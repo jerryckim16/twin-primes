@@ -11,6 +11,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 st = json.load(open("status.json"))
 log = json.load(open("log/entries.json"))
+bh = json.load(open("log/bound-history.json")) if os.path.exists("log/bound-history.json") else []
 esc = html.escape
 
 # ---------- paper -> HTML fragment (MathML) ----------
@@ -47,6 +48,41 @@ with tempfile.NamedTemporaryFile("w", suffix=".tex", delete=False) as f:
 abstract_html = subprocess.run(["pandoc", tmp, "-f", "latex", "-t", "html", "--mathml"], capture_output=True, text=True, check=True).stdout
 os.unlink(tmp)
 
+
+# ---------- bound history chart (log scale) ----------
+def bound_chart(hist, established, claimed):
+    if not hist:
+        return ""
+    W, H, L, R, T, B = 520, 300, 46, 142, 40, 50
+    vals = [h["bound"] for h in hist] + [established, claimed]
+    lo = min(vals) * 0.85; hi = max(vals) * 1.12
+    def y(v): return T + (H - T - B) * (math.log(hi) - math.log(v)) / (math.log(hi) - math.log(lo))
+    n = len(hist)
+    def x(i): return L + 26 + (W - L - R - 40) * (i / max(n - 1, 1))
+    out = [f'<svg viewBox="0 0 {W} {H}" class="bchart" role="img" aria-label="Bound reproduced by this project after each improvement, logarithmic scale: ' +
+           ", ".join(str(h["bound"]) for h in hist) + f'. Established {established}, claimed {claimed}.">']
+    for t in (150, 200, 300, 400, 500, 600, 800, 1000):
+        if lo <= t <= hi:
+            out.append(f'<line x1="{L}" x2="{W-R}" y1="{y(t):.1f}" y2="{y(t):.1f}" class="grid"/>'
+                       f'<text x="{L-8}" y="{y(t)+4:.1f}" class="tick" text-anchor="end">{t}</text>')
+    for v, cls, lab in ((established, "ref ok", "established"), (claimed, "ref warn", "claimed")):
+        out.append(f'<line x1="{L}" x2="{W-R}" y1="{y(v):.1f}" y2="{y(v):.1f}" class="{cls}"/>'
+                   f'<text x="{W-R+8}" y="{y(v)+4:.1f}" class="reflab {cls.split()[1]}">{v} {lab}</text>')
+    pts = []
+    for i, h in enumerate(hist):
+        if i: pts.append(f"{x(i):.1f},{y(hist[i-1]['bound']):.1f}")
+        pts.append(f"{x(i):.1f},{y(h['bound']):.1f}")
+    out.append(f'<polyline points="{" ".join(pts)}" class="step"/>')
+    for i, h in enumerate(hist):
+        cx, cy = x(i), y(h["bound"])
+        out.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="7" class="pt"><title>{h["date"]}, session {h["session"]}: {h["bound"]} (k = {h["k"]}). {esc(h["how"])}</title></circle>'
+                   f'<text x="{cx:.1f}" y="{cy-14:.1f}" class="ptlab" text-anchor="middle">{h["bound"]}</text>'
+                   f'<text x="{cx:.1f}" y="{H-B+26:.1f}" class="tick" text-anchor="middle">S{h["session"]}</text>')
+    out.append(f'<text x="{L+26}" y="{H-4}" class="tick">session</text></svg>')
+    rows = "".join(f'<tr><td>{esc(h["date"])}</td><td>S{h["session"]}</td><td class="num">{h["bound"]}</td><td class="num">{h["k"]}</td><td>{esc(h["how"])}</td></tr>' for h in reversed(hist))
+    table = f'<details class="bh"><summary>Every improvement ({len(hist)})</summary><div class="scroll"><table><thead><tr><th>Date</th><th>Session</th><th>Bound</th><th>k</th><th>How</th></tr></thead><tbody>{rows}</tbody></table></div></details>'
+    return "\n".join(out) + table
+
 # ---------- pieces ----------
 b = st["bounds"]
 LABEL_CLASS = {"Lean-checked": "ok", "Computed": "ok", "Proved here": "own", "Literature": "lit", "Claimed": "warn", "Open": "open"}
@@ -66,6 +102,7 @@ for v, lab, cls, side in marks:
 line.append("</div>")
 scale = "\n".join(line)
 
+bchart = bound_chart(bh, b["established"], b["claimed"])
 tiles = f"""
 <div class="tiles">
   <div class="tile ok"><div class="k">Established</div><div class="v">{b['established']}</div><div class="d">Polymath8b, 2014. Checked in Lean by others, given Bombieri&ndash;Vinogradov.</div></div>
@@ -164,6 +201,16 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 .paper .smallcaps{font-variant:small-caps;letter-spacing:.03em} .paper .theorem em,.paper .proposition em,.paper .corollary em{font-style:italic}
 .paper .proof{margin:.6em 0} .paper ol,.paper ul{padding-left:1.3em}
 .paper code{font-family:var(--mono);font-size:.82em;overflow-wrap:anywhere}
+.bchart{width:100%;max-width:600px;height:auto;display:block;font-family:var(--mono)}
+.bchart .grid{stroke:var(--rule);stroke-width:1}
+.bchart .tick{fill:var(--muted);font-size:15px}
+.bchart .ref{stroke-width:1.5;stroke-dasharray:5 4} .bchart .ref.ok{stroke:var(--ok)} .bchart .ref.warn{stroke:var(--warn)}
+.bchart .reflab{font-size:15px} .bchart .reflab.ok{fill:var(--ok)} .bchart .reflab.warn{fill:var(--warn)}
+.bchart .step{fill:none;stroke:var(--own);stroke-width:3.5;stroke-linejoin:round}
+.bchart .pt{fill:var(--own);stroke:var(--bg);stroke-width:2}
+.bchart .ptlab{fill:var(--own);font-size:19px;font-weight:500;paint-order:stroke;stroke:var(--bg);stroke-width:5px}
+.bh{margin-top:8px;font-size:.88rem} .bh summary{cursor:pointer;color:var(--accent);font-family:var(--mono);font-size:.78rem}
+.bh td.num{font-variant-numeric:tabular-nums;text-align:right;padding-right:14px} .bh th{font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:500}
 .files{columns:2;column-gap:24px;list-style:none;padding:0;margin:0;font-size:.8rem} .files code{font-family:var(--mono);overflow-wrap:anywhere}
 @media (max-width:640px){ body{font-size:17px} .tiles{grid-template-columns:repeat(2,1fr)} .files{columns:1}
   .mark .cap{font-size:.6rem;left:-38px;width:76px} h1{font-size:1.6rem}
@@ -196,6 +243,12 @@ page = f"""<!DOCTYPE html>
   {scale}
   <p class="scalenote">Smallest gap proved to occur infinitely often between primes, on a logarithmic scale. Lower is better.</p>
   {tiles}
+</section>
+
+<section>
+  <h2>Our bound, improvement by improvement</h2>
+  <p class="scalenote" style="margin-bottom:8px">The bound reproduced end to end by this project, each time it went down. Logarithmic scale. The twin prime conjecture would be 2, far below this chart.</p>
+  {bchart}
 </section>
 
 <section>

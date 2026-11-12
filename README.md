@@ -27,6 +27,7 @@ Each session reads `STATE.md`, does one reproduction step and tests one idea of 
 | `code/mk_general.py` | Exact Gram matrices for Maynard's M_k with all symmetric polynomials; certified lower bounds |
 | `code/cert_*.json` | Exact rational certificates (coefficient vectors) for M_k > 4 |
 | `code/admissible.py`, `code/gen_lean.py` | Admissible-tuple search and Lean generation |
+| `log/bound-history.json` | Every improvement of the project's own bound, starting from 578 (drawn as a log-scale chart on the website) |
 | `status.json`, `log/entries.json` | Bounds, results ledger, ideas ledger, research log (drive the website) |
 | `STATE.md` | Handoff notes for the next session |
 | `notes/` | Reading notes and working notes |
