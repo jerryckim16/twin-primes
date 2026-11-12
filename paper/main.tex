@@ -365,19 +365,22 @@ without changing any certified digit, which makes degree $25$ feasible on a
 four-core machine (build $16$ minutes, search $4$ minutes).
 
 \begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Meps}
-With even power sums of degree $25$ ($1780$ coefficients),
+With even power sums of degree $25$ ($1780$ coefficients) and of degree $27$
+($2526$ coefficients),
 \[
-M_{50,1/25}\ge4.0012466 .
+M_{50,1/25}\ge4.0012466\qquad\text{and}\qquad M_{50,1/25}\ge4.0043063 .
 \]
 \end{theorem}
 
-The certificate is \texttt{code/cert\_M50e25\_D25e.json}; the script
+The certificates are \texttt{code/cert\_M50e25\_D25e.json} and
+\texttt{code/cert\_M50e25\_D27e.json} (the degree-$27$ run took $43$ minutes
+to build and $10$ minutes to search, with about $10$~GB of memory); the script
 \texttt{code/verify\_cert.py} rebuilds both Gram matrices from scratch and
 re-evaluates the stored rational vector exactly; it uses the same
 Gram-matrix builder, so it checks the arithmetic and the bookkeeping, while
 the formulas themselves are checked by the symbolic test above. Polymath8b report
 $M_{50,1/25}>4.00124$ at degree $25$ and $>4.0043$ at degree $27$
-\cite[\S7.2]{Pol14b}; our value agrees with the first to every printed digit.
+\cite[\S7.2]{Pol14b}; our values agree with both to every printed digit.
 
 
 \begin{corollary}[end-to-end within this project]\label{cor:246}
@@ -793,8 +796,17 @@ truth near $k=50$, a dual weight must depend on more of $t$ than $t_m$ and
 $S$}. The optimal weight is known in principle: if $F>0$ is the extremal
 function, $\psi_m=\int F\,dt_m/F$ makes Lemma~\ref{lem:dual} an equality (the
 Collatz--Wielandt principle for the positive operator
-$F\mapsto\sum_{m\text{ active}}\int F\,dt_m$). Making that usable with an
-approximate $F$ is \lbl{Open}. The script is \texttt{code/dual\_lp.py};
+$F\mapsto\sum_{m\text{ active}}\int F\,dt_m$). A first test
+(\lbl{Computed}, floating point, $20000$ random points, not a bound;
+\texttt{code/cw\_sample.py}) is encouraging on the plain simplex and
+discouraging on the enlarged one. For $k=3$, $\varepsilon=0$ and the
+degree-$12$ Galerkin function ($M_3\ge1.646440$) the sampled ratio stays in
+$[1.6464,1.6465]$, which would be an almost sharp upper bound if the supremum
+could be certified. For $\varepsilon>0$ the Galerkin polynomial changes sign
+($\min F/\max F=-0.0003$ at $(k,\varepsilon,d)=(10,1/5,12)$, $-0.11$ at
+$(50,1/25,12)$). This is structural: where no index is active the extremal
+function vanishes, so near that region any positive $F$ makes the ratio
+large. Making the principle usable there is \lbl{Open}. The script is \texttt{code/dual\_lp.py};
 \texttt{runs/dual\_lp\_conv.log} and \texttt{runs/dual\_lp\_floor.log} hold the
 output. The last column is from Table~\ref{tab:eps} and
 Theorem~\ref{thm:Meps}.
@@ -809,7 +821,10 @@ against the certified $3.99310$ (degree $22$), our $4.00125$ (degree $25$)
 and Polymath8b's $4.0043$ (degree $27$). The model is slightly optimistic, by
 $0.0001$ to $0.0012$. Applied to $k=49$ with $D=18,20,22$ (certified
 $3.97715$ and $3.97690$ at degree $22$ for $\varepsilon=1/30$ and $1/25$) it
-gives limits $3.9922$ and $3.9938$; the grid
+gives limits $3.9922$ and $3.9938$. As a test registered before the run, the
+fit predicted $3.98230$ at degree $24$ for $\varepsilon=1/30$; the certified
+value is $3.98218$ ($1508$ coefficients), again slightly below, and the fit
+through $D=20,22,24$ moves the limit down to $3.9913$. The grid
 $\varepsilon\in\{1/50,1/40,1/30,1/25,1/20\}$ at $D\le20$ gives at most
 $3.995$. This suggests that $\sup_\varepsilon M_{49,\varepsilon}<4$, so that
 the $\varepsilon$-enlarged simplex with Bombieri--Vinogradov stops at $k=50$,

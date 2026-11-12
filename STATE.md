@@ -6,8 +6,8 @@ Each session works on the claude/... branch its system instructions name (create
 ## Position (after session 4, 2026-11-12, 8 AM run started by hand)
 - Established in the literature: H1 <= 246 (Polymath8b 2014; Lean-formalised by Axiom given Bombieri-Vinogradov).
 - Claimed in 2026 preprints: 240 (Stadlmann), 236 (Kintali; Song-Yue), 212 (Charton et al.), 186 (OpenAI, Lean conditional on 3 axioms; Nervous-Machine re-run 7 Nov: "conditionally supported ... not yet settled"), 182 (GPT-6 Astra prompted by R. Sharifi, DHL[39,2]). No news search this session (only the 3:34 AM run does it). The 182 PDF still has not been re-opened.
-- Reproduced end to end by this project: 246 = the established bound (M_{50,1/25} >= 4.0012466, even power sums degree 25, 1780 coeffs, eps-enlarged simplex; + Lean tuple (50,246) + BV + Polymath8b Thm 3.12(i)). Matches Polymath8b's 4.00124 at d=25. Reproduction, not new.
-- Own results so far: Theorem 15 (was 13): eps-enlarged simplex floor k <= 29. Session 4: Proposition 19 (numerical): dual weights depending only on (t_m, S) stall near 4.14 at (50, 1/25); Remark 20 (heuristic): degree extrapolation suggests sup_eps M_{49,eps} ~ 3.993 < 4, i.e. the eps-simplex stops at k = 50. Remark 16: Polymath8b Prop. 6.5 as printed (arXiv text, re-read this session) proves only (k/(k-1)+eps) log(2k-1).
+- Reproduced end to end by this project: 246 = the established bound (M_{50,1/25} >= 4.0012466 at degree 25 (1780 coeffs) and >= 4.0043063 at degree 27, eps-enlarged simplex; + Lean tuple (50,246) + BV + Polymath8b Thm 3.12(i)). Matches Polymath8b's 4.00124 (d=25) and 4.0043 (d=27). Reproduction, not new.
+- Own results so far: Theorem 15 (was 13): eps-enlarged simplex floor k <= 29. Session 4: Proposition 19 (numerical): dual weights depending only on (t_m, S) stall near 4.14 at (50, 1/25); Remark 20 (heuristic): degree extrapolation suggests sup_eps M_{49,eps} ~ 3.991-3.994 < 4 (a prediction registered before the degree-24 run, 3.98230, came out 3.98218), i.e. the eps-simplex stops at k = 50. Remark 16: Polymath8b Prop. 6.5 as printed (arXiv text, re-read this session) proves only (k/(k-1)+eps) log(2k-1).
 - The twin prime conjecture itself is OPEN. Sieve methods of this kind stop at 6 even under GEH (parity).
 
 ## Paper numbering (v0.4)
@@ -20,14 +20,14 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6 M_{50,1/25}; 
 - code/dual_lp.py: convex optimisation over weights rho(S,u)*(L-sigma+(k-1)u) (cvxpy + Clarabel; pip install cvxpy). `python3 code/dual_lp.py k eps Nc N` (use Nc = N). Logs in runs/dual_lp_*.log.
 - Certificates: cert_M50e25_D25e.json (new), cert_M54_D23e.json, cert_M55_D20e.json, ... , cert_floor_k29.json.
 - Lean: Basic.lean now also has isPrime_two, not_boundedGaps_one, admissible_pair_iff.
-%D27%
+- M_{50,1/25} >= 4.0043063 at degree 27 (2526 coeffs): 43 min build + 10 min solve, ~10 GB (cert_M50e25_D27e.json). code/check_eps_sympy.py checks the eps Gram formulas by direct symbolic integration (k <= 4).
 
 ## Bound history
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246. Append whenever status.json bounds.project decreases; never edit past entries. Next rung would be 240 (k = 49), which needs Stadlmann's support.
 
 ## Next steps (in order)
 1. Track A, reproduce 240: Stadlmann's support T_k (notes/sources-enlarged-supports.md §2): eps = 0.0075, A1 = 0.253, delta = 0.028, caps B_{1,1}=B_{1,2}=0.15, B_{1,m}=0.17 (m>=3), k = 49, basis p^2 (1 - sum t)^b, D = 19. Needs integrals over the simplex with rough-mass caps (sum of coordinates > delta at most B_{|I|}): think about inclusion-exclusion over which coordinates exceed delta, or Monte-Carlo-free exact formulas; first re-read arXiv:2608.31126 Def. 1, Def. 5, Prop. 1 and §5.1.
-2. Own, main direction: Collatz-Wielandt weights psi_m = (int F dt_m)/F from a positive approximate extremal F (Prop. 19 says (t_m,S)-weights cannot reach the truth). Try F = h(S) prod g(t_i) or the Galerkin eigenfunction; the hard part is a rigorous sup over t. Also: converge Prop. 19 at (30, 1/4) (bigger N, or a better discretisation) to locate the exact floor of the (t_m,S) family.
+2. Own, main direction: Collatz-Wielandt weights psi_m = (int F dt_m)/F from a positive approximate extremal F (Prop. 19 says (t_m,S)-weights cannot reach the truth). code/cw_sample.py: at k=3, eps=0 the sampled ratio is within 1e-4 of M_3; for eps>0 the Galerkin F changes sign, because the extremal F vanishes where no index is active. Ideas: restrict the support to points with an active index and build F positive there (e.g. Galerkin F plus a small positive multiple of a barrier); the hard part is a rigorous sup over t (symmetric reduction?). Also: converge Prop. 19 at (30, 1/4) (bigger N, or a better discretisation) to locate the exact floor of the (t_m,S) family.
 3. Track B: Bombieri's asymptotic sieve and Heath-Brown (Siegel zeros => twin primes) as precise statements; the bilinear-hypothesis problem as Lean Props.
 4. Optional: M_{49,eps} at degree 24-25 for eps 1/30, 1/25 to test Remark 20 (D=22 took about 9 min build each).
 

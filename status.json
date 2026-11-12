@@ -12,8 +12,8 @@
   "results": [
     {
       "label": "Computed",
-      "text": "M_{50,1/25} ≥ 4.0012466 on Polymath8b's epsilon-enlarged simplex, even power sums of degree 25 (1780 coefficients). With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives H1 ≤ 246 end to end, the established bound. Agrees with Polymath8b's 4.00124 at degree 25 to every printed digit. Reproduction, not new.",
-      "where": "code/cert_M50e25_D25e.json; re-check with code/verify_cert.py"
+      "text": "M_{50,1/25} ≥ 4.0012466 (degree 25, 1780 coefficients) and ≥ 4.0043063 (degree 27, 2526 coefficients) on Polymath8b's epsilon-enlarged simplex, even power sums. With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives H1 ≤ 246 end to end, the established bound. Agrees with Polymath8b's 4.00124 (d=25) and 4.0043 (d=27) to every printed digit; Gram formulas checked against direct sympy integration. Reproduction, not new.",
+      "where": "code/cert_M50e25_D25e.json, code/cert_M50e25_D27e.json; re-check with code/verify_cert.py; code/check_eps_sympy.py"
     },
     {
       "label": "Lean-checked",
@@ -27,7 +27,7 @@
     },
     {
       "label": "Computed",
-      "text": "Certified M_{k,eps} values for k = 49, 50, degrees 10-22, eps in {0, 1/50, 1/40, 1/30, 1/25, 1/20}; heuristic geometric extrapolation in the degree (checked against the known degree 22/25/27 values at k = 50) suggests sup_eps M_{49,eps} ≈ 3.993 < 4 (Remark 20, Open).",
+      "text": "Certified M_{k,eps} values for k = 49, 50, degrees 10-24, eps in {0, 1/50, 1/40, 1/30, 1/25, 1/20}; heuristic geometric extrapolation in the degree (checked against the known degree 22/25/27 values at k = 50) suggests sup_eps M_{49,eps} ≈ 3.991-3.994 < 4 (Remark 20, Open); a prediction registered before the degree-24 run (3.98230) came out 3.98218.",
       "where": "runs/scan_k49.jsonl, runs/scan_k50.jsonl; code/scan_eps.py, code/extrapolate_eps.py"
     },
     {
@@ -122,7 +122,7 @@
       "idea": "Degree extrapolation of certified M_{k,eps}: does the eps-enlarged simplex reach k = 49?",
       "origin": "own",
       "status": "partial",
-      "note": "Geometric model validated at k = 50 (optimistic by ≤ 0.0012) predicts sup_eps M_{49,eps} ≈ 3.993 < 4: heuristic evidence that the method stops at 50 (Remark 20)."
+      "note": "Geometric model validated at k = 50 (optimistic by ≤ 0.0012) predicts sup_eps M_{49,eps} ≈ 3.991-3.994 < 4: heuristic evidence that the method stops at 50 (Remark 20)."
     },
     {
       "idea": "Collatz-Wielandt weights psi_m = (int F dt_m)/F from a positive approximate extremal F, to approach the true floor near k = 50.",
