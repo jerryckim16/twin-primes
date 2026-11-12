@@ -54,5 +54,13 @@
   "k": 50,
   "how": "M_{50,1/25} >= 4.0012466 on the eps-enlarged simplex (Polymath8b Thm 3.12), even power sums of degree 25 (1780 coefficients); 50-tuple of diameter 246",
   "certificate": "code/cert_M50e25_D25e.json"
+ },
+ {
+  "date": "2026-11-12",
+  "session": 6,
+  "bound": 240,
+  "k": 49,
+  "how": "Variational step of [Sta26] independently reproduced: on Stadlmann's capped one-band support (k = 49, eps = 0.0075, A1 = 0.253, delta = 0.028, caps 0.15/0.15/0.17, c1 = c2 = 0) the degree-20 polynomial P gives k J_T/I_T = 4.0120389 > 4 for F = P 1_T, computed exactly by two independent programs; Lean-checked 49-tuple of diameter 240. conditional: rests on the equidistribution estimates of Stadlmann (arXiv:2608.31126, his Prop. 1 and equidistribution theorem), which this project has NOT verified.",
+  "certificate": "code/cap6/P_capfree_D20_u.json (+ code/cap6/res_capfree_D20.json, code/cap6/check_capfree_D20.json)"
  }
 ]
