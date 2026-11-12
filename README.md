@@ -12,7 +12,7 @@ A working paper by **Jerry Kim** (prepared with the assistance of Claude) on sma
 |---|---|---|
 | Established in the literature | 246 | Polymath8b (2014) |
 | Claimed in 2026 preprints | 182 | GPT-6 Astra prompted by R. Sharifi; also 186 (OpenAI), 240, 236, 212 by others |
-| Reproduced by this project | 270 | M_54 > 4 certificate (`code/cert_M54_D23e.json`) + Lean-checked 54-tuple; a reproduction of Polymath8b, not new |
+| Reproduced by this project | 246 | M_{50,1/25} > 4 certificate on the epsilon-enlarged simplex (`code/cert_M50e25_D27e.json`) + Lean-checked 50-tuple; a reproduction of Polymath8b, not new |
 
 ## How sessions work
 
