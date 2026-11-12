@@ -1,0 +1,30 @@
+# Research log
+
+## 2026-11-12 - Session 2 (12:40 AM): All symmetric test functions: certified down to k = 56 (H1 ≤ 278 reproduced); rigidity on the enlarged simplex
+
+- Proved an exponential-moment formula for simplex integrals of power-sum products (Lemma 3) and used it to build exact Gram matrices for every symmetric test function.
+- Certified M_64 > 4 (all symmetric, degree 12), M_58 > 4 and M_56 ≥ 4.00519 (even power sums, degrees 16 and 18). The end-to-end bound inside the project moved from 578 to 278.
+- Searched admissible tuples for k = 56..64 (diameters 278 to 330) and added them to the Lean development; it still builds with no sorry and only propext and Quot.sound.
+- Own idea, with a helper agent: does Proposition 5 survive on Polymath8b's epsilon-enlarged simplex? Yes. A single rescaling closes the gap that naive slicing leaves (Proposition 8), and k = 3 numerics agree.
+- A second helper read Polymath8b, Stadlmann and the 212 draft and wrote exact definitions of the enlarged supports to notes/sources-enlarged-supports.md. Key fact: with Bombieri-Vinogradov any epsilon < 1 is allowed.
+
+Did not work or is blocked:
+- M_55 reaches only 3.99153 at degree 18, so 270 (k = 54) is not yet reproduced.
+- The first inverse-iteration version converged to a non-top eigenvalue; fixed by keeping the shift above the Polymath8b upper bound. Certified values were never affected (they are exact Rayleigh quotients).
+- arxiv.org is blocked for direct downloads in this workspace; sources are read through WebFetch.
+
+Next: Even power sums at degree 20 to 22 for k = 54 and 55 (estimate 6 to 15 minutes each), then add the epsilon-enlarged simplex to mk_general.py for k = 50.
+
+## 2026-11-12 - Session 1 (setup): Survey, first certificates, first Lean build, one no-go result
+
+- Surveyed the field. The 2014 record of 246 was passed in the week of 31 August 2026 by a run of preprints: 240 (Stadlmann), 236, 212 (DHL[45,2]) and 186 (DHL[40,2]). None was found fully verified independently; no claim below 186 was found.
+- Built an exact-arithmetic pipeline for Maynard's sieve constant and reproduced M_105 > 4. Pushed the same family of test functions to k = 102, where it stalls.
+- Searched for narrow admissible tuples for k = 2..55, 102 and 105. Every k up to 55 matches the published optimum. For k = 102 the search found diameter 578; a 576 search did not succeed.
+- Wrote the Lean development (core Lean 4.35.0, no Mathlib, no sorry). It builds in about 15 seconds. Axioms used: propext, Quot.sound.
+- Tested an idea of our own, the weighted pigeonhole. It cannot work; the proof became Proposition 5.
+
+Did not work or is blocked:
+- Mathlib cannot be built here (its cache host is blocked), so the analytic statements stay outside Lean for now.
+- No 102-tuple of diameter 576 found.
+
+Next: Generalise the test functions beyond P1, P2 to reproduce M_54 > 4 (270). In parallel, read Stadlmann's paper closely enough to write down her support region exactly.

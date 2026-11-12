@@ -1,0 +1,11 @@
+lean/.lake/
+paper/*.aux
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/main.pdf
+__pycache__/
+*.pyc
+code/*.log

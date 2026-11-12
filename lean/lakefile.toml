@@ -1,0 +1,5 @@
+name = "TwinPrimes"
+defaultTargets = ["TwinPrimes"]
+
+[[lean_lib]]
+name = "TwinPrimes"
