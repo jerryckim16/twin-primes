@@ -6,3 +6,5 @@ k=28 omega=1/300: certified 454 intervals; worst float sup W = 3.999855
 k=25 omega=1/68: failed at eps in [2883/64000, 46129/1024000], float sup W = 4.000000
 k=24 omega=1/68: failed at eps in [11061/204800, 27653/512000], float sup W = 4.000002
 k=23 omega=1/68: failed at eps in [73901/1024000, 36951/512000], float sup W = 4.000000
+k=22 omega=1/68: certified 442 intervals; worst float sup W = 3.967322
+k=21 omega=1/68: certified 434 intervals; worst float sup W = 3.927023
