@@ -1,15 +1,35 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "updated": "2026-11-12",
-  "session_count": 2,
+  "session_count": 3,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
-    "claimed": 186,
+    "claimed": 182,
     "established": 246,
-    "project": 278
+    "project": 272
   },
   "results": [
+    {
+      "label": "Lean-checked",
+      "text": "DHL.mono: DHL[k,2] implies DHL[k',2] for every k' ≥ k (delete shifts), with Admissible.sublist.",
+      "where": "lean/TwinPrimes/Basic.lean"
+    },
+    {
+      "label": "Proved here",
+      "text": "Proposition 12: M_{k,eps} ≤ (1+eps) M_k, and M_{k,eps} ≥ (1+eps) M_k − 64k²eps²/M_k for small eps, so the enlargement gains exactly (1+eps) to first order. Possibly folklore.",
+      "where": "paper, Proposition 12"
+    },
+    {
+      "label": "Proved here",
+      "text": "Theorem 13 (floor of the epsilon-enlarged simplex): M_{k,eps} < 3.99 for every k ≤ 29 and every 0 ≤ eps < 1, so the enlarged simplex alone cannot give DHL[k,2] for k ≤ 29 from Bombieri-Vinogradov or any level θ ≤ 0.501. Inequality proved; numerical part Computed in interval arithmetic and re-checked with a second library.",
+      "where": "paper, Theorem 13; code/cert_floor_k29.json, dual_eps_cert.py, check_floor_cert.py"
+    },
+    {
+      "label": "Computed",
+      "text": "M_55 ≥ 4.00516 with even power sums of degree 20 (707 coefficients). With the Lean tuple (55, 272), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 272 end to end. Reproduction, not new; M_54 at degree 23 (for 270) was still running.",
+      "where": "code/cert_M55_D20e.json; re-check with code/verify_cert.py"
+    },
     {
       "label": "Lean-checked",
       "text": "The twin prime conjecture is equivalent to BoundedGaps 2.",
@@ -57,11 +77,23 @@
     },
     {
       "label": "Literature",
-      "text": "With Bombieri-Vinogradov and Maynard's Prop. 4.2, the M_56 certificate and the Lean tuple (56, 278) give H1 ≤ 278 end to end inside this project.",
+      "text": "With Bombieri-Vinogradov and Maynard's Prop. 4.2, the M_55 certificate and the Lean tuple (55, 272) give H1 ≤ 272 end to end inside this project (was 278).",
       "where": "paper, Corollary 5"
     }
   ],
   "ideas": [
+    {
+      "idea": "Active-count-normalised weight (beta/n)(a − S_A + n t_m) to beat scaling at small eps.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Exact fiber evaluation at k = 50, eps = 1/25: never below 4.178, worse than the scaling bound 4.1515 (Remark 16)."
+    },
+    {
+      "idea": "Two-zone dual weight (linear in t_m below s1, proportional to t_m/S above) in Polymath8b's Lemma 6.1 with the marginal region kept, to bound M_{k,eps} uniformly in eps.",
+      "origin": "own",
+      "status": "works",
+      "note": "Theorem 13: no k ≤ 29 for any eps < 1, beating the k ≤ 23 floor from Polymath8b Prop. 6.5."
+    },
     {
       "idea": "Exponential-moment generating function for simplex integrals of power-sum products, to make certified high-degree computations cheap.",
       "origin": "own",
@@ -77,8 +109,8 @@
     {
       "idea": "Floor of the method: a rigorous upper bound (dual certificate) for the 2026 hybrid sieve supports, to learn how far below 186 the present inputs can go.",
       "origin": "own",
-      "status": "open",
-      "note": "Main original direction. Needs the exact shape of Stadlmann's region first."
+      "status": "partial",
+      "note": "Done for the eps-enlarged simplex down to k ≤ 29 (Theorem 13). The true threshold is near k = 50; Remark 16 records a weight that fails (4.178 vs 4.1515). Hybrid 2026 supports still open."
     },
     {
       "idea": "Does the slicing lemma behind Proposition 5 survive on enlarged supports?",
@@ -90,7 +122,7 @@
       "idea": "Richer symmetric test functions to pass k = 102 and reach M_54 > 4 (270).",
       "origin": "literature",
       "status": "partial",
-      "note": "Reached k = 56 with even power sums of degree 18 (471 coefficients). k = 55 gives 3.9915 at degree 18; degree 20 to 23 needed."
+      "note": "M_55 ≥ 4.00516 at degree 20 (272). M_54 needs degree 23 (Polymath8b): over 15 min and 9 GB here."
     },
     {
       "idea": "One explicit bilinear hypothesis that implies twin primes, formalised in Lean.",

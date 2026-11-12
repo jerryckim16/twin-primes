@@ -1,6 +1,26 @@
 [
   {
     "date": "2026-11-12",
+    "slot": "Session 3 (7 AM, recovery of the 6:34 AM run)",
+    "title": "H1 ≤ 272 reproduced; the epsilon-enlarged simplex cannot reach k ≤ 29 (Theorem 13); paper v0.3",
+    "did": [
+      "Certified M_55 ≥ 4.00516 with even power sums of degree 20 (707 coefficients). With the Lean tuple (55, 272) the project's end-to-end bound moved from 278 to 272.",
+      "Own idea (convex duality): a two-zone weight in Polymath8b's dual lemma, keeping the region of the marginals, proves M_{k,eps} < 3.99 for every k ≤ 29 and every eps < 1 (Theorem 13). 857 rational intervals, checked in flint ball arithmetic and again with mpmath intervals.",
+      "Proposition 12: the enlargement gains exactly a factor 1+eps to first order, so any saving needs eps of size about 1/k. Noted a step in Polymath8b Prop. 6.5 we could not complete (Remark 14, Open).",
+      "Lean: added Admissible.sublist and DHL.mono; the development builds with only propext and Quot.sound.",
+      "Status table: added the 182 claim (GPT-6 Astra prompted by R. Sharifi) and the Nervous-Machine re-run of PrimeGaps186 (conditionally supported, not yet settled)."
+    ],
+    "failed": [
+      "The 3:34 AM and 6:34 AM runs did not reach GitHub; the 6:34 run had produced v0.3 and sent the PDF, then errored. This session rebuilt all of it from the PDF.",
+      "Remark 16 did not reproduce as drafted: exact fiber evaluation gives 4.178 (the weight is worse than scaling), not 4.146. The paper now gives the reproducible number.",
+      "The 182 preprint could not be re-opened (too large for WebFetch, direct download refused); its details are as read by the earlier run.",
+      "M_54 at degree 23 (for 270) did not finish before the merge: it needs about 9 GB, more than the scheduled runs have.",
+      "Theorem 13 is far from sharp: the expected threshold is near k = 50."
+    ],
+    "next": "Finish M_54 > 4 (270). Then add the eps-enlarged simplex to mk_general.py and certify M_{50,1/25} > 4 (246). Own side: a sharper dual weight for small eps (Remark 16 says what it must do)."
+  },
+  {
+    "date": "2026-11-12",
     "slot": "Session 2 (12:40 AM)",
     "title": "All symmetric test functions: certified down to k = 56 (H1 ≤ 278 reproduced); rigidity on the enlarged simplex",
     "did": [
