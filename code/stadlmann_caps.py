@@ -7,7 +7,7 @@ Setting (Polymath scaling u = 4t of Stadlmann's coordinates, one band):
 Stadlmann's parameters: L = 4(A1+eps) = 1.042, tau = 4(A1-eps) = 0.982, g = 4 delta = 0.112,
 C_1 = C_2 = 0.6, C_m = 0.68 (m >= 3).
 
-Take F = P 1_T with P a polynomial and V = {sum u <= L} \\ T.  Then (Proposition 21 of the paper)
+Take F = P 1_T with P a polynomial and V = {sum u <= L} \\ T.  Then (Proposition 23 of paper v0.5)
   I_T(F) <= I(P),   J_T(F) >= J(P) - 2 sqrt(J(P) * L * E),   E >= int_V P^2,
 where I(P), J(P) are the cap-free functionals on {sum u <= L} with marginal domain tau.
 Union bound: a point of V has a large set I with sum_I u > C_|I| (|I| <= 6) or |I| >= 7 (then 7 of its

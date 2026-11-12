@@ -40,7 +40,11 @@ bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
 itself, reach any $k\le29$; numerical evidence that this upper bound is close
 to the limit of every dual weight depending only on $t_m$ and $t_1+\dots+t_k$,
 and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
-$k=50$, and (iv) a programme of original
+$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
+floor (no $k\le28$ at his level of distribution, whatever the caps), exact
+integrals over the cap-violation set, and a certified capped ratio of
+$3.9597$ at $k=49$, still short of the $4$ needed to reproduce $240$, and
+(iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
 \lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
@@ -554,7 +558,7 @@ that depend on $m$, or arguments that are not linear in the indicators of
 primality. Those are \lbl{Open}.
 \end{remark}
 
-\section{Results of our own: how far the \texorpdfstring{$\varepsilon$}{epsilon}-enlargement alone can go}
+\section{Results of our own: how far the \texorpdfstring{$\varepsilon$}{epsilon}-enlargement alone can go}\label{sec:epsfloor}
 
 For the plain simplex the bound $M_k\le\frac{k}{k-1}\log k$ shows where the
 method stops ($k\ge51$). This section starts the same analysis for the
@@ -875,7 +879,7 @@ In the Polymath scaling $u=4t$ the support lies in $L\R_k$ with
 $L=4(A_1+\varepsilon)$, the marginals are integrated over $\tau\R_{k-1}$ with
 $\tau=4(A_1-\varepsilon)$, and the criterion with $c_1=c_2=0$ reads
 $kJ/I>4$. Write $s=(L+\tau)/2=4A_1$ and $e=(L-\tau)/(L+\tau)=\varepsilon/A_1$;
-the scaling $M_k(cL,c\tau)=cM_k(L,\tau)$ of Section~5 gives
+the scaling $M_k(cL,c\tau)=cM_k(L,\tau)$ of Section~\ref{sec:epsfloor} gives
 \begin{equation}\label{eq:dil}
 M_k(L,\tau)=s\,M_k(1+e,1-e)=4A_1\,M_{k,\varepsilon/A_1}.
 \end{equation}
@@ -953,7 +957,33 @@ $E$, and evaluate both bounds exactly. The penalty works: at degree $16$ it
 lowers $E/I$ from $3.2\cdot10^{-4}$ (for the cap-free optimiser) to
 $3.4\cdot10^{-7}$.
 
-CAPSRESULT
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic]\label{prop:capped}
+For Stadlmann's parameters ($k=49$) there is a polynomial $P$ of degree $20$
+in even power sums ($707$ coefficients) with
+\[
+\frac{kJ_T(P\,1_T)}{I_T(P\,1_T)}\ \ge\ 3.95972 .
+\]
+At degree $16$ ($307$ coefficients) the same method gives $3.93625$.
+\end{proposition}
+
+\begin{sloppypar}
+This is below $4$: \emph{the rung $240$ is not reproduced.} The certificate is
+\texttt{code/cert\_stad49\_caps\_D20e.json}, written by
+\texttt{code/stadlmann\_caps\_opt.py}; the best bound came from
+$\eta=1/800$, with $E/I=1.6\cdot10^{-7}$ and the bound of
+Proposition~\ref{prop:caps} in its square-root form. Where the loss comes from
+(\lbl{Computed}, same runs): the cap-free optimiser of degree $20$ has
+$s\,kJ/I=4.01618$ but $E/I=1.2\cdot10^{-3}$ (of which $1.2\cdot10^{-4}$ from points with one
+coordinate above $0.6$); forcing $E$ down costs about $0.045$ of the cap-free
+ratio ($4.0161\to3.9710$), and the Cauchy--Schwarz step costs another
+$0.011$. Both losses come from the way we bound $J_T$, not from the caps as
+such: $F=P\,1_T$ is cut off on $V$ anyway, and Proposition~\ref{prop:caps}
+charges for $P$ on $V$ only because it does not compute the capped marginals.
+The next step is therefore an exact formula for $J_T(P\,1_T)$, which needs the
+fibers of $T$ and not only integrals over $V$. A first attempt that dropped the
+condition $u_i>g$ in the union bound failed badly ($E/I\approx146$ for the
+cap-free optimiser; \texttt{runs/stad49\_caps\_D20.log}).
+\end{sloppypar}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
 Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the

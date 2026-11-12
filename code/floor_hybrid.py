@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Floor for one-band Stadlmann supports (Proposition 22 of paper v0.5).
+"""Floor for one-band Stadlmann supports (Theorem 25 of paper v0.5).
 
 Stadlmann's support T_k(delta, A, B, eps) with one band (n = 1, A = (-eps, A1)), any delta and any caps,
 in Polymath scaling (u = 4t), lies inside the simplex {sum u <= L}, L = 4(A1 + eps), and its functional J

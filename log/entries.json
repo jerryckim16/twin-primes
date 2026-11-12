@@ -1,6 +1,25 @@
 [
  {
   "date": "2026-11-12",
+  "slot": "Session 5 (10:30 AM, started by hand in place of the 11:34 AM slot)",
+  "title": "Stadlmann's support: cap-free part certified, capped ratio 3.9597 (240 not yet reproduced); a floor for one-band hybrid supports; paper v0.5",
+  "did": [
+   "A helper re-read Stadlmann (arXiv:2608.31126) and Charton et al. (bgp212.pdf) and confirmed the support, the criterion and the parameters (k = 49, eps = 0.0075, A1 = 0.253, delta = 0.028, caps 0.15/0.15/0.17; k = 45 for Charton et al.); both use one band. Notes in notes/stadlmann-recheck-s5.md.",
+   "By dilation, the cap-free version of Stadlmann's functional is (253/250) M_{49,15/506}; certified M_{49,15/506} ≥ 3.9685535 (degree 20) gives 4.016176 > 4. For Charton et al.'s parameters the cap-free value is ≥ 4.012272 (degree 21, 846 coefficients, matching their basis dimension), against their claimed 4.00438 with caps.",
+   "Added the caps: exact integrals over {m coordinates above delta, sum above the cap} with shifted power sums (checked against Lemma 3 and sympy), a rigorous bound for the capped functional (Proposition 23), and a penalised eigenproblem. Best certified capped ratio at k = 49: 3.95972 (degree 20), below 4, so 240 is not reproduced.",
+   "Own idea: dilation plus the two-zone dual weight gives the first rigorous floor for one-band hybrid supports (Theorem 25): whatever delta, caps and minorant, no k ≤ 28 at Stadlmann's level omega = 0.003 (and 1/300), no k ≤ 26 at omega = 0.007, no k ≤ 22 for omega ≤ 1/68. Certified in ball arithmetic and re-checked with mpmath.iv.",
+   "Lean: Caps.lean (length × g ≤ sum for entries above g; at most 9 large coordinates, and 7 large coordinates exceed every cap). Paper v0.5: new Section 5, Propositions 22-24, Theorem 25."
+  ],
+  "failed": [
+   "The capped criterion is not reproduced: 3.95972 < 4 at degree 20. The Cauchy-Schwarz bound for the capped marginals forces P to be small on the cap-violation set, costing about 0.056 against the cap-free 4.0162.",
+   "A union bound that dropped the condition 'each coordinate above delta' was useless (E/I ≈ 146).",
+   "The floor of Theorem 25 is far from the truth (28 vs 49) and the two-zone weight fails at the next k for every omega tried.",
+   "No news search this run (only the 3:34 AM run does it)."
+  ],
+  "next": "Exact capped marginals J_T(P 1_T) (fibres of T, not only integrals over the violation set), then optimise P on T directly; a degree-22 capped run was started this session (see STATE.md). Own side: a floor that uses the caps, or the Collatz-Wielandt weight."
+ },
+ {
+  "date": "2026-11-12",
   "slot": "Session 4 (8 AM, first test run of the schedule)",
   "title": "H1 ≤ 246 reproduced (M_{50,1/25} ≥ 4.0043063); dual weights that see only t_m and S stall near 4.14; paper v0.4",
   "did": [
