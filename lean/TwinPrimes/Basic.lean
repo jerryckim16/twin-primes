@@ -127,6 +127,23 @@ structure NarrowTuple (k D : Nat) where
   bound : ∀ h ∈ H, h ≤ D
   check : admissibleCheck H = true
 
+/-- Sub-tuples of admissible tuples are admissible. -/
+theorem Admissible.sublist {H H' : List Nat} (hs : H.Sublist H') (h : Admissible H') :
+    Admissible H := by
+  intro p hp
+  obtain ⟨r, hr, hall⟩ := h p hp
+  exact ⟨r, hr, fun x hx => hall x (hs.subset hx)⟩
+
+/-- `DHL[k,2]` implies `DHL[k',2]` for `k ≤ k'`: delete shifts from the tuple. -/
+theorem DHL.mono {k k' : Nat} (hk : k ≤ k') (h : DHL k) : DHL k' := by
+  intro H hlen hsort hadm N
+  have hsub : (H.take k).Sublist H := List.take_sublist k H
+  have hlen' : (H.take k).length = k := by
+    rw [List.length_take]; omega
+  obtain ⟨n, hn, a, b, ha, hb, hab, hpa, hpb⟩ :=
+    h (H.take k) hlen' (hsort.sublist hsub) (Admissible.sublist hsub hadm) N
+  exact ⟨n, hn, a, b, hsub.subset ha, hsub.subset hb, hab, hpa, hpb⟩
+
 /-- The combinatorial half of every bounded-gaps theorem. -/
 theorem NarrowTuple.boundedGaps {k D : Nat} (T : NarrowTuple k D)
     (hDHL : DHL k) : BoundedGaps D := by

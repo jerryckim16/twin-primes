@@ -201,6 +201,7 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 .paper .smallcaps{font-variant:small-caps;letter-spacing:.03em} .paper .theorem em,.paper .proposition em,.paper .corollary em{font-style:italic}
 .paper .proof{margin:.6em 0} .paper ol,.paper ul{padding-left:1.3em}
 .paper code{font-family:var(--mono);font-size:.82em;overflow-wrap:anywhere}
+.paper a{overflow-wrap:anywhere} .paper p math:not([display=block]){display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}
 .bchart{width:100%;max-width:600px;height:auto;display:block;font-family:var(--mono)}
 .bchart .grid{stroke:var(--rule);stroke-width:1}
 .bchart .tick{fill:var(--muted);font-size:15px}
@@ -214,6 +215,7 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 .files{columns:2;column-gap:24px;list-style:none;padding:0;margin:0;font-size:.8rem} .files code{font-family:var(--mono);overflow-wrap:anywhere}
 @media (max-width:640px){ body{font-size:17px} .tiles{grid-template-columns:repeat(2,1fr)} .files{columns:1}
   .mark .cap{font-size:.6rem;left:-38px;width:76px} h1{font-size:1.6rem}
+  .mark.al .num,.mark.al .cap,.mark.ar .num,.mark.ar .cap{width:72px}
   .ledger tr{display:block;padding:10px 0;border-bottom:1px solid var(--rule)} .ledger td{display:block;border:0;padding:0 0 4px} .ledger td.where{min-width:0} }
 """
 

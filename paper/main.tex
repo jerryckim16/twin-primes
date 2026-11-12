@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.2, 12 November 2026}
+\date{Version 0.3, 12 November 2026}
 
 \begin{document}
 
@@ -32,8 +32,10 @@ primes. It records (i) the state of the problem as of the date above, (ii) what
 this project has verified for itself, by exact computation and by the Lean~4
 kernel, (iii) small results of our own: a no-go statement for a natural
 attempt to sharpen the pigeonhole step, on the plain and on the
-$\varepsilon$-enlarged simplex, and a generating-function formula that makes
-certified computation with all symmetric test functions cheap, and (iv) a programme of original
+$\varepsilon$-enlarged simplex; a generating-function formula that makes
+certified computation with all symmetric test functions cheap; and an upper
+bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
+itself, reach any $k\le29$, and (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
 \lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
@@ -72,6 +74,7 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 236 & 48$^{\ast}$ & Kintali \cite{Kin26}; Song--Yue \cite{SY26} & \lbl{Claimed}\\
 212 & 45 & Charton et al.\ \cite{Cha26} & \lbl{Claimed}\\
 186 & 40 & OpenAI \cite{OAI26} & \lbl{Claimed}\\
+182 & 39 & GPT-6 Astra, prompted by Sharifi \cite{Sha26} & \lbl{Claimed}\\
 \midrule
 12 & 5 & Maynard, assuming EH \cite{May15} & \lbl{Literature}\\
 6 & 3 & Polymath8b, assuming GEH \cite{Pol14b} & \lbl{Literature}\\
@@ -82,16 +85,27 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
-\cite{Axiom26}. The four bounds below it in the table appeared within one week.
+\cite{Axiom26}. The bounds from $240$ to $186$ appeared within one week.
 They rest on Stadlmann's idea of enlarging the support of the sieve weights
 using equidistribution estimates for moduli with a large smooth factor. The
 Lean development accompanying the bound $186$ is conditional on three stated
 inputs (two exponential-sum bounds and a family of numerical integral bounds)
-\cite{OAI26}. As of 7 September 2026 a standard reference still listed $246$
-as the best fully established value \cite{MW}; on the date of this version we
-found no report of complete independent verification of the 2026 claims and no
-claimed bound below $186$. We therefore keep two columns throughout:
-\emph{established} ($246$) and \emph{claimed} ($186$).
+\cite{OAI26}. An independent re-run of that repository, dated 7 and 8 November
+2026, reproduced the build and the numerical certificate and describes the
+result as ``conditionally supported, with the computation independently
+reproduced; not yet settled''; the two exponential-sum bounds remain axioms
+\cite{NM26}. A further document, dated 18 September 2026 and naming an AI
+system as its author, claims $\DHL[39,2]$ and hence $182$; by its own abstract
+its Lean development verifies the last implication ``under explicit numerical
+and finite-field premises'' \cite{Sha26}. We had missed it in earlier
+versions. (These details were read by an earlier run of this project; on
+12 November the file was too large for our reader and direct download was
+refused, so we have not re-checked them since.) As of 7 September 2026 a standard reference still listed $246$ as
+the best fully established value \cite{MW}, and the page read the same on 12
+November. On the date of this version we found no report of complete
+independent verification of any of the 2026 claims and no claimed bound below
+$182$. We therefore keep two columns throughout: \emph{established} ($246$)
+and \emph{claimed} ($182$).
 
 \subsection*{Why \texorpdfstring{$2$}{2} is a different problem}
 Under the generalised Elliott--Halberstam conjecture the sieve gives $H_1\le6$,
@@ -123,6 +137,9 @@ $(k,D)=(56,278)$, $(57,282)$, $(58,288)$, $(59,300)$, $(60,304)$, $(61,310)$,
 $(62,320)$, $(63,324)$, $(64,330)$, and for $(102,578)$ and $(105,600)$, there is an explicit admissible $k$-tuple in $[0,D]$, and
 $\DHL[k,2]$ implies \texttt{BoundedGaps D}. In particular $\DHL[2,2]$ implies
 the twin prime conjecture.
+\item $\DHL[k,2]$ implies $\DHL[k',2]$ for every $k'\ge k$
+(\texttt{DHL.mono}: delete shifts from the tuple). So a proof of $\DHL[j,2]$
+with $j\le k$ gives \texttt{BoundedGaps D} for each listed pair $(k,D)$.
 \end{enumerate}
 \end{theorem}
 
@@ -236,17 +253,20 @@ So both Gram matrices are exact rational matrices. We find an approximate top
 eigenvector by inverse iteration with a fixed shift above
 $\frac{k}{k-1}\log k$, which can only converge to the top eigenvalue. We take
 its floating-point midpoints as exact dyadic rationals and evaluate the
-Rayleigh quotient exactly.
+Rayleigh quotient exactly. The working precision of the eigenvector matters
+only for speed. A separate script, \texttt{code/verify\_cert.py}, rebuilds
+both Gram matrices from scratch and re-evaluates each stored coefficient
+vector in exact arithmetic.
 
 \begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Mk}
-\[
-M_{105}\ge4.17427,\quad M_{64}\ge4.00363,\quad M_{58}\ge4.00927,\quad
-M_{56}\ge4.00519 .
-\]
+\begin{gather*}
+M_{105}\ge4.17427,\qquad M_{64}\ge4.00363,\qquad M_{58}\ge4.00927,\\
+M_{56}\ge4.00519,\qquad M_{55}\ge4.00516,\qquad M_{54}\ge4.00238 .
+\end{gather*}
 The first two use all symmetric polynomials of degree $11$ and $12$
-($195$ and $272$ coefficients). The last two use the subspace spanned by
+($195$ and $272$ coefficients). The others use the subspace spanned by
 $(1-P_1)^aP^b$ with $b$ supported on even $j$, as in \cite[\S7]{Pol14b}, of
-degree $16$ and $18$ ($307$ and $471$ coefficients).
+degree $16$, $18$, $20$ and $23$ ($307$, $471$, $707$ and $1236$ coefficients).
 \end{theorem}
 
 \begin{center}
@@ -258,22 +278,28 @@ $1-P_1$, $P_2$ & 19 & 110 & 102\\
 all symmetric & 12 & 272 & 64\\
 even power sums & 16 & 307 & 58\\
 even power sums & 18 & 471 & 56\\
+even power sums & 20 & 707 & 55$^{\dagger}$\\
+even power sums & 23 & 1236 & 54$^{\dagger}$\\
 \bottomrule
 \end{tabular}
 \end{center}
+\noindent{\small $^{\dagger}$ Only this value of $k$ was run at this degree; smaller $k$ were not tried.}
 
 \begin{corollary}[end-to-end within this project]\label{cor:578}
 Assuming the Bombieri--Vinogradov theorem and \cite[Prop.~4.2]{May15}, both
 \lbl{Literature}, Theorems~\ref{thm:Mk} and~\ref{thm:lean} give
-$H_1\le278$.
+$H_1\le270$.
 \end{corollary}
 
-Polymath8b reached $M_{54}>4.00238$ with even-part polynomials of degree $23$
-\cite[Thm.~3.9]{Pol14b}, and hence $H_1\le270$. Our pipeline is two steps of
-$k$ short of that, and the tuple for $k=56$ came from our own search and may
-not be the narrowest. Corollary~\ref{cor:578} remains far weaker than the
-literature. It is the position of our own pipeline on the ladder
-$600\to270\to246\to240\to212\to186$, which we intend to climb rung by rung.
+This reproduces a known result and is not new. Polymath8b obtained
+$M_{54}>4.00238$ with even-part polynomials of degree $23$
+\cite[Thm.~3.9]{Pol14b}, and hence $H_1\le270$. Our certified value in the
+same space, $4.002386\ldots$, agrees with theirs to every digit they print,
+which is an external check on our pipeline; two independent runs of it (one
+from an earlier session) produced the same value. Corollary~\ref{cor:578}
+remains weaker than the established $246$. It is the position of our own pipeline on the ladder
+$600\to270\to246\to240\to212\to186\to182$, which we intend to climb rung by
+rung.
 
 \subsection{What the plain method cannot do}
 Polymath8b proved $M_k\le\frac{k}{k-1}\log k$ \cite{Pol14b}. Hence
@@ -431,23 +457,225 @@ that depend on $m$, or arguments that are not linear in the indicators of
 primality. Those are \lbl{Open}.
 \end{remark}
 
+\section{Results of our own: how far the \texorpdfstring{$\varepsilon$}{epsilon}-enlargement alone can go}
+
+For the plain simplex the bound $M_k\le\frac{k}{k-1}\log k$ shows where the
+method stops ($k\ge51$). This section starts the same analysis for the
+$\varepsilon$-enlarged simplex. For $0<\tau\le L$ put
+\[
+M_k(L,\tau)=\sup_F\frac{\sum_{m=1}^k\int_{\tau\R_{k-1}}\left(\int_0^\infty F\,dt_m\right)^2\prod_{i\ne m}dt_i}{\int F^2},
+\]
+the supremum over square-integrable $F\ne0$ supported on $L\R_k$. Then
+$M_{k,\varepsilon}=M_k(1+\varepsilon,1-\varepsilon)$ and $M_k=M_k(1,1)$. The
+quantity $M_k(L,\tau)$ is non-decreasing in $L$ and in $\tau$, satisfies
+$M_k(cL,c\tau)=c\,M_k(L,\tau)$, and is non-decreasing in $k$ by the embedding
+used in the proof of Proposition~\ref{prop:rigid-eps}. Write
+$S=t_1+\dots+t_k$ and call the index $m$ \emph{active} at $t$ if
+$S-t_m\le\tau$.
+
+\begin{lemma}[\lbl{Proved here}; it is {\cite[Lemma~6.1]{Pol14b}} with the region of the marginals kept]\label{lem:dual}
+Let $\psi_1,\dots,\psi_k$ be measurable functions on $L\R_k$, positive almost
+everywhere, such that for almost every $t'\in\tau\R_{k-1}$ and every $m$
+\[
+\int_0^{L-|t'|}\frac{du}{\psi_m(t',u)}\le1,
+\]
+where $(t',u)$ is the point whose $m$-th coordinate is $u$ and whose other
+coordinates are $t'$. Then
+\[
+M_k(L,\tau)\le\operatorname*{ess\,sup}_{t\in L\R_k}\ \sum_{m\text{ active at }t}\psi_m(t).
+\]
+\end{lemma}
+
+\begin{proof}
+For $t'\in\tau\R_{k-1}$ the Cauchy--Schwarz inequality gives
+\[
+\left(\int F\,dt_m\right)^2\le\int\frac{dt_m}{\psi_m}\cdot\int\psi_mF^2\,dt_m\le\int\psi_mF^2\,dt_m .
+\]
+Integrating over $t'\in\tau\R_{k-1}$ gives the integral of $\psi_mF^2$ over
+the set where $m$ is active. Sum over $m$.
+\end{proof}
+
+\begin{proposition}[\lbl{Proved here}; elementary, possibly folklore]\label{prop:eps-first}
+For $k\ge2$ and $0\le\varepsilon<1$,
+\[
+M_{k,\varepsilon}\le(1+\varepsilon)M_k\le(1+\varepsilon)\frac{k}{k-1}\log k .
+\]
+Conversely, for $0\le\varepsilon\le M_k/(4k)$,
+\[
+M_{k,\varepsilon}\ge(1+\varepsilon)M_k-\frac{64k^2}{M_k}\,\varepsilon^2 .
+\]
+In particular $\lim_{\varepsilon\to0^+}(M_{k,\varepsilon}-M_k)/\varepsilon=M_k$.
+\end{proposition}
+
+\begin{proof}
+By monotonicity in $\tau$ and scaling,
+$M_k(1+\varepsilon,1-\varepsilon)\le M_k(1+\varepsilon,1+\varepsilon)=(1+\varepsilon)M_k$,
+and $M_k\le\frac{k}{k-1}\log k$ is \cite[Cor.~6.4]{Pol14b}.
+
+For the lower bound, scaling gives $M_{k,\varepsilon}=(1+\varepsilon)M_k(1,\rho)$
+with $\rho=(1-\varepsilon)/(1+\varepsilon)$. Put $\delta=k(1-\rho)$ and let $F$
+on $\R_k$ satisfy $\sum_mJ_k^{(m)}(F)\ge(M_k-\eta)I_k(F)$. Split $F=F_1+F_2$
+with $F_2=F\mathbf 1_{S>\rho}$, and let $x=I_k(F_2)/I_k(F)$. Two facts follow
+from the Cauchy--Schwarz inequality on segments of length at most $1-\rho$.
+First, a fiber of $F_2$ has length at most $1-\rho$, so
+$\sum_mJ_k^{(m)}(F_2)\le\delta\,I_k(F_2)$. Second, a fiber over $t'$ with
+$|t'|>\rho$ lies in $\{S>\rho\}$ and has length at most $1-\rho$, so
+restricting the marginals of $F$ to $\rho\R_{k-1}$ loses at most
+$\delta\,I_k(F_2)$. By the triangle inequality for
+$F\mapsto(\int F\,dt_m)_{m\le k}$ and the first fact,
+\[
+M_k-\eta\le\left(\sqrt{M_k(1-x)}+\sqrt{\delta x}\right)^2\le M_k(1-x)+2\sqrt{M_k\delta x}+\delta x .
+\]
+This is a quadratic inequality in $\sqrt x$. If $\delta\le M_k/2$ it gives
+$x\le(16\delta+8\eta)/M_k$. By the second fact the quotient of $F$ for
+$M_k(1,\rho)$ is at least $M_k-\eta-\delta x$. Letting $\eta\to0$ we get
+$M_k(1,\rho)\ge M_k-16\delta^2/M_k$. Finally
+$\delta=2k\varepsilon/(1+\varepsilon)$, and $\delta\le M_k/2$ when
+$\varepsilon\le M_k/(4k)$.
+\end{proof}
+
+So for fixed $k$ the factor $1+\varepsilon$ is exact to first order, and no
+dual argument can improve it there. Any saving is an effect of large $k$: it
+needs $\varepsilon$ of size about $1/k$ or more, where the shell
+$\rho<\sigma\le1$ carries most of the mass. The first inequality already
+restricts the parameter: with Bombieri--Vinogradov the criterion
+$M_{k,\varepsilon}>4$ forces
+$\varepsilon>\varepsilon_0(k)=\frac{4(k-1)}{k\log k}-1$ (\lbl{Computed}):
+\begin{center}
+\begin{tabular}{@{}rccccccc@{}}
+\toprule
+$k$ & 49 & 48 & 45 & 40 & 39 & 35 & 30\\
+\midrule
+$\varepsilon_0(k)$ & 0.0068 & 0.0117 & 0.0274 & 0.0572 & 0.0638 & 0.0929 & 0.1369\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For larger $\varepsilon$ we use the lemma with a weight that changes shape
+where the indices start to become inactive.
+
+\begin{theorem}[\lbl{Proved here} for the inequality; \lbl{Computed}, interval arithmetic, for the numerical statement]\label{thm:floor}
+Let $k\ge2$, $0<\tau<s_1\le L$ and $a\ge s_1$. Then
+\[
+M_k(L,\tau)\le\sup_{0\le\sigma\le\tau}W(\sigma),\qquad
+W(\sigma)=\frac{ka}{k-1}\log\left(1+\frac{(k-1)(s_1-\sigma)}{a-\sigma}\right)+L-s_1+\sigma\log\frac{L-\sigma}{s_1-\sigma}.
+\]
+Consequently $M_{k,\varepsilon}<3.99$ for every $k\le29$ and every
+$0\le\varepsilon<1$. In particular the criterion of \cite[Thm.~3.12]{Pol14b}
+on the $\varepsilon$-enlarged simplex cannot give $\DHL[k,2]$ for any
+$k\le29$ from the Bombieri--Vinogradov theorem, nor from any level of
+distribution $\theta\le0.501$, whatever the value of $\varepsilon$.
+\end{theorem}
+
+\begin{proof}
+Fix $\Lambda>0$, put $\lambda=\Lambda/(ka)$ and take the two-zone weight
+\[
+\psi_m(t)=\lambda\,(a-S+kt_m)\quad(S\le s_1),\qquad
+\psi_m(t)=\Lambda\,\frac{t_m}{S}\quad(S>s_1).
+\]
+It is positive wherever $t_m>0$. Where $S\le s_1\le a$ every term is
+non-negative, so the sum over the active indices is at most the sum over all
+indices, which is $\lambda(k(a-S)+kS)=\Lambda$. Where $S>s_1$ the sum over the
+active indices is at most $\Lambda\sum_mt_m/S=\Lambda$. On the fiber over $t'$
+with $|t'|=\sigma\le\tau$ we have $S=\sigma+u$, and
+\[
+\int_0^{s_1-\sigma}\frac{du}{\lambda(a-\sigma+(k-1)u)}+\int_{s_1-\sigma}^{L-\sigma}\frac{(\sigma+u)\,du}{\Lambda u}=\frac{W(\sigma)}{\Lambda}.
+\]
+Lemma~\ref{lem:dual} with $\Lambda=\sup W$ gives the inequality.
+
+For the numerical statement it suffices to treat $k=29$. For
+$\varepsilon\le143/1000$, Proposition~\ref{prop:eps-first} gives
+$M_{29,\varepsilon}\le1.143\cdot\frac{29}{28}\log29<3.9863$. The interval
+$[143/1000,1]$ is cut into $857$ intervals $[e,e']$ of length $1/1000$. For
+each one the file \texttt{code/cert\_floor\_k29.json} lists rational $a$ and
+$s_1$ with $\sup W<3.99$ for $(L,\tau)=(1+e',1-e)$; by monotonicity in $L$ and
+$\tau$ this covers every $\varepsilon\in[e,e']$. The supremum over $\sigma$ is
+bounded rigorously: the first logarithm is non-increasing in $\sigma$ (because
+$a\ge s_1$) and the last term is non-decreasing, so on a piece $[x,y]$ we bound
+$W$ by the first term at $x$ plus the last at $y$, in ball arithmetic at
+rational points, bisecting until the bound is below $3.99$. The script is
+\texttt{code/dual\_eps\_cert.py}; a second script,
+\texttt{code/check\_floor\_cert.py}, re-checks the certificate with a
+different interval library. The largest value of $\sup W$ over the $857$
+intervals is $3.9772$ (floating point).
+\end{proof}
+
+\begin{remark}[what was known, and a caution]
+Polymath8b state the uniform bound $M_{k,\varepsilon}\le\frac{k}{k-1}\log(2k-1)$
+for $0\le\varepsilon<1$ \cite[Prop.~6.5]{Pol14b}, and remark that the bounds
+for $M_{k,\varepsilon}$ ``do not appear to be as sharp''. That bound is below
+$4$ exactly for $k\le23$, so Theorem~\ref{thm:floor} moves this floor from $24$
+to $30$. It does not use their bound. We note, with caution, that we could not
+complete the last step of the proof of \cite[Prop.~6.5]{Pol14b} as we read it:
+the weights $1-S+kt_m$ are summed, and for $S>1$ their sum over the active
+indices can exceed $k$ (at $t=(s,0,\dots,0)$ with $1<s\le1+\varepsilon$ only
+the first index is active and its weight is $1+(k-1)s$). Our reconstruction
+gives the constant $\frac{k}{k-1}+\varepsilon$ in place of $\frac{k}{k-1}$. We
+read that proof only through a text extraction of the arXiv version and may be
+misreading it; this is \lbl{Open} until checked against the published text. A
+brief search (the paper \cite{Pol14b} and the Polymath wiki page on the
+variational problem) found no sharper published upper bound for
+$M_{k,\varepsilon}$; the search was not exhaustive, and
+Theorem~\ref{thm:floor} has not been reviewed by anyone outside this project.
+\end{remark}
+
+\begin{remark}[\lbl{Computed}, floating point only: how far this weight goes]
+The best value of $\sup W$ over $(a,s_1)$, maximised over $\varepsilon$, is
+about $3.975$ for $k=29$, $4.004$ for $k=30$, $4.257$ for $k=40$ and $4.459$
+for $k=50$, in each case near $\varepsilon=0.24$ to $0.28$; the bound of
+\cite[Prop.~6.5]{Pol14b} is $4.187$, $4.218$, $4.482$ and $4.689$. For small
+$\varepsilon$ the two-zone weight does not beat the scaling bound: at $k=50$
+and $\varepsilon=1/25$ both give $4.15$ ($4.1458$ against $4.1515$), while
+Polymath8b's certified lower bound is $4.0043$. The true threshold is presumably
+close to $k=50$, so the theorem is far from sharp. Script:
+\texttt{code/dual\_eps.py remark15}.
+\end{remark}
+
+\begin{remark}[a weight that did not work]
+We also tried the weight $\psi_m=\frac{\beta}{n}(a-S_A+nt_m)$, where $n$ is
+the number of active indices at $t$ and $S_A$ the sum of the active
+coordinates. Its sum over the active indices is exactly $\beta a$ everywhere,
+so the bound is $a$ times the largest fiber integral. Evaluating the fiber
+integral exactly on the fibers over $t'=(x,\dots,x,0,\dots,0)$ (\lbl{Computed},
+floating point, $k=50$, $\varepsilon=1/25$, every $a\in[1.05,3]$ on a grid of
+step $0.01$, script \texttt{code/dual\_eps.py remark16}) shows that this
+weight cannot give less than $4.178$, which is worse than the $4.1515$ from
+scaling. The binding fiber has a single non-zero coordinate $x\approx2\varepsilon$:
+there the zero coordinates become inactive while $n$ is still large, and the
+normalisation by $n$ wastes the slack. A dual bound that is sharper for small
+$\varepsilon$ must treat the small coordinates near such sparse points
+differently. This is \lbl{Open}. (An earlier draft of this remark, version~0.3
+as first circulated, reported a weaker obstruction, $4.146$, from fibers with
+about ten non-zero coordinates; the exact fiber evaluation above supersedes it.)
+\end{remark}
+
+\begin{remark}[scope]
+Theorem~\ref{thm:floor} concerns the $\varepsilon$-enlarged simplex only. It
+says nothing about the 2026 claims, which use other supports and new
+equidistribution estimates. A floor for those is the Problem in the next
+section.
+\end{remark}
+
 \section{Programme}
 
 \subsection*{Track A: lowering the bound}
 \begin{enumerate}
-\item \emph{Climb the ladder.} Push the certified pipeline from $k=56$ to
-$M_{54}>4$ ($H_1\le270$; needs degree about $20$ to $23$), then add the
+\item \emph{Climb the ladder.} The certified pipeline now stands at $k=54$
+($H_1\le270$). Next: add the
 $\varepsilon$-enlarged simplex ($k=50$, $246$), then Stadlmann's region
 ($k=49$, $240$).
 \item \emph{Floor of the method (our main original direction).} For the plain
-simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows exactly where the
-method stops. No analogous upper bound is known to us for the 2026 hybrid
-supports. A rigorous dual certificate there would say whether $186$ is close
-to the limit of the present inputs or far from it, and which input (which
-Type~I/II/III range) is binding.
+simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
+stops ($k\ge51$). For the $\varepsilon$-enlarged simplex
+Theorem~\ref{thm:floor} gives $k\ge30$, which is still far from the expected
+truth near $50$; Section~4 explains what a sharper weight must do. No upper
+bound of this kind is known to us for the 2026 hybrid supports. A rigorous
+dual certificate there would say whether $182$ is close to the limit of the
+present inputs or far from it, and which input (which Type~I/II/III range) is
+binding.
 \item \emph{Which rung is cheap.} From Table~\ref{tab:tuples}, the gain per
-unit of $k$ below the claimed frontier is $186\to182\to176\to168\to162\to158$
-for $k=40,\dots,35$: the steps $39\to38$ and $38\to37$ are worth the most.
+unit of $k$ below the claimed frontier is $182\to176\to168\to162\to158$
+for $k=39,\dots,35$: the steps $39\to38$ and $38\to37$ are worth the most.
 \end{enumerate}
 
 \begin{problem}[\lbl{Open}]
@@ -504,10 +732,18 @@ conjecture}, Discrete Math., 1972.
 181 (2015), 383--413.
 \bibitem{MW} E.~W.~Weisstein, \emph{Bounded gaps between primes}, MathWorld.
 \url{https://mathworld.wolfram.com/BoundedGapsBetweenPrimes.html}
+\bibitem{NM26} Nervous Machine, \emph{DEBRIEF-math-primegaps}, a re-run of
+the repository \texttt{openai/PrimeGaps186} by a third party (``Scorecard, not
+a verification''), status dated 7 November 2026.
+\url{https://github.com/Nervous-Machine/DEBRIEF-math-primegaps}
 \bibitem{OAI26} OpenAI, \emph{Improved short gaps between primes}, preprint
 dated 30 August 2026, with the repository \texttt{openai/PrimeGaps186}.
 \bibitem{Pol14b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and
 bounded intervals containing many primes}, Res. Math. Sci. 1 (2014).
+\bibitem{Sha26} GPT-6 Astra (OpenAI), prompted by R.~Sharifi, \emph{A
+fixed-profile proof for prime gaps of at most 182}, dated 18 September 2026
+(first version 4 September 2026).
+\url{https://www.math.ucla.edu/~sharifi/AI/prime_gaps_182_expository_bundle.pdf}
 \bibitem{SS22} W.~Sawin, M.~Shusterman, \emph{On the Chowla and twin primes
 conjectures over $\mathbb F_q[T]$}, Ann. of Math., 2022.
 \bibitem{SY26} Z.~Song, S.~Yue, \emph{Bounded gaps between primes: an upper
