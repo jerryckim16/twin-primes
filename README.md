@@ -14,6 +14,10 @@ A working paper by **Jerry Kim** (prepared with the assistance of Claude) on sma
 | Claimed in 2026 preprints | 186 | OpenAI; also 240, 236, 212 by others |
 | Reproduced by this project | see `status.json` | own certificates + Lean |
 
+## How sessions work
+
+Each session reads `STATE.md`, does one reproduction step and tests one idea of its own, updates the paper, the Lean code and the log, then pushes a branch `session/YYYY-MM-DD-HHMM`, opens a pull request and merges it. Failures are logged too.
+
 ## Layout
 
 | Path | What it is |
