@@ -11,7 +11,7 @@ A working paper by **Jerry Kim** (prepared with the assistance of Claude) on sma
 | | Bound on liminf (p<sub>n+1</sub> − p<sub>n</sub>) | Source |
 |---|---|---|
 | Established in the literature | 246 | Polymath8b (2014) |
-| Claimed in 2026 preprints | 186 | OpenAI; also 240, 236, 212 by others |
+| Claimed in 2026 preprints | 182 | GPT-6 Astra prompted by R. Sharifi; also 186 (OpenAI), 240, 236, 212 by others |
 | Reproduced by this project | see `status.json` | own certificates + Lean |
 
 ## How sessions work
@@ -23,9 +23,11 @@ Each session reads `STATE.md`, does one reproduction step and tests one idea of 
 | Path | What it is |
 |---|---|
 | `paper/main.tex` | The paper (amsart). `latexmk -pdf main.tex` |
-| `lean/` | Core Lean 4.35.0 project, no Mathlib, no `sorry`. `lake build`, then `lake env lean Audit.lean` |
+| `lean/` | Core Lean 4.35.0 project, no Mathlib, no `sorry`: twin primes ⇔ `BoundedGaps 2`, admissibility certificates, explicit tuples, `DHL.mono`. `lake build`, then `lake env lean Audit.lean` |
 | `code/mk_general.py` | Exact Gram matrices for Maynard's M_k with all symmetric polynomials; certified lower bounds |
-| `code/cert_*.json` | Exact rational certificates (coefficient vectors) for M_k > 4 |
+| `code/cert_M*.json` | Exact rational certificates (coefficient vectors) for M_k > 4. Re-check any of them with `python3 code/verify_cert.py <file>` |
+| `code/dual_eps_cert.py`, `code/check_floor_cert.py`, `code/cert_floor_k29.json` | Theorem 13: the epsilon-enlarged simplex cannot reach k ≤ 29 (certificate, and an independent re-check with a second interval library) |
+| `code/dual_eps.py` | Floating-point exploration of dual weights (Remarks 15 and 16) |
 | `code/admissible.py`, `code/gen_lean.py` | Admissible-tuple search and Lean generation |
 | `log/bound-history.json` | Every improvement of the project's own bound, starting from 578 (drawn as a log-scale chart on the website) |
 | `status.json`, `log/entries.json` | Bounds, results ledger, ideas ledger, research log (drive the website) |
