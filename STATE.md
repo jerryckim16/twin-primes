@@ -19,6 +19,9 @@ Each session works on a branch session/YYYY-MM-DD-HHMM, opens a pull request and
 - notes/sources-enlarged-supports.md: exact definitions from Polymath8b (Thm 3.12, eps-enlarged), Stadlmann (support T_k, k=49 parameters), Charton et al. (k=45 parameters). Items marked UNSURE need checking before use.
 - notes/enlarged-rigidity.md: full proofs behind Proposition 8.
 
+## Bound history
+- log/bound-history.json records every time the project's end-to-end bound goes down (date, session, bound, k, how, certificate). Append an entry whenever status.json bounds.project decreases; never edit past entries. The website draws it as a log-scale step chart.
+
 ## Next steps (in order)
 1. Track A, reproduce 270: even power sums, degree 20 then 22, at k=55 and k=54 (`python3 code/mk_general.py 54 22 --even --cert code/cert_M54_D22e.json`). Polymath8b got M_54 > 4.00238 at degree 23. If the solve is too slow, lower working precision in top_vector (prec is set from basis size) or restrict b further.
 2. Track A, reproduce 246: add the eps-enlarged simplex to mk_general.py. Support (1+eps)R_k, basis (1+eps-P1)^a P^b; J outer region (1-eps)R_{k-1}, so expand (1+eps-P1')^A = (2eps + (1-eps-P1'))^A binomially and integrate over (1-eps)R_{k-1} by scaling. Target M_{50,1/25} > 4 (Polymath8b: 4.0043 at degree 27).

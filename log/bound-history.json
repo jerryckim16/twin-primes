@@ -1,0 +1,14 @@
+[
+  {"date": "2026-11-12", "session": 1, "bound": 578, "k": 102,
+   "how": "M_102 > 4 with polynomials in 1-P1 and P2 (degree 15); admissible 102-tuple of diameter 578 from our search",
+   "certificate": "code/cert_M102.json"},
+  {"date": "2026-11-12", "session": 2, "bound": 330, "k": 64,
+   "how": "M_64 > 4 with all symmetric polynomials of degree 12 (Lemma 3); 64-tuple of diameter 330",
+   "certificate": "code/cert_M64_D12.json"},
+  {"date": "2026-11-12", "session": 2, "bound": 288, "k": 58,
+   "how": "M_58 > 4 with even power sums of degree 16; 58-tuple of diameter 288",
+   "certificate": "code/cert_M58_D16e.json"},
+  {"date": "2026-11-12", "session": 2, "bound": 278, "k": 56,
+   "how": "M_56 >= 4.00519 with even power sums of degree 18; 56-tuple of diameter 278",
+   "certificate": "code/cert_M56_D18e.json"}
+]
