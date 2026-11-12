@@ -94,7 +94,7 @@ class Capped:
         self.k = data["k"]
         self.L, self.tau, self.g = Fq(data["L"]), Fq(data["tau"]), Fq(data["g"])
         cp = data["caps"]
-        self.C1, self.C2, self.C3 = Fq(cp["1"]), Fq(cp["2"]), Fq(cp["3+"])
+        self.caps = {str(kk): Fq(v) for kk, v in cp.items()}   # "m": C_m, and "m+": C_m' for all m' >= m
         self.basis = [(a, tuple(b)) for a, b in data["basis"]]
         self.coef = [Fq(x) for x in data["coeffs"]]
         self.D = max(a + wt(b) for a, b in self.basis)
@@ -104,9 +104,23 @@ class Capped:
         mg.EVEN_ONLY = True
         self.cp0 = CapPieces(self.k, self.W, self.L, self.g)   # densities dA and moments E_n
         self.Ecache = {}
+        self.MM = 1
+        while self.MM * self.g < self.L:
+            self.MM += 1
+        self.MM += 1                                            # m, j range(0, MM) covers (m + j) g < L
+        for m in range(1, self.MM + 1):
+            assert self.C(m + 1) <= self.C(m) + self.g, "need C_{m+1} <= C_m + g"
 
     def C(self, m):
-        return self.C1 if m == 1 else (self.C2 if m == 2 else self.C3)
+        if str(m) in self.caps:
+            return self.caps[str(m)]
+        best = None
+        for kk, v in self.caps.items():
+            if kk.endswith("+") and int(kk[:-1]) <= m and (best is None or int(kk[:-1]) > best[0]):
+                best = (int(kk[:-1]), v)
+        if best is None:
+            raise ValueError("no cap for m = %d" % m)
+        return best[1]
 
     # ---------- polynomial data ----------
     def prepare(self):
@@ -322,7 +336,7 @@ class Capped:
         g = self.g
         out = []
         for m in range(0, 13):
-            for j in range(0, 13):
+            for j in range(0, self.MM):
                 if (m + j) * g < Lam_tot:
                     out.append((m, j))
         return out
@@ -351,36 +365,36 @@ class Capped:
         """All (kind, m, j, args) pieces; each value enters with weight (-1)^j C(n, m) C(n - m, j)."""
         k, L, tau, g = self.k, self.L, self.tau, self.g
         out = []
-        for m in range(1, 13):                       # I correction: int_V P^2, n = k
+        for m in range(1, self.MM):                       # I correction: int_V P^2, n = k
             alo = max(self.C(m) - m * g, fmpq(0))
-            for j in range(0, 13):
+            for j in range(0, self.MM):
                 Lam = L - (m + j) * g
                 if Lam > alo and m + j <= k:
                     out.append(("Icorr", k, m, j, (alo, Lam, Lam)))
         n = k - 1
-        for m in range(1, 13):                       # Corr1: u' not admissible, |u'| <= tau
+        for m in range(1, self.MM):                       # Corr1: u' not admissible, |u'| <= tau
             alo = max(self.C(m) - m * g, fmpq(0))
-            for j in range(0, 13):
+            for j in range(0, self.MM):
                 T0 = tau - (m + j) * g
                 if T0 > alo and m + j <= n:
                     out.append(("Corr1", n, m, j, (alo, T0, T0)))
-        for m in range(1, 7):                        # Corr2 (b): r_A >= r*, R > g
+        for m in range(1, self.MM):                  # Corr2 (b): r_A >= r*, R > g
             amax = self.C(m) - m * g
             rstar = self.C(m + 1) - (m + 1) * g
             lo = rstar if rstar > 0 else fmpq(0)
-            for j in range(0, 13):
+            for j in range(0, self.MM):
                 Lam = L - (m + j + 1) * g
                 hi = amax if amax < Lam else Lam
                 if hi > lo and m + j <= n:
                     out.append(("Corr2b", n, m, j, (lo, hi, Lam)))
-        for m in range(0, 7):                        # Corr2 (c): r_A < r*, rho < rc
+        for m in range(0, self.MM):                  # Corr2 (c): r_A < r*, rho < rc
             amax = self.C(m) - m * g if m > 0 else fmpq(0)
             rstar = self.C(m + 1) - (m + 1) * g
             a = rstar if rstar < amax else amax
             if (m > 0 and a <= 0) or rstar <= 0:
                 continue
             cprime = self.C(m + 1) - m * g
-            for j in range(0, 13):
+            for j in range(0, self.MM):
                 rc = L - self.C(m + 1) - j * g
                 if rc > 0 and m + j <= n:
                     out.append(("Corr2c", n, m, j, (a, rc, cprime)))
@@ -421,14 +435,14 @@ class Capped:
         return res
 
     def direct_I(self, log=print):
-        """I_T = sum_{m=0}^{6} C(k,m) int_{exactly m large, s <= C_m} P^2 (second code path inside this file; tests)."""
+        """I_T = sum_m C(k,m) int_{exactly m large, s <= C_m} P^2 (second code path inside this file; tests)."""
         k, L, g = self.k, self.L, self.g
         tot = fmpq(0)
-        for m in range(0, 7):
+        for m in range(0, self.MM):
             amax = self.C(m) - m * g if m > 0 else None
-            for j in range(0, 13):
+            for j in range(0, self.MM):
                 Lam = L - (m + j) * g
-                if Lam <= 0:
+                if Lam <= 0 or m + j > k:
                     continue
                 if m == 0:
                     v = self.T1(k, 0, j, None, None, Lam, self.HI)

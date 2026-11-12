@@ -53,4 +53,31 @@ theorem stadlmann_extra_le_three (l : List Nat) (h : ∀ y ∈ l, 112 < y) (s : 
   have := length_mul_le_sum 112 l h
   omega
 
+/-! ### Charton et al.'s parameters (Table 3 of their draft), in units of 1/1250 of the Polymath scaling:
+`g = 4 δ = 82`, `L = 1325`, caps `Cₘ = 4 B_{1,m}` = 777, 794, 875, 917, 953, 983, 1016, 1042, 1063, 1081, then 1081. -/
+
+/-- Charton et al.'s caps in units of 1/1250. -/
+def chartonCap (m : Nat) : Nat :=
+  [777, 794, 875, 917, 953, 983, 1016, 1042, 1063, 1081].getD (m - 1) 1081
+
+/-- Stadlmann's admissibility condition `δ < B_m ≤ B_{m+1} ≤ B_m + δ` for these caps (checked for
+`1 ≤ m ≤ 40`; for `m ≥ 11` the caps are constant). -/
+theorem charton_caps_valid :
+    ∀ m ∈ List.range' 1 40, 82 < chartonCap m ∧ chartonCap m ≤ chartonCap (m + 1) ∧
+      chartonCap (m + 1) ≤ chartonCap m + 82 := by
+  decide
+
+/-- At most sixteen coordinates of a point with total `≤ 1325` exceed `82`. -/
+theorem charton_large_count (l : List Nat) (h : ∀ x ∈ l, 82 < x) (hs : l.sum ≤ 1325) :
+    l.length ≤ 16 := by
+  have := length_mul_le_sum 82 l h
+  omega
+
+/-- In the correction pieces the large set carries at least `777`, so at most six further
+coordinates exceed `82` below `1325` (inclusion-exclusion stops at `j = 6`). -/
+theorem charton_extra_le_six (l : List Nat) (h : ∀ y ∈ l, 82 < y) (s : Nat) (hs : 777 ≤ s)
+    (htot : s + l.sum ≤ 1325) : l.length ≤ 6 := by
+  have := length_mul_le_sum 82 l h
+  omega
+
 end TwinPrimes
