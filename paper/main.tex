@@ -259,14 +259,14 @@ both Gram matrices from scratch and re-evaluates each stored coefficient
 vector in exact arithmetic.
 
 \begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Mk}
-\[
-M_{105}\ge4.17427,\quad M_{64}\ge4.00363,\quad M_{58}\ge4.00927,\quad
-M_{56}\ge4.00519,\quad M_{55}\ge4.00516 .
-\]
+\begin{gather*}
+M_{105}\ge4.17427,\qquad M_{64}\ge4.00363,\qquad M_{58}\ge4.00927,\\
+M_{56}\ge4.00519,\qquad M_{55}\ge4.00516,\qquad M_{54}\ge4.00238 .
+\end{gather*}
 The first two use all symmetric polynomials of degree $11$ and $12$
 ($195$ and $272$ coefficients). The others use the subspace spanned by
 $(1-P_1)^aP^b$ with $b$ supported on even $j$, as in \cite[\S7]{Pol14b}, of
-degree $16$, $18$ and $20$ ($307$, $471$ and $707$ coefficients).
+degree $16$, $18$, $20$ and $23$ ($307$, $471$, $707$ and $1236$ coefficients).
 \end{theorem}
 
 \begin{center}
@@ -279,6 +279,7 @@ all symmetric & 12 & 272 & 64\\
 even power sums & 16 & 307 & 58\\
 even power sums & 18 & 471 & 56\\
 even power sums & 20 & 707 & 55$^{\dagger}$\\
+even power sums & 23 & 1236 & 54$^{\dagger}$\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -287,14 +288,16 @@ even power sums & 20 & 707 & 55$^{\dagger}$\\
 \begin{corollary}[end-to-end within this project]\label{cor:578}
 Assuming the Bombieri--Vinogradov theorem and \cite[Prop.~4.2]{May15}, both
 \lbl{Literature}, Theorems~\ref{thm:Mk} and~\ref{thm:lean} give
-$H_1\le272$.
+$H_1\le270$.
 \end{corollary}
 
-Polymath8b reached $M_{54}>4.00238$ with even-part polynomials of degree $23$
-\cite[Thm.~3.9]{Pol14b}, and hence $H_1\le270$. Our pipeline is one step of
-$k$ short of that; the degree-$23$ computation for $k=54$ is running.
-Corollary~\ref{cor:578} reproduces known results and is weaker than the
-established $246$. It is the position of our own pipeline on the ladder
+This reproduces a known result and is not new. Polymath8b obtained
+$M_{54}>4.00238$ with even-part polynomials of degree $23$
+\cite[Thm.~3.9]{Pol14b}, and hence $H_1\le270$. Our certified value in the
+same space, $4.002386\ldots$, agrees with theirs to every digit they print,
+which is an external check on our pipeline; two independent runs of it (one
+from an earlier session) produced the same value. Corollary~\ref{cor:578}
+remains weaker than the established $246$. It is the position of our own pipeline on the ladder
 $600\to270\to246\to240\to212\to186\to182$, which we intend to climb rung by
 rung.
 
@@ -657,9 +660,8 @@ section.
 
 \subsection*{Track A: lowering the bound}
 \begin{enumerate}
-\item \emph{Climb the ladder.} The certified pipeline stands at $k=55$
-($H_1\le272$). Next: $M_{54}>4$ ($H_1\le270$; even power sums of degree
-$23$), then add the
+\item \emph{Climb the ladder.} The certified pipeline now stands at $k=54$
+($H_1\le270$). Next: add the
 $\varepsilon$-enlarged simplex ($k=50$, $246$), then Stadlmann's region
 ($k=49$, $240$).
 \item \emph{Floor of the method (our main original direction).} For the plain

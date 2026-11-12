@@ -38,5 +38,13 @@
   "k": 55,
   "how": "M_55 >= 4.00516 with even power sums of degree 20 (707 coefficients); 55-tuple of diameter 272",
   "certificate": "code/cert_M55_D20e.json"
+ },
+ {
+  "date": "2026-11-12",
+  "session": 3,
+  "bound": 270,
+  "k": 54,
+  "how": "M_54 >= 4.0023860 with even power sums of degree 23 (1236 coefficients); 54-tuple of diameter 270",
+  "certificate": "code/cert_M54_D23e.json"
  }
 ]

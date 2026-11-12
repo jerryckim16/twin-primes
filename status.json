@@ -7,9 +7,14 @@
     "sieve_limit_geh": 6,
     "claimed": 182,
     "established": 246,
-    "project": 272
+    "project": 270
   },
   "results": [
+    {
+      "label": "Computed",
+      "text": "M_54 ≥ 4.0023860 with even power sums of degree 23 (1236 coefficients). With the Lean tuple (54, 270), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 270 end to end. Agrees with Polymath8b's 4.00238 to every printed digit; a second run (the 3:34 AM session's certificate, recovered from a bundle) gives the same value. Reproduction, not new.",
+      "where": "code/cert_M54_D23e.json; re-check with code/verify_cert.py"
+    },
     {
       "label": "Lean-checked",
       "text": "DHL.mono: DHL[k,2] implies DHL[k',2] for every k' ≥ k (delete shifts), with Admissible.sublist.",
@@ -27,7 +32,7 @@
     },
     {
       "label": "Computed",
-      "text": "M_55 ≥ 4.00516 with even power sums of degree 20 (707 coefficients). With the Lean tuple (55, 272), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 272 end to end. Reproduction, not new; M_54 at degree 23 (for 270) was still running.",
+      "text": "M_55 ≥ 4.00516 with even power sums of degree 20 (707 coefficients). With the Lean tuple (55, 272), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 272 end to end. Reproduction, not new.",
       "where": "code/cert_M55_D20e.json; re-check with code/verify_cert.py"
     },
     {
@@ -77,7 +82,7 @@
     },
     {
       "label": "Literature",
-      "text": "With Bombieri-Vinogradov and Maynard's Prop. 4.2, the M_55 certificate and the Lean tuple (55, 272) give H1 ≤ 272 end to end inside this project (was 278).",
+      "text": "With Bombieri-Vinogradov and Maynard's Prop. 4.2, the M_54 certificate and the Lean tuple (54, 270) give H1 ≤ 270 end to end inside this project (was 278).",
       "where": "paper, Corollary 5"
     }
   ],
@@ -121,8 +126,8 @@
     {
       "idea": "Richer symmetric test functions to pass k = 102 and reach M_54 > 4 (270).",
       "origin": "literature",
-      "status": "partial",
-      "note": "M_55 ≥ 4.00516 at degree 20 (272). M_54 needs degree 23 (Polymath8b): over 15 min and 9 GB here."
+      "status": "works",
+      "note": "M_54 ≥ 4.0023860 at degree 23 (1236 coefficients): 270 reproduced. Next rung needs the enlarged simplex."
     },
     {
       "idea": "One explicit bilinear hypothesis that implies twin primes, formalised in Lean.",
