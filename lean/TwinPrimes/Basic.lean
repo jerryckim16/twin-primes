@@ -153,4 +153,47 @@ theorem NarrowTuple.boundedGaps {k D : Nat} (T : NarrowTuple k D)
   have hbD := T.bound b hb
   exact ⟨n + a, n + b, by omega, by omega, by omega, hpa, hpb⟩
 
+/-! ## Why the target is 2 (session 4) -/
+
+/-- `2` is prime. -/
+theorem isPrime_two : IsPrime 2 := by
+  refine ⟨by decide, fun d hd => ?_⟩
+  have hle : d ≤ 2 := Nat.le_of_dvd (by decide) hd
+  have hpos : 0 < d := Nat.pos_of_dvd_of_pos hd (by decide)
+  omega
+
+/-- Gaps of size `1` occur only once (`2, 3`): `BoundedGaps 1` is false, so `2` is the
+smallest bound that can hold, and the twin prime conjecture is the strongest statement
+of this form. -/
+theorem not_boundedGaps_one : ¬ BoundedGaps 1 := by
+  intro h
+  obtain ⟨p, q, hN, hpq, hq, hp, hq'⟩ := h 3
+  have h1 := hp.odd_of_three_le (by omega)
+  have h2 := hq'.odd_of_three_le (by omega)
+  omega
+
+/-- A pair `{0, d}` is admissible exactly when `d` is even. -/
+theorem admissible_pair_iff (d : Nat) : Admissible [0, d] ↔ d % 2 = 0 := by
+  constructor
+  · intro h
+    obtain ⟨r, hr, hall⟩ := h 2 isPrime_two
+    have h0 := hall 0 (by simp)
+    have hd := hall d (by simp)
+    simp at h0
+    omega
+  · intro hd p hp
+    by_cases h2 : p = 2
+    · subst h2
+      exact ⟨1, by decide, by intro x hx; simp at hx; rcases hx with rfl | rfl <;> omega⟩
+    · have hp3 : 3 ≤ p := by have := hp.1; omega
+      by_cases h1 : d % p = 1
+      · exact ⟨2, by omega, by
+          intro x hx; simp at hx; rcases hx with rfl | rfl
+          · simp
+          · omega⟩
+      · exact ⟨1, by omega, by
+          intro x hx; simp at hx; rcases hx with rfl | rfl
+          · simp
+          · exact h1⟩
+
 end TwinPrimes
