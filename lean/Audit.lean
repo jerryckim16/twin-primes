@@ -7,3 +7,6 @@ import TwinPrimes
 #print axioms TwinPrimes.DHL.mono
 #print axioms TwinPrimes.not_boundedGaps_one
 #print axioms TwinPrimes.admissible_pair_iff
+#print axioms TwinPrimes.length_mul_le_sum
+#print axioms TwinPrimes.stadlmann_large_count
+#print axioms TwinPrimes.stadlmann_seven_large

@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.4, 12 November 2026}
+\date{Version 0.5, 12 November 2026}
 
 \begin{document}
 
@@ -40,7 +40,11 @@ bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
 itself, reach any $k\le29$; numerical evidence that this upper bound is close
 to the limit of every dual weight depending only on $t_m$ and $t_1+\dots+t_k$,
 and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
-$k=50$, and (iv) a programme of original
+$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
+floor (no $k\le28$ at his level of distribution, whatever the caps), exact
+integrals over the cap-violation set, and a certified capped ratio of
+$3.9597$ at $k=49$, still short of the $4$ needed to reproduce $240$, and
+(iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
 \lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
@@ -554,7 +558,7 @@ that depend on $m$, or arguments that are not linear in the indicators of
 primality. Those are \lbl{Open}.
 \end{remark}
 
-\section{Results of our own: how far the \texorpdfstring{$\varepsilon$}{epsilon}-enlargement alone can go}
+\section{Results of our own: how far the \texorpdfstring{$\varepsilon$}{epsilon}-enlargement alone can go}\label{sec:epsfloor}
 
 For the plain simplex the bound $M_k\le\frac{k}{k-1}\log k$ shows where the
 method stops ($k\ge51$). This section starts the same analysis for the
@@ -841,14 +845,224 @@ equidistribution estimates. A floor for those is the Problem in the next
 section.
 \end{remark}
 
-\section{Programme}
+\section{Stadlmann's support (version 0.5)}\label{sec:stad}
+
+This section takes the first steps on the next rung, Stadlmann's region for
+$H_1\le240$ \cite{Sta26}, and gives a first rigorous answer to the Problem in
+the Programme (Section~\ref{sec:prog}) for the one-band supports used by \cite{Sta26} and \cite{Cha26}.
+For this version a helper re-read both sources (the arXiv text of
+\cite{Sta26}, the draft \cite{Cha26}); our notes with page references are in
+\texttt{notes/stadlmann-recheck-s5.md}.
+
+\subsection*{The support and the criterion}
+The following is \lbl{Literature}, read in \cite[Def.~1, Def.~5, Prop.~1]{Sta26}.
+For $\delta>0$, $-\varepsilon=A_0<A_1<\dots<A_n<\frac12-\varepsilon$ and caps
+$\delta<B_{j,m}\le B_{j,m+1}\le B_{j,m}+\delta$, the support
+$T_k(\delta,\underline A,\underline B,\varepsilon)$ is the set of
+$t\in[0,1]^k$ such that, for the $j$ with
+$\sum_it_i\in[A_{j-1}+\varepsilon,A_j+\varepsilon)$, one has
+$\sum_{i\in I}t_i\le B_{j,|I|}$ where $I=\{i:t_i>\delta\}$ (the ``large''
+coordinates). With one band ($n=1$), the functional $J(F)$ of \cite{Sta26}
+is the integral of $\left(\int F\,dt_k\right)^2$ over
+$t_1+\dots+t_{k-1}\le A_1-\varepsilon$ (our reduction of the general
+definition), $I(F)=\int_{T_k}F^2$, and the criterion is
+$k(1-c_1)J(F)-kc_2K(F)>I(F)$ for a symmetric $F$ supported on $T_k$, where
+$c_1,c_2\ge0$ come from the minorant and $K(F)\ge0$. Stadlmann's choice is
+$k=49$, $\varepsilon=0.0075$, $A_1=0.253$, $\delta=0.028$,
+$B_{1,1}=B_{1,2}=0.15$, $B_{1,m}=0.17$ ($m\ge3$) and $c_1=c_2=0$; that of
+\cite{Cha26} is $k=45$, $\varepsilon=1/125$, $A_1=257/1000$,
+$\delta=41/2500$ with caps listed in their Table~3. Both use one band. The
+equidistribution estimates behind the criterion are \lbl{Claimed}; we have not
+checked them.
+
+In the Polymath scaling $u=4t$ the support lies in $L\R_k$ with
+$L=4(A_1+\varepsilon)$, the marginals are integrated over $\tau\R_{k-1}$ with
+$\tau=4(A_1-\varepsilon)$, and the criterion with $c_1=c_2=0$ reads
+$kJ/I>4$. Write $s=(L+\tau)/2=4A_1$ and $e=(L-\tau)/(L+\tau)=\varepsilon/A_1$;
+the scaling $M_k(cL,c\tau)=cM_k(L,\tau)$ of Section~\ref{sec:epsfloor} gives
+\begin{equation}\label{eq:dil}
+M_k(L,\tau)=s\,M_k(1+e,1-e)=4A_1\,M_{k,\varepsilon/A_1}.
+\end{equation}
+For Stadlmann, $(L,\tau)=(1.042,0.982)$, $s=253/250$, $e=15/506$; for
+\cite{Cha26}, $(L,\tau)=(1.06,0.996)$, $s=257/250$, $e=8/257$.
+
+\subsection*{Without the caps}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic]\label{prop:capfree}
+With even power sums,
+$M_{49,15/506}\ge3.9685535$ (degree $20$, $707$ coefficients) and
+$M_{45,8/257}\ge3.9029887$ (degree $21$, $846$ coefficients). Hence, by
+\eqref{eq:dil}, $M_{49}(1.042,0.982)\ge4.016176$ and
+$M_{45}(1.06,0.996)\ge4.012272$.
+\end{proposition}
+
+\begin{sloppypar}
+The two certificates, in the directory \texttt{code/}, are
+\texttt{cert\_stad49\_capfree\_D20e.json} and
+\texttt{cert\_ax45\_capfree\_D21e.json}; the script
+\texttt{verify\_cert.py} re-checks them. Products of even power sums and
+even-part monomial symmetric polynomials span the same space, so our degree-$21$
+basis is the space $\mathcal B_{21}$ of \cite[Thm.~11.1]{Cha26}; its dimension,
+$846$, agrees with theirs. On their capped support they report the exact value
+$4.0043840983\ldots$ (\lbl{Claimed}); on the larger cap-free region, with the
+same space, we get $4.012272$. Both are lower bounds, for $M_T$ and for
+$M_{45}(1.06,0.996)\ge M_T$ respectively, so the comparison proves nothing;
+but it suggests (if their value is right) that at this degree the caps cost
+about $0.008$. This is a comparison, not a verification of \cite{Cha26}.
+\end{sloppypar}
+
+\subsection*{With the caps}
+For $F=P\,1_T$ with $P$ a polynomial, write $I(P)$, $J(P)$ for the cap-free
+functionals on $L\R_k$ (marginals over $\tau\R_{k-1}$) and $V=L\R_k\setminus T$
+(Polymath scaling; $g=4\delta$, $C_m=4B_{1,m}$).
+
+\begin{proposition}[\lbl{Proved here}; elementary]\label{prop:caps}
+Let $R_m(g,c)=\{u\in L\R_k:\ u_1,\dots,u_m>g,\ u_1+\dots+u_m\ge c\}$, put
+$c_m=C_m$ for $m\le6$ and $c_7=7g$. Then, with
+\[
+E(P)=\sum_{m=1}^{7}\binom km\int_{R_m(g,c_m)}P^2 ,
+\]
+one has $I_T(F)\le I(P)$ and, for every $0<\eta<1$,
+\[
+J_T(F)\ \ge\ \max\left(J(P)-2\sqrt{J(P)\,L\,E(P)},\ (1-\eta)J(P)-(\eta^{-1}-1)L\,E(P)\right).
+\]
+\end{proposition}
+
+\begin{proof}
+A point of $V$ has a large set $I$ with $\sum_{i\in I}u_i>C_{|I|}$. If
+$|I|\le6$ it lies in a copy of $R_{|I|}(g,c_{|I|})$; if $|I|\ge7$, any seven
+of its large coordinates exceed $g$ and sum to more than $7g$, so it lies in
+a copy of $R_7(g,c_7)$. By symmetry of $P^2$, $\int_VP^2\le E(P)$. On the
+fiber over $u'$ write $a=\int P\,du_k$ and $b=\int P\,1_V\,du_k$, so that the
+marginal of $F$ is $a-b$. Cauchy--Schwarz gives $b^2\le L\int P^21_V\,du_k$,
+hence $\int b^2\le L\,E(P)$. Then $(a-b)^2\ge a^2-2|a||b|$ with
+Cauchy--Schwarz once more, or $(a-b)^2\ge(1-\eta)a^2-(\eta^{-1}-1)b^2$.
+Finally $I_T(F)=\int_TP^2\le I(P)$.
+\end{proof}
+
+The integrals over $R_m(g,c)$ are again exact rational numbers for the basis
+$(L-P_1)^aP^b$ (\lbl{Proved here}; \texttt{code/caps\_exact.py}). Write the
+first $m$ coordinates as $g+z$. Integrating out the other $k-m$ coordinates
+with Lemma~\ref{lem:egf} leaves powers of $L-mg-|z|$; the shifted power sums
+are $P_j(g+z)=\sum_l\binom jlg^{j-l}P_l(z)$ with $P_0=m$ and $P_1=|z|$; at
+fixed $r=|z|$ the integral of $\prod_lP_l(z)^{f_l}$ is
+$r^{m-1+w(f)}E_m(f)/(m-1+w(f))!$ (now with odd parts as well); and the
+remaining integral in $r$ over $[\max(c-mg,0),L-mg]$ is elementary. The code
+reproduces Lemma~\ref{lem:egf} exactly when $g=c=0$, and agrees with direct
+symbolic integration (sympy) for $k=3$, $m=1,2$, $g=1/10$.
+
+Since all three quantities are exact quadratic forms in the coefficients of
+$P$, we choose $P$ as the top eigenvector of
+$(1-\eta)J-(\eta^{-1}-1)L\,G_E$ against $I$, where $G_E$ is the Gram matrix of
+$E$, and evaluate both bounds exactly. The penalty works: at degree $16$ it
+lowers $E/I$ from $3.2\cdot10^{-4}$ (for the cap-free optimiser) to
+$3.4\cdot10^{-7}$.
+
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic]\label{prop:capped}
+For Stadlmann's parameters ($k=49$) there is a polynomial $P$ of degree $20$
+in even power sums ($707$ coefficients) with
+\[
+\frac{kJ_T(P\,1_T)}{I_T(P\,1_T)}\ \ge\ 3.95972 .
+\]
+At degree $16$ ($307$ coefficients) the same method gives $3.93625$.
+\end{proposition}
+
+\begin{sloppypar}
+This is below $4$: \emph{the rung $240$ is not reproduced.} The certificate is
+\texttt{code/cert\_stad49\_caps\_D20e.json}, written by
+\texttt{code/stadlmann\_caps\_opt.py}; the best bound came from
+$\eta=1/800$, with $E/I=1.6\cdot10^{-7}$ and the bound of
+Proposition~\ref{prop:caps} in its square-root form. Where the loss comes from
+(\lbl{Computed}, same runs): the cap-free optimiser of degree $20$ has
+$s\,kJ/I=4.01618$ but $E/I=1.2\cdot10^{-3}$ (of which $1.2\cdot10^{-4}$ from points with one
+coordinate above $0.6$); forcing $E$ down costs about $0.045$ of the cap-free
+ratio ($4.0161\to3.9710$), and the Cauchy--Schwarz step costs another
+$0.011$. Both losses come from the way we bound $J_T$, not from the caps as
+such: $F=P\,1_T$ is cut off on $V$ anyway, and Proposition~\ref{prop:caps}
+charges for $P$ on $V$ only because it does not compute the capped marginals.
+The next step is therefore an exact formula for $J_T(P\,1_T)$, which needs the
+fibers of $T$ and not only integrals over $V$. A first attempt that dropped the
+condition $u_i>g$ in the union bound failed badly ($E/I\approx146$ for the
+cap-free optimiser; \texttt{runs/stad49\_caps\_D20.log}).
+\end{sloppypar}
+
+\subsection*{A floor for one-band hybrid supports (our own)}
+Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the
+following extends Theorem~\ref{thm:floor} to every one-band support of
+Stadlmann's type.
+
+\begin{theorem}[\lbl{Proved here} for the reduction; \lbl{Computed}, interval arithmetic, for the table]\label{thm:hybrid-floor}
+Let $T=T_k(\delta,(-\varepsilon,A_1),\underline B,\varepsilon)$ be a one-band
+support with $\varepsilon\ge0$ and $A_1\le\frac14+\omega$, with any $\delta$
+and any caps. If the criterion $k(1-c_1)J(F)-kc_2K(F)>I(F)$ holds for some
+$F$ supported on $T$, then
+$M_k\left(4(\tfrac14+\omega+\varepsilon),4(\tfrac14+\omega-\varepsilon)\right)>4$. This
+is false, for every $0\le\varepsilon<\frac14+\omega$, in each of the
+following cases:
+\begin{center}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$\omega$ & $0$ & $3/1000$ & $1/300$ & $7/1000$ & $1/68$\\
+\midrule
+no $k$ with & $k\le29$ & $k\le28$ & $k\le28$ & $k\le26$ & $k\le22$\\
+\bottomrule
+\end{tabular}
+\end{center}
+So, whatever $\delta$, the caps and the minorant, a one-band support cannot give
+$\DHL[k,2]$ for $k\le28$ at Stadlmann's level ($\omega=0.003$; the helper's
+reconstruction of his conditions gives $\omega\le0.0032$), for $k\le26$ at the
+level $\omega=0.007$ of \cite{Cha26}, and for $k\le22$ whenever
+$\omega\le1/68$, a range containing every $\omega$ that satisfies the
+Type~I condition $68\omega+14\delta<1$ of \cite[Lemma~5]{Sta26}.
+\end{theorem}
+
+\begin{proof}
+As $c_1,c_2\ge0$ and $K(F)\ge0$, the criterion implies $kJ(F)>I(F)$. In the
+scaling $u=4t$, $F$ becomes a function supported on $L\R_k$ (because
+$T\subseteq\{\sum t_i\le A_1+\varepsilon\}$), the ratio is multiplied by $4$,
+and $J$ is the marginal functional over $\tau\R_{k-1}$; so
+$4<M_k(4(A_1+\varepsilon),4(A_1-\varepsilon))$, and monotonicity in $L$ and
+$\tau$ replaces $A_1$ by $\frac14+\omega$. (For $\varepsilon<0$ one has
+$\tau>L$ and the quantity is at most $LM_k$, which is covered by the case
+$\varepsilon=0$ below.) Monotonicity in $k$ reduces each entry to the largest
+$k$ shown. For the numerical part, put $A=\frac14+\omega$. When
+$4(A+\varepsilon)\frac{k}{k-1}\log k<4$ we use
+$M_k(L,\tau)\le M_k(L,L)=LM_k\le L\frac{k}{k-1}\log k$
+\cite[Cor.~6.4]{Pol14b}. The remaining range of $\varepsilon$, up to $A$, is
+cut into intervals of length at most $1/2000$; on $[e,e']$ we take
+$(L,\tau)=(4(A+e'),4(A-e))$, which dominates by monotonicity, and certify
+$\sup_\sigma W(\sigma)<4$ with rational $(a,s_1)$ exactly as in the proof of
+Theorem~\ref{thm:floor}. The certificates are
+\texttt{code/cert\_floor\_hybrid\_k*\_w*.json}, written by
+\texttt{code/floor\_hybrid.py} in ball arithmetic (\texttt{python-flint}) and
+re-checked by the same script with \texttt{--check} in a different interval
+library (\texttt{mpmath.iv}).
+\end{proof}
+
+\begin{remark}[how sharp]
+For each $\omega$ in the table the same weight fails at the next $k$: the
+floating-point $\sup W$ reaches $4$ on some interval of $\varepsilon$ (for
+example $k=27$, $\omega=0.007$, near $\varepsilon\approx0.0548$). So the table
+shows the reach of this weight, not of the method; the true floor is
+presumably much higher, as Proposition~\ref{prop:capfree} suggests (it shows
+that the cap-free quantity already exceeds $4$ at $k=49$ and $k=45$ for the two
+parameter sets). The theorem ignores the caps entirely, which only shrink the
+support; a floor that sees the caps is the natural next step. It also does not
+apply to supports with several bands, where $J$ contains cross terms between
+bands, nor to the constructions behind $186$ and $182$, which we have not
+read in enough detail.
+\end{remark}
+
+\section{Programme}\label{sec:prog}
 
 \subsection*{Track A: lowering the bound}
 \begin{enumerate}
 \item \emph{Climb the ladder.} The certified pipeline now stands at $k=50$
 ($H_1\le246$, the established bound, via the $\varepsilon$-enlarged simplex).
-Next: Stadlmann's region ($k=49$, $240$), which needs the rough-mass caps of
-\cite{Sta26} in the integration formulas.
+Next: Stadlmann's region ($k=49$, $240$). Version~0.5 has the cap-free part
+(Proposition~\ref{prop:capfree}) and exact integrals over the cap-violation
+pieces (Proposition~\ref{prop:caps}); what is missing is an exact
+computation of the capped marginal functional $J_T$ itself, in place of the
+Cauchy--Schwarz loss of Proposition~\ref{prop:caps}.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
 stops ($k\ge51$). For the $\varepsilon$-enlarged simplex
@@ -856,8 +1070,11 @@ Theorem~\ref{thm:floor} gives $k\ge30$, which is still far from the expected
 truth near $50$; Section~4 explains what a sharper weight must do, and
 Proposition~\ref{prop:family} indicates that it must depend on more of $t$
 than $t_m$ and $S$ (a Collatz--Wielandt weight $\psi_m=\int F\,dt_m/F$ built
-from a good positive test function $F$ is the natural candidate). No upper
-bound of this kind is known to us for the 2026 hybrid supports. A rigorous
+from a good positive test function $F$ is the natural candidate). For the
+one-band hybrid supports of \cite{Sta26,Cha26},
+Theorem~\ref{thm:hybrid-floor} gives the first such bound we know of
+($k\ge29$ at Stadlmann's level, $k\ge27$ at that of \cite{Cha26}), still
+far from $49$ and $45$; it ignores the caps. A rigorous
 dual certificate there would say whether $182$ is close to the limit of the
 present inputs or far from it, and which input (which Type~I/II/III range) is
 binding.
@@ -866,7 +1083,7 @@ unit of $k$ below the claimed frontier is $182\to176\to168\to162\to158$
 for $k=39,\dots,35$: the steps $39\to38$ and $38\to37$ are worth the most.
 \end{enumerate}
 
-\begin{problem}[\lbl{Open}]
+\begin{problem}[\lbl{Open}; partly answered by Theorem~\ref{thm:hybrid-floor} for one band, without using the caps]
 Give a rigorous upper bound for the variational quantity of \cite{Sta26} as a
 function of $k$ and of the admissible exponents, and deduce the least $k$ the
 hybrid method can reach with the currently proved estimates.

@@ -1,7 +1,7 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "updated": "2026-11-12",
-  "session_count": 4,
+  "session_count": 5,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
@@ -10,6 +10,31 @@
     "project": 246
   },
   "results": [
+    {
+      "label": "Proved here",
+      "text": "Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give DHL[k,2] only if M_k(4(A1+eps), 4(A1-eps)) > 4. Certified false for every eps: k ≤ 29 (omega = 0), k ≤ 28 (omega = 0.003 and 1/300, Stadlmann's level), k ≤ 26 (omega = 0.007, the level of Charton et al.), k ≤ 22 (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.",
+      "where": "paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json"
+    },
+    {
+      "label": "Computed",
+      "text": "Stadlmann's capped support at k = 49 (his parameters, re-read in the source): with F = P 1_T, P of degree 20 (707 coefficients), the criterion ratio is ≥ 3.95972, below the 4 needed. The 240 rung is NOT reproduced. The loss comes from bounding the capped marginals by Cauchy-Schwarz (Proposition 23), not from the caps themselves.",
+      "where": "paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log"
+    },
+    {
+      "label": "Proved here",
+      "text": "Proposition 23: for F = P 1_T, I_T ≤ I(P) and J_T ≥ J(P) − 2 sqrt(J(P) L E(P)), where E(P) is an exact union bound for the integral of P^2 over the cap-violation set; the pieces {m coordinates above delta, their sum above the cap} are integrated exactly with shifted power sums (checked against Lemma 3 and against sympy for k = 3).",
+      "where": "paper, Proposition 23; code/caps_exact.py"
+    },
+    {
+      "label": "Computed",
+      "text": "Cap-free parts of the 2026 supports: M_{49,15/506} ≥ 3.9685535 (degree 20) and M_{45,8/257} ≥ 3.9029887 (degree 21, dimension 846, equal to the dimension stated by Charton et al.), so by dilation the cap-free ratios are ≥ 4.016176 (Stadlmann's (L, tau) = (1.042, 0.982)) and ≥ 4.012272 (Charton et al.'s (1.06, 0.996)). Compared with their claimed capped value 4.00438, the caps seem to cost about 0.008 at k = 45 (a comparison, not a verification).",
+      "where": "paper, Proposition 22; code/cert_stad49_capfree_D20e.json, code/cert_ax45_capfree_D21e.json; re-check with code/verify_cert.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "Counting large coordinates: if every entry of a list exceeds g then length × g ≤ sum; so (in units of 1/1000) at most 9 coordinates of a point of Stadlmann's support exceed 4 delta = 112, and 7 such coordinates always exceed every cap (680).",
+      "where": "lean/TwinPrimes/Caps.lean"
+    },
     {
       "label": "Computed",
       "text": "M_{50,1/25} ≥ 4.0012466 (degree 25, 1780 coefficients) and ≥ 4.0043063 (degree 27, 2526 coefficients) on Polymath8b's epsilon-enlarged simplex, even power sums. With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives H1 ≤ 246 end to end, the established bound. Agrees with Polymath8b's 4.00124 (d=25) and 4.0043 (d=27) to every printed digit; Gram formulas checked against direct sympy integration. Reproduction, not new.",
@@ -113,6 +138,24 @@
   ],
   "ideas": [
     {
+      "idea": "Dilation identity M_k(L,tau) = 4 A1 M_{k, eps/A1} plus the two-zone dual weight, to bound the one-band hybrid supports of 2026 as a function of the level omega.",
+      "origin": "own",
+      "status": "works",
+      "note": "Theorem 25: no k ≤ 28 at Stadlmann's omega = 0.003, no k ≤ 26 at omega = 0.007, no k ≤ 22 for omega ≤ 1/68, for any delta, caps and minorant. The same weight fails at the next k."
+    },
+    {
+      "idea": "Rigorous capped ratio from a polynomial P: penalise the exact integral of P^2 over the cap-violation set in a generalised eigenproblem, bound J_T by Cauchy-Schwarz.",
+      "origin": "own",
+      "status": "partial",
+      "note": "Penalty lowers E/I from 1.2e-3 to 1.6e-7, but the bound reaches only 3.9597 < 4 at degree 20 (k = 49). The Cauchy-Schwarz treatment of J_T is the bottleneck; need exact capped marginals."
+    },
+    {
+      "idea": "Union bound for the cap-violation set over m-subsets with sum above the cap, dropping the condition that each coordinate exceeds delta.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Hopelessly loose: E/I ≈ 146 for the cap-free optimiser at degree 20 (the m = 4..6 terms explode)."
+    },
+    {
       "idea": "Optimise Lemma 13 over ALL weights psi_m = Psi(S - t_m, t_m) (the family containing Cor. 6.4 and the two-zone weight) as a convex program, to learn the limit of this family.",
       "origin": "own",
       "status": "ruled out",
@@ -158,7 +201,7 @@
       "idea": "Floor of the method: a rigorous upper bound (dual certificate) for the 2026 hybrid sieve supports, to learn how far below 186 the present inputs can go.",
       "origin": "own",
       "status": "partial",
-      "note": "Done for the eps-enlarged simplex down to k ≤ 29 (Theorem 15). Session 4: (t_m,S)-weights stall near 4.14 at k=50 (Prop. 19); extrapolation suggests the true floor is k = 50 (Remark 20). Hybrid 2026 supports still open."
+      "note": "eps-enlarged simplex down to k ≤ 29 (Theorem 15). Session 5: one-band hybrid supports (Stadlmann, Charton et al.) cannot reach k ≤ 28 at omega = 0.003, k ≤ 26 at omega = 0.007, whatever the caps (Theorem 25). Multi-band supports and the 186/182 constructions still open; a floor that sees the caps is next."
     },
     {
       "idea": "Does the slicing lemma behind Proposition 8 survive on enlarged supports?",

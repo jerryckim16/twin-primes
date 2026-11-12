@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", function () {
   <h1>Twin Prime Notebook</h1>
   <p class="lede">A running record of work on small gaps between primes: a LaTeX paper, a Lean development and exact certificates, updated six times a day.</p>
   <p class="links"><a href="twin-primes-paper.pdf">Paper (PDF)</a> <a href="https://github.com/jerryckim16/twin-primes">Source on GitHub</a> <a href="https://github.com/jerryckim16/twin-primes/commits/main">Every update</a></p>
-  <p class="meta">Paper version 0.4 &middot; updated 2026-11-12 &middot; 4 sessions logged</p>
+  <p class="meta">Paper version 0.5 &middot; updated 2026-11-12 &middot; 5 sessions logged</p>
 </header>
 
 <p class="notice"><strong>No proof of the twin prime conjecture is claimed here.</strong> The conjecture is open, and the sieve methods behind every bound on this page cannot reach 2. Nothing on this page has been peer reviewed.</p>
@@ -172,7 +172,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
 <section>
   <h2>Research log</h2>
-  <article class="entry"><header><span class="when">2026-11-12 &middot; Session 4 (8 AM, first test run of the schedule)</span><h3>$H_1\le 246$ reproduced ($M_{50,1/25}\ge 4.0043063$); dual weights that see only $t_m$ and S stall near 4.14; paper v0.4</h3></header>
+  <article class="entry"><header><span class="when">2026-11-12 &middot; Session 5 (10:30 AM, started by hand in place of the 11:34 AM slot)</span><h3>Stadlmann&#x27;s support: cap-free part certified, capped ratio 3.9597 (240 not yet reproduced); a floor for one-band hybrid supports; paper v0.5</h3></header>
+<ul><li>A helper re-read Stadlmann (arXiv:2608.31126) and Charton et al. (bgp212.pdf) and confirmed the support, the criterion and the parameters ($k=49$, $\varepsilon=0$.0075, A1 = 0.253, delta = 0.028, caps 0.15/0.15/0.17; $k=45$ for Charton et al.); both use one band. Notes in notes/stadlmann-recheck-s5.md.</li><li>By dilation, the cap-free version of Stadlmann&#x27;s functional is (253/250) $M_{49,15/506}$; certified $M_{49,15/506}\ge 3.9685535$ (degree 20) gives 4.016176 &gt; 4. For Charton et al.&#x27;s parameters the cap-free value is ≥ 4.012272 (degree 21, 846 coefficients, matching their basis dimension), against their claimed 4.00438 with caps.</li><li>Added the caps: exact integrals over {m coordinates above delta, sum above the cap} with shifted power sums (checked against Lemma 3 and sympy), a rigorous bound for the capped functional (Proposition 23), and a penalised eigenproblem. Best certified capped ratio at $k=49$: 3.95972 (degree 20), below 4, so 240 is not reproduced.</li><li>Own idea: dilation plus the two-zone dual weight gives the first rigorous floor for one-band hybrid supports (Theorem 25): whatever delta, caps and minorant, no $k\le 28$ at Stadlmann&#x27;s level omega = 0.003 (and 1/300), no $k\le 26$ at omega = 0.007, no $k\le 22$ for omega ≤ 1/68. Certified in ball arithmetic and re-checked with mpmath.iv.</li><li>Lean: Caps.lean (length × g ≤ sum for entries above g; at most 9 large coordinates, and 7 large coordinates exceed every cap). Paper v0.5: new Section 5, Propositions 22-24, Theorem 25.</li></ul>
+<p class="sub">Did not work or is blocked</p><ul class="failed"><li>The capped criterion is not reproduced: 3.95972 &lt; 4 at degree 20. The Cauchy-Schwarz bound for the capped marginals forces P to be small on the cap-violation set, costing about 0.056 against the cap-free 4.0162.</li><li>A union bound that dropped the condition &#x27;each coordinate above delta&#x27; was useless (E/I ≈ 146).</li><li>The floor of Theorem 25 is far from the truth (28 vs 49) and the two-zone weight fails at the next k for every omega tried.</li><li>No news search this run (only the 3:34 AM run does it).</li></ul>
+<p class="next"><span class="sub">Next</span> Exact capped marginals J_T(P 1_T) (fibres of T, not only integrals over the violation set), then optimise P on T directly; a degree-22 capped run was started this session (see STATE.md). Own side: a floor that uses the caps, or the Collatz-Wielandt weight.</p>
+</article>
+<article class="entry"><header><span class="when">2026-11-12 &middot; Session 4 (8 AM, first test run of the schedule)</span><h3>$H_1\le 246$ reproduced ($M_{50,1/25}\ge 4.0043063$); dual weights that see only $t_m$ and S stall near 4.14; paper v0.4</h3></header>
 <ul><li>Added Polymath8b&#x27;s $\varepsilon$-enlarged simplex to the exact pipeline (scaling plus the binomial rewrite $1+\varepsilon-P_1=2\varepsilon+(1-\varepsilon-P_1)$); checked every Gram entry against direct sympy integration for $k=3,4$. Lowering the search precision from about 6000 to 300-500 bits made high degrees cheap.</li><li>Certified $M_{50,1/25}\ge 4.0012466$ (degree 25, 1780 coefficients) and $\ge 4.0043063$ (degree 27, 2526 coefficients), matching Polymath8b&#x27;s 4.00124 and 4.0043. With the Lean tuple (50, 246) the project&#x27;s end-to-end bound moved from 270 to 246, the established bound: a reproduction, not new.</li><li>Own idea (variational/spectral): optimised Lemma 13 over every dual weight of the form $\Psi(S-t_m,t_m)$ as a convex program. It returns exactly $\tfrac{k}{k-1}\log k$ at $\varepsilon=0$ and settles near 4.14 at (50, 1/25), far above the truth ($\ge 4.0043$): sharper floors need weights that see more of t (Proposition 19). A Collatz-Wielandt weight from the Galerkin eigenfunction is within 1e-4 of $M_{3}$ at $k=3$ (sampled), but for $\varepsilon&gt;0$ the eigenfunction vanishes where no index is active.</li><li>Certified $M_{k,\varepsilon}$ for $k=49,50$ at degrees 10-24 and six values of $\varepsilon$. A geometric extrapolation in the degree, tested against the known $k=50$ values and against a prediction registered before the degree-24 run (3.98230 predicted, 3.98218 certified), suggests $\sup_\varepsilon M_{49,\varepsilon}\approx 3.991$–$3.994&lt;4$: heuristic evidence that the enlarged simplex stops at $k=50$ (Remark 20).</li><li>Lean: not_boundedGaps_one (gaps of size 1 happen only once) and admissible_pair_iff ({0,d} is admissible iff d is even). Re-read Polymath8b Prop. 6.5 in the arXiv text: as printed, the argument gives $(\tfrac{k}{k-1}+\varepsilon)\log(2k-1)$ (Remark 16).</li></ul>
 <p class="sub">Did not work or is blocked</p><ul class="failed"><li>The first discretisations of the dual-weight program were wrong or unstable (Kelley cutting planes drifted; piecewise-constant weights in (sigma,u) could not represent the two-zone weight). The final version uses cells in (S,u) and an exact convex solver per step.</li><li>At $(k,\varepsilon)=(30,1/4)$ the discretised optimum has not converged (4.050, 4.035, 4.024 for N = 80, 120, 160, above the 4.0021 already certified), so the exact floor of the $(t_m,S)$ family is not determined.</li><li>A product-form Collatz-Wielandt weight ($F=\prod_i 1/(1+At_i)$) gave useless bounds (above 5 at $k=50$).</li><li>No news search this run (only the 3:34 AM run does it); the 182 preprint is still not re-opened.</li></ul>
 <p class="next"><span class="sub">Next</span> Stadlmann&#x27;s support for 240 (rough-mass caps in the integration formulas). Own side: a Collatz-Wielandt weight that stays positive where an index is active, aiming at a rigorous floor near $k=50$.</p>
@@ -197,7 +202,12 @@ window.addEventListener("DOMContentLoaded", function () {
 <section>
   <h2>Results so far</h2>
   <div class="scroll"><table class="ledger"><tbody>
-  <tr><td><span class="chip ok">Computed</span></td><td>$M_{50,1/25}\ge 4.0012466$ (degree 25, 1780 coefficients) and $\ge 4.0043063$ (degree 27, 2526 coefficients) on Polymath8b&#x27;s $\varepsilon$-enlarged simplex, even power sums. With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives $H_1\le 246$ end to end, the established bound. Agrees with Polymath8b&#x27;s 4.00124 (d=25) and 4.0043 (d=27) to every printed digit; Gram formulas checked against direct sympy integration. Reproduction, not new.</td><td class="where">code/cert_M50e25_D25e.json, code/cert_M50e25_D27e.json; re-check with code/verify_cert.py; code/check_eps_sympy.py</td></tr>
+  <tr><td><span class="chip own">Proved here</span></td><td>Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give $\mathrm{DHL}[k,2]$ only if $M_{k}$(4(A$1+\varepsilon$), 4(A1-$\varepsilon$)) &gt; 4. Certified false for every $\varepsilon$: $k\le 29$ (omega = 0), $k\le 28$ (omega = 0.003 and 1/300, Stadlmann&#x27;s level), $k\le 26$ (omega = 0.007, the level of Charton et al.), $k\le 22$ (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.</td><td class="where">paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json</td></tr>
+<tr><td><span class="chip ok">Computed</span></td><td>Stadlmann&#x27;s capped support at $k=49$ (his parameters, re-read in the source): with F = P 1_T, P of degree 20 (707 coefficients), the criterion ratio is ≥ 3.95972, below the 4 needed. The 240 rung is NOT reproduced. The loss comes from bounding the capped marginals by Cauchy-Schwarz (Proposition 23), not from the caps themselves.</td><td class="where">paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log</td></tr>
+<tr><td><span class="chip own">Proved here</span></td><td>Proposition 23: for F = P 1_T, I_T ≤ I(P) and J_T ≥ J(P) − 2 sqrt(J(P) L E(P)), where E(P) is an exact union bound for the integral of P^2 over the cap-violation set; the pieces {m coordinates above delta, their sum above the cap} are integrated exactly with shifted power sums (checked against Lemma 3 and against sympy for $k=3$).</td><td class="where">paper, Proposition 23; code/caps_exact.py</td></tr>
+<tr><td><span class="chip ok">Computed</span></td><td>Cap-free parts of the 2026 supports: $M_{49,15/506}\ge 3.9685535$ (degree 20) and $M_{45,8/257}\ge 3.9029887$ (degree 21, dimension 846, equal to the dimension stated by Charton et al.), so by dilation the cap-free ratios are ≥ 4.016176 (Stadlmann&#x27;s (L, tau) = (1.042, 0.982)) and $\ge 4.012272$ (Charton et al.&#x27;s (1.06, 0.996)). Compared with their claimed capped value 4.00438, the caps seem to cost about 0.008 at $k=45$ (a comparison, not a verification).</td><td class="where">paper, Proposition 22; code/cert_stad49_capfree_D20e.json, code/cert_ax45_capfree_D21e.json; re-check with code/verify_cert.py</td></tr>
+<tr><td><span class="chip ok">Lean-checked</span></td><td>Counting large coordinates: if every entry of a list exceeds g then length × g ≤ sum; so (in units of 1/1000) at most 9 coordinates of a point of Stadlmann&#x27;s support exceed 4 delta = 112, and 7 such coordinates always exceed every cap (680).</td><td class="where">lean/TwinPrimes/Caps.lean</td></tr>
+<tr><td><span class="chip ok">Computed</span></td><td>$M_{50,1/25}\ge 4.0012466$ (degree 25, 1780 coefficients) and $\ge 4.0043063$ (degree 27, 2526 coefficients) on Polymath8b&#x27;s $\varepsilon$-enlarged simplex, even power sums. With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives $H_1\le 246$ end to end, the established bound. Agrees with Polymath8b&#x27;s 4.00124 (d=25) and 4.0043 (d=27) to every printed digit; Gram formulas checked against direct sympy integration. Reproduction, not new.</td><td class="where">code/cert_M50e25_D25e.json, code/cert_M50e25_D27e.json; re-check with code/verify_cert.py; code/check_eps_sympy.py</td></tr>
 <tr><td><span class="chip ok">Lean-checked</span></td><td>BoundedGaps 1 is false, and {0, d} is admissible iff d is even: 2 is the smallest possible bound.</td><td class="where">lean/TwinPrimes/Basic.lean: not_boundedGaps_one, admissible_pair_iff</td></tr>
 <tr><td><span class="chip ok">Computed</span></td><td>Proposition 19 (floating point, discretised, not rigorous): the best dual weight depending only on $(t_m,S)$, found as a convex program, is the classical $\tfrac{k}{k-1}\log k$ at $\varepsilon=0$ and about 4.14 at $(k,\varepsilon)=(50,1/25)$, far above $M_{50,1/25}\ge 4.0012$. Sharper floors need weights that see more of t.</td><td class="where">code/dual_lp.py; runs/dual_lp_conv.log, runs/dual_lp_floor.log</td></tr>
 <tr><td><span class="chip ok">Computed</span></td><td>Certified $M_{k,\varepsilon}$ values for $k=49,50$, degrees 10-24, $\varepsilon\in\{0, 1/50, 1/40, 1/30, 1/25, 1/20\}$; heuristic geometric extrapolation in the degree (checked against the known degree 22/25/27 values at $k=50$) suggests $\sup_\varepsilon M_{49,\varepsilon}\approx 3.991$–$3.994&lt;4$ (Remark 20, Open); a prediction registered before the degree-24 run (3.98230) came out 3.98218.</td><td class="where">runs/scan_k49.jsonl, runs/scan_k50.jsonl; code/scan_eps.py, code/extrapolate_eps.py</td></tr>
@@ -223,14 +233,17 @@ window.addEventListener("DOMContentLoaded", function () {
 <section>
   <h2>Ideas ledger</h2>
   <div class="scroll"><table class="ledger"><tbody>
-  <tr><td><span class="chip open">ruled out</span></td><td>Optimise Lemma 13 over ALL weights $\psi_m=\Psi(S-t_m,t_m)$ (the family containing Cor. 6.4 and the two-zone weight) as a convex program, to learn the limit of this family.<div class="note">Discretised optimum ≈ 4.14 at $(k,\varepsilon)=(50,1/25)$ vs truth $\ge 4.0012$; equals $\tfrac{k}{k-1}\log k$ at $\varepsilon=0$. The family cannot reach the true threshold; need weights seeing more of t (Proposition 19).</div></td><td class="where">own</td></tr>
+  <tr><td><span class="chip ok">works</span></td><td>Dilation identity $M_{k}$(L,tau) = 4 A1 $M_{k, \varepsilon/A1}$ plus the two-zone dual weight, to bound the one-band hybrid supports of 2026 as a function of the level omega.<div class="note">Theorem 25: no $k\le 28$ at Stadlmann&#x27;s omega = 0.003, no $k\le 26$ at omega = 0.007, no $k\le 22$ for omega ≤ 1/68, for any delta, caps and minorant. The same weight fails at the next k.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip own">partial</span></td><td>Rigorous capped ratio from a polynomial P: penalise the exact integral of P^2 over the cap-violation set in a generalised eigenproblem, bound J_T by Cauchy-Schwarz.<div class="note">Penalty lowers E/I from 1.2e-3 to 1.6e-7, but the bound reaches only 3.9597 &lt; 4 at degree 20 ($k=49$). The Cauchy-Schwarz treatment of J_T is the bottleneck; need exact capped marginals.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip open">ruled out</span></td><td>Union bound for the cap-violation set over m-subsets with sum above the cap, dropping the condition that each coordinate exceeds delta.<div class="note">Hopelessly loose: E/I ≈ 146 for the cap-free optimiser at degree 20 (the m = 4..6 terms explode).</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip open">ruled out</span></td><td>Optimise Lemma 13 over ALL weights $\psi_m=\Psi(S-t_m,t_m)$ (the family containing Cor. 6.4 and the two-zone weight) as a convex program, to learn the limit of this family.<div class="note">Discretised optimum ≈ 4.14 at $(k,\varepsilon)=(50,1/25)$ vs truth $\ge 4.0012$; equals $\tfrac{k}{k-1}\log k$ at $\varepsilon=0$. The family cannot reach the true threshold; need weights seeing more of t (Proposition 19).</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip own">partial</span></td><td>Degree extrapolation of certified $M_{k,\varepsilon}$: does the $\varepsilon$-enlarged simplex reach $k=49$?<div class="note">Geometric model validated at $k=50$ (optimistic by $\le 0.0012$) predicts $\sup_\varepsilon M_{49,\varepsilon}\approx 3.991$–$3.994&lt;4$: heuristic evidence that the method stops at 50 (Remark 20).</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip warn">open</span></td><td>Collatz-Wielandt weights $\psi_m=\int F\,dt_m/F$ from a positive approximate extremal F, to approach the true floor near $k=50$.<div class="note">Exact for the extremal F; the obstacle is controlling sup over $t$ of the ratio for a polynomial F.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip open">ruled out</span></td><td>Active-count-normalised weight $(\beta/n)(a-S_A+n\,t_m)$ to beat scaling at small $\varepsilon$.<div class="note">Exact fiber evaluation at $k=50$, $\varepsilon=1/25$: never below 4.178, worse than the scaling bound 4.1515 (Remark 18).</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip ok">works</span></td><td>Two-zone dual weight (linear in $t_m$ below $s_1$, proportional to $t_m/S$ above) in Polymath8b&#x27;s Lemma 6.1 with the marginal region kept, to bound $M_{k,\varepsilon}$ uniformly in $\varepsilon$.<div class="note">Theorem 15: no $k\le 29$ for any $\varepsilon&lt;1$, beating the $k\le 23$ floor from Polymath8b Prop. 6.5.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip ok">works</span></td><td>Exponential-moment generating function for simplex integrals of power-sum products, to make certified high-degree computations cheap.<div class="note">Lemma 3. Builds a 471x471 exact Gram pair in about 15 s.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip open">ruled out</span></td><td>Weighted pigeonhole: give the shifts unequal weights to force two primes closer than the tuple&#x27;s diameter.<div class="note">Convexity plus perfection of unit interval graphs. Proved as Proposition 8; checked numerically for $k=3$.</div></td><td class="where">own</td></tr>
-<tr><td><span class="chip own">partial</span></td><td>Floor of the method: a rigorous upper bound (dual certificate) for the 2026 hybrid sieve supports, to learn how far below 186 the present inputs can go.<div class="note">Done for the $\varepsilon$-enlarged simplex down to $k\le 29$ (Theorem 15). Session 4: $(t_m,S)$-weights stall near 4.14 at k=50 (Prop. 19); extrapolation suggests the true floor is $k=50$ (Remark 20). Hybrid 2026 supports still open.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip own">partial</span></td><td>Floor of the method: a rigorous upper bound (dual certificate) for the 2026 hybrid sieve supports, to learn how far below 186 the present inputs can go.<div class="note">$\varepsilon$-enlarged simplex down to $k\le 29$ (Theorem 15). Session 5: one-band hybrid supports (Stadlmann, Charton et al.) cannot reach $k\le 28$ at omega = 0.003, $k\le 26$ at omega = 0.007, whatever the caps (Theorem 25). Multi-band supports and the 186/182 constructions still open; a floor that sees the caps is next.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip ok">works</span></td><td>Does the slicing lemma behind Proposition 8 survive on enlarged supports?<div class="note">Yes: a single rescaling by $(1+\varepsilon-|u|)/(1+\varepsilon)$ keeps each slice inside the $\varepsilon$-problem&#x27;s J-region. Proposition 10; checked numerically for $k=3$ and $\varepsilon$ up to 1/3.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip ok">works</span></td><td>Richer symmetric test functions to pass $k=102$ and reach $M_{54}&gt;4$ (270).<div class="note">$M_{54}\ge 4.0023860$ at degree 23 (1236 coefficients): 270 reproduced. Next rung needs the enlarged simplex.</div></td><td class="where">literature</td></tr>
 <tr><td><span class="chip warn">open</span></td><td>One explicit bilinear hypothesis that implies twin primes, formalised in Lean.<div class="note">Track B. Start from Bombieri&#x27;s asymptotic sieve and Heath-Brown&#x27;s Siegel-zero theorem.</div></td><td class="where">own</td></tr>
@@ -242,7 +255,7 @@ window.addEventListener("DOMContentLoaded", function () {
   <div class="paper">
     <p class="ptitle"><strong>Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme</strong></p>
     <p class="pauthor">Jerry Kim</p>
-    <p class="pdate">Version 0.4, 12 November 2026</p>
+    <p class="pdate">Version 0.5, 12 November 2026</p>
     <div class="abstract"><p>This is a living working paper. It does <em>not</em> prove the twin
 prime conjecture, and it does not improve the best known bound on small
 gaps between primes. It records (i) the state of the problem as of the
@@ -262,10 +275,17 @@ evidence that this upper bound is close to the limit of every dual
 weight depending only on <span class="math inline">t_m</span> and <span
 class="math inline">t_1+\dots+t_k</span>, and heuristic evidence that
 the <span class="math inline">\varepsilon</span>-enlarged simplex stops
-at <span class="math inline">k=50</span>, and (iv) a programme of
-original directions that later versions will test. Every statement
-carries one of the labels <span class="smallcaps">Lean-checked</span>,
-<span class="smallcaps">Computed</span>, <span class="smallcaps">Proved
+at <span class="math inline">k=50</span>; and, for the one-band hybrid
+supports of Stadlmann, a rigorous floor (no <span
+class="math inline">k\le28</span> at his level of distribution, whatever
+the caps), exact integrals over the cap-violation set, and a certified
+capped ratio of <span class="math inline">3.9597</span> at <span
+class="math inline">k=49</span>, still short of the <span
+class="math inline">4</span> needed to reproduce <span
+class="math inline">240</span>, and (iv) a programme of original
+directions that later versions will test. Every statement carries one of
+the labels <span class="smallcaps">Lean-checked</span>, <span
+class="smallcaps">Computed</span>, <span class="smallcaps">Proved
 here</span>, <span class="smallcaps">Literature</span>, <span
 class="smallcaps">Claimed</span> (a preprint not yet independently
 verified), or <span class="smallcaps">Open</span>.</p>
@@ -1332,9 +1352,7 @@ class="math inline">m</span>, or arguments that are not linear in the
 indicators of primality. Those are <span class="upright"><span
 class="smallcaps">Open</span></span>.</p>
 </div>
-<h1
-id="results-of-our-own-how-far-the-varepsilon-enlargement-alone-can-go">Results
-of our own: how far the <span
+<h1 id="sec:epsfloor">Results of our own: how far the <span
 class="math inline">\varepsilon</span>-enlargement alone can go</h1>
 <p>For the plain simplex the bound <span
 class="math inline">M_k\le\frac{k}{k-1}\log k</span> shows where the
@@ -1872,7 +1890,379 @@ says nothing about the 2026 claims, which use other supports and new
 equidistribution estimates. A floor for those is the Problem in the next
 section.</p>
 </div>
-<h1 id="programme">Programme</h1>
+<h1 id="sec:stad">Stadlmann’s support (version 0.5)</h1>
+<p>This section takes the first steps on the next rung, Stadlmann’s
+region for <span class="math inline">H_1\le240</span> [18], and gives a
+first rigorous answer to the Problem in the Programme (Section <a
+href="#sec:prog" data-reference-type="ref"
+data-reference="sec:prog">6</a>) for the one-band supports used by [18]
+and [3]. For this version a helper re-read both sources (the arXiv text
+of [18], the draft [3]); our notes with page references are in
+<code>notes/stadlmann-recheck-s5.md</code>.</p>
+<h2 class="unnumbered" id="the-support-and-the-criterion">The support
+and the criterion</h2>
+<p>The following is <span class="upright"><span
+class="smallcaps">Literature</span></span>, read in [18, Def. 1, Def. 5,
+Prop. 1]. For <span class="math inline">\delta&gt;0</span>, <span
+class="math inline">-\varepsilon=A_0&lt;A_1&lt;\dots&lt;A_n&lt;\frac12-\varepsilon</span>
+and caps <span class="math inline">\delta&lt;B_{j,m}\le B_{j,m+1}\le
+B_{j,m}+\delta</span>, the support <span
+class="math inline">T_k(\delta,\underline A,\underline
+B,\varepsilon)</span> is the set of <span
+class="math inline">t\in[0,1]^k</span> such that, for the <span
+class="math inline">j</span> with <span
+class="math inline">\sum_it_i\in[A_{j-1}+\varepsilon,A_j+\varepsilon)</span>,
+one has <span class="math inline">\sum_{i\in I}t_i\le B_{j,|I|}</span>
+where <span class="math inline">I=\{i:t_i&gt;\delta\}</span> (the
+“large” coordinates). With one band (<span
+class="math inline">n=1</span>), the functional <span
+class="math inline">J(F)</span> of [18] is the integral of <span
+class="math inline">\left(\int F\,dt_k\right)^2</span> over <span
+class="math inline">t_1+\dots+t_{k-1}\le A_1-\varepsilon</span> (our
+reduction of the general definition), <span
+class="math inline">I(F)=\int_{T_k}F^2</span>, and the criterion is
+<span class="math inline">k(1-c_1)J(F)-kc_2K(F)&gt;I(F)</span> for a
+symmetric <span class="math inline">F</span> supported on <span
+class="math inline">T_k</span>, where <span
+class="math inline">c_1,c_2\ge0</span> come from the minorant and <span
+class="math inline">K(F)\ge0</span>. Stadlmann’s choice is <span
+class="math inline">k=49</span>, <span
+class="math inline">\varepsilon=0.0075</span>, <span
+class="math inline">A_1=0.253</span>, <span
+class="math inline">\delta=0.028</span>, <span
+class="math inline">B_{1,1}=B_{1,2}=0.15</span>, <span
+class="math inline">B_{1,m}=0.17</span> (<span
+class="math inline">m\ge3</span>) and <span
+class="math inline">c_1=c_2=0</span>; that of [3] is <span
+class="math inline">k=45</span>, <span
+class="math inline">\varepsilon=1/125</span>, <span
+class="math inline">A_1=257/1000</span>, <span
+class="math inline">\delta=41/2500</span> with caps listed in their
+Table 3. Both use one band. The equidistribution estimates behind the
+criterion are <span class="upright"><span
+class="smallcaps">Claimed</span></span>; we have not checked them.</p>
+<p>In the Polymath scaling <span class="math inline">u=4t</span> the
+support lies in <span class="math inline">L\mathcal{R}_k</span> with
+<span class="math inline">L=4(A_1+\varepsilon)</span>, the marginals are
+integrated over <span class="math inline">\tau\mathcal{R}_{k-1}</span>
+with <span class="math inline">\tau=4(A_1-\varepsilon)</span>, and the
+criterion with <span class="math inline">c_1=c_2=0</span> reads <span
+class="math inline">kJ/I&gt;4</span>. Write <span
+class="math inline">s=(L+\tau)/2=4A_1</span> and <span
+class="math inline">e=(L-\tau)/(L+\tau)=\varepsilon/A_1</span>; the
+scaling <span class="math inline">M_k(cL,c\tau)=cM_k(L,\tau)</span> of
+Section <a href="#sec:epsfloor" data-reference-type="ref"
+data-reference="sec:epsfloor">4</a> gives <div class="scroll eq"><span
+class="math display">M_k(L,\tau)=s\,M_k(1+e,1-e)=4A_1\,M_{k,\varepsilon/A_1}.\qquad(2)</span></div>
+For Stadlmann, <span class="math inline">(L,\tau)=(1.042,0.982)</span>,
+<span class="math inline">s=253/250</span>, <span
+class="math inline">e=15/506</span>; for [3], <span
+class="math inline">(L,\tau)=(1.06,0.996)</span>, <span
+class="math inline">s=257/250</span>, <span
+class="math inline">e=8/257</span>.</p>
+<h2 class="unnumbered" id="without-the-caps">Without the caps</h2>
+<div id="prop:capfree" class="proposition">
+<p><strong>Proposition 22</strong> (<span class="upright"><span
+class="smallcaps">Computed</span></span>, exact rational arithmetic).
+<em>With even power sums, <span
+class="math inline">M_{49,15/506}\ge3.9685535</span> (degree <span
+class="math inline">20</span>, <span class="math inline">707</span>
+coefficients) and <span
+class="math inline">M_{45,8/257}\ge3.9029887</span> (degree <span
+class="math inline">21</span>, <span class="math inline">846</span>
+coefficients). Hence, by (2), <span
+class="math inline">M_{49}(1.042,0.982)\ge4.016176</span> and <span
+class="math inline">M_{45}(1.06,0.996)\ge4.012272</span>.</em></p>
+</div>
+<p>The two certificates, in the directory <code>code/</code>, are
+<code>cert_stad49_capfree_D20e.json</code> and
+<code>cert_ax45_capfree_D21e.json</code>; the script
+<code>verify_cert.py</code> re-checks them. Products of even power sums
+and even-part monomial symmetric polynomials span the same space, so our
+degree-<span class="math inline">21</span> basis is the space <span
+class="math inline">\mathcal B_{21}</span> of [3, Thm. 11.1]; its
+dimension, <span class="math inline">846</span>, agrees with theirs. On
+their capped support they report the exact value <span
+class="math inline">4.0043840983\ldots</span> (<span
+class="upright"><span class="smallcaps">Claimed</span></span>); on the
+larger cap-free region, with the same space, we get <span
+class="math inline">4.012272</span>. Both are lower bounds, for <span
+class="math inline">M_T</span> and for <span
+class="math inline">M_{45}(1.06,0.996)\ge M_T</span> respectively, so
+the comparison proves nothing; but it suggests (if their value is right)
+that at this degree the caps cost about <span
+class="math inline">0.008</span>. This is a comparison, not a
+verification of [3].</p>
+<h2 class="unnumbered" id="with-the-caps">With the caps</h2>
+<p>For <span class="math inline">F=P\,1_T</span> with <span
+class="math inline">P</span> a polynomial, write <span
+class="math inline">I(P)</span>, <span class="math inline">J(P)</span>
+for the cap-free functionals on <span
+class="math inline">L\mathcal{R}_k</span> (marginals over <span
+class="math inline">\tau\mathcal{R}_{k-1}</span>) and <span
+class="math inline">V=L\mathcal{R}_k\setminus T</span> (Polymath
+scaling; <span class="math inline">g=4\delta</span>, <span
+class="math inline">C_m=4B_{1,m}</span>).</p>
+<div id="prop:caps" class="proposition">
+<p><strong>Proposition 23</strong> (<span class="upright"><span
+class="smallcaps">Proved here</span></span>; elementary). <em>Let <span
+class="math inline">R_m(g,c)=\{u\in L\mathcal{R}_k:\
+u_1,\dots,u_m&gt;g,\ u_1+\dots+u_m\ge c\}</span>, put <span
+class="math inline">c_m=C_m</span> for <span
+class="math inline">m\le6</span> and <span
+class="math inline">c_7=7g</span>. Then, with <div class="scroll eq"><span
+class="math display">E(P)=\sum_{m=1}^{7}\binom km\int_{R_m(g,c_m)}P^2
+,</span></div> one has <span class="math inline">I_T(F)\le I(P)</span> and,
+for every <span class="math inline">0&lt;\eta&lt;1</span>, <div class="scroll eq"><span
+class="math display">J_T(F)\ \ge\ \max\left(J(P)-2\sqrt{J(P)\,L\,E(P)},\
+(1-\eta)J(P)-(\eta^{-1}-1)L\,E(P)\right).</span></div></em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> A point of <span class="math inline">V</span> has a
+large set <span class="math inline">I</span> with <span
+class="math inline">\sum_{i\in I}u_i&gt;C_{|I|}</span>. If <span
+class="math inline">|I|\le6</span> it lies in a copy of <span
+class="math inline">R_{|I|}(g,c_{|I|})</span>; if <span
+class="math inline">|I|\ge7</span>, any seven of its large coordinates
+exceed <span class="math inline">g</span> and sum to more than <span
+class="math inline">7g</span>, so it lies in a copy of <span
+class="math inline">R_7(g,c_7)</span>. By symmetry of <span
+class="math inline">P^2</span>, <span class="math inline">\int_VP^2\le
+E(P)</span>. On the fiber over <span class="math inline">u&#39;</span>
+write <span class="math inline">a=\int P\,du_k</span> and <span
+class="math inline">b=\int P\,1_V\,du_k</span>, so that the marginal of
+<span class="math inline">F</span> is <span
+class="math inline">a-b</span>. Cauchy–Schwarz gives <span
+class="math inline">b^2\le L\int P^21_V\,du_k</span>, hence <span
+class="math inline">\int b^2\le L\,E(P)</span>. Then <span
+class="math inline">(a-b)^2\ge a^2-2|a||b|</span> with Cauchy–Schwarz
+once more, or <span
+class="math inline">(a-b)^2\ge(1-\eta)a^2-(\eta^{-1}-1)b^2</span>.
+Finally <span class="math inline">I_T(F)=\int_TP^2\le I(P)</span>. ◻</p>
+</div>
+<p>The integrals over <span class="math inline">R_m(g,c)</span> are
+again exact rational numbers for the basis <span
+class="math inline">(L-P_1)^aP^b</span> (<span class="upright"><span
+class="smallcaps">Proved here</span></span>;
+<code>code/caps_exact.py</code>). Write the first <span
+class="math inline">m</span> coordinates as <span
+class="math inline">g+z</span>. Integrating out the other <span
+class="math inline">k-m</span> coordinates with Lemma <a href="#lem:egf"
+data-reference-type="ref" data-reference="lem:egf">3</a> leaves powers
+of <span class="math inline">L-mg-|z|</span>; the shifted power sums are
+<span class="math inline">P_j(g+z)=\sum_l\binom jlg^{j-l}P_l(z)</span>
+with <span class="math inline">P_0=m</span> and <span
+class="math inline">P_1=|z|</span>; at fixed <span
+class="math inline">r=|z|</span> the integral of <span
+class="math inline">\prod_lP_l(z)^{f_l}</span> is <span
+class="math inline">r^{m-1+w(f)}E_m(f)/(m-1+w(f))!</span> (now with odd
+parts as well); and the remaining integral in <span
+class="math inline">r</span> over <span
+class="math inline">[\max(c-mg,0),L-mg]</span> is elementary. The code
+reproduces Lemma <a href="#lem:egf" data-reference-type="ref"
+data-reference="lem:egf">3</a> exactly when <span
+class="math inline">g=c=0</span>, and agrees with direct symbolic
+integration (sympy) for <span class="math inline">k=3</span>, <span
+class="math inline">m=1,2</span>, <span
+class="math inline">g=1/10</span>.</p>
+<p>Since all three quantities are exact quadratic forms in the
+coefficients of <span class="math inline">P</span>, we choose <span
+class="math inline">P</span> as the top eigenvector of <span
+class="math inline">(1-\eta)J-(\eta^{-1}-1)L\,G_E</span> against <span
+class="math inline">I</span>, where <span class="math inline">G_E</span>
+is the Gram matrix of <span class="math inline">E</span>, and evaluate
+both bounds exactly. The penalty works: at degree <span
+class="math inline">16</span> it lowers <span
+class="math inline">E/I</span> from <span
+class="math inline">3.2\cdot10^{-4}</span> (for the cap-free optimiser)
+to <span class="math inline">3.4\cdot10^{-7}</span>.</p>
+<div id="prop:capped" class="proposition">
+<p><strong>Proposition 24</strong> (<span class="upright"><span
+class="smallcaps">Computed</span></span>, exact rational arithmetic).
+<em>For Stadlmann’s parameters (<span class="math inline">k=49</span>)
+there is a polynomial <span class="math inline">P</span> of degree <span
+class="math inline">20</span> in even power sums (<span
+class="math inline">707</span> coefficients) with <div class="scroll eq"><span
+class="math display">\frac{kJ_T(P\,1_T)}{I_T(P\,1_T)}\ \ge\ 3.95972
+.</span></div> At degree <span class="math inline">16</span> (<span
+class="math inline">307</span> coefficients) the same method gives <span
+class="math inline">3.93625</span>.</em></p>
+</div>
+<p>This is below <span class="math inline">4</span>: <em>the rung <span
+class="math inline">240</span> is not reproduced.</em> The certificate
+is <code>code/cert_stad49_caps_D20e.json</code>, written by
+<code>code/stadlmann_caps_opt.py</code>; the best bound came from <span
+class="math inline">\eta=1/800</span>, with <span
+class="math inline">E/I=1.6\cdot10^{-7}</span> and the bound of
+Proposition <a href="#prop:caps" data-reference-type="ref"
+data-reference="prop:caps">23</a> in its square-root form. Where the
+loss comes from (<span class="upright"><span
+class="smallcaps">Computed</span></span>, same runs): the cap-free
+optimiser of degree <span class="math inline">20</span> has <span
+class="math inline">s\,kJ/I=4.01618</span> but <span
+class="math inline">E/I=1.2\cdot10^{-3}</span> (of which <span
+class="math inline">1.2\cdot10^{-4}</span> from points with one
+coordinate above <span class="math inline">0.6</span>); forcing <span
+class="math inline">E</span> down costs about <span
+class="math inline">0.045</span> of the cap-free ratio (<span
+class="math inline">4.0161\to3.9710</span>), and the Cauchy–Schwarz step
+costs another <span class="math inline">0.011</span>. Both losses come
+from the way we bound <span class="math inline">J_T</span>, not from the
+caps as such: <span class="math inline">F=P\,1_T</span> is cut off on
+<span class="math inline">V</span> anyway, and Proposition <a
+href="#prop:caps" data-reference-type="ref"
+data-reference="prop:caps">23</a> charges for <span
+class="math inline">P</span> on <span class="math inline">V</span> only
+because it does not compute the capped marginals. The next step is
+therefore an exact formula for <span
+class="math inline">J_T(P\,1_T)</span>, which needs the fibers of <span
+class="math inline">T</span> and not only integrals over <span
+class="math inline">V</span>. A first attempt that dropped the condition
+<span class="math inline">u_i&gt;g</span> in the union bound failed
+badly (<span class="math inline">E/I\approx146</span> for the cap-free
+optimiser; <code>runs/stad49_caps_D20.log</code>).</p>
+<h2 class="unnumbered"
+id="a-floor-for-one-band-hybrid-supports-our-own">A floor for one-band
+hybrid supports (our own)</h2>
+<p>Polymath8b’s <span class="math inline">\varepsilon</span>-simplex is
+the case <span class="math inline">A_1=1/4</span> without caps, so the
+following extends Theorem <a href="#thm:floor" data-reference-type="ref"
+data-reference="thm:floor">15</a> to every one-band support of
+Stadlmann’s type.</p>
+<div id="thm:hybrid-floor" class="theorem">
+<p><strong>Theorem 25</strong> (<span class="upright"><span
+class="smallcaps">Proved here</span></span> for the reduction; <span
+class="upright"><span class="smallcaps">Computed</span></span>, interval
+arithmetic, for the table). <em>Let <span
+class="math inline">T=T_k(\delta,(-\varepsilon,A_1),\underline
+B,\varepsilon)</span> be a one-band support with <span
+class="math inline">\varepsilon\ge0</span> and <span
+class="math inline">A_1\le\frac14+\omega</span>, with any <span
+class="math inline">\delta</span> and any caps. If the criterion <span
+class="math inline">k(1-c_1)J(F)-kc_2K(F)&gt;I(F)</span> holds for some
+<span class="math inline">F</span> supported on <span
+class="math inline">T</span>, then <span
+class="math inline">M_k\left(4(\tfrac14+\omega+\varepsilon),4(\tfrac14+\omega-\varepsilon)\right)&gt;4</span>.
+This is false, for every <span
+class="math inline">0\le\varepsilon&lt;\frac14+\omega</span>, in each of
+the following cases:</em></p>
+<div class="center">
+<div class="scroll"><table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><em><span
+class="math inline">\omega</span></em></th>
+<th style="text-align: center;"><em><span
+class="math inline">0</span></em></th>
+<th style="text-align: center;"><em><span
+class="math inline">3/1000</span></em></th>
+<th style="text-align: center;"><em><span
+class="math inline">1/300</span></em></th>
+<th style="text-align: center;"><em><span
+class="math inline">7/1000</span></em></th>
+<th style="text-align: center;"><em><span
+class="math inline">1/68</span></em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>no <span class="math inline">k</span>
+with</em></td>
+<td style="text-align: center;"><em><span
+class="math inline">k\le29</span></em></td>
+<td style="text-align: center;"><em><span
+class="math inline">k\le28</span></em></td>
+<td style="text-align: center;"><em><span
+class="math inline">k\le28</span></em></td>
+<td style="text-align: center;"><em><span
+class="math inline">k\le26</span></em></td>
+<td style="text-align: center;"><em><span
+class="math inline">k\le22</span></em></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p><em>So, whatever <span class="math inline">\delta</span>, the caps
+and the minorant, a one-band support cannot give <span
+class="math inline">\mathrm{DHL}[k,2]</span> for <span
+class="math inline">k\le28</span> at Stadlmann’s level (<span
+class="math inline">\omega=0.003</span>; the helper’s reconstruction of
+his conditions gives <span class="math inline">\omega\le0.0032</span>),
+for <span class="math inline">k\le26</span> at the level <span
+class="math inline">\omega=0.007</span> of [3], and for <span
+class="math inline">k\le22</span> whenever <span
+class="math inline">\omega\le1/68</span>, a range containing every <span
+class="math inline">\omega</span> that satisfies the Type I condition
+<span class="math inline">68\omega+14\delta&lt;1</span> of [18,
+Lemma 5].</em></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> As <span class="math inline">c_1,c_2\ge0</span> and
+<span class="math inline">K(F)\ge0</span>, the criterion implies <span
+class="math inline">kJ(F)&gt;I(F)</span>. In the scaling <span
+class="math inline">u=4t</span>, <span class="math inline">F</span>
+becomes a function supported on <span
+class="math inline">L\mathcal{R}_k</span> (because <span
+class="math inline">T\subseteq\{\sum t_i\le A_1+\varepsilon\}</span>),
+the ratio is multiplied by <span class="math inline">4</span>, and <span
+class="math inline">J</span> is the marginal functional over <span
+class="math inline">\tau\mathcal{R}_{k-1}</span>; so <span
+class="math inline">4&lt;M_k(4(A_1+\varepsilon),4(A_1-\varepsilon))</span>,
+and monotonicity in <span class="math inline">L</span> and <span
+class="math inline">\tau</span> replaces <span
+class="math inline">A_1</span> by <span
+class="math inline">\frac14+\omega</span>. (For <span
+class="math inline">\varepsilon&lt;0</span> one has <span
+class="math inline">\tau&gt;L</span> and the quantity is at most <span
+class="math inline">LM_k</span>, which is covered by the case <span
+class="math inline">\varepsilon=0</span> below.) Monotonicity in <span
+class="math inline">k</span> reduces each entry to the largest <span
+class="math inline">k</span> shown. For the numerical part, put <span
+class="math inline">A=\frac14+\omega</span>. When <span
+class="math inline">4(A+\varepsilon)\frac{k}{k-1}\log k&lt;4</span> we
+use <span class="math inline">M_k(L,\tau)\le M_k(L,L)=LM_k\le
+L\frac{k}{k-1}\log k</span> [14, Cor. 6.4]. The remaining range of <span
+class="math inline">\varepsilon</span>, up to <span
+class="math inline">A</span>, is cut into intervals of length at most
+<span class="math inline">1/2000</span>; on <span
+class="math inline">[e,e&#39;]</span> we take <span
+class="math inline">(L,\tau)=(4(A+e&#39;),4(A-e))</span>, which
+dominates by monotonicity, and certify <span
+class="math inline">\sup_\sigma W(\sigma)&lt;4</span> with rational
+<span class="math inline">(a,s_1)</span> exactly as in the proof of
+Theorem <a href="#thm:floor" data-reference-type="ref"
+data-reference="thm:floor">15</a>. The certificates are
+<code>code/cert_floor_hybrid_k*_w*.json</code>, written by
+<code>code/floor_hybrid.py</code> in ball arithmetic
+(<code>python-flint</code>) and re-checked by the same script with
+<code>–check</code> in a different interval library
+(<code>mpmath.iv</code>). ◻</p>
+</div>
+<div class="remark">
+<p><em>Remark 26</em> (how sharp). For each <span
+class="math inline">\omega</span> in the table the same weight fails at
+the next <span class="math inline">k</span>: the floating-point <span
+class="math inline">\sup W</span> reaches <span
+class="math inline">4</span> on some interval of <span
+class="math inline">\varepsilon</span> (for example <span
+class="math inline">k=27</span>, <span
+class="math inline">\omega=0.007</span>, near <span
+class="math inline">\varepsilon\approx0.0548</span>). So the table shows
+the reach of this weight, not of the method; the true floor is
+presumably much higher, as Proposition <a href="#prop:capfree"
+data-reference-type="ref" data-reference="prop:capfree">22</a> suggests
+(it shows that the cap-free quantity already exceeds <span
+class="math inline">4</span> at <span class="math inline">k=49</span>
+and <span class="math inline">k=45</span> for the two parameter sets).
+The theorem ignores the caps entirely, which only shrink the support; a
+floor that sees the caps is the natural next step. It also does not
+apply to supports with several bands, where <span
+class="math inline">J</span> contains cross terms between bands, nor to
+the constructions behind <span class="math inline">186</span> and <span
+class="math inline">182</span>, which we have not read in enough
+detail.</p>
+</div>
+<h1 id="sec:prog">Programme</h1>
 <h2 class="unnumbered" id="track-a-lowering-the-bound">Track A: lowering
 the bound</h2>
 <ol>
@@ -1881,8 +2271,15 @@ the bound</h2>
 class="math inline">H_1\le246</span>, the established bound, via the
 <span class="math inline">\varepsilon</span>-enlarged simplex). Next:
 Stadlmann’s region (<span class="math inline">k=49</span>, <span
-class="math inline">240</span>), which needs the rough-mass caps of [18]
-in the integration formulas.</p></li>
+class="math inline">240</span>). Version 0.5 has the cap-free part
+(Proposition <a href="#prop:capfree" data-reference-type="ref"
+data-reference="prop:capfree">22</a>) and exact integrals over the
+cap-violation pieces (Proposition <a href="#prop:caps"
+data-reference-type="ref" data-reference="prop:caps">23</a>); what is
+missing is an exact computation of the capped marginal functional <span
+class="math inline">J_T</span> itself, in place of the Cauchy–Schwarz
+loss of Proposition <a href="#prop:caps" data-reference-type="ref"
+data-reference="prop:caps">23</a>.</p></li>
 <li><p><em>Floor of the method (our main original direction).</em> For
 the plain simplex the dual bound <span
 class="math inline">M_k\le\frac{k}{k-1}\log k</span> shows where the
@@ -1899,11 +2296,16 @@ that it must depend on more of <span class="math inline">t</span> than
 class="math inline">S</span> (a Collatz–Wielandt weight <span
 class="math inline">\psi_m=\int F\,dt_m/F</span> built from a good
 positive test function <span class="math inline">F</span> is the natural
-candidate). No upper bound of this kind is known to us for the 2026
-hybrid supports. A rigorous dual certificate there would say whether
-<span class="math inline">182</span> is close to the limit of the
-present inputs or far from it, and which input (which Type I/II/III
-range) is binding.</p></li>
+candidate). For the one-band hybrid supports of [18, 3], Theorem <a
+href="#thm:hybrid-floor" data-reference-type="ref"
+data-reference="thm:hybrid-floor">25</a> gives the first such bound we
+know of (<span class="math inline">k\ge29</span> at Stadlmann’s level,
+<span class="math inline">k\ge27</span> at that of [3]), still far from
+<span class="math inline">49</span> and <span
+class="math inline">45</span>; it ignores the caps. A rigorous dual
+certificate there would say whether <span class="math inline">182</span>
+is close to the limit of the present inputs or far from it, and which
+input (which Type I/II/III range) is binding.</p></li>
 <li><p><em>Which rung is cheap.</em> From Table <a href="#tab:tuples"
 data-reference-type="ref" data-reference="tab:tuples">1</a>, the gain
 per unit of <span class="math inline">k</span> below the claimed
@@ -1913,12 +2315,15 @@ class="math inline">39\to38</span> and <span
 class="math inline">38\to37</span> are worth the most.</p></li>
 </ol>
 <div class="problem">
-<p><strong>Problem 22</strong> (<span class="upright"><span
-class="smallcaps">Open</span></span>). Give a rigorous upper bound for
-the variational quantity of [18] as a function of <span
-class="math inline">k</span> and of the admissible exponents, and deduce
-the least <span class="math inline">k</span> the hybrid method can reach
-with the currently proved estimates.</p>
+<p><strong>Problem 27</strong> (<span class="upright"><span
+class="smallcaps">Open</span></span>; partly answered by Theorem <a
+href="#thm:hybrid-floor" data-reference-type="ref"
+data-reference="thm:hybrid-floor">25</a> for one band, without using the
+caps). Give a rigorous upper bound for the variational quantity of [18]
+as a function of <span class="math inline">k</span> and of the
+admissible exponents, and deduce the least <span
+class="math inline">k</span> the hybrid method can reach with the
+currently proved estimates.</p>
 </div>
 <h2 class="unnumbered" id="track-b-the-parity-barrier">Track B: the
 parity barrier</h2>
@@ -1932,7 +2337,7 @@ theorem that Siegel zeros would imply the conjecture [7]; the
 function-field proof of Sawin and Shusterman [16]; and the entropy-based
 results on correlations of multiplicative functions [19].</p>
 <div class="problem">
-<p><strong>Problem 23</strong> (<span class="upright"><span
+<p><strong>Problem 28</strong> (<span class="upright"><span
 class="smallcaps">Open</span></span>, to be made precise in Lean).
 State, as a single explicit hypothesis on bilinear sums over <span
 class="math inline">n(n+2)</span>, the weakest known input that implies
@@ -2010,7 +2415,7 @@ conjectures for two-point correlations</em>, Forum Math. Pi,
 
 <section>
   <h2>Source files in this project</h2>
-  <ul class="files"><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/README.md"><code>README.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/STATE.md"><code>STATE.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/admissible.py"><code>code/admissible.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/build_site.py"><code>code/build_site.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M102.json"><code>code/cert_M102.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M105.json"><code>code/cert_M105.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M5.json"><code>code/cert_M5.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D25e.json"><code>code/cert_M50e25_D25e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D27e.json"><code>code/cert_M50e25_D27e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M54_D23e.json"><code>code/cert_M54_D23e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D18e.json"><code>code/cert_M55_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D20e.json"><code>code/cert_M55_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M56_D18e.json"><code>code/cert_M56_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M58_D16e.json"><code>code/cert_M58_D16e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M64_D12.json"><code>code/cert_M64_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_k29.json"><code>code/cert_floor_k29.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_eps_sympy.py"><code>code/check_eps_sympy.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_floor_cert.py"><code>code/check_floor_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cw_sample.py"><code>code/cw_sample.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps.py"><code>code/dual_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps_cert.py"><code>code/dual_eps_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_lp.py"><code>code/dual_lp.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/enlarged_pigeonhole.py"><code>code/enlarged_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/extrapolate_eps.py"><code>code/extrapolate_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/gen_lean.py"><code>code/gen_lean.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/make_cert.py"><code>code/make_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_bound.py"><code>code/mk_bound.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_general.py"><code>code/mk_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan.py"><code>code/scan.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_eps.py"><code>code/scan_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_general.py"><code>code/scan_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_results.json"><code>code/scan_results.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/search_big.py"><code>code/search_big.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/texify_text.py"><code>code/texify_text.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples.json"><code>code/tuples.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_big.json"><code>code/tuples_big.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_mid.json"><code>code/tuples_mid.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/verify_cert.py"><code>code/verify_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/weighted_pigeonhole.py"><code>code/weighted_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/Audit.lean"><code>lean/Audit.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes.lean"><code>lean/TwinPrimes.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Basic.lean"><code>lean/TwinPrimes/Basic.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Tuples.lean"><code>lean/TwinPrimes/Tuples.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lakefile.toml"><code>lean/lakefile.toml</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lean-toolchain"><code>lean/lean-toolchain</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/bound-history.json"><code>log/bound-history.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/entries.json"><code>log/entries.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/research-log.md"><code>log/research-log.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged-rigidity.md"><code>notes/enlarged-rigidity.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged_pigeonhole_d5_d10.txt"><code>notes/enlarged_pigeonhole_d5_d10.txt</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/sources-enlarged-supports.md"><code>notes/sources-enlarged-supports.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/paper/main.tex"><code>paper/main.tex</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k49.jsonl"><code>runs/scan_k49.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k50.jsonl"><code>runs/scan_k50.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/status.json"><code>status.json</code></a></li></ul>
+  <ul class="files"><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/README.md"><code>README.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/STATE.md"><code>STATE.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/admissible.py"><code>code/admissible.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/build_site.py"><code>code/build_site.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/caps_exact.py"><code>code/caps_exact.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M102.json"><code>code/cert_M102.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M105.json"><code>code/cert_M105.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M5.json"><code>code/cert_M5.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D25e.json"><code>code/cert_M50e25_D25e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D27e.json"><code>code/cert_M50e25_D27e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M54_D23e.json"><code>code/cert_M54_D23e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D18e.json"><code>code/cert_M55_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D20e.json"><code>code/cert_M55_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M56_D18e.json"><code>code/cert_M56_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M58_D16e.json"><code>code/cert_M58_D16e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M64_D12.json"><code>code/cert_M64_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_ax45_capfree_D21e.json"><code>code/cert_ax45_capfree_D21e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k22_w1_68.json"><code>code/cert_floor_hybrid_k22_w1_68.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k26_w7_1000.json"><code>code/cert_floor_hybrid_k26_w7_1000.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k28_w1_300.json"><code>code/cert_floor_hybrid_k28_w1_300.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k28_w3_1000.json"><code>code/cert_floor_hybrid_k28_w3_1000.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k29_w0.json"><code>code/cert_floor_hybrid_k29_w0.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_k29.json"><code>code/cert_floor_k29.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_stad49_capfree_D20e.json"><code>code/cert_stad49_capfree_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_stad49_caps_D20e.json"><code>code/cert_stad49_caps_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_eps_sympy.py"><code>code/check_eps_sympy.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_floor_cert.py"><code>code/check_floor_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cw_sample.py"><code>code/cw_sample.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps.py"><code>code/dual_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps_cert.py"><code>code/dual_eps_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_lp.py"><code>code/dual_lp.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/enlarged_pigeonhole.py"><code>code/enlarged_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/extrapolate_eps.py"><code>code/extrapolate_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/floor_hybrid.py"><code>code/floor_hybrid.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/gen_lean.py"><code>code/gen_lean.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/make_cert.py"><code>code/make_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_bound.py"><code>code/mk_bound.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_general.py"><code>code/mk_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan.py"><code>code/scan.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_eps.py"><code>code/scan_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_general.py"><code>code/scan_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_results.json"><code>code/scan_results.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/search_big.py"><code>code/search_big.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/stadlmann_caps.py"><code>code/stadlmann_caps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/stadlmann_caps_opt.py"><code>code/stadlmann_caps_opt.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/texify_text.py"><code>code/texify_text.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples.json"><code>code/tuples.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_big.json"><code>code/tuples_big.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_mid.json"><code>code/tuples_mid.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/verify_cert.py"><code>code/verify_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/weighted_pigeonhole.py"><code>code/weighted_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/Audit.lean"><code>lean/Audit.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes.lean"><code>lean/TwinPrimes.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Basic.lean"><code>lean/TwinPrimes/Basic.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Caps.lean"><code>lean/TwinPrimes/Caps.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Tuples.lean"><code>lean/TwinPrimes/Tuples.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lakefile.toml"><code>lean/lakefile.toml</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lean-toolchain"><code>lean/lean-toolchain</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/bound-history.json"><code>log/bound-history.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/entries.json"><code>log/entries.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/research-log.md"><code>log/research-log.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged-rigidity.md"><code>notes/enlarged-rigidity.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged_pigeonhole_d5_d10.txt"><code>notes/enlarged_pigeonhole_d5_d10.txt</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/sources-enlarged-supports.md"><code>notes/sources-enlarged-supports.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/stadlmann-recheck-s5.md"><code>notes/stadlmann-recheck-s5.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/paper/main.tex"><code>paper/main.tex</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k49.jsonl"><code>runs/scan_k49.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k50.jsonl"><code>runs/scan_k50.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/status.json"><code>status.json</code></a></li></ul>
   <p class="scalenote" style="margin-top:10px">Rebuild: <code>lake build</code> in <code>lean/</code>; <code>latexmk -pdf main.tex</code> in <code>paper/</code>; <code>python3 code/make_cert.py 102 15</code>.</p>
 </section>
 </main>

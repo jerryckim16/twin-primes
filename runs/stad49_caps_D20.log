@@ -1,0 +1,11 @@
+rebuilt Gram matrices in 137 s; cap-free ratio s*k*J/I = 4.01617614
+17887 distinct (A, B) keys
+self-test passed (m = 1, c = 0 reproduces q^T I q exactly) in 16 s
+m=1: C(k,m) * int_{|x|>=0.5929} P^2 / I = 1.191e-04
+m=2: C(k,m) * int_{|x|>=0.5929} P^2 / I = 9.641e-03
+m=3: C(k,m) * int_{|x|>=0.6719} P^2 / I = 1.434e-02
+m=4: C(k,m) * int_{|x|>=0.6719} P^2 / I = 4.168e-01
+m=5: C(k,m) * int_{|x|>=0.6719} P^2 / I = 8.569e+00
+m=6: C(k,m) * int_{|x|>=0.6719} P^2 / I = 1.332e+02
+m=7: C(k,m) * int_{|x|>=0.7747} P^2 / I = 3.992e+00
+E/I = 1.462e+02; certified lower bound for Stadlmann's ratio k J_T / I_T: -342.28369501 (NOT > 4)

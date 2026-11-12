@@ -1,0 +1,7 @@
+n=307, Gram matrices in 13 s
+penalty Gram matrix (5321 keys) in 240 s
+cap-free top vector: s*k*J/I = 3.987180, E/I = 3.180e-04
+{"eta": "1/5", "lower_float": 3.178539795832359, "capfree_float": 3.9782522938414098, "E_over_I": 1.988933781566524e-05, "gt4": false}
+{"eta": "1/10", "lower_float": 3.5725683118255236, "capfree_float": 3.9749991490804706, "E_over_I": 1.0730546844112035e-05, "gt4": false}
+{"eta": "1/20", "lower_float": 3.767272056235606, "capfree_float": 3.971545082358029, "E_over_I": 5.871312505820474e-06, "gt4": false}
+{"eta": "1/40", "lower_float": 3.862185742036142, "capfree_float": 3.967692456382582, "E_over_I": 3.1710558112772927e-06, "gt4": false}

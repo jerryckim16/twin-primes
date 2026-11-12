@@ -1,0 +1,9 @@
+n=307, Gram matrices in 16 s
+penalty Gram matrix (5321 keys) in 266 s
+cap-free top vector: s*k*J/I = 3.987180, E/I = 3.180e-04
+{"eta": "1/100", "lower_float": 3.92929603895677, "lower_eta_float": 3.915598144886001, "lower_sqrt_float": 3.92929603895677, "capfree_float": 3.96182787349532, "E_over_I": 1.307969798333055e-06, "gt4": false}
+{"eta": "1/200", "lower_float": 3.934230321340046, "lower_eta_float": 3.9307775434126455, "lower_sqrt_float": 3.934230321340046, "capfree_float": 3.957191934314623, "E_over_I": 6.523698470420126e-07, "gt4": false}
+{"eta": "1/400", "lower_float": 3.9362471211300023, "lower_eta_float": 3.9359934301097823, "lower_sqrt_float": 3.9362471211300023, "capfree_float": 3.9527385575916907, "E_over_I": 3.3689540785301223e-07, "gt4": false}
+{"eta": "1/800", "lower_float": 3.9362298278009185, "lower_eta_float": 3.9359776170252334, "lower_sqrt_float": 3.9362298278009185, "capfree_float": 3.9483730796662475, "E_over_I": 1.8286392332319503e-07, "gt4": false}
+{"eta": "1/1600", "lower_float": 3.9346967209080854, "lower_eta_float": 3.9329923396067894, "lower_sqrt_float": 3.9346967209080854, "capfree_float": 3.9437318794533995, "E_over_I": 1.0135388122845003e-07, "gt4": false}
+{"eta": "1/3200", "lower_float": 3.931828576591248, "lower_eta_float": 3.92819560975357, "lower_sqrt_float": 3.931828576591248, "capfree_float": 3.93852094894129, "E_over_I": 5.568051484893835e-08, "gt4": false}
