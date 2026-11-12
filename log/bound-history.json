@@ -46,5 +46,13 @@
   "k": 54,
   "how": "M_54 >= 4.0023860 with even power sums of degree 23 (1236 coefficients); 54-tuple of diameter 270",
   "certificate": "code/cert_M54_D23e.json"
+ },
+ {
+  "date": "2026-11-12",
+  "session": 4,
+  "bound": 246,
+  "k": 50,
+  "how": "M_{50,1/25} >= 4.0012466 on the eps-enlarged simplex (Polymath8b Thm 3.12), even power sums of degree 25 (1780 coefficients); 50-tuple of diameter 246",
+  "certificate": "code/cert_M50e25_D25e.json"
  }
 ]

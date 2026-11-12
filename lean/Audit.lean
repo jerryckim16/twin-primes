@@ -5,3 +5,5 @@ import TwinPrimes
 #print axioms TwinPrimes.twinPrimeConjecture_of_DHL_2
 #print axioms TwinPrimes.boundedGaps_330_of_DHL_64
 #print axioms TwinPrimes.DHL.mono
+#print axioms TwinPrimes.not_boundedGaps_one
+#print axioms TwinPrimes.admissible_pair_iff
