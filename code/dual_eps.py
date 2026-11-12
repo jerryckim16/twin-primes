@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Floating-point exploration behind Remarks 15 and 16 (NOT a certificate).
+"""Floating-point exploration behind Remarks 17 and 18 (15 and 16 in paper v0.3) (NOT a certificate).
 
-Remark 15: for the two-zone weight of Theorem 13, the best value of sup W over (a, s1), maximised
+Remark 17: for the two-zone weight of Theorem 15, the best value of sup W over (a, s1), maximised
 over eps, for several k; compared with Polymath8b's bound k/(k-1) log(2k-1) [Prop. 6.5] and with
 scaling (1+eps) k/(k-1) log k.
 
-Remark 16: the weight psi_m = (beta/n)(a - S_A + n t_m), n = number of active indices at t,
+Remark 18: the weight psi_m = (beta/n)(a - S_A + n t_m), n = number of active indices at t,
 S_A = sum of the active coordinates. Its sum over the active indices is beta*a, so Lemma 11 gives
 M_k(L, tau) <= a * sup_{t'} int_0^{L-|t'|} n(u) / (a - S_A(u) + n(u) u) du.
 We evaluate the fiber integral exactly (piecewise in u) on explicit fibers t' = (x, ..., x, 0, ...)

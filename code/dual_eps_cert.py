@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Certificate for Theorem 13: M_{29,eps} < 3.99 for every 0 <= eps < 1.
+"""Certificate for Theorem 15 (Theorem 13 in paper v0.3): M_{29,eps} < 3.99 for every 0 <= eps < 1.
 
-Dual bound (Lemma 11 with the two-zone weight of Theorem 13): for 0 < tau < s1 <= L, a >= s1,
+Dual bound (Lemma 13 with the two-zone weight of Theorem 15; Lemma 11 and Theorem 13 in v0.3): for 0 < tau < s1 <= L, a >= s1,
     M_k(L, tau) <= sup_{0<=sigma<=tau} W(sigma),
     W(sigma) = k a/(k-1) * log(1 + (k-1)(s1-sigma)/(a-sigma)) + L - s1 + sigma*log((L-sigma)/(s1-sigma)).
 M_{k,eps} = M_k(1+eps, 1-eps), non-decreasing in L and in tau.

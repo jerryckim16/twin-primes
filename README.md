@@ -16,18 +16,20 @@ A working paper by **Jerry Kim** (prepared with the assistance of Claude) on sma
 
 ## How sessions work
 
-Each session reads `STATE.md`, does one reproduction step and tests one idea of its own, updates the paper, the Lean code and the log, then pushes a branch `session/YYYY-MM-DD-HHMM`, opens a pull request and merges it. Failures are logged too.
+Each session reads `STATE.md`, does one reproduction step and tests one idea of its own, updates the paper, the Lean code and the log, then pushes a session branch, opens a pull request and merges it. Failures are logged too.
 
 ## Layout
 
 | Path | What it is |
 |---|---|
 | `paper/main.tex` | The paper (amsart). `latexmk -pdf main.tex` |
-| `lean/` | Core Lean 4.35.0 project, no Mathlib, no `sorry`: twin primes ⇔ `BoundedGaps 2`, admissibility certificates, explicit tuples, `DHL.mono`. `lake build`, then `lake env lean Audit.lean` |
-| `code/mk_general.py` | Exact Gram matrices for Maynard's M_k with all symmetric polynomials; certified lower bounds |
+| `lean/` | Core Lean 4.35.0 project, no Mathlib, no `sorry`: twin primes ⇔ `BoundedGaps 2`, admissibility certificates, explicit tuples, `DHL.mono`, `not_boundedGaps_one`. `lake build`, then `lake env lean Audit.lean` |
+| `code/mk_general.py` | Exact Gram matrices for Maynard's M_k with all symmetric polynomials, and (`--eps p/q`) for Polymath8b's epsilon-enlarged simplex M_{k,eps}; certified lower bounds |
+| `code/scan_eps.py`, `code/extrapolate_eps.py`, `runs/scan_k*.jsonl` | Certified M_{k,eps} on a grid of (k, degree, eps) and the heuristic degree extrapolation (Remark 20) |
+| `code/dual_lp.py`, `runs/dual_lp_*.log` | Convex optimisation of dual weights depending on (t_m, S) (Proposition 19; floating point) |
 | `code/cert_M*.json` | Exact rational certificates (coefficient vectors) for M_k > 4. Re-check any of them with `python3 code/verify_cert.py <file>` |
-| `code/dual_eps_cert.py`, `code/check_floor_cert.py`, `code/cert_floor_k29.json` | Theorem 13: the epsilon-enlarged simplex cannot reach k ≤ 29 (certificate, and an independent re-check with a second interval library) |
-| `code/dual_eps.py` | Floating-point exploration of dual weights (Remarks 15 and 16) |
+| `code/dual_eps_cert.py`, `code/check_floor_cert.py`, `code/cert_floor_k29.json` | Theorem 15: the epsilon-enlarged simplex cannot reach k ≤ 29 (certificate, and an independent re-check with a second interval library) |
+| `code/dual_eps.py` | Floating-point exploration of dual weights (Remarks 17 and 18) |
 | `code/admissible.py`, `code/gen_lean.py` | Admissible-tuple search and Lean generation |
 | `log/bound-history.json` | Every improvement of the project's own bound, starting from 578 (drawn as a log-scale chart on the website) |
 | `status.json`, `log/entries.json` | Bounds, results ledger, ideas ledger, research log (drive the website) |

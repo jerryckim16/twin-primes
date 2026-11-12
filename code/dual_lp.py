@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Best dual weight of the form psi_m(t) = Psi(S - t_m, t_m) in Lemma 11 (Session 4, own experiment).
+"""Best dual weight of the form psi_m(t) = Psi(S - t_m, t_m) in Lemma 13 (Session 4, own experiment).
 
-Lemma 11: if int_0^{L-sigma} du / Psi(sigma, u) <= 1 for every sigma in [0, tau], then
+Lemma 13 of the paper (v0.4): if int_0^{L-sigma} du / Psi(sigma, u) <= 1 for every sigma in [0, tau], then
   M_k(L, tau) <= sup_t  sum_{m active at t} Psi(S - t_m, t_m)     (m active iff sigma_m = S - t_m <= tau).
-Every weight used so far (Polymath8b Cor. 6.4, the two-zone weight of Theorem 13) has this form.
+Every weight used so far (Polymath8b Cor. 6.4, the two-zone weight of Theorem 15) has this form.
 
 Parametrisation: Psi = rho_c * (L - sigma + (k-1) u) with rho_c > 0 constant on cells: Nc uniform
 S-cells on [0, L] and geometric u-cells. Fiber integrals are exact (logarithms) at every fine

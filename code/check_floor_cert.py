@@ -3,7 +3,7 @@
 
 For each interval [e, e'] it reads the stored rationals (a, s1), checks a >= s1 > tau, s1 <= L for
 (L, tau) = (1+e', 1-e), and re-runs the bisection with mpmath interval arithmetic, bounding
-W(sigma) on [x, y] by first(x) + rest(y) (first is non-increasing, rest non-decreasing; Theorem 13).
+W(sigma) on [x, y] by first(x) + rest(y) (first is non-increasing, rest non-decreasing; Theorem 15 (Theorem 13 in paper v0.3)).
 It also checks that the intervals cover [143/1000, 1] and re-checks the Proposition 12 bound.
 
 usage: check_floor_cert.py [code/cert_floor_k29.json]
