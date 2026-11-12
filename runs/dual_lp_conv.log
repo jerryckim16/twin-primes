@@ -1,0 +1,10 @@
+RESULT k=50 eps=1/25 Nc=120 N=120: LP 4.1420, best feasible 4.1421; scaling bound 4.1515
+/home/user/twin-primes/code/dual_lp.py:111: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver=cp.CLARABEL)
+RESULT k=30 eps=1/4 Nc=120 N=120: LP 4.0345, best feasible 4.0345; scaling bound 4.3981
+/home/user/twin-primes/code/dual_lp.py:111: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver=cp.CLARABEL)
+RESULT k=50 eps=1/25 Nc=160 N=160: LP 4.1418, best feasible 4.1418; scaling bound 4.1515
+/home/user/twin-primes/code/dual_lp.py:111: UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+  prob.solve(solver=cp.CLARABEL)
+RESULT k=30 eps=1/4 Nc=160 N=160: LP 4.0240, best feasible 4.0240; scaling bound 4.3981

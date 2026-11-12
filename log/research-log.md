@@ -1,5 +1,21 @@
 # Research log
 
+## 2026-11-12 - Session 4 (8 AM, first test run of the schedule): H1 ≤ 246 reproduced (M_{50,1/25} ≥ 4.0043063); dual weights that see only t_m and S stall near 4.14; paper v0.4
+
+- Added Polymath8b's epsilon-enlarged simplex to the exact pipeline (scaling plus the binomial rewrite 1+eps-P1 = 2eps + (1-eps-P1)); checked every Gram entry against direct sympy integration for k = 3, 4. Lowering the search precision from about 6000 to 300-500 bits made high degrees cheap.
+- Certified M_{50,1/25} ≥ 4.0012466 (degree 25, 1780 coefficients) and ≥ 4.0043063 (degree 27, 2526 coefficients), matching Polymath8b's 4.00124 and 4.0043. With the Lean tuple (50, 246) the project's end-to-end bound moved from 270 to 246, the established bound: a reproduction, not new.
+- Own idea (variational/spectral): optimised Lemma 13 over every dual weight of the form Psi(S - t_m, t_m) as a convex program. It returns exactly k/(k-1) log k at eps = 0 and settles near 4.14 at (50, 1/25), far above the truth (≥ 4.0043): sharper floors need weights that see more of t (Proposition 19). A Collatz-Wielandt weight from the Galerkin eigenfunction is within 1e-4 of M_3 at k = 3 (sampled), but for eps > 0 the eigenfunction vanishes where no index is active.
+- Certified M_{k,eps} for k = 49, 50 at degrees 10-24 and six values of eps. A geometric extrapolation in the degree, tested against the known k = 50 values and against a prediction registered before the degree-24 run (3.98230 predicted, 3.98218 certified), suggests sup_eps M_{49,eps} ≈ 3.991-3.994 < 4: heuristic evidence that the enlarged simplex stops at k = 50 (Remark 20).
+- Lean: not_boundedGaps_one (gaps of size 1 happen only once) and admissible_pair_iff ({0,d} is admissible iff d is even). Re-read Polymath8b Prop. 6.5 in the arXiv text: as printed, the argument gives (k/(k-1)+eps) log(2k-1) (Remark 16).
+
+Did not work or is blocked:
+- The first discretisations of the dual-weight program were wrong or unstable (Kelley cutting planes drifted; piecewise-constant weights in (sigma,u) could not represent the two-zone weight). The final version uses cells in (S,u) and an exact convex solver per step.
+- At (k, eps) = (30, 1/4) the discretised optimum has not converged (4.050, 4.035, 4.024 for N = 80, 120, 160, above the 4.0021 already certified), so the exact floor of the (t_m,S) family is not determined.
+- A product-form Collatz-Wielandt weight (F = prod 1/(1+A t_i)) gave useless bounds (above 5 at k = 50).
+- No news search this run (only the 3:34 AM run does it); the 182 preprint is still not re-opened.
+
+Next: Stadlmann's support for 240 (rough-mass caps in the integration formulas). Own side: a Collatz-Wielandt weight that stays positive where an index is active, aiming at a rigorous floor near k = 50.
+
 ## 2026-11-12 - Session 3 (7 AM, recovery of the 6:34 AM run): H1 ≤ 270 reproduced; the epsilon-enlarged simplex cannot reach k ≤ 29 (Theorem 13); paper v0.3
 
 - Certified M_55 ≥ 4.00516 (even power sums, degree 20) and M_54 ≥ 4.0023860 (degree 23, 1236 coefficients; 49 minutes, 10 GB). With the Lean tuple (54, 270) the project's end-to-end bound moved from 278 to 272 to 270, matching Polymath8b to every printed digit.

@@ -21,7 +21,9 @@ def verify(path):
     basis = [(a, tuple(b)) for a, b in c["basis"]]
     even = all(x == 0 for _, b in basis for j, x in enumerate(b) if (j + 2) % 2)
     mg.EVEN_ONLY = even
-    b2, I, J = mg.build(k, D)
+    es = c.get("eps", "0")
+    eps = fmpq(*map(int, es.split("/"))) if "/" in es else fmpq(int(es))
+    b2, I, J = mg.build(k, D, eps)
     assert [(a, tuple(b)) for a, b in b2] == basis, "basis does not match the builder"
     n = len(basis)
     q = fmpq_mat(n, 1, [fmpq(*map(int, s.split("/"))) if "/" in s else fmpq(int(s)) for s in c["coeffs"]])
@@ -33,8 +35,8 @@ def verify(path):
     assert val == stored, "Rayleigh quotient differs from the stored value"
     from fractions import Fraction
     f = float(Fraction(int(val.p), int(val.q)))
-    print("%s: k=%d degree=%d %s, %d coefficients: M_k >= %.8f  (%s 4)"
-          % (path, k, D, "even power sums" if even else "all symmetric", n, f, ">" if val > 4 else "NOT >"))
+    print("%s: k=%d eps=%s degree=%d %s, %d coefficients: M >= %.8f  (%s 4)"
+          % (path, k, es, D, "even power sums" if even else "all symmetric", n, f, ">" if val > 4 else "NOT >"))
     return val > 4
 
 

@@ -18,7 +18,17 @@ Pipeline: exact rational Gram matrices (flint fmpq) -> high-precision inverse it
 (flint arb) for the top generalized eigenvector -> round to rationals -> EXACT Rayleigh
 quotient k*vJv/vIv.  The last step is a rigorous lower bound for M_k.
 
-usage: mk_general.py k D [--even] [--cert out.json]
+Epsilon-enlarged simplex (Polymath8b Thm 3.12), option --eps p/q:  F is supported on L*R_k with
+L = 1+eps, basis (L-P1)^a prod P_j^{b_j}, and the marginal of each t_m is integrated over
+tau*R_{k-1}, tau = 1-eps.  Scaling t = L s gives
+  int_{L R_k} (L-P1)^A prod P_j^{b_j} = L^{k+A+w(b)} * S_k(A,b),
+the inner integral is the same formula with (1-P1') -> (L-P1'), and on tau*R_{k-1}
+  (L-P1')^A = sum_i C(A,i) (2 eps)^{A-i} (tau-P1')^i,
+  int_{tau R_{k-1}} (tau-P1')^i prod P'^B = tau^{k-1+i+w(B)} S_{k-1}(i,B).
+With eps = 0 everything reduces to the plain M_k computation.
+
+usage: mk_general.py k D [--even] [--eps p/q] [--prec bits] [--cert out.json]
+(--prec only affects the floating-point search for the vector; 300 bits sufficed up to degree 20.)
 """
 import sys, json, time, itertools
 from math import comb, factorial
@@ -74,7 +84,9 @@ class Moments:
             H[b] = s
         return H
 
-def build(k, D):
+def build(k, D, eps=None):
+    eps = fmpq(0) if eps is None else eps
+    Lf, tau, two_e = 1 + eps, 1 - eps, 2 * eps
     L = 2 * D
     basis = [(a, b) for b in weighted_partitions(D, L) for a in range(D - w(b) + 1)]
     pad = lambda b: tuple(b) + (0,) * (L - 1 - len(b))
@@ -100,13 +112,19 @@ def build(k, D):
         for y in range(x, n):
             a2, b2 = basis[y]
             key = (a + a2, add(b, b2))
-            if key not in cacheI: cacheI[key] = S(Mk, k, *key)
+            if key not in cacheI: cacheI[key] = S(Mk, k, *key) * Lf ** (k + key[0] + w(key[1]))
             I[x, y] = I[y, x] = cacheI[key]
             s = fmpq(0)
             for c1, A1, B1 in inner[x]:
                 for c2, A2, B2 in inner[y]:
                     kk = (A1 + A2, add(B1, B2))
-                    if kk not in cacheJ: cacheJ[kk] = S(Mk1, k - 1, *kk)
+                    if kk not in cacheJ:
+                        A, B = kk
+                        if eps == 0:
+                            cacheJ[kk] = S(Mk1, k - 1, A, B)
+                        else:
+                            cacheJ[kk] = sum((comb(A, i) * two_e ** (A - i) * tau ** (k - 1 + i + w(B))
+                                              * S(Mk1, k - 1, i, B) for i in range(A + 1)), fmpq(0))
                     s += c1 * c2 * cacheJ[kk]
             J[x, y] = J[y, x] = s
     return basis, I, J
@@ -144,13 +162,15 @@ def certify(I, J, k, v):
     den = (q.transpose() * I * q)[0, 0]
     return num / den, q
 
-def run(k, D, sigma=None):
+def run(k, D, sigma=None, eps=None, prec=None):
     from math import log
-    if sigma is None: sigma = k / (k - 1) * log(k) + 0.02   # Polymath8b upper bound: above the top eigenvalue
+    e = 0.0 if eps is None else float(eps.p) / float(eps.q)
+    # Polymath8b / Proposition 12 upper bound (1+eps) k/(k-1) log k: above the top eigenvalue
+    if sigma is None: sigma = (1 + e) * k / (k - 1) * log(k) + 0.02
     t0 = time.time()
-    basis, I, J = build(k, D)
+    basis, I, J = build(k, D, eps)
     t1 = time.time()
-    lam, v = top_vector(I, J, k, sigma)
+    lam, v = top_vector(I, J, k, sigma, prec=prec)
     exact, q = certify(I, J, k, v)
     val = float(exact.p) / float(exact.q) if abs(exact.p) < 10**300 else None
     from fractions import Fraction
@@ -161,10 +181,16 @@ def run(k, D, sigma=None):
 if __name__ == "__main__":
     if "--even" in sys.argv: EVEN_ONLY = True
     k, D = int(sys.argv[1]), int(sys.argv[2])
-    info, exact, basis, q = run(k, D)
+    eps = None
+    if "--eps" in sys.argv:
+        es = sys.argv[sys.argv.index("--eps") + 1]
+        eps = fmpq(*map(int, es.split("/"))) if "/" in es else fmpq(int(es))
+    prec = int(sys.argv[sys.argv.index("--prec") + 1]) if "--prec" in sys.argv else None
+    info, exact, basis, q = run(k, D, eps=eps, prec=prec)
+    if eps is not None: info["eps"] = str(eps)
     print(json.dumps(info), flush=True)
     if "--cert" in sys.argv:
         out = sys.argv[sys.argv.index("--cert") + 1]
-        json.dump(dict(k=k, D=D, basis=[[a, list(b)] for a, b in basis],
+        json.dump(dict(k=k, D=D, eps=str(eps) if eps is not None else "0", basis=[[a, list(b)] for a, b in basis],
                        coeffs=[str(q[i, 0]) for i in range(q.nrows())],
                        rayleigh=str(exact), gt4=bool(exact > 4)), open(out, "w"))
