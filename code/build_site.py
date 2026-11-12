@@ -35,17 +35,17 @@ enum = "\\section*{References}\n\\begin{enumerate}\n" + "\n".join("\\item " + t.
 tex2 = tex2[:tex2.index("\\begin{thebibliography}")] + enum + "\n\\end{document}\n"
 with tempfile.NamedTemporaryFile("w", suffix=".tex", delete=False) as f:
     f.write(tex2); tmp = f.name
-paper = subprocess.run(["pandoc", tmp, "-f", "latex", "-t", "html", "--mathml"], capture_output=True, text=True, check=True).stdout
+paper = subprocess.run(["pandoc", tmp, "-f", "latex", "-t", "html", "--katex"], capture_output=True, text=True, check=True).stdout
 os.unlink(tmp)
 paper = re.sub(r"<table>", '<div class="scroll"><table>', paper).replace("</table>", "</table></div>")
-paper = re.sub(r'(<math display="block".*?</math>)', r'<div class="scroll eq">\1</div>', paper, flags=re.S)
+paper = re.sub(r'(<span\s+class="math display">.*?</span>)', r'<div class="scroll eq">\1</div>', paper, flags=re.S)
 title = re.search(r"\\title(?:\[[^\]]*\])?\{(.*?)\}\n", tex, re.S).group(1)
 author = re.search(r"\\author\{(.*?)\}", tex).group(1)
 date = re.search(r"\\date\{(.*?)\}", tex).group(1)
 abstract = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", tex, re.S).group(1)
 with tempfile.NamedTemporaryFile("w", suffix=".tex", delete=False) as f:
     f.write(re.sub(r"\\textsc\{([^}]*)\}", r"\\textsc{\1}", abstract).replace("\\lbl", "\\textsc")); tmp = f.name
-abstract_html = subprocess.run(["pandoc", tmp, "-f", "latex", "-t", "html", "--mathml"], capture_output=True, text=True, check=True).stdout
+abstract_html = subprocess.run(["pandoc", tmp, "-f", "latex", "-t", "html", "--katex"], capture_output=True, text=True, check=True).stdout
 os.unlink(tmp)
 
 
@@ -197,11 +197,12 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 .paper .abstract{font-size:.92rem;border-left:2px solid var(--rule);padding-left:12px;color:var(--muted)}
 .paper table{width:auto;font-variant-numeric:tabular-nums} .paper td,.paper th{padding:3px 12px 3px 0;border-bottom:0;white-space:nowrap} .paper thead th{border-bottom:1px solid var(--rule)}
 .paper caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);padding-bottom:6px;white-space:normal}
-.paper .eq{padding:6px 0 10px} .paper .eq math{display:block;width:max-content;min-width:100%}
+.paper .eq{padding:2px 0 6px} .paper .eq .katex-display{margin:.4em 0;width:max-content;min-width:100%}
+.katex{font-size:1.06em} .paper .math,.paper .scroll,.abstract .math{position:relative} .math.inline.wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:2px 0}
 .paper .smallcaps{font-variant:small-caps;letter-spacing:.03em} .paper .theorem em,.paper .proposition em,.paper .corollary em{font-style:italic}
 .paper .proof{margin:.6em 0} .paper ol,.paper ul{padding-left:1.3em}
 .paper code{font-family:var(--mono);font-size:.82em;overflow-wrap:anywhere}
-.paper a{overflow-wrap:anywhere} .paper p math:not([display=block]){display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}
+.paper a{overflow-wrap:anywhere}
 .bchart{width:100%;max-width:600px;height:auto;display:block;font-family:var(--mono)}
 .bchart .grid{stroke:var(--rule);stroke-width:1}
 .bchart .tick{fill:var(--muted);font-size:15px}
@@ -227,7 +228,28 @@ page = f"""<!DOCTYPE html>
 <title>Twin Prime Notebook</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <style>{CSS}</style>
+<script>
+// Typeset every math span pandoc emitted (inline and display) with KaTeX.
+// If KaTeX cannot load, the raw TeX stays visible.
+window.addEventListener("DOMContentLoaded", function () {{
+  if (!window.katex) return;
+  document.querySelectorAll("span.math").forEach(function (el) {{
+    var tex = el.textContent.trim();
+    // strip pandoc's delimiters (backslash + bracket at both ends) if present
+    if (tex.length > 3 && tex.charCodeAt(0) === 92 && "([".indexOf(tex.charAt(1)) >= 0) tex = tex.slice(2, -2);
+    var display = el.classList.contains("display");
+    try {{ katex.render(tex, el, {{displayMode: display, throwOnError: false, strict: "ignore"}}); }}
+    catch (e) {{ return; }}
+    if (!display) {{
+      var box = el.closest("p, li, td, div");
+      if (box && el.getBoundingClientRect().right > box.getBoundingClientRect().right + 1) el.classList.add("wide");
+    }}
+  }});
+}});
+</script>
 </head>
 <body>
 <main>
