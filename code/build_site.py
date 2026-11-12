@@ -13,6 +13,8 @@ st = json.load(open("status.json"))
 log = json.load(open("log/entries.json"))
 bh = json.load(open("log/bound-history.json")) if os.path.exists("log/bound-history.json") else []
 esc = html.escape
+from texify_text import texify
+tx = lambda s: esc(texify(s))   # plain text with notation typeset by KaTeX
 
 # ---------- paper -> HTML fragment (MathML) ----------
 tex = open("paper/main.tex").read()
@@ -79,7 +81,7 @@ def bound_chart(hist, established, claimed):
                    f'<text x="{cx:.1f}" y="{cy-14:.1f}" class="ptlab" text-anchor="middle">{h["bound"]}</text>'
                    f'<text x="{cx:.1f}" y="{H-B+26:.1f}" class="tick" text-anchor="middle">S{h["session"]}</text>')
     out.append(f'<text x="{L+26}" y="{H-4}" class="tick">session</text></svg>')
-    rows = "".join(f'<tr><td>{esc(h["date"])}</td><td>S{h["session"]}</td><td class="num">{h["bound"]}</td><td class="num">{h["k"]}</td><td>{esc(h["how"])}</td></tr>' for h in reversed(hist))
+    rows = "".join(f'<tr><td>{esc(h["date"])}</td><td>S{h["session"]}</td><td class="num">{h["bound"]}</td><td class="num">{h["k"]}</td><td>{tx(h["how"])}</td></tr>' for h in reversed(hist))
     table = f'<details class="bh"><summary>Every improvement ({len(hist)})</summary><div class="scroll"><table><thead><tr><th>Date</th><th>Session</th><th>Bound</th><th>k</th><th>How</th></tr></thead><tbody>{rows}</tbody></table></div></details>'
     return "\n".join(out) + table
 
@@ -111,16 +113,16 @@ tiles = f"""
   <div class="tile goal"><div class="k">Twin primes</div><div class="v">{b['target']}</div><div class="d">Open. Out of reach of every current method.</div></div>
 </div>"""
 
-rows = "\n".join(f'<tr><td>{chip(r["label"], LABEL_CLASS.get(r["label"], "lit"))}</td><td>{esc(r["text"])}</td><td class="where">{esc(r["where"])}</td></tr>' for r in st["results"])
-ideas = "\n".join(f'<tr><td>{chip(i["status"], STATUS_CLASS.get(i["status"], "lit"))}</td><td>{esc(i["idea"])}<div class="note">{esc(i["note"])}</div></td><td class="where">{esc(i["origin"])}</td></tr>' for i in st["ideas"])
+rows = "\n".join(f'<tr><td>{chip(r["label"], LABEL_CLASS.get(r["label"], "lit"))}</td><td>{tx(r["text"])}</td><td class="where">{esc(r["where"])}</td></tr>' for r in st["results"])
+ideas = "\n".join(f'<tr><td>{chip(i["status"], STATUS_CLASS.get(i["status"], "lit"))}</td><td>{tx(i["idea"])}<div class="note">{tx(i["note"])}</div></td><td class="where">{esc(i["origin"])}</td></tr>' for i in st["ideas"])
 
 def entry(e):
-    out = [f'<article class="entry"><header><span class="when">{esc(e["date"])} &middot; {esc(e["slot"])}</span><h3>{esc(e["title"])}</h3></header>']
-    out.append("<ul>" + "".join(f"<li>{esc(x)}</li>" for x in e.get("did", [])) + "</ul>")
+    out = [f'<article class="entry"><header><span class="when">{esc(e["date"])} &middot; {esc(e["slot"])}</span><h3>{tx(e["title"])}</h3></header>']
+    out.append("<ul>" + "".join(f"<li>{tx(x)}</li>" for x in e.get("did", [])) + "</ul>")
     if e.get("failed"):
-        out.append('<p class="sub">Did not work or is blocked</p><ul class="failed">' + "".join(f"<li>{esc(x)}</li>" for x in e["failed"]) + "</ul>")
+        out.append('<p class="sub">Did not work or is blocked</p><ul class="failed">' + "".join(f"<li>{tx(x)}</li>" for x in e["failed"]) + "</ul>")
     if e.get("next"):
-        out.append(f'<p class="next"><span class="sub">Next</span> {esc(e["next"])}</p>')
+        out.append(f'<p class="next"><span class="sub">Next</span> {tx(e["next"])}</p>')
     out.append("</article>")
     return "\n".join(out)
 entries = "\n".join(entry(e) for e in log)
@@ -230,6 +232,7 @@ page = f"""<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 <style>{CSS}</style>
 <script>
 // Typeset every math span pandoc emitted (inline and display) with KaTeX.
@@ -248,6 +251,10 @@ window.addEventListener("DOMContentLoaded", function () {{
       if (box && el.getBoundingClientRect().right > box.getBoundingClientRect().right + 1) el.classList.add("wide");
     }}
   }});
+  // Status, results, ideas and log come from JSON as text with $...$ notation (code/texify_text.py).
+  if (window.renderMathInElement) renderMathInElement(document.body, {{
+    delimiters: [{{left: "$", right: "$", display: false}}],
+    ignoredClasses: ["paper"], throwOnError: false, strict: "ignore"}});
 }});
 </script>
 </head>
