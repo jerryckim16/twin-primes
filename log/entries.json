@@ -1,6 +1,24 @@
 [
  {
   "date": "2026-11-12",
+  "slot": "Session 7 (4:39 PM CT, bonus run started by hand)",
+  "title": "Rung 212: Charton et al.'s capped criterion confirmed at k = 45 for their Table 3 caps (4.0027 > 4, two programs) but not for their Lemma 9.1 caps (3.9737); bound stays 240 (conditional); paper v0.7",
+  "did": [
+   "Extended both exact evaluators to caps that depend on m (code/capped_exact.py, code/capped_check.py, code/to_ucoords.py --params charton) and re-ran the k = 12 and k = 49 checks unchanged.",
+   "Charton et al.'s support at k = 45 (L = 1.06, tau = 0.996, g = 0.0656, caps 4 B_{1,m} from their Table 3): our degree-21 cap-free optimiser truncated to T gives 45 J_T/I_T = 4.0027351 > 4. capped_check.py (13 min) and capped_exact.py (108 min, 228 pieces with j <= 6) agree exactly on I_T and J_T. Their claimed value with their own F is 4.00438; the caps cost us 0.0095 against the cap-free 4.012272.",
+   "Located discrepancy: with the caps of their Lemma 9.1 (C(1) = C(2) = 31/50, C(s) = 17/25) the same P gives 3.9736870 < 4. So the conclusion depends on which cap set the draft intends; the project bound stays at 240 (conditional on Stadlmann's equidistribution estimates) and is not lowered to 212.",
+   "Own idea: ceilings. The two-zone dual weight certifies the capped quantity <= 4.126 at k = 45 (and <= 4.14 at k = 49); cutting fibres at the largest coordinate barely changes it.",
+   "Lean: charton_caps_valid (Stadlmann's admissibility condition for their caps, by decide), charton_large_count (at most 16 large coordinates), charton_extra_le_six. Paper v0.7: Proposition 29, Remark 30."
+  ],
+  "failed": [
+   "Lemma 9.1's caps: 3.9737 < 4 with our test function; not optimised on the capped support, so this is not a disproof.",
+   "Still no test function optimised on a capped support (Gram matrices of the corrections not built).",
+   "No news search (only the 3:34 AM run does it)."
+  ],
+  "next": "Optimise P on the capped support (Gram matrices via capped_check's contractions) to settle Lemma 9.1's caps and report margins; then rung 236 (Kintali; Song-Yue): read the sources and record their supports."
+ },
+ {
+  "date": "2026-11-12",
   "slot": "Session 6 (12:39 PM CT, started by hand in place of the 3:34 PM slot)",
   "title": "Variational step of Stadlmann's 240 reproduced exactly: capped ratio 4.0120 > 4 (two independent programs); project bound 240, conditional on his unverified equidistribution estimates; paper v0.6",
   "did": [

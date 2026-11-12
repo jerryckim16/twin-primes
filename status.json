@@ -1,7 +1,7 @@
 {
- "version": "0.6",
+ "version": "0.7",
  "updated": "2026-11-12",
- "session_count": 6,
+ "session_count": 7,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -150,6 +150,16 @@
    "label": "Computed",
    "text": "Ceiling: Stadlmann's capped quantity at k = 49 is at most 4.14 (two-zone dual weight, interval arithmetic); cutting fibres at the Lean-checked coordinate bound 0.6 barely moves this weight's ceiling (4.13785 -> 4.13753, floating point).",
    "where": "paper, Remark 28"
+  },
+  {
+   "label": "Computed",
+   "text": "Charton et al.'s capped support (k = 45, caps of their Table 3): our degree-21 cap-free optimiser truncated to T gives 45 J_T/I_T = 4.0027351 > 4, with identical exact I_T, J_T from two independent programs (their claimed value with their own F: 4.00438). With the different caps of their Lemma 9.1 the same P gives 3.9736870 < 4. The project bound is not lowered to 212 (caps discrepancy; analytic input Claimed).",
+   "where": "paper, Proposition 29"
+  },
+  {
+   "label": "Computed",
+   "text": "Ceiling for Charton et al.'s capped quantity at k = 45: at most 4.126 (two-zone dual weight, interval arithmetic).",
+   "where": "paper, Remark 30"
   }
  ],
  "ideas": [
@@ -248,6 +258,12 @@
    "origin": "own",
    "status": "partial",
    "note": "Valid ceiling 4.14 (certified), but caps move this weight's sup only from 4.13785 to 4.13753: the sup sits where fibres are short. Needs a weight that sees large coordinates."
+  },
+  {
+   "idea": "Use the exact capped evaluator to test which of Charton et al.'s two cap sets (Table 3 vs Lemma 9.1) supports their k = 45 criterion.",
+   "origin": "own",
+   "status": "partial",
+   "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: 3.9737 < 4 with the same P (not optimised on T), so the discrepancy matters; open whether optimising on T rescues Lemma 9.1's caps."
   }
  ]
 }
