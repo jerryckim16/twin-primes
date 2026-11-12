@@ -31,4 +31,26 @@ theorem stadlmann_seven_large (l : List Nat) (h : ∀ x ∈ l, 112 < x) (hl : 7 
   have : 7 * 112 ≤ l.length * 112 := Nat.mul_le_mul_right 112 hl
   omega
 
+/-- Stadlmann's caps in units of 1/1000 (Polymath scaling): `C₁ = C₂ = 600`, `Cₘ = 680` for `m ≥ 3`. -/
+def stadCap (m : Nat) : Nat := if m ≤ 2 then 600 else 680
+
+/-- Every coordinate of a point of Stadlmann's support is at most `600` (that is, `u_i ≤ 0.6`):
+if `x` lies in the large set `x :: l` (all entries above `112`) whose sum respects the cap, then
+`x ≤ 600`. -/
+theorem stadlmann_coord_le (x : Nat) (l : List Nat) (h : ∀ y ∈ l, 112 < y)
+    (hcap : x + l.sum ≤ stadCap (l.length + 1)) : x ≤ 600 := by
+  have hl := length_mul_le_sum 112 l h
+  unfold stadCap at hcap
+  split at hcap
+  · omega
+  · omega
+
+/-- In every correction piece of Session 6 the large set already carries at least `600`, so at most
+three further coordinates can exceed `112` below the total `1042` (inclusion-exclusion stops at
+`j = 3`). -/
+theorem stadlmann_extra_le_three (l : List Nat) (h : ∀ y ∈ l, 112 < y) (s : Nat) (hs : 600 ≤ s)
+    (htot : s + l.sum ≤ 1042) : l.length ≤ 3 := by
+  have := length_mul_le_sum 112 l h
+  omega
+
 end TwinPrimes
