@@ -3,6 +3,12 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 7 (bonus run, 4:39 PM CT, 2026-11-12) -- additions
+- Both evaluators now take per-m caps (JSON caps {"1":..,"2":..,...,"11+":..}); code/to_ucoords.py --params charton.
+- Charton et al. (k = 45, Table 3 caps): our cap-free D21 vector truncated to T gives 4.0027351 > 4; capped_check.py and capped_exact.py agree exactly (code/cap6/check_ax45_D21.json, res_ax45_D21.json). Lemma 9.1 caps (31/50, 31/50, 17/25...): 3.9736870 < 4 (code/cap6/check_ax45_D21_lemma91caps.json). bounds.project NOT lowered to 212 (cap discrepancy in the draft; analytic input Claimed). Paper v0.7: Prop. 29 (k = 45), Remark 30 (ceiling <= 4.126); Thm 31 is now the hybrid floor.
+- Lean: charton_caps_valid, charton_large_count, charton_extra_le_six.
+- Next steps 1-2 below are updated: (1) optimise P on a capped support: build the correction Gram matrices (capped_check's contraction structure is fastest; capped_exact took 108 min for one vector at k = 45) and settle whether Lemma 9.1's caps can reach 4; (2) rung 236.
+
 ## Position (after session 6, 2026-11-12, 12:39 PM CT run started by hand in place of the 3:34 PM slot)
 - Established in the literature: H1 <= 246 (Polymath8b 2014; Lean-formalised by Axiom given Bombieri-Vinogradov).
 - Claimed in 2026 preprints: 240 (Stadlmann), 236 (Kintali; Song-Yue), 212 (Charton et al.), 186 (OpenAI, Lean conditional on 3 axioms), 182 (GPT-6 Astra prompted by R. Sharifi). No news search this session (arXiv:2608.31126 still v1, no erratum, checked 12 Nov).

@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.6, 12 November 2026}
+\date{Version 0.7, 12 November 2026}
 
 \begin{document}
 
@@ -46,7 +46,10 @@ exact formula for his capped functionals, which gives a certified capped
 ratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two
 independent programs: the variational step of Stadlmann's $H_1\le240$ is
 thereby reproduced, while his new equidistribution estimates, on which $240$
-rests, have not been verified by us, and
+rests, have not been verified by us; the same computation confirms the
+variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
+of their Table~3 but not, with our test function, for the different caps of
+their Lemma~9.1 ($3.9737$), and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -852,7 +855,7 @@ equidistribution estimates. A floor for those is the Problem in the next
 section.
 \end{remark}
 
-\section{Stadlmann's support (versions 0.5 and 0.6)}\label{sec:stad}
+\section{Stadlmann-type supports (versions 0.5--0.7)}\label{sec:stad}
 
 This section takes the first steps on the next rung, Stadlmann's region for
 $H_1\le240$ \cite{Sta26}, and gives a first rigorous answer to the Problem in
@@ -1145,6 +1148,81 @@ so a ceiling that sees the caps needs a weight that sees the large
 coordinates (\lbl{Open}).
 \end{remark}
 
+\subsection*{The next rung: the support of \texorpdfstring{\cite{Cha26}}{Charton et al.} (version 0.7)}
+The same computation applies to the one-band support of \cite{Cha26}
+($k=45$, $H(45)=212$), whose caps change with $m$. In the Polymath scaling
+their Table~3 gives $L=53/50$, $\tau=249/250$, $g=41/625$ and
+$C_m=4B_{1,m}$ with
+$B_{1,m}=\frac{1}{5000}(777,794,875,917,953,983,1016,1042,1063,1081)$ for
+$m\le10$ and $B_{1,m}=1081/5000$ for $m\ge11$ (\lbl{Literature}, read in
+\cite{Cha26}; our notes record the page). These caps satisfy
+$\delta<B_{1,m}\le B_{1,m+1}\le B_{1,m}+\delta$, at most $16$ coordinates can
+exceed $g$, and every correction piece of Proposition~\ref{prop:exact} has
+$j\le6$ (\lbl{Lean-checked}: \texttt{charton\_caps\_valid},
+\texttt{charton\_large\_count}, \texttt{charton\_extra\_le\_six}).
+
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs]\label{prop:cha-capped}
+Let $P$ be our cap-free optimiser of degree $21$ for
+$M_{45}(1.06,0.996)$ (Proposition~\ref{prop:capfree}, $846$ coefficients) and
+$T$ the support of \cite{Cha26} with the caps of their Table~3. Then
+\[
+\frac{45\,J_T(P\,1_T)}{I_T(P\,1_T)}=4.0027351128\ldots\ >\ 4 .
+\]
+\end{proposition}
+
+\begin{sloppypar}
+The value was computed by \texttt{code/capped\_check.py} ($13$ minutes on four
+cores; input \texttt{code/cap6/P\_ax45\_D21\_u.json}, result
+\texttt{code/cap6/check\_ax45\_D21.json}). Our own program \texttt{code/capped\_exact.py}
+(Proposition~\ref{prop:exact}, now with caps depending on $m$; $108$~minutes
+on four cores, $228$ pieces, result \texttt{code/cap6/res\_ax45\_D21.json})
+gives the same $I_T$ and $J_T$ as exact rationals. Relative to the cap-free
+values, $\int_VP^2=2.67\cdot10^{-3}I(P)$ and the three $J$ corrections are
+$3.0\cdot10^{-4}$, $9.6\cdot10^{-5}$ and $4.65\cdot10^{-3}$ of $J(P)$. The cap-free value of the
+same $P$ is $4.012272$, so the caps cost $0.0095$ here, more than at $k=49$:
+the caps of \cite{Cha26} start lower ($C_1=0.6216$ against $L=1.06$) and
+$g$ is smaller. The value reported in \cite[Thm.~11.1]{Cha26}, with their own
+optimised $F$ in the same polynomial space, is $4.00438$ (\lbl{Claimed});
+ours is lower, as it should be for a vector optimised without the caps, and
+it already exceeds $4$.
+\end{sloppypar}
+
+As recorded in version~0.5, the draft \cite{Cha26} is not consistent about
+its caps: its Lemma~9.1 states $C(1)=C(2)=31/50$ and $C(s)=17/25$ for
+$s\ge3$. With those caps the same $P$ gives
+\[
+\frac{45\,J_T(P\,1_T)}{I_T(P\,1_T)}=3.9736869862\ldots\ <\ 4
+\]
+(\lbl{Computed}, exact, \texttt{capped\_check.py},
+\texttt{code/cap6/check\_ax45\_D21\_lemma91caps.json}).
+This does not show that the criterion fails for those caps: our $P$
+was optimised without caps, and the caps of Lemma~9.1 are smaller than those
+of Table~3 for every $m\ge4$, so their support is smaller. But it does show
+that, with this test function, the conclusion depends on which of the two
+cap sets the draft intends, and that Table~3 is the one under which the
+criterion is easy to confirm. A test function optimised on the smaller support
+would settle whether Lemma~9.1's caps can work at all (\lbl{Open}).
+
+We do \emph{not} lower the project's bound to $212$ in this version. The
+analytic input of \cite{Cha26} (its equidistribution statements at level
+$\omega=7/1000$ for moduli generated by these caps) is \lbl{Claimed}, the
+draft is not consistent about which caps it uses, and with the other cap set
+our test function falls below $4$. What is established here is narrower:
+\emph{for the caps of Table~3 of \cite{Cha26}, the variational criterion of
+\cite[Thm.~4.10]{Cha26} holds at $k=45$} (\lbl{Computed}, two programs).
+Together with the \lbl{Lean-checked} $45$-tuple of diameter $212$, this
+would give $H_1\le212$ conditionally on the analytic input of \cite{Cha26}
+for those caps; whether that input covers the caps of Table~3 is the question
+an expert reader of \cite{Cha26} should settle first.
+
+\begin{remark}[\lbl{Computed}, interval arithmetic: ceiling for $k=45$]\label{rem:ceiling45}
+As in Remark~\ref{rem:ceiling}, Theorem~\ref{thm:floor} with $a=1.0596$,
+$s_1=1.0166$ gives $M_{45}(1.06,0.996)\le4.126$ ($495$ pieces). So the
+capped value of \cite{Cha26} lies in $(4.0027,\,4.126]$. Cutting the fibers at
+the largest coordinate $C_1=0.6216$ moves the floating-point ceiling of this
+weight only from $4.12481$ to $4.12446$.
+\end{remark}
+
 \subsection*{A floor for one-band hybrid supports (our own)}
 Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the
 following extends Theorem~\ref{thm:floor} to every one-band support of
@@ -1221,9 +1299,12 @@ read in enough detail.
 Stadlmann's region ($k=49$, $240$): version~0.6 reproduces the variational
 step exactly (Theorem~\ref{thm:capped-exact}, Corollary~\ref{cor:240}), so the
 project's bound is $240$ \emph{conditionally on the unverified
-equidistribution estimates of \cite{Sta26}}. Next rungs: $236$ ($k=48$,
-\cite{Kin26,SY26}) and $212$ ($k=45$, \cite{Cha26}, whose caps vary with $m$;
-Proposition~\ref{prop:exact} applies with the obvious changes), then $186$ and $182$.
+equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
+\cite{Cha26}) version~0.7 confirms the variational criterion for the caps of
+their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
+can move, the discrepancy between their Table~3 and Lemma~9.1 must be
+resolved and a test function optimised on the capped support itself would
+help. Then $236$ ($k=48$, \cite{Kin26,SY26}), $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
 stops ($k\ge51$). For the $\varepsilon$-enlarged simplex

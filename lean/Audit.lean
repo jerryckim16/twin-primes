@@ -12,3 +12,6 @@ import TwinPrimes
 #print axioms TwinPrimes.stadlmann_seven_large
 #print axioms TwinPrimes.stadlmann_coord_le
 #print axioms TwinPrimes.stadlmann_extra_le_three
+#print axioms TwinPrimes.charton_caps_valid
+#print axioms TwinPrimes.charton_large_count
+#print axioms TwinPrimes.charton_extra_le_six

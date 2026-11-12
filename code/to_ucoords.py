@@ -5,16 +5,27 @@ Stadlmann's Polymath-scaled coordinates u = s t (support L, marginal tau, s = (L
 Output format (read by code/capped_exact.py and code/capped_check.py):
   k, L, tau, g, caps {"1": C_1, "2": C_2, "3+": C_m for m >= 3}, basis [[a, [b_2, b_3, ..., b_W]]], coeffs [p/q strings]
   P(u) = sum_i coeffs_i (L - u_1 - ... - u_k)^{a_i} prod_{j>=2} (u_1^j + ... + u_k^j)^{b_i[j-2]}.
-usage: to_ucoords.py cert_in.json out.json
+usage: to_ucoords.py cert_in.json out.json [--params stadlmann|charton]
+  stadlmann ([Sta26], k = 49): L = 1.042, tau = 0.982, g = 0.112, C_1 = C_2 = 0.6, C_m = 0.68 (m >= 3);
+  charton ([Cha26] Table 3, k = 45): L = 53/50, tau = 249/250, g = 41/625, C_m = 4 B_{1,m},
+           B = (777, 794, 875, 917, 953, 983, 1016, 1042, 1063, 1081)/5000, B_{1,m} = 1081/5000 for m >= 11.
 """
 import sys, json
 from fractions import Fraction as Fr
 c = json.load(open(sys.argv[1]))
-L, tau, g = Fr(1042, 1000), Fr(982, 1000), Fr(112, 1000)
+which = sys.argv[sys.argv.index("--params") + 1] if "--params" in sys.argv else "stadlmann"
+if which == "stadlmann":
+    L, tau, g = Fr(1042, 1000), Fr(982, 1000), Fr(112, 1000)
+    caps = {"1": "3/5", "2": "3/5", "3+": "17/25"}
+else:
+    L, tau, g = Fr(53, 50), Fr(249, 250), Fr(41, 625)
+    Bs = [777, 794, 875, 917, 953, 983, 1016, 1042, 1063, 1081]
+    caps = {str(m + 1): str(Fr(4 * b, 5000)) for m, b in enumerate(Bs)}
+    caps["11+"] = str(Fr(4 * 1081, 5000))
 s = (L + tau) / 2
 assert Fr(c["eps"]) == (L - tau) / (L + tau)
 w = lambda b: sum((j + 2) * x for j, x in enumerate(b))
 co = [Fr(x) * s ** (-(a + w(b))) for (a, b), x in zip(c["basis"], c["coeffs"])]
-json.dump(dict(k=c["k"], L=str(L), tau=str(tau), g=str(g), caps={"1": "3/5", "2": "3/5", "3+": "17/25"},
+json.dump(dict(k=c["k"], L=str(L), tau=str(tau), g=str(g), caps=caps,
                basis=c["basis"], coeffs=[str(x) for x in co], source=sys.argv[1]), open(sys.argv[2], "w"))
 print("wrote", sys.argv[2], len(co), "terms")
