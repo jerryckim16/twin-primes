@@ -97,7 +97,7 @@ import math
 def xpos(v, lo=1.6, hi=760.0): return 4 + 92 * (math.log(v) - math.log(lo)) / (math.log(hi) - math.log(lo))
 marks = [(b["target"], "the conjecture", "goal", "up"), (b["sieve_limit_geh"], "sieve limit, even assuming GEH", "limit", "down"),
          (b["claimed"], "claimed, 2026 preprints", "warn", "up ar"), (b["established"], "established", "ok", "down"),
-         (b["project"], "reproduced here", "own", "up al")]
+         (b["project"], "reproduced here" + (" (conditional)" if b.get("project_note") else ""), "own", "up al")]
 line = ['<div class="scale" role="img" aria-label="Gap bounds on a logarithmic scale: target 2, sieve limit 6, claimed %d, established %d, reproduced here %d">' % (b["claimed"], b["established"], b["project"]), '<div class="axis"></div>']
 for v, lab, cls, side in marks:
     line.append(f'<div class="mark {cls} {side}" style="left:{xpos(v):.2f}%"><span class="dot"></span><span class="num">{v}</span><span class="cap">{esc(lab)}</span></div>')
@@ -109,7 +109,7 @@ tiles = f"""
 <div class="tiles">
   <div class="tile ok"><div class="k">Established</div><div class="v">{b['established']}</div><div class="d">Polymath8b, 2014. Checked in Lean by others, given Bombieri&ndash;Vinogradov.</div></div>
   <div class="tile warn"><div class="k">Claimed</div><div class="v">{b['claimed']}</div><div class="d">2026 preprints. Not yet fully verified independently.</div></div>
-  <div class="tile own"><div class="k">Reproduced here</div><div class="v">{b['project']}</div><div class="d">What this project's own certificates and Lean code reach so far.</div></div>
+  <div class="tile own"><div class="k">Reproduced here</div><div class="v">{b['project']}</div><div class="d">{esc(b.get('project_note', "What this project's own certificates and Lean code reach so far."))}</div></div>
   <div class="tile goal"><div class="k">Twin primes</div><div class="v">{b['target']}</div><div class="d">Open. Out of reach of every current method.</div></div>
 </div>"""
 
@@ -278,7 +278,7 @@ window.addEventListener("DOMContentLoaded", function () {{
 
 <section>
   <h2>Our bound, improvement by improvement</h2>
-  <p class="scalenote" style="margin-bottom:8px">The bound reproduced end to end by this project, each time it went down. Logarithmic scale. The twin prime conjecture would be 2, far below this chart.</p>
+  <p class="scalenote" style="margin-bottom:8px">The bound reproduced end to end by this project, each time it went down. Logarithmic scale. The last step, 240, is conditional: it reproduces the variational step of Stadlmann's argument and rests on his equidistribution estimates, which this project has not verified. The twin prime conjecture would be 2, far below this chart.</p>
   {bchart}
 </section>
 

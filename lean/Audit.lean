@@ -10,3 +10,5 @@ import TwinPrimes
 #print axioms TwinPrimes.length_mul_le_sum
 #print axioms TwinPrimes.stadlmann_large_count
 #print axioms TwinPrimes.stadlmann_seven_large
+#print axioms TwinPrimes.stadlmann_coord_le
+#print axioms TwinPrimes.stadlmann_extra_le_three

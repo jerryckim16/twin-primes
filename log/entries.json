@@ -1,6 +1,24 @@
 [
  {
   "date": "2026-11-12",
+  "slot": "Session 6 (12:39 PM CT, started by hand in place of the 3:34 PM slot)",
+  "title": "Variational step of Stadlmann's 240 reproduced exactly: capped ratio 4.0120 > 4 (two independent programs); project bound 240, conditional on his unverified equidistribution estimates; paper v0.6",
+  "did": [
+   "Proved an exact reduction of Stadlmann's capped functionals (Prop. 25): the fibre over u' is [0, min(R, max(g, C_{m+1} - s))], and I_T, J_T are the cap-free values minus three corrections, each a signed inclusion-exclusion sum (m <= 9 large coordinates, j <= 3 extra) of polygon integrals of polynomials in two variables. Implemented in exact rational arithmetic (code/capped_exact.py); checked by Monte Carlo at k = 12 where caps remove 47% of I, and by an exact internal second decomposition of I_T.",
+   "For F = P 1_T with the degree-20 cap-free optimiser P, k J_T/I_T = 4.0120389 > 4 at k = 49 with Stadlmann's parameters (cap-free value 4.0161761). A helper wrote an independent exact evaluator from the definitions only (code/capped_check.py; direct sum over the exact large set, brute-force polytope tests for k = 2..5): I_T and J_T agree exactly as rationals.",
+   "So the variational step of [Sta26] is independently reproduced; H1 <= 240 then follows from his Prop. 1 and his equidistribution theorem, which we have not verified. Project bound 240 (conditional), 246 still unconditional. The session-5 value 3.9597 was an artefact of the Cauchy-Schwarz bound; the caps cost only 0.0041 at degree 20 (losses 9e-7, 9e-5, 1.2e-3, 4.1e-3 at degrees 8, 12, 16, 20).",
+   "Own idea: a ceiling. Every coordinate of T is <= 0.6 (Lean-checked), and the two-zone dual weight certifies the capped quantity <= 4.14; cutting fibres at 0.6 barely moves that weight (4.13785 -> 4.13753), so a sharper ceiling needs a weight that sees large coordinates.",
+   "Lean: stadlmann_coord_le and stadlmann_extra_le_three (Caps.lean). Paper v0.6: Proposition 25, Theorem 26, Corollary 27 (conditional), Remark 28; abstract, status table and programme updated."
+  ],
+  "failed": [
+   "The test function was not optimised on the capped support itself (only the cap-free optimiser was truncated); the margin 0.012 is enough, but the true capped value is not known.",
+   "The cap-aware dual ceiling gives essentially nothing beyond the cap-free ceiling (4.14).",
+   "Stadlmann's new equidistribution estimates (the analytic input) remain unverified; no news search this run (only the 3:34 AM run does it)."
+  ],
+  "next": "Return to the earlier balance: next rung 236 (k = 48, Kintali / Song-Yue) and 212 (k = 45, Charton et al.: test capped_check on their per-m caps against their claimed 4.00438); own ideas about half."
+ },
+ {
+  "date": "2026-11-12",
   "slot": "Session 5 (10:30 AM, started by hand in place of the 11:34 AM slot)",
   "title": "Stadlmann's support: cap-free part certified, capped ratio 3.9597 (240 not yet reproduced); a floor for one-band hybrid supports; paper v0.5",
   "did": [

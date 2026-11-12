@@ -12,7 +12,7 @@ A working paper by **Jerry Kim** (prepared with the assistance of Claude) on sma
 |---|---|---|
 | Established in the literature | 246 | Polymath8b (2014) |
 | Claimed in 2026 preprints | 182 | GPT-6 Astra prompted by R. Sharifi; also 186 (OpenAI), 240, 236, 212 by others |
-| Reproduced by this project | 246 | M_{50,1/25} > 4 certificate on the epsilon-enlarged simplex (`code/cert_M50e25_D27e.json`) + Lean-checked 50-tuple; a reproduction of Polymath8b, not new. Next rung (240, Stadlmann's support): best certified capped ratio so far 3.9597, short of the 4 needed |
+| Reproduced by this project | 240 (conditional); 246 unconditional | 240: the variational step of Stadlmann's argument (arXiv:2608.31126) reproduced exactly — capped ratio k J_T/I_T = 4.0120 > 4 at k = 49 (`code/cap6/P_capfree_D20_u.json`, checked by two independent programs `code/capped_exact.py` and `code/capped_check.py`) + Lean-checked 49-tuple; **conditional on Stadlmann's equidistribution estimates, which this project has not verified**. 246: Polymath8b reproduced (M_{50,1/25} > 4, `code/cert_M50e25_D27e.json`, + Lean-checked 50-tuple), given Bombieri–Vinogradov. Neither is new |
 
 ## How sessions work
 
@@ -29,7 +29,8 @@ Each session reads `STATE.md`, does one reproduction step and tests one idea of 
 | `code/dual_lp.py`, `runs/dual_lp_*.log` | Convex optimisation of dual weights depending on (t_m, S) (Proposition 19; floating point) |
 | `code/cert_M*.json` | Exact rational certificates (coefficient vectors) for M_k > 4. Re-check any of them with `python3 code/verify_cert.py <file>` |
 | `code/dual_eps_cert.py`, `code/check_floor_cert.py`, `code/cert_floor_k29.json` | Theorem 15: the epsilon-enlarged simplex cannot reach k ≤ 29 (certificate, and an independent re-check with a second interval library) |
-| `code/floor_hybrid.py`, `code/cert_floor_hybrid_*.json` | Theorem 25: floor for one-band Stadlmann-type supports (any caps), as a function of the level ω; `--check` re-verifies with a second interval library |
+| `code/floor_hybrid.py`, `code/cert_floor_hybrid_*.json` | Theorem 29: floor for one-band Stadlmann-type supports (any caps), as a function of the level ω; `--check` re-verifies with a second interval library |
+| `code/capped_exact.py`, `code/capped_check.py`, `code/cap6/` | Session 6: EXACT capped functionals I_T, J_T on Stadlmann's support (Proposition 25, Theorem 26). Two independent programs; `python3 code/capped_exact.py code/cap6/P_capfree_D20_u.json --procs 3` (≈45 min) and `python3 code/capped_check.py code/cap6/P_capfree_D20_u.json --procs 4` (≈6 min) both give k J_T/I_T = 4.0120389 > 4. `code/to_ucoords.py` converts certificates to Stadlmann's scaling; tests in `code/capped_check_tests.py`, `code/cap6/mc_test.py` |
 | `code/stadlmann_caps.py` | Stadlmann's support with rough-mass caps: exact cap-violation integrals and a rigorous lower bound from a cap-free certificate |
 | `code/dual_eps.py` | Floating-point exploration of dual weights (Remarks 17 and 18) |
 | `code/admissible.py`, `code/gen_lean.py` | Admissible-tuple search and Lean generation |
