@@ -23,7 +23,8 @@ Regions in the (r_A, rho) plane:
   T2 (Corr2 case c): 0 <= r_A <= a, 0 <= rho <= rc, x = c' - r_A, R = x + (rc - rho), integrand h(R, x).
 All arithmetic is exact (flint fmpq / fmpq_poly).
 
-usage: capped_exact.py P_u.json [--out result.json] [--direct]   (--direct: also compute I_T directly, test)
+usage: capped_exact.py P_u.json [--out result.json] [--direct] [--jonly] [--ckpt pieces.jsonl]   (--direct: also compute I_T directly, test;
+       --jonly: only the J corrections; then "I_T" in the output is the CAP-FREE I and "ratio" is k J_T / I)
 """
 import sys, json, time
 from math import comb, factorial
@@ -365,7 +366,7 @@ class Capped:
         """All (kind, m, j, args) pieces; each value enters with weight (-1)^j C(n, m) C(n - m, j)."""
         k, L, tau, g = self.k, self.L, self.tau, self.g
         out = []
-        for m in range(1, self.MM):                       # I correction: int_V P^2, n = k
+        for m in (range(1, self.MM) if not getattr(self, "jonly", False) else []):   # I correction: int_V P^2, n = k
             alo = max(self.C(m) - m * g, fmpq(0))
             for j in range(0, self.MM):
                 Lam = L - (m + j) * g
@@ -420,6 +421,22 @@ class Capped:
         res = {"Icorr": fmpq(0), "Corr1": fmpq(0), "Corr2b": fmpq(0), "Corr2c": fmpq(0)}
         self.build_H()
         ts = self.tasks()
+        ck = getattr(self, "ckpt", None)          # --ckpt file: exact value of every finished piece (JSON lines)
+        if ck:
+            import os
+            done = {}
+            if os.path.exists(ck):
+                for line in open(ck):
+                    if line.strip():
+                        r = json.loads(line)
+                        done[(r["kind"], r["m"], r["j"])] = r["v"]
+            for t in ts:
+                key = (t[0], t[2], t[3])
+                if key in done:
+                    res[t[0]] += Fq(done[key])
+            log("checkpoint %s: %d of %d pieces already done" % (ck, sum((t[0], t[2], t[3]) in done for t in ts), len(ts)))
+            ts = [t for t in ts if (t[0], t[2], t[3]) not in done]
+            ckf = open(ck, "a")
         ts.sort(key=lambda t: -(t[3] * 10 + (1 if t[2] else 0)))     # expensive (large j) first
         if procs == 1:
             it = map(_run, ts)
@@ -431,6 +448,8 @@ class Capped:
             if isinstance(v, str):
                 v = Fq(v)
             res[kind] += v
+            if ck:
+                ckf.write(json.dumps(dict(kind=kind, m=m, j=j, v=str(v), sec=round(sec))) + "\n"); ckf.flush()
             log("%s m=%d j=%d: %+.6e (%.0f s)" % (kind, m, j, fl(v), sec))
         return res
 
@@ -485,9 +504,11 @@ def main():
     k = c.k
     log("cap-free: I = %.10e, J = %.10e, k J / I = %.10f" % (fl(I), fl(J), fl(k * J / I)))
     _G["c"] = c
+    c.ckpt = sys.argv[sys.argv.index("--ckpt") + 1] if "--ckpt" in sys.argv else None
+    c.jonly = "--jonly" in sys.argv     # skip the I correction (I_T then not computed; ratio uses cap-free I)
     procs = int(sys.argv[sys.argv.index("--procs") + 1]) if "--procs" in sys.argv else 1
     res = c.corrections(log, procs)
-    IT = I - res["Icorr"]
+    IT = I - res["Icorr"] if not c.jonly else I
     JT = J - res["Corr1"] - res["Corr2b"] - res["Corr2c"]
     ratio = k * JT / IT
     out = dict(k=k, I=str(I), J=str(J), Icorr=str(res["Icorr"]), Corr1=str(res["Corr1"]), Corr2b=str(res["Corr2b"]),

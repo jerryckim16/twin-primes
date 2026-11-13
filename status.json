@@ -1,7 +1,7 @@
 {
- "version": "0.9",
+ "version": "0.10",
  "updated": "2026-11-13",
- "session_count": 9,
+ "session_count": 10,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,11 @@
   "project_note": "240 is conditional: rests on the equidistribution estimates of Stadlmann (arXiv:2608.31126, his Prop. 1 and equidistribution theorem), which this project has NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (ePrint 2026/1893, Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5; unverified by us."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Song-Yue's published 236 witness (IACR ePrint 2026/1893, App. A; 1295 rows, degree 25, k = 48, D182 support) recomputed exactly: the cap-free denominator I0 and the capped numerator J_T, normalised to their integer coordinates, EQUAL their reference integers Iref (655 digits) and Jref (715 digits) exactly. Hence 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026596864 in Polymath scaling); with the capped denominator 4.0030988047 and without caps 4.0036348167, both equal to Kintali's claimed values to every printed digit. I0 and J0 by an independent monomial-basis program; J_T by capped_check.py (second program capped_exact.py --jonly: see the log). The authors list the regeneration of Jref as pending; this is a reproduction of the variational step only, the equidistribution input of 236 is Claimed and unverified.",
+   "where": "paper, Proposition sy-exact; code/songyue_convert.py, songyue_I0.py, songyue_J0.py, songyue_compare.py; code/cap6/check_sy236.json, compare_sy236.json"
+  },
   {
    "label": "Computed",
    "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. One program so far, so not yet two-program certified. The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound stays 240 (conditional).",
@@ -189,6 +194,18 @@
  ],
  "ideas": [
   {
+   "idea": "Integrate products of monomial symmetric functions over the simplex by summing over partial matchings of their parts (bitmask DP), so a witness given in the monomial basis can be checked without converting to power sums.",
+   "origin": "own",
+   "status": "works",
+   "note": "Session 10: songyue_I0.py / songyue_J0.py reproduce Song-Yue's Iref exactly in 25 s and the cap-free J0 in 33 s; an independent check of the power-sum route."
+  },
+  {
+   "idea": "Read the step of [Sta26, Lemma 5] that Song-Yue (Remark 4.23) say lacks a hypothesis.",
+   "origin": "exploration",
+   "status": "partial",
+   "note": "Session 10: confirmed against arXiv v1 that the gamma in (1/2, 1/2+2omega+eps] step applies Lemma 3 with alpha as the short factor without a Siegel-Walfisz hypothesis on alpha; whether the alphas that occur satisfy it (a repair) is not checked."
+  },
+  {
    "idea": "Dilation identity M_k(L,tau) = 4 A1 M_{k, eps/A1} plus the two-zone dual weight, to bound the one-band hybrid supports of 2026 as a function of the level omega.",
    "origin": "own",
    "status": "works",
@@ -308,5 +325,8 @@
    "status": "works",
    "note": "Exact agreement at k = 45 (Lemma 9.1 caps) with capped_check.py: the two degree-2 forms agree with failure probability < 2^-31 each."
   }
- ]
+ ],
+ "phase": "A",
+ "papers": [],
+ "last_review": null
 }
