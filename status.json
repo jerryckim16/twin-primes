@@ -1,16 +1,26 @@
 {
- "version": "0.10",
+ "version": "0.11",
  "updated": "2026-11-13",
- "session_count": 10,
+ "session_count": 12,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
   "claimed": 182,
   "established": 246,
-  "project": 240,
-  "project_note": "240 is conditional: rests on the equidistribution estimates of Stadlmann (arXiv:2608.31126, his Prop. 1 and equidistribution theorem), which this project has NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (ePrint 2026/1893, Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5; unverified by us."
+  "project": 236,
+  "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked)."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Song-Yue's 236 witness: the capped numerator J_T computed by a SECOND independent exact program (capped_exact.py --jonly, cap-free minus 126 inclusion-exclusion corrections, ~32 core-hours) equals capped_check.py's J_T exactly, hence (99!)^2 (26!)^2 10^196 5^150 521^50 J_T = Jref; its cap-free I, J equal the monomial-basis I0, J0. Criterion 48 J_T/I0 = 1.000664921591 > 2001/2000. Variational step of 236 reproduced; H1 <= 236 then follows from Song-Yue's Theorem 4.33 + Theorem 4.18 (equidistribution), which we have NOT verified.",
+   "where": "paper, Proposition sy-exact and Corollary cor:236 (v0.11)"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "The 40-tuple printed in OpenAI's 186 preprint (display 1.3) is admissible of diameter 186 (boundedGaps_186_of_DHL_40', Session 11).",
+   "where": "paper, Remark oai186"
+  },
   {
    "label": "Computed",
    "text": "Song-Yue's published 236 witness (IACR ePrint 2026/1893, App. A; 1295 rows, degree 25, k = 48, D182 support) recomputed exactly: the cap-free denominator I0 and the capped numerator J_T, normalised to their integer coordinates, EQUAL their reference integers Iref (655 digits) and Jref (715 digits) exactly. Hence 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026596864 in Polymath scaling); with the capped denominator 4.0030988047 and without caps 4.0036348167, both equal to Kintali's claimed values to every printed digit. I0 and J0 by an independent monomial-basis program; J_T by capped_check.py (second program capped_exact.py --jonly: see the log). The authors list the regeneration of Jref as pending; this is a reproduction of the variational step only, the equidistribution input of 236 is Claimed and unverified.",
@@ -193,6 +203,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Skip the thin inclusion-exclusion pieces (j = 3 extra coordinates above g) with a rigorous a priori bound (volume of the thin region times a sup bound for the integrand) when only the sign of the criterion is needed, not exact equality.",
+   "origin": "own",
+   "status": "open",
+   "note": "Session 12: on the Song-Yue witness the j = 3 pieces are at most 1.0e-24 J in absolute value but take most of the 32 core-hours; a bound would cut the second program for later rungs to a few hours. Not yet proved."
+  },
+  {
+   "idea": "Toy capped problem at k = 3 with per-m caps (caps on single coordinates and on pair sums): does the cap pattern explain the 31% regain at k = 45?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 12: pair caps give a SMALLER regain (0.04-0.085) than single caps (<= 0.13); mixing never exceeds ~13%. The cap pattern alone does not explain k = 45 (notes/explorations.md)."
+  },
   {
    "idea": "Integrate products of monomial symmetric functions over the simplex by summing over partial matchings of their parts (bitmask DP), so a witness given in the monomial basis can be checked without converting to power sums.",
    "origin": "own",

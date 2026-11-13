@@ -1,0 +1,10 @@
+{
+ "J_T_equal": true,
+ "J_T_exact_float": 3.1339194935837815e+86,
+ "J_T_check_float": 3.1339194935837815e+86,
+ "ratio_48JT_over_I0_polymath": "4.0026596864",
+ "ratio_48JT_over_I0_stadlmann": "1.000664921591",
+ "criterion_gt_2001_2000": true,
+ "ratio_with_check_I_T": "4.0030988047",
+ "I_T_over_I0": "0.999890305384"
+}

@@ -59,7 +59,10 @@ function of degree~$22$ gives $4.0061>4$ (one exact program so far), and
 for the published witness of Song and Yue (same support) we recompute their
 capped numerator exactly: it equals their reference integer digit for digit,
 as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
-holds (the analytic input of $236$ is not verified by us); and
+holds; since version~0.11 this is confirmed by a second, independent exact
+program, so the variational step of $H_1\le236$ is reproduced (its analytic
+input is not verified by us, and the project's bound $236$ is conditional on
+it); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -96,7 +99,7 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 600 & 105 & Maynard \cite{May15} & \lbl{Literature}\\
 246 & 50 & Polymath8b \cite{Pol14b} & \lbl{Literature}\\
 240 & 49$^{\ast}$ & Stadlmann \cite{Sta26} & \lbl{Claimed}$^{\dagger}$\\
-236 & 48 & Kintali \cite{Kin26}; Song--Yue \cite{SY26} & \lbl{Claimed}\\
+236 & 48 & Kintali \cite{Kin26}; Song--Yue \cite{SY26} & \lbl{Claimed}$^{\ddagger}$\\
 212 & 45 & Charton et al.\ \cite{Cha26} & \lbl{Claimed}\\
 186 & 40 & OpenAI \cite{OAI26} & \lbl{Claimed}\\
 182 & 39 & GPT-6 Astra, prompted by Sharifi \cite{Sha26} & \lbl{Claimed}\\
@@ -107,7 +110,8 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 \end{tabular}
 \end{center}
 \noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
-$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.}
+$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.
+$^{\ddagger}$ Its variational step is reproduced here (Corollary~\ref{cor:236}); its equidistribution input is not verified by us.}
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
@@ -132,9 +136,11 @@ November. On the date of this version we found no report of complete
 independent verification of any of the 2026 claims and no claimed bound below
 $182$. We therefore keep three numbers apart throughout: \emph{established}
 ($246$), \emph{claimed} ($182$), and \emph{reproduced by this project}:
-$246$ unconditionally, and since version~0.6 also $240$, conditionally on
+$246$ unconditionally; since version~0.6 also $240$, conditionally on
 the equidistribution estimates of \cite{Sta26}, which we have not verified
-(Corollary~\ref{cor:240}).
+(Corollary~\ref{cor:240}); and since version~0.11 also $236$, conditionally
+on the equidistribution theorem of \cite{SY26} (Corollary~\ref{cor:236}),
+which we have not verified either.
 
 \subsection*{Why \texorpdfstring{$2$}{2} is a different problem}
 Under the generalised Elliott--Halberstam conjecture the sieve gives $H_1\le6$,
@@ -1442,7 +1448,7 @@ polynomial in $L-P_1$ and the even power sums $P_2,\dots,P_{24}$ ($1311$
 terms, degree $25$; \texttt{code/songyue\_convert.py}, checked exactly at
 random rational points of $\mathbf{R}^{48}$ by \texttt{code/songyue\_pointcheck.py}).
 
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic; the capped numerator by one program so far]\label{prop:sy-exact}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic; the capped numerator by two independent programs]\label{prop:sy-exact}
 For the witness $P_U$ of \cite{SY26} and the support $T$ above:
 \begin{enumerate}
 \item $(98!)^2\,10^{192}\,5^{150}\,521^{50}\,I_0=I_{\mathrm{ref}}$ exactly;
@@ -1472,12 +1478,48 @@ comparison \texttt{code/songyue\_compare.py}, output
 with the capped and cap-free values claimed in \cite{Kin26} to every printed
 digit.
 \end{sloppypar}
+\begin{sloppypar}
+\emph{Second program (version 0.11).} \texttt{code/capped\_exact.py}
+(Proposition~\ref{prop:exact}: cap-free value minus the correction integrals
+$\mathrm{Corr}_1$, $\mathrm{Corr}_2$, here $126$ inclusion--exclusion pieces
+with $m\le13$, $j\le3$, each an exact rational, checkpointed piece by piece)
+was run on the same converted polynomial with the option \texttt{--jonly}
+(numerator only; about $32$ core-hours, resumed from a checkpoint of five pieces). Its $J_T$ equals the $J_T$ of
+\texttt{capped\_check.py} as an exact rational, hence also
+$(99!)^2(26!)^2\,10^{196}\,5^{150}\,521^{50}\,J_T=J_{\mathrm{ref}}$
+(\texttt{code/songyue\_compare2.py}, outputs
+\texttt{code/cap6/compare2\_sy236.json}, \texttt{code/cap6/compare\_sy236\_exact.json});
+its cap-free $I$ and $J$ equal the monomial-basis values $I_0$, $J_0$ of
+\texttt{songyue\_I0.py} and \texttt{songyue\_J0.py} exactly. The two
+programs for $J_T$ share only the input file: one sums over the exact large
+set, the other subtracts corrections from the cap-free value. The
+corrections are small: $\mathrm{Corr}_1/J=2.3\cdot10^{-6}$,
+$\mathrm{Corr}_{2}/J=2.4\cdot10^{-4}$, and the pieces with $j=3$ further
+coordinates above $g$ are below $10^{-23}J$ in absolute value although they
+take most of the running time (\texttt{runs/exact\_sy236\_jonly.log}).
+\end{sloppypar}
 So the capped numerator of \cite{SY26}, whose fresh regeneration the authors
-list as pending, is reproduced exactly by an independent implementation, and
+list as pending, is reproduced exactly by two independent implementations, and
 the variational criterion of both $236$ preprints holds for their published
 witness. This is a statement about the variational step only. The
 equidistribution input (\cite[Theorem~4.18]{SY26}; Stadlmann's estimates as
 amended in \cite{Kin26}) is \lbl{Claimed} and not verified by us.
+
+\begin{corollary}[conditional; the analytic input is \lbl{Claimed}]\label{cor:236}
+The variational step of \cite{SY26} is independently reproduced: the
+criterion $48J/I_0>\frac{2001}{2000}$ of \cite[Prop.~4.21]{SY26} holds for
+their witness, support and parameters at $k=48$, by two independent exact
+programs (Proposition~\ref{prop:sy-exact}). Together with the
+\lbl{Lean-checked} admissible $48$-tuple of diameter $236$
+(\texttt{boundedGaps\_236\_of\_DHL\_48}), $H_1\le236$ then follows from
+\cite[Theorem~4.33]{SY26} and their equidistribution theorem
+\cite[Theorem~4.18]{SY26}, which we have not verified.
+\end{corollary}
+This is a reproduction of part of a claimed result, not a new bound. The
+project's reproduced bound becomes $236$ with exactly this caveat. The
+witness is theirs; our own degree-$22$ vector on the same support
+(Proposition~\ref{prop:kin-capped}, $4.0061$) has so far been evaluated by one
+program only.
 
 \begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature} reading, not a result]\label{rem:sta-lemma5}
 Song and Yue \cite[Remark~4.23]{SY26} say that one step in the proof of
@@ -1617,9 +1659,10 @@ our $846$-dimensional space reaches $3.99$ (Proposition~\ref{prop:cha-ceiling});
 so the draft's value must belong to its Table~3 caps. For $236$ ($k=48$) the variational criterion of \cite{Kin26} holds with
 our own degree-$22$ vector (Proposition~\ref{prop:kin-capped}), and the
 capped numerator of the published witness of \cite{SY26} is reproduced
-exactly, integer for integer (Proposition~\ref{prop:sy-exact}); a second
-exact program for the capped numerator is the remaining check, and the
-analytic input remains \lbl{Claimed}. Then
+exactly, integer for integer, by two independent programs
+(Proposition~\ref{prop:sy-exact}), so the project's bound is $236$
+conditionally (Corollary~\ref{cor:236}); the analytic input remains
+\lbl{Claimed}. Then
 $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
