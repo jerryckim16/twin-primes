@@ -388,13 +388,16 @@ def gram(pb, WI, WJ, basis_terms, PREC, log=print):
     return GI, GJint, LQ, colabs
 
 
+PD_SPLIT = (1, 2)   # block split ratio of is_pd (numerator, denominator)
+
+
 def is_pd(M):
     """rigorous: True only if the symmetric ball matrix M is certainly positive definite
     (recursive Schur complements in ball arithmetic: M > 0 iff M11 > 0 and M22 - M21 M11^{-1} M12 > 0)."""
     n = M.nrows()
     if n == 1:
         return M[0, 0] > 0
-    h = n // 2
+    h = max(1, min(n - 1, n * PD_SPLIT[0] // PD_SPLIT[1]))
     M11 = arb_mat(h, h, [M[i, j] for i in range(h) for j in range(h)])
     if not is_pd(M11):
         return False
@@ -420,6 +423,9 @@ def main():
     ap.add_argument("--save", help="pickle the exact weights wI, wJ here")
     ap.add_argument("--load", help="load exact weights instead of running the adjoint")
     ap.add_argument("--ceiling", type=str, default="", help="comma-separated sigmas: certify sigma*GI - k*GJ > 0")
+    ap.add_argument("--split", type=str, default="1/2", help="block split ratio for the positive-definiteness test")
+    ap.add_argument("--gramcheck", action="store_true", help="check that the ball Gram forms contain the exact I_T, J_T of the input vector, then stop")
+    ap.add_argument("--maxit", type=int, default=600)
     a = ap.parse_args()
     log = lambda *x: print(*x, flush=True)
     data = json.load(open(a.pjson))
@@ -462,16 +468,24 @@ def main():
     c0 = arb_mat(n, 1, [toq(x) for x in data["coeffs"]])
     r0 = ((c0.transpose() * B * c0)[0, 0] / (c0.transpose() * A * c0)[0, 0]).mid()
     log("Gram check: ratio of input vector from Gram = %s" % r0.str(15))
+    global PD_SPLIT
+    PD_SPLIT = tuple(map(int, a.split.split("/")))
+    if a.gramcheck or a.ceiling:
+        Brig = arb_mat(n, n, [arb(GJint[i][j], colabs[i] * colabs[j] + 1) for i in range(n) for j in range(n)]) * scale * pb.k
+    if a.gramcheck:
+        vI = (c0.transpose() * A * c0)[0, 0]; vJ = (c0.transpose() * Brig * c0)[0, 0] / pb.k
+        log("GRAMCHECK: ball c^T G_I c = %s contains exact I_T: %s" % (vI.str(20), vI.contains(arb(IT))))
+        log("GRAMCHECK: ball c^T G_J c = %s contains exact J_T: %s" % (vJ.str(20), vJ.contains(arb(JT))))
+        return
     if a.ceiling:
         # rigorous: B_true = k GJ_true, |GJint/(LQ^2 2^P) - GJ_true|[t1,t2] <= colabs[t1] colabs[t2] / (LQ^2 2^P)
-        Brig = arb_mat(n, n, [arb(GJint[i][j], colabs[i] * colabs[j] + 1) for i in range(n) for j in range(n)]) * scale * pb.k
         for sg in a.ceiling.split(","):
             ok = is_pd(A * arb(fmpq(*map(int, sg.split("/")))) - Brig)
             log("CEILING sigma=%s: sigma*I_T - k*J_T positive definite on the whole test space: %s" % (sg, ok))
     C = (B - A * arb(a.sigma)).solve(A, algorithm="approx").mid()
     v = c0
     lam = None
-    for it in range(600):
+    for it in range(a.maxit):
         x = (C * v).mid()
         nrm = max(abs(x[i, 0].mid()) for i in range(n))
         v = x * (1 / nrm)
