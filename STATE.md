@@ -3,6 +3,12 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## NEW 13 Nov, 11:30 PM CT (coordination session): Song-Yue's 236 paper obtained -- top priority for rung 236
+- Read `notes/sources-236-song-yue.md` first. Its support is the same D182 support as Kintali's. The full 1295-row witness (degree 25) is in `code/cap6/songyue236_witness.json` and their reference integers are in `code/cap6/songyue236_appC.json`.
+- Their criterion uses the CAP-FREE denominator: 48 J_T / I0 > 2001/2000, with reference ratio 1.00066492. So only the cap-free I0 and the capped numerator J are needed.
+- The authors say fresh regeneration of the capped numerator is still PENDING. Recomputing J exactly and matching Jref is the next concrete step on 236 (see §6 of the note).
+- Their Remark 4.23 claims a missing hypothesis in the proof of [Sta26, Lemma 5]. We have not checked it; add it to the status table as an unverified possible gap in the analytic input for 240.
+
 ## Session 8 (bonus run, 5:51 PM CT, 2026-11-12; the trigger called it Session 7) -- additions
 - code/capped_gram.py: exact reverse-mode weights of capped_check.py -> Gram matrices G_I (exact), G_J (fixed point, explicit error bound); options --check (exact self-test vs a capped_check result), --save/--load (pickle of weights), --out (top eigenvector on T, written in u-format), --ceiling s1,s2 (rigorous: sigma G_I - k G_J positive definite by recursive Schur complements in arb), env GRAM_CHUNKS=n (n chunks per worker; bounds worker memory).
   Self-test passed exactly at k = 12 and k = 49 (D20). Memory: workers grow to ~5 GB at k = 45 (rational denominators accumulate); with other jobs running this OOM-killed two runs. Fix next: put each group's gradients over a common denominator / reduce before accumulating.
