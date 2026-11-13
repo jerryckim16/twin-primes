@@ -1,0 +1,16 @@
+{
+ "Iref_equals_98fact2_Istar0": true,
+ "Jref_equals_ours": true,
+ "Jours_over_Jref": "1.00000000000000000000",
+ "Jours_minus_Jref_rel": "0.000000e+00",
+ "JrefOurs_is_integer": true,
+ "ratio_capped_I_T_stadlmann": "1.000774701187",
+ "ratio_capped_I_T_polymath": "4.0030988047",
+ "ratio_capfree_denominator_stadlmann": "1.000664921591",
+ "ratio_capfree_denominator_polymath": "4.0026596864",
+ "criterion_48J_over_I0_gt_2001_2000": true,
+ "paper_Nref_over_Dref": "1.000664921591",
+ "ratio_cap_free_both_polymath": "4.0036348167",
+ "I_T_over_I0": "0.999890305384",
+ "J_T_over_J0": "0.999756438740"
+}
