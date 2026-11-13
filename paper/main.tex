@@ -1497,6 +1497,32 @@ concern only the variational step and are unaffected either way. The
 \emph{bounds} $240$ and $236$ depend on this input.
 \end{remark}
 
+\begin{remark}[the next rung, $186$; \lbl{Literature} reading and one \lbl{Lean-checked} fact]\label{rem:oai186}
+We read \cite{OAI26} and its numerical companion (the file
+\texttt{short\_gaps\_numerics.pdf} of the repository \texttt{openai/PrimeGaps186}) in version~0.11.
+Their criterion is not a capped simplex ratio of the kind treated above.
+The sieve has one outer sum and, for each coordinate, two nested inner sums,
+and the criterion \cite[Theorem~4.5]{OAI26} is a ``signed minorant''
+inequality. It involves $I=\|F\|^2$, the inner masses
+$J_{0,i}$ and $J_{+,i}$, and a residual $E_{0,i}$ weighted by the negative
+part of Stadlmann's prime minorant, at $k=40$.
+The test function lives on ``fragment configurations'': each coordinate carries
+a Poisson process with intensity $dv/v$, so coordinate totals have Dickman
+densities. It is a $77$-coefficient rational step function on a grid of
+$98304$ cells per coordinate. Their Lemma~2.5 states
+$\rho^*J^-/I^+>\frac{500103}{500000}$ and a loss bound
+$L^+/I^-\le 696075110\cdot10^{-12}$ (from $97$ components). We checked only the
+final rational arithmetic of their (2.34)--(2.35) (exact; it holds as printed),
+not any integral. The $40$-tuple of \cite[(1.3)]{OAI26} is admissible of diameter
+$186$ (\lbl{Lean-checked}: \texttt{boundedGaps\_186\_of\_DHL\_40'}; the project
+already had another such tuple). Reproducing the variational step of $186$ therefore
+requires a new evaluator: the fragment-measure forms, and the loss cover for the
+support failures. The pipeline of this paper does not cover it.
+The analytic inputs (a triply densely divisible variant of Stadlmann's
+bilinear estimate, the prime minorant, and the exponential-sum bounds that are
+axioms of their Lean development) remain \lbl{Claimed}.
+\end{remark}
+
 \subsection*{A floor for one-band hybrid supports (our own)}
 Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the
 following extends Theorem~\ref{thm:floor} to every one-band support of
