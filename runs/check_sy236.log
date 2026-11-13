@@ -1,0 +1,4 @@
+index: 8406 multi-indices, 440262 pairs, W=50, parts=[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]
+prepare: 74.8s
+powers: phi^0..14, Zeta_n for n in [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]: 266.9s
+  group r=0 nZ=47 done in 75.4s (elapsed 75.6s)

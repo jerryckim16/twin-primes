@@ -23,7 +23,8 @@ Regions in the (r_A, rho) plane:
   T2 (Corr2 case c): 0 <= r_A <= a, 0 <= rho <= rc, x = c' - r_A, R = x + (rc - rho), integrand h(R, x).
 All arithmetic is exact (flint fmpq / fmpq_poly).
 
-usage: capped_exact.py P_u.json [--out result.json] [--direct]   (--direct: also compute I_T directly, test)
+usage: capped_exact.py P_u.json [--out result.json] [--direct] [--jonly]   (--direct: also compute I_T directly, test;
+       --jonly: only the J corrections; then "I_T" in the output is the CAP-FREE I and "ratio" is k J_T / I)
 """
 import sys, json, time
 from math import comb, factorial
@@ -365,7 +366,7 @@ class Capped:
         """All (kind, m, j, args) pieces; each value enters with weight (-1)^j C(n, m) C(n - m, j)."""
         k, L, tau, g = self.k, self.L, self.tau, self.g
         out = []
-        for m in range(1, self.MM):                       # I correction: int_V P^2, n = k
+        for m in (range(1, self.MM) if not getattr(self, "jonly", False) else []):   # I correction: int_V P^2, n = k
             alo = max(self.C(m) - m * g, fmpq(0))
             for j in range(0, self.MM):
                 Lam = L - (m + j) * g
@@ -485,9 +486,10 @@ def main():
     k = c.k
     log("cap-free: I = %.10e, J = %.10e, k J / I = %.10f" % (fl(I), fl(J), fl(k * J / I)))
     _G["c"] = c
+    c.jonly = "--jonly" in sys.argv     # skip the I correction (I_T then not computed; ratio uses cap-free I)
     procs = int(sys.argv[sys.argv.index("--procs") + 1]) if "--procs" in sys.argv else 1
     res = c.corrections(log, procs)
-    IT = I - res["Icorr"]
+    IT = I - res["Icorr"] if not c.jonly else I
     JT = J - res["Corr1"] - res["Corr2b"] - res["Corr2c"]
     ratio = k * JT / IT
     out = dict(k=k, I=str(I), J=str(J), Icorr=str(res["Icorr"]), Corr1=str(res["Corr1"]), Corr2b=str(res["Corr2b"]),

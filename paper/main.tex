@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.9, 13 November 2026}
+\date{Version 0.10, 13 November 2026}
 
 \begin{document}
 
@@ -103,7 +103,7 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 \end{tabular}
 \end{center}
 \noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
-$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion, and we have not checked it (\lbl{Claimed}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.}
+$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.}
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
