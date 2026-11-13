@@ -3,6 +3,22 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-13, Session 11 -- Toy model of the capped problem: what decides the "regain" fraction? (variational/spectral)
+- Idea: Session 9's registered prediction failed because re-optimising on the capped support regained 31% of the
+  truncation loss at k = 45 (Lemma 9.1 caps) against 9% at k = 49. Is the regain fraction a property of k, of the
+  cap severity, or of the cap pattern? Test in the smallest model where everything is cheap: region
+  T_c = {t >= 0, sum t <= 1, t_i <= c} (one uniform cap, no enlarged support), symmetric polynomials of degree d.
+- Tried: code/explore/toy_capped.py (floating point, Delaunay + collapsed Gauss quadrature, exact for these degrees;
+  sanity check M_2 = 1.3859333, M_3 = 1.646440 as in Polymath8b). Log: runs/explore_toy_capped.log.
+  regain = (opt_T - trunc)/(opt_free - trunc), degrees d = 6, 10 (k = 2) and d = 5, 8 (k = 3) agree to 2 digits:
+  k = 2: c = 0.95 / 0.9 / 0.8 / 0.7 / 0.6 -> 0.045 / 0.069 / 0.088 / 0.089 / 0.080.
+  k = 3: c = 0.95 / 0.9 / 0.8 / 0.7 / 0.6 / 0.5 / 0.45 -> 0.025 / 0.060 / 0.101 / 0.120 / 0.126 / 0.126 / 0.120.
+- Outcome: INCONCLUSIVE. With one uniform cap the regain stays small (<= 13%) and plateaus as the cap tightens,
+  rising slowly with k; this fits k = 49 (9%, uniform cap 0.6 on Stadlmann's support) but not k = 45 (31%), which
+  suggests the large regain there comes from the non-uniform per-m caps of Lemma 9.1 (different caps for m = 1, 2,
+  3+), not from k. Not tested: per-m caps in the toy (needs k >= 3 with caps on sums of pairs) -- the natural next
+  step if this question matters again. Heuristic only; nothing enters a paper.
+
 ## 2026-11-13, Session 10 -- Is Song-Yue's objection to [Sta26, Lemma 5] real? (exponential sums / Type I-II area)
 - Idea: [SY26, Remark 4.23] says the large-gamma step of the proof of [Sta26, Lemma 5] (Baker-Irving Type I)
   applies the Type IIa lemma with the factors swapped, although Type IIa needs the shorter factor to be
