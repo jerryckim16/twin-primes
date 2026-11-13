@@ -1,0 +1,69 @@
+{
+ "schema_version": 1,
+ "manuscript_sha256": "a2841e73818b3a7bdcd52ea0635a642553c1a04838fe33d81029320dd5ed0bc0",
+ "contract_sha256": "1724a27967dc2db3a1831b9428f41013d10f745963fb978e0d1bf4849c2d116d",
+ "coverage": [
+  {
+   "lanes": [
+    "correctness",
+    "adversarial"
+   ],
+   "scope": "all units",
+   "units": [
+    "sha256:e14b7b1807b8bb71dfbafce9e67ee9600d4530a6f327c230054c935bb271de83:1",
+    "sha256:048e9d1c9a0da7ab0608b7ff25073061ec53cd606f7f3237e16259dd859b046e:1",
+    "sha256:f7b372290e4ba59841b9c3dc95834d2a2ca53ad7005dc3f935a987784f7ebec0:1",
+    "sha256:7dfdcf5f1ef23405db2092d4da6cbc8e95b8eaa0ba422f534b0735fe4f881f7c:1",
+    "sha256:9ecf57f594bff3760e13366c8fed449f65f77501bd40c4f846d2ccfbcbe2fea5:1",
+    "sha256:036ec9dc35d5fd4ec3344e3863b84529d32b80bba69937bd812e7154a8bb15aa:1",
+    "sha256:2397709bbbc73a3549ce41125940c6e610088265fc9e1add4c2db7973a702617:1",
+    "sha256:b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9:1"
+   ],
+   "executor": "isolated general-purpose subagent",
+   "method": "read manuscript; rederived lem:egf and prop:fibre; checked numbers against code/cap6 result files on origin/main and origin/claude/zen-curie-qciknl; reran songyue_compare.py; python exact checks; Lean not run; long computations not rerun",
+   "status": "complete",
+   "model_assignment": {
+    "assignment_source": null,
+    "requested_model": null,
+    "requested_reasoning": null,
+    "actual_model": null,
+    "actual_reasoning": null,
+    "fallback_reason": "no model preference; host default inherited"
+   }
+  },
+  {
+   "lanes": [
+    "claims",
+    "notation",
+    "exposition"
+   ],
+   "scope": "whole manuscript",
+   "units": [
+    "sha256:e14b7b1807b8bb71dfbafce9e67ee9600d4530a6f327c230054c935bb271de83:1",
+    "sha256:048e9d1c9a0da7ab0608b7ff25073061ec53cd606f7f3237e16259dd859b046e:1",
+    "sha256:f7b372290e4ba59841b9c3dc95834d2a2ca53ad7005dc3f935a987784f7ebec0:1",
+    "sha256:7dfdcf5f1ef23405db2092d4da6cbc8e95b8eaa0ba422f534b0735fe4f881f7c:1",
+    "sha256:9ecf57f594bff3760e13366c8fed449f65f77501bd40c4f846d2ccfbcbe2fea5:1",
+    "sha256:036ec9dc35d5fd4ec3344e3863b84529d32b80bba69937bd812e7154a8bb15aa:1",
+    "sha256:2397709bbbc73a3549ce41125940c6e610088265fc9e1add4c2db7973a702617:1",
+    "sha256:b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9:1"
+   ],
+   "executor": "isolated general-purpose subagent",
+   "method": "text review; context from repo notes; no computations; no external literature check",
+   "status": "complete",
+   "model_assignment": {
+    "assignment_source": null,
+    "requested_model": null,
+    "requested_reasoning": null,
+    "actual_model": null,
+    "actual_reasoning": null,
+    "fallback_reason": "no model preference; host default inherited"
+   }
+  }
+ ],
+ "raw_files": [
+  "raw-correctness.json",
+  "raw-claims-notation-exposition.json"
+ ],
+ "issues_note": "raw issues are kept in the two raw files"
+}

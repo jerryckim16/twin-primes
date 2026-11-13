@@ -1,0 +1,38 @@
+\section{Method}
+
+\subsection*{Two independent exact evaluators}
+Given a polynomial $P$ with rational coefficients (we use products of
+$(L-P_1)^a$ and even power sums), both programs return $I_T(P\,1_T)$ and
+$J_T(P\,1_T)$ as exact rationals.
+\begin{enumerate}
+\item \texttt{capped\_exact.py} computes the cap-free values with
+Lemma~\ref{lem:egf} and subtracts the corrections of
+Proposition~\ref{prop:fibre}, piece by piece.
+\item \texttt{capped\_check.py} was written separately from the definitions
+only, without access to the first program. It sums directly over the exact
+large set, with exponential-moment generating functions, and has no cap-free
+term.
+\end{enumerate}
+Both were tested independently: a Monte Carlo comparison at $k=12$ with caps
+that remove almost half of $I$ and $J$; exact agreement of
+\texttt{capped\_check.py} with brute-force polytope triangulation and symbolic
+integration for $k=2,\dots,5$; and exact agreement of the two programs on every
+production input reported as ``two programs'' below. A value counts as
+certified when both programs return the same two rationals.
+
+\subsection*{Optimising on the capped support, and ceilings}
+Both functionals are quadratic forms, $I_T=c^\top G_Ic$ and $J_T=c^\top G_Jc$,
+in the coefficients $c$ of $P$. Running the chain of exact linear maps of
+\texttt{capped\_check.py} backwards gives the Gram matrices at about the cost
+of one evaluation (\texttt{capped\_gram.py}; \lbl{Proved here}, elementary).
+We use them in two ways. First, to \emph{find} a good vector (the top
+generalised eigenvector), which is then rounded and re-evaluated exactly by
+the evaluators; only that exact value is stated as a certificate. Second, to
+prove a \emph{ceiling}: if $\sigma G_I-kG_J$ is positive definite, no $P$ in
+the space reaches the ratio $\sigma$. Positive definiteness is certified by
+recursive Schur complements in ball arithmetic, with the entrywise error of
+$G_J$ included in the balls. The weights behind $G_I$ and $G_J$ were checked
+against \texttt{capped\_check.py} exactly at a uniformly random integer
+vector, which by the Schwartz--Zippel lemma rules out a discrepancy between
+the two quadratic forms except with probability below $2^{-31}$ for each.
+
