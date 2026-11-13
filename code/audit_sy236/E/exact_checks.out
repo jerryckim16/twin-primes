@@ -1,0 +1,38 @@
+PASS U=521/2000
+PASS L=491/2000
+PASS L+U=253/500 (modulus level)
+PASS 2U<1 (Prop 4.31 Selberg range)   [521/1000]
+PASS 10*delta<B<11*delta (r<=10)
+PASS 253/500+1/3=1259/1500<1
+PASS 1/2 < 1259/1500 (X^{1/2} term dominated)
+PASS 3999/10000+253/500=9059/10000<1
+PASS 3999/10000-7997/20000=1/20000
+PASS 0.2002-1/5=1/5000
+PASS 2/5-0.3999=1/10000
+PASS 0.6001-3/5=1/10000
+PASS 11/25 between 7997/20000 and 1/2
+PASS Mobius atom scale 1/10 < 0.2002
+PASS tail exponent = Bc+2-2r   [Bc - 2*r + 2]
+PASS 19/20<1
+PASS v=0: 2^(v+1)<=r=2 and <=m=2
+PASS v=0.3: 2^(v+1)<=r=3 and <=m=4
+PASS v=1: 2^(v+1)<=r=4 and <=m=4
+PASS v=1.5: 2^(v+1)<=r=6 and <=m=8
+PASS v=2: 2^(v+1)<=r=8 and <=m=8
+PASS v=3.7: 2^(v+1)<=r=26 and <=m=32
+PASS v=6: 2^(v+1)<=r=128 and <=m=128
+PASS (C+21)-20 = C+1
+PASS 48<=2^6 (m(q)<=tau^6)
+PASS 47<=2^6
+PASS 141=47*3<=2^8 (pairs <=tau^8)
+PASS 8+6=14 weight
+PASS 253/500=0.506
+PASS lambda<1-sigma0
+PASS L0/lambda>L
+PASS lambda*2001/2000=40017999/40000000
+PASS ...>(1+1/50000)^2
+PASS 48U<16 (sqrt(48U)<4)   [1563/125]
+PASS 1+20e-4e=1+16e>1+e
+PASS 48*delta=546/625<1
+PASS Q182(X;s0/2) level < 253/500
+ALL PASS
