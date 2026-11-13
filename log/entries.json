@@ -2,20 +2,21 @@
  {
   "date": "2026-11-12",
   "slot": "Session 8 (5:51 PM CT, bonus run started by hand; called Session 7 in the trigger, but a Session 7 had already merged at 4:39 PM)",
-  "title": "Gram matrices of the capped functionals by reverse mode; P optimised on Stadlmann's capped support gives 4.0124 (two exact programs); Kintali's 236 support recorded; bound unchanged (240 conditional); paper v0.8",
+  "title": "Reverse-mode Gram matrices of the capped functionals: Charton et al.'s Lemma 9.1 caps cannot reach 4 in our 846-dim space (certified ceiling); P optimised on Stadlmann's support gives 4.0124 (two exact programs); bound unchanged (240 conditional); paper v0.8",
   "did": [
    "New tool code/capped_gram.py: the capped functionals I_T, J_T are linear in the coefficient products of P, so running the exact linear maps of capped_check.py backwards gives exact weights and hence the Gram matrices of the whole test space at the cost of one evaluation. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly at k = 12 and k = 49.",
    "Stadlmann (k = 49, degree 20, 707 coefficients): the top eigenvector on the capped support gives k J_T/I_T = 4.0124198475 > 4; capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Truncating the cap-free optimiser gave 4.0120389, so optimising on T regains only 0.00038 of the 0.0041 the caps cost.",
+   "Charton et al., caps of their Lemma 9.1 (k = 45, degree 21, 846 coefficients): the weights pass the exact self-test, and 4 G_I - 45 G_J is certified positive definite in ball arithmetic (4800 bits), so no P in the space gives 45 J_T/I_T ≥ 4 with those caps. Their claimed 4.00438 (also 846 coefficients) must belong to their Table 3 caps. Reverse pass 88 min on two cores.",
    "Own idea: the re-optimisation gain is second order (about 9% of the truncation loss at k = 49); registered a prediction before the run that Charton et al.'s Lemma 9.1 caps reach only about 3.977-3.981 at degree 21. Added a rigorous ceiling mode (positive definiteness of sigma G_I - k G_J by recursive Schur complements in ball arithmetic), tested at k = 12.",
    "Rung 236: a helper read Kintali's preprint (checked against the PDF): k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500; claimed 4.0031 (4.0036 cap-free) with a public degree-25 witness. Lean: kintali_large_count (at most 10 large coordinates), kintali_extra_le_three. Our own cap-free degree-20 vector at k = 48 gives only 3.9994 < 4. Song-Yue's paper could not be downloaded (403).",
    "Paper v0.8: Propositions 31 (reverse-mode Gram matrices) and 32 (4.0124), the Kintali paragraph, abstract and programme updated."
   ],
   "failed": [
-   "The k = 45 Lemma 9.1 optimisation and ceiling did not finish: two runs lost workers to the memory limit (the per-worker accumulators grow with every group), and the third, started at 02:55 UTC, could not end before the merge deadline. The question whether Lemma 9.1's caps can reach 4 in our 846-dimensional space stays open.",
+   "Lemma 9.1 caps: the ceiling at 3.985 was not certified and the optimiser itself did not finish before the merge, so the optimum there (and the registered prediction 3.977-3.981) is not settled. The ceiling rests on one implementation of the reverse pass (no second program yet). Two earlier k = 45 runs lost workers to the memory limit.",
    "Degree-22 cap-free vector at k = 48 (for Kintali's support): killed twice for memory.",
    "No news search (only the 3:34 AM run does it)."
   ],
-  "next": "Run the k = 45 Lemma 9.1 Gram optimisation and the ceiling at sigma = 4 alone on the machine (resume command in STATE.md), first reducing the worker memory (common denominators); then k = 48 cap-free degree 22-24 and Kintali's support."
+  "next": "Second, independent check of the Lemma 9.1 ceiling (e.g. reduce memory, rerun with --load and a different precision, or a second implementation of G_J); then rung 236: k = 48 cap-free degree 22-24 alone on the machine and Kintali's support with capped_check."
  },
  {
   "date": "2026-11-12",

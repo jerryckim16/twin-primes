@@ -13,6 +13,11 @@
  "results": [
   {
    "label": "Computed",
+   "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 4 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 4 with those caps (ball arithmetic, 4800 bits; weights pass the exact self-test at k = 45). Their claimed 4.00438 (also 846 coefficients) must then belong to their Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation; rests on one implementation of the reverse pass.",
+   "where": "paper, Proposition 33; code/capped_gram.py --ceiling 4/1; runs/gram45_lemma91_D21.log"
+  },
+  {
+   "label": "Computed",
    "text": "Test function optimised on Stadlmann's capped support itself (k = 49, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 > 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.",
    "where": "paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json"
   },
@@ -277,20 +282,20 @@
   {
    "idea": "Use the exact capped evaluator to test which of Charton et al.'s two cap sets (Table 3 vs Lemma 9.1) supports their k = 45 criterion.",
    "origin": "own",
-   "status": "partial",
-   "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: 3.9737 < 4 with the same P (not optimised on T), so the discrepancy matters; open whether optimising on T rescues Lemma 9.1's caps. Session 8: the Gram-matrix optimiser on T exists (capped_gram.py); the k = 45 Lemma 9.1 run did not finish in time (resume command in STATE.md)."
+   "status": "works",
+   "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: no P in our 846-dim space reaches 4 (certified ceiling, session 8), so the draft's 4.00438 must use Table 3's caps."
   },
   {
    "idea": "Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.",
    "origin": "own",
    "status": "works",
-   "note": "Exact self-test passed at k = 12 and 49; k = 49 optimum 4.0124198 (two exact programs). Ceiling mode tested at k = 12 only so far."
+   "note": "Exact self-test passed at k = 12, 49 and 45; k = 49 optimum 4.0124198 (two exact programs); ceiling at sigma = 4 certified for Lemma 9.1 caps at k = 45 (sigma = 3.985 not certified)."
   },
   {
    "idea": "Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.",
    "origin": "own",
    "status": "open",
-   "note": "k = 49: regains 9% (0.00038 of 0.0041). Registered prediction for Charton et al.'s Lemma 9.1 caps at k = 45: optimum about 3.977-3.981 < 4 (notes/session8-prediction.md); not yet tested."
+   "note": "k = 49: regains 9% (0.00038 of 0.0041). Prediction for Lemma 9.1 caps (3.977-3.981) not settled: the ceiling is certified at 4 but not at 3.985, and the optimiser did not finish before the merge."
   }
  ]
 }

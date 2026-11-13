@@ -49,7 +49,9 @@ thereby reproduced, while his new equidistribution estimates, on which $240$
 rests, have not been verified by us; the same computation confirms the
 variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
 of their Table~3 but not, with our test function, for the different caps of
-their Lemma~9.1 ($3.9737$); optimising the test function on Stadlmann's
+their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
+$846$-dimensional space reaches $4$ (a ceiling certified in ball
+arithmetic); optimising the test function on Stadlmann's
 capped support itself, with exact Gram matrices obtained by running the exact
 evaluator backwards, raises his margin only from $4.0120$ to $4.0124$; and
 (iv) a programme of original
@@ -1252,7 +1254,8 @@ The reverse pass costs about one forward evaluation
 polynomial, $\sum\langle\kappa_I,w_I\rangle$ and
 $\sum\langle\kappa_J,w_J\rangle$ equal the $I_T$ and $J_T$ of
 \texttt{capped\_check.py} as rationals (passed at $k=12$, at $k=49$ with the
-polynomial of Theorem~\ref{thm:capped-exact}). $G_I$ is exact; $G_J$ is assembled in fixed point
+polynomial of Theorem~\ref{thm:capped-exact}, and at $k=45$ with the
+polynomial and caps of Proposition~\ref{prop:cha-ceiling}). $G_I$ is exact; $G_J$ is assembled in fixed point
 with an explicit entrywise error bound. The matrices are only used to
 \emph{find} a vector, or, with that error bound, to certify that
 $\sigma G_I-kG_J$ is positive definite (recursive Schur complements in ball
@@ -1282,13 +1285,40 @@ cost (about $9\%$): in this test space the margin of the variational step of
 \cite{Sta26} is $0.0124$, and the caps cost $0.0038$ even for the best
 polynomial of degree~$20$.
 
-For the caps of Lemma~9.1 of \cite{Cha26} ($k=45$) the same optimisation, and
-the ceiling over our whole $846$-dimensional space, did not finish in this
-version (the reverse pass at $k=45$ needs $138$ groups and more memory than
-our workspace allowed alongside other jobs). Before running it we registered a
-prediction (\texttt{notes/session8-prediction.md}): if re-optimisation again
-regains about a tenth of what truncation costs, the optimum there is about
-$3.977$--$3.981<4$ (a heuristic, \lbl{Open}).
+\begin{proposition}[\lbl{Computed}, ball arithmetic; rests on the reverse pass of Proposition~\ref{prop:adjoint}]\label{prop:cha-ceiling}
+Let $T'$ be the support of \cite{Cha26} at $k=45$ with the caps of their
+Lemma~9.1 ($C_1=C_2=31/50$, $C_m=17/25$ for $m\ge3$; $L=53/50$,
+$\tau=249/250$, $g=41/625$), and let $V$ be our $846$-dimensional space
+(even power sums times powers of $L-P_1$, degree $\le21$). Then
+$4\,G_I-45\,G_J$ is positive definite, so
+\[
+\frac{45\,J_{T'}(P\,1_{T'})}{I_{T'}(P\,1_{T'})}<4\qquad\text{for every }0\ne P\in V .
+\]
+\end{proposition}
+\begin{sloppypar}
+The weights were computed exactly and pass the exact self-test against
+\texttt{capped\_check.py} at $k=45$ (input
+\texttt{code/cap6/P\_ax45\_D21\_u\_lemma91caps.json}); $G_J$ was assembled
+with absolute error at most $2^{-5000}$ per weight and the resulting
+entrywise error bound was put into the balls; positive definiteness was
+certified by recursive Schur complements in ball arithmetic at $4800$ bits
+(\texttt{code/capped\_gram.py --ceiling 4/1}, log
+\texttt{runs/gram45\_lemma91\_D21.log}; $88$ minutes for the reverse pass on
+two cores). The same test at $\sigma=3.985$ did not succeed (the top value
+in $V$ may lie above $3.985$, or the balls may be too wide), so our
+registered prediction ($3.977$--$3.981$, \texttt{notes/session8-prediction.md})
+is neither confirmed nor refuted. The statement depends on the correctness of
+the reverse pass beyond its self-tests; a second, independent implementation
+has not been written, so we do not yet call it a two-program result.
+\end{sloppypar}
+
+Since \cite{Cha26} report $846$ coefficients as well, this suggests that the
+caps of Lemma~9.1 cannot give their $4.00438$ in a space of this size, and
+that the value they report belongs to the caps of Table~3, for which our
+truncated vector already gives $4.0027$
+(Proposition~\ref{prop:cha-capped}). We have not checked that their space
+is the same as ours (the dimension is equal), so this is a located
+discrepancy for the authors or an expert reader, not a refutation.
 
 \subsection*{The rung \texorpdfstring{$236$}{236}: the support of Kintali (version 0.8)}
 \cite{Kin26} uses Stadlmann's criterion with one band at $k=48$ and the
@@ -1395,8 +1425,9 @@ equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
 their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
 can move, the discrepancy between their Table~3 and Lemma~9.1 must be
 resolved; version~0.8 has the tool for optimising on the capped support
-(Proposition~\ref{prop:adjoint}), and the run for the caps of Lemma~9.1 is the
-next step. Then $236$ ($k=48$): the support of \cite{Kin26} is recorded and
+(Proposition~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
+our $846$-dimensional space reaches $4$ (Proposition~\ref{prop:cha-ceiling});
+so the draft's value must belong to its Table~3 caps. Then $236$ ($k=48$): the support of \cite{Kin26} is recorded and
 fits our evaluators; we need our own cap-free vector of degree at least $22$
 at $k=48$, or his. Then $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain

@@ -173,10 +173,10 @@ window.addEventListener("DOMContentLoaded", function () {
 
 <section>
   <h2>Research log</h2>
-  <article class="entry"><header><span class="when">2026-11-12 &middot; Session 8 (5:51 PM CT, bonus run started by hand; called Session 7 in the trigger, but a Session 7 had already merged at 4:39 PM)</span><h3>Gram matrices of the capped functionals by reverse mode; P optimised on Stadlmann&#x27;s capped support gives 4.0124 (two exact programs); Kintali&#x27;s 236 support recorded; bound unchanged (240 conditional); paper v0.8</h3></header>
-<ul><li>New tool code/capped_gram.py: the capped functionals I_T, J_T are linear in the coefficient products of P, so running the exact linear maps of capped_check.py backwards gives exact weights and hence the Gram matrices of the whole test space at the cost of one evaluation. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly at $k=12$ and $k=49$.</li><li>Stadlmann ($k=49$, degree 20, 707 coefficients): the top eigenvector on the capped support gives k J_T/I_T = 4.0124198475 &gt; 4; capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Truncating the cap-free optimiser gave 4.0120389, so optimising on T regains only 0.00038 of the 0.0041 the caps cost.</li><li>Own idea: the re-optimisation gain is second order (about 9% of the truncation loss at $k=49$); registered a prediction before the run that Charton et al.&#x27;s Lemma 9.1 caps reach only about 3.977-3.981 at degree 21. Added a rigorous ceiling mode (positive definiteness of sigma G_I - k G_J by recursive Schur complements in ball arithmetic), tested at $k=12$.</li><li>Rung 236: a helper read Kintali&#x27;s preprint (checked against the PDF): $k=48$, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500; claimed 4.0031 (4.0036 cap-free) with a public degree-25 witness. Lean: kintali_large_count (at most 10 large coordinates), kintali_extra_le_three. Our own cap-free degree-20 vector at $k=48$ gives only 3.9994 &lt; 4. Song-Yue&#x27;s paper could not be downloaded (403).</li><li>Paper v0.8: Propositions 31 (reverse-mode Gram matrices) and 32 (4.0124), the Kintali paragraph, abstract and programme updated.</li></ul>
-<p class="sub">Did not work or is blocked</p><ul class="failed"><li>The $k=45$ Lemma 9.1 optimisation and ceiling did not finish: two runs lost workers to the memory limit (the per-worker accumulators grow with every group), and the third, started at 02:55 UTC, could not end before the merge deadline. The question whether Lemma 9.1&#x27;s caps can reach 4 in our 846-dimensional space stays open.</li><li>Degree-22 cap-free vector at $k=48$ (for Kintali&#x27;s support): killed twice for memory.</li><li>No news search (only the 3:34 AM run does it).</li></ul>
-<p class="next"><span class="sub">Next</span> Run the $k=45$ Lemma 9.1 Gram optimisation and the ceiling at sigma = 4 alone on the machine (resume command in STATE.md), first reducing the worker memory (common denominators); then $k=48$ cap-free degree 22-24 and Kintali&#x27;s support.</p>
+  <article class="entry"><header><span class="when">2026-11-12 &middot; Session 8 (5:51 PM CT, bonus run started by hand; called Session 7 in the trigger, but a Session 7 had already merged at 4:39 PM)</span><h3>Reverse-mode Gram matrices of the capped functionals: Charton et al.&#x27;s Lemma 9.1 caps cannot reach 4 in our 846-dim space (certified ceiling); P optimised on Stadlmann&#x27;s support gives 4.0124 (two exact programs); bound unchanged (240 conditional); paper v0.8</h3></header>
+<ul><li>New tool code/capped_gram.py: the capped functionals I_T, J_T are linear in the coefficient products of P, so running the exact linear maps of capped_check.py backwards gives exact weights and hence the Gram matrices of the whole test space at the cost of one evaluation. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly at $k=12$ and $k=49$.</li><li>Stadlmann ($k=49$, degree 20, 707 coefficients): the top eigenvector on the capped support gives k J_T/I_T = 4.0124198475 &gt; 4; capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Truncating the cap-free optimiser gave 4.0120389, so optimising on T regains only 0.00038 of the 0.0041 the caps cost.</li><li>Charton et al., caps of their Lemma 9.1 ($k=45$, degree 21, 846 coefficients): the weights pass the exact self-test, and 4 G_I - 45 G_J is certified positive definite in ball arithmetic (4800 bits), so no P in the space gives 45 J_T/I_T ≥ 4 with those caps. Their claimed 4.00438 (also 846 coefficients) must belong to their Table 3 caps. Reverse pass 88 min on two cores.</li><li>Own idea: the re-optimisation gain is second order (about 9% of the truncation loss at $k=49$); registered a prediction before the run that Charton et al.&#x27;s Lemma 9.1 caps reach only about 3.977-3.981 at degree 21. Added a rigorous ceiling mode (positive definiteness of sigma G_I - k G_J by recursive Schur complements in ball arithmetic), tested at $k=12$.</li><li>Rung 236: a helper read Kintali&#x27;s preprint (checked against the PDF): $k=48$, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500; claimed 4.0031 (4.0036 cap-free) with a public degree-25 witness. Lean: kintali_large_count (at most 10 large coordinates), kintali_extra_le_three. Our own cap-free degree-20 vector at $k=48$ gives only 3.9994 &lt; 4. Song-Yue&#x27;s paper could not be downloaded (403).</li><li>Paper v0.8: Propositions 31 (reverse-mode Gram matrices) and 32 (4.0124), the Kintali paragraph, abstract and programme updated.</li></ul>
+<p class="sub">Did not work or is blocked</p><ul class="failed"><li>Lemma 9.1 caps: the ceiling at 3.985 was not certified and the optimiser itself did not finish before the merge, so the optimum there (and the registered prediction 3.977-3.981) is not settled. The ceiling rests on one implementation of the reverse pass (no second program yet). Two earlier $k=45$ runs lost workers to the memory limit.</li><li>Degree-22 cap-free vector at $k=48$ (for Kintali&#x27;s support): killed twice for memory.</li><li>No news search (only the 3:34 AM run does it).</li></ul>
+<p class="next"><span class="sub">Next</span> Second, independent check of the Lemma 9.1 ceiling (e.g. reduce memory, rerun with --load and a different precision, or a second implementation of G_J); then rung 236: $k=48$ cap-free degree 22-24 alone on the machine and Kintali&#x27;s support with capped_check.</p>
 </article>
 <article class="entry"><header><span class="when">2026-11-12 &middot; Session 7 (4:39 PM CT, bonus run started by hand)</span><h3>Rung 212: Charton et al.&#x27;s capped criterion confirmed at $k=45$ for their Table 3 caps (4.0027 &gt; 4, two programs) but not for their Lemma 9.1 caps (3.9737); bound stays 240 (conditional); paper v0.7</h3></header>
 <ul><li>Extended both exact evaluators to caps that depend on m (code/capped_exact.py, code/capped_check.py, code/to_ucoords.py --params charton) and re-ran the $k=12$ and $k=49$ checks unchanged.</li><li>Charton et al.&#x27;s support at $k=45$ (L = 1.06, tau = 0.996, g = 0.0656, caps 4 B_{1,m} from their Table 3): our degree-21 cap-free optimiser truncated to T gives 45 J_T/I_T = 4.0027351 &gt; 4. capped_check.py (13 min) and capped_exact.py (108 min, 228 pieces with j &lt;= 6) agree exactly on I_T and J_T. Their claimed value with their own F is 4.00438; the caps cost us 0.0095 against the cap-free 4.012272.</li><li>Located discrepancy: with the caps of their Lemma 9.1 (C(1) = C(2) = 31/50, C(s) = 17/25) the same P gives 3.9736870 &lt; 4. So the conclusion depends on which cap set the draft intends; the project bound stays at 240 (conditional on Stadlmann&#x27;s equidistribution estimates) and is not lowered to 212.</li><li>Own idea: ceilings. The two-zone dual weight certifies the capped quantity &lt;= 4.126 at $k=45$ (and &lt;= 4.14 at $k=49$); cutting fibres at the largest coordinate barely changes it.</li><li>Lean: charton_caps_valid (Stadlmann&#x27;s admissibility condition for their caps, by decide), charton_large_count (at most 16 large coordinates), charton_extra_le_six. Paper v0.7: Proposition 29, Remark 30.</li></ul>
@@ -218,7 +218,8 @@ window.addEventListener("DOMContentLoaded", function () {
 <section>
   <h2>Results so far</h2>
   <div class="scroll"><table class="ledger"><tbody>
-  <tr><td><span class="chip ok">Computed</span></td><td>Test function optimised on Stadlmann&#x27;s capped support itself ($k=49$, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 &gt; 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.</td><td class="where">paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json</td></tr>
+  <tr><td><span class="chip ok">Computed</span></td><td>Ceiling for Charton et al.&#x27;s Lemma 9.1 caps ($k=45$, C1 = C2 = 31/50, Cm = 17/25): 4 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 4 with those caps (ball arithmetic, 4800 bits; weights pass the exact self-test at $k=45$). Their claimed 4.00438 (also 846 coefficients) must then belong to their Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation; rests on one implementation of the reverse pass.</td><td class="where">paper, Proposition 33; code/capped_gram.py --ceiling 4/1; runs/gram45_lemma91_D21.log</td></tr>
+<tr><td><span class="chip ok">Computed</span></td><td>Test function optimised on Stadlmann&#x27;s capped support itself ($k=49$, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 &gt; 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.</td><td class="where">paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json</td></tr>
 <tr><td><span class="chip own">Proved here</span></td><td>Gram matrices of the capped functionals by reverse mode: I_T and J_T are linear in the coefficient products of P and of its fibre integral, so running capped_check.py&#x27;s exact linear maps backwards gives exact weights, and G_I[t1,t2] = w_I[F1+F2][a1+a2], G_J = Q^T H Q. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly ($k=12$ and $k=49$). A rigorous ceiling mode certifies sigma G_I - k G_J positive definite by recursive Schur complements in ball arithmetic.</td><td class="where">paper, Proposition 31; code/capped_gram.py</td></tr>
 <tr><td><span class="chip ok">Lean-checked</span></td><td>Kintali&#x27;s support for 236 ($k=48$, g = 91/1250, one cap 1899/2500, L = 1.042 in Polymath scaling): at most ten coordinates exceed g, and every cap-violation piece has at most three further large coordinates.</td><td class="where">lean/TwinPrimes/Caps.lean: kintali_large_count, kintali_extra_le_three</td></tr>
 <tr><td><span class="chip own">Proved here</span></td><td>Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give $\mathrm{DHL}[k,2]$ only if $M_{k}$(4(A$1+\varepsilon$), 4(A1-$\varepsilon$)) &gt; 4. Certified false for every $\varepsilon$: $k\le 29$ (omega = 0), $k\le 28$ (omega = 0.003 and 1/300, Stadlmann&#x27;s level), $k\le 26$ (omega = 0.007, the level of Charton et al.), $k\le 22$ (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.</td><td class="where">paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json</td></tr>
@@ -273,9 +274,9 @@ window.addEventListener("DOMContentLoaded", function () {
 <tr><td><span class="chip warn">open</span></td><td>One explicit bilinear hypothesis that implies twin primes, formalised in Lean.<div class="note">Track B. Start from Bombieri&#x27;s asymptotic sieve and Heath-Brown&#x27;s Siegel-zero theorem.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip ok">works</span></td><td>Compute the capped marginal functional J_T exactly via the fibre formula and cap-free-minus-corrections with inclusion-exclusion over the large set.<div class="note">Capped ratio 4.0120 &gt; 4 at $k=49$ (degree 20), confirmed exactly by an independent program; caps cost only 0.0041 (Prop. 25, Thm 26).</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip own">partial</span></td><td>Cap-aware dual ceiling: cut the fibres of the two-zone dual weight at the maximal coordinate 0.6 of Stadlmann&#x27;s support.<div class="note">Valid ceiling 4.14 (certified), but caps move this weight&#x27;s sup only from 4.13785 to 4.13753: the sup sits where fibres are short. Needs a weight that sees large coordinates.</div></td><td class="where">own</td></tr>
-<tr><td><span class="chip own">partial</span></td><td>Use the exact capped evaluator to test which of Charton et al.&#x27;s two cap sets (Table 3 vs Lemma 9.1) supports their $k=45$ criterion.<div class="note">Table 3 caps: 4.0027 &gt; 4 (two programs). Lemma 9.1 caps: 3.9737 &lt; 4 with the same P (not optimised on T), so the discrepancy matters; open whether optimising on T rescues Lemma 9.1&#x27;s caps. Session 8: the Gram-matrix optimiser on T exists (capped_gram.py); the $k=45$ Lemma 9.1 run did not finish in time (resume command in STATE.md).</div></td><td class="where">own</td></tr>
-<tr><td><span class="chip ok">works</span></td><td>Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.<div class="note">Exact self-test passed at $k=12$ and 49; $k=49$ optimum 4.0124198 (two exact programs). Ceiling mode tested at $k=12$ only so far.</div></td><td class="where">own</td></tr>
-<tr><td><span class="chip warn">open</span></td><td>Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.<div class="note">$k=49$: regains 9% (0.00038 of 0.0041). Registered prediction for Charton et al.&#x27;s Lemma 9.1 caps at $k=45$: optimum about 3.977-3.981 &lt; 4 (notes/session8-prediction.md); not yet tested.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip ok">works</span></td><td>Use the exact capped evaluator to test which of Charton et al.&#x27;s two cap sets (Table 3 vs Lemma 9.1) supports their $k=45$ criterion.<div class="note">Table 3 caps: 4.0027 &gt; 4 (two programs). Lemma 9.1 caps: no P in our 846-dim space reaches 4 (certified ceiling, session 8), so the draft&#x27;s 4.00438 must use Table 3&#x27;s caps.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip ok">works</span></td><td>Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.<div class="note">Exact self-test passed at $k=12,49$ and 45; $k=49$ optimum 4.0124198 (two exact programs); ceiling at sigma = 4 certified for Lemma 9.1 caps at $k=45$ (sigma = 3.985 not certified).</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip warn">open</span></td><td>Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.<div class="note">$k=49$: regains 9% (0.00038 of 0.0041). Prediction for Lemma 9.1 caps (3.977-3.981) not settled: the ceiling is certified at 4 but not at 3.985, and the optimiser did not finish before the merge.</div></td><td class="where">own</td></tr>
   </tbody></table></div>
 </section>
 
@@ -319,10 +320,13 @@ same computation confirms the variational criterion of Charton et al. at
 <span class="math inline">k=45</span> (<span
 class="math inline">4.0027&gt;4</span>) for the caps of their Table 3
 but not, with our test function, for the different caps of their
-Lemma 9.1 (<span class="math inline">3.9737</span>); optimising the test
-function on Stadlmann’s capped support itself, with exact Gram matrices
-obtained by running the exact evaluator backwards, raises his margin
-only from <span class="math inline">4.0120</span> to <span
+Lemma 9.1 (<span class="math inline">3.9737</span>), and with those caps
+no polynomial in our <span class="math inline">846</span>-dimensional
+space reaches <span class="math inline">4</span> (a ceiling certified in
+ball arithmetic); optimising the test function on Stadlmann’s capped
+support itself, with exact Gram matrices obtained by running the exact
+evaluator backwards, raises his margin only from <span
+class="math inline">4.0120</span> to <span
 class="math inline">4.0124</span>; and (iv) a programme of original
 directions that later versions will test. Every statement carries one of
 the labels <span class="smallcaps">Lean-checked</span>, <span
@@ -2651,7 +2655,10 @@ class="math inline">J_T</span> of <code>capped_check.py</code> as
 rationals (passed at <span class="math inline">k=12</span>, at <span
 class="math inline">k=49</span> with the polynomial of Theorem <a
 href="#thm:capped-exact" data-reference-type="ref"
-data-reference="thm:capped-exact">26</a>). <span
+data-reference="thm:capped-exact">26</a>, and at <span
+class="math inline">k=45</span> with the polynomial and caps of
+Proposition <a href="#prop:cha-ceiling" data-reference-type="ref"
+data-reference="prop:cha-ceiling">33</a>). <span
 class="math inline">G_I</span> is exact; <span
 class="math inline">G_J</span> is assembled in fixed point with an
 explicit entrywise error bound. The matrices are only used to
@@ -2697,18 +2704,57 @@ class="math inline">9\%</span>): in this test space the margin of the
 variational step of [18] is <span class="math inline">0.0124</span>, and
 the caps cost <span class="math inline">0.0038</span> even for the best
 polynomial of degree <span class="math inline">20</span>.</p>
-<p>For the caps of Lemma 9.1 of [3] (<span
-class="math inline">k=45</span>) the same optimisation, and the ceiling
-over our whole <span class="math inline">846</span>-dimensional space,
-did not finish in this version (the reverse pass at <span
-class="math inline">k=45</span> needs <span
-class="math inline">138</span> groups and more memory than our workspace
-allowed alongside other jobs). Before running it we registered a
-prediction (<code>notes/session8-prediction.md</code>): if
-re-optimisation again regains about a tenth of what truncation costs,
-the optimum there is about <span class="math inline">3.977</span>–<span
-class="math inline">3.981&lt;4</span> (a heuristic, <span
-class="upright"><span class="smallcaps">Open</span></span>).</p>
+<div id="prop:cha-ceiling" class="proposition">
+<p><strong>Proposition 33</strong> (<span class="upright"><span
+class="smallcaps">Computed</span></span>, ball arithmetic; rests on the
+reverse pass of Proposition <a href="#prop:adjoint"
+data-reference-type="ref" data-reference="prop:adjoint">31</a>). <em>Let
+<span class="math inline">T&#39;</span> be the support of [3] at <span
+class="math inline">k=45</span> with the caps of their Lemma 9.1 (<span
+class="math inline">C_1=C_2=31/50</span>, <span
+class="math inline">C_m=17/25</span> for <span
+class="math inline">m\ge3</span>; <span
+class="math inline">L=53/50</span>, <span
+class="math inline">\tau=249/250</span>, <span
+class="math inline">g=41/625</span>), and let <span
+class="math inline">V</span> be our <span
+class="math inline">846</span>-dimensional space (even power sums times
+powers of <span class="math inline">L-P_1</span>, degree <span
+class="math inline">\le21</span>). Then <span
+class="math inline">4\,G_I-45\,G_J</span> is positive definite, so <div class="scroll eq"><span
+class="math display">\frac{45\,J_{T&#39;}(P\,1_{T&#39;})}{I_{T&#39;}(P\,1_{T&#39;})}&lt;4\qquad\text{for
+every }0\ne P\in V .</span></div></em></p>
+</div>
+<p>The weights were computed exactly and pass the exact self-test
+against <code>capped_check.py</code> at <span
+class="math inline">k=45</span> (input
+<code>code/cap6/P_ax45_D21_u_lemma91caps.json</code>); <span
+class="math inline">G_J</span> was assembled with absolute error at most
+<span class="math inline">2^{-5000}</span> per weight and the resulting
+entrywise error bound was put into the balls; positive definiteness was
+certified by recursive Schur complements in ball arithmetic at <span
+class="math inline">4800</span> bits
+(<code>code/capped_gram.py –ceiling 4/1</code>, log
+<code>runs/gram45_lemma91_D21.log</code>; <span
+class="math inline">88</span> minutes for the reverse pass on two
+cores). The same test at <span class="math inline">\sigma=3.985</span>
+did not succeed (the top value in <span class="math inline">V</span> may
+lie above <span class="math inline">3.985</span>, or the balls may be
+too wide), so our registered prediction (<span
+class="math inline">3.977</span>–<span class="math inline">3.981</span>,
+<code>notes/session8-prediction.md</code>) is neither confirmed nor
+refuted. The statement depends on the correctness of the reverse pass
+beyond its self-tests; a second, independent implementation has not been
+written, so we do not yet call it a two-program result.</p>
+<p>Since [3] report <span class="math inline">846</span> coefficients as
+well, this suggests that the caps of Lemma 9.1 cannot give their <span
+class="math inline">4.00438</span> in a space of this size, and that the
+value they report belongs to the caps of Table 3, for which our
+truncated vector already gives <span class="math inline">4.0027</span>
+(Proposition <a href="#prop:cha-capped" data-reference-type="ref"
+data-reference="prop:cha-capped">29</a>). We have not checked that their
+space is the same as ours (the dimension is equal), so this is a located
+discrepancy for the authors or an expert reader, not a refutation.</p>
 <h2 class="unnumbered"
 id="the-rung-236-the-support-of-kintali-version-0.8">The rung <span
 class="math inline">236</span>: the support of Kintali (version
@@ -2766,7 +2812,7 @@ following extends Theorem <a href="#thm:floor" data-reference-type="ref"
 data-reference="thm:floor">15</a> to every one-band support of
 Stadlmann’s type.</p>
 <div id="thm:hybrid-floor" class="theorem">
-<p><strong>Theorem 33</strong> (<span class="upright"><span
+<p><strong>Theorem 34</strong> (<span class="upright"><span
 class="smallcaps">Proved here</span></span> for the reduction; <span
 class="upright"><span class="smallcaps">Computed</span></span>, interval
 arithmetic, for the table). <em>Let <span
@@ -2875,7 +2921,7 @@ data-reference="thm:floor">15</a>. The certificates are
 (<code>mpmath.iv</code>). ◻</p>
 </div>
 <div class="remark">
-<p><em>Remark 34</em> (how sharp). For each <span
+<p><em>Remark 35</em> (how sharp). For each <span
 class="math inline">\omega</span> in the table the same weight fails at
 the next <span class="math inline">k</span>: the floating-point <span
 class="math inline">\sup W</span> reaches <span
@@ -2921,8 +2967,12 @@ data-reference-type="ref" data-reference="prop:cha-capped">29</a>);
 before the project’s bound can move, the discrepancy between their
 Table 3 and Lemma 9.1 must be resolved; version 0.8 has the tool for
 optimising on the capped support (Proposition <a href="#prop:adjoint"
-data-reference-type="ref" data-reference="prop:adjoint">31</a>), and the
-run for the caps of Lemma 9.1 is the next step. Then <span
+data-reference-type="ref" data-reference="prop:adjoint">31</a>), and for
+the caps of Lemma 9.1 no polynomial in our <span
+class="math inline">846</span>-dimensional space reaches <span
+class="math inline">4</span> (Proposition <a href="#prop:cha-ceiling"
+data-reference-type="ref" data-reference="prop:cha-ceiling">33</a>); so
+the draft’s value must belong to its Table 3 caps. Then <span
 class="math inline">236</span> (<span class="math inline">k=48</span>):
 the support of [8] is recorded and fits our evaluators; we need our own
 cap-free vector of degree at least <span class="math inline">22</span>
@@ -2947,7 +2997,7 @@ class="math inline">\psi_m=\int F\,dt_m/F</span> built from a good
 positive test function <span class="math inline">F</span> is the natural
 candidate). For the one-band hybrid supports of [18, 3], Theorem <a
 href="#thm:hybrid-floor" data-reference-type="ref"
-data-reference="thm:hybrid-floor">33</a> gives the first such bound we
+data-reference="thm:hybrid-floor">34</a> gives the first such bound we
 know of (<span class="math inline">k\ge29</span> at Stadlmann’s level,
 <span class="math inline">k\ge27</span> at that of [3]), still far from
 <span class="math inline">49</span> and <span
@@ -2964,10 +3014,10 @@ class="math inline">39\to38</span> and <span
 class="math inline">38\to37</span> are worth the most.</p></li>
 </ol>
 <div class="problem">
-<p><strong>Problem 35</strong> (<span class="upright"><span
+<p><strong>Problem 36</strong> (<span class="upright"><span
 class="smallcaps">Open</span></span>; partly answered by Theorem <a
 href="#thm:hybrid-floor" data-reference-type="ref"
-data-reference="thm:hybrid-floor">33</a> for one band, without using the
+data-reference="thm:hybrid-floor">34</a> for one band, without using the
 caps). Give a rigorous upper bound for the variational quantity of [18]
 as a function of <span class="math inline">k</span> and of the
 admissible exponents, and deduce the least <span
@@ -2986,7 +3036,7 @@ theorem that Siegel zeros would imply the conjecture [7]; the
 function-field proof of Sawin and Shusterman [16]; and the entropy-based
 results on correlations of multiplicative functions [19].</p>
 <div class="problem">
-<p><strong>Problem 36</strong> (<span class="upright"><span
+<p><strong>Problem 37</strong> (<span class="upright"><span
 class="smallcaps">Open</span></span>, to be made precise in Lean).
 State, as a single explicit hypothesis on bilinear sums over <span
 class="math inline">n(n+2)</span>, the weakest known input that implies
