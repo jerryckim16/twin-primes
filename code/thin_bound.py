@@ -13,7 +13,7 @@ Integrands: Icorr P^2 <= M^2;  Corr1 Q(R)^2 <= (L M)^2;  Corr2 |Q(R)^2 - Q(U)^2|
 where on {u >= 0, |u| <= L}: 0 <= R = L - |u| <= L, 0 <= P_j(u) = sum u_i^j <= |u|^j <= L^j, hence
   |P(u)| <= M := sum_i |c_i| L^(a_i + w(b_i)),   |Q(u', x)| <= x M <= L M  (0 <= x <= R <= L).
 So |piece| <= C(n,m) C(n-m,j) * vol * sup|integrand|.  All arithmetic exact (fractions); output also as floats.
-usage: thin_bound.py P_u.json [--j 3] [--pieces pieces.jsonl] [--volcheck] [--out f.json]
+usage: thin_bound.py P_u.json [--j 3] [--jonly] [--ref capped_exact_result.json] [--pieces pieces.jsonl] [--volcheck] [--out f.json]
   --pieces: compare with the exact values of finished pieces (each |exact| must be <= its bound)
   --volcheck: recompute each region volume with capped_exact.T1 / T2 (integrand 1) and check vol_code <= vol_formula
 """
@@ -60,11 +60,13 @@ def main():
         bnd = comb(n, m) * comb(n - m, j) * vol * sup
         out.append(dict(kind=kind, m=m, j=j, vol=vol, bound=bnd))
         tot[kind] = tot.get(kind, Fr(0)) + bnd
-    I, J = c.capfree() if False else (None, None)
-    # cap-free I, J (exact) for the relative size
-    c.prepare()
-    I, J = c.capfree()
-    I, J = q(I), q(J)
+    # cap-free I, J (exact) for the relative size: from a capped_exact result file (--ref) or recomputed
+    if "--ref" in sys.argv:
+        r = json.load(open(sys.argv[sys.argv.index("--ref") + 1]))
+        I, J = F(r["I"]), F(r["J"])
+    else:
+        c.prepare()
+        I, J = map(q, c.capfree())
     rep = {kd: float(v / (I if kd == "Icorr" else J)) for kd, v in tot.items()}
     print("M = %.6e ; pieces with j = %d: %d" % (float(M), jj, len(out)))
     print("bound / (cap-free I or J) per kind:", {kd: "%.3e" % v for kd, v in rep.items()})
