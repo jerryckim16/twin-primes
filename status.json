@@ -8,9 +8,14 @@
   "claimed": 182,
   "established": 246,
   "project": 240,
-  "project_note": "240 is conditional: rests on the equidistribution estimates of Stadlmann (arXiv:2608.31126, his Prop. 1 and equidistribution theorem), which this project has NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov)."
+  "project_note": "240 is conditional: rests on the equidistribution estimates of Stadlmann (arXiv:2608.31126, his Prop. 1 and equidistribution theorem), which this project has NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (ePrint 2026/1893, Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5; unverified by us."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. One program so far, so not yet two-program certified. The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound stays 240 (conditional).",
+   "where": "paper, Proposition 35; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
+  },
   {
    "label": "Computed",
    "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 3.99 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 3.99 (ball arithmetic; sigma = 4 certified at 5000 and 6500 bits with two block splits, sigma = 3.99 at 6500 bits). The Gram weights reproduce capped_check.py exactly at a random integer vector (Schwartz-Zippel: failure probability < 2^-31). The best P in the space gives 3.98555 (Gram, floating point). So the draft's claimed 4.00438 (also 846 coefficients) must belong to its Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation.",

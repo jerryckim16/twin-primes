@@ -3,6 +3,13 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 9 (11:34 PM CT slot, 2026-11-12/13) -- additions
+- NOTE: the sandbox clock (date) ran about 50 minutes behind real time in sessions 8-9; budget the merge by elapsed time, not by `date`.
+- k = 45 Lemma 9.1 (from the saved weights, `--load`): ceiling re-certified for sigma = 4 at 6500 bits with block split 1/3, and sigma = 3.99 also certified (paper Prop 33 now says < 3.99). Optimum in the 846-dim space 3.98555 (Gram float; vector code/cap6/P_opt45_lemma91_D21r_u.json, not re-certified exactly). The registered prediction 3.977-3.981 FAILED (Remark 34): regain is 31% of the truncation loss at k = 45 vs 9% at k = 49.
+- Schwartz-Zippel check: random integer vector code/cap6/P_rand45_lemma91_u.json (seed 20261113, entries in [-2^31, 2^31]); capped_check gives code/cap6/check_rand45_lemma91.json; weights reproduce both exactly (runs/gram45_rand_selftest.log), and the ball Gram forms contain them (--gramcheck). capped_exact on the same vector was stopped after 138 pieces (~4 h needed on 2 procs). Resume: `python3 code/capped_exact.py code/cap6/P_rand45_lemma91_u.json --procs 4 --out code/cap6/res_rand45_lemma91.json` and compare I_T, J_T with check_rand45_lemma91.json.
+- capped_gram.py: new options --split p/q (PD block split), --gramcheck, --maxit.
+- Rung 236 (Kintali): k = 48 cap-free degree 22 (1041 coeffs, cert_kin48_capfree_D22e.json): M = 3.9589046383, ratio x 253/250 = 4.0064115 > 4 (build 7 min, solve 33 min, ~7.5 GB: run it alone). On Kintali's support (P_kin48_D22r_u.json, 400-bit rounding): capped_check gives 48 J_T/I_T = 4.0060814208 > 4 (check_kin48_D22r.json, 22 min on 4 procs); caps cost 0.00033. Second program capped_exact.py was started and stopped (several hours: first correction piece 9 min on 4 procs). Resume: `python3 code/capped_exact.py code/cap6/P_kin48_D22r_u.json --procs 4 --out code/cap6/res_kin48_D22r.json` and compare I_T, J_T with check_kin48_D22r.json. Project bound NOT lowered (analytic input Claimed).
+- Memory: mk_general at D22 needs ~7.5 GB; capped_gram main at 6500 bits ~10 GB during the PD test. Never run two of these together (four OOM kills in sessions 8-9).
 ## NEW 13 Nov, 11:30 PM CT (coordination session): Song-Yue's 236 paper obtained -- top priority for rung 236
 - Read `notes/sources-236-song-yue.md` first. Its support is the same D182 support as Kintali's. The full 1295-row witness (degree 25) is in `code/cap6/songyue236_witness.json` and their reference integers are in `code/cap6/songyue236_appC.json`.
 - Their criterion uses the CAP-FREE denominator: 48 J_T / I0 > 2001/2000, with reference ratio 1.00066492. So only the cap-free I0 and the capped numerator J are needed.
@@ -40,6 +47,7 @@ Each session works on the claude/... branch its system instructions name (create
   - Lean: stadlmann_coord_le (coordinates <= 600/1000), stadlmann_extra_le_three.
 - The twin prime conjecture itself is OPEN. Sieve methods of this kind stop at 6 even under GEH (parity).
 
+## Paper numbering (v0.9: Prop 33 Lemma 9.1 ceiling < 3.99, Remark 34 failed prediction; hybrid floor Thm 35)
 ## Paper numbering (v0.8: Section 5 adds Prop 31 adjoint Gram, Prop 32 optimised 4.0124; Prop 33 Lemma 9.1 ceiling; hybrid floor is now Thm 34)
 ## Paper numbering (v0.6)
 Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246); Props 8, 10; Lemma 13; Prop 14; Thm 15 floor k<=29; Remarks 16-18; Prop 19; Remarks 20, 21. Section 5: Prop 22 cap-free, Prop 23 cap bound, Prop 24 capped 3.9597 (superseded), Prop 25 exact reduction, Thm 26 capped 4.0120, Cor 27 (240 conditional), Remark 28 ceiling, Thm 29 hybrid floor, Remark 30. Section 6 Programme (label sec:prog).
@@ -55,7 +63,8 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246 -> 240 (session 6, conditional on [Sta26]'s equidistribution input; stated in the "how" field).
 
 ## Next steps (in order) -- the 240 focus is done; back to the earlier balance (reproduction ladder, own ideas about half)
-0. (Session 8) k = 45 Lemma 9.1: ceiling 4 certified; still to do: a second independent check of it and the optimum itself (command above; compare with the registered prediction). Then rung 236: mk_general 48 22/24 --even --eps 15/506 (alone; ~5 GB), to_ucoords --params kintali, capped_check; optionally optimise on T with capped_gram.
+0a. FIRST: rung 236 via Song-Yue's witness (see the NEW coordination block above; same D182 support as our Kintali run, so code/cap6/check_kin48_D22r.json's parameters apply).
+0. (Session 9) k = 45 Lemma 9.1: ceiling 3.99 certified twice, weights checked at a random point against capped_check; remaining: capped_exact at the same random point (resume command above), which also cross-checks capped_check at these caps. Then rung 236 per the Session 9 notes (capped_exact on P_kin48_D22r_u.json if not finished; then optionally optimise on T with capped_gram at k = 48 D22 -- memory: run alone; then 186 (OpenAI, k = 40)). Then rung 236: mk_general 48 22/24 --even --eps 15/506 (alone; ~5 GB), to_ucoords --params kintali, capped_check; optionally optimise on T with capped_gram.
 1. (done in sessions 7-8 except the Lemma 9.1 optimisation) Rung 212 (Charton et al., k = 45): extend the input format for per-m caps (their Table 3, /5000 values) in capped_check.py and capped_exact.py; evaluate our cap-free degree-21 vector (code/cert_ax45_capfree_D21e.json, cap-free 4.012272) on their capped support and compare with their claimed 4.00438. Note their level/parameters need checking against their own equidistribution claims (Claimed).
 2. Rung 236 (k = 48, Kintali; Song-Yue): read the sources (WebFetch arXiv, pdftotext), record the support and parameters in notes/, then the same pipeline.
 3. Optional for 240: optimise P on T itself (Gram matrices of the corrections; capped_check's contraction structure is the faster base) to report the margin; and Stadlmann's own basis B19/B21.
