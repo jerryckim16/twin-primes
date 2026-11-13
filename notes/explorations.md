@@ -3,6 +3,18 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-13, Session 13 -- Primes in translates of the 236-tuple vs Hardy-Littlewood (probabilistic models of primes)
+- Idea: test the probabilistic (Hardy-Littlewood) model directly on the Lean-checked admissible 48-tuple narrow48
+  (diameter 236) that the conditional 236 rests on, and ask whether numerical data could say anything about
+  DHL[48,2] (infinitely many n with at least 2 primes among n + h_i).
+- Tried: code/explore/tuple_counts_hl.py (numpy sieve; HL 2-tuple prediction sum_{i<j} S(h_j - h_i) int dt/(log t log(t+d))).
+  X = 1e6 / 1e7 / 1e8: prime pairs in translates 15612870 / 111570638 / 837030982, ratio to HL 0.99642 / 0.99885 /
+  0.99969; n <= X with >= 2 primes in n + H: 496425 / 4903811 / 48078484 (about 48% of n at X = 1e8).
+- Outcome: DEAD END (as expected). HL fits to 3e-4, which is well known. The data cannot bear on DHL[48,2]: the
+  average number of primes in a translate is about 48/log X, which stays above 1 until X is about e^48 = 7e20, so in
+  any computable range "two primes in a translate" is the typical event, not a rare one; the content of DHL is
+  asymptotic. Not worth repeating with other tuples. Heuristic only.
+
 ## 2026-11-13, Session 12 -- Per-m caps in the toy capped problem: do caps on SUMS cause a large regain? (variational)
 - Idea: Session 11's toy (one uniform cap) left open whether the 31% regain at k = 45 (Lemma 9.1 caps, Session 9)
   comes from the per-m pattern of the caps (separate caps on single coordinates and on sums of several). Smallest
