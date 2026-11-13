@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.10, 13 November 2026}
+\date{Version 0.11, 13 November 2026}
 
 \begin{document}
 
@@ -1517,7 +1517,15 @@ not any integral. The $40$-tuple of \cite[(1.3)]{OAI26} is admissible of diamete
 $186$ (\lbl{Lean-checked}: \texttt{boundedGaps\_186\_of\_DHL\_40'}; the project
 already had another such tuple). Reproducing the variational step of $186$ therefore
 requires a new evaluator: the fragment-measure forms, and the loss cover for the
-support failures. The pipeline of this paper does not cover it.
+support failures. The pipeline of this paper does not cover it. In version~0.11
+we transcribed the forms $I_H$ and $J_{\lambda,H}$ of the companion and its
+table of $77$ coefficients (\texttt{notes/sources-186-forms.md}). Two facts
+shape any reproduction. First, the cell masses of the Dickman densities are
+transcendental, so an independent check can only be an interval computation, not an
+exact rational one. Second, by symmetry everything reduces to one-dimensional
+arrays of length about $10^5$, so the cost is a few thousand long polynomial
+products at a few hundred bits (our estimate). One formula of the companion,
+its layered cap convolution, is not specified completely in the text.
 The analytic inputs (a triply densely divisible variant of Stadlmann's
 bilinear estimate, the prime minorant, and the exponential-sum bounds that are
 axioms of their Lean development) remain \lbl{Claimed}.
