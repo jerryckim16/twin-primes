@@ -15,3 +15,5 @@ import TwinPrimes
 #print axioms TwinPrimes.charton_caps_valid
 #print axioms TwinPrimes.charton_large_count
 #print axioms TwinPrimes.charton_extra_le_six
+#print axioms TwinPrimes.kintali_large_count
+#print axioms TwinPrimes.kintali_extra_le_three

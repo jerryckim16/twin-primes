@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", function () {
   <h1>Twin Prime Notebook</h1>
   <p class="lede">A running record of work on small gaps between primes: a LaTeX paper, a Lean development and exact certificates, updated six times a day.</p>
   <p class="links"><a href="twin-primes-paper.pdf">Paper (PDF)</a> <a href="https://github.com/jerryckim16/twin-primes">Source on GitHub</a> <a href="https://github.com/jerryckim16/twin-primes/commits/main">Every update</a></p>
-  <p class="meta">Paper version 0.7 &middot; updated 2026-11-12 &middot; 7 sessions logged</p>
+  <p class="meta">Paper version 0.8 &middot; updated 2026-11-13 &middot; 8 sessions logged</p>
 </header>
 
 <p class="notice"><strong>No proof of the twin prime conjecture is claimed here.</strong> The conjecture is open, and the sieve methods behind every bound on this page cannot reach 2. Nothing on this page has been peer reviewed.</p>
@@ -173,7 +173,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
 <section>
   <h2>Research log</h2>
-  <article class="entry"><header><span class="when">2026-11-12 &middot; Session 7 (4:39 PM CT, bonus run started by hand)</span><h3>Rung 212: Charton et al.&#x27;s capped criterion confirmed at $k=45$ for their Table 3 caps (4.0027 &gt; 4, two programs) but not for their Lemma 9.1 caps (3.9737); bound stays 240 (conditional); paper v0.7</h3></header>
+  <article class="entry"><header><span class="when">2026-11-12 &middot; Session 8 (5:51 PM CT, bonus run started by hand; called Session 7 in the trigger, but a Session 7 had already merged at 4:39 PM)</span><h3>Reverse-mode Gram matrices of the capped functionals: Charton et al.&#x27;s Lemma 9.1 caps cannot reach 4 in our 846-dim space (certified ceiling); P optimised on Stadlmann&#x27;s support gives 4.0124 (two exact programs); bound unchanged (240 conditional); paper v0.8</h3></header>
+<ul><li>New tool code/capped_gram.py: the capped functionals I_T, J_T are linear in the coefficient products of P, so running the exact linear maps of capped_check.py backwards gives exact weights and hence the Gram matrices of the whole test space at the cost of one evaluation. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly at $k=12$ and $k=49$.</li><li>Stadlmann ($k=49$, degree 20, 707 coefficients): the top eigenvector on the capped support gives k J_T/I_T = 4.0124198475 &gt; 4; capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Truncating the cap-free optimiser gave 4.0120389, so optimising on T regains only 0.00038 of the 0.0041 the caps cost.</li><li>Charton et al., caps of their Lemma 9.1 ($k=45$, degree 21, 846 coefficients): the weights pass the exact self-test, and 4 G_I - 45 G_J is certified positive definite in ball arithmetic (4800 bits), so no P in the space gives 45 J_T/I_T ≥ 4 with those caps. Their claimed 4.00438 (also 846 coefficients) must belong to their Table 3 caps. Reverse pass 88 min on two cores.</li><li>Own idea: the re-optimisation gain is second order (about 9% of the truncation loss at $k=49$); registered a prediction before the run that Charton et al.&#x27;s Lemma 9.1 caps reach only about 3.977-3.981 at degree 21. Added a rigorous ceiling mode (positive definiteness of sigma G_I - k G_J by recursive Schur complements in ball arithmetic), tested at $k=12$.</li><li>Rung 236: a helper read Kintali&#x27;s preprint (checked against the PDF): $k=48$, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500; claimed 4.0031 (4.0036 cap-free) with a public degree-25 witness. Lean: kintali_large_count (at most 10 large coordinates), kintali_extra_le_three. Our own cap-free degree-20 vector at $k=48$ gives only 3.9994 &lt; 4. Song-Yue&#x27;s paper could not be downloaded (403).</li><li>Paper v0.8: Propositions 31 (reverse-mode Gram matrices) and 32 (4.0124), the Kintali paragraph, abstract and programme updated.</li></ul>
+<p class="sub">Did not work or is blocked</p><ul class="failed"><li>Lemma 9.1 caps: the ceiling at 3.985 was not certified and the optimiser itself did not finish before the merge, so the optimum there (and the registered prediction 3.977-3.981) is not settled. The ceiling rests on one implementation of the reverse pass (no second program yet). Two earlier $k=45$ runs lost workers to the memory limit.</li><li>Degree-22 cap-free vector at $k=48$ (for Kintali&#x27;s support): killed twice for memory.</li><li>No news search (only the 3:34 AM run does it).</li></ul>
+<p class="next"><span class="sub">Next</span> Second, independent check of the Lemma 9.1 ceiling (e.g. reduce memory, rerun with --load and a different precision, or a second implementation of G_J); then rung 236: $k=48$ cap-free degree 22-24 alone on the machine and Kintali&#x27;s support with capped_check.</p>
+</article>
+<article class="entry"><header><span class="when">2026-11-12 &middot; Session 7 (4:39 PM CT, bonus run started by hand)</span><h3>Rung 212: Charton et al.&#x27;s capped criterion confirmed at $k=45$ for their Table 3 caps (4.0027 &gt; 4, two programs) but not for their Lemma 9.1 caps (3.9737); bound stays 240 (conditional); paper v0.7</h3></header>
 <ul><li>Extended both exact evaluators to caps that depend on m (code/capped_exact.py, code/capped_check.py, code/to_ucoords.py --params charton) and re-ran the $k=12$ and $k=49$ checks unchanged.</li><li>Charton et al.&#x27;s support at $k=45$ (L = 1.06, tau = 0.996, g = 0.0656, caps 4 B_{1,m} from their Table 3): our degree-21 cap-free optimiser truncated to T gives 45 J_T/I_T = 4.0027351 &gt; 4. capped_check.py (13 min) and capped_exact.py (108 min, 228 pieces with j &lt;= 6) agree exactly on I_T and J_T. Their claimed value with their own F is 4.00438; the caps cost us 0.0095 against the cap-free 4.012272.</li><li>Located discrepancy: with the caps of their Lemma 9.1 (C(1) = C(2) = 31/50, C(s) = 17/25) the same P gives 3.9736870 &lt; 4. So the conclusion depends on which cap set the draft intends; the project bound stays at 240 (conditional on Stadlmann&#x27;s equidistribution estimates) and is not lowered to 212.</li><li>Own idea: ceilings. The two-zone dual weight certifies the capped quantity &lt;= 4.126 at $k=45$ (and &lt;= 4.14 at $k=49$); cutting fibres at the largest coordinate barely changes it.</li><li>Lean: charton_caps_valid (Stadlmann&#x27;s admissibility condition for their caps, by decide), charton_large_count (at most 16 large coordinates), charton_extra_le_six. Paper v0.7: Proposition 29, Remark 30.</li></ul>
 <p class="sub">Did not work or is blocked</p><ul class="failed"><li>Lemma 9.1&#x27;s caps: 3.9737 &lt; 4 with our test function; not optimised on the capped support, so this is not a disproof.</li><li>Still no test function optimised on a capped support (Gram matrices of the corrections not built).</li><li>No news search (only the 3:34 AM run does it).</li></ul>
 <p class="next"><span class="sub">Next</span> Optimise P on the capped support (Gram matrices via capped_check&#x27;s contractions) to settle Lemma 9.1&#x27;s caps and report margins; then rung 236 (Kintali; Song-Yue): read the sources and record their supports.</p>
@@ -213,8 +218,12 @@ window.addEventListener("DOMContentLoaded", function () {
 <section>
   <h2>Results so far</h2>
   <div class="scroll"><table class="ledger"><tbody>
-  <tr><td><span class="chip own">Proved here</span></td><td>Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give $\mathrm{DHL}[k,2]$ only if $M_{k}$(4(A$1+\varepsilon$), 4(A1-$\varepsilon$)) &gt; 4. Certified false for every $\varepsilon$: $k\le 29$ (omega = 0), $k\le 28$ (omega = 0.003 and 1/300, Stadlmann&#x27;s level), $k\le 26$ (omega = 0.007, the level of Charton et al.), $k\le 22$ (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.</td><td class="where">paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json</td></tr>
-<tr><td><span class="chip ok">Computed</span></td><td>Stadlmann&#x27;s capped support at $k=49$ (his parameters, re-read in the source): with F = P 1_T, P of degree 20 (707 coefficients), the criterion ratio is ≥ 3.95972, below the 4 needed. The 240 rung is NOT reproduced. The loss comes from bounding the capped marginals by Cauchy-Schwarz (Proposition 23), not from the caps themselves.</td><td class="where">paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log</td></tr>
+  <tr><td><span class="chip ok">Computed</span></td><td>Ceiling for Charton et al.&#x27;s Lemma 9.1 caps ($k=45$, C1 = C2 = 31/50, Cm = 17/25): 4 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 4 with those caps (ball arithmetic, 4800 bits; weights pass the exact self-test at $k=45$). Their claimed 4.00438 (also 846 coefficients) must then belong to their Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation; rests on one implementation of the reverse pass.</td><td class="where">paper, Proposition 33; code/capped_gram.py --ceiling 4/1; runs/gram45_lemma91_D21.log</td></tr>
+<tr><td><span class="chip ok">Computed</span></td><td>Test function optimised on Stadlmann&#x27;s capped support itself ($k=49$, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 &gt; 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.</td><td class="where">paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json</td></tr>
+<tr><td><span class="chip own">Proved here</span></td><td>Gram matrices of the capped functionals by reverse mode: I_T and J_T are linear in the coefficient products of P and of its fibre integral, so running capped_check.py&#x27;s exact linear maps backwards gives exact weights, and G_I[t1,t2] = w_I[F1+F2][a1+a2], G_J = Q^T H Q. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly ($k=12$ and $k=49$). A rigorous ceiling mode certifies sigma G_I - k G_J positive definite by recursive Schur complements in ball arithmetic.</td><td class="where">paper, Proposition 31; code/capped_gram.py</td></tr>
+<tr><td><span class="chip ok">Lean-checked</span></td><td>Kintali&#x27;s support for 236 ($k=48$, g = 91/1250, one cap 1899/2500, L = 1.042 in Polymath scaling): at most ten coordinates exceed g, and every cap-violation piece has at most three further large coordinates.</td><td class="where">lean/TwinPrimes/Caps.lean: kintali_large_count, kintali_extra_le_three</td></tr>
+<tr><td><span class="chip own">Proved here</span></td><td>Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give $\mathrm{DHL}[k,2]$ only if $M_{k}$(4(A$1+\varepsilon$), 4(A1-$\varepsilon$)) &gt; 4. Certified false for every $\varepsilon$: $k\le 29$ (omega = 0), $k\le 28$ (omega = 0.003 and 1/300, Stadlmann&#x27;s level), $k\le 26$ (omega = 0.007, the level of Charton et al.), $k\le 22$ (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.</td><td class="where">paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json</td></tr>
+<tr><td><span class="chip ok">Computed</span></td><td>SUPERSEDED (session 6): with a Cauchy-Schwarz bound on the capped marginals the ratio was only certified ≥ 3.95972 for Stadlmann&#x27;s support (degree 20); computing J_T exactly gives 4.0120 (truncated cap-free optimiser) and 4.0124 (optimised on the support), see below. The loss came from Proposition 23, not from the caps.</td><td class="where">paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log</td></tr>
 <tr><td><span class="chip own">Proved here</span></td><td>Proposition 23: for F = P 1_T, I_T ≤ I(P) and J_T ≥ J(P) − 2 sqrt(J(P) L E(P)), where E(P) is an exact union bound for the integral of P^2 over the cap-violation set; the pieces {m coordinates above delta, their sum above the cap} are integrated exactly with shifted power sums (checked against Lemma 3 and against sympy for $k=3$).</td><td class="where">paper, Proposition 23; code/caps_exact.py</td></tr>
 <tr><td><span class="chip ok">Computed</span></td><td>Cap-free parts of the 2026 supports: $M_{49,15/506}\ge 3.9685535$ (degree 20) and $M_{45,8/257}\ge 3.9029887$ (degree 21, dimension 846, equal to the dimension stated by Charton et al.), so by dilation the cap-free ratios are ≥ 4.016176 (Stadlmann&#x27;s (L, tau) = (1.042, 0.982)) and $\ge 4.012272$ (Charton et al.&#x27;s (1.06, 0.996)). Compared with their claimed capped value 4.00438, the caps seem to cost about 0.008 at $k=45$ (a comparison, not a verification).</td><td class="where">paper, Proposition 22; code/cert_stad49_capfree_D20e.json, code/cert_ax45_capfree_D21e.json; re-check with code/verify_cert.py</td></tr>
 <tr><td><span class="chip ok">Lean-checked</span></td><td>Counting large coordinates: if every entry of a list exceeds g then length × g ≤ sum; so (in units of 1/1000) at most 9 coordinates of a point of Stadlmann&#x27;s support exceed 4 delta = 112, and 7 such coordinates always exceed every cap (680).</td><td class="where">lean/TwinPrimes/Caps.lean</td></tr>
@@ -265,7 +274,9 @@ window.addEventListener("DOMContentLoaded", function () {
 <tr><td><span class="chip warn">open</span></td><td>One explicit bilinear hypothesis that implies twin primes, formalised in Lean.<div class="note">Track B. Start from Bombieri&#x27;s asymptotic sieve and Heath-Brown&#x27;s Siegel-zero theorem.</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip ok">works</span></td><td>Compute the capped marginal functional J_T exactly via the fibre formula and cap-free-minus-corrections with inclusion-exclusion over the large set.<div class="note">Capped ratio 4.0120 &gt; 4 at $k=49$ (degree 20), confirmed exactly by an independent program; caps cost only 0.0041 (Prop. 25, Thm 26).</div></td><td class="where">own</td></tr>
 <tr><td><span class="chip own">partial</span></td><td>Cap-aware dual ceiling: cut the fibres of the two-zone dual weight at the maximal coordinate 0.6 of Stadlmann&#x27;s support.<div class="note">Valid ceiling 4.14 (certified), but caps move this weight&#x27;s sup only from 4.13785 to 4.13753: the sup sits where fibres are short. Needs a weight that sees large coordinates.</div></td><td class="where">own</td></tr>
-<tr><td><span class="chip own">partial</span></td><td>Use the exact capped evaluator to test which of Charton et al.&#x27;s two cap sets (Table 3 vs Lemma 9.1) supports their $k=45$ criterion.<div class="note">Table 3 caps: 4.0027 &gt; 4 (two programs). Lemma 9.1 caps: 3.9737 &lt; 4 with the same P (not optimised on T), so the discrepancy matters; open whether optimising on T rescues Lemma 9.1&#x27;s caps.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip ok">works</span></td><td>Use the exact capped evaluator to test which of Charton et al.&#x27;s two cap sets (Table 3 vs Lemma 9.1) supports their $k=45$ criterion.<div class="note">Table 3 caps: 4.0027 &gt; 4 (two programs). Lemma 9.1 caps: no P in our 846-dim space reaches 4 (certified ceiling, session 8), so the draft&#x27;s 4.00438 must use Table 3&#x27;s caps.</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip ok">works</span></td><td>Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.<div class="note">Exact self-test passed at $k=12,49$ and 45; $k=49$ optimum 4.0124198 (two exact programs); ceiling at sigma = 4 certified for Lemma 9.1 caps at $k=45$ (sigma = 3.985 not certified).</div></td><td class="where">own</td></tr>
+<tr><td><span class="chip warn">open</span></td><td>Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.<div class="note">$k=49$: regains 9% (0.00038 of 0.0041). Prediction for Lemma 9.1 caps (3.977-3.981) not settled: the ceiling is certified at 4 but not at 3.985, and the optimiser did not finish before the merge.</div></td><td class="where">own</td></tr>
   </tbody></table></div>
 </section>
 
@@ -274,7 +285,7 @@ window.addEventListener("DOMContentLoaded", function () {
   <div class="paper">
     <p class="ptitle"><strong>Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme</strong></p>
     <p class="pauthor">Jerry Kim</p>
-    <p class="pdate">Version 0.7, 12 November 2026</p>
+    <p class="pdate">Version 0.8, 13 November 2026</p>
     <div class="abstract"><p>This is a living working paper. It does <em>not</em> prove the twin
 prime conjecture, and it does not improve the best known bound on small
 gaps between primes. It records (i) the state of the problem as of the
@@ -309,10 +320,16 @@ same computation confirms the variational criterion of Charton et al. at
 <span class="math inline">k=45</span> (<span
 class="math inline">4.0027&gt;4</span>) for the caps of their Table 3
 but not, with our test function, for the different caps of their
-Lemma 9.1 (<span class="math inline">3.9737</span>), and (iv) a
-programme of original directions that later versions will test. Every
-statement carries one of the labels <span
-class="smallcaps">Lean-checked</span>, <span
+Lemma 9.1 (<span class="math inline">3.9737</span>), and with those caps
+no polynomial in our <span class="math inline">846</span>-dimensional
+space reaches <span class="math inline">4</span> (a ceiling certified in
+ball arithmetic); optimising the test function on Stadlmann’s capped
+support itself, with exact Gram matrices obtained by running the exact
+evaluator backwards, raises his margin only from <span
+class="math inline">4.0120</span> to <span
+class="math inline">4.0124</span>; and (iv) a programme of original
+directions that later versions will test. Every statement carries one of
+the labels <span class="smallcaps">Lean-checked</span>, <span
 class="smallcaps">Computed</span>, <span class="smallcaps">Proved
 here</span>, <span class="smallcaps">Literature</span>, <span
 class="smallcaps">Claimed</span> (a preprint not yet independently
@@ -1925,7 +1942,7 @@ says nothing about the 2026 claims, which use other supports and new
 equidistribution estimates. A floor for those is the Problem in the next
 section.</p>
 </div>
-<h1 id="sec:stad">Stadlmann-type supports (versions 0.5–0.7)</h1>
+<h1 id="sec:stad">Stadlmann-type supports (versions 0.5–0.8)</h1>
 <p>This section takes the first steps on the next rung, Stadlmann’s
 region for <span class="math inline">H_1\le240</span> [18], and gives a
 first rigorous answer to the Problem in the Programme (Section <a
@@ -2593,6 +2610,200 @@ class="math inline">4.12481</span> to <span
 class="math inline">4.12446</span>.</p>
 </div>
 <h2 class="unnumbered"
+id="optimising-the-test-function-on-the-capped-support-version-0.8">Optimising
+the test function on the capped support (version 0.8)</h2>
+<p>Up to version 0.7 every capped value came from a polynomial optimised
+<em>without</em> the caps and then truncated to <span
+class="math inline">T</span>. Both capped functionals are quadratic
+forms in the coefficients <span class="math inline">c</span> of <span
+class="math inline">P</span>: <span
+class="math inline">I_T(P\,1_T)=c^{\top}G_Ic</span> and <span
+class="math inline">J_T(P\,1_T)=c^{\top}G_Jc</span>.</p>
+<div id="prop:adjoint" class="proposition">
+<p><strong>Proposition 31</strong> (<span class="upright"><span
+class="smallcaps">Proved here</span></span>; elementary). <em>In the
+direct method of <code>code/capped_check.py</code>, <span
+class="math inline">I_T</span> is a linear function of the coefficient
+products <span
+class="math inline">\kappa_I[F](y)=\sum_{F_1+F_2=F}p_{F_1}(y)p_{F_2}(y)</span>
+and <span class="math inline">J_T</span> a linear function of <span
+class="math inline">\kappa_J[F](y,v)=\sum_{F_1+F_2=F}q_{F_1}q_{F_2}</span>,
+where <span class="math inline">P=\sum_Fp_F(y)\prod_jP_j^{F_j}</span>,
+<span class="math inline">y=L-P_1</span>, and <span
+class="math inline">q_F(y,v)</span> are the coefficients of <span
+class="math inline">\int_0^vP\,dt</span>. Running the chain of exact
+linear maps of that program backwards gives exact weights <span
+class="math inline">w_I[F][\alpha]=\partial
+I_T/\partial\kappa_I[F][y^\alpha]</span> and <span
+class="math inline">w_J[F][(b,\gamma)]=\partial
+J_T/\partial\kappa_J[F][y^bv^\gamma]</span>, and then <span
+class="math inline">G_I[t_1,t_2]=w_I[F_1+F_2][a_1+a_2]</span> for basis
+terms <span
+class="math inline">t_i=(L-P_1)^{a_i}\prod_jP_j^{F_{i,j}}</span>, and
+<span class="math inline">G_J=Q^{\top}HQ</span> with <span
+class="math inline">H[(F_1,b_1,\gamma_1),(F_2,b_2,\gamma_2)]=w_J[F_1+F_2][(b_1+b_2,\gamma_1+\gamma_2)]</span>
+and <span class="math inline">Q</span> the (sparse, explicit) map from
+basis terms to the <span class="math inline">q_F</span>.</em></p>
+</div>
+<p>The reverse pass costs about one forward evaluation
+(<code>code/capped_gram.py</code>). Its self-test is exact: for the
+input polynomial, <span
+class="math inline">\sum\langle\kappa_I,w_I\rangle</span> and <span
+class="math inline">\sum\langle\kappa_J,w_J\rangle</span> equal the
+<span class="math inline">I_T</span> and <span
+class="math inline">J_T</span> of <code>capped_check.py</code> as
+rationals (passed at <span class="math inline">k=12</span>, at <span
+class="math inline">k=49</span> with the polynomial of Theorem <a
+href="#thm:capped-exact" data-reference-type="ref"
+data-reference="thm:capped-exact">26</a>, and at <span
+class="math inline">k=45</span> with the polynomial and caps of
+Proposition <a href="#prop:cha-ceiling" data-reference-type="ref"
+data-reference="prop:cha-ceiling">33</a>). <span
+class="math inline">G_I</span> is exact; <span
+class="math inline">G_J</span> is assembled in fixed point with an
+explicit entrywise error bound. The matrices are only used to
+<em>find</em> a vector, or, with that error bound, to certify that <span
+class="math inline">\sigma G_I-kG_J</span> is positive definite
+(recursive Schur complements in ball arithmetic), i.e. that no <span
+class="math inline">P</span> in the whole test space exceeds <span
+class="math inline">\sigma</span>; every capped value stated as a
+certificate is recomputed from the rounded vector by the exact
+evaluators.</p>
+<div id="prop:opt49" class="proposition">
+<p><strong>Proposition 32</strong> (<span class="upright"><span
+class="smallcaps">Computed</span></span>, exact rational arithmetic, two
+programs). <em>For Stadlmann’s support and parameters (<span
+class="math inline">k=49</span>, as in Theorem <a
+href="#thm:capped-exact" data-reference-type="ref"
+data-reference="thm:capped-exact">26</a>) let <span
+class="math inline">P^\ast</span> be the top generalised eigenvector of
+<span class="math inline">(k\,G_J,G_I)</span> in the same <span
+class="math inline">707</span>-dimensional space (even power sums,
+degree <span class="math inline">20</span>), rounded to <span
+class="math inline">400</span> significant bits per coefficient. Then
+<div class="scroll eq"><span
+class="math display">\frac{k\,J_T(P^\ast1_T)}{I_T(P^\ast1_T)}=4.0124198475\ldots\
+&gt;\ 4 .</span></div></em></p>
+</div>
+<p>Files: <code>code/cap6/P_opt49_D20r_u.json</code> (vector),
+<code>code/cap6/check_opt49_D20r.json</code>
+(<code>capped_check.py</code>, <span class="math inline">7</span>
+minutes on two cores), and <code>code/cap6/res_opt49_D20r.json</code>
+(<code>capped_exact.py</code>, <span class="math inline">60</span>
+minutes on two cores); the two programs agree on <span
+class="math inline">I_T</span> and <span class="math inline">J_T</span>
+as exact rationals. The unrounded vector gives the same value to twelve
+digits (<code>check_opt49_D20.json</code>). The cap-free value of <span
+class="math inline">P^\ast</span> is <span
+class="math inline">4.0158303</span>, against <span
+class="math inline">4.0161761</span> for the cap-free optimiser.</p>
+<p>So optimising on <span class="math inline">T</span> regains only
+<span class="math inline">0.00038</span> of the <span
+class="math inline">0.0041</span> that truncation cost (about <span
+class="math inline">9\%</span>): in this test space the margin of the
+variational step of [18] is <span class="math inline">0.0124</span>, and
+the caps cost <span class="math inline">0.0038</span> even for the best
+polynomial of degree <span class="math inline">20</span>.</p>
+<div id="prop:cha-ceiling" class="proposition">
+<p><strong>Proposition 33</strong> (<span class="upright"><span
+class="smallcaps">Computed</span></span>, ball arithmetic; rests on the
+reverse pass of Proposition <a href="#prop:adjoint"
+data-reference-type="ref" data-reference="prop:adjoint">31</a>). <em>Let
+<span class="math inline">T&#39;</span> be the support of [3] at <span
+class="math inline">k=45</span> with the caps of their Lemma 9.1 (<span
+class="math inline">C_1=C_2=31/50</span>, <span
+class="math inline">C_m=17/25</span> for <span
+class="math inline">m\ge3</span>; <span
+class="math inline">L=53/50</span>, <span
+class="math inline">\tau=249/250</span>, <span
+class="math inline">g=41/625</span>), and let <span
+class="math inline">V</span> be our <span
+class="math inline">846</span>-dimensional space (even power sums times
+powers of <span class="math inline">L-P_1</span>, degree <span
+class="math inline">\le21</span>). Then <span
+class="math inline">4\,G_I-45\,G_J</span> is positive definite, so <div class="scroll eq"><span
+class="math display">\frac{45\,J_{T&#39;}(P\,1_{T&#39;})}{I_{T&#39;}(P\,1_{T&#39;})}&lt;4\qquad\text{for
+every }0\ne P\in V .</span></div></em></p>
+</div>
+<p>The weights were computed exactly and pass the exact self-test
+against <code>capped_check.py</code> at <span
+class="math inline">k=45</span> (input
+<code>code/cap6/P_ax45_D21_u_lemma91caps.json</code>); <span
+class="math inline">G_J</span> was assembled with absolute error at most
+<span class="math inline">2^{-5000}</span> per weight and the resulting
+entrywise error bound was put into the balls; positive definiteness was
+certified by recursive Schur complements in ball arithmetic at <span
+class="math inline">4800</span> bits
+(<code>code/capped_gram.py –ceiling 4/1</code>, log
+<code>runs/gram45_lemma91_D21.log</code>; <span
+class="math inline">88</span> minutes for the reverse pass on two
+cores). The same test at <span class="math inline">\sigma=3.985</span>
+did not succeed (the top value in <span class="math inline">V</span> may
+lie above <span class="math inline">3.985</span>, or the balls may be
+too wide), so our registered prediction (<span
+class="math inline">3.977</span>–<span class="math inline">3.981</span>,
+<code>notes/session8-prediction.md</code>) is neither confirmed nor
+refuted. The statement depends on the correctness of the reverse pass
+beyond its self-tests; a second, independent implementation has not been
+written, so we do not yet call it a two-program result.</p>
+<p>Since [3] report <span class="math inline">846</span> coefficients as
+well, this suggests that the caps of Lemma 9.1 cannot give their <span
+class="math inline">4.00438</span> in a space of this size, and that the
+value they report belongs to the caps of Table 3, for which our
+truncated vector already gives <span class="math inline">4.0027</span>
+(Proposition <a href="#prop:cha-capped" data-reference-type="ref"
+data-reference="prop:cha-capped">29</a>). We have not checked that their
+space is the same as ours (the dimension is equal), so this is a located
+discrepancy for the authors or an expert reader, not a refutation.</p>
+<h2 class="unnumbered"
+id="the-rung-236-the-support-of-kintali-version-0.8">The rung <span
+class="math inline">236</span>: the support of Kintali (version
+0.8)</h2>
+<p>[8] uses Stadlmann’s criterion with one band at <span
+class="math inline">k=48</span> and the support “D182” (<span
+class="upright"><span class="smallcaps">Literature</span></span>, read
+in [8, §2]): <span class="math inline">\varepsilon=3/400</span>, <span
+class="math inline">A=253/1000</span>, <span
+class="math inline">\delta=91/5000</span> and a single cap <span
+class="math inline">B_m=1899/10000</span> for every <span
+class="math inline">m\ge1</span>. In our scaling this is <span
+class="math inline">L=1.042</span> and <span
+class="math inline">\tau=0.982</span> (Stadlmann’s values), <span
+class="math inline">g=91/1250</span> and <span
+class="math inline">C_m=1899/2500</span> for all <span
+class="math inline">m</span>; it satisfies <span
+class="math inline">C_{m+1}\le C_m+g</span> and <span
+class="math inline">g\ge L-\tau</span>, so our evaluators apply
+unchanged (<code>code/to_ucoords.py –params kintali</code>). At most ten
+coordinates of a point of this support exceed <span
+class="math inline">g</span>, and every correction piece has <span
+class="math inline">j\le3</span> (<span class="upright"><span
+class="smallcaps">Lean-checked</span></span>:
+<code>kintali_large_count</code>, <code>kintali_extra_le_three</code>).
+The analytic input is Stadlmann’s (his Prop. 3, with the Type IIc range
+made empty); the test function is a public <span
+class="math inline">1295</span>-term witness of degree <span
+class="math inline">25</span> (the <span class="math inline">k=50</span>
+certificate of the AxiomMath <code>PrimeGapsLib</code> repository,
+according to [8, §3]), transported by the dilation <span
+class="math inline">z=\frac{26}{25U}t</span> and used at <span
+class="math inline">k=48</span> without re-optimising; the claimed
+values are <span class="math inline">48J/I=1.0007747\ldots</span> in his
+normalisation, i.e. <span class="math inline">4.0030988</span> in ours,
+and <span class="math inline">4.0036348</span> without the caps (<span
+class="upright"><span class="smallcaps">Claimed</span></span>). We have
+not evaluated this support yet. Our own cap-free optimiser of
+degree <span class="math inline">20</span> at <span
+class="math inline">k=48</span> gives only <span
+class="math inline">\frac{253}{250}\cdot3.9520043=3.9994&lt;4</span>
+(<span class="upright"><span class="smallcaps">Computed</span></span>,
+<code>code/cert_kin48_capfree_D20e.json</code>), so a degree of at least
+<span class="math inline">22</span> is needed; two attempts at degree
+<span class="math inline">22</span> ran out of memory alongside the
+<span class="math inline">k=45</span> computation. The second <span
+class="math inline">236</span> preprint [17] could not be obtained (the
+server refused the download), so its parameters are unknown to us.</p>
+<h2 class="unnumbered"
 id="a-floor-for-one-band-hybrid-supports-our-own">A floor for one-band
 hybrid supports (our own)</h2>
 <p>Polymath8b’s <span class="math inline">\varepsilon</span>-simplex is
@@ -2601,7 +2812,7 @@ following extends Theorem <a href="#thm:floor" data-reference-type="ref"
 data-reference="thm:floor">15</a> to every one-band support of
 Stadlmann’s type.</p>
 <div id="thm:hybrid-floor" class="theorem">
-<p><strong>Theorem 31</strong> (<span class="upright"><span
+<p><strong>Theorem 34</strong> (<span class="upright"><span
 class="smallcaps">Proved here</span></span> for the reduction; <span
 class="upright"><span class="smallcaps">Computed</span></span>, interval
 arithmetic, for the table). <em>Let <span
@@ -2710,7 +2921,7 @@ data-reference="thm:floor">15</a>. The certificates are
 (<code>mpmath.iv</code>). ◻</p>
 </div>
 <div class="remark">
-<p><em>Remark 32</em> (how sharp). For each <span
+<p><em>Remark 35</em> (how sharp). For each <span
 class="math inline">\omega</span> in the table the same weight fails at
 the next <span class="math inline">k</span>: the floating-point <span
 class="math inline">\sup W</span> reaches <span
@@ -2754,10 +2965,19 @@ class="math inline">212</span> (<span class="math inline">k=45</span>,
 their Table 3 (Proposition <a href="#prop:cha-capped"
 data-reference-type="ref" data-reference="prop:cha-capped">29</a>);
 before the project’s bound can move, the discrepancy between their
-Table 3 and Lemma 9.1 must be resolved and a test function optimised on
-the capped support itself would help. Then <span
-class="math inline">236</span> (<span class="math inline">k=48</span>,
-[8, 17]), <span class="math inline">186</span> and <span
+Table 3 and Lemma 9.1 must be resolved; version 0.8 has the tool for
+optimising on the capped support (Proposition <a href="#prop:adjoint"
+data-reference-type="ref" data-reference="prop:adjoint">31</a>), and for
+the caps of Lemma 9.1 no polynomial in our <span
+class="math inline">846</span>-dimensional space reaches <span
+class="math inline">4</span> (Proposition <a href="#prop:cha-ceiling"
+data-reference-type="ref" data-reference="prop:cha-ceiling">33</a>); so
+the draft’s value must belong to its Table 3 caps. Then <span
+class="math inline">236</span> (<span class="math inline">k=48</span>):
+the support of [8] is recorded and fits our evaluators; we need our own
+cap-free vector of degree at least <span class="math inline">22</span>
+at <span class="math inline">k=48</span>, or his. Then <span
+class="math inline">186</span> and <span
 class="math inline">182</span>.</p></li>
 <li><p><em>Floor of the method (our main original direction).</em> For
 the plain simplex the dual bound <span
@@ -2777,7 +2997,7 @@ class="math inline">\psi_m=\int F\,dt_m/F</span> built from a good
 positive test function <span class="math inline">F</span> is the natural
 candidate). For the one-band hybrid supports of [18, 3], Theorem <a
 href="#thm:hybrid-floor" data-reference-type="ref"
-data-reference="thm:hybrid-floor">31</a> gives the first such bound we
+data-reference="thm:hybrid-floor">34</a> gives the first such bound we
 know of (<span class="math inline">k\ge29</span> at Stadlmann’s level,
 <span class="math inline">k\ge27</span> at that of [3]), still far from
 <span class="math inline">49</span> and <span
@@ -2794,10 +3014,10 @@ class="math inline">39\to38</span> and <span
 class="math inline">38\to37</span> are worth the most.</p></li>
 </ol>
 <div class="problem">
-<p><strong>Problem 33</strong> (<span class="upright"><span
+<p><strong>Problem 36</strong> (<span class="upright"><span
 class="smallcaps">Open</span></span>; partly answered by Theorem <a
 href="#thm:hybrid-floor" data-reference-type="ref"
-data-reference="thm:hybrid-floor">31</a> for one band, without using the
+data-reference="thm:hybrid-floor">34</a> for one band, without using the
 caps). Give a rigorous upper bound for the variational quantity of [18]
 as a function of <span class="math inline">k</span> and of the
 admissible exponents, and deduce the least <span
@@ -2816,7 +3036,7 @@ theorem that Siegel zeros would imply the conjecture [7]; the
 function-field proof of Sawin and Shusterman [16]; and the entropy-based
 results on correlations of multiplicative functions [19].</p>
 <div class="problem">
-<p><strong>Problem 34</strong> (<span class="upright"><span
+<p><strong>Problem 37</strong> (<span class="upright"><span
 class="smallcaps">Open</span></span>, to be made precise in Lean).
 State, as a single explicit hypothesis on bilinear sums over <span
 class="math inline">n(n+2)</span>, the weakest known input that implies
@@ -2851,7 +3071,9 @@ Math., 1998.</p></li>
 <li><p>D. R. Heath-Brown, <em>Prime twins and Siegel zeros</em>, Proc.
 London Math. Soc., 1983.</p></li>
 <li><p>S. Kintali, <em>Improved bounded gaps between primes</em>,
-preprint, 1 September 2026.</p></li>
+preprint, 1 September 2026. <a
+href="https://shivakintali.github.io/papers/Prime-Gaps.pdf"
+class="uri">https://shivakintali.github.io/papers/Prime-Gaps.pdf</a></p></li>
 <li><p>L. Lovász, <em>Normal hypergraphs and the perfect graph
 conjecture</em>, Discrete Math., 1972.</p></li>
 <li><p>J. Maynard, <em>Small gaps between primes</em>, Ann. of Math. 181
@@ -2894,7 +3116,7 @@ conjectures for two-point correlations</em>, Forum Math. Pi,
 
 <section>
   <h2>Source files in this project</h2>
-  <ul class="files"><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/README.md"><code>README.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/STATE.md"><code>STATE.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/admissible.py"><code>code/admissible.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/build_site.py"><code>code/build_site.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D12_u.json"><code>code/cap6/P_D12_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D16_u.json"><code>code/cap6/P_D16_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D4_u.json"><code>code/cap6/P_D4_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D8_u.json"><code>code/cap6/P_D8_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_ax45_D21_u.json"><code>code/cap6/P_ax45_D21_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_ax45_D21_u_lemma91caps.json"><code>code/cap6/P_ax45_D21_u_lemma91caps.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_capfree_D20_u.json"><code>code/cap6/P_capfree_D20_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_test_k12.json"><code>code/cap6/P_test_k12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D12.json"><code>code/cap6/cert_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D16.json"><code>code/cap6/cert_D16.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D4.json"><code>code/cap6/cert_D4.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D8.json"><code>code/cap6/cert_D8.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_ax45_D21.json"><code>code/cap6/check_ax45_D21.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_ax45_D21_lemma91caps.json"><code>code/cap6/check_ax45_D21_lemma91caps.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_capfree_D20.json"><code>code/cap6/check_capfree_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/mc_test.py"><code>code/cap6/mc_test.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/res_ax45_D21.json"><code>code/cap6/res_ax45_D21.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/res_capfree_D20.json"><code>code/cap6/res_capfree_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_check.py"><code>code/capped_check.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_check_tests.py"><code>code/capped_check_tests.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_exact.py"><code>code/capped_exact.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/caps_exact.py"><code>code/caps_exact.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M102.json"><code>code/cert_M102.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M105.json"><code>code/cert_M105.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M5.json"><code>code/cert_M5.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D25e.json"><code>code/cert_M50e25_D25e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D27e.json"><code>code/cert_M50e25_D27e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M54_D23e.json"><code>code/cert_M54_D23e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D18e.json"><code>code/cert_M55_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D20e.json"><code>code/cert_M55_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M56_D18e.json"><code>code/cert_M56_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M58_D16e.json"><code>code/cert_M58_D16e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M64_D12.json"><code>code/cert_M64_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_ax45_capfree_D21e.json"><code>code/cert_ax45_capfree_D21e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k22_w1_68.json"><code>code/cert_floor_hybrid_k22_w1_68.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k26_w7_1000.json"><code>code/cert_floor_hybrid_k26_w7_1000.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k28_w1_300.json"><code>code/cert_floor_hybrid_k28_w1_300.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k28_w3_1000.json"><code>code/cert_floor_hybrid_k28_w3_1000.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k29_w0.json"><code>code/cert_floor_hybrid_k29_w0.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_k29.json"><code>code/cert_floor_k29.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_stad49_capfree_D20e.json"><code>code/cert_stad49_capfree_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_stad49_caps_D20e.json"><code>code/cert_stad49_caps_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_eps_sympy.py"><code>code/check_eps_sympy.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_floor_cert.py"><code>code/check_floor_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cw_sample.py"><code>code/cw_sample.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps.py"><code>code/dual_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps_cert.py"><code>code/dual_eps_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_lp.py"><code>code/dual_lp.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/enlarged_pigeonhole.py"><code>code/enlarged_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/extrapolate_eps.py"><code>code/extrapolate_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/floor_hybrid.py"><code>code/floor_hybrid.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/gen_lean.py"><code>code/gen_lean.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/make_cert.py"><code>code/make_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_bound.py"><code>code/mk_bound.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_general.py"><code>code/mk_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan.py"><code>code/scan.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_eps.py"><code>code/scan_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_general.py"><code>code/scan_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_results.json"><code>code/scan_results.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/search_big.py"><code>code/search_big.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/stadlmann_caps.py"><code>code/stadlmann_caps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/stadlmann_caps_opt.py"><code>code/stadlmann_caps_opt.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/texify_text.py"><code>code/texify_text.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/to_ucoords.py"><code>code/to_ucoords.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples.json"><code>code/tuples.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_big.json"><code>code/tuples_big.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_mid.json"><code>code/tuples_mid.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/verify_cert.py"><code>code/verify_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/weighted_pigeonhole.py"><code>code/weighted_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/Audit.lean"><code>lean/Audit.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes.lean"><code>lean/TwinPrimes.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Basic.lean"><code>lean/TwinPrimes/Basic.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Caps.lean"><code>lean/TwinPrimes/Caps.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Tuples.lean"><code>lean/TwinPrimes/Tuples.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lakefile.toml"><code>lean/lakefile.toml</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lean-toolchain"><code>lean/lean-toolchain</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/bound-history.json"><code>log/bound-history.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/entries.json"><code>log/entries.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/research-log.md"><code>log/research-log.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged-rigidity.md"><code>notes/enlarged-rigidity.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged_pigeonhole_d5_d10.txt"><code>notes/enlarged_pigeonhole_d5_d10.txt</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/sources-enlarged-supports.md"><code>notes/sources-enlarged-supports.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/stadlmann-recheck-s5.md"><code>notes/stadlmann-recheck-s5.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/paper/main.tex"><code>paper/main.tex</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D12.json"><code>runs/capped_check_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D16.json"><code>runs/capped_check_D16.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D20.json"><code>runs/capped_check_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D8.json"><code>runs/capped_check_D8.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k49.jsonl"><code>runs/scan_k49.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k50.jsonl"><code>runs/scan_k50.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/status.json"><code>status.json</code></a></li></ul>
+  <ul class="files"><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/README.md"><code>README.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/STATE.md"><code>STATE.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/admissible.py"><code>code/admissible.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/build_site.py"><code>code/build_site.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D12_u.json"><code>code/cap6/P_D12_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D16_u.json"><code>code/cap6/P_D16_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D4_u.json"><code>code/cap6/P_D4_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_D8_u.json"><code>code/cap6/P_D8_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_ax45_D21_u.json"><code>code/cap6/P_ax45_D21_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_ax45_D21_u_lemma91caps.json"><code>code/cap6/P_ax45_D21_u_lemma91caps.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_capfree_D20_u.json"><code>code/cap6/P_capfree_D20_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_kin48_M50D25_u.json"><code>code/cap6/P_kin48_M50D25_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_opt49_D20_u.json"><code>code/cap6/P_opt49_D20_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_opt49_D20r_u.json"><code>code/cap6/P_opt49_D20r_u.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/P_test_k12.json"><code>code/cap6/P_test_k12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D12.json"><code>code/cap6/cert_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D16.json"><code>code/cap6/cert_D16.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D4.json"><code>code/cap6/cert_D4.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/cert_D8.json"><code>code/cap6/cert_D8.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_ax45_D21.json"><code>code/cap6/check_ax45_D21.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_ax45_D21_lemma91caps.json"><code>code/cap6/check_ax45_D21_lemma91caps.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_capfree_D20.json"><code>code/cap6/check_capfree_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_opt49_D20.json"><code>code/cap6/check_opt49_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/check_opt49_D20r.json"><code>code/cap6/check_opt49_D20r.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/mc_test.py"><code>code/cap6/mc_test.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/res_ax45_D21.json"><code>code/cap6/res_ax45_D21.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/res_capfree_D20.json"><code>code/cap6/res_capfree_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cap6/res_opt49_D20r.json"><code>code/cap6/res_opt49_D20r.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_check.py"><code>code/capped_check.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_check_tests.py"><code>code/capped_check_tests.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_exact.py"><code>code/capped_exact.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/capped_gram.py"><code>code/capped_gram.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/caps_exact.py"><code>code/caps_exact.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M102.json"><code>code/cert_M102.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M105.json"><code>code/cert_M105.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M5.json"><code>code/cert_M5.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D25e.json"><code>code/cert_M50e25_D25e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M50e25_D27e.json"><code>code/cert_M50e25_D27e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M54_D23e.json"><code>code/cert_M54_D23e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D18e.json"><code>code/cert_M55_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M55_D20e.json"><code>code/cert_M55_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M56_D18e.json"><code>code/cert_M56_D18e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M58_D16e.json"><code>code/cert_M58_D16e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_M64_D12.json"><code>code/cert_M64_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_ax45_capfree_D21e.json"><code>code/cert_ax45_capfree_D21e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k22_w1_68.json"><code>code/cert_floor_hybrid_k22_w1_68.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k26_w7_1000.json"><code>code/cert_floor_hybrid_k26_w7_1000.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k28_w1_300.json"><code>code/cert_floor_hybrid_k28_w1_300.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k28_w3_1000.json"><code>code/cert_floor_hybrid_k28_w3_1000.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_hybrid_k29_w0.json"><code>code/cert_floor_hybrid_k29_w0.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_floor_k29.json"><code>code/cert_floor_k29.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_kin48_capfree_D20e.json"><code>code/cert_kin48_capfree_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_stad49_capfree_D20e.json"><code>code/cert_stad49_capfree_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cert_stad49_caps_D20e.json"><code>code/cert_stad49_caps_D20e.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_eps_sympy.py"><code>code/check_eps_sympy.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/check_floor_cert.py"><code>code/check_floor_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/cw_sample.py"><code>code/cw_sample.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps.py"><code>code/dual_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_eps_cert.py"><code>code/dual_eps_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/dual_lp.py"><code>code/dual_lp.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/enlarged_pigeonhole.py"><code>code/enlarged_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/extrapolate_eps.py"><code>code/extrapolate_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/floor_hybrid.py"><code>code/floor_hybrid.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/gen_lean.py"><code>code/gen_lean.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/make_cert.py"><code>code/make_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_bound.py"><code>code/mk_bound.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/mk_general.py"><code>code/mk_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan.py"><code>code/scan.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_eps.py"><code>code/scan_eps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_general.py"><code>code/scan_general.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/scan_results.json"><code>code/scan_results.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/search_big.py"><code>code/search_big.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/stadlmann_caps.py"><code>code/stadlmann_caps.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/stadlmann_caps_opt.py"><code>code/stadlmann_caps_opt.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/texify_text.py"><code>code/texify_text.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/to_ucoords.py"><code>code/to_ucoords.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples.json"><code>code/tuples.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_big.json"><code>code/tuples_big.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/tuples_mid.json"><code>code/tuples_mid.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/verify_cert.py"><code>code/verify_cert.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/code/weighted_pigeonhole.py"><code>code/weighted_pigeonhole.py</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/Audit.lean"><code>lean/Audit.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes.lean"><code>lean/TwinPrimes.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Basic.lean"><code>lean/TwinPrimes/Basic.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Caps.lean"><code>lean/TwinPrimes/Caps.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/TwinPrimes/Tuples.lean"><code>lean/TwinPrimes/Tuples.lean</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lakefile.toml"><code>lean/lakefile.toml</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/lean/lean-toolchain"><code>lean/lean-toolchain</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/bound-history.json"><code>log/bound-history.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/entries.json"><code>log/entries.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/log/research-log.md"><code>log/research-log.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged-rigidity.md"><code>notes/enlarged-rigidity.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/enlarged_pigeonhole_d5_d10.txt"><code>notes/enlarged_pigeonhole_d5_d10.txt</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/session8-prediction.md"><code>notes/session8-prediction.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/sources-236.md"><code>notes/sources-236.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/sources-enlarged-supports.md"><code>notes/sources-enlarged-supports.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/notes/stadlmann-recheck-s5.md"><code>notes/stadlmann-recheck-s5.md</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/paper/main.tex"><code>paper/main.tex</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D12.json"><code>runs/capped_check_D12.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D16.json"><code>runs/capped_check_D16.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D20.json"><code>runs/capped_check_D20.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/capped_check_D8.json"><code>runs/capped_check_D8.json</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k49.jsonl"><code>runs/scan_k49.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/runs/scan_k50.jsonl"><code>runs/scan_k50.jsonl</code></a></li><li><a href="https://github.com/jerryckim16/twin-primes/blob/main/status.json"><code>status.json</code></a></li></ul>
   <p class="scalenote" style="margin-top:10px">Rebuild: <code>lake build</code> in <code>lean/</code>; <code>latexmk -pdf main.tex</code> in <code>paper/</code>; <code>python3 code/make_cert.py 102 15</code>.</p>
 </section>
 </main>

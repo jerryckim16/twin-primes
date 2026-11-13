@@ -1,7 +1,7 @@
 {
- "version": "0.7",
- "updated": "2026-11-12",
- "session_count": 7,
+ "version": "0.8",
+ "updated": "2026-11-13",
+ "session_count": 8,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -12,13 +12,33 @@
  },
  "results": [
   {
+   "label": "Computed",
+   "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 4 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 4 with those caps (ball arithmetic, 4800 bits; weights pass the exact self-test at k = 45). Their claimed 4.00438 (also 846 coefficients) must then belong to their Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation; rests on one implementation of the reverse pass.",
+   "where": "paper, Proposition 33; code/capped_gram.py --ceiling 4/1; runs/gram45_lemma91_D21.log"
+  },
+  {
+   "label": "Computed",
+   "text": "Test function optimised on Stadlmann's capped support itself (k = 49, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 > 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.",
+   "where": "paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json"
+  },
+  {
+   "label": "Proved here",
+   "text": "Gram matrices of the capped functionals by reverse mode: I_T and J_T are linear in the coefficient products of P and of its fibre integral, so running capped_check.py's exact linear maps backwards gives exact weights, and G_I[t1,t2] = w_I[F1+F2][a1+a2], G_J = Q^T H Q. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly (k = 12 and k = 49). A rigorous ceiling mode certifies sigma G_I - k G_J positive definite by recursive Schur complements in ball arithmetic.",
+   "where": "paper, Proposition 31; code/capped_gram.py"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "Kintali's support for 236 (k = 48, g = 91/1250, one cap 1899/2500, L = 1.042 in Polymath scaling): at most ten coordinates exceed g, and every cap-violation piece has at most three further large coordinates.",
+   "where": "lean/TwinPrimes/Caps.lean: kintali_large_count, kintali_extra_le_three"
+  },
+  {
    "label": "Proved here",
    "text": "Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give DHL[k,2] only if M_k(4(A1+eps), 4(A1-eps)) > 4. Certified false for every eps: k ≤ 29 (omega = 0), k ≤ 28 (omega = 0.003 and 1/300, Stadlmann's level), k ≤ 26 (omega = 0.007, the level of Charton et al.), k ≤ 22 (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.",
    "where": "paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json"
   },
   {
    "label": "Computed",
-   "text": "Stadlmann's capped support at k = 49 (his parameters, re-read in the source): with F = P 1_T, P of degree 20 (707 coefficients), the criterion ratio is ≥ 3.95972, below the 4 needed. The 240 rung is NOT reproduced. The loss comes from bounding the capped marginals by Cauchy-Schwarz (Proposition 23), not from the caps themselves.",
+   "text": "SUPERSEDED (session 6): with a Cauchy-Schwarz bound on the capped marginals the ratio was only certified ≥ 3.95972 for Stadlmann's support (degree 20); computing J_T exactly gives 4.0120 (truncated cap-free optimiser) and 4.0124 (optimised on the support), see below. The loss came from Proposition 23, not from the caps.",
    "where": "paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log"
   },
   {
@@ -262,8 +282,20 @@
   {
    "idea": "Use the exact capped evaluator to test which of Charton et al.'s two cap sets (Table 3 vs Lemma 9.1) supports their k = 45 criterion.",
    "origin": "own",
-   "status": "partial",
-   "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: 3.9737 < 4 with the same P (not optimised on T), so the discrepancy matters; open whether optimising on T rescues Lemma 9.1's caps."
+   "status": "works",
+   "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: no P in our 846-dim space reaches 4 (certified ceiling, session 8), so the draft's 4.00438 must use Table 3's caps."
+  },
+  {
+   "idea": "Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.",
+   "origin": "own",
+   "status": "works",
+   "note": "Exact self-test passed at k = 12, 49 and 45; k = 49 optimum 4.0124198 (two exact programs); ceiling at sigma = 4 certified for Lemma 9.1 caps at k = 45 (sigma = 3.985 not certified)."
+  },
+  {
+   "idea": "Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.",
+   "origin": "own",
+   "status": "open",
+   "note": "k = 49: regains 9% (0.00038 of 0.0041). Prediction for Lemma 9.1 caps (3.977-3.981) not settled: the ceiling is certified at 4 but not at 3.985, and the optimiser did not finish before the merge."
   }
  ]
 }

@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.7, 12 November 2026}
+\date{Version 0.8, 13 November 2026}
 
 \begin{document}
 
@@ -49,7 +49,11 @@ thereby reproduced, while his new equidistribution estimates, on which $240$
 rests, have not been verified by us; the same computation confirms the
 variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
 of their Table~3 but not, with our test function, for the different caps of
-their Lemma~9.1 ($3.9737$), and
+their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
+$846$-dimensional space reaches $4$ (a ceiling certified in ball
+arithmetic); optimising the test function on Stadlmann's
+capped support itself, with exact Gram matrices obtained by running the exact
+evaluator backwards, raises his margin only from $4.0120$ to $4.0124$; and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -855,7 +859,7 @@ equidistribution estimates. A floor for those is the Problem in the next
 section.
 \end{remark}
 
-\section{Stadlmann-type supports (versions 0.5--0.7)}\label{sec:stad}
+\section{Stadlmann-type supports (versions 0.5--0.8)}\label{sec:stad}
 
 This section takes the first steps on the next rung, Stadlmann's region for
 $H_1\le240$ \cite{Sta26}, and gives a first rigorous answer to the Problem in
@@ -1223,6 +1227,123 @@ the largest coordinate $C_1=0.6216$ moves the floating-point ceiling of this
 weight only from $4.12481$ to $4.12446$.
 \end{remark}
 
+\subsection*{Optimising the test function on the capped support (version 0.8)}
+Up to version~0.7 every capped value came from a polynomial optimised
+\emph{without} the caps and then truncated to $T$. Both capped functionals
+are quadratic forms in the coefficients $c$ of $P$:
+$I_T(P\,1_T)=c^{\top}G_Ic$ and $J_T(P\,1_T)=c^{\top}G_Jc$.
+
+\begin{proposition}[\lbl{Proved here}; elementary]\label{prop:adjoint}
+In the direct method of \texttt{code/capped\_check.py}, $I_T$ is a linear
+function of the coefficient products
+$\kappa_I[F](y)=\sum_{F_1+F_2=F}p_{F_1}(y)p_{F_2}(y)$ and $J_T$ a linear
+function of $\kappa_J[F](y,v)=\sum_{F_1+F_2=F}q_{F_1}q_{F_2}$, where
+$P=\sum_Fp_F(y)\prod_jP_j^{F_j}$, $y=L-P_1$, and
+$q_F(y,v)$ are the coefficients of $\int_0^vP\,dt$. Running the chain of
+exact linear maps of that program backwards gives exact weights
+$w_I[F][\alpha]=\partial I_T/\partial\kappa_I[F][y^\alpha]$ and
+$w_J[F][(b,\gamma)]=\partial J_T/\partial\kappa_J[F][y^bv^\gamma]$, and then
+$G_I[t_1,t_2]=w_I[F_1+F_2][a_1+a_2]$ for basis terms
+$t_i=(L-P_1)^{a_i}\prod_jP_j^{F_{i,j}}$, and $G_J=Q^{\top}HQ$ with
+$H[(F_1,b_1,\gamma_1),(F_2,b_2,\gamma_2)]=w_J[F_1+F_2][(b_1+b_2,\gamma_1+\gamma_2)]$
+and $Q$ the (sparse, explicit) map from basis terms to the $q_F$.
+\end{proposition}
+\begin{sloppypar}
+The reverse pass costs about one forward evaluation
+(\texttt{code/capped\_gram.py}). Its self-test is exact: for the input
+polynomial, $\sum\langle\kappa_I,w_I\rangle$ and
+$\sum\langle\kappa_J,w_J\rangle$ equal the $I_T$ and $J_T$ of
+\texttt{capped\_check.py} as rationals (passed at $k=12$, at $k=49$ with the
+polynomial of Theorem~\ref{thm:capped-exact}, and at $k=45$ with the
+polynomial and caps of Proposition~\ref{prop:cha-ceiling}). $G_I$ is exact; $G_J$ is assembled in fixed point
+with an explicit entrywise error bound. The matrices are only used to
+\emph{find} a vector, or, with that error bound, to certify that
+$\sigma G_I-kG_J$ is positive definite (recursive Schur complements in ball
+arithmetic), i.e.\ that no $P$ in the whole test space exceeds $\sigma$; every capped value stated as a
+certificate is recomputed from the rounded vector by the exact evaluators.
+\end{sloppypar}
+
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two programs]\label{prop:opt49}
+For Stadlmann's support and parameters ($k=49$, as in
+Theorem~\ref{thm:capped-exact}) let $P^\ast$ be the top generalised
+eigenvector of $(k\,G_J,G_I)$ in the same $707$-dimensional space (even
+power sums, degree $20$), rounded to $400$ significant bits per
+coefficient. Then
+\[
+\frac{k\,J_T(P^\ast1_T)}{I_T(P^\ast1_T)}=4.0124198475\ldots\ >\ 4 .
+\]
+\end{proposition}
+\begin{sloppypar}
+Files: \texttt{code/cap6/P\_opt49\_D20r\_u.json} (vector),
+\texttt{code/cap6/check\_opt49\_D20r.json} (\texttt{capped\_check.py}, $7$
+minutes on two cores), and \texttt{code/cap6/res\_opt49\_D20r.json} (\texttt{capped\_exact.py}, $60$ minutes on two cores); the two programs agree on $I_T$ and $J_T$ as exact rationals. The unrounded vector gives the same value to
+twelve digits (\texttt{check\_opt49\_D20.json}). The cap-free value of
+$P^\ast$ is $4.0158303$, against $4.0161761$ for the cap-free optimiser.
+\end{sloppypar}
+So optimising on $T$ regains only $0.00038$ of the $0.0041$ that truncation
+cost (about $9\%$): in this test space the margin of the variational step of
+\cite{Sta26} is $0.0124$, and the caps cost $0.0038$ even for the best
+polynomial of degree~$20$.
+
+\begin{proposition}[\lbl{Computed}, ball arithmetic; rests on the reverse pass of Proposition~\ref{prop:adjoint}]\label{prop:cha-ceiling}
+Let $T'$ be the support of \cite{Cha26} at $k=45$ with the caps of their
+Lemma~9.1 ($C_1=C_2=31/50$, $C_m=17/25$ for $m\ge3$; $L=53/50$,
+$\tau=249/250$, $g=41/625$), and let $V$ be our $846$-dimensional space
+(even power sums times powers of $L-P_1$, degree $\le21$). Then
+$4\,G_I-45\,G_J$ is positive definite, so
+\[
+\frac{45\,J_{T'}(P\,1_{T'})}{I_{T'}(P\,1_{T'})}<4\qquad\text{for every }0\ne P\in V .
+\]
+\end{proposition}
+\begin{sloppypar}
+The weights were computed exactly and pass the exact self-test against
+\texttt{capped\_check.py} at $k=45$ (input
+\texttt{code/cap6/P\_ax45\_D21\_u\_lemma91caps.json}); $G_J$ was assembled
+with absolute error at most $2^{-5000}$ per weight and the resulting
+entrywise error bound was put into the balls; positive definiteness was
+certified by recursive Schur complements in ball arithmetic at $4800$ bits
+(\texttt{code/capped\_gram.py --ceiling 4/1}, log
+\texttt{runs/gram45\_lemma91\_D21.log}; $88$ minutes for the reverse pass on
+two cores). The same test at $\sigma=3.985$ did not succeed (the top value
+in $V$ may lie above $3.985$, or the balls may be too wide), so our
+registered prediction ($3.977$--$3.981$, \texttt{notes/session8-prediction.md})
+is neither confirmed nor refuted. The statement depends on the correctness of
+the reverse pass beyond its self-tests; a second, independent implementation
+has not been written, so we do not yet call it a two-program result.
+\end{sloppypar}
+
+Since \cite{Cha26} report $846$ coefficients as well, this suggests that the
+caps of Lemma~9.1 cannot give their $4.00438$ in a space of this size, and
+that the value they report belongs to the caps of Table~3, for which our
+truncated vector already gives $4.0027$
+(Proposition~\ref{prop:cha-capped}). We have not checked that their space
+is the same as ours (the dimension is equal), so this is a located
+discrepancy for the authors or an expert reader, not a refutation.
+
+\subsection*{The rung \texorpdfstring{$236$}{236}: the support of Kintali (version 0.8)}
+\cite{Kin26} uses Stadlmann's criterion with one band at $k=48$ and the
+support ``D182'' (\lbl{Literature}, read in \cite[\S2]{Kin26}):
+$\varepsilon=3/400$, $A=253/1000$, $\delta=91/5000$ and a single cap
+$B_m=1899/10000$ for every $m\ge1$. In our scaling this is $L=1.042$ and
+$\tau=0.982$ (Stadlmann's values), $g=91/1250$ and $C_m=1899/2500$ for all
+$m$; it satisfies $C_{m+1}\le C_m+g$ and $g\ge L-\tau$, so our evaluators
+apply unchanged (\texttt{code/to\_ucoords.py --params kintali}). At most ten
+coordinates of a point of this support exceed $g$, and every correction piece
+has $j\le3$ (\lbl{Lean-checked}: \texttt{kintali\_large\_count},
+\texttt{kintali\_extra\_le\_three}). The analytic input is Stadlmann's
+(his Prop.~3, with the Type~IIc range made empty); the test function is a public
+$1295$-term witness of degree $25$ (the $k=50$ certificate of the AxiomMath
+\texttt{PrimeGapsLib} repository, according to \cite[\S3]{Kin26}), transported
+by the dilation $z=\frac{26}{25U}t$ and used at $k=48$ without re-optimising; the claimed values are
+$48J/I=1.0007747\ldots$ in his normalisation, i.e.\ $4.0030988$ in ours,
+and $4.0036348$ without the caps (\lbl{Claimed}). We have not evaluated this
+support yet. Our own cap-free optimiser of degree~$20$ at $k=48$ gives only
+$\frac{253}{250}\cdot3.9520043=3.9994<4$ (\lbl{Computed},
+\texttt{code/cert\_kin48\_capfree\_D20e.json}), so a degree of at least $22$ is
+needed; two attempts at degree $22$ ran out of memory alongside the $k=45$
+computation. The second $236$ preprint \cite{SY26} could not be obtained
+(the server refused the download), so its parameters are unknown to us.
+
 \subsection*{A floor for one-band hybrid supports (our own)}
 Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the
 following extends Theorem~\ref{thm:floor} to every one-band support of
@@ -1303,8 +1424,12 @@ equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
 \cite{Cha26}) version~0.7 confirms the variational criterion for the caps of
 their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
 can move, the discrepancy between their Table~3 and Lemma~9.1 must be
-resolved and a test function optimised on the capped support itself would
-help. Then $236$ ($k=48$, \cite{Kin26,SY26}), $186$ and $182$.
+resolved; version~0.8 has the tool for optimising on the capped support
+(Proposition~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
+our $846$-dimensional space reaches $4$ (Proposition~\ref{prop:cha-ceiling});
+so the draft's value must belong to its Table~3 caps. Then $236$ ($k=48$): the support of \cite{Kin26} is recorded and
+fits our evaluators; we need our own cap-free vector of degree at least $22$
+at $k=48$, or his. Then $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
 stops ($k\ge51$). For the $\varepsilon$-enlarged simplex
@@ -1373,6 +1498,7 @@ captures its primes}, Ann. of Math., 1998.
 London Math. Soc., 1983.
 \bibitem{Kin26} S.~Kintali, \emph{Improved bounded gaps between primes},
 preprint, 1 September 2026.
+\url{https://shivakintali.github.io/papers/Prime-Gaps.pdf}
 \bibitem{Lov72} L.~Lov\'asz, \emph{Normal hypergraphs and the perfect graph
 conjecture}, Discrete Math., 1972.
 \bibitem{May15} J.~Maynard, \emph{Small gaps between primes}, Ann. of Math.

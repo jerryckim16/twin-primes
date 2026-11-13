@@ -1,0 +1,168 @@
+index: 3083 multi-indices, 109553 pairs, W=42, parts=[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+prepare: 28.0s
+powers: phi^0..16, Zeta_n for n in [29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]: 42.9s
+    group r=0 nZ=44 (2 jobs): 52.1s
+    group r=1 nZ=43 (2 jobs): 68.3s
+    group r=8 nZ=36 (2 jobs): 63.8s
+    group r=9 nZ=35 (2 jobs): 56.3s
+    group r=0 nZ=43 (2 jobs): 87.9s
+    group r=1 nZ=42 (2 jobs): 105.6s
+    group r=8 nZ=35 (2 jobs): 67.0s
+    group r=9 nZ=34 (2 jobs): 64.8s
+    group r=1 nZ=41 (2 jobs): 108.2s
+    group r=2 nZ=40 (2 jobs): 107.3s
+    group r=9 nZ=33 (2 jobs): 67.2s
+    group r=10 nZ=32 (2 jobs): 65.5s
+    group r=3 nZ=38 (2 jobs): 110.7s
+    group r=4 nZ=37 (2 jobs): 109.7s
+    group r=11 nZ=30 (2 jobs): 64.3s
+    group r=12 nZ=29 (2 jobs): 61.1s
+    group r=6 nZ=34 (2 jobs): 66.7s
+    group r=7 nZ=33 (2 jobs): 69.2s
+    group r=2 nZ=37 (2 jobs): 110.7s
+    group r=3 nZ=36 (2 jobs): 110.8s
+    group r=10 nZ=29 (2 jobs): 60.2s
+    group r=0 nZ=38 (2 jobs): 95.3s
+    group r=7 nZ=31 (2 jobs): 66.2s
+    group r=8 nZ=30 (2 jobs): 65.1s
+    group r=5 nZ=32 (2 jobs): 101.5s
+    group r=6 nZ=31 (2 jobs): 67.0s
+    group r=4 nZ=32 (2 jobs): 110.1s
+    group r=5 nZ=31 (2 jobs): 98.1s
+    group r=5 nZ=30 (2 jobs): 94.7s
+    group r=11 nZ=34 (1 jobs): 7.4s
+    group r=4 nZ=31 (2 jobs): 110.5s
+    group r=10 nZ=35 (1 jobs): 6.8s
+    group r=2 nZ=32 (1 jobs): 71.4s
+    group r=1 nZ=33 (1 jobs): 69.4s
+  adjoint chunk done: 1350.3s (elapsed 1358.7s)
+  adjoint chunk done: 1357.1s (elapsed 1370.4s)
+    group r=2 nZ=42 (2 jobs): 68.9s
+    group r=3 nZ=41 (2 jobs): 66.5s
+    group r=10 nZ=34 (2 jobs): 62.3s
+    group r=11 nZ=33 (2 jobs): 64.1s
+    group r=2 nZ=41 (2 jobs): 105.2s
+    group r=3 nZ=40 (2 jobs): 103.3s
+    group r=10 nZ=33 (2 jobs): 64.9s
+    group r=11 nZ=32 (2 jobs): 65.5s
+    group r=3 nZ=39 (2 jobs): 107.9s
+    group r=4 nZ=38 (2 jobs): 105.5s
+    group r=11 nZ=31 (2 jobs): 66.7s
+    group r=12 nZ=30 (2 jobs): 63.7s
+    group r=6 nZ=35 (2 jobs): 67.5s
+    group r=5 nZ=36 (2 jobs): 98.4s
+    group r=1 nZ=39 (2 jobs): 109.1s
+    group r=0 nZ=40 (2 jobs): 92.8s
+    group r=9 nZ=31 (2 jobs): 66.2s
+    group r=8 nZ=32 (2 jobs): 67.1s
+    group r=5 nZ=34 (2 jobs): 99.6s
+    group r=4 nZ=35 (2 jobs): 106.5s
+    group r=2 nZ=36 (2 jobs): 110.1s
+    group r=1 nZ=37 (2 jobs): 110.6s
+    group r=9 nZ=29 (2 jobs): 62.6s
+    group r=0 nZ=37 (2 jobs): 93.7s
+    group r=7 nZ=30 (2 jobs): 67.1s
+    group r=8 nZ=29 (2 jobs): 63.1s
+    group r=6 nZ=30 (2 jobs): 67.0s
+    group r=7 nZ=29 (2 jobs): 63.3s
+    group r=0 nZ=45 (1 jobs): 2.1s
+    group r=5 nZ=40 (1 jobs): 6.6s
+    group r=13 nZ=32 (1 jobs): 7.1s
+    group r=6 nZ=29 (2 jobs): 60.8s
+    group r=12 nZ=33 (1 jobs): 7.3s
+    group r=4 nZ=30 (1 jobs): 62.7s
+  adjoint chunk done: 1251.9s (elapsed 2624.1s)
+    group r=3 nZ=31 (1 jobs): 71.6s
+    group r=4 nZ=40 (2 jobs): 67.3s
+  adjoint chunk done: 1320.0s (elapsed 2683.9s)
+    group r=5 nZ=39 (2 jobs): 65.3s
+    group r=12 nZ=32 (2 jobs): 62.9s
+    group r=13 nZ=31 (2 jobs): 62.5s
+    group r=4 nZ=39 (2 jobs): 103.2s
+    group r=5 nZ=38 (2 jobs): 100.5s
+    group r=12 nZ=31 (2 jobs): 64.2s
+    group r=13 nZ=30 (2 jobs): 63.9s
+    group r=5 nZ=37 (2 jobs): 103.2s
+    group r=6 nZ=36 (2 jobs): 65.6s
+    group r=13 nZ=29 (2 jobs): 60.4s
+    group r=0 nZ=41 (2 jobs): 91.8s
+    group r=7 nZ=34 (2 jobs): 66.3s
+    group r=8 nZ=33 (2 jobs): 66.6s
+    group r=2 nZ=38 (2 jobs): 108.8s
+    group r=3 nZ=37 (2 jobs): 109.3s
+    group r=10 nZ=30 (2 jobs): 64.3s
+    group r=11 nZ=29 (2 jobs): 61.1s
+    group r=6 nZ=33 (2 jobs): 68.2s
+    group r=7 nZ=32 (2 jobs): 67.2s
+    group r=3 nZ=35 (2 jobs): 112.1s
+    group r=4 nZ=34 (2 jobs): 107.3s
+    group r=1 nZ=36 (2 jobs): 111.9s
+    group r=2 nZ=35 (2 jobs): 112.2s
+    group r=0 nZ=36 (2 jobs): 91.6s
+    group r=1 nZ=35 (2 jobs): 110.7s
+    group r=0 nZ=35 (2 jobs): 92.1s
+    group r=1 nZ=44 (1 jobs): 7.3s
+    group r=6 nZ=39 (1 jobs): 7.1s
+    group r=14 nZ=31 (1 jobs): 6.9s
+    group r=1 nZ=34 (2 jobs): 109.1s
+    group r=2 nZ=43 (1 jobs): 7.0s
+    group r=5 nZ=29 (1 jobs): 68.6s
+    group r=7 nZ=38 (1 jobs): 7.3s
+    group r=15 nZ=30 (1 jobs): 6.1s
+  adjoint chunk done: 1298.6s (elapsed 3925.0s)
+  adjoint chunk done: 1247.1s (elapsed 3936.7s)
+    group r=6 nZ=38 (2 jobs): 65.5s
+    group r=7 nZ=37 (2 jobs): 60.2s
+    group r=14 nZ=30 (2 jobs): 53.7s
+    group r=15 nZ=29 (2 jobs): 56.8s
+    group r=7 nZ=36 (2 jobs): 67.0s
+    group r=6 nZ=37 (2 jobs): 100.0s
+    group r=14 nZ=29 (2 jobs): 60.0s
+    group r=0 nZ=42 (2 jobs): 88.9s
+    group r=7 nZ=35 (2 jobs): 64.9s
+    group r=8 nZ=34 (2 jobs): 64.6s
+    group r=1 nZ=40 (2 jobs): 106.8s
+    group r=2 nZ=39 (2 jobs): 108.8s
+    group r=9 nZ=32 (2 jobs): 65.3s
+    group r=10 nZ=31 (2 jobs): 64.9s
+    group r=5 nZ=35 (2 jobs): 92.6s
+    group r=4 nZ=36 (2 jobs): 106.1s
+    group r=0 nZ=39 (2 jobs): 91.7s
+    group r=1 nZ=38 (2 jobs): 109.3s
+    group r=8 nZ=31 (2 jobs): 68.3s
+    group r=9 nZ=30 (2 jobs): 65.9s
+    group r=6 nZ=32 (2 jobs): 67.2s
+    group r=5 nZ=33 (2 jobs): 99.8s
+    group r=4 nZ=33 (2 jobs): 106.8s
+    group r=3 nZ=34 (2 jobs): 110.7s
+    group r=3 nZ=33 (2 jobs): 111.3s
+    group r=2 nZ=34 (2 jobs): 113.0s
+    group r=3 nZ=32 (2 jobs): 110.2s
+    group r=4 nZ=41 (1 jobs): 7.5s
+    group r=9 nZ=36 (1 jobs): 7.3s
+    group r=2 nZ=33 (2 jobs): 111.3s
+    group r=3 nZ=42 (1 jobs): 7.6s
+    group r=8 nZ=37 (1 jobs): 7.4s
+    group r=16 nZ=29 (1 jobs): 6.4s
+    group r=0 nZ=34 (1 jobs): 59.5s
+  adjoint chunk done: 1270.7s (elapsed 5197.4s)
+  adjoint chunk done: 1282.7s (elapsed 5221.6s)
+adjoint done: 5292.6s
+weights saved to /tmp/claude-0/w45_lemma91.pkl
+self-test from weights: I_T=2.844620355684132e-105 J_T=2.511917975165403e-106 ratio=3.973686986264
+EXACT agreement with code/cap6/check_ax45_D21_lemma91caps.json: I_T True, J_T True
+GI built: 1.6s
+Q: 4317 rows, 23659 nonzeros, LQ=232792560
+  HQ row 0/4317 (3s)
+  HQ row 500/4317 (13s)
+  HQ row 1000/4317 (22s)
+  HQ row 1500/4317 (31s)
+  HQ row 2000/4317 (40s)
+  HQ row 2500/4317 (50s)
+  HQ row 3000/4317 (59s)
+  HQ row 3500/4317 (68s)
+  HQ row 4000/4317 (77s)
+GJ built: 97.4s
+Gram check: ratio of input vector from Gram = [3.97368698626421 +/- 3.25e-15]
+CEILING sigma=4/1: sigma*I_T - k*J_T positive definite on the whole test space: True
+CEILING sigma=3985/1000: sigma*I_T - k*J_T positive definite on the whole test space: False

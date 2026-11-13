@@ -1,0 +1,84 @@
+index: 2430 multi-indices, 76981 pairs, W=40, parts=[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+prepare: 14.9s
+powers: phi^0..9, Zeta_n for n in [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]: 8.0s
+    group r=0 nZ=48 (2 jobs): 22.7s
+    group r=2 nZ=46 (2 jobs): 26.9s
+    group r=1 nZ=47 (2 jobs): 27.3s
+    group r=5 nZ=43 (2 jobs): 22.5s
+    group r=3 nZ=45 (2 jobs): 29.4s
+    group r=4 nZ=44 (2 jobs): 27.8s
+    group r=8 nZ=40 (2 jobs): 25.4s
+    group r=6 nZ=42 (2 jobs): 24.8s
+    group r=7 nZ=41 (2 jobs): 25.7s
+    group r=0 nZ=47 (2 jobs): 40.7s
+    group r=2 nZ=45 (2 jobs): 43.6s
+    group r=1 nZ=46 (2 jobs): 44.5s
+    group r=5 nZ=42 (2 jobs): 27.1s
+    group r=4 nZ=43 (2 jobs): 28.2s
+    group r=3 nZ=44 (2 jobs): 46.2s
+    group r=7 nZ=40 (2 jobs): 26.5s
+    group r=0 nZ=46 (2 jobs): 42.7s
+    group r=6 nZ=41 (2 jobs): 27.6s
+    group r=2 nZ=44 (2 jobs): 45.7s
+    group r=3 nZ=43 (2 jobs): 46.0s
+    group r=1 nZ=45 (2 jobs): 44.5s
+    group r=5 nZ=41 (2 jobs): 28.8s
+    group r=6 nZ=40 (2 jobs): 27.2s
+    group r=4 nZ=42 (2 jobs): 29.1s
+    group r=1 nZ=44 (2 jobs): 44.1s
+    group r=2 nZ=43 (2 jobs): 45.9s
+    group r=0 nZ=45 (2 jobs): 43.1s
+    group r=4 nZ=41 (2 jobs): 27.4s
+    group r=5 nZ=40 (2 jobs): 26.5s
+    group r=3 nZ=42 (2 jobs): 45.2s
+    group r=1 nZ=43 (2 jobs): 43.9s
+    group r=2 nZ=42 (2 jobs): 45.1s
+    group r=0 nZ=44 (2 jobs): 40.9s
+    group r=4 nZ=40 (2 jobs): 27.0s
+    group r=0 nZ=43 (2 jobs): 41.1s
+    group r=3 nZ=41 (2 jobs): 46.2s
+    group r=2 nZ=41 (2 jobs): 45.5s
+    group r=1 nZ=48 (1 jobs): 3.1s
+    group r=4 nZ=45 (1 jobs): 3.2s
+    group r=7 nZ=42 (1 jobs): 3.2s
+    group r=3 nZ=40 (2 jobs): 45.4s
+    group r=2 nZ=47 (1 jobs): 3.3s
+    group r=5 nZ=44 (1 jobs): 3.3s
+    group r=8 nZ=41 (1 jobs): 3.2s
+    group r=0 nZ=42 (1 jobs): 26.1s
+    group r=1 nZ=42 (2 jobs): 45.4s
+    group r=0 nZ=49 (1 jobs): 1.4s
+    group r=3 nZ=46 (1 jobs): 3.3s
+    group r=6 nZ=43 (1 jobs): 2.9s
+    group r=9 nZ=40 (1 jobs): 3.0s
+  adjoint chunk done: 493.4s (elapsed 496.8s)
+    group r=1 nZ=41 (1 jobs): 30.9s
+  adjoint chunk done: 521.2s (elapsed 526.4s)
+    group r=2 nZ=40 (1 jobs): 30.5s
+  adjoint chunk done: 541.6s (elapsed 546.6s)
+adjoint done: 569.7s
+self-test from weights: I_T=3.413702796814539e-110 J_T=2.795083352254568e-111 ratio=4.012038903571
+EXACT agreement with code/cap6/check_capfree_D20.json: I_T True, J_T True
+GI built: 0.8s
+Q: 3471 rows, 17833 nonzeros, LQ=232792560
+  HQ row 0/3471 (2s)
+  HQ row 500/3471 (7s)
+  HQ row 1000/3471 (13s)
+  HQ row 1500/3471 (18s)
+  HQ row 2000/3471 (23s)
+  HQ row 2500/3471 (29s)
+  HQ row 3000/3471 (34s)
+GJ built: 46.6s
+Gram check: ratio of input vector from Gram = [4.01203890357051 +/- 1.14e-15]
+  iter 4: [4.01241774281483 +/- 1.79e-15]
+  iter 9: [4.01241976022085 +/- 6.29e-16]
+  iter 14: [4.01241984213968 +/- 1.25e-15]
+  iter 19: [4.01241984719063 +/- 3.85e-15]
+  iter 24: [4.01241984752569 +/- 2.66e-15]
+  iter 29: [4.01241984754814 +/- 6.88e-16]
+  iter 34: [4.01241984754965 +/- 4.16e-15]
+  iter 39: [4.01241984754975 +/- 3.05e-15]
+  iter 44: [4.01241984754975 +/- 3.75e-15]
+rounded vector, ratio from Gram (not a certificate): [4.01241984754975 +/- 3.75e-15]
+wrote code/cap6/P_opt49_D20_u.json
+total 1557.5s
