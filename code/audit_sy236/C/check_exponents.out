@@ -1,0 +1,32 @@
+--- parameters
+2A = 1/2+2*omega = 253/500  claimed 253/500  OK
+eta2-delta = 1/100000  claimed 1/100000  OK
+10*delta < B < 11*delta = True
+--- Lemma 4.5
+gamma*-eta2+2tau0-2B = 461/250000  claimed 461/250000  OK  sign OK
+a_{11/25}-eta2+2tau0 = 17897/500000  claimed 17897/500000  OK  sign OK
+q-exponent minus u-target: 6053/250000 = 2w+eta2+tau0 = 6053/250000
+u window width = delta = 91/5000  claimed 91/5000  OK
+excess > delta (so u is a proper divisor of q) = 1503/250000  sign OK
+1/2 - (11/25 - eta2 + 2tau0) = 39103/500000  sign OK
+--- (38)
+1+4w-g*+eta2 = 15759/25000  claimed 15759/25000  OK
+RQ^2 exponent < 1 = -9241/25000  sign OK
+1/2+2w-2g*+eta2 = -27549/100000  claimed -27549/100000  OK  sign OK
+--- E exponents at gamma*
+(1+24w+7eta2-3g*)/2 = -1/25000  claimed -1/25000  OK  sign OK
+8w+3eta2-g* = -16061/50000  claimed -16061/50000  OK  sign OK
+E3 exponent: -1/500000 (claimed -tau0 = -1/500000 )
+(42) algebra difference: 0
+normalization difference: 0
+E1 alt form diff: 0
+E2 alt form diff: 0
+(43) prefactor A1*norm with U1V=Q/q0 : N**2*Q**4*z**2/q0**4 claimed N^2Q^4z^2/q0^4
+E1 exponent after lq,lu extremes: 3*gamma/2 - 7*lq0/2 - 3*lr + 109021/200000
+E1 worst: -3*gamma/2 - 7*lq0/2 + 119947/200000  claimed (1+24w+7eta2-3g)/2 - (7/2)lq0: -3*gamma/2 - 7*lq0/2 + 119947/200000
+E2 worst: -gamma - 4*lq0 + 7863/100000  claimed: -gamma - 4*lq0 + 7863/100000
+E1 at gamma*: -1/25000 E2 at gamma*: -16061/50000
+E1 ex/2+zeta+kappa = -4937/250000000 OK
+E2 ex/2+zeta+kappa = -40152437/250000000 OK
+E3 ex/2+zeta+kappa = -187/250000000 OK
+ALL OK

@@ -1,0 +1,23 @@
+random exact tests: 59998, failures: 0, alt counts (non-exclusive): [14767, 42713, 2518]
+u=(1/5)^5, s=1001/10000: (False, True, False)
+u=(1/5)^5, s=1/10     : (False, False, False) (all False => s>1/10 is necessary)
+u=(0.2002,0.3999,0.3999): (False, False, True)
+n=1: MILP status=0, max strictness slack eps=-0.39990000000000003
+n=2: MILP status=0, max strictness slack eps=1.1102230246251565e-16
+n=3: MILP status=0, max strictness slack eps=1.1102230246251565e-16
+n=4: MILP status=0, max strictness slack eps=1e-06
+n=5: MILP status=0, max strictness slack eps=1.0000000020624659e-06
+n=6: MILP status=0, max strictness slack eps=3.3306690738754696e-16
+n=7: MILP status=0, max strictness slack eps=-0.0
+n=8: MILP status=0, max strictness slack eps=-0.0
+n=9: MILP status=0, max strictness slack eps=1.99998079558683e-09
+
+Exact re-test of MILP optimisers (the tiny positive slacks are solver tolerance):
+n=2: u~[0.3999, 0.6001] exact alternatives=(True, False, False)
+n=3: u~[0.6001, 0.3999, 0.0] exact alternatives=(True, False, False)
+n=4: u~[0.2002, 0.3999, 1e-06, 0.399899] exact alternatives=(False, True, False)
+n=5: u~[0.0, 0.0, 0.3998993998993999, 0.2002002002002002, 0.3999003999003999] exact alternatives=(False, True, False)
+n=6: u~[0.0, 0.3999, 0.0, 0.2002, 0.0, 0.3999] exact alternatives=(False, False, True)
+n=7: u~[0.0, 0.0, 0.30005, 0.30005, 0.09985, 0.30005, 0.0] exact alternatives=(False, False, True)
+n=8: u~[0.0, 0.0, 0.2002, 0.3999, 0.0, 0.3999, 0.0, 0.0] exact alternatives=(False, False, True)
+n=9: u~[0.0, 0.0, 0.3999, 0.0, 0.0, 0.3999, 0.0, 0.2002, 0.0] exact alternatives=(False, False, True)

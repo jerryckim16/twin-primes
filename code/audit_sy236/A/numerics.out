@@ -1,0 +1,78 @@
+PASS 4.1 U=A+eps=521/2000   [521/2000]
+PASS 4.1 L=A-eps=491/2000   [491/2000]
+PASS 4.1 L+U=253/500 (so q<=X^{(1-sig)253/500})
+PASS 4.1 253/500<1
+PASS L4.1 delta<B
+PASS L4.1 10*delta<B<11*delta   [91/500,1899/10000,1001/5000]
+PASS Q182: m*delta<=B forces m<=10 (bound 'm<=54' in def is vacuous)   [mmax=10]
+PASS L4.24 48*delta=546/625<1
+PASS 2B=1899/5000
+PASS 4.2 1/2+2*omega=253/500
+PASS L4.3 11/25-eta2+2tau0-2B=20997/500000>0
+PASS L4.3 overshoot: -eta2+2tau0+delta = -3tau0  (i.e. delta=eta2-5tau0)
+PASS L4.3 target < 1/2-zeta at gamma=1/2 (zeta<tau0/100)
+PASS (28) RQ^2 exponent at gamma=11/25 = 59021/100000 (decreasing in gamma)
+PASS (28) Q/N exponent at gamma=11/25 = -35579/100000 (decreasing)
+PASS (28) RQ^2 exponent <1 (diagonal progression modulus)
+PASS (33) form 1+12w+7eta2/2-5g/2
+PASS (33) value at 11/25 = -53/200000
+PASS (34) form 8w+3eta2-g and value -36137/100000
+PASS (35) form 2g-1-tau0 and value at 1/2 = -1/500000
+PASS (33),(34) decrease, (35) increases in gamma
+PASS IIa: 2*kappa+2*zeta < min margin (kappa=tau0/4, zeta<tau0/100)
+NOTE IIa: BV range R<<N X^-tau0<=X^{1/2-tau0} (by inspection)
+PASS IIa/IIb: 7997/20000 - delta >0 (N/p grows by fixed power)
+PASS (32) line 1 from (30),(31): ratios are q0^-3, q0^-2, 1
+PASS (32) line 2 after H=X^zeta R Q^2/M
+PASS L4.5 gamma*-eta2+2tau0-2B=461/250000>0
+PASS L4.5 a_{11/25}-eta2+2tau0=17897/500000>0
+PASS L4.5 u-target is minimal at gamma=11/25 (a_gamma decreasing)
+PASS L4.5 q-excess 2w+eta2+tau0-zeta>0
+PASS L4.5 u overshoot: a-eta2+2tau0+delta=a-3tau0
+PASS (38) RQ^2 exponent: 2(1/2+2w)-(g-eta2) == 1+4w-g+eta2
+PASS (38) RQ^2 at gamma*=15759/25000
+PASS (38) Q/N at gamma*=-27549/100000
+PASS (38) both decreasing in gamma, RQ^2<X, Q<N
+PASS IIb E1 ~ q0^-4 U1^-1/2 R^5/2 Q^11/2/(M^2N)
+PASS IIb E2 ~ q0^-4 R Q^4/M^2
+PASS (43) A1*A2 normalised = N^2Q^4z^2/q0^4 (E1+E2+E3) under U1 V = Q/q0
+PASS (42) three summands after substituting H
+PASS IIb E1 exponent == (1+24w+7eta2-3g)/2
+PASS IIb E1 value at gamma* = -1/25000
+PASS IIb E2 value at gamma* = -16061/50000
+PASS IIb E3 exponent == -tau0
+PASS IIb: 2kappa+2zeta < min margin (kappa=tau0/8, zeta<tau0/1000)
+PASS IIb BV range R<<N X^-tau0 <= X^{11/25-tau0} < X^{1/2}
+PASS 4.4 s3=143/375
+PASS L4.7 343/1000+delta=903/2500<2B
+PASS L4.7 343/1000-(s3-eta3)=1/1500>0
+PASS L4.7 s3-2B=23/15000>0
+PASS L4.7 343/1000 < 1/2-zeta (target below modulus)
+PASS P4.6 1/2+eta3-s3=473/3000>0
+PASS P4.6 pair products => N>=X^{9/10}, M<=X^{1/10}
+PASS (52) term1 = 2/3+7w/3+3/10+2eta3/3 = 1-1/3000
+PASS (52) term2 = 1/3+8w/3+3/5+eta3/3 = 1-137/3000
+PASS (52) term3 = 2/3+7w/3+3/10-eta3/12 = 1-71/2400
+PASS (52) all three <1 and min margin 1/3000 > 1/12000
+PASS P4.6 T-bound from T^2<=T1*T2
+NOTE P4.6 denominators b^{1/2}B*, b^{5/4}B*^{1/2} >= b B*^{1/2} since B*>=b (by inspection)
+PASS (52) from (48): (N/Q^2)*numerators
+PASS P4.6 Euler factor: sum_{e>=1} p^{1-e/2} = p^{1/2}/(1-p^{-1/2}) (numeric p=2,3,101)
+PASS L4.9 1/2+s=0.6001, 1/2-s=0.3999, 2s=0.2002
+PASS L4.9 s>1/10 i.e. 4s>1/2-s   [4s-a=1/2000]
+PASS L4.9 2b>1
+PASS L4.10 3999/10000+253/500=9059/10000<1
+PASS L4.10 M<<X^{1-0.6001}=X^{0.3999}
+PASS P4.11 3999/10000-7997/20000=1/20000>0
+PASS P4.11 IIa/IIb ranges abut at 11/25 (no gap): [7997/20000,11/25] U [11/25,1/2] contains [0.3999,1/2]
+PASS P4.11 TypeIII reserves 0.2002-1/5=1/5000, 2/5-0.3999=1/10000, 0.6001-3/5=1/10000
+PASS P4.11 Mobius scale X^{1/10} < X^{0.2002} (selected Type III atoms are smooth)
+NOTE (55): 2j<=20 => X/2^20<=P<=2^21 X ; P^u/X^u in [2^-20,2^21] for u in [0,1] (by inspection)
+NOTE HB: Z^10=2X so (mu-mu_Z)^{*10} vanishes on n<=2X (by inspection; identity re-derived in report)
+PASS L4.12/(65) k=20: 1-1/k=19/20<1
+PASS (63) tail: h^{-r}R^{1-r}=(logX)^{Bcut+2-2r} with h=(logX)^{-Bcut},R=(logX)^{Bcut+2}
+PASS L4.16 253/500+1/3=1259/1500<1
+PASS 4.7 endpoint cost X^{253/500}<<X(logX)^-C
+PASS R4.23 39999/100000-39983/100000=1/6250
+
+FAILED: none

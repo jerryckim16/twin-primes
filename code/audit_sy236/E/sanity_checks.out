@@ -1,0 +1,21 @@
+HB identity K=2,Z=54, n<= 2916: max err 6.22e-15
+HB identity K=3,Z=14, n<= 2744: max err 3.02e-14
+HB identity K=4,Z=7, n<= 2401: max err 1.14e-13
+u^2=a mod q root count > 2^omega(q) cases (q<400 squarefree): 0
+partial summation X=1000,Y=1800,q=7: lhs=0.6666666667 rhs=0.6666666667
+partial summation X=1000,Y=2000,q=30: lhs=-16.8750000000 rhs=-16.8750000000
+partial summation X=1500,Y=2999,q=77: lhs=-0.1833333333 rhs=-0.1833333333
+Lemma4.12 k=2 X=1000000 H=10: sum=209, ratio to bound=0.184
+Lemma4.12 k=2 X=1000000 H=1000: sum=14897, ratio to bound=1.006
+Lemma4.12 k=2 X=10000000 H=100: sum=1806, ratio to bound=0.378
+Lemma4.12 k=3 X=1000000 H=10: sum=2677, ratio to bound=0.019
+Lemma4.12 k=3 X=1000000 H=1000: sum=117934, ratio to bound=0.358
+Lemma4.12 k=3 X=10000000 H=100: sum=19653, ratio to bound=0.025
+Lemma4.12 k=4 X=1000000 H=10: sum=20692, ratio to bound=0.003
+Lemma4.12 k=4 X=1000000 H=1000: sum=655172, ratio to bound=0.076
+Lemma4.12 k=4 X=10000000 H=100: sum=160292, ratio to bound=0.003
+(62) uY=0.0: max(|1-chi|-beta_Y) = 0.000e+00 (<=0 means holds)
+(62) uY=0.005: max(|1-chi|-beta_Y) = 0.000e+00 (<=0 means holds)
+(62) uY=0.02: max(|1-chi|-beta_Y) = 0.000e+00 (<=0 means holds)
+(62) uY=0.3: max(|1-chi|-beta_Y) = 0.000e+00 (<=0 means holds)
+(62) uY=0.6931471805599453: max(|1-chi|-beta_Y) = 0.000e+00 (<=0 means holds)
