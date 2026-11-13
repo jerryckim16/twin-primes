@@ -1,6 +1,6 @@
 # Twin Prime Notebook
 
-A working paper by **Jerry Kim** (prepared with the assistance of Claude) on small gaps between primes, toward the twin prime conjecture, with a Lean 4 development and exact computer certificates. Research sessions run six times a day; each one opens a pull request that is merged automatically, so the commit history is the research log.
+A working paper by **Jerry Kim** (prepared with the assistance of Claude) on small gaps between primes, toward the twin prime conjecture, with a Lean 4 development and exact computer certificates. Research sessions run three times a day (every eight hours); each one opens a pull request that is merged automatically, so the commit history is the research log.
 
 **Website:** https://jerryckim16.github.io/twin-primes/
 
