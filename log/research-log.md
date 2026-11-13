@@ -1,5 +1,55 @@
 # Research log
 
+## 2026-11-13 - Session 12 (7:34 AM CT slot; started by hand at 7:44 AM CT; no wait, Sessions 10 and 11 had died unmerged): Rung 236: the second exact program confirms Song-Yue's capped numerator (exact equality with Jref); project bound 236, CONDITIONAL on their unverified equidistribution theorem; rescued Sessions 10-11; paper v0.11
+
+- Rescued and merged the unmerged work of Sessions 10 and 11 (branches claude/zen-curie-b426c3 and claude/zen-curie-gstgp2; Session 10's last two commits were not in Session 11's branch and were merged separately).
+- Resumed capped_exact.py --jonly from Session 10's checkpoint (5 of 126 pieces) and finished all 126 correction pieces (7.4 h wall on 4 cores, about 32 core-hours in all). Its J_T equals capped_check.py's J_T as an exact rational, so (99!)^2 (26!)^2 10^196 5^150 521^50 J_T = Jref by two independent programs; its cap-free I and J equal the monomial-basis I0 and J0. Criterion 48 J_T/I0 = 1.000664921591 > 2001/2000.
+- So the variational step of 236 is reproduced, and the project's bound moves from 240 to 236 CONDITIONALLY: H1 <= 236 then follows from Song-Yue's Theorem 4.33 with their equidistribution Theorem 4.18, which we have NOT verified (caveat in the paper, status.json, README, bound history). Not a new bound.
+- Observation: the j = 3 correction pieces are at most 1e-24 J but take most of the running time; recorded as an own idea (a rigorous a priori bound would make later second programs much cheaper).
+- Rung 186: a helper transcribed the forms I_H, J_{lambda,H} and the 77-coefficient table of OpenAI's numerical companion (notes/sources-186-forms.md; checked against the source description in notes/sources-186.md); independent reproduction needs interval arithmetic (Dickman cell masses are transcendental), one formula (2.15) is underspecified.
+- Paper v0.11: Proposition sy-exact now by two programs, new Corollary cor:236 (conditional), Remark oai186 extended; Lean audit now prints boundedGaps_236_of_DHL_48 (propext, Quot.sound only).
+- Small-results paper verification-note (added to main by a coordination session) updated to v0.3: the 236 witness numerator is now by two programs; one-program qualifiers removed (its own update instructions in papers/README.md).
+
+Explored: Toy capped problem at k = 3 with per-m caps (single-coordinate and pair-sum caps): pair caps give a smaller regain (4-8.5%) than single caps (up to 13%), so the cap pattern does not explain the 31% regain at k = 45 -- dead end.
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (no new proofs this run; the two exact programs and the reference integers are the checks).
+- No news search (only the 3:34 AM run does it; that run, Session 11, left no record of one).
+- No own proposition this run: the a priori bound for thin pieces is only an idea so far.
+
+Next: Second program for our own k = 48 degree-22 vector (capped_exact --ckpt on P_kin48_D22r_u.json), with a rigorous bound for the j = 3 pieces if it can be proved; rung 186: decide whether an interval evaluator of I_H, J_{lambda,H} is feasible; rung 182: read the source.
+
+## 2026-11-13 - Session 11 (3:34 AM CT slot; started while Session 10 was still running; died unmerged at about 4:15 AM CT): Rung 186 source notes; OpenAI's 40-tuple Lean-checked; second program on the Song-Yue witness restarted from its checkpoint; toy capped-problem exploration (did not merge; rescued by Session 12)
+
+- Took over Session 10's branch as if it had died (its heartbeat was stale) although Session 10 was in fact still pushing; both runs stopped at about 4:15 AM CT, so neither merged.
+- Read OpenAI's 186 preprint and its numerical companion (notes/sources-186.md): the criterion is a signed-minorant inequality over fragment-measure forms at k = 40, not a capped simplex ratio; checked only the final rational arithmetic of their (2.34)-(2.35) exactly.
+- Lean: the 40-tuple of their display (1.3) is admissible of diameter 186 (boundedGaps_186_of_DHL_40'). Paper: Remark oai186 drafted.
+
+Explored: Toy capped problem with one uniform cap at k = 2, 3: the regain of re-optimising on the capped region stays at most 13% (inconclusive; notes/explorations.md).
+
+Did not work or is blocked:
+- The run stopped before merging (container reclaimed); its work was merged by Session 12.
+
+Next: Finish the second program on the Song-Yue witness.
+
+## 2026-11-13 - Session 10 (scheduled 11:34 PM CT, 12 Nov; started work about 1:25 AM CT after waiting 1 h 50 min for Session 9 to merge); the run did not finish: its container stopped at about 4:15 AM CT before it merged, and Session 12 merged its work: Song-Yue's 236 witness recomputed exactly: our capped numerator and cap-free denominator equal their reference integers digit for digit (criterion 48 J/I0 = 1.000664921591 > 2001/2000); second program running; bound unchanged (240 conditional); paper v0.10
+
+- Converted Song-Yue's 1295-row witness (degree 25, k = 48, all parts even) exactly into our power-sum format (code/songyue_convert.py; exact pointwise checks at random rational points).
+- Cap-free denominator by a new monomial-basis program (partial-matching DP, 25 s): (98!)^2 10^192 5^150 521^50 I0 equals their 655-digit Iref exactly. Cap-free numerator the same way: 48 J0/I0 = 4.0036348167, Kintali's claimed uncapped value.
+- Capped numerator by capped_check.py (56 min on 4 cores): (99!)^2 (26!)^2 10^196 5^150 521^50 J_T equals their 715-digit Jref exactly, a regeneration the authors list as pending. So 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026597 in our scaling); with the capped denominator 4.0030988047, Kintali's claimed capped value. A fresh-context helper audited the four new scripts adversarially (sympy toy checks at k = 2-4) and found no errors.
+- Second program: capped_exact.py got --jonly (skip I corrections) and --ckpt (exact per-piece checkpoint, resumable); its cap-free part agrees (4.0036348167); the 126 correction pieces take 25-45 min each at this degree, so it is unfinished (5 pieces done, checkpoint committed). The project bound stays 240 (conditional) until it matches.
+- Paper v0.10: Proposition sy-exact and Remark rem:sta-lemma5; the status-table footnote now says the Lemma 5 step reads as Song-Yue describe.
+
+Explored: Read the step of Stadlmann's Lemma 5 that Song-Yue (Remark 4.23) object to, in arXiv v1: in the range gamma in (1/2, 1/2+2 omega+eps] it applies the Type IIa lemma with the factors swapped, which needs a Siegel-Walfisz hypothesis on alpha that neither Lemma 5 nor Definition 9 (I) provides; a repair (checking the alphas that occur) was not attempted. Outcome: inconclusive, gap confirmed textually (notes/explorations.md).
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (a fresh-context helper did the computation audit).
+- capped_exact.py on the Song-Yue witness needs roughly 5-10 hours on 4 cores; a first launch without checkpoints was restarted (4 pieces lost) to make it resumable. Not finished in this run.
+- First fetch of Stadlmann's PDF came back as raw PDF bytes to the fetch helper; read locally with pdftotext instead.
+- No news search (only the 3:34 AM run does it).
+
+Next: Resume capped_exact --jonly --ckpt on the Song-Yue witness (STATE.md); if J_T matches, lower the project bound to 236 conditionally, with the caveat everywhere. Then the second program for our own k = 48 vector and rung 186.
+
 ## 2026-11-13 - Session 9 (11:34 PM CT, 12 Nov): Charton et al.'s Lemma 9.1 caps: ceiling 3.99 certified twice and the weights checked at a random point; optimum 3.98555, so a registered prediction failed; Kintali's 236 support gives 4.0061 > 4 with our own degree-22 vector (one program); bound unchanged (240 conditional); paper v0.9
 
 - Lemma 9.1 caps (k = 45, 846-dim space): with the saved exact weights, 4 G_I - 45 G_J re-certified positive definite at 6500 bits with a different block split, and 3.99 G_I - 45 G_J as well, so no P in the space reaches 3.99.

@@ -4,7 +4,7 @@ Each line of work that grows into its own result gets its own paper here: `paper
 
 | slug | title | version | status | one line |
 |---|---|---|---|---|
-| `verification-note` | An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft | 0.2 (draft, 13 Nov 2026; referee fixes applied) | active | Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song–Yue (236) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps. The analytic inputs are not verified. |
+| `verification-note` | An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft | 0.3 (draft, 13 Nov 2026; second program confirms the 236 witness numerator) | active | Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song–Yue (236) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps. The analytic inputs are not verified. |
 
 ## Updating `verification-note`
 

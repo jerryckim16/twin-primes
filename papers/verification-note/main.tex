@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.2 (draft), 13 November 2026}
+\date{Version 0.3 (draft), 13 November 2026}
 
 \begin{document}
 
@@ -45,7 +45,8 @@ $1$) $48J_T/I_0=1.0006649215907\ldots>2001/2000$. The authors list the regenerat
 capped numerator as pending. The same computation reproduces Kintali's
 printed capped and cap-free ratios to $12$ significant digits, and a test
 function of our own gives $4.0060814\ldots>4$ on the same support. The capped
-numerators at $k=48$ have so far been computed by one program; a second is running.
+numerator of the witness is confirmed by a second, independent exact program;
+the value for our own test function so far rests on one program.
 (iii) For the draft of Charton et al.\ ($k=45$, claimed $H_1\le212$) the
 criterion holds for the caps of its Table~3 ($4.0027351\ldots>4$, two
 programs), whereas for the different caps stated in its Lemma~9.1 no
@@ -104,8 +105,8 @@ Ratios in the Polymath scaling, where the threshold is $4$:
 claim & variational ratio & status here\\
 \midrule
 $240$ & $4.0120389$; optimised on $T$: $4.0124198$ & \lbl{Computed}, two programs\\
-$236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \lbl{Computed}, one program\\
- & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & (second running)\\
+$236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \lbl{Computed}, two programs\\
+ & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & ($J_T$; $I_T$ one)\\
 $236$, our own $F$ & $4.0060814$ & \lbl{Computed}, one program\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in an $846$-dim.\ space & \lbl{Computed}, ball arithm.\\
@@ -353,7 +354,7 @@ even, $P_{\mathrm{SY}}$, rewritten in $u=4t$, is exactly a polynomial in $L-P_1$
 $P_2,\dots,P_{24}$ ($1311$ terms); the conversion was checked exactly at random
 rational points.
 
-\begin{theorem}[\lbl{Computed}, exact rational arithmetic; item (2) by one program so far]\label{thm:sy}
+\begin{theorem}[\lbl{Computed}, exact rational arithmetic; items (1) and (2) each by two independent programs]\label{thm:sy}
 For the witness $P_{\mathrm{SY}}$ of \cite{SY26} and the support above, with
 $I_0$ and $J_T$ computed in the $t$-coordinates of \cite{SY26}:
 \begin{enumerate}
@@ -386,15 +387,19 @@ significant digits; for example
 \[4\times1.000774701187468=4.003098804749\ldots,\]
 and our capped ratio is $4.0030988047499\ldots$.
 
-\emph{Status of item (2).} This item and Proposition~\ref{prop:kin-own}
-below are the results of this note that so far rest on one program. The
-second evaluator, \texttt{capped\_exact.py}, agrees with the monomial-basis
-programs \texttt{songyue\_I0.py} and \texttt{songyue\_J0.py} on the cap-free
-values $I_0$ and $J_0$ (to about $11$ digits) and is computing the $126$
-correction pieces from a checkpoint (many hours on four cores). This draft
-will be updated when it finishes. The exact agreement of \texttt{capped\_check.py} with the
-authors' independently produced $715$-digit integer is itself strong evidence
-for both, since a common error would have to produce the same integer.
+\emph{Second program (version 0.3).} The second evaluator,
+\texttt{capped\_exact.py} (cap-free value minus $126$ inclusion--exclusion
+correction pieces, each an exact rational; about $32$ core-hours), gives the
+same $J_T$ as \texttt{capped\_check.py} as an exact rational, so item (2)
+holds by two independent programs; its cap-free values equal $I_0$ and $J_0$
+of the monomial-basis programs \texttt{songyue\_I0.py} and
+\texttt{songyue\_J0.py} exactly, so item (1) does too (see
+\texttt{code/}\allowbreak\texttt{songyue\_compare2.py} and
+\texttt{code/}\allowbreak\texttt{cap6/}\allowbreak\texttt{compare2\_sy236.json}).
+The capped denominator $I_T$, which enters only the ratio $48J_T/I_T$ and not
+the criterion of \cite{SY26}, rests on \texttt{capped\_check.py} alone.
+Proposition~\ref{prop:kin-own} below is now the only result of this note that
+rests on one program.
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic, one program]\label{prop:kin-own}
 For our own cap-free optimiser in $V_{22}$ for this $(L,\tau)$ at $k=48$
@@ -406,11 +411,11 @@ Here the caps cost only $0.00033$ (the cap-free value is $4.0064115$). That our
 value exceeds the witness's $4.0031$ is expected, since the witness was
 optimised for $k=50$ and transported, while ours is optimised for $k=48$.
 
-\begin{corollary}[conditional; the analytic input is \lbl{Claimed}; one program so far]
+\begin{corollary}[conditional; the analytic input is \lbl{Claimed}]
 For the published witness, the variational criteria of both \cite{Kin26}
 ($48J_T/I_T>4$) and \cite{SY26} ($48J_T/I_0>2001/2000$) hold at $k=48$. For
 our independent test function only the capped criterion $48J_T/I_T>4$ was
-computed, and it holds. With the
+computed, and it holds (one program). With the
 \lbl{Lean-checked} admissible $48$-tuple of diameter $236$, $H_1\le236$
 follows from their equidistribution input, which we have not verified.
 \end{corollary}
@@ -512,6 +517,10 @@ version 0.9).
 
 \section*{Changes}
 \begin{description}
+\item[0.3] (13 November 2026) The second exact program confirms the capped
+numerator of the witness of \cite{SY26} (Theorem~\ref{thm:sy}); the
+one-program qualifiers for it are removed from the abstract, the table, the
+theorem and the corollary.
 \item[0.2] (13 November 2026) Revised after an internal referee report
 (in the directory \texttt{referee/} of the repository).
 The normalisations are now stated (new paragraph in \S2) and the $236$ ratios

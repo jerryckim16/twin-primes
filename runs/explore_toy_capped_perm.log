@@ -1,0 +1,13 @@
+k=3 d=8 c1=0.800 c2=1.000  free 1.646440  trunc 1.614592  opt_T 1.617819  loss 3.18e-02  regain 0.101
+k=3 d=8 c1=0.800 c2=0.800  free 1.646440  trunc 1.444236  opt_T 1.457806  loss 2.02e-01  regain 0.067
+k=3 d=8 c1=1.000 c2=0.900  free 1.646440  trunc 1.580119  opt_T 1.585764  loss 6.63e-02  regain 0.085
+k=3 d=8 c1=1.000 c2=0.800  free 1.646440  trunc 1.444236  opt_T 1.457806  loss 2.02e-01  regain 0.067
+k=3 d=8 c1=1.000 c2=0.700  free 1.646440  trunc 1.276072  opt_T 1.289693  loss 3.70e-01  regain 0.037
+k=3 d=8 c1=0.600 c2=1.000  free 1.646440  trunc 1.473884  opt_T 1.495585  loss 1.73e-01  regain 0.126
+k=3 d=8 c1=0.600 c2=0.900  free 1.646440  trunc 1.455615  opt_T 1.480624  loss 1.91e-01  regain 0.131
+k=3 d=8 c1=0.600 c2=0.800  free 1.646440  trunc 1.391914  opt_T 1.419830  loss 2.55e-01  regain 0.110
+k=3 d=8 c1=0.700 c2=0.800  free 1.646440  trunc 1.435202  opt_T 1.452340  loss 2.11e-01  regain 0.081
+k=3 d=8 c1=0.500 c2=0.900  free 1.646440  trunc 1.333754  opt_T 1.373215  loss 3.13e-01  regain 0.126
+k=3 d=5 c1=0.600 c2=0.900  free 1.646427  trunc 1.455679  opt_T 1.480568  loss 1.91e-01  regain 0.130
+k=3 d=5 c1=0.600 c2=0.800  free 1.646427  trunc 1.391858  opt_T 1.419611  loss 2.55e-01  regain 0.109
+k=3 d=5 c1=0.500 c2=0.900  free 1.646427  trunc 1.333906  opt_T 1.373154  loss 3.13e-01  regain 0.126

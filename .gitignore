@@ -9,3 +9,8 @@ paper/main.pdf
 __pycache__/
 *.pyc
 code/*.log
+papers/*/*.aux
+papers/*/*.fdb_latexmk
+papers/*/*.fls
+papers/*/*.log
+papers/*/*.out

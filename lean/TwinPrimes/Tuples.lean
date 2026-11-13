@@ -402,6 +402,18 @@ def narrow40 : NarrowTuple 40 186 where
 theorem boundedGaps_186_of_DHL_40 (h : DHL 40) : BoundedGaps 186 :=
   narrow40.boundedGaps h
 
+/-- The 40-tuple printed in OpenAI's 186 preprint, display (1.3) (a different tuple from `narrow40`);
+checked here so that the tuple quoted in that source is itself certified admissible of diameter 186. -/
+def openai40 : NarrowTuple 40 186 where
+  H := [0, 2, 6, 12, 20, 26, 30, 32, 36, 42, 48, 50, 56, 60, 68, 72, 78, 86, 90, 92, 98, 102, 110, 116, 120, 126, 132, 138, 140, 146, 152, 156, 158, 162, 168, 170, 176, 180, 182, 186]
+  len := by decide
+  sorted := by decide +kernel
+  bound := by decide +kernel
+  check := by decide +kernel
+
+theorem boundedGaps_186_of_DHL_40' (h : DHL 40) : BoundedGaps 186 :=
+  openai40.boundedGaps h
+
 def narrow41 : NarrowTuple 41 188 where
   H := [0, 2, 6, 8, 12, 20, 26, 30, 32, 36, 42, 48, 50, 56, 60, 68, 72, 78, 86, 90, 92, 98, 102, 110, 116, 120, 126, 132, 138, 140, 146, 152, 156, 158, 162, 168, 170, 176, 182, 186, 188]
   len := by decide

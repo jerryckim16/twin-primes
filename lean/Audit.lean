@@ -17,3 +17,5 @@ import TwinPrimes
 #print axioms TwinPrimes.charton_extra_le_six
 #print axioms TwinPrimes.kintali_large_count
 #print axioms TwinPrimes.kintali_extra_le_three
+#print axioms TwinPrimes.boundedGaps_186_of_DHL_40'
+#print axioms TwinPrimes.boundedGaps_236_of_DHL_48

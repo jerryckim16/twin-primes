@@ -62,5 +62,13 @@
   "k": 49,
   "how": "Variational step of [Sta26] independently reproduced: on Stadlmann's capped one-band support (k = 49, eps = 0.0075, A1 = 0.253, delta = 0.028, caps 0.15/0.15/0.17, c1 = c2 = 0) the degree-20 polynomial P gives k J_T/I_T = 4.0120389 > 4 for F = P 1_T, computed exactly by two independent programs; Lean-checked 49-tuple of diameter 240. conditional: rests on the equidistribution estimates of Stadlmann (arXiv:2608.31126, his Prop. 1 and equidistribution theorem), which this project has NOT verified.",
   "certificate": "code/cap6/P_capfree_D20_u.json (+ code/cap6/res_capfree_D20.json, code/cap6/check_capfree_D20.json)"
+ },
+ {
+  "date": "2026-11-13",
+  "session": 12,
+  "bound": 236,
+  "k": 48,
+  "how": "Variational step of Song-Yue (IACR ePrint 2026/1893; same D182 support as Kintali) independently reproduced: for their published 1295-row witness (degree 25, k = 48) the criterion 48 J_T/I0 = 1.000664921591 > 2001/2000 holds, with the capped numerator computed exactly by two independent programs (both equal to their reference integer Jref) and I0 equal to Iref; Lean-checked 48-tuple of diameter 236. conditional: rests on Song-Yue's equidistribution theorem (their Theorem 4.18, via Theorem 4.33), which this project has NOT verified; see also their Remark 4.23 on Stadlmann's Lemma 5.",
+  "certificate": "code/cap6/P_sy236_u.json (from code/cap6/songyue236_witness.json; + code/cap6/check_sy236.json, code/cap6/res_sy236_jonly.json, code/cap6/compare2_sy236.json, code/cap6/compare_sy236_exact.json)"
  }
 ]
