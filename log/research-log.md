@@ -8,6 +8,7 @@
 - Observation: the j = 3 correction pieces are at most 1e-24 J but take most of the running time; recorded as an own idea (a rigorous a priori bound would make later second programs much cheaper).
 - Rung 186: a helper transcribed the forms I_H, J_{lambda,H} and the 77-coefficient table of OpenAI's numerical companion (notes/sources-186-forms.md; checked against the source description in notes/sources-186.md); independent reproduction needs interval arithmetic (Dickman cell masses are transcendental), one formula (2.15) is underspecified.
 - Paper v0.11: Proposition sy-exact now by two programs, new Corollary cor:236 (conditional), Remark oai186 extended; Lean audit now prints boundedGaps_236_of_DHL_48 (propext, Quot.sound only).
+- Small-results paper verification-note (added to main by a coordination session) updated to v0.3: the 236 witness numerator is now by two programs; one-program qualifiers removed (its own update instructions in papers/README.md).
 
 Explored: Toy capped problem at k = 3 with per-m caps (single-coordinate and pair-sum caps): pair caps give a smaller regain (4-8.5%) than single caps (up to 13%), so the cap pattern does not explain the 31% regain at k = 45 -- dead end.
 

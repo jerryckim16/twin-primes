@@ -349,6 +349,15 @@
   }
  ],
  "phase": "A",
- "papers": [],
+ "papers": [
+  {
+   "slug": "verification-note",
+   "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
+   "version": "0.3",
+   "status": "active",
+   "pdf": "docs/papers/verification-note.pdf",
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; witness numerator now by two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps. Analytic inputs not verified."
+  }
+ ],
  "last_review": null
 }

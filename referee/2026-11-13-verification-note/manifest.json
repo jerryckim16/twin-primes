@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "preparation_version": 1,
+  "main": "papers/verification-note/main.tex",
+  "source_sha256": "a2841e73818b3a7bdcd52ea0635a642553c1a04838fe33d81029320dd5ed0bc0",
+  "global_context_sha256": "571998f72dd76776d9e9fec5a961f46defbcdc87072c15adee8e52ec3589f5cd",
+  "contract_sha256": "1724a27967dc2db3a1831b9428f41013d10f745963fb978e0d1bf4849c2d116d",
+  "source_files_sha256": "73dea68843d25560d1948d4257972f0d231648e394c57c107648b6190152be1d",
+  "sources": [
+    {
+      "path": "papers/verification-note/main.tex",
+      "sha256": "a2841e73818b3a7bdcd52ea0635a642553c1a04838fe33d81029320dd5ed0bc0",
+      "bytes": 24293
+    }
+  ],
+  "source_map": [
+    {
+      "expanded_start": 0,
+      "expanded_end": 24292,
+      "path": "papers/verification-note/main.tex",
+      "source_start": 0,
+      "source_end": 24292,
+      "source_line": 1
+    },
+    {
+      "expanded_start": 24292,
+      "expanded_end": 24293,
+      "path": "papers/verification-note/main.tex",
+      "source_start": 24292,
+      "source_end": 24293,
+      "source_line": 461
+    }
+  ],
+  "units": [
+    {
+      "id": "sha256:e14b7b1807b8bb71dfbafce9e67ee9600d4530a6f327c230054c935bb271de83:1",
+      "sha256": "755cfcda5ae155216e12c97c5200b87770eee87736bfecff88b76769d2ee7265",
+      "identity_sha256": "e14b7b1807b8bb71dfbafce9e67ee9600d4530a6f327c230054c935bb271de83",
+      "title": "Front matter",
+      "kind": "front-matter",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/001-front-matter.tex",
+      "expanded_start": 1171,
+      "expanded_end": 3197,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 25
+      }
+    },
+    {
+      "id": "sha256:048e9d1c9a0da7ab0608b7ff25073061ec53cd606f7f3237e16259dd859b046e:1",
+      "sha256": "0720c21221400b9a25252158783a6b47fcec97a9e6ea29fb5d80ca9f9dab4771",
+      "identity_sha256": "048e9d1c9a0da7ab0608b7ff25073061ec53cd606f7f3237e16259dd859b046e",
+      "title": "Introduction",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/002-introduction.tex",
+      "expanded_start": 3197,
+      "expanded_end": 6136,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 59
+      }
+    },
+    {
+      "id": "sha256:f7b372290e4ba59841b9c3dc95834d2a2ca53ad7005dc3f935a987784f7ebec0:1",
+      "sha256": "b9900ebe94cee10af26ab3ac92d721de566004612ca9a12e4c4c3f4042d1072c",
+      "identity_sha256": "f7b372290e4ba59841b9c3dc95834d2a2ca53ad7005dc3f935a987784f7ebec0",
+      "title": "The variational problem on a capped support",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/003-the-variational-problem-on-a-capped-support.tex",
+      "expanded_start": 6136,
+      "expanded_end": 10431,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 119
+      }
+    },
+    {
+      "id": "sha256:7dfdcf5f1ef23405db2092d4da6cbc8e95b8eaa0ba422f534b0735fe4f881f7c:1",
+      "sha256": "c6b37537ecc330f45554f98282d01f5b7284495b7e78aaa43c86f96bd58ad422",
+      "identity_sha256": "7dfdcf5f1ef23405db2092d4da6cbc8e95b8eaa0ba422f534b0735fe4f881f7c",
+      "title": "Method",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/004-method.tex",
+      "expanded_start": 10431,
+      "expanded_end": 12654,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 215
+      }
+    },
+    {
+      "id": "sha256:9ecf57f594bff3760e13366c8fed449f65f77501bd40c4f846d2ccfbcbe2fea5:1",
+      "sha256": "1eb31cbeff062d03c6b18add08a870a36477a501915d8c69d4966fe7d667e710",
+      "identity_sha256": "9ecf57f594bff3760e13366c8fed449f65f77501bd40c4f846d2ccfbcbe2fea5",
+      "title": "Results",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/005-results.tex",
+      "expanded_start": 12654,
+      "expanded_end": 20618,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 253
+      }
+    },
+    {
+      "id": "sha256:036ec9dc35d5fd4ec3344e3863b84529d32b80bba69937bd812e7154a8bb15aa:1",
+      "sha256": "473f7feeffef575f23463e5caed7a0cd623f5d6ccbac0341230f5c0aa27bea99",
+      "identity_sha256": "036ec9dc35d5fd4ec3344e3863b84529d32b80bba69937bd812e7154a8bb15aa",
+      "title": "Remarks",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/006-remarks.tex",
+      "expanded_start": 20618,
+      "expanded_end": 22202,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 397
+      }
+    },
+    {
+      "id": "sha256:2397709bbbc73a3549ce41125940c6e610088265fc9e1add4c2db7973a702617:1",
+      "sha256": "f8066e2e1747eb2a6938abda74bc708e2de4fb4a7c72113b1d531d3524700b6c",
+      "identity_sha256": "2397709bbbc73a3549ce41125940c6e610088265fc9e1add4c2db7973a702617",
+      "title": "Reproducibility",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/007-reproducibility.tex",
+      "expanded_start": 22202,
+      "expanded_end": 23139,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 424
+      }
+    },
+    {
+      "id": "sha256:b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9:1",
+      "sha256": "c8dcb26a6af6f788e6a7c4a3a33f954f3aa15ffb4630b93becb5902c0c451a70",
+      "identity_sha256": "b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9",
+      "title": "Bibliography",
+      "kind": "bibliography",
+      "reviewable": false,
+      "skip_reason": "Bibliography material",
+      "file": "sections/008-bibliography.tex",
+      "expanded_start": 23139,
+      "expanded_end": 24278,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 440
+      }
+    }
+  ],
+  "limitations": [
+    "Lexical preparation only: no TeX execution or arbitrary macro expansion.",
+    "Conditionals, catcode changes, includeonly, TEXINPUTS or import-package paths and custom input/section macros need manual inspection.",
+    "Literal masking covers verb/lstinline and common verbatim/listing/comment environments, not every package.",
+    "Bibliography files, graphics and package inputs are not loaded or authenticated.",
+    "Context is an extraction index; its order is not manuscript theorem numbering.",
+    "Hash comparison identifies text candidates, not dependency freshness or completed reviews."
+  ],
+  "comparison": null
+}

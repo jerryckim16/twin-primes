@@ -1,0 +1,144 @@
+\section{Results}
+
+\subsection*{The support of Stadlmann ($k=49$, claimed $H_1\le240$)}
+
+\begin{theorem}[\lbl{Computed}; exact, two independent programs]\label{thm:240}
+For the parameters of \cite{Sta26} in the table above:
+\begin{enumerate}
+\item for $P$ the cap-free optimiser of degree $20$ in even power sums
+($707$ coefficients),
+\[49J_T(P1_T)/I_T(P1_T)=4.0120389035\ldots;\]
+\item for $P^\ast$ the top eigenvector of $(49G_J,G_I)$ in the same space,
+rounded to $400$ significant bits per coefficient,
+\[49J_T(P^\ast1_T)/I_T(P^\ast1_T)=4.0124198475\ldots.\]
+\end{enumerate}
+\end{theorem}
+
+In both cases the two evaluators agree on $I_T$ and $J_T$ as exact rationals.
+Without caps the same space gives $4.016176$, so the caps cost $0.0041$ for the
+truncated optimiser and $0.0038$ for the optimised one: optimising on $T$
+regains less than a tenth of the loss. Since every point of $T$ has all
+coordinates at most $0.6$ and $T\subset L\R_{49}$, a dual-weight bound gives
+the ceiling $\sup_FkJ_T/I_T\le4.14$ (\lbl{Computed}, interval arithmetic). So
+the margin of the variational step of \cite{Sta26} lies in $(0.0124,\,0.14]$.
+
+\begin{corollary}[conditional; the analytic input is \lbl{Claimed}]
+The criterion of \cite[Prop.~1]{Sta26} holds for $k=49$ with Stadlmann's
+support, caps and parameters. With the \lbl{Lean-checked} admissible
+$49$-tuple of diameter $240$, $H_1\le240$ follows from \cite[Prop.~1]{Sta26}
+and his equidistribution theorem, which we have not verified.
+\end{corollary}
+
+\subsection*{The support of Kintali and of Song--Yue ($k=48$, claimed $H_1\le236$)}
+Both preprints use the same support (the table above, called ``D182'' in
+\cite{Kin26}) and, by their descriptions, the same public witness of degree
+$25$, originally constructed for $k=50$ and evaluated at $k=48$ without
+re-optimisation. Song and Yue print it as $1295$ integer triples
+$(a,\alpha,c)$, with
+\[
+P(z)=\sum c\,\left(\tfrac{26}{25}-s(z)\right)^a m_\alpha(z),\qquad
+P_U(t)=P\!\left(\tfrac{26}{25U}t\right),\quad U=\tfrac{521}{2000},
+\]
+$m_\alpha$ the monomial symmetric polynomials, and they print the reference
+integers $I_{\mathrm{ref}}=(98!)^2I_0^\ast$ and
+$J_{\mathrm{ref}}=(99!)^2(26!)^2J^\ast$. Here $I_0$ is the \emph{cap-free} mass
+on $\{s<U\}$, $J$ the capped numerator, and the stars denote integer
+coordinates $x=10^4t$. Their criterion is $48J/I_0>2001/2000$, which implies
+the capped criterion because $I_T\le I_0$ (\lbl{Literature},
+\cite[\S4.12, App.~A, App.~C]{SY26}). They state that a fresh evaluation
+reproduces $I_{\mathrm{ref}}$, while fresh regeneration of $J_{\mathrm{ref}}$
+from the table ``remains incomplete''.
+
+We extracted the table from the PDF using font sizes to read the exponents in
+the partitions. All $1295$ rows are present, every $\alpha$ is nondecreasing
+with even parts, and $\max(a+|\alpha|)=25$, as stated. Since all parts are
+even, $P_U$ is exactly a polynomial in $L-P_1$ and the even power sums
+$P_2,\dots,P_{24}$ ($1311$ terms); the conversion was checked exactly at random
+rational points.
+
+\begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:sy}
+For the witness $P_U$ of \cite{SY26} and the support above:
+\begin{enumerate}
+\item $(98!)^2\,10^{192}\,5^{150}\,521^{50}\,I_0=I_{\mathrm{ref}}$ exactly
+(an integer with $655$ digits);
+\item $(99!)^2(26!)^2\,10^{196}\,5^{150}\,521^{50}\,J_T=J_{\mathrm{ref}}$
+exactly (an integer with $715$ digits), where $J_T$ is the capped numerator;
+\item hence $48J_T/I_0=1.000664921591\ldots>2001/2000$, which is
+$4.0026596864\ldots$ in the Polymath scaling; with the capped denominator
+$48J_T/I_T=4.0030988047\ldots$, and without caps $48J_0/I_0=4.0036348167\ldots$.
+\end{enumerate}
+\end{theorem}
+
+The factors $10^{192}5^{150}521^{50}$ and $10^{196}5^{150}521^{50}$ come from the
+change to integer coordinates when the polynomial is scaled by $65125^{25}$
+(our reading of \cite[Eq.~(71)]{SY26}; $65125=25\cdot2605$), so items (1) and
+(2) are equalities of integers, not numerical agreement. Item (1) was computed
+by a program written for this purpose, which works in the monomial basis of
+the table, integrating each product $m_\alpha m_\beta$ by a sum over partial
+matchings of parts, and does not use the power-sum conversion. Item (2) was
+computed by \texttt{capped\_check.py} on the converted polynomial ($56$ minutes
+on four cores). The capped and cap-free values in (3) agree with those claimed
+in \cite{Kin26}, $4.0030988$ and $4.0036348$, to every printed digit.
+
+\emph{Status of item (2).} This item and Proposition~\ref{prop:kin-own}
+below are the results of this note that so far rest on one program. The second evaluator, \texttt{capped\_exact.py}, agrees
+with it on the cap-free part and is computing the $126$ correction pieces
+from a checkpoint (about $5$--$10$ hours on four cores). This draft will be
+updated when it finishes. The exact agreement of the first program with the
+authors' independently produced $715$-digit integer is itself strong evidence
+for both, since a common error would have to produce the same integer.
+
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, one program]\label{prop:kin-own}
+For our own cap-free optimiser of degree $22$ for this $(L,\tau)$ at $k=48$
+($1041$ coefficients, even power sums, rounded to $400$ significant bits),
+$48J_T(P1_T)/I_T(P1_T)=4.0060814208\ldots>4$.
+\end{proposition}
+
+Here the caps cost only $0.00033$ (the cap-free value is $4.0064115$). That our
+value exceeds the witness's $4.0031$ is expected, since the witness was
+optimised for $k=50$ and transported, while ours is optimised for $k=48$.
+
+\begin{corollary}[conditional; the analytic input is \lbl{Claimed}]
+The variational criteria of \cite{Kin26} and \cite{SY26} hold at $k=48$, for
+the published witness and for an independent test function. With the
+\lbl{Lean-checked} admissible $48$-tuple of diameter $236$, $H_1\le236$
+follows from their equidistribution input, which we have not verified.
+\end{corollary}
+
+\subsection*{The draft of Charton et al.\ ($k=45$, claimed $H_1\le212$)}
+
+\begin{proposition}[\lbl{Computed}; exact, two independent programs]\label{prop:212}
+With the caps of \cite[Table~3]{Cha26} and $P$ our cap-free optimiser of
+degree $21$ ($846$ coefficients, the dimension of the space
+$\mathcal B_{21}$ of \cite[Thm.~11.1]{Cha26}),
+$45J_T(P1_T)/I_T(P1_T)=4.0027351128\ldots>4$.
+\end{proposition}
+
+The authors report $4.00438$ with their own optimised function (\lbl{Claimed});
+our value is lower, as expected for a function optimised without caps, and
+already above $4$. The draft, however, also states caps in its Lemma~9.1,
+namely $C_1=C_2=31/50$ and $C_m=17/25$ for $m\ge3$, which are smaller than
+those of Table~3 for every $m\ge4$. With these the conclusion changes.
+
+\begin{proposition}[\lbl{Computed}, ball arithmetic]\label{prop:ceiling}
+Let $T'$ be the support with the caps of Lemma~9.1 of \cite{Cha26} and $V$ the
+$846$-dimensional space above. Then $3.99\,G_I-45\,G_J$ is positive definite on
+$V$, so
+\[
+\frac{45J_{T'}(P1_{T'})}{I_{T'}(P1_{T'})}<3.99\qquad\text{for every nonzero }P\in V.
+\]
+\end{proposition}
+
+The certificate was obtained twice, at $5000$ and $6500$ bits with different
+block splits, and the underlying weights agree exactly with
+\texttt{capped\_check.py} at a random integer point. The best $P$ in $V$ gives
+about $3.98555$ (floating point, from the Gram matrices). So within a space of
+the size the authors use, the caps of Lemma~9.1 cannot give their
+$4.00438$, which must belong to the caps of Table~3. A careful reading of the
+draft supports this: Table~3 is presented as the parameter set used in both
+halves of the proof, and the Lemma~9.1 values appear to be left over from an
+earlier choice. We report this as a located inconsistency for the authors to
+resolve, not as an error in their result. We have not checked that their space
+coincides with ours beyond its dimension, and \texttt{capped\_exact.py} has not
+yet re-evaluated the random point used for the weights.
+

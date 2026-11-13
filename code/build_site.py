@@ -218,11 +218,36 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 .bh{margin-top:8px;font-size:.88rem} .bh summary{cursor:pointer;color:var(--accent);font-family:var(--mono);font-size:.78rem}
 .bh td.num{font-variant-numeric:tabular-nums;text-align:right;padding-right:14px} .bh th{font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:500}
 .files{columns:2;column-gap:24px;list-style:none;padding:0;margin:0;font-size:.8rem} .files code{font-family:var(--mono);overflow-wrap:anywhere}
+.papers{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px} .papers li{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.papers .ptl{font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.3;margin:0 0 4px} .papers .pmeta{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin:0 0 6px} .papers .pdesc{font-size:.92rem;margin:0 0 6px} .papers .plinks{font-family:var(--mono);font-size:.78rem;display:flex;flex-wrap:wrap;gap:6px 16px;margin:0}
 @media (max-width:640px){ body{font-size:17px} .tiles{grid-template-columns:repeat(2,1fr)} .files{columns:1}
   .mark .cap{font-size:.6rem;left:-38px;width:76px} h1{font-size:1.6rem}
   .mark.al .num,.mark.al .cap,.mark.ar .num,.mark.ar .cap{width:72px}
   .ledger tr{display:block;padding:10px 0;border-bottom:1px solid var(--rule)} .ledger td{display:block;border:0;padding:0 0 4px} .ledger td.where{min-width:0} }
 """
+
+# ---------- papers: the main paper and every small-results paper (index: papers/README.md) ----------
+def papers_list():
+    gh = "https://github.com/jerryckim16/twin-primes/blob/main/"
+    items = [f'<li><p class="ptl">{esc(title)}</p><p class="pmeta">Main paper &middot; {esc(date)} &middot; living paper, updated with every run</p>'
+             '<p class="pdesc">The full record: state of the problem, every certificate, our own results and the programme.</p>'
+             f'<p class="plinks"><a href="twin-primes-paper.pdf">PDF</a> <a href="{gh}paper/main.tex">LaTeX source</a></p></li>']
+    idx = "papers/README.md"
+    if os.path.exists(idx):
+        for line in open(idx):
+            m = re.match(r"\|\s*`([^`]+)`\s*\|(.*?)\|(.*?)\|(.*?)\|(.*?)\|\s*$", line)
+            if not m:
+                continue
+            slug, ptitle, ver, status, desc = (x.strip() for x in m.groups())
+            src = f"papers/{slug}/main.pdf"
+            if os.path.exists(src):
+                os.makedirs("docs/papers", exist_ok=True)
+                import shutil; shutil.copy(src, f"docs/papers/{slug}.pdf")
+            pdf = f'<a href="papers/{esc(slug)}.pdf">PDF</a> ' if os.path.exists(f"docs/papers/{slug}.pdf") else ""
+            items.append(f'<li><p class="ptl">{esc(ptitle)}</p><p class="pmeta">Small-results paper &middot; version {esc(ver)} &middot; {esc(status)}</p>'
+                         f'<p class="pdesc">{esc(desc)}</p><p class="plinks">{pdf}<a href="{gh}papers/{esc(slug)}/main.tex">LaTeX source</a></p></li>')
+    return '<ul class="papers">' + "".join(items) + "</ul>"
+papers_html = papers_list()
 
 page = f"""<!DOCTYPE html>
 <html lang="en">
@@ -264,8 +289,8 @@ window.addEventListener("DOMContentLoaded", function () {{
 <main>
 <header>
   <h1>Twin Prime Notebook</h1>
-  <p class="lede">A running record of work on small gaps between primes: a LaTeX paper, a Lean development and exact certificates, updated six times a day.</p>
-  <p class="links"><a href="twin-primes-paper.pdf">Paper (PDF)</a> <a href="https://github.com/jerryckim16/twin-primes">Source on GitHub</a> <a href="https://github.com/jerryckim16/twin-primes/commits/main">Every update</a></p>
+  <p class="lede">A running record of work on small gaps between primes: a LaTeX paper, a Lean development and exact certificates, updated three times a day.</p>
+  <p class="links"><a href="twin-primes-paper.pdf">Paper (PDF)</a> <a href="#papers">All papers</a> <a href="https://github.com/jerryckim16/twin-primes">Source on GitHub</a> <a href="https://github.com/jerryckim16/twin-primes/commits/main">Every update</a></p>
   <p class="meta">Paper version {esc(st['version'])} &middot; updated {esc(st['updated'])} &middot; {st['session_count']} session{'s' if st['session_count'] != 1 else ''} logged</p>
 </header>
 
@@ -276,6 +301,12 @@ window.addEventListener("DOMContentLoaded", function () {{
   {scale}
   <p class="scalenote">Smallest gap proved to occur infinitely often between primes, on a logarithmic scale. Lower is better.</p>
   {tiles}
+</section>
+
+<section id="papers">
+  <h2>Papers</h2>
+  {papers_html}
+  <p class="scalenote" style="margin-top:10px">Drafts, not peer reviewed. Each small-results paper keeps growing as new results are checked; its version and changelog are in the PDF.</p>
 </section>
 
 <section>

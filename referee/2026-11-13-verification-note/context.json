@@ -1,0 +1,125 @@
+{
+  "preamble": "\\documentclass[11pt]{amsart}\n\\usepackage[margin=1.1in]{geometry}\n\\usepackage{amsmath,amssymb,amsthm}\n\\usepackage{booktabs}\n\\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}\n\n\\newtheorem{theorem}{Theorem}\n\\newtheorem{proposition}[theorem]{Proposition}\n\\newtheorem{lemma}[theorem]{Lemma}\n\\newtheorem{corollary}[theorem]{Corollary}\n\\theoremstyle{definition}\n\\newtheorem{definition}[theorem]{Definition}\n\\theoremstyle{remark}\n\\newtheorem{remark}[theorem]{Remark}\n\n\\newcommand{\\lbl}[1]{\\textup{\\textsc{#1}}}\n\\newcommand{\\R}{\\mathcal{R}}\n\\newcommand{\\DHL}{\\mathrm{DHL}}\n\n\\title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the 2026 bounds $H_1\\le240$ and $H_1\\le236$, with a remark on the caps of a $212$ draft}\n\\author{Jerry Kim}\n\\thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \\url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \\url{https://jerryckim16.github.io/twin-primes/}.}\n\\date{Version 0.1 (draft), 13 November 2026}\n\n",
+  "title": "An independent exact verification of the variational step behind the 2026 bounds $H_1\\le240$ and $H_1\\le236$, with a remark on the caps of a $212$ draft",
+  "abstracts": [
+    {
+      "text": "\nSeveral 2026 preprints claim improvements of the bound $H_1\\le246$ of\nPolymath8b for $H_1=\\liminf(p_{n+1}-p_n)$. Each combines new equidistribution\nestimates for primes in arithmetic progressions with a \\emph{variational step}:\na test function $F$ on a capped region of $\\mathbb R^k$ whose sieve ratio\nexceeds a threshold. We recompute the variational step of three of these\nclaims in exact rational arithmetic, with independent programs, and do not\naddress their analytic input. (i) For the support and parameters of Stadlmann\n($k=49$, claimed $H_1\\le240$) we certify the capped ratio $4.0120389\\ldots>4$\nwith a test function of our own, and $4.0124198\\ldots$ after optimising it on\nthe capped region; two independent programs agree to the last digit.\n(ii) For the support shared by Kintali and by Song and Yue ($k=48$, claimed\n$H_1\\le236$) we recompute the published witness of Song and Yue: its cap-free\nmass and its capped numerator equal the paper's reference integers ($655$ and\n$715$ digits) exactly, so their criterion $48J/I_0>2001/2000$ holds, with\n$48J/I_0=1.000664921591\\ldots$; the authors list the regeneration of the\ncapped numerator as pending. The same computation reproduces Kintali's\nclaimed capped and cap-free values to every printed digit, and a test\nfunction of our own gives $4.0060814\\ldots>4$ on the same support. The capped\nnumerator has so far been recomputed by one program; a second is running.\n(iii) For the draft of Charton et al.\\ ($k=45$, claimed $H_1\\le212$) the\ncriterion holds for the caps of its Table~3 ($4.0027351\\ldots>4$, two\nprograms), whereas for the different caps stated in its Lemma~9.1 no\npolynomial in an $846$-dimensional space of the size the authors use reaches\n$3.99$ (ball arithmetic). This locates an inconsistency in the draft; it is\nnot a refutation. None of this verifies the new equidistribution estimates,\non which every one of these bounds rests, and none of it bears on the twin\nprime conjecture, which remains open.\n",
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 27
+      }
+    }
+  ],
+  "statements": [
+    {
+      "environment": "lemma",
+      "label": "lem:egf",
+      "text": "\\begin{lemma}[\\lbl{Proved here}; elementary]\\label{lem:egf}\nLet $P_j=\\sum_iu_i^j$, $X_1,\\dots,X_k$ independent exponential variables of\nmean $1$, and $E_k(b)=\\mathbb E\\prod_jP_j(X)^{b_j}$. Then, with\n$w(b)=\\sum_jjb_j$,\n\\[\n\\int_{\\R_k}(1-P_1)^A\\prod_jP_j^{b_j}\\,du=\\frac{A!}{(k+A+w(b))!}\\,E_k(b),\n\\qquad\n\\sum_bE_k(b)\\frac{s^b}{b!}=\\left(\\sum_c w(c)!\\,\\frac{s^c}{c!}\\right)^{k}.\n\\]\n\\end{lemma}",
+      "expanded_start": 7914,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 160
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:fibre",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; elementary]\\label{prop:fibre}\nIf $C_{m+1}\\le C_m+g$ for all $m$, then the fibre $\\{t\\ge0:(u',t)\\in T\\}$ is\nempty when $u'$ is not admissible and equals $[0,U(u')]$ otherwise, where\n\\[\nU=\\min\\bigl(R,\\ \\max(g,\\ C_{m(u')+1}-s(u'))\\bigr).\n\\]\nConsequently, with $Q(u',x)=\\int_0^xP(u',t)\\,dt$ for a polynomial $P$,\n\\[\nJ_T(P\\,1_T)=J(P)-\\int_{\\substack{|u'|\\le\\tau\\\\ u'\\text{ not adm.}}}Q(u',R)^2\n-\\int_{\\substack{|u'|\\le\\tau\\\\ u'\\text{ adm.},\\ U<R}}\\bigl(Q(u',R)^2-Q(u',U)^2\\bigr),\n\\]\nand $I_T(P\\,1_T)=I(P)-\\int_{L\\R_k\\setminus T}P^2$, where $I,J$ are the\ncap-free functionals.\n\\end{proposition}",
+      "expanded_start": 8744,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 181
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:240",
+      "text": "\\begin{theorem}[\\lbl{Computed}; exact, two independent programs]\\label{thm:240}\nFor the parameters of \\cite{Sta26} in the table above:\n\\begin{enumerate}\n\\item for $P$ the cap-free optimiser of degree $20$ in even power sums\n($707$ coefficients),\n\\[49J_T(P1_T)/I_T(P1_T)=4.0120389035\\ldots;\\]\n\\item for $P^\\ast$ the top eigenvector of $(49G_J,G_I)$ in the same space,\nrounded to $400$ significant bits per coefficient,\n\\[49J_T(P^\\ast1_T)/I_T(P^\\ast1_T)=4.0124198475\\ldots.\\]\n\\end{enumerate}\n\\end{theorem}",
+      "expanded_start": 12743,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 257
+      }
+    },
+    {
+      "environment": "corollary",
+      "label": null,
+      "text": "\\begin{corollary}[conditional; the analytic input is \\lbl{Claimed}]\nThe criterion of \\cite[Prop.~1]{Sta26} holds for $k=49$ with Stadlmann's\nsupport, caps and parameters. With the \\lbl{Lean-checked} admissible\n$49$-tuple of diameter $240$, $H_1\\le240$ follows from \\cite[Prop.~1]{Sta26}\nand his equidistribution theorem, which we have not verified.\n\\end{corollary}",
+      "expanded_start": 13786,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 277
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:sy",
+      "text": "\\begin{theorem}[\\lbl{Computed}, exact rational arithmetic]\\label{thm:sy}\nFor the witness $P_U$ of \\cite{SY26} and the support above:\n\\begin{enumerate}\n\\item $(98!)^2\\,10^{192}\\,5^{150}\\,521^{50}\\,I_0=I_{\\mathrm{ref}}$ exactly\n(an integer with $655$ digits);\n\\item $(99!)^2(26!)^2\\,10^{196}\\,5^{150}\\,521^{50}\\,J_T=J_{\\mathrm{ref}}$\nexactly (an integer with $715$ digits), where $J_T$ is the capped numerator;\n\\item hence $48J_T/I_0=1.000664921591\\ldots>2001/2000$, which is\n$4.0026596864\\ldots$ in the Polymath scaling; with the capped denominator\n$48J_T/I_T=4.0030988047\\ldots$, and without caps $48J_0/I_0=4.0036348167\\ldots$.\n\\end{enumerate}\n\\end{theorem}",
+      "expanded_start": 15684,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 311
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:kin-own",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic, one program]\\label{prop:kin-own}\nFor our own cap-free optimiser of degree $22$ for this $(L,\\tau)$ at $k=48$\n($1041$ coefficients, even power sums, rounded to $400$ significant bits),\n$48J_T(P1_T)/I_T(P1_T)=4.0060814208\\ldots>4$.\n\\end{proposition}",
+      "expanded_start": 17690,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 343
+      }
+    },
+    {
+      "environment": "corollary",
+      "label": null,
+      "text": "\\begin{corollary}[conditional; the analytic input is \\lbl{Claimed}]\nThe variational criteria of \\cite{Kin26} and \\cite{SY26} hold at $k=48$, for\nthe published witness and for an independent test function. With the\n\\lbl{Lean-checked} admissible $48$-tuple of diameter $236$, $H_1\\le236$\nfollows from their equidistribution input, which we have not verified.\n\\end{corollary}",
+      "expanded_start": 18229,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 353
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:212",
+      "text": "\\begin{proposition}[\\lbl{Computed}; exact, two independent programs]\\label{prop:212}\nWith the caps of \\cite[Table~3]{Cha26} and $P$ our cap-free optimiser of\ndegree $21$ ($846$ coefficients, the dimension of the space\n$\\mathcal B_{21}$ of \\cite[Thm.~11.1]{Cha26}),\n$45J_T(P1_T)/I_T(P1_T)=4.0027351128\\ldots>4$.\n\\end{proposition}",
+      "expanded_start": 18677,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 362
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:ceiling",
+      "text": "\\begin{proposition}[\\lbl{Computed}, ball arithmetic]\\label{prop:ceiling}\nLet $T'$ be the support with the caps of Lemma~9.1 of \\cite{Cha26} and $V$ the\n$846$-dimensional space above. Then $3.99\\,G_I-45\\,G_J$ is positive definite on\n$V$, so\n\\[\n\\frac{45J_{T'}(P1_{T'})}{I_{T'}(P1_{T'})}<3.99\\qquad\\text{for every nonzero }P\\in V.\n\\]\n\\end{proposition}",
+      "expanded_start": 19383,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 375
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:lemma5",
+      "text": "\\begin{remark}[on {\\cite[Lemma~5]{Sta26}}; \\lbl{Literature} reading, not a result]\\label{rem:lemma5}\nSong and Yue \\cite[Remark~4.23]{SY26} say that one step in the proof of\n\\cite[Lemma~5]{Sta26} lacks a hypothesis. In arXiv v1, Lemma~5 (a Type~I\nestimate) takes $f=\\alpha\\star\\beta$ with $\\alpha$ an arbitrary\ncoefficient sequence and $\\beta$ smooth. For $\\gamma$ in a short range above\n$1/2$ the proof applies Lemma~3 (a Type~II estimate) ``with the roles of\n$\\alpha$ and $\\beta$ swapped''; Lemma~3 requires its shorter factor to satisfy\na Siegel--Walfisz condition, and after the swap that factor is $\\alpha$, for\nwhich neither Lemma~5 nor the case of \\cite[Definition~9]{Sta26} where it is\nused assumes this. So the step reads as \\cite{SY26} describe it. A natural\nrepair is to check that the sequences $\\alpha$ arising in the decomposition\nhave the property; we have not done so, and we do not know whether the\nconclusion is affected. Theorem~\\ref{thm:240} concerns only the variational\nstep and is unaffected; the \\emph{bound} $240$ depends on this input.\n\\end{remark}",
+      "expanded_start": 20637,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 399
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[what would change the picture]\nThe variational steps examined here have margins of $0.003$ to $0.012$ above\nthe threshold. They are therefore robust to rounding but not to a change of\nsupport: Proposition~\\ref{prop:ceiling} shows that a modest change in the caps\nmoves the best attainable ratio below $4$. Any revision of the analytic input\nthat shrinks the admissible caps should be re-checked against the variational\nstep, which our programs can do in hours.\n\\end{remark}",
+      "expanded_start": 21712,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 415
+      }
+    }
+  ]
+}

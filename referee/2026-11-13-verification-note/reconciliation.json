@@ -1,0 +1,237 @@
+{
+ "schema_version": 1,
+ "manuscript_sha256": "a2841e73818b3a7bdcd52ea0635a642553c1a04838fe33d81029320dd5ed0bc0",
+ "contract_sha256": "1724a27967dc2db3a1831b9428f41013d10f745963fb978e0d1bf4849c2d116d",
+ "executor": "coordinator (main session)",
+ "method": "self-review reconciliation of two isolated delegated passes; quotes and key claims re-checked in main.tex and the companion paper",
+ "model_assignment": {
+  "assignment_source": null,
+  "requested_model": null,
+  "requested_reasoning": null,
+  "actual_model": null,
+  "actual_reasoning": null,
+  "fallback_reason": null
+ },
+ "entries": [
+  {
+   "finding_id": "C001",
+   "disposition": "retained",
+   "reason": "Confirmed at main.tex:317-321 and the results table (line 95 heading vs row value 1.00066): one theorem item mixes threshold-1 (t-scaling) and threshold-4 (u-scaling) values.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC1"
+  },
+  {
+   "finding_id": "N006",
+   "disposition": "merged",
+   "reason": "Same defect: the coordinate system of I_0, J_T in Thm sy(1)-(2) is not stated; with the Section 2 (u=4t) definitions the identities would be off by powers of 4.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC1"
+  },
+  {
+   "finding_id": "N010",
+   "disposition": "retained",
+   "reason": "Exposition: no dictionary from the sources' (t, threshold 1) parameters to (L, tau, g, C_m) and threshold 4.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC11"
+  },
+  {
+   "finding_id": "C007",
+   "disposition": "merged",
+   "reason": "Evidence level of J_T (one program) omitted from the theorem label, table row and corollary; disclosed only in the status paragraph.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC2"
+  },
+  {
+   "finding_id": "N001",
+   "disposition": "retained",
+   "reason": "Confirmed: Method defines certified = two programs; thm:sy header and corollary lack the qualifier; the 4.14 ceiling gives no program/provenance.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC2"
+  },
+  {
+   "finding_id": "N004",
+   "disposition": "merged",
+   "reason": "Corollary (line ~350) asserts both preprints' criteria for the independent F; only k J_T/I_T > 4 was computed for it.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC2"
+  },
+  {
+   "finding_id": "C006",
+   "disposition": "merged",
+   "reason": "\"agrees with it on the cap-free part\" (line 337): capped_check has no cap-free term; the recorded agreement is between capped_exact and songyue_I0/J0.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC2"
+  },
+  {
+   "finding_id": "N012",
+   "disposition": "merged",
+   "reason": "Same as C006, plus missing program attribution for I_T and J_0 in thm:sy(3).",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC2"
+  },
+  {
+   "finding_id": "C002",
+   "disposition": "retained",
+   "reason": "Confirmed against companion paper (origin/main paper/main.tex:1305-1306): sigma=4 at 5000 bits; sigma=4 and 3.99 at 6500 bits; the 3.99 statement was certified once.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC3"
+  },
+  {
+   "finding_id": "C008",
+   "disposition": "retained",
+   "reason": "Confirmed at line 419 (\"best attainable ratio\") vs prop:ceiling, which is restricted to V.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC4"
+  },
+  {
+   "finding_id": "N002",
+   "disposition": "merged",
+   "reason": "Same overreach, plus \"must belong to the caps of Table 3\" (line 389) and the drafting guess \"left over\" (line 391).",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC4"
+  },
+  {
+   "finding_id": "C004",
+   "disposition": "retained",
+   "reason": "Confirmed: prop:fibre hypothesis \"for all m\" (line 182) fails at m=0 for every listed cap set if C_0=0 (or is undefined); proof is valid for m>=1 with C_0=0, so a local fix.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC5"
+  },
+  {
+   "finding_id": "N009",
+   "disposition": "merged",
+   "reason": "C_0 and the range of m unstated; Stadlmann caps given only as \"0.68, ...\".",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC5"
+  },
+  {
+   "finding_id": "C005",
+   "disposition": "retained",
+   "reason": "Line 210-213: m<=10 for Kintali bounds large coordinates on the support, but correction pieces include non-admissible bases with m up to ~14; Lean validates cap inequalities only for Table 3.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC6"
+  },
+  {
+   "finding_id": "C009",
+   "disposition": "retained",
+   "reason": "Line 373: Lemma 9.1 caps are smaller than Table 3 caps for every m>=1 (0.62<0.6216, 0.62<0.6352, 0.68<0.70, ...), not only m>=4.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC7"
+  },
+  {
+   "finding_id": "C003",
+   "disposition": "retained",
+   "reason": "Rounded decimals printed with an ellipsis (1.0006649215907... shown as 1.000664921591...).",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC8"
+  },
+  {
+   "finding_id": "N003",
+   "disposition": "conditional",
+   "reason": "Grounded in the companion paper (\"The analytic input is Stadlmann's (his Prop. 3 ...)\" for Kintali): the Lemma 5 remark may also bear on Kintali's 236. Needs a check of Kintali's text; kept as a question.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC9"
+  },
+  {
+   "finding_id": "N007",
+   "disposition": "retained",
+   "reason": "Overloaded symbols (U as Song-Yue radius and fibre endpoint; s; t; I) and I,J vs I_0,J_0 for cap-free functionals.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC10"
+  },
+  {
+   "finding_id": "N008",
+   "disposition": "merged",
+   "reason": "Space V and \"degree\" (on which prop:ceiling is a statement) not defined in the note.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC10"
+  },
+  {
+   "finding_id": "N011",
+   "disposition": "retained",
+   "reason": "Exposition: radial reduction, second evaluator, dual-weight ceiling compressed with no pointer to the companion paper.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC12"
+  },
+  {
+   "finding_id": "N005",
+   "disposition": "retained",
+   "reason": "Minor claims: \"to every printed digit\" not checkable from the note; Kintali normalisation.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC13"
+  },
+  {
+   "finding_id": "N013",
+   "disposition": "merged",
+   "reason": "Minor framing: \"the 2026 bounds\" vs claimed bounds; \"all four bounds\" counts 236 twice.",
+   "checked_locations": [
+    "papers/verification-note/main.tex"
+   ],
+   "specialist_artifacts": [],
+   "final_concern_id": "FC13"
+  }
+ ]
+}
