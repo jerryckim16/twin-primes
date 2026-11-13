@@ -3,6 +3,19 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 10 (scheduled 11:34 PM CT, 12 Nov; work started about 1:25 AM CT, 13 Nov, after waiting ~1 h 50 min for Session 9 to merge) -- additions
+- Heartbeat protocol in use: runs/heartbeat.json (section 0 of the task). Session 9 had no heartbeat (older prompt); it was treated as active while it kept pushing.
+- RUNG 236 via Song-Yue's witness: DONE with one program, second running.
+  - code/songyue_convert.py: witness -> u-format (z = (520/521) u; augmented monomials -> even power sums), integer coefficients with "scale" (code/cap6/P_sy236_u.json, 1311 terms, degree 25). code/songyue_pointcheck.py: exact at random rational points.
+  - code/songyue_I0.py (monomial basis, partial-matching DP, 25 s): (98!)^2 10^192 5^150 521^50 I0 == Iref EXACTLY. code/songyue_J0.py: cap-free J0, 48 J0/I0 = 4.0036348167 (= Kintali's claimed uncapped value).
+  - capped_check.py on P_sy236_u.json (56 min, 4 procs, ~1.9 GB/worker): code/cap6/check_sy236.json. code/songyue_compare.py: (99!)^2 (26!)^2 10^196 5^150 521^50 J_T == Jref EXACTLY; 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026596864 Polymath); 48 J_T/I_T = 4.0030988047 (= Kintali's claimed capped value). Fresh-context audit of the four scripts found no errors (sympy toy checks at k = 2-4).
+  - Second program: capped_exact.py --jonly (new option: skip I corrections) with --ckpt (new: exact value of each finished piece in a JSONL; restart skips them). 126 pieces; the j = 3 pieces take 28-47 min each on 4 procs. Cap-free part agrees (4.0036348167). RESUME (alone on the machine):
+      nohup python3 code/capped_exact.py code/cap6/P_sy236_u.json --procs 4 --jonly --ckpt code/cap6/pieces_sy236_jonly.jsonl --out code/cap6/res_sy236_jonly.json > runs/exact_sy236_jonly.log 2>&1 &
+    then compare J_T in res_sy236_jonly.json with check_sy236.json (exact string equality of the rationals). If equal: the variational step of 236 is reproduced by two programs; the project bound may move to 236 CONDITIONALLY (analytic input: [SY26] Thm 4.18 / Stadlmann's estimates as amended by [Kin26], Claimed; caveat everywhere; Lean tuple boundedGaps_236_of_DHL_48 exists).
+- Exploration: [SY26, Remark 4.23] on [Sta26, Lemma 5] read against arXiv v1 (notes/explorations.md): the step does use a Siegel-Walfisz hypothesis on alpha that Lemma 5 / Def. 9 (I) do not provide. Repair not checked. Paper Remark rem:sta-lemma5 and the status-table footnote.
+- Paper v0.10: Prop sy-exact, Remark rem:sta-lemma5 (inserted after Prop kin-capped, before the hybrid floor).
+- Wolfram connector and mathbox skills NOT available in this session.
+
 ## Session 9 (11:34 PM CT slot, 2026-11-12/13) -- additions
 - NOTE: the sandbox clock (date) ran about 50 minutes behind real time in sessions 8-9; budget the merge by elapsed time, not by `date`.
 - k = 45 Lemma 9.1 (from the saved weights, `--load`): ceiling re-certified for sigma = 4 at 6500 bits with block split 1/3, and sigma = 3.99 also certified (paper Prop 33 now says < 3.99). Optimum in the 846-dim space 3.98555 (Gram float; vector code/cap6/P_opt45_lemma91_D21r_u.json, not re-certified exactly). The registered prediction 3.977-3.981 FAILED (Remark 34): regain is 31% of the truncation loss at k = 45 vs 9% at k = 49.
@@ -63,7 +76,9 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246 -> 240 (session 6, conditional on [Sta26]'s equidistribution input; stated in the "how" field).
 
 ## Next steps (in order) -- the 240 focus is done; back to the earlier balance (reproduction ladder, own ideas about half)
-0a. FIRST: rung 236 via Song-Yue's witness (see the NEW coordination block above; same D182 support as our Kintali run, so code/cap6/check_kin48_D22r.json's parameters apply).
+0a. FIRST: finish the second program on the Song-Yue witness (resume command in the Session 10 block; it skips finished pieces). If J_T matches, lower bounds.project to 236 with the caveat (bound-history entry, README, status, paper Cor.), exactly like 240.
+0b. Then the second program for our own k = 48 vector (capped_exact on P_kin48_D22r_u.json; add --ckpt), and the k = 45 random point (with --ckpt).
+0c. Rung 186 (OpenAI, k = 40): read the source, record the support and parameters.
 0. (Session 9) k = 45 Lemma 9.1: ceiling 3.99 certified twice, weights checked at a random point against capped_check; remaining: capped_exact at the same random point (resume command above), which also cross-checks capped_check at these caps. Then rung 236 per the Session 9 notes (capped_exact on P_kin48_D22r_u.json if not finished; then optionally optimise on T with capped_gram at k = 48 D22 -- memory: run alone; then 186 (OpenAI, k = 40)). Then rung 236: mk_general 48 22/24 --even --eps 15/506 (alone; ~5 GB), to_ucoords --params kintali, capped_check; optionally optimise on T with capped_gram.
 1. (done in sessions 7-8 except the Lemma 9.1 optimisation) Rung 212 (Charton et al., k = 45): extend the input format for per-m caps (their Table 3, /5000 values) in capped_check.py and capped_exact.py; evaluate our cap-free degree-21 vector (code/cert_ax45_capfree_D21e.json, cap-free 4.012272) on their capped support and compare with their claimed 4.00438. Note their level/parameters need checking against their own equidistribution claims (Claimed).
 2. Rung 236 (k = 48, Kintali; Song-Yue): read the sources (WebFetch arXiv, pdftotext), record the support and parameters in notes/, then the same pipeline.

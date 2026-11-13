@@ -54,3 +54,9 @@ The PDF itself is not committed. The data needed to check it is in `code/cap6/so
 3. Capped J: run the J-part of `code/capped_check.py` with k = 48, the D182 parameters above, base cutoff L and B_m = B. Compare with Jref **exactly**. Then compute 48 J/I0 and check > 2001/2000. A second, independent program is needed as for every rung (e.g. `capped_exact.py`'s J path, or a direct implementation of Appendix B).
 4. Memory: degree 25 at k = 48 is heavy, and our own k = 48 builds ran out of memory twice. Run it alone and use chunking (GRAM_CHUNKS-style) or disk-backed accumulation.
 5. If J matches Jref exactly and the ratio clears 2001/2000, then the variational step of [SY26] is independently reproduced, and 236 becomes our conditional bound with the same caveat as 240 (analytic input Claimed). If it does not match, report the discrepancy precisely. This would be the first fresh regeneration of their numerator, which the authors say is still pending.
+
+## 7. Result (Session 10, 13 Nov 2026)
+- Plan step 1-3 done. Witness converted exactly (`code/songyue_convert.py`, pointwise check exact); all parts of every alpha are even, so the witness lies in our even-power-sum degree-25 space (1311 terms).
+- I0: (98!)^2 10^192 5^150 521^50 I0 = Iref exactly (`code/songyue_I0.py`, monomial basis). So Q = 65125^25 P_U in their integer coordinates (our reading of Eq. (71), confirmed by the equality).
+- J (capped, `code/capped_check.py`): (99!)^2 (26!)^2 10^196 5^150 521^50 J = Jref exactly. 48 J/I0 = 1.000664921591 > 2001/2000. Capped denominator: 4.0030988047 (Kintali's 4.0030988); cap-free: 4.0036348167 (Kintali's 4.0036348).
+- Second program (`capped_exact.py --jonly --ckpt`) in progress; see STATE.md.
