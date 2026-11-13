@@ -204,10 +204,22 @@
  ],
  "ideas": [
   {
-   "idea": "Skip the thin inclusion-exclusion pieces (j = 3 extra coordinates above g) with a rigorous a priori bound (volume of the thin region times a sup bound for the integrand) when only the sign of the criterion is needed, not exact equality.",
+   "idea": "Probabilistic model check: prime pairs in translates of the Lean-checked 236-tuple vs the Hardy-Littlewood prediction, and whether data can say anything about DHL[48,2].",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 13: HL fits to 3e-4 at X = 1e8 (known); the mean number of primes per translate is 48/log X > 1 until X ~ 7e20, so no computable range bears on DHL[48,2]. notes/explorations.md."
+  },
+  {
+   "idea": "Split Corr2 into its Q(u',R)^2 and Q(u',U)^2 parts (both >= 0) and apply the Bonferroni truncation to each (upper bound with j <= 2 for the first, lower bound with j <= 1 for the second), so that one-sided certificates need no j = 3 pieces at all.",
    "origin": "own",
    "status": "open",
-   "note": "Session 12: on the Song-Yue witness the j = 3 pieces are at most 1.0e-24 J in absolute value but take most of the 32 core-hours; a bound would cut the second program for later rungs to a few hours. Not yet proved."
+   "note": "Session 13: follows from Prop. prop:bonf; needs a mode of capped_exact.py that keeps the two parts apart (expected saving: all j = 3 pieces, about half of the 32 core-hours on the Song-Yue witness, minus the cost of splitting)."
+  },
+  {
+   "idea": "Skip the thin inclusion-exclusion pieces (j = 3 extra coordinates above g) with a rigorous a priori bound (volume of the thin region times a sup bound for the integrand) when only the sign of the criterion is needed, not exact equality.",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 13: Bonferroni (paper Prop. prop:bonf, Proved here): for a one-sided certificate the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be dropped (their integrands are >= 0), no bound needed; on the Song-Yue witness the dropped Corr1 level is -2.5e-69 J and cost 7.1 of 32.2 core-hours. The crude a priori bound (code/thin_bound.py: coefficient-sum sup times region volume) gives 1.4e-14 J for Corr1 j = 3 but 6e32 J for Corr2 j = 3, so it does not settle Corr2 (unsigned integrand)."
   },
   {
    "idea": "Toy capped problem at k = 3 with per-m caps (caps on single coordinates and on pair sums): does the cap pattern explain the 31% regain at k = 45?",
