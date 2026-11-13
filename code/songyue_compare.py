@@ -26,7 +26,7 @@ Iref, Jref = int(appc["Iref"]), int(appc["Jref"])
 out = {}
 out["Iref_equals_98fact2_Istar0"] = (factorial(98) ** 2 * Istar0 == Iref)
 JrefOurs = factorial(99) ** 2 * factorial(26) ** 2 * Jstar
-out["Jref_equals_ours"] = (JrefOurs == Iref * 0 + Jref)
+out["Jref_equals_ours"] = (JrefOurs == Jref)
 out["Jours_over_Jref"] = "%.20f" % float(JrefOurs / Jref)
 out["Jours_minus_Jref_rel"] = "%.6e" % float((JrefOurs - Jref) / Jref)
 out["JrefOurs_is_integer"] = (JrefOurs.denominator == 1)
