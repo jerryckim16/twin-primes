@@ -55,7 +55,11 @@ arithmetic, with weights checked exactly at a random point); optimising the test
 capped support itself, with exact Gram matrices obtained by running the exact
 evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
 for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
-function of degree~$22$ gives $4.0061>4$ (one exact program so far); and
+function of degree~$22$ gives $4.0061>4$ (one exact program so far), and
+for the published witness of Song and Yue (same support) we recompute their
+capped numerator exactly: it equals their reference integer digit for digit,
+as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
+holds (the analytic input of $236$ is not verified by us); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1416,6 +1420,83 @@ function. This is \emph{not} a verification of $236$: the analytic input
 \cite{Kin26}) is \lbl{Claimed} and unverified by us, a second exact program
 has not yet confirmed the number, and the project's bound is not lowered.
 
+\subsection*{The witness of Song and Yue, recomputed exactly (version 0.10)}
+Appendix~A of \cite{SY26} prints the witness as $1295$ integer triples
+$(a,\alpha,c)$, $P(z)=\sum c\,(\frac{26}{25}-s(z))^{a}m_\alpha(z)$ with
+monomial symmetric functions $m_\alpha$ and $a+|\alpha|\le25$, used as
+$P_U(t)=P(\frac{26}{25U}t)$ on the support above ($U=\frac{521}{2000}$, $k=48$).
+Appendix~C prints reference integers $I_{\mathrm{ref}}=(98!)^2I_0^{*}$ and
+$J_{\mathrm{ref}}=(99!)^2(26!)^2J^{*}$, where $I_0$ is the \emph{cap-free}
+mass on $\{s<U\}$, $J$ the capped numerator, and the stars denote the integer
+coordinates $x=10^4t$. The criterion is $48J/I_0>\frac{2001}{2000}$
+(\lbl{Literature}, read in \cite[\S4.12, App.~C]{SY26}). The authors write
+that a fresh evaluation reproduces $I_{\mathrm{ref}}$, while a fresh
+regeneration of $J_{\mathrm{ref}}$ from the table ``remains incomplete''.
+
+All parts of every $\alpha$ in the table are even. In our coordinates $u=4t$
+we have $z=\frac{520}{521}u$ and
+$\frac{26}{25}-s(z)=\frac{520}{521}(L-P_1(u))$, and the augmented monomials
+$A_\beta=|\mathrm{Aut}\,\beta|\,m_\beta$ satisfy
+$p_rA_\beta=A_{(\beta,r)}+\sum_iA_{\beta+r e_i}$. So $P_U$ is, exactly, a
+polynomial in $L-P_1$ and the even power sums $P_2,\dots,P_{24}$ ($1311$
+terms, degree $25$; \texttt{code/songyue\_convert.py}, checked exactly at
+random rational points of $\mathbf{R}^{48}$ by \texttt{code/songyue\_pointcheck.py}).
+
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic; the capped numerator by one program so far]\label{prop:sy-exact}
+For the witness $P_U$ of \cite{SY26} and the support $T$ above:
+\begin{enumerate}
+\item $(98!)^2\,10^{192}\,5^{150}\,521^{50}\,I_0=I_{\mathrm{ref}}$ exactly;
+\item $(99!)^2(26!)^2\,10^{196}\,5^{150}\,521^{50}\,J_T=J_{\mathrm{ref}}$ exactly,
+where $J_T$ is the capped numerator;
+\item hence $48J_T/I_0=1.000664921591\ldots>\frac{2001}{2000}$, i.e.\
+$4.0026596864\ldots$ in our scaling. With the capped denominator,
+$48J_T/I_T=4.0030988047\ldots$ ($I_T/I_0=0.99989031$). Without the caps,
+$48J_0/I_0=4.0036348167\ldots$.
+\end{enumerate}
+\end{proposition}
+\begin{sloppypar}
+The factor $10^{192}5^{150}521^{50}$ (resp.\ $10^{196}5^{150}521^{50}$) is
+what the change to the integer coordinates $x=10^4t$ gives when
+$Q=65125^{25}P_U$ (our reading of \cite[Eq.~(71)]{SY26}; note
+$65125=25\cdot2605$ and $z=26x/65125$), so items (1) and (2) are
+equalities of integers with $655$ and $715$ digits, not numerical agreements.
+Item (1) comes from a program written for this purpose,
+\texttt{code/songyue\_I0.py}. It works in the monomial basis of the table:
+each pair $m_\alpha m_\beta$ is integrated by summing over partial matchings of
+the parts, with a bitmask dynamic programme. It does not use the power-sum
+conversion. $J_T$ in (2) is \texttt{code/capped\_check.py} on the converted
+polynomial ($56$ minutes on four cores; \texttt{code/cap6/check\_sy236.json};
+comparison \texttt{code/songyue\_compare.py}, output
+\texttt{code/cap6/compare\_sy236.json}). $J_0$ is again in the monomial basis
+(\texttt{code/songyue\_J0.py}). The values $4.0030988$ and $4.0036348$ agree
+with the capped and cap-free values claimed in \cite{Kin26} to every printed
+digit.
+\end{sloppypar}
+So the capped numerator of \cite{SY26}, whose fresh regeneration the authors
+list as pending, is reproduced exactly by an independent implementation, and
+the variational criterion of both $236$ preprints holds for their published
+witness. This is a statement about the variational step only. The
+equidistribution input (\cite[Theorem~4.18]{SY26}; Stadlmann's estimates as
+amended in \cite{Kin26}) is \lbl{Claimed} and not verified by us.
+
+\begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature} reading, not a result]\label{rem:sta-lemma5}
+Song and Yue \cite[Remark~4.23]{SY26} say that one step in the proof of
+\cite[Lemma~5]{Sta26} lacks a hypothesis. We read the step in arXiv v1. Lemma~5
+(Baker--Irving Type~I) takes $f=\alpha\star\beta$ with $\alpha$ an arbitrary
+coefficient sequence and $\beta$ smooth at scale $x^\gamma$. For
+$\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof applies Lemma~3
+(Polymath Type~II) ``with the roles of $\alpha$ and $\beta$ swapped''. Lemma~3
+requires its factor at scale $\le x^{1/2}$ to have the Siegel--Walfisz
+property, and after the swap that factor is $\alpha$. Neither Lemma~5 nor
+case~(I) of \cite[Definition~9]{Sta26}, where Lemma~5 is used, assumes this
+property of $\alpha$. So the step reads as \cite{SY26} describe it. A
+natural repair is to check that the sequences $\alpha$ produced by the
+decomposition do have the property, but we have not checked this, and we do
+not know whether the conclusion is affected. Our results on $240$ and $236$
+concern only the variational step and are unaffected either way. The
+\emph{bounds} $240$ and $236$ depend on this input.
+\end{remark}
+
 \subsection*{A floor for one-band hybrid supports (our own)}
 Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the
 following extends Theorem~\ref{thm:floor} to every one-band support of
@@ -1500,8 +1581,11 @@ resolved; version~0.8 has the tool for optimising on the capped support
 (Proposition~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
 our $846$-dimensional space reaches $3.99$ (Proposition~\ref{prop:cha-ceiling});
 so the draft's value must belong to its Table~3 caps. For $236$ ($k=48$) the variational criterion of \cite{Kin26} holds with
-our own degree-$22$ vector (Proposition~\ref{prop:kin-capped}); a second exact
-program is the next step, and the analytic input remains \lbl{Claimed}. Then
+our own degree-$22$ vector (Proposition~\ref{prop:kin-capped}), and the
+capped numerator of the published witness of \cite{SY26} is reproduced
+exactly, integer for integer (Proposition~\ref{prop:sy-exact}); a second
+exact program for the capped numerator is the remaining check, and the
+analytic input remains \lbl{Claimed}. Then
 $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
