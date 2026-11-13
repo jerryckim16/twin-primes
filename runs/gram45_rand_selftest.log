@@ -1,0 +1,20 @@
+index: 3083 multi-indices, 109553 pairs, W=42, parts=[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+prepare: 6.1s
+weights loaded from /tmp/claude-0/w45_lemma91.pkl
+self-test from weights: I_T=1.971416216673053e-37 J_T=4.056013577151560e-39 ratio=0.925834988209
+EXACT agreement with code/cap6/check_rand45_lemma91.json: I_T True, J_T True
+GI built: 1.1s
+Q: 4317 rows, 23659 nonzeros, LQ=232792560
+  HQ row 0/4317 (3s)
+  HQ row 500/4317 (12s)
+  HQ row 1000/4317 (21s)
+  HQ row 1500/4317 (30s)
+  HQ row 2000/4317 (40s)
+  HQ row 2500/4317 (49s)
+  HQ row 3000/4317 (58s)
+  HQ row 3500/4317 (67s)
+  HQ row 4000/4317 (76s)
+GJ built: 95.9s
+Gram check: ratio of input vector from Gram = [0.925834988208835 +/- 8.19e-17]
+GRAMCHECK: ball c^T G_I c = [1.9714162166730529761e-37 +/- 3.23e-57] contains exact I_T: True
+GRAMCHECK: ball c^T G_J c = [4.0560135771515605977e-39 +/- 4.94e-59] contains exact J_T: True
