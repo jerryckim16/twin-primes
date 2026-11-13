@@ -80,4 +80,20 @@ theorem charton_extra_le_six (l : List Nat) (h : ∀ y ∈ l, 82 < y) (s : Nat) 
   have := length_mul_le_sum 82 l h
   omega
 
+/-! ### Kintali's support "D182" ([Kin26] Sec. 2), in units of 1/2500 of the Polymath scaling:
+`g = 4 δ = 182`, `L = 2605`, one cap `Cₘ = 4 Bₘ = 1899` for every `m ≥ 1`. -/
+
+/-- On Kintali's support at most ten coordinates exceed `g = 182`: their sum is at most the cap `1899`. -/
+theorem kintali_large_count (l : List Nat) (h : ∀ x ∈ l, 182 < x) (hs : l.sum ≤ 1899) :
+    l.length ≤ 10 := by
+  have := length_mul_le_sum 182 l h
+  omega
+
+/-- In a cap-violation piece the large set carries more than `1899`, so at most three further
+coordinates exceed `182` below `L = 2605` (inclusion-exclusion stops at `j = 3`). -/
+theorem kintali_extra_le_three (l : List Nat) (h : ∀ y ∈ l, 182 < y) (s : Nat) (hs : 1899 < s)
+    (htot : s + l.sum ≤ 2605) : l.length ≤ 3 := by
+  have := length_mul_le_sum 182 l h
+  omega
+
 end TwinPrimes
