@@ -212,6 +212,7 @@ def chain_to_kap(pb, Gb, GII):
 
 
 _PB = None
+CHUNKS_PER_PROC = int(os.environ.get("GRAM_CHUNKS", "1"))   # >1 bounds the memory of each worker
 
 
 def _worker(tasks):
@@ -253,7 +254,7 @@ def weights(data, procs=1, log=print):
     WI = [dict() for _ in range(N)]
     WJ = [dict() for _ in range(N)]
     t0 = time.time()
-    nb = max(1, procs)
+    nb = max(1, procs) * CHUNKS_PER_PROC
     chunks = [[] for _ in range(nb)]
     load = [0] * nb
     for t in tasks:
@@ -265,14 +266,15 @@ def weights(data, procs=1, log=print):
                 WI[i][a] = WI[i].get(a, fmpq(0)) + fmpq(p, q)
             for bg, (p, q) in sJ[i].items():
                 WJ[i][bg] = WJ[i].get(bg, fmpq(0)) + fmpq(p, q)
-    if nb > 1:
+    if procs > 1:
         import multiprocessing as mp
-        with mp.get_context("fork").Pool(nb) as pool:
+        with mp.get_context("fork").Pool(procs, maxtasksperchild=1) as pool:
             for sI, sJ, dt in pool.imap_unordered(_worker, chunks):
                 absorb(sI, sJ)
                 log("  adjoint chunk done: %.1fs (elapsed %.1fs)" % (dt, time.time() - t0))
     else:
-        sI, sJ, dt = _worker(chunks[0]); absorb(sI, sJ)
+        for ch in chunks:
+            sI, sJ, dt = _worker(ch); absorb(sI, sJ)
     return pb, WI, WJ
 
 

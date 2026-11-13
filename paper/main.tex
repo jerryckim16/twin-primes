@@ -49,7 +49,9 @@ thereby reproduced, while his new equidistribution estimates, on which $240$
 rests, have not been verified by us; the same computation confirms the
 variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
 of their Table~3 but not, with our test function, for the different caps of
-their Lemma~9.1 ($3.9737$), and
+their Lemma~9.1 ($3.9737$); optimising the test function on Stadlmann's
+capped support itself, with exact Gram matrices obtained by running the exact
+evaluator backwards, raises his margin only from $4.0120$ to $4.0124$; and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1250,11 +1252,11 @@ The reverse pass costs about one forward evaluation
 polynomial, $\sum\langle\kappa_I,w_I\rangle$ and
 $\sum\langle\kappa_J,w_J\rangle$ equal the $I_T$ and $J_T$ of
 \texttt{capped\_check.py} as rationals (passed at $k=12$, at $k=49$ with the
-polynomial of Theorem~\ref{thm:capped-exact}, and at $k=45$ with the caps of
-Lemma~9.1 of \cite{Cha26}). $G_I$ is exact; $G_J$ is assembled in fixed point
+polynomial of Theorem~\ref{thm:capped-exact}). $G_I$ is exact; $G_J$ is assembled in fixed point
 with an explicit entrywise error bound. The matrices are only used to
-\emph{find} a vector, or, with that error bound, for the rigorous ceiling of
-Proposition~\ref{prop:cha-ceiling} below; every capped value stated as a
+\emph{find} a vector, or, with that error bound, to certify that
+$\sigma G_I-kG_J$ is positive definite (recursive Schur complements in ball
+arithmetic), i.e.\ that no $P$ in the whole test space exceeds $\sigma$; every capped value stated as a
 certificate is recomputed from the rounded vector by the exact evaluators.
 \end{sloppypar}
 
@@ -1280,7 +1282,13 @@ cost (about $9\%$): in this test space the margin of the variational step of
 \cite{Sta26} is $0.0124$, and the caps cost $0.0038$ even for the best
 polynomial of degree~$20$.
 
-%K45%
+For the caps of Lemma~9.1 of \cite{Cha26} ($k=45$) the same optimisation, and
+the ceiling over our whole $846$-dimensional space, did not finish in this
+version (the reverse pass at $k=45$ needs $138$ groups and more memory than
+our workspace allowed alongside other jobs). Before running it we registered a
+prediction (\texttt{notes/session8-prediction.md}): if re-optimisation again
+regains about a tenth of what truncation costs, the optimum there is about
+$3.977$--$3.981<4$ (a heuristic, \lbl{Open}).
 
 \subsection*{The rung \texorpdfstring{$236$}{236}: the support of Kintali (version 0.8)}
 \cite{Kin26} uses Stadlmann's criterion with one band at $k=48$ and the
@@ -1386,8 +1394,11 @@ equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
 \cite{Cha26}) version~0.7 confirms the variational criterion for the caps of
 their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
 can move, the discrepancy between their Table~3 and Lemma~9.1 must be
-resolved and a test function optimised on the capped support itself would
-help. Then $236$ ($k=48$, \cite{Kin26,SY26}), $186$ and $182$.
+resolved; version~0.8 has the tool for optimising on the capped support
+(Proposition~\ref{prop:adjoint}), and the run for the caps of Lemma~9.1 is the
+next step. Then $236$ ($k=48$): the support of \cite{Kin26} is recorded and
+fits our evaluators; we need our own cap-free vector of degree at least $22$
+at $k=48$, or his. Then $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
 stops ($k\ge51$). For the $\varepsilon$-enlarged simplex

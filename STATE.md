@@ -3,6 +3,16 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 8 (bonus run, 5:51 PM CT, 2026-11-12; the trigger called it Session 7) -- additions
+- code/capped_gram.py: exact reverse-mode weights of capped_check.py -> Gram matrices G_I (exact), G_J (fixed point, explicit error bound); options --check (exact self-test vs a capped_check result), --save/--load (pickle of weights), --out (top eigenvector on T, written in u-format), --ceiling s1,s2 (rigorous: sigma G_I - k G_J positive definite by recursive Schur complements in arb), env GRAM_CHUNKS=n (n chunks per worker; bounds worker memory).
+  Self-test passed exactly at k = 12 and k = 49 (D20). Memory: workers grow to ~5 GB at k = 45 (rational denominators accumulate); with other jobs running this OOM-killed two runs. Fix next: put each group's gradients over a common denominator / reduce before accumulating.
+- k = 49 Stadlmann, optimised on T (D20, 707 coeffs): 4.0124198475 > 4; capped_check (check_opt49_D20r.json) and capped_exact (res_opt49_D20r.json) agree exactly. Vector code/cap6/P_opt49_D20r_u.json (400 significant bits per coefficient; the unrounded P_opt49_D20_u.json gives the same 12 digits but makes the evaluators 8x slower: always round). Paper v0.8 Props 31 (adjoint), 32 (4.0124).
+- Rung 236: notes/sources-236.md (Kintali read and checked against the PDF; Song-Yue PDF blocked, 403). Kintali: k = 48, L = 521/500, tau = 491/500, g = 91/1250, all caps 1899/2500; `to_ucoords.py --params kintali` (and --support-scale --k 48 to transport a k = 50 eps = 1/25 certificate the way he does: code/cap6/P_kin48_M50D25_u.json from our cert_M50e25_D25e, not evaluated, degree 25 is heavy). Our k = 48 cap-free D20: 3.952004 x 253/250 = 3.9994 < 4 (cert_kin48_capfree_D20e.json). Lean: kintali_large_count, kintali_extra_le_three.
+- Registered prediction (notes/session8-prediction.md): Lemma 9.1 caps at k = 45, D21 optimum about 3.977-3.981 < 4.
+- RESUME (k = 45 Lemma 9.1, run ALONE on the machine, ~100 min adjoint on 2 procs + gram + ceilings):
+  GRAM_CHUNKS=4 python3 code/capped_gram.py code/cap6/P_ax45_D21_u_lemma91caps.json --procs 2 --check code/cap6/check_ax45_D21_lemma91caps.json --prec 5000 --sigma 4.3 --save /tmp/w45.pkl --ceiling 4/1,3985/1000 --out code/cap6/P_opt45_lemma91_D21_u.json > runs/gram45_lemma91_D21.log
+  then round the vector (400 bits, as in session 8) and certify with capped_check.py.
+
 ## Session 7 (bonus run, 4:39 PM CT, 2026-11-12) -- additions
 - Both evaluators now take per-m caps (JSON caps {"1":..,"2":..,...,"11+":..}); code/to_ucoords.py --params charton.
 - Charton et al. (k = 45, Table 3 caps): our cap-free D21 vector truncated to T gives 4.0027351 > 4; capped_check.py and capped_exact.py agree exactly (code/cap6/check_ax45_D21.json, res_ax45_D21.json). Lemma 9.1 caps (31/50, 31/50, 17/25...): 3.9736870 < 4 (code/cap6/check_ax45_D21_lemma91caps.json). bounds.project NOT lowered to 212 (cap discrepancy in the draft; analytic input Claimed). Paper v0.7: Prop. 29 (k = 45), Remark 30 (ceiling <= 4.126); Thm 31 is now the hybrid floor.
@@ -23,6 +33,7 @@ Each session works on the claude/... branch its system instructions name (create
   - Lean: stadlmann_coord_le (coordinates <= 600/1000), stadlmann_extra_le_three.
 - The twin prime conjecture itself is OPEN. Sieve methods of this kind stop at 6 even under GEH (parity).
 
+## Paper numbering (v0.8: Section 5 adds Prop 31 adjoint Gram, Prop 32 optimised 4.0124; hybrid floor is now Thm 33)
 ## Paper numbering (v0.6)
 Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246); Props 8, 10; Lemma 13; Prop 14; Thm 15 floor k<=29; Remarks 16-18; Prop 19; Remarks 20, 21. Section 5: Prop 22 cap-free, Prop 23 cap bound, Prop 24 capped 3.9597 (superseded), Prop 25 exact reduction, Thm 26 capped 4.0120, Cor 27 (240 conditional), Remark 28 ceiling, Thm 29 hybrid floor, Remark 30. Section 6 Programme (label sec:prog).
 
@@ -37,7 +48,8 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246 -> 240 (session 6, conditional on [Sta26]'s equidistribution input; stated in the "how" field).
 
 ## Next steps (in order) -- the 240 focus is done; back to the earlier balance (reproduction ladder, own ideas about half)
-1. Rung 212 (Charton et al., k = 45): extend the input format for per-m caps (their Table 3, /5000 values) in capped_check.py and capped_exact.py; evaluate our cap-free degree-21 vector (code/cert_ax45_capfree_D21e.json, cap-free 4.012272) on their capped support and compare with their claimed 4.00438. Note their level/parameters need checking against their own equidistribution claims (Claimed).
+0. (Session 8) Finish k = 45 Lemma 9.1: run the RESUME command above alone; the ceiling at sigma = 4 settles whether any P in our 846-dim space reaches 4 with those caps; compare with the registered prediction. Then rung 236: mk_general 48 22/24 --even --eps 15/506 (alone; ~5 GB), to_ucoords --params kintali, capped_check; optionally optimise on T with capped_gram.
+1. (done in sessions 7-8 except the Lemma 9.1 optimisation) Rung 212 (Charton et al., k = 45): extend the input format for per-m caps (their Table 3, /5000 values) in capped_check.py and capped_exact.py; evaluate our cap-free degree-21 vector (code/cert_ax45_capfree_D21e.json, cap-free 4.012272) on their capped support and compare with their claimed 4.00438. Note their level/parameters need checking against their own equidistribution claims (Claimed).
 2. Rung 236 (k = 48, Kintali; Song-Yue): read the sources (WebFetch arXiv, pdftotext), record the support and parameters in notes/, then the same pipeline.
 3. Optional for 240: optimise P on T itself (Gram matrices of the corrections; capped_check's contraction structure is the faster base) to report the margin; and Stadlmann's own basis B19/B21.
 4. Own: a ceiling that sees the caps (weight depending on large coordinates); floor for multi-band supports; Track B (Bombieri's asymptotic sieve, Heath-Brown's Siegel-zero theorem as Lean Props).
