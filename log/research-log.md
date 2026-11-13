@@ -1,5 +1,20 @@
 # Research log
 
+## 2026-11-13 - Session 9 (11:34 PM CT, 12 Nov): Charton et al.'s Lemma 9.1 caps: ceiling 3.99 certified twice and the weights checked at a random point; optimum 3.98555, so a registered prediction failed; Kintali's 236 support gives 4.0061 > 4 with our own degree-22 vector (one program); bound unchanged (240 conditional); paper v0.9
+
+- Lemma 9.1 caps (k = 45, 846-dim space): with the saved exact weights, 4 G_I - 45 G_J re-certified positive definite at 6500 bits with a different block split, and 3.99 G_I - 45 G_J as well, so no P in the space reaches 3.99.
+- Schwartz-Zippel check of the reverse pass: at a random integer vector (entries in [-2^31, 2^31], seed recorded) the Gram weights reproduce I_T and J_T of capped_check.py exactly, so the quadratic forms agree with failure probability below 2^-31; the ball Gram forms contain the exact values.
+- Optimum in the space: 3.98555 (Gram, floating point). The registered prediction 3.977-3.981 failed: re-optimising regains 31% of the truncation loss here against 9% at k = 49 (paper Remark 34).
+- Rung 236: our cap-free optimiser at k = 48, degree 22 (1041 coefficients) certifies M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps; on Kintali's support it gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact; caps cost 0.00033). His claimed value with a transported k = 50 witness is 4.0031.
+- Paper v0.9: Proposition 33 sharpened to < 3.99 with the random-point check, Remark 34 (failed prediction), Proposition 35 (Kintali 4.0061). The status table now notes Song-Yue's remark on a possible missing hypothesis in Stadlmann's Lemma 5 (unverified), and that both 236 preprints use the same D182 support.
+
+Did not work or is blocked:
+- capped_exact.py at the random point (k = 45) needs about 4 hours; stopped after 138 pieces. On Kintali's support capped_exact.py also needs hours (one correction piece took 9 minutes); stopped, so 4.0061 rests on one program.
+- The degree-22 build at k = 48 was killed for memory once more before it ran alone.
+- No news search (only the 3:34 AM run does it).
+
+Next: Rung 236 via Song-Yue's published witness (notes/sources-236-song-yue.md): recompute their capped numerator J exactly and compare with Jref; second program for Kintali's support (capped_exact on P_kin48_D22r_u.json); capped_exact at the k = 45 random point.
+
 ## 2026-11-12 - Session 8 (5:51 PM CT, bonus run started by hand; called Session 7 in the trigger, but a Session 7 had already merged at 4:39 PM): Reverse-mode Gram matrices of the capped functionals: Charton et al.'s Lemma 9.1 caps cannot reach 4 in our 846-dim space (certified ceiling); P optimised on Stadlmann's support gives 4.0124 (two exact programs); bound unchanged (240 conditional); paper v0.8
 
 - New tool code/capped_gram.py: the capped functionals I_T, J_T are linear in the coefficient products of P, so running the exact linear maps of capped_check.py backwards gives exact weights and hence the Gram matrices of the whole test space at the cost of one evaluation. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly at k = 12 and k = 49.
