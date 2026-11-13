@@ -1,0 +1,96 @@
+\section{The variational problem on a capped support}
+
+\subsection*{Supports}
+We use the Polymath scaling $u=4t$, in which the criterion reads $kJ/I>4$. Let
+$\R_k=\{u\in[0,1]^k:\ u_1+\dots+u_k\le1\}$ and write $L\R_k$ for its dilate.
+The one-band supports of \cite{Sta26} (\lbl{Literature}: Definitions~1
+and~5 and Proposition~1 of \cite{Sta26}) are described by a length $L$, a marginal radius
+$\tau$, a threshold $g$ and caps $C_1\le C_2\le\dots$; with
+$I(u)=\{i:u_i>g\}$, $m(u)=|I(u)|$ and $s(u)=\sum_{i\in I(u)}u_i$,
+\[
+T=\{u\in L\R_k:\ s(u)\le C_{m(u)}\}.
+\]
+For a symmetric $F$ supported on $T$,
+\[
+I_T(F)=\int_TF^2,\qquad
+J_T(F)=\int_{\tau\R_{k-1}}\left(\int F(u',u_k)\,du_k\right)^2du',
+\]
+and the variational criterion is $kJ_T(F)/I_T(F)>4$. In this scaling the
+parameters are as follows (\lbl{Literature}).
+\begin{center}\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+ & $k$ & $(L,\tau)$ & $g$ & caps $C_1,C_2,\dots$\\
+\midrule
+\cite{Sta26} & $49$ & $(1.042,\,0.982)$ & $0.112$ & $0.6,\,0.6,\,0.68,\,0.68,\dots$\\
+\cite{Kin26}, \cite{SY26} & $48$ & $(1.042,\,0.982)$ & $91/1250$ & $1899/2500$ for all $m$\\
+\cite{Cha26}, Tab.~3 & $45$ & $(53/50,\,249/250)$ & $41/625$ & $4B_{1,m}$ (see below)\\
+\cite{Cha26}, L.~9.1 & $45$ & $(53/50,\,249/250)$ & $41/625$ & $0.62,\,0.62,\,0.68,\,0.68,\dots$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For \cite{Cha26}, Table~3 lists
+$B_{1,m}=\frac1{5000}(777,794,875,917,953,983,1016,1042,1063,1081)$ for
+$m\le10$ and $B_{1,m}=1081/5000$ for $m\ge11$, and $C_m=4B_{1,m}$; Lemma~9.1
+states $C_1=C_2=31/50$ and $C_m=17/25$ for $m\ge3$. All four cap sets satisfy
+$C_{m+1}\le C_m+g$ (\lbl{Lean-checked} for the caps of \cite{Cha26} and the
+counting lemmas below).
+
+\subsection*{Exact moments}
+All integrals reduce to moments over simplices.
+
+\begin{lemma}[\lbl{Proved here}; elementary]\label{lem:egf}
+Let $P_j=\sum_iu_i^j$, $X_1,\dots,X_k$ independent exponential variables of
+mean $1$, and $E_k(b)=\mathbb E\prod_jP_j(X)^{b_j}$. Then, with
+$w(b)=\sum_jjb_j$,
+\[
+\int_{\R_k}(1-P_1)^A\prod_jP_j^{b_j}\,du=\frac{A!}{(k+A+w(b))!}\,E_k(b),
+\qquad
+\sum_bE_k(b)\frac{s^b}{b!}=\left(\sum_c w(c)!\,\frac{s^c}{c!}\right)^{k}.
+\]
+\end{lemma}
+
+\begin{proof}
+The Dirichlet integral gives $\int_{\R_k}(1-P_1)^Au^\alpha\,du=A!\,\alpha!/(k+A+|\alpha|)!$
+and $\alpha!=\mathbb EX^\alpha$; sum over the monomials of $\prod_jP_j^{b_j}$,
+all of degree $w(b)$. The generating function follows from independence.
+\end{proof}
+
+\subsection*{The fibres of a capped support}
+Let $R=L-|u'|$ on the fibre over $u'\in\mathbb R^{k-1}_{\ge0}$, and call $u'$
+\emph{admissible} if $s(u')\le C_{m(u')}$.
+
+\begin{proposition}[\lbl{Proved here}; elementary]\label{prop:fibre}
+If $C_{m+1}\le C_m+g$ for all $m$, then the fibre $\{t\ge0:(u',t)\in T\}$ is
+empty when $u'$ is not admissible and equals $[0,U(u')]$ otherwise, where
+\[
+U=\min\bigl(R,\ \max(g,\ C_{m(u')+1}-s(u'))\bigr).
+\]
+Consequently, with $Q(u',x)=\int_0^xP(u',t)\,dt$ for a polynomial $P$,
+\[
+J_T(P\,1_T)=J(P)-\int_{\substack{|u'|\le\tau\\ u'\text{ not adm.}}}Q(u',R)^2
+-\int_{\substack{|u'|\le\tau\\ u'\text{ adm.},\ U<R}}\bigl(Q(u',R)^2-Q(u',U)^2\bigr),
+\]
+and $I_T(P\,1_T)=I(P)-\int_{L\R_k\setminus T}P^2$, where $I,J$ are the
+cap-free functionals.
+\end{proposition}
+
+\begin{proof}
+If $t\le g$ the large set of $(u',t)$ is $I(u')$, so $(u',t)\in T$ if and only
+if $u'$ is admissible and $t\le R$. If $t>g$ the large set gains the last
+coordinate and the condition is $s(u')+t\le C_{m(u')+1}$; with
+$C_{m+1}\le C_m+g$ this forces $s(u')<C_{m(u')}$, so a non-admissible $u'$ has
+an empty fibre, and for admissible $u'$ the fibre is
+$[0,\min(R,g)]\cup(g,\min(R,C_{m+1}-s)]=[0,U]$. The marginal of $P\,1_T$ is
+$Q(u',U)$ on admissible $u'$ and $0$ otherwise; subtract from the cap-free
+marginal $Q(u',R)$.
+\end{proof}
+
+By symmetry each correction is a finite signed sum, over the size $m$ of the
+large set and over $j\ge0$ further coordinates forced above $g$ (inclusion and
+exclusion for ``all other coordinates are at most $g$''), of integrals of
+polynomials over polygons in two radial variables; so every term is an exact
+rational number. The ranges of $m$ and $j$ that occur are short and were
+checked in Lean (e.g.\ $m\le9$, $j\le3$ for \cite{Sta26}; $m\le10$, $j\le3$
+for \cite{Kin26}; $m\le16$, $j\le6$ for \cite{Cha26}).
+
