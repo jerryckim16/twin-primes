@@ -382,7 +382,27 @@ def gram(pb, WI, WJ, basis_terms, PREC, log=print):
             for r1, qv in col: acc += qv * HQ[r1][t2]
             GJint[t1][t2] = acc
     log("GJ built: %.1fs" % (time.time() - t0))
-    return GI, GJint, LQ
+    colabs = [sum(abs(qv) for _, qv in col) for col in colsI]
+    return GI, GJint, LQ, colabs
+
+
+def is_pd(M):
+    """rigorous: True only if the symmetric ball matrix M is certainly positive definite
+    (recursive Schur complements in ball arithmetic: M > 0 iff M11 > 0 and M22 - M21 M11^{-1} M12 > 0)."""
+    n = M.nrows()
+    if n == 1:
+        return M[0, 0] > 0
+    h = n // 2
+    M11 = arb_mat(h, h, [M[i, j] for i in range(h) for j in range(h)])
+    if not is_pd(M11):
+        return False
+    M12 = arb_mat(h, n - h, [M[i, j] for i in range(h) for j in range(h, n)])
+    M22 = arb_mat(n - h, n - h, [M[i, j] for i in range(h, n) for j in range(h, n)])
+    X = M11.solve(M12)                       # rigorous enclosure (raises if M11 not certainly invertible)
+    S = M22 - M12.transpose() * X
+    # symmetrise the enclosure (S is symmetric in exact arithmetic): take the union of S and S^T
+    S = arb_mat(n - h, n - h, [S[i, j].union(S[j, i]) for i in range(n - h) for j in range(n - h)])
+    return is_pd(S)
 
 
 def main():
@@ -395,12 +415,27 @@ def main():
     ap.add_argument("--sigma", type=float, default=4.3)
     ap.add_argument("--check", help="capped_check result json for the input vector (exact I_T, J_T)")
     ap.add_argument("--weights_only", action="store_true")
+    ap.add_argument("--save", help="pickle the exact weights wI, wJ here")
+    ap.add_argument("--load", help="load exact weights instead of running the adjoint")
+    ap.add_argument("--ceiling", type=str, default="", help="comma-separated sigmas: certify sigma*GI - k*GJ > 0")
     a = ap.parse_args()
     log = lambda *x: print(*x, flush=True)
     data = json.load(open(a.pjson))
     t0 = time.time()
-    pb, WI, WJ = weights(data, procs=a.procs, log=log)
-    log("adjoint done: %.1fs" % (time.time() - t0))
+    import pickle
+    if a.load:
+        pb = cc.Problem(data); pb.prepare(log=log)
+        WIr, WJr = pickle.load(open(a.load, "rb"))
+        WI = [{al: fmpq(p, q) for al, (p, q) in d.items()} for d in WIr]
+        WJ = [{bg: fmpq(p, q) for bg, (p, q) in d.items()} for d in WJr]
+        log("weights loaded from %s" % a.load)
+    else:
+        pb, WI, WJ = weights(data, procs=a.procs, log=log)
+        log("adjoint done: %.1fs" % (time.time() - t0))
+        if a.save:
+            pickle.dump(([{al: (int(v.p), int(v.q)) for al, v in d.items()} for d in WI],
+                         [{bg: (int(v.p), int(v.q)) for bg, v in d.items()} for d in WJ]), open(a.save, "wb"))
+            log("weights saved to %s" % a.save)
     IT, JT = self_test(pb, WI, WJ)
     log("self-test from weights: I_T=%.15e J_T=%.15e ratio=%.12f" % (cc.fq(IT), cc.fq(JT), cc.fq(pb.k * JT / IT)))
     if a.check:
@@ -416,7 +451,7 @@ def main():
         bb = list(b) + [0] * max(0, pb.parts[-1] - 1 - len(b))
         full.append((int(a_), tuple(bb[j - 2] for j in pb.parts)))
     basis_terms = full
-    GI, GJint, LQ = gram(pb, WI, WJ, basis_terms, a.prec, log=log)
+    GI, GJint, LQ, colabs = gram(pb, WI, WJ, basis_terms, a.prec, log=log)
     n = len(basis_terms)
     flint.ctx.prec = a.prec - 200
     scale = arb(fmpq(1, LQ * LQ)) * arb(2) ** (-a.prec)
@@ -425,6 +460,12 @@ def main():
     c0 = arb_mat(n, 1, [toq(x) for x in data["coeffs"]])
     r0 = ((c0.transpose() * B * c0)[0, 0] / (c0.transpose() * A * c0)[0, 0]).mid()
     log("Gram check: ratio of input vector from Gram = %s" % r0.str(15))
+    if a.ceiling:
+        # rigorous: B_true = k GJ_true, |GJint/(LQ^2 2^P) - GJ_true|[t1,t2] <= colabs[t1] colabs[t2] / (LQ^2 2^P)
+        Brig = arb_mat(n, n, [arb(GJint[i][j], colabs[i] * colabs[j] + 1) for i in range(n) for j in range(n)]) * scale * pb.k
+        for sg in a.ceiling.split(","):
+            ok = is_pd(A * arb(fmpq(*map(int, sg.split("/")))) - Brig)
+            log("CEILING sigma=%s: sigma*I_T - k*J_T positive definite on the whole test space: %s" % (sg, ok))
     C = (B - A * arb(a.sigma)).solve(A, algorithm="approx").mid()
     v = c0
     lam = None
