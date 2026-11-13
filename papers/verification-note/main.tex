@@ -17,33 +17,35 @@
 \newcommand{\R}{\mathcal{R}}
 \newcommand{\DHL}{\mathrm{DHL}}
 
-\title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
+\title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.1 (draft), 13 November 2026}
+\date{Version 0.2 (draft), 13 November 2026}
 
 \begin{document}
 
 \begin{abstract}
 Several 2026 preprints claim improvements of the bound $H_1\le246$ of
-Polymath8b for $H_1=\liminf(p_{n+1}-p_n)$. Each combines new equidistribution
-estimates for primes in arithmetic progressions with a \emph{variational step}:
+Polymath8b for $H_1=\liminf(p_{n+1}-p_n)$. Each combines equidistribution
+estimates for primes in arithmetic progressions (new, or adapted from
+Stadlmann's) with a \emph{variational step}:
 a test function $F$ on a capped region of $\mathbb R^k$ whose sieve ratio
 exceeds a threshold. We recompute the variational step of three of these
 claims in exact rational arithmetic, with independent programs, and do not
-address their analytic input. (i) For the support and parameters of Stadlmann
+address their analytic input. Ratios are given in the Polymath scaling, where
+the threshold is $4$. (i) For the support and parameters of Stadlmann
 ($k=49$, claimed $H_1\le240$) we certify the capped ratio $4.0120389\ldots>4$
 with a test function of our own, and $4.0124198\ldots$ after optimising it on
-the capped region; two independent programs agree to the last digit.
+the capped region; two independent programs agree exactly.
 (ii) For the support shared by Kintali and by Song and Yue ($k=48$, claimed
 $H_1\le236$) we recompute the published witness of Song and Yue: its cap-free
 mass and its capped numerator equal the paper's reference integers ($655$ and
-$715$ digits) exactly, so their criterion $48J/I_0>2001/2000$ holds, with
-$48J/I_0=1.000664921591\ldots$; the authors list the regeneration of the
+$715$ digits) exactly, so their criterion holds: in their normalisation (threshold
+$1$) $48J_T/I_0=1.0006649215907\ldots>2001/2000$. The authors list the regeneration of the
 capped numerator as pending. The same computation reproduces Kintali's
-claimed capped and cap-free values to every printed digit, and a test
+printed capped and cap-free ratios to $12$ significant digits, and a test
 function of our own gives $4.0060814\ldots>4$ on the same support. The capped
-numerator has so far been recomputed by one program; a second is running.
+numerators at $k=48$ have so far been computed by one program; a second is running.
 (iii) For the draft of Charton et al.\ ($k=45$, claimed $H_1\le212$) the
 criterion holds for the caps of its Table~3 ($4.0027351\ldots>4$, two
 programs), whereas for the different caps stated in its Lemma~9.1 no
@@ -67,8 +69,11 @@ proves $\DHL[k,2]$ from a level of distribution and a symmetric test function
 $F$ whose ratio $kJ(F)/I(F)$ exceeds a threshold; Polymath8b \cite{Pol14b}
 enlarged the region on which $F$ may live and obtained $H_1\le246$ with
 $k=50$. The 2026 preprints listed below enlarge the region further, to
-\emph{capped} supports, and pay for this with new equidistribution estimates
-for the moduli that arise.
+\emph{capped} supports, and pay for this with equidistribution estimates
+for the moduli that arise: Stadlmann \cite{Sta26} proves new ones, Kintali
+\cite{Kin26} uses Stadlmann's \cite[Prop.~3]{Sta26} with one branch made empty,
+Charton et al.\ \cite{Cha26} use Stadlmann's Type~I, II and III estimates for
+their own family of moduli, and Song and Yue \cite{SY26} prove their own.
 
 \subsection*{The claims examined}
 \begin{center}
@@ -99,7 +104,8 @@ Ratios in the Polymath scaling, where the threshold is $4$:
 claim & variational ratio & status here\\
 \midrule
 $240$ & $4.0120389$; optimised on $T$: $4.0124198$ & \lbl{Computed}, two programs\\
-$236$, witness of \cite{SY26} & $48J/I_0=1.00066492>2001/2000$ & \lbl{Computed}, Thm.~\ref{thm:sy}\\
+$236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \lbl{Computed}, one program\\
+ & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & (second running)\\
 $236$, our own $F$ & $4.0060814$ & \lbl{Computed}, one program\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in an $846$-dim.\ space & \lbl{Computed}, ball arithm.\\
@@ -109,22 +115,34 @@ $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in an $846$-dim.\ space & \lbl{Compu
 
 \subsection*{What this note does not do}
 It does not verify the equidistribution estimates of \cite{Sta26},
-\cite{Kin26}, \cite{SY26} or \cite{Cha26}; all four bounds remain conditional
+\cite{Kin26}, \cite{SY26} or \cite{Cha26}; all three claimed bounds remain conditional
 on them, and the established bound is still $246$. Song and Yue
 \cite[Remark~4.23]{SY26} point to a missing hypothesis in one step of the
-proof of \cite[Lemma~5]{Sta26}; we read that step and comment on it in
-Remark~\ref{rem:lemma5}, without resolving it. Nothing here concerns the
+proof of \cite[Lemma~5]{Sta26}; we read that step and comment on it, and on
+which of the claims may depend on it, in Remark~\ref{rem:lemma5}, without
+resolving it. Nothing here concerns the
 parity barrier or the twin prime conjecture.
 
 \section{The variational problem on a capped support}
 
+\subsection*{Normalisations}
+The sources work in coordinates $t$ in which the criterion reads $kJ/I>1$
+(Song and Yue use the slightly stronger $48J/I_0>2001/2000$, see below). We
+use the Polymath scaling $u=4t$, in which the criterion reads $kJ/I>4$: every
+length is multiplied by $4$ (so $g=4\delta$ and $C_m=4B_m$ for the threshold
+$\delta$ and caps $B_m$ of \cite{Sta26}, and the radius $U_{\mathrm{SY}}=521/2000$
+of \cite{SY26} becomes $L=1.042$), and every ratio $kJ/I$ is multiplied by
+$4$. Values quoted from the sources have been converted, except where we say
+otherwise.
+
 \subsection*{Supports}
-We use the Polymath scaling $u=4t$, in which the criterion reads $kJ/I>4$. Let
+Let
 $\R_k=\{u\in[0,1]^k:\ u_1+\dots+u_k\le1\}$ and write $L\R_k$ for its dilate.
 The one-band supports of \cite{Sta26} (\lbl{Literature}: Definitions~1
 and~5 and Proposition~1 of \cite{Sta26}) are described by a length $L$, a marginal radius
-$\tau$, a threshold $g$ and caps $C_1\le C_2\le\dots$; with
-$I(u)=\{i:u_i>g\}$, $m(u)=|I(u)|$ and $s(u)=\sum_{i\in I(u)}u_i$,
+$\tau$, a threshold $g$ and caps $C_1\le C_2\le\dots$, with $C_0=0$; with
+$\mathcal L(u)=\{i:u_i>g\}$ (the \emph{large set}), $m(u)=|\mathcal L(u)|$ and
+$s(u)=\sum_{i\in\mathcal L(u)}u_i$,
 \[
 T=\{u\in L\R_k:\ s(u)\le C_{m(u)}\}.
 \]
@@ -133,8 +151,12 @@ For a symmetric $F$ supported on $T$,
 I_T(F)=\int_TF^2,\qquad
 J_T(F)=\int_{\tau\R_{k-1}}\left(\int F(u',u_k)\,du_k\right)^2du',
 \]
-and the variational criterion is $kJ_T(F)/I_T(F)>4$. In this scaling the
-parameters are as follows (\lbl{Literature}).
+and the variational criterion is $kJ_T(F)/I_T(F)>4$. (This one-band form of
+$J_T$, with marginals over $\tau\R_{k-1}$, is our transcription of the
+criterion of \cite[Prop.~1]{Sta26}; see \cite[\S5]{Kim26}.) We write
+$I_0,J_0$ for the same functionals without caps, that is with $T$ replaced by
+$L\R_k$. In this scaling the parameters are as follows (\lbl{Literature},
+converted).
 \begin{center}\small
 \begin{tabular}{@{}lllll@{}}
 \toprule
@@ -151,8 +173,10 @@ For \cite{Cha26}, Table~3 lists
 $B_{1,m}=\frac1{5000}(777,794,875,917,953,983,1016,1042,1063,1081)$ for
 $m\le10$ and $B_{1,m}=1081/5000$ for $m\ge11$, and $C_m=4B_{1,m}$; Lemma~9.1
 states $C_1=C_2=31/50$ and $C_m=17/25$ for $m\ge3$. All four cap sets satisfy
-$C_{m+1}\le C_m+g$ (\lbl{Lean-checked} for the caps of \cite{Cha26} and the
-counting lemmas below).
+$g<C_m\le C_{m+1}\le C_m+g$ for $m\ge1$ (checked by hand and in Python; the
+case of the Table~3 caps is also \lbl{Lean-checked}, \texttt{charton\_caps\_valid}).
+The inequality fails at $m=0$ for every cap set, which is why
+Proposition~\ref{prop:fibre} assumes it only for $m\ge1$.
 
 \subsection*{Exact moments}
 All integrals reduce to moments over simplices.
@@ -179,28 +203,29 @@ Let $R=L-|u'|$ on the fibre over $u'\in\mathbb R^{k-1}_{\ge0}$, and call $u'$
 \emph{admissible} if $s(u')\le C_{m(u')}$.
 
 \begin{proposition}[\lbl{Proved here}; elementary]\label{prop:fibre}
-If $C_{m+1}\le C_m+g$ for all $m$, then the fibre $\{t\ge0:(u',t)\in T\}$ is
-empty when $u'$ is not admissible and equals $[0,U(u')]$ otherwise, where
+Let $C_0=0$ and suppose $C_{m+1}\le C_m+g$ for all $m\ge1$. Then the fibre
+$\{t\ge0:(u',t)\in T\}$ is empty when $u'$ is not admissible and equals
+$[0,\theta(u')]$ otherwise, where
 \[
-U=\min\bigl(R,\ \max(g,\ C_{m(u')+1}-s(u'))\bigr).
+\theta(u')=\min\bigl(R,\ \max(g,\ C_{m(u')+1}-s(u'))\bigr).
 \]
 Consequently, with $Q(u',x)=\int_0^xP(u',t)\,dt$ for a polynomial $P$,
 \[
-J_T(P\,1_T)=J(P)-\int_{\substack{|u'|\le\tau\\ u'\text{ not adm.}}}Q(u',R)^2
--\int_{\substack{|u'|\le\tau\\ u'\text{ adm.},\ U<R}}\bigl(Q(u',R)^2-Q(u',U)^2\bigr),
+J_T(P\,1_T)=J_0(P)-\int_{\substack{|u'|\le\tau\\ u'\text{ not adm.}}}Q(u',R)^2
+-\int_{\substack{|u'|\le\tau\\ u'\text{ adm.},\ \theta<R}}\bigl(Q(u',R)^2-Q(u',\theta)^2\bigr),
 \]
-and $I_T(P\,1_T)=I(P)-\int_{L\R_k\setminus T}P^2$, where $I,J$ are the
-cap-free functionals.
+and $I_T(P\,1_T)=I_0(P)-\int_{L\R_k\setminus T}P^2$.
 \end{proposition}
 
 \begin{proof}
-If $t\le g$ the large set of $(u',t)$ is $I(u')$, so $(u',t)\in T$ if and only
+If $t\le g$ the large set of $(u',t)$ is $\mathcal L(u')$, so $(u',t)\in T$ if and only
 if $u'$ is admissible and $t\le R$. If $t>g$ the large set gains the last
-coordinate and the condition is $s(u')+t\le C_{m(u')+1}$; with
-$C_{m+1}\le C_m+g$ this forces $s(u')<C_{m(u')}$, so a non-admissible $u'$ has
-an empty fibre, and for admissible $u'$ the fibre is
-$[0,\min(R,g)]\cup(g,\min(R,C_{m+1}-s)]=[0,U]$. The marginal of $P\,1_T$ is
-$Q(u',U)$ on admissible $u'$ and $0$ otherwise; subtract from the cap-free
+coordinate and the condition is $s(u')+t\le C_{m(u')+1}$. If $m(u')=0$ then
+$s(u')=0=C_0$, so $u'$ is admissible. If $m(u')\ge1$, the hypothesis
+$C_{m+1}\le C_m+g$ with $t>g$ forces $s(u')<C_{m(u')}$. So in either case a
+non-admissible $u'$ has an empty fibre, and for admissible $u'$ the fibre is
+$[0,\min(R,g)]\cup(g,\min(R,C_{m+1}-s)]=[0,\theta]$. The marginal of $P\,1_T$ is
+$Q(u',\theta)$ on admissible $u'$ and $0$ otherwise; subtract from the cap-free
 marginal $Q(u',R)$.
 \end{proof}
 
@@ -208,16 +233,32 @@ By symmetry each correction is a finite signed sum, over the size $m$ of the
 large set and over $j\ge0$ further coordinates forced above $g$ (inclusion and
 exclusion for ``all other coordinates are at most $g$''), of integrals of
 polynomials over polygons in two radial variables; so every term is an exact
-rational number. The ranges of $m$ and $j$ that occur are short and were
-checked in Lean (e.g.\ $m\le9$, $j\le3$ for \cite{Sta26}; $m\le10$, $j\le3$
-for \cite{Kin26}; $m\le16$, $j\le6$ for \cite{Cha26}).
+rational number. The ranges that occur are short. In Lean
+(\lbl{Lean-checked}, file \texttt{lean/TwinPrimes/Caps.lean}): at most $9$
+coordinates of a point of $L\R_{49}$ exceed $g$ for \cite{Sta26}
+(\texttt{stadlmann\_large\_count}), at most $10$ large coordinates of a point
+of $T$ for \cite{Kin26} (\texttt{kintali\_large\_count}), and at most $16$
+coordinates of a point of $L\R_{45}$ exceed $g$ for \cite{Cha26}
+(\texttt{charton\_large\_count}); and the inclusion--exclusion over further
+coordinates stops at $j\le3$, $3$, $6$ respectively
+(\texttt{stadlmann\_extra\_le\_three}, \texttt{kintali\_extra\_le\_three},
+\texttt{charton\_extra\_le\_six}). The correction pieces themselves include
+non-admissible bases, whose size $m$ is bounded only by the total length (up
+to about $14$ for \cite{Kin26}). The reduction to two radial variables is
+written out in \cite[\S5]{Kim26}.
 
 \section{Method}
 
+\subsection*{Test spaces}
+For $D\ge0$ let $V_D$ be the space of symmetric polynomials spanned by
+$(L-P_1)^a\prod_{i\ge1}P_{2i}^{b_i}$ with $a+\sum_i2ib_i\le D$; we call $D$
+the \emph{degree}. Its dimension is $707$, $846$ and $1041$ for $D=20$, $21$
+and $22$. A ``cap-free optimiser of degree $D$'' is the top generalised
+eigenvector of $(kJ_0,I_0)$ on $V_D$.
+
 \subsection*{Two independent exact evaluators}
-Given a polynomial $P$ with rational coefficients (we use products of
-$(L-P_1)^a$ and even power sums), both programs return $I_T(P\,1_T)$ and
-$J_T(P\,1_T)$ as exact rationals.
+Given a polynomial $P$ with rational coefficients in some $V_D$, both
+programs return $I_T(P\,1_T)$ and $J_T(P\,1_T)$ as exact rationals.
 \begin{enumerate}
 \item \texttt{capped\_exact.py} computes the cap-free values with
 Lemma~\ref{lem:egf} and subtracts the corrections of
@@ -225,7 +266,7 @@ Proposition~\ref{prop:fibre}, piece by piece.
 \item \texttt{capped\_check.py} was written separately from the definitions
 only, without access to the first program. It sums directly over the exact
 large set, with exponential-moment generating functions, and has no cap-free
-term.
+term (details in \cite[\S5]{Kim26}).
 \end{enumerate}
 Both were tested independently: a Monte Carlo comparison at $k=12$ with caps
 that remove almost half of $I$ and $J$; exact agreement of
@@ -257,8 +298,7 @@ the two quadratic forms except with probability below $2^{-31}$ for each.
 \begin{theorem}[\lbl{Computed}; exact, two independent programs]\label{thm:240}
 For the parameters of \cite{Sta26} in the table above:
 \begin{enumerate}
-\item for $P$ the cap-free optimiser of degree $20$ in even power sums
-($707$ coefficients),
+\item for $P$ the cap-free optimiser in $V_{20}$ ($707$ coefficients),
 \[49J_T(P1_T)/I_T(P1_T)=4.0120389035\ldots;\]
 \item for $P^\ast$ the top eigenvector of $(49G_J,G_I)$ in the same space,
 rounded to $400$ significant bits per coefficient,
@@ -269,10 +309,13 @@ rounded to $400$ significant bits per coefficient,
 In both cases the two evaluators agree on $I_T$ and $J_T$ as exact rationals.
 Without caps the same space gives $4.016176$, so the caps cost $0.0041$ for the
 truncated optimiser and $0.0038$ for the optimised one: optimising on $T$
-regains less than a tenth of the loss. Since every point of $T$ has all
-coordinates at most $0.6$ and $T\subset L\R_{49}$, a dual-weight bound gives
-the ceiling $\sup_FkJ_T/I_T\le4.14$ (\lbl{Computed}, interval arithmetic). So
-the margin of the variational step of \cite{Sta26} lies in $(0.0124,\,0.14]$.
+regains less than a tenth of the loss. Every point of $T$ has all
+coordinates at most $0.6$ (\lbl{Lean-checked}, \texttt{stadlmann\_coord\_le})
+and $T\subset L\R_{49}$; the dual-weight theorem of \cite[\S4]{Kim26},
+applied as in \cite[\S5]{Kim26} and depending only on these two facts, gives
+$\sup_FkJ_T/I_T\le4.14$ over \emph{all} $F$ (\lbl{Computed}, interval
+arithmetic, \texttt{dual\_eps\_cert.certify\_box}, $337$ pieces). So the
+margin of the variational step of \cite{Sta26} lies in $(0.0124,\,0.14]$.
 
 \begin{corollary}[conditional; the analytic input is \lbl{Claimed}]
 The criterion of \cite[Prop.~1]{Sta26} holds for $k=49$ with Stadlmann's
@@ -288,14 +331,16 @@ $25$, originally constructed for $k=50$ and evaluated at $k=48$ without
 re-optimisation. Song and Yue print it as $1295$ integer triples
 $(a,\alpha,c)$, with
 \[
-P(z)=\sum c\,\left(\tfrac{26}{25}-s(z)\right)^a m_\alpha(z),\qquad
-P_U(t)=P\!\left(\tfrac{26}{25U}t\right),\quad U=\tfrac{521}{2000},
+P(z)=\sum c\,\left(\tfrac{26}{25}-\textstyle\sum_iz_i\right)^a m_\alpha(z),\qquad
+P_{\mathrm{SY}}(t)=P\!\left(\tfrac{26}{25U_{\mathrm{SY}}}t\right),\quad U_{\mathrm{SY}}=\tfrac{521}{2000},
 \]
 $m_\alpha$ the monomial symmetric polynomials, and they print the reference
 integers $I_{\mathrm{ref}}=(98!)^2I_0^\ast$ and
 $J_{\mathrm{ref}}=(99!)^2(26!)^2J^\ast$. Here $I_0$ is the \emph{cap-free} mass
-on $\{s<U\}$, $J$ the capped numerator, and the stars denote integer
-coordinates $x=10^4t$. Their criterion is $48J/I_0>2001/2000$, which implies
+on $\{\sum_it_i<U_{\mathrm{SY}}\}$, $J$ the capped numerator, both in their
+$t$-coordinates, and the stars denote integer
+coordinates $x=10^4t$. Their criterion is $48J/I_0>2001/2000$ (threshold $1$
+in their normalisation), which implies
 the capped criterion because $I_T\le I_0$ (\lbl{Literature},
 \cite[\S4.12, App.~A, App.~C]{SY26}). They state that a fresh evaluation
 reproduces $I_{\mathrm{ref}}$, while fresh regeneration of $J_{\mathrm{ref}}$
@@ -304,20 +349,23 @@ from the table ``remains incomplete''.
 We extracted the table from the PDF using font sizes to read the exponents in
 the partitions. All $1295$ rows are present, every $\alpha$ is nondecreasing
 with even parts, and $\max(a+|\alpha|)=25$, as stated. Since all parts are
-even, $P_U$ is exactly a polynomial in $L-P_1$ and the even power sums
+even, $P_{\mathrm{SY}}$, rewritten in $u=4t$, is exactly a polynomial in $L-P_1$ and the even power sums
 $P_2,\dots,P_{24}$ ($1311$ terms); the conversion was checked exactly at random
 rational points.
 
-\begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:sy}
-For the witness $P_U$ of \cite{SY26} and the support above:
+\begin{theorem}[\lbl{Computed}, exact rational arithmetic; item (2) by one program so far]\label{thm:sy}
+For the witness $P_{\mathrm{SY}}$ of \cite{SY26} and the support above, with
+$I_0$ and $J_T$ computed in the $t$-coordinates of \cite{SY26}:
 \begin{enumerate}
 \item $(98!)^2\,10^{192}\,5^{150}\,521^{50}\,I_0=I_{\mathrm{ref}}$ exactly
 (an integer with $655$ digits);
 \item $(99!)^2(26!)^2\,10^{196}\,5^{150}\,521^{50}\,J_T=J_{\mathrm{ref}}$
 exactly (an integer with $715$ digits), where $J_T$ is the capped numerator;
-\item hence $48J_T/I_0=1.000664921591\ldots>2001/2000$, which is
-$4.0026596864\ldots$ in the Polymath scaling; with the capped denominator
-$48J_T/I_T=4.0030988047\ldots$, and without caps $48J_0/I_0=4.0036348167\ldots$.
+\item hence, in the normalisation of \cite{SY26} (threshold $1$),
+$48J_T/I_0=1.0006649215907\ldots>2001/2000$. In the Polymath scaling
+(threshold $4$) the same ratio is $4.00265968636\ldots$; with the capped
+denominator $48J_T/I_T=4.0030988047\ldots$, and without caps
+$48J_0/I_0=4.0036348167\ldots$.
 \end{enumerate}
 \end{theorem}
 
@@ -325,24 +373,32 @@ The factors $10^{192}5^{150}521^{50}$ and $10^{196}5^{150}521^{50}$ come from th
 change to integer coordinates when the polynomial is scaled by $65125^{25}$
 (our reading of \cite[Eq.~(71)]{SY26}; $65125=25\cdot2605$), so items (1) and
 (2) are equalities of integers, not numerical agreement. Item (1) was computed
-by a program written for this purpose, which works in the monomial basis of
+by \texttt{songyue\_I0.py}, written for this purpose, which works in the monomial basis of
 the table, integrating each product $m_\alpha m_\beta$ by a sum over partial
-matchings of parts, and does not use the power-sum conversion. Item (2) was
+matchings of parts, and does not use the power-sum conversion;
+\texttt{songyue\_J0.py} computes $J_0$ the same way. Item (2) was
 computed by \texttt{capped\_check.py} on the converted polynomial ($56$ minutes
-on four cores). The capped and cap-free values in (3) agree with those claimed
-in \cite{Kin26}, $4.0030988$ and $4.0036348$, to every printed digit.
+on four cores). Kintali \cite{Kin26} prints, in the normalisation with
+threshold $1$, $48J_T/I_T=1.000774701187468\ldots$ and
+$48J_0/I_0=1.000908704175987\ldots$, and the ratios $I_T/I_0=0.99989030538\ldots$
+and $J_T/J_0=0.99975643873\ldots$; ours agree with all four to $12$
+significant digits; for example
+\[4\times1.000774701187468=4.003098804749\ldots,\]
+and our capped ratio is $4.0030988047499\ldots$.
 
 \emph{Status of item (2).} This item and Proposition~\ref{prop:kin-own}
-below are the results of this note that so far rest on one program. The second evaluator, \texttt{capped\_exact.py}, agrees
-with it on the cap-free part and is computing the $126$ correction pieces
-from a checkpoint (about $5$--$10$ hours on four cores). This draft will be
-updated when it finishes. The exact agreement of the first program with the
+below are the results of this note that so far rest on one program. The
+second evaluator, \texttt{capped\_exact.py}, agrees with the monomial-basis
+programs \texttt{songyue\_I0.py} and \texttt{songyue\_J0.py} on the cap-free
+values $I_0$ and $J_0$ (to about $11$ digits) and is computing the $126$
+correction pieces from a checkpoint (many hours on four cores). This draft
+will be updated when it finishes. The exact agreement of \texttt{capped\_check.py} with the
 authors' independently produced $715$-digit integer is itself strong evidence
 for both, since a common error would have to produce the same integer.
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic, one program]\label{prop:kin-own}
-For our own cap-free optimiser of degree $22$ for this $(L,\tau)$ at $k=48$
-($1041$ coefficients, even power sums, rounded to $400$ significant bits),
+For our own cap-free optimiser in $V_{22}$ for this $(L,\tau)$ at $k=48$
+($1041$ coefficients, rounded to $400$ significant bits),
 $48J_T(P1_T)/I_T(P1_T)=4.0060814208\ldots>4$.
 \end{proposition}
 
@@ -350,9 +406,11 @@ Here the caps cost only $0.00033$ (the cap-free value is $4.0064115$). That our
 value exceeds the witness's $4.0031$ is expected, since the witness was
 optimised for $k=50$ and transported, while ours is optimised for $k=48$.
 
-\begin{corollary}[conditional; the analytic input is \lbl{Claimed}]
-The variational criteria of \cite{Kin26} and \cite{SY26} hold at $k=48$, for
-the published witness and for an independent test function. With the
+\begin{corollary}[conditional; the analytic input is \lbl{Claimed}; one program so far]
+For the published witness, the variational criteria of both \cite{Kin26}
+($48J_T/I_T>4$) and \cite{SY26} ($48J_T/I_0>2001/2000$) hold at $k=48$. For
+our independent test function only the capped criterion $48J_T/I_T>4$ was
+computed, and it holds. With the
 \lbl{Lean-checked} admissible $48$-tuple of diameter $236$, $H_1\le236$
 follows from their equidistribution input, which we have not verified.
 \end{corollary}
@@ -360,8 +418,8 @@ follows from their equidistribution input, which we have not verified.
 \subsection*{The draft of Charton et al.\ ($k=45$, claimed $H_1\le212$)}
 
 \begin{proposition}[\lbl{Computed}; exact, two independent programs]\label{prop:212}
-With the caps of \cite[Table~3]{Cha26} and $P$ our cap-free optimiser of
-degree $21$ ($846$ coefficients, the dimension of the space
+With the caps of \cite[Table~3]{Cha26} and $P$ our cap-free optimiser in
+$V_{21}$ ($846$ coefficients, the dimension of the space
 $\mathcal B_{21}$ of \cite[Thm.~11.1]{Cha26}),
 $45J_T(P1_T)/I_T(P1_T)=4.0027351128\ldots>4$.
 \end{proposition}
@@ -370,29 +428,29 @@ The authors report $4.00438$ with their own optimised function (\lbl{Claimed});
 our value is lower, as expected for a function optimised without caps, and
 already above $4$. The draft, however, also states caps in its Lemma~9.1,
 namely $C_1=C_2=31/50$ and $C_m=17/25$ for $m\ge3$, which are smaller than
-those of Table~3 for every $m\ge4$. With these the conclusion changes.
+those of Table~3 for every $m\ge1$. With these the conclusion changes.
 
 \begin{proposition}[\lbl{Computed}, ball arithmetic]\label{prop:ceiling}
-Let $T'$ be the support with the caps of Lemma~9.1 of \cite{Cha26} and $V$ the
-$846$-dimensional space above. Then $3.99\,G_I-45\,G_J$ is positive definite on
+Let $T'$ be the support with the caps of Lemma~9.1 of \cite{Cha26} and
+$V=V_{21}$. Then $3.99\,G_I-45\,G_J$ is positive definite on
 $V$, so
 \[
 \frac{45J_{T'}(P1_{T'})}{I_{T'}(P1_{T'})}<3.99\qquad\text{for every nonzero }P\in V.
 \]
 \end{proposition}
 
-The certificate was obtained twice, at $5000$ and $6500$ bits with different
-block splits, and the underlying weights agree exactly with
-\texttt{capped\_check.py} at a random integer point. The best $P$ in $V$ gives
-about $3.98555$ (floating point, from the Gram matrices). So within a space of
-the size the authors use, the caps of Lemma~9.1 cannot give their
-$4.00438$, which must belong to the caps of Table~3. A careful reading of the
-draft supports this: Table~3 is presented as the parameter set used in both
-halves of the proof, and the Lemma~9.1 values appear to be left over from an
-earlier choice. We report this as a located inconsistency for the authors to
-resolve, not as an error in their result. We have not checked that their space
-coincides with ours beyond its dimension, and \texttt{capped\_exact.py} has not
-yet re-evaluated the random point used for the weights.
+The weaker statement with $4$ in place of $3.99$ was certified twice, at
+$5000$ bits (blocks halved) and at $6500$ bits (blocks split $1:2$); the
+statement with $3.99$ was certified once, at $6500$ bits. Both runs use the
+same saved weights, which agree exactly with \texttt{capped\_check.py} at a
+random integer point. The best $P$ in $V$ gives
+about $3.98555$ (floating point, from the Gram matrices). So within $V$, a
+space of the size the authors use, the caps of Lemma~9.1 cannot give their
+$4.00438$, which is consistent with the caps of Table~3. We report this as a
+located inconsistency for the authors to resolve, not as an error in their
+result. We have not checked that their space coincides with ours beyond its
+dimension, and \texttt{capped\_exact.py} has not yet re-evaluated the random
+point used for the weights.
 
 \section{Remarks}
 
@@ -410,13 +468,26 @@ repair is to check that the sequences $\alpha$ arising in the decomposition
 have the property; we have not done so, and we do not know whether the
 conclusion is affected. Theorem~\ref{thm:240} concerns only the variational
 step and is unaffected; the \emph{bound} $240$ depends on this input.
+
+The question may also bear on the $236$ of \cite{Kin26}: Kintali proves no
+new estimate and takes \cite[Prop.~3]{Sta26}, with its Type~I, IIa, IIb and
+III branches and the Type~IIc range made empty, as his analytic input
+(\lbl{Literature}). Whether his argument is affected depends on whether those
+branches pass through the step in question, which we have not traced. Song
+and Yue prove their own estimate \cite[Thm.~4.18]{SY26}, via a Heath--Brown
+decomposition and Type~IIa, IIb and III estimates
+\cite[\S\S4.2--4.7]{SY26}; we have not checked whether it uses an argument of
+the same kind. Charton et al.\ \cite{Cha26} list the same five Type~I, II and
+III estimates as \cite{Sta26}, Lemma~5 among them, so the same question
+applies to their draft. Theorem~\ref{thm:sy} and
+Proposition~\ref{prop:212} are unaffected either way.
 \end{remark}
 
 \begin{remark}[what would change the picture]
 The variational steps examined here have margins of $0.003$ to $0.012$ above
 the threshold. They are therefore robust to rounding but not to a change of
 support: Proposition~\ref{prop:ceiling} shows that a modest change in the caps
-moves the best attainable ratio below $4$. Any revision of the analytic input
+moves the best ratio in $V_{21}$ below $4$. Any revision of the analytic input
 that shrinks the admissible caps should be re-checked against the variational
 step, which our programs can do in hours.
 \end{remark}
@@ -435,7 +506,32 @@ and $246$ are checked by the Lean~4 kernel (core Lean, no Mathlib, no
 \texttt{sorry}; axioms \texttt{propext} and \texttt{Quot.sound} only), as are
 the counting lemmas used in Proposition~\ref{prop:fibre}. The companion paper
 \cite{Kim26} contains the full derivations and the history of each
-computation.
+computation: the dual-weight ceilings in its \S4, and the capped supports,
+the two evaluators and the Gram matrices in its \S5 (section numbers of its
+version 0.9).
+
+\section*{Changes}
+\begin{description}
+\item[0.2] (13 November 2026) Revised after an internal referee report
+(in the directory \texttt{referee/} of the repository).
+The normalisations are now stated (new paragraph in \S2) and the $236$ ratios
+in Theorem~\ref{thm:sy} and the results table are given in one scaling;
+the one-program status of the $236$ capped numerators is marked in the table,
+the theorem and the corollary, and the corollary no longer claims the
+criterion of \cite{SY26} for our own test function; the cap-free agreement of
+the second evaluator is attributed correctly; the $4.14$ ceiling has its
+provenance; ``certified twice'' is corrected for the $3.99$ ceiling, and the
+statements after Proposition~\ref{prop:ceiling} are restricted to $V_{21}$,
+with a conjecture about the drafting of \cite{Cha26} removed;
+Proposition~\ref{prop:fibre} sets $C_0=0$ and assumes the cap condition for
+$m\ge1$ only, with the case $m(u')=0$ added to the proof; the Lean
+attributions name the theorems and what they bound; the test spaces $V_D$ are
+defined; overloaded symbols are renamed ($\mathcal L$, $\theta$,
+$U_{\mathrm{SY}}$, $I_0$, $J_0$); ``$m\ge4$'' is corrected to ``$m\ge1$'';
+truncated digits are corrected; Remark~\ref{rem:lemma5} now discusses which
+$236$ argument may depend on the step it describes.
+\item[0.1] (13 November 2026) First draft.
+\end{description}
 
 \begin{thebibliography}{99}
 \bibitem{Cha26} F.~Charton, L.~Hong, K.~Lau, K.~Ono, G.~Remy, H.~C.~Siu,
