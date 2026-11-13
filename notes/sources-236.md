@@ -11,7 +11,9 @@ Format and notation follow `notes/sources-enlarged-supports.md` §2 (Stadlmann a
 ---------------------------------------------------------------------------------------------
 ## 1. Z. Song, S. Yue, "Bounded Gaps Between Primes: An Upper Bound of 236", IACR ePrint 2026/1893
 
-### Status: full text NOT obtained
+### UPDATE 13 Nov 2026: full text obtained. Jerry supplied the PDF. See `notes/sources-236-song-yue.md` and the extracted data in `code/cap6/songyue236_witness.json` and `code/cap6/songyue236_appC.json`. The attempts below are kept for the record.
+
+### Status (12 Nov): full text NOT obtained
 What I tried:
 1. WebFetch of `https://eprint.iacr.org/2026/1893` worked for the abstract page only.
 2. `curl -L https://eprint.iacr.org/2026/1893.pdf` into `/tmp/claude-0/src236/song/` returned a Cloudflare "Just a moment..."
