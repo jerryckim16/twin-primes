@@ -191,3 +191,18 @@ I2old 55254, I5/2old 435544, I2new 1405159, I5/2new 32422390; total 696075110.
 - Main obstacles: (a) layer/face-mask definitions in (2.15) are underspecified (Sec. 3 above); (b) avoiding
   python-flint/FLINT (their stack) for independence requires another fast big-integer polynomial multiplier;
   (c) the extraction of (2.1) loses the over/under bars (reading given above).
+
+---------------------------------------------------------------------------------------------------------------
+## Session 13 (13 Nov 2026): first independent check -- Dickman cell masses (Section 1 above)
+- code/oai186_dickman_cells.py: closed forms of rho_D on [0,3] (log and Li2; self-tested against quadrature and
+  the delay equation) give d_j = A_j(c)/h = M (Phi((j+1)/M) - Phi(j/M)) for the seven grid caps M = z/h of (1.5)
+  (68225, 49152, 46580, 44781, 35265, 44976, 35419), all cells j = M .. 98263. 40-digit floating point, not
+  interval arithmetic. Output code/oai186_dickman_cells.json.
+- Every grid value rho(j/M) lies in the transcribed recurrence enclosure (2.1) and every cell mass lies in the cell
+  enclosure (2.2): 0 violations over 372,450 cells; smallest cell slack 5e-16, largest enclosure width 8.3e-10
+  (units of h).
+- The "[reading]" doubt (which bar is upper/lower) is IMMATERIAL here: the swapped assignment also contains the true
+  values (M = 35265, 650 sampled points, 0 violations), because the two recurrences differ by far less than the
+  margin 1/(2M^3). So this check confirms the transcription is consistent, not which reading [14] intends.
+- Next sub-step: one 1-D contraction for a single signature (sigma = (), d = 0) on one cap domain, with an exact or
+  interval evaluator written independently of [14]'s code.

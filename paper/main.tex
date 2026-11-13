@@ -1636,6 +1636,18 @@ its layered cap convolution, is not specified completely in the text.
 The analytic inputs (a triply densely divisible variant of Stadlmann's
 bilinear estimate, the prime minorant, and the exponential-sum bounds that are
 axioms of their Lean development) remain \lbl{Claimed}.
+In version~0.12 we made a first independent check of one ingredient
+(\lbl{Computed}, $40$-digit floating point, not interval arithmetic;
+\texttt{code/oai186\_dickman\_cells.py}). On $[0,3]$ the Dickman function has
+closed forms, $\rho_D(u)=1-\log u$ on $[1,2]$ and
+$\rho_D(u)=1-\log u+\frac12\log^2u+\mathrm{Li}_2(1/u)-\frac12\log^22-\mathrm{Li}_2(\frac12)$
+on $[2,3]$, and so does $\int\rho_D$. With these we evaluated every cell mass of the seven grid caps
+of the companion ($372{,}450$ cells). All lie inside the enclosures given by
+its recurrence and cell bound, as we transcribed them, and the enclosures have
+width at most $8.3\cdot10^{-10}$ in units of the cell. One transcription doubt
+(which of two bars is the upper one) turns out not to matter at this precision.
+This checks one input of the companion; it is not yet an evaluation of
+$I_H$ or $J_{\lambda,H}$.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
