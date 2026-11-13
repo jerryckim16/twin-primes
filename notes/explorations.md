@@ -3,6 +3,22 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-13, Session 12 -- Per-m caps in the toy capped problem: do caps on SUMS cause a large regain? (variational)
+- Idea: Session 11's toy (one uniform cap) left open whether the 31% regain at k = 45 (Lemma 9.1 caps, Session 9)
+  comes from the per-m pattern of the caps (separate caps on single coordinates and on sums of several). Smallest
+  test: k = 3, T = {t >= 0, sum t <= 1, t_i <= c1, t_i + t_j <= c2}, symmetric polynomials of degree d = 5, 8.
+- Tried: code/explore/toy_capped_perm.py (floating point; fibre in t_1 split into the four polytopes where
+  min(c1, 1 - y2 - y3, c2 - y2, c2 - y3) is attained). Sanity: c2 = 1 reproduces Session 11's uniform-cap numbers
+  (c1 = 0.8: trunc 1.614592, regain 0.101). Log: runs/explore_toy_capped_perm.log. d = 5 and d = 8 agree to 2 digits.
+  regain: pair caps only (c1 = 1): c2 = 0.9 / 0.8 / 0.75 / 0.7 -> 0.085 / 0.067 / 0.051 / 0.037 (it FALLS as the
+  pair cap tightens); mixed c1/c2 = 0.6/0.9, 0.6/0.8, 0.7/0.8, 0.5/0.9 -> 0.131, 0.110, 0.081, 0.126; single cap
+  c1 = 0.6 -> 0.126.
+- Outcome: DEAD END for the hypothesis. In the toy, caps on sums give a SMALLER regain than caps on single
+  coordinates, and mixing them never exceeds about 13%. So the cap pattern alone does not explain the 31% regain at
+  k = 45; remaining candidates are the enlarged (L > 1) part of the hybrid support and the size of k, which a k = 3
+  toy cannot show. Not worth more toy work; if the question returns, test on the real k = 45 support with fewer caps
+  switched on (the adjoint Gram machinery of capped_gram.py does this exactly). Heuristic only.
+
 ## 2026-11-13, Session 11 -- Toy model of the capped problem: what decides the "regain" fraction? (variational/spectral)
 - Idea: Session 9's registered prediction failed because re-optimising on the capped support regained 31% of the
   truncation loss at k = 45 (Lemma 9.1 caps) against 9% at k = 49. Is the regain fraction a property of k, of the

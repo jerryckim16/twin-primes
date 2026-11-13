@@ -1,0 +1,8 @@
+prepared 6563 keys (I), 6563 keys (J) in 8 s
+cap-free: I = 3.7582044810e+87, J = 3.1346829809e+86, k J / I = 4.0036348167
+checkpoint code/cap6/pieces_sy236_jonly.jsonl: 0 of 126 pieces already done
+Corr1 m=3 j=3: -6.000990e+08 (1550 s)
+Corr1 m=1 j=3: -3.976710e+02 (2371 s)
+Corr1 m=2 j=3: -8.266075e+05 (2536 s)
+Corr1 m=4 j=3: -1.959279e+11 (2707 s)
+Corr1 m=5 j=3: -3.032703e+13 (1740 s)
