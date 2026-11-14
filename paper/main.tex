@@ -69,7 +69,7 @@ with three forced coordinates is needed (Proposition~\ref{prop:bonf2},
 $4.012038868>4$ for the $240$ vector); for the next rung, $186$, version~0.13
 recomputes independently the two main terms $I_H$ and $J_{\lambda,H}$ of the
 numerical companion of OpenAI's preprint and finds them inside its published
-enclosures, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
+enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
 and its analytic inputs are not checked); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
@@ -1743,7 +1743,7 @@ This checks one input of the companion; it is not yet an evaluation of
 $I_H$ or $J_{\lambda,H}$.
 \end{remark}
 
-\begin{proposition}[\lbl{Computed}, one program, high precision; version 0.13]\label{prop:oai186-main}
+\begin{proposition}[\lbl{Computed}, two independent programs, the second in ball arithmetic; version 0.13]\label{prop:oai186-main}
 Evaluate the forms of \cite{OAI26}'s companion, as transcribed in
 \texttt{notes/}\allowbreak\texttt{sources-186-forms.md}, with the layered cap
 measure of (2.15) read as follows (our derivation): split the retained $39$
@@ -1780,13 +1780,26 @@ and the final signed sums are exact integer sums. The result is therefore accura
 far beyond the $10^{-9}$ of the comparison, but it is not a rigorous interval
 enclosure (the special functions are not interval-evaluated). A fresh-context
 audit of the derivation and both scripts found no defect.
+A second program (\texttt{code/oai186\_check2.py}, combined by
+\texttt{code/oai186\_check2\_combine.py}; output \texttt{code/oai186\_check2.json})
+works in ball arithmetic throughout (python-flint \texttt{arb}, with the
+Dickman closed forms evaluated in balls) and obtains the coordinate sums
+differently, as $m!\,[y^m]A(y)^d$ for the exponential generating series
+$A(y)=\sum_jK_jX^j\exp\left(\sum_ey_et_j^e\right)$, instead of by set
+partitions. It gives $I_H\in[2.36853178533302\cdot10^{-14}\pm3\cdot10^{-30}]$,
+$J_{\lambda,H}\in[9.02487556547131\cdot10^{-14}\pm4\cdot10^{-29}]$ and
+$\rho^*J_{\lambda,H}/I_H\in[1.00020608684\pm4\cdot10^{-12}]$, agreeing with the
+first program to $7\cdot10^{-17}$ (relative). Both programs use the same
+transcription and the same reading of (2.15), so they check the arithmetic and
+the code, not the reading; the agreement with the published values checks
+the reading.
 
 What this does and does not show. The main-term quotient of
 \cite[Lemma~2.5]{OAI26} is reproduced independently, and so is the reading of
 its layered cap convolution that we had marked as underspecified. Not
 reproduced: the loss bound $L^+/I_H\le696075110\cdot10^{-12}$ (the $97$
 support-failure components of their \S2.4), which the criterion also needs;
-a second independent program for $I_H$ and $J_{\lambda,H}$; and, as always,
+and, as always,
 the analytic inputs (\lbl{Claimed}). The project's bound does not move.
 
 \begin{remark}[the last rung, $182$; \lbl{Literature} reading only]\label{rem:sha182}

@@ -1,6 +1,8 @@
-[     1 s] Z = [1996.0917645506627956 +/- 1.30e-17]
-[    12 s] p_sigma ready
-[    12 s] 53 eta, 53 exponent vectors in the down-closed set
-[    40 s] marginals shell 0 done
-[    55 s] marginals shell 1 done
-[    68 s] marginals shell 2 done
+[     0 s] Z = [1996.0917645506627956 +/- 1.30e-17]
+[    11 s] p_sigma ready
+[    11 s] 53 eta, 53 exponent vectors in the down-closed set
+[    38 s] marginals shell 0 done
+[    53 s] marginals shell 1 done
+[    66 s] marginals shell 2 done
+[  2887 s] M^b_39 done for b = 44976
+[  2901 s] {"b": 44976, "0": ["0", 1.0402954792671776e-94], "0_str": "[+/- 1.05e-94]", "+": ["9.02876321139659114729976155852672868788143786726883577024166e-9", 6.285373228262024e-96], "+_str": "[9.02876321139659114729976155853e-9 +/- 3.28e-39]", "t": ["-9.02876321139659114729976155852672868788143786726883577024166e-9", 4.001734296420317e-95], "t_str": "[-9.02876321139659114729976155853e-9 +/- 3.28e-39]"}

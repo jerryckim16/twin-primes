@@ -1,6 +1,26 @@
 [
  {
   "date": "2026-11-14",
+  "slot": "Session 14 (7:34 PM CT slot, 13 Nov; no wait: Session 13 had merged at 7:18 PM CT)",
+  "title": "Rung 186: the two main terms of OpenAI's numerical companion recomputed independently by two programs (inside the published enclosures); split Bonferroni certificate needs no three-coordinate pieces; 182 source read; audit of Song-Yue's Thm 4.18 integrated; paper v0.13, verification note v0.5",
+  "did": [
+   "Rung 186: own evaluators of I_H and J_{lambda,H} of the companion (code/oai186_IH.py, code/oai186_J.py: GMP integer products with directed rounding; code/oai186_check2.py: arb ball arithmetic with a different combinatorial route). Both give I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_{lambda,H} = 9.0248755655e-14, 5.9e-9 above the published lower bound; rho* J/I_H = 1.000206087 > 500103/500000; the two programs agree to 7e-17. Our own derivation of the underspecified layered cap form (2.15) is thereby confirmed. The loss bound L^+ and the analytic inputs are not checked, so 186 is not adopted.",
+   "Own idea settled: splitting Corr2 into its Q(R)^2 and Q(U)^2 parts lets the Bonferroni truncation drop every piece with three forced coordinates (paper Prop. bonf2, Proved here). New capped_exact.py --split/--bonf; on the 240 vector (k = 49) 98 pieces give 49 J_low/I_up = 4.012038868 > 4, 3.5e-8 below the exact value, as exact rationals.",
+   "Rung 182 read (helper transcription, notes/sources-182.md): k = 39, the 186 framework on a 4x finer grid, 726 trial coefficients not printed in the bundle. The 39-tuple printed there is Lean-checked admissible of diameter 182 (boundedGaps_182_of_DHL_39').",
+   "The coordinator's audit of Song-Yue's Theorem 4.18 (PR #19) is now in the paper (Remark sy-audit, labelled 'Literature, audited', not peer review), the status table, status.json and the verification note; 236 stays conditional. A fresh-context audit of Prop. bonf2, the new code and both 186 evaluators found no mathematical defect (four minor fixes applied).",
+   "Papers changed: main paper v0.13, verification note v0.5. The k = 45 Schwartz-Zippel job was stopped at 74/273 checkpointed pieces to free cores (resume command in STATE.md)."
+  ],
+  "explored": "Exponential sums / Type III: could the slack in Song-Yue's printed exponent margins raise the level enough to move the criterion from k = 48 to k = 47? It would need d omega >= 5.8e-4, against 1.4e-4 (Type III margin) and 2.2e-5 (IIa margin) -- dead end (heuristic).",
+  "failed": [
+   "Wolfram connector not available in this session; mathbox skills not available (audits done by a fresh-context helper agent).",
+   "One worker of the second 186 program was killed for lack of memory (four 3 GB processes); rerun with at most three at a time.",
+   "Not done: the 186 loss bound L^+ (its Section 2.4 is not in our notes, and the PDF sits in a GitHub repository outside this session's scope); any computation on 182 (coefficients missing). Both requested from Jerry in notes/sources-needed.md.",
+   "No news search (not the 3:34 AM run); no weekly review (not a Monday)."
+  ],
+  "next": "186: the loss bound once Section 2.4 of the companion arrives; 182: blocked on its 726 coefficients; a one-sided --jonly --bonf run on the Song-Yue witness; first weekly review on Monday 16 Nov."
+ },
+ {
+  "date": "2026-11-14",
   "slot": "Session 13 (11:34 AM CT slot, 13 Nov; waited 3 h 30 min for Session 12 and stood down, then resumed at Jerry's request at 3:10 PM CT after Session 12 merged; finished 14 Nov)",
   "title": "Our own k = 48 test function confirmed by a second exact program (4.0060814208 > 4); Bonferroni one-sided certificates; first independent check on rung 186 (Dickman cell masses); paper v0.12, verification note v0.4",
   "did": [
