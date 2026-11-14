@@ -1,0 +1,74 @@
+{
+ "group": "I5/2new",
+ "components": {
+  "L7": {
+   "A": 327802575.1079566,
+   "A_rad": 6.075441970349829e-60,
+   "beta": 7.764108172335162e-24,
+   "table_A": 327802576,
+   "L": 5644,
+   "H": 8129,
+   "K": 35419,
+   "theta": 105,
+   "J": 17,
+   "branch": "renewal",
+   "delay_first_failed": 47895,
+   "renewal_floored_at": null,
+   "lower_index": 87250,
+   "clip": {
+    "eligible": 27,
+    "absorbed_eligible": 12,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": true
+   }
+  },
+  "L8": {
+   "A": 50667881708.6588,
+   "A_rad": 1.0539358297255505e-57,
+   "beta": 1.2000848813330766e-21,
+   "table_A": 50667881720,
+   "L": 8128,
+   "H": 11705,
+   "K": 35419,
+   "theta": 73,
+   "J": 12,
+   "branch": "renewal",
+   "delay_first_failed": 70684,
+   "renewal_floored_at": null,
+   "lower_index": 87250,
+   "clip": {
+    "eligible": 27,
+    "absorbed_eligible": 12,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": true
+   }
+  },
+  "L9": {
+   "A": 143104919723.5722,
+   "A_rad": 3.5625633822572775e-57,
+   "beta": 3.3894855046859745e-21,
+   "table_A": 143104919759,
+   "L": 11704,
+   "H": 14046,
+   "K": 35419,
+   "theta": 61,
+   "J": 8,
+   "branch": "delay",
+   "delay_first_failed": null,
+   "renewal_floored_at": null,
+   "lower_index": 87250,
+   "clip": {
+    "eligible": 27,
+    "absorbed_eligible": 12,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": true
+   }
+  }
+ },
+ "prec": 256,
+ "seconds": 1576,
+ "peak_rss_MB": 1444
+}
