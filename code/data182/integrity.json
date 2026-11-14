@@ -1,0 +1,108 @@
+{
+ "h": "1379373467/516093837312000",
+ "S_ok": true,
+ "h_ok": true,
+ "component_caps_over_h": [
+  "141720",
+  "177528",
+  "246256"
+ ],
+ "component_caps_ok": true,
+ "shell_caps_over_h": {
+  "outer": [
+   "246256",
+   "196608",
+   "186253"
+  ],
+  "base": [
+   "246256",
+   "177542",
+   "140306"
+  ],
+  "enlarged": [
+   "246256",
+   "179967",
+   "141724"
+  ],
+  "subtractionC": [
+   "246256",
+   "186491"
+  ],
+  "full": [
+   "246256"
+  ]
+ },
+ "shell_caps_ok": true,
+ "knots_ok": true,
+ "signatures": [
+  [],
+  [
+   2
+  ],
+  [
+   3
+  ],
+  [
+   4
+  ],
+  [
+   2,
+   2
+  ],
+  [
+   5
+  ],
+  [
+   2,
+   3
+  ],
+  [
+   6
+  ],
+  [
+   2,
+   4
+  ],
+  [
+   3,
+   3
+  ],
+  [
+   2,
+   2,
+   2
+  ]
+ ],
+ "signatures_ok": true,
+ "radii_ok": true,
+ "old_rows": {
+  "rows": 43,
+  "order_counts": [
+   12,
+   12,
+   19
+  ],
+  "band_chain": true,
+  "upperBand_formula_rows": 43,
+  "activation_eq_delta_over_rho_rows": 43,
+  "first_lowerBand": "500000/262499",
+  "last_upperBand": "2"
+ },
+ "new_rows": {
+  "rows": 55,
+  "order_counts": [
+   12,
+   12,
+   31
+  ],
+  "band_chain": true,
+  "upperBand_formula_rows": 55,
+  "activation_eq_delta_over_rho_rows": 55,
+  "first_lowerBand": "500000/262499",
+  "last_upperBand": "528400/262499"
+ },
+ "I_target": [
+  1.4896340800902754e-11,
+  1.4896341215381332e-11
+ ]
+}
