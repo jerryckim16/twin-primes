@@ -13,6 +13,11 @@
  "results": [
   {
    "label": "Computed",
+   "text": "Rung 182 (GPT-6 Astra / Sharifi, k = 39): the trial data TrialData182.lean (supplied by Jerry Kim) checked for integrity, and the denominator I(F) of the criterion evaluated independently from it: I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] (relative position 0.49993). One program, high precision (floor-only rounding at 2^-224), not a rigorous enclosure. J0, J+, the tail, the restoration losses and the analytic inputs (including the unproved Type III local Fourier proposition) are NOT checked; 182 stays Claimed.",
+   "where": "paper, Remark sha182 (v0.14); code/sharifi182_I.py, code/sharifi182_data.py, code/data182/"
+  },
+  {
+   "label": "Computed",
    "text": "Rung 186, source data and loss-table arithmetic (exact rationals, from the companion PDF supplied by Jerry Kim): the source ladders (29 / 43 rows), retained rows, boundary values, continuous caps and the integer cap masks (1.5), and the six group parameters with all guards of Lemma 1.1, recomputed from the printed rational definitions -- every printed value reproduced; for the 97 component bounds of Tables 2.1-2.6, every Young inequality and inner weighting, the group totals, L^+/I_H <= 696075110e-12 < 697e-6 and the final margins (2.34)-(2.35) hold exactly. The raw component bounds themselves (forms (2.16)-(2.21)) are NOT yet recomputed; the analytic comparisons of Lemma 1.1 are not checked.",
    "where": "paper, after Proposition oai186-main (v0.14); code/oai186_support_data.py, code/oai186_tables_check.py, code/oai186_tables_2_1_to_2_6.json; notes/sources-186-forms.md, notes/sources-186-loss.md"
   },
@@ -243,6 +248,12 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Rung 182: read the 182 trial's component caps as a layered sum over the largest fragment (layers over the union of component and outer-shell caps, active coefficients = components with cap >= layer value), processed cap by cap through linearity.",
+   "origin": "own",
+   "status": "works",
+   "note": "Session 14 follow-up: I(F) lands at the midpoint of the published enclosure (code/sharifi182_I.py)."
+  },
   {
    "idea": "Rung 186: read the underspecified layered cap convolution (2.15) of OpenAI's companion as a split of the retained configuration by the layer of its largest fragment over ALL cap values occurring in the outer and face domains, with the erased coordinate admitted in the outer shells whose cap is >= the layer value.",
    "origin": "own",

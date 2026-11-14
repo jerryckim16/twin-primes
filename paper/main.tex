@@ -75,7 +75,9 @@ numerical companion of OpenAI's preprint and finds them inside its published
 enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
 and its analytic inputs are not checked; version~0.14 recomputes its source
 data and cap masks exactly from their rational definitions and checks the
-arithmetic of its loss tables, not yet the raw loss bounds); and
+arithmetic of its loss tables, not yet the raw loss bounds); for the last
+rung, $182$, the denominator $I(F)$ of the criterion, recomputed from the trial
+data, lies inside its published enclosure (Remark~\ref{rem:sha182}); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1920,8 +1922,19 @@ admissible of diameter $182$ (\lbl{Lean-checked}:
 \texttt{boundedGaps\_182\_of\_DHL\_39'}; the project already had another
 such tuple). The $726$ coefficients and the source-row tables
 of the restoration step are not printed in the bundle; they are in a separate
-repository that this project has not obtained. So no part of the variational
-step of $182$ can be recomputed yet.
+repository that this project has not obtained. In version~0.14 Jerry Kim supplied
+that data (the file \texttt{TrialData182.lean}; verbatim copy in
+\texttt{code/}\allowbreak\texttt{data182/}, with integrity checks: cell-aligned caps,
+knots, and the defining relations of all $98$ source rows). From it we
+evaluated the denominator of the $182$ criterion, $I(F)=\|F\|^2$, independently
+(\lbl{Computed}, one program, high precision, not a rigorous enclosure;
+\texttt{code/sharifi182\_I.py}): splitting by the layer of the largest fragment
+over the five cap values $141720h<177528h<186253h<196608h<246256h$, with the
+active coefficient vector on each layer the sum of the components whose cap
+is at least the layer value, gives $I(F)=1.489634100811\cdot10^{-11}$, inside
+the published enclosure $[1.48963408009,\,1.48963412154]\cdot10^{-11}$, at
+relative position $0.49993$. The numerators $J_0$, $J_+$ and the tail, the
+restoration losses and the analytic inputs remain to be checked.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}

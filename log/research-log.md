@@ -1,5 +1,18 @@
 # Research log
 
+## 2026-11-14 - Session 14 follow-up 2 (about 1:40 AM CT, 14 Nov; started when Jerry pasted the 182 trial data): Rung 182: trial data received and checked; the denominator I(F) recomputed independently lands inside the published enclosure; paper v0.14
+
+- Jerry pasted formal/TrialData182.lean (the 726 coefficients, knots, shells, 98 source rows, published enclosures). It is copied verbatim into code/data182/ and checked by code/sharifi182_data.py: the caps are cell-aligned (141720, 177528, 246256 and the shell caps as in the bundle), the knots and signatures match the bundle, and all 98 source rows satisfy their defining relations exactly.
+- code/sharifi182_I.py evaluates the denominator I(F) = ||F||^2 of the 182 criterion (39 coordinates, 393216-cell grid, 22 cubic B-splines x 11 signatures x 3 nested cap components): I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] at relative position 0.49993. Own reading of the cap components as a layered sum over the largest fragment; 19 minutes on two cores. One program, high precision, not a rigorous enclosure.
+- The top-level Lean file of the 182 development (pasted earlier) is recorded in notes/sources-182.md: H1 <= 182 under four hypotheses, one of them (a Type III local Fourier proposition) an unproved input.
+
+Explored: No separate exploration in this follow-up.
+
+Did not work or is blocked:
+- J0, J+ and the tail of the 182 criterion, the restoration losses and a second program for I(F) are not done yet.
+
+Next: 182: a second program for I(F) (ball arithmetic, as for 186), then J0 / J+ / tail with the 186 face machinery; 186: the raw loss bounds.
+
 ## 2026-11-14 - Session 14 follow-up (about 12:00 AM CT, 14 Nov; started when Jerry uploaded the 186 companion PDF, after Session 14 had merged): Rung 186: source data and cap masks recomputed exactly from the companion's rational definitions; the arithmetic of all 97 loss components checks out; loss-cover forms transcribed; paper v0.14
 
 - Jerry supplied the PDF of OpenAI's numerical companion (short_gaps_numerics.pdf); it is not committed, and notes/sources-needed.md marks it received.

@@ -1,0 +1,9 @@
+[     0 s] 13 knot spans with cells; first r = 56104
+[     3 s] p arrays ready (3 distinct coefficient vectors)
+[    12 s] Z = 7966.674668651398901755432
+[    94 s] cap 177528: coordinate arrays
+[   351 s] cap 177528: 77 moment products done
+[   379 s] cap 177528: contribution 4.090567424629705e-12
+[   404 s] cap 196608: coordinate arrays
+[   661 s] cap 196608: 77 moment products done
+[   687 s] cap 196608: contribution 5.793544200744920e-13
