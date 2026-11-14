@@ -1,5 +1,5 @@
 {
- "version": "0.13",
+ "version": "0.14",
  "updated": "2026-11-14",
  "session_count": 14,
  "bounds": {
@@ -11,6 +11,11 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Rung 186, source data and loss-table arithmetic (exact rationals, from the companion PDF supplied by Jerry Kim): the source ladders (29 / 43 rows), retained rows, boundary values, continuous caps and the integer cap masks (1.5), and the six group parameters with all guards of Lemma 1.1, recomputed from the printed rational definitions -- every printed value reproduced; for the 97 component bounds of Tables 2.1-2.6, every Young inequality and inner weighting, the group totals, L^+/I_H <= 696075110e-12 < 697e-6 and the final margins (2.34)-(2.35) hold exactly. The raw component bounds themselves (forms (2.16)-(2.21)) are NOT yet recomputed; the analytic comparisons of Lemma 1.1 are not checked.",
+   "where": "paper, after Proposition oai186-main (v0.14); code/oai186_support_data.py, code/oai186_tables_check.py, code/oai186_tables_2_1_to_2_6.json; notes/sources-186-forms.md, notes/sources-186-loss.md"
+  },
   {
    "label": "Computed",
    "text": "Rung 186 (OpenAI): independent recomputation of the two main terms of the numerical companion (formulas (2.12)-(2.15), with our own derivation of the layered cap measure): I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_lambda,H = 9.0248755655e-14, 5.9e-9 (relative) above the published lower bound 90248755123e-24; rho* J/I_H = 1.000206087 > 500103/500000. Two independent programs: GMP integer products with directed rounding (rho_D, g, Z at 110 digits), and arb ball arithmetic with y-series combinatorics (I_H in [2.36853178533302e-14 +/- 3e-30], ratio in [1.00020608684 +/- 4e-12]); they agree to 7e-17. The loss bound L^+ and the analytic inputs are NOT checked; the project bound does not move.",

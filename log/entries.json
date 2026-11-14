@@ -1,6 +1,22 @@
 [
  {
   "date": "2026-11-14",
+  "slot": "Session 14 follow-up (about 12:00 AM CT, 14 Nov; started when Jerry uploaded the 186 companion PDF, after Session 14 had merged)",
+  "title": "Rung 186: source data and cap masks recomputed exactly from the companion's rational definitions; the arithmetic of all 97 loss components checks out; loss-cover forms transcribed; paper v0.14",
+  "did": [
+   "Jerry supplied the PDF of OpenAI's numerical companion (short_gaps_numerics.pdf); it is not committed, and notes/sources-needed.md marks it received.",
+   "code/oai186_support_data.py recomputes in exact rationals, from (1.13)-(1.19) and (1.23)-(1.24), the two source ladders (29 and 43 rows; order counts (12,12,5) and (12,12,19)), the omega enclosures, identity (1.17), the retained rows 0-27 and 0-38 with the boundary values 187773, 188087, 188254, 188256, the cap masks (1.5) that our I_H and J evaluations had taken as given, and the six group parameters with every guard of Lemma 1.1. Every printed value is reproduced.",
+   "code/oai186_tables_check.py checks exactly all 97 rows of Tables 2.1-2.6 (52 Young inequalities, 45 inner weightings), the six group totals, L^+/I_H <= 696075110e-12 < 697e-6, the component counts against the witness schedule, and the margins (2.34)-(2.35). All pass. This is bookkeeping only: the raw bounds come from the forms (2.16)-(2.21), now transcribed in notes/sources-186-loss.md for later runs (the PDF will not be available to them).",
+   "Main paper v0.14 (a paragraph after Proposition oai186-main; abstract)."
+  ],
+  "explored": "No separate exploration in this short follow-up (Session 14's exploration is in the entry below).",
+  "failed": [
+   "The raw component bounds (R_G, V_G, beta_G) are not recomputed yet; the analytic comparisons of Lemma 1.1 are not checked. Wolfram and mathbox not available."
+  ],
+  "next": "Implement the loss forms (2.16)-(2.21) from notes/sources-186-loss.md, starting with one small inner group (I2old, 7 components), and compare its raw A values with Table 2.3."
+ },
+ {
+  "date": "2026-11-14",
   "slot": "Session 14 (7:34 PM CT slot, 13 Nov; no wait: Session 13 had merged at 7:18 PM CT)",
   "title": "Rung 186: the two main terms of OpenAI's numerical companion recomputed independently by two programs (inside the published enclosures); split Bonferroni certificate needs no three-coordinate pieces; 182 source read; audit of Song-Yue's Thm 4.18 integrated; paper v0.13, verification note v0.5",
   "did": [
