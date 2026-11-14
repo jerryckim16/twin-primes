@@ -1,0 +1,95 @@
+{
+ "rows": 97,
+ "failures": [],
+ "groups": {
+  "O2": {
+   "n": 17,
+   "sum_E": 38927522,
+   "printed_total": 38927522,
+   "table27": 38927522,
+   "total_ok": true,
+   "counts": [
+    10,
+    6,
+    1
+   ],
+   "counts_ok": true
+  },
+  "O5/2": {
+   "n": 35,
+   "sum_E": 622829241,
+   "printed_total": 622829241,
+   "table27": 622829241,
+   "total_ok": true,
+   "counts": [
+    22,
+    12,
+    1
+   ],
+   "counts_ok": true
+  },
+  "I2old": {
+   "n": 7,
+   "sum_E": 55254,
+   "printed_total": 55254,
+   "table27": 55254,
+   "total_ok": true,
+   "counts": [
+    5,
+    1,
+    1
+   ],
+   "counts_ok": true
+  },
+  "I52old": {
+   "n": 10,
+   "sum_E": 435544,
+   "printed_total": 435544,
+   "table27": 435544,
+   "total_ok": true,
+   "counts": [
+    7,
+    2,
+    1
+   ],
+   "counts_ok": true
+  },
+  "I2new": {
+   "n": 11,
+   "sum_E": 1405159,
+   "printed_total": 1405159,
+   "table27": 1405159,
+   "total_ok": true,
+   "counts": [
+    6,
+    4,
+    1
+   ],
+   "counts_ok": true
+  },
+  "I52new": {
+   "n": 17,
+   "sum_E": 32422390,
+   "printed_total": 32422390,
+   "table27": 32422390,
+   "total_ok": true,
+   "counts": [
+    11,
+    5,
+    1
+   ],
+   "counts_ok": true
+  }
+ },
+ "grand_total": 696075110,
+ "grand_ok": true,
+ "n_components": 97,
+ "young_parameters": 52,
+ "schedule_ok": true,
+ "low_total": 61,
+ "margin_234": "18806715247/236853178900000000",
+ "margin_234_ok": true,
+ "margin_235": "230382667/10000000000000",
+ "margin_235_ok": true,
+ "young_lhs_over_optimum_max": 21.41578996649759
+}

@@ -206,3 +206,25 @@ I2old 55254, I5/2old 435544, I2new 1405159, I5/2new 32422390; total 696075110.
   margin 1/(2M^3). So this check confirms the transcription is consistent, not which reading [14] intends.
 - Next sub-step: one 1-D contraction for a single signature (sigma = (), d = 0) on one cap domain, with an exact or
   interval evaluator written independently of [14]'s code.
+
+---------------------------------------------------------------------------------------------------------------
+## Session 14 follow-up (14 Nov 2026): the full PDF supplied by Jerry Kim
+- The PDF was supplied directly (not committed). The transcription above (Sections 1-2.3) was compared with it where it
+  mattered: the masks (1.5) and the forms (2.12)-(2.15) as used by our evaluators agree with the PDF (and our I_H, J
+  agree with its Lemma 2.5, Session 14).
+- (2.15) reading confirmed by the text: "List all distinct positive cap values increasingly as b_1 < ... < b_t" over
+  the caps occurring; our evaluators use the 7 values {35265, 35419, 44781, 44976, 46580, 49152, 68225}.
+- Source data recomputed EXACTLY from the rational definitions (1.13)-(1.19), (1.23)-(1.24) by
+  code/oai186_support_data.py (output code/oai186_support_data.json): S, rho*, T0, T1, rho; ladders with 29 / 43 rows,
+  order counts (12,12,5) / (12,12,19); the 10^6 omega enclosures of the proof of Lemma 1.1; identity (1.17); retained
+  rows 0..27 and 0..38 and the four values floor(B/h) = 187773, 188087, 188254, 188256; the masks (1.5) from the
+  continuous caps (1.18) and the grid rule (1.19); z_G/h, p_G/h and all guards of Lemma 1.1 for the six groups;
+  1 - 4 rho* |b_h|. Every printed value is reproduced. NOT checked: the analytic comparisons of Lemma 1.1 with the
+  distribution inequalities of the main paper [8].
+- Readings used there: in (1.15) the "t" after "min Omega_nu," is the subscript r_t; B_{nu,t} without "+" in (1.16) is
+  (1/2 + 2 omega_{t-1})/rho. Both are confirmed by (1.17) holding exactly.
+- Tables 2.1-2.6 (97 components: q, A, B, E) transcribed to code/oai186_tables_2_1_to_2_6.json; code/oai186_tables_check.py
+  checks every Young inequality (2.30) and inner weighting (2.31) exactly, the six group totals, the grand total
+  696075110 < 697e6, the counts of Table 2.7 against the schedule lists of 1.5.1, and the margins (2.34)-(2.35).
+  All pass. This checks the bookkeeping only, not the raw bounds A, B (that needs the forms (2.16)-(2.21); see
+  notes/sources-186-loss.md).

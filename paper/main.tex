@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.13, 14 November 2026}
+\date{Version 0.14, 14 November 2026}
 
 \begin{document}
 
@@ -73,7 +73,9 @@ $4.012038868>4$ for the $240$ vector); for the next rung, $186$, version~0.13
 recomputes independently the two main terms $I_H$ and $J_{\lambda,H}$ of the
 numerical companion of OpenAI's preprint and finds them inside its published
 enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
-and its analytic inputs are not checked); and
+and its analytic inputs are not checked; version~0.14 recomputes its source
+data and cap masks exactly from their rational definitions and checks the
+arithmetic of its loss tables, not yet the raw loss bounds); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1871,6 +1873,28 @@ reproduced: the loss bound $L^+/I_H\le696075110\cdot10^{-12}$ (the $97$
 support-failure components of their \S2.4), which the criterion also needs;
 and, as always,
 the analytic inputs (\lbl{Claimed}). The project's bound does not move.
+
+\begin{sloppypar}\noindent\emph{Source data and the bookkeeping of the loss bound} (\lbl{Computed}, exact
+rational arithmetic; version~0.14; the full companion was supplied to us after
+version~0.13). (i) From the rational definitions in \cite[(1.13)--(1.19),
+(1.23)--(1.24)]{OAI26} we recomputed the two source ladders ($29$ and $43$ rows,
+with order counts $(12,12,5)$ and $(12,12,19)$), the retained rows ($0$--$27$
+and $0$--$38$) and the four boundary values $\lfloor B/h\rfloor$, the continuous
+caps and, through the grid rule, the integer cap masks (1.5) on which our
+$I_H$ and $J_{\lambda,H}$ rest (we had taken them as given), and the six
+group parameters with every guard of their Lemma~1.1. Every printed value is
+reproduced (\texttt{code/oai186\_support\_data.py}). The analytic comparisons
+in that lemma, with the distribution inequalities of \cite{OAI26}, are not
+checked. (ii) For the $97$ component bounds of their Tables~2.1--2.6
+(\texttt{code/}\allowbreak\texttt{oai186\_tables\_2\_1\_to\_2\_6.json}) every
+Young inequality $cA+B/c\le E$ and inner weighting, the six group totals, the
+total $696075110<697\cdot10^6$, the component counts against their witness
+schedule, and the final margins (2.34)--(2.35) hold exactly
+(\texttt{code/oai186\_tables\_check.py}). This checks how the raw bounds are
+combined, not the raw bounds themselves; those come from the forms
+(2.16)--(2.21) of the companion, which we have transcribed
+(\texttt{notes/}\allowbreak\texttt{sources-186-loss.md}) but not yet evaluated.
+\end{sloppypar}
 
 \begin{remark}[the last rung, $182$; \lbl{Literature (preprint)} reading only]\label{rem:sha182}
 In version~0.13 we read \cite{Sha26} (a $132$-page bundle: the main paper

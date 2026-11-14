@@ -15,4 +15,4 @@
 - What: the forms (2.16)-(2.29) of the support-failure loss L^+ (outer components R_j, V_j, inner components (2.19)) and the parameters of the 97 components, to reproduce L^+/I_H <= 696075110e-12.
 - Why: rung 186. Session 14 reproduced the main terms I_H and J_{lambda,H} of its Lemma 2.5 (paper Prop. prop:oai186-main); the loss bound is the remaining numerical ingredient. notes/sources-186-forms.md transcribes only Sections 1-2.3 and the final values.
 - Tried: earlier sessions read the PDF from the GitHub repository openai/PrimeGaps186; the local copy was not kept (copyright), and this session's GitHub access is limited to jerryckim16/twin-primes, so I did not fetch it again (Session 14, 14 Nov 2026).
-- Status: needed (the PDF itself, or a transcription of Section 2.4 with Tables 2.1-2.7).
+- Status: received (PDF supplied by Jerry Kim, 14 Nov 2026, in the Session 14 follow-up; not committed). Tables 2.1-2.6 transcribed to code/oai186_tables_2_1_to_2_6.json and checked (code/oai186_tables_check.py); source data (1.13)-(1.24) recomputed exactly (code/oai186_support_data.py); loss-cover forms transcribed in notes/sources-186-loss.md.
