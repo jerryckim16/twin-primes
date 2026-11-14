@@ -1,0 +1,17 @@
+I2old L2,L3
+I2old L1,L4,L5
+I2old P1,H
+I5/2old L1,L2,L3
+I5/2old L4,L5,L6
+I5/2old L7,P1
+I5/2old P2,H
+I2new L1,L2,L3
+I2new L4,L5,L6
+I2new P1,P2
+I2new P3,P4,H
+I5/2new L1,L2,L3
+I5/2new L4,L5,L6
+I5/2new L7,L8,L9
+I5/2new L10,L11,P1
+I5/2new P2,P3
+I5/2new P4,P5,H
