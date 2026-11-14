@@ -76,8 +76,9 @@ enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>50
 and its analytic inputs are not checked; version~0.14 recomputes its source
 data and cap masks exactly from their rational definitions and checks the
 arithmetic of its loss tables, not yet the raw loss bounds); for the last
-rung, $182$, the denominator $I(F)$ of the criterion, recomputed from the trial
-data, lies inside its published enclosure (Remark~\ref{rem:sha182}); and
+rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
+criterion, recomputed from the trial data, agree with its published enclosures
+(Remark~\ref{rem:sha182}); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1933,8 +1934,16 @@ over the five cap values $141720h<177528h<186253h<196608h<246256h$, with the
 active coefficient vector on each layer the sum of the components whose cap
 is at least the layer value, gives $I(F)=1.489634100811\cdot10^{-11}$, inside
 the published enclosure $[1.48963408009,\,1.48963412154]\cdot10^{-11}$, at
-relative position $0.49993$. The numerators $J_0$, $J_+$ and the tail, the
-restoration losses and the analytic inputs remain to be checked.
+relative position $0.49993$. The two cap numerators follow in the same way
+(\texttt{code/sharifi182\_J.py}; the erased coordinate is capped by the smaller
+of its component cap and its outer-shell cap, and the retained configuration is
+split over all nine cap values that occur): $J_0=5.6364590899\cdot10^{-11}$ and
+$J_+=4.0824074297\cdot10^{-13}$, each just above the published lower bound
+(relative excess $4\cdot10^{-11}$ and $5\cdot10^{-12}$). With the published upper
+bound for the tail term, which we have not recomputed, these give a cap surplus
+$q_H-1=2.76706\cdot10^{-4}$, consistent with the certified $\mu^-=2.76692\cdot10^{-4}$
+of \cite{Sha26}. Still unchecked: the tail term, the restoration losses
+($2.115\cdot10^{-4}$ claimed), a second program, and the analytic inputs.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
