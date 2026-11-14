@@ -1,5 +1,18 @@
 # Research log
 
+## 2026-11-14 - Session 14 follow-up 3 (14 Nov, continued at Jerry's request): Rung 182: the cap numerators J0 and J+ recomputed independently, each just above its published lower bound; cap surplus consistent with the certified value
+
+- code/sharifi182_J.py evaluates the 182 cap numerators: J0 = 5.6364590899e-11 and J+ = 4.0824074297e-13, each just above the published lower bound (relative excess 4e-11 and 5e-12). Own derivation: the erased coordinate is capped by min(component cap, outer-shell cap), and the retained configuration is split over the nine cap values that occur; by linearity each cap is a separate worker (9 workers, about 2.5 h on 2 cores; one OOM kill at 3 workers of ~6 GB each).
+- Structural checks: at the caps where only a base-face row changes sides (140306, 177542) the J0 and J+ parts are exact negatives, and where nothing changes for the base face (141724, 179967) the J0 part is exactly 0.
+- With the published tail bound (not recomputed), our I, J0, J+ give q_H - 1 = 2.76706e-4, consistent with the certified mu- = 2.76692e-4 (their own endpoints give mu- exactly). Paper v0.14 Remark sha182 and abstract updated.
+
+Explored: No separate exploration in this follow-up.
+
+Did not work or is blocked:
+- Not done: the tail term (kernel K over the complement of H_C), the 197 restoration-loss components, second programs for I and J.
+
+Next: 182: the tail term and a second program; 186: the raw loss bounds; first weekly review on Monday.
+
 ## 2026-11-14 - Session 14 follow-up 2 (about 1:40 AM CT, 14 Nov; started when Jerry pasted the 182 trial data): Rung 182: trial data received and checked; the denominator I(F) recomputed independently lands inside the published enclosure; paper v0.14
 
 - Jerry pasted formal/TrialData182.lean (the 726 coefficients, knots, shells, 98 source rows, published enclosures). It is copied verbatim into code/data182/ and checked by code/sharifi182_data.py: the caps are cell-aligned (141720, 177528, 246256 and the shell caps as in the bundle), the knots and signatures match the bundle, and all 98 source rows satisfy their defining relations exactly.

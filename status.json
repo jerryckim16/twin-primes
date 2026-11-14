@@ -13,8 +13,8 @@
  "results": [
   {
    "label": "Computed",
-   "text": "Rung 182 (GPT-6 Astra / Sharifi, k = 39): the trial data TrialData182.lean (supplied by Jerry Kim) checked for integrity, and the denominator I(F) of the criterion evaluated independently from it: I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] (relative position 0.49993). One program, high precision (floor-only rounding at 2^-224), not a rigorous enclosure. J0, J+, the tail, the restoration losses and the analytic inputs (including the unproved Type III local Fourier proposition) are NOT checked; 182 stays Claimed.",
-   "where": "paper, Remark sha182 (v0.14); code/sharifi182_I.py, code/sharifi182_data.py, code/data182/"
+   "text": "Rung 182 (GPT-6 Astra / Sharifi, k = 39): the trial data TrialData182.lean (supplied by Jerry Kim) checked for integrity, and the denominator I(F) of the criterion evaluated independently from it: I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] (relative position 0.49993). One program, high precision (floor-only rounding at 2^-224), not a rigorous enclosure. The numerators: J0 = 5.6364590899e-11 and J+ = 4.0824074297e-13, each just above the published lower bound (relative excess 4e-11 and 5e-12; code/sharifi182_J.py); with the published tail bound (not recomputed) the cap surplus is q_H - 1 = 2.76706e-4, consistent with the certified mu- = 2.76692e-4. The tail, the restoration losses and the analytic inputs (including the unproved Type III local Fourier proposition) are NOT checked; 182 stays Claimed.",
+   "where": "paper, Remark sha182 (v0.14); code/sharifi182_I.py, code/sharifi182_data.py, code/data182/, code/sharifi182_J.py, code/data182/J_result.json, code/data182/qH_check.json"
   },
   {
    "label": "Computed",

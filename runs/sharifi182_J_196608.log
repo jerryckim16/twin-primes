@@ -1,0 +1,5 @@
+[     6 s] p arrays (fixed point 2^256)
+[   164 s] layer 7 (b = 196608): marginals
+[   234 s] layer 8 (b = 246256): marginals
+[   532 s] M^b_38 products done
+[   591 s] cap 196608: J0 part 2.696047043358e-12, J+ part 9.556726633043e-14
