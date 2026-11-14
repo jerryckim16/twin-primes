@@ -2012,6 +2012,63 @@ table. This does not check that the forms majorise the true failure integrals
 $90$ components.
 \end{sloppypar}
 
+\begin{sloppypar}\noindent\emph{The raw loss bounds, version~0.16} (\lbl{Computed}, one program per form
+family, arb ball arithmetic at $256$ bits (inner) and $128$ bits (outer); a
+high-precision re-evaluation of the published forms, not an outward-rounded
+certificate). The companion itself is now in the repository
+(\texttt{code/third\_party/openai186/}, Apache-2.0), and with it the two pieces of
+group data that version~0.15 had to infer: the radial intervals
+\cite[(1.23)--(1.24)]{OAI26} (old-ladder rows $12$--$23$ for I2old, as we had read)
+and the rule for the low kernels: the delay recurrence (2.1) only when $M\ge64$
+and its acceptance tests pass (ordered intervals in $[0,1]$, both endpoint
+sequences nonincreasing), the renewal majorant (2.3) otherwise. We implemented
+that test as stated. It selects renewal exactly for the two I2old bins where
+version~0.15 had inferred it from the numbers, so that inference is now
+derived. For the clipping (1.26) we read the core and threshold of an inner row
+as $b_t$, $C_t$ and of an outer row as $a_t$, $A_t$ (its predicate in (1.21)).
+With this reading our schedule reproduces the counts stated in their Lemma~1.6:
+the first $11$, $2$, $5$ order-$5/2$ low bins lie below every absorbed
+activation, and on the remaining $11$, $5$, $6$ the order-three minimum is the
+group's lower radial boundary. Programs \texttt{code/oai186\_loss\_inner.py}
+(the $45$ inner forms (2.19)) and \texttt{code/oai186\_loss\_outer.py} (the outer
+forms (2.17) and (2.20)--(2.21)); outputs
+\texttt{code/}\allowbreak\texttt{cap6/oai186\_loss\_inner.json},
+\texttt{code/}\allowbreak\texttt{cap6/oai186\_loss\_outer.json}. For the smallest low
+bins (fragment caps of a few cells) the Eulerian kernels use the closed form
+$T_e=(\exp Q-X^{e+1}\exp(XQ))/(1-X)$ of \cite[\S2.1]{OAI26}, which agrees with
+the direct sum to $3\cdot10^{-70}$ on a test case. Results:
+(a) all $45$ inner components (groups I2old, I5/2old, I2new, I5/2new). Every
+value is at most its entry in Tables~2.3--2.6, and wherever the entry exceeds
+$10^6$ (in units of $10^{-18}I_H^-$) it lies within $1.6\cdot10^{-7}$ of the entry in
+relative terms (within $5\cdot10^{-10}$ for $33$ of these $38$). Rounding our
+values up and weighting them as in (2.31) reproduces the four inner group
+totals of their Table~2.7 exactly ($55254$, $435544$, $1405159$, $32422390$ in
+units of $10^{-12}$). (b) OUTERTODO.
+A fresh-context audit of both programs against the companion (items: clipping,
+slopes, bin lists, branch rule, closed form, masks and weights, $P$-sets and
+prefactors, rank-two and factorial arrays, the erased-coordinate correlation;
+\texttt{notes/}\allowbreak\texttt{audit-186-loss/report.md}) found no
+discrepancy. It flagged one reading as open: we take ``the appropriate rows of
+(1.5)'' to mean all face rows of the domain, so that for O2, I2old and I2new
+about $39$ top indices of the next, smaller-cap row are kept. That reading is
+the one that matches the tables.
+\end{sloppypar}
+
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic on the published integers; version~0.16]\label{prop:oai186-budget}
+Let $\mu(L):=(\rho^*(J^--L)-I^+)/I^+$ with $\rho^*=2624989/10^7$ and $I^\pm$, $J^-$
+the endpoints of \cite[(2.33)]{OAI26}. With $L=L^+$ at the value of Table~2.7,
+$\mu=2.336\cdot10^{-5}$. The total loss may exceed its published bound by at most
+$1.84\%$ before $\mu\le1/50000$, and by at most $12.8\%$ before $\mu\le0$. The
+group $O_{5/2}$ is $89.5\%$ of $L^+$, so by itself it may be at most $2.06\%$
+(respectively $14.3\%$) too small; $O_2$ and I5/2new may be $33\%$ and $39\%$ too
+small, and the other three inner groups by factors $10$ to $230$.
+\end{proposition}
+\noindent So whether the loss bound of \cite{OAI26} is right is decided by the
+group $O_{5/2}$, and within it by its $12$ rank-two components and its
+third-factorial component ($81\%$ of $L^+$). This is how we ordered the
+computation. We have not checked which of the two thresholds the restoration step of the
+main $186$ paper (\cite{OAI26}, its reference [8, Prop.~4.6]) requires (\texttt{code/oai186\_margin\_budget.py}).
+
 \begin{remark}[the last rung, $182$; \lbl{Literature (preprint)} reading only]\label{rem:sha182}
 In version~0.13 we read \cite{Sha26} (a $132$-page bundle: the main paper
 and two analytic companions; notes in \texttt{notes/}\allowbreak\texttt{sources-182.md}).

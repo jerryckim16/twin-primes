@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.5 (draft), 14 November 2026}
+\date{Version 0.6 (draft), 14 November 2026}
 
 \begin{document}
 
@@ -537,8 +537,18 @@ $I_H$ and above the published lower bound for $J_{\lambda,H}$, so that
 $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (\cite{Kim26},
 Proposition on the 186 main terms; \texttt{code/oai186\_IH.py},
 \texttt{code/oai186\_J.py}; a second program in ball arithmetic,
-\texttt{code/oai186\_check2.py}, agrees to $7\cdot10^{-17}$). The loss bound of the companion, which the
-criterion also needs, and its analytic inputs are not checked.
+\texttt{code/oai186\_check2.py}, agrees to $7\cdot10^{-17}$). The criterion
+also needs the loss bound $L^+/I_H\le696075110\cdot10^{-12}$, a sum of $97$
+component bounds. In version~0.6 we re-evaluated their raw forms in ball
+arithmetic, in our own code, from the companion's formulas
+(\cite{Kim26}, the paragraph on the raw loss bounds; one program, not an
+outward-rounded certificate). All $45$ inner components are at most their table
+entries and agree with them to $5\cdot10^{-10}$ for most components; rounding
+up reproduces the four inner group totals exactly. OUTERTODOVN The final
+margin is sensitive almost only to the group $O_{5/2}$ ($89.5\%$ of $L^+$, at most
+$2.06\%$ slack if the margin must exceed $1/50000$). What this does not check:
+that the forms majorise the true support-failure integrals (the companion's
+Lemmas~1.4--1.7, 2.3, 2.4), that the cover is complete, and the analytic inputs.
 \end{remark}
 
 \begin{remark}[what would change the picture]
@@ -578,6 +588,9 @@ version 0.12).
 
 \section*{Changes}
 \begin{description}
+\item[0.6] (14 November 2026) Remark~\ref{rem:186}: the raw loss bounds of the
+$186$ companion re-evaluated (all $45$ inner components; OUTERTODOCH), and the
+sensitivity of its final margin to each loss group.
 \item[0.5] (14 November 2026) Remark~\ref{rem:bonf} (one-sided certificates
 without the three-coordinate pieces) and Remark~\ref{rem:186} (the main terms of
 the $186$ companion). Remark~\ref{rem:lemma5} now mentions the internal audit
