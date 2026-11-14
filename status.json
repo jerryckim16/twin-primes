@@ -63,8 +63,8 @@
   },
   {
    "label": "Computed",
-   "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. One program so far, so not yet two-program certified. The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound stays 240 (conditional).",
-   "where": "paper, Proposition 35; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
+   "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. Confirmed by the second program in Session 13 (see the entry above). The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound is 236 only conditionally, through Song-Yue's route (see bounds.project_note).",
+   "where": "paper, Proposition kin-capped; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cap6/compare_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
   },
   {
    "label": "Computed",

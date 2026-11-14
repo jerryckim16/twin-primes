@@ -115,6 +115,7 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 3. One-sided certificate on the Song-Yue witness with --jonly --bonf (no j = 3 pieces; about half of the 32 core-hours), as a third, cheaper confirmation of 236's variational step.
 4. k = 45 random point (Schwartz-Zippel) resume, low priority (command above).
 5. Phase B NOT yet triggered: 186 had certified progress this session; 182 is blocked on data (counting towards "3 sessions without progress" from Session 14).
+5b. Main paper: the internal referee report on v0.12 (referee/2026-11-14-companion-paper/report.md) -- Session 14 applied the localized fixes FC1-FC11 (see the log); STILL TO DO: FC12 reorganisation toward a v1.0 shape (one-sentence abstract split, version narration out of headings, own results moved up, notation cleanup), and the FC3 question (certify the weight psi_m near a = 1.037: if below 4.1515 it improves the scaling bound at (50, 1/25); Open).
 6. First weekly review is due on the first run that starts on Monday 16 Nov (Central time).
 
 ## Rotation of areas to explore (one per session, about half the effort)
