@@ -3,6 +3,25 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-14, Session 16 -- A "pretentious twin" statistic: how far is lambda from the Siegel-zero world lambda ~ chi_D? (Siegel zeros)
+- Idea: in Heath-Brown's Siegel-zero argument the parity obstruction for twin primes disappears because
+  lambda(n) ~ chi_D(n) on most of the range, so lambda(n)lambda(n+2) ~ chi_D(n)chi_D(n+2), whose mean is not zero.
+  Risky question: for the nine class-number-one discriminants -D (the conductors where L(1, chi_D) = pi h/sqrt(D)
+  is smallest relative to D), is there any measurable "Siegel-world" signal in the twin correlation itself, i.e. in
+  S2(X) = sum_{n<=X} lambda(n)lambda(n+2) chi_D(n)chi_D(n+2), which would be about X in that world?
+- Tried: code/explore/siegel_pretentious_twin.py (numpy sieve to X = 2e7; Kronecker symbols; output
+  code/explore/siegel_pretentious_twin.json). Also S1 = sum lambda chi_D, the squared pretentious distance
+  sum_{p<=X} (1 + chi_D(p))/p, and the Chowla sum S3 = sum lambda(n)lambda(n+2). Check: L(1, chi_{-163}) from the
+  Hurwitz-zeta formula agrees with pi/sqrt(163) to 1e-10.
+- Outcome: DEAD END for twin primes. |S2|/sqrt(X) <= 1.8 for every D at X = 2e7 (S2/X <= 4e-4 and decreasing), and
+  |S3|/sqrt(X) <= 1: square-root cancellation, no pretentious twin correlation at these scales, as expected.
+  The one large signal is S1 for D = 163: S1/sqrt(X) = 25.7, 27.9, 27.7, 27.4 at X = 1e5, 1e6, 1e7, 2e7 (stable, not
+  growing). Explanation checked in part: the pole of L(2s, chi_0) = zeta(2s)(1 - D^{-2s}) at s = 1/2 gives a term
+  (1 - 1/D) sqrt(X)/L(1/2, chi_D) = 14.50 sqrt(X) (L(1/2, chi_{-163}) = 0.06853, mpmath); the excess is consistent
+  with the unusually low zero of L(s, chi_{-163}) near 1/2 + 0.2 i (|L| = 0.0019 there on a 1/40 grid), whose term
+  rotates slowly in log X. Not pursued further: this is a known kind of secondary term, and it says nothing about
+  the twin correlation. Heuristic / exploratory only; no literature opened for the low zero, so no claim about it.
+
 ## 2026-11-14, Session 15 -- Moebius autocorrelations and twin irreducibles in F_2[T] at small degree (function fields)
 - Idea: in F_q[T] the twin-prime analogue is proved for large q (Sawin-Shusterman), but q = 2 is the most
   "integer-like" case and characteristic 2 is known to be special for Chowla-type sums. Risky question: at the

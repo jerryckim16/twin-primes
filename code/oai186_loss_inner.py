@@ -167,7 +167,7 @@ def main():
         return
     c2 = load("c2", "code/oai186_check2.py", ("x", "--prec", str(PREC)))
     sd = load("sd", "code/oai186_support_data.py")
-    from flint import arb, arb_poly, fmpq, ctx
+    from flint import arb, arb_poly, arb_series, fmpq, ctx
     ctx.prec = PREC
     t0 = time.time()
     log_ = lambda s: print("[%6.0f s] %s" % (time.time() - t0, s), flush=True)
@@ -284,6 +284,36 @@ def main():
     def Rpoly(r):
         return arb_poly([arb(1)] * r)
 
+    def That(Q, J, rmax):
+        """hat T_e, e = 0, 1 of (2.6)-(2.7) mod X^nn: sum_{r<=J} q_r E_{r+e+1} + (T_e - sum_{r<=J} q_r R_{r+e+1}).
+        For rmax <= J (no tail) the finite sum is taken directly; otherwise T_e is the closed form
+        (exp Q - X^{e+1} exp(X Q)) / (1 - X) of [14] (series exp in arb; 1/(1-X) = prefix sums)."""
+        PE = [arb_poly([0]), arb_poly([0])]; PR = [arb_poly([0]), arb_poly([0])]
+        q = arb_poly([1])
+        for r in range(0, min(J, rmax) + 1):
+            if r > 0:
+                q = (q * Q).truncate(nn) * (arb(1) / r)
+            for e in (0, 1):
+                PE[e] += q * Epoly(r + e + 1)
+                PR[e] += q * Rpoly(r + e + 1)
+        if rmax <= J:
+            return PE[0].truncate(nn), PE[1].truncate(nn)
+        ctx.cap = nn
+        eQ = arb_series(Q.coeffs()[:nn], prec=nn).exp().coeffs()
+        XQ = [arb(0)] + Q.coeffs()[:nn - 1]
+        eXQ = arb_series(XQ, prec=nn).exp().coeffs()
+        eQ += [arb(0)] * (nn - len(eQ)); eXQ += [arb(0)] * (nn - len(eXQ))
+        out = []
+        for e in (0, 1):
+            num = [eQ[j] - (eXQ[j - e - 1] if j >= e + 1 else arb(0)) for j in range(nn)]
+            T, acc = [], arb(0)
+            for j in range(nn):
+                acc += num[j]; T.append(acc)
+            pr = PR[e].coeffs() + [arb(0)] * nn
+            pe = PE[e].coeffs() + [arb(0)] * nn
+            out.append(arb_poly([pe[j] + (T[j] - pr[j]) for j in range(nn)]))
+        return out[0], out[1]
+
     # ---------- ring machinery ----------
     def rmul(X, Y, ok):
         out = {}
@@ -380,16 +410,7 @@ def main():
             Mp = arb_poly([arb(0)] * Lb + [arb(1) / a for a in range(Lb, Hb)])
             J = min(32, (NG - 1) // Lb)
             rmax = (nn - 1) // Lb
-            T0p = arb_poly([0]); T1p = arb_poly([0])
-            q = arb_poly([1])
-            for r in range(0, rmax + 1):
-                if r > 0:
-                    q = (q * Q).truncate(nn) * (arb(1) / r)
-                if r <= J:
-                    T0p += q * Epoly(r + 1); T1p += q * Epoly(r + 2)
-                else:
-                    T0p += q * Rpoly(r + 1); T1p += q * Rpoly(r + 2)
-            T0p, T1p = T0p.truncate(nn), T1p.truncate(nn)
+            T0p, T1p = That(Q, J, rmax)
             Bt = (Dt * T0p).truncate(nn)
             Mt = ((Dt * Mp).truncate(nn) * T1p).truncate(nn)
             bc, mc = Bt.coeffs(), Mt.coeffs()
