@@ -1,0 +1,20 @@
+[     0 s] 53 distinct eta
+[     0 s] 77 distinct block-sum multisets; 692 set partitions in total
+[     2 s] p_sigma(r) ready
+[     4 s] Z = 1996.091764550662795612908
+[     4 s] cap M = 68225 (shell r = 0..89196): cell masses
+[    12 s]   coordinate arrays at 2^256
+[    78 s]   lower products done (77 multisets)
+[   145 s]   upper products done (77 multisets)
+[   152 s]   shell contribution in [2.166191927714963e-14, 2.166191927714963e-14]
+[   152 s] cap M = 49152 (shell r = 89197..95598): cell masses
+[   163 s]   coordinate arrays at 2^256
+[   225 s]   lower products done (77 multisets)
+[   289 s]   upper products done (77 multisets)
+[   289 s]   shell contribution in [1.654372106889649e-15, 1.654372106889649e-15]
+[   289 s] cap M = 46580 (shell r = 95599..98263): cell masses
+[   309 s]   coordinate arrays at 2^256
+[   371 s]   lower products done (77 multisets)
+[   434 s]   upper products done (77 multisets)
+[   434 s]   shell contribution in [3.690264692909234e-16, 3.690264692909234e-16]
+[   434 s] {"I_H_lo": 2.3685317853330202e-14, "I_H_up": 2.3685317853330202e-14, "ref_lo": 2.3685317816e-14, "ref_up": 2.368531789e-14, "inside_ref": true, "overlaps_ref": true, "width": 7.178672325111565e-48, "bits": 256, "shells": [{"cap": 68225, "r0": 0, "r1": 89196, "lo": 2.166191927714963e-14, "up": 2.166191927714963e-14}, {"cap": 49152, "r0": 89197, "r1": 95598, "lo": 1.6543721068896492e-15, "up": 1.6543721068896492e-15}, {"cap": 46580, "r0": 95599, "r1": 98263, "lo": 3.690264692909234e-16, "up": 3.690264692909234e-16}], "seconds": 434}

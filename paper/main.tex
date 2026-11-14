@@ -1684,6 +1684,25 @@ This checks one input of the companion; it is not yet an evaluation of
 $I_H$ or $J_{\lambda,H}$.
 \end{remark}
 
+\begin{remark}[the last rung, $182$; \lbl{Literature} reading only]\label{rem:sha182}
+In version~0.13 we read \cite{Sha26} (a $132$-page bundle: the main paper
+and two analytic companions; notes in \texttt{notes/}\allowbreak\texttt{sources-182.md}).
+It claims $\mathrm{DHL}[39,2]$ and hence $H_1\le182$ (its Theorem~1.2). Its
+framework is the fragment-measure framework of \cite{OAI26} on a grid four
+times finer ($393216$ cells), with four cap domains, a profile of $726$
+rational coefficients (the factor $g$ of \cite{OAI26} and its $11$
+power-sum signatures times $22$ cubic B-splines), a new five-prime minorant
+and a support restoration step. The claimed surplus before restoration is
+$>2.7669\cdot10^{-4}$, the restoration costs at most $2.1148\cdot10^{-4}$, and
+the final margin exceeds $6.52\cdot10^{-5}$. The analytic inputs (a new
+incidence Type~II estimate and a new Type~III estimate, proved in the
+companions) are \lbl{Claimed}; its Lean development takes $262$ numerical
+inequalities as hypotheses. The $726$ coefficients and the source-row tables
+of the restoration step are not printed in the bundle; they are in a separate
+repository that this project has not obtained. So no part of the variational
+step of $182$ can be recomputed yet.
+\end{remark}
+
 \subsection*{A floor for one-band hybrid supports (our own)}
 Polymath8b's $\varepsilon$-simplex is the case $A_1=1/4$ without caps, so the
 following extends Theorem~\ref{thm:floor} to every one-band support of
