@@ -16,3 +16,9 @@
 - Why: rung 186. Session 14 reproduced the main terms I_H and J_{lambda,H} of its Lemma 2.5 (paper Prop. prop:oai186-main); the loss bound is the remaining numerical ingredient. notes/sources-186-forms.md transcribes only Sections 1-2.3 and the final values.
 - Tried: earlier sessions read the PDF from the GitHub repository openai/PrimeGaps186; the local copy was not kept (copyright), and this session's GitHub access is limited to jerryckim16/twin-primes, so I did not fetch it again (Session 14, 14 Nov 2026).
 - Status: received (PDF supplied by Jerry Kim, 14 Nov 2026, in the Session 14 follow-up; not committed). Tables 2.1-2.6 transcribed to code/oai186_tables_2_1_to_2_6.json and checked (code/oai186_tables_check.py); source data (1.13)-(1.24) recomputed exactly (code/oai186_support_data.py); loss-cover forms transcribed in notes/sources-186-loss.md.
+
+## OpenAI 186 numerical companion (short_gaps_numerics.pdf): group data for the remaining loss components
+- What: for each loss group, the radial interval (b_G, t_G] of (1.22) and the row cores c_t and thresholds V_t used by the clipping (1.26); and the acceptance test that selects the delay recurrence vs the renewal majorant (2.3) for the low kernels. A transcription of these (or the PDF again) is enough.
+- Why: rung 186. Session 15 reproduced the 7 raw bounds of group I2old (code/oai186_loss_I2old.py) but had to infer the radial interval and the delay/renewal choice from the table; for the 5/2 groups the clipping (1.26) is active and cannot be inferred. notes/sources-186-loss.md does not contain these items.
+- Tried: the PDF supplied in the Session 14 follow-up was not committed (copyright) and is not available to later runs; its GitHub repository (openai/PrimeGaps186) is outside this session's GitHub scope (Session 15, 14 Nov 2026).
+- Status: needed
