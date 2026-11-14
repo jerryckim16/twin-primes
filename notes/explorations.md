@@ -3,6 +3,21 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-14, Session 14 -- Is there enough slack in Song-Yue's exponent conditions to save one step k = 48 -> 47? (exponential sums / Type III)
+- Idea: the D182 level theta = 253/500 (omega = 3/1000) is set by many exponent inequalities of [SY26, Sec. 4],
+  and the audit (notes/audit-sy236-thm418/) lists their exact margins. If one margin were loose, raising omega a
+  little might move the variational criterion from k = 48 to k = 47 (a smaller tuple). Compare the omega the
+  k = 47 criterion would need with the omega the printed margins allow.
+- Tried: code/explore/level_slack.py. Criterion M_{k,eps} * 2 theta > 4 (eps = 15/506 as in
+  cert_kin48_capfree_D22e). M_{47,eps} - M_{48,eps} at degree 16: 3.909715 vs 3.925064 (mk_general, Session 14),
+  so M_{47,eps}(D22) is about 3.94356; k = 47 needs theta >= 0.507157, i.e. d omega >= 5.8e-4. With all other
+  parameters fixed, the Type III margin (52) (1 - 1/3000, coefficient 7/3 on omega) allows d omega <= 1.4e-4 and
+  the IIa margin (33) at gamma = 11/25 allows <= 2.2e-5.
+- Outcome: DEAD END. The needed increase is 4 times the loosest margin and 26 times the IIa one, before the
+  cap cost (about 3e-4 in the ratio) and before re-tuning eps and the caps to the new omega. Saving one k needs a
+  genuinely stronger equidistribution estimate, not tighter bookkeeping. Heuristic only (the margins can be
+  re-balanced by moving eta2, tau0, s3, eta3, which this toy does not do).
+
 ## 2026-11-13, Session 13 -- Primes in translates of the 236-tuple vs Hardy-Littlewood (probabilistic models of primes)
 - Idea: test the probabilistic (Hardy-Littlewood) model directly on the Lean-checked admissible 48-tuple narrow48
   (diameter 236) that the conditional 236 rests on, and ask whether numerical data could say anything about

@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.4 (draft), 14 November 2026}
+\date{Version 0.5 (draft), 14 November 2026}
 
 \begin{document}
 
@@ -501,10 +501,44 @@ branches pass through the step in question, which we have not traced. Song
 and Yue prove their own estimate \cite[Thm.~4.18]{SY26}, via a Heath--Brown
 decomposition and Type~IIa, IIb and III estimates
 \cite[\S\S4.2--4.7]{SY26}; we have not checked whether it uses an argument of
-the same kind. Charton et al.\ \cite{Cha26} list the same five Type~I, II and
+the same kind ourselves; an AI audit made inside our project of the proof
+of \cite[Thm.~4.18]{SY26} (one auditor per section, not expert review) reports
+that the swapped-factor step does not occur there, and finds one repairable
+mis-statement, a gcd factor in the $\mathrm{Kl}_3$ correlation bound (49) of
+\cite{SY26}, inherited from \cite[Lemma~6.25]{PM8a}, that changes no exponent
+(\cite{Kim26}, Remark on the audit; files in
+\texttt{notes/}\allowbreak\texttt{audit-sy236-thm418/}). Charton et al.\ \cite{Cha26} list the same five Type~I, II and
 III estimates as \cite{Sta26}, Lemma~5 among them, so the same question
 applies to their draft. Theorem~\ref{thm:sy} and
 Proposition~\ref{prop:212} are unaffected either way.
+\end{remark}
+
+\begin{remark}[one-sided certificates; \lbl{Proved here}, Bonferroni]\label{rem:bonf}
+Only a lower bound for $J_T$ and an upper bound for $I_T$ are needed. In the
+inclusion--exclusion over the coordinates forced above $g$, every piece of
+$\int_VP^2$, of $\mathrm{Corr}_1$, and of the two nonnegative parts
+$\int Q(u',R)^2$ and $\int Q(u',U)^2$ of $\mathrm{Corr}_2$ has a nonnegative
+integrand, so the Bonferroni inequalities allow truncation after level $2$ (upper bounds)
+or level $1$ (lower bounds), and no piece with three forced coordinates is
+needed (\cite{Kim26}, Propositions on Bonferroni truncation). For the vector of
+Theorem~\ref{thm:240}(1) this gives $49J_{\mathrm{low}}/I_{\mathrm{up}}=4.012038868>4$,
+$3.5\cdot10^{-8}$ below the exact value, as exact rationals
+(\texttt{capped\_exact.py --bonf};
+\texttt{code/}\allowbreak\texttt{cap6/}\allowbreak\texttt{compare\_capfree\_D20\_bonf.json}).
+\end{remark}
+
+\begin{remark}[the next claim, $186$; \lbl{Computed}, two independent programs]\label{rem:186}
+The claimed $H_1\le186$ of OpenAI \cite{OAI26} uses a different criterion,
+on fragment configurations with Dickman-distributed coordinate totals, at
+$k=40$. We recomputed the two main terms of its numerical companion from the
+transcribed formulas, in our own code: $I_H=2.36853178533\cdot10^{-14}$ and
+$J_{\lambda,H}=9.0248755655\cdot10^{-14}$, inside the published enclosure for
+$I_H$ and above the published lower bound for $J_{\lambda,H}$, so that
+$\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (\cite{Kim26},
+Proposition on the 186 main terms; \texttt{code/oai186\_IH.py},
+\texttt{code/oai186\_J.py}; a second program in ball arithmetic,
+\texttt{code/oai186\_check2.py}, agrees to $7\cdot10^{-17}$). The loss bound of the companion, which the
+criterion also needs, and its analytic inputs are not checked.
 \end{remark}
 
 \begin{remark}[what would change the picture]
@@ -544,6 +578,13 @@ version 0.12).
 
 \section*{Changes}
 \begin{description}
+\item[0.5] (14 November 2026) Remark~\ref{rem:bonf} (one-sided certificates
+without the three-coordinate pieces) and Remark~\ref{rem:186} (the main terms of
+the $186$ companion). Remark~\ref{rem:lemma5} now mentions the internal audit
+of \cite[Thm.~4.18]{SY26}. This version also contains the revisions made
+after the internal referee report of 14 November on version~0.4 (directory
+\texttt{referee/2026-11-14-verification-note/}; abstract, the three-part
+description of each claim, the label definitions).
 \item[0.4] (14 November 2026) The second exact program confirms
 Proposition~\ref{prop:kin-own} (our own $k=48$ test function): same $I_T$ and
 $J_T$ as exact rationals. The one-program qualifiers for it are removed from
@@ -586,6 +627,9 @@ preprint, 1 September 2026.
 \url{https://shivakintali.github.io/papers/Prime-Gaps.pdf}
 \bibitem{May15} J.~Maynard, \emph{Small gaps between primes}, Ann. of Math.
 181 (2015), 383--413.
+\bibitem{OAI26} OpenAI, \emph{Improved short gaps between primes}, preprint
+dated 30 August 2026, with the repository \texttt{openai/PrimeGaps186}.
+\bibitem{PM8a} D.~H.~J.~Polymath, \emph{New equidistribution estimates of Zhang type}, Algebra Number Theory \textbf{8} (2014), 2067--2199.
 \bibitem{Pol14b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and
 bounded intervals containing many primes}, Res. Math. Sci. 1 (2014).
 \bibitem{SY26} Z.~Song, S.~Yue, \emph{Bounded gaps between primes: an upper

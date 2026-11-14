@@ -1,16 +1,36 @@
 {
- "version": "0.12",
+ "version": "0.13",
  "updated": "2026-11-14",
- "session_count": 13,
+ "session_count": 14,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
   "claimed": 182,
   "established": 246,
   "project": 236,
-  "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked)."
+  "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Rung 186 (OpenAI): independent recomputation of the two main terms of the numerical companion (formulas (2.12)-(2.15), with our own derivation of the layered cap measure): I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_lambda,H = 9.0248755655e-14, 5.9e-9 (relative) above the published lower bound 90248755123e-24; rho* J/I_H = 1.000206087 > 500103/500000. Two independent programs: GMP integer products with directed rounding (rho_D, g, Z at 110 digits), and arb ball arithmetic with y-series combinatorics (I_H in [2.36853178533302e-14 +/- 3e-30], ratio in [1.00020608684 +/- 4e-12]); they agree to 7e-17. The loss bound L^+ and the analytic inputs are NOT checked; the project bound does not move.",
+   "where": "paper, Proposition oai186-main (v0.13); code/oai186_IH.py, code/oai186_J.py, code/oai186_IH.json, code/oai186_J.json, code/oai186_check2.py, code/oai186_check2.json"
+  },
+  {
+   "label": "Proved here",
+   "text": "Split Bonferroni certificate (folklore in substance): Corr2 = (Q(R)^2 part) - (Q(U)^2 part), both with nonnegative integrands piece by piece, so a one-sided certificate needs no piece with three forced coordinates (Q(R)^2, Corr1 to level 2; Q(U)^2 and int_V P^2 to level 1). On the 240 vector (k = 49): 49 J_low/I_up = 4.012038868083 > 4, 3.5e-8 below the exact 4.0120389035705, exact rationals, 98 pieces.",
+   "where": "paper, Proposition bonf2 (v0.13); capped_exact.py --split/--bonf; code/cap6/compare_capfree_D20_bonf.json"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "The 39-tuple printed in the 182 bundle of GPT-6 Astra / R. Sharifi is admissible of diameter 182 (boundedGaps_182_of_DHL_39').",
+   "where": "lean/TwinPrimes/Tuples.lean: sharifi39"
+  },
+  {
+   "label": "Literature",
+   "text": "Rung 182 read (GPT-6 Astra / Sharifi bundle, 132 pp.): k = 39, fragment-measure framework of the 186 paper on a 4x finer grid, 726-coefficient profile not printed in the bundle (it is in a separate repository not obtained), so no part of its variational step can be recomputed yet.",
+   "where": "paper, Remark sha182; notes/sources-182.md; notes/sources-needed.md"
+  },
   {
    "label": "Computed",
    "text": "Our own k = 48 degree-22 vector on the support of Kintali / Song-Yue: capped_exact.py (176 checkpointed inclusion-exclusion pieces, 15.5 core-hours) and capped_check.py give the SAME I_T and J_T as exact rationals; 48 J_T/I_T = 4.0060814208 > 4 by two independent programs. Variational step only; the analytic input of 236 is NOT verified.",
@@ -23,7 +43,7 @@
   },
   {
    "label": "Computed",
-   "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (372,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.3e-10 cell units). One input checked; I_H and J_{lambda,H} not yet evaluated.",
+   "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (363,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.35e-10 cell units). One input checked (I_H and J_{lambda,H}: see the Session 14 entry).",
    "where": "paper, Remark oai186 (v0.12); code/oai186_dickman_cells.py, notes/sources-186-forms.md"
   },
   {
@@ -43,8 +63,8 @@
   },
   {
    "label": "Computed",
-   "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. One program so far, so not yet two-program certified. The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound stays 240 (conditional).",
-   "where": "paper, Proposition 35; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
+   "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. Confirmed by the second program in Session 13 (see the entry above). The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound is 236 only conditionally, through Song-Yue's route (see bounds.project_note).",
+   "where": "paper, Proposition kin-capped; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cap6/compare_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
   },
   {
    "label": "Computed",
@@ -219,6 +239,18 @@
  ],
  "ideas": [
   {
+   "idea": "Rung 186: read the underspecified layered cap convolution (2.15) of OpenAI's companion as a split of the retained configuration by the layer of its largest fragment over ALL cap values occurring in the outer and face domains, with the erased coordinate admitted in the outer shells whose cap is >= the layer value.",
+   "origin": "own",
+   "status": "works",
+   "note": "Session 14: with this reading our J_lambda,H lands 5.9e-9 above the published lower bound and the ratio matches (code/oai186_J.py); a fresh-context audit found no defect."
+  },
+  {
+   "idea": "Exploration: could the slack in Song-Yue's exponent conditions raise the level enough to move the variational criterion from k = 48 to k = 47?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 14: k = 47 needs d omega >= 5.8e-4; the loosest printed margin (Type III (52)) allows 1.4e-4, IIa (33) 2.2e-5 (code/explore/level_slack.py; heuristic)."
+  },
+  {
    "idea": "Probabilistic model check: prime pairs in translates of the Lean-checked 236-tuple vs the Hardy-Littlewood prediction, and whether data can say anything about DHL[48,2].",
    "origin": "exploration",
    "status": "ruled out",
@@ -227,8 +259,8 @@
   {
    "idea": "Split Corr2 into its Q(u',R)^2 and Q(u',U)^2 parts (both >= 0) and apply the Bonferroni truncation to each (upper bound with j <= 2 for the first, lower bound with j <= 1 for the second), so that one-sided certificates need no j = 3 pieces at all.",
    "origin": "own",
-   "status": "open",
-   "note": "Session 13: follows from Prop. prop:bonf; needs a mode of capped_exact.py that keeps the two parts apart (expected saving: all j = 3 pieces, about half of the 32 core-hours on the Song-Yue witness, minus the cost of splitting)."
+   "status": "works",
+   "note": "Session 14: paper Prop. prop:bonf2 and capped_exact.py --bonf. On the 240 vector: 4.012038868083 > 4 from 98 pieces (no j = 3 piece), 3.5e-8 below exact; the R and U parts are each ~35x their difference but their levels decay fast."
   },
   {
    "idea": "Skip the thin inclusion-exclusion pieces (j = 3 extra coordinates above g) with a rigorous a priori bound (volume of the thin region times a sup bound for the integrand) when only the sign of the criterion is needed, not exact equality.",
@@ -380,10 +412,10 @@
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.4",
+   "version": "0.5",
    "status": "active",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; witness numerator and our own k = 48 test function now by two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps. Analytic inputs not verified."
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms of the 186 companion recomputed. Analytic inputs not verified."
   }
  ],
  "last_review": null

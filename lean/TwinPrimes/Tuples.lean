@@ -392,6 +392,18 @@ def narrow39 : NarrowTuple 39 182 where
 theorem boundedGaps_182_of_DHL_39 (h : DHL 39) : BoundedGaps 182 :=
   narrow39.boundedGaps h
 
+/-- The 39-tuple printed in the 182 bundle of GPT-6 Astra / R. Sharifi (main paper, Sec. 12, from the MIT table);
+checked here so that the tuple quoted in that source is itself certified admissible of diameter 182. -/
+def sharifi39 : NarrowTuple 39 182 where
+  H := [0, 6, 14, 20, 24, 26, 30, 36, 42, 44, 50, 54, 62, 66, 72, 80, 84, 86, 92, 96, 104, 110, 114, 120, 126, 132, 134, 140, 146, 150, 152, 156, 162, 164, 170, 174, 176, 180, 182]
+  len := by decide
+  sorted := by decide +kernel
+  bound := by decide +kernel
+  check := by decide +kernel
+
+theorem boundedGaps_182_of_DHL_39' (h : DHL 39) : BoundedGaps 182 :=
+  sharifi39.boundedGaps h
+
 def narrow40 : NarrowTuple 40 186 where
   H := [0, 2, 6, 12, 14, 20, 26, 30, 32, 36, 42, 44, 50, 54, 56, 72, 74, 90, 92, 96, 102, 104, 110, 114, 116, 126, 132, 134, 140, 144, 146, 152, 156, 162, 170, 174, 176, 180, 182, 186]
   len := by decide

@@ -19,3 +19,4 @@ import TwinPrimes
 #print axioms TwinPrimes.kintali_extra_le_three
 #print axioms TwinPrimes.boundedGaps_186_of_DHL_40'
 #print axioms TwinPrimes.boundedGaps_236_of_DHL_48
+#print axioms TwinPrimes.boundedGaps_182_of_DHL_39'
