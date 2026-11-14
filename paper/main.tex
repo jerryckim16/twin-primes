@@ -1617,8 +1617,38 @@ coefficient bound $M$ exceeds the values of $|P|$ we sampled for our own
 $k=48$ vector by a factor of about $10^{28}$ (cancellation in the power-sum basis). Since the integrand of
 $\mathrm{Corr}_2$ has no sign, the proposition does not apply to it directly;
 splitting it into its $Q(u',R)^2$ and $Q(u',U)^2$ parts and applying the
-proposition to each is the next thing to try (\lbl{Open}).
+proposition to each is the next thing to try (done in version~0.13, Proposition~\ref{prop:bonf2}).
 \end{sloppypar}
+
+\begin{proposition}[\lbl{Proved here}; Bonferroni again, folklore in substance]\label{prop:bonf2}
+Write $\mathrm{Corr}_2=\mathrm{Corr}_2^{R}-\mathrm{Corr}_2^{U}$, where
+$\mathrm{Corr}_2^{R}=\int_{u'\text{ admissible},\,U<R}Q(u',R)^2$ and
+$\mathrm{Corr}_2^{U}=\int_{u'\text{ admissible},\,U<R}Q(u',U)^2$, and expand
+each, as in Proposition~\ref{prop:exact}(3), as $\sum_{j\ge0}(-1)^jS^{R}_j$ and
+$\sum_{j\ge0}(-1)^jS^{U}_j$ over the number $j$ of forced coordinates. Then
+$S^R_j,S^U_j\ge0$ and
+\[
+J_T\;\ge\;J-\left(S_0-S_1+S_2\right)-\left(S^R_0-S^R_1+S^R_2\right)+\left(S^U_0-S^U_1\right),
+\qquad I_T\le I-S'_0+S'_1 .
+\]
+So a one-sided certificate of $kJ_T/I_T>4$ needs no piece with $j\ge3$, and
+no piece of $\mathrm{Corr}_2^U$ or of $\int_VP^2$ with $j\ge2$.
+\end{proposition}
+
+\begin{proof}
+In both cases of Proposition~\ref{prop:exact}(3) (whether $U=g$ or
+$U=C_{m+1}-s_A$), the region of a piece and the value of $U$ are functions
+of $u'$ that depend on the set $A$ of large coordinates only through $m=|A|$
+and $s_A$ (and on $u'$ through $R$), not on the indicators $1_{u_i>g}$ of the
+other coordinates; given $A$, the integrands $Q(u',R)^2$ and $Q(u',U)^2$ are $\ge0$. So the proof of
+Proposition~\ref{prop:bonf} applies verbatim to each of the two parts: the
+truncation after an even level is an upper bound and after an odd level a
+lower bound. Use the upper bound at level $2$ for $\mathrm{Corr}_1$ and
+$\mathrm{Corr}_2^R$ and the lower bound at level $1$ for $\mathrm{Corr}_2^U$
+in $J_T=J-\mathrm{Corr}_1-\mathrm{Corr}_2^R+\mathrm{Corr}_2^U$.
+\end{proof}
+
+%BONF2NUMBERS
 
 \begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature} reading, not a result]\label{rem:sta-lemma5}
 Song and Yue \cite[Remark~4.23]{SY26} say that one step in the proof of
@@ -1683,6 +1713,50 @@ width at most $8.3\cdot10^{-10}$ in units of the cell. One transcription doubt
 This checks one input of the companion; it is not yet an evaluation of
 $I_H$ or $J_{\lambda,H}$.
 \end{remark}
+
+\begin{proposition}[\lbl{Computed}, one program, high precision; version 0.13]\label{prop:oai186-main}
+Evaluate the forms of \cite{OAI26}'s companion, as transcribed in
+\texttt{notes/}\allowbreak\texttt{sources-186-forms.md}, with the layered cap
+measure of (2.15) read as follows (our derivation): split the retained $39$
+coordinates by the layer $(b_{a-1},b_a]$ of their largest fragment over all
+seven cap values $b$ that occur in the outer and face domains, and admit the
+erased coordinate in the outer shells whose cap is $\ge b_a$. Then
+\[
+I_H=2.36853178533\ldots\cdot10^{-14},\qquad
+J_{\lambda,H}=9.0248755655\ldots\cdot10^{-14},\qquad
+\frac{\rho^*J_{\lambda,H}}{I_H}=1.000206087\ldots>\frac{500103}{500000},
+\]
+with $J_0=9.00605408\cdot10^{-14}$, $J_+=1.91277\cdot10^{-16}$ and
+$J_t=1.61669\cdot10^{-15}$. Our $I_H$ lies inside the enclosure
+$[23685317816,23685317890]\cdot10^{-24}$ of \cite[Lemma~2.5]{OAI26}, and our
+$J_{\lambda,H}$ is $5.9\cdot10^{-9}$ (relative) above its lower bound
+$90248755123\cdot10^{-24}$.
+\end{proposition}
+\noindent\emph{How it was computed} (\texttt{code/oai186\_IH.py},
+\texttt{code/oai186\_J.py}, outputs \texttt{code/oai186\_IH.json},
+\texttt{code/oai186\_J.json}; $7$ and $23$ minutes on one core). Nothing from
+the authors' repository was used or run. By symmetry each form is a sum over
+the radial index $r<n=98264$ of exact rational weights against coefficients of
+products of one-dimensional arrays. $M_{d,\eta}=\sum_{\pi}(d)_{|\pi|}P_0^{d-|\pi|}\prod_{B\in\pi}P_{e(B)}$
+is summed over the set partitions $\pi$ of the labels of the signature $\eta$;
+we checked this formula against brute force on small cases. The Dickman
+function was evaluated through its closed forms (logarithm and
+$\mathrm{Li}_2$), and the profile and $Z$ in $110$-digit floating point. The
+coordinate arrays were rounded down and up at scale $2^{-256}$. All products
+are exact integer products by Kronecker substitution in GMP, not FLINT, which
+is the library of \cite{OAI26}. The erased-coordinate correlations are exact,
+and the final signed sums are exact integer sums. The result is therefore accurate
+far beyond the $10^{-9}$ of the comparison, but it is not a rigorous interval
+enclosure (the special functions are not interval-evaluated). A fresh-context
+audit of the derivation and both scripts found no defect.
+
+What this does and does not show. The main-term quotient of
+\cite[Lemma~2.5]{OAI26} is reproduced independently, and so is the reading of
+its layered cap convolution that we had marked as underspecified. Not
+reproduced: the loss bound $L^+/I_H\le696075110\cdot10^{-12}$ (the $97$
+support-failure components of their \S2.4), which the criterion also needs;
+a second independent program for $I_H$ and $J_{\lambda,H}$; and, as always,
+the analytic inputs (\lbl{Claimed}). The project's bound does not move.
 
 \begin{remark}[the last rung, $182$; \lbl{Literature} reading only]\label{rem:sha182}
 In version~0.13 we read \cite{Sha26} (a $132$-page bundle: the main paper

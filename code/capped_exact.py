@@ -386,6 +386,7 @@ class Capped:
                 if Lam > alo and m + j <= k:
                     out.append(("Icorr", k, m, j, (alo, Lam, Lam)))
         n = k - 1
+        assert L - g <= tau, "Corr2 pieces assume L - g <= tau (|u'| <= tau automatic where R > g)"
         for m in range(1, self.MM):                       # Corr1: u' not admissible, |u'| <= tau
             alo = max(self.C(m) - m * g, fmpq(0))
             for j in range(0, self.MM):

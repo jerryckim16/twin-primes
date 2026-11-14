@@ -199,11 +199,12 @@ def main():
     den = (PSC << B) ** 2 << B
     J = {F: Fr(Jsum[F], den) * fac / Zf for F in Jsum}
     Ju = {F: Fr(Jsum_up[F], den) * fac / Zf for F in Jsum}
-    Jl = J["0"] + (AH + BH) * J["+"] + BH * J["t"]
-    Jlu = Ju["0"] + (AH + BH) * Ju["+"] + BH * Ju["t"]
+    # directed: a_h + b_h > 0 and b_h < 0, so the lower value uses lower J_0, J_+ and the UPPER J_t (as in [14])
+    Jl = J["0"] + (AH + BH) * J["+"] + BH * Ju["t"]
+    Jlu = Ju["0"] + (AH + BH) * Ju["+"] + BH * J["t"]
     ref = Fr(90248755123, 10 ** 24)
-    IH = Fr(json.load(open("code/oai186_IH.json"))["I_H_lo_exact"])
-    out = dict(J0=float(J["0"]), Jplus=float(J["+"]), Jt=float(J["t"]), J_lambda=float(Jl), J_lambda_upper_M=float(Jlu),
+    IH = Fr(json.load(open("code/oai186_IH.json"))["I_H_up_exact"])     # upper I_H for a lower ratio
+    out = dict(J0=float(J["0"]), Jplus=float(J["+"]), Jt=float(J["t"]), J_lambda=float(Jl), J_lambda_upper=float(Jlu),
                ref_J_lower=float(ref), J_ge_ref=bool(Jl >= ref), rel_excess_over_ref=float(Jl / ref - 1),
                ratio_rhostar_J_over_IH=float(RHOSTAR * Jl / IH), ratio_gt_500103_500000=bool(RHOSTAR * Jl / IH > Fr(500103, 500000)),
                bits=B, seconds=round(time.time() - t0))
