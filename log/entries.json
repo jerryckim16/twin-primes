@@ -1,6 +1,25 @@
 [
  {
   "date": "2026-11-14",
+  "slot": "Session 16 (started early at Jerry's request, 9:23 AM CT; no wait, no other run active)",
+  "title": "186: the raw loss bounds of its numerical companion re-evaluated for NDONEALL of 97 components (SHAREPCT of the loss), all at or just below the published values; the final margin turns out to hinge on one loss group",
+  "did": [
+   "With the 186 companion PDF now in the repository, two new evaluators were written from its formulas (not from the authors' script, which was not read): code/oai186_loss_inner.py for the 45 inner forms (2.19) and code/oai186_loss_outer.py for the outer forms (2.17), (2.20)-(2.21). The group data that Session 15 had to infer are now read in the PDF, and the delay/renewal rule is implemented as its acceptance test; the test picks renewal exactly where Session 15 had inferred it, and our bin schedule reproduces the counts stated in its Lemma 1.6.",
+   "All 45 inner components: each at most its Table 2.3-2.6 entry and within 5e-10 for most; rounding up as in (2.31) reproduces the four inner group totals of Table 2.7 exactly (55254, 435544, 1405159, 32422390).",
+   "NDONEOUT of 52 outer components, chosen in decreasing order of their share of the loss (all 13 rank-two and factorial components of O_{5/2}, its largest low bins, and LISTO2): every R and V at most its Table 2.1-2.2 entry and within 1.1e-8 of it; together with the inner ones they carry SHAREPCT of L^+.",
+   "Own idea, margin budget (exact rationals on the printed integers, paper Prop. oai186-budget): the group O_{5/2} is 89.5% of L^+ and could be at most 2.06% too small before the final margin drops to 1/50000 (14.3% before it drops to 0); the inner groups could be 10-230 times too small. A fresh-context audit of both evaluators against the PDF found no discrepancy (notes/audit-186-loss/report.md).",
+   "Bounds unchanged: established 246, claimed 182, project 236 conditional. Paper v0.16; verification note v0.6. This is a re-evaluation of the published forms in ball arithmetic, not an outward-rounded certificate; it does not check that the forms majorise the true losses or the analytic inputs."
+  ],
+  "explored": "A 'pretentious twin' statistic sum lambda(n)lambda(n+2)chi_D(n)chi_D(n+2) for the nine class-number-one discriminants up to 2e7 (Siegel-zero world test): square-root size for every D, a dead end; the only large signal, sum lambda chi_{-163} ~ 27 sqrt(X), is a known kind of secondary term (pole of zeta(2s) plus a low zero of L(s, chi_{-163})).",
+  "failed": [
+   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audit used instead).",
+   "Not finished for lack of time: NREM small outer components (low bins of O_{5/2} and O_2, REMPCT of L^+ in the tables); resume command in STATE.md.",
+   "The first queue mistakenly started the outer jobs while the inner ones ran (a wait condition misfired); paused by hand, no work lost. One inner job ran an old slow kernel loop for 85 min and was restarted on the closed form."
+  ],
+  "next": "186: finish the remaining small outer components; then a second, independent program for the decisive group O_{5/2} (y-series moments, as for the main terms) and an outward-rounded version, since O_{5/2} must be right to 2%. First weekly review on Monday 16 Nov."
+ },
+ {
+  "date": "2026-11-14",
   "slot": "Session 15 (3:34 AM CT, started work 4:37 AM CT after waiting 62 minutes for Session 14's follow-up branch to go quiet)",
   "title": "182: I(F) confirmed by a second, ball-arithmetic program; 186: raw loss bounds of one group reproduced; a dual weight that sees the active set gives M_{50,1/25} < 4.1463, but the project's two-zone weight does better (4.1459, now certified); paper v0.15",
   "did": [

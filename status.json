@@ -1,7 +1,7 @@
 {
- "version": "0.15",
+ "version": "0.16",
  "updated": "2026-11-14",
- "session_count": 15,
+ "session_count": 16,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -265,6 +265,16 @@
    "label": "Computed",
    "text": "186 companion: raw loss bounds of group I2old (7 of 97 components) re-evaluated from the transcribed forms; each at or just below its Table 2.3 value (two readings stated; one inferred from the numbers).",
    "where": "paper v0.15, after Prop. oai186-main"
+  },
+  {
+   "label": "Computed",
+   "text": "186 companion: raw loss bounds re-evaluated from its formulas for NDONEALL of 97 components (SHAREPCT of L^+; all 45 inner, NDONEOUT outer); every value at most the published one and within 4e-7 (mostly within 2e-9); inner group totals of Table 2.7 reproduced exactly. One program, ball arithmetic, not an outward-rounded certificate.",
+   "where": "paper v0.16, after Prop. oai186-main; verification note v0.6, Remark rem:186"
+  },
+  {
+   "label": "Computed",
+   "text": "186 margin budget from the printed integers (exact rationals): O_{5/2} is 89.5% of L^+ and may be at most 2.06% too small before the margin falls to 1/50000 (14.3% before 0).",
+   "where": "paper v0.16, Prop. oai186-budget"
   }
  ],
  "ideas": [
@@ -472,10 +482,10 @@
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.5",
+   "version": "0.6",
    "status": "active",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms of the 186 companion recomputed. Analytic inputs not verified."
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and most raw loss bounds of the 186 companion recomputed. Analytic inputs not verified."
   }
  ],
  "last_review": null
