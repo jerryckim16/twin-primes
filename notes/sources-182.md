@@ -353,3 +353,18 @@ axiom reports are "standard-only" and "certify these conditional theorems, not t
   unproved in Lean. (1) is the numerical part, which this project could recompute if it had the 726 trial coefficients
   (formal/TrialData182.lean, still needed: notes/sources-needed.md). We have not compiled or inspected the imported
   modules, so even the conditional theorems are Claimed here, not Lean-checked.
+
+## 10. Session 14 follow-up (14 Nov 2026): the trial data (formal/TrialData182.lean), pasted by Jerry Kim
+- Copied verbatim into code/data182/TrialData182_part{1,2,3}*.lean (definition order rearranged into three files,
+  text unchanged); header: "Literal data exported from the frozen 182 trial. Source SHA-256: 3ebae417...45952" (the
+  trial-file hash quoted in the bundle, p. 46). Contents: dimension 39, N = 393216, S, rho, rho*, lambda, kappa, a,
+  roughness, knots (26), signatures (11, order as in the bundle), component caps, the 3 x 11 x 22 coefficient table,
+  shells (outer, base, enlarged, subtraction C, full), 43 old and 55 new source rows (order counts (12,12,19) and
+  (12,12,31)), base/enlarged/subtraction radii, and the published enclosures of I (denominator), J0 (lower),
+  J+ (lower) and the tail (upper).
+- Integrity checks (code/sharifi182_data.py, output code/data182/integrity.json): h = S/N; component caps / h =
+  141720, 177528, 246256; shell caps / h equal the cell table of Sec. 3 above; knots as in Sec. 4; every source row
+  satisfies upperBand = (1/2 + 2 omega)/rho and activation = delta/rho, and the bands chain. All pass. The outer cell
+  masks follow from the continuous shells by the grid rule of the 186 companion (1.19).
+- Next: I(F) by code/sharifi182_I.py (own derivation of the layered contraction; see its docstring), then J0, J+,
+  tail with the 186 machinery.
