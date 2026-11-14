@@ -1,0 +1,10 @@
+[     0 s] group I5/2old: m=5/2 z=35265 p=17912 chi = 87195..89524; components ['P2', 'H']
+[    93 s] marginals shell 0 done
+[   125 s] marginals shell 1 done
+[   150 s] marginals shell 2 done
+[   160 s] 53 eta, 77 block-sum multisets on 2330 radial indices ready
+[   163 s] P2: a/h=30427.273 b/h=35265.000 r_-^-/h=21719 r_+^+/h=23655 Lambda=[0.1475516247 +/- 2.63e-11]
+[  2346 s] P2: A = [1.2009121684063e+13 +/- 0.282], table 12009121688668, ratio 0.999999999617
+[  2357 s] H: L=17912 K=35265 bmax(0)=5
+[  3957 s] H: A = [686922192412.96 +/- 4.34e-4], table 686922192553, ratio 0.999999999796
+[  3957 s] {"group": "I5/2old", "components": {"P2": {"A": 12009121684062.719, "A_rad": 5.297163840244849e-55, "beta": 2.844398637780426e-19, "table_A": 12009121688668, "a_over_h": 30427.27304881242, "b_over_h": 35265.0, "rminus_over_h": 21719, "rplus_over_h": 23655}, "H": {"A": 686922192412.9604, "A_rad": 1.6082527700854125e-56, "beta": 1.6269970442164473e-20, "table_A": 686922192553, "L": 17912, "K": 35265}}, "prec": 256, "seconds": 3957, "peak_rss_MB": 1891}

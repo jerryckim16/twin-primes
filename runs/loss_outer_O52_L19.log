@@ -1,0 +1,8 @@
+[     0 s] group O5/2: m=5/2 z=46580 p=19660 chi = 95599..98263; components ['L19']
+[    31 s] marginals shell 0 done
+[    41 s] marginals shell 1 done
+[    49 s] marginals shell 2 done
+[    55 s] P(0,z_G) = [3]; 53 eta, 77 block multisets; pair weights ready
+[    59 s] L19: L=11704 H=14046 theta=47 J=8 branch=delay (first failed test None) lower index 95599
+[   784 s] L19: A = [3006707962469.3 +/- 0.0486] (table 3006707964277, ratio 0.999999999399)  B = [529135124379.25 +/- 2.70e-3] (table 529135146833, ratio 0.999999957565)
+[   784 s] {"group": "O5/2", "components": {"L19": {"A": 3006707962469.3486, "A_rad": 6.471910329861335e-17, "B": 529135124379.2473, "B_rad": 1.884548781011022e-18, "table_A": 3006707964277, "table_B": 529135146833, "L": 11704, "H": 14046, "theta": 47, "branch": "delay", "delay_first_failed": null, "lower_index": 95599, "clip": {"eligible": 67, "absorbed_eligible": 48, "clipped": false, "below_all_absorbed": false, "order3_min_is_bG": true}}}, "prec": 128, "seconds": 784, "peak_rss_MB": 1417}

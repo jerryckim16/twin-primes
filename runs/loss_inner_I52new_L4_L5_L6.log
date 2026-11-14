@@ -1,0 +1,12 @@
+[     0 s] group I5/2new: m=5/2 z=35419 p=17990 chi = 87250..89914; components ['L4', 'L5', 'L6']
+[    40 s] marginals shell 0 done
+[    54 s] marginals shell 1 done
+[    66 s] marginals shell 2 done
+[    69 s] 53 eta, 77 block-sum multisets on 2665 radial indices ready
+[   106 s] L4: L=202 H=810 K=35419 theta=1046 J=32 rmax=445 branch=renewal (first failed test index 1305) lower index 89265
+[   602 s] L4: A = [60.522710010643 +/- 3.51e-13], table 61, ratio 0.992175573945
+[   643 s] L5: L=809 H=2117 K=35419 theta=400 J=32 rmax=111 branch=renewal (first failed test index 5930) lower index 88250
+[  1138 s] L5: A = [136.80317852796 +/- 4.74e-12], table 137, ratio 0.998563346919
+[  1178 s] L6: L=2116 H=5645 K=35419 theta=150 J=32 rmax=42 branch=renewal (first failed test index 16738) lower index 87250
+[  1663 s] L6: A = [177471602.23554 +/- 3.19e-6], table 177471603, ratio 0.999999995692
+[  1663 s] {"group": "I5/2new", "components": {"L4": {"A": 60.52271001064265, "A_rad": 6.197960387792571e-60, "beta": 1.4334996216876759e-30, "table_A": 61, "L": 202, "H": 810, "K": 35419, "theta": 1046, "J": 32, "branch": "renewal", "delay_first_failed": 1305, "renewal_floored_at": 5180, "lower_index": 89265, "clip": {"eligible": 12, "absorbed_eligible": 0, "clipped": true, "below_all_absorbed": true, "order3_min_is_bG": false}}, "L5": {"A": 136.80317852795528, "A_rad": 2.8248132096402033e-63, "beta": 3.240226761673608e-30, "table_A": 137, "L": 809, "H": 2117, "K": 35419, "theta": 400, "J": 32, "branch": "renewal", "delay_first_failed": 5930, "renewal_floored_at": 20709, "lower_index": 88250, "clip": {"eligible": 14, "absorbed_eligible": 0, "clipped": true, "below_all_absorbed": true, "order3_min_is_bG": false}}, "L6": {"A": 177471602.2355368, "A_rad": 5.0171665719506304e-59, "beta": 4.2034713022634255e-24, "table_A": 177471603, "L": 2116, "H": 5645, "K": 35419, "theta": 150, "J": 32, "branch": "renewal", "delay_first_failed": 16738, "renewal_floored_at": 54145, "lower_index": 87250, "clip": {"eligible": 27, "absorbed_eligible": 12, "clipped": false, "below_all_absorbed": false, "order3_min_is_bG": true}}}, "prec": 256, "seconds": 1663, "peak_rss_MB": 1471}

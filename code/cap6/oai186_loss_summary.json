@@ -1,19 +1,19 @@
 {
  "groups": {
   "O2": {
-   "done": 8,
+   "done": 13,
    "of": 17,
    "E_table_total": 38927522,
-   "E_table_done": 36816111,
-   "E_ours_done": 36816111,
+   "E_table_done": 38926928,
+   "E_ours_done": 38926928,
    "E_equal": true
   },
   "O5/2": {
-   "done": 18,
+   "done": 20,
    "of": 35,
    "E_table_total": 622829241,
-   "E_table_done": 622796401,
-   "E_ours_done": 622796398,
+   "E_table_done": 622829012,
+   "E_ours_done": 622829009,
    "E_equal": false
   },
   "I2old": {
@@ -49,9 +49,9 @@
    "E_equal": true
   }
  },
- "done": 71,
+ "done": 78,
  "of": 97,
- "share_of_Lplus_done": 0.9969195120336942,
+ "share_of_Lplus_done": 0.9999988176563303,
  "all_at_most_table": true,
- "max_rel_dev_entries_ge_1e6": 3.586275301170616e-07
+ "max_rel_dev_entries_ge_1e6": 3.40058727797965e-05
 }

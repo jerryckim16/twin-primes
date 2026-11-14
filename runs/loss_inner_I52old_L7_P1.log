@@ -1,0 +1,10 @@
+[     0 s] group I5/2old: m=5/2 z=35265 p=17912 chi = 87195..89524; components ['L7', 'P1']
+[    84 s] marginals shell 0 done
+[   115 s] marginals shell 1 done
+[   144 s] marginals shell 2 done
+[   155 s] 53 eta, 77 block-sum multisets on 2330 radial indices ready
+[   163 s] L7: L=14045 H=17912 K=35265 theta=37 J=6 rmax=6 branch=delay (first failed test index None) lower index 87195
+[  1176 s] L7: A = [5548294544361.0 +/- 7.74e-3], table 5548294545493, ratio 0.999999999796
+[  1180 s] P1: a/h=25589.546 b/h=30427.273 r_-^-/h=23654 r_+^+/h=25590 Lambda=[0.1731554335 +/- 3.78e-11]
+[  3386 s] P1: A = [3.0283518206693e+13 +/- 0.327], table 30283518217418, ratio 0.999999999646
+[  3386 s] {"group": "I5/2old", "components": {"L7": {"A": 5548294544361.008, "A_rad": 1.3258402173930486e-55, "beta": 1.3141311961996937e-19, "table_A": 5548294545493, "L": 14045, "H": 17912, "K": 35265, "theta": 37, "J": 6, "branch": "delay", "delay_first_failed": null, "renewal_floored_at": null, "lower_index": 87195, "clip": {"eligible": 16, "absorbed_eligible": 12, "clipped": false, "below_all_absorbed": false, "order3_min_is_bG": true}}, "P1": {"A": 30283518206692.67, "A_rad": 1.2336425584288106e-54, "beta": 7.172747533121384e-19, "table_A": 30283518217418, "a_over_h": 25589.546097624843, "b_over_h": 30427.27304881242, "rminus_over_h": 23654, "rplus_over_h": 25590}}, "prec": 256, "seconds": 3386, "peak_rss_MB": 1567}

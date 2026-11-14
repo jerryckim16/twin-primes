@@ -268,7 +268,7 @@
   },
   {
    "label": "Computed",
-   "text": "186 companion: raw loss bounds re-evaluated from its formulas for NDONEALL of 97 components (SHAREPCT of L^+; all 45 inner, NDONEOUT outer); every value at most the published one and within 4e-7 (mostly within 2e-9); inner group totals of Table 2.7 reproduced exactly. One program, ball arithmetic, not an outward-rounded certificate.",
+   "text": "186 companion: raw loss bounds re-evaluated from its formulas for 78 of 97 components (all but 1.2e-6 of L^+; all 45 inner, 33 outer); every value at most the published one and within 3.4e-5 (mostly within 5e-9); inner group totals of Table 2.7 reproduced exactly. One program, ball arithmetic, not an outward-rounded certificate.",
    "where": "paper v0.16, after Prop. oai186-main; verification note v0.6, Remark rem:186"
   },
   {
