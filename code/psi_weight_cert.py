@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Second, independent certificate (Session 15) for the psi-weight bound at (k, eps) = (50, 1/25).
-Reduction (paper Prop. prop:psi-reduction, Proved here): for every fiber t',
+Reduction (paper Prop. prop:psi-weight, Proved here): for every fiber t',
   I(a, t') <= G_a(s, nu) = F(s) + int_0^W nu/(c0 + nu s + (nu-1) w) dw,
   F(s) = k/(k-1) log((c0 + k s)/(c0 + s)),  W = 2 eps,  c0 = a - tau,
 over R = {0 <= s <= tau, 1 <= nu, (nu-1) W <= tau - s}.

@@ -800,9 +800,11 @@ close to $k=50$, so the theorem is far from sharp. Script:
 \begin{remark}[another weight]
 We also tried the weight $\psi_m=\frac{\beta}{n}(a-S_A+nt_m)$, where $n$ is
 the number of active indices at $t$ and $S_A$ the sum of the active
-coordinates. It is positive for every $a>\tau$ (an active index has
+coordinates, at points where $m$ is active (set $\psi_m=1$ where $m$ is
+inactive; the proof of Lemma~\ref{lem:dual} uses $\psi_m$ only where $m$ is
+active). It is positive for every $a>\tau$ (an active index has
 $t_m\ge S-\tau$, so $a-S_A+nt_m\ge a-\tau$). Its sum over the active indices
-is exactly $\beta a$ everywhere, so by Lemma~\ref{lem:dual}
+is exactly $\beta a$ wherever some index is active, so by Lemma~\ref{lem:dual}
 \[
 M_k(L,\tau)\le a\sup_{t'\in\tau\R_{k-1}}I(a,t'),\qquad
 I(a,t')=\int_0^{L-|t'|}\frac{n\,du}{a-S_A+nu}.
@@ -844,7 +846,7 @@ I(a,t')=\frac{k}{k-1}\log\frac{c_0+ks}{c_0+s}+\int_0^W\frac{1+N(w)}{A+N(w)s+M(w)
 \emph{Equalising the profile.} Let $B=M(W)$ and $\mu=B/W$; we show that the last
 integral, $J$, is at most $J_\mu=\int_0^W(1+\mu)/(A+\mu s+\mu w)\,dw$, which is
 the second term of $G_a(s,1+\mu)$. If $\mu=0$ both equal $W/A$. Otherwise let
-$w_e=\sup\{N>0\}$; $N\ge1$ on $(0,w_e)$ and $N=0$ after it. The map
+$w_e=\min(W,\sup\{w:N(w)>0\})$; $N\ge1$ on $(0,w_e)$ and $N=0$ on $(w_e,W]$. The map
 $\theta=M(w)/\mu$ is an increasing piecewise linear bijection $[0,w_e]\to[0,W]$
 with $dw=\mu q\,d\theta$, $q=1/N$, and $q(\theta)$ is non-decreasing. With
 $C(\theta)=A+\mu\theta$ and $f_\theta(q)=q(q+1)/(C(\theta)q+s)$,
@@ -869,7 +871,7 @@ $(\nu-1)W=M(W)\le|t'|=\tau-s$.
 logarithm is increasing in $s$, the integrand of the second term is decreasing
 in $s$, and its $\nu$-derivative has the sign of $c_0-w$. So
 $G_a\le\frac{k}{k-1}\log\frac{c_0+ks_2}{c_0+s_2}+\int_0^{c_0}[\nu_2,s_1]+\int_{c_0}^W[\nu_1,s_1]$
-(here $0<c_0=0.0373<W=0.08$), with closed-form integrals. Cells that miss the
+(here $0<c_0=0.0773<W=0.08$), with closed-form integrals. Cells that miss the
 region are discarded by an exact rational test. Adaptive bisection of
 $[0,\tau]\times[1,13]$ certifies $a\,G_a<4.1463$ on every cell in arb ball
 arithmetic ($3.5\cdot10^6$ cells; \texttt{code/psi\_weight\_cert.py 10373 10000 41463 10000}).
@@ -883,9 +885,10 @@ The relaxed supremum (real $\nu$) at $a=1.037$ is about $4.1463525$, at
 $\nu\approx10.87$, $s\approx0.171$, while the best fiber actually found is
 $t'=((2\varepsilon)^{10},0^{39})$ with $a\,I=4.1463296$; the gap is
 $2.3\cdot10^{-5}$. So the weight's true value lies between these two numbers
-at $a=1.037$. The supremum over fibers is not always attained at
+at $a=1.037$. At $a=1.0373$ the floating-point maximum of $a\,G_a$ is
+$4.1462991$, so the certified $4.1463$ has a margin of about $10^{-6}$. The supremum over fibers is not always attained at
 $((2\varepsilon)^r,0,\dots)$: at $a=1.036$ the fiber $(y^{10},0^{39})$ with
-$y=0.0811278>2\varepsilon$ beats every such fiber by $3.8\cdot10^{-5}$
+$y=0.0811278>2\varepsilon$ beats every such fiber ($a\,I$ larger by $4\cdot10^{-5}$)
 (checked by exact piecewise integration and by two quadratures;
 \texttt{code/explore/psi\_scratch\_checks.py}). The improvement over scaling is
 small ($0.0052$), and it is an \emph{upper} bound for $M_{50,1/25}$, so it does
@@ -893,7 +896,8 @@ not move any bound on gaps; it narrows the window between Polymath8b's
 certified lower bound $4.0043$ and the best known upper bound. The only literature search behind
 ``possibly folklore'' is the brief one reported in the remark after
 Theorem~\ref{thm:floor} (\cite{Pol14b} and the Polymath wiki page on the
-variational problem); it was not repeated for this statement.
+variational problem), plus one web search on 14 November 2026 that found no
+explicit numerical upper bound for $M_{50,\varepsilon}$; it is not exhaustive.
 \end{remark}
 
 \subsection*{The limit of weights that see only \texorpdfstring{$t_m$}{t\_m} and \texorpdfstring{$S$}{S} (version 0.4)}
