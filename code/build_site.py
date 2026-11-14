@@ -202,7 +202,7 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 .paper table{width:auto;font-variant-numeric:tabular-nums} .paper td,.paper th{padding:3px 12px 3px 0;border-bottom:0;white-space:nowrap} .paper thead th{border-bottom:1px solid var(--rule)}
 .paper caption{caption-side:top;text-align:left;font-size:.85rem;color:var(--muted);padding-bottom:6px;white-space:normal}
 .paper .eq{padding:2px 0 6px} .paper .eq .katex-display{margin:.4em 0;width:max-content;min-width:100%}
-.katex{font-size:1.06em} .paper .math,.paper .scroll,.abstract .math{position:relative} .math.inline.wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:2px 0}
+.katex .katex-mathml{overflow:hidden!important;width:1px!important;height:1px!important;left:0} .katex{font-size:1.06em} .paper .math,.paper .scroll,.abstract .math{position:relative} .math.inline.wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:2px 0}
 .paper .smallcaps{font-variant:small-caps;letter-spacing:.03em} .paper .theorem em,.paper .proposition em,.paper .corollary em{font-style:italic}
 .paper .proof{margin:.6em 0} .paper ol,.paper ul{padding-left:1.3em}
 .paper code{font-family:var(--mono);font-size:.82em;overflow-wrap:anywhere}
