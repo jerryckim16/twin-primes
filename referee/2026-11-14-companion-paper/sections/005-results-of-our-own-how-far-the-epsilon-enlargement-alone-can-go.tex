@@ -1,0 +1,287 @@
+\section{Results of our own: how far the \texorpdfstring{$\varepsilon$}{epsilon}-enlargement alone can go}\label{sec:epsfloor}
+
+For the plain simplex the bound $M_k\le\frac{k}{k-1}\log k$ shows where the
+method stops ($k\ge51$). This section starts the same analysis for the
+$\varepsilon$-enlarged simplex. For $0<\tau\le L$ put
+\[
+M_k(L,\tau)=\sup_F\frac{\sum_{m=1}^k\int_{\tau\R_{k-1}}\left(\int_0^\infty F\,dt_m\right)^2\prod_{i\ne m}dt_i}{\int F^2},
+\]
+the supremum over square-integrable $F\ne0$ supported on $L\R_k$. Then
+$M_{k,\varepsilon}=M_k(1+\varepsilon,1-\varepsilon)$ and $M_k=M_k(1,1)$. The
+quantity $M_k(L,\tau)$ is non-decreasing in $L$ and in $\tau$, satisfies
+$M_k(cL,c\tau)=c\,M_k(L,\tau)$, and is non-decreasing in $k$ by the embedding
+used in the proof of Proposition~\ref{prop:rigid-eps}. Write
+$S=t_1+\dots+t_k$ and call the index $m$ \emph{active} at $t$ if
+$S-t_m\le\tau$.
+
+\begin{lemma}[\lbl{Proved here}; it is {\cite[Lemma~6.1]{Pol14b}} with the region of the marginals kept]\label{lem:dual}
+Let $\psi_1,\dots,\psi_k$ be measurable functions on $L\R_k$, positive almost
+everywhere, such that for almost every $t'\in\tau\R_{k-1}$ and every $m$
+\[
+\int_0^{L-|t'|}\frac{du}{\psi_m(t',u)}\le1,
+\]
+where $(t',u)$ is the point whose $m$-th coordinate is $u$ and whose other
+coordinates are $t'$. Then
+\[
+M_k(L,\tau)\le\operatorname*{ess\,sup}_{t\in L\R_k}\ \sum_{m\text{ active at }t}\psi_m(t).
+\]
+\end{lemma}
+
+\begin{proof}
+For $t'\in\tau\R_{k-1}$ the Cauchy--Schwarz inequality gives
+\[
+\left(\int F\,dt_m\right)^2\le\int\frac{dt_m}{\psi_m}\cdot\int\psi_mF^2\,dt_m\le\int\psi_mF^2\,dt_m .
+\]
+Integrating over $t'\in\tau\R_{k-1}$ gives the integral of $\psi_mF^2$ over
+the set where $m$ is active. Sum over $m$.
+\end{proof}
+
+\begin{proposition}[\lbl{Proved here}; elementary, possibly folklore]\label{prop:eps-first}
+For $k\ge2$ and $0\le\varepsilon<1$,
+\[
+M_{k,\varepsilon}\le(1+\varepsilon)M_k\le(1+\varepsilon)\frac{k}{k-1}\log k .
+\]
+Conversely, for $0\le\varepsilon\le M_k/(4k)$,
+\[
+M_{k,\varepsilon}\ge(1+\varepsilon)M_k-\frac{64k^2}{M_k}\,\varepsilon^2 .
+\]
+In particular $\lim_{\varepsilon\to0^+}(M_{k,\varepsilon}-M_k)/\varepsilon=M_k$.
+\end{proposition}
+
+\begin{proof}
+By monotonicity in $\tau$ and scaling,
+$M_k(1+\varepsilon,1-\varepsilon)\le M_k(1+\varepsilon,1+\varepsilon)=(1+\varepsilon)M_k$,
+and $M_k\le\frac{k}{k-1}\log k$ is \cite[Cor.~6.4]{Pol14b}.
+
+For the lower bound, scaling gives $M_{k,\varepsilon}=(1+\varepsilon)M_k(1,\rho)$
+with $\rho=(1-\varepsilon)/(1+\varepsilon)$. Put $\delta=k(1-\rho)$ and let $F$
+on $\R_k$ satisfy $\sum_mJ_k^{(m)}(F)\ge(M_k-\eta)I_k(F)$. Split $F=F_1+F_2$
+with $F_2=F\mathbf 1_{S>\rho}$, and let $x=I_k(F_2)/I_k(F)$. Two facts follow
+from the Cauchy--Schwarz inequality on segments of length at most $1-\rho$.
+First, a fiber of $F_2$ has length at most $1-\rho$, so
+$\sum_mJ_k^{(m)}(F_2)\le\delta\,I_k(F_2)$. Second, a fiber over $t'$ with
+$|t'|>\rho$ lies in $\{S>\rho\}$ and has length at most $1-\rho$, so
+restricting the marginals of $F$ to $\rho\R_{k-1}$ loses at most
+$\delta\,I_k(F_2)$. By the triangle inequality for
+$F\mapsto(\int F\,dt_m)_{m\le k}$ and the first fact,
+\[
+M_k-\eta\le\left(\sqrt{M_k(1-x)}+\sqrt{\delta x}\right)^2\le M_k(1-x)+2\sqrt{M_k\delta x}+\delta x .
+\]
+This is a quadratic inequality in $\sqrt x$. If $\delta\le M_k/2$ it gives
+$x\le(16\delta+8\eta)/M_k$. By the second fact the quotient of $F$ for
+$M_k(1,\rho)$ is at least $M_k-\eta-\delta x$. Letting $\eta\to0$ we get
+$M_k(1,\rho)\ge M_k-16\delta^2/M_k$. Finally
+$\delta=2k\varepsilon/(1+\varepsilon)$, and $\delta\le M_k/2$ when
+$\varepsilon\le M_k/(4k)$.
+\end{proof}
+
+So for fixed $k$ the factor $1+\varepsilon$ is exact to first order, and no
+dual argument can improve it there. Any saving is an effect of large $k$: it
+needs $\varepsilon$ of size about $1/k$ or more, where the shell
+$\rho<\sigma\le1$ carries most of the mass. The first inequality already
+restricts the parameter: with Bombieri--Vinogradov the criterion
+$M_{k,\varepsilon}>4$ forces
+$\varepsilon>\varepsilon_0(k)=\frac{4(k-1)}{k\log k}-1$ (\lbl{Computed}):
+\begin{center}
+\begin{tabular}{@{}rccccccc@{}}
+\toprule
+$k$ & 49 & 48 & 45 & 40 & 39 & 35 & 30\\
+\midrule
+$\varepsilon_0(k)$ & 0.0068 & 0.0117 & 0.0274 & 0.0572 & 0.0638 & 0.0929 & 0.1369\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For larger $\varepsilon$ we use the lemma with a weight that changes shape
+where the indices start to become inactive.
+
+\begin{theorem}[\lbl{Proved here} for the inequality; \lbl{Computed}, interval arithmetic, for the numerical statement]\label{thm:floor}
+Let $k\ge2$, $0<\tau<s_1\le L$ and $a\ge s_1$. Then
+\[
+M_k(L,\tau)\le\sup_{0\le\sigma\le\tau}W(\sigma),\qquad
+W(\sigma)=\frac{ka}{k-1}\log\left(1+\frac{(k-1)(s_1-\sigma)}{a-\sigma}\right)+L-s_1+\sigma\log\frac{L-\sigma}{s_1-\sigma}.
+\]
+Consequently $M_{k,\varepsilon}<3.99$ for every $k\le29$ and every
+$0\le\varepsilon<1$. In particular the criterion of \cite[Thm.~3.12]{Pol14b}
+on the $\varepsilon$-enlarged simplex cannot give $\DHL[k,2]$ for any
+$k\le29$ from the Bombieri--Vinogradov theorem, nor from any level of
+distribution $\theta\le0.501$, whatever the value of $\varepsilon$.
+\end{theorem}
+
+\begin{proof}
+Fix $\Lambda>0$, put $\lambda=\Lambda/(ka)$ and take the two-zone weight
+\[
+\psi_m(t)=\lambda\,(a-S+kt_m)\quad(S\le s_1),\qquad
+\psi_m(t)=\Lambda\,\frac{t_m}{S}\quad(S>s_1).
+\]
+It is positive wherever $t_m>0$. Where $S\le s_1\le a$ every term is
+non-negative, so the sum over the active indices is at most the sum over all
+indices, which is $\lambda(k(a-S)+kS)=\Lambda$. Where $S>s_1$ the sum over the
+active indices is at most $\Lambda\sum_mt_m/S=\Lambda$. On the fiber over $t'$
+with $|t'|=\sigma\le\tau$ we have $S=\sigma+u$, and
+\[
+\int_0^{s_1-\sigma}\frac{du}{\lambda(a-\sigma+(k-1)u)}+\int_{s_1-\sigma}^{L-\sigma}\frac{(\sigma+u)\,du}{\Lambda u}=\frac{W(\sigma)}{\Lambda}.
+\]
+Lemma~\ref{lem:dual} with $\Lambda=\sup W$ gives the inequality.
+
+For the numerical statement it suffices to treat $k=29$. For
+$\varepsilon\le143/1000$, Proposition~\ref{prop:eps-first} gives
+$M_{29,\varepsilon}\le1.143\cdot\frac{29}{28}\log29<3.9863$. The interval
+$[143/1000,1]$ is cut into $857$ intervals $[e,e']$ of length $1/1000$. For
+each one the file \texttt{code/cert\_floor\_k29.json} lists rational $a$ and
+$s_1$ with $\sup W<3.99$ for $(L,\tau)=(1+e',1-e)$; by monotonicity in $L$ and
+$\tau$ this covers every $\varepsilon\in[e,e']$. The supremum over $\sigma$ is
+bounded rigorously: the first logarithm is non-increasing in $\sigma$ (because
+$a\ge s_1$) and the last term is non-decreasing, so on a piece $[x,y]$ we bound
+$W$ by the first term at $x$ plus the last at $y$, in ball arithmetic at
+rational points, bisecting until the bound is below $3.99$. The script is
+\texttt{code/dual\_eps\_cert.py}; a second script,
+\texttt{code/check\_floor\_cert.py}, re-checks the certificate with a
+different interval library. The largest value of $\sup W$ over the $857$
+intervals is $3.9772$ (floating point).
+\end{proof}
+
+\begin{remark}[what was known, and a caution]
+Polymath8b state the uniform bound $M_{k,\varepsilon}\le\frac{k}{k-1}\log(2k-1)$
+for $0\le\varepsilon<1$ \cite[Prop.~6.5]{Pol14b}, and remark that the bounds
+for $M_{k,\varepsilon}$ ``do not appear to be as sharp''. That bound is below
+$4$ exactly for $k\le23$, so Theorem~\ref{thm:floor} moves this floor from $24$
+to $30$. It does not use their bound. We note, with caution, that we could not
+complete the last step of the proof of \cite[Prop.~6.5]{Pol14b} as we read it:
+the weights $1-S+kt_m$ are summed, and for $S>1$ their sum over the active
+indices can exceed $k$ (at $t=(s,0,\dots,0)$ with $1<s\le1+\varepsilon$ only
+the first index is active and its weight is $1+(k-1)s$). Our reconstruction
+gives the constant $\frac{k}{k-1}+\varepsilon$ in place of $\frac{k}{k-1}$. For
+version~0.4 we re-read the proof in the current arXiv text: after the
+Cauchy--Schwarz step it says only ``Integrating in $t_1,\dots,t_{i-1},
+t_{i+1},\dots,t_k$ and summing in $i$, we obtain the claim.'' The weights
+$1-S+kt_i$ of the inactive indices can be negative when $S>1$, and dropping
+them is what lets the sum exceed $k$; it is at most
+$k+(k-1)(S-1)\le k+(k-1)\varepsilon$, which gives our constant. So the
+argument as printed proves $M_{k,\varepsilon}\le\left(\frac{k}{k-1}+\varepsilon\right)\log(2k-1)$.
+Whether the stated inequality is nevertheless true is \lbl{Open}; we have not
+seen the journal version, and we may be missing an intended step. A
+brief search (the paper \cite{Pol14b} and the Polymath wiki page on the
+variational problem) found no sharper published upper bound for
+$M_{k,\varepsilon}$; the search was not exhaustive, and
+Theorem~\ref{thm:floor} has not been reviewed by anyone outside this project.
+\end{remark}
+
+\begin{remark}[\lbl{Computed}, floating point only: how far this weight goes]
+The best value of $\sup W$ over $(a,s_1)$, maximised over $\varepsilon$, is
+about $3.975$ for $k=29$, $4.004$ for $k=30$, $4.257$ for $k=40$ and $4.459$
+for $k=50$, in each case near $\varepsilon=0.24$ to $0.28$; the bound of
+\cite[Prop.~6.5]{Pol14b} is $4.187$, $4.218$, $4.482$ and $4.689$. For small
+$\varepsilon$ the two-zone weight does not beat the scaling bound: at $k=50$
+and $\varepsilon=1/25$ both give $4.15$ ($4.1458$ against $4.1515$), while
+Polymath8b's certified lower bound is $4.0043$. The true threshold is presumably
+close to $k=50$, so the theorem is far from sharp. Script:
+\texttt{code/dual\_eps.py remark15}.
+\end{remark}
+
+\begin{remark}[a weight that did not work]
+We also tried the weight $\psi_m=\frac{\beta}{n}(a-S_A+nt_m)$, where $n$ is
+the number of active indices at $t$ and $S_A$ the sum of the active
+coordinates. Its sum over the active indices is exactly $\beta a$ everywhere,
+so the bound is $a$ times the largest fiber integral. Evaluating the fiber
+integral exactly on the fibers over $t'=(x,\dots,x,0,\dots,0)$ (\lbl{Computed},
+floating point, $k=50$, $\varepsilon=1/25$, every $a\in[1.05,3]$ on a grid of
+step $0.01$, script \texttt{code/dual\_eps.py remark16}) shows that this
+weight cannot give less than $4.178$, which is worse than the $4.1515$ from
+scaling. The binding fiber has a single non-zero coordinate $x\approx2\varepsilon$:
+there the zero coordinates become inactive while $n$ is still large, and the
+normalisation by $n$ wastes the slack. A dual bound that is sharper for small
+$\varepsilon$ must treat the small coordinates near such sparse points
+differently. This is \lbl{Open}. (An earlier draft of this remark, version~0.3
+as first circulated, reported a weaker obstruction, $4.146$, from fibers with
+about ten non-zero coordinates; the exact fiber evaluation above supersedes it.)
+\end{remark}
+
+\subsection*{The limit of weights that see only \texorpdfstring{$t_m$}{t\_m} and \texorpdfstring{$S$}{S} (version 0.4)}
+Every weight used so far has the form
+$\psi_m(t)=\Psi(S-t_m,t_m)$: Polymath8b's $\lambda(a-S+kt_m)$ and both zones of
+Theorem~\ref{thm:floor}. Call this family $\mathcal W$. For weights in
+$\mathcal W$ the problem ``minimise the bound of Lemma~\ref{lem:dual}'' is
+convex: each fiber condition $\int du/\Psi\le1$ is convex in $\Psi$, and each
+point $t$ gives a linear condition $\sum_{m\text{ active}}\Psi(S-t_m,t_m)\le\Lambda$.
+So its optimum can be computed, and it tells us how far any weight in
+$\mathcal W$, however clever, can go.
+
+\begin{proposition}[\lbl{Computed}, floating point, discretised; not a rigorous bound]\label{prop:family}
+Discretise $\Psi=\rho\cdot(L-\sigma+(k-1)u)$ with $\rho$ constant on cells of
+an $N\times{}$(geometric) grid in $(S,u)$, impose the fiber conditions exactly
+on the grid $\sigma\in\frac LN\mathbb Z$, and impose the pointwise condition
+on all configurations of the grid of step $L/N$ (found by a knapsack oracle).
+The convex optimum $B_N(k,\varepsilon)$, computed by cutting planes with an
+exact convex solver at each step, is:
+\begin{center}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$(k,\varepsilon)$ & $N=80$ & $N=120$ & $N=160$ & best weight known & $M_{k,\varepsilon}\ge$\\
+\midrule
+$(50,0)$    & 3.9919 & & & 3.9919 (Cor.~6.4) & 3.9274\\
+$(50,1/25)$ & 4.1427 & 4.1420 & 4.1418 & 4.1458 (Thm.~\ref{thm:floor}) & 4.0012\\
+$(30,1/4)$  & 4.0501 & 4.0345 & 4.0240 & 4.0021 (Thm.~\ref{thm:floor}) & --\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+At $\varepsilon=0$ the optimum over the whole family is the classical weight:
+the solver, started anywhere, returns $\frac{k}{k-1}\log k$. At
+$(50,1/25)$ the values have settled near $4.14$: no weight that sees only
+$t_m$ and $S$ can bring the dual bound much below $4.14$ there, while the true
+value is at least $4.0012$. At $(30,1/4)$ the discretisation has not
+converged (the values still fall, and lie above the continuum value $\le4.0021$
+that Theorem~\ref{thm:floor} already certifies), so we draw no conclusion about
+the exact floor of $\mathcal W$; runs at $k=31,32$ gave $B_{120}=4.0261$ to
+$4.0976$, also unconverged. The lesson is the first one: \emph{to approach the
+truth near $k=50$, a dual weight must depend on more of $t$ than $t_m$ and
+$S$}. The optimal weight is known in principle: if $F>0$ is the extremal
+function, $\psi_m=\int F\,dt_m/F$ makes Lemma~\ref{lem:dual} an equality (the
+Collatz--Wielandt principle for the positive operator
+$F\mapsto\sum_{m\text{ active}}\int F\,dt_m$). A first test
+(\lbl{Computed}, floating point, $20000$ random points, not a bound;
+\texttt{code/cw\_sample.py}) is encouraging on the plain simplex and
+discouraging on the enlarged one. For $k=3$, $\varepsilon=0$ and the
+degree-$12$ Galerkin function ($M_3\ge1.646440$) the sampled ratio stays in
+$[1.6464,1.6465]$, which would be an almost sharp upper bound if the supremum
+could be certified. For $\varepsilon>0$ the Galerkin polynomial changes sign
+($\min F/\max F=-0.0003$ at $(k,\varepsilon,d)=(10,1/5,12)$, $-0.11$ at
+$(50,1/25,12)$). This is structural: where no index is active the extremal
+function vanishes, so near that region any positive $F$ makes the ratio
+large. Making the principle usable there is \lbl{Open}. The script is \texttt{code/dual\_lp.py};
+\texttt{runs/dual\_lp\_conv.log} and \texttt{runs/dual\_lp\_floor.log} hold the
+output. The last column is from Table~\ref{tab:eps} and
+Theorem~\ref{thm:Meps}.
+
+\begin{remark}[heuristic: does the enlarged simplex stop at $k=50$?]\label{rem:k49}
+The certified values of Table~\ref{tab:eps} grow with the degree roughly
+geometrically. Fitting $M(D)=M_\infty-Cr^{D}$ to three consecutive even
+degrees (Aitken's $\Delta^2$, script \texttt{code/extrapolate\_eps.py}) can
+be tested where the answer is known. From the \lbl{Computed} values at $D=16,18,20$ for $k=50$,
+$\varepsilon=1/25$ it predicts $3.99324$, $4.00195$, $4.00553$ at $D=22,25,27$,
+against the certified $3.99310$ (degree $22$), our $4.00125$ (degree $25$)
+and Polymath8b's $4.0043$ (degree $27$). The model is slightly optimistic, by
+$0.0001$ to $0.0012$. Applied to $k=49$ with $D=18,20,22$ (certified
+$3.97715$ and $3.97690$ at degree $22$ for $\varepsilon=1/30$ and $1/25$) it
+gives limits $3.9922$ and $3.9938$. As a test registered before the run, the
+fit predicted $3.98230$ at degree $24$ for $\varepsilon=1/30$; the certified
+value is $3.98218$ ($1508$ coefficients), again slightly below, and the fit
+through $D=20,22,24$ moves the limit down to $3.9913$. The grid
+$\varepsilon\in\{1/50,1/40,1/30,1/25,1/20\}$ at $D\le20$ gives at most
+$3.995$. This suggests that $\sup_\varepsilon M_{49,\varepsilon}<4$, so that
+the $\varepsilon$-enlarged simplex with Bombieri--Vinogradov stops at $k=50$,
+consistent with the fact that every bound below $246$ uses a different support.
+This is a heuristic, not a theorem: \lbl{Open}. Together with
+Theorem~\ref{thm:floor} it brackets the floor of this method between $30$ and
+(conjecturally) $50$.
+\end{remark}
+
+\begin{remark}[scope]
+Theorem~\ref{thm:floor} concerns the $\varepsilon$-enlarged simplex only. It
+says nothing about the 2026 claims, which use other supports and new
+equidistribution estimates. A floor for those is the Problem in the next
+section.
+\end{remark}
+

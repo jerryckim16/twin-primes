@@ -1,0 +1,65 @@
+\section{Introduction}
+
+\subsection*{The reduction}
+For an admissible $k$-tuple $\mathcal H=\{h_1<\dots<h_k\}$, let $\DHL[k,2]$
+denote the statement that infinitely many translates $n+\mathcal H$ contain at
+least two primes. If $\DHL[k,2]$ holds and $\mathcal H$ is an admissible
+$k$-tuple of diameter $D$, then $H_1\le D$. Maynard's method \cite{May15}
+proves $\DHL[k,2]$ from a level of distribution and a symmetric test function
+$F$ whose ratio $kJ(F)/I(F)$ exceeds a threshold; Polymath8b \cite{Pol14b}
+enlarged the region on which $F$ may live and obtained $H_1\le246$ with
+$k=50$. The 2026 preprints listed below enlarge the region further, to
+\emph{capped} supports, and pay for this with equidistribution estimates
+for the moduli that arise: Stadlmann \cite{Sta26} proves new ones, Kintali
+\cite{Kin26} uses Stadlmann's \cite[Prop.~3]{Sta26} with one branch made empty,
+Charton et al.\ \cite{Cha26} use Stadlmann's Type~I, II and III estimates for
+their own family of moduli, and Song and Yue \cite{SY26} prove their own.
+
+\subsection*{The claims examined}
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+claim & $k$ & source & what we check\\
+\midrule
+$H_1\le240$ & $49$ & Stadlmann \cite{Sta26} & variational criterion\\
+$H_1\le236$ & $48$ & Kintali \cite{Kin26}; Song--Yue \cite{SY26} & variational criterion; published witness\\
+$H_1\le212$ & $45$ & Charton et al.\ \cite{Cha26} & variational criterion; caps\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each claim has two parts: an \emph{analytic} part (an equidistribution
+theorem for the relevant family of moduli) and a \emph{variational} part (a
+function $F$ on the capped support with ratio above the threshold). We check
+only the variational part, and the combinatorial fact that an admissible
+tuple of the stated diameter exists. Throughout we label statements
+\lbl{Computed} (exact certificate and a script that reproduces it),
+\lbl{Proved here}, \lbl{Lean-checked}, \lbl{Literature} (read in the source),
+or \lbl{Claimed} (asserted in a preprint and not verified by us).
+
+\subsection*{Results in brief}
+Ratios in the Polymath scaling, where the threshold is $4$:
+\begin{center}\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+claim & variational ratio & status here\\
+\midrule
+$240$ & $4.0120389$; optimised on $T$: $4.0124198$ & \lbl{Computed}, two programs\\
+$236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \lbl{Computed}, two programs\\
+ & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & ($J_T$; $I_T$ one)\\
+$236$, our own $F$ & $4.0060814$ & \lbl{Computed}, two programs\\
+$212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
+$212$, Lemma~9.1 caps & $<3.99$ for all $F$ in an $846$-dim.\ space & \lbl{Computed}, ball arithm.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{What this note does not do}
+It does not verify the equidistribution estimates of \cite{Sta26},
+\cite{Kin26}, \cite{SY26} or \cite{Cha26}; all three claimed bounds remain conditional
+on them, and the established bound is still $246$. Song and Yue
+\cite[Remark~4.23]{SY26} point to a missing hypothesis in one step of the
+proof of \cite[Lemma~5]{Sta26}; we read that step and comment on it, and on
+which of the claims may depend on it, in Remark~\ref{rem:lemma5}, without
+resolving it. Nothing here concerns the
+parity barrier or the twin prime conjecture.
+

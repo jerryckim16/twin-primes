@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "preparation_version": 1,
+  "main": "paper/main.tex",
+  "source_sha256": "ae415c3ca560a7ebd748e2298aaf459b2c4b4fdcf51a36c6367fbfa4b1190d27",
+  "global_context_sha256": "3a96045c90b37173ee216006a88108b661bab905dbc8c537c283b36e1b5b0186",
+  "contract_sha256": "1724a27967dc2db3a1831b9428f41013d10f745963fb978e0d1bf4849c2d116d",
+  "source_files_sha256": "8d4e05cbbdc7b5380ee4bba772e2d993b71a6b082bef4644a50eebdec0693d5a",
+  "sources": [
+    {
+      "path": "paper/main.tex",
+      "sha256": "ae415c3ca560a7ebd748e2298aaf459b2c4b4fdcf51a36c6367fbfa4b1190d27",
+      "bytes": 104475
+    }
+  ],
+  "source_map": [
+    {
+      "expanded_start": 0,
+      "expanded_end": 104474,
+      "path": "paper/main.tex",
+      "source_start": 0,
+      "source_end": 104474,
+      "source_line": 1
+    },
+    {
+      "expanded_start": 104474,
+      "expanded_end": 104475,
+      "path": "paper/main.tex",
+      "source_start": 104474,
+      "source_end": 104475,
+      "source_line": 1850
+    }
+  ],
+  "units": [
+    {
+      "id": "sha256:f312d41a2aae7fe452f0202d3e08c43f97130ab87c6ddad93d595ee7a5937411:1",
+      "sha256": "763030409eea79a447644408f4db1c04a536b1218b06ae0fed1302d431114f10",
+      "identity_sha256": "f312d41a2aae7fe452f0202d3e08c43f97130ab87c6ddad93d595ee7a5937411",
+      "title": "Front matter",
+      "kind": "front-matter",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/001-front-matter.tex",
+      "expanded_start": 977,
+      "expanded_end": 4180,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 26
+      }
+    },
+    {
+      "id": "sha256:edd61414211792730a95284eb1678eab567e39759efae59734fab85355024a56:1",
+      "sha256": "6e7e3eccb2c3eaa4b55b9ba74aa9a13b7d6ecf39463223ad33a64fdc3992d89d",
+      "identity_sha256": "edd61414211792730a95284eb1678eab567e39759efae59734fab85355024a56",
+      "title": "The problem and the honest position",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/002-the-problem-and-the-honest-position.tex",
+      "expanded_start": 4180,
+      "expanded_end": 9633,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 77
+      }
+    },
+    {
+      "id": "sha256:ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9:1",
+      "sha256": "2cab8f115871bd0403b4ec9c722ffb34c0b0f84b132da946c28fe26b5cce6f6d",
+      "identity_sha256": "ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9",
+      "title": "What this project has verified for itself",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/003-what-this-project-has-verified-for-itself.tex",
+      "expanded_start": 9633,
+      "expanded_end": 23534,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 154
+      }
+    },
+    {
+      "id": "sha256:d16cdf32d961ed0ec9eb5cbadf95480520cd1614a5e244403c54564ad26c08cb:1",
+      "sha256": "32c65a921f086d9d5d4533dd94dba8de42612d03fad0dc4882c9d50ac2b58caa",
+      "identity_sha256": "d16cdf32d961ed0ec9eb5cbadf95480520cd1614a5e244403c54564ad26c08cb",
+      "title": "Results of our own: rigidity of the pigeonhole step",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/004-results-of-our-own-rigidity-of-the-pigeonhole-step.tex",
+      "expanded_start": 23534,
+      "expanded_end": 30509,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 450
+      }
+    },
+    {
+      "id": "sha256:a88e1fccb1ebbcfcf0815147c681059e67c025afafec85a28e6387f5ea735da2:1",
+      "sha256": "dcbd0566a8da399207c4125d9d575b36c456f9dc7bc174925d684ae76708b8dd",
+      "identity_sha256": "a88e1fccb1ebbcfcf0815147c681059e67c025afafec85a28e6387f5ea735da2",
+      "title": "Results of our own: how far the \\texorpdfstring{$\\varepsilon$}{epsilon}-enlargement alone can go",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/005-results-of-our-own-how-far-the-epsilon-enlargement-alone-can-go.tex",
+      "expanded_start": 30509,
+      "expanded_end": 46595,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 589
+      }
+    },
+    {
+      "id": "sha256:5c773f081500fd9fb1f47796f4bb03b3e136c7e2abfd762acec83358c9c0485e:1",
+      "sha256": "787130c690a07ddfbe7d11a13d8d895c5e57c13232a1356365b2b340f34be49e",
+      "identity_sha256": "5c773f081500fd9fb1f47796f4bb03b3e136c7e2abfd762acec83358c9c0485e",
+      "title": "Stadlmann-type supports (versions 0.5--0.9)",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/006-stadlmann-type-supports-versions-0-5-0-9.tex",
+      "expanded_start": 46595,
+      "expanded_end": 97038,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 876
+      }
+    },
+    {
+      "id": "sha256:8d7f28e17ed5174c6cfa073b20ac8627ec005b5123ebf9ee7781ef2ac5209689:1",
+      "sha256": "0252dbab9f1c257979ec64c733872b83e40d17650a4de5d59631c4fab82d0565",
+      "identity_sha256": "8d7f28e17ed5174c6cfa073b20ac8627ec005b5123ebf9ee7781ef2ac5209689",
+      "title": "Programme",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/007-programme.tex",
+      "expanded_start": 97038,
+      "expanded_end": 101468,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1725
+      }
+    },
+    {
+      "id": "sha256:ad8905fa54637899ec6ab168a023954978b22bef731d34ab12c372096b3fc435:1",
+      "sha256": "57c53516c8587bc431ffb12f38dc6f1e3e6ed8cef4b3a0d745a656aaeb68fa5a",
+      "identity_sha256": "ad8905fa54637899ec6ab168a023954978b22bef731d34ab12c372096b3fc435",
+      "title": "Bibliography",
+      "kind": "bibliography",
+      "reviewable": false,
+      "skip_reason": "Bibliography material",
+      "file": "sections/008-bibliography.tex",
+      "expanded_start": 101468,
+      "expanded_end": 104460,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1800
+      }
+    }
+  ],
+  "limitations": [
+    "Lexical preparation only: no TeX execution or arbitrary macro expansion.",
+    "Conditionals, catcode changes, includeonly, TEXINPUTS or import-package paths and custom input/section macros need manual inspection.",
+    "Literal masking covers verb/lstinline and common verbatim/listing/comment environments, not every package.",
+    "Bibliography files, graphics and package inputs are not loaded or authenticated.",
+    "Context is an extraction index; its order is not manuscript theorem numbering.",
+    "Hash comparison identifies text candidates, not dependency freshness or completed reviews."
+  ],
+  "comparison": null
+}

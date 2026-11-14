@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "preparation_version": 1,
+  "main": "papers/verification-note/main.tex",
+  "source_sha256": "1ee6c81f460d21198fe4ae17233740e404dd6b93ad4fd19ce8472669a1032f54",
+  "global_context_sha256": "4ff4630d52e0c31f960c0fc8baf2a1a07c21e40d9f5011b3db32c4ec03f4d4c7",
+  "contract_sha256": "1724a27967dc2db3a1831b9428f41013d10f745963fb978e0d1bf4849c2d116d",
+  "source_files_sha256": "61977eb26b2cefde447585cf0b96b881b0a360bb1d5109c8b99022d659b52d1f",
+  "sources": [
+    {
+      "path": "papers/verification-note/main.tex",
+      "sha256": "1ee6c81f460d21198fe4ae17233740e404dd6b93ad4fd19ce8472669a1032f54",
+      "bytes": 31423
+    }
+  ],
+  "source_map": [
+    {
+      "expanded_start": 0,
+      "expanded_end": 31422,
+      "path": "papers/verification-note/main.tex",
+      "source_start": 0,
+      "source_end": 31422,
+      "source_line": 1
+    },
+    {
+      "expanded_start": 31422,
+      "expanded_end": 31423,
+      "path": "papers/verification-note/main.tex",
+      "source_start": 31422,
+      "source_end": 31423,
+      "source_line": 573
+    }
+  ],
+  "units": [
+    {
+      "id": "sha256:e8b81e1d5243b8dfdedec11023d04d1fa2701abd80f34469b2199627dc207b88:1",
+      "sha256": "3a000a4d8348319c2e4b4e604613abe5ee1a858a209b9740949b0e1c11b79f91",
+      "identity_sha256": "e8b81e1d5243b8dfdedec11023d04d1fa2701abd80f34469b2199627dc207b88",
+      "title": "Front matter",
+      "kind": "front-matter",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/001-front-matter.tex",
+      "expanded_start": 1179,
+      "expanded_end": 3379,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 25
+      }
+    },
+    {
+      "id": "sha256:d0f4cfc8e86bfe1827c64658fb1d5dbbe47d123df8521bc81be82d2b0a0f39de:1",
+      "sha256": "1c9e5255bf08248fa549d745d24000dd0149bf5aef7ceb43d0831fce807f1647",
+      "identity_sha256": "d0f4cfc8e86bfe1827c64658fb1d5dbbe47d123df8521bc81be82d2b0a0f39de",
+      "title": "Introduction",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/002-introduction.tex",
+      "expanded_start": 3379,
+      "expanded_end": 6740,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 62
+      }
+    },
+    {
+      "id": "sha256:728b7dbbd6347a21dcedb202d6ad648b99da62e9d5f623465cbf2e9122a8813f:1",
+      "sha256": "bfec0165b6b197221077cf14d6561a8c0a243e13106b2b0cf9a046af1682b64a",
+      "identity_sha256": "728b7dbbd6347a21dcedb202d6ad648b99da62e9d5f623465cbf2e9122a8813f",
+      "title": "The variational problem on a capped support",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/003-the-variational-problem-on-a-capped-support.tex",
+      "expanded_start": 6740,
+      "expanded_end": 12855,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 127
+      }
+    },
+    {
+      "id": "sha256:d5080a973097adde5b45ef7109cd9c58c8991e4291fa9ca5a0cf29546ba5cd27:1",
+      "sha256": "d3228bef6491550de078db3711bfbfde60cb70c8c8c1af9f069a50440806f0f7",
+      "identity_sha256": "d5080a973097adde5b45ef7109cd9c58c8991e4291fa9ca5a0cf29546ba5cd27",
+      "title": "Method",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/004-method.tex",
+      "expanded_start": 12855,
+      "expanded_end": 15431,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 251
+      }
+    },
+    {
+      "id": "sha256:d35aa9879413e976963d36efd759eae423449cfbe29276ea1d34083bf1997d38:1",
+      "sha256": "71c63e9e1d4542d6322b3e28e3082a8568fb553caa721d90b50add03511d3fc0",
+      "identity_sha256": "d35aa9879413e976963d36efd759eae423449cfbe29276ea1d34083bf1997d38",
+      "title": "Results",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/005-results.tex",
+      "expanded_start": 15431,
+      "expanded_end": 24857,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 295
+      }
+    },
+    {
+      "id": "sha256:1df21581605438671d466660899df1017408ae44619c40d0165278f49b70eb8a:1",
+      "sha256": "4207793d52c2e24430462db677fb0534f7ae377965d0f845adbcd119bda38e5e",
+      "identity_sha256": "1df21581605438671d466660899df1017408ae44619c40d0165278f49b70eb8a",
+      "title": "Remarks",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/006-remarks.tex",
+      "expanded_start": 24857,
+      "expanded_end": 27274,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 463
+      }
+    },
+    {
+      "id": "sha256:faaabb4dbf86fe6c11d555b8809bf7e2d51d1415867a37b3039649476b3440d0:1",
+      "sha256": "4ecfc1ced03bbdd060c1f9a5bb4898926d797efe146b4c5a41c61bf0db3c2710",
+      "identity_sha256": "faaabb4dbf86fe6c11d555b8809bf7e2d51d1415867a37b3039649476b3440d0",
+      "title": "Reproducibility",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/007-reproducibility.tex",
+      "expanded_start": 27274,
+      "expanded_end": 28363,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 503
+      }
+    },
+    {
+      "id": "sha256:2f30ca108b53f940ef33ff8306d012deb9caee4c0778e26d76dd4b295a3fdb67:1",
+      "sha256": "5780b4af9f42647ca41c44edd784fb8d78a2e300ae3900449b11e7084ba6c0f1",
+      "identity_sha256": "2f30ca108b53f940ef33ff8306d012deb9caee4c0778e26d76dd4b295a3fdb67",
+      "title": "Changes",
+      "kind": "section",
+      "reviewable": true,
+      "skip_reason": null,
+      "file": "sections/008-changes.tex",
+      "expanded_start": 28363,
+      "expanded_end": 30269,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 521
+      }
+    },
+    {
+      "id": "sha256:b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9:1",
+      "sha256": "c8dcb26a6af6f788e6a7c4a3a33f954f3aa15ffb4630b93becb5902c0c451a70",
+      "identity_sha256": "b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9",
+      "title": "Bibliography",
+      "kind": "bibliography",
+      "reviewable": false,
+      "skip_reason": "Bibliography material",
+      "file": "sections/009-bibliography.tex",
+      "expanded_start": 30269,
+      "expanded_end": 31408,
+      "location": {
+        "path": "papers/verification-note/main.tex",
+        "line": 552
+      }
+    }
+  ],
+  "limitations": [
+    "Lexical preparation only: no TeX execution or arbitrary macro expansion.",
+    "Conditionals, catcode changes, includeonly, TEXINPUTS or import-package paths and custom input/section macros need manual inspection.",
+    "Literal masking covers verb/lstinline and common verbatim/listing/comment environments, not every package.",
+    "Bibliography files, graphics and package inputs are not loaded or authenticated.",
+    "Context is an extraction index; its order is not manuscript theorem numbering.",
+    "Hash comparison identifies text candidates, not dependency freshness or completed reviews."
+  ],
+  "comparison": {
+    "previous_source_sha256": "a2841e73818b3a7bdcd52ea0635a642553c1a04838fe33d81029320dd5ed0bc0",
+    "previous_main": "papers/verification-note/main.tex",
+    "main_changed": false,
+    "candidate_unchanged": [
+      "sha256:b86998af7e5ab56d527ea006414a2fd9fd1e7c4dd31e2242c3b390c544c7efb9:1"
+    ],
+    "added": [
+      "sha256:1df21581605438671d466660899df1017408ae44619c40d0165278f49b70eb8a:1",
+      "sha256:2f30ca108b53f940ef33ff8306d012deb9caee4c0778e26d76dd4b295a3fdb67:1",
+      "sha256:728b7dbbd6347a21dcedb202d6ad648b99da62e9d5f623465cbf2e9122a8813f:1",
+      "sha256:d0f4cfc8e86bfe1827c64658fb1d5dbbe47d123df8521bc81be82d2b0a0f39de:1",
+      "sha256:d35aa9879413e976963d36efd759eae423449cfbe29276ea1d34083bf1997d38:1",
+      "sha256:d5080a973097adde5b45ef7109cd9c58c8991e4291fa9ca5a0cf29546ba5cd27:1",
+      "sha256:e8b81e1d5243b8dfdedec11023d04d1fa2701abd80f34469b2199627dc207b88:1",
+      "sha256:faaabb4dbf86fe6c11d555b8809bf7e2d51d1415867a37b3039649476b3440d0:1"
+    ],
+    "removed": [
+      "sha256:036ec9dc35d5fd4ec3344e3863b84529d32b80bba69937bd812e7154a8bb15aa:1",
+      "sha256:048e9d1c9a0da7ab0608b7ff25073061ec53cd606f7f3237e16259dd859b046e:1",
+      "sha256:2397709bbbc73a3549ce41125940c6e610088265fc9e1add4c2db7973a702617:1",
+      "sha256:7dfdcf5f1ef23405db2092d4da6cbc8e95b8eaa0ba422f534b0735fe4f881f7c:1",
+      "sha256:9ecf57f594bff3760e13366c8fed449f65f77501bd40c4f846d2ccfbcbe2fea5:1",
+      "sha256:e14b7b1807b8bb71dfbafce9e67ee9600d4530a6f327c230054c935bb271de83:1",
+      "sha256:f7b372290e4ba59841b9c3dc95834d2a2ca53ad7005dc3f935a987784f7ebec0:1"
+    ],
+    "ambiguous": [],
+    "contract_changed": false,
+    "global_context_changed": true,
+    "whole_paper_invalidated": true,
+    "reuse_requires_context_check": true
+  }
+}

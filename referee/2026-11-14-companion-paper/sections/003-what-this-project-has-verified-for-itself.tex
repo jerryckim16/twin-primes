@@ -1,0 +1,296 @@
+\section{What this project has verified for itself}
+
+\subsection{The combinatorial half, checked by the Lean kernel}
+
+Our Lean development is written in core Lean~4, without Mathlib. It defines
+primality, the twin prime conjecture, the predicate \texttt{BoundedGaps B}
+(infinitely many pairs of distinct primes at distance at most $B$),
+admissibility, and $\DHL[k,2]$. It contains no \texttt{sorry}, and the only
+axioms it uses are \texttt{propext} and \texttt{Quot.sound}. The statement
+$\DHL[k,2]$ is always a hypothesis, never an axiom.
+
+\begin{theorem}[\lbl{Lean-checked}]\label{thm:lean}
+\begin{enumerate}
+\item The twin prime conjecture is equivalent to \texttt{BoundedGaps 2}.
+\item If a finite Boolean check succeeds on a list $\mathcal H$ (it misses a
+class modulo every $m$ with $2\le m\le|\mathcal H|$), then $\mathcal H$ is
+admissible. The moduli $p>|\mathcal H|$ are handled by a formal pigeonhole
+argument.
+\item For each pair $(k,D)$ in Table~\ref{tab:tuples}, for
+$(k,D)=(56,278)$, $(57,282)$, $(58,288)$, $(59,300)$, $(60,304)$, $(61,310)$,
+$(62,320)$, $(63,324)$, $(64,330)$, and for $(102,578)$ and $(105,600)$, there is an explicit admissible $k$-tuple in $[0,D]$, and
+$\DHL[k,2]$ implies \texttt{BoundedGaps D}. In particular $\DHL[2,2]$ implies
+the twin prime conjecture.
+\item $\DHL[k,2]$ implies $\DHL[k',2]$ for every $k'\ge k$
+(\texttt{DHL.mono}: delete shifts from the tuple). So a proof of $\DHL[j,2]$
+with $j\le k$ gives \texttt{BoundedGaps D} for each listed pair $(k,D)$.
+\item \texttt{BoundedGaps 1} is false (\texttt{not\_boundedGaps\_one}), and a
+pair $\{0,d\}$ is admissible if and only if $d$ is even
+(\texttt{admissible\_pair\_iff}). So $2$ is the smallest bound of this form
+that can hold, and the twin prime conjecture is the strongest statement of the
+form \texttt{BoundedGaps D}.
+\end{enumerate}
+\end{theorem}
+
+\begin{table}[h]
+\caption{Pairs $(k,D)$ with a kernel-checked admissible $k$-tuple of diameter
+$D$. The tuples were found by our own search; each $D$ agrees with the value
+of $H(k)$ in published tables, whose optimality we have not re-proved.}
+\label{tab:tuples}
+\begin{tabular}{@{}rr@{\qquad}rr@{\qquad}rr@{\qquad}rr@{\qquad}rr@{\qquad}rr@{}}
+\toprule
+$k$&$D$&$k$&$D$&$k$&$D$&$k$&$D$&$k$&$D$&$k$&$D$\\
+\midrule
+2&2&11&36&20&80&29&130&38&176&47&226\\
+3&6&12&42&21&84&30&136&39&182&48&236\\
+4&8&13&48&22&90&31&140&40&186&49&240\\
+5&12&14&50&23&94&32&146&41&188&50&246\\
+6&16&15&56&24&100&33&152&42&196&51&252\\
+7&20&16&60&25&110&34&156&43&200&52&254\\
+8&26&17&66&26&114&35&158&44&210&53&264\\
+9&30&18&70&27&120&36&162&45&212&54&270\\
+10&32&19&76&28&126&37&168&46&216&55&272\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Theorem~\ref{thm:lean} is elementary. Its value is that implication
+\eqref{eq:reduction} is now a checked interface: any future proof of
+$\DHL[k,2]$, by anyone, yields the corresponding gap bound with nothing left
+to trust on the combinatorial side.
+
+\subsection{The sieve constant, with exact certificates}
+
+Let $\R_k=\{t\in[0,1]^k:\ t_1+\dots+t_k\le1\}$ and, for square-integrable $F$
+supported on $\R_k$,
+\[
+I_k(F)=\int_{\R_k}F^2,\qquad
+J_k^{(m)}(F)=\int\left(\int F\,dt_m\right)^{2}\prod_{i\ne m}dt_i,\qquad
+M_k=\sup_F\frac{\sum_{m=1}^{k}J_k^{(m)}(F)}{I_k(F)}.
+\]
+Maynard's theorem \cite[Prop.~4.2]{May15} states that if the primes have level
+of distribution $\theta$ and $\theta M_k/2>1$ then $\DHL[k,2]$ holds. With
+Bombieri--Vinogradov ($\theta<1/2$) the condition is $M_k>4$.
+
+We take $F=\sum_{a+2b\le d}c_{a,b}(1-P_1)^aP_2^b$ with $P_j=\sum_it_i^j$, as
+in \cite[\S8]{May15}. All integrals reduce to
+\[
+\int_{\R_k}(1-P_1)^AP_2^B\,dt=\frac{A!}{(k+A+2B)!}\,G_k(B),\qquad
+\sum_{B\ge0}G_k(B)\frac{x^B}{B!}=\left(\sum_{b\ge0}\frac{(2b)!}{b!}x^b\right)^{k},
+\]
+which follows from the Dirichlet integral. The two quadratic forms are then
+exact rational matrices. We compute an approximate top eigenvector in
+floating point, round it to rationals, and evaluate the Rayleigh quotient in
+exact arithmetic; the last step is a rigorous lower bound whatever happened
+before it.
+
+\begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Mk0}
+With $F$ a polynomial in $1-P_1$ and $P_2$ only,
+\[
+M_{105}\ge4.00206976,\qquad M_{102}\ge4.00271343,\qquad M_{5}\ge2.00410541 .
+\]
+\end{theorem}
+
+The first value reproduces Maynard's $M_{105}>4$ with $d=11$ ($42$
+coefficients). The third gives $\DHL[5,2]$ and $H_1\le12$ under the
+Elliott--Halberstam conjecture, again reproducing \cite{May15}. For
+$d=11,15,19$ the least $k$ at which this family certifies $M_k>4$ is
+$105,102,102$, and at $k=101$ it gives only $3.99931$ ($d=19$): polynomials in
+$P_1,P_2$ alone stop at $k=102$.
+
+\subsection{All symmetric test functions}
+To go further we allow every symmetric polynomial. Since $P_1,\dots,P_k$
+generate the symmetric polynomials, the functions
+\[
+(1-P_1)^a\,P^{b}:=(1-P_1)^a\prod_{j\ge2}P_j^{b_j},\qquad a+w(b)\le d,\quad w(b)=\sum_j jb_j,
+\]
+span all symmetric polynomials of degree at most $d$ (for $k\ge d$). The
+integrals have a closed form that we have not seen stated in this way
+(\lbl{Proved here}; possibly folklore).
+
+\begin{lemma}\label{lem:egf}
+Let $X_1,\dots,X_k$ be independent exponential random variables of mean $1$
+and $E_k(b)=\mathbb E\prod_jP_j(X)^{b_j}$. Then
+\[
+\int_{\R_k}(1-P_1)^AP^{b}\,dt=\frac{A!}{(k+A+w(b))!}\,E_k(b),
+\qquad
+\sum_b E_k(b)\frac{s^b}{b!}=\left(\sum_{c}w(c)!\,\frac{s^c}{c!}\right)^{k},
+\]
+where $s^b=\prod_js_j^{b_j}$ and $b!=\prod_jb_j!$. In particular each
+$E_k(b)$ is a positive integer, computed exactly by multiplying
+exponential generating functions.
+\end{lemma}
+
+\begin{proof}
+For a monomial, the Dirichlet integral gives
+$\int_{\R_k}(1-P_1)^At^\alpha\,dt=A!\,\alpha!/(k+A+|\alpha|)!$, and
+$\alpha!=\mathbb EX^\alpha$. Summing over the monomials of $P^b$, all of
+degree $w(b)$, gives the first identity. For the second,
+$\mathbb E\exp(\sum_js_jP_j(X))=\left(\mathbb E\exp(\sum_js_jX_1^j)\right)^k$
+by independence, and
+$\mathbb E\exp(\sum_js_jX_1^j)=\sum_c\mathbb E X_1^{w(c)}\,s^c/c!=\sum_cw(c)!\,s^c/c!$,
+as formal power series.
+\end{proof}
+
+The $J$-functional reduces to the same lemma in $k-1$ variables: with
+$P_j=P_j'+t_k^j$,
+\[
+\int_0^{1-P_1'}(1-P_1)^aP^b\,dt_k=\sum_{e\le b}\binom{b}{e}
+\frac{a!\,w(e)!}{(a+w(e)+1)!}\,(1-P_1')^{a+w(e)+1}P'^{\,b-e}.
+\]
+So both Gram matrices are exact rational matrices. We find an approximate top
+eigenvector by inverse iteration with a fixed shift above
+$\frac{k}{k-1}\log k$, which can only converge to the top eigenvalue. We take
+its floating-point midpoints as exact dyadic rationals and evaluate the
+Rayleigh quotient exactly. The working precision of the eigenvector matters
+only for speed. A separate script, \texttt{code/verify\_cert.py}, rebuilds
+both Gram matrices from scratch and re-evaluates each stored coefficient
+vector in exact arithmetic.
+
+\begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Mk}
+\begin{gather*}
+M_{105}\ge4.17427,\qquad M_{64}\ge4.00363,\qquad M_{58}\ge4.00927,\\
+M_{56}\ge4.00519,\qquad M_{55}\ge4.00516,\qquad M_{54}\ge4.00238 .
+\end{gather*}
+The first two use all symmetric polynomials of degree $11$ and $12$
+($195$ and $272$ coefficients). The others use the subspace spanned by
+$(1-P_1)^aP^b$ with $b$ supported on even $j$, as in \cite[\S7]{Pol14b}, of
+degree $16$, $18$, $20$ and $23$ ($307$, $471$, $707$ and $1236$ coefficients).
+\end{theorem}
+
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Basis & degree & coefficients & least $k$ with certified $M_k>4$\\
+\midrule
+$1-P_1$, $P_2$ & 19 & 110 & 102\\
+all symmetric & 12 & 272 & 64\\
+even power sums & 16 & 307 & 58\\
+even power sums & 18 & 471 & 56\\
+even power sums & 20 & 707 & 55$^{\dagger}$\\
+even power sums & 23 & 1236 & 54$^{\dagger}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent{\small $^{\dagger}$ Only this value of $k$ was run at this degree; smaller $k$ were not tried.}
+
+\begin{corollary}[end-to-end within this project]\label{cor:578}
+Assuming the Bombieri--Vinogradov theorem and \cite[Prop.~4.2]{May15}, both
+\lbl{Literature}, Theorems~\ref{thm:Mk} and~\ref{thm:lean} give
+$H_1\le270$.
+\end{corollary}
+
+This reproduces a known result and is not new. Polymath8b obtained
+$M_{54}>4.00238$ with even-part polynomials of degree $23$
+\cite[Thm.~3.9]{Pol14b}, and hence $H_1\le270$. Our certified value in the
+same space, $4.002386\ldots$, agrees with theirs to every digit they print,
+which is an external check on our pipeline; two independent runs of it (one
+from an earlier session) produced the same value. Corollary~\ref{cor:578}
+is the best that the plain simplex gives with Bombieri--Vinogradov (see the
+next subsection); Corollary~\ref{cor:246} below takes the next rung of the
+ladder $600\to270\to246\to240\to212\to186\to182$.
+
+\subsection{What the plain method cannot do}
+Polymath8b proved $M_k\le\frac{k}{k-1}\log k$ \cite{Pol14b}. Hence
+(\lbl{Computed} from that bound) $M_k>4$ forces $k\ge51$, and on the plain
+simplex $\DHL[k,2]$ requires a level of distribution
+$\theta>2(k-1)/(k\log k)$:
+\begin{center}
+\begin{tabular}{@{}rcccccccc@{}}
+\toprule
+$k$ & 50 & 45 & 40 & 35 & 30 & 20 & 10 & 5\\
+\midrule
+$\theta>$ & 0.501 & 0.514 & 0.529 & 0.547 & 0.568 & 0.634 & 0.782 & 0.994\\
+\bottomrule
+\end{tabular}
+\end{center}
+The 2026 results go below $k=50$ by changing the support of $F$, not by
+proving a uniform level of distribution of this size.
+
+\subsection{Beyond the plain simplex: \texorpdfstring{$H_1\le246$}{H1 <= 246}}
+Polymath8b's $\varepsilon$-enlarged simplex \cite[Thm.~3.12]{Pol14b}
+(\lbl{Literature}; we re-read the statement in the arXiv text for this
+version) takes $F$ supported on $(1+\varepsilon)\R_k$ and integrates the
+square of each marginal $\int F\,dt_m$ only over $(1-\varepsilon)\R_{k-1}$.
+Call the resulting constant $M_{k,\varepsilon}$. If $\mathrm{EH}[\theta]$
+holds with $1+\varepsilon<1/\theta$ and $M_{k,\varepsilon}>2/\theta$, then
+$\DHL[k,2]$ holds. Bombieri--Vinogradov gives every $\theta<1/2$, so for
+every fixed $\varepsilon<1$ the condition is $M_{k,\varepsilon}>4$.
+
+We extended our pipeline to this functional, following the route that
+\cite[\S7.2]{Pol14b} describes in words. Put $L=1+\varepsilon$,
+$\tau=1-\varepsilon$ and use the basis $(L-P_1)^aP^b$ ($b$ supported on even
+$j$). The following identities are elementary (\lbl{Proved here}): the
+substitution $t=Ls$ and Lemma~\ref{lem:egf} give
+\[
+\int_{L\R_k}(L-P_1)^AP^b\,dt=L^{k+A+w(b)}\,\frac{A!}{(k+A+w(b))!}\,E_k(b);
+\]
+the inner integral over $t_m\in[0,L-P_1']$ is the formula displayed after
+Lemma~\ref{lem:egf} with $1-P_1'$ replaced by $L-P_1'$; and on
+$\tau\R_{k-1}$ we write $L-P_1'=2\varepsilon+(\tau-P_1')$, so that
+\[
+\int_{\tau\R_{k-1}}(L-P_1')^AP'^{\,B}=\sum_{i=0}^{A}\binom Ai(2\varepsilon)^{A-i}\,
+\tau^{k-1+i+w(B)}\,\frac{i!}{(k-1+i+w(B))!}\,E_{k-1}(B).
+\]
+For rational $\varepsilon$ both Gram matrices are again exact rational
+matrices. We checked the code against hand computation for $k=2,3$ and
+$F\in\{1,L-P_1\}$, and against direct iterated symbolic integration (sympy,
+without Lemma~\ref{lem:egf} or the binomial rewrite) of every Gram entry for
+$(k,d,\varepsilon)=(3,3,1/5)$ and $(4,4,1/25)$: no mismatch
+(\texttt{code/check\_eps\_sympy.py}). At $\varepsilon=0$ it is the old code
+path (an old certificate re-verifies unchanged). We also found that the working precision of
+the eigenvector search can be cut from about $6000$ to $300$--$400$ bits
+without changing any certified digit, which makes degree $25$ feasible on a
+four-core machine (build $16$ minutes, search $4$ minutes).
+
+\begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Meps}
+With even power sums of degree $25$ ($1780$ coefficients) and of degree $27$
+($2526$ coefficients),
+\[
+M_{50,1/25}\ge4.0012466\qquad\text{and}\qquad M_{50,1/25}\ge4.0043063 .
+\]
+\end{theorem}
+
+The certificates are \texttt{code/cert\_M50e25\_D25e.json} and
+\texttt{code/cert\_M50e25\_D27e.json} (the degree-$27$ run took $43$ minutes
+to build and $10$ minutes to search, with about $10$~GB of memory); the script
+\texttt{code/verify\_cert.py} rebuilds both Gram matrices from scratch and
+re-evaluates the stored rational vector exactly; it uses the same
+Gram-matrix builder, so it checks the arithmetic and the bookkeeping, while
+the formulas themselves are checked by the symbolic test above. Polymath8b report
+$M_{50,1/25}>4.00124$ at degree $25$ and $>4.0043$ at degree $27$
+\cite[\S7.2]{Pol14b}; our values agree with both to every printed digit.
+
+
+\begin{corollary}[end-to-end within this project]\label{cor:246}
+Assuming the Bombieri--Vinogradov theorem and \cite[Thm.~3.12(i)]{Pol14b},
+both \lbl{Literature}, Theorem~\ref{thm:Meps} and the Lean tuple $(50,246)$
+of Theorem~\ref{thm:lean} give $H_1\le246$.
+\end{corollary}
+
+This is the established bound of 2014, reproduced; it is not new. It closes
+the second rung of our ladder. Table~\ref{tab:eps} shows how the certified
+values grow with the degree and depend on $\varepsilon$; it is the data
+behind Remark~\ref{rem:k49} below.
+
+\begin{table}[h]
+\caption{Certified lower bounds for $M_{k,\varepsilon}$ (\lbl{Computed}, exact
+Rayleigh quotients, even power sums of degree $D$). Data:
+\texttt{runs/scan\_k49.jsonl}, \texttt{runs/scan\_k50.jsonl}, written by
+\texttt{code/scan\_eps.py}; the column $k=50$, $D=16$ from direct runs of
+\texttt{code/mk\_general.py}. A dash: not computed.}
+\label{tab:eps}
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+& \multicolumn{3}{c}{$k=49$} & \multicolumn{3}{c}{$k=50$}\\
+$\varepsilon$ & $D=16$ & $D=18$ & $D=20$ & $D=16$ & $D=18$ & $D=20$\\
+\midrule
+$0$    & 3.88640 & 3.90102 & 3.91056 & 3.90173 & 3.91718 & 3.92739\\
+$1/50$ & 3.93491 & 3.95066 & 3.96110 & 3.94979 & 3.96644 & 3.97761\\
+$1/30$ & 3.93969 & 3.95745 & 3.96933 & --      & 3.97254 & 3.98522\\
+$1/25$ & 3.93674 & 3.95563 & 3.96840 & 3.95041 & 3.97034 & 3.98395\\
+$1/20$ & 3.92741 & 3.94823 & 3.96244 & --      & 3.96234 & 3.97745\\
+\bottomrule
+\end{tabular}
+\end{table}
+

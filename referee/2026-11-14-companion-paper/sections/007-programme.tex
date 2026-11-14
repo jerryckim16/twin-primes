@@ -1,0 +1,75 @@
+\section{Programme}\label{sec:prog}
+
+\subsection*{Track A: lowering the bound}
+\begin{enumerate}
+\item \emph{Climb the ladder.} The certified pipeline now stands at $k=50$
+($H_1\le246$, the established bound, via the $\varepsilon$-enlarged simplex).
+Stadlmann's region ($k=49$, $240$): version~0.6 reproduces the variational
+step exactly (Theorem~\ref{thm:capped-exact}, Corollary~\ref{cor:240}), so the
+project's bound is $240$ \emph{conditionally on the unverified
+equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
+\cite{Cha26}) version~0.7 confirms the variational criterion for the caps of
+their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
+can move, the discrepancy between their Table~3 and Lemma~9.1 must be
+resolved; version~0.8 has the tool for optimising on the capped support
+(Proposition~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
+our $846$-dimensional space reaches $3.99$ (Proposition~\ref{prop:cha-ceiling});
+so the draft's value must belong to its Table~3 caps. For $236$ ($k=48$) the variational criterion of \cite{Kin26} holds with
+our own degree-$22$ vector (Proposition~\ref{prop:kin-capped}), and the
+capped numerator of the published witness of \cite{SY26} is reproduced
+exactly, integer for integer, by two independent programs
+(Proposition~\ref{prop:sy-exact}), so the project's bound is $236$
+conditionally (Corollary~\ref{cor:236}); the analytic input remains
+\lbl{Claimed}. Our own vector is confirmed by
+two programs (version~0.12); Proposition~\ref{prop:bonf} makes such checks cheaper
+when only the inequality is needed. Then
+$186$ and $182$.
+\item \emph{Floor of the method (our main original direction).} For the plain
+simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
+stops ($k\ge51$). For the $\varepsilon$-enlarged simplex
+Theorem~\ref{thm:floor} gives $k\ge30$, which is still far from the expected
+truth near $50$; Section~4 explains what a sharper weight must do, and
+Proposition~\ref{prop:family} indicates that it must depend on more of $t$
+than $t_m$ and $S$ (a Collatz--Wielandt weight $\psi_m=\int F\,dt_m/F$ built
+from a good positive test function $F$ is the natural candidate). For the
+one-band hybrid supports of \cite{Sta26,Cha26},
+Theorem~\ref{thm:hybrid-floor} gives the first such bound we know of
+($k\ge29$ at Stadlmann's level, $k\ge27$ at that of \cite{Cha26}), still
+far from $49$ and $45$; it ignores the caps. A rigorous
+dual certificate there would say whether $182$ is close to the limit of the
+present inputs or far from it, and which input (which Type~I/II/III range) is
+binding.
+\item \emph{Which rung is cheap.} From Table~\ref{tab:tuples}, the gain per
+unit of $k$ below the claimed frontier is $182\to176\to168\to162\to158$
+for $k=39,\dots,35$: the steps $39\to38$ and $38\to37$ are worth the most.
+\end{enumerate}
+
+\begin{problem}[\lbl{Open}; partly answered by Theorem~\ref{thm:hybrid-floor} for one band, without using the caps]
+Give a rigorous upper bound for the variational quantity of \cite{Sta26} as a
+function of $k$ and of the admissible exponents, and deduce the least $k$ the
+hybrid method can reach with the currently proved estimates.
+\end{problem}
+
+\subsection*{Track B: the parity barrier}
+No sieve of the above kind can distinguish integers with an even number of
+prime factors from those with an odd number. Known ways around the barrier
+all inject bilinear or structural information. We will study, one per
+session, what each would need in order to say something about twin primes:
+Chen's theorem \cite{Che73}; Bombieri's asymptotic sieve \cite{Bom76}; the
+parity-breaking sieve of Friedlander and Iwaniec \cite{FI98}; Heath-Brown's
+theorem that Siegel zeros would imply the conjecture \cite{HB83}; the
+function-field proof of Sawin and Shusterman \cite{SS22}; and the
+entropy-based results on correlations of multiplicative functions
+\cite{Tao16}.
+
+\begin{problem}[\lbl{Open}, to be made precise in Lean]
+State, as a single explicit hypothesis on bilinear sums over $n(n+2)$, the
+weakest known input that implies the twin prime conjecture, and formalise the
+implication.
+\end{problem}
+
+\subsection*{Rules of this paper}
+A numerical bound enters the ``established by this project'' column only with
+an exact certificate and, for the combinatorial part, a Lean proof. Ideas are
+logged with their outcome, including failures. Nothing here is peer reviewed.
+
