@@ -1,0 +1,128 @@
+{
+ "schema_version": 1,
+ "pass": "P1",
+ "manuscript_sha256": "ae415c3ca560a7ebd748e2298aaf459b2c4b4fdcf51a36c6367fbfa4b1190d27",
+ "contract_sha256": "1724a27967dc2db3a1831b9428f41013d10f745963fb978e0d1bf4849c2d116d",
+ "units": [
+  "sha256:f312d41a2aae7fe452f0202d3e08c43f97130ab87c6ddad93d595ee7a5937411:1",
+  "sha256:edd61414211792730a95284eb1678eab567e39759efae59734fab85355024a56:1",
+  "sha256:ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9:1",
+  "sha256:d16cdf32d961ed0ec9eb5cbadf95480520cd1614a5e244403c54564ad26c08cb:1"
+ ],
+ "lanes": [
+  "correctness",
+  "adversarial"
+ ],
+ "coverage": [
+  {
+   "lanes": [
+    "correctness",
+    "adversarial"
+   ],
+   "scope": "Units 001-004 (paper/main.tex lines 1-588): abstract/front matter; Section 'The problem and the honest position' (eq:reduction, status table and footnotes); Section 'What this project has verified for itself' (Thm thm:lean, Table tab:tuples, Thm thm:Mk0, Lemma lem:egf and proof, J-reduction formula, Thm thm:Mk and basis table, Cor cor:578, theta table, eps-enlarged identities, Thm thm:Meps, Cor cor:246, Table tab:eps); Section 'Results of our own: rigidity of the pigeonhole step' (weighted criterion, Prop prop:rigid and proof, k=3 remark, Prop prop:rigid-eps and proof, eps k=3 table, scope remark)",
+   "reviewed_units": [
+    "sha256:f312d41a2aae7fe452f0202d3e08c43f97130ab87c6ddad93d595ee7a5937411:1",
+    "sha256:edd61414211792730a95284eb1678eab567e39759efae59734fab85355024a56:1",
+    "sha256:ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9:1",
+    "sha256:d16cdf32d961ed0ec9eb5cbadf95480520cd1614a5e244403c54564ad26c08cb:1"
+   ],
+   "context_units": [
+    "full-source.tex (cross-references cor:240, cor:236, prop:bonf, rem:k49, thm:floor, Sections 5-6 for abstract numbers)"
+   ],
+   "executor": "referee subagent (correctness+adversarial lanes, units 001-004)",
+   "method": "Hand re-derivation of Lemma lem:egf (Dirichlet integral + exponential moments, integrality), the inner-integral formula, the three eps-enlarged identities, Prop prop:rigid (perfect-graph polytope step, convexity, slicing/rescaling exponents sigma^j, sigma^{j+1}, monotonicity) and Prop prop:rigid-eps (mu-rescaling, region inclusion, j=1 case, embedding limit, equality). Lean: read lean/TwinPrimes/Basic.lean, Tuples.lean, Audit.lean (not built); confirmed every theorem name cited (twin_iff, admissible_of_check, DHL.mono, not_boundedGaps_one, admissible_pair_iff, NarrowTuple.boundedGaps), no sorry/native_decide; parsed all 65 NarrowTuple lists and checked in Python: length k, strictly increasing, diameter = D, admissible mod every prime <= k; Table tab:tuples equals the Lean list. Exact checks: read every cert_M*.json and computed its exact Rayleigh quotient; reran code/verify_cert.py on cert_M58_D16e, cert_M64_D12, cert_M56_D18e (all pass); recomputed basis sizes 42,110,195,272,307,471,707,1236,1780,2526 from partition counts; recomputed theta table and k/(k-1)log k at k=50,51; reran mk_general.py at (105,11) [4.174272850696], (104,11), (63,12) [3.99484<4], (57,16,even) [3.99716<4], (50,16,even, eps 0,1/50,1/25) [3.901734, 3.949799, 3.950417]; mk_bound.run (P1,P2 family) at (104,11) [3.99868], (101,11/15/19/23) [3.98814, 3.99885, 3.99931, 3.99933]; compared Table tab:eps with runs/scan_k49.jsonl and runs/scan_k50.jsonl entry by entry; reran code/weighted_pigeonhole.py at degree 5 and 6 (matches Remark values); compared eps k=3 table with notes/enlarged_pigeonhole_d5_d10.txt (matches; rerun of enlarged_pigeonhole.py timed out at 295 s, not completed); reran code/check_eps_sympy.py 3 3 1/5 (0 mismatches). Front matter: every number in the abstract matched against the body (4.0120, 4.0027, 3.9737, 846, 3.99, 4.0124, 4.0061, 2001/2000, k<=29, k<=28); their correctness is left to the passes on Sections 5-6.",
+   "status": "complete",
+   "model_assignment": {
+    "assignment_source": "Parent agent assignment: CORRECTNESS + ADVERSARIAL lanes, units 001-004",
+    "requested_model": null,
+    "requested_reasoning": null,
+    "actual_model": null,
+    "actual_reasoning": null,
+    "fallback_reason": null
+   }
+  }
+ ],
+ "coverage_notes": "Verified correct (no finding): eq:reduction; Theorem thm:lean items 1-5 match the Lean sources (Lean DHL quantifies over Nat lists, which is implied by the paper's integer-tuple DHL, so the stated implications hold in the direction used); all 65 tuples admissible with the stated diameters; Thm thm:Mk0 values are truncations of the stored exact quotients (4.0020697619, 4.0027134339, 2.0041054153); 'least k' claims 105/102/102, 64, 58, 56 confirmed by reruns at k-1 (3.99868, 3.99484, 3.99716; cert_M55_D18e 3.99153); 3.99931 at k=101, d=19 confirmed, and d=23 gives 3.999325, so 'polynomials in P1,P2 alone stop at k=102' is well supported; Lemma lem:egf and its proof are correct (E_k(b) = sum of multinomial b!/prod c^i! times prod w(c^i)!, a positive integer); the inner-integral and the three eps identities are correct; the inverse-iteration shift argument is valid for the plain simplex; Thm thm:Mk values (except provenance of M_105, F003) are truncations of stored certificates; Thm thm:Meps basis sizes, and the agreement with Polymath8b's printed digits, hold; Table tab:eps entries match the jsonl data up to the rounding issue in F001; Prop prop:rigid: the perfect-graph step (STAB = QSTAB for the perfect complement, so P = conv of clique indicators), convexity, the slicing exponents and the monotonicity are all correct; Prop prop:rigid-eps: the mu-rescaling, the region inclusion (equivalent to -|u|(1+eps) <= -|u|(1-eps)), the j=1 Cauchy-Schwarz value 1+eps, the embedding limit (the region radius tends to 1-eps from below, so the limit holds by monotone convergence) and the equality for a largest clique all hold; degenerate omega=1 makes both criteria unsatisfiable, consistently; GEH condition eps<1/(k-1) is weaker for omega<=k. Not checked: Lean build/axiom output (reading only, per instructions); external-literature citation numbers (Maynard Prop 4.2, Pol14b Thm 3.9/3.12/3.13, section 7.2) were not checked against sources (no internet); degree-25/27 certificates not rebuilt (16-53 min builds).",
+ "findings": [
+  {
+   "id": "P1-F001",
+   "lane": "correctness",
+   "title": "Stated certified lower bounds rounded up past the certified value (Thm thm:Meps, Table tab:eps, eps k=3 table)",
+   "severity": "minor",
+   "type": "computation-error",
+   "confidence": 0.95,
+   "location": "Theorem thm:Meps, paper/main.tex:403; also Table tab:eps lines 441-445, Remark table lines 571-574, theta table line 356",
+   "quote": "M_{50,1/25}\\ge4.0012466\\qquad\\text{and}\\qquad M_{50,1/25}\\ge4.0043063 .",
+   "claim": "M_{50,1/25} >= 4.0012466 (degree 25) and >= 4.0043063 (degree 27), certified in exact arithmetic.",
+   "issue": "The exact Rayleigh quotients stored in code/cert_M50e25_D25e.json and code/cert_M50e25_D27e.json are 4.001246593441... and 4.004306258353.... Both stated bounds exceed these (4.0012466 > 4.00124659344; 4.0043063 > 4.00430625835), so neither inequality as printed is what the certificates prove; they are round-to-nearest, not truncations. The same convention appears in Table tab:eps, captioned 'Certified lower bounds': e.g. k=49, eps=1/50, D=18 printed 3.95066 vs 3.950655280 in runs/scan_k49.jsonl; eps=1/30, D=18 3.95745 vs 3.957446343; eps=0, D=18 3.90102 vs 3.901015520; eps=1/50, D=16 3.93491 vs 3.934909829; eps=1/20, D=16 3.92741 vs 3.927408074; eps=1/20, D=20 3.96244 vs 3.962437041; k=50, D=20: eps=1/30 3.98522 vs 3.985219018, eps=1/25 3.98395 vs 3.983945393, eps=1/20 3.97745 vs 3.977447280. (The k=50, D=16 column is truncated, so the table even mixes the two conventions.) The eps remark table at line 571-574 does the same: 1.518567 vs 1.518566714, 1.482143 vs 1.482142652, 1.264698 vs 1.264697853, 1.882282 vs 1.882281975, 1.717104 vs 1.717103517 (notes/enlarged_pigeonhole_d5_d10.txt). In the theta table, the necessary thresholds 2(k-1)/(k log k) = 0.51372, 0.52862, 0.54646, 0.78173 are printed as 0.514, 0.529, 0.547, 0.782, i.e. slightly stronger than what the bound gives. Thm thm:Mk0 and thm:Mk use truncation correctly. No conclusion (>4 or <4) changes.",
+   "analysis": "Exact check: Fraction(cert['rayleigh']) >= Fraction('4.0012466') is False and >= Fraction('4.0043063') is False. The values remain >4 by a wide margin, so Cor cor:246 is unaffected.",
+   "suggested_fix": "Print truncated (rounded-down) digits for every quantity labelled a certified lower bound: 4.0012465 and 4.0043062 in thm:Meps; truncate Table tab:eps and the eps k=3 table entries, or state that entries are rounded to nearest; round the theta thresholds down (0.513, 0.528, 0.546, 0.781) or print them as approximations.",
+   "unit_id": "sha256:ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9:1",
+   "reviewer": "P1 correctness+adversarial"
+  },
+  {
+   "id": "P1-F002",
+   "lane": "correctness",
+   "title": "'Best that the plain simplex gives' is not justified by the cited bound, which leaves k = 51, 52, 53 open",
+   "severity": "moderate",
+   "type": "other",
+   "confidence": 0.85,
+   "location": "Section 'The sieve constant, with exact certificates', paper/main.tex:341-343, with the justification at lines 347-349",
+   "quote": "is the best that the plain simplex gives with Bombieri--Vinogradov (see the",
+   "claim": "Corollary cor:578 (H_1 <= 270, k = 54) is the best that the plain simplex gives with BV, as shown in the next subsection.",
+   "issue": "The next subsection proves only that M_k > 4 forces k >= 51, from M_k <= k/(k-1) log k (equal to 3.99186 at k=50 and 4.01046 at k=51). It does not exclude M_51, M_52 or M_53 > 4, which would give H_1 <= H(51)=252, H(52)=254 or H(53)=264 on the plain simplex, all below 270. The paper elsewhere says exactly this ('shows where the method stops (k>=51)', lines 591-592 and 1753-1754), so the sentence at 341-343 contradicts the paper's own stated limit. What is established is that k=54 is the best this project (and Polymath8b) has certified on the plain simplex, and that k <= 50 is impossible.",
+   "analysis": "Recomputed k/(k-1) log k at k=50 and k=51. No statement in full-source.tex gives an upper bound M_53 <= 4 or similar (searched for M_{51}, M_{52}, M_{53}, k=53).",
+   "suggested_fix": "Replace with: 'Corollary cor:578 is the best certified on the plain simplex with BV (by Polymath8b and by us); the dual bound of the next subsection shows only that k <= 50 is impossible there, so k = 51, 52, 53 remain open for this method.' Alternatively cite an actual upper bound showing M_53 < 4, if one exists.",
+   "unit_id": "sha256:ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9:1",
+   "reviewer": "P1 correctness+adversarial"
+  },
+  {
+   "id": "P1-F003",
+   "lane": "correctness",
+   "title": "M_105 >= 4.17427 (all symmetric, degree 11) and the k=50, D=16 column of Table tab:eps have no stored certificate or data file",
+   "severity": "minor",
+   "type": "other",
+   "confidence": 0.9,
+   "location": "Theorem thm:Mk, paper/main.tex:305; text at lines 299-301; Table tab:eps caption line 433",
+   "quote": "M_{105}\\ge4.17427,\\qquad M_{64}\\ge4.00363,\\qquad M_{58}\\ge4.00927,\\\\",
+   "claim": "M_105 >= 4.17427 is Computed in exact rational arithmetic, and code/verify_cert.py re-evaluates each stored coefficient vector exactly.",
+   "issue": "code/ contains certificates for every other value of thm:Mk (cert_M64_D12, cert_M58_D16e, cert_M56_D18e, cert_M55_D20e, cert_M54_D23e), but none for M_105 at degree 11 with 195 coefficients: code/cert_M105.json is the 42-coefficient P1,P2 vector of thm:Mk0 (quotient 4.0020697619), and code/scan_results.json has only the P1,P2 runs. The value appears only as text in status.json:176. So the sentence 'rebuilds both Gram matrices from scratch and re-evaluates each stored coefficient vector' does not cover this entry. Similarly, the k=50, D=16 column of Table tab:eps is attributed to 'direct runs of code/mk_general.py' with no data file in runs/ or code/. The values themselves are correct: rerunning 'mk_general.py 105 11' gives n=195, exact quotient 4.174272850696 (13 s), and 'mk_general.py 50 16 --even --eps e' gives 3.901734, 3.949799, 3.950417 for e = 0, 1/50, 1/25, matching the table.",
+   "analysis": "Searched every JSON under the repository (outside referee/) for k=105 records: only cert_M105.json (D=11, 42 coefficients) and scan_results.json (n=42).",
+   "suggested_fix": "Store code/cert_M105_D11.json (mk_general.py 105 11 --cert ..., about 15 s) and a small runs/ file for the k=50, D=16 column, or say in the text that this value is recorded without a stored vector.",
+   "unit_id": "sha256:ad32d0898be4b5b9151a74ccaf5bd61c264f3030d04f004d6b89bfd07425dda9:1",
+   "reviewer": "P1 correctness+adversarial"
+  },
+  {
+   "id": "P1-F004",
+   "lane": "adversarial",
+   "title": "k=3 consistency remark does not state the shifts and D, so the bound it checks against (M_2) is not determined",
+   "severity": "minor",
+   "type": "implicit-assumption",
+   "confidence": 0.75,
+   "location": "Remark [Computed, consistency check for k=3], paper/main.tex:506-511 (also the eps remark, lines 563-579)",
+   "quote": "$M_2=1/(1-W(1/e))=1.3859\\ldots$\\,. The half-weighted functional is far below",
+   "claim": "The lower bounds for M_3[c] at c=(1,1,0) and (1/2,1,1/2) lie below M_2, as Proposition prop:rigid requires.",
+   "issue": "Proposition prop:rigid bounds M_k[c] by alpha_D(c) M_omega, and both alpha_D and omega depend on the shifts and on D, which the remark never fixes. The comparison with M_2 is the right one only when h_2-h_1 <= D, h_3-h_2 <= D and h_3-h_1 > D (path graph: omega=2, alpha_D((1/2,1,1/2)) = alpha_D((1,1,0)) = 1). For D below both gaps, omega=1 and alpha_D((1/2,1,1/2))=2, so the proposition requires only M_3[c] <= 2; for D >= h_3-h_1 the bound is M_3. The intended configuration (shifts (0,1,2), D=1) is stated only in code/enlarged_pigeonhole.py and notes/enlarged-rigidity.md. The numbers themselves reproduce (weighted_pigeonhole.py degree 6: 1.646438, 1.357924, 1.160439).",
+   "analysis": "Worked out alpha_D and omega for the three possible graph types on 3 points.",
+   "suggested_fix": "Add 'for the shifts (0,1,2) and D=1, so that omega=2 and alpha_D(c)=1 for both weight vectors' to the k=3 remark and to the eps remark.",
+   "unit_id": "sha256:d16cdf32d961ed0ec9eb5cbadf95480520cd1614a5e244403c54564ad26c08cb:1",
+   "reviewer": "P1 correctness+adversarial"
+  },
+  {
+   "id": "P1-F005",
+   "lane": "correctness",
+   "title": "Abstract's 'every statement carries a label' is not met by the two end-to-end corollaries",
+   "severity": "minor",
+   "type": "other",
+   "confidence": 0.7,
+   "location": "Abstract, paper/main.tex:69-72; Corollaries cor:578 (line 330) and cor:246 (line 418)",
+   "quote": "directions that later versions will test. Every statement carries one of the",
+   "claim": "Every statement carries one of the labels Lean-checked, Computed, Proved here, Literature, Claimed, Open.",
+   "issue": "Corollaries cor:578 and cor:246 carry only '[end-to-end within this project]', with no status label, though they are exactly the statements where the status is mixed (Computed + Lean-checked + Literature inputs). Lemma lem:egf has no label in its header; its status ('Proved here; possibly folklore') is only in the sentence before it. Equation eq:reduction and the bound M_k <= k/(k-1) log k at line 347 also have no label (the latter is attributed to Polymath8b, so Literature is implied).",
+   "analysis": "Checked every theorem-like environment in units 002-004 for a \\lbl{...} tag.",
+   "suggested_fix": "Label the corollaries, e.g. '[Computed + Lean-checked, conditional on Literature inputs]', put '\\lbl{Proved here}' in the header of lem:egf, and mark eq:reduction and the dual bound as Literature (or weaken the abstract sentence to 'every result').",
+   "unit_id": "sha256:f312d41a2aae7fe452f0202d3e08c43f97130ab87c6ddad93d595ee7a5937411:1",
+   "reviewer": "P1 correctness+adversarial"
+  }
+ ]
+}

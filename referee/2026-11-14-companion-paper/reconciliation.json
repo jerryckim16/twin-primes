@@ -1,0 +1,266 @@
+{
+ "run": "2026-11-14-companion-paper",
+ "manuscript": "paper/main.tex v0.12",
+ "entries": [
+  {
+   "finding_id": "P5-C01",
+   "disposition": "accepted",
+   "reason": "FC1"
+  },
+  {
+   "finding_id": "P5-C02",
+   "disposition": "accepted",
+   "reason": "FC2"
+  },
+  {
+   "finding_id": "P2-S5-F001",
+   "disposition": "accepted",
+   "reason": "FC3; coordinator reran dual_eps.fiber_integral below the grid: a=1.037 gives 4.14633 (r=10), a=1.05 gives 4.17821"
+  },
+  {
+   "finding_id": "P3-S6A-02",
+   "disposition": "accepted",
+   "reason": "FC4; coordinator confirmed notes/sources-enlarged-supports.md l.251"
+  },
+  {
+   "finding_id": "P4-S6B-03",
+   "disposition": "merged",
+   "reason": "duplicate of P3-S6A-02 -> FC4"
+  },
+  {
+   "finding_id": "P5-C03",
+   "disposition": "accepted",
+   "reason": "FC5"
+  },
+  {
+   "finding_id": "P4-S6B-10",
+   "disposition": "merged",
+   "reason": "-> FC5"
+  },
+  {
+   "finding_id": "P3-S6A-03",
+   "disposition": "accepted",
+   "reason": "FC6; L-tau = 0.06 (Sta, Kin), 0.064 (Cha) vs g = 0.112, 0.0728, 0.0656"
+  },
+  {
+   "finding_id": "P1-F002",
+   "disposition": "accepted",
+   "reason": "FC7"
+  },
+  {
+   "finding_id": "P5-C05",
+   "disposition": "merged",
+   "reason": "duplicate -> FC7"
+  },
+  {
+   "finding_id": "P5-C04",
+   "disposition": "accepted",
+   "reason": "FC8"
+  },
+  {
+   "finding_id": "P2-S5-F002",
+   "disposition": "accepted",
+   "reason": "merged into FC8 (confidence 0.55 kept as stated)"
+  },
+  {
+   "finding_id": "P5-C06",
+   "disposition": "accepted",
+   "reason": "FC9"
+  },
+  {
+   "finding_id": "P5-C07",
+   "disposition": "accepted",
+   "reason": "FC9"
+  },
+  {
+   "finding_id": "P5-C08",
+   "disposition": "accepted",
+   "reason": "FC9"
+  },
+  {
+   "finding_id": "P1-F005",
+   "disposition": "accepted",
+   "reason": "FC9"
+  },
+  {
+   "finding_id": "P3-S6A-04",
+   "disposition": "merged",
+   "reason": "-> FC9"
+  },
+  {
+   "finding_id": "P4-S6B-09",
+   "disposition": "accepted",
+   "reason": "FC9"
+  },
+  {
+   "finding_id": "P2-S5-F003",
+   "disposition": "accepted",
+   "reason": "FC9"
+  },
+  {
+   "finding_id": "P1-F001",
+   "disposition": "accepted",
+   "reason": "FC10; coordinator: cert_M50e25_D25e rayleigh = 4.00124659344..., D27e = 4.00430625835..., printed 4.0012466 / 4.0043063"
+  },
+  {
+   "finding_id": "P3-S6A-01",
+   "disposition": "merged",
+   "reason": "-> FC10"
+  },
+  {
+   "finding_id": "P4-S6B-01",
+   "disposition": "merged",
+   "reason": "-> FC10"
+  },
+  {
+   "finding_id": "P2-S5-F005",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P4-S6B-04",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P4-S6B-05",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C14",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P4-S6B-06",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P4-S6B-07",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P4-S6B-08",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P4-S6B-02",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P1-F003",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P2-S5-F004",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P3-S6A-07",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P1-F004",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P3-S6A-05",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P3-S6A-06",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P3-S6A-08",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C15",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C13",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C10",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C11",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C09",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-C12",
+   "disposition": "accepted",
+   "reason": "FC11 (minor; not individually re-verified by the coordinator unless noted in report)"
+  },
+  {
+   "finding_id": "P5-N01",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-N02",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-N03",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-N04",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-N05",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-E01",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-E02",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-E03",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  },
+  {
+   "finding_id": "P5-E04",
+   "disposition": "accepted",
+   "reason": "FC12 (notation/exposition)"
+  }
+ ]
+}
