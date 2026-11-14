@@ -317,6 +317,15 @@ def main():
                     pr = (a * b).truncate(nn)
                     out[mm] = out[mm] + pr if mm in out else pr
         return out
+    def rtop(X, Y, tgt):
+        """[tgt] of the ring product X*Y (only the target monomial), truncated mod X^nn."""
+        acc = None
+        for m1, a in X.items():
+            m2 = tuple(t - i for t, i in zip(tgt, m1))
+            if m2 in Y:
+                pr = (a * Y[m2]).truncate(nn)
+                acc = pr if acc is None else acc + pr
+        return acc
     def coeffs(poly, lo, hi):
         cf = poly.coeffs() if poly is not None else []
         return [cf[r] if r < len(cf) else arb(0) for r in range(lo, hi + 1)]
@@ -346,9 +355,7 @@ def main():
                 prod[E] = Pr[E[0]] if len(E) == 1 else rmul(getprod(E[:-1]), Pr[E[-1]], ok)
             return prod[E]
         for E in allE:
-            full40 = rmul(p0[40 - len(E)], getprod(E), ok) if E else p0[40]
-            top40[E] = coeffs(full40.get(tgt), R0, R1)
-            del full40
+            top40[E] = coeffs(rtop(p0[40 - len(E)], getprod(E), tgt) if E else p0[40].get(tgt), R0, R1)
             users = [(eta, f[E]) for eta, f in Mform[39].items() if E in f]
             if users:
                 full39 = rmul(p0[39 - len(E)], getprod(E), ok) if E else p0[39]
