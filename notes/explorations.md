@@ -3,6 +3,24 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-14, Session 15 -- Moebius autocorrelations and twin irreducibles in F_2[T] at small degree (function fields)
+- Idea: in F_q[T] the twin-prime analogue is proved for large q (Sawin-Shusterman), but q = 2 is the most
+  "integer-like" case and characteristic 2 is known to be special for Chowla-type sums. Risky question: at the
+  degrees we can reach, does F_2[T] show any parity-type structure in sum mu(f) mu(f + h), or any deviation of the twin
+  count from the Hardy-Littlewood shape, that could point to a mechanism with an integer analogue?
+- Tried: code/explore/ff_chowla.py (sieve for mu and irreducibility over F_2, polynomials as bit masks, checked against
+  trial-division factorisation for deg <= 10 and the count 99 of irreducibles of degree 10). Output for n <= 22 in
+  code/explore/ff_chowla_out22.txt. Shift 1 is NOT admissible over F_2 (f(0) = f(1) = 1 forces T | f + 1), so the
+  twin count uses H = T^2 + T, with singular series S(H) = 3.3315 (product over irreducibles of degree <= 22).
+- Outcome: INCONCLUSIVE, no usable mechanism. (i) P_2^H(n) / (S 2^n / n^2) = 1.016, 1.001, 0.995 at n = 20, 21, 22
+  (HL shape fits). (ii) |C_h(n)| / 2^{n/2} stays between 0 and 2.3 for h in {1, T, T+1, T^2+T}, n = 12..22:
+  square-root-size cancellation, no sign of a non-vanishing correlation at these degrees. (iii) C_T = C_{T+1}
+  identically (the automorphism T -> T+1). (iv) A small curiosity: C_1(n) > 0 for every even n in 12..22 (largest
+  4660 = 2.28 * 2^11 at n = 22), mixed signs for odd n; with six data points this may be noise. The characteristic-2
+  literature on Chowla sums (Carmon-Rudnick; Conrad-Conrad-Gross) was NOT opened this session, so no comparison is
+  claimed. Heuristic / exploratory only. If revisited: open those sources first, then test whether the even-degree
+  sign pattern persists to n = 26 (bytearray sieve needs ~2^27 bytes, a few minutes).
+
 ## 2026-11-14, Session 14 -- Is there enough slack in Song-Yue's exponent conditions to save one step k = 48 -> 47? (exponential sums / Type III)
 - Idea: the D182 level theta = 253/500 (omega = 3/1000) is set by many exponent inequalities of [SY26, Sec. 4],
   and the audit (notes/audit-sy236-thm418/) lists their exact margins. If one margin were loose, raising omega a
