@@ -324,3 +324,32 @@ companions are substantive parts of the proof".
 - The repo and release (prime-gaps-external-182-verified-20260909.zip, SHA-256
   2960729efa8996538731820ce6cadc202831c8e98b2c0bdb14cfd19f33726f3b, p. 47, joined from two extracted lines, 64 hex
   chars) were not fetched.
+
+## 9. Session 14 follow-up (14 Nov 2026): the top-level Lean file of the 182 development (pasted by Jerry Kim)
+Status: **Claimed** (read only; NOT compiled here -- it needs Mathlib and the modules IncidenceRawBlockBound,
+SourceIncidenceSecondary182, SourceIncidenceBilinear182 and the rest of the development, none of which we have; this
+project uses core Lean without Mathlib). The `#print axioms` output was not supplied; the file's docstring says the
+axiom reports are "standard-only" and "certify these conditional theorems, not their hypotheses".
+- Endpoint theorems (namespace PrimeGap182), all with the same four hypotheses:
+  - `primeGapLiminf_le_182_of_local_inputs : PrimeGap186.primeGapLiminf ≤ (182 : EReal)`;
+  - `infinite_integer_translates182_of_local_inputs`: for H : Finset ℤ with H.card = 39 and the usual admissibility
+    (for every prime p some residue a mod p misses H), {n : ℤ | 2 ≤ #{h ∈ H : (n + h).toNat prime}} is infinite,
+    i.e. DHL[39,2] (negative n + h map to toNat = 0, not prime, so this is harmless);
+  - `infinite_consecutive_prime_pairs182_of_local_inputs`: infinitely many primes p with a next prime q, q - p ≤ 182.
+- The four hypotheses (docstring, verbatim in substance):
+  1. `PhysicalSourceBounds182` -- "the 262 physical numerical inequalities" (the integral inequalities of the
+     certificate; cf. Sec. 5 above: 5 cap, 60 outer-root, 60 outer-face, 137 inner-face);
+  2. `PublicPrimeLocalBounds182` -- "the two established public prime-local bounds";
+  3. `AllIncidenceRankFourBounds` -- "the established rank-four Kloosterman bound";
+  4. `LocalFourierHypothesis C D p₀` (some C ≥ 0, D, p₀) -- "the new Type III local Fourier proposition", which the
+     docstring calls "still an explicit unproved input. Its manuscript proof has not been completely formalized."
+  The docstring adds: "there is no supplied global bilinear, distribution, support, or moment estimate."
+- New compared with the bundle's Sec. 13 (as recorded in Sec. 5 above): the new incidence Type II estimate is now
+  DERIVED in Lean from hypothesis 3 (`incidenceSecondaryFamily182_of_rank_four` via `incidenceRawBlockFamily_of_rank_four`
+  and `incidenceSecondaryEstimate_of_raw`; then `trialOrderThreeBilinear182_of_rank_four`), so per this file it is no
+  longer a separate input. The 182 endpoint reuses `PrimeGap186.primeGapLiminf` from the 186 development.
+- What this means here: the claimed reduction is formalised conditionally on (1)-(4). (2) and (3) are described as
+  established published results (we have not checked their Lean statements against the literature). (4) is new and
+  unproved in Lean. (1) is the numerical part, which this project could recompute if it had the 726 trial coefficients
+  (formal/TrialData182.lean, still needed: notes/sources-needed.md). We have not compiled or inspected the imported
+  modules, so even the conditional theorems are Claimed here, not Lean-checked.
