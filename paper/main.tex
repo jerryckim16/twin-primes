@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.14, 14 November 2026}
+\date{Version 0.15, 14 November 2026}
 
 \begin{document}
 
@@ -39,7 +39,10 @@ certified computation with all symmetric test functions cheap; an upper
 bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
 itself, reach any $k\le29$; numerical evidence, \lbl{Heuristic} only, that at
 $(k,\varepsilon)=(50,1/25)$ no dual weight depending only on $t_m$ and
-$t_1+\dots+t_k$ does much better than ours,
+$t_1+\dots+t_k$ does much better than ours (version~0.15 certifies
+$M_{50,1/25}<4.1459$ with ours, and proves that a weight that sees the active
+set, after reducing its supremum over all fibers to two parameters, gives only
+$4.1463$),
 and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
 $k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
 floor (no $k\le28$ at his level of distribution, whatever the caps), and an
@@ -790,9 +793,12 @@ The best value of $\sup W$ over $(a,s_1)$, maximised over $\varepsilon$, is
 about $3.975$ for $k=29$, $4.004$ for $k=30$, $4.257$ for $k=40$ and $4.459$
 for $k=50$, in each case near $\varepsilon=0.24$ to $0.28$; the bound of
 \cite[Prop.~6.5]{Pol14b} is $4.187$, $4.218$, $4.482$ and $4.689$. For small
-$\varepsilon$ the two-zone weight does not beat the scaling bound: at $k=50$
-and $\varepsilon=1/25$ both give $4.15$ ($4.1458$ against $4.1515$), while
-Polymath8b's certified lower bound is $4.0043$. The true threshold is presumably
+$\varepsilon$ the two-zone weight barely beats the scaling bound: at $k=50$
+and $\varepsilon=1/25$ it gives $4.1458$ against $4.1515$ (earlier versions
+said ``does not beat''; that was wrong). With $a=519347/500000$,
+$s_1=244591/250000$ this is certified (\lbl{Computed}, ball arithmetic, one
+program, version~0.15): $M_{50,1/25}<4.1459$ (\texttt{code/twozone\_50\_cert.py},
+$1154$ pieces). Polymath8b's certified lower bound is $4.0043$. The true threshold is presumably
 close to $k=50$, so the theorem is far from sharp. Script:
 \texttt{code/dual\_eps.py remark15}.
 \end{remark}
@@ -828,7 +834,10 @@ $k=50$ and $\varepsilon=1/25$, with $a=10373/10000$,
 M_{50,1/25}\le a\sup_{0\le s\le\tau,\ 1\le\nu\le1+(\tau-s)/W}G_a(s,\nu)<4.1463,
 \]
 below the scaling bound $(1+\varepsilon)\frac{k}{k-1}\log k=4.15153\ldots$ of
-Proposition~\ref{prop:eps-first}.
+Proposition~\ref{prop:eps-first}, but above the bound $4.1459$ that the
+two-zone weight of Theorem~\ref{thm:floor} gives (remark after
+Theorem~\ref{thm:floor}). So this weight does not improve the best upper bound for
+$M_{50,1/25}$ that we know.
 \end{proposition}
 
 \begin{proof}
@@ -891,9 +900,11 @@ $((2\varepsilon)^r,0,\dots)$: at $a=1.036$ the fiber $(y^{10},0^{39})$ with
 $y=0.0811278>2\varepsilon$ beats every such fiber ($a\,I$ larger by $4\cdot10^{-5}$)
 (checked by exact piecewise integration and by two quadratures;
 \texttt{code/explore/psi\_scratch\_checks.py}). The improvement over scaling is
-small ($0.0052$), and it is an \emph{upper} bound for $M_{50,1/25}$, so it does
-not move any bound on gaps; it narrows the window between Polymath8b's
-certified lower bound $4.0043$ and the best known upper bound. The only literature search behind
+small ($0.0052$), it is weaker than the two-zone weight's $4.1459$, and it is an
+\emph{upper} bound for $M_{50,1/25}$, so it moves no bound on gaps. Its value is
+the reduction itself: the supremum over all $49$-dimensional fibers reduces to
+two real parameters (Lemma ``equalising the profile'' in the proof), which may
+help with weights that see the active set. The only literature search behind
 ``possibly folklore'' is the brief one reported in the remark after
 Theorem~\ref{thm:floor} (\cite{Pol14b} and the Polymath wiki page on the
 variational problem), plus one web search on 14 November 2026 that found no

@@ -421,6 +421,12 @@
    "origin": "own",
    "status": "works",
    "note": "Exact agreement at k = 45 (Lemma 9.1 caps) with capped_check.py: the two degree-2 forms agree with failure probability < 2^-31 each."
+  },
+  {
+   "idea": "FC3 question: does the dual weight psi_m = (beta/n)(a - S_A + n t_m), which sees the set of active indices, beat the scaling bound at (k, eps) = (50, 1/25)? Reduce sup over all 49-dimensional fibers to two parameters (s, nu) by an equalisation lemma (concavity + Chebyshev), then certify on cells.",
+   "origin": "own",
+   "status": "works",
+   "note": "Session 15, paper Prop. psi-weight (Proved here + two ball/interval certificates): M_{50,1/25} < 4.1463, below scaling 4.1515 but above the two-zone weight's 4.1459 (certified the same session), so it does not improve the best upper bound; the reduction lemma is the reusable part. Equal-fiber conjecture refuted at a = 1.036."
   }
  ],
  "phase": "A",
