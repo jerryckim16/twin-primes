@@ -1,0 +1,74 @@
+{
+ "group": "I5/2old",
+ "components": {
+  "L1": {
+   "A": 8.60853690257624e-09,
+   "A_rad": 1.0216960527375491e-66,
+   "beta": 2.0389593246828244e-40,
+   "table_A": 1,
+   "L": 93,
+   "H": 188,
+   "K": 35265,
+   "theta": 3520,
+   "J": 32,
+   "branch": "renewal",
+   "delay_first_failed": 554,
+   "renewal_floored_at": 2392,
+   "lower_index": 89431,
+   "clip": {
+    "eligible": 1,
+    "absorbed_eligible": 0,
+    "clipped": true,
+    "below_all_absorbed": true,
+    "order3_min_is_bG": false
+   }
+  },
+  "L2": {
+   "A": 3229103.4919851352,
+   "A_rad": 4.329215381570912e-55,
+   "beta": 7.648234246842333e-26,
+   "table_A": 3229104,
+   "L": 187,
+   "H": 941,
+   "K": 35265,
+   "theta": 700,
+   "J": 32,
+   "branch": "renewal",
+   "delay_first_failed": 1199,
+   "renewal_floored_at": 4797,
+   "lower_index": 88961,
+   "clip": {
+    "eligible": 2,
+    "absorbed_eligible": 0,
+    "clipped": true,
+    "below_all_absorbed": true,
+    "order3_min_is_bG": false
+   }
+  },
+  "L3": {
+   "A": 29825525.309992615,
+   "A_rad": 1.4021078092880037e-58,
+   "beta": 7.064270459963271e-25,
+   "table_A": 29825526,
+   "L": 940,
+   "H": 3176,
+   "K": 35265,
+   "theta": 208,
+   "J": 32,
+   "branch": "renewal",
+   "delay_first_failed": 6976,
+   "renewal_floored_at": 24060,
+   "lower_index": 87195,
+   "clip": {
+    "eligible": 14,
+    "absorbed_eligible": 10,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": true
+   }
+  }
+ },
+ "prec": 256,
+ "seconds": 1570,
+ "peak_rss_MB": 1470
+}
