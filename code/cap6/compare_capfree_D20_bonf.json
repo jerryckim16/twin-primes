@@ -1,0 +1,10 @@
+{
+ "onesided_ratio": 4.012038868083114,
+ "onesided_gt4": true,
+ "exact_ratio": 4.012038903570509,
+ "loss": 3.548739468648625e-08,
+ "J_low_le_J_T": true,
+ "I_up_ge_I_T": true,
+ "pieces": 98,
+ "seconds_one_proc": 5327
+}
