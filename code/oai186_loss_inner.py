@@ -146,7 +146,7 @@ def combine(files):
         tab = {r["c"]: r["A"] for r in TABLES[tkey(g)]["rows"]}[c]
         rows.append(dict(group=g, component=c, table_A=tab, A=v["A"], ratio=v["A"] / tab if tab else None,
                          ceil_equals_table=bool(ceil(v["A"]) == tab), within_1e9=abs(v["A"] / tab - 1) < 1e-9 if tab else None,
-                         **{k: w for k, w in v.items() if k not in ("A",)}))
+                         **{k: w for k, w in v.items() if k not in ("A", "table_A")}))
     return rows
 
 def main():
