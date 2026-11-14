@@ -1,5 +1,19 @@
 # Research log
 
+## 2026-11-14 - Session 14 follow-up (about 12:00 AM CT, 14 Nov; started when Jerry uploaded the 186 companion PDF, after Session 14 had merged): Rung 186: source data and cap masks recomputed exactly from the companion's rational definitions; the arithmetic of all 97 loss components checks out; loss-cover forms transcribed; paper v0.14
+
+- Jerry supplied the PDF of OpenAI's numerical companion (short_gaps_numerics.pdf); it is not committed, and notes/sources-needed.md marks it received.
+- code/oai186_support_data.py recomputes in exact rationals, from (1.13)-(1.19) and (1.23)-(1.24), the two source ladders (29 and 43 rows; order counts (12,12,5) and (12,12,19)), the omega enclosures, identity (1.17), the retained rows 0-27 and 0-38 with the boundary values 187773, 188087, 188254, 188256, the cap masks (1.5) that our I_H and J evaluations had taken as given, and the six group parameters with every guard of Lemma 1.1. Every printed value is reproduced.
+- code/oai186_tables_check.py checks exactly all 97 rows of Tables 2.1-2.6 (52 Young inequalities, 45 inner weightings), the six group totals, L^+/I_H <= 696075110e-12 < 697e-6, the component counts against the witness schedule, and the margins (2.34)-(2.35). All pass. This is bookkeeping only: the raw bounds come from the forms (2.16)-(2.21), now transcribed in notes/sources-186-loss.md for later runs (the PDF will not be available to them).
+- Main paper v0.14 (a paragraph after Proposition oai186-main; abstract).
+
+Explored: No separate exploration in this short follow-up (Session 14's exploration is in the entry below).
+
+Did not work or is blocked:
+- The raw component bounds (R_G, V_G, beta_G) are not recomputed yet; the analytic comparisons of Lemma 1.1 are not checked. Wolfram and mathbox not available.
+
+Next: Implement the loss forms (2.16)-(2.21) from notes/sources-186-loss.md, starting with one small inner group (I2old, 7 components), and compare its raw A values with Table 2.3.
+
 ## 2026-11-14 - Session 14 (7:34 PM CT slot, 13 Nov; no wait: Session 13 had merged at 7:18 PM CT): Rung 186: the two main terms of OpenAI's numerical companion recomputed independently by two programs (inside the published enclosures); split Bonferroni certificate needs no three-coordinate pieces; 182 source read; audit of Song-Yue's Thm 4.18 integrated; paper v0.13, verification note v0.5
 
 - Rung 186: own evaluators of I_H and J_{lambda,H} of the companion (code/oai186_IH.py, code/oai186_J.py: GMP integer products with directed rounding; code/oai186_check2.py: arb ball arithmetic with a different combinatorial route). Both give I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_{lambda,H} = 9.0248755655e-14, 5.9e-9 above the published lower bound; rho* J/I_H = 1.000206087 > 500103/500000; the two programs agree to 7e-17. Our own derivation of the underspecified layered cap form (2.15) is thereby confirmed. The loss bound L^+ and the analytic inputs are not checked, so 186 is not adopted.
