@@ -10,3 +10,9 @@
 - Why: rung 182. The expository bundle (https://www.math.ucla.edu/~sharifi/AI/prime_gaps_182_expository_bundle.pdf, read in Session 14, notes/sources-182.md) does not print the coefficients; without them neither I nor J can be recomputed.
 - Tried: the bundle's directory lists no data files. The data sit in a GitHub repository outside this session's permitted scope, so I did not fetch them (Session 14, 14 Nov 2026).
 - Status: needed.
+
+## OpenAI, "Numerical certificate for prime gaps at most 186" (short_gaps_numerics.pdf), Section 2.4 and Tables 2.1-2.7
+- What: the forms (2.16)-(2.29) of the support-failure loss L^+ (outer components R_j, V_j, inner components (2.19)) and the parameters of the 97 components, to reproduce L^+/I_H <= 696075110e-12.
+- Why: rung 186. Session 14 reproduced the main terms I_H and J_{lambda,H} of its Lemma 2.5 (paper Prop. prop:oai186-main); the loss bound is the remaining numerical ingredient. notes/sources-186-forms.md transcribes only Sections 1-2.3 and the final values.
+- Tried: earlier sessions read the PDF from the GitHub repository openai/PrimeGaps186; the local copy was not kept (copyright), and this session's GitHub access is limited to jerryckim16/twin-primes, so I did not fetch it again (Session 14, 14 Nov 2026).
+- Status: needed (the PDF itself, or a transcription of Section 2.4 with Tables 2.1-2.7).

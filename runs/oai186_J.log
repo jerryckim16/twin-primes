@@ -1,0 +1,13 @@
+[     2 s] 23 (tau, e) rows
+[    22 s] shell 0 (cap 68225): marginals done
+[    38 s] shell 1 (cap 49152): marginals done
+[    62 s] shell 2 (cap 46580): marginals done
+[    64 s] 53 eta, 77 multisets; layer caps [35265, 35419, 44781, 44976, 46580, 49152, 68225]
+[   293 s] layer 0 (b = 35265, l = 3) done
+[   522 s] layer 1 (b = 35419, l = 3) done
+[   710 s] layer 2 (b = 44781, l = 3) done
+[   891 s] layer 3 (b = 44976, l = 3) done
+[  1068 s] layer 4 (b = 46580, l = 3) done
+[  1226 s] layer 5 (b = 49152, l = 2) done
+[  1392 s] layer 6 (b = 68225, l = 1) done
+[  1392 s] {"J0": 9.006054079174034e-14, "Jplus": 1.9127715041247658e-16, "Jt": 1.6166931611641253e-15, "J_lambda": 9.024875565471314e-14, "J_lambda_upper": 9.024875565471314e-14, "ref_J_lower": 9.0248755123e-14, "J_ge_ref": true, "rel_excess_over_ref": 5.891639498204099e-09, "ratio_rhostar_J_over_IH": 1.0002060868437992, "ratio_gt_500103_500000": true, "bits": 256, "seconds": 1392}
