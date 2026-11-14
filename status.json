@@ -1,7 +1,7 @@
 {
- "version": "0.14",
+ "version": "0.15",
  "updated": "2026-11-14",
- "session_count": 14,
+ "session_count": 15,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -245,6 +245,26 @@
    "label": "Computed",
    "text": "Ceiling for Charton et al.'s capped quantity at k = 45: at most 4.126 (two-zone dual weight, interval arithmetic).",
    "where": "paper, Remark 30"
+  },
+  {
+   "label": "Proved here (computer-assisted: ball arithmetic, two programs)",
+   "text": "The dual weight psi_m = (beta/n)(a - S_A + n t_m), whose fiber supremum reduces to two parameters by an equalisation lemma, gives M_{50,1/25} < 4.1463 (a = 10373/10000): below scaling 4.1515 but above the two-zone weight's 4.1459, so it does not improve the best upper bound.",
+   "where": "paper v0.15, Prop. psi-weight"
+  },
+  {
+   "label": "Computed",
+   "text": "Two-zone weight of Theorem floor certifies M_{50,1/25} < 4.1459 (arb, 1154 pieces; code/twozone_50_cert.py). Corrects an earlier sentence that it did not beat scaling.",
+   "where": "paper v0.15, remark after Theorem floor"
+  },
+  {
+   "label": "Computed",
+   "text": "182 criterion: second, independent ball-arithmetic program for I(F): [1.48963410081137215290e-11 +/- 5.2e-40], inside the published enclosure; agrees with the first program to 1.7e-22 (code/sharifi182_check2.py).",
+   "where": "paper v0.15, Remark sha182"
+  },
+  {
+   "label": "Computed",
+   "text": "186 companion: raw loss bounds of group I2old (7 of 97 components) re-evaluated from the transcribed forms; each at or just below its Table 2.3 value (two readings stated; one inferred from the numbers).",
+   "where": "paper v0.15, after Prop. oai186-main"
   }
  ],
  "ideas": [

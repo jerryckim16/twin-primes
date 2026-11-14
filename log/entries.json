@@ -1,6 +1,24 @@
 [
  {
   "date": "2026-11-14",
+  "slot": "Session 15 (3:34 AM CT, started work 4:37 AM CT after waiting 62 minutes for Session 14's follow-up branch to go quiet)",
+  "title": "182: I(F) confirmed by a second, ball-arithmetic program; 186: raw loss bounds of one group reproduced; a dual weight that sees the active set gives M_{50,1/25} < 4.1463, but the project's two-zone weight does better (4.1459, now certified); paper v0.15",
+  "did": [
+   "Rung 182: a second, independent program for the denominator (code/sharifi182_check2.py: arb balls, own Lean parser, own Dickman closed form, pointwise Cox-de Boor splines, moments from A(y)^39) gives I(F) in [1.48963410081137215290e-11 +/- 5.2e-40], inside the published enclosure, agreeing with the first program to 1.7e-22 (the residual is the first program's 2^-224 fixed-point rounding, traced on a coarse grid). 67 min on 2 cores.",
+   "Rung 186: the raw bounds of the seven I2old loss components, evaluated from the transcribed forms in arb (code/oai186_loss_I2old.py), are each at or just below their Table 2.3 values (e.g. 25776.59 vs 25777); two readings were needed, one (renewal vs delay recurrence for L2, L3) inferred from the numbers. 90 components remain.",
+   "Own idea (referee FC3): an equalisation lemma (concavity plus Chebyshev) reduces the supremum over all 49-dimensional fibers of the weight psi_m = (beta/n)(a - S_A + n t_m) to two parameters; two independent certificates (arb, mpmath.iv) give M_{50,1/25} < 4.1463 at a = 1.0373, below scaling 4.1515. But the two-zone weight already in the paper certifies 4.1459 (code/twozone_50_cert.py), so this does not improve the best upper bound; an older sentence saying the two-zone weight did not beat scaling was wrong and is corrected. A fresh-context audit found the proof correct and five small fixes, all applied.",
+   "News search (3:34 AM run): no new bounds, errata or verifications found for 240, 236, 212, 186 or 182. Bounds unchanged: established 246, claimed 182, project 236 conditional. Paper v0.15."
+  ],
+  "explored": "Moebius autocorrelations and twin irreducibles in F_2[T] up to degree 22 (code/explore/ff_chowla.py): square-root cancellation and a Hardy-Littlewood fit to within 2% at degrees 20-22, no usable structure; inconclusive.",
+  "failed": [
+   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).",
+   "The exact claim that the psi-weight supremum sits on the fibers ((2 eps)^r, 0, ...) is false at a = 1.036 (a fiber with coordinates 0.0811 > 2 eps beats it); not needed for the bound.",
+   "Not done: 182 tail term (kernel K not transcribed) and second programs for J0, J+; the 186 groups other than I2old; FC12 reorganisation of the main paper."
+  ],
+  "next": "186: the remaining loss groups (start with O2 and the 5/2 groups; needs the radial intervals and c_t, V_t, not transcribed); 182: second program for J0, J+; first weekly review on Monday 16 Nov."
+ },
+ {
+  "date": "2026-11-14",
   "slot": "Session 14 follow-up 3 (14 Nov, continued at Jerry's request)",
   "title": "Rung 182: the cap numerators J0 and J+ recomputed independently, each just above its published lower bound; cap surplus consistent with the certified value",
   "did": [
