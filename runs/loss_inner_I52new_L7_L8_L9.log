@@ -1,0 +1,12 @@
+[     0 s] group I5/2new: m=5/2 z=35419 p=17990 chi = 87250..89914; components ['L7', 'L8', 'L9']
+[    41 s] marginals shell 0 done
+[    56 s] marginals shell 1 done
+[    70 s] marginals shell 2 done
+[    76 s] 53 eta, 77 block-sum multisets on 2665 radial indices ready
+[    87 s] L7: L=5644 H=8129 K=35419 theta=105 J=17 rmax=15 branch=renewal (first failed test index 47895) lower index 87250
+[   585 s] L7: A = [327802575.10796 +/- 3.43e-6], table 327802576, ratio 0.999999997279
+[   593 s] L8: L=8128 H=11705 K=35419 theta=73 J=12 rmax=11 branch=renewal (first failed test index 70684) lower index 87250
+[  1057 s] L8: A = [50667881708.659 +/- 2.06e-4], table 50667881720, ratio 0.999999999776
+[  1062 s] L9: L=11704 H=14046 K=35419 theta=61 J=8 rmax=7 branch=delay (first failed test index None) lower index 87250
+[  1576 s] L9: A = [143104919723.57 +/- 2.21e-3], table 143104919759, ratio 0.999999999752
+[  1576 s] {"group": "I5/2new", "components": {"L7": {"A": 327802575.1079566, "A_rad": 6.075441970349829e-60, "beta": 7.764108172335162e-24, "table_A": 327802576, "L": 5644, "H": 8129, "K": 35419, "theta": 105, "J": 17, "branch": "renewal", "delay_first_failed": 47895, "renewal_floored_at": null, "lower_index": 87250, "clip": {"eligible": 27, "absorbed_eligible": 12, "clipped": false, "below_all_absorbed": false, "order3_min_is_bG": true}}, "L8": {"A": 50667881708.6588, "A_rad": 1.0539358297255505e-57, "beta": 1.2000848813330766e-21, "table_A": 50667881720, "L": 8128, "H": 11705, "K": 35419, "theta": 73, "J": 12, "branch": "renewal", "delay_first_failed": 70684, "renewal_floored_at": null, "lower_index": 87250, "clip": {"eligible": 27, "absorbed_eligible": 12, "clipped": false, "below_all_absorbed": false, "order3_min_is_bG": true}}, "L9": {"A": 143104919723.5722, "A_rad": 3.5625633822572775e-57, "beta": 3.3894855046859745e-21, "table_A": 143104919759, "L": 11704, "H": 14046, "K": 35419, "theta": 61, "J": 8, "branch": "delay", "delay_first_failed": null, "renewal_floored_at": null, "lower_index": 87250, "clip": {"eligible": 27, "absorbed_eligible": 12, "clipped": false, "below_all_absorbed": false, "order3_min_is_bG": true}}}, "prec": 256, "seconds": 1576, "peak_rss_MB": 1444}

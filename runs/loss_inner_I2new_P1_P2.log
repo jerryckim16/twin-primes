@@ -1,0 +1,10 @@
+[     0 s] group I2new: m=2 z=44976 p=22488 chi = 85162..87288; components ['P1', 'P2']
+[    87 s] marginals shell 0 done
+[   117 s] marginals shell 1 done
+[   143 s] marginals shell 2 done
+[   153 s] 53 eta, 77 block-sum multisets on 2127 radial indices ready
+[   156 s] P1: a/h=29984.616 b/h=32483.180 r_-^-/h=28735 r_+^+/h=29985 Lambda=[0.08003796387 +/- 1.05e-12]
+[  2007 s] P1: A = [266162792630.78 +/- 1.32e-3], table 266162792752, ratio 0.999999999545
+[  2009 s] P2: a/h=32483.180 b/h=37480.308 r_-^-/h=26236 r_+^+/h=28736 Lambda=[0.1430932535 +/- 6.55e-12]
+[  3056 s] P2: A = [337097314680.08 +/- 2.98e-3], table 337097314828, ratio 0.999999999561
+[  3056 s] {"group": "I2new", "components": {"P1": {"A": 266162792630.7813, "A_rad": 1.519111262942587e-56, "beta": 6.304150334254158e-21, "table_A": 266162792752, "a_over_h": 29984.61637689998, "b_over_h": 32483.180314083318, "rminus_over_h": 28735, "rplus_over_h": 29985}, "P2": {"A": 337097314680.077, "A_rad": 1.8574489881545653e-56, "beta": 7.984257033117786e-21, "table_A": 337097314828, "a_over_h": 32483.180314083318, "b_over_h": 37480.30818844999, "rminus_over_h": 26236, "rplus_over_h": 28736}}, "prec": 256, "seconds": 3056, "peak_rss_MB": 1780}

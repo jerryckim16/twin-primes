@@ -1,0 +1,29 @@
+{
+ "group": "O2",
+ "components": {
+  "L4": {
+   "A": 3056104724.068722,
+   "A_rad": 4.583845164080569e-20,
+   "B": 915663277.3432668,
+   "B_rad": 3.823388418801987e-21,
+   "table_A": 3056104728,
+   "table_B": 915663654,
+   "L": 9753,
+   "H": 11705,
+   "theta": 57,
+   "branch": "renewal",
+   "delay_first_failed": 85834,
+   "lower_index": 89197,
+   "clip": {
+    "eligible": 48,
+    "absorbed_eligible": 0,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": null
+   }
+  }
+ },
+ "prec": 128,
+ "seconds": 752,
+ "peak_rss_MB": 1425
+}

@@ -1,0 +1,8 @@
+[     0 s] group O5/2: m=5/2 z=46580 p=19660 chi = 95599..98263; components ['P4']
+[    70 s] marginals shell 0 done
+[    92 s] marginals shell 1 done
+[   111 s] marginals shell 2 done
+[   127 s] P(0,z_G) = [3]; 53 eta, 77 block multisets; pair weights ready
+[   132 s] P4: a/h=31554.326 b/h=32710.147 Lambda=[0.03597464408 +/- 2.28e-12]
+[  5647 s] P4: A = [6.2684550937132e+13 +/- 0.450] (table 62684551010344, ratio 0.999999998832)  B = [1.6455348493163e+13 +/- 0.153] (table 16455348517458, ratio 0.999999998524)
+[  5647 s] {"group": "O5/2", "components": {"P4": {"A": 62684550937131.55, "A_rad": 2.5796480854334976e-15, "B": 16455348493162.848, "B_rad": 2.1606307212940857e-17, "table_A": 62684551010344, "table_B": 16455348517458, "a_over_h": 31554.325588357737, "b_over_h": 32710.146696945605}}, "prec": 128, "seconds": 5647, "peak_rss_MB": 1675}
