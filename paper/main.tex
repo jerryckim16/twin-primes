@@ -37,21 +37,23 @@ attempt to sharpen the pigeonhole step, on the plain and on the
 $\varepsilon$-enlarged simplex; a generating-function formula that makes
 certified computation with all symmetric test functions cheap; an upper
 bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
-itself, reach any $k\le29$; numerical evidence that this upper bound is close
-to the limit of every dual weight depending only on $t_m$ and $t_1+\dots+t_k$,
+itself, reach any $k\le29$; numerical evidence, \lbl{Heuristic} only, that at
+$(k,\varepsilon)=(50,1/25)$ no dual weight depending only on $t_m$ and
+$t_1+\dots+t_k$ does much better than ours,
 and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
 $k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
 floor (no $k\le28$ at his level of distribution, whatever the caps), and an
 exact formula for his capped functionals, which gives a certified capped
 ratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two
 independent programs: the variational step of Stadlmann's $H_1\le240$ is
-thereby reproduced, while his new equidistribution estimates, on which $240$
-rests, have not been verified by us; the same computation confirms the
+thereby reproduced, while his reduction \cite[Prop.~1]{Sta26} and his new
+equidistribution estimates, on which $240$ rests, have not been verified by us; the same computation confirms the
 variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
 of their Table~3 but not, with our test function, for the different caps of
 their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
 $846$-dimensional space reaches $3.99$ (a ceiling certified in ball
-arithmetic, with weights checked exactly at a random point); optimising the test function on Stadlmann's
+arithmetic at $3.99$; it rests on the Gram weights of one program, checked
+exactly at one random point); optimising the test function on Stadlmann's
 capped support itself, with exact Gram matrices obtained by running the exact
 evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
 for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
@@ -61,8 +63,9 @@ capped numerator exactly: it equals their reference integer digit for digit,
 as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
 holds; since version~0.11 this is confirmed by a second, independent exact
 program, so the variational step of $H_1\le236$ is reproduced (its analytic
-input is not verified by us, and the project's bound $236$ is conditional on
-it); version~0.12 adds an elementary observation (Bonferroni) that lets a
+input \cite[Thm.~4.18]{SY26} and the reduction \cite[Thm.~4.33,
+\S\S4.12--4.14]{SY26} are not verified by us, and the project's bound $236$ is
+conditional on them); version~0.12 adds an elementary observation (Bonferroni) that lets a
 one-sided certificate skip the most expensive inclusion--exclusion pieces
 (Proposition~\ref{prop:bonf}), and version~0.13 extends it so that no piece
 with three forced coordinates is needed (Proposition~\ref{prop:bonf2},
@@ -75,7 +78,10 @@ and its analytic inputs are not checked); and
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
 \lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
-verified), or \lbl{Open}.
+verified), or \lbl{Open}; \lbl{Literature (preprint)} marks our reading of a
+definition in an unrefereed preprint, \lbl{Computed (floating point)} a
+numerical value that is not a certified bound, and \lbl{Heuristic} an argument
+that is not a proof.
 \end{abstract}
 
 \maketitle
@@ -93,6 +99,7 @@ be the least diameter $h_k-h_1$ of an admissible $k$-tuple. Then
 \begin{equation}\label{eq:reduction}
 \DHL[k,2]\ \Longrightarrow\ H_1\le H(k),
 \end{equation}
+(\lbl{Literature}; \lbl{Lean-checked} for the pairs of Theorem~\ref{thm:lean}),
 and $\DHL[2,2]$ applied to $\{0,2\}$ is the twin prime conjecture. All progress
 on $H_1$ since 2013 consists of proving $\DHL[k,2]$ for smaller $k$.
 
@@ -118,8 +125,8 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 \end{tabular}
 \end{center}
 \noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
-$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.
-$^{\ddagger}$ Its variational step is reproduced here (Corollary~\ref{cor:236}); its equidistribution input is not verified by us. An AI audit inside this project of the proof of \cite[Theorem~4.18]{SY26} found one repairable mis-statement (eq.~(49), inherited from \cite[Lemma~6.25]{PM8a}) and no gap (Remark~\ref{rem:sy-audit}); this is not expert review.
+$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its reduction \cite[Prop.~1]{Sta26} and its equidistribution input are not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}).
+$^{\ddagger}$ Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}. Its variational step is reproduced here (Corollary~\ref{cor:236}); its reduction \cite[Thm.~4.33, \S\S4.12--4.14]{SY26} and its equidistribution input \cite[Thm.~4.18]{SY26} are not verified by us. An AI audit inside this project of the proof of \cite[Theorem~4.18]{SY26} found one repairable mis-statement (eq.~(49), inherited from \cite[Lemma~6.25]{PM8a}) and no gap (Remark~\ref{rem:sy-audit}); this is not expert review.
 $^{\S}$ Its two main terms $I_H$, $J_{\lambda,H}$ are recomputed here and lie inside its published enclosures (Proposition~\ref{prop:oai186-main}); its loss bound and analytic inputs are not checked.}
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
@@ -146,10 +153,11 @@ independent verification of any of the 2026 claims and no claimed bound below
 $182$. We therefore keep three numbers apart throughout: \emph{established}
 ($246$), \emph{claimed} ($182$), and \emph{reproduced by this project}:
 $246$ unconditionally; since version~0.6 also $240$, conditionally on
-the equidistribution estimates of \cite{Sta26}, which we have not verified
-(Corollary~\ref{cor:240}); and since version~0.11 also $236$, conditionally
-on the equidistribution theorem of \cite{SY26} (Corollary~\ref{cor:236}),
-which we have not verified either.
+the reduction \cite[Prop.~1]{Sta26} and the equidistribution estimates of
+\cite{Sta26}, which we have not verified (Corollary~\ref{cor:240}); and since
+version~0.11 also $236$, conditionally on the equidistribution theorem of
+\cite{SY26} and their reduction \cite[Thm.~4.33, \S\S4.12--4.14]{SY26}
+(Corollary~\ref{cor:236}), which we have not verified either.
 
 \subsection*{Why \texorpdfstring{$2$}{2} is a different problem}
 Under the generalised Elliott--Halberstam conjecture the sieve gives $H_1\le6$,
@@ -265,10 +273,9 @@ generate the symmetric polynomials, the functions
 (1-P_1)^a\,P^{b}:=(1-P_1)^a\prod_{j\ge2}P_j^{b_j},\qquad a+w(b)\le d,\quad w(b)=\sum_j jb_j,
 \]
 span all symmetric polynomials of degree at most $d$ (for $k\ge d$). The
-integrals have a closed form that we have not seen stated in this way
-(\lbl{Proved here}; possibly folklore).
+integrals have a closed form that we have not seen stated in this way.
 
-\begin{lemma}\label{lem:egf}
+\begin{lemma}[\lbl{Proved here}; possibly folklore]\label{lem:egf}
 Let $X_1,\dots,X_k$ be independent exponential random variables of mean $1$
 and $E_k(b)=\mathbb E\prod_jP_j(X)^{b_j}$. Then
 \[
@@ -305,7 +312,9 @@ its floating-point midpoints as exact dyadic rationals and evaluate the
 Rayleigh quotient exactly. The working precision of the eigenvector matters
 only for speed. A separate script, \texttt{code/verify\_cert.py}, rebuilds
 both Gram matrices from scratch and re-evaluates each stored coefficient
-vector in exact arithmetic.
+vector in exact arithmetic. (No coefficient vector is stored in the
+repository for the value $M_{105}\ge4.17427$ below, so that value is not
+covered by this re-check.)
 
 \begin{theorem}[\lbl{Computed}, exact rational arithmetic]\label{thm:Mk}
 \begin{gather*}
@@ -334,7 +343,7 @@ even power sums & 23 & 1236 & 54$^{\dagger}$\\
 \end{center}
 \noindent{\small $^{\dagger}$ Only this value of $k$ was run at this degree; smaller $k$ were not tried.}
 
-\begin{corollary}[end-to-end within this project]\label{cor:578}
+\begin{corollary}[\lbl{Computed} and \lbl{Lean-checked}, conditional on \lbl{Literature} inputs; end-to-end within this project]\label{cor:578}
 Assuming the Bombieri--Vinogradov theorem and \cite[Prop.~4.2]{May15}, both
 \lbl{Literature}, Theorems~\ref{thm:Mk} and~\ref{thm:lean} give
 $H_1\le270$.
@@ -346,21 +355,24 @@ $M_{54}>4.00238$ with even-part polynomials of degree $23$
 same space, $4.002386\ldots$, agrees with theirs to every digit they print,
 which is an external check on our pipeline; two independent runs of it (one
 from an earlier session) produced the same value. Corollary~\ref{cor:578}
-is the best that the plain simplex gives with Bombieri--Vinogradov (see the
-next subsection); Corollary~\ref{cor:246} below takes the next rung of the
+is the best bound certified on the plain simplex with Bombieri--Vinogradov,
+by Polymath8b and by us; the upper bound of the next subsection excludes only
+$k\le50$ there, so $k=51,52,53$ ($H(k)=252,254,264$) are not ruled out by
+anything in this paper. Corollary~\ref{cor:246} below takes the next rung of the
 ladder $600\to270\to246\to240\to212\to186\to182$.
 
 \subsection{What the plain method cannot do}
-Polymath8b proved $M_k\le\frac{k}{k-1}\log k$ \cite{Pol14b}. Hence
+Polymath8b proved (\lbl{Literature}) that $M_k\le\frac{k}{k-1}\log k$
+\cite{Pol14b}. Hence
 (\lbl{Computed} from that bound) $M_k>4$ forces $k\ge51$, and on the plain
 simplex $\DHL[k,2]$ requires a level of distribution
-$\theta>2(k-1)/(k\log k)$:
+$\theta>2(k-1)/(k\log k)$ (values truncated):
 \begin{center}
 \begin{tabular}{@{}rcccccccc@{}}
 \toprule
 $k$ & 50 & 45 & 40 & 35 & 30 & 20 & 10 & 5\\
 \midrule
-$\theta>$ & 0.501 & 0.514 & 0.529 & 0.547 & 0.568 & 0.634 & 0.782 & 0.994\\
+$\theta>$ & 0.501 & 0.513 & 0.528 & 0.546 & 0.568 & 0.634 & 0.781 & 0.994\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -407,7 +419,7 @@ four-core machine (build $16$ minutes, search $4$ minutes).
 With even power sums of degree $25$ ($1780$ coefficients) and of degree $27$
 ($2526$ coefficients),
 \[
-M_{50,1/25}\ge4.0012466\qquad\text{and}\qquad M_{50,1/25}\ge4.0043063 .
+M_{50,1/25}\ge4.0012465\qquad\text{and}\qquad M_{50,1/25}\ge4.0043062 .
 \]
 \end{theorem}
 
@@ -422,7 +434,7 @@ $M_{50,1/25}>4.00124$ at degree $25$ and $>4.0043$ at degree $27$
 \cite[\S7.2]{Pol14b}; our values agree with both to every printed digit.
 
 
-\begin{corollary}[end-to-end within this project]\label{cor:246}
+\begin{corollary}[\lbl{Computed} and \lbl{Lean-checked}, conditional on \lbl{Literature} inputs; end-to-end within this project]\label{cor:246}
 Assuming the Bombieri--Vinogradov theorem and \cite[Thm.~3.12(i)]{Pol14b},
 both \lbl{Literature}, Theorem~\ref{thm:Meps} and the Lean tuple $(50,246)$
 of Theorem~\ref{thm:lean} give $H_1\le246$.
@@ -435,21 +447,22 @@ behind Remark~\ref{rem:k49} below.
 
 \begin{table}[h]
 \caption{Certified lower bounds for $M_{k,\varepsilon}$ (\lbl{Computed}, exact
-Rayleigh quotients, even power sums of degree $D$). Data:
+Rayleigh quotients, even power sums of degree $D$; digits truncated). Data:
 \texttt{runs/scan\_k49.jsonl}, \texttt{runs/scan\_k50.jsonl}, written by
 \texttt{code/scan\_eps.py}; the column $k=50$, $D=16$ from direct runs of
-\texttt{code/mk\_general.py}. A dash: not computed.}
+\texttt{code/mk\_general.py}, whose output is not stored in the repository. A
+dash: not computed.}
 \label{tab:eps}
 \begin{tabular}{@{}lllllll@{}}
 \toprule
 & \multicolumn{3}{c}{$k=49$} & \multicolumn{3}{c}{$k=50$}\\
 $\varepsilon$ & $D=16$ & $D=18$ & $D=20$ & $D=16$ & $D=18$ & $D=20$\\
 \midrule
-$0$    & 3.88640 & 3.90102 & 3.91056 & 3.90173 & 3.91718 & 3.92739\\
-$1/50$ & 3.93491 & 3.95066 & 3.96110 & 3.94979 & 3.96644 & 3.97761\\
-$1/30$ & 3.93969 & 3.95745 & 3.96933 & --      & 3.97254 & 3.98522\\
-$1/25$ & 3.93674 & 3.95563 & 3.96840 & 3.95041 & 3.97034 & 3.98395\\
-$1/20$ & 3.92741 & 3.94823 & 3.96244 & --      & 3.96234 & 3.97745\\
+$0$    & 3.88640 & 3.90101 & 3.91056 & 3.90173 & 3.91718 & 3.92739\\
+$1/50$ & 3.93490 & 3.95065 & 3.96110 & 3.94979 & 3.96644 & 3.97761\\
+$1/30$ & 3.93968 & 3.95744 & 3.96933 & --      & 3.97254 & 3.98521\\
+$1/25$ & 3.93674 & 3.95563 & 3.96840 & 3.95041 & 3.97034 & 3.98394\\
+$1/20$ & 3.92740 & 3.94822 & 3.96243 & --      & 3.96234 & 3.97744\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -511,6 +524,8 @@ Integrating over $u$ gives the claim.
 \end{proof}
 
 \begin{remark}[\lbl{Computed}, consistency check for $k=3$]
+Take the shifts $(0,1,2)$ and $D=1$, so that $\omega=2$ and $\alpha_D(c)=1$
+for both weight vectors below.
 With unrestricted polynomials of degree $6$ on $\R_3$ we find the lower bounds
 $M_3[(1,1,1)]\ge1.6464$, $M_3[(1,1,0)]\ge1.3579$ and
 $M_3[(\tfrac12,1,\tfrac12)]\ge1.1604$, against
@@ -568,22 +583,25 @@ weighted constant by $\sup_{\varepsilon'\ge\varepsilon}M_{j,\varepsilon'}$, a
 weaker statement. The single rescaling by $\mu$ above avoids that loss.
 
 \begin{remark}[\lbl{Computed}, $k=3$]
-With unrestricted polynomials (degree $5$ for $k=3$, degree $10$ for $k=2$,
-cut off at $|t|\le\rho$ for $\rho\in\{1-\varepsilon,1,1+\varepsilon\}$):
+For the shifts $(0,1,2)$ and $D=1$ (so $\omega=2$ and $\alpha_D(c)=1$ for
+both weight vectors), with unrestricted polynomials (degree $5$ for $k=3$,
+degree $10$ for $k=2$, cut off at $|t|\le\rho$ for
+$\rho\in\{1-\varepsilon,1,1+\varepsilon\}$; values truncated):
 \begin{center}
 \begin{tabular}{@{}ccccc@{}}
 \toprule
 $\varepsilon$ & $M_{2,\varepsilon}\ge$ & $M_{3,\varepsilon}[(1,1,0)]\ge$ & $M_{3,\varepsilon}[(\frac12,1,\frac12)]\ge$ & $M_{3,\varepsilon}\ge$\\
 \midrule
 $0$ & 1.385933 & 1.349844 & 1.160121 & 1.646427\\
-$1/10$ & 1.518567 & 1.482143 & 1.264698 & 1.793492\\
-$1/5$ & 1.627161 & 1.585674 & 1.341926 & 1.882282\\
-$1/3$ & 1.717104 & 1.663743 & 1.413309 & 1.917001\\
+$1/10$ & 1.518566 & 1.482142 & 1.264697 & 1.793492\\
+$1/5$ & 1.627161 & 1.585674 & 1.341926 & 1.882281\\
+$1/3$ & 1.717103 & 1.663743 & 1.413309 & 1.917001\\
 \bottomrule
 \end{tabular}
 \end{center}
 Both weighted columns stay below $M_{2,\varepsilon}$, as the proposition
-requires.
+requires. The data are in the file
+\texttt{notes/}\allowbreak\texttt{enlarged\_pigeonhole\_}\allowbreak\texttt{d5\_d10.txt}.
 \end{remark}
 
 \begin{remark}[scope]
@@ -682,7 +700,7 @@ $\varepsilon>\varepsilon_0(k)=\frac{4(k-1)}{k\log k}-1$ (\lbl{Computed}):
 \toprule
 $k$ & 49 & 48 & 45 & 40 & 39 & 35 & 30\\
 \midrule
-$\varepsilon_0(k)$ & 0.0068 & 0.0117 & 0.0274 & 0.0572 & 0.0638 & 0.0929 & 0.1369\\
+$\varepsilon_0(k)$ & 0.0068 & 0.0117 & 0.0274 & 0.0572 & 0.0638 & 0.0929 & 0.1368\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -762,7 +780,7 @@ $M_{k,\varepsilon}$; the search was not exhaustive, and
 Theorem~\ref{thm:floor} has not been reviewed by anyone outside this project.
 \end{remark}
 
-\begin{remark}[\lbl{Computed}, floating point only: how far this weight goes]
+\begin{remark}[\lbl{Computed (floating point)}: how far this weight goes]
 The best value of $\sup W$ over $(a,s_1)$, maximised over $\varepsilon$, is
 about $3.975$ for $k=29$, $4.004$ for $k=30$, $4.257$ for $k=40$ and $4.459$
 for $k=50$, in each case near $\varepsilon=0.24$ to $0.28$; the bound of
@@ -774,22 +792,25 @@ close to $k=50$, so the theorem is far from sharp. Script:
 \texttt{code/dual\_eps.py remark15}.
 \end{remark}
 
-\begin{remark}[a weight that did not work]
+\begin{remark}[another weight; whether it beats scaling is \lbl{Open}]
 We also tried the weight $\psi_m=\frac{\beta}{n}(a-S_A+nt_m)$, where $n$ is
 the number of active indices at $t$ and $S_A$ the sum of the active
-coordinates. Its sum over the active indices is exactly $\beta a$ everywhere,
-so the bound is $a$ times the largest fiber integral. Evaluating the fiber
-integral exactly on the fibers over $t'=(x,\dots,x,0,\dots,0)$ (\lbl{Computed},
-floating point, $k=50$, $\varepsilon=1/25$, every $a\in[1.05,3]$ on a grid of
-step $0.01$, script \texttt{code/dual\_eps.py remark16}) shows that this
-weight cannot give less than $4.178$, which is worse than the $4.1515$ from
-scaling. The binding fiber has a single non-zero coordinate $x\approx2\varepsilon$:
-there the zero coordinates become inactive while $n$ is still large, and the
-normalisation by $n$ wastes the slack. A dual bound that is sharper for small
-$\varepsilon$ must treat the small coordinates near such sparse points
-differently. This is \lbl{Open}. (An earlier draft of this remark, version~0.3
-as first circulated, reported a weaker obstruction, $4.146$, from fibers with
-about ten non-zero coordinates; the exact fiber evaluation above supersedes it.)
+coordinates. It is positive for every $a>\tau$ (an active index has
+$t_m\ge S-\tau$, so $a-S_A+nt_m\ge a-\tau$). Its sum over the active indices
+is exactly $\beta a$ everywhere, so the bound is $a$ times the largest fiber
+integral. Evaluating the fiber integral exactly on the fibers over
+$t'=(x,\dots,x,0,\dots,0)$ only gives a lower bound for what this weight
+achieves. Version~0.12 did this for $a\in[1.05,3]$ only (\texttt{code/dual\_eps.py
+remark16}, which still scans that grid), found $4.178$ at the edge $a=1.05$,
+and concluded wrongly that the weight is worse than scaling. Rerunning the
+same fiber code over $a>\tau$ (\lbl{Computed (floating point)}, $k=50$,
+$\varepsilon=1/25$) gives about $4.14633$ at $a=1.037$, with binding fiber
+$r=10$ non-zero coordinates, below the $4.1515$ from scaling ($4.16437$ at
+$a=1.03$, $4.15020$ at $a=1.04$, $4.17821$ at $a=1.05$). This reproduces the
+value $4.146$ of an earlier draft (version~0.3), which came from fibers with
+about ten non-zero coordinates. Since the test only bounds what the weight
+achieves from below, whether this weight, with all fibers taken into account,
+beats the scaling bound is \lbl{Open}.
 \end{remark}
 
 \subsection*{The limit of weights that see only \texorpdfstring{$t_m$}{t\_m} and \texorpdfstring{$S$}{S} (version 0.4)}
@@ -799,23 +820,23 @@ Theorem~\ref{thm:floor}. Call this family $\mathcal W$. For weights in
 $\mathcal W$ the problem ``minimise the bound of Lemma~\ref{lem:dual}'' is
 convex: each fiber condition $\int du/\Psi\le1$ is convex in $\Psi$, and each
 point $t$ gives a linear condition $\sum_{m\text{ active}}\Psi(S-t_m,t_m)\le\Lambda$.
-So its optimum can be computed, and it tells us how far any weight in
-$\mathcal W$, however clever, can go.
+So its optimum can be approximated, and the approximation suggests how far a
+weight in $\mathcal W$ can go.
 
-\begin{proposition}[\lbl{Computed}, floating point, discretised; not a rigorous bound]\label{prop:family}
+\begin{proposition}[\lbl{Computed (floating point)}, discretised; not a rigorous bound in either direction; \lbl{Heuristic}]\label{prop:family}
 Discretise $\Psi=\rho\cdot(L-\sigma+(k-1)u)$ with $\rho$ constant on cells of
 an $N\times{}$(geometric) grid in $(S,u)$, impose the fiber conditions exactly
 on the grid $\sigma\in\frac LN\mathbb Z$, and impose the pointwise condition
 on all configurations of the grid of step $L/N$ (found by a knapsack oracle).
-The convex optimum $B_N(k,\varepsilon)$, computed by cutting planes with an
-exact convex solver at each step, is:
+The convex optimum $B_N(k,\varepsilon)$, computed by cutting planes with a
+floating-point conic solver (Clarabel) at each step, is:
 \begin{center}
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 $(k,\varepsilon)$ & $N=80$ & $N=120$ & $N=160$ & best weight known & $M_{k,\varepsilon}\ge$\\
 \midrule
 $(50,0)$    & 3.9919 & & & 3.9919 (Cor.~6.4) & 3.9274\\
-$(50,1/25)$ & 4.1427 & 4.1420 & 4.1418 & 4.1458 (Thm.~\ref{thm:floor}) & 4.0012\\
+$(50,1/25)$ & 4.1427 & 4.1420 & 4.1418 & 4.1458 (Thm.~\ref{thm:floor}) & 4.0043\\
 $(30,1/4)$  & 4.0501 & 4.0345 & 4.0240 & 4.0021 (Thm.~\ref{thm:floor}) & --\\
 \bottomrule
 \end{tabular}
@@ -824,19 +845,22 @@ $(30,1/4)$  & 4.0501 & 4.0345 & 4.0240 & 4.0021 (Thm.~\ref{thm:floor}) & --\\
 
 At $\varepsilon=0$ the optimum over the whole family is the classical weight:
 the solver, started anywhere, returns $\frac{k}{k-1}\log k$. At
-$(50,1/25)$ the values have settled near $4.14$: no weight that sees only
-$t_m$ and $S$ can bring the dual bound much below $4.14$ there, while the true
-value is at least $4.0012$. At $(30,1/4)$ the discretisation has not
+$(50,1/25)$ the discretised optimum settles near $4.14$. This suggests
+(\lbl{Heuristic}) that no weight that sees only $t_m$ and $S$ can bring the
+dual bound much below $4.14$ there, while the true value is at least $4.0043$;
+but $B_N$ is neither a restriction nor a relaxation of the problem over
+$\mathcal W$, and at $(30,1/4)$ it exceeds the value $4.0021$ of a known
+member of $\mathcal W$ by about $0.022$. At $(30,1/4)$ the discretisation has not
 converged (the values still fall, and lie above the continuum value $\le4.0021$
 that Theorem~\ref{thm:floor} already certifies), so we draw no conclusion about
 the exact floor of $\mathcal W$; runs at $k=31,32$ gave $B_{120}=4.0261$ to
-$4.0976$, also unconverged. The lesson is the first one: \emph{to approach the
-truth near $k=50$, a dual weight must depend on more of $t$ than $t_m$ and
-$S$}. The optimal weight is known in principle: if $F>0$ is the extremal
+$4.0976$, also unconverged. The lesson, heuristically, is the first one:
+\emph{to approach the truth near $k=50$, a dual weight must depend on more of
+$t$ than $t_m$ and $S$}. The optimal weight is known in principle: if $F>0$ is the extremal
 function, $\psi_m=\int F\,dt_m/F$ makes Lemma~\ref{lem:dual} an equality (the
 Collatz--Wielandt principle for the positive operator
 $F\mapsto\sum_{m\text{ active}}\int F\,dt_m$). A first test
-(\lbl{Computed}, floating point, $20000$ random points, not a bound;
+(\lbl{Computed (floating point)}, $20000$ random points, not a bound;
 \texttt{code/cw\_sample.py}) is encouraging on the plain simplex and
 discouraging on the enlarged one. For $k=3$, $\varepsilon=0$ and the
 degree-$12$ Galerkin function ($M_3\ge1.646440$) the sampled ratio stays in
@@ -847,7 +871,9 @@ $(50,1/25,12)$). This is structural: where no index is active the extremal
 function vanishes, so near that region any positive $F$ makes the ratio
 large. Making the principle usable there is \lbl{Open}. The script is \texttt{code/dual\_lp.py};
 \texttt{runs/dual\_lp\_conv.log} and \texttt{runs/dual\_lp\_floor.log} hold the
-output. The last column is from Table~\ref{tab:eps} and
+output, including the solver's warning ``Solution may be inaccurate'' on some
+of the runs in the table; the $N=80$ values at $(50,1/25)$ and $(50,0)$ are
+not in these logs. The last column is from Table~\ref{tab:eps} and
 Theorem~\ref{thm:Meps}.
 
 \begin{remark}[heuristic: does the enlarged simplex stop at $k=50$?]\label{rem:k49}
@@ -856,10 +882,10 @@ geometrically. Fitting $M(D)=M_\infty-Cr^{D}$ to three consecutive even
 degrees (Aitken's $\Delta^2$, script \texttt{code/extrapolate\_eps.py}) can
 be tested where the answer is known. From the \lbl{Computed} values at $D=16,18,20$ for $k=50$,
 $\varepsilon=1/25$ it predicts $3.99324$, $4.00195$, $4.00553$ at $D=22,25,27$,
-against the certified $3.99310$ (degree $22$), our $4.00125$ (degree $25$)
+against the certified $3.99310$ (degree $22$), our $4.00124$ (degree $25$)
 and Polymath8b's $4.0043$ (degree $27$). The model is slightly optimistic, by
 $0.0001$ to $0.0012$. Applied to $k=49$ with $D=18,20,22$ (certified
-$3.97715$ and $3.97690$ at degree $22$ for $\varepsilon=1/30$ and $1/25$) it
+$3.97714$ and $3.97689$ at degree $22$ for $\varepsilon=1/30$ and $1/25$) it
 gives limits $3.9922$ and $3.9938$. As a test registered before the run, the
 fit predicted $3.98230$ at degree $24$ for $\varepsilon=1/30$; the certified
 value is $3.98218$ ($1508$ coefficients), again slightly below, and the fit
@@ -890,7 +916,9 @@ For this version a helper re-read both sources (the arXiv text of
 \texttt{notes/stadlmann-recheck-s5.md}.
 
 \subsection*{The support and the criterion}
-The following is \lbl{Literature}, read in \cite[Def.~1, Def.~5, Prop.~1]{Sta26}.
+The following is \lbl{Literature (preprint)}, read in \cite[Def.~1, Def.~5,
+Prop.~1]{Sta26}; the implication from the criterion to $\DHL[k,2]$ is
+\lbl{Claimed}.
 For $\delta>0$, $-\varepsilon=A_0<A_1<\dots<A_n<\frac12-\varepsilon$ and caps
 $\delta<B_{j,m}\le B_{j,m+1}\le B_{j,m}+\delta$, the support
 $T_k(\delta,\underline A,\underline B,\varepsilon)$ is the set of
@@ -924,7 +952,7 @@ For Stadlmann, $(L,\tau)=(1.042,0.982)$, $s=253/250$, $e=15/506$; for
 \subsection*{Without the caps}
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic]\label{prop:capfree}
 With even power sums,
-$M_{49,15/506}\ge3.9685535$ (degree $20$, $707$ coefficients) and
+$M_{49,15/506}\ge3.9685534$ (degree $20$, $707$ coefficients) and
 $M_{45,8/257}\ge3.9029887$ (degree $21$, $846$ coefficients). Hence, by
 \eqref{eq:dil}, $M_{49}(1.042,0.982)\ge4.016176$ and
 $M_{45}(1.06,0.996)\ge4.012272$.
@@ -934,10 +962,13 @@ $M_{45}(1.06,0.996)\ge4.012272$.
 The two certificates, in the directory \texttt{code/}, are
 \texttt{cert\_stad49\_capfree\_D20e.json} and
 \texttt{cert\_ax45\_capfree\_D21e.json}; the script
-\texttt{verify\_cert.py} re-checks them. Products of even power sums and
-even-part monomial symmetric polynomials span the same space, so our degree-$21$
-basis is the space $\mathcal B_{21}$ of \cite[Thm.~11.1]{Cha26}; its dimension,
-$846$, agrees with theirs. On their capped support they report the exact value
+\texttt{verify\_cert.py} re-checks them. Our degree-$21$ basis spans the
+space $\mathcal B_{21}$ of \cite[Thm.~11.1]{Cha26} (\lbl{Literature
+(preprint)}): their \S11 defines $\mathcal B_{21}$ as the span of
+$(L-P_1)^aP_\lambda$ with $P_\lambda$ a product of even power sums and
+$a+|\lambda|\le21$, with the same $L=53/50$ (definition quoted in
+\texttt{notes/}\allowbreak\texttt{sources-enlarged-supports.md}), which is our
+family; its dimension, $846$, agrees with theirs. On their capped support they report the exact value
 $4.0043840983\ldots$ (\lbl{Claimed}); on the larger cap-free region, with the
 same space, we get $4.012272$. Both are lower bounds, for $M_T$ and for
 $M_{45}(1.06,0.996)\ge M_T$ respectively, so the comparison proves nothing;
@@ -1031,7 +1062,9 @@ $Q(u',x)=\int_0^xP(u',t)\,dt$.
 
 \begin{proposition}[\lbl{Proved here}; elementary]\label{prop:exact}
 Assume $C_{m+1}\le C_m+g$ for all $m$ (this is Stadlmann's condition
-$B_{j,m+1}\le B_{j,m}+\delta$). Call $u'$ \emph{admissible} if $s(u')\le
+$B_{j,m+1}\le B_{j,m}+\delta$) and $g\ge L-\tau$ (this holds for every
+parameter set below: $L-\tau=0.06$ against $g=0.112$ and $0.0728$ for
+\cite{Sta26,Kin26}, and $L-\tau=0.064$ against $g=0.0656$ for \cite{Cha26}). Call $u'$ \emph{admissible} if $s(u')\le
 C_{m(u')}$. Then:
 \begin{enumerate}
 \item the fiber $\{t\ge0:(u',t)\in T\}$ is empty if $u'$ is not admissible,
@@ -1076,10 +1109,14 @@ $x=C_{m+1}-s$) is a polynomial in $R$ and $x$, both affine in
 $(r_A,\rho)$. The regions are: $r_A\ge C_m-mg$ and $r_A+\rho\le$ const
 (the non-admissible pieces); $r_A\ge C_{m+1}-(m+1)g$ and $R>g$ (where $U=g$);
 and the rectangle $r_A<C_{m+1}-(m+1)g$, $\rho<L-C_{m+1}-jg$ (where
-$U=C_{m+1}-s$). In every piece the large set carries at least $C_1=0.6$ or
+$U=C_{m+1}-s$). In the last two cases $U<R$ forces $R>g$, so
+$|u'|<L-g\le\tau$ by the hypothesis $g\ge L-\tau$, and these fibers lie in
+the domain of $J$. In every piece the large set carries at least $C_1=0.6$ or
 the free mass is below $L-C_1$, so $jg<0.442$, $j\le3$; and $mg<L$ gives
-$m\le9$. Both counts are \lbl{Lean-checked}
-(\texttt{stadlmann\_extra\_le\_three}, \texttt{stadlmann\_large\_count}).
+$m\le9$. These one-line inequalities are \lbl{Proved here}; their
+integer-unit analogues, for lists of natural numbers in units of $1/1000$,
+are \lbl{Lean-checked} (\texttt{stadlmann\_extra\_le\_three},
+\texttt{stadlmann\_large\_count}).
 \end{proof}
 
 \begin{theorem}[\lbl{Computed}, exact rational arithmetic, two independent programs]\label{thm:capped-exact}
@@ -1121,8 +1158,9 @@ $1.72\cdot10^{-4}$, $8.1\cdot10^{-5}$ and $1.98\cdot10^{-3}$ of $J(P)$. The
 largest loss is the cut of the fiber at $C_{m+1}-s$ (for $m=0$: no coordinate
 above $0.6$). So Proposition~\ref{prop:capped} ($3.9597$) measured the
 weakness of Proposition~\ref{prop:caps}, not the caps; it is superseded. The loss grows with the degree of the cap-free optimiser
-(\lbl{Computed}, exact, \texttt{capped\_check.py}; degrees $8$, $12$ and $16$
-also with \texttt{capped\_exact.py} at degree $8$):
+(\lbl{Computed}, exact: \texttt{capped\_check.py} for every degree; the
+degree-$20$ value also with \texttt{capped\_exact.py}, and the degree-$8$ value
+too, though that run's output is not stored in the repository):
 \begin{center}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -1134,7 +1172,8 @@ capped $kJ_T/I_T$ & $3.789068$ & $3.923849$ & $3.985976$ & $4.012039$\\
 \end{tabular}
 \end{center}
 so higher-degree optimisers put more mass near the caps; optimising $P$ on
-$T$ itself (not done yet) can only raise the capped value.
+$T$ itself (done in version~0.8, Proposition~\ref{prop:opt49}) can only raise
+the capped value.
 At $k=45$ this is consistent with the comparison after
 Proposition~\ref{prop:capfree}, where the caps of \cite{Cha26} appeared to
 cost about $0.008$.
@@ -1144,8 +1183,9 @@ The variational step of \cite{Sta26} is independently reproduced: the
 criterion of \cite[Prop.~1]{Sta26} holds for $k=49$ with his support, his
 caps and his parameters, and $c_1=c_2=0$. Together with the
 \lbl{Lean-checked} admissible $49$-tuple of diameter $240$
-(Theorem~\ref{thm:lean}), $H_1\le240$ then follows from his Prop.~1 and his
-equidistribution theorem, which we have not verified.
+(Theorem~\ref{thm:lean}), $H_1\le240$ then follows from his reduction
+\cite[Prop.~1]{Sta26} and his equidistribution theorem, neither of which we
+have verified.
 \end{corollary}
 
 This is a reproduction of part of a claimed result, not a new bound, and it
@@ -1162,7 +1202,8 @@ $\mathcal B_{21}$, whose coefficients he does not print.
 
 \begin{remark}[\lbl{Computed}, interval arithmetic: a ceiling, our own]\label{rem:ceiling}
 Every coordinate of a point of $T$ is at most $0.6$
-(\lbl{Lean-checked}: \texttt{stadlmann\_coord\_le}) and $T\subset L\R_k$, so
+(\lbl{Proved here}, by the same linear inequality; an integer-unit analogue
+in units of $1/1000$ is \lbl{Lean-checked}: \texttt{stadlmann\_coord\_le}) and $T\subset L\R_k$, so
 the capped quantity is at most $M_{49}(1.042,0.982)$, which
 Theorem~\ref{thm:floor} with $a=1.0417$, $s_1=1.0007$ bounds by $4.14$
 (certified with \texttt{dual\_eps\_cert.certify\_box}, $337$ pieces). Hence
@@ -1179,11 +1220,13 @@ The same computation applies to the one-band support of \cite{Cha26}
 their Table~3 gives $L=53/50$, $\tau=249/250$, $g=41/625$ and
 $C_m=4B_{1,m}$ with
 $B_{1,m}=\frac{1}{5000}(777,794,875,917,953,983,1016,1042,1063,1081)$ for
-$m\le10$ and $B_{1,m}=1081/5000$ for $m\ge11$ (\lbl{Literature}, read in
-\cite{Cha26}; our notes record the page). These caps satisfy
-$\delta<B_{1,m}\le B_{1,m+1}\le B_{1,m}+\delta$, at most $16$ coordinates can
-exceed $g$, and every correction piece of Proposition~\ref{prop:exact} has
-$j\le6$ (\lbl{Lean-checked}: \texttt{charton\_caps\_valid},
+$m\le10$ and $B_{1,m}=1081/5000$ for $m\ge11$ (\lbl{Literature (preprint)},
+read in \cite{Cha26}; our notes record the page). These caps satisfy
+$\delta<B_{1,m}\le B_{1,m+1}\le B_{1,m}+\delta$ (\lbl{Lean-checked}:
+\texttt{charton\_caps\_valid}), and $g=0.0656\ge L-\tau=0.064$. At most $16$
+coordinates can exceed $g$, and every correction piece of
+Proposition~\ref{prop:exact} has $j\le6$ (\lbl{Proved here}; the integer-unit
+analogues in units of $1/1250$ are \lbl{Lean-checked}:
 \texttt{charton\_large\_count}, \texttt{charton\_extra\_le\_six}).
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs]\label{prop:cha-capped}
@@ -1205,8 +1248,9 @@ gives the same $I_T$ and $J_T$ as exact rationals. Relative to the cap-free
 values, $\int_VP^2=2.67\cdot10^{-3}I(P)$ and the three $J$ corrections are
 $3.0\cdot10^{-4}$, $9.6\cdot10^{-5}$ and $4.65\cdot10^{-3}$ of $J(P)$. The cap-free value of the
 same $P$ is $4.012272$, so the caps cost $0.0095$ here, more than at $k=49$:
-the caps of \cite{Cha26} start lower ($C_1=0.6216$ against $L=1.06$) and
-$g$ is smaller. The value reported in \cite[Thm.~11.1]{Cha26}, with their own
+$g$ is smaller ($0.0656$ against $0.112$), so more coordinates count as
+large, and the largest correction, the cut at $C_{m+1}-s$, is $4.65\cdot10^{-3}$
+of $J(P)$ against $1.98\cdot10^{-3}$. The value reported in \cite[Thm.~11.1]{Cha26}, with their own
 optimised $F$ in the same polynomial space, is $4.00438$ (\lbl{Claimed});
 ours is lower, as it should be for a vector optimised without the caps, and
 it already exceeds $4$.
@@ -1221,18 +1265,21 @@ $s\ge3$. With those caps the same $P$ gives
 (\lbl{Computed}, exact, \texttt{capped\_check.py},
 \texttt{code/cap6/check\_ax45\_D21\_lemma91caps.json}).
 This does not show that the criterion fails for those caps: our $P$
-was optimised without caps, and the caps of Lemma~9.1 are smaller than those
-of Table~3 for every $m\ge4$, so their support is smaller. But it does show
+was optimised without caps, and the caps of Lemma~9.1 are strictly smaller
+than those of Table~3 for every $m\ge1$, so their support is smaller. But it does show
 that, with this test function, the conclusion depends on which of the two
 cap sets the draft intends, and that Table~3 is the one under which the
-criterion is easy to confirm. A test function optimised on the smaller support
-would settle whether Lemma~9.1's caps can work at all (\lbl{Open}).
+criterion is easy to confirm. Within our $846$-dimensional space a test
+function optimised on the smaller support does not reach $3.99$
+(Proposition~\ref{prop:cha-ceiling}, version~0.9); whether a test function
+outside that space can work with Lemma~9.1's caps is \lbl{Open}.
 
 We do \emph{not} lower the project's bound to $212$ in this version. The
 analytic input of \cite{Cha26} (its equidistribution statements at level
 $\omega=7/1000$ for moduli generated by these caps) is \lbl{Claimed}, the
 draft is not consistent about which caps it uses, and with the other cap set
-our test function falls below $4$. What is established here is narrower:
+no test function in our space reaches $3.99$
+(Proposition~\ref{prop:cha-ceiling}). What is established here is narrower:
 \emph{for the caps of Table~3 of \cite{Cha26}, the variational criterion of
 \cite[Thm.~4.10]{Cha26} holds at $k=45$} (\lbl{Computed}, two programs).
 Together with the \lbl{Lean-checked} $45$-tuple of diameter $212$, this
@@ -1254,7 +1301,7 @@ Up to version~0.7 every capped value came from a polynomial optimised
 are quadratic forms in the coefficients $c$ of $P$:
 $I_T(P\,1_T)=c^{\top}G_Ic$ and $J_T(P\,1_T)=c^{\top}G_Jc$.
 
-\begin{proposition}[\lbl{Proved here}; elementary]\label{prop:adjoint}
+\begin{proposition}[\lbl{Computed}; a description of the method, validated by the exact self-tests below, not a proved statement]\label{prop:adjoint}
 In the direct method of \texttt{code/capped\_check.py}, $I_T$ is a linear
 function of the coefficient products
 $\kappa_I[F](y)=\sum_{F_1+F_2=F}p_{F_1}(y)p_{F_2}(y)$ and $J_T$ a linear
@@ -1306,7 +1353,7 @@ cost (about $9\%$): in this test space the margin of the variational step of
 \cite{Sta26} is $0.0124$, and the caps cost $0.0038$ even for the best
 polynomial of degree~$20$.
 
-\begin{proposition}[\lbl{Computed}, ball arithmetic; versions 0.8--0.9]\label{prop:cha-ceiling}
+\begin{proposition}[\lbl{Computed}, ball arithmetic, certified at $\sigma=3.99$; it rests on the Gram weights of one program (\texttt{capped\_check.py} run backwards), checked at one random point (Schwartz--Zippel test; the second exact program's run at that point is not finished); versions 0.8--0.9]\label{prop:cha-ceiling}
 Let $T'$ be the support of \cite{Cha26} at $k=45$ with the caps of their
 Lemma~9.1 ($C_1=C_2=31/50$, $C_m=17/25$ for $m\ge3$; $L=53/50$,
 $\tau=249/250$, $g=41/625$), and let $V$ be our $846$-dimensional space
@@ -1345,25 +1392,29 @@ Charton et al.'s Table~3 parameters, Theorem~\ref{thm:capped-exact} and
 Proposition~\ref{prop:cha-capped}) up to a failure probability below
 $2^{-31}$ for each functional. The same random point has not yet been
 evaluated by \texttt{capped\_exact.py}. That run needs about four hours here
-and was stopped after $138$ of its pieces, so the cross-check of
-\texttt{capped\_check.py} itself at these caps is still to come.
+and was stopped after $153$ of its pieces (\texttt{runs/exact\_rand45\_lemma91.log}),
+so the cross-check of \texttt{capped\_check.py} itself at these caps is still
+to come. The exact weights used for both tests were loaded from a file outside
+the repository and are not yet archived.
 
 \begin{sloppypar}
 \emph{The optimum.} Inverse iteration in $V$ converges to
-$45J_{T'}/I_{T'}=3.98555$ (\texttt{code/cap6/}\allowbreak\texttt{P\_opt45\_lemma91\_D21r\_u.json},
-the eigenvector rounded to $400$ bits; a floating-point value from the Gram
-matrices, not re-certified exactly). So in $V$ the truncated cap-free vector
-($3.97369$) is beaten by $0.0119$, the best possible lies in
-$[3.98555,\,3.99)$, and $4$ is out of reach.
+$45J_{T'}/I_{T'}=3.9855478$ (\texttt{code/cap6/}\allowbreak\texttt{P\_opt45\_lemma91\_D21r\_u.json},
+the eigenvector rounded to $400$ bits; \lbl{Computed (floating point)}, a value
+from the Gram matrices, not re-certified exactly). So in $V$ the truncated
+cap-free vector ($3.97369$) is beaten by $0.0119$, the best possible lies
+(up to that floating-point evaluation) in $[3.98554,\,3.99)$, and $4$ is out
+of reach.
 \end{sloppypar}
 
-Since \cite{Cha26} also report $846$ coefficients, this suggests that the
-caps of Lemma~9.1 cannot give their $4.00438$ in a space of this size, and
-that the value they report belongs to the caps of their Table~3, for which our
-truncated vector already gives $4.0027$
-(Proposition~\ref{prop:cha-capped}). We have not checked that their space
-is the same as ours (only the dimension is equal), so this is a located
-discrepancy for the authors or an expert reader, not a refutation.
+Since our space $V$ is the space $\mathcal B_{21}$ of \cite[Thm.~11.1]{Cha26}
+(see after Proposition~\ref{prop:capfree}), this suggests that the caps of
+Lemma~9.1 cannot give their $4.00438$, and that the value they report belongs
+to the caps of their Table~3, for which our truncated vector already gives
+$4.0027$ (Proposition~\ref{prop:cha-capped}). The ceiling rests on one
+program and a randomised check, and we have not compared their support and
+fiber conventions with ours in every detail, so this is a located discrepancy
+for the authors or an expert reader, not a refutation.
 
 \begin{remark}[a failed prediction, our own]\label{rem:prediction}
 Before the run we registered a prediction
@@ -1371,25 +1422,29 @@ Before the run we registered a prediction
 regained only $9\%$ of what truncation cost ($0.00038$ of $0.0041$). We
 guessed that re-optimisation is a second-order effect and would again regain
 about a tenth, giving $3.977$--$3.981$ here. It regains $31\%$ ($0.0119$ of
-$0.0386$), and the optimum $3.98555$ lies outside the predicted range. A
+$0.0386$), and the optimum $3.9855478$ lies outside the predicted range. A
 pure second-order picture, with gain about $\mathrm{loss}^2/\mathrm{gap}$ and
-the gap fitted at $k=49$, would instead predict a gain larger than the loss
-itself. Neither guess is right: the fraction regained grows with the size of
-the truncation loss, but not quadratically. The heuristic is ruled out as a
+the gap fitted at $k=49$ (gap $\approx0.0041^2/0.00038\approx0.044$), would instead
+predict a gain of about $0.033$, nearly the whole loss. Neither guess is
+right: the fraction regained grows with the size of the truncation loss, but
+not quadratically. The heuristic is ruled out as a
 quantitative tool.
 \end{remark}
 
 \subsection*{The rung \texorpdfstring{$236$}{236}: the support of Kintali (versions 0.8--0.9)}
 \cite{Kin26} uses Stadlmann's criterion with one band at $k=48$ and the
-support ``D182'' (\lbl{Literature}, read in \cite[\S2]{Kin26}):
+support ``D182'' (\lbl{Literature (preprint)}, read in \cite[\S2]{Kin26}):
 $\varepsilon=3/400$, $A=253/1000$, $\delta=91/5000$ and a single cap
 $B_m=1899/10000$ for every $m\ge1$. In our scaling this is $L=1.042$ and
 $\tau=0.982$ (Stadlmann's values), $g=91/1250$ and $C_m=1899/2500$ for all
 $m$; it satisfies $C_{m+1}\le C_m+g$ and $g\ge L-\tau$, so our evaluators
 apply unchanged (\texttt{code/to\_ucoords.py --params kintali}). At most ten
 coordinates of a point of this support exceed $g$, and every correction piece
-has $j\le3$ (\lbl{Lean-checked}: \texttt{kintali\_large\_count},
-\texttt{kintali\_extra\_le\_three}). The analytic input is Stadlmann's
+has $j\le3$ (\lbl{Proved here}: in the cap-violation pieces and in the
+$\mathrm{Corr}_2$ pieces alike, $jg<L-C_1=0.2824$, while $4g=0.2912$;
+integer-unit analogues in units of $1/2500$ are \lbl{Lean-checked}:
+\texttt{kintali\_large\_count}, and \texttt{kintali\_extra\_le\_three} for the
+cap-violation pieces only). The analytic input is Stadlmann's
 (his Prop.~3, with the Type~IIc range made empty); the test function is a public
 $1295$-term witness of degree $25$ (the $k=50$ certificate of the AxiomMath
 \texttt{PrimeGapsLib} repository, according to \cite[\S3]{Kin26}), transported
@@ -1397,7 +1452,7 @@ by the dilation $z=\frac{26}{25U}t$ and used at $k=48$ without re-optimising; th
 $48J/I=1.0007747\ldots$ in his normalisation, i.e.\ $4.0030988$ in ours,
 and $4.0036348$ without the caps (\lbl{Claimed}). The second $236$
 preprint \cite{SY26}, whose full text was supplied to us after version~0.8,
-uses the same support with the same witness (\lbl{Literature}, read in
+uses the same support with the same witness (\lbl{Literature (preprint)}, read in
 \cite[\S4]{SY26}; notes in \texttt{notes/}\allowbreak\texttt{sources-236-song-yue.md}).
 Its criterion divides by the cap-free denominator, $48J(F)/I_0>2001/2000$.
 The authors state that a fresh regeneration of their capped numerator is
@@ -1420,7 +1475,8 @@ Computed by \texttt{code/capped\_check.py} ($22$ minutes on four cores; input
 \texttt{code/cap6/check\_kin48\_D22r.json}; certificate
 \texttt{code/cert\_kin48\_capfree\_D22e.json}). In version~0.12 our second program, \texttt{capped\_exact.py}
 (cap-free value minus $176$ inclusion--exclusion pieces, checkpointed;
-$15.5$ core-hours, about $2.1$ hours on four cores), gave the same $I_T$ and
+$15.5$ core-hours in two segments: it was resumed at $77$ of $176$ pieces after
+a worker restart, and the second segment took $2.1$ hours on four cores), gave the same $I_T$ and
 $J_T$ as exact rationals (\texttt{code/cap6/res\_kin48\_D22r.json},
 \texttt{code/compare\_two\_programs.py},
 \texttt{code/cap6/compare\_kin48\_D22r.json}).
@@ -1446,7 +1502,8 @@ Appendix~C prints reference integers $I_{\mathrm{ref}}=(98!)^2I_0^{*}$ and
 $J_{\mathrm{ref}}=(99!)^2(26!)^2J^{*}$, where $I_0$ is the \emph{cap-free}
 mass on $\{s<U\}$, $J$ the capped numerator, and the stars denote the integer
 coordinates $x=10^4t$. The criterion is $48J/I_0>\frac{2001}{2000}$
-(\lbl{Literature}, read in \cite[\S4.12, App.~C]{SY26}). The authors write
+(\lbl{Literature (preprint)}, read in \cite[\S4.12, App.~C]{SY26}; that it
+implies $\DHL[48,2]$ is \lbl{Claimed}). The authors write
 that a fresh evaluation reproduces $I_{\mathrm{ref}}$, while a fresh
 regeneration of $J_{\mathrm{ref}}$ from the table ``remains incomplete''.
 
@@ -1507,14 +1564,17 @@ set, the other subtracts corrections from the cap-free value. The
 corrections are small: $\mathrm{Corr}_1/J=2.3\cdot10^{-6}$,
 $\mathrm{Corr}_{2}/J=2.4\cdot10^{-4}$, and the pieces with $j=3$ further
 coordinates above $g$ are below $10^{-23}J$ in absolute value although they
-take most of the running time (\texttt{runs/exact\_sy236\_jonly.log}).
+take almost half of the running time ($15.3$ of $32.2$ core-hours, $47\%$;
+\texttt{runs/exact\_sy236\_jonly.log}, \texttt{code/cap6/pieces\_sy236\_jonly.jsonl}).
 \end{sloppypar}
 So the capped numerator of \cite{SY26}, whose fresh regeneration the authors
 list as pending, is reproduced exactly by two independent implementations, and
 the variational criterion of both $236$ preprints holds for their published
 witness. This is a statement about the variational step only. The
 equidistribution input (\cite[Theorem~4.18]{SY26}; Stadlmann's estimates as
-amended in \cite{Kin26}) is \lbl{Claimed} and not verified by us.
+amended in \cite{Kin26}) and the reductions from it to the variational
+criterion (\cite[Thm.~4.33, \S\S4.12--4.14]{SY26}; \cite[Prop.~1]{Sta26})
+are \lbl{Claimed} and not verified by us.
 
 \begin{corollary}[conditional; the analytic input is \lbl{Claimed}]\label{cor:236}
 The variational step of \cite{SY26} is independently reproduced: the
@@ -1523,8 +1583,9 @@ their witness, support and parameters at $k=48$, by two independent exact
 programs (Proposition~\ref{prop:sy-exact}). Together with the
 \lbl{Lean-checked} admissible $48$-tuple of diameter $236$
 (\texttt{boundedGaps\_236\_of\_DHL\_48}), $H_1\le236$ then follows from
-\cite[Theorem~4.33]{SY26} and their equidistribution theorem
-\cite[Theorem~4.18]{SY26}, which we have not verified.
+their reduction \cite[Theorem~4.33 and \S\S4.12--4.14]{SY26} and their
+equidistribution theorem \cite[Theorem~4.18]{SY26}, neither of which we have
+verified.
 \end{corollary}
 This is a reproduction of part of a claimed result, not a new bound. The
 project's reproduced bound becomes $236$ with exactly this caveat. The
@@ -1532,7 +1593,7 @@ witness is theirs; our own degree-$22$ vector on the same support
 (Proposition~\ref{prop:kin-capped}, $4.0061$) is also confirmed by two
 programs since version~0.12.
 
-\begin{remark}[an audit of the analytic input of $236$; \lbl{Literature, audited}, not peer review]\label{rem:sy-audit}
+\begin{remark}[an audit of the analytic input of $236$; \lbl{Claimed}, audited inside this project, not peer review]\label{rem:sy-audit}
 In version~0.13 we record the outcome of an adversarial check of the proof
 of \cite[Theorem~4.18]{SY26} (\S\S4.1--4.7, and its use in \S\S4.13--4.14),
 carried out inside this project by AI auditors, one per part of the proof,
@@ -1557,7 +1618,8 @@ occur in the proof of \cite{SY26}. This does \emph{not} change the status of
 $236$: the audit is one AI reading per section, not expert review; the deep
 inputs (Deligne's bounds, bilinear Bombieri--Vinogradov, Siegel--Walfisz)
 stay \lbl{Literature}; and \S4.12, the Selberg main term and Lemma~4.32 of
-\cite{SY26} were not audited. The bound $236$ remains conditional
+\cite{SY26} were not audited, so the reduction \cite[Thm.~4.33,
+\S\S4.12--4.14]{SY26} as a whole remains unverified. The bound $236$ remains conditional
 (Corollary~\ref{cor:236}).
 \end{remark}
 
@@ -1620,8 +1682,11 @@ The resulting bound is $1.4\cdot10^{-14}J$, and it is above all ten exact
 $j=3$ values. The same crude bound is useless for $\mathrm{Corr}_2$ (it gives
 $6\cdot10^{32}J$): there the corresponding length is
 $L-C-3g=\frac{8}{125}$, sixteen times larger in about $44$ dimensions, and the
-coefficient bound $M$ exceeds the values of $|P|$ we sampled for our own
-$k=48$ vector by a factor of about $10^{28}$ (cancellation in the power-sum basis). Since the integrand of
+coefficient bound $M$ is far above the actual size of $|P|$ (cancellation in
+the power-sum basis). Both bounds above are for the witness of \cite{SY26}
+(\texttt{code/cap6/thin\_bound\_sy236.json}); for a different polynomial, our
+own $k=48$ vector, we sampled $|P|$ and found $M$ larger by a factor of about
+$10^{28}$ (that sampling is not stored in the repository). Since the integrand of
 $\mathrm{Corr}_2$ has no sign, the proposition does not apply to it directly;
 splitting it into its $Q(u',R)^2$ and $Q(u',U)^2$ parts and applying the
 proposition to each is the next thing to try (done in version~0.13, Proposition~\ref{prop:bonf2}).
@@ -1679,7 +1744,7 @@ to the same conclusion, not a new one.
 \end{sloppypar}
 
 
-\begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature} reading, not a result]\label{rem:sta-lemma5}
+\begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature (preprint)} reading, not a result]\label{rem:sta-lemma5}
 Song and Yue \cite[Remark~4.23]{SY26} say that one step in the proof of
 \cite[Lemma~5]{Sta26} lacks a hypothesis. We read the step in arXiv v1. Lemma~5
 (Baker--Irving Type~I) takes $f=\alpha\star\beta$ with $\alpha$ an arbitrary
@@ -1694,10 +1759,14 @@ natural repair is to check that the sequences $\alpha$ produced by the
 decomposition do have the property, but we have not checked this, and we do
 not know whether the conclusion is affected. Our results on $240$ and $236$
 concern only the variational step and are unaffected either way. The
-\emph{bounds} $240$ and $236$ depend on this input.
+\emph{bound} $240$ may depend on this step, and so may the routes to $236$ of
+\cite{Kin26} (which uses \cite[Prop.~3]{Sta26}) and to $212$ of \cite{Cha26};
+we have not traced either. Our route to $236$ goes through
+\cite[Theorem~4.18]{SY26} (Corollary~\ref{cor:236}), and the internal audit
+of its proof found no swapped-factor step there (Remark~\ref{rem:sy-audit}).
 \end{remark}
 
-\begin{remark}[the next rung, $186$; \lbl{Literature} reading and one \lbl{Lean-checked} fact]\label{rem:oai186}
+\begin{remark}[the next rung, $186$; \lbl{Literature (preprint)} reading and one \lbl{Lean-checked} fact]\label{rem:oai186}
 We read \cite{OAI26} and its numerical companion (the file
 \texttt{short\_gaps\_numerics.pdf} of the repository \texttt{openai/PrimeGaps186}) in version~0.11.
 Their criterion is not a capped simplex ratio of the kind treated above.
@@ -1730,14 +1799,15 @@ The analytic inputs (a triply densely divisible variant of Stadlmann's
 bilinear estimate, the prime minorant, and the exponential-sum bounds that are
 axioms of their Lean development) remain \lbl{Claimed}.
 In version~0.12 we made a first independent check of one ingredient
-(\lbl{Computed}, $40$-digit floating point, not interval arithmetic;
+(\lbl{Computed (floating point)}, $40$ digits, not interval arithmetic;
 \texttt{code/oai186\_dickman\_cells.py}). On $[0,3]$ the Dickman function has
 closed forms, $\rho_D(u)=1-\log u$ on $[1,2]$ and
 $\rho_D(u)=1-\log u+\frac12\log^2u+\mathrm{Li}_2(1/u)-\frac12\log^22-\mathrm{Li}_2(\frac12)$
 on $[2,3]$, and so does $\int\rho_D$. With these we evaluated every cell mass of the seven grid caps
-of the companion ($372{,}450$ cells). All lie inside the enclosures given by
+of the companion ($363{,}450$ cells; \texttt{code/oai186\_dickman\_cells.json}).
+All lie inside the enclosures given by
 its recurrence and cell bound, as we transcribed them, and the enclosures have
-width at most $8.3\cdot10^{-10}$ in units of the cell. One transcription doubt
+width at most $8.35\cdot10^{-10}$ in units of the cell. One transcription doubt
 (which of two bars is the upper one) turns out not to matter at this precision.
 This checks one input of the companion; it is not yet an evaluation of
 $I_H$ or $J_{\lambda,H}$.
@@ -1802,7 +1872,7 @@ support-failure components of their \S2.4), which the criterion also needs;
 and, as always,
 the analytic inputs (\lbl{Claimed}). The project's bound does not move.
 
-\begin{remark}[the last rung, $182$; \lbl{Literature} reading only]\label{rem:sha182}
+\begin{remark}[the last rung, $182$; \lbl{Literature (preprint)} reading only]\label{rem:sha182}
 In version~0.13 we read \cite{Sha26} (a $132$-page bundle: the main paper
 and two analytic companions; notes in \texttt{notes/}\allowbreak\texttt{sources-182.md}).
 It claims $\mathrm{DHL}[39,2]$ and hence $H_1\le182$ (its Theorem~1.2). Its
@@ -1882,9 +1952,10 @@ For each $\omega$ in the table the same weight fails at the next $k$: the
 floating-point $\sup W$ reaches $4$ on some interval of $\varepsilon$ (for
 example $k=27$, $\omega=0.007$, near $\varepsilon\approx0.0548$). So the table
 shows the reach of this weight, not of the method; the true floor is
-presumably much higher, as Proposition~\ref{prop:capfree} suggests (it shows
-that the cap-free quantity already exceeds $4$ at $k=49$ and $k=45$ for the two
-parameter sets). The theorem ignores the caps entirely, which only shrink the
+presumably much higher (\lbl{Heuristic}): the cap-free quantity of
+Proposition~\ref{prop:capfree} exceeds $4$ at $k=45$ only by $0.012$, so its
+threshold is probably not far below $k=45$, by analogy with
+Remark~\ref{rem:k49}. The theorem ignores the caps entirely, which only shrink the
 support; a floor that sees the caps is the natural next step. It also does not
 apply to supports with several bands, where $J$ contains cross terms between
 bands, nor to the constructions behind $186$ and $182$, which we have not
@@ -1899,15 +1970,16 @@ read in enough detail.
 ($H_1\le246$, the established bound, via the $\varepsilon$-enlarged simplex).
 Stadlmann's region ($k=49$, $240$): version~0.6 reproduces the variational
 step exactly (Theorem~\ref{thm:capped-exact}, Corollary~\ref{cor:240}), so the
-project's bound is $240$ \emph{conditionally on the unverified
-equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
+project's bound is $240$ \emph{conditionally on the unverified reduction
+\cite[Prop.~1]{Sta26} and equidistribution estimates of \cite{Sta26}}. For $212$ ($k=45$,
 \cite{Cha26}) version~0.7 confirms the variational criterion for the caps of
 their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
 can move, the discrepancy between their Table~3 and Lemma~9.1 must be
 resolved; version~0.8 has the tool for optimising on the capped support
 (Proposition~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
-our $846$-dimensional space reaches $3.99$ (Proposition~\ref{prop:cha-ceiling});
-so the draft's value must belong to its Table~3 caps. For $236$ ($k=48$) the variational criterion of \cite{Kin26} holds with
+our $846$-dimensional space reaches $3.99$ (Proposition~\ref{prop:cha-ceiling},
+resting on one program's Gram weights and a randomised check), which suggests
+that the draft's value belongs to its Table~3 caps. For $236$ ($k=48$) the variational criterion of \cite{Kin26} holds with
 our own degree-$22$ vector (Proposition~\ref{prop:kin-capped}), and the
 capped numerator of the published witness of \cite{SY26} is reproduced
 exactly, integer for integer, by two independent programs
@@ -1922,19 +1994,21 @@ simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
 stops ($k\ge51$). For the $\varepsilon$-enlarged simplex
 Theorem~\ref{thm:floor} gives $k\ge30$, which is still far from the expected
 truth near $50$; Section~4 explains what a sharper weight must do, and
-Proposition~\ref{prop:family} indicates that it must depend on more of $t$
-than $t_m$ and $S$ (a Collatz--Wielandt weight $\psi_m=\int F\,dt_m/F$ built
+Proposition~\ref{prop:family} indicates (\lbl{Heuristic}) that it must
+depend on more of $t$ than $t_m$ and $S$ (a Collatz--Wielandt weight $\psi_m=\int F\,dt_m/F$ built
 from a good positive test function $F$ is the natural candidate). For the
 one-band hybrid supports of \cite{Sta26,Cha26},
 Theorem~\ref{thm:hybrid-floor} gives the first such bound we know of
 ($k\ge29$ at Stadlmann's level, $k\ge27$ at that of \cite{Cha26}), still
 far from $49$ and $45$; it ignores the caps. A rigorous
-dual certificate there would say whether $182$ is close to the limit of the
-present inputs or far from it, and which input (which Type~I/II/III range) is
-binding.
+dual certificate there would say how far one-band supports can go with the
+present inputs, and which input (which Type~I/II/III range) is binding; the
+constructions behind $186$ and $182$ are of a different kind and would need
+their own dual bound.
 \item \emph{Which rung is cheap.} From Table~\ref{tab:tuples}, the gain per
 unit of $k$ below the claimed frontier is $182\to176\to168\to162\to158$
-for $k=39,\dots,35$: the steps $39\to38$ and $38\to37$ are worth the most.
+for $k=39,\dots,35$: the step $38\to37$ (gain $8$) is worth the most;
+$39\to38$ and $37\to36$ give $6$ each.
 \end{enumerate}
 
 \begin{problem}[\lbl{Open}; partly answered by Theorem~\ref{thm:hybrid-floor} for one band, without using the caps]
@@ -1962,8 +2036,11 @@ implication.
 \end{problem}
 
 \subsection*{Rules of this paper}
-A numerical bound enters the ``established by this project'' column only with
-an exact certificate and, for the combinatorial part, a Lean proof. Ideas are
+A bound is listed as reproduced by this project only if its variational step
+has an exact certificate (for the 2026 bounds, confirmed by two independent
+programs) and its
+combinatorial step is Lean-checked; every unverified analytic input is named
+next to it. Ideas are
 logged with their outcome, including failures. Nothing here is peer reviewed.
 
 \begin{thebibliography}{99}

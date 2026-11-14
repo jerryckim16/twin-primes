@@ -43,7 +43,7 @@
   },
   {
    "label": "Computed",
-   "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (372,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.3e-10 cell units). One input checked; I_H and J_{lambda,H} not yet evaluated.",
+   "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (363,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.35e-10 cell units). One input checked (I_H and J_{lambda,H}: see the Session 14 entry).",
    "where": "paper, Remark oai186 (v0.12); code/oai186_dickman_cells.py, notes/sources-186-forms.md"
   },
   {
