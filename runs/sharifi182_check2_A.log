@@ -1,0 +1,105 @@
+[     0 s, maxrss 0.02 GB] grid N = 393216, n = 393177, caps [141720, 177528, 186253, 196608, 246256], outer [((0, 352697), 246256), ((352698, 376449), 196608), ((376450, 393176), 186253)], prec 128
+[    11 s, maxrss 0.18 GB] B-splines by Cox-de Boor at 337073 points (first r = 56104), partition of unity exact
+[    13 s, maxrss 0.26 GB] Z = [7966.674668651398901755432 +/- 2.06e-22]
+[    13 s, maxrss 0.26 GB] symbolic y-series: 53 etas, |S| = 53, 77 distinct monomials, 241 (eta, monomial) terms, weights [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+[    20 s, maxrss 0.54 GB] cap 141720: cell masses and 12 coordinate polynomials
+[   101 s, maxrss 1.34 GB] cap 141720: monomials of length 0 done (0 products so far)
+[   218 s, maxrss 2.18 GB] cap 141720: monomials of length 1 done (11 products so far)
+[   626 s, maxrss 2.43 GB] cap 141720: monomials of length 2 done (45 products so far)
+[  1088 s, maxrss 2.43 GB] cap 141720: monomials of length 3 done (91 products so far)
+[  1357 s, maxrss 2.43 GB] cap 141720: monomials of length 4 done (128 products so far)
+[  1488 s, maxrss 2.43 GB] cap 141720: monomials of length 5 done (147 products so far)
+[  1527 s, maxrss 2.43 GB] cap 141720: monomials of length 6 done (153 products so far)
+[  1549 s, maxrss 2.43 GB] cap 141720: term +1 (v of cap 141720, rows <= 393176): [1.4827824939335145183e-11 +/- 4.37e-31]
+[  1572 s, maxrss 2.43 GB] cap 141720: term -1 (v of cap 177528, rows <= 393176): [1.0625246670901700739e-11 +/- 4.50e-31]
+[  1572 s, maxrss 2.43 GB] cap 141720: contribution [4.202578268433444444886485e-12 +/- 1.40e-37]
+[  1574 s, maxrss 2.43 GB] cap 177528: cell masses and 12 coordinate polynomials
+[  1619 s, maxrss 2.43 GB] cap 177528: monomials of length 0 done (0 products so far)
+[  1697 s, maxrss 2.61 GB] cap 177528: monomials of length 1 done (11 products so far)
+[  1953 s, maxrss 2.84 GB] cap 177528: monomials of length 2 done (45 products so far)
+[  2291 s, maxrss 2.84 GB] cap 177528: monomials of length 3 done (91 products so far)
+[  2563 s, maxrss 2.84 GB] cap 177528: monomials of length 4 done (128 products so far)
+[  2698 s, maxrss 2.84 GB] cap 177528: monomials of length 5 done (147 products so far)
+[  2738 s, maxrss 2.84 GB] cap 177528: monomials of length 6 done (153 products so far)
+[  2764 s, maxrss 2.84 GB] cap 177528: term +1 (v of cap 177528, rows <= 393176): [1.0687508651781545702e-11 +/- 2.09e-31]
+[  2789 s, maxrss 2.84 GB] cap 177528: term -1 (v of cap 186253, rows <= 393176): [6.5969412271518405941e-12 +/- 3.21e-32]
+[  2789 s, maxrss 2.84 GB] cap 177528: contribution [4.090567424629705107723330e-12 +/- 3.10e-37]
+[  2791 s, maxrss 2.84 GB] cap 186253: cell masses and 12 coordinate polynomials
+[  2836 s, maxrss 2.84 GB] cap 186253: monomials of length 0 done (0 products so far)
+[  2917 s, maxrss 2.84 GB] cap 186253: monomials of length 1 done (11 products so far)
+[  3180 s, maxrss 2.88 GB] cap 186253: monomials of length 2 done (45 products so far)
+[  3519 s, maxrss 2.88 GB] cap 186253: monomials of length 3 done (91 products so far)
+[  3782 s, maxrss 2.88 GB] cap 186253: monomials of length 4 done (128 products so far)
+[  3924 s, maxrss 2.88 GB] cap 186253: monomials of length 5 done (147 products so far)
+[  3968 s, maxrss 2.88 GB] cap 186253: monomials of length 6 done (153 products so far)
+[  3995 s, maxrss 2.88 GB] cap 186253: term +1 (v of cap 186253, rows <= 393176): [6.6010361401738034901e-12 +/- 1.87e-32]
+[  4022 s, maxrss 2.88 GB] cap 186253: term -1 (v of cap 196608, rows <= 376449): [6.3839834929884062185e-12 +/- 2.53e-32]
+[  4022 s, maxrss 2.88 GB] cap 186253: contribution [2.170526471853972716438076e-13 +/- 7.57e-39]
+[  4022 s, maxrss 2.88 GB] {
+ "N": 393216,
+ "prec": 128,
+ "I_mid": "1.48963410081137215290205688396e-11",
+ "I_rad": "5.170494e-40",
+ "I_ball": "[1.48963410081137215290205688396e-11 +/- 5.170e-40]",
+ "I_lower_exact": "43542053547195354013935510442207900909/2923003274661805836407369665432566039311865085952",
+ "I_upper_exact": "174168214188781416055742041780922299707/11692013098647223345629478661730264157247460343808",
+ "published_lo": 1.4896340800902754e-11,
+ "published_up": 1.4896341215381332e-11,
+ "inside_published": true,
+ "rel_pos_in_enclosure": 0.4999316663940865,
+ "program1_I": 1.489634100811372e-11,
+ "diff_vs_program1": 2.575332832747764e-33,
+ "reldiff_vs_program1": 1.7288358472359316e-22,
+ "program1_inside_ball": false,
+ "per_cap": {
+  "141720": {
+   "check2": "[4.202578268433444444886485e-12 +/- 1.40e-37]",
+   "program1": 4.202578268433445e-12,
+   "diff": 1.4308103229482036e-33,
+   "rel": 3.4046012508448847e-22,
+   "rad": 3.0971318467124988e-40
+  },
+  "177528": {
+   "check2": "[4.090567424629705107723330e-12 +/- 3.10e-37]",
+   "program1": 4.090567424629705e-12,
+   "diff": 8.58286847376054e-34,
+   "rel": 2.0982097549797745e-22,
+   "rad": 1.1948134270920647e-40
+  },
+  "186253": {
+   "check2": "[2.170526471853972716438076e-13 +/- 7.57e-39]",
+   "program1": 2.1705264718539726e-13,
+   "diff": -1.5961983127660768e-44,
+   "rel": -7.353968419480602e-32,
+   "rad": 4.2702568264978e-41
+  },
+  "196608": {
+   "check2": "[5.793544200744920597174029e-13 +/- 4.37e-38]",
+   "program1": 5.79354420074492e-13,
+   "diff": 1.2663525230544862e-44,
+   "rel": 2.1857993642158827e-32,
+   "rad": 3.2132953139050854e-41
+  },
+  "246256": {
+   "check2": "[5.806788247790682645049543e-12 +/- 1.19e-37]",
+   "program1": 5.8067882477906825e-12,
+   "diff": 2.8623566242680475e-34,
+   "rel": 4.929328403454513e-23,
+   "rad": 1.301932367982142e-41
+  }
+ },
+ "per_cap_seconds": {
+  "141720": 1559,
+  "177528": 1217,
+  "186253": 1233,
+  "196608": 1555,
+  "246256": 1189
+ },
+ "per_cap_maxrss_GB": {
+  "141720": 2.435,
+  "177528": 2.837,
+  "186253": 2.883,
+  "196608": 2.436,
+  "246256": 2.887
+ }
+}

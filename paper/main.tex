@@ -81,7 +81,9 @@ data and cap masks exactly from their rational definitions and checks the
 arithmetic of its loss tables, not yet the raw loss bounds); for the last
 rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
 criterion, recomputed from the trial data, agree with its published enclosures
-(Remark~\ref{rem:sha182}); and
+(Remark~\ref{rem:sha182}; for $I(F)$ by two independent programs since
+version~0.15); version~0.15 also reproduces the raw loss bounds of one group of
+the $186$ companion (I2old, $7$ of $97$ components); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1989,7 +1991,25 @@ schedule, and the final margins (2.34)--(2.35) hold exactly
 (\texttt{code/oai186\_tables\_check.py}). This checks how the raw bounds are
 combined, not the raw bounds themselves; those come from the forms
 (2.16)--(2.21) of the companion, which we have transcribed
-(\texttt{notes/}\allowbreak\texttt{sources-186-loss.md}) but not yet evaluated.
+(\texttt{notes/}\allowbreak\texttt{sources-186-loss.md}). (iii) Version~0.15
+evaluates them for one inner group, I2old ($7$ components), in arb ball
+arithmetic (\lbl{Computed}, one program, high precision, not an outward-rounded
+certificate; \texttt{code/oai186\_loss\_I2old.py}, output
+\texttt{code/}\allowbreak\texttt{cap6/oai186\_loss\_I2old.json}). Every computed
+raw bound is at most its Table~2.3 entry and within $2.7\cdot10^{-6}$ of it in
+relative terms (within $2.5\cdot10^{-10}$ for five of the seven); for
+example $25776.59$ against $25777$ and $1511406796.9$ against $1511410893$, in
+units of $10^{-18}I_H^-$. Two readings were needed that the transcription does
+not fix: the radial interval of the group, read as the span of old-ladder rows
+$12$--$23$ (the alternative mask, base row~2 only, is $2$--$5\%$ low on every
+component and is ruled out), and the choice between the delay recurrence and the
+renewal majorant (2.3) for the low kernels: the delay recurrence gives values
+slightly \emph{below} the table for $L_2$, $L_3$, the renewal majorant matches
+them to $2\cdot10^{-10}$, so the companion apparently used renewal there; we
+inferred this from the numbers, and both choices give bounds no larger than the
+table. This does not check that the forms majorise the true failure integrals
+(their Lemmas~1.4--1.7, 2.3, 2.4), the completeness of the cover, or the other
+$90$ components.
 \end{sloppypar}
 
 \begin{remark}[the last rung, $182$; \lbl{Literature (preprint)} reading only]\label{rem:sha182}
@@ -2035,8 +2055,22 @@ $J_+=4.0824074297\cdot10^{-13}$, each just above the published lower bound
 (relative excess $4\cdot10^{-11}$ and $5\cdot10^{-12}$). With the published upper
 bound for the tail term, which we have not recomputed, these give a cap surplus
 $q_H-1=2.76706\cdot10^{-4}$, consistent with the certified $\mu^-=2.76692\cdot10^{-4}$
-of \cite{Sha26}. Still unchecked: the tail term, the restoration losses
-($2.115\cdot10^{-4}$ claimed), a second program, and the analytic inputs.
+of \cite{Sha26}. In version~0.15 a second, independent program for $I(F)$
+(\lbl{Computed}, arb ball arithmetic throughout;
+\texttt{code/sharifi182\_check2.py}) gives the rigorous ball
+$I(F)\in[1.48963410081137215290\cdot10^{-11}\pm5.2\cdot10^{-40}]$, inside the
+published enclosure. It has its own parser of the Lean data, its own Dickman
+closed form ($\rho(u)=1-\log u+\log u\log(u-1)+\mathrm{Li}_2(1-u)+\pi^2/12$ on
+$[2,3]$), pointwise Cox--de Boor B-splines in exact rationals, and moments from
+the power series $A(y)^{39}$ instead of the set-partition formula; it shares
+with the first program the reading of $F$ and the layered decomposition over the
+caps, so it checks the arithmetic and the code, not that reading. The two
+programs agree to $1.7\cdot10^{-22}$ in relative terms; the first program's
+value lies just outside the ball, which a test on a coarser grid traces to its
+fixed-point rounding at $2^{-224}$ (at $400$ bits the difference drops to
+$3\cdot10^{-34}$). Still unchecked: a second program for $J_0$, $J_+$, the tail
+term, the restoration losses ($2.115\cdot10^{-4}$ claimed), and the analytic
+inputs.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
