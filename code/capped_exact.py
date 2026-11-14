@@ -23,7 +23,9 @@ Regions in the (r_A, rho) plane:
   T2 (Corr2 case c): 0 <= r_A <= a, 0 <= rho <= rc, x = c' - r_A, R = x + (rc - rho), integrand h(R, x).
 All arithmetic is exact (flint fmpq / fmpq_poly).
 
-usage: capped_exact.py P_u.json [--out result.json] [--direct] [--jonly] [--ckpt pieces.jsonl]   (--direct: also compute I_T directly, test;
+usage: capped_exact.py P_u.json [--out result.json] [--direct] [--jonly] [--ckpt pieces.jsonl] [--split] [--bonf]
+       --split (Session 14): Corr2 = (Q(R)^2 part) - (Q(U)^2 part), pieces kept apart (exact; same totals);
+       --bonf: implies --split; one-sided certificate, Icorr j <= 1, Corr1 j <= 2, Q(R)^2 parts j <= 2, Q(U)^2 parts j <= 1;   (--direct: also compute I_T directly, test;
        --jonly: only the J corrections; then "I_T" in the output is the CAP-FREE I and "ratio" is k J_T / I)
 """
 import sys, json, time
@@ -361,6 +363,17 @@ class Capped:
                 h.add(self.Hx[B], -1)
             Hc[B] = h
         self.Hc = Hc
+        if getattr(self, "split", False):          # --split (Session 14): keep Q(R)^2 and Q(U)^2 apart (each >= 0)
+            self.HbR = {B: H(fmpq_poly([g, 1])) for B, H in self.HR.items()}
+            self.HbU = {B: H(fmpq_poly([g, 1])) for B, H in self.Hg.items()}
+            HcR = {}
+            for B, HRB in self.HR.items():
+                h = BiPoly()
+                for i in range(HRB.degree() + 1):
+                    if HRB[i] != 0:
+                        h.d[(i, 0)] = HRB[i]
+                HcR[B] = h
+            self.HcR, self.HcU = HcR, dict(self.Hx)
 
     def tasks(self):
         """All (kind, m, j, args) pieces; each value enters with weight (-1)^j C(n, m) C(n - m, j)."""
@@ -401,6 +414,18 @@ class Capped:
                     out.append(("Corr2c", n, m, j, (a, rc, cprime)))
         for t in out:
             assert t[1] - t[2] - t[3] >= 1, "n' = 0 piece not supported"
+        if getattr(self, "split", False):         # Corr2b = Corr2bR - Corr2bU, Corr2c = Corr2cR - Corr2cU
+            o2 = []
+            for t in out:
+                if t[0] in ("Corr2b", "Corr2c"):
+                    o2.append((t[0] + "R",) + t[1:])
+                    o2.append((t[0] + "U",) + t[1:])
+                else:
+                    o2.append(t)
+            out = o2
+        if getattr(self, "bonf", False):          # Bonferroni truncation (paper Prop. bonf and its split form)
+            jmax = {"Icorr": 1, "Corr1": 2, "Corr2bR": 2, "Corr2cR": 2, "Corr2bU": 1, "Corr2cU": 1}
+            out = [t for t in out if t[3] <= jmax[t[0]]]
         return out
 
     def run_task(self, t):
@@ -412,13 +437,22 @@ class Capped:
             v = self.T1(n, m, j, *args, self.HRs)
         elif kind == "Corr2b":
             v = self.T1(n, m, j, *args, self.Hb)
-        else:
+        elif kind == "Corr2c":
             v = self.T2(n, m, j, *args, self.Hc)
+        elif kind == "Corr2bR":
+            v = self.T1(n, m, j, *args, self.HbR)
+        elif kind == "Corr2bU":
+            v = self.T1(n, m, j, *args, self.HbU)
+        elif kind == "Corr2cR":
+            v = self.T2(n, m, j, *args, self.HcR)
+        else:
+            assert kind == "Corr2cU"
+            v = self.T2(n, m, j, *args, self.HcU)
         v = (-1) ** j * comb(n, m) * comb(n - m, j) * v
         return kind, m, j, v, time.time() - t0
 
     def corrections(self, log=print, procs=1):
-        res = {"Icorr": fmpq(0), "Corr1": fmpq(0), "Corr2b": fmpq(0), "Corr2c": fmpq(0)}
+        res = {kk: fmpq(0) for kk in ("Icorr", "Corr1", "Corr2b", "Corr2c", "Corr2bR", "Corr2bU", "Corr2cR", "Corr2cU")}
         self.build_H()
         ts = self.tasks()
         ck = getattr(self, "ckpt", None)          # --ckpt file: exact value of every finished piece (JSON lines)
@@ -507,13 +541,24 @@ def main():
     c.ckpt = sys.argv[sys.argv.index("--ckpt") + 1] if "--ckpt" in sys.argv else None
     c.jonly = "--jonly" in sys.argv     # skip the I correction (I_T then not computed; ratio uses cap-free I)
     procs = int(sys.argv[sys.argv.index("--procs") + 1]) if "--procs" in sys.argv else 1
+    c.split = "--split" in sys.argv or "--bonf" in sys.argv
+    c.bonf = "--bonf" in sys.argv       # one-sided: J_T >= J - (truncated sums), I_T <= I - (truncated sum)
     res = c.corrections(log, procs)
+    if c.split:
+        res["Corr2b"] = res["Corr2bR"] - res["Corr2bU"]
+        res["Corr2c"] = res["Corr2cR"] - res["Corr2cU"]
     IT = I - res["Icorr"] if not c.jonly else I
     JT = J - res["Corr1"] - res["Corr2b"] - res["Corr2c"]
     ratio = k * JT / IT
     out = dict(k=k, I=str(I), J=str(J), Icorr=str(res["Icorr"]), Corr1=str(res["Corr1"]), Corr2b=str(res["Corr2b"]),
                Corr2c=str(res["Corr2c"]), I_T=str(IT), J_T=str(JT), ratio=str(ratio), ratio_float=fl(ratio),
                capfree_ratio_float=fl(k * J / I), gt4=bool(ratio > 4), source=sys.argv[1], seconds=round(time.time() - t0))
+    if c.split:
+        out.update({kk: str(res[kk]) for kk in ("Corr2bR", "Corr2bU", "Corr2cR", "Corr2cU")})
+    if c.bonf:
+        out["onesided"] = True
+        out["note"] = ("BONFERRONI ONE-SIDED: J_T here is a LOWER bound and I_T an UPPER bound for the true values "
+                       "(Icorr j<=1, Corr1 j<=2, Q(R)^2 parts j<=2, Q(U)^2 parts j<=1); ratio is a lower bound")
     log(json.dumps({kk: v for kk, v in out.items() if kk not in ("I", "J", "Icorr", "Corr1", "Corr2b", "Corr2c", "I_T", "J_T", "ratio")}))
     log("relative: Icorr/I = %.4e, Corr1/J = %.4e, Corr2b/J = %.4e, Corr2c/J = %.4e" % (
         fl(res["Icorr"] / I), fl(res["Corr1"] / J), fl(res["Corr2b"] / J), fl(res["Corr2c"] / J)))

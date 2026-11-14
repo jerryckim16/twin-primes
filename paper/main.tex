@@ -113,7 +113,7 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 \end{center}
 \noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
 $^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.
-$^{\ddagger}$ Its variational step is reproduced here (Corollary~\ref{cor:236}); its equidistribution input is not verified by us.}
+$^{\ddagger}$ Its variational step is reproduced here (Corollary~\ref{cor:236}); its equidistribution input is not verified by us. An AI audit inside this project of the proof of \cite[Theorem~4.18]{SY26} found one repairable mis-statement (eq.~(49), inherited from \cite[Lemma~6.25]{PM8a}) and no gap (Remark~\ref{rem:sy-audit}); this is not expert review.}
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
@@ -1525,6 +1525,35 @@ witness is theirs; our own degree-$22$ vector on the same support
 (Proposition~\ref{prop:kin-capped}, $4.0061$) is also confirmed by two
 programs since version~0.12.
 
+\begin{remark}[an audit of the analytic input of $236$; \lbl{Literature, audited}, not peer review]\label{rem:sy-audit}
+In version~0.13 we record the outcome of an adversarial check of the proof
+of \cite[Theorem~4.18]{SY26} (\S\S4.1--4.7, and its use in \S\S4.13--4.14),
+carried out inside this project by AI auditors, one per part of the proof,
+with exact-rational checks of every exponent inequality and a word-for-word
+comparison of the cited statements of Polymath8a \cite{PM8a}
+(\texttt{notes/}\allowbreak\texttt{audit-sy236-thm418/}, scripts in
+\texttt{code/}\allowbreak\texttt{audit\_sy236/}). Its verdict: the theorem appears to
+follow from the cited literature after one local repair. The displayed bound
+(49) of \cite[p.~27]{SY26} for the correlation of two $\mathrm{Kl}_3$ sums,
+transcribed correctly from \cite[Lemma~6.25, Cor.~6.26]{PM8a}, carries the
+factor $\gcd(g,m_1-m_2)^{1/2}$ with $g=(r_1,r_2)$, $r_i=gt_i$; the
+prime-by-prime proof gives $\gcd(g,m_1t_1^3-m_2t_2^3)^{1/2}$ instead (the
+local correlation is of size $p$ exactly when the two local arguments
+coincide, where it equals $\sum_a|\mathrm{Kl}_3(a;p)|^2$). After this
+change the sum over $m_1,m_2$ has the same bound, and no exponent or margin
+changes. We re-ran the auditors' numerical check
+(\texttt{code/audit\_sy236/kl3\_coordinator\_check.py}, $p=31$, $t_1=2$,
+$t_2=3$): the normalised correlation is at most $1.03$ when $m_1=m_2$ and at
+least $29.97$ when $m_1t_1^3\equiv m_2t_2^3\pmod p$. The auditors also
+found that the swapped-factor step of Remark~\ref{rem:sta-lemma5} does not
+occur in the proof of \cite{SY26}. This does \emph{not} change the status of
+$236$: the audit is one AI reading per section, not expert review; the deep
+inputs (Deligne's bounds, bilinear Bombieri--Vinogradov, Siegel--Walfisz)
+stay \lbl{Literature}; and \S4.12, the Selberg main term and Lemma~4.32 of
+\cite{SY26} were not audited. The bound $236$ remains conditional
+(Corollary~\ref{cor:236}).
+\end{remark}
+
 \subsection*{One-sided certificates without the thin pieces (version 0.12)}
 Exact equality of two programs is the strongest check, but the criterion
 itself only needs a lower bound for $J_T$ and an upper bound for $I_T$. The
@@ -1829,6 +1858,7 @@ a verification''), status dated 7 November 2026.
 \url{https://github.com/Nervous-Machine/DEBRIEF-math-primegaps}
 \bibitem{OAI26} OpenAI, \emph{Improved short gaps between primes}, preprint
 dated 30 August 2026, with the repository \texttt{openai/PrimeGaps186}.
+\bibitem{PM8a} D.~H.~J.~Polymath, \emph{New equidistribution estimates of Zhang type}, Algebra Number Theory \textbf{8} (2014), 2067--2199; arXiv:1402.0811.
 \bibitem{Pol14b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and
 bounded intervals containing many primes}, Res. Math. Sci. 1 (2014).
 \bibitem{Sha26} GPT-6 Astra (OpenAI), prompted by R.~Sharifi, \emph{A
