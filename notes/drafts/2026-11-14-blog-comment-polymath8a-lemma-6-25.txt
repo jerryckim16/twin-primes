@@ -1,0 +1,13 @@
+Draft blog comment (DRAFT, not posted). For the post
+https://terrytao.wordpress.com/2014/02/07/new-equidistribution-estimates-of-zhang-type-and-bounded-gaps-between-primes-and-a-retrospective/
+Tao's blog renders LaTeX written as $latex ... $ (WordPress syntax). Paste everything below the line.
+------------------------------------------------------------------------
+A small remark on Lemma 6.25 (correlation of hyper-Kloosterman sums) of the Polymath8a paper (ANT 8 (2014), arXiv:1402.0811v3); Corollary 6.26 has the same factor. I don't think it affects any result, but the gcd factor in the statement seems to be off when $latex r_1 \neq r_2$.
+
+Write $latex g = (r_1,r_2)$ and $latex r_i = g t_i$. In the proof, the local arguments at a prime $latex p | g$ are $latex b_i = a_i \bar{s}^3 (r_i/p)^{-3}$. These coincide when $latex a_1 t_2^3 \equiv a_2 t_1^3 \pmod p$, not when $latex a_1 \equiv a_2$. So the proof gives the factor $latex (a_1 t_2^3 - a_2 t_1^3, n, g)^{1/2}$ in place of $latex (a_2 - a_1, n, r_1, r_2)^{1/2}$.
+
+A family where the printed bound fails: take $latex s = 1$, $latex n = 0$, $latex r_1 = 5g$, $latex r_2 = 7g$ with $latex g$ squarefree and coprime to $latex 2 \cdot 5 \cdot 7 \cdot 109$. Take $latex a_2 = 1$ and $latex a_1 \equiv 5^3 \cdot 7^{-3} \pmod g$, $latex a_1 \equiv 1 \pmod 5$. Then $latex (a_2 - a_1, g) = 1$, since $latex 5^3 - 7^3 = -2 \cdot 109$. By CRT the sum factors over primes: the primes 5 and 7 contribute $latex -1/5$ and $latex -1/7$, and each $latex p | g$ contributes $latex \sum_{x \in {\bf F}_p^\times} |\mathrm{Kl}_3(x;p)|^2 = p - 1 - 1/p - 1/p^2$ (Parseval over multiplicative characters). So the sum is exactly $latex \frac{1}{35} \prod_{p | g} (p - 1 - \frac{1}{p} - \frac{1}{p^2})$, which is not $latex O_\varepsilon(g^{1/2+\varepsilon})$.
+
+In the applications (e.g. Lemma 7.4) this factor is summed over the $latex m$-variables. The corrected version still gives $latex \sum_{m_1, m_2 \asymp M} (g, m_1 t_1^3 - m_2 t_2^3)^{1/2} \ll \tau(g) M (M + g^{1/2})$, so as far as I can see nothing downstream changes. (Song and Yue's recent 236 preprint quotes the lemma in its eq. (49); the same remark applies there.)
+
+A short script checking this numerically is at https://github.com/jerryckim16/twin-primes/tree/main/code/audit_sy236/pm8a_lemma625 . Disclosure: I'm not a professional number theorist, and this check was done with the help of AI tools; apologies if this is already known.
