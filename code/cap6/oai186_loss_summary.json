@@ -1,0 +1,57 @@
+{
+ "groups": {
+  "O2": {
+   "done": 8,
+   "of": 17,
+   "E_table_total": 38927522,
+   "E_table_done": 36816111,
+   "E_ours_done": 36816111,
+   "E_equal": true
+  },
+  "O5/2": {
+   "done": 18,
+   "of": 35,
+   "E_table_total": 622829241,
+   "E_table_done": 622796401,
+   "E_ours_done": 622796398,
+   "E_equal": false
+  },
+  "I2old": {
+   "done": 7,
+   "of": 7,
+   "E_table_total": 55254,
+   "E_table_done": 55254,
+   "E_ours_done": 55254,
+   "E_equal": true
+  },
+  "I5/2old": {
+   "done": 10,
+   "of": 10,
+   "E_table_total": 435544,
+   "E_table_done": 435544,
+   "E_ours_done": 435544,
+   "E_equal": true
+  },
+  "I2new": {
+   "done": 11,
+   "of": 11,
+   "E_table_total": 1405159,
+   "E_table_done": 1405159,
+   "E_ours_done": 1405159,
+   "E_equal": true
+  },
+  "I5/2new": {
+   "done": 17,
+   "of": 17,
+   "E_table_total": 32422390,
+   "E_table_done": 32422390,
+   "E_ours_done": 32422390,
+   "E_equal": true
+  }
+ },
+ "done": 71,
+ "of": 97,
+ "share_of_Lplus_done": 0.9969195120336942,
+ "all_at_most_table": true,
+ "max_rel_dev_entries_ge_1e6": 3.586275301170616e-07
+}
