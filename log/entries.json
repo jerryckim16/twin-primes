@@ -1,5 +1,24 @@
 [
  {
+  "date": "2026-11-14",
+  "slot": "Session 13 (11:34 AM CT slot, 13 Nov; waited 3 h 30 min for Session 12 and stood down, then resumed at Jerry's request at 3:10 PM CT after Session 12 merged; finished 14 Nov)",
+  "title": "Our own k = 48 test function confirmed by a second exact program (4.0060814208 > 4); Bonferroni one-sided certificates; first independent check on rung 186 (Dickman cell masses); paper v0.12, verification note v0.4",
+  "did": [
+   "The scheduled run waited 3 h 30 min for Session 12 (still running its exact job), stood down without work as the rules require, and was resumed at Jerry's request once Session 12 merged (PR #18).",
+   "Second program for our own k = 48 degree-22 vector on the Kintali / Song-Yue support: capped_exact.py with checkpoints, 176 pieces, 15.5 core-hours (resumed once after a worker restart at 77/176). Its I_T and J_T equal capped_check.py's as exact rationals: 48 J_T/I_T = 4.0060814208 > 4 by two independent programs (variational step only; the analytic input of 236 is not verified).",
+   "Own idea, partly settled: by the Bonferroni inequalities (paper Prop. bonf, Proved here, folklore in substance) the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be dropped from a one-sided certificate. On our k = 48 vector the one-sided ratio is 4.006081420807 (3.5e-12 below exact) and 28% of the run time is saved; all 142 exact Corr1 / I-correction pieces (both runs) have the predicted sign. The crude a priori sup bound (code/thin_bound.py) gives 1.4e-14 J for Corr1 j = 3 but is useless for Corr2 (6e32 J); its region volumes were cross-checked against the evaluator's own (30 pieces, 0 failures).",
+   "Rung 186, first sub-step: closed-form Dickman cell masses (log, Li2) for all seven grid caps of OpenAI's numerical companion (372,450 cells) lie inside its recurrence and cell enclosures as transcribed (widths <= 8.3e-10); the transcription doubt about upper/lower bars turns out not to matter.",
+   "Main paper v0.12 (Prop. kin-capped now two programs, new Prop. bonf, Remark oai186 extended); verification note v0.4 (Prop. kin-own two programs). README now says three runs a day."
+  ],
+  "explored": "Probabilistic models of primes: prime pairs in translates of the Lean-checked 236-tuple match Hardy-Littlewood to 3e-4 at X = 1e8, but the mean number of primes per translate stays above 1 until X ~ 7e20, so no computable data bears on DHL[48,2] -- dead end.",
+  "failed": [
+   "Wolfram connector not available in this session; mathbox skills not available (the Bonferroni proof was checked by hand line by line; the computations are checked by exact equality of two programs and by the sign and volume cross-checks).",
+   "The a priori bound does not handle the Corr2 j = 3 pieces (unsigned integrand, wide region).",
+   "No news search (not the 3:34 AM run); no weekly review (not a Monday)."
+  ],
+  "next": "Split Corr2 into its Q(R)^2 and Q(U)^2 parts so that one-sided certificates need no j = 3 pieces; k = 45 random point (Schwartz-Zippel check, capped_exact --ckpt); rung 186: one 1-D contraction for a single signature on one cap domain; rung 182: read the source."
+ },
+ {
   "date": "2026-11-13",
   "slot": "Session 12 (7:34 AM CT slot; started by hand at 7:44 AM CT; no wait, Sessions 10 and 11 had died unmerged)",
   "title": "Rung 236: the second exact program confirms Song-Yue's capped numerator (exact equality with Jref); project bound 236, CONDITIONAL on their unverified equidistribution theorem; rescued Sessions 10-11; paper v0.11",

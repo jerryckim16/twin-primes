@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.3 (draft), 13 November 2026}
+\date{Version 0.4 (draft), 14 November 2026}
 
 \begin{document}
 
@@ -45,8 +45,8 @@ $1$) $48J_T/I_0=1.0006649215907\ldots>2001/2000$. The authors list the regenerat
 capped numerator as pending. The same computation reproduces Kintali's
 printed capped and cap-free ratios to $12$ significant digits, and a test
 function of our own gives $4.0060814\ldots>4$ on the same support. The capped
-numerator of the witness is confirmed by a second, independent exact program;
-the value for our own test function so far rests on one program.
+numerator of the witness and both functionals for our own test function are
+confirmed by a second, independent exact program.
 (iii) For the draft of Charton et al.\ ($k=45$, claimed $H_1\le212$) the
 criterion holds for the caps of its Table~3 ($4.0027351\ldots>4$, two
 programs), whereas for the different caps stated in its Lemma~9.1 no
@@ -107,7 +107,7 @@ claim & variational ratio & status here\\
 $240$ & $4.0120389$; optimised on $T$: $4.0124198$ & \lbl{Computed}, two programs\\
 $236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \lbl{Computed}, two programs\\
  & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & ($J_T$; $I_T$ one)\\
-$236$, our own $F$ & $4.0060814$ & \lbl{Computed}, one program\\
+$236$, our own $F$ & $4.0060814$ & \lbl{Computed}, two programs\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in an $846$-dim.\ space & \lbl{Computed}, ball arithm.\\
 \bottomrule
@@ -398,15 +398,18 @@ of the monomial-basis programs \texttt{songyue\_I0.py} and
 \texttt{code/}\allowbreak\texttt{cap6/}\allowbreak\texttt{compare2\_sy236.json}).
 The capped denominator $I_T$, which enters only the ratio $48J_T/I_T$ and not
 the criterion of \cite{SY26}, rests on \texttt{capped\_check.py} alone.
-Proposition~\ref{prop:kin-own} below is now the only result of this note that
-rests on one program.
+Proposition~\ref{prop:kin-own} below is also confirmed by both programs
+(version 0.4).
 
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic, one program]\label{prop:kin-own}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs]\label{prop:kin-own}
 For our own cap-free optimiser in $V_{22}$ for this $(L,\tau)$ at $k=48$
 ($1041$ coefficients, rounded to $400$ significant bits),
 $48J_T(P1_T)/I_T(P1_T)=4.0060814208\ldots>4$.
 \end{proposition}
 
+\texttt{capped\_check.py} and \texttt{capped\_exact.py} ($176$ correction
+pieces, $15.5$ core-hours) give the same $I_T$ and $J_T$ as exact rationals
+(\texttt{code/}\allowbreak\texttt{cap6/}\allowbreak\texttt{compare\_kin48\_D22r.json}).
 Here the caps cost only $0.00033$ (the cap-free value is $4.0064115$). That our
 value exceeds the witness's $4.0031$ is expected, since the witness was
 optimised for $k=50$ and transported, while ours is optimised for $k=48$.
@@ -415,7 +418,7 @@ optimised for $k=50$ and transported, while ours is optimised for $k=48$.
 For the published witness, the variational criteria of both \cite{Kin26}
 ($48J_T/I_T>4$) and \cite{SY26} ($48J_T/I_0>2001/2000$) hold at $k=48$. For
 our independent test function only the capped criterion $48J_T/I_T>4$ was
-computed, and it holds (one program). With the
+computed, and it holds (two programs). With the
 \lbl{Lean-checked} admissible $48$-tuple of diameter $236$, $H_1\le236$
 follows from their equidistribution input, which we have not verified.
 \end{corollary}
@@ -517,6 +520,10 @@ version 0.9).
 
 \section*{Changes}
 \begin{description}
+\item[0.4] (14 November 2026) The second exact program confirms
+Proposition~\ref{prop:kin-own} (our own $k=48$ test function): same $I_T$ and
+$J_T$ as exact rationals. The one-program qualifiers for it are removed from
+the abstract, the table, the proposition and the corollary.
 \item[0.3] (13 November 2026) The second exact program confirms the capped
 numerator of the witness of \cite{SY26} (Theorem~\ref{thm:sy}); the
 one-program qualifiers for it are removed from the abstract, the table, the

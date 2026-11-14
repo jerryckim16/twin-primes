@@ -1,7 +1,7 @@
 {
- "version": "0.11",
- "updated": "2026-11-13",
- "session_count": 12,
+ "version": "0.12",
+ "updated": "2026-11-14",
+ "session_count": 13,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,21 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked)."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Our own k = 48 degree-22 vector on the support of Kintali / Song-Yue: capped_exact.py (176 checkpointed inclusion-exclusion pieces, 15.5 core-hours) and capped_check.py give the SAME I_T and J_T as exact rationals; 48 J_T/I_T = 4.0060814208 > 4 by two independent programs. Variational step only; the analytic input of 236 is NOT verified.",
+   "where": "paper, Proposition kin-capped (v0.12); verification note Prop. kin-own (v0.4); code/cap6/compare_kin48_D22r.json"
+  },
+  {
+   "label": "Proved here",
+   "text": "Bonferroni one-sided certificates (folklore in substance): the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be omitted when only k J_T/I_T > 4 is needed (their integrands are >= 0). On our k = 48 vector the one-sided ratio is 4.006081420807 (3.5e-12 below exact) and the omitted pieces are 28% of the running time; all 96 + 46 exact Corr1/I-correction pieces have the predicted sign (-1)^j.",
+   "where": "paper, Proposition bonf (v0.12); code/compare_two_programs.py, code/thin_bound.py"
+  },
+  {
+   "label": "Computed",
+   "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (372,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.3e-10 cell units). One input checked; I_H and J_{lambda,H} not yet evaluated.",
+   "where": "paper, Remark oai186 (v0.12); code/oai186_dickman_cells.py, notes/sources-186-forms.md"
+  },
   {
    "label": "Computed",
    "text": "Song-Yue's 236 witness: the capped numerator J_T computed by a SECOND independent exact program (capped_exact.py --jonly, cap-free minus 126 inclusion-exclusion corrections, ~32 core-hours) equals capped_check.py's J_T exactly, hence (99!)^2 (26!)^2 10^196 5^150 521^50 J_T = Jref; its cap-free I, J equal the monomial-basis I0, J0. Criterion 48 J_T/I0 = 1.000664921591 > 2001/2000. Variational step of 236 reproduced; H1 <= 236 then follows from Song-Yue's Theorem 4.33 + Theorem 4.18 (equidistribution), which we have NOT verified.",
@@ -365,10 +380,10 @@
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.3",
+   "version": "0.4",
    "status": "active",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; witness numerator now by two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps. Analytic inputs not verified."
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; witness numerator and our own k = 48 test function now by two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps. Analytic inputs not verified."
   }
  ],
  "last_review": null

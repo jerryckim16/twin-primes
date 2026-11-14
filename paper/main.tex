@@ -55,7 +55,7 @@ arithmetic, with weights checked exactly at a random point); optimising the test
 capped support itself, with exact Gram matrices obtained by running the exact
 evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
 for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
-function of degree~$22$ gives $4.0061>4$ (one exact program so far), and
+function of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and
 for the published witness of Song and Yue (same support) we recompute their
 capped numerator exactly: it equals their reference integer digit for digit,
 as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
@@ -1397,7 +1397,7 @@ The authors state that a fresh regeneration of their capped numerator is
 still pending. An exact recomputation of it from their table is a natural
 next step for us.
 
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic, one program so far; version 0.9]\label{prop:kin-capped}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs; versions 0.9 and 0.12]\label{prop:kin-capped}
 Let $P$ be our cap-free optimiser of degree $22$ for $M_{48,15/506}$ ($1041$
 coefficients, even power sums; certified Rayleigh quotient $3.9589046383$, so
 $kJ/I=\frac{253}{250}\cdot3.9589046=4.0064115$ without caps), rounded to
@@ -1411,9 +1411,12 @@ above. Then
 Computed by \texttt{code/capped\_check.py} ($22$ minutes on four cores; input
 \texttt{code/cap6/P\_kin48\_D22r\_u.json}, result
 \texttt{code/cap6/check\_kin48\_D22r.json}; certificate
-\texttt{code/cert\_kin48\_capfree\_D22e.json}). Our second program, \texttt{capped\_exact.py}, reproduces the
-cap-free value of the rounded vector ($4.0064115$) but needs several hours
-for the corrections on this support. It was stopped and is the next check.
+\texttt{code/cert\_kin48\_capfree\_D22e.json}). In version~0.12 our second program, \texttt{capped\_exact.py}
+(cap-free value minus $176$ inclusion--exclusion pieces, checkpointed;
+$15.5$ core-hours, about $2.1$ hours on four cores), gave the same $I_T$ and
+$J_T$ as exact rationals (\texttt{code/cap6/res\_kin48\_D22r.json},
+\texttt{code/compare\_two\_programs.py},
+\texttt{code/cap6/compare\_kin48\_D22r.json}).
 At degree $20$ the
 same construction stays below $4$ ($3.9994$ even without caps).
 \end{sloppypar}
@@ -1425,8 +1428,7 @@ this $k$ and this $(L,\tau)$. So the variational step of \cite{Kin26}
 (Stadlmann's criterion for this support at $k=48$) holds with our own test
 function. This is \emph{not} a verification of $236$: the analytic input
 (Stadlmann's equidistribution estimates, with the corrections described in
-\cite{Kin26}) is \lbl{Claimed} and unverified by us, a second exact program
-has not yet confirmed the number, and the project's bound is not lowered.
+\cite{Kin26}) is \lbl{Claimed} and unverified by us.
 
 \subsection*{The witness of Song and Yue, recomputed exactly (version 0.10)}
 Appendix~A of \cite{SY26} prints the witness as $1295$ integer triples
@@ -1520,8 +1522,8 @@ programs (Proposition~\ref{prop:sy-exact}). Together with the
 This is a reproduction of part of a claimed result, not a new bound. The
 project's reproduced bound becomes $236$ with exactly this caveat. The
 witness is theirs; our own degree-$22$ vector on the same support
-(Proposition~\ref{prop:kin-capped}, $4.0061$) has so far been evaluated by one
-program only.
+(Proposition~\ref{prop:kin-capped}, $4.0061$) is also confirmed by two
+programs since version~0.12.
 
 \subsection*{One-sided certificates without the thin pieces (version 0.12)}
 Exact equality of two programs is the strongest check, but the criterion
@@ -1567,9 +1569,12 @@ On the witness of \cite{SY26} the four levels of $\mathrm{Corr}_1$ are
 $2.3\cdot10^{-6}J$, $-1.7\cdot10^{-10}J$, $7.0\cdot10^{-20}J$ and
 $-2.5\cdot10^{-69}J$ for $j=0,1,2,3$, and the $j=3$ level took $7.1$ of the
 $32.2$ core-hours; all $46$ exact pieces of $\mathrm{Corr}_1$ there, and the
-$19$ finished pieces of $\mathrm{Corr}_1$ and $\int_VP^2$ of the second program
+$96$ pieces of $\mathrm{Corr}_1$ and $\int_VP^2$ of the second program
 for our own $k=48$ vector (\texttt{code/cap6/pieces\_kin48\_D22r.jsonl}), have
-the sign $(-1)^j$, as the proposition requires. The loss can also be bounded a
+the sign $(-1)^j$, as the proposition requires. For that vector the one-sided
+certificate of the proposition gives $48J_{\mathrm{low}}/I_{\mathrm{up}}=4.006081420807>4$,
+$3.5\cdot10^{-12}$ below the exact ratio, and the omitted pieces took $4.3$ of
+its $15.5$ core-hours ($28\%$). The loss can also be bounded a
 priori (\texttt{code/thin\_bound.py}): on $\{|u|\le L\}$ one has
 $0\le R\le L$ and $0\le P_\ell(u)\le|u|^\ell$, so $|P|\le M:=\sum_i|c_i|L^{a_i+w(b_i)}$
 and $|Q|\le LM$; and the region of a $j=3$ piece of $\mathrm{Corr}_1$ has
@@ -1739,8 +1744,8 @@ capped numerator of the published witness of \cite{SY26} is reproduced
 exactly, integer for integer, by two independent programs
 (Proposition~\ref{prop:sy-exact}), so the project's bound is $236$
 conditionally (Corollary~\ref{cor:236}); the analytic input remains
-\lbl{Claimed}. The second program for our own vector is running from
-checkpoints (version~0.12); Proposition~\ref{prop:bonf} makes such checks cheaper
+\lbl{Claimed}. Our own vector is confirmed by
+two programs (version~0.12); Proposition~\ref{prop:bonf} makes such checks cheaper
 when only the inequality is needed. Then
 $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain

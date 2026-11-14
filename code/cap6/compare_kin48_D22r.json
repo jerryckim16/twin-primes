@@ -1,0 +1,9 @@
+{
+ "I_T_equal": true,
+ "J_T_equal": true,
+ "ratio_exact": 4.006081420810689,
+ "ratio_check": 4.006081420810689,
+ "onesided_ratio": 4.006081420807216,
+ "onesided_gt4": true,
+ "loss": 3.4737840790386323e-12
+}
