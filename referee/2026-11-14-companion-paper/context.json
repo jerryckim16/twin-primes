@@ -1,0 +1,455 @@
+{
+  "preamble": "\\documentclass[11pt]{amsart}\n\\usepackage[margin=1.1in]{geometry}\n\\usepackage{amsmath,amssymb,amsthm}\n\\usepackage{booktabs}\n\\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}\n\n\\newtheorem{theorem}{Theorem}\n\\newtheorem{proposition}[theorem]{Proposition}\n\\newtheorem{lemma}[theorem]{Lemma}\n\\newtheorem{corollary}[theorem]{Corollary}\n\\theoremstyle{definition}\n\\newtheorem{definition}[theorem]{Definition}\n\\newtheorem{problem}[theorem]{Problem}\n\\theoremstyle{remark}\n\\newtheorem{remark}[theorem]{Remark}\n\n\\newcommand{\\lbl}[1]{\\textup{\\textsc{#1}}}\n\\newcommand{\\DHL}{\\mathrm{DHL}}\n\\newcommand{\\R}{\\mathcal{R}}\n\n\\title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}\n\\author{Jerry Kim}\n\\thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}\n\\date{Version 0.12, 13 November 2026}\n\n",
+  "title": "Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme",
+  "abstracts": [
+    {
+      "text": "\nThis is a living working paper. It does \\emph{not} prove the twin prime\nconjecture, and it does not improve the best known bound on small gaps between\nprimes. It records (i) the state of the problem as of the date above, (ii) what\nthis project has verified for itself, by exact computation and by the Lean~4\nkernel, now including the established bound $H_1\\le246$ of Polymath8b,\nreproduced end to end through a certified lower bound for $M_{50,1/25}$,\n(iii) small results of our own: a no-go statement for a natural\nattempt to sharpen the pigeonhole step, on the plain and on the\n$\\varepsilon$-enlarged simplex; a generating-function formula that makes\ncertified computation with all symmetric test functions cheap; an upper\nbound showing that the $\\varepsilon$-enlargement of Polymath8b cannot, by\nitself, reach any $k\\le29$; numerical evidence that this upper bound is close\nto the limit of every dual weight depending only on $t_m$ and $t_1+\\dots+t_k$,\nand heuristic evidence that the $\\varepsilon$-enlarged simplex stops at\n$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous\nfloor (no $k\\le28$ at his level of distribution, whatever the caps), and an\nexact formula for his capped functionals, which gives a certified capped\nratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two\nindependent programs: the variational step of Stadlmann's $H_1\\le240$ is\nthereby reproduced, while his new equidistribution estimates, on which $240$\nrests, have not been verified by us; the same computation confirms the\nvariational criterion of Charton et al.\\ at $k=45$ ($4.0027>4$) for the caps\nof their Table~3 but not, with our test function, for the different caps of\ntheir Lemma~9.1 ($3.9737$), and with those caps no polynomial in our\n$846$-dimensional space reaches $3.99$ (a ceiling certified in ball\narithmetic, with weights checked exactly at a random point); optimising the test function on Stadlmann's\ncapped support itself, with exact Gram matrices obtained by running the exact\nevaluator backwards, raises his margin only from $4.0120$ to $4.0124$;\nfor the support of Kintali at $k=48$ (claimed $H_1\\le236$), our own test\nfunction of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and\nfor the published witness of Song and Yue (same support) we recompute their\ncapped numerator exactly: it equals their reference integer digit for digit,\nas does their cap-free denominator, so their criterion $48J/I_0>2001/2000$\nholds; since version~0.11 this is confirmed by a second, independent exact\nprogram, so the variational step of $H_1\\le236$ is reproduced (its analytic\ninput is not verified by us, and the project's bound $236$ is conditional on\nit); version~0.12 adds an elementary observation (Bonferroni) that lets a\none-sided certificate skip the most expensive inclusion--exclusion pieces\n(Proposition~\\ref{prop:bonf}); and\n(iv) a programme of original\ndirections that later versions will test. Every statement carries one of the\nlabels \\lbl{Lean-checked}, \\lbl{Computed}, \\lbl{Proved here},\n\\lbl{Literature}, \\lbl{Claimed} (a preprint not yet independently\nverified), or \\lbl{Open}.\n",
+      "location": {
+        "path": "paper/main.tex",
+        "line": 28
+      }
+    }
+  ],
+  "statements": [
+    {
+      "environment": "theorem",
+      "label": "thm:lean",
+      "text": "\\begin{theorem}[\\lbl{Lean-checked}]\\label{thm:lean}\n\\begin{enumerate}\n\\item The twin prime conjecture is equivalent to \\texttt{BoundedGaps 2}.\n\\item If a finite Boolean check succeeds on a list $\\mathcal H$ (it misses a\nclass modulo every $m$ with $2\\le m\\le|\\mathcal H|$), then $\\mathcal H$ is\nadmissible. The moduli $p>|\\mathcal H|$ are handled by a formal pigeonhole\nargument.\n\\item For each pair $(k,D)$ in Table~\\ref{tab:tuples}, for\n$(k,D)=(56,278)$, $(57,282)$, $(58,288)$, $(59,300)$, $(60,304)$, $(61,310)$,\n$(62,320)$, $(63,324)$, $(64,330)$, and for $(102,578)$ and $(105,600)$, there is an explicit admissible $k$-tuple in $[0,D]$, and\n$\\DHL[k,2]$ implies \\texttt{BoundedGaps D}. In particular $\\DHL[2,2]$ implies\nthe twin prime conjecture.\n\\item $\\DHL[k,2]$ implies $\\DHL[k',2]$ for every $k'\\ge k$\n(\\texttt{DHL.mono}: delete shifts from the tuple). So a proof of $\\DHL[j,2]$\nwith $j\\le k$ gives \\texttt{BoundedGaps D} for each listed pair $(k,D)$.\n\\item \\texttt{BoundedGaps 1} is false (\\texttt{not\\_boundedGaps\\_one}), and a\npair $\\{0,d\\}$ is admissible if and only if $d$ is even\n(\\texttt{admissible\\_pair\\_iff}). So $2$ is the smallest bound of this form\nthat can hold, and the twin prime conjecture is the strongest statement of the\nform \\texttt{BoundedGaps D}.\n\\end{enumerate}\n\\end{theorem}",
+      "expanded_start": 10174,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 165
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:Mk0",
+      "text": "\\begin{theorem}[\\lbl{Computed}, exact rational arithmetic]\\label{thm:Mk0}\nWith $F$ a polynomial in $1-P_1$ and $P_2$ only,\n\\[\nM_{105}\\ge4.00206976,\\qquad M_{102}\\ge4.00271343,\\qquad M_{5}\\ge2.00410541 .\n\\]\n\\end{theorem}",
+      "expanded_start": 13673,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 240
+      }
+    },
+    {
+      "environment": "lemma",
+      "label": "lem:egf",
+      "text": "\\begin{lemma}\\label{lem:egf}\nLet $X_1,\\dots,X_k$ be independent exponential random variables of mean $1$\nand $E_k(b)=\\mathbb E\\prod_jP_j(X)^{b_j}$. Then\n\\[\n\\int_{\\R_k}(1-P_1)^AP^{b}\\,dt=\\frac{A!}{(k+A+w(b))!}\\,E_k(b),\n\\qquad\n\\sum_b E_k(b)\\frac{s^b}{b!}=\\left(\\sum_{c}w(c)!\\,\\frac{s^c}{c!}\\right)^{k},\n\\]\nwhere $s^b=\\prod_js_j^{b_j}$ and $b!=\\prod_jb_j!$. In particular each\n$E_k(b)$ is a positive integer, computed exactly by multiplying\nexponential generating functions.\n\\end{lemma}",
+      "expanded_start": 14727,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 264
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:Mk",
+      "text": "\\begin{theorem}[\\lbl{Computed}, exact rational arithmetic]\\label{thm:Mk}\n\\begin{gather*}\nM_{105}\\ge4.17427,\\qquad M_{64}\\ge4.00363,\\qquad M_{58}\\ge4.00927,\\\\\nM_{56}\\ge4.00519,\\qquad M_{55}\\ge4.00516,\\qquad M_{54}\\ge4.00238 .\n\\end{gather*}\nThe first two use all symmetric polynomials of degree $11$ and $12$\n($195$ and $272$ coefficients). The others use the subspace spanned by\n$(1-P_1)^aP^b$ with $b$ supported on even $j$, as in \\cite[\\S7]{Pol14b}, of\ndegree $16$, $18$, $20$ and $23$ ($307$, $471$, $707$ and $1236$ coefficients).\n\\end{theorem}",
+      "expanded_start": 16448,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 303
+      }
+    },
+    {
+      "environment": "corollary",
+      "label": "cor:578",
+      "text": "\\begin{corollary}[end-to-end within this project]\\label{cor:578}\nAssuming the Bombieri--Vinogradov theorem and \\cite[Prop.~4.2]{May15}, both\n\\lbl{Literature}, Theorems~\\ref{thm:Mk} and~\\ref{thm:lean} give\n$H_1\\le270$.\n\\end{corollary}",
+      "expanded_start": 17498,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 330
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:Meps",
+      "text": "\\begin{theorem}[\\lbl{Computed}, exact rational arithmetic]\\label{thm:Meps}\nWith even power sums of degree $25$ ($1780$ coefficients) and of degree $27$\n($2526$ coefficients),\n\\[\nM_{50,1/25}\\ge4.0012466\\qquad\\text{and}\\qquad M_{50,1/25}\\ge4.0043063 .\n\\]\n\\end{theorem}",
+      "expanded_start": 21138,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 399
+      }
+    },
+    {
+      "environment": "corollary",
+      "label": "cor:246",
+      "text": "\\begin{corollary}[end-to-end within this project]\\label{cor:246}\nAssuming the Bombieri--Vinogradov theorem and \\cite[Thm.~3.12(i)]{Pol14b},\nboth \\lbl{Literature}, Theorem~\\ref{thm:Meps} and the Lean tuple $(50,246)$\nof Theorem~\\ref{thm:lean} give $H_1\\le246$.\n\\end{corollary}",
+      "expanded_start": 22065,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 418
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:rigid",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; possibly folklore]\\label{prop:rigid}\nLet $\\omega$ be the largest number of shifts $h_i$ contained in an interval of\nlength $D$. Then for every $c\\ge0$, not identically zero,\n\\[\n\\frac{M_k[c]}{\\alpha_D(c)}\\le M_\\omega .\n\\]\nSo the weighted criterion never certifies more than the standard criterion\napplied to the best sub-tuple of diameter at most $D$.\n\\end{proposition}",
+      "expanded_start": 24464,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 468
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[\\lbl{Computed}, consistency check for $k=3$]\nWith unrestricted polynomials of degree $6$ on $\\R_3$ we find the lower bounds\n$M_3[(1,1,1)]\\ge1.6464$, $M_3[(1,1,0)]\\ge1.3579$ and\n$M_3[(\\tfrac12,1,\\tfrac12)]\\ge1.1604$, against\n$M_2=1/(1-W(1/e))=1.3859\\ldots$\\,. The half-weighted functional is far below\n$M_2$, as the proposition requires.\n\\end{remark}",
+      "expanded_start": 26370,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 506
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:rigid-eps",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; possibly folklore]\\label{prop:rigid-eps}\nFor $0\\le\\varepsilon<1$ and every weight $c\\ge0$, $c\\ne0$,\n$M_{k,\\varepsilon}[c]/\\alpha_D(c)\\le M_{\\omega,\\varepsilon}$, with equality\nfor the indicator of a largest clique. Since the conditions on $\\varepsilon$\nabove do not get harder as $k$ decreases, the weighted criterion never\ncertifies more than the standard one for the best sub-tuple of diameter at\nmost $D$.\n\\end{proposition}",
+      "expanded_start": 27441,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 526
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[\\lbl{Computed}, $k=3$]\nWith unrestricted polynomials (degree $5$ for $k=3$, degree $10$ for $k=2$,\ncut off at $|t|\\le\\rho$ for $\\rho\\in\\{1-\\varepsilon,1,1+\\varepsilon\\}$):\n\\begin{center}\n\\begin{tabular}{@{}ccccc@{}}\n\\toprule\n$\\varepsilon$ & $M_{2,\\varepsilon}\\ge$ & $M_{3,\\varepsilon}[(1,1,0)]\\ge$ & $M_{3,\\varepsilon}[(\\frac12,1,\\frac12)]\\ge$ & $M_{3,\\varepsilon}\\ge$\\\\\n\\midrule\n$0$ & 1.385933 & 1.349844 & 1.160121 & 1.646427\\\\\n$1/10$ & 1.518567 & 1.482143 & 1.264698 & 1.793492\\\\\n$1/5$ & 1.627161 & 1.585674 & 1.341926 & 1.882282\\\\\n$1/3$ & 1.717104 & 1.663743 & 1.413309 & 1.917001\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nBoth weighted columns stay below $M_{2,\\varepsilon}$, as the proposition\nrequires.\n\\end{remark}",
+      "expanded_start": 29496,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 563
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[scope]\nNeither proposition covers more general polytope supports\n\\cite[\\S3]{Pol14b}, Stadlmann's hybrid supports \\cite{Sta26}, $J$-regions\nthat depend on $m$, or arguments that are not linear in the indicators of\nprimality. Those are \\lbl{Open}.\n\\end{remark}",
+      "expanded_start": 30234,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 582
+      }
+    },
+    {
+      "environment": "lemma",
+      "label": "lem:dual",
+      "text": "\\begin{lemma}[\\lbl{Proved here}; it is {\\cite[Lemma~6.1]{Pol14b}} with the region of the marginals kept]\\label{lem:dual}\nLet $\\psi_1,\\dots,\\psi_k$ be measurable functions on $L\\R_k$, positive almost\neverywhere, such that for almost every $t'\\in\\tau\\R_{k-1}$ and every $m$\n\\[\n\\int_0^{L-|t'|}\\frac{du}{\\psi_m(t',u)}\\le1,\n\\]\nwhere $(t',u)$ is the point whose $m$-th coordinate is $u$ and whose other\ncoordinates are $t'$. Then\n\\[\nM_k(L,\\tau)\\le\\operatorname*{ess\\,sup}_{t\\in L\\R_k}\\ \\sum_{m\\text{ active at }t}\\psi_m(t).\n\\]\n\\end{lemma}",
+      "expanded_start": 31408,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 605
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:eps-first",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; elementary, possibly folklore]\\label{prop:eps-first}\nFor $k\\ge2$ and $0\\le\\varepsilon<1$,\n\\[\nM_{k,\\varepsilon}\\le(1+\\varepsilon)M_k\\le(1+\\varepsilon)\\frac{k}{k-1}\\log k .\n\\]\nConversely, for $0\\le\\varepsilon\\le M_k/(4k)$,\n\\[\nM_{k,\\varepsilon}\\ge(1+\\varepsilon)M_k-\\frac{64k^2}{M_k}\\,\\varepsilon^2 .\n\\]\nIn particular $\\lim_{\\varepsilon\\to0^+}(M_{k,\\varepsilon}-M_k)/\\varepsilon=M_k$.\n\\end{proposition}",
+      "expanded_start": 32257,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 627
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:floor",
+      "text": "\\begin{theorem}[\\lbl{Proved here} for the inequality; \\lbl{Computed}, interval arithmetic, for the numerical statement]\\label{thm:floor}\nLet $k\\ge2$, $0<\\tau<s_1\\le L$ and $a\\ge s_1$. Then\n\\[\nM_k(L,\\tau)\\le\\sup_{0\\le\\sigma\\le\\tau}W(\\sigma),\\qquad\nW(\\sigma)=\\frac{ka}{k-1}\\log\\left(1+\\frac{(k-1)(s_1-\\sigma)}{a-\\sigma}\\right)+L-s_1+\\sigma\\log\\frac{L-\\sigma}{s_1-\\sigma}.\n\\]\nConsequently $M_{k,\\varepsilon}<3.99$ for every $k\\le29$ and every\n$0\\le\\varepsilon<1$. In particular the criterion of \\cite[Thm.~3.12]{Pol14b}\non the $\\varepsilon$-enlarged simplex cannot give $\\DHL[k,2]$ for any\n$k\\le29$ from the Bombieri--Vinogradov theorem, nor from any level of\ndistribution $\\theta\\le0.501$, whatever the value of $\\varepsilon$.\n\\end{theorem}",
+      "expanded_start": 34951,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 686
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[what was known, and a caution]\nPolymath8b state the uniform bound $M_{k,\\varepsilon}\\le\\frac{k}{k-1}\\log(2k-1)$\nfor $0\\le\\varepsilon<1$ \\cite[Prop.~6.5]{Pol14b}, and remark that the bounds\nfor $M_{k,\\varepsilon}$ ``do not appear to be as sharp''. That bound is below\n$4$ exactly for $k\\le23$, so Theorem~\\ref{thm:floor} moves this floor from $24$\nto $30$. It does not use their bound. We note, with caution, that we could not\ncomplete the last step of the proof of \\cite[Prop.~6.5]{Pol14b} as we read it:\nthe weights $1-S+kt_m$ are summed, and for $S>1$ their sum over the active\nindices can exceed $k$ (at $t=(s,0,\\dots,0)$ with $1<s\\le1+\\varepsilon$ only\nthe first index is active and its weight is $1+(k-1)s$). Our reconstruction\ngives the constant $\\frac{k}{k-1}+\\varepsilon$ in place of $\\frac{k}{k-1}$. For\nversion~0.4 we re-read the proof in the current arXiv text: after the\nCauchy--Schwarz step it says only ``Integrating in $t_1,\\dots,t_{i-1},\nt_{i+1},\\dots,t_k$ and summing in $i$, we obtain the claim.'' The weights\n$1-S+kt_i$ of the inactive indices can be negative when $S>1$, and dropping\nthem is what lets the sum exceed $k$; it is at most\n$k+(k-1)(S-1)\\le k+(k-1)\\varepsilon$, which gives our constant. So the\nargument as printed proves $M_{k,\\varepsilon}\\le\\left(\\frac{k}{k-1}+\\varepsilon\\right)\\log(2k-1)$.\nWhether the stated inequality is nevertheless true is \\lbl{Open}; we have not\nseen the journal version, and we may be missing an intended step. A\nbrief search (the paper \\cite{Pol14b} and the Polymath wiki page on the\nvariational problem) found no sharper published upper bound for\n$M_{k,\\varepsilon}$; the search was not exhaustive, and\nTheorem~\\ref{thm:floor} has not been reviewed by anyone outside this project.\n\\end{remark}",
+      "expanded_start": 37517,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 732
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[\\lbl{Computed}, floating point only: how far this weight goes]\nThe best value of $\\sup W$ over $(a,s_1)$, maximised over $\\varepsilon$, is\nabout $3.975$ for $k=29$, $4.004$ for $k=30$, $4.257$ for $k=40$ and $4.459$\nfor $k=50$, in each case near $\\varepsilon=0.24$ to $0.28$; the bound of\n\\cite[Prop.~6.5]{Pol14b} is $4.187$, $4.218$, $4.482$ and $4.689$. For small\n$\\varepsilon$ the two-zone weight does not beat the scaling bound: at $k=50$\nand $\\varepsilon=1/25$ both give $4.15$ ($4.1458$ against $4.1515$), while\nPolymath8b's certified lower bound is $4.0043$. The true threshold is presumably\nclose to $k=50$, so the theorem is far from sharp. Script:\n\\texttt{code/dual\\_eps.py remark15}.\n\\end{remark}",
+      "expanded_start": 39288,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 758
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[a weight that did not work]\nWe also tried the weight $\\psi_m=\\frac{\\beta}{n}(a-S_A+nt_m)$, where $n$ is\nthe number of active indices at $t$ and $S_A$ the sum of the active\ncoordinates. Its sum over the active indices is exactly $\\beta a$ everywhere,\nso the bound is $a$ times the largest fiber integral. Evaluating the fiber\nintegral exactly on the fibers over $t'=(x,\\dots,x,0,\\dots,0)$ (\\lbl{Computed},\nfloating point, $k=50$, $\\varepsilon=1/25$, every $a\\in[1.05,3]$ on a grid of\nstep $0.01$, script \\texttt{code/dual\\_eps.py remark16}) shows that this\nweight cannot give less than $4.178$, which is worse than the $4.1515$ from\nscaling. The binding fiber has a single non-zero coordinate $x\\approx2\\varepsilon$:\nthere the zero coordinates become inactive while $n$ is still large, and the\nnormalisation by $n$ wastes the slack. A dual bound that is sharper for small\n$\\varepsilon$ must treat the small coordinates near such sparse points\ndifferently. This is \\lbl{Open}. (An earlier draft of this remark, version~0.3\nas first circulated, reported a weaker obstruction, $4.146$, from fibers with\nabout ten non-zero coordinates; the exact fiber evaluation above supersedes it.)\n\\end{remark}",
+      "expanded_start": 40012,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 770
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:family",
+      "text": "\\begin{proposition}[\\lbl{Computed}, floating point, discretised; not a rigorous bound]\\label{prop:family}\nDiscretise $\\Psi=\\rho\\cdot(L-\\sigma+(k-1)u)$ with $\\rho$ constant on cells of\nan $N\\times{}$(geometric) grid in $(S,u)$, impose the fiber conditions exactly\non the grid $\\sigma\\in\\frac LN\\mathbb Z$, and impose the pointwise condition\non all configurations of the grid of step $L/N$ (found by a knapsack oracle).\nThe convex optimum $B_N(k,\\varepsilon)$, computed by cutting planes with an\nexact convex solver at each step, is:\n\\begin{center}\n\\begin{tabular}{@{}lccccc@{}}\n\\toprule\n$(k,\\varepsilon)$ & $N=80$ & $N=120$ & $N=160$ & best weight known & $M_{k,\\varepsilon}\\ge$\\\\\n\\midrule\n$(50,0)$    & 3.9919 & & & 3.9919 (Cor.~6.4) & 3.9274\\\\\n$(50,1/25)$ & 4.1427 & 4.1420 & 4.1418 & 4.1458 (Thm.~\\ref{thm:floor}) & 4.0012\\\\\n$(30,1/4)$  & 4.0501 & 4.0345 & 4.0240 & 4.0021 (Thm.~\\ref{thm:floor}) & --\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\n\\end{proposition}",
+      "expanded_start": 41878,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 798
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:k49",
+      "text": "\\begin{remark}[heuristic: does the enlarged simplex stop at $k=50$?]\\label{rem:k49}\nThe certified values of Table~\\ref{tab:eps} grow with the degree roughly\ngeometrically. Fitting $M(D)=M_\\infty-Cr^{D}$ to three consecutive even\ndegrees (Aitken's $\\Delta^2$, script \\texttt{code/extrapolate\\_eps.py}) can\nbe tested where the answer is known. From the \\lbl{Computed} values at $D=16,18,20$ for $k=50$,\n$\\varepsilon=1/25$ it predicts $3.99324$, $4.00195$, $4.00553$ at $D=22,25,27$,\nagainst the certified $3.99310$ (degree $22$), our $4.00125$ (degree $25$)\nand Polymath8b's $4.0043$ (degree $27$). The model is slightly optimistic, by\n$0.0001$ to $0.0012$. Applied to $k=49$ with $D=18,20,22$ (certified\n$3.97715$ and $3.97690$ at degree $22$ for $\\varepsilon=1/30$ and $1/25$) it\ngives limits $3.9922$ and $3.9938$. As a test registered before the run, the\nfit predicted $3.98230$ at degree $24$ for $\\varepsilon=1/30$; the certified\nvalue is $3.98218$ ($1508$ coefficients), again slightly below, and the fit\nthrough $D=20,22,24$ moves the limit down to $3.9913$. The grid\n$\\varepsilon\\in\\{1/50,1/40,1/30,1/25,1/20\\}$ at $D\\le20$ gives at most\n$3.995$. This suggests that $\\sup_\\varepsilon M_{49,\\varepsilon}<4$, so that\nthe $\\varepsilon$-enlarged simplex with Bombieri--Vinogradov stops at $k=50$,\nconsistent with the fact that every bound below $246$ uses a different support.\nThis is a heuristic, not a theorem: \\lbl{Open}. Together with\nTheorem~\\ref{thm:floor} it brackets the floor of this method between $30$ and\n(conjecturally) $50$.\n\\end{remark}",
+      "expanded_start": 44775,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 846
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[scope]\nTheorem~\\ref{thm:floor} concerns the $\\varepsilon$-enlarged simplex only. It\nsays nothing about the 2026 claims, which use other supports and new\nequidistribution estimates. A floor for those is the Problem in the next\nsection.\n\\end{remark}",
+      "expanded_start": 46331,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 869
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:capfree",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic]\\label{prop:capfree}\nWith even power sums,\n$M_{49,15/506}\\ge3.9685535$ (degree $20$, $707$ coefficients) and\n$M_{45,8/257}\\ge3.9029887$ (degree $21$, $846$ coefficients). Hence, by\n\\eqref{eq:dil}, $M_{49}(1.042,0.982)\\ge4.016176$ and\n$M_{45}(1.06,0.996)\\ge4.012272$.\n\\end{proposition}",
+      "expanded_start": 49017,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 918
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:caps",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; elementary]\\label{prop:caps}\nLet $R_m(g,c)=\\{u\\in L\\R_k:\\ u_1,\\dots,u_m>g,\\ u_1+\\dots+u_m\\ge c\\}$, put\n$c_m=C_m$ for $m\\le6$ and $c_7=7g$. Then, with\n\\[\nE(P)=\\sum_{m=1}^{7}\\binom km\\int_{R_m(g,c_m)}P^2 ,\n\\]\none has $I_T(F)\\le I(P)$ and, for every $0<\\eta<1$,\n\\[\nJ_T(F)\\ \\ge\\ \\max\\left(J(P)-2\\sqrt{J(P)\\,L\\,E(P)},\\ (1-\\eta)J(P)-(\\eta^{-1}-1)L\\,E(P)\\right).\n\\]\n\\end{proposition}",
+      "expanded_start": 50479,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 946
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:capped",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic]\\label{prop:capped}\nFor Stadlmann's parameters ($k=49$) there is a polynomial $P$ of degree $20$\nin even power sums ($707$ coefficients) with\n\\[\n\\frac{kJ_T(P\\,1_T)}{I_T(P\\,1_T)}\\ \\ge\\ 3.95972 .\n\\]\nAt degree $16$ ($307$ coefficients) the same method gives $3.93625$.\n\\end{proposition}",
+      "expanded_start": 52633,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 988
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:exact",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; elementary]\\label{prop:exact}\nAssume $C_{m+1}\\le C_m+g$ for all $m$ (this is Stadlmann's condition\n$B_{j,m+1}\\le B_{j,m}+\\delta$). Call $u'$ \\emph{admissible} if $s(u')\\le\nC_{m(u')}$. Then:\n\\begin{enumerate}\n\\item the fiber $\\{t\\ge0:(u',t)\\in T\\}$ is empty if $u'$ is not admissible,\nand otherwise equals $[0,U(u')]$ with\n$U=\\min\\left(R,\\max(g,\\,C_{m(u')+1}-s(u'))\\right)$;\n\\item one has $I_T(P\\,1_T)=I(P)-\\int_VP^2$ and\n\\[J_T(P\\,1_T)=J(P)-\\mathrm{Corr}_1-\\mathrm{Corr}_2,\\]\nwhere\n$\\mathrm{Corr}_1=\\int Q(u',R)^2$ over the non-admissible $u'$ with\n$|u'|\\le\\tau$, and\n$\\mathrm{Corr}_2=\\int\\left(Q(u',R)^2-Q(u',U)^2\\right)$ over the admissible $u'$ with $U<R$;\n\\item each of the three correction integrals is a finite signed sum, over the\nsize $m$ of the large set and over $j\\ge0$ further coordinates forced above\n$g$ (inclusion--exclusion for ``all other coordinates are at most $g$'', with\nweight $(-1)^j\\binom nm\\binom{n-m}{j}$), of integrals over polygons in the\nplane of $r_A=s-mg$ and $\\rho=|u|-s-jg$. On each polygon the integrand,\nafter the shape integrals of Lemma~\\ref{lem:egf} and of\nProposition~\\ref{prop:caps}, is a polynomial in $(r_A,\\rho)$, so every term\nis an exact rational number.\n\\end{enumerate}\nFor Stadlmann's parameters every correction piece has $m\\le9$ and $j\\le3$.\n\\end{proposition}",
+      "expanded_start": 54726,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1025
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:capped-exact",
+      "text": "\\begin{theorem}[\\lbl{Computed}, exact rational arithmetic, two independent programs]\\label{thm:capped-exact}\nLet $P$ be the cap-free optimiser of degree $20$ of\nProposition~\\ref{prop:capfree} ($707$ coefficients, even power sums). For\nStadlmann's parameters ($k=49$, $L=1.042$, $\\tau=0.982$, $g=0.112$,\n$C_1=C_2=0.6$, $C_m=0.68$ for $m\\ge3$) and $F=P\\,1_T$,\n\\[\n\\frac{k\\,J_T(F)}{I_T(F)}=4.0120389035\\ldots\\ >\\ 4 .\n\\]\n\\end{theorem}",
+      "expanded_start": 57837,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1078
+      }
+    },
+    {
+      "environment": "corollary",
+      "label": "cor:240",
+      "text": "\\begin{corollary}[conditional; the analytic input is \\lbl{Claimed}]\\label{cor:240}\nThe variational step of \\cite{Sta26} is independently reproduced: the\ncriterion of \\cite[Prop.~1]{Sta26} holds for $k=49$ with his support, his\ncaps and his parameters, and $c_1=c_2=0$. Together with the\n\\lbl{Lean-checked} admissible $49$-tuple of diameter $240$\n(Theorem~\\ref{thm:lean}), $H_1\\le240$ then follows from his Prop.~1 and his\nequidistribution theorem, which we have not verified.\n\\end{corollary}",
+      "expanded_start": 60881,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1135
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:ceiling",
+      "text": "\\begin{remark}[\\lbl{Computed}, interval arithmetic: a ceiling, our own]\\label{rem:ceiling}\nEvery coordinate of a point of $T$ is at most $0.6$\n(\\lbl{Lean-checked}: \\texttt{stadlmann\\_coord\\_le}) and $T\\subset L\\R_k$, so\nthe capped quantity is at most $M_{49}(1.042,0.982)$, which\nTheorem~\\ref{thm:floor} with $a=1.0417$, $s_1=1.0007$ bounds by $4.14$\n(certified with \\texttt{dual\\_eps\\_cert.certify\\_box}, $337$ pieces). Hence\n$4.0120<\\sup_F kJ_T/I_T\\le4.14$. Cutting the fibers of the two-zone weight at\n$0.6$ lowers its floating-point ceiling only from $4.13785$ to $4.13753$: the\nsupremum of $W$ sits near $\\sigma=\\tau$, where the fibers are short anyway,\nso a ceiling that sees the caps needs a weight that sees the large\ncoordinates (\\lbl{Open}).\n\\end{remark}",
+      "expanded_start": 62192,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1156
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:cha-capped",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic, two independent programs]\\label{prop:cha-capped}\nLet $P$ be our cap-free optimiser of degree $21$ for\n$M_{45}(1.06,0.996)$ (Proposition~\\ref{prop:capfree}, $846$ coefficients) and\n$T$ the support of \\cite{Cha26} with the caps of their Table~3. Then\n\\[\n\\frac{45\\,J_T(P\\,1_T)}{I_T(P\\,1_T)}=4.0027351128\\ldots\\ >\\ 4 .\n\\]\n\\end{proposition}",
+      "expanded_start": 63777,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1182
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:ceiling45",
+      "text": "\\begin{remark}[\\lbl{Computed}, interval arithmetic: ceiling for $k=45$]\\label{rem:ceiling45}\nAs in Remark~\\ref{rem:ceiling}, Theorem~\\ref{thm:floor} with $a=1.0596$,\n$s_1=1.0166$ gives $M_{45}(1.06,0.996)\\le4.126$ ($495$ pieces). So the\ncapped value of \\cite{Cha26} lies in $(4.0027,\\,4.126]$. Cutting the fibers at\nthe largest coordinate $C_1=0.6216$ moves the floating-point ceiling of this\nweight only from $4.12481$ to $4.12446$.\n\\end{remark}",
+      "expanded_start": 66922,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1236
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:adjoint",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; elementary]\\label{prop:adjoint}\nIn the direct method of \\texttt{code/capped\\_check.py}, $I_T$ is a linear\nfunction of the coefficient products\n$\\kappa_I[F](y)=\\sum_{F_1+F_2=F}p_{F_1}(y)p_{F_2}(y)$ and $J_T$ a linear\nfunction of $\\kappa_J[F](y,v)=\\sum_{F_1+F_2=F}q_{F_1}q_{F_2}$, where\n$P=\\sum_Fp_F(y)\\prod_jP_j^{F_j}$, $y=L-P_1$, and\n$q_F(y,v)$ are the coefficients of $\\int_0^vP\\,dt$. Running the chain of\nexact linear maps of that program backwards gives exact weights\n$w_I[F][\\alpha]=\\partial I_T/\\partial\\kappa_I[F][y^\\alpha]$ and\n$w_J[F][(b,\\gamma)]=\\partial J_T/\\partial\\kappa_J[F][y^bv^\\gamma]$, and then\n$G_I[t_1,t_2]=w_I[F_1+F_2][a_1+a_2]$ for basis terms\n$t_i=(L-P_1)^{a_i}\\prod_jP_j^{F_{i,j}}$, and $G_J=Q^{\\top}HQ$ with\n$H[(F_1,b_1,\\gamma_1),(F_2,b_2,\\gamma_2)]=w_J[F_1+F_2][(b_1+b_2,\\gamma_1+\\gamma_2)]$\nand $Q$ the (sparse, explicit) map from basis terms to the $q_F$.\n\\end{proposition}",
+      "expanded_start": 67706,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1250
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:opt49",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic, two programs]\\label{prop:opt49}\nFor Stadlmann's support and parameters ($k=49$, as in\nTheorem~\\ref{thm:capped-exact}) let $P^\\ast$ be the top generalised\neigenvector of $(k\\,G_J,G_I)$ in the same $707$-dimensional space (even\npower sums, degree $20$), rounded to $400$ significant bits per\ncoefficient. Then\n\\[\n\\frac{k\\,J_T(P^\\ast1_T)}{I_T(P^\\ast1_T)}=4.0124198475\\ldots\\ >\\ 4 .\n\\]\n\\end{proposition}",
+      "expanded_start": 69561,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1280
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:cha-ceiling",
+      "text": "\\begin{proposition}[\\lbl{Computed}, ball arithmetic; versions 0.8--0.9]\\label{prop:cha-ceiling}\nLet $T'$ be the support of \\cite{Cha26} at $k=45$ with the caps of their\nLemma~9.1 ($C_1=C_2=31/50$, $C_m=17/25$ for $m\\ge3$; $L=53/50$,\n$\\tau=249/250$, $g=41/625$), and let $V$ be our $846$-dimensional space\n(even power sums times powers of $L-P_1$, degree $\\le21$). Then\n$3.99\\,G_I-45\\,G_J$ is positive definite, so\n\\[\n\\frac{45\\,J_{T'}(P\\,1_{T'})}{I_{T'}(P\\,1_{T'})}<3.99<4\\qquad\\text{for every }0\\ne P\\in V .\n\\]\n\\end{proposition}",
+      "expanded_start": 70819,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1302
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:prediction",
+      "text": "\\begin{remark}[a failed prediction, our own]\\label{rem:prediction}\nBefore the run we registered a prediction\n(\\texttt{notes/}\\allowbreak\\texttt{session8-prediction.md}). At $k=49$, optimising on $T$ had\nregained only $9\\%$ of what truncation cost ($0.00038$ of $0.0041$). We\nguessed that re-optimisation is a second-order effect and would again regain\nabout a tenth, giving $3.977$--$3.981$ here. It regains $31\\%$ ($0.0119$ of\n$0.0386$), and the optimum $3.98555$ lies outside the predicted range. A\npure second-order picture, with gain about $\\mathrm{loss}^2/\\mathrm{gap}$ and\nthe gap fitted at $k=49$, would instead predict a gain larger than the loss\nitself. Neither guess is right: the fraction regained grows with the size of\nthe truncation loss, but not quadratically. The heuristic is ruled out as a\nquantitative tool.\n\\end{remark}",
+      "expanded_start": 74309,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1361
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:kin-capped",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic, two independent programs; versions 0.9 and 0.12]\\label{prop:kin-capped}\nLet $P$ be our cap-free optimiser of degree $22$ for $M_{48,15/506}$ ($1041$\ncoefficients, even power sums; certified Rayleigh quotient $3.9589046383$, so\n$kJ/I=\\frac{253}{250}\\cdot3.9589046=4.0064115$ without caps), rounded to\n$400$ significant bits per coefficient, and $T$ the support of \\cite{Kin26}\nabove. Then\n\\[\n\\frac{48\\,J_T(P\\,1_T)}{I_T(P\\,1_T)}=4.0060814208\\ldots\\ >\\ 4 .\n\\]\n\\end{proposition}",
+      "expanded_start": 76916,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1400
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:sy-exact",
+      "text": "\\begin{proposition}[\\lbl{Computed}, exact rational arithmetic; the capped numerator by two independent programs]\\label{prop:sy-exact}\nFor the witness $P_U$ of \\cite{SY26} and the support $T$ above:\n\\begin{enumerate}\n\\item $(98!)^2\\,10^{192}\\,5^{150}\\,521^{50}\\,I_0=I_{\\mathrm{ref}}$ exactly;\n\\item $(99!)^2(26!)^2\\,10^{196}\\,5^{150}\\,521^{50}\\,J_T=J_{\\mathrm{ref}}$ exactly,\nwhere $J_T$ is the capped numerator;\n\\item hence $48J_T/I_0=1.000664921591\\ldots>\\frac{2001}{2000}$, i.e.\\\n$4.0026596864\\ldots$ in our scaling. With the capped denominator,\n$48J_T/I_T=4.0030988047\\ldots$ ($I_T/I_0=0.99989031$). Without the caps,\n$48J_0/I_0=4.0036348167\\ldots$.\n\\end{enumerate}\n\\end{proposition}",
+      "expanded_start": 80240,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1455
+      }
+    },
+    {
+      "environment": "corollary",
+      "label": "cor:236",
+      "text": "\\begin{corollary}[conditional; the analytic input is \\lbl{Claimed}]\\label{cor:236}\nThe variational step of \\cite{SY26} is independently reproduced: the\ncriterion $48J/I_0>\\frac{2001}{2000}$ of \\cite[Prop.~4.21]{SY26} holds for\ntheir witness, support and parameters at $k=48$, by two independent exact\nprograms (Proposition~\\ref{prop:sy-exact}). Together with the\n\\lbl{Lean-checked} admissible $48$-tuple of diameter $236$\n(\\texttt{boundedGaps\\_236\\_of\\_DHL\\_48}), $H_1\\le236$ then follows from\n\\cite[Theorem~4.33]{SY26} and their equidistribution theorem\n\\cite[Theorem~4.18]{SY26}, which we have not verified.\n\\end{corollary}",
+      "expanded_start": 83824,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1512
+      }
+    },
+    {
+      "environment": "proposition",
+      "label": "prop:bonf",
+      "text": "\\begin{proposition}[\\lbl{Proved here}; an instance of the Bonferroni inequalities, so folklore in substance]\\label{prop:bonf}\nIn Proposition~\\ref{prop:exact}(3) write $\\mathrm{Corr}_1=\\sum_{j\\ge0}(-1)^jS_j$\nand $\\int_VP^2=\\sum_{j\\ge0}(-1)^jS'_j$, where $S_j$ (resp.\\ $S'_j$) is the sum\nover $m$ of $\\binom nm\\binom{n-m}{j}$ times the piece with $j$ forced\ncoordinates. Then $S_j,S'_j\\ge0$, and for every $t\\ge0$\n\\[\n\\sum_{j\\le 2t+1}(-1)^jS_j\\;\\le\\;\\mathrm{Corr}_1\\;\\le\\;\\sum_{j\\le2t}(-1)^jS_j,\n\\]\nand the same for $S'_j$. In particular\n$J_T\\ge J-\\left(S_0-S_1+S_2\\right)-\\mathrm{Corr}_2$ and\n$I_T\\le I-S'_0+S'_1$. A certificate of $kJ_T/I_T>4$ therefore needs only\nthe pieces of $\\mathrm{Corr}_1$ with $j\\le2$, those of $\\int_VP^2$ with\n$j\\le1$, and all pieces of $\\mathrm{Corr}_2$.\n\\end{proposition}",
+      "expanded_start": 85105,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1534
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:sta-lemma5",
+      "text": "\\begin{remark}[on {\\cite[Lemma~5]{Sta26}}; \\lbl{Literature} reading, not a result]\\label{rem:sta-lemma5}\nSong and Yue \\cite[Remark~4.23]{SY26} say that one step in the proof of\n\\cite[Lemma~5]{Sta26} lacks a hypothesis. We read the step in arXiv v1. Lemma~5\n(Baker--Irving Type~I) takes $f=\\alpha\\star\\beta$ with $\\alpha$ an arbitrary\ncoefficient sequence and $\\beta$ smooth at scale $x^\\gamma$. For\n$\\gamma\\in(\\frac12,\\frac12+2\\omega+\\varepsilon]$ the proof applies Lemma~3\n(Polymath Type~II) ``with the roles of $\\alpha$ and $\\beta$ swapped''. Lemma~3\nrequires its factor at scale $\\le x^{1/2}$ to have the Siegel--Walfisz\nproperty, and after the swap that factor is $\\alpha$. Neither Lemma~5 nor\ncase~(I) of \\cite[Definition~9]{Sta26}, where Lemma~5 is used, assumes this\nproperty of $\\alpha$. So the step reads as \\cite{SY26} describe it. A\nnatural repair is to check that the sequences $\\alpha$ produced by the\ndecomposition do have the property, but we have not checked this, and we do\nnot know whether the conclusion is affected. Our results on $240$ and $236$\nconcern only the variational step and are unaffected either way. The\n\\emph{bounds} $240$ and $236$ depend on this input.\n\\end{remark}",
+      "expanded_start": 88909,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1594
+      }
+    },
+    {
+      "environment": "remark",
+      "label": "rem:oai186",
+      "text": "\\begin{remark}[the next rung, $186$; \\lbl{Literature} reading and one \\lbl{Lean-checked} fact]\\label{rem:oai186}\nWe read \\cite{OAI26} and its numerical companion (the file\n\\texttt{short\\_gaps\\_numerics.pdf} of the repository \\texttt{openai/PrimeGaps186}) in version~0.11.\nTheir criterion is not a capped simplex ratio of the kind treated above.\nThe sieve has one outer sum and, for each coordinate, two nested inner sums,\nand the criterion \\cite[Theorem~4.5]{OAI26} is a ``signed minorant''\ninequality. It involves $I=\\|F\\|^2$, the inner masses\n$J_{0,i}$ and $J_{+,i}$, and a residual $E_{0,i}$ weighted by the negative\npart of Stadlmann's prime minorant, at $k=40$.\nThe test function lives on ``fragment configurations'': each coordinate carries\na Poisson process with intensity $dv/v$, so coordinate totals have Dickman\ndensities. It is a $77$-coefficient rational step function on a grid of\n$98304$ cells per coordinate. Their Lemma~2.5 states\n$\\rho^*J^-/I^+>\\frac{500103}{500000}$ and a loss bound\n$L^+/I^-\\le 696075110\\cdot10^{-12}$ (from $97$ components). We checked only the\nfinal rational arithmetic of their (2.34)--(2.35) (exact; it holds as printed),\nnot any integral. The $40$-tuple of \\cite[(1.3)]{OAI26} is admissible of diameter\n$186$ (\\lbl{Lean-checked}: \\texttt{boundedGaps\\_186\\_of\\_DHL\\_40'}; the project\nalready had another such tuple). Reproducing the variational step of $186$ therefore\nrequires a new evaluator: the fragment-measure forms, and the loss cover for the\nsupport failures. The pipeline of this paper does not cover it. In version~0.11\nwe transcribed the forms $I_H$ and $J_{\\lambda,H}$ of the companion and its\ntable of $77$ coefficients (\\texttt{notes/sources-186-forms.md}). Two facts\nshape any reproduction. First, the cell masses of the Dickman densities are\ntranscendental, so an independent check can only be an interval computation, not an\nexact rational one. Second, by symmetry everything reduces to one-dimensional\narrays of length about $10^5$, so the cost is a few thousand long polynomial\nproducts at a few hundred bits (our estimate). One formula of the companion,\nits layered cap convolution, is not specified completely in the text.\nThe analytic inputs (a triply densely divisible variant of Stadlmann's\nbilinear estimate, the prime minorant, and the exponential-sum bounds that are\naxioms of their Lean development) remain \\lbl{Claimed}.\nIn version~0.12 we made a first independent check of one ingredient\n(\\lbl{Computed}, $40$-digit floating point, not interval arithmetic;\n\\texttt{code/oai186\\_dickman\\_cells.py}). On $[0,3]$ the Dickman function has\nclosed forms, $\\rho_D(u)=1-\\log u$ on $[1,2]$ and\n$\\rho_D(u)=1-\\log u+\\frac12\\log^2u+\\mathrm{Li}_2(1/u)-\\frac12\\log^22-\\mathrm{Li}_2(\\frac12)$\non $[2,3]$, and so does $\\int\\rho_D$. With these we evaluated every cell mass of the seven grid caps\nof the companion ($372{,}450$ cells). All lie inside the enclosures given by\nits recurrence and cell bound, as we transcribed them, and the enclosures have\nwidth at most $8.3\\cdot10^{-10}$ in units of the cell. One transcription doubt\n(which of two bars is the upper one) turns out not to matter at this precision.\nThis checks one input of the companion; it is not yet an evaluation of\n$I_H$ or $J_{\\lambda,H}$.\n\\end{remark}",
+      "expanded_start": 90111,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1612
+      }
+    },
+    {
+      "environment": "theorem",
+      "label": "thm:hybrid-floor",
+      "text": "\\begin{theorem}[\\lbl{Proved here} for the reduction; \\lbl{Computed}, interval arithmetic, for the table]\\label{thm:hybrid-floor}\nLet $T=T_k(\\delta,(-\\varepsilon,A_1),\\underline B,\\varepsilon)$ be a one-band\nsupport with $\\varepsilon\\ge0$ and $A_1\\le\\frac14+\\omega$, with any $\\delta$\nand any caps. If the criterion $k(1-c_1)J(F)-kc_2K(F)>I(F)$ holds for some\n$F$ supported on $T$, then\n$M_k\\left(4(\\tfrac14+\\omega+\\varepsilon),4(\\tfrac14+\\omega-\\varepsilon)\\right)>4$. This\nis false, for every $0\\le\\varepsilon<\\frac14+\\omega$, in each of the\nfollowing cases:\n\\begin{center}\n\\begin{tabular}{@{}lccccc@{}}\n\\toprule\n$\\omega$ & $0$ & $3/1000$ & $1/300$ & $7/1000$ & $1/68$\\\\\n\\midrule\nno $k$ with & $k\\le29$ & $k\\le28$ & $k\\le28$ & $k\\le26$ & $k\\le22$\\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\nSo, whatever $\\delta$, the caps and the minorant, a one-band support cannot give\n$\\DHL[k,2]$ for $k\\le28$ at Stadlmann's level ($\\omega=0.003$; the helper's\nreconstruction of his conditions gives $\\omega\\le0.0032$), for $k\\le26$ at the\nlevel $\\omega=0.007$ of \\cite{Cha26}, and for $k\\le22$ whenever\n$\\omega\\le1/68$, a range containing every $\\omega$ that satisfies the\nType~I condition $68\\omega+14\\delta<1$ of \\cite[Lemma~5]{Sta26}.\n\\end{theorem}",
+      "expanded_start": 93615,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1663
+      }
+    },
+    {
+      "environment": "remark",
+      "label": null,
+      "text": "\\begin{remark}[how sharp]\nFor each $\\omega$ in the table the same weight fails at the next $k$: the\nfloating-point $\\sup W$ reaches $4$ on some interval of $\\varepsilon$ (for\nexample $k=27$, $\\omega=0.007$, near $\\varepsilon\\approx0.0548$). So the table\nshows the reach of this weight, not of the method; the true floor is\npresumably much higher, as Proposition~\\ref{prop:capfree} suggests (it shows\nthat the cap-free quantity already exceeds $4$ at $k=49$ and $k=45$ for the two\nparameter sets). The theorem ignores the caps entirely, which only shrink the\nsupport; a floor that sees the caps is the natural next step. It also does not\napply to supports with several bands, where $J$ contains cross terms between\nbands, nor to the constructions behind $186$ and $182$, which we have not\nread in enough detail.\n\\end{remark}",
+      "expanded_start": 96213,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1711
+      }
+    },
+    {
+      "environment": "problem",
+      "label": null,
+      "text": "\\begin{problem}[\\lbl{Open}; partly answered by Theorem~\\ref{thm:hybrid-floor} for one band, without using the caps]\nGive a rigorous upper bound for the variational quantity of \\cite{Sta26} as a\nfunction of $k$ and of the admissible exponents, and deduce the least $k$ the\nhybrid method can reach with the currently proved estimates.\n\\end{problem}",
+      "expanded_start": 99909,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1771
+      }
+    },
+    {
+      "environment": "problem",
+      "label": null,
+      "text": "\\begin{problem}[\\lbl{Open}, to be made precise in Lean]\nState, as a single explicit hypothesis on bilinear sums over $n(n+2)$, the\nweakest known input that implies the twin prime conjecture, and formalise the\nimplication.\n\\end{problem}",
+      "expanded_start": 100962,
+      "location": {
+        "path": "paper/main.tex",
+        "line": 1789
+      }
+    }
+  ]
+}

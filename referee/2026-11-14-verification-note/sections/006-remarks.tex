@@ -1,0 +1,40 @@
+\section{Remarks}
+
+\begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature} reading, not a result]\label{rem:lemma5}
+Song and Yue \cite[Remark~4.23]{SY26} say that one step in the proof of
+\cite[Lemma~5]{Sta26} lacks a hypothesis. In arXiv v1, Lemma~5 (a Type~I
+estimate) takes $f=\alpha\star\beta$ with $\alpha$ an arbitrary
+coefficient sequence and $\beta$ smooth. For $\gamma$ in a short range above
+$1/2$ the proof applies Lemma~3 (a Type~II estimate) ``with the roles of
+$\alpha$ and $\beta$ swapped''; Lemma~3 requires its shorter factor to satisfy
+a Siegel--Walfisz condition, and after the swap that factor is $\alpha$, for
+which neither Lemma~5 nor the case of \cite[Definition~9]{Sta26} where it is
+used assumes this. So the step reads as \cite{SY26} describe it. A natural
+repair is to check that the sequences $\alpha$ arising in the decomposition
+have the property; we have not done so, and we do not know whether the
+conclusion is affected. Theorem~\ref{thm:240} concerns only the variational
+step and is unaffected; the \emph{bound} $240$ depends on this input.
+
+The question may also bear on the $236$ of \cite{Kin26}: Kintali proves no
+new estimate and takes \cite[Prop.~3]{Sta26}, with its Type~I, IIa, IIb and
+III branches and the Type~IIc range made empty, as his analytic input
+(\lbl{Literature}). Whether his argument is affected depends on whether those
+branches pass through the step in question, which we have not traced. Song
+and Yue prove their own estimate \cite[Thm.~4.18]{SY26}, via a Heath--Brown
+decomposition and Type~IIa, IIb and III estimates
+\cite[\S\S4.2--4.7]{SY26}; we have not checked whether it uses an argument of
+the same kind. Charton et al.\ \cite{Cha26} list the same five Type~I, II and
+III estimates as \cite{Sta26}, Lemma~5 among them, so the same question
+applies to their draft. Theorem~\ref{thm:sy} and
+Proposition~\ref{prop:212} are unaffected either way.
+\end{remark}
+
+\begin{remark}[what would change the picture]
+The variational steps examined here have margins of $0.003$ to $0.012$ above
+the threshold. They are therefore robust to rounding but not to a change of
+support: Proposition~\ref{prop:ceiling} shows that a modest change in the caps
+moves the best ratio in $V_{21}$ below $4$. Any revision of the analytic input
+that shrinks the admissible caps should be re-checked against the variational
+step, which our programs can do in hours.
+\end{remark}
+

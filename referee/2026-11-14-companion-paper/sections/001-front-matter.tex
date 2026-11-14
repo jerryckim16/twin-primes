@@ -1,0 +1,51 @@
+
+
+\begin{abstract}
+This is a living working paper. It does \emph{not} prove the twin prime
+conjecture, and it does not improve the best known bound on small gaps between
+primes. It records (i) the state of the problem as of the date above, (ii) what
+this project has verified for itself, by exact computation and by the Lean~4
+kernel, now including the established bound $H_1\le246$ of Polymath8b,
+reproduced end to end through a certified lower bound for $M_{50,1/25}$,
+(iii) small results of our own: a no-go statement for a natural
+attempt to sharpen the pigeonhole step, on the plain and on the
+$\varepsilon$-enlarged simplex; a generating-function formula that makes
+certified computation with all symmetric test functions cheap; an upper
+bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
+itself, reach any $k\le29$; numerical evidence that this upper bound is close
+to the limit of every dual weight depending only on $t_m$ and $t_1+\dots+t_k$,
+and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
+$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
+floor (no $k\le28$ at his level of distribution, whatever the caps), and an
+exact formula for his capped functionals, which gives a certified capped
+ratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two
+independent programs: the variational step of Stadlmann's $H_1\le240$ is
+thereby reproduced, while his new equidistribution estimates, on which $240$
+rests, have not been verified by us; the same computation confirms the
+variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
+of their Table~3 but not, with our test function, for the different caps of
+their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
+$846$-dimensional space reaches $3.99$ (a ceiling certified in ball
+arithmetic, with weights checked exactly at a random point); optimising the test function on Stadlmann's
+capped support itself, with exact Gram matrices obtained by running the exact
+evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
+for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
+function of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and
+for the published witness of Song and Yue (same support) we recompute their
+capped numerator exactly: it equals their reference integer digit for digit,
+as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
+holds; since version~0.11 this is confirmed by a second, independent exact
+program, so the variational step of $H_1\le236$ is reproduced (its analytic
+input is not verified by us, and the project's bound $236$ is conditional on
+it); version~0.12 adds an elementary observation (Bonferroni) that lets a
+one-sided certificate skip the most expensive inclusion--exclusion pieces
+(Proposition~\ref{prop:bonf}); and
+(iv) a programme of original
+directions that later versions will test. Every statement carries one of the
+labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
+\lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
+verified), or \lbl{Open}.
+\end{abstract}
+
+\maketitle
+

@@ -1,0 +1,139 @@
+\section{Results of our own: rigidity of the pigeonhole step}
+
+Every bound above ends with the same step: if the weighted average number of
+primes among $n+h_1,\dots,n+h_k$ exceeds $1$, two of them are prime, and they
+are at most $h_k-h_1$ apart. A natural hope is to do better with unequal
+weights. Fix $D$, and give each position a weight $c_i\ge0$. Call a set of
+positions \emph{$D$-separated} if any two of its shifts differ by more than
+$D$, and let $\alpha_D(c)$ be the largest total weight of a $D$-separated set.
+If no two primes among the $n+h_i$ are within $D$, then
+$\sum_ic_i\mathbf 1_{n+h_i\text{ prime}}\le\alpha_D(c)$. Writing
+\[
+M_k[c]=\sup_F\frac{\sum_{m}c_mJ_k^{(m)}(F)}{I_k(F)},
+\]
+the sieve therefore yields $H_1\le D$ as soon as
+$\tfrac{\theta}{2}M_k[c]>\alpha_D(c)$. For $c=(1,\dots,1)$ and $D=h_k-h_1$
+this is the usual criterion. Could a cleverer $c$ certify some $D<h_k-h_1$
+that no sub-tuple certifies?
+
+\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:rigid}
+Let $\omega$ be the largest number of shifts $h_i$ contained in an interval of
+length $D$. Then for every $c\ge0$, not identically zero,
+\[
+\frac{M_k[c]}{\alpha_D(c)}\le M_\omega .
+\]
+So the weighted criterion never certifies more than the standard criterion
+applied to the best sub-tuple of diameter at most $D$.
+\end{proposition}
+
+\begin{proof}
+Let $G$ be the graph on $\{1,\dots,k\}$ joining $i\ne j$ when
+$|h_i-h_j|\le D$. Its stable sets are the $D$-separated sets and its cliques
+are the sets of shifts lying in an interval of length $D$. Normalise
+$\alpha_D(c)=1$, so $c$ lies in
+\[P=\{c\ge0:\ c(S)\le1\text{ for every stable set }S\}.\] The graph $G$ is a
+unit interval graph, hence perfect, and so is its complement by the perfect
+graph theorem \cite{Lov72}. For a perfect graph the polytope cut out by the
+clique inequalities is the convex hull of the indicator vectors of its stable
+sets \cite{Chv75}. Applying this to the complement of $G$ gives
+\[P=\operatorname{conv}\{\mathbf 1_K:\ K\text{ a clique of }G\}.\]
+
+The map $c\mapsto M_k[c]$ is a supremum of linear functionals, hence convex,
+and therefore $M_k[c]\le\max_KM_k[\mathbf 1_K]$. It remains to show
+$M_k[\mathbf 1_K]\le M_{j}$ for $|K|=j$; this suffices because $M_j$ is
+non-decreasing in $j$ (adjoin a variable and concentrate $F$ near its zero
+set). Write $t=(s,u)$ with $s$ the coordinates in $K$ and $u$ the others, put
+$\sigma(u)=1-\sum u\ge0$, and let $F_u=F(\cdot,u)$, a function on the scaled
+simplex $\sigma(u)\R_j$. For $m\in K$ we have
+$J_k^{(m)}(F)=\int J_j^{(m)}(F_u)\,du$, and $I_k(F)=\int I_j(F_u)\,du$.
+Rescaling $F_u$ to $\R_j$ multiplies $I_j$ by $\sigma^{j}$ and each
+$J_j^{(m)}$ by $\sigma^{j+1}$, so
+\[
+\sum_{m\in K}J_j^{(m)}(F_u)\ \le\ \sigma(u)\,M_j\,I_j(F_u)\ \le\ M_j\,I_j(F_u).
+\]
+Integrating over $u$ gives the claim.
+\end{proof}
+
+\begin{remark}[\lbl{Computed}, consistency check for $k=3$]
+With unrestricted polynomials of degree $6$ on $\R_3$ we find the lower bounds
+$M_3[(1,1,1)]\ge1.6464$, $M_3[(1,1,0)]\ge1.3579$ and
+$M_3[(\tfrac12,1,\tfrac12)]\ge1.1604$, against
+$M_2=1/(1-W(1/e))=1.3859\ldots$\,. The half-weighted functional is far below
+$M_2$, as the proposition requires.
+\end{remark}
+
+\subsection*{The same rigidity on the enlarged simplex}
+The $\varepsilon$-enlarged simplex of Polymath8b \cite[Thm.~3.12]{Pol14b}
+takes $F$
+supported on $(1+\varepsilon)\R_k$ and restricts the outer integral of each
+$J^{(m)}$ to $(1-\varepsilon)\R_{k-1}$. Call the resulting constant
+$M_{k,\varepsilon}$. The criterion $M_{k,\varepsilon}>2/\theta$ is valid in
+two cases (\lbl{Literature}): under $\mathrm{EH}[\theta]$ when
+$1+\varepsilon<1/\theta$, and under $\mathrm{GEH}[\theta]$ when
+$\varepsilon<1/(k-1)$. With Bombieri--Vinogradov the first case allows every
+$\varepsilon<1$, and Polymath8b's $H_1\le246$ uses $M_{50,1/25}>4.0043$
+\cite[Thm.~3.13]{Pol14b}. Unequal weights are no more useful there.
+
+\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:rigid-eps}
+For $0\le\varepsilon<1$ and every weight $c\ge0$, $c\ne0$,
+$M_{k,\varepsilon}[c]/\alpha_D(c)\le M_{\omega,\varepsilon}$, with equality
+for the indicator of a largest clique. Since the conditions on $\varepsilon$
+above do not get harder as $k$ decreases, the weighted criterion never
+certifies more than the standard one for the best sub-tuple of diameter at
+most $D$.
+\end{proposition}
+
+\begin{proof}
+As for Proposition~\ref{prop:rigid}, it suffices to show
+$\sum_{m\in K}J_{k,\varepsilon}^{(m)}(F)\le M_{j,\varepsilon}I_k(F)$ for a
+clique $K$ of size $j$, together with $M_{j,\varepsilon}\le M_{\omega,\varepsilon}$.
+Fix the coordinates $u$ outside $K$, with $|u|\le1-\varepsilon$ (other slices
+do not meet the $J$-region). The slice $F_u$ is supported on
+$(1+\varepsilon-|u|)\R_j$, and its $J$-region is
+$(1-\varepsilon-|u|)\R_{j-1}$. Put $\mu=(1+\varepsilon-|u|)/(1+\varepsilon)\le1$
+and $H(x)=F_u(\mu x)$, which is supported on $(1+\varepsilon)\R_j$. Then
+$I_j(F_u)=\mu^jI_j(H)$, and each slice $J$-term equals $\mu^{j+1}$ times the
+integral of $(\int H\,dx_m)^2$ over $|x'|\le(1-\varepsilon-|u|)/\mu$. Since
+\[
+\frac{(1-\varepsilon-|u|)(1+\varepsilon)}{1+\varepsilon-|u|}\le1-\varepsilon
+\iff -|u|(1+\varepsilon)\le-|u|(1-\varepsilon),
+\]
+that region lies inside $(1-\varepsilon)\R_{j-1}$, so the slice contributes at
+most $\mu^{j+1}M_{j,\varepsilon}I_j(H)=\mu M_{j,\varepsilon}I_j(F_u)$. For
+$j=1$ use Cauchy--Schwarz, which gives $M_{1,\varepsilon}=1+\varepsilon$.
+Integrate over $u$ and use $\mu\le1$. Monotonicity in $j$ follows by
+embedding: take $F(s,u)=H(s/\mu_\delta)\mathbf 1_{[0,\delta]^{k-j}}(u)$ with
+$\mu_\delta=1-(k-j)\delta/(1+\varepsilon)$ and let $\delta\to0$.
+\end{proof}
+
+Slicing naively gives each slice its own parameter
+$\varepsilon'=\varepsilon/(1-|u|)\ge\varepsilon$, which would only bound the
+weighted constant by $\sup_{\varepsilon'\ge\varepsilon}M_{j,\varepsilon'}$, a
+weaker statement. The single rescaling by $\mu$ above avoids that loss.
+
+\begin{remark}[\lbl{Computed}, $k=3$]
+With unrestricted polynomials (degree $5$ for $k=3$, degree $10$ for $k=2$,
+cut off at $|t|\le\rho$ for $\rho\in\{1-\varepsilon,1,1+\varepsilon\}$):
+\begin{center}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+$\varepsilon$ & $M_{2,\varepsilon}\ge$ & $M_{3,\varepsilon}[(1,1,0)]\ge$ & $M_{3,\varepsilon}[(\frac12,1,\frac12)]\ge$ & $M_{3,\varepsilon}\ge$\\
+\midrule
+$0$ & 1.385933 & 1.349844 & 1.160121 & 1.646427\\
+$1/10$ & 1.518567 & 1.482143 & 1.264698 & 1.793492\\
+$1/5$ & 1.627161 & 1.585674 & 1.341926 & 1.882282\\
+$1/3$ & 1.717104 & 1.663743 & 1.413309 & 1.917001\\
+\bottomrule
+\end{tabular}
+\end{center}
+Both weighted columns stay below $M_{2,\varepsilon}$, as the proposition
+requires.
+\end{remark}
+
+\begin{remark}[scope]
+Neither proposition covers more general polytope supports
+\cite[\S3]{Pol14b}, Stadlmann's hybrid supports \cite{Sta26}, $J$-regions
+that depend on $m$, or arguments that are not linear in the indicators of
+primality. Those are \lbl{Open}.
+\end{remark}
+

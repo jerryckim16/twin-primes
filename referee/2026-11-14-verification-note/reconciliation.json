@@ -1,0 +1,125 @@
+{
+ "run": "2026-11-14-verification-note",
+ "manuscript": "papers/verification-note/main.tex v0.4",
+ "raw_passes": [
+  "raw-V1-correctness.json (correctness+adversarial)",
+  "raw-V2-claims-notation-exposition.json (claims+notation+exposition)"
+ ],
+ "entries": [
+  {
+   "finding_id": "V1-F01",
+   "disposition": "accepted",
+   "reason": "merged into FC1; checked against notes/audit-sy236-thm418/README.md and main.tex Remark rem:lemma5"
+  },
+  {
+   "finding_id": "V2-C01",
+   "disposition": "merged",
+   "reason": "duplicate of V1-F01 -> FC1"
+  },
+  {
+   "finding_id": "V2-C02",
+   "disposition": "accepted",
+   "reason": "FC2; the reductions (Sta26 Prop 1, SY 4.12-4.14, Cha26 Thm 4.10) are indeed not named as unverified inputs"
+  },
+  {
+   "finding_id": "V1-F06",
+   "disposition": "accepted",
+   "reason": "merged into FC3; coordinator confirmed runs/gram45_lemma91_*.log record no precision/split, log/entries.json says 4800 bits while the note says 5000"
+  },
+  {
+   "finding_id": "V2-C05",
+   "disposition": "merged",
+   "reason": "duplicate -> FC3"
+  },
+  {
+   "finding_id": "V1-F05",
+   "disposition": "accepted",
+   "reason": "merged into FC4; coordinator confirmed notes/sources-enlarged-supports.md l.251 defines B_21 = span{(L-P_1)^a P_lambda}, i.e. V_21"
+  },
+  {
+   "finding_id": "V2-C04",
+   "disposition": "merged",
+   "reason": "duplicate -> FC4 (the \"Table 3 is the working datum\" part kept as a suggestion only)"
+  },
+  {
+   "finding_id": "V2-C03",
+   "disposition": "accepted",
+   "reason": "FC5; verified 48J/I0 = 1.000664921591 vs 2001/2000: margin 1.65e-4 (6.6e-4 Polymath)"
+  },
+  {
+   "finding_id": "V1-F02",
+   "disposition": "accepted",
+   "reason": "FC6; coordinator read lean/TwinPrimes/Caps.lean: statements over List Nat in integer units"
+  },
+  {
+   "finding_id": "V2-C07",
+   "disposition": "accepted",
+   "reason": "merged into FC7"
+  },
+  {
+   "finding_id": "V2-C08",
+   "disposition": "accepted",
+   "reason": "merged into FC7; Kim26 cited at v0.9, now v0.12"
+  },
+  {
+   "finding_id": "V2-E01",
+   "disposition": "accepted",
+   "reason": "merged into FC7"
+  },
+  {
+   "finding_id": "V1-F04",
+   "disposition": "accepted",
+   "reason": "FC8; the bound sup_F kJ_T/I_T <= M_49(L,tau) uses only T subset L R_49"
+  },
+  {
+   "finding_id": "V1-F03",
+   "disposition": "accepted",
+   "reason": "merged into FC9"
+  },
+  {
+   "finding_id": "V2-C06",
+   "disposition": "merged",
+   "reason": "duplicate -> FC9"
+  },
+  {
+   "finding_id": "V1-F07",
+   "disposition": "accepted",
+   "reason": "FC10; coordinator recomputed 48 J_T/I_T exactly from code/cap6/check_sy236.json: 4.00309880474987377905390044599145775...; 4 x Kintali 1.000774701187468444763475111497864 = 4.003098804749873779053900445991456: all printed digits agree"
+  },
+  {
+   "finding_id": "V2-N01",
+   "disposition": "accepted",
+   "reason": "FC11"
+  },
+  {
+   "finding_id": "V2-E02",
+   "disposition": "accepted",
+   "reason": "FC12; abstract measured at 2154 characters"
+  },
+  {
+   "finding_id": "V2-N02",
+   "disposition": "accepted",
+   "reason": "FC12"
+  },
+  {
+   "finding_id": "V2-N03",
+   "disposition": "accepted",
+   "reason": "FC12"
+  },
+  {
+   "finding_id": "V2-N04",
+   "disposition": "accepted",
+   "reason": "FC12"
+  },
+  {
+   "finding_id": "V2-E03",
+   "disposition": "accepted",
+   "reason": "FC12"
+  },
+  {
+   "finding_id": "V2-E04",
+   "disposition": "accepted",
+   "reason": "FC12"
+  }
+ ]
+}

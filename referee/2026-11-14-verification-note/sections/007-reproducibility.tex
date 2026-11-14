@@ -1,0 +1,18 @@
+\section{Reproducibility}
+All inputs, certificates and logs are in the repository, under
+\texttt{code/} and \texttt{code/cap6/}. The evaluators are
+\texttt{code/capped\_exact.py} and \texttt{code/capped\_check.py}; the Gram
+matrices and ceilings come from \texttt{code/capped\_gram.py}; the Song--Yue
+witness and reference integers, as extracted, are
+\texttt{code/cap6/songyue236\_witness.json} and
+\texttt{code/cap6/songyue236\_appC.json}, with the conversion and comparison
+scripts \texttt{code/songyue\_*.py}. Running times above are for four cores
+and $16$~GB of memory. The admissible tuples of diameters $212$, $236$, $240$
+and $246$ are checked by the Lean~4 kernel (core Lean, no Mathlib, no
+\texttt{sorry}; axioms \texttt{propext} and \texttt{Quot.sound} only), as are
+the counting lemmas used in Proposition~\ref{prop:fibre}. The companion paper
+\cite{Kim26} contains the full derivations and the history of each
+computation: the dual-weight ceilings in its \S4, and the capped supports,
+the two evaluators and the Gram matrices in its \S5 (section numbers of its
+version 0.9).
+

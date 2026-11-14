@@ -1,0 +1,77 @@
+\section{The problem and the honest position}
+
+Write $p_n$ for the $n$-th prime and $H_1=\liminf_{n\to\infty}(p_{n+1}-p_n)$.
+The twin prime conjecture is the statement $H_1=2$. It is \lbl{Open}.
+
+A finite set $\mathcal H=\{h_1<\dots<h_k\}$ of integers is \emph{admissible} if
+for every prime $p$ it misses at least one residue class modulo $p$. Let
+$\DHL[k,2]$ be the statement that every admissible $k$-tuple has infinitely
+many translates $n+\mathcal H$ containing at least two primes, and let $H(k)$
+be the least diameter $h_k-h_1$ of an admissible $k$-tuple. Then
+\begin{equation}\label{eq:reduction}
+\DHL[k,2]\ \Longrightarrow\ H_1\le H(k),
+\end{equation}
+and $\DHL[2,2]$ applied to $\{0,2\}$ is the twin prime conjecture. All progress
+on $H_1$ since 2013 consists of proving $\DHL[k,2]$ for smaller $k$.
+
+\subsection*{Where the bound stands (13 November 2026)}
+
+\begin{center}
+\begin{tabular}{@{}rlll@{}}
+\toprule
+$H_1\le$ & $k$ & Source & Label\\
+\midrule
+$7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
+600 & 105 & Maynard \cite{May15} & \lbl{Literature}\\
+246 & 50 & Polymath8b \cite{Pol14b} & \lbl{Literature}\\
+240 & 49$^{\ast}$ & Stadlmann \cite{Sta26} & \lbl{Claimed}$^{\dagger}$\\
+236 & 48 & Kintali \cite{Kin26}; Song--Yue \cite{SY26} & \lbl{Claimed}$^{\ddagger}$\\
+212 & 45 & Charton et al.\ \cite{Cha26} & \lbl{Claimed}\\
+186 & 40 & OpenAI \cite{OAI26} & \lbl{Claimed}\\
+182 & 39 & GPT-6 Astra, prompted by Sharifi \cite{Sha26} & \lbl{Claimed}\\
+\midrule
+12 & 5 & Maynard, assuming EH \cite{May15} & \lbl{Literature}\\
+6 & 3 & Polymath8b, assuming GEH \cite{Pol14b} & \lbl{Literature}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
+$^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its equidistribution input is not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. In version~0.10 we read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}). Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}.
+$^{\ddagger}$ Its variational step is reproduced here (Corollary~\ref{cor:236}); its equidistribution input is not verified by us.}
+
+The bound $246$ stood from 2014 until the last days of August 2026. It has been
+formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
+\cite{Axiom26}. The bounds from $240$ to $186$ appeared within one week.
+They rest on Stadlmann's idea of enlarging the support of the sieve weights
+using equidistribution estimates for moduli with a large smooth factor. The
+Lean development accompanying the bound $186$ is conditional on three stated
+inputs (two exponential-sum bounds and a family of numerical integral bounds)
+\cite{OAI26}. An independent re-run of that repository, dated 7 and 8 November
+2026, reproduced the build and the numerical certificate and describes the
+result as ``conditionally supported, with the computation independently
+reproduced; not yet settled''; the two exponential-sum bounds remain axioms
+\cite{NM26}. A further document, dated 18 September 2026 and naming an AI
+system as its author, claims $\DHL[39,2]$ and hence $182$; by its own abstract
+its Lean development verifies the last implication ``under explicit numerical
+and finite-field premises'' \cite{Sha26}. We had missed it in earlier
+versions. (These details were read by an earlier run of this project; on
+12 November the file was too large for our reader and direct download was
+refused, so we have not re-checked them since.) As of 7 September 2026 a standard reference still listed $246$ as
+the best fully established value \cite{MW}, and the page read the same on 12
+November. On the date of this version we found no report of complete
+independent verification of any of the 2026 claims and no claimed bound below
+$182$. We therefore keep three numbers apart throughout: \emph{established}
+($246$), \emph{claimed} ($182$), and \emph{reproduced by this project}:
+$246$ unconditionally; since version~0.6 also $240$, conditionally on
+the equidistribution estimates of \cite{Sta26}, which we have not verified
+(Corollary~\ref{cor:240}); and since version~0.11 also $236$, conditionally
+on the equidistribution theorem of \cite{SY26} (Corollary~\ref{cor:236}),
+which we have not verified either.
+
+\subsection*{Why \texorpdfstring{$2$}{2} is a different problem}
+Under the generalised Elliott--Halberstam conjecture the sieve gives $H_1\le6$,
+and Polymath8b showed that $6$ cannot be improved by purely sieve-theoretic
+arguments: this is Selberg's parity obstruction \cite{Pol14b}. Lowering the
+bound (Track~A below) and proving the conjecture (Track~B) are therefore
+different tasks. No amount of success on Track~A reaches $2$.
+
