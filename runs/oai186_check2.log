@@ -3,3 +3,5 @@
 [    12 s] 53 eta, 53 exponent vectors in the down-closed set
 [  2278 s] I_H shell cap 68225: [2.16619192771496e-14 +/- 3.01e-29]
 [  4540 s] I_H shell cap 49152: [1.65437210688965e-15 +/- 7.47e-31]
+[  6785 s] I_H shell cap 46580: [3.69026469290923e-16 +/- 4.15e-31]
+[  6785 s] I_H = [2.36853178533302e-14 +/- 2.73e-30], inside Lemma 2.5 enclosure: True
