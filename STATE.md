@@ -3,6 +3,10 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## RELAYED DECISION (Jerry Kim via the coordinator session, 14 Nov 15:26 UTC; received by Session 16 after its merge)
+- SWITCH TO PHASE B AS SOON AS RUNG 186 IS FINISHED: its variational step INCLUDING the loss bound L^+ reproduced by two independent programs, or shown to fail as stated, or blocked. Do not wait for rung 182 (it continues inside Phase B's ~20% bound share). When the switch happens, record it in STATE.md, status.json (phase "B") and the log; Phase B top priority is the parity-barrier programme (papers/parity-barrier/, notes/parity-programme.md, one bounded attempt per run in notes/parity-attempts/), ~35%.
+- Status after Session 16: NOT yet finished. L^+ has been re-evaluated by ONE program for 78 of 97 components (all but 1.2e-6 of L^+). Still needed: the 19 small outer components, and a second, independent program (at least for the decisive group O_{5/2}). Until then, prioritise 186's loss bound.
+
 ## Session 16 (started early at Jerry's request, 9:23 AM CT, 14 Nov; no wait, no other run active) -- additions
 - POSITION unchanged: bounds.project = 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Phase A. No news search (not the 3:34 AM run).
 - The 186 companion PDF and the authors' script are now committed (code/third_party/openai186/, Apache-2.0, PR #30). The script was NOT used (not read) this session.
