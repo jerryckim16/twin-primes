@@ -3,6 +3,20 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 14 (7:34 PM CT slot, 13 Nov; no wait, Session 13 had merged at 7:18 PM CT) -- additions
+- POSITION unchanged: bounds.project = 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional.
+- Audit of SY Thm 4.18 (PR #19) integrated: paper Remark rem:sy-audit (label "Literature, audited", not peer review), status-table footnote, status.json project_note, verification note Remark lemma5. Kl3 check re-run (1.03 vs 29.97).
+- capped_exact.py: new --split (Corr2 = Q(R)^2 part - Q(U)^2 part; exact, same totals, tested k = 12) and --bonf (one-sided: Icorr j<=1, Corr1 j<=2, R parts j<=2, U parts j<=1). New assert L - g <= tau (true for all our inputs). Paper Prop prop:bonf2 (Proved here). 240 vector: 4.012038868083 > 4 from 98 pieces, 3.5e-8 below exact (code/cap6/compare_capfree_D20_bonf.json).
+- RUNG 186, big step: code/oai186_IH.py and code/oai186_J.py (GMP Kronecker products, directed rounding; rho_D closed forms at 110 digits) give I_H = 2.36853178533e-14 (inside Lemma 2.5 enclosure) and J_lambda = 9.0248755655e-14 (5.9e-9 above its lower bound), rho* J/I_H = 1.000206087 > 500103/500000. Own reading of layered (2.15): layers over all 7 cap values {35265, 35419, 44781, 44976, 46580, 49152, 68225}, erased coordinate in outer shells with cap >= b_a, face masks cap >= b_a. Paper Prop prop:oai186-main. 7 + 23 min on one core. Fresh-context audit: no defect.
+  Second program code/oai186_check2.py (arb balls, y-series A(y)^d instead of set partitions): I-mode run plus J workers `--jcap b` (one per layer cap; linearity: each worker returns S(v^{l(a)}, M^b; chi_a) - S(v^{l(a+1)}, M^b; chi_{a+1}) into code/cap6/oai186_check2_J_b<b>.json). MEMORY: each worker ~3 GB, at most 3 at a time (one OOM kill at 4). Queue: runs/oai186_check2_queue.sh. Combine with code/oai186_check2_combine.py (see below).
+  Remaining for 186: the loss bound L^+ (97 components, their Sec. 2.4, Tables 2.1-2.7) -- the PDF is in the GitHub repo openai/PrimeGaps186, outside this session's GitHub scope; requested from Jerry (notes/sources-needed.md).
+- RUNG 182: notes/sources-182.md (helper transcription of the bundle; k = 39; 726 coefficients NOT in the bundle, only in GitHub repo romyar1/prime-gaps-lean -> requested from Jerry). Lean: sharifi39 / boundedGaps_182_of_DHL_39'. Paper Remark rem:sha182.
+- k = 45 Schwartz-Zippel run was STOPPED at 74/273 pieces to free cores (checkpoint code/cap6/pieces_rand45_lemma91.jsonl). Resume (alone, 3-4 procs, several hours):
+      nohup python3 code/capped_exact.py code/cap6/P_rand45_lemma91_u.json --procs 4 --ckpt code/cap6/pieces_rand45_lemma91.jsonl --out code/cap6/res_rand45_lemma91.json > runs/exact_rand45.log 2>&1 &
+  NOTE: it was started without --split; resume it the same way (same piece keys). Low priority.
+- Exploration: code/explore/level_slack.py (level slack in SY's exponent margins vs the omega needed for k = 47) -- dead end.
+- Wolfram and mathbox NOT available.
+
 ## Session 13 (11:34 AM CT slot, 13 Nov; waited 3 h 30 min for Session 12, stood down, resumed at Jerry's request 3:10 PM CT after PR #18 merged; finished ~7:30 PM CT) -- additions
 - POSITION unchanged: bounds.project = 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional.
 - DONE: second program for our own k = 48 D22 vector: capped_exact.py --ckpt, all 176 pieces (code/cap6/pieces_kin48_D22r.jsonl, result code/cap6/res_kin48_D22r.json, 15.5 core-hours). I_T and J_T equal check_kin48_D22r.json exactly (code/compare_two_programs.py -> code/cap6/compare_kin48_D22r.json). 4.0060814208 > 4 by two programs. Paper Prop kin-capped and verification note Prop kin-own now say two programs.
@@ -96,15 +110,12 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246 -> 240 (session 6, conditional on [Sta26]'s equidistribution input; stated in the "how" field).
 
 ## Next steps (in order)
-00. NEW (merged as PR #19 while Session 13 ran, by a coordinator session): notes/audit-sy236-thm418/ -- an adversarial audit of Song-Yue's analytic Theorem 4.18 (verdict: appears correct as a deduction from the cited literature after one local repair, eq. (49); one AI auditor per section, NOT peer review; label "Literature, audited"). Session 13 did not integrate it. Next run: read README.md there and decide, with honest labels, how the paper's status table, Cor. cor:236, status.json project_note and README should mention it (the 236 stays conditional; deep inputs remain Literature).
-0a. Own idea (ledger, open): split Corr2 into its Q(u',R)^2 and Q(u',U)^2 parts (both >= 0) in capped_exact.py (new mode keeping HR/Hg and the Hx parts apart) and apply Prop bonf to each: upper bound with j <= 2 for the first, lower bound with j <= 1 for the second; then one-sided certificates need no j = 3 piece. Test on the k = 48 vector (exact pieces now in pieces_kin48_D22r.jsonl for comparison).
-0b. k = 45 random point (Schwartz-Zippel check of capped_check at Lemma 9.1 caps), run ALONE, resumable:
-      nohup python3 code/capped_exact.py code/cap6/P_rand45_lemma91_u.json --procs 4 --ckpt code/cap6/pieces_rand45_lemma91.jsonl --out code/cap6/res_rand45_lemma91.json > runs/exact_rand45.log 2>&1 &
-    and compare with check_rand45_lemma91.json (python3 code/compare_two_programs.py res.json check.json pieces.jsonl).
-1. Rung 186: next sub-step is one 1-D contraction for a single signature (sigma = (), d = 0) on one cap domain, with an interval evaluator written independently of [14] (notes/sources-186-forms.md).
-2. Rung 182 (GPT-6 Astra / Sharifi): find and read the source; record support and parameters.
-3. Track B / own floors within the own-ideas share.
-4. Phase B is NOT yet triggered: 186 and 182 are open rungs (186 had certified progress this session).
+1. Rung 186: (a) if Session 14 did not finish the second program, finish it (resume the queue: `nohup runs/oai186_check2_queue.sh &`, skips caps whose JSON exists; I-mode: `python3 code/oai186_check2.py --only I --out code/oai186_check2.json`), then combine; (b) the loss bound L^+ once Jerry supplies Sec. 2.4 of short_gaps_numerics.pdf (notes/sources-needed.md); (c) only then could 186 be "variational step reproduced" (still conditional on its analytic inputs; Lean tuple exists).
+2. Rung 182: blocked until the 726 coefficients arrive (notes/sources-needed.md). Meanwhile its I-type main term needs only the 186 machinery on a 4x finer grid (N = 393216: products 4x longer, fine for GMP).
+3. One-sided certificate on the Song-Yue witness with --jonly --bonf (no j = 3 pieces; about half of the 32 core-hours), as a third, cheaper confirmation of 236's variational step.
+4. k = 45 random point (Schwartz-Zippel) resume, low priority (command above).
+5. Phase B NOT yet triggered: 186 had certified progress this session; 182 is blocked on data (counting towards "3 sessions without progress" from Session 14).
+6. First weekly review is due on the first run that starts on Monday 16 Nov (Central time).
 
 ## Rotation of areas to explore (one per session, about half the effort)
 variational/spectral methods; convex duality and LP/SDP bounds; exponential sums and l-adic methods (Type III); automorphic methods and large moduli (Maynard, Lichtman); zero-density and large values (Guth-Maynard); function fields (Sawin-Shusterman); Siegel zeros; multiplicative functions and entropy (Tao, Matomaki-Radziwill); additive combinatorics; probabilistic models of primes.
