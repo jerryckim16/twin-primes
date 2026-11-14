@@ -1,0 +1,5 @@
+M = 7.795905e+105 ; pieces with j = 3: 30
+bound / (cap-free I or J) per kind: {'Corr1': '1.374e-14', 'Corr2b': '6.038e+31', 'Corr2c': '6.233e+32'}
+total: B_I/I = 0.000e+00, B_J/J = 6.836e+32
+checked 30 exact pieces against their bounds: all within = True; max |exact|/bound = 1.103e-43
+volcheck: 30 pieces, failures 0

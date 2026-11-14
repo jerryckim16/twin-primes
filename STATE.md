@@ -3,6 +3,16 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 13 (11:34 AM CT slot, 13 Nov; waited 3 h 30 min for Session 12, stood down, resumed at Jerry's request 3:10 PM CT after PR #18 merged; finished ~7:30 PM CT) -- additions
+- POSITION unchanged: bounds.project = 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional.
+- DONE: second program for our own k = 48 D22 vector: capped_exact.py --ckpt, all 176 pieces (code/cap6/pieces_kin48_D22r.jsonl, result code/cap6/res_kin48_D22r.json, 15.5 core-hours). I_T and J_T equal check_kin48_D22r.json exactly (code/compare_two_programs.py -> code/cap6/compare_kin48_D22r.json). 4.0060814208 > 4 by two programs. Paper Prop kin-capped and verification note Prop kin-own now say two programs.
+- NEW Prop bonf (paper v0.12, Proved here): Bonferroni -> one-sided certificate J_T >= J - (S0 - S1 + S2) - Corr2, I_T <= I - S'0 + S'1; drops Corr1 j = 3 and Icorr j >= 2. k = 48: one-sided 4.006081420807 (loss 3.5e-12), saves 28% of time. compare_two_programs.py prints the one-sided value from a pieces file.
+- code/thin_bound.py: crude a priori bound (|P| <= sum |c| L^deg times region volume): Corr1 j = 3 <= 1.4e-14 J (SY witness), useless for Corr2 (6e32 J). Volume formulas cross-checked against capped_exact.T1/T2 (--volcheck, 30 pieces, 0 failures; slow, ~1 h). Output code/cap6/thin_bound_sy236.json.
+- Rung 186: code/oai186_dickman_cells.py (closed-form Dickman cell masses; all 7 caps inside the transcribed enclosures (2.1)-(2.2)); notes/sources-186-forms.md has a Session 13 section.
+- Exploration: code/explore/tuple_counts_hl.py (HL vs prime pairs in narrow48 translates) -- dead end.
+- Wolfram and mathbox NOT available.
+- NOTE: a worker restart killed the background job once (77/176); restarting with the same command resumed from the checkpoint. Commit checkpoint files often.
+
 ## Session 12 (7:34 AM CT slot, 13 Nov; started by hand 7:44 AM CT; Sessions 10 and 11 had died unmerged at ~4:15 AM CT) -- additions
 - POSITION NOW: bounds.project = 236 CONDITIONAL (Song-Yue's equidistribution Thm 4.18, via Thm 4.33; NOT verified). Caveat is in the paper (Cor. cor:236), status.json, README, bound-history "how". Keep it everywhere 236 appears. 240 remains conditional on Stadlmann; 246 unconditional.
 - Rescued: Session 11's branch (claude/zen-curie-gstgp2) and Session 10's last two commits (claude/zen-curie-b426c3; not ancestors of each other). Both died while running concurrently (Session 11 thought Session 10 was dead).
@@ -86,15 +96,15 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246 -> 240 (session 6, conditional on [Sta26]'s equidistribution input; stated in the "how" field).
 
 ## Next steps (in order)
-0a. Second program for our OWN k = 48 vector (one program so far, 4.0061): run ALONE, resumable:
-      nohup python3 code/capped_exact.py code/cap6/P_kin48_D22r_u.json --procs 4 --ckpt code/cap6/pieces_kin48_D22r.jsonl --out code/cap6/res_kin48_D22r.json > runs/exact_kin48_D22r.log 2>&1 &
-    and compare I_T, J_T with code/cap6/check_kin48_D22r.json (degree 22: expect several hours; commit the checkpoint file regularly).
-0b. Own idea (ledger, open): prove a rigorous a priori bound for the thin j = 3 pieces (volume of {|u'| <= tau, m+3 coordinates forced, sum >= C_m + 3g} times a sup bound for Q^2), so that sign-only checks can skip them; test on the Song-Yue pieces (exact values in pieces_sy236_jonly.jsonl).
-0c. k = 45 random point (Schwartz-Zippel check of capped_check at Lemma 9.1 caps): capped_exact with --ckpt (command in the Session 9 block, add --ckpt).
-1. Rung 186: decide feasibility of an independent INTERVAL evaluator for I_H, J_{lambda,H} of [14] (notes/sources-186-forms.md); first sub-step: the Dickman cell masses A_j(c) on the grid with mpmath intervals and one 1-D contraction for a single signature; record differences of formulation.
+00. NEW (merged as PR #19 while Session 13 ran, by a coordinator session): notes/audit-sy236-thm418/ -- an adversarial audit of Song-Yue's analytic Theorem 4.18 (verdict: appears correct as a deduction from the cited literature after one local repair, eq. (49); one AI auditor per section, NOT peer review; label "Literature, audited"). Session 13 did not integrate it. Next run: read README.md there and decide, with honest labels, how the paper's status table, Cor. cor:236, status.json project_note and README should mention it (the 236 stays conditional; deep inputs remain Literature).
+0a. Own idea (ledger, open): split Corr2 into its Q(u',R)^2 and Q(u',U)^2 parts (both >= 0) in capped_exact.py (new mode keeping HR/Hg and the Hx parts apart) and apply Prop bonf to each: upper bound with j <= 2 for the first, lower bound with j <= 1 for the second; then one-sided certificates need no j = 3 piece. Test on the k = 48 vector (exact pieces now in pieces_kin48_D22r.jsonl for comparison).
+0b. k = 45 random point (Schwartz-Zippel check of capped_check at Lemma 9.1 caps), run ALONE, resumable:
+      nohup python3 code/capped_exact.py code/cap6/P_rand45_lemma91_u.json --procs 4 --ckpt code/cap6/pieces_rand45_lemma91.jsonl --out code/cap6/res_rand45_lemma91.json > runs/exact_rand45.log 2>&1 &
+    and compare with check_rand45_lemma91.json (python3 code/compare_two_programs.py res.json check.json pieces.jsonl).
+1. Rung 186: next sub-step is one 1-D contraction for a single signature (sigma = (), d = 0) on one cap domain, with an interval evaluator written independently of [14] (notes/sources-186-forms.md).
 2. Rung 182 (GPT-6 Astra / Sharifi): find and read the source; record support and parameters.
-3. Track B / own floors (see below) within the own-ideas share.
-4. Phase B is NOT yet triggered: 212 is "shown to fail as stated" for the Lemma 9.1 caps but holds for Table 3 caps; 186 and 182 are open rungs.
+3. Track B / own floors within the own-ideas share.
+4. Phase B is NOT yet triggered: 186 and 182 are open rungs (186 had certified progress this session).
 
 ## Rotation of areas to explore (one per session, about half the effort)
 variational/spectral methods; convex duality and LP/SDP bounds; exponential sums and l-adic methods (Type III); automorphic methods and large moduli (Maynard, Lichtman); zero-density and large values (Guth-Maynard); function fields (Sawin-Shusterman); Siegel zeros; multiplicative functions and entropy (Tao, Matomaki-Radziwill); additive combinatorics; probabilistic models of primes.

@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.11, 13 November 2026}
+\date{Version 0.12, 13 November 2026}
 
 \begin{document}
 
@@ -55,14 +55,16 @@ arithmetic, with weights checked exactly at a random point); optimising the test
 capped support itself, with exact Gram matrices obtained by running the exact
 evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
 for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
-function of degree~$22$ gives $4.0061>4$ (one exact program so far), and
+function of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and
 for the published witness of Song and Yue (same support) we recompute their
 capped numerator exactly: it equals their reference integer digit for digit,
 as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
 holds; since version~0.11 this is confirmed by a second, independent exact
 program, so the variational step of $H_1\le236$ is reproduced (its analytic
 input is not verified by us, and the project's bound $236$ is conditional on
-it); and
+it); version~0.12 adds an elementary observation (Bonferroni) that lets a
+one-sided certificate skip the most expensive inclusion--exclusion pieces
+(Proposition~\ref{prop:bonf}); and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -1395,7 +1397,7 @@ The authors state that a fresh regeneration of their capped numerator is
 still pending. An exact recomputation of it from their table is a natural
 next step for us.
 
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic, one program so far; version 0.9]\label{prop:kin-capped}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs; versions 0.9 and 0.12]\label{prop:kin-capped}
 Let $P$ be our cap-free optimiser of degree $22$ for $M_{48,15/506}$ ($1041$
 coefficients, even power sums; certified Rayleigh quotient $3.9589046383$, so
 $kJ/I=\frac{253}{250}\cdot3.9589046=4.0064115$ without caps), rounded to
@@ -1409,9 +1411,12 @@ above. Then
 Computed by \texttt{code/capped\_check.py} ($22$ minutes on four cores; input
 \texttt{code/cap6/P\_kin48\_D22r\_u.json}, result
 \texttt{code/cap6/check\_kin48\_D22r.json}; certificate
-\texttt{code/cert\_kin48\_capfree\_D22e.json}). Our second program, \texttt{capped\_exact.py}, reproduces the
-cap-free value of the rounded vector ($4.0064115$) but needs several hours
-for the corrections on this support. It was stopped and is the next check.
+\texttt{code/cert\_kin48\_capfree\_D22e.json}). In version~0.12 our second program, \texttt{capped\_exact.py}
+(cap-free value minus $176$ inclusion--exclusion pieces, checkpointed;
+$15.5$ core-hours, about $2.1$ hours on four cores), gave the same $I_T$ and
+$J_T$ as exact rationals (\texttt{code/cap6/res\_kin48\_D22r.json},
+\texttt{code/compare\_two\_programs.py},
+\texttt{code/cap6/compare\_kin48\_D22r.json}).
 At degree $20$ the
 same construction stays below $4$ ($3.9994$ even without caps).
 \end{sloppypar}
@@ -1423,8 +1428,7 @@ this $k$ and this $(L,\tau)$. So the variational step of \cite{Kin26}
 (Stadlmann's criterion for this support at $k=48$) holds with our own test
 function. This is \emph{not} a verification of $236$: the analytic input
 (Stadlmann's equidistribution estimates, with the corrections described in
-\cite{Kin26}) is \lbl{Claimed} and unverified by us, a second exact program
-has not yet confirmed the number, and the project's bound is not lowered.
+\cite{Kin26}) is \lbl{Claimed} and unverified by us.
 
 \subsection*{The witness of Song and Yue, recomputed exactly (version 0.10)}
 Appendix~A of \cite{SY26} prints the witness as $1295$ integer triples
@@ -1518,8 +1522,74 @@ programs (Proposition~\ref{prop:sy-exact}). Together with the
 This is a reproduction of part of a claimed result, not a new bound. The
 project's reproduced bound becomes $236$ with exactly this caveat. The
 witness is theirs; our own degree-$22$ vector on the same support
-(Proposition~\ref{prop:kin-capped}, $4.0061$) has so far been evaluated by one
-program only.
+(Proposition~\ref{prop:kin-capped}, $4.0061$) is also confirmed by two
+programs since version~0.12.
+
+\subsection*{One-sided certificates without the thin pieces (version 0.12)}
+Exact equality of two programs is the strongest check, but the criterion
+itself only needs a lower bound for $J_T$ and an upper bound for $I_T$. The
+following observation lets a one-sided certificate omit the most expensive
+pieces of Proposition~\ref{prop:exact}(3).
+
+\begin{proposition}[\lbl{Proved here}; an instance of the Bonferroni inequalities, so folklore in substance]\label{prop:bonf}
+In Proposition~\ref{prop:exact}(3) write $\mathrm{Corr}_1=\sum_{j\ge0}(-1)^jS_j$
+and $\int_VP^2=\sum_{j\ge0}(-1)^jS'_j$, where $S_j$ (resp.\ $S'_j$) is the sum
+over $m$ of $\binom nm\binom{n-m}{j}$ times the piece with $j$ forced
+coordinates. Then $S_j,S'_j\ge0$, and for every $t\ge0$
+\[
+\sum_{j\le 2t+1}(-1)^jS_j\;\le\;\mathrm{Corr}_1\;\le\;\sum_{j\le2t}(-1)^jS_j,
+\]
+and the same for $S'_j$. In particular
+$J_T\ge J-\left(S_0-S_1+S_2\right)-\mathrm{Corr}_2$ and
+$I_T\le I-S'_0+S'_1$. A certificate of $kJ_T/I_T>4$ therefore needs only
+the pieces of $\mathrm{Corr}_1$ with $j\le2$, those of $\int_VP^2$ with
+$j\le1$, and all pieces of $\mathrm{Corr}_2$.
+\end{proposition}
+
+\begin{proof}
+Fix $m$ and $A=\{1,\dots,m\}$ and let $G_A(u)\ge0$ be the integrand of the
+piece ($Q(u',R)^2$ times the indicator of $|u'|\le\tau$ and $s_A>C_m$ for
+$\mathrm{Corr}_1$; $P^2$ times the indicator of $|u|\le L$ and $s_A>C_m$ for
+$\int_VP^2$). On the set where every coordinate of $A$ exceeds $g$, the
+indicator that no other coordinate exceeds $g$ is $\prod_{i\notin A}(1-x_i)$
+with $x_i=1_{u_i>g}\in\{0,1\}$. If $N$ of the $x_i$ equal $1$, then
+$\sum_{j\le\ell}(-1)^je_j(x)=\sum_{j\le\ell}(-1)^j\binom Nj=(-1)^\ell\binom{N-1}{\ell}$
+for $N\ge1$ (and $1$ for $N=0$), which is $\ge\prod(1-x_i)$ for even $\ell$ and
+$\le$ it for odd $\ell$. Multiply by $G_A\ge0$, integrate, and sum over $m$
+and over the $\binom nm$ choices of $A$; by symmetry the integral of
+$G_A\,e_j(x)$ is $\binom{n-m}{j}$ times the piece with $j$ forced
+coordinates, which is $\ge0$. The last two inequalities are the cases $t=1$
+and $t=0$ together with $I_T=I-\int_VP^2$ and
+$J_T=J-\mathrm{Corr}_1-\mathrm{Corr}_2$.
+\end{proof}
+
+\begin{sloppypar}\noindent\emph{Size of what is saved} (\lbl{Computed}, from the exact pieces
+of Proposition~\ref{prop:sy-exact}, \texttt{code/cap6/pieces\_sy236\_jonly.jsonl}).
+On the witness of \cite{SY26} the four levels of $\mathrm{Corr}_1$ are
+$2.3\cdot10^{-6}J$, $-1.7\cdot10^{-10}J$, $7.0\cdot10^{-20}J$ and
+$-2.5\cdot10^{-69}J$ for $j=0,1,2,3$, and the $j=3$ level took $7.1$ of the
+$32.2$ core-hours; all $46$ exact pieces of $\mathrm{Corr}_1$ there, and the
+$96$ pieces of $\mathrm{Corr}_1$ and $\int_VP^2$ of the second program
+for our own $k=48$ vector (\texttt{code/cap6/pieces\_kin48\_D22r.jsonl}), have
+the sign $(-1)^j$, as the proposition requires. For that vector the one-sided
+certificate of the proposition gives $48J_{\mathrm{low}}/I_{\mathrm{up}}=4.006081420807>4$,
+$3.5\cdot10^{-12}$ below the exact ratio, and the omitted pieces took $4.3$ of
+its $15.5$ core-hours ($28\%$). The loss can also be bounded a
+priori (\texttt{code/thin\_bound.py}): on $\{|u|\le L\}$ one has
+$0\le R\le L$ and $0\le P_\ell(u)\le|u|^\ell$, so $|P|\le M:=\sum_i|c_i|L^{a_i+w(b_i)}$
+and $|Q|\le LM$; and the region of a $j=3$ piece of $\mathrm{Corr}_1$ has
+$C_m-mg\le r_A\le r_A+\rho\le\tau-(m+3)g$, an interval of length
+$\tau-C-3g=\frac{1}{250}$ for the caps of \cite{Kin26,SY26}, whatever $m$ is.
+The resulting bound is $1.4\cdot10^{-14}J$, and it is above all ten exact
+$j=3$ values. The same crude bound is useless for $\mathrm{Corr}_2$ (it gives
+$6\cdot10^{32}J$): there the corresponding length is
+$L-C-3g=\frac{8}{125}$, sixteen times larger in about $44$ dimensions, and the
+coefficient bound $M$ exceeds the values of $|P|$ we sampled for our own
+$k=48$ vector by a factor of about $10^{28}$ (cancellation in the power-sum basis). Since the integrand of
+$\mathrm{Corr}_2$ has no sign, the proposition does not apply to it directly;
+splitting it into its $Q(u',R)^2$ and $Q(u',U)^2$ parts and applying the
+proposition to each is the next thing to try (\lbl{Open}).
+\end{sloppypar}
 
 \begin{remark}[on {\cite[Lemma~5]{Sta26}}; \lbl{Literature} reading, not a result]\label{rem:sta-lemma5}
 Song and Yue \cite[Remark~4.23]{SY26} say that one step in the proof of
@@ -1571,6 +1641,18 @@ its layered cap convolution, is not specified completely in the text.
 The analytic inputs (a triply densely divisible variant of Stadlmann's
 bilinear estimate, the prime minorant, and the exponential-sum bounds that are
 axioms of their Lean development) remain \lbl{Claimed}.
+In version~0.12 we made a first independent check of one ingredient
+(\lbl{Computed}, $40$-digit floating point, not interval arithmetic;
+\texttt{code/oai186\_dickman\_cells.py}). On $[0,3]$ the Dickman function has
+closed forms, $\rho_D(u)=1-\log u$ on $[1,2]$ and
+$\rho_D(u)=1-\log u+\frac12\log^2u+\mathrm{Li}_2(1/u)-\frac12\log^22-\mathrm{Li}_2(\frac12)$
+on $[2,3]$, and so does $\int\rho_D$. With these we evaluated every cell mass of the seven grid caps
+of the companion ($372{,}450$ cells). All lie inside the enclosures given by
+its recurrence and cell bound, as we transcribed them, and the enclosures have
+width at most $8.3\cdot10^{-10}$ in units of the cell. One transcription doubt
+(which of two bars is the upper one) turns out not to matter at this precision.
+This checks one input of the companion; it is not yet an evaluation of
+$I_H$ or $J_{\lambda,H}$.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
@@ -1662,7 +1744,9 @@ capped numerator of the published witness of \cite{SY26} is reproduced
 exactly, integer for integer, by two independent programs
 (Proposition~\ref{prop:sy-exact}), so the project's bound is $236$
 conditionally (Corollary~\ref{cor:236}); the analytic input remains
-\lbl{Claimed}. Then
+\lbl{Claimed}. Our own vector is confirmed by
+two programs (version~0.12); Proposition~\ref{prop:bonf} makes such checks cheaper
+when only the inequality is needed. Then
 $186$ and $182$.
 \item \emph{Floor of the method (our main original direction).} For the plain
 simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
