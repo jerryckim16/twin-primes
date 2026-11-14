@@ -1,0 +1,52 @@
+{
+ "group": "I2old",
+ "components": {
+  "L2": {
+   "A": 1511410892.2850378,
+   "A_rad": 2.6168154437026655e-59,
+   "beta": 3.579824733433526e-23,
+   "table_A": 1511410893,
+   "L": 4703,
+   "H": 9754,
+   "K": 44781,
+   "theta": 68,
+   "J": 20,
+   "branch": "renewal",
+   "delay_first_failed": 39411,
+   "renewal_floored_at": null,
+   "lower_index": 84931,
+   "clip": {
+    "eligible": 12,
+    "absorbed_eligible": 0,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": true
+   }
+  },
+  "L3": {
+   "A": 18120016646.671417,
+   "A_rad": 4.336531830845656e-58,
+   "beta": 4.291783531076231e-22,
+   "table_A": 18120016651,
+   "L": 9753,
+   "H": 14046,
+   "K": 44781,
+   "theta": 47,
+   "J": 10,
+   "branch": "renewal",
+   "delay_first_failed": 85834,
+   "renewal_floored_at": null,
+   "lower_index": 84931,
+   "clip": {
+    "eligible": 12,
+    "absorbed_eligible": 0,
+    "clipped": false,
+    "below_all_absorbed": false,
+    "order3_min_is_bG": true
+   }
+  }
+ },
+ "prec": 256,
+ "seconds": 1339,
+ "peak_rss_MB": 1391
+}
