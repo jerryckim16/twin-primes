@@ -9,7 +9,7 @@
 - What: the 726 rational coefficients of the 182 trial function (file `formal/TrialData182.lean`, or the `independent_components` JSON, commit b77bf175...; SHA-256 of the trial file is in notes/sources-182.md), and, if available, the 43 + 55 source-row tables and the low-witness / Chernoff kernel parameters of the restoration step, and the exact value of T0.
 - Why: rung 182. The expository bundle (https://www.math.ucla.edu/~sharifi/AI/prime_gaps_182_expository_bundle.pdf, read in Session 14, notes/sources-182.md) does not print the coefficients; without them neither I nor J can be recomputed.
 - Tried: the bundle's directory lists no data files. The data sit in a GitHub repository outside this session's permitted scope, so I did not fetch them (Session 14, 14 Nov 2026).
-- Status: needed.
+- Status: received (formal/TrialData182.lean pasted by Jerry Kim, 14 Nov 2026, Session 14 follow-up; verbatim copy in code/data182/ with integrity checks code/sharifi182_data.py). The restoration-step tables (source-row inequalities) are covered by its source rows; Chernoff/witness kernel parameters still to be located.
 
 ## OpenAI, "Numerical certificate for prime gaps at most 186" (short_gaps_numerics.pdf), Section 2.4 and Tables 2.1-2.7
 - What: the forms (2.16)-(2.29) of the support-failure loss L^+ (outer components R_j, V_j, inner components (2.19)) and the parameters of the 97 components, to reproduce L^+/I_H <= 696075110e-12.
