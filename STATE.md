@@ -3,6 +3,20 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## Session 16 (started early at Jerry's request, 9:23 AM CT, 14 Nov; no wait, no other run active) -- additions
+- POSITION unchanged: bounds.project = 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Phase A. No news search (not the 3:34 AM run).
+- The 186 companion PDF and the authors' script are now committed (code/third_party/openai186/, Apache-2.0, PR #30). The script was NOT used (not read) this session.
+- RUNG 186 LOSS: two new evaluators written from the PDF:
+  - code/oai186_loss_inner.py (45 inner components, (2.19)); ALL 45 DONE (code/cap6/loss_inner/part_*.json, combined code/cap6/oai186_loss_inner.json): every value <= table, within 5e-10 for most; ceil + (2.31) reproduces the four inner group totals of Table 2.7 EXACTLY.
+  - code/oai186_loss_outer.py (52 outer components, R (2.17) and V (2.20)-(2.21)); run in decreasing order of table E, 128 bits, one component per job (~60 min wall each with 4 in parallel, ~1.6 GB each). Done: see code/cap6/oai186_loss_outer.json (OUTERDONE).
+  - Group data now read in the PDF: radial intervals (1.23)-(1.24); delay recurrence only if M >= 64 and the acceptance tests after (2.1) pass (implemented as stated; it confirms Session 15's inferred renewal choice); clipping (1.26) with core/threshold b_t, C_t (inner rows) and a_t, A_t (outer rows); the schedule reproduces Lemma 1.6's counts.
+  - Small bins use the closed form T_e = (exp Q - X^{e+1} exp(XQ))/(1-X) (arb series exp), essential for L = 3 cells.
+  - Fresh-context audit of both programs vs the PDF: notes/audit-186-loss/report.md, no discrepancy.
+  - RESUME the outer queue (skips finished parts):  cat runs/oai186_outer_queue.txt | xargs -P 4 -L 1 sh runs/oai186_outer_job.sh   then   python3 code/oai186_loss_outer.py --combine code/cap6/loss_outer/part_*.json
+- OWN IDEA: margin budget (code/oai186_margin_budget.py, paper Prop. prop:oai186-budget): O_{5/2} = 89.5% of L^+, may be at most 2.06% too small (margin > 1/50000) or 14.3% (margin > 0); the inner groups barely matter.
+- Exploration: pretentious twin statistic for class-number-one discriminants (code/explore/siegel_pretentious_twin.py) -- dead end.
+- Wolfram and mathbox NOT available.
+
 ## Session 15 (3:34 AM CT slot, 14 Nov; waited 62 min for Session 14 follow-up 3's branch to go quiet, work 4:37 AM CT on) -- additions
 - POSITION unchanged: bounds.project = 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Phase A. News search: nothing new.
 - RUNG 182: second program for I(F) DONE: code/sharifi182_check2.py (arb; own Lean parser, own Dickman form, Cox-de Boor in fmpq, A(y)^39 moments). Result code/data182/check2_I_result.json: ball [1.48963410081137215290e-11 +/- 5.2e-40], inside the published enclosure; vs program 1 rel 1.7e-22 (program 1's 2^-224 rounding; at 400 bits the gap is 3e-34 on a test grid). Per-cap files code/data182/check2_I_cap_<b>.json. 2 workers x 2.9 GB, 67 min. Shared with program 1: reading of F and the layered cap decomposition.
