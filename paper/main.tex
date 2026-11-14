@@ -1909,7 +1909,13 @@ $>2.7669\cdot10^{-4}$, the restoration costs at most $2.1148\cdot10^{-4}$, and
 the final margin exceeds $6.52\cdot10^{-5}$. The analytic inputs (a new
 incidence Type~II estimate and a new Type~III estimate, proved in the
 companions) are \lbl{Claimed}; its Lean development takes $262$ numerical
-inequalities as hypotheses. The $39$-tuple printed in \cite[\S12]{Sha26} is
+inequalities as hypotheses. The top-level file of that development (shown to us
+in version~0.14; not compiled here, since it needs Mathlib and modules we do not
+have) states $H_1\le182$ and $\mathrm{DHL}[39,2]$ under four hypotheses: those
+$262$ inequalities, two published prime-local bounds, a published rank-four
+Kloosterman bound (from which the new incidence Type~II estimate is derived
+inside Lean), and a new Type~III local Fourier proposition that the file itself
+calls an unproved input. The $39$-tuple printed in \cite[\S12]{Sha26} is
 admissible of diameter $182$ (\lbl{Lean-checked}:
 \texttt{boundedGaps\_182\_of\_DHL\_39'}; the project already had another
 such tuple). The $726$ coefficients and the source-row tables
