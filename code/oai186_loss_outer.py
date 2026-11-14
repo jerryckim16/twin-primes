@@ -136,7 +136,7 @@ def combine(files):
                          A=v["A"], B=v["B"], ratio_A=v["A"] / tab["A"], ratio_B=v["B"] / tab["B"],
                          E_from_ours=float(Eours), ceil_A_equals_table=bool(ceil(v["A"]) == tab["A"]),
                          ceil_B_equals_table=bool(ceil(v["B"]) == tab["B"]),
-                         **{k: w for k, w in v.items() if k not in ("A", "B")}))
+                         **{k: w for k, w in v.items() if k not in ("A", "B", "table_A", "table_B")}))
     return rows
 
 def main():
