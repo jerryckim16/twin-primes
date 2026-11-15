@@ -1,7 +1,7 @@
 {
- "version": "0.17",
+ "version": "0.18",
  "updated": "2026-11-15",
- "session_count": 17,
+ "session_count": 18,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -290,6 +290,31 @@
    "label": "Computed",
    "text": "186 margin budget from the printed integers (exact rationals): O_{5/2} is 89.5% of L^+ and may be at most 2.06% too small before the margin falls to 1/50000 (14.3% before 0).",
    "where": "paper v0.16, Prop. oai186-budget"
+  },
+  {
+   "label": "Proved here",
+   "text": "(possibly folklore; for the class of Liouville-pattern weights, which is the heuristic part) A fair pattern weight blocking a target exists iff (1/2,...,1/2) is a convex combination of target-free sets: for pairs iff the target graph is bipartite; for DHL[k,m+1] iff k <= 2m; for m+1 primes in windows of length g iff no closed window holds 2m+1 tuple elements. Hence the class blocks every tuple exactly when g < H(2m+1): H_1 < 6, H_2 < 12, H_3 < 20 (H(k) by exhaustive search; witnesses Lean-checked admissible).",
+   "where": "papers/parity-barrier v0.2, Prop. prop:bipartite, Cor. cor:six; notes/parity-attempts/2026-11-15-bipartite-criterion.md"
+  },
+  {
+   "label": "Proved here",
+   "text": "Polymath8b Remark 8.1's printed weight (product over 0 <= i <= i' <= H, positions prime to 3) is identically zero, and stays zero with i < i' once H >= 4 (odd cycles among positions prime to 3); the corrected weight (i < i', odd positions) is fair and works. Typo-level; no result changes.",
+   "where": "papers/parity-barrier v0.2, Sec. subsec:rem81; code/parity/bipartite_obstruction.py; notes/flags-for-jerry.md"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "A non-negative integer fair weight on {+-1}^3 that kills all three pairs has total mass 0; the Polymath8b weight (1-ab)(1-bc) is non-negative, fair and kills {0,2},{2,6}; {0,2,6,8,12} and {0,2,6,8,12,18,20} are admissible.",
+   "where": "lean/TwinPrimes/Parity.lean"
+  },
+  {
+   "label": "Computed",
+   "text": "182 cap numerators by a second program (arb balls): J0 = 5.63645908992367166973506e-11 +- 1.7e-39, J+ = 4.08240742966433656776654e-13 +- 2.5e-40, both above the published lower bounds; agree with program 1 to 2e-23 / 2e-32 relative.",
+   "where": "code/sharifi182_check2_J.py, code/data182/check2_J_result.json, notes/check2-J-182-report.md; paper v0.18 Remark rem:sha182"
+  },
+  {
+   "label": "Computed",
+   "text": "Polymath8b Thm 6.7 lower bound for M_k reproduced in ball arithmetic: smallest k for DHL[k,3] is 35410 in PM8b's MPZ region and 41588 with BV only, both equal to Polymath8b's.",
+   "where": "code/hm/pm8b_mk_lower.py, notes/hm-programme.md"
   }
  ],
  "ideas": [
@@ -502,6 +527,24 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Dead end: |S2|/sqrt(X) <= 1.8 for all nine D at X = 2e7. Only signal: sum lambda chi_{-163} ~ 27 sqrt(X), a square-root secondary term (pole of zeta(2s) gives 14.5 sqrt(X); the rest is consistent with the low zero of L(s, chi_{-163}) near 1/2 + 0.2i). notes/explorations.md."
+  },
+  {
+   "idea": "Which close-prime targets can a Polymath8b-type Liouville-pattern weight block? Exact criterion via fractional stable sets.",
+   "origin": "own",
+   "status": "works",
+   "note": "Proved: bipartite target graph / k <= 2m / windows with <= 2m elements; the class forbids exactly H_m < H(2m+1); explains the 6. Parity paper v0.2 Prop. prop:bipartite (audited)."
+  },
+  {
+   "idea": "Residue-class-dependent parity weights: can dead positions (p | n+h_j) let a weight block DHL[3,2]?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Classwise fairness (what the sieve's Type I main terms see) gives nothing beyond k <= 2m; global fairness would 'block' DHL[3,2] at q = 5*7*11, contradicting Polymath8b's GEH theorem, so it is the wrong notion. code/explore/residue_parity_lp.py."
+  },
+  {
+   "idea": "Tao-Teravainen (arXiv:2512.01739v2, Thm 3.1) to push Prop. prop:tao-weight to level R = (log x)^{c0}",
+   "origin": "own",
+   "status": "open",
+   "note": "Needs expanding the square with W = [d1,d2] <= R^2 and dyadic-to-log averaging outside exceptional scales; deduction not written; conditional on a preprint."
   }
  ],
  "phase": "B",
@@ -509,10 +552,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.1",
+   "version": "0.2",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) (missing: Type I at level x^{2/3+} and a bilinear bound that has no cancellation for the parity-twisted sequence); the twisted Type I input proved in a weak log-averaged form from Tao's two-point theorem. No progress on the twin prime conjecture is claimed."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; an exact criterion for which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (target graph bipartite; DHL[k,m+1] iff k <= 2m; so the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind their a^2+b^4 bilinear estimate; the twisted Type I input proved in a weak log-averaged form. No progress on the twin prime conjecture is claimed."
   },
   {
    "slug": "verification-note",
