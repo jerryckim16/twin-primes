@@ -82,3 +82,10 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Next attempt candidates: (a) a rigorous ceiling for S_3(eps) using the overlapping constraints (alternating projections with a
   rate; finite-element dual with error control); (b) does S_3(eps) > 2 hold on an interval? exact arrangement certificates at
   other eps (helper run in progress at the end of Session 22, see the log); (c) weights that change the twisted main terms.
+
+## Session 23 (15 Nov, back-to-back run 2 of 3, same conversation) updates
+- Attempt (route card 2026-11-15-k3-window.md): Schur-test reduction to 1D for eps >= 1/4; Theorem thm:k3-window (sigma_3 > 2 at
+  2/9, 1/4, 7/24; <= 1.9999 for eps >= 0.439), Cor. cor:k3-linear (scaling). Paper v0.8 subsec:window.
+- Literature: PM8b v4 re-read for this (p. 63: their partition works for eps in [1/4, 1/3], 1/4 chosen for simplifications);
+  three web searches found no range-of-eps statement.
+- Next: rigorous ceiling < 2 for small eps / [0.31, 0.439) needs the marginal condition (overlapping constraints).

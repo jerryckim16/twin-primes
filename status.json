@@ -1,7 +1,7 @@
 {
- "version": "0.22",
+ "version": "0.23",
  "updated": "2026-11-15",
- "session_count": 22,
+ "session_count": 23,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -385,6 +385,16 @@
    "label": "Computed",
    "text": "Independent exact check of Polymath8b Theorem 3.15 (DHL[3,2] under GEH, eps = 1/4): a symmetric step function on the arrangement {t_i, t_i+t_j, sum t = m/8} has ratio 2 + 711155/3866758832 > 2.00018, by two independent programs (PM8b's printed polynomial: about 2 + 6e-8). Nothing new is proved.",
    "where": "papers/parity-barrier v0.7 Prop. prop:k3-step; code/parity/k3_arrangement_exact.py, k3_arrangement_verify.py, k3_arrangement_cert.json"
+  },
+  {
+   "label": "Proved here",
+   "text": "(possibly folklore) Schur-test reduction: for k = 3 and 1/4 <= eps < 1/2, any positive phi on [0,1-eps] with int_0^{a-y}(phi(t)+phi(y))/(C-3/2+t+y)dt <= phi(y) proves that the Theorem 3.14 ratio (even without the vanishing marginal condition) is <= C for all eps' >= eps; the condition is scale-invariant.",
+   "where": "papers/parity-barrier v0.8 Prop. prop:unc-ceiling, Cor. cor:k3-linear"
+  },
+  {
+   "label": "Computed",
+   "text": "For which eps Polymath8b's k = 3 GEH criterion works: the supremum sigma_3(eps) exceeds 2 at eps = 2/9, 1/4, 7/24 (exact step functions), and is <= 1.9999 < 2 for every eps in [0.439, 1/2) (Schur certificates); sigma_3(1/4) in (2.0001, 2.17], and sigma_3(eps) <= 3/2 + 0.89109(1-eps) on [1/4, 1/2). Each certificate by two independent programs. Heuristic: the good set is about (0.19, 0.31) with maximum about 2.003.",
+   "where": "papers/parity-barrier v0.8 Thm. thm:k3-window; code/parity/k3_unc_cert.py, k3_unc_verify.py, k3_arrangement_exact.py, k3_arrangement_verify.py"
   }
  ],
  "ideas": [
@@ -663,6 +673,24 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Grid extremal marginal varies by a factor ~5; constant-marginal ansatz gives 1.736 vs 1.959 (eps = 1/4, n = 24). notes/explorations.md, Session 22."
+  },
+  {
+   "idea": "Schur test with fibre-integral eigenfunction structure for the k = 3 Thm 3.14 problem without marginal condition (1D reduction)",
+   "origin": "own",
+   "status": "works",
+   "note": "Rigorous ceilings: < 2 for eps >= 0.439; 2.17 at eps = 1/4. Parity paper v0.8 Prop. prop:unc-ceiling, Thm. thm:k3-window."
+  },
+  {
+   "idea": "Closed form for the constant kappa = 0.8901675 of the 1D Schur problem",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "mpmath.identify gives only overfitted noise; notes/explorations.md, Session 23."
+  },
+  {
+   "idea": "Rigorous ceiling < 2 for the k = 3 Thm 3.14 ratio at small eps or eps in [0.31, 0.439), using the marginal condition",
+   "origin": "own",
+   "status": "open",
+   "note": "Needs the overlapping constraints (Session 22); alternating projections with a rate or a finite-element dual."
   }
  ],
  "phase": "B",
@@ -670,10 +698,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.7",
+   "version": "0.8",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post. v0.8: for which eps the k = 3 criterion works: above 2 at eps = 2/9, 1/4, 7/24 (exact), provably below 2 for all eps >= 0.439 (Schur-test certificates, two programs)."
   },
   {
    "slug": "verification-note",

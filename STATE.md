@@ -3,12 +3,12 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 22, back-to-back bonus run 1 of 3, 15 Nov 2026): PHASE B
+## POSITION (after Session 23, back-to-back run 2 of 3, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.7, verification-note v0.10 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
-  NOT started as a paper. Main paper v0.22.
+- Active papers: parity-barrier v0.8, verification-note v0.10 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+  NOT started as a paper. Main paper v0.23.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
 ## Next steps (in order; Phase B)
@@ -18,7 +18,8 @@ Each session works on the claude/... branch its system instructions name (create
    Is thread 2 (now FI, HB, Tao, TT, MR, SS) complete? Is the 182 restoration step worth more effort without per-component data?
 2. Parity attempt (one per run; route card + README line). Not to repeat: everything in notes/parity-attempts/README.md, now also
    ceilings / Cauchy-Schwarz for the PM8b GEH criteria and the k = 2 Thm 3.14 problem (Session 21, done). Candidates:
-   (a) open question 6: a RIGOROUS ceiling for the k = 3 Thm 3.14 supremum using the overlapping constraints (Session 22 showed the
+   (a) open question 6 (partly answered in Session 23: sigma_3 > 2 at 2/9, 1/4, 7/24; < 2 for eps >= 0.439, Thm thm:k3-window):
+   still open: a RIGOROUS ceiling < 2 for small eps or eps in [0.31, 0.439), which must use the overlapping constraints (Session 22 showed the
    direct extension of thm:k2 fails: route card 2026-11-15-k3-dual-orthogonal.md; tools: alternating projections with a rate, or a
    finite-element dual with error control); or exact arrangement certificates (code/parity/k3_arrangement_exact.py --eps p/q
    --cert-each) to map where sigma_3(eps) > 2 (Heuristic: only near eps = 1/4 among 0.05, 1/8, 0.15, 1/4, 0.35, 3/8, 0.45);
@@ -31,6 +32,17 @@ Each session works on the claude/... branch its system instructions name (create
 5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta)
    region). Note: parity paper Cor. cor:ceil is relevant to H_m (H_2 <= 12-type results need a new criterion).
 6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+
+## Session 23 (back-to-back run 2 of 3, continued in the same conversation as Session 22 at Jerry's request; no wait) -- additions
+- Parity paper v0.8: subsec:window (Prop. prop:unc-ceiling, Thm. thm:k3-window, Cor. cor:k3-linear, Remark rem:k3-window);
+  open question 6 partly answered. Route card notes/parity-attempts/2026-11-15-k3-window.md. Audit notes/audit-parity-v08.md.
+- Scripts (code/parity/, /usr/bin/python3 -I): k3_unc_1d.py eps [N] and k3_unc_kernel.py eps n... (Heuristic 1D/2D values);
+  k3_unc_cert.py eps_p eps_q C_p C_q [N] [delta] (arb certificate -> k3_unc_cert_<p>_<q>.json) and k3_unc_verify.py <json>
+  (independent mpmath iv check; ~5 min for the 439/1000 file); arrangement certificates k3_arrangement_cert_2_9_n18.json,
+  k3_arrangement_cert_7_24_n24.json (verified by k3_arrangement_verify.py; output k3_arrangement_verify_eps.out);
+  eps sweep output k3_arrangement_eps2.out (runs/k3_eps2_jobs.sh).
+- Exploration: code/explore/kappa_closed_form.py (kappa = 0.8901675, no closed form; dead end).
+- Wolfram and mathbox NOT available.
 
 ## Session 22 (back-to-back bonus run 1 of 3 at Jerry's request, 15:51 UTC 15 Nov; no wait) -- additions
 - Parity paper v0.7: subsec:dual (Lemma lem:dual, Prop. prop:overlap, Prop. prop:orth-relax, Prop. prop:k3-step, Remark rem:k3-eps),
