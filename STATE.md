@@ -3,35 +3,41 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 23, back-to-back run 2 of 3, 15 Nov 2026): PHASE B
+## POSITION (after Session 24, 11:34 AM CT slot, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.8, verification-note v0.10 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
-  NOT started as a paper. Main paper v0.23.
+- Active papers: parity-barrier v0.9, verification-note v0.10 (or v0.11 if the k = 45 check landed, see below). H_m programme scoped
+  (notes/hm-programme.md), NOT started as a paper. Main paper v0.24.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
 ## Next steps (in order; Phase B)
-1. Weekly review (Monday 16 Nov run). Candid questions for it: is sec:ceil / subsec:dual of the parity paper interesting or folklore-level?
-   NOTE (Session 22): the core of prop:bipartite turned out to be in Tao's 2014 blog post (notes/sources-tao14b.md); the review
-   should ask what else in our "Proved here" list a search of blogs (terrytao.wordpress.com) and MathOverflow would find.
-   Is thread 2 (now FI, HB, Tao, TT, MR, SS) complete? Is the 182 restoration step worth more effort without per-component data?
+1. Weekly review (Monday 16 Nov run). Candid questions for it: is sec:ceil / subsec:dual / subsec:window of the parity paper
+   (three runs on the k = 3 GEH criterion) worth more runs, or is it a variational side-show? Is the new sec:bomb (Session 24)
+   mostly a literature summary plus a folklore reduction (honestly: yes; its value is the sharp sourced statement and the
+   Debouzy constant)? Search terrytao.wordpress.com / MathOverflow for our "Proved here" items (lesson of Session 22).
+   Is thread 2 complete (FI, HB, Tao, TT, MR, SS)? Thread 3 now has FI98 Thm 2, PM8b sec. 8, Bombieri/Ford.
+   Decide on a second small-results paper (capped-variational theory, or the H_m (varpi, delta) region).
 2. Parity attempt (one per run; route card + README line). Not to repeat: everything in notes/parity-attempts/README.md, now also
-   ceilings / Cauchy-Schwarz for the PM8b GEH criteria and the k = 2 Thm 3.14 problem (Session 21, done). Candidates:
-   (a) open question 6 (partly answered in Session 23: sigma_3 > 2 at 2/9, 1/4, 7/24; < 2 for eps >= 0.439, Thm thm:k3-window):
-   still open: a RIGOROUS ceiling < 2 for small eps or eps in [0.31, 0.439), which must use the overlapping constraints (Session 22 showed the
-   direct extension of thm:k2 fails: route card 2026-11-15-k3-dual-orthogonal.md; tools: alternating projections with a rate, or a
-   finite-element dual with error control); or exact arrangement certificates (code/parity/k3_arrangement_exact.py --eps p/q
-   --cert-each) to map where sigma_3(eps) > 2 (Heuristic: only near eps = 1/4 among 0.05, 1/8, 0.15, 1/4, 0.35, 3/8, 0.45);
-   (b) weights that change the twisted main terms (open question 2); (c) an integer substitute for "mu on a line is a character".
-3. Parity paper thread 3: which hypotheses are known NOT to suffice (EH/GEH for sieve methods: PM8b sec 8), stated precisely.
-   Murty-Vatwani original if it arrives (notes/sources-needed.md).
-4. Bound share, rung 182 (per-component restoration data requested from Jerry in Session 22, notes/sources-needed.md): done so far: I, J0, J+, T (two programs), kappa_true (two methods), printed restoration arithmetic and
-   the 98 source rows (Session 21). Remaining: the 197 restoration integrals; the per-component A_j, M_j, Chernoff/low-witness
-   parameters are NOT in the bundle or the trial data (would need the authors' supplement; outside our GitHub scope).
-5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta)
-   region). Note: parity paper Cor. cor:ceil is relevant to H_m (H_2 <= 12-type results need a new criterion).
-6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+   "what the level alone gives" (Bombieri/Ford, Session 24). Candidates: (a) open question 6 (rigorous k = 3 ceiling < 2 for small
+   eps, needs the marginal condition) -- only if the review keeps it; (b) open question 7 (Hooley-type averaged parity condition
+   for twins): any structured twin-type sequence where it is provable?; (c) weights that change the twisted main terms (open
+   question 2); (d) Murty-Vatwani in the original if it arrives.
+3. Bound share, rung 182: per-component restoration data still requested (notes/sources-needed.md). Nothing else to do without it.
+4. Optional, low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Lemma 9.1 weights Schwartz-Zippel check
+   (Session 24 resumed it; see the Session 24 block for its status).
+
+## Session 24 (11:34 AM CT slot, started on time 17:35 UTC 15 Nov; no wait) -- additions
+- Parity paper v0.9: new Section sec:bomb (Prop. prop:bomb-twin, Remarks rem:ford-twin, rem:debouzy), second table in sec:num,
+  open question 7; abstract rewritten (173 words). Route card notes/parity-attempts/2026-11-15-bombieri-level-alone.md.
+  Audits: notes/audit-parity-v09.md (two fresh-context agents; 5 errors fixed, incl. p+2 vs p-2).
+- Sources read (hashes in notes/parity-programme.md): Ford arXiv:math/0401215v1; Debouzy arXiv:1907.06393v1; Lichtman 2009.08969v2.
+- FLAG (minor): Debouzy's constant 2 S_2 should apparently be 4 S_2 (notes/flags-for-jerry.md, README).
+- Scripts: code/parity/bombieri_twin_split.py [x] (numpy, ~4 GB at 3e7; 1e8 is OOM-killed at 13 GB: do not run it), output .out;
+  code/explore/hooley_twin_parity.py [x] [alpha...] (.out).
+- k = 45 Schwartz-Zippel (capped_exact on code/cap6/P_rand45_lemma91_u.json) resumed from 74/273 pieces with 3 procs, /usr/bin/python3
+  (python-flint is installed for /usr/bin/python3, not for /usr/local/bin/python3). STATUS: see the end of this block.
+- Wolfram and mathbox NOT available.
 
 ## Session 23 (back-to-back run 2 of 3, continued in the same conversation as Session 22 at Jerry's request; no wait) -- additions
 - Parity paper v0.8: subsec:window (Prop. prop:unc-ceiling, Thm. thm:k3-window, Cor. cor:k3-linear, Remark rem:k3-window);
