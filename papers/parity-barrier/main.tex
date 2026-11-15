@@ -788,6 +788,21 @@ $I(F_\varepsilon)=a^2+2\cdot\frac14\cdot a\cdot2\varepsilon=a(a+\varepsilon)=a$.
 \end{enumerate}
 \end{remark}
 
+\begin{corollary}[\lbl{Proved here}]\label{cor:consistent}
+For every pair $(k,m)$ that pattern weights block, that is $2\le k\le2m$
+(Proposition~\ref{prop:bipartite}(b)), none of the three GEH criteria proves
+$\mathrm{DHL}[k,m+1]$. So, for these criteria, the variational method and
+the parity class agree on every blocked case.
+\end{corollary}
+
+\begin{proof}
+For $m=1$ the only case is $k=2$, which is Theorem~\ref{thm:k2}. For $m\ge2$,
+$c(k)\le4\log k\le4\log(2m)$ because $\frac k{k-1}\le2$. Now $4\log(2m)<2m$
+for $m\ge5$ (true at $m=5$, and $2m-4\log(2m)$ increases), and for $m=2,3,4$
+the script \texttt{geh\_ceiling.py} checks $c(k)<2m$ for all $2\le k\le2m$
+(the maximum is $c(2)=4\log2$). Apply Proposition~\ref{prop:ceil}.
+\end{proof}
+
 \begin{remark}[On the printed proof of {\cite[Proposition~6.5]{PM8b}}]\label{rem:pm65}
 \lbl{Proved here} (our reading of the printed proof). Proposition~6.5 states
 $M_{k,\varepsilon}\le\frac k{k-1}\log(2k-1)$ for $0\le\varepsilon<1$ (p.~44). The proof
@@ -1313,12 +1328,11 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   two-variable weights at level $(\log x)^{c/32}$, conditional on \cite{TT25}.
   What remains \lbl{Open} is the same as in question~1: any level beyond a power
   of $\log x$.
-\item (\lbl{Open}) Theorem~\ref{thm:k2} proves the parity value $2$ directly
-  for $k=2$. Is there a direct variational proof of the same kind for the
-  other cases blocked by Proposition~\ref{prop:bipartite}, for instance that
-  the Theorem~3.14 ratio is at most $4$ for $k=3$ and $k=4$ (the cases
-  $\mathrm{DHL}[3,3]$, $\mathrm{DHL}[4,3]$)? And what is the exact supremum at
-  $k=3$, which \cite[Theorem~3.15]{PM8b} only shows exceeds $2$?
+\item (\lbl{Open}) What is the exact supremum of the Theorem~3.14 ratio at
+  $k=3$? \cite[Theorem~3.15]{PM8b} shows it exceeds $2$, and
+  Proposition~\ref{prop:ceil} gives at most $c(3)=2.472$. More generally, does
+  the variance argument of Theorem~\ref{thm:k2} give sharp ceilings for
+  $k\ge3$, where $c(k)$ is surely not sharp?
 \end{enumerate}
 
 \subsection*{Plan for later versions}
@@ -1425,7 +1439,7 @@ suffice). Nothing enters before it is read in the source.
   $k^2\log k/(k-1)^2$ for Polymath8b's three GEH criteria
   (Proposition~\ref{prop:ceil}, Corollary~\ref{cor:ceil}: no
   $\mathrm{DHL}[k,3]$ for $k\le45$), Theorem~\ref{thm:k2} (at $k=2$ the
-  Theorem~3.14 ratio is at most $2$, with equality), and a remark on the
+  Theorem~3.14 ratio is at most $2$, with equality), Corollary~\ref{cor:consistent}, and a remark on the
   printed proof of \cite[Proposition~6.5]{PM8b}; parity attempt of this run
   (route card \texttt{2026-11-15-geh-}\allowbreak\texttt{ceilings-k2.md}). New
   Section~\ref{subsec:mr16} on Matom\"aki--Radziwi\l\l{} (read in arXiv v4)

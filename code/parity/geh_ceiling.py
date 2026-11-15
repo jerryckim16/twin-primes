@@ -57,4 +57,12 @@ print("4. Prop 6.5 printed vs corrected constants (k, eps)")
 for K, e in [(50, arb(1)/25), (51, arb(1)/50), (4, arb('0.168')), (2, arb(1)/2)]:
     pr = arb(K)/(K-1)*(arb(2*K-1)).log(); co = (arb(K)/(K-1) + e)*(arb(2*K-1)).log(); sc = (1+e)*arb(K)/(K-1)*arb(K).log()
     print(f"  k={K} eps={e.mid().str(4)}: printed {pr.mid().str(6)}, corrected {co.mid().str(6)}, scaling (1+eps)k/(k-1)log k {sc.mid().str(6)}")
+print("5. parity-blocked cases k <= 2m, m >= 2: max_{2<=k<=2m} c(k) < 2m (checked for m = 2..4; for m >= 5,")
+print("   c(k) <= 4 log k <= 4 log(2m) < 2m, the last checked here for m = 5..10^4 and true beyond by monotonicity of 2m - 4 log 2m)")
+for m in range(2, 5):
+    mx = max((c(k) for k in range(2, 2*m+1)), key=lambda v: v.mid())
+    ok = all(bool(c(k) < 2*m) for k in range(2, 2*m+1)); fail |= not ok
+    print(f"  m={m}: max c(k) = {mx.mid().str(6)} < {2*m}: {ok}")
+ok = all(bool(4*arb(2*m).log() < 2*m) for m in range(5, 10001)); fail |= not ok
+print("  m=5..10000: 4 log(2m) < 2m:", ok)
 print("FAIL" if fail else "ALL PASS"); sys.exit(1 if fail else 0)
