@@ -1,5 +1,23 @@
 # Research log
 
+## 2026-11-15 - Session 17 (7:34 PM CT, 14 Nov; no wait, no other run active): Rung 186 finished: its loss bound re-evaluated in full and its decisive part by a second, independent program; the project moves to Phase B with a first paper on the parity barrier
+
+- 186 loss bound L+: the first program (Arb balls) finished the last 19 of 97 components. At 128 bits the 15 smallest low bins were rejected by the companion's own test (nonpositive lower endpoint in the renewal recurrence), at 256 bits all pass. Every raw value is at most its table entry; the summed component bounds equal the table's group totals (O_2 and O_{5/2} 1 and 3 units of 1e-12 below, inner groups exactly).
+- A fresh-context helper wrote a second, independent program from the PDF alone (code/oai186_loss_outer2.py: GMP integer products and mpmath instead of Arb, a generating-series moment algorithm instead of set partitions, own cap rows). On the 17 components carrying 99.95% of the decisive group O_{5/2} (89.4% of L+) it agrees with the first program to 1.4e-12 (rank-two and factorial) and 2.2e-9 (low bins); both sit about 1.2e-9 below the table. The rest of L+ rests on one program, with large slack by the margin budget (Prop. oai186-budget).
+- So rung 186 is finished in the sense of the plan (main terms and L+ by two programs), and the project switches to Phase B. 186 is NOT adopted: the lemmas that its forms majorise the true losses, its restoration step and its analytic inputs are unchecked. Bounds unchanged: established 246, claimed 182, project 236 (conditional).
+- New paper papers/parity-barrier v0.1 (The parity barrier and twin primes: what is known and what is missing): the Polymath8b parity obstruction and Selberg's example re-read in the sources; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) (Props. fi-twin, B-parity, proved here); the twisted Type I input proved in a weak log-averaged form (Prop. tao-weight). An adversarial fresh-context audit found all three propositions correct with fixable gaps and one misquotation (Tao's Remark 1.4 says 'in principle effective'); all fixed. Main paper v0.17 (new Section 'Related results', Remark rem:186-status); verification note v0.7.
+
+Parity attempt: Tao's log-averaged two-point Chowla theorem along sieve weights: proved (possibly folklore) for periodic weights of fixed or slowly growing level, so such weights cannot tell lambda(n)lambda(n+2) = +1 from -1; this confirms the obstruction's input in a weak regime, and the first unresolved step (uniformity in the modulus up to x^theta) is open and would only confirm it further.
+
+Explored: What a GPY/Selberg weight sees of the parity of n(n+2) (code/explore/parity_weighted_liouville.py, up to 1e8): weighted lambda(n)lambda(n+2) ~ 4e-5, the two parity-twisted measures have equal mass and class distributions, and all twin pairs sit in the + measure; Selberg's phenomenon made visible, as expected (now the parity paper's Heuristic illustration).
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).
+- The second loss program has no renewal branch, so the smallest low bins of O_{5/2} (0.05% of the group), O_2 and the inner groups remain one-program results.
+- No progress on rung 182 this run (its tail term and a second program for J0, J+ are still open).
+
+Next: Phase B: parity paper thread 2 (Friedlander-Iwaniec x^2+y^4 and Sawin-Shusterman, read in the sources) with one bounded parity attempt; start the H_m or capped-variational small-results paper; rung 182 second program for J0, J+ in the bound share. First weekly review on Monday 16 Nov.
+
 ## 2026-11-14 - Session 16 (started early at Jerry's request, 9:23 AM CT; no wait, no other run active): 186: the raw loss bounds of its numerical companion re-evaluated for 78 of 97 components (all but 1.2e-6 of the loss), all at or just below the published values; the final margin turns out to hinge on one loss group
 
 - With the 186 companion PDF now in the repository, two new evaluators were written from its formulas (not from the authors' script, which was not read): code/oai186_loss_inner.py for the 45 inner forms (2.19) and code/oai186_loss_outer.py for the outer forms (2.17), (2.20)-(2.21). The group data that Session 15 had to infer are now read in the PDF, and the delay/renewal rule is implemented as its acceptance test; the test picks renewal exactly where Session 15 had inferred it, and our bin schedule reproduces the counts stated in its Lemma 1.6.

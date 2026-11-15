@@ -1,7 +1,7 @@
 {
- "version": "0.16",
- "updated": "2026-11-14",
- "session_count": 16,
+ "version": "0.17",
+ "updated": "2026-11-15",
+ "session_count": 17,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,21 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Computed",
+   "text": "Rung 186 loss bound L+ of OpenAI's numerical companion: all 97 raw component bounds re-evaluated by one program (all at most the published values; outer group totals 1 and 3 units of 1e-12 below the table, inner totals equal), and the 17 components carrying 99.95% of the decisive group O_{5/2} (89.4% of L+) by a second, independent program (GMP integer products + mpmath, generating-series moments), agreeing with the first to 1.4e-12 (rank-two, factorial) and 2.2e-9 (low bins). Re-evaluation of the published forms; the majorisation lemmas, restoration step and analytic inputs are not checked; 186 not adopted.",
+   "where": "code/oai186_loss_outer.py, code/oai186_loss_outer2.py, code/cap6/oai186_loss_summary.json, code/cap6/loss_outer2/, notes/loss-outer2-report.md; paper Rem. rem:186-status"
+  },
+  {
+   "label": "Proved here",
+   "text": "(possibly folklore) For every periodic weight w and shifts h != h', sum_{n<=x} w(n)lambda(n+h)lambda(n+h')/n = o(log x) (from Tao's log-averaged two-point Chowla theorem); so Selberg-type weights of fixed (or slowly growing) level split their log-weighted mass equally between lambda(n)lambda(n+2) = +1 and -1. This confirms, in a weak regime, the input of the parity obstruction; it gives nothing for twin primes.",
+   "where": "papers/parity-barrier Prop. prop:tao-weight; notes/parity-attempts/2026-11-15-tao-twisted-typeI-weights.md"
+  },
+  {
+   "label": "Proved here",
+   "text": "For a_n = Lambda(n+2), all hypotheses of Friedlander-Iwaniec's asymptotic sieve (Thm 2) except (R3) at level x^{2/3+} and the bilinear (B) hold, with H = 2C_2; (B) at C = 1 has no cancellation at all for the parity-twisted sequence Lambda(n+2)(1+lambda(n))/2, and Cauchy-Schwarz reduces (B) at C = 1 to an off-diagonal bound whose twisted analogue has only non-negative terms.",
+   "where": "papers/parity-barrier Props. prop:fi-twin, prop:B-parity"
+  },
   {
    "label": "Computed",
    "text": "Rung 182 (GPT-6 Astra / Sharifi, k = 39): the trial data TrialData182.lean (supplied by Jerry Kim) checked for integrity, and the denominator I(F) of the criterion evaluated independently from it: I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] (relative position 0.49993). One program, high precision (floor-only rounding at 2^-224), not a rigorous enclosure. The numerators: J0 = 5.6364590899e-11 and J+ = 4.0824074297e-13, each just above the published lower bound (relative excess 4e-11 and 5e-12; code/sharifi182_J.py); with the published tail bound (not recomputed) the cap surplus is q_H - 1 = 2.76706e-4, consistent with the certified mu- = 2.76692e-4. The tail, the restoration losses and the analytic inputs (including the unproved Type III local Fourier proposition) are NOT checked; 182 stays Claimed.",
@@ -279,6 +294,18 @@
  ],
  "ideas": [
   {
+   "idea": "Parity attempt: transfer Tao's log-averaged two-point Chowla theorem to sieve-weighted sums sum w(n)lambda(n)lambda(n+2)/n, to see whether the twisted Type I input of the parity obstruction can be proved for actual sieve weights.",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 17: proved for periodic weights (fixed or slowly growing level); level x^theta needs uniformity in the modulus, which is open, and would only confirm the obstruction."
+  },
+  {
+   "idea": "Exploration: measure what a GPY/Selberg weight sees of the parity of n(n+2) (weighted lambda(n)lambda(n+2), parity-pattern shares, class distributions of the two twisted measures).",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 17: as expected (B/A ~ 4e-5 at 1e8, equal class shares, all twins in the + measure); kept as the parity paper's numerical illustration, not a result."
+  },
+  {
    "idea": "Rung 182: read the 182 trial's component caps as a layered sum over the largest fragment (layers over the union of component and outer-shell caps, active coefficients = components with cap >= layer value), processed cap by cap through linearity.",
    "origin": "own",
    "status": "works",
@@ -477,16 +504,25 @@
    "note": "Dead end: |S2|/sqrt(X) <= 1.8 for all nine D at X = 2e7. Only signal: sum lambda chi_{-163} ~ 27 sqrt(X), a square-root secondary term (pole of zeta(2s) gives 14.5 sqrt(X); the rest is consistent with the low zero of L(s, chi_{-163}) near 1/2 + 0.2i). notes/explorations.md."
   }
  ],
- "phase": "A",
+ "phase": "B",
  "papers": [
+  {
+   "slug": "parity-barrier",
+   "title": "The parity barrier and twin primes: what is known and what is missing",
+   "version": "0.1",
+   "status": "active",
+   "pdf": "docs/papers/parity-barrier.pdf",
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) (missing: Type I at level x^{2/3+} and a bilinear bound that has no cancellation for the parity-twisted sequence); the twisted Type I input proved in a weak log-averaged form from Tao's two-point theorem. No progress on the twin prime conjecture is claimed."
+  },
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.6",
+   "version": "0.7",
    "status": "active",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and most raw loss bounds of the 186 companion recomputed. Analytic inputs not verified."
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and all 97 raw loss bounds of the 186 companion recomputed (the dominant group by two programs). Analytic inputs not verified."
   }
  ],
- "last_review": null
+ "last_review": null,
+ "phase_note": "Phase B since Session 17 (15 Nov 2026): rung 186 finished in the sense of the plan (main terms and loss bound L+ re-evaluated by two programs, L+ by two programs for the 17 components carrying 99.95% of the decisive group O_{5/2}; the rest by one program, with large margin slack). 186 is NOT adopted (majorisation lemmas, restoration step and analytic inputs unchecked). Rung 182 continues inside Phase B's bound share."
 }
