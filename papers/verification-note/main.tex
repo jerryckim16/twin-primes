@@ -616,6 +616,15 @@ $\mu^--\bar L>6.52\cdot10^{-5}$ of (10.3), the Lean margin of Section~13.3,
 and the inequalities of Section~3.7. Only the printed totals can be checked:
 the individual $A_j$, $M_j$ of the $197$ components, the $43+55$ source-row
 tables, the Chernoff parameters and $T_0$ are not printed in the bundle.
+
+The $43+55$ source rows of the trial data (the PDF prints only rows $13$ and $14$)
+satisfy every row definition printed in \cite[Sections~3.5--3.6]{Sha26}
+exactly (\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_rows.py}, $30$
+checks): the counts, contiguous bands from $1/(2\rho)$, activations $\delta/\rho$,
+thresholds $A_r,C_r$ by order, the order-three budget (with equality) and
+plateaux, and the last-row coverage (3.13). The rows also determine the radius
+$T_0=2491228441011/2624989000000$, so the printed $\rho^*T_0=.2491228441011$ is
+exact.
 \end{sloppypar}
 
 Not checked: the $197$ source integrals of the restoration loss (only their
@@ -664,7 +673,8 @@ version 0.12).
 \begin{description}
 \item[0.10] (15 November 2026) Remark~\ref{rem:182}: the printed arithmetic of
 the restoration step (constants (8.3), the Section~10 totals, (10.2)--(10.3),
-Sections~3.7 and 13.3) re-done exactly.
+Sections~3.7 and 13.3) re-done exactly; the $98$ source rows checked
+against the printed row definitions.
 \item[0.9] (15 November 2026) Remark~\ref{rem:182}: the mass deficit
 $\kappa_{\mathrm{true}}$ of the $182$ minorant recomputed by two methods.
 \item[0.8] (15 November 2026) Remark~\ref{rem:182}: the four ingredients of the

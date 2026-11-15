@@ -29,3 +29,14 @@ for eps in (0.1, 0.25, 0.5, 0.9):
 print("finer grids, full precision:")
 for n, eps in ((32, 0.3), (30, 0.2), (28, 0.5)):
     print(n, eps, repr(best(n, eps)))
+print("without the vanishing marginal condition (general, non-symmetric F), n = 8:")
+def unconstrained(n, eps):
+    h = 1.0/n; cells = [(i, j) for i in range(2*n) for j in range(2*n) if i + j + 2 <= 2*n]
+    Jq = np.zeros((len(cells), len(cells)))
+    for axis in (0, 1):
+        for i in range(2*n):
+            v = np.array([h if c[axis] == i else 0.0 for c in cells])
+            if (i+1)*h <= 1 - eps + 1e-12: Jq += h*np.outer(v, v)
+    return sl.eigh(Jq, h*h*np.eye(len(cells)), eigvals_only=True)[-1]
+for eps in (0.0, 0.1):
+    print("  eps", eps, "ratio", repr(unconstrained(8, eps)))

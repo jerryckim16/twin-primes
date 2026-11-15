@@ -36,7 +36,7 @@ a Polymath8b-type weight blocks a close-prime target exactly when its target
 graph is bipartite, which explains the number $6$ and gives $H_m<H(2m+1)$;
 at $k=2$ Polymath8b's strongest GEH criterion reaches exactly the parity value
 $2$ and never exceeds it, while for $5\le k\le45$ its failure to give three
-primes is a variational ceiling, not parity. We also record what the bilinear
+primes comes from a variational ceiling rather than from the parity class. We also record what the bilinear
 estimates for $a^2+b^4$ and $x^3+2y^3$, the short-interval theorem of
 Matom\"aki--Radziwi\l\l{} and Sawin--Shusterman's twin primes in $\mathbb F_q[T]$
 use, and why none of it transfers to twin primes.
@@ -426,7 +426,7 @@ to be at least as deep as the twin prime conjecture'' (p.~3). The word
 \begin{remark}[Why this does not transfer to twin primes]\label{rem:mr16-transfer}
 \lbl{Heuristic} (our reading, not a statement of \cite{MR16}). Every step
 above applies to a single function $f(n)$ that is multiplicative, real and
-bounded by~$1$. Step~(3) needs $f(pm)=f(p)f(m)$ (p.~9). The function
+bounded by~$1$. Step~(3) uses multiplicativity to factor $n=pm$ (p.~9; written there for completely multiplicative $f$). The function
 $n\mapsto\lambda(n)\lambda(n+2)$ is not multiplicative, and
 $\Lambda(n+2)$ is neither bounded nor multiplicative in~$n$. So
 Theorem~1 says nothing about either of them directly. For
@@ -438,7 +438,7 @@ bilinear estimate (Section~\ref{sec:parity}); we have not checked here how it
 uses \cite{MR16}. Twin primes need more than a short-interval average of
 one function: they need a correlation $\sum_n\Lambda(n)\Lambda(n+2)$ of
 $\Lambda$ with a shift of itself. Nothing in \cite{MR16} addresses that
-correlation (\lbl{Open}).
+correlation; its asymptotic is \lbl{Open}.
 \end{remark}
 
 
@@ -672,6 +672,10 @@ For every $F$ admissible in any of the three criteria,
 For every $\varepsilon\ge0$ also $M_{k,\varepsilon}\le(1+\varepsilon)\frac k{k-1}\log k$.
 \end{proposition}
 
+The second bound is also the endpoint $a=1/(1+\varepsilon)$ of
+\cite[Remark~6.6, p.~45]{PM8b}, where the weight there is non-negative on the
+whole support, so their argument applies (pointed out by our auditor).
+
 \begin{proof}
 All three supports lie in $c\,\mathcal R_k$ with $c=\frac k{k-1}$ (for
 Theorem~3.12(ii), $1+\varepsilon<\frac k{k-1}$), and
@@ -704,11 +708,12 @@ the $k=3$ ratio $>2$ of Theorem~3.15 against $c(3)=2.472$.
 \begin{remark}[What this locates]\label{rem:ceil-locates}
 By Proposition~\ref{prop:bipartite}(b), pattern weights block
 $\mathrm{DHL}[k,3]$ only for $k\le4$. So for $5\le k\le45$ the failure of
-these criteria to give $\mathrm{DHL}[k,3]$ is \emph{not} a parity phenomenon.
+these criteria to give $\mathrm{DHL}[k,3]$ is \emph{not} a parity block of the
+kind in Section~\ref{sec:bip}.
 It is a limit of the variational method itself. This is the honest content of
 open question~2 for $m=2$: the gap between ``not blocked by parity'' ($k\ge5$)
-and ``reachable by the GEH criteria'' ($k\ge46$, and $k=51$ is what
-\cite{PM8b} achieved) is a gap in the method. Our reading; it is not stated
+and ``not excluded by the ceiling'' ($k\ge46$; $k=51$ is what \cite{PM8b}
+achieved) is a gap in the method. Our reading; it is not stated
 in \cite{PM8b}, whose Corollary~6.4 makes the analogous remark for
 Theorem~3.8 and $\mathrm{DHL}[4,2]$ (p.~44).
 \end{remark}
@@ -718,8 +723,8 @@ Theorem~3.8 and $\mathrm{DHL}[4,2]$ (p.~44).
 For $k=2$ the ceiling gives only $c(2)=4\log2\approx2.77$. Parity predicts
 more: if the Theorem~3.14 ratio could exceed $2$ for some $\varepsilon$, then
 choosing $\vartheta<1$ close enough to $1$ would give $\mathrm{DHL}[2,2]$ (twin
-primes) under GEH, which the parity argument of \cite[Section~8]{PM8b} rules
-out for sieve methods of this kind. The next theorem proves directly that the
+primes) under GEH, which the (heuristic) parity argument of
+\cite[Section~8]{PM8b} rules out for sieve methods of this kind. The next theorem proves directly that the
 ratio never exceeds $2$, and that $2$ is attained.
 
 \begin{theorem}[\lbl{Proved here}; elementary, possibly folklore]\label{thm:k2}
@@ -771,20 +776,26 @@ $I(F_\varepsilon)=a^2+2\cdot\frac14\cdot a\cdot2\varepsilon=a(a+\varepsilon)=a$.
 \begin{remark}\label{rem:k2}
 \begin{enumerate}
 \item The marginal condition is essential. Without it, a piecewise-constant
-  $F$ on $D$ already gives ratio $2.518$ (\lbl{Heuristic}, floating point,
-  $8$ cells per unit length). The proof uses the condition only through
+  $F$ on $D$ with $8$ cells per unit length already gives ratio $2.445$ at
+  $\varepsilon=0.1$ (and $2.518$ at $\varepsilon=0$) (\lbl{Heuristic}, floating
+  point, same script as item~(3)). The proof uses the condition only through
   $\iint_{U_1}\bar f(y)F=0$.
 \item Theorem~\ref{thm:k2} is a variational shadow of the parity obstruction:
-  the criterion reaches the parity value $2$ exactly, so the threshold is
-  missed only because $\vartheta<1$. It does not prove the obstruction, which
-  is a statement about all sieve methods. Compare $M_{2,\varepsilon}$
-  (Theorem~3.12 under EH), which increases to $2$ only as $\varepsilon\to1$
+  the criterion reaches the parity value $2$ exactly but never exceeds it, and
+  since it needs a ratio strictly above $2/\vartheta\ge2$ it would fail even
+  with $\vartheta=1$. It does not prove the obstruction, which is a heuristic
+  statement about all sieve methods of this kind \cite[Section~8]{PM8b}. Compare $M_{2,\varepsilon}$
+  (Theorem~3.12; its class lies in the Theorem~3.14 class, so $M_{2,\varepsilon}\le2$ by Theorem~\ref{thm:k2}, consistent with the exact formula), which increases to $2$ only as $\varepsilon\to1$
   \cite[p.~46]{PM8b}, and $k=3$, where Theorem~3.14 exceeds $2$
   \cite[Theorem~3.15]{PM8b}, giving $H_1\le6$.
 \item \lbl{Heuristic} (\texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{k2\_thm314\_numeric.py},
   floating point, not a certificate): the constrained maximum over
-  piecewise-constant $F$ on grids with $8$ to $32$ cells per unit length is
-  $2.000000000000000$ to rounding error for $\varepsilon\in\{0.1,0.2,0.25,0.3,0.5,0.9\}$.
+  \emph{symmetric} piecewise-constant $F$ on grids with $8$ to $32$ cells per
+  unit length is $2.000000000000000$ to rounding error for
+  $\varepsilon\in\{0.1,0.2,0.25,0.3,0.5,0.9\}$ (except $\varepsilon=0.9$ with $8$
+  cells, where the $J$-region contains no whole cell and the value is $0$).
+  An independent non-symmetric optimiser of the auditor also found nothing
+  above $2$ (\texttt{notes/}\allowbreak\texttt{audit-parity-v06.md}).
 \end{enumerate}
 \end{remark}
 
@@ -796,7 +807,12 @@ the parity class agree on every blocked case.
 \end{corollary}
 
 \begin{proof}
-For $m=1$ the only case is $k=2$, which is Theorem~\ref{thm:k2}. For $m\ge2$,
+For $m=1$ the only case is $k=2$. For Theorem~3.14 this is
+Theorem~\ref{thm:k2}. An $F$ admissible in Theorem~3.12(ii) at $k=2$
+($\varepsilon<1$, support $(1+\varepsilon)\mathcal R_2\subseteq2\mathcal R_2$) is
+admissible in Theorem~3.14 with the same $\varepsilon$: its marginals vanish
+where $t_j>1+\varepsilon$ because it vanishes there. Theorem~3.8 has
+$M_2=1.3859\ldots<2$ \cite[Corollary~6.3, p.~43]{PM8b}. For $m\ge2$,
 $c(k)\le4\log k\le4\log(2m)$ because $\frac k{k-1}\le2$. Now $4\log(2m)<2m$
 for $m\ge5$ (true at $m=5$, and $2m-4\log(2m)$ increases), and for $m=2,3,4$
 the script \texttt{geh\_ceiling.py} checks $c(k)<2m$ for all $2\le k\le2m$
@@ -812,10 +828,14 @@ $w_i=1-t_1-\dots-t_k+kt_i$, which is positive on the fibres used. It then
 where $U_i$ is the set where $\sum_{j\ne i}t_j\le1-\varepsilon$. Off $U_i$ the
 weight $w_i$ can be negative when $t_1+\dots+t_k>1$ (e.g.\ $t_i=0$,
 $\sum_jt_j=1+\varepsilon$ gives $w_i=-\varepsilon$), so this step is not
-justified as written. Bounding the negative parts ($|w_i^-|\le\varepsilon$, for
+justified as written (it is fine for $\varepsilon=0$; the same issue affects
+Remark~6.6 for $a>1/(1+\varepsilon)$). Bounding the negative parts ($|w_i^-|\le\varepsilon$, for
 at most $k-1$ indices at each point) gives the weaker
 $M_{k,\varepsilon}\le\left(\frac k{k-1}+\varepsilon\right)\log(2k-1)$. We have not
-decided whether the printed constant is true for all $\varepsilon<1$. Nothing in
+decided whether the printed constant is true for all $\varepsilon<1$; at $k=2$
+it is, since $M_{2,\varepsilon}\le2<2\log3$ by Theorem~\ref{thm:k2} (the Theorem~3.12
+class lies in the Theorem~3.14 class, see the proof of
+Corollary~\ref{cor:consistent}). Nothing in
 \cite{PM8b} depends on it (the proposition is cited again only in Remark~6.6, as far as we
 searched the text). The scaling bound $(1+\varepsilon)\frac k{k-1}\log k$ of
 Proposition~\ref{prop:ceil} is stronger whenever $k^\varepsilon<2-\frac1k$, for
@@ -1307,8 +1327,8 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   $H_2\le12$, provable under GEH? The known sieve bounds for $H_2$ are far weaker.
   Partial answer to the converse (Corollary~\ref{cor:ceil}): not by the three
   GEH criteria of \cite{PM8b}, which cannot give $\mathrm{DHL}[k,3]$ for any
-  $k\le45$. A proof of $\mathrm{DHL}[5,3]$ would need a genuinely different
-  criterion, not a better test function.
+  $k\le45$. A proof of $\mathrm{DHL}[5,3]$ would need a criterion genuinely
+  different from these three, not a better test function.
 \item (Answered from the literature, as far as we searched.) No result we
   found gives absolute-value, fixed-residue equidistribution of primes for all
   moduli beyond $x^{1/2}$ with a saving of a power of $\log x$. Beyond
@@ -1444,7 +1464,11 @@ suffice). Nothing enters before it is read in the source.
   (route card \texttt{2026-11-15-geh-}\allowbreak\texttt{ceilings-k2.md}). New
   Section~\ref{subsec:mr16} on Matom\"aki--Radziwi\l\l{} (read in arXiv v4)
   and Remark~\ref{rem:mr16-transfer}. Open question~2 partly answered; new
-  open question~6.
+  open question~6. Fresh-context adversarial audit
+  (\texttt{notes/}\allowbreak\texttt{audit-parity-v06.md}): no errors; fixes: credit to
+  \cite[Remark~6.6]{PM8b} for the $(1+\varepsilon)$ bound, the $m=1$ case of
+  Corollary~\ref{cor:consistent} for Theorems~3.8 and 3.12, ``heuristic'' for
+  the parity argument, the wording on $\vartheta$, scope of the numerics.
 \end{itemize}
 
 \end{document}

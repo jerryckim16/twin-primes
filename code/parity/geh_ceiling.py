@@ -5,7 +5,7 @@ criteria, sum_i J_i(F) / I(F) <= c(k) := k^2 log k / (k-1)^2.  Hence DHL[k,m+1] 
 them (theta < 1, threshold 2m/theta > 2m) unless c(k) > 2m.
 
 This script (run: /usr/bin/python3 -I code/parity/geh_ceiling.py) certifies with arb ball arithmetic:
- 1. the smallest k with c(k) > 2m, m = 1..5, and c(k) <= 2m for all smaller k >= 2 (c is increasing for k >= 3;
+ 1. the smallest k with c(k) > 2m, m = 1..5, and c(k) <= 2m for all smaller k >= 2 (c is increasing for k >= 4;
     we check every k from 2 to the threshold explicitly anyway);
  2. that PM8b's printed lower bounds (Thm 3.13 (i), (xii'), (xiii); Thm 3.15) lie below the ceiling (consistency);
  3. the fibre constant: int_0^{s+1/(k-1)} dt / (1 - a(1-s) + a(k-1)t) = log(k)/(a(k-1)) for a=(k-1)/k, all s

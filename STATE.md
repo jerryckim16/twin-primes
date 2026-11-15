@@ -3,31 +3,42 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 20, a bonus run, 15 Nov 2026): PHASE B
+## POSITION (after Session 21, a bonus run, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.5, verification-note v0.9 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
-  NOT started as a paper. Main paper v0.20.
+- Active papers: parity-barrier v0.6, verification-note v0.10 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+  NOT started as a paper. Main paper v0.21.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
 ## Next steps (in order; Phase B)
-1. Weekly review (Monday 16 Nov run).
-2. Parity attempt (one per run; route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov); Tao two-point along
-   periodic weights (15 Nov); bipartite criterion for Liouville-pattern weights (15 Nov); TT25 at level (log x)^{c0} (Session 19;
-   two-variable weights done in Session 20); extra Liouville coordinates (exploration, Session 19); residue-class weights with
-   classwise fairness (exploration, Session 18); integer transposition of Sawin-Shusterman's split (Session 20: only relocates the
-   problem into T_D, notes/parity-attempts/2026-11-15-ss-step-over-Z.md); L^2/BDH route to the twisted Type I input (exploration,
-   Session 20: capped at level 1/2). Candidates: (a) weights that change the twisted main terms (open question 2);
-   (b) an integer structure where "mu on a line is a character" has a substitute (none known for n -> n+2).
-3. Parity paper thread 2: done for FI a^2+b^4, Heath-Brown x^3+2y^3, Sawin-Shusterman. Next: Matomaki-Radziwill (2016), or the
-   original Murty-Vatwani (JNT 2017; requested, notes/sources-needed.md) to pin down prop:ss-split's relation to it.
-   Thread 3: which hypotheses are known NOT to suffice (EH/GEH for sieve methods: PM8b sec 8).
-4. Bound share, rung 182: I, J0, J+, T by two programs (Sessions 18-19); kappa_true by two methods (Session 20). Next: scope the
-   restoration losses (Thm 8.1, (8.6); 197 source integrals; row tables partly underspecified in the PDF, see notes/sources-182.md
-   section 7 item 3; TrialData182_part3_sources.lean may contain the rows), or the (8.3)/(10.2)-(10.3) rational arithmetic (cheap).
-5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta) region).
+1. Weekly review (Monday 16 Nov run). Candid questions for it: is sec:ceil of the parity paper interesting or folklore-level?
+   Is thread 2 (now FI, HB, Tao, TT, MR, SS) complete? Is the 182 restoration step worth more effort without per-component data?
+2. Parity attempt (one per run; route card + README line). Not to repeat: everything in notes/parity-attempts/README.md, now also
+   ceilings / Cauchy-Schwarz for the PM8b GEH criteria and the k = 2 Thm 3.14 problem (Session 21, done). Candidates:
+   (a) open question 6: certified k = 3 supremum of the Thm 3.14 ratio (Heuristic ~2.003 at eps = 1/4; needs piecewise-polynomial
+   elements on PM8b's Sec. 7.4 polytopes plus a dual bound; does the variance argument of Thm thm:k2 extend?);
+   (b) weights that change the twisted main terms (open question 2); (c) an integer substitute for "mu on a line is a character".
+3. Parity paper thread 3: which hypotheses are known NOT to suffice (EH/GEH for sieve methods: PM8b sec 8), stated precisely.
+   Murty-Vatwani original if it arrives (notes/sources-needed.md).
+4. Bound share, rung 182: done so far: I, J0, J+, T (two programs), kappa_true (two methods), printed restoration arithmetic and
+   the 98 source rows (Session 21). Remaining: the 197 restoration integrals; the per-component A_j, M_j, Chernoff/low-witness
+   parameters are NOT in the bundle or the trial data (would need the authors' supplement; outside our GitHub scope).
+5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta)
+   region). Note: parity paper Cor. cor:ceil is relevant to H_m (H_2 <= 12-type results need a new criterion).
 6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+
+## Session 21 (bonus run at Jerry's request, 14:54 UTC 15 Nov; no wait) -- additions
+- Parity paper v0.6: Section sec:ceil (Prop. prop:ceil, Cor. cor:ceil, Remark rem:ceil-locates, Thm thm:k2, Remark rem:k2,
+  Cor. cor:consistent, Remark rem:pm65), subsec:mr16 + Remark rem:mr16-transfer; open question 2 partly answered, new open
+  question 6. Scripts: code/parity/geh_ceiling.py (/usr/bin/python3 -I; arb), code/parity/k2_thm314_numeric.py (/usr/bin/python3,
+  floating point; output .out). Audit notes/audit-parity-v06.md (no errors; gaps fixed). Route card
+  notes/parity-attempts/2026-11-15-geh-ceilings-k2.md. Sources: notes/sources-mr16.md.
+- Rung 182: code/sharifi182_arith.py (86 PASS), code/sharifi182_rows.py (30 PASS), notes/arith-182-report.md, notes/sources-182.md
+  section 11 (T0 exact from the rows). Verification note v0.10, main paper v0.21.
+- Exploration: code/explore/k3_thm314_grid.py (+ .out): k = 3 grid lower bounds, extrapolating to ~2.003 (inconclusive).
+- Minor flag: PM8b Prop 6.5 proof step (notes/flags-for-jerry.md).
+- Wolfram and mathbox NOT available. numpy/scipy/flint are installed for /usr/bin/python3 only (pip install went elsewhere).
 
 ## Session 20 (bonus run at Jerry's request, 11:37 UTC 15 Nov; no wait) -- additions
 - Parity paper v0.5: Section sec:ss (Sawin-Shusterman read in arXiv:1808.04001v2, notes/sources-sawin-shusterman.md),
