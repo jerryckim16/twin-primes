@@ -57,3 +57,7 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   open question 6 (exact k = 3 value; is S_3(eps) > 2 only on an interval of eps?), and the honest statement that H_1 <= 6
   under GEH has little room (Heuristic: sup about 2.003 at eps = 1/4). Missing for anything bigger: everything; this is about
   the variational shadow of the parity obstruction, not about primes.
+- (Session 23) Prop. prop:unc-ceiling / Thm. thm:k3-window / Cor. cor:k3-linear (parity paper v0.8): rigorous brackets for
+  sigma_3(eps): > 2 at 2/9, 1/4, 7/24; < 2 for eps >= 0.439. Depends on nothing analytic. Feeds into: open question 6; an
+  honest statement of how robust "H1 <= 6 under GEH" is within PM8b's Theorem 3.14 (it works only in a narrow eps-window,
+  heuristically (0.19, 0.31)). Missing for anything bigger: as before, this is the variational shadow, not primes.

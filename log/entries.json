@@ -1,6 +1,22 @@
 [
  {
   "date": "2026-11-15",
+  "slot": "Session 23 (back-to-back run 2 of 3 at Jerry's request, continued in the same conversation as Session 22 right after its merge, ~16:45 UTC; no wait)",
+  "title": "For which eps does Polymath8b's k = 3 GEH criterion beat the parity value 2? Above 2 at eps = 2/9, 1/4, 7/24; provably below 2 for every eps >= 0.439 (parity paper v0.8)",
+  "did": [
+   "Parity paper v0.8 (this run's parity attempt): for eps >= 1/4 the k = 3 problem of Polymath8b's Theorem 3.14 without the marginal condition reduces, by a Schur test, to a one-dimensional inequality (Prop. prop:unc-ceiling, proved here). Any positive phi satisfying it gives a ceiling for that eps and every larger one.",
+   "Certificates, each checked by two independent programs (arb and mpmath interval arithmetic): the supremum sigma_3(eps) is at most 1.9999 for every eps in [0.439, 1/2), at most 1.995 for eps >= 0.45, and at most 2.17 at eps = 1/4. By scaling, the single certificate at 0.439 gives sigma_3(eps) <= 3/2 + (4999/5610)(1-eps) on [1/4, 1/2), so sigma_3 < 2 for all eps > 0.43889.",
+   "Lower side: exact step functions give sigma_3 > 2 at eps = 2/9 and 7/24 as well as 1/4 (helper program plus our independent verifier). Exact lower bounds at 1/6, 1/5, 3/10, 1/3 stay below 2 and are undecided. So under GEH the criterion gives DHL[3,2] (H1 <= 6) for 2/9, 1/4, 7/24 and cannot give it for eps >= 0.439; heuristically it works only on about (0.19, 0.31), with maximum about 2.003.",
+   "Literature: Polymath8b v4 re-read (their partition works for eps in [1/4, 1/3]; 1/4 chosen for simplicity, p. 63); three web searches found no range-of-eps result. Fresh-context audit: no errors, 2 gaps and 6 wording items, all fixed (notes/audit-parity-v08.md). Main paper v0.23.",
+   "Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
+  ],
+  "explored": "Is the constant kappa of the 1D Schur problem (sup without marginal condition = 3/2 + kappa(1-eps)) a closed form? Dead end: kappa = 0.8901675 (threshold eps* = 0.43831) and mpmath.identify gives only overfitted noise; the scaling observation itself became Cor. cor:k3-linear.",
+  "parity": "Attempt: rigorous brackets for the k = 3 GEH criterion as a function of eps. Classification: proved/computed (partial answer to open question 6): above 2 at 2/9, 1/4, 7/24, below 2 on [0.439, 1/2); first unresolved implication: a rigorous ceiling below 2 for small eps or on [0.31, 0.4383), which must use the marginal condition. No parity-breaking content.",
+  "failed": "Wolfram connector not available; mathbox skills not available (fresh-context agents used). Weighted Cauchy-Schwarz with fibre-length weights gives only c(3) = 2.472 again. No rigorous ceiling below 2 in the middle or small-eps range. No bound work this run (182 data still requested).",
+  "next": "Monday 16 Nov run: the first weekly review before other work. Parity: use the marginal condition for a rigorous ceiling at small eps; or move on to thread 3 (hypotheses known not to suffice). 182: restoration data if supplied."
+ },
+ {
+  "date": "2026-11-15",
   "slot": "Session 22 (back-to-back bonus run 1 of 3 at Jerry's request, started 9:51 AM CT / 15:51 UTC; no wait, no other run active)",
   "title": "Why the sharp k = 2 argument does not extend to k = 3: a dual formula, overlapping marginal conditions, and an exact step-function check of Polymath8b's DHL[3,2] under GEH (parity paper v0.7); our bipartite criterion credited to Tao's 2014 blog post",
   "did": [

@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.7 (draft), 15 November 2026}
+\date{Version 0.8 (draft), 15 November 2026}
 
 \begin{document}
 
@@ -38,7 +38,8 @@ at $k=2$ Polymath8b's strongest GEH criterion reaches exactly the parity value
 $2$ and never exceeds it, while for $5\le k\le45$ its failure to give three
 primes comes from a variational ceiling rather than from the parity class; at
 $k=3$ the step that makes $k=2$ sharp fails, because two marginal conditions
-act at the same points. We also record what the bilinear
+act at the same points; at $k=3$ the criterion works for $\varepsilon=\frac29,\frac14,\frac7{24}$
+and provably fails for $\varepsilon\ge0.439$. We also record what the bilinear
 estimates for $a^2+b^4$ and $x^3+2y^3$, the short-interval theorem of
 Matom\"aki--Radziwi\l\l{} and Sawin--Shusterman's twin primes in $\mathbb F_q[T]$
 use, and why none of it transfers to twin primes.
@@ -1041,8 +1042,9 @@ exact ratios of admissible $F$, so true lower bounds, and they are consistent
 with the table (\texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{eps.out}).
 Three things follow, all heuristic.
 \begin{enumerate}
-\item Of the sampled values of $\varepsilon$, only $\frac14$ gives a ratio above the
-  parity value $2$, and then by about $0.15\%$: the $H_1\le6$ of
+\item Of the values sampled here, only $\frac14$ gives a ratio above the
+  parity value $2$ (Theorem~\ref{thm:k3-window} adds $\frac29$ and $\frac7{24}$),
+  and then by about $0.15\%$: the $H_1\le6$ of
   \cite[Theorem~3.15]{PM8b} has very little room.
 \item At $\varepsilon=\frac18$ the overlapping constraints push the supremum from
   about $2.18$ down to about $1.98$, below $2$.
@@ -1050,6 +1052,148 @@ Three things follow, all heuristic.
   or $\frac14$ (certain, by Proposition~\ref{prop:orth-relax}); its extrapolated
   values exceed $2$ at all three sampled $\varepsilon$. Other orthogonal subfamilies of
   the constraints exist and were not tried.
+\end{enumerate}
+\end{remark}
+
+\subsection{For which \texorpdfstring{$\varepsilon$}{eps} does the \texorpdfstring{$k=3$}{k=3} criterion work?}\label{subsec:window}
+
+Polymath8b took $\varepsilon=\frac14$ for computational convenience: their
+partition of $\frac32\mathcal R_3$ works for $\varepsilon\in[\frac14,\frac13]$, ``but the
+endpoint $\varepsilon=1/4$ has some simplifications'' \cite[p.~63]{PM8b}. Here we
+bracket $\sigma_3(\varepsilon)$ rigorously from both sides. The upper side uses no
+marginal condition at all, only that $J$ counts fibres over
+$\{|u|\le1-\varepsilon\}$.
+
+\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:unc-ceiling}
+Let $k=3$, $\frac14\le\varepsilon<\frac12$, $a=1-\varepsilon$, and $C>\frac32$; put $\mu=C-\frac32$.
+Suppose $\varphi:[0,a]\to(0,\infty)$ is continuous and
+\[
+\Phi(y):=\int_0^{a-y}\frac{\varphi(\tau)+\varphi(y)}{\mu+\tau+y}\,d\tau\le\varphi(y)\qquad(0\le y\le a).
+\]
+Then for every $\varepsilon'\in[\varepsilon,\frac12)$, every $F\in L^2(\frac32\mathcal R_3)$, with or
+without the vanishing marginal condition, satisfies
+\[
+\sum_{i=1}^3J_{i,1-\varepsilon'}(F)\le C\,I(F).
+\]
+In particular $\sigma_3(\varepsilon')\le C$.
+\end{proposition}
+
+\begin{proof}
+Let $D=\frac32\mathcal R_3$, $\Delta=\{u\in[0,\infty)^2:u_1+u_2\le a\}$,
+$g(x,y)=(\varphi(x)+\varphi(y))/(\mu+x+y)$, which is positive and symmetric on $\Delta$, and
+$h(t)=\sum_i\mathbf 1[|t_{-i}|\le a]\,g(t_{-i})$ on $D$. Fix $i$ and $u=(x,y)\in\Delta$
+(the coordinates of $t_{-i}$, in either order by symmetry). Every point of the
+fibre $\{t\in D:t_{-i}=u\}$, $t_i\in[0,\frac32-x-y]$, has $h(t)\ge g(u)>0$, so by
+Cauchy--Schwarz
+\[
+\left(\int F\,dt_i\right)^2\le\int\frac{F^2}{h}\,dt_i\cdot\int h\,dt_i .
+\]
+On this fibre the term with index $i$ of $h$ is $g(u)$. The term whose index
+$j$ has $t_j=x$ (so $t_{-j}=\{t_i,y\}$) is $\mathbf 1[t_i+y\le a]\,g(t_i,y)$, and $a-y\le\frac32-x-y$
+because $x\le a\le\frac32-a$ (this is where $\varepsilon\ge\frac14$ is used). So
+\[
+\int h\,dt_i=\left(\tfrac32-x-y\right)g(u)+\int_0^{a-y}g(\tau,y)\,d\tau+\int_0^{a-x}g(\tau,x)\,d\tau
+=\left(\tfrac32-x-y\right)g(u)+\Phi(y)+\Phi(x),
+\]
+and $\Phi(x)+\Phi(y)\le\varphi(x)+\varphi(y)=(\mu+x+y)g(u)$. Hence
+$\int h\,dt_i\le Cg(u)$, and
+\[
+\sum_iJ_{i,1-\varepsilon}(F)\le C\sum_i\int_{\{|t_{-i}|\le a\}}\frac{F^2}{h}\,g(t_{-i})\,dt
+=C\int_{\{h>0\}}F^2\le C\,I(F).
+\]
+For $\varepsilon'>\varepsilon$ each $J_{i,1-\varepsilon'}(F)\le J_{i,1-\varepsilon}(F)$ (smaller domain,
+non-negative integrand), while the support $D$ does not depend on $\varepsilon$.
+\end{proof}
+
+This is a Schur test. If $\varphi>0$ solves $\Phi=\varphi$ exactly, then $F=h$ has
+$\int h\,dt_i=Cg(t_{-i})$, so $h$ attains the bound and the test is sharp for
+the problem without marginal condition. Conversely, an eigenfunction of that
+problem, if one exists, has this form (integrate the eigenvalue equation along
+the fibres). \lbl{Heuristic}: the supremum is attained this way, so for
+$\varepsilon\ge\frac14$ the three-dimensional problem reduces to a one-dimensional
+one. The 1D computation (\texttt{k3\_\allowbreak{}unc\_\allowbreak{}1d.py}), the 2D one
+(\texttt{k3\_\allowbreak{}unc\_\allowbreak{}kernel.py}) and the 3D cube grids without marginal
+condition (\texttt{k3\_\allowbreak{}thm314\_\allowbreak{}dual.py}, mode \texttt{none}) agree to
+$10^{-4}$ (outputs \texttt{k3\_\allowbreak{}unc\_\allowbreak{}1d.out}, \texttt{k3\_\allowbreak{}unc\_\allowbreak{}kernel.out}
+in \texttt{code/}\allowbreak\texttt{parity/}).
+
+\begin{theorem}[\lbl{Computed}; each certificate checked by two independent programs]\label{thm:k3-window}
+Let $\sigma_3(\varepsilon)$ be the supremum of the Theorem~3.14 ratio at $k=3$.
+\begin{enumerate}
+\item $\sigma_3(\varepsilon)>2$ for $\varepsilon=\frac29,\frac14,\frac7{24}$. Exact step functions on
+  the arrangement of Proposition~\ref{prop:k3-step} (with $n=18$, $8$, $24$
+  cells per unit) give ratios $2+\frac{342007}{555935160}$,
+  $2+\frac{711155}{3866758832}$ and $2+\frac{4238047}{46648223968}$.
+\item $\sigma_3(\varepsilon)\le\frac{19999}{10000}<2$ for every $\varepsilon\in[0.439,\frac12)$, and
+  $\sigma_3(\varepsilon)\le1.995$ for $\varepsilon\ge0.45$. Also $\sigma_3(\frac14)\le2.17$ and
+  $\sigma_3(\frac38)\le2.057$.
+\end{enumerate}
+So, under GEH, the criterion of Theorem~3.14 with $k=3$ gives $\mathrm{DHL}[3,2]$
+for $\varepsilon=\frac29,\frac14,\frac7{24}$ (the case $\varepsilon=\frac14$ is the
+computation behind \cite[Theorem~3.15]{PM8b}, $H_1\le6$ under GEH), and it
+cannot give $\mathrm{DHL}[3,2]$ for any $\varepsilon\in[0.439,\frac12)$. This says
+nothing about whether $\mathrm{DHL}[3,2]$ itself holds.
+\end{theorem}
+
+\begin{sloppypar}
+\begin{itemize}
+\item Part~(1): \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}exact.py} (helper-written) and the
+  independent \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}verify.py}; certificates
+  \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert\_\allowbreak{}2\_\allowbreak{}9\_\allowbreak{}n18.json}, \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert.json},
+  \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert\_\allowbreak{}7\_\allowbreak{}24\_\allowbreak{}n24.json}.
+\item Part~(2): Proposition~\ref{prop:unc-ceiling} with a piecewise-linear $\varphi$
+  (rational node values). \texttt{k3\_\allowbreak{}unc\_\allowbreak{}cert.py} checks the inequality on
+  adaptive boxes with arb balls, bounding $\Phi$ on a box $[y_0,y_1]$ by its
+  monotone majorant (integrand at $y_0$, upper limit $a-y_0$, $\varphi(y)$ replaced
+  by its maximum on the box). \texttt{k3\_\allowbreak{}unc\_\allowbreak{}verify.py}, written separately,
+  re-checks each certificate file with mpmath interval arithmetic. Files
+  \texttt{k3\_\allowbreak{}unc\_\allowbreak{}cert\_\allowbreak{}<p>\_\allowbreak{}<q>.json}; all in \texttt{code/}\allowbreak\texttt{parity/}.
+\end{itemize}
+\end{sloppypar}
+
+\begin{corollary}[\lbl{Proved here} + \lbl{Computed}]\label{cor:k3-linear}
+For every $\varepsilon\in[\frac14,\frac12)$,
+$\sigma_3(\varepsilon)\le\frac32+\frac{4999}{5610}(1-\varepsilon)$; here $\frac{4999}{5610}=0.89108\ldots$.
+\end{corollary}
+
+\begin{proof}
+The condition of Proposition~\ref{prop:unc-ceiling} is invariant under scaling:
+if $\varphi$ works for $(a,\mu)$ and $s>0$, then $\tilde\varphi(y)=\varphi(y/s)$ works
+for $(sa,s\mu)$ (substitute $\tau=s\tau'$, $y=sy'$). Apply this to the
+certificate at $\varepsilon=0.439$, $\mu=0.4999$, with $s=(1-\varepsilon)/0.561$.
+\end{proof}
+
+The corollary sharpens Theorem~\ref{thm:k3-window}(2): it gives
+$\sigma_3(\frac14)\le2.1684$, $\sigma_3(\frac38)\le2.0570$ and $\sigma_3(\varepsilon)<2$ for
+every $\varepsilon>\frac{2194}{4999}=0.43889\ldots$. The certificates at $\frac14$,
+$\frac38$ and $0.45$ remain as independent cross-checks.
+
+\begin{sloppypar}
+By the same scaling the critical value is $\mu^*=\kappa(1-\varepsilon)$. Numerically
+$\kappa\approx0.8901675$ (\lbl{Heuristic}; Richardson extrapolation of the 1D
+computation in the script \texttt{kappa\_}\allowbreak\texttt{closed\_}\allowbreak\texttt{form.py} of
+\texttt{code/}\allowbreak\texttt{explore/}),
+so the supremum without marginal condition is about $\frac32+\kappa(1-\varepsilon)$ and
+equals $2$ at $\varepsilon^*=1-\frac1{2\kappa}\approx0.43831$. We found no closed form
+for $\kappa$.
+\end{sloppypar}
+
+\begin{remark}[\lbl{Heuristic}; what is left]\label{rem:k3-window}
+\begin{enumerate}
+\item Without the marginal condition, the supremum equals $2$ at about
+  $\varepsilon=0.43831$; so this method cannot push part~(2) much further. At $\varepsilon=\frac14$ it gives $2.17$ against a true value near
+  $2.003$; in the middle range the marginal condition matters
+  (Section~\ref{subsec:dual}).
+\item Exact lower bounds at $\varepsilon=\frac16$, $\frac15$, $\frac3{10}$, $\frac13$ stay
+  below $2$: $1.9909$, $1.9982$, $1.9990$, $1.9952$ at $24$, $20$, $20$, $24$
+  cells per unit (\texttt{k3\_\allowbreak{}}\allowbreak\texttt{arrangement\_\allowbreak{}}\allowbreak\texttt{eps2.out}). All four are still rising with $n$, so none is decided rigorously; at
+  $\frac15$ and $\frac3{10}$ the gap to $2$ is so small that even the
+  extrapolations do not settle them. With the cube-grid extrapolations of Remark~\ref{rem:k3-eps},
+  the picture is a window of roughly $\varepsilon\in(0.19,0.31)$ in which
+  $\sigma_3(\varepsilon)>2$, with a maximum of about $2.003$.
+\item A rigorous upper bound below $2$ for small $\varepsilon$, or anywhere in
+  $[0.31,0.4383)$, needs the marginal condition: without it the supremum
+  exceeds $2$ there (heuristically, for $\varepsilon<\varepsilon^*\approx0.43831$).
 \end{enumerate}
 \end{remark}
 
@@ -1559,18 +1703,20 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   two-variable weights at level $(\log x)^{c/32}$, conditional on \cite{TT25}.
   What remains \lbl{Open} is the same as in question~1: any level beyond a power
   of $\log x$.
-\item (\lbl{Open}) What is the exact supremum $\sigma_3(\varepsilon)$ of the Theorem~3.14
-  ratio at $k=3$? \cite[Theorem~3.15]{PM8b} shows $\sigma_3(\frac14)>2$ (independently:
-  Proposition~\ref{prop:k3-step}), and Proposition~\ref{prop:ceil} gives at most
-  $c(3)=2.472$. Heuristically $\sigma_3(\frac14)\approx2.003$ and $\sigma_3(\frac18)\approx1.976<2$
-  (Remark~\ref{rem:k3-eps}). Is $\sigma_3(\varepsilon)>2$ only on an interval of $\varepsilon$, and
-  is $\sup_\varepsilon \sigma_3(\varepsilon)$ close to $2.003$? The variance argument of
-  Theorem~\ref{thm:k2} does not extend directly (Proposition~\ref{prop:overlap}):
-  a sharp ceiling will presumably have to use the overlapping constraints, for example through
-  alternating projections with an explicit rate, or a finite-element dual with
-  error control (Lemma~\ref{lem:dual}(2)). It cannot come from the clean-column
-  relaxation alone, which allows more than $2.14$ at $\varepsilon=\frac18$
-  (Proposition~\ref{prop:orth-relax}).
+\item (\lbl{Open}, partly answered) What is the exact supremum $\sigma_3(\varepsilon)$ of the
+  Theorem~3.14 ratio at $k=3$, and for which $\varepsilon$ does it exceed $2$?
+  Theorem~\ref{thm:k3-window}: it exceeds $2$ at $\varepsilon=\frac29,\frac14,\frac7{24}$
+  and is below $2$ for all $\varepsilon>0.43889$; $\sigma_3(\frac14)\in(2.0001,2.1684]$
+  (two programs each; the first program alone gives $2.00255$ from below).
+  Heuristically the set where it exceeds $2$ is an interval of about
+  $(0.19,0.31)$ with maximum about $2.003$ (Remarks~\ref{rem:k3-eps},
+  \ref{rem:k3-window}). Open: a rigorous ceiling below $2$ for small $\varepsilon$
+  or in $[0.31,0.4383)$, which needs the marginal condition. The variance
+  argument of Theorem~\ref{thm:k2} does not extend directly
+  (Proposition~\ref{prop:overlap}), and the clean-column relaxation alone
+  allows more than $2.14$ at $\varepsilon=\frac18$ (Proposition~\ref{prop:orth-relax});
+  tools to try are alternating projections with an explicit rate, or a
+  finite-element dual with error control (Lemma~\ref{lem:dual}(2)).
 \end{enumerate}
 
 \subsection*{Plan for later versions}
@@ -1710,6 +1856,19 @@ suffice). Nothing enters before it is read in the source.
   \emph{Correction of attribution}: the core of Proposition~\ref{prop:bipartite}
   is in Tao's 2014 blog post \cite{Tao14b}, found by this run's literature check
   (new Remark~\ref{rem:tao14b}; label, section opening and abstract changed).
+\item[0.8] (15 Nov 2026) New Subsection~\ref{subsec:window}: a Schur-test
+  reduction of the $k=3$ problem without marginal condition to a
+  one-dimensional inequality (Proposition~\ref{prop:unc-ceiling}), and
+  Theorem~\ref{thm:k3-window}: the supremum of the $k=3$ criterion exceeds $2$ at
+  $\varepsilon=\frac29,\frac14,\frac7{24}$ and is below $2$ for all $\varepsilon\ge0.439$
+  (each certificate by two programs), and Corollary~\ref{cor:k3-linear}
+  (a ceiling linear in $\varepsilon$, by scaling). Open question~6 partly answered.
+  Parity attempt of this run (route card
+  \texttt{2026-11-15-}\allowbreak\texttt{k3-window.md}). Fresh-context adversarial audit
+  (\texttt{notes/}\allowbreak\texttt{audit-}\allowbreak\texttt{parity-v08.md}): no errors; fixes: labels on the
+  sharpness remark, the corollary's improvement of part~(2), the interval in
+  Remark~\ref{rem:k3-window}(3), wording of the conclusion and of the
+  undecided cases.
 \end{itemize}
 
 \end{document}

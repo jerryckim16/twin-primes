@@ -1,0 +1,10 @@
+n=18 eps=2/9 triangles=1458 labels=5440
+I = 4632793/139968000  (cert 4632793/139968000)  equal: True
+J = 1112212327/16796160000  (cert 1112212327/16796160000)  equal: True
+marginal-condition violations (interior points): 0
+J/I = 1112212327/555935160 = 2.000615192247;  J/I - 2 = 342007/555935160;  > 2: True
+n=24 eps=7/24 triangles=2592 labels=12403
+I = 1457756999/55296000000  (cert 1457756999/55296000000)  equal: True
+J = 10366742887/196608000000  (cert 10366742887/196608000000)  equal: True
+marginal-condition violations (interior points): 0
+J/I = 93300685983/46648223968 = 2.000090851197;  J/I - 2 = 4238047/46648223968;  > 2: True

@@ -3,6 +3,15 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 23 -- Is the constant of the k = 3 Schur problem a closed form? (numerical experiment / constants)
+- Idea: the 1D Schur problem of parity paper Prop. prop:unc-ceiling is scale-invariant, so the supremum of the k = 3 problem
+  without marginal condition is (numerically) 3/2 + kappa (1-eps) for eps in [1/4, 1/2). A closed form for kappa would give
+  the exact threshold eps* = 1 - 1/(2 kappa) where it crosses 2.
+- Tried: code/explore/kappa_closed_form.py (piecewise-linear Nystrom at N = 100..800, Richardson; mpmath.identify).
+- Outcome: dead end for the closed form: kappa = 0.8901675 (about 8 digits stable), eps* = 0.438308; identify returns only
+  overfitted combinations of pi, e, logs (noise). Useful by-product (rigorous, in the paper as Cor. cor:k3-linear): by scaling,
+  the single certificate at eps = 0.439 gives sigma_3(eps) <= 3/2 + (4999/5610)(1-eps) for all eps in [1/4, 1/2).
+
 ## 2026-11-15, Session 22 -- Does the k = 3 extremal of Polymath8b's Theorem 3.14 keep the k = 2 structure (constant marginal)? (variational structure / spectral)
 - Idea: at k = 2 the extremal step function F_eps has marginal f = 1 on the whole J-interval [0, 1-eps]. If the k = 3 extremal
   also had (nearly) constant marginal on {t2+t3 <= 1-eps}, the supremum would reduce to a minimum-norm problem (min I subject
