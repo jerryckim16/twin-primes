@@ -1,0 +1,411 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\lbl}[1]{\textup{\textsc{[#1]}}}
+
+\title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
+\author{Jerry Kim}
+\thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
+\date{Version 0.1 (draft), 15 November 2026}
+
+\begin{document}
+
+\begin{abstract}
+This is a survey-with-checks, not a research announcement: the twin prime
+conjecture is open and nothing here proves it or comes close. We state, with
+exact quotations checked in the sources, the parity obstruction that stops
+sieve methods of the Maynard--Tao type at $H_1\le 6$ even under the
+generalised Elliott--Halberstam conjecture, and the Friedlander--Iwaniec
+asymptotic sieve, the one sieve framework with a bilinear axiom that breaks
+parity. For the twin-prime sequence $a_n=\Lambda(n+2)$ we check that every
+hypothesis of the asymptotic sieve except the Type~I and bilinear ones is satisfied, so that the
+Hardy--Littlewood asymptotic would follow from a Type~I bound at level
+$x^{2/3+}$ and one bilinear bound; we show that the bilinear bound has no
+cancellation at all for the parity-twisted sequence, and that Cauchy--Schwarz
+only moves the parity problem into an off-diagonal correlation. We also note
+that the input of the parity heuristic, smallness of Liouville-twisted
+Type~I sums, is a theorem in the logarithmically averaged, bounded-level
+regime (a direct consequence of Tao's two-point theorem), and we give a small
+numerical illustration. Every statement carries a label saying how it was
+checked.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Let $H_1=\liminf_n (p_{n+1}-p_n)$. Zhang, Maynard and Tao, and Polymath8b
+proved $H_1\le 246$ \cite{PM8b}; several 2026 preprints claim smaller bounds,
+and the companion papers of this project re-check the numerical parts of those
+claims. The twin prime conjecture is the statement $H_1=2$. It is open.
+
+Sieve methods that control primes only through \emph{linear} information
+(how primes and related functions are distributed in arithmetic progressions)
+cannot reach $H_1=2$, and in the Maynard--Tao framework cannot go below
+$H_1\le 6$, even if the strongest conjectured linear input is granted. This
+is the parity barrier. The aim of this paper is narrow: to state precisely
+what the barrier is, which known results get around it and why their
+mechanism does not obviously transfer to twin primes, and exactly which
+estimate is missing. It grows run by run (see the changelog), and new
+material enters only after it has been read in its source or proved in full.
+
+\subsection*{Labels}
+\lbl{Literature}: read in the cited source (version and location given).
+\lbl{Proved here}: full proof given here; ``possibly folklore'' unless a
+literature search says otherwise. \lbl{Heuristic}: numerical or informal;
+never used as an input. \lbl{Open}: not known.
+
+\section{The parity obstruction for sieve methods}\label{sec:parity}
+
+\subsection{Selberg's example}
+\lbl{Literature} \cite[pp.~1044--1045]{FI98}. Let $\lambda(n)=(-1)^{\Omega(n)}$
+be the Liouville function and $a_n=\tfrac12(1+\lambda(n))$, the indicator of
+integers with an even number of prime factors; then $a_p=0$ for every prime
+$p$. Friedlander and Iwaniec write that this sequence ``satisfies (R) with
+$D=x^{1-\varepsilon}$ but fails to satisfy (B)'', where (R) is the Type~I
+remainder hypothesis and (B) the bilinear hypothesis of
+Section~\ref{sec:fi}. In the classical set-up, (R) alone ``cannot capture
+the primes, even for $D(x)=x^{1-\varepsilon}$'' \cite[p.~1044]{FI98}: the
+sequences $\tfrac12(1+\lambda(n))$ and $\tfrac12(1-\lambda(n))$ have the same
+Type~I data up to negligible error, but only the second contains primes.
+
+\subsection{The obstruction for $H_1$}
+\lbl{Literature} \cite[\S8, pp.~68--71]{PM8b}. Polymath8b argue, ``somewhat
+informal and heuristic in nature'', that sieve methods cannot prove anything
+stronger than $H_1\le 6$, ``even on the assumption of strong distributional
+conjectures such as the generalized Elliott-Halberstam conjecture'', and
+``even if one uses sieves other than the Selberg sieve''. The structure of the
+argument is the following.
+\begin{enumerate}
+\item A sieve proof of $\mathrm{DHL}$-type statements produces a lower bound
+  $\sum_n \nu(n)1_A(n)>0$ for a non-negative weight $\nu$ supported on
+  $[x,2x]$, derived only from upper bounds for the discrepancies
+  \cite[(142)]{PM8b}
+  \[
+  \left|\sum_{\substack{x\le n\le 2x\\ n\equiv a\ (q)}} f(n+h)
+   -\frac{1}{\varphi(q)}\sum_{\substack{x\le n\le 2x\\ (n+h,q)=1}} f(n+h)\right|
+  \]
+  for $h$ in the tuple, $q\le x^{1-\varepsilon}$ and $f\in\{1,\Lambda\}$ or
+  $f=\alpha\star\beta$ as in GEH, together with the main terms
+  \cite[(143)]{PM8b}.
+\item The same argument, run with a further weight $\omega\ge0$ inserted in
+  every sum over $n$, would give $\sum_n\nu(n)1_A(n)\omega(n)>0$, provided
+  the weighted discrepancies and main terms \cite[(144)--(145)]{PM8b} are
+  controlled in the same way.
+\item For $A_1=\{n: n,n+2\text{ prime}\}\cup\{n:n+2,n+6\text{ prime}\}$ (the
+  set needed for $H_1\le 4$) take
+  $\omega(n)=(1-\lambda(n)\lambda(n+2))(1-\lambda(n+2)\lambda(n+6))$. Since
+  $\lambda(p)\lambda(p')=1$ for primes $p,p'$, $\omega$ vanishes on $A_1$, so
+  the weighted lower bound is false \cite[(148)]{PM8b}.
+\item The ``M\"obius randomness law'' predicts that the extra terms created by
+  $\omega$, sums such as $\sum_{n\equiv a\,(q)} f(n)\lambda(n+2)\lambda(n+6)$,
+  are negligible; Polymath8b ``conclude (heuristically, at least) that all the
+  bounds that are believed to hold for (142), (143) should also hold (up to
+  minor changes in the implied constants) for (144), (145)''
+  \cite[p.~70]{PM8b}. Note $(\alpha\star\beta)\lambda=(\alpha\lambda)\star
+  (\beta\lambda)$, so the twist preserves the GEH class.
+\end{enumerate}
+For twin primes themselves the simpler weight $\omega(n)=1-\lambda(n)
+\lambda(n+2)$ suffices, ``and the argument is essentially due to Selberg''
+\cite[p.~70]{PM8b}.
+
+\begin{remark}[What kind of statement this is]\label{rem:meta}
+The obstruction is not a theorem about all proofs. It says: any argument that
+uses only the linear inputs (142)--(143), in a way that is insensitive to
+inserting a non-negative weight, would also prove a false statement, as long
+as the twisted inputs (144)--(145) hold. Two things are heuristic: that the
+twisted inputs hold at the level needed (this is a family of Chowla-type
+conjectures in progressions), and that ``sieve-theoretic'' arguments are
+weight-insensitive in this sense. Proposition~\ref{prop:tao-weight} below
+shows that the first is a theorem in a restricted (logarithmically averaged,
+bounded-level) regime.
+\end{remark}
+
+\subsection{The twisted Type~I input in the log-averaged regime}
+
+\lbl{Literature} \cite[Theorem~1.2]{Tao16} (arXiv:1509.05422): let
+$a_1,a_2\in\mathbb N$, $b_1,b_2\in\mathbb Z$ with $a_1b_2-a_2b_1\ne0$, and
+$1\le\omega(x)\le x$ with $\omega(x)\to\infty$; then
+$\sum_{x/\omega(x)<n\le x}\lambda(a_1n+b_1)\lambda(a_2n+b_2)/n=o(\log\omega(x))$.
+Tao notes that such estimates ``are well known to be subject to the parity
+problem obstruction'' and that the proof gets around it with a new bilinear
+estimate that uses the multiplicativity $\lambda(pn)=-\lambda(n)$ at small
+primes; and that the method does ``not appear to have any bearing as yet on
+twin prime-type sums'' \cite[pp.~3--5]{Tao16}.
+
+\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:tao-weight}
+Let $w:\mathbb N\to\mathbb R$ be periodic with period $q$. Then
+\[
+\sum_{n\le x}\frac{w(n)\lambda(n)\lambda(n+2)}{n}=o(\log x)\qquad(x\to\infty).
+\]
+In particular, if $R\ge1$ is fixed, $(\lambda_d)_{d\le R}$ are real with
+$\lambda_1=1$, and $w(n)=\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$,
+then with $c_w:=\lim_{x\to\infty}(\log x)^{-1}\sum_{n\le x}w(n)/n>0$,
+\[
+\sum_{\substack{n\le x\\ \lambda(n)\lambda(n+2)=\pm1}}\frac{w(n)}{n}
+=\left(\tfrac12+o(1)\right)c_w\log x
+\]
+for both signs. The same holds with $R=R(x)\to\infty$ sufficiently slowly.
+\end{proposition}
+
+\begin{proof}
+Write $w$ as a linear combination of the indicators of the residue classes
+$c\bmod q$, $1\le c\le q$. For one class, $n=qm+c$ with $m\ge0$; the term
+$m=0$ contributes $O(1)$, and for $m\ge1$, $1/n=1/(qm)+O(1/m^2)$. Hence
+\[
+\sum_{\substack{n\le x\\ n\equiv c\ (q)}}\frac{\lambda(n)\lambda(n+2)}{n}
+=\frac1q\sum_{1\le m\le (x-c)/q}\frac{\lambda(qm+c)\lambda(qm+c+2)}{m}+O(1).
+\]
+Apply \cite[Theorem~1.2]{Tao16} with $a_1=a_2=q$, $b_1=c$, $b_2=c+2$
+(so $a_1b_2-a_2b_1=2q\ne0$) and $\omega(y)=y$ at $y=(x-c)/q$: the sum over
+$m$ is $o(\log x)$. Summing over the $q$ classes gives the first claim.
+
+For the second, $w$ is periodic modulo $q=\prod_{d\le R}d$ (indeed modulo the
+least common multiple of the $d$), because $1_{d\mid n(n+2)}$ depends only on
+$n\bmod d$. A periodic $w\ge0$ has $\sum_{n\le x}w(n)/n=c_w\log x+O_w(1)$ with
+$c_w$ the mean of $w$ over a period. If $n$ is odd and $n\not\equiv0,-2
+\pmod p$ for every odd prime $p\le R$ then the only $d\le R$ dividing $n(n+2)$
+is $d=1$, so $w(n)=\lambda_1^2=1$; such $n$ form a non-empty union of classes
+modulo $\prod_{p\le R}p$ (choose $n\equiv1\pmod 2$, $n\equiv 2\pmod 3$ and,
+for $p\ge5$, any $n\not\equiv0,-2$), hence $c_w>0$. Since
+$1_{\lambda(n)\lambda(n+2)=\pm1}=\tfrac12(1\pm\lambda(n)\lambda(n+2))$ for
+$n\ge1$, the first claim gives the second. Finally, for each fixed $R$ the
+$o(1)$ above tends to $0$; a standard diagonal choice of $R(x)\to\infty$
+(take $R(x)=R_j$ on $[x_j,x_{j+1})$ with $x_j$ so large that the error for
+all $R\le R_j$ is below $1/j$, and with the weights chosen from a fixed
+sequence) gives the last statement.
+\end{proof}
+
+\begin{remark}[What is missing]\label{rem:tao-missing}
+Sieve weights for twin primes need level $R=x^{\theta}$ with $\theta>0$
+fixed. Proposition~\ref{prop:tao-weight} needs $R$ fixed or growing as slowly
+as the (ineffective, see \cite[Remark~1.4 and footnote~2]{Tao16}) dependence
+of Tao's theorem on $a_1,b_1,b_2$ allows. Uniformity of
+\cite[Theorem~1.2]{Tao16} over moduli $q\le x^{\theta}$ is \lbl{Open} as far
+as we know. Even with it, Proposition~\ref{prop:tao-weight} would only
+confirm the input of the obstruction: it says that the sieve weight cannot
+tell $\lambda(n)\lambda(n+2)=+1$ from $-1$, which is exactly why it cannot
+see twin primes. It does not give a lower bound for twin primes.
+\end{remark}
+
+\section{The asymptotic sieve and the twin-prime sequence}\label{sec:fi}
+
+\subsection{The theorem}
+\lbl{Literature} \cite{FI98} (arXiv:math/9811186v1, journal pagination). Let
+$a_n\ge0$, $A(x)=\sum_{n\le x}a_n$, $A_d(x)=\sum_{n\le x,\,d\mid n}a_n=g(d)A(x)
++r_d(x)$ with $g$ multiplicative. The hypotheses are: (1.4)
+$A(x)\gg A(\sqrt x)(\log x)^2$; (1.6) $A_d(x)\ll d^{-1}\tau(d)^8A(x)$ for
+$d\le x^{1/3}$; (1.8) $0\le g(p)<1$, $g(p)\ll p^{-1}$; (1.9)
+$\sum_{p\le y}g(p)=\log\log y+c+O((\log y)^{-10})$; the Type~I hypothesis
+\[
+\text{(R)}\qquad \sum_{d\le D}\mu^2(d)|r_d(t)|\le A(x)(\log x)^{-2^{22}}
+\quad(t\le x),\qquad \text{(R1)}\quad x^{2/3}<D(x)<x;
+\]
+and the bilinear hypothesis
+\[
+\text{(B)}\qquad \sum_m\left|\sum_{\substack{N<n\le2N\\ mn\le x}}
+\gamma(n,C)\mu(mn)a_{mn}\right|\le A(x)(\log x)^{-2^{22}},
+\qquad \gamma(n,C)=\sum_{d\mid n,\,d\le C}\mu(d),
+\]
+for every $N$ with $\Delta^{-1}\sqrt D<N<\delta^{-1}\sqrt x$ and every
+$1\le C\le xD^{-1}$. Theorem~1 \cite[p.~1044]{FI98} (for $a_n$ supported on
+squarefree $n$) gives
+$\sum_{p\le x}a_p\log p=HA(x)\{1+O(\log\delta/\log\Delta)\}$ with
+$H=\prod_p(1-g(p))(1-1/p)^{-1}$. Theorem~2 \cite[\S9, p.~1059]{FI98} drops
+the squarefree condition, adding (9.1) $0\le g(p^2)\le g(p)$, $g(p^2)\ll
+p^{-2}$, (9.2) $\sum_{n\le x}a_n^2\le x^{-2/3}A(x)^2$, and replacing (R) by
+the cubefree version (R$_3$) $\sum^{3}_{d<DL^2}|r_d(t)|\le A(x)L^{-2}$,
+$L=(\log x)^{2^{24}}$. Friedlander and Iwaniec remark that the lower limit
+$N>\Delta^{-1}\sqrt D$ in (B) ``is essential; indeed by narrowing this
+slightly to $N>\sqrt D$ we would not be able to break the parity problem''
+\cite[p.~1045]{FI98}, and, on twin primes \cite[p.~1046]{FI98}: ``The
+stumbling block is that in this case we have no idea how to prove that the
+relevant sequence satifies the condition (B). Even proving (R) to such a high
+level is currently beyond reach.''
+
+\subsection{Specialisation to $a_n=\Lambda(n+2)$}
+
+\begin{proposition}[\lbl{Proved here}, modulo the Brun--Titchmarsh inequality]
+\label{prop:fi-twin}
+For $a_n=\Lambda(n+2)$ the hypotheses (1.4), (1.6), (1.8), (1.9), (9.1),
+(9.2) of \cite[Theorem~2]{FI98} hold with $g(2^j)=0$ and $g(p^j)=1/\varphi(p^j)$
+for odd $p$, and $H=2C_2$ with $C_2=\prod_{p\ge3}p(p-2)/(p-1)^2$. Hence, if
+\textup{(R$_3$)} holds with some $D>x^{2/3}$ and \textup{(B)} holds for this
+sequence in the stated ranges, then
+$\sum_{p\le x}\Lambda(p+2)\log p=2C_2x\{1+O(\log\delta/\log\Delta)\}$,
+which is the Hardy--Littlewood twin-prime asymptotic.
+\end{proposition}
+
+\begin{proof}
+For odd $d$, $A_d(t)=\sum_{m\le t+2,\ m\equiv2\,(d)}\Lambda(m)+O(\log t)
+=\psi(t+2;d,2)+O(\log t)$, and $(2,d)=1$, so the natural density is
+$1/\varphi(d)$. For even $d$, $d\mid n$ and $\Lambda(n+2)\ne0$ force
+$n+2$ to be a power of $2$, so $A_d(t)=O((\log t)^2)$, and we take $g(d)=0$.
+So $g(p^j)=1/\varphi(p^j)$ for odd $p$ and $g(2^j)=0$. Then $0\le g(p)\le
+\tfrac12<1$ and $g(p)\ll1/p$, which is (1.8); (1.9) follows from Mertens'
+theorem since $\sum_{p\le y}1/(p-1)=\log\log y+c'+O(1/\log y)$ with the prime
+number theorem error (much better than $(\log y)^{-10}$); (9.1) holds since
+$g(p^2)=1/(p(p-1))\le 1/(p-1)$ and $\ll p^{-2}$. By the prime number theorem
+$A(x)\sim x$, giving (1.4), and $\sum_{n\le x}a_n^2\le x\log^2(x+2)\ll
+x^{4/3}\ll x^{-2/3}A(x)^2$, giving (9.2). For (1.6), Brun--Titchmarsh gives
+$A_d(x)\ll x/(\varphi(d)\log(x/d))\ll x/\varphi(d)$ for odd $d\le x^{1/3}$, and
+$d/\varphi(d)\le 2^{\omega(d)}\le\tau(d)$. Finally
+$H=\prod_p(1-g(p))(1-1/p)^{-1}=2\prod_{p\ge3}\frac{p-2}{p-1}\cdot\frac{p}{p-1}
+=2C_2$.
+\end{proof}
+
+So two inputs are missing. (R$_3$) at a level $D>x^{2/3}$ is a fixed-residue
+Elliott--Halberstam bound with absolute values; the best known level of this
+form is $x^{1/2-\varepsilon}$ (Bombieri--Vinogradov, as stated in
+\cite[Theorem~2.3]{PM8b}). (B) for $\Lambda(n+2)$ is the bilinear estimate
+discussed next. Whether there is progress after 2014 on absolute-value,
+fixed-residue level beyond $x^{1/2}$ has not yet been checked (Section~\ref{sec:open}).
+
+\subsection{The bilinear hypothesis carries the parity information}
+
+\begin{proposition}[\lbl{Proved here}]\label{prop:B-parity}
+Let $a_n=\Lambda(n+2)$ and $a^{+}_n=\Lambda(n+2)\tfrac12(1+\lambda(n))$.
+\begin{enumerate}
+\item With $C=1$, the inner sum of \textup{(B)} for $a$ is
+  $\sum_n\mu^2(mn)\lambda(mn)\Lambda(mn+2)$: \textup{(B)} at $C=1$ is a bilinear
+  estimate for $k\mapsto\lambda(k)\Lambda(k+2)$.
+\item With $C=1$, every term $\mu(mn)a^+_{mn}$ is $\ge0$, so the left side of
+  \textup{(B)} for $a^+$ equals its trivial bound
+  $\sum_{m}\sum_{N<n\le2N,\,mn\le x}\mu^2(mn)a^+_{mn}$.
+\item Bound the left side of \textup{(B)} for $a$ at $C=1$ by Cauchy--Schwarz in
+  $m$. The diagonal $n_1=n_2$ is acceptable, and the following off-diagonal bound
+  suffices for \textup{(B)} at $C=1$:
+  \[
+  \text{(OD)}\qquad\left|\sum_{\substack{n_1\ne n_2\\ N<n_i\le 2N}}\mu(n_1)\mu(n_2)
+  \sum_{\substack{m\le x/\max(n_1,n_2)\\(m,n_1n_2)=1}}\mu^2(m)
+  \Lambda(mn_1+2)\Lambda(mn_2+2)\right|\le \tfrac14 Nx(\log x)^{-2^{23}}.
+  \]
+  For $a^+$ in place of $a$ every term of the corresponding sum is $\ge0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) $\gamma(n,1)=1$, and $\mu(k)\ne0$ implies $\mu(k)=\lambda(k)$.
+(2) If $\mu(k)\ne0$ then $\mu(k)\cdot\tfrac12(1+\lambda(k))=\tfrac12(\mu(k)+1)
+\in\{0,1\}$, and $\Lambda\ge0$.
+(3) Put $S_m=\sum_{N<n\le2N,\,mn\le x}\mu(mn)a_{mn}$; only $m\le x/N$ occur.
+By Cauchy--Schwarz, $(\sum_m|S_m|)^2\le (x/N)\sum_m|S_m|^2$, and for
+$(m,n)=1$, $\mu(mn)=\mu(m)\mu(n)$, so
+$\sum_m|S_m|^2=\sum_{n_1,n_2}\mu(n_1)\mu(n_2)\sum_{m}\mu^2(m)
+a_{mn_1}a_{mn_2}$ with $m\le x/\max(n_1,n_2)$, $(m,n_1n_2)=1$ and $n_i$
+squarefree (terms with $\mu(mn_i)=0$ vanish). The diagonal is
+$\sum_n\sum_{m\le x/n}\Lambda(mn+2)^2\ll\sum_{n\le2N}(x/\varphi(n))\log x\ll
+x(\log x)^2$ by Brun--Titchmarsh (for odd $n$; even $n$ contribute only
+prime powers of $2$), so its share of $(\sum_m|S_m|)^2$ is $\ll
+(x^2/N)(\log x)^2$, which is $\le\tfrac14 x^2(\log x)^{-2^{23}}$ as soon as
+$N\ge(\log x)^{2^{23}+3}$ and $x$ is large, true in the range of (B). With (OD)
+the off-diagonal share is at most $(x/N)\cdot\tfrac14Nx(\log x)^{-2^{23}}$, so
+$(\sum_m|S_m|)^2\le\tfrac12x^2(\log x)^{-2^{23}}\le A(x)^2(\log x)^{-2^{23}}$
+for large $x$, since $A(x)\sim x$. For $a^+$: if $a^+_{mn_i}\ne0$ with $mn_i$
+squarefree then $\lambda(mn_i)=\mu(m)\mu(n_i)=1$, so $\mu(n_i)=\mu(m)$ and
+$\mu(n_1)\mu(n_2)=1$; all terms are $\ge0$.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:B-parity}(2) says (B) separates $a$ from $a^+$; by the
+heuristic of Section~\ref{sec:parity}, Type~I data do not
+\cite[p.~70]{PM8b}. That (B) actually fails for $a^+$ needs the trivial bound to
+be $\gg A(x)(\log x)^{-2^{22}}$, i.e.\ enough primes $q$ with
+$\lambda(q-2)=1$ and $q-2$ having a squarefree divisor in $(N,2N]$; this is
+expected but we have not proved it. Polymath8b say of such bilinear sums for
+$\Lambda(dm+2)$: ``we do not know of any plausible way to control such
+bilinear expressions'' \cite[p.~71]{PM8b}.
+\end{remark}
+
+\section{A numerical illustration}\label{sec:num}
+
+\lbl{Heuristic.} For odd $n\le X$ let
+\[
+w(n)=\left(\sum_{\substack{d\mid n(n+2),\ d\le R\\ d\text{ odd squarefree}}}\mu(d)
+\left(\frac{\log(R/d)}{\log R}\right)^2\right)^2,\qquad R=X^{\theta}
+\]
+(a GPY-type weight for the pair $\{0,2\}$). The script (file
+\texttt{parity\_weighted\_liouville.py} in \texttt{code/explore/})
+computes $B/A=\sum w(n)\lambda(n)\lambda(n+2)/\sum w(n)$ and the share
+$T/A$ of the weight on twin-prime pairs:
+
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$X$ & $\theta$ & $R$ & $B/A$ & $T/A$\\
+\midrule
+$10^7$ & $0.20$ & $25.1$ & $3.6\cdot10^{-4}$ & $0.0325$\\
+$10^7$ & $0.25$ & $56.2$ & $6.0\cdot10^{-4}$ & $0.0490$\\
+$10^8$ & $0.20$ & $39.8$ & $4.2\cdot10^{-5}$ & $0.0310$\\
+$10^8$ & $0.25$ & $100$ & $4.3\cdot10^{-5}$ & $0.0466$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+So the two parity-twisted measures $w(1\pm\lambda(n)\lambda(n+2))/2$ carry
+essentially equal mass, and (at $X=10^6$, printed by the script) the same
+residue-class distributions modulo $3,5,7$ to about three decimals, while all
+the twin-prime pairs, about $3$--$5\%$ of the weight, lie in the ``$+$''
+measure. This is Selberg's phenomenon made visible; it proves nothing.
+
+\section{Open questions}\label{sec:open}
+
+\begin{enumerate}
+\item (\lbl{Open}) Is \cite[Theorem~1.2]{Tao16} uniform in the modulus: is
+  $\sum_{n\le x,\,n\equiv c\,(q)}\lambda(n)\lambda(n+2)/n=o(\log x/q)$
+  uniformly for $q\le x^{\theta}$, on average over $q$? This is the twisted
+  Type~I input of Section~\ref{sec:parity} in log-averaged form; even a positive
+  answer would confirm the obstruction rather than break it.
+\item Is there post-2014 progress on absolute-value, fixed-residue
+  equidistribution of primes beyond level $x^{1/2}$, so that (R$_3$) at
+  $x^{2/3+}$ is not a second, independent barrier? (Not yet checked.)
+\item Is there a sequence closely tied to twin primes (for instance with a
+  norm-form structure, as in Friedlander--Iwaniec's $a^2+b^4$) for which a
+  (B)-type estimate is provable? Tao's blog post on the parity problem
+  (2007) observes that the known parity-breaking methods ``all seem to
+  require that the form be representable as a norm over some number field''
+  (to be re-read before it is used).
+\end{enumerate}
+
+\subsection*{Plan for later versions}
+Each run adds one bounded step: Friedlander--Iwaniec $x^2+y^4$ and
+Heath-Brown $x^3+2y^3$ (statements and the structure each uses);
+Matom\"aki--Radziwi\l\l(--Tao) and Tao--Ter\"av\"ainen; Sawin--Shusterman in
+$\mathbb F_q[T]$ and the step with no integer analogue; conditional
+statements (which hypotheses imply twin primes, which are known not to
+suffice). Nothing enters before it is read in the source.
+
+\begin{thebibliography}{9}
+\bibitem{FI98} J.~Friedlander and H.~Iwaniec, \emph{Asymptotic sieve for primes},
+  Ann.\ of Math.\ \textbf{148} (1998), 1041--1065; arXiv:math/9811186v1.
+\bibitem{PM8b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and bounded
+  intervals containing many primes}, arXiv:1407.4897v4 (22 Dec 2014) (cited by its page numbers, of 80).
+\bibitem{Tao16} T.~Tao, \emph{The logarithmically averaged Chowla and Elliott
+  conjectures for two-point correlations}, arXiv:1509.05422 (journal version not
+  consulted).
+\end{thebibliography}
+
+\section*{Changelog}
+\begin{itemize}
+\item[0.1] (15 Nov 2026) First version: Sections 2--3 from the sources read
+  on 14--15 Nov (SHA-256 of the files in \texttt{notes/parity-programme.md});
+  Proposition~\ref{prop:fi-twin} and Proposition~\ref{prop:B-parity} from
+  the 14 Nov route card (\texttt{notes/parity-attempts/}), re-derived;
+  Proposition~\ref{prop:tao-weight} (parity attempt of 15 Nov); numerical
+  illustration.
+\end{itemize}
+
+\end{document}
