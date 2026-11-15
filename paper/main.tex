@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.17, 15 November 2026}
+\date{Version 0.18, 15 November 2026}
 
 \begin{document}
 
@@ -82,7 +82,7 @@ arithmetic of its loss tables, not yet the raw loss bounds); for the last
 rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
 criterion, recomputed from the trial data, agree with its published enclosures
 (Remark~\ref{rem:sha182}; for $I(F)$ by two independent programs since
-version~0.15); version~0.16 re-evaluates the raw loss bounds of the $186$
+version~0.15, for $J_0$, $J_+$ since version~0.18, and its tail term by one program, just below its published bound); version~0.16 re-evaluates the raw loss bounds of the $186$
 companion from its formulas ($78$ of its $97$ components, all but $1.2\cdot10^{-6}$ of its
 loss $L^+$; all at most the published values, most within $5\cdot10^{-9}$ of them; one
 program, not an outward-rounded certificate) and shows that the final margin of
@@ -2213,9 +2213,33 @@ caps, so it checks the arithmetic and the code, not that reading. The two
 programs agree to $1.7\cdot10^{-22}$ in relative terms; the first program's
 value lies just outside the ball, which a test on a coarser grid traces to its
 fixed-point rounding at $2^{-224}$ (at $400$ bits the difference drops to
-$3\cdot10^{-34}$). Still unchecked: a second program for $J_0$, $J_+$, the tail
-term, the restoration losses ($2.115\cdot10^{-4}$ claimed), and the analytic
-inputs.
+$3\cdot10^{-34}$). In version~0.18 the same second program was extended to the
+cap numerators (\lbl{Computed}, arb balls at $128$ bits;
+\texttt{code/}\allowbreak\texttt{sharifi182\_check2\_J.py}, report
+\texttt{notes/}\allowbreak\texttt{check2-J-182-report.md}; row tables derived from
+the Lean shells and checked against the paper's table, the $J_+$ mask taken
+literally as $\chi_1(1-\chi_0)$, a brute-force self-test at $k=3,4$):
+$J_0\in[5.63645908992367166973506\cdot10^{-11}\pm1.7\cdot10^{-39}]$ and
+$J_+\in[4.08240742966433656776654\cdot10^{-13}\pm2.5\cdot10^{-40}]$, both
+above the published lower bounds (as exact rationals), agreeing with the
+first program to $2\cdot10^{-23}$ and $2\cdot10^{-32}$ in relative terms
+(the $J_0$ gap sits on the same three caps as the $I$ gap and has the same
+size). Both programs share the reading of which caps form the layers and what
+the face mask in a layer is, which the source does not spell out. The tail term
+$E_{H_C^c}$ (\cite{Sha26}, (6.5)--(6.7) with $H_C$ for $C$, and the step kernel
+$K$ of (5.6), computed exactly in rationals; (5.7), $0\le K\le2.194$, holds when
+the last block ends at $n_0-1$) is evaluated by one program so far
+(\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_tail.py}, report
+\texttt{notes/}\allowbreak\texttt{tail-182-report.md}):
+$T\in[5.286348805928077\cdot10^{-13}\pm1.1\cdot10^{-40}]$, just below the published
+upper bound $5.286348805972699\cdot10^{-13}$ (relative gap $8\cdot10^{-12}$). From
+the balls for $I$, $J_0$, $J_+$ and $T$ the cap surplus is
+$q_H-1=2.767059\cdot10^{-4}$, above the certified $\mu^-=2.766919\cdot10^{-4}$;
+the tail costs $7.86\cdot10^{-5}$ of $q_H$, so the claimed final margin
+($6.52\cdot10^{-5}$) would be lost if the true tail were about $1.83$ times
+larger.
+Still unchecked: the restoration losses ($2.115\cdot10^{-4}$ claimed) and the
+analytic inputs.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
@@ -2309,7 +2333,15 @@ hypotheses except the Type~I bound at level $x^{2/3+}$ and the bilinear bound
 hold, and the bilinear bound has no cancellation for the parity-twisted
 sequence), and the remark that the twisted Type~I input of the obstruction is a
 theorem for bounded-level, logarithmically averaged weights (a consequence of
-Tao's two-point theorem \cite{Tao16}). It makes no claim of progress on the
+Tao's two-point theorem \cite{Tao16}). Its version~0.2 (version~0.18 of this
+paper) adds an exact criterion for which ``close-prime'' targets a weight of the
+Polymath8b kind can block (\lbl{Proved here}, possibly folklore, for that class
+of weights): exactly those whose target graph is bipartite, so that the class
+forbids precisely $H_m<H(2m+1)$, where $H(j)$ is the narrowest admissible
+$j$-tuple; for $m=1$ this is the familiar limit $6$. It also notes that the
+weight printed in Polymath8b's Remark~8.1 vanishes identically as written (a
+typo-level slip), and records which structure the Friedlander--Iwaniec bilinear
+estimate for $a^2+b^4$ uses. It makes no claim of progress on the
 twin prime conjecture, which is open.
 \end{itemize}
 \end{sloppypar}

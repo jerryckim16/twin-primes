@@ -1,0 +1,33 @@
+{
+ "cap": 246256,
+ "N": 393216,
+ "prec": 128,
+ "T": {
+  "mid_man_exp": [
+   "0",
+   "0"
+  ],
+  "rad_man_exp": [
+   "0",
+   "0"
+  ],
+  "ball": "0",
+  "value_float": 0.0,
+  "rad": 0.0
+ },
+ "M_T": {
+  "mid_man_exp": [
+   "0",
+   "0"
+  ],
+  "rad_man_exp": [
+   "0",
+   "0"
+  ],
+  "ball": "0",
+  "value_float": 0.0,
+  "rad": 0.0
+ },
+ "seconds": 1169,
+ "maxrss_GB": 3.469
+}

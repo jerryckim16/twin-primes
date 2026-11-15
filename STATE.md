@@ -3,32 +3,44 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 17, 15 Nov 2026): PHASE B
+## POSITION (after Session 18, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
-- PHASE B since Session 17. Rung 186 finished in the sense of the relayed decision: main terms by two programs (Session 14), loss
-  L^+ by program 1 for all 97 components (code/cap6/oai186_loss_summary.json) and by an independent program 2
-  (code/oai186_loss_outer2.py, notes/loss-outer2-report.md) for the 17 components with 99.95% of O_{5/2} (89.4% of L^+).
-  186 NOT adopted (Lemmas 1.4-1.7, 2.3, 2.4, restoration Prop. 1.3 and analytic inputs unchecked). Paper Rem. rem:186-status.
-- Phase B time split: ~35% parity programme (papers/parity-barrier, notes/parity-programme.md, one attempt per run in
-  notes/parity-attempts/), ~25% other small-results programmes (3g), ~20% bound work (rung 182 first), ~15-20% exploration.
-- Active papers: parity-barrier v0.1 (new), verification-note v0.7. At most 3 active.
+- PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
+  ~15-20% exploration.
+- Active papers: parity-barrier v0.2, verification-note v0.7 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+  NOT started as a paper.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), before other work.
 
 ## Next steps (in order; Phase B)
-1. Parity paper, thread 2 (one bounded step): read Friedlander-Iwaniec x^2+y^4 (Annals 1998; arXiv math/9811185 if it exists --
-   check) and state exactly which bilinear (Type II) estimate they prove and which structure (norm form, Jacobi symbol) it uses;
-   or Sawin-Shusterman (arXiv:1808.04001): which step has no integer analogue. Sources via curl https://arxiv.org/pdf/<id> worked
-   this session (FI98, PM8b, Tao16; hashes in notes/parity-programme.md). Every Literature sentence read in the source.
-2. Parity attempt (one per run, route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov), Tao two-point along
-   periodic weights (15 Nov). Candidates: uniform-in-modulus two-point log Chowla ON AVERAGE over q (literature first: Tao-Teravainen,
-   Helfgott-Radziwill, Pilatte?); a parity-sensitive quantity of the 2026 capped supports; the function-field step.
-3. Second small-results paper (3g programme (1) H_m bounds with the 2026 supports, or (2) theory of the capped variational problem:
-   floors/ceilings, Thms 13/15/25 and the k = 45/49 ceilings). Literature-check first.
-4. Bound share: rung 182 -- second program for J0, J+ (structure of code/sharifi182_check2.py with the face masks of
-   code/sharifi182_J.py; at most 2 workers, ~6 GB each); the tail term needs the kernel K of [M] (5.6) transcribed.
-5. Optional 186 follow-ups: renewal branch in program 2 (would cover O_2 and the small low bins); a third look at why the
-   renewal-branch V of small bins sits up to 2.7% below the table (likely interval widening in their recurrence).
+1. Parity attempt (one per run; route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov); Tao two-point along
+   periodic weights (15 Nov); bipartite criterion for Liouville-pattern weights (15 Nov, Session 18); residue-class weights with
+   classwise fairness (exploration, 15 Nov: nothing new). Candidates: (a) write and audit the deduction "Tao-Teravainen
+   (arXiv:2512.01739v2, Thm 3.1, preprint) => Prop. prop:tao-weight at level R = (log x)^{c0}" (expand the square, W = [d1,d2] <= R^2,
+   dyadic -> log averages outside the exceptional scales; label conditional on the preprint); (b) the function-field step
+   (Sawin-Shusterman); (c) a weight class beyond Liouville patterns that blocks DHL[5,3]? (open question 3 of the paper).
+2. Parity paper thread 2: Heath-Brown x^3+2y^3 (Acta Math. 186 (2001)) -- statement and the structure its Type II estimate uses;
+   then Sawin-Shusterman (arXiv:1808.04001). Every Literature sentence read in the source; adversarial audit before release.
+3. Bound share, rung 182: I, J0, J+ now by two programs; tail by one (Session 18). Next: a second, genuinely different program
+   for the tail (e.g. program 1's fixed-point/GMP style, code/sharifi182_J.py, with the K mask), then the restoration losses.
+4. 3g share: decide on a second small-results paper at the weekly review (options: capped-variational theory (programme 2), or the
+   H_m (varpi, delta) region (programme 1, notes/hm-programme.md)).
+5. Optional 186 follow-ups: renewal branch in program 2; why renewal-branch V of small bins sits up to 2.7% below the table.
 6. Low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume (commands below).
+
+## Session 18 (3:34 AM CT slot started early at Jerry's request, 04:23 UTC 15 Nov; no wait, Session 17 merged as PR #36) -- additions
+- News search (WebSearch, standard): nothing new since the last entry.
+- PARITY ATTEMPT: notes/parity-attempts/2026-11-15-bipartite-criterion.md, paper v0.2 Section sec:bip (Prop. prop:bipartite,
+  Cor. cor:six, Remark rem:marg, subsec:rem81). Code code/parity/bipartite_obstruction.py; Lean lean/TwinPrimes/Parity.lean
+  (triangle_no_fair_weight, pm8b_path_weight_*, narrow5/7_admissible). Audit notes/audit-parity-v02.md (2 errors, all fixed).
+- FLAG (minor): Polymath8b Remark 8.1 printed weight identically zero (notes/flags-for-jerry.md); journal version blocked by a
+  bot challenge (notes/sources-needed.md, 'needed', low priority).
+- Parity paper thread 2: FI a^2+b^4 (notes/sources-fi-x2y4.md; subsec:fi-x2y4, Remark rem:fi-transfer).
+- Literature for open question 1: notes/sources-chowla-quantitative.md (HR, Pilatte, Tao-Teravainen, Guo, Hughes).
+- 3g: notes/hm-programme.md, code/hm/pm8b_mk_lower.py (PM8b Thm 6.7 reproduced: k = 35410 MPZ, 41588 BV-only).
+- Exploration: code/explore/residue_parity_lp.py (dead end; global fairness is the wrong notion).
+- RUNG 182 J second program DONE: code/sharifi182_check2_J.py (--cap b, --combine, --selftest), results code/data182/check2_J_result.json and check2_J_cap_<b>.json; J0, J+ balls above the published lower bounds; vs program 1 rel 2e-23 (J0), 2e-32 (J+). Report notes/check2-J-182-report.md. 2 workers x 3.7 GB, ~107 min.
+- RUNG 182 TAIL (one program): code/sharifi182_tail.py (imports check2_J and check2), results code/data182/tail_result.json and tail_cap_<b>.json, report notes/tail-182-report.md; source notes notes/sources-182-tail.md. T = 5.286348805928e-13 +- 1e-40 <= published trialTailUpper (rel gap 8e-12); q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4. Kernel K exact in fmpq; (5.7) needs r_max = n0-1 (nominal block end violates it). 2 workers x 3.6 GB, 66 min. NEXT for 182: an independent second program for the tail (different contraction), then the restoration losses (2.115e-4 claimed).
+- Wolfram and mathbox NOT available.
 
 ## Session 17 (7:34 PM CT slot, 14 Nov; started 01:34 UTC 15 Nov; no wait) -- additions
 - 186 program 1: the 19 remaining outer components. NOTE: at --prec 128 the 15 smallest bins (O2 L1, L2; O5/2 L1-L13) abort with

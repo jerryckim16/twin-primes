@@ -1,5 +1,26 @@
 # Research log
 
+## 2026-11-15 - Session 18 (3:34 AM CT slot, started early at Jerry's request, 10:23 PM CT 14 Nov; no wait, Session 17 had merged as PR #36): An exact criterion for what the parity obstruction blocks (it explains the 6, and gives H_m < H(2m+1) for this class of weights); rung 182's numerators by a second program and its tail term recomputed
+
+- Parity paper v0.2 (papers/parity-barrier): for Polymath8b-type weights built from Liouville signs on the tuple, a weight that blocks a target exists exactly when (1/2,...,1/2) is a convex combination of target-free sets (Prop. prop:bipartite, proved here, possibly folklore). Consequences: a pair target is blocked iff its graph is bipartite; DHL[k,m+1] iff k <= 2m; and the class blocks every tuple exactly when g < H(2m+1), i.e. H_1 < 6, H_2 < 12, H_3 < 20, while the known sieve bounds for H_2 are 270 (EH) and 252 (GEH). Finite cases Lean-checked (lean/TwinPrimes/Parity.lean); H(3..9) = 6, 8, 12, 16, 20, 26, 30 by exhaustive search.
+- The weight printed in Polymath8b's Remark 8.1 vanishes identically (the product includes i = i', and even with i < i' the positions prime to 3 contain triangles); the intended weight (odd positions) is fair and works. Typo-level; flagged as a minor item.
+- Thread 2: Friedlander-Iwaniec's a^2+b^4 paper read in the source (Theorem 1, Props. 3.5, 4.1, 17.2; norm-form factorisation, lattice count, spin symbol) and a remark on why that structure has no counterpart for Lambda(n+2). Quantitative two-point Chowla literature read for open question 1 (Tao-Teravainen preprint would give level (log x)^c0; deduction not written). A fresh-context adversarial audit found 2 errors (an overclaimed scope in Cor. cor:six, one page number) and several gaps; all fixed before release.
+- Rung 182 (bound share): a second program for the cap numerators gives J0 = 5.63645908992367e-11 and J+ = 4.08240742966434e-13 as rigorous balls, both above the published lower bounds and agreeing with program 1 to 2e-23 / 2e-32. The tail term, transcribed from the bundle (kernel K of (5.6) computed exactly), is T = 5.286348805928e-13, just below its published upper bound, so q_H - 1 = 2.767059e-4 >= the certified mu- (one program for the tail). 182 stays claimed: restoration losses and analytic inputs are unchecked.
+- Small results (3g): the H_m programme was scoped (notes/hm-programme.md): Polymath8b's Theorem 6.7 lower bound reproduced in ball arithmetic (k = 35410 with MPZ, 41588 with BV only, both as published); any gain from the 2026 inputs depends on a (varpi, delta) region no source states, so no paper yet. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Main paper v0.18; parity paper v0.2.
+
+Flag for Jerry: Minor: Polymath8b's Remark 8.1 prints a parity weight that is identically zero (typo-level; the intended weight works); the journal version could not be checked.
+
+Parity attempt: Which close-prime targets the Polymath8b obstruction blocks: proved (for the class of Liouville-pattern weights) that it is exactly the bipartite / fractional-stable-set condition, which explains the parity limit 6 and gives H_m < H(2m+1) for this class; the first open step is whether weights outside the class block DHL[5,3].
+
+Explored: Residue-class-dependent parity weights (exact LPs, code/explore/residue_parity_lp.py): requiring fairness class by class gives nothing beyond k <= 2m, and the naive global notion would 'block' DHL[3,2] at modulus 5*7*11, contradicting Polymath8b's GEH theorem; a dead end that pins down the right notion of fairness.
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).
+- The journal version of Polymath8b (Res. Math. Sci.) returned a bot-challenge page; recorded in notes/sources-needed.md.
+- The 182 tail rests on one program; the J0 gap to program 1 (2e-23) is rounding in program 1, not resolved to the last digit.
+
+Next: Weekly review first (Monday 16 Nov). Then: parity attempt (the Tao-Teravainen deduction to level (log x)^c0, or the function-field step); parity paper thread 2 (Heath-Brown x^3+2y^3); a second, different program for the 182 tail; decide on a second small-results paper.
+
 ## 2026-11-15 - Session 17 (7:34 PM CT, 14 Nov; no wait, no other run active): Rung 186 finished: its loss bound re-evaluated in full and its decisive part by a second, independent program; the project moves to Phase B with a first paper on the parity barrier
 
 - 186 loss bound L+: the first program (Arb balls) finished the last 19 of 97 components. At 128 bits the 15 smallest low bins were rejected by the companion's own test (nonpositive lower endpoint in the renewal recurrence), at 256 bits all pass. Every raw value is at most its table entry; the summed component bounds equal the table's group totals (O_2 and O_{5/2} 1 and 3 units of 1e-12 below, inner groups exactly).

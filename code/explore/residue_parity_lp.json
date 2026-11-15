@@ -1,0 +1,139 @@
+{
+ "m=1,k=2,p=3": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=1,k=2,p=4": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=1,k=2,p=11": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=1,k=2,p=23": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=1,k=3,p=4": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=3,p=5": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=3,p=11": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=3,p=23": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=4,p=5": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=4,p=6": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=4,p=11": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=1,k=4,p=23": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=4,p=5": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=2,k=4,p=6": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=2,k=4,p=11": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=2,k=4,p=23": {
+  "global": true,
+  "classwise": true,
+  "predicted_global": true
+ },
+ "m=2,k=5,p=6": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=5,p=7": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=5,p=11": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=5,p=23": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=6,p=7": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=6,p=8": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=6,p=11": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "m=2,k=6,p=23": {
+  "global": false,
+  "classwise": false,
+  "predicted_global": false
+ },
+ "multi_prime": {
+  "[5, 7]": {
+   "k=3,m=1 global": false,
+   "k=3,m=1 classwise": false,
+   "naive bound 2m/prod(1-1/p)": 2.916666666666666
+  },
+  "[5, 7, 11]": {
+   "k=3,m=1 global": true,
+   "k=3,m=1 classwise": false,
+   "naive bound 2m/prod(1-1/p)": 3.208333333333333
+  },
+  "[5, 7, 11, 13]": {
+   "k=3,m=1 global": true,
+   "k=3,m=1 classwise": false,
+   "naive bound 2m/prod(1-1/p)": 3.4756944444444433
+  }
+ }
+}
