@@ -21,7 +21,7 @@ suffice" beyond the heuristic Polymath8b section 8 argument?
    capture the primes, even for D(x) = x^{1-eps}, which is the case treated by Bombieri".
 2. Paper Prop. prop:bomb-twin (proved here, folklore; conditional on Bombieri's theorem applying to this sequence): under EH,
    sum Lambda(n+2)Lambda(n) log n + sum Lambda(n+2)(Lambda*Lambda)(n) = (4 C_2 + o(1)) x log x; hence twin-prime asymptotic <=>
-   (Lambda*Lambda)-weighted asymptotic for p+2 = p1 p2; and the factor-2 upper bound.
+   (Lambda*Lambda)-weighted asymptotic for p-2 = p1 p2; and the factor-2 upper bound.
 3. Remark rem:ford-twin: Ford's (1.6) for this sequence = quantitative Moebius-on-shifted-primes (shift -2; Lichtman proves only an
    average over shifts); Hooley's condition = level-alpha version; under EH every alpha > 0 is in Ford's open range.
 4. Remark rem:debouzy: probable factor-2 slip in Debouzy's constant (2 S_2 printed, 4 S_2 = 4 C_2 meant): Cor 2.7 with

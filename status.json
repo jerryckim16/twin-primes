@@ -1,7 +1,7 @@
 {
- "version": "0.23",
+ "version": "0.24",
  "updated": "2026-11-15",
- "session_count": 23,
+ "session_count": 24,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -399,6 +399,18 @@
  ],
  "ideas": [
   {
+   "idea": "Parity attempt (thread 3): what the level of distribution alone gives for Lambda(n+2), via Bombieri's asymptotic sieve and Ford's limits.",
+   "origin": "own",
+   "status": "works",
+   "note": "Session 24: located, folklore reduction (paper Prop. prop:bomb-twin): under EH, twin primes <=> (Lambda*Lambda)-weighted P2-twins; Ford: no fixed level suffices; Hooley-type condition open (open question 7). Side result: probable factor-2 slip in Debouzy's constant (flag)."
+  },
+  {
+   "idea": "Exploration: does mu(p-2) show parity bias in progressions (Hooley's averaged condition) beyond square-root cancellation?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 24: no; ratio to a random-sign model 0.73-1.54 at x = 1e6, 1e7 (code/explore/hooley_twin_parity.py). Nothing to exploit."
+  },
+  {
    "idea": "Parity attempt: ceilings for Polymath8b's GEH criteria, and the exact k = 2 value of the Theorem 3.14 ratio.",
    "origin": "own",
    "status": "works",
@@ -698,10 +710,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.8",
+   "version": "0.9",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post. v0.8: for which eps the k = 3 criterion works: above 2 at eps = 2/9, 1/4, 7/24 (exact), provably below 2 for all eps >= 0.439 (Schur-test certificates, two programs)."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post. v0.8: for which eps the k = 3 criterion works: above 2 at eps = 2/9, 1/4, 7/24 (exact), provably below 2 for all eps >= 0.439 (Schur-test certificates, two programs). v0.9: what the level of distribution alone gives (Bombieri's asymptotic sieve as quoted by Ford 2004): under EH twin primes are equivalent to the (Lambda*Lambda)-weighted count of p-2 = p1 p2 and nothing more (folklore); Ford: no fixed level below 1 suffices; Hooley's averaged parity condition for twins is open (open question 7); a probable factor-2 slip in the constant of Debouzy's 2019 preprint."
   },
   {
    "slug": "verification-note",
