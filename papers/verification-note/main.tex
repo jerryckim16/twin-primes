@@ -40,8 +40,9 @@ in their $846$-dimensional space reaches $3.99$ (one program's Gram weights), an
 (iv) For the claimed $186$ and $182$ we recompute the main terms, the $186$ loss
 bounds (the decisive group by two programs, the rest by one) and the four
 ingredients of the $182$ cap quotient (two programs each), all consistent with
-the published values. None of this verifies the analytic inputs, and none of
-it bears on the twin prime conjecture, which remains open.
+the published values. None of this verifies the analytic inputs or the $182$
+restoration losses, so no claim is verified, and none of it bears on the twin
+prime conjecture, which remains open.
 \end{abstract}
 
 \maketitle
@@ -104,8 +105,8 @@ $236$, our own $F$ & $4.0060814$ & \lbl{Computed}, two programs\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in their $846$-dim.\ space & \lbl{Computed}, ball arithm.,\\
  & & one program's weights\\
-$186$, $182$ & different criteria; main terms and losses (186), & \lbl{Computed}, two programs\\
- & cap quotient (182): Remarks~\ref{rem:186}, \ref{rem:182} & \\
+$186$, $182$ & other criteria: Remarks~\ref{rem:186}, \ref{rem:182} & \lbl{Computed}, two programs\\
+ & & (186 losses: decisive group)\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -563,7 +564,7 @@ Lemmas~1.4--1.7, 2.3, 2.4), that the cover is complete, and the analytic inputs.
 The claimed $H_1\le182$ of GPT-6 Astra, prompted by R.~Sharifi \cite{Sha26},
 uses the framework of \cite{OAI26} at $k=39$ on a grid of $393216$ cells, with
 a trial function of $726$ rational coefficients (taken from the authors' Lean
-data, supplied to us by Jerry Kim). Its numerical criterion is a cap quotient
+data, supplied to the project). Its numerical criterion is a cap quotient
 $q_H=\rho^*(J_0+(1-\ell)J_+-d_hT)/I$ with certified $q_H-1\ge\mu^-=2.766919\cdot10^{-4}$,
 followed by a restoration loss of at most $2.115\cdot10^{-4}$. We recomputed
 the four ingredients of $q_H$, each by two programs (\cite{Kim26}, Remark on
@@ -579,10 +580,11 @@ the last rung; reports in \texttt{notes/}):
   bound (relative gap $8\cdot10^{-12}$; the second program's enclosure, of
   radius $1.4\cdot10^{-45}$, lies inside the first one's).
 \end{itemize}
-From these, $q_H-1=2.767059\cdot10^{-4}\ge\mu^-$. The two tail programs
-share the reading of the source, which leaves one point open: where the last
-kernel block ends. Only the reading $r_{\max}=n_0-1$ is consistent with the
-published bound. With the nominal block end the kernel violates the paper's
+From these, $q_H-1=2.767059\cdot10^{-4}\ge\mu^-$. Each pair of programs shares the reading of the source (cap layers, face
+mask, and for the tail the layered derivation), so they check arithmetic and
+code, not that reading. One point of the reading, where the last kernel block
+ends, is constrained by the published bound: only $r_{\max}=n_0-1$ is
+consistent with it. With the nominal block end the kernel violates the paper's
 own bound $K\le2.194$, and the tail exceeds the published bound by $5\cdot10^{-7}$
 in relative terms (an effect on $q_H$ of about $4\cdot10^{-11}$). Not checked:
 the restoration losses, the analytic lemmas behind the kernel and the

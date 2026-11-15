@@ -33,8 +33,8 @@ $a_n=\Lambda(n+2)$ every hypothesis of that sieve except the Type~I and
 bilinear ones holds, and the simplest bilinear bound has no cancellation for
 the parity-twisted sequence. Our own results (labelled ``Proved here''): the
 twisted Type~I input of the obstruction holds for log-averaged sieve weights of
-bounded level (from Tao's two-point theorem) and, conditionally on a preprint
-of Tao and Ter\"av\"ainen, at level $(\log x)^{c_0}$; and a weight of the
+bounded level (from Tao's two-point theorem) and, conditionally on an unrefereed preprint
+of Tao and Ter\"av\"ainen (whose proof we have not checked), at level $(\log x)^{c_0}$; and a weight of the
 Polymath8b kind can block a close-prime target exactly when its target graph
 is bipartite, which explains the number $6$, gives the analogue $H_m<H(2m+1)$,
 and corrects the printed weight of Polymath8b's Remark~8.1.
@@ -223,7 +223,7 @@ The proof of Proposition~\ref{prop:tao-weight} expands $w$ over its period
 $\operatorname{lcm}(d\le R)\approx e^{R}$, so it allows only very slowly growing
 $R$. A quantitative correlation estimate of Tao and Ter\"av\"ainen
 \cite[Theorem~3.1]{TT25} (an unrefereed preprint), applied modulus by modulus,
-gives an explicit polylogarithmic level. The deduction was audited by a fresh-context
+gives a polylogarithmic level $(\log x)^{c_0}$. The deduction was audited by a fresh-context
 referee (\texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-15-tt25-audit.md}): no error affecting the statement;
 its wording fixes are applied below. The proof of \cite[Theorem~3.1]{TT25} itself was not checked.
 \begin{proposition}[\lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25} (preprint)}]
@@ -274,7 +274,8 @@ $\int_{n/2}^{n}N^{-2}\,dN=1/n$,
 S(e,c;x):=\sum_{n\le x,\,n\equiv c(e)}\frac{\lambda(n)\lambda(n+2)}{n}=\int_0^xF(N)N^{-2}\,dN.
 \]
 Let $X_0=x$, $X_{j+1}=X_j^{1/2}$ and $J=\max\{j:\log X_j\ge(\log x)^{1/2}\}$.
-We use $|F(N)|\le N/e+1$ on $(x/2,x]$, on $E(X_j)$, and on $(0,X_{J+1})$, and
+We use $|F(N)|\le N/e+1$ on $(x/2,x]$ and on $E(X_j)$; on $(0,X_{J+1})$ we bound
+directly $\int_0^{X_{J+1}}|F(N)|N^{-2}\,dN\le\sum_{n<2X_{J+1},\,n\equiv c\,(e)}1/n\le1+(2+(\log x)^{1/2})/e$; and
 \eqref{eq:TT-input} with $X=X_j$, $W=e$ (admissible, since
 $e\le(\log X_j)^{\kappa}$) on $[X_{j+1},X_j]\setminus E(X_j)$ (on
 $[X_1,x/2]$ for $j=0$), where $F(N)$ is a full dyadic sum. Since
@@ -283,7 +284,7 @@ $\sum_j\log X_j\le2\log x$, we get
 |S(e,c;x)|\ll\frac{(\log x)^{1-\kappa/2}}{e}+\frac{(\log x)^{1/2}}{e}+1
 \ll\frac{(\log x)^{1-\kappa/2}}{e}+1,
 \]
-where the term $1$ comes from the term $n=c$ in the range $n\le2X_{J+1}$.
+where the term $1$ comes from the smallest $n$ of the class in the range $n<2X_{J+1}$.
 
 \emph{Summation.} Expanding the square,
 $w_R(n)=\sum_{d_1,d_2\le R}\lambda_{d_1}\lambda_{d_2}
@@ -314,9 +315,9 @@ from $1_{\lambda(n)\lambda(n+2)=\pm1}=\frac12(1\pm\lambda(n)\lambda(n+2))$.
 \begin{remark}\label{rem:tao-weight-logc}
 This replaces the non-explicit $R(x)\to\infty$ of
 Proposition~\ref{prop:tao-weight} by $R=(\log x)^{c_0}$, uniformly in the
-weights, for weights of the stated form $w_R$ and the shift $2$ (the earlier proposition also covers general periodic $w$, which this one does not), but only conditionally on the preprint \cite{TT25}, whose proof we
-have not checked. Note that one must expand in the moduli $[d_1,d_2]\le R^2$
-and not in the period $\prod_{p\le R}p$ of $w_R$. The range of moduli
+weights, for weights of the stated form $w_R$ and the shift $2$ (the earlier proposition also covers general periodic $w$ and arbitrary shifts $h\ne h'$, which this one does not), but only conditionally on the preprint \cite{TT25}, whose proof we
+have not checked. Note that the proof expands in the moduli $[d_1,d_2]\le R^2$,
+not in the period $\operatorname{lcm}(d\le R)\approx e^{R}$ of $w_R$. The range of moduli
 $W\le L^c$ in \cite[Theorem~3.1]{TT25} is the binding constraint; level
 $x^{\theta}$ remains \lbl{Open}, and even at that level the statement would
 only confirm the input of the parity obstruction, not give a lower bound
@@ -770,7 +771,7 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   uniformly for $q\le x^{\theta}$, on average over $q$? This is the twisted
   Type~I input of Section~\ref{sec:parity} in log-averaged form; even a positive
   answer would confirm the obstruction rather than break it. \lbl{Literature,
-  preprint}: Tao and Ter\"av\"ainen \cite[Theorem~3.1, p.~24]{TT25} prove a
+  preprint}: Tao and Ter\"av\"ainen \cite[Theorem~3.1, p.~24]{TT25} state (preprint; proof not checked here) a
   quantitative correlation bound for 1-bounded multiplicative $g_1,g_2$ in
   progressions $n\equiv b\pmod W$, uniformly for $W\le L^{c}$ and shifts
   $O(L^c)$ ($L\le\log X$ a parameter), outside a set of scales of logarithmic
@@ -863,7 +864,9 @@ suffice). Nothing enters before it is read in the source.
   \texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-15-tt25-level-logc.md}): the
   twisted Type~I input at level $(\log x)^{c_0}$, conditional on
   \cite[Theorem~3.1]{TT25}; fresh-context audit applied (wording of the
-  \cite{MRT15} input, scope of the statement, period $2\prod_{3\le p\le R}p$).
+  \cite{MRT15} input, the source of $L=(\log X)^{1/4}$, scope of the statement,
+  period $2\prod_{3\le p\le R}p$); proofread afterwards (period of $w_R$,
+  low range of the proof, wording).
   Shorter abstract; open question~1 updated; new open question~5.
 \end{itemize}
 

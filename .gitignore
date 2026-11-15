@@ -15,3 +15,5 @@ papers/*/*.fls
 papers/*/*.log
 papers/*/*.out
 runs/loss_outer2_cache/
+paper/*.toc
+papers/*/*.toc
