@@ -3,6 +3,18 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 17 -- What does a Selberg/GPY weight see of the parity of n(n+2)? (probabilistic models / parity)
+- Idea: weight odd n <= X by the GPY-type Selberg weight w(n) = (sum_{d | n(n+2), d <= X^theta} mu(d)(log(R/d)/log R)^2)^2 and
+  measure the weighted correlation of lambda(n)lambda(n+2), the split of the weight by parity pattern, and the residue-class
+  distribution of the two parity-twisted measures w(1 +- lambda(n)lambda(n+2))/2.
+- Tried: code/explore/parity_weighted_liouville.py at X = 1e6, 1e7, 1e8, theta = 0.20, 0.25 (log runs/explore_parity_weighted.log;
+  each run under a minute, < 2 GB).
+- Outcome: inconclusive / as expected. B/A = sum w lambda lambda / sum w falls from 6e-4 (1e7) to 4e-5 (1e8); the two twisted measures
+  have equal mass and the same class shares mod 3, 5, 7 to two or three decimals, while all twin pairs (3-5% of the weight) lie in
+  the "+" measure: Selberg's phenomenon, visible but proving nothing. It suggested the parity attempt of this run (Tao's two-point
+  theorem along periodic weights, paper Prop. prop:tao-weight) and is the numerical illustration of the parity paper (Sec. 4,
+  Heuristic).
+
 ## 2026-11-14, Session 16 -- A "pretentious twin" statistic: how far is lambda from the Siegel-zero world lambda ~ chi_D? (Siegel zeros)
 - Idea: in Heath-Brown's Siegel-zero argument the parity obstruction for twin primes disappears because
   lambda(n) ~ chi_D(n) on most of the range, so lambda(n)lambda(n+2) ~ chi_D(n)chi_D(n+2), whose mean is not zero.
