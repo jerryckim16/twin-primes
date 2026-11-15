@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.6 (draft), 15 November 2026}
+\date{Version 0.7 (draft), 15 November 2026}
 
 \begin{document}
 
@@ -32,11 +32,13 @@ Friedlander--Iwaniec asymptotic sieve, whose bilinear axiom breaks parity.
 Our own results (labelled ``Proved here''): the twisted Type~I input of the
 obstruction for log-averaged weights of bounded level, and, conditionally on
 an unrefereed preprint of Tao and Ter\"av\"ainen, at level $(\log x)^{c_0}$;
-a Polymath8b-type weight blocks a close-prime target exactly when its target
-graph is bipartite, which explains the number $6$ and gives $H_m<H(2m+1)$;
+a window form of Tao's convex-hull criterion for which close-prime targets a
+Polymath8b-type weight blocks, giving $H_m<H(2m+1)$;
 at $k=2$ Polymath8b's strongest GEH criterion reaches exactly the parity value
 $2$ and never exceeds it, while for $5\le k\le45$ its failure to give three
-primes comes from a variational ceiling rather than from the parity class. We also record what the bilinear
+primes comes from a variational ceiling rather than from the parity class; at
+$k=3$ the step that makes $k=2$ sharp fails, because two marginal conditions
+act at the same points. We also record what the bilinear
 estimates for $a^2+b^4$ and $x^3+2y^3$, the short-interval theorem of
 Matom\"aki--Radziwi\l\l{} and Sawin--Shusterman's twin primes in $\mathbb F_q[T]$
 use, and why none of it transfers to twin primes.
@@ -447,9 +449,12 @@ correlation; its asymptotic is \lbl{Open}.
 The weight in \cite[\S8]{PM8b} is tailored to one target (two primes at
 distance $\le4$ among $n,n+2,n+6$). Here we ask, for an arbitrary target, when
 a weight of the same kind exists. The answer is a clean combinatorial
-criterion. It explains why the parity limit of the method is $6$, it gives
-the corresponding statement for $H_m$, and it shows that the weight printed in
-\cite[Remark~8.1]{PM8b} needs a small correction. The criterion concerns
+criterion. Its core is \emph{not new}: it is the convex-hull criterion of
+Tao's 2014 blog post \cite{Tao14b}, with the graph and ``$k/2$'' cases (see
+Remark~\ref{rem:tao14b}, added in version~0.7; earlier versions of this paper
+missed the post). What we add is the window form (c), the resulting statement
+$H_m<H(2m+1)$ for $H_m$, and a small correction to the weight printed in
+\cite[Remark~8.1]{PM8b}. The criterion concerns
 only the class of weights described next; that this class captures ``what
 sieve methods can see'' is the heuristic part of Section~\ref{sec:parity}, and
 nothing here removes it.
@@ -500,7 +505,7 @@ $\mathcal E$, but not $\{1,3\}$ (\lbl{Lean-checked}:
 Call $I\subseteq\{1,\dots,k\}$ \emph{$\mathcal E$-free} if it contains no
 $e\in\mathcal E$.
 
-\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:bipartite}
+\begin{proposition}[\lbl{Proved here} for this class; (1)$\Leftrightarrow$(3), (a), (b) are in \cite{Tao14b}]\label{prop:bipartite}
 The following are equivalent:
 \begin{enumerate}
 \item there is a fair pattern weight that kills $\mathcal E$;
@@ -556,6 +561,24 @@ elements of $\mathcal H$ in an interval of length $g$ have consecutive indices,
 at most $2m$ of them, so at most $m$ lie in $A$ and at most $m$ in $B$; take
 $\tfrac12 1_A+\tfrac12 1_B$.
 \end{proof}
+
+\begin{remark}[Relation to \cite{Tao14b}; \lbl{Literature}]\label{rem:tao14b}
+Tao's post (read 15 Nov 2026) considers sign patterns
+$(\lambda(L_1(n)),\dots,\lambda(L_k(n)))$ that are \emph{forbidden} by a property $P$
+and states, as a ``slightly informal'' claim resting on a ``Liouville
+pseudorandomness conjecture'', that the sieve approach cannot establish $P$
+when the convex hull of the forbidden sign patterns contains the origin. He
+builds the weight from the convex combination exactly as in our proof, and
+expects no obstruction when the origin is outside the hull. In the $\pm1$
+coordinates, ``origin in the hull'' is our condition~(3). The post also says
+that ``at least $j$ of the $k$ numbers'' being prime is obstructed as soon as
+$j\ge k/2+1$, which is (b), and that a graph property is subject to the
+parity problem ``precisely when'' the graph is two-colourable, which is (a).
+The window form (c) and Corollary~\ref{cor:six} do not appear in the post as
+far as we could read it (through a text extract of the page; the post's
+formulas are images). A footnote of Akeno \cite[\S5, footnote~3]{Ake25} credits
+a related argument to Zeb Brady and Tao in another setting (Goldbach primes).
+\end{remark}
 
 \begin{remark}[Extra coordinates do not help]\label{rem:marg}
 If $\Omega$ also depends on Liouville values at shifts outside $\mathcal H$,
@@ -840,6 +863,194 @@ Corollary~\ref{cor:consistent}). Nothing in
 searched the text). The scaling bound $(1+\varepsilon)\frac k{k-1}\log k$ of
 Proposition~\ref{prop:ceil} is stronger whenever $k^\varepsilon<2-\frac1k$, for
 example for all $\varepsilon\le\frac1{k-1}$ when $k\ge4$.
+\end{remark}
+
+\subsection{A dual formula, and what changes at \texorpdfstring{$k=3$}{k=3}}\label{subsec:dual}
+
+This subsection explains why the proof of Theorem~\ref{thm:k2} works and
+why it does not extend directly to $k=3$, where \cite[Theorem~3.15]{PM8b}
+shows that the ratio exceeds $2$. Fix $k\ge2$ and $0<\varepsilon<\frac1{k-1}$, and
+write $a=1-\varepsilon$, $B=1+\varepsilon$, $c=\frac k{k-1}$, $D=c\,\mathcal R_k$ and
+$H=L^2(D)$. For $t\in D$ let $|t_{-j}|=\sum_{l\ne j}t_l$, and put
+\[
+Z_j=\{t\in D:|t_{-j}|>B\},\qquad \mathcal V_j=\{\psi(t_{-j})\mathbf 1_{Z_j}(t)\}\cap H ,
+\]
+where $\psi$ ranges over measurable functions of the $k-1$ coordinates other
+than $t_j$. Let $W$ be the closure of $\mathcal V_1+\dots+\mathcal V_k$ and $K=W^\perp$. Define
+$P:H\to\bigoplus_{i=1}^kL^2(a\mathcal R_{k-1})$ by $(PF)_i=\int F\,dt_i$
+(restricted to $a\mathcal R_{k-1}$), so that
+$\sum_iJ_{i,1-\varepsilon}(F)=\|PF\|^2$, and let
+$\sigma_k(\varepsilon)=\sup\{\|PF\|^2/\|F\|^2:0\ne F\in K\}$.
+
+\begin{lemma}[\lbl{Proved here}; standard Hilbert-space duality]\label{lem:dual}
+\begin{enumerate}
+\item $K$ is exactly the set of $F\in H$ that satisfy the vanishing marginal
+  condition of Theorem~3.14, so $\sigma_k(\varepsilon)$ is the supremum of the
+  Theorem~3.14 ratio.
+\item $P^*f=\sum_if_i(t_{-i})\mathbf 1[|t_{-i}|\le a]$, and
+  \[
+  \sigma_k(\varepsilon)=\|\Pi_KP^*\|^2=\sup_{f\ne0}\frac{\operatorname{dist}(P^*f,W)^2}{\|f\|^2}.
+  \]
+  Hence any rule $f\mapsto v(f)\in W$ with
+  $\|P^*f-v(f)\|^2\le C\|f\|^2$ for all $f$ proves $\sigma_k(\varepsilon)\le C$, and the
+  projection $v(f)=\Pi_WP^*f$ gives the exact value.
+\item If $\mathcal V'_j\subseteq \mathcal V_j$ are closed subspaces, the class
+  $K'=\bigcap_j(\mathcal V'_j)^\perp$ contains $K$, so its supremum $\sigma'$ satisfies
+  $\sigma'\ge \sigma_k(\varepsilon)$. If the $\mathcal V'_j$ are supported on pairwise disjoint sets,
+  they are mutually orthogonal and $\Pi_{K'}=I-\sum_jE'_j$, where $E'_j$ is
+  the orthogonal projection onto $\mathcal V'_j$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+By Cauchy--Schwarz on fibres, $\left(\int F\,dt_i\right)^2\le c\int F^2\,dt_i$, so
+$\|PF\|^2\le kc\|F\|^2$ and $P$ is bounded; the formula for $P^*$ is Fubini.
+(1) For $v=\psi(t_{-j})\mathbf 1_{Z_j}\in \mathcal V_j$, Fubini gives
+$\langle F,v\rangle=\int_{|u|>B}\psi(u)f_j(u)\,du$ with $f_j=\int F\,dt_j$. If $f_j=0$
+a.e.\ on $\{|u|>B\}$ this vanishes. Conversely, taking
+$\psi=\operatorname{sign}(f_j)\mathbf 1[|f_j|\le M]$ (bounded, so $v\in H$) and letting
+$M\to\infty$ shows that $\langle F,\mathcal V_j\rangle=0$ forces $f_j=0$ a.e.\ there.
+(2) $\sigma_k(\varepsilon)=\|P\Pi_K\|^2=\|(P\Pi_K)^*\|^2=\|\Pi_KP^*\|^2$, and
+$\|\Pi_Kg\|=\operatorname{dist}(g,W)$ because $\Pi_K=I-\Pi_W$.
+(3) $\mathcal V'_j\subseteq \mathcal V_j$ gives $(\mathcal V'_j)^\perp\supseteq \mathcal V_j^\perp$, hence $K'\supseteq K$.
+Functions with disjoint supports are orthogonal; for mutually orthogonal
+closed subspaces the projection onto the closure of their sum is the sum of
+the projections.
+\end{proof}
+
+Each $\mathcal V_j$ is closed: it is the range of the fibre-mean projection $E_j$,
+where $(E_jg)(t)=\mathbf 1_{Z_j}(t)$ times the
+mean of $g$ over the fibre $\{s\in D:s_{-j}=t_{-j}\}$. At $k=2$, $Z_1\cap Z_2=\emptyset$
+because $x+y\le2<2B$, so Lemma~\ref{lem:dual}(3) applies with $\mathcal V'_j=\mathcal V_j$:
+$\Pi_K=I-E_1-E_2$. The function $\Phi$ in the proof of Theorem~\ref{thm:k2}
+is exactly $(I-E_1-E_2)P^*(g,f)$ in the notation of that proof (on $U_1$ it is
+$f(x)-\bar f(y)$, the subtracted fibre mean, and $P^*$ elsewhere), so that
+proof bounds the dual expression with the exact projection. Sharpness then
+comes from the two remaining inequalities ($2uv\le u^2+v^2$ and the mean
+minimising the squared deviation), which are equalities for constant
+marginals.
+
+\begin{proposition}[\lbl{Proved here}; elementary]\label{prop:overlap}
+Let $k\ge3$ and $0<\varepsilon<\frac1{k-1}$. For all $i\ne j$ the set $Z_i\cap Z_j$
+has positive measure, so $\mathcal V_i$ and $\mathcal V_j$ are not orthogonal and $\Pi_W$ is not
+$\sum_jE_j$.
+\end{proposition}
+
+\begin{proof}
+Pick $r\notin\{i,j\}$. Since $\varepsilon<\frac1{k-1}$ we have $B<c$, so the set of
+$t\in D$ with $B<t_r<c$ and $\sum_{l\ne r}t_l<c-t_r$ is a non-empty open set.
+Each of its points has $|t_{-i}|\ge t_r>B$ and $|t_{-j}|\ge t_r>B$, so it lies
+in $Z_i\cap Z_j$. Since $D$ is bounded, $\mathbf 1_{Z_i}\in \mathcal V_i$ and
+$\mathbf 1_{Z_j}\in \mathcal V_j$, and $\langle\mathbf 1_{Z_i},\mathbf 1_{Z_j}\rangle=|Z_i\cap Z_j|>0$.
+If $\Pi_W$ were $\sum_lE_l$, then for $v\in \mathcal V_i$ we would have
+$\|v\|^2\ge\langle\Pi_Wv,v\rangle=\|v\|^2+\sum_{l\ne i}\|E_lv\|^2$, so $E_lv=0$ for all
+$l\ne i$, that is, $\mathcal V_i\perp \mathcal V_l$, a contradiction.
+\end{proof}
+
+So the step of the $k=2$ proof that fails at $k\ge3$ is the exact evaluation of
+the projection: two marginal conditions act at the same points. One can still
+discard the overlapping constraints. At $k=3$ the fibre in direction $j$ at
+$u=(t_l,t_m)$ meets $Z_l$ or $Z_m$ exactly when $\min(t_l,t_m)<\frac12-\varepsilon$
+(it meets $Z_l$ iff $c-t_l>B$). Let $\mathcal V'_j\subseteq \mathcal V_j$ be the functions
+supported on the \emph{clean} columns $\{|u|>B,\ \min(u)\ge\frac12-\varepsilon\}$;
+it is closed, being the range of the fibre mean restricted to those columns.
+On a clean fibre in direction $j$, $t_j+t_r\le c-t_l\le B$ for $\{l,r\}=\{1,2,3\}\setminus\{j\}$,
+so the point lies in no other $Z$. Hence the $\mathcal V'_j$ are supported on pairwise
+disjoint sets, and Lemma~\ref{lem:dual}(3)
+gives an orthogonal relaxation with supremum $\sigma'_3(\varepsilon)\ge \sigma_3(\varepsilon)$, of
+the kind the $k=2$ method can handle.
+
+\begin{proposition}[\lbl{Computed}, exact certificate, two programs]\label{prop:orth-relax}
+$\sigma'_3(\frac18)>\frac{13523319026150757}{6316738844612720}>2.1408$ and
+$\sigma'_3(\frac14)>\frac{39699868771187709}{19218050037559040}>2.0657$.
+\end{proposition}
+
+The certificates are symmetric step functions on cubes of side $\frac1{32}$
+lying inside $D$. Their marginals vanish on every clean column, and $J$ is
+counted only on columns inside $\{|u|\le a\}$, which can only lower it. Integer
+null spaces and the exact ratios are computed by
+\texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{k3\_orth\_relax\_cert.py}
+(python-flint; output \texttt{k3\_orth\_relax\_cert.out}). A second script,
+\texttt{k3\_orth\_relax\_verify.py}, expands the vector to all cubes, recomputes
+$I$ and all three $J_{i,3/4}$ cell by cell, and checks the marginal condition on
+the clean columns in all three directions; it gives the same fractions.
+
+
+\begin{proposition}[\lbl{Computed}, exact certificate, two independent programs]\label{prop:k3-step}
+Let $\varepsilon=\frac14$. There is a symmetric $F$ on $\frac32\mathcal R_3$, constant on
+each cell of the arrangement $\{t_i=\frac m8\}$, $\{t_i+t_j=\frac m8\}$,
+$\{t_1+t_2+t_3=\frac m8\}$, with coefficients in $\frac1{1000}\mathbb Z$, that
+satisfies the vanishing marginal condition of Theorem~3.14 and has
+\[
+I(F)=\tfrac{241672427}{6144000000},\qquad \sum_{i=1}^3J_{i,3/4}(F)=\tfrac{2578076273}{32768000000},
+\qquad \frac{\sum_iJ_{i,3/4}(F)}{I(F)}=2+\tfrac{711155}{3866758832}>2.00018 .
+\]
+\end{proposition}
+
+So, by \cite[Theorem~3.14]{PM8b}, $\mathrm{DHL}[3,2]$ holds under GEH. This is
+\cite[Theorem~3.15]{PM8b}; nothing new is proved. The proposition is an independent
+exact check of its variational step with a simple test function. The
+polynomial printed in \cite[\S7.4]{PM8b} exceeds $2$ by only about $6\cdot10^{-8}$
+(our recomputation, Session~21, \texttt{notes/}\allowbreak\texttt{explorations.md}).
+\begin{itemize}
+\item First program: the script \texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{exact.py}
+  in \texttt{code/}\allowbreak\texttt{parity/} (exact cell volumes, exact Gram matrices, exact null space; certificate
+  \texttt{k3\_arrangement\_cert.json}).
+\item Second program: \texttt{k3\_arrangement\_verify.py} (same folder). It uses
+  only the cells' labels and coefficients. It integrates $F$ and $F^2$ exactly
+  along each fibre. On each triangle cut out by $u_j=m$, $u_2\pm u_3=m$ (scaled
+  coordinates $u=8t_{-1}$, $m\in\mathbb Z$) the fibre breakpoints $m$, $m-u_2$,
+  $m-u_3$, $m-u_2-u_3$ and the end point keep their order, so both integrals
+  are affine there; the script evaluates each piece at three interior points
+  (and spot-checks two more). It reproduces $I$ and $J$ exactly and checks the
+  marginal condition.
+\end{itemize}
+One point of geometry matters. The marginals jump across the lines
+$u_j=m$ and $u_2+u_3=m$ (they come from planes that contain the fibre
+direction), and they are affine only after the lines $u_2-u_3=m$ are added.
+Both programs handle this. The same class at $8$, $12$, $16$, $20$, $24$ cells
+per unit gives $2.00019$, $2.00155$, $2.00211$, $2.00239$, $2.00255$ (exact
+ratios of rounded eigenvectors, first program only; file
+\texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{exact.out}).
+
+\begin{remark}[\lbl{Heuristic}: the $k=3$ supremum as a function of $\varepsilon$]\label{rem:k3-eps}
+The cube grids (cubes of side $1/n$ inside $D$), with all marginal conditions
+imposed, give lower bounds for $\sigma_3(\varepsilon)$ that converge like $1/n$, since
+they lose a boundary layer. We fit $L-\gamma/n$ to $n=32,40$ and
+$L-\gamma/n-\delta/n^2$ to $n=24,32,40$. The fits agree to $2\cdot10^{-4}$ in the
+first column and to $10^{-3}$ in the others; the table shows the second fit,
+rounded:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+$\varepsilon$ & all conditions, $\sigma_3(\varepsilon)$ & clean columns only, $\sigma'_3(\varepsilon)$ & no condition \\
+\midrule
+$\frac18$ & $1.976$ & $2.181$ & $2.273$\\
+$\frac14$ & $2.003$ & $2.105$ & $2.168$\\
+$\frac38$ & $1.990$ & $2.017$ & $2.056$\\
+\bottomrule
+\end{tabular}
+\end{center}
+(Extrapolated values; scripts \texttt{k3\_}\allowbreak\texttt{thm314\_}\allowbreak\texttt{dual.py} and
+\texttt{k3\_extrapolate.py} in \texttt{code/}\allowbreak\texttt{parity/}; floating point, not a certificate.) Two-point fits
+at $\varepsilon=0.05$, $0.15$, $0.35$, $0.45$ give $1.936$, $1.986$, $1.994$, $1.972$
+for the first column. The arrangement class of Proposition~\ref{prop:k3-step}
+converges much faster. It gives $1.97619$ ($\varepsilon=\frac18$, $n=32$), $1.98923$
+($\varepsilon=\frac38$, $n=24$) and $2.00255$ ($\varepsilon=\frac14$, $n=24$); these are
+exact ratios of admissible $F$, so true lower bounds, and they are consistent
+with the table (\texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{eps.out}).
+Three things follow, all heuristic.
+\begin{enumerate}
+\item Of the sampled values of $\varepsilon$, only $\frac14$ gives a ratio above the
+  parity value $2$, and then by about $0.15\%$: the $H_1\le6$ of
+  \cite[Theorem~3.15]{PM8b} has very little room.
+\item At $\varepsilon=\frac18$ the overlapping constraints push the supremum from
+  about $2.18$ down to about $1.98$, below $2$.
+\item The clean-column relaxation cannot prove $\sigma_3(\varepsilon)\le2$ at $\varepsilon=\frac18$
+  or $\frac14$ (certain, by Proposition~\ref{prop:orth-relax}); its extrapolated
+  values exceed $2$ at all three sampled $\varepsilon$. Other orthogonal subfamilies of
+  the constraints exist and were not tried.
+\end{enumerate}
 \end{remark}
 
 \section{The asymptotic sieve and the twin-prime sequence}\label{sec:fi}
@@ -1348,11 +1559,18 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   two-variable weights at level $(\log x)^{c/32}$, conditional on \cite{TT25}.
   What remains \lbl{Open} is the same as in question~1: any level beyond a power
   of $\log x$.
-\item (\lbl{Open}) What is the exact supremum of the Theorem~3.14 ratio at
-  $k=3$? \cite[Theorem~3.15]{PM8b} shows it exceeds $2$, and
-  Proposition~\ref{prop:ceil} gives at most $c(3)=2.472$. More generally, does
-  the variance argument of Theorem~\ref{thm:k2} give sharp ceilings for
-  $k\ge3$, where $c(k)$ is surely not sharp?
+\item (\lbl{Open}) What is the exact supremum $\sigma_3(\varepsilon)$ of the Theorem~3.14
+  ratio at $k=3$? \cite[Theorem~3.15]{PM8b} shows $\sigma_3(\frac14)>2$ (independently:
+  Proposition~\ref{prop:k3-step}), and Proposition~\ref{prop:ceil} gives at most
+  $c(3)=2.472$. Heuristically $\sigma_3(\frac14)\approx2.003$ and $\sigma_3(\frac18)\approx1.976<2$
+  (Remark~\ref{rem:k3-eps}). Is $\sigma_3(\varepsilon)>2$ only on an interval of $\varepsilon$, and
+  is $\sup_\varepsilon \sigma_3(\varepsilon)$ close to $2.003$? The variance argument of
+  Theorem~\ref{thm:k2} does not extend directly (Proposition~\ref{prop:overlap}):
+  a sharp ceiling will presumably have to use the overlapping constraints, for example through
+  alternating projections with an explicit rate, or a finite-element dual with
+  error control (Lemma~\ref{lem:dual}(2)). It cannot come from the clean-column
+  relaxation alone, which allows more than $2.14$ at $\varepsilon=\frac18$
+  (Proposition~\ref{prop:orth-relax}).
 \end{enumerate}
 
 \subsection*{Plan for later versions}
@@ -1401,6 +1619,12 @@ suffice). Nothing enters before it is read in the source.
   moduli, and shifted primes without large prime factors}, arXiv:2211.09641v1;
   \emph{Primes in arithmetic progressions to large moduli and Goldbach beyond the
   square-root barrier}, arXiv:2309.08522v1.
+\bibitem{Tao14b} T.~Tao, \emph{A general parity problem obstruction}, blog
+  post, What's new, 21 November 2014,
+  \url{https://terrytao.wordpress.com/2014/11/21/a-general-parity-problem-obstruction/}
+  (read 15 Nov 2026: Claim~1, the ``at least $j$ of $k$'' example, Example~4).
+\bibitem{Ake25} M.~Akeno, \emph{Small gaps between Goldbach primes},
+  arXiv:2508.02769v3 (30 Nov 2025) (read: \S5, footnote~3, p.~38).
 \end{thebibliography}
 
 \section*{Changelog}
@@ -1469,6 +1693,23 @@ suffice). Nothing enters before it is read in the source.
   \cite[Remark~6.6]{PM8b} for the $(1+\varepsilon)$ bound, the $m=1$ case of
   Corollary~\ref{cor:consistent} for Theorems~3.8 and 3.12, ``heuristic'' for
   the parity argument, the wording on $\vartheta$, scope of the numerics.
+\item[0.7] (15 Nov 2026) New Subsection~\ref{subsec:dual}: the dual formula
+  (Lemma~\ref{lem:dual}), which shows that the proof of Theorem~\ref{thm:k2} is
+  the exact projection; the overlap of the constraint cylinders for $k\ge3$
+  (Proposition~\ref{prop:overlap}); exact certificates that the orthogonal
+  relaxation at $k=3$ exceeds $2.14$ ($\varepsilon=\frac18$) and $2.06$ ($\varepsilon=\frac14$)
+  (Proposition~\ref{prop:orth-relax}); an exact step-function check of
+  \cite[Theorem~3.15]{PM8b}, ratio $2+1.84\cdot10^{-4}$, by two programs
+  (Proposition~\ref{prop:k3-step}); heuristic $\varepsilon$-dependence of the $k=3$
+  supremum (Remark~\ref{rem:k3-eps}). Parity attempt of this run (route card
+  \texttt{2026-11-15-k3-dual-}\allowbreak\texttt{orthogonal.md}). Open question~6 sharpened.
+  Fresh-context adversarial audit (\texttt{notes/}\allowbreak\texttt{audit-parity-v07.md}):
+  no mathematical errors; fixes: the fits in Remark~\ref{rem:k3-eps}, the
+  non-orthogonality argument, closedness of the $\mathcal V_j$, $v(f)\in W$, the source
+  of sharpness at $k=2$, scope of the heuristic conclusions.
+  \emph{Correction of attribution}: the core of Proposition~\ref{prop:bipartite}
+  is in Tao's 2014 blog post \cite{Tao14b}, found by this run's literature check
+  (new Remark~\ref{rem:tao14b}; label, section opening and abstract changed).
 \end{itemize}
 
 \end{document}

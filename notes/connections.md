@@ -9,7 +9,8 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Missing for anything bigger: the analytic inputs themselves; and nothing in this line can touch parity.
 
 ## Parity-barrier paper (papers/parity-barrier)
-- Prop. prop:bipartite / Cor. cor:six: within Liouville-pattern weights, the obstruction blocks exactly H_m < H(2m+1). Depends
+- Prop. prop:bipartite / Cor. cor:six: within Liouville-pattern weights, the obstruction blocks exactly H_m < H(2m+1)
+  (core = Tao's 2014 blog post "A general parity problem obstruction"; ours: the window form and H_m < H(2m+1)). Depends
   only on the PM8b heuristic framework (the heuristic part is that this class captures what sieves can see).
   Feeds into: a sharp statement of the barrier; the H_m line (the parity limit of this class for H_2 is 12, far below the
   known 270 (EH) / 252 (GEH)); the open question whether weights outside the class block DHL[5,3].
@@ -50,3 +51,9 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 ## H_m programme (scoped, not started as a paper; notes/hm-programme.md)
 - PM8b Thm 6.7 lower bound reproduced (code/hm/pm8b_mk_lower.py): k = 35410 (MPZ) and 41588 (BV only) match.
 - Possible gain from 2026 inputs depends on an admissible (varpi, delta) region nobody has made explicit; modest at best.
+
+- (Session 22) Lemma lem:dual / Prop. prop:overlap / Prop. prop:orth-relax / Prop. prop:k3-step (parity paper v0.7): the
+  supremum of PM8b's Thm 3.14 ratio as a projection norm. Depends on nothing analytic (pure variational problem). Feeds into:
+  open question 6 (exact k = 3 value; is S_3(eps) > 2 only on an interval of eps?), and the honest statement that H_1 <= 6
+  under GEH has little room (Heuristic: sup about 2.003 at eps = 1/4). Missing for anything bigger: everything; this is about
+  the variational shadow of the parity obstruction, not about primes.

@@ -3,30 +3,46 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 21, a bonus run, 15 Nov 2026): PHASE B
+## POSITION (after Session 22, back-to-back bonus run 1 of 3, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.6, verification-note v0.10 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
-  NOT started as a paper. Main paper v0.21.
+- Active papers: parity-barrier v0.7, verification-note v0.10 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+  NOT started as a paper. Main paper v0.22.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
 ## Next steps (in order; Phase B)
-1. Weekly review (Monday 16 Nov run). Candid questions for it: is sec:ceil of the parity paper interesting or folklore-level?
+1. Weekly review (Monday 16 Nov run). Candid questions for it: is sec:ceil / subsec:dual of the parity paper interesting or folklore-level?
+   NOTE (Session 22): the core of prop:bipartite turned out to be in Tao's 2014 blog post (notes/sources-tao14b.md); the review
+   should ask what else in our "Proved here" list a search of blogs (terrytao.wordpress.com) and MathOverflow would find.
    Is thread 2 (now FI, HB, Tao, TT, MR, SS) complete? Is the 182 restoration step worth more effort without per-component data?
 2. Parity attempt (one per run; route card + README line). Not to repeat: everything in notes/parity-attempts/README.md, now also
    ceilings / Cauchy-Schwarz for the PM8b GEH criteria and the k = 2 Thm 3.14 problem (Session 21, done). Candidates:
-   (a) open question 6: certified k = 3 supremum of the Thm 3.14 ratio (Heuristic ~2.003 at eps = 1/4; needs piecewise-polynomial
-   elements on PM8b's Sec. 7.4 polytopes plus a dual bound; does the variance argument of Thm thm:k2 extend?);
+   (a) open question 6: a RIGOROUS ceiling for the k = 3 Thm 3.14 supremum using the overlapping constraints (Session 22 showed the
+   direct extension of thm:k2 fails: route card 2026-11-15-k3-dual-orthogonal.md; tools: alternating projections with a rate, or a
+   finite-element dual with error control); or exact arrangement certificates (code/parity/k3_arrangement_exact.py --eps p/q
+   --cert-each) to map where sigma_3(eps) > 2 (Heuristic: only near eps = 1/4 among 0.05, 1/8, 0.15, 1/4, 0.35, 3/8, 0.45);
    (b) weights that change the twisted main terms (open question 2); (c) an integer substitute for "mu on a line is a character".
 3. Parity paper thread 3: which hypotheses are known NOT to suffice (EH/GEH for sieve methods: PM8b sec 8), stated precisely.
    Murty-Vatwani original if it arrives (notes/sources-needed.md).
-4. Bound share, rung 182: done so far: I, J0, J+, T (two programs), kappa_true (two methods), printed restoration arithmetic and
+4. Bound share, rung 182 (per-component restoration data requested from Jerry in Session 22, notes/sources-needed.md): done so far: I, J0, J+, T (two programs), kappa_true (two methods), printed restoration arithmetic and
    the 98 source rows (Session 21). Remaining: the 197 restoration integrals; the per-component A_j, M_j, Chernoff/low-witness
    parameters are NOT in the bundle or the trial data (would need the authors' supplement; outside our GitHub scope).
 5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta)
    region). Note: parity paper Cor. cor:ceil is relevant to H_m (H_2 <= 12-type results need a new criterion).
 6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+
+## Session 22 (back-to-back bonus run 1 of 3 at Jerry's request, 15:51 UTC 15 Nov; no wait) -- additions
+- Parity paper v0.7: subsec:dual (Lemma lem:dual, Prop. prop:overlap, Prop. prop:orth-relax, Prop. prop:k3-step, Remark rem:k3-eps),
+  Remark rem:tao14b (credit to Tao's 2014 blog post for the core of prop:bipartite; bib Tao14b, Ake25), open question 6 sharpened.
+  Audit notes/audit-parity-v07.md (fixes applied). Route card notes/parity-attempts/2026-11-15-k3-dual-orthogonal.md.
+- Scripts (all in code/parity/, run with /usr/bin/python3 -I): k3_thm314_dual.py eps mode n... (cube grids; modes full/disj/none;
+  output .out), k3_extrapolate.py, k3_orth_relax_cert.py p q n (+ data/orth_relax_*.json) and k3_orth_relax_verify.py,
+  k3_arrangement_exact.py [--eps p/q] [--cert-each] n... (helper-written; exact arrangement class; cert k3_arrangement_cert.json,
+  eps runs in k3_arrangement_eps.out) and k3_arrangement_verify.py (independent fibre-wise exact check).
+- Exploration: code/explore/k3_extremal_marginal.py (dead end).
+- Sources: notes/sources-tao14b.md (Tao blog 2014, Akeno arXiv:2508.02769v3). New 'needed': 182 restoration data.
+- Wolfram and mathbox NOT available.
 
 ## Session 21 (bonus run at Jerry's request, 14:54 UTC 15 Nov; no wait) -- additions
 - Parity paper v0.6: Section sec:ceil (Prop. prop:ceil, Cor. cor:ceil, Remark rem:ceil-locates, Thm thm:k2, Remark rem:k2,

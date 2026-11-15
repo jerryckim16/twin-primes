@@ -1,5 +1,282 @@
 # Research log
 
+## 2026-11-15 - Session 22 (back-to-back bonus run 1 of 3 at Jerry's request, started 9:51 AM CT / 15:51 UTC; no wait, no other run active): Why the sharp k = 2 argument does not extend to k = 3: a dual formula, overlapping marginal conditions, and an exact step-function check of Polymath8b's DHL[3,2] under GEH (parity paper v0.7); our bipartite criterion credited to Tao's 2014 blog post
+
+- Parity paper v0.7 (this run's parity attempt): the supremum of Polymath8b's Theorem 3.14 ratio is the norm of a projected operator (Lemma lem:dual, standard duality). Our k = 2 theorem is exactly this projection, because at k = 2 the two marginal conditions act on disjoint sets. For k >= 3 they overlap (Prop. prop:overlap), so the argument does not transfer.
+- Dropping the overlapping conditions at k = 3 lets the ratio exceed 2.1408 at eps = 1/8 and 2.0657 at eps = 1/4 (exact certificates, two scripts), while the true supremum at eps = 1/8 is about 1.976 (Heuristic, two grid methods). So whether the criterion beats the parity value 2 is decided by the overlapping conditions.
+- An exact step function on the arrangement {t_i, t_i+t_j, sum t = m/8} gives the k = 3, eps = 1/4 ratio 2 + 711155/3866758832 (about 2.00018), confirmed by two independent programs (one written by a helper agent, one here). This independently checks the variational step of Polymath8b's Theorem 3.15 (DHL[3,2], so H1 <= 6, under GEH); nothing new is proved. Heuristic eps scan: only eps = 1/4 of the sampled values exceeds 2 (about 2.003); 1/8, 3/8 give about 1.976 and 1.989.
+- Literature check correction: the core of our bipartite criterion (convex hull of forbidden sign patterns, bipartite target graphs, DHL[k,m+1] blocked iff k <= 2m) is already in Tao's blog post 'A general parity problem obstruction' (21 Nov 2014), found through a footnote of Akeno (arXiv:2508.02769v3). The paper now credits it (Remark rem:tao14b); our window form and H_m < H(2m+1) remain. Fresh-context audit of the new subsection: no mathematical errors, one numerical-description error and gaps, all fixed (notes/audit-parity-v07.md). Main paper v0.22.
+- Bound share: the 182 restoration step's per-component data (197 components) are not in the trial data we have; requested from Jerry (notes/sources-needed.md). Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
+
+Parity attempt: Attempt: extend the sharp k = 2 variance argument to k = 3 via a dual formula. Classification: no-go for the direct extension (Computed + Heuristic): the constraint cylinders overlap, and the clean-column relaxation is certified above 2.14 at eps = 1/8 where the true value is about 1.976; first unresolved implication: a rigorous ceiling using the overlapping constraints. No parity-breaking content.
+
+Explored: Does the k = 3 extremal keep the k = 2 structure (constant marginal on the J-region)? Dead end: the grid extremal's marginal varies by a factor of about 5, and forcing a constant marginal drops the ratio to 1.736 (vs 1.959 on the same grid).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- N
+- o
+-  
+- r
+- i
+- g
+- o
+- r
+- o
+- u
+- s
+-  
+- c
+- e
+- i
+- l
+- i
+- n
+- g
+-  
+- b
+- e
+- l
+- o
+- w
+-  
+- 2
+- .
+- 4
+- 7
+- 2
+-  
+- a
+- t
+-  
+- k
+-  
+- =
+-  
+- 3
+-  
+- w
+- a
+- s
+-  
+- p
+- r
+- o
+- v
+- e
+- d
+-  
+- (
+- t
+- h
+- e
+-  
+- a
+- t
+- t
+- e
+- m
+- p
+- t
+- '
+- s
+-  
+- s
+- u
+- c
+- c
+- e
+- s
+- s
+-  
+- c
+- r
+- i
+- t
+- e
+- r
+- i
+- o
+- n
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- 1
+- 8
+- 2
+-  
+- r
+- e
+- s
+- t
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+-  
+- i
+- n
+- t
+- e
+- g
+- r
+- a
+- l
+- s
+-  
+- r
+- e
+- m
+- a
+- i
+- n
+-  
+- b
+- l
+- o
+- c
+- k
+- e
+- d
+-  
+- o
+- n
+-  
+- d
+- a
+- t
+- a
+- .
+
+Next: Monday 16 Nov run: the first weekly review (notes/reviews/2026-11-16.md) before other work. Parity: a rigorous k = 3 ceiling using the overlapping constraints, or exact arrangement certificates over a range of eps. 182: the restoration data if Jerry supplies them.
+
 ## 2026-11-15 - Session 21 (bonus run at Jerry's request, started 8:54 AM CT / 14:54 UTC; no wait, no other run active): Where Polymath8b's GEH criteria stop: a ceiling k^2 log k/(k-1)^2 (no DHL[k,3] for k <= 45) and, at k = 2, exactly the parity value 2 (parity paper v0.6); the 182 restoration arithmetic and source rows checked
 
 - Parity paper v0.6 (this run's parity attempt): Polymath8b's three GEH criteria (Thms 3.8, 3.12(ii), 3.14) have ratio at most c(k) = k^2 log k/(k-1)^2 (Prop. prop:ceil, proved here by scaling their Cor 6.4). So they cannot give DHL[k,3] for any k <= 45, DHL[5,3] in particular (c(5) = 2.515 < 4), although Liouville-pattern weights block only k <= 4. Thresholds 46, 392, 2965, 22007 for m = 2..5 are certified with ball arithmetic.
