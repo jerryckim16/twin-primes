@@ -1,0 +1,3 @@
+I_T string-equal: True  exact-equal: True  digits(num): 347
+J_T string-equal: True  exact-equal: True  digits(num): 352
+k J_T/I_T (program 2) = 0.925834988208835 ; program 1 ratio_float = 0.925834988208835

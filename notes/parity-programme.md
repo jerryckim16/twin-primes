@@ -89,3 +89,14 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Literature: PM8b v4 re-read for this (p. 63: their partition works for eps in [1/4, 1/3], 1/4 chosen for simplifications);
   three web searches found no range-of-eps statement.
 - Next: rigorous ceiling < 2 for small eps / [0.31, 0.439) needs the marginal condition (overlapping constraints).
+
+## Session 24 (15 Nov, 11:34 AM CT slot) updates
+- Sources read: Fo04 Ford, On Bombieri's asymptotic sieve, arXiv:math/0401215v1 (SHA-256 4af579dbe2af84c4539bce0ef4067a97364f68bf83ab53622a40a0baea5b86b3), pp. 1-5;
+  De19 Debouzy arXiv:1907.06393v1 (0743fb64c6478419ed5e5bb8c63d7769eadac5b241c3e93c2b39e7bedc887838), pp. 1-3, 36-37 (+ audit read Lemma 2.6, (59), (61), (67));
+  Li21 again (7f7421c328f01dcf18565b1840a0d9e66e9f901ee966b414c8bde5f9e49a4456), pp. 1-2, Thm 1.1; FI98 p. 1044 again (same hash).
+  Not opened: Bombieri, The asymptotic sieve (1976) and Le grand crible (Asterisque 18): quoted only through Ford.
+- Thread 3: new Section sec:bomb (paper v0.9): Prop. prop:bomb-twin, Remarks rem:ford-twin, rem:debouzy; open question 7.
+  Thread 3 now covers: FI98 Thm 2 specialised (what suffices with (B)), PM8b sec. 8 (GEH heuristic), Bombieri/Ford (level alone).
+- Next attempt candidates: (a) the k = 3 small-eps ceiling (open question 6; review to decide whether to continue);
+  (b) Murty-Vatwani in the original if it arrives; (c) the Hooley-type question for twins (open question 7): is there ANY
+  structured sequence of the twin type (a_n = Lambda(n+2) times a nice weight) for which the averaged condition is provable?

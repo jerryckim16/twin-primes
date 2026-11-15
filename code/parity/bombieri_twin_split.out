@@ -1,0 +1,27 @@
+x = 1.000e+06, S_2 = 0.6601618606
+P/main = 0.994273   (twin primes, weight Lambda(n) log n)
+Q/main = 0.942604   (Lambda*Lambda piece)
+baseline sum (Lambda*Lambda)(n) / (x log x - x) = 0.910267  (Q/main should track this)
+(P+Q)/(2 main) = 0.968439   (Bombieri under EH: -> 1)
+g = 0.1: prime piece / 2S2x = 0.994335, localised semiprime piece / 2S2x = 0.535134, sum/(2 * 2S2x) = 0.764735
+g = 0.25: prime piece / 2S2x = 0.994335, localised semiprime piece / 2S2x = 0.852574, sum/(2 * 2S2x) = 0.923455
+g = 0.5: prime piece / 2S2x = 0.994335, localised semiprime piece / 2S2x = 0.941742, sum/(2 * 2S2x) = 0.968039
+g = 0.75: prime piece / 2S2x = 0.994335, localised semiprime piece / 2S2x = 0.971465, sum/(2 * 2S2x) = 0.982900
+x = 1.000e+07, S_2 = 0.6601618606
+P/main = 1.005232   (twin primes, weight Lambda(n) log n)
+Q/main = 0.943489   (Lambda*Lambda piece)
+baseline sum (Lambda*Lambda)(n) / (x log x - x) = 0.923769  (Q/main should track this)
+(P+Q)/(2 main) = 0.974361   (Bombieri under EH: -> 1)
+g = 0.1: prime piece / 2S2x = 1.005183, localised semiprime piece / 2S2x = 0.488411, sum/(2 * 2S2x) = 0.746797
+g = 0.25: prime piece / 2S2x = 1.005183, localised semiprime piece / 2S2x = 0.877987, sum/(2 * 2S2x) = 0.941585
+g = 0.5: prime piece / 2S2x = 1.005183, localised semiprime piece / 2S2x = 0.943186, sum/(2 * 2S2x) = 0.974184
+g = 0.75: prime piece / 2S2x = 1.005183, localised semiprime piece / 2S2x = 0.964918, sum/(2 * 2S2x) = 0.985051
+x = 3.000e+07, S_2 = 0.6601618606
+P/main = 1.000885   (twin primes, weight Lambda(n) log n)
+Q/main = 0.949272   (Lambda*Lambda piece)
+baseline sum (Lambda*Lambda)(n) / (x log x - x) = 0.928787  (Q/main should track this)
+(P+Q)/(2 main) = 0.975079   (Bombieri under EH: -> 1)
+g = 0.1: prime piece / 2S2x = 1.001020, localised semiprime piece / 2S2x = 0.624995, sum/(2 * 2S2x) = 0.813007
+g = 0.25: prime piece / 2S2x = 1.001020, localised semiprime piece / 2S2x = 0.888505, sum/(2 * 2S2x) = 0.944762
+g = 0.5: prime piece / 2S2x = 1.001020, localised semiprime piece / 2S2x = 0.948984, sum/(2 * 2S2x) = 0.975002
+g = 0.75: prime piece / 2S2x = 1.001020, localised semiprime piece / 2S2x = 0.969143, sum/(2 * 2S2x) = 0.985081

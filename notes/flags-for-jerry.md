@@ -1,5 +1,24 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-15 (Session 24) — (minor) Debouzy, "Twins almost prime under a Elliott-Halberstam's conjecture": the main constant appears to be off by a factor 2 (qualitative result unaffected)
+- **What.** N. Debouzy, arXiv:1907.06393v1 (2019; no journal version found). Theorem 0.2 and Corollaries 0.3, 2.7 state, under an EH-type
+  conjecture, that the twin-prime sum plus a localised semiprime sum equals 2 S_2 X (1+o(1)), with S_2 = prod_{p>=3} p(p-2)/(p-1)^2 = 0.66.
+  The constant should apparently be 4 S_2. (a) For nu1 = nu2 = 1 her Cor. 2.7 gives sum Lambda(n+2) Lambda_2(n) ~ 2 S_2 X log X,
+  but Bombieri's theorem (as quoted by Ford, arXiv:math/0401215v1, (1.3), H = 2 S_2) gives 4 S_2 X log X. (b) Her eq. (65) takes the
+  local-factor product over 3 <= p <= z, dropping the p = 2 factor (1 - 0)/(1 - 1/2) = 2. If her coprime-to-2 convention is meant
+  to remove p = 2, the model sum of 1 over odd n has density 1/2, not the 1/d used, and the same factor is lost. (c) Her own text
+  says sum Lambda(n)Lambda(n+2) ~ S_2 X "as a consequence of Hardy-Littlewood", while the standard prediction, which she
+  also uses (Pi(X) = 2 S_2 X / log^2 X), is 2 S_2 X.
+- **Why it might matter.** Only as a correction of a constant in a preprint. Her conclusion (infinitely many twins almost prime
+  under EH) does not change. It came up in this run's parity work (paper v0.9, Remark rem:debouzy).
+- **Evidence label:** our reading of pp. 1-3, 36-37 (rendered pages checked), plus Heuristic numerics: code/parity/bombieri_twin_split.py
+  gives (P+Q)/(2 * 2 S_2 (x log x - x)) = 0.968, 0.974, 0.975 at x = 1e6, 1e7, 3e7. This tends to 1 under the corrected constant and
+  would tend to 1/2 under the printed one. A fresh-context adversarial audit tried to find a normalisation that makes the printed
+  constant right and could not (verdict: CONFIRMED). The same audit found a bug in our script, now fixed; the fix moves the numbers
+  further from the printed constant.
+- **Not checked:** the rest of her proof; whether a later version exists outside arXiv; Bombieri's original papers (not opened).
+- **Needs outside expert review:** no. It is a pointer to a likely slip in a constant, not a claim against the method.
+
 ## 2026-11-15 (Session 21) — (minor) Polymath8b, Proposition 6.5: one step of the printed proof is not justified (no result changes)
 - **What.** In D. H. J. Polymath, *Variants of the Selberg sieve...* (arXiv:1407.4897v4, Prop. 6.5, p. 44), the bound
   M_{k,eps} <= k/(k-1) log(2k-1) is proved by Cauchy-Schwarz on fibres with the weight w_i = 1 - t_1 - ... - t_k + k t_i, followed by
