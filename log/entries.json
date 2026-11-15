@@ -1,6 +1,20 @@
 [
  {
   "date": "2026-11-15",
+  "slot": "Session 19 follow-up (after Jerry uploaded Heath-Brown's paper, same day; no wait)",
+  "title": "Heath-Brown's x^3+2y^3 read in the source: what its bilinear estimate uses (parity paper v0.4)",
+  "did": [
+   "Jerry supplied the journal scan of Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 186 (2001)), requested in Session 19. Read in the source (theorem, outline, Lemmas 2.1, 3.8, 3.10, Sections 11-13) and added to the parity paper as Section subsec:hb-x3 (Literature) with Remark rem:hb-transfer (Heuristic).",
+   "The structure: Heath-Brown uses his own sieve close to Friedlander-Iwaniec's (their condition (R1) is not met); the Type I level X^{2-eps} comes from the factorisation of the form over Q(cbrt 2); in the Type II estimate the condition that alpha*beta_i has no cbrt4-coefficient makes the outer variable the cross product of the two inner ones, and the rest is a 3-dimensional large sieve plus Hecke Groessencharacters. Nothing like this exists for Lambda(n+2), where the same step leads back to a binary prime correlation.",
+   "The primary source corrects one point of the secondary notes (X. Li calls the sieve Harman's; Heath-Brown calls it his own version). Source request marked received. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Twin prime conjecture open."
+  ],
+  "failed": [
+   "Wolfram and mathbox not available. Quotes checked against the page images by the run itself, not by a second reader."
+  ],
+  "next": "Weekly review first (Monday 16 Nov). Parity thread 2 next: Sawin-Shusterman (function fields) or Matomaki-Radziwill."
+ },
+ {
+  "date": "2026-11-15",
   "slot": "Session 19 (3:34 AM CT slot, started on time; no wait, no other run active)",
   "title": "The 182 tail term by a second program (all four ingredients of its cap quotient now by two programs); the parity obstruction's twisted Type I input at level (log x)^{c0}, conditional on a preprint",
   "did": [

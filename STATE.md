@@ -7,7 +7,7 @@ Each session works on the claude/... branch its system instructions name (create
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.3, verification-note v0.8 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+- Active papers: parity-barrier v0.4, verification-note v0.8 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
   NOT started as a paper. Main paper v0.19.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
@@ -19,12 +19,16 @@ Each session works on the claude/... branch its system instructions name (create
    (exploration, Session 18). Candidates: (a) the function-field step (Sawin-Shusterman arXiv:1808.04001: which step has no integer
    analogue); (b) Maynard two-variable weights at level (log x)^{c0} via TT25 (moduli up to R^4; open question 5 of the paper);
    (c) weights that change the twisted main terms (open question 2).
-3. Parity paper thread 2: Heath-Brown x^3+2y^3 is BLOCKED (notes/sources-needed.md, requested from Jerry; secondary notes in
-   notes/sources-hb-x3-2y3.md, not to be used as Literature). Next instead: Sawin-Shusterman, or Matomaki-Radziwill.
+3. Parity paper thread 2: Heath-Brown x^3+2y^3 DONE (v0.4, Session 19 follow-up, journal scan supplied by Jerry). Next:
+   Sawin-Shusterman (arXiv:1808.04001), or Matomaki-Radziwill.
 4. Bound share, rung 182: I, J0, J+, T all by two programs (Session 19). Next: scope the restoration losses (Thm 8.1, (8.6); 197 source
    integrals, 60 outer + 137 inner; row tables partly underspecified in the PDF, see notes/sources-182.md section 7 item 3).
 5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta) region).
 6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+
+## Session 19 follow-up (15 Nov, after the merge of PR #39)
+- Jerry uploaded Heath-Brown's x^3+2y^3 (journal scan, SHA-256 in notes/sources-hb-x3-2y3.md; not committed). Parity paper v0.4:
+  Section subsec:hb-x3, Remark rem:hb-transfer. Source request marked received.
 
 ## Session 19 (3:34 AM CT slot, started on time 09:34 UTC 15 Nov; no wait) -- additions
 - News search (WebSearch, standard, 3 queries; Science News article of 11 Sep opened): nothing new.
