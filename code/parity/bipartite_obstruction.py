@@ -6,10 +6,10 @@ parity obstruction cover?  Exact / brute-force checks for papers/parity-barrier 
     corrected (i < i', n+i and n+i' odd): compute omega(n) exactly for n <= N with lambda = Liouville.
 (2) LP: for a graph G on k vertices, is there a probability distribution on sets I (the positions with
     lambda = -1) containing no edge, with P(i in I) = 1/2 for every i?  Claim: iff G bipartite.
-    Checked by exact rational LP (vertex enumeration over independent sets via scipy linprog, then an exact
-    rational witness / odd-cycle certificate).
-(3) H(k) = minimal diameter of an admissible k-tuple, k <= 9, by brute force.
-(4) Window version for H_m: alternating colouring witness for tuples whose windows hold <= 2m elements.
+    Checked by floating-point LP feasibility (scipy HiGHS) over all independent sets, on 400 random graphs
+    (a numerical check of the proof, not a certificate).
+(3) H(k) = minimal diameter of an admissible k-tuple, 2 <= k <= 9, by brute force.
+(1b) the Remark 8.1 weight with i < i' but all positions prime to 3 (even ones included): identically 0 for H >= 4.
 usage: python3 code/parity/bipartite_obstruction.py  (writes code/parity/bipartite_obstruction.json)"""
 import itertools, json, random
 from fractions import Fraction as Fr
@@ -38,6 +38,17 @@ def remark81(lam, n, H, corrected):
         for j in range(i, H + 1):
             if corrected and (j == i or (n + i) % 2 == 0 or (n + j) % 2 == 0):
                 continue
+            if (n + i) % 3 == 0 or (n + j) % 3 == 0 or j - i > 4:
+                continue
+            w *= (1 - lam[n + i] * lam[n + j])
+            if w == 0: return 0
+    return w
+
+def strict_all(lam, n, H):
+    """Remark 8.1 weight with i < i' but every position prime to 3 (including even ones)."""
+    w = 1
+    for i in range(H + 1):
+        for j in range(i + 1, H + 1):
             if (n + i) % 3 == 0 or (n + j) % 3 == 0 or j - i > 4:
                 continue
             w *= (1 - lam[n + i] * lam[n + j])
@@ -86,14 +97,15 @@ def main():
     out = {}
     N = 20000; lam = liouville(N + 40)
     r81 = {}
-    for H in (4, 6, 8, 12):
+    for H in (3, 4, 6, 8, 12):
         pr = sum(1 for n in range(1, N) if remark81(lam, n, H, False) != 0)
         co = [n for n in range(1, N) if remark81(lam, n, H, True) != 0]
         # corrected weight must vanish whenever two primes at distance <= 4 sit in [n, n+H]
         isprime = lambda m: m > 1 and lam[m] == -1 and all(m % q for q in range(2, int(m ** 0.5) + 1))
         bad = [n for n in co if any(isprime(n + i) and isprime(n + j)
                                     for i in range(H + 1) for j in range(i + 1, min(H, i + 4) + 1))]
-        r81[H] = {"printed_nonzero_count": pr, "corrected_nonzero_count": len(co), "corrected_but_close_primes": len(bad)}
+        strict = sum(1 for n in range(1, N) if strict_all(lam, n, H) != 0)
+        r81[H] = {"printed_nonzero_count": pr, "strict_all_positions_nonzero_count": strict, "corrected_nonzero_count": len(co), "corrected_but_close_primes": len(bad)}
     out["remark81_n_le_%d" % N] = r81
     random.seed(20261115); agree = 0; tested = 0; nb = 0
     for trial in range(400):

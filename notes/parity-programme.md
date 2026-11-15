@@ -11,10 +11,14 @@ The twin prime conjecture is open. Nothing in this programme claims to prove it 
 | PM8b | Polymath, Variants of the Selberg sieve... | arXiv:1407.4897v4 | 4085a675d4716db2b22e672d083d4e38262b88b37b8d05b06bcdceb7cb4086a7 | §8 pp. 68-71 (of 80), re-read 15 Nov |
 | Tao16 | Tao, The logarithmically averaged Chowla and Elliott conjectures for two-point correlations | arXiv:1509.05422 (current version) | 467329ae414b669808555fddf131be3bc07025777ae3af8ccdea6e98db6722e9 | Thm 1.2, Thm 1.3, Cor 1.5, Remarks 1.4, 1.6, pp. 2-6; 15 Nov |
 | Tao07 | Tao, blog "Open question: the parity problem in sieve theory" (2007) | HTML | (14 Nov, see attempt details) | quoted in the 14 Nov route card only; re-read before use in the paper |
+| FI98b | Friedlander–Iwaniec, The polynomial X^2+Y^4 captures its primes, Ann. Math. 148 (1998) 945-1040 | arXiv:math/9811185v1 | 7c1ef7c50fe5ac405560c0bf56baea5fd6c014bdc6fc5d248727b96f66cdb07a | Thm 1, Prop 2.1, 3.5, 4.1, (5.2), Lemma 17.1, Prop 17.2, pp. 945-1017 (helper, notes/sources-fi-x2y4.md; key quotes re-checked by the coordinator); 15 Nov (Session 18) |
+| PM8b (again) | §8 incl. Remark 8.1 (p. 70), Thm 1.4 (pp. 2-3) | arXiv:1407.4897v4 | same hash | 15 Nov (Session 18) |
+| TT25 | Tao–Teräväinen, Quantitative correlations and some problems on prime factors of consecutive integers (preprint) | arXiv:2512.01739v2 | see notes/sources-chowla-quantitative.md | Thm 3.1, Remarks 3.2, pp. 24-25 (re-checked by the coordinator) |
+| HR, Pil, Guo, Hughes | Helfgott–Radziwiłł 2103.06853v2; Pilatte 2310.19357v3; Guo 2608.23500; Hughes 2609.28526 | arXiv | notes/sources-chowla-quantitative.md | helper reading only (statements, uniformity ranges); not used in the paper yet |
 | Li21 | Lichtman, Averages of the Möbius function on shifted primes | arXiv:2009.08969v2 | (14 Nov) | abstract, §1 |
 
 Not opened yet: Bombieri, Le grand crible / The asymptotic sieve (1976); Opera de Cribro (paywalled); Selberg's original parity papers;
-Friedlander–Iwaniec 1998 x^2+y^4 (Annals); Heath-Brown x^3+2y^3 (Acta 2001); Matomäki–Radziwiłł 2016; MRT averaged Chowla;
+Heath-Brown x^3+2y^3 (Acta 2001); Matomäki–Radziwiłł 2016; MRT averaged Chowla;
 Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 
 ## Threads and status (one bounded step per run)
@@ -30,3 +34,12 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 ## Literature-check record
 - 15 Nov: one standard web search ("logarithmically averaged Chowla two-point correlation in arithmetic progressions uniform modulus
   ... sieve weights") found no source stating Prop. prop:tao-weight or a uniform-in-modulus version; hence "possibly folklore" stays.
+
+## Session 18 (15 Nov) updates
+- Thread 1: new Section sec:bip of the paper (v0.2): exact criterion for which targets a Liouville-pattern weight can block
+  (Prop. prop:bipartite, Cor. cor:six); PM8b Remark 8.1 correction (subsec:rem81). Lean: lean/TwinPrimes/Parity.lean.
+- Thread 2: FI a^2+b^4 done (subsec:fi-x2y4, Remark rem:fi-transfer). Next: Heath-Brown x^3+2y^3, then Sawin–Shusterman.
+- Open question 1: TT25 Thm 3.1 would give level (log x)^{c0} (deduction not written; next candidate step: write and audit it,
+  as a strengthening of Prop. prop:tao-weight, labelled conditional on the preprint).
+- Next attempt candidates: (a) the deduction above; (b) weights outside the class (residue-class version explored: classwise
+  fairness gives nothing new, global fairness is the wrong notion; see notes/explorations.md); (c) the function-field step.

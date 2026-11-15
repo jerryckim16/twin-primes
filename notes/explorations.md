@@ -3,6 +3,20 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 18 -- Can residue-class-dependent parity weights beat the k <= 2m criterion? (optimisation duality / LP)
+- Idea: the parity paper's Prop. prop:bipartite covers weights that depend only on Liouville signs. A weight may also depend on
+  n mod q; in classes where p | n + h_j the position j cannot hold a prime, so it needs no fairness and no kill condition. Risky
+  question: does this extra freedom block targets the criterion leaves open, e.g. DHL[3,2]?
+- Tried: code/explore/residue_parity_lp.py (exact LP feasibility, scipy/HiGHS, toy model with uniform true masses; output
+  code/explore/residue_parity_lp.json; 11 s). Two fairness notions: GLOBAL (one density constant per position, class weights free)
+  and CLASSWISE (uniform class weights, fake-prime density 1/2 at each alive position in each class).
+- Outcome: dead end, but instructive. One prime p > k: no integer gain in either model (global gives k <= 2m p/(p-1) < 2m+1).
+  Several primes: the GLOBAL model becomes feasible for k = 3, m = 1 at q = 5*7*11 and 5*7*11*13 (bound ~ 2m/prod(1-1/p)), i.e.
+  it would "block" DHL[3,2], which Polymath8b prove under GEH; so global fairness is the wrong notion (such a weight changes the
+  Type I main terms class by class, which the sieve sees). CLASSWISE fairness is infeasible in every case tested, and in general it
+  reduces to the criterion class by class (alive positions only), so no gain. Heuristic / exploratory; not in a paper.
+- Use: supports Remark rem:marg's scope statement and the new open question of the parity paper (weights outside the class).
+
 ## 2026-11-15, Session 17 -- What does a Selberg/GPY weight see of the parity of n(n+2)? (probabilistic models / parity)
 - Idea: weight odd n <= X by the GPY-type Selberg weight w(n) = (sum_{d | n(n+2), d <= X^theta} mu(d)(log(R/d)/log R)^2)^2 and
   measure the weighted correlation of lambda(n)lambda(n+2), the split of the weight by parity pattern, and the residue-class
