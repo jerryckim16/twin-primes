@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.8 (draft), 15 November 2026}
+\date{Version 0.9 (draft), 15 November 2026}
 
 \begin{document}
 
@@ -586,9 +586,28 @@ code, not that reading. One point of the reading, where the last kernel block
 ends, is constrained by the published bound: only $r_{\max}=n_0-1$ is
 consistent with it. With the nominal block end the kernel violates the paper's
 own bound $K\le2.194$, and the tail exceeds the published bound by $5\cdot10^{-7}$
-in relative terms (an effect on $q_H$ of about $4\cdot10^{-11}$). Not checked:
-the restoration losses, the analytic lemmas behind the kernel and the
-minorant, and the analytic inputs (new Type~II and Type~III estimates).
+in relative terms (an effect on $q_H$ of about $4\cdot10^{-11}$).
+
+The mass deficit of the five-prime minorant, $\kappa_{\mathrm{true}}$ of
+\cite[(4.2)]{Sha26}, a $4$-dimensional integral over an ordered region, was
+also recomputed (\texttt{code/sharifi182\_kappa.py}; report in
+\texttt{notes/}). We used two methods:
+\begin{itemize}
+\item our own reduction to three variables, with Gauss--Legendre quadrature;
+\item the paper's exact moment series on its three simplices, after checking
+  that the simplices tile the region.
+\end{itemize}
+The two agree to $58$ digits:
+$\kappa_{\mathrm{true}}=9.3307088324061199\ldots\cdot10^{-5}$. This lies inside
+the printed bracket, below $\bar\kappa$ of (4.3) by $8\cdot10^{-19}$, and below
+the constant $\kappa_{\mathrm{cvx}}=11696/125000000$ used in the authors' Lean
+check. A crude Monte Carlo of the definition agrees to within its error
+($1\%$).
+
+Not checked: the restoration losses, the analytic lemmas behind the kernel and
+the minorant (including the factor $24$ and the asymptotic meaning of
+$\kappa_{\mathrm{true}}$), and the analytic inputs (new Type~II and Type~III
+estimates).
 \end{remark}
 
 \begin{remark}[what would change the picture]
@@ -628,6 +647,8 @@ version 0.12).
 
 \section*{Changes}
 \begin{description}
+\item[0.9] (15 November 2026) Remark~\ref{rem:182}: the mass deficit
+$\kappa_{\mathrm{true}}$ of the $182$ minorant recomputed by two methods.
 \item[0.8] (15 November 2026) Remark~\ref{rem:182}: the four ingredients of the
 cap quotient of the claimed $182$, each by two programs (the tail term by a
 second program this version), and the block-end reading of its kernel. Table of

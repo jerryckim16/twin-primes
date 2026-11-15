@@ -1,5 +1,18 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-15 (bonus run) — (minor) Sawin–Shusterman, Theorem 4.5: two different saving exponents in one proof (most likely a harmless slip)
+- **What.** In W. Sawin, M. Shusterman, *On the Chowla and twin primes conjectures over F_q[T]* (arXiv:1808.04001v2), the
+  saving of Theorem 4.5 is stated as << |M_d|^{1 - beta/p} ((4.8), (4.35)). The proof on p. 22 says "we obtain a savings in each
+  term of q^{(d-t')beta/2p} ... To obtain our desired savings of q^{d beta/2p}". So the exponent is beta/p in one place and
+  beta/(2p) in the other.
+- **Why it might matter.** Hardly at all. Every later use only needs some power saving proportional to 1/p. It came up while reading
+  the paper for the parity paper (v0.5, Section sec:ss).
+- **Evidence label:** Literature (read in arXiv v2, SHA-256 5b762a08...0e687). It was spotted by the helper and confirmed in the
+  extracted text by an independent auditor (notes/audit-parity-v05.md).
+- **Not checked:** the Annals of Math. (2022) version, which may already be corrected; whether either constant is the one the proof
+  actually gives.
+- **Needs outside expert review:** no. It is a pointer only, and most likely a typo.
+
 ## 2026-11-15 — Polymath8b Remark 8.1: the printed parity weight is identically zero (typo-level; no result changes)
 - **What.** In D. H. J. Polymath, *Variants of the Selberg sieve, and bounded intervals containing many primes*
   (arXiv:1407.4897v4, Remark 8.1, p. 70), the weight meant to block H_1 <= 4 in every window is printed as a product of

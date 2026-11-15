@@ -1,0 +1,121 @@
+{
+ "source": "Sharifi/GPT-6 Astra 182 bundle, Sec. 4.4-4.5 (4.2)-(4.11), Sec. 13.3",
+ "status": "Computed",
+ "a": "41361/100000",
+ "u": "1361/100000",
+ "method_A": {
+  "description": "closed-form al4 integral, then 3-dim tensor Gauss-Legendre (mpmath) on 2 analytic pieces of my own derivation of P_a; no simplex decomposition",
+  "dps": 60,
+  "gl_nodes_per_dim": [
+   24,
+   48
+  ],
+  "values": [
+   "0.00009330708832406119916592098704527262353773",
+   "0.00009330708832406119916592098704527262353773"
+  ],
+  "kappa_A": "0.00009330708832406119916592098704527262353773",
+  "error_estimate_of_coarser": "5.7e-65",
+  "seconds": 4.8,
+  "raw4d_float64_GL48_sanity": "np.float64(9.330708832406049e-05)"
+ },
+ "method_B": {
+  "vertices_enumerated": [
+   [
+    "-1/3",
+    "-1/3",
+    "-1/3",
+    "-1/3"
+   ],
+   [
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   [
+    "1/2",
+    "1/2",
+    "-3/4",
+    "-3/4"
+   ],
+   [
+    "1/2",
+    "1/2",
+    "-1/3",
+    "-1/3"
+   ],
+   [
+    "1/2",
+    "1/2",
+    "1/2",
+    "-2"
+   ],
+   [
+    "1/2",
+    "1/2",
+    "1/2",
+    "-3/4"
+   ],
+   [
+    "4/3",
+    "-1/3",
+    "-1/3",
+    "-1/3"
+   ]
+  ],
+  "vertices_match_printed": true,
+  "PE_45_equals_alpha_definition_on_20000_rational_points": true,
+  "vol_PE_exact_independent": "125/864",
+  "simplex_volumes": [
+   "125/5184",
+   "625/20736",
+   "625/6912"
+  ],
+  "simplex_volumes_match_printed": true,
+  "sum_volumes": "125/864",
+  "triangulation_covers_PE": true,
+  "r_Sigma": [
+   "1361/15000",
+   "1361/15000",
+   "1361/10000"
+  ],
+  "r_Sigma_match_printed": true,
+  "D_paper": 22,
+  "interval_D22_lo": "0.0000933070883240611846196693934484",
+  "interval_D22_hi": "0.0000933070883240612137121724443755",
+  "interval_D22_width": "2.9093e-20",
+  "printed_bracket_contains_D22_interval": true,
+  "D_high": 60,
+  "kappa_B_high": "0.00009330708832406119916592098704527262353773",
+  "kappa_B_high_tail_bound": "6.7396e-52",
+  "per_simplex_contribution": [
+   "0.0000155297245268365564977153988893",
+   "0.0000194262491518329864624572074986",
+   "0.0000583511146453916562057483806574"
+  ],
+  "kappa_cvx_vertex_average_exact": "972279236614331619785205362923721217921150080028438265517350584383717/10391163893562399507347091784449412580152041113707314847703040000000000000",
+  "kappa_cvx_vertex_average": "0.0000935678858088923308740247751736",
+  "kappa_cvx_vertex_average_le_11696/125000000": true,
+  "seconds": 49.7
+ },
+ "comparison": {
+  "abs_diff_A_minus_B_high": "2.14e-63",
+  "agreeing_significant_digits": 58,
+  "printed_bracket": [
+   ".000093307088324061",
+   ".000093307088324062"
+  ],
+  "printed_bracket_contains_A": true,
+  "printed_bracket_contains_B_rigorous_D22": true,
+  "kappa_bar": "46653544162031/500000000000000000",
+  "kappa_bar_equals_printed_upper_end": true,
+  "kappa_true_lt_kappa_bar_rigorous": true,
+  "kappa_bar_minus_kappa_true": "8.0083e-19",
+  "kappa_cvx": "11696/125000000",
+  "kappa_bar_lt_kappa_cvx": true,
+  "vertex_average_le_kappa_cvx": true,
+  "kappa_cvx_minus_vertex_average": "1.1419e-10"
+ },
+ "total_seconds": 54.8
+}

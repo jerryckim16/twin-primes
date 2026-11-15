@@ -1,0 +1,52 @@
+method A, GL degree 4 (24 nodes/dim): 0.00009330708832406119916592098704527262353773
+method A, GL degree 5 (48 nodes/dim): 0.00009330708832406119916592098704527262353773
+raw 4-d float GL48: np.float64(9.330708832406049e-05)
+  simplex 1: done (1.4s)
+  simplex 2: done (25.3s)
+  simplex 3: done (47.6s)
+  B.vertices_enumerated: [['-1/3', '-1/3', '-1/3', '-1/3'], ['0', '0', '0', '0'], ['1/2', '1/2', '-3/4', '-3/4'], ['1/2', '1/2', '-1/3', '-1/3'], ['1/2', '1/2', '1/2', '-2'], ['1/2', '1/2', '1/2', '-3/4'], ['4/3', '-1/3', '-1/3', '-1/3']]
+  B.vertices_match_printed: True
+  B.PE_45_equals_alpha_definition_on_20000_rational_points: True
+  B.vol_PE_exact_independent: 125/864
+  B.simplex_volumes: ['125/5184', '625/20736', '625/6912']
+  B.simplex_volumes_match_printed: True
+  B.sum_volumes: 125/864
+  B.triangulation_covers_PE: True
+  B.r_Sigma: ['1361/15000', '1361/15000', '1361/10000']
+  B.r_Sigma_match_printed: True
+  B.D_paper: 22
+  B.interval_D22_lo: 0.0000933070883240611846196693934484
+  B.interval_D22_hi: 0.0000933070883240612137121724443755
+  B.interval_D22_width: 2.9093e-20
+  B.printed_bracket_contains_D22_interval: True
+  B.D_high: 60
+  B.kappa_B_high: 0.00009330708832406119916592098704527262353773
+  B.kappa_B_high_tail_bound: 6.7396e-52
+  B.per_simplex_contribution: ['0.0000155297245268365564977153988893', '0.0000194262491518329864624572074986', '0.0000583511146453916562057483806574']
+  B.kappa_cvx_vertex_average_exact: 972279236614331619785205362923721217921150080028438265517350584383717/10391163893562399507347091784449412580152041113707314847703040000000000000
+  B.kappa_cvx_vertex_average: 0.0000935678858088923308740247751736
+  B.kappa_cvx_vertex_average_le_11696/125000000: True
+  B.seconds: 49.7
+{
+ "abs_diff_A_minus_B_high": "2.14e-63",
+ "agreeing_significant_digits": 58,
+ "printed_bracket": [
+  ".000093307088324061",
+  ".000093307088324062"
+ ],
+ "printed_bracket_contains_A": true,
+ "printed_bracket_contains_B_rigorous_D22": true,
+ "kappa_bar": "46653544162031/500000000000000000",
+ "kappa_bar_equals_printed_upper_end": true,
+ "kappa_true_lt_kappa_bar_rigorous": true,
+ "kappa_bar_minus_kappa_true": "8.0083e-19",
+ "kappa_cvx": "11696/125000000",
+ "kappa_bar_lt_kappa_cvx": true,
+ "vertex_average_le_kappa_cvx": true,
+ "kappa_cvx_minus_vertex_average": "1.1419e-10"
+}
+wrote code/data182/kappa_result.json
+
+real	0m55.100s
+user	0m50.811s
+sys	0m4.499s

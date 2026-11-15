@@ -3,6 +3,19 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, bonus run (Session 20) -- Barban-Davenport-Halberstam variance for lambda(n)lambda(n+2): can L^2 information reach the twisted Type I input beyond level 1/2? (large sieve / probabilistic models)
+- Idea: the twisted Type I input of the parity obstruction is a statement about sum_{n = 0 (d)} lambda(n)lambda(n+2) for d up to x^theta.
+  An L^2 (BDH-type) statement over all classes might be easier than a pointwise one. The BDH variance
+  V(Q) = sum_{W<=Q} sum_b |sum_{n=b (W)} f(n)|^2 with f = lambda(n)lambda(n+2) is governed by the four-point "parallelogram"
+  correlations C(d) = sum_n f(n)f(n+d).
+- Tried: code/explore/bdh_twin_liouville.py at N = 10^7 (49 s). C(d)/sqrt(N) for d <= 2000 has rms 1.000 and max 3.47, the same
+  for even and odd d. V(200)/(200 N) = 0.983, against 1 for random signs. The deduction: by Cauchy-Schwarz,
+  sum_{d<=Q} |S(d,0)| <= (Q V(Q))^{1/2}, and even the random-sign value V = QN gives Q sqrt(N), which beats the trivial bound
+  x log Q only for Q < sqrt(x).
+- Outcome: dead end (as expected). L^2 / large-sieve information about lambda(n)lambda(n+2) cannot go past level 1/2, whatever
+  the four-point correlations are, so it cannot replace the pointwise input. The numerics are consistent with randomness and
+  show no structure.
+
 ## 2026-11-15, Session 19 -- Do Liouville signs at extra linear forms enlarge the class of parity weights? (optimisation duality / LP)
 - Idea: open question 2 of the parity paper asks for weights outside the Liouville-pattern class. The cheapest enlargement is to let
   the weight also depend on lambda(L(n)) at further linear forms L (independent ones, or dependent ones such as
