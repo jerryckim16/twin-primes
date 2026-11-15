@@ -325,6 +325,50 @@ only confirm the input of the parity obstruction, not give a lower bound
 for twin primes.
 \end{remark}
 
+The same argument covers Maynard's two-variable weights (open question~5 of
+version~0.3, suggested by the audit of Proposition~\ref{prop:tao-weight-logc}).
+
+\begin{corollary}[\lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25} (preprint)}]
+\label{cor:maynard-logc}
+Let $c$ be the constant of \cite[Theorem~3.1]{TT25} and $c_0'=c/32$. For
+$x\ge x_0$, $1\le R\le(\log x)^{c_0'}$ and real $(\lambda_{d_1,d_2})_{d_1,d_2\le R}$
+with $\lambda_{1,1}=1$ and $|\lambda_{d_1,d_2}|\le1$, put
+\[
+w(n)=\left(\sum_{d_1\mid n,\ d_2\mid n+2,\ d_1,d_2\le R}\lambda_{d_1,d_2}\right)^2 .
+\]
+Then $\left|\sum_{n\le x}w(n)\lambda(n)\lambda(n+2)/n\right|\le(\log x)^{-c_0'}\sum_{n\le x}w(n)/n$.
+\end{corollary}
+
+\begin{proof}
+We reuse the steps of the proof of Proposition~\ref{prop:tao-weight-logc},
+with $\kappa=c/4$. Expanding the square,
+\[
+w(n)=\sum_{d_1,d_2,e_1,e_2\le R}\lambda_{d_1,d_2}\lambda_{e_1,e_2}\,
+1_{A\mid n}\,1_{B\mid n+2},\qquad A=[d_1,e_1],\ B=[d_2,e_2].
+\]
+The conditions $A\mid n$, $B\mid n+2$ are solvable only if $(A,B)\mid2$, and
+then, by the Chinese remainder theorem, they define a single class modulo
+$e=[A,B]=[d_1,d_2,e_1,e_2]\le R^4\le(\log x)^{\kappa/2}$. The bound for one
+class, $|S(e,c;x)|\ll(\log x)^{1-\kappa/2}/e+1$, is proved there for every
+$e\le(\log x)^{\kappa/2}$ and every residue $c$, so
+\[
+\left|\sum_{n\le x}\frac{w(n)\lambda(n)\lambda(n+2)}{n}\right|
+\ll(\log x)^{1-\kappa/2}\sum_{e\le R^4}\frac{g(e)}{e}+R^4,
+\]
+where $g(e)$ is the number of quadruples with least common multiple $e$. The
+function $g$ is multiplicative with $g(p^a)=(a+1)^4-a^4\le 4(a+1)^3$, so
+$\sum_{e\le R^4}g(e)/e\le\prod_{p\le R}\sum_{a\ge0}g(p^a)p^{-a}\ll(\log R+1)^{15}$
+(the only $e$ that occur have all prime factors $\le R$).
+
+For the main term: if $n$ is odd and $p\nmid n(n+2)$ for $3\le p\le R$, then
+every $d_1\le R$ dividing $n$, and every $d_2\le R$ dividing $n+2$, equals $1$,
+so $w(n)=\lambda_{1,1}^2=1$. As in the proof of
+Proposition~\ref{prop:tao-weight-logc}, $\sum_{n\le x}w(n)/n\gg(\log R+1)^{-2}\log x$.
+The ratio is therefore
+$\ll(\log x)^{-\kappa/2+o(1)}+(\log x)^{\kappa/2-1+o(1)}\le(\log x)^{-\kappa/8}$
+for $x\ge x_0$, and $\kappa/8=c/32$.
+\end{proof}
+
 \section{Which close-prime targets the obstruction blocks}\label{sec:bip}
 
 The weight in \cite[\S8]{PM8b} is tailored to one target (two primes at
@@ -874,12 +918,10 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
 \item Is there a sequence closely tied to twin primes (for instance with a
   norm-form structure, as in Friedlander--Iwaniec's $a^2+b^4$, cited in
   \cite[p.~71]{PM8b}) for which a (B)-type estimate is provable?
-\item (\lbl{Open}) Weights of Maynard's two-variable form
-  $\left(\sum_{d_1\mid n,\,d_2\mid n+2}\lambda_{d_1,d_2}\right)^2$ are not of the
-  form treated in Proposition~\ref{prop:tao-weight-logc}. The same proof should
-  apply with moduli up to $R^4$ (each pair of conditions is at most two classes
-  modulo $[d_1,e_1][d_2,e_2]$) and $\lambda_{1,1}\ne0$; this was suggested by
-  the audit and has not been written out.
+\item (Answered conditionally in Corollary~\ref{cor:maynard-logc}.) Maynard's
+  two-variable weights at level $(\log x)^{c/32}$, conditional on \cite{TT25}.
+  What remains \lbl{Open} is the same as in question~1: any level beyond a power
+  of $\log x$.
 \end{enumerate}
 
 \subsection*{Plan for later versions}
