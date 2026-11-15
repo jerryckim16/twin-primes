@@ -315,6 +315,11 @@
    "label": "Computed",
    "text": "Polymath8b Thm 6.7 lower bound for M_k reproduced in ball arithmetic: smallest k for DHL[k,3] is 35410 in PM8b's MPZ region and 41588 with BV only, both equal to Polymath8b's.",
    "where": "code/hm/pm8b_mk_lower.py, notes/hm-programme.md"
+  },
+  {
+   "label": "Computed",
+   "text": "182 tail term E_{H_C^c} (one program, arb balls; kernel K of [M] (5.6) exact): T = 5.286348805928e-13 +- 1e-40, below the published trialTailUpper 5.286348805973e-13; with the balls for I, J0, J+ the cap surplus q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4.",
+   "where": "code/sharifi182_tail.py, code/data182/tail_result.json, notes/tail-182-report.md; paper v0.18 Remark rem:sha182"
   }
  ],
  "ideas": [

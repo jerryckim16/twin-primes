@@ -20,8 +20,8 @@ Each session works on the claude/... branch its system instructions name (create
    (Sawin-Shusterman); (c) a weight class beyond Liouville patterns that blocks DHL[5,3]? (open question 3 of the paper).
 2. Parity paper thread 2: Heath-Brown x^3+2y^3 (Acta Math. 186 (2001)) -- statement and the structure its Type II estimate uses;
    then Sawin-Shusterman (arXiv:1808.04001). Every Literature sentence read in the source; adversarial audit before release.
-3. Bound share, rung 182: see the Session 18 block below for the status of the second J program (code/sharifi182_check2_J.py).
-   Remaining for 182 after J: the tail term E_{C^c} (needs the kernel K of [M] (5.6) transcribed), the losses, restoration.
+3. Bound share, rung 182: I, J0, J+ now by two programs; tail by one (Session 18). Next: a second, genuinely different program
+   for the tail (e.g. program 1's fixed-point/GMP style, code/sharifi182_J.py, with the K mask), then the restoration losses.
 4. 3g share: decide on a second small-results paper at the weekly review (options: capped-variational theory (programme 2), or the
    H_m (varpi, delta) region (programme 1, notes/hm-programme.md)).
 5. Optional 186 follow-ups: renewal branch in program 2; why renewal-branch V of small bins sits up to 2.7% below the table.
@@ -39,7 +39,7 @@ Each session works on the claude/... branch its system instructions name (create
 - 3g: notes/hm-programme.md, code/hm/pm8b_mk_lower.py (PM8b Thm 6.7 reproduced: k = 35410 MPZ, 41588 BV-only).
 - Exploration: code/explore/residue_parity_lp.py (dead end; global fairness is the wrong notion).
 - RUNG 182 J second program DONE: code/sharifi182_check2_J.py (--cap b, --combine, --selftest), results code/data182/check2_J_result.json and check2_J_cap_<b>.json; J0, J+ balls above the published lower bounds; vs program 1 rel 2e-23 (J0), 2e-32 (J+). Report notes/check2-J-182-report.md. 2 workers x 3.7 GB, ~107 min.
-- RUNG 182 TAIL: STATUS182TAIL
+- RUNG 182 TAIL (one program): code/sharifi182_tail.py (imports check2_J and check2), results code/data182/tail_result.json and tail_cap_<b>.json, report notes/tail-182-report.md; source notes notes/sources-182-tail.md. T = 5.286348805928e-13 +- 1e-40 <= published trialTailUpper (rel gap 8e-12); q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4. Kernel K exact in fmpq; (5.7) needs r_max = n0-1 (nominal block end violates it). 2 workers x 3.6 GB, 66 min. NEXT for 182: an independent second program for the tail (different contraction), then the restoration losses (2.115e-4 claimed).
 - Wolfram and mathbox NOT available.
 
 ## Session 17 (7:34 PM CT slot, 14 Nov; started 01:34 UTC 15 Nov; no wait) -- additions

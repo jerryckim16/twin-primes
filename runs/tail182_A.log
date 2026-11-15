@@ -1,0 +1,36 @@
+[    24 s, maxrss 0.92 GB] kernel: {"nonzero_W": 506, "sum_W": 0.047815551681968535, "blocks": 512, "K_first": 0.2769026620452197, "K_block459": 0.9541743715192743, "K_block483": 1.2891962233895935, "K_last": 2.1935428780743305, "K_57_holds": true, "K_last_if_rmax_393215": 2.196369787195455, "K_57_holds_if_rmax_393215": false}
+[    24 s, maxrss 0.92 GB] setup: caps [141720, 177528, 186253, 186491, 196608, 246256], H_C rows [((0, 352698), 246256), ((352699, 371671), 186491)], prec 128
+[   213 s, maxrss 1.91 GB] layer 0 (b = 141720): marginal, 5 groups, 115 products
+[   349 s, maxrss 2.09 GB] layer 1 (b = 177528): marginal, 4 groups, 92 products
+[   393 s, maxrss 2.37 GB] cap 141720: moments, monomials of length 0 done (0 products)
+[   479 s, maxrss 3.20 GB] cap 141720: moments, monomials of length 1 done (11 products)
+[   733 s, maxrss 3.46 GB] cap 141720: moments, monomials of length 2 done (45 products)
+[  1059 s, maxrss 3.46 GB] cap 141720: moments, monomials of length 3 done (91 products)
+[  1322 s, maxrss 3.46 GB] cap 141720: moments, monomials of length 4 done (128 products)
+[  1453 s, maxrss 3.46 GB] cap 141720: moments, monomials of length 5 done (147 products)
+[  1494 s, maxrss 3.46 GB] cap 141720: moments, monomials of length 6 done (153 products)
+[  1499 s, maxrss 3.46 GB] cap 141720: term +1 (layer 0): T [5.0645588495203826575e-13 +/- 3.58e-33], M_T [3.3517173506932912252e-13 +/- 3.95e-34]
+[  1505 s, maxrss 3.46 GB] cap 141720: term -1 (layer 1): T [4.2044019897956036276e-13 +/- 3.49e-33], M_T [2.7900919834991131390e-13 +/- 1.38e-33]
+[  1505 s, maxrss 3.46 GB] cap 141720: T part [8.601568597247790298293997e-14 +/- 1.56e-39], M_T part [5.616253671941780862098329e-14 +/- 2.03e-40]
+[  1594 s, maxrss 3.46 GB] layer 2 (b = 186253): marginal, 3 groups, 69 products
+[  1636 s, maxrss 3.46 GB] cap 177528: moments, monomials of length 0 done (0 products)
+[  1714 s, maxrss 3.46 GB] cap 177528: moments, monomials of length 1 done (11 products)
+[  1959 s, maxrss 3.55 GB] cap 177528: moments, monomials of length 2 done (45 products)
+[  2289 s, maxrss 3.55 GB] cap 177528: moments, monomials of length 3 done (91 products)
+[  2549 s, maxrss 3.55 GB] cap 177528: moments, monomials of length 4 done (128 products)
+[  2677 s, maxrss 3.55 GB] cap 177528: moments, monomials of length 5 done (147 products)
+[  2718 s, maxrss 3.55 GB] cap 177528: moments, monomials of length 6 done (153 products)
+[  2723 s, maxrss 3.55 GB] cap 177528: term +1 (layer 1): T [4.3973046264044776020e-13 +/- 2.28e-33], M_T [2.9155485530408649762e-13 +/- 3.69e-33]
+[  2728 s, maxrss 3.55 GB] cap 177528: term -1 (layer 2): T [2.9365361758528245976e-13 +/- 1.95e-33], M_T [1.9391239720523752188e-13 +/- 2.83e-33]
+[  2729 s, maxrss 3.55 GB] cap 177528: T part [1.460768450551653004403300e-13 +/- 1.83e-38], M_T part [9.764245809884897574086450e-14 +/- 1.28e-39]
+[  2799 s, maxrss 3.55 GB] layer 3 (b = 186491): marginal, 2 groups, 46 products
+[  2845 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 0 done (0 products)
+[  2924 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 1 done (11 products)
+[  3179 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 2 done (45 products)
+[  3528 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 3 done (91 products)
+[  3797 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 4 done (128 products)
+[  3924 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 5 done (147 products)
+[  3964 s, maxrss 3.55 GB] cap 186253: moments, monomials of length 6 done (153 products)
+[  3970 s, maxrss 3.55 GB] cap 186253: term +1 (layer 2): T [2.9574093052416223090e-13 +/- 5.62e-34], M_T [1.9526272395474981217e-13 +/- 4.11e-33]
+[  3974 s, maxrss 3.55 GB] cap 186253: term -1 (layer 3): T [1.4508738211915181621e-14 +/- 1.77e-34], M_T [1.0869473546048369314e-14 +/- 4.57e-34]
+[  3974 s, maxrss 3.55 GB] cap 186253: T part [2.812321923122470492793849e-13 +/- 4.32e-38], M_T part [1.843932504087014428605600e-13 +/- 3.95e-38]

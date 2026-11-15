@@ -82,7 +82,7 @@ arithmetic of its loss tables, not yet the raw loss bounds); for the last
 rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
 criterion, recomputed from the trial data, agree with its published enclosures
 (Remark~\ref{rem:sha182}; for $I(F)$ by two independent programs since
-version~0.15, for $J_0$, $J_+$ since version~0.18); version~0.16 re-evaluates the raw loss bounds of the $186$
+version~0.15, for $J_0$, $J_+$ since version~0.18, and its tail term by one program, just below its published bound); version~0.16 re-evaluates the raw loss bounds of the $186$
 companion from its formulas ($78$ of its $97$ components, all but $1.2\cdot10^{-6}$ of its
 loss $L^+$; all at most the published values, most within $5\cdot10^{-9}$ of them; one
 program, not an outward-rounded certificate) and shows that the final margin of
@@ -2225,7 +2225,19 @@ above the published lower bounds (as exact rationals), agreeing with the
 first program to $2\cdot10^{-23}$ and $2\cdot10^{-32}$ in relative terms
 (the $J_0$ gap sits on the same three caps as the $I$ gap and has the same
 size). Both programs share the reading of which caps form the layers and what
-the face mask in a layer is, which the source does not spell out. TAIL182
+the face mask in a layer is, which the source does not spell out. The tail term
+$E_{H_C^c}$ (\cite{Sha26}, (6.5)--(6.7) with $H_C$ for $C$, and the step kernel
+$K$ of (5.6), computed exactly in rationals; (5.7), $0\le K\le2.194$, holds when
+the last block ends at $n_0-1$) is evaluated by one program so far
+(\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_tail.py}, report
+\texttt{notes/}\allowbreak\texttt{tail-182-report.md}):
+$T\in[5.286348805928077\cdot10^{-13}\pm1.1\cdot10^{-40}]$, just below the published
+upper bound $5.286348805972699\cdot10^{-13}$ (relative gap $8\cdot10^{-12}$). From
+the balls for $I$, $J_0$, $J_+$ and $T$ the cap surplus is
+$q_H-1=2.767059\cdot10^{-4}$, above the certified $\mu^-=2.766919\cdot10^{-4}$;
+the tail costs $7.86\cdot10^{-5}$ of $q_H$, so the claimed final margin
+($6.52\cdot10^{-5}$) would be lost if the true tail were about $1.83$ times
+larger.
 Still unchecked: the restoration losses ($2.115\cdot10^{-4}$ claimed) and the
 analytic inputs.
 \end{remark}
