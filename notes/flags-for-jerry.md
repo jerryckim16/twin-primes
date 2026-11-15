@@ -21,6 +21,8 @@
 - **Needs outside expert review:** not really (elementary); worth a one-line note to the authors only if the journal version
   has the same text.
 
+- **Update (15 Nov, coordinator):** the journal version (Res. Math. Sci. 1 (2014), Art. 12, Open Access, CC-BY; Remark 45 there) prints the same weight, 0 <= i <= i' <= H, so the slip is in the published text as well. A one-line note to the authors is reasonable; it changes no result.
+
 ## 2026-11-14 — Polymath8a Lemma 6.25 (and Cor. 6.26) is false as stated; repairable, no result changes
 - **What.** The gcd factor $(a_2-a_1,n,r_1,r_2)^{1/2}$ in the hyper-Kloosterman correlation bound of
   D. H. J. Polymath, *New equidistribution estimates of Zhang type* (ANT 8 (2014); arXiv:1402.0811v3)
