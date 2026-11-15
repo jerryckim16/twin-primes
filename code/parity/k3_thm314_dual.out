@@ -37,3 +37,5 @@ eps=0.375 mode=none n=40 orbits=6145 constraints=0 ratio>= 2.019553
 eps=0.05 mode=full n=20 orbits=785 constraints=196 ratio>= 1.883896
 eps=0.05 mode=full n=40 orbits=6145 constraints=850 ratio>= 1.909938
 eps=0.05 mode=disj n=20 orbits=785 constraints=52 ratio>= 2.170508
+eps=0.05 mode=disj n=40 orbits=6145 constraints=238 ratio>= 2.202857
+eps=0.15 mode=full n=20 orbits=785 constraints=153 ratio>= 1.934650

@@ -1,7 +1,7 @@
 {
- "version": "0.21",
+ "version": "0.22",
  "updated": "2026-11-15",
- "session_count": 21,
+ "session_count": 22,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -328,7 +328,7 @@
   },
   {
    "label": "Proved here",
-   "text": "(possibly folklore; for the class of Liouville-pattern weights, which is the heuristic part) A fair pattern weight blocking a target exists iff (1/2,...,1/2) is a convex combination of target-free sets: for pairs iff the target graph is bipartite; for DHL[k,m+1] iff k <= 2m; for m+1 primes in windows of length g iff no closed window holds 2m+1 tuple elements. Hence the class blocks every tuple exactly when g < H(2m+1): H_1 < 6, H_2 < 12, H_3 < 20 (H(k) by exhaustive search; witnesses Lean-checked admissible).",
+   "text": "(core NOT new: the convex-hull, bipartite and k/2 cases are in Tao's blog post \"A general parity problem obstruction\", 21 Nov 2014, credited from parity paper v0.7; the window form and H_m < H(2m+1) are ours as far as we read; for the class of Liouville-pattern weights, which is the heuristic part) A fair pattern weight blocking a target exists iff (1/2,...,1/2) is a convex combination of target-free sets: for pairs iff the target graph is bipartite; for DHL[k,m+1] iff k <= 2m; for m+1 primes in windows of length g iff no closed window holds 2m+1 tuple elements. Hence the class blocks every tuple exactly when g < H(2m+1): H_1 < 6, H_2 < 12, H_3 < 20 (H(k) by exhaustive search; witnesses Lean-checked admissible).",
    "where": "papers/parity-barrier v0.2, Prop. prop:bipartite, Cor. cor:six; notes/parity-attempts/2026-11-15-bipartite-criterion.md"
   },
   {
@@ -370,6 +370,21 @@
    "label": "Literature",
    "text": "Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 2001) read in the source: own sieve close to Friedlander-Iwaniec's (their (R1) not met), Type I level X^{2-eps} from the factorisation of the form, Type II Lemma 3.10 via the vanishing cbrt4-coefficient (outer variable = cross product of the two inner ones), a 3-dimensional large sieve and Hecke Groessencharacters; why this does not transfer to Lambda(n+2) recorded as Heuristic.",
    "where": "papers/parity-barrier v0.4 Section subsec:hb-x3, Remark rem:hb-transfer; notes/sources-hb-x3-2y3.md"
+  },
+  {
+   "label": "Proved here",
+   "text": "Dual formula for the supremum S_k(eps) of Polymath8b's Theorem 3.14 ratio: S = |Pi_K P^*|^2 = sup_f dist(P^* f, W)^2/|f|^2 (standard Hilbert-space duality); the proof of our k = 2 theorem is exactly this projection, because at k = 2 the two constraint cylinders are disjoint. For k >= 3 any two cylinders overlap in positive measure, so the k = 2 argument does not transfer.",
+   "where": "papers/parity-barrier v0.7 Lemma lem:dual, Prop. prop:overlap"
+  },
+  {
+   "label": "Computed",
+   "text": "k = 3: the orthogonal relaxation (marginal condition kept only on columns whose fibres meet no other constraint) has supremum > 2.1408 at eps = 1/8 and > 2.0657 at eps = 1/4 (exact certificates, two scripts); heuristically the full supremum is about 1.976 at eps = 1/8, so the overlapping constraints decide whether the criterion beats the parity value 2.",
+   "where": "papers/parity-barrier v0.7 Prop. prop:orth-relax, Remark rem:k3-eps; code/parity/k3_orth_relax_cert.py, k3_orth_relax_verify.py, k3_thm314_dual.py"
+  },
+  {
+   "label": "Computed",
+   "text": "Independent exact check of Polymath8b Theorem 3.15 (DHL[3,2] under GEH, eps = 1/4): a symmetric step function on the arrangement {t_i, t_i+t_j, sum t = m/8} has ratio 2 + 711155/3866758832 > 2.00018, by two independent programs (PM8b's printed polynomial: about 2 + 6e-8). Nothing new is proved.",
+   "where": "papers/parity-barrier v0.7 Prop. prop:k3-step; code/parity/k3_arrangement_exact.py, k3_arrangement_verify.py, k3_arrangement_cert.json"
   }
  ],
  "ideas": [
@@ -636,6 +651,18 @@
    "origin": "own",
    "status": "open",
    "note": "Suggested by the Session 19 audit; same proof should work; not written."
+  },
+  {
+   "idea": "Variance/fibre-mean argument of the k = 2 theorem extended to k = 3 (sharp ceiling for PM8b Thm 3.14)",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "In its direct form: at k = 3 the constraint cylinders overlap (Prop. prop:overlap) and the orthogonal relaxation already exceeds 2.14 at eps = 1/8 while the true sup is ~1.976 (Prop. prop:orth-relax). A sharp ceiling needs the overlapping constraints (alternating projections with a rate, or a finite-element dual)."
+  },
+  {
+   "idea": "k = 3 extremal has constant marginal on the J-region (as at k = 2), reducing the problem to a minimum-norm problem",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Grid extremal marginal varies by a factor ~5; constant-marginal ansatz gives 1.736 vs 1.959 (eps = 1/4, n = 24). notes/explorations.md, Session 22."
   }
  ],
  "phase": "B",
@@ -643,10 +670,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.6",
+   "version": "0.7",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; an exact criterion for which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (target graph bipartite; DHL[k,m+1] iff k <= 2m; so the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post."
   },
   {
    "slug": "verification-note",

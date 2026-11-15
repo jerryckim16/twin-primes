@@ -71,3 +71,14 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Open question 2 partly answered (DHL[5,3] not by PM8b's GEH criteria); new open question 6 (exact k = 3 supremum).
 - Next attempt candidates: (a) a dual certificate for the k = 3 supremum (open question 6; exploration of this run suggests about
   2.003 at eps = 1/4); (b) weights that change the twisted main terms (open question 2); (c) Murty–Vatwani in the original if it arrives.
+
+## Session 22 (15 Nov, back-to-back bonus run 1 of 3) updates
+- Attempt (route card 2026-11-15-k3-dual-orthogonal.md): dual formula for the Thm 3.14 supremum; at k = 3 the constraint
+  cylinders overlap, so the k = 2 variance argument does not transfer; orthogonal relaxation certified > 2.14 at eps = 1/8 while
+  the true sup is ~1.976 (Heuristic). Paper v0.7 subsec:dual. Exact step-function check of PM8b Thm 3.15 (2 + 1.8e-4, two programs).
+- LITERATURE CORRECTION: the core of Prop. prop:bipartite is in Tao's blog post "A general parity problem obstruction"
+  (21 Nov 2014; notes/sources-tao14b.md), found via Akeno arXiv:2508.02769v3. Credited in v0.7 (Remark rem:tao14b).
+  Lesson: blog posts are part of the literature check; search terrytao.wordpress.com for every parity-type statement.
+- Next attempt candidates: (a) a rigorous ceiling for S_3(eps) using the overlapping constraints (alternating projections with a
+  rate; finite-element dual with error control); (b) does S_3(eps) > 2 hold on an interval? exact arrangement certificates at
+  other eps (helper run in progress at the end of Session 22, see the log); (c) weights that change the twisted main terms.
