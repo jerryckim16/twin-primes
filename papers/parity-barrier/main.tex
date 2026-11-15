@@ -19,30 +19,27 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.8 (draft), 15 November 2026}
+\date{Version 0.9 (draft), 15 November 2026}
 
 \begin{document}
 
 \begin{abstract}
 A survey with checks, not a research announcement: the twin prime conjecture
-is open and nothing here proves it or comes close. We state, with quotations
-checked in the sources, the (heuristic) parity obstruction that stops sieve
-methods of Maynard--Tao type at $H_1\le6$ even under GEH, and the
-Friedlander--Iwaniec asymptotic sieve, whose bilinear axiom breaks parity.
-Our own results (labelled ``Proved here''): the twisted Type~I input of the
-obstruction for log-averaged weights of bounded level, and, conditionally on
-an unrefereed preprint of Tao and Ter\"av\"ainen, at level $(\log x)^{c_0}$;
-a window form of Tao's convex-hull criterion for which close-prime targets a
-Polymath8b-type weight blocks, giving $H_m<H(2m+1)$;
-at $k=2$ Polymath8b's strongest GEH criterion reaches exactly the parity value
-$2$ and never exceeds it, while for $5\le k\le45$ its failure to give three
-primes comes from a variational ceiling rather than from the parity class; at
-$k=3$ the step that makes $k=2$ sharp fails, because two marginal conditions
-act at the same points; at $k=3$ the criterion works for $\varepsilon=\frac29,\frac14,\frac7{24}$
-and provably fails for $\varepsilon\ge0.439$. We also record what the bilinear
-estimates for $a^2+b^4$ and $x^3+2y^3$, the short-interval theorem of
-Matom\"aki--Radziwi\l\l{} and Sawin--Shusterman's twin primes in $\mathbb F_q[T]$
-use, and why none of it transfers to twin primes.
+is open and nothing here proves it or comes close. We state, checked in the
+sources, the (heuristic) parity obstruction that stops Maynard--Tao sieves at
+$H_1\le6$ even under GEH; Bombieri's asymptotic sieve, under which EH makes
+twin primes equivalent to a weighted count of $p+2=p_1p_2$ and nothing more;
+and the Friedlander--Iwaniec bilinear axiom that breaks parity. Our own
+results (``Proved here''): the twisted Type~I input of the obstruction for
+log-averaged weights of bounded level (and of level $(\log x)^{c_0}$,
+conditionally on a preprint of Tao and Ter\"av\"ainen); a window form of
+Tao's convex-hull criterion, giving $H_m<H(2m+1)$ as the exact reach of
+Polymath8b-type weights; at $k=2$ Polymath8b's strongest GEH criterion
+reaches the parity value $2$ exactly, and at $k=3$ it works for
+$\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not for $\varepsilon\ge0.439$. We also
+record what the proofs for $a^2+b^4$, $x^3+2y^3$, short intervals and twin
+primes in $\mathbb F_q[T]$ use, why none of it transfers, and a probable
+factor-$2$ slip in a preprint's constant.
 \end{abstract}
 
 \maketitle
@@ -1487,6 +1484,128 @@ analogue for $n+2$. Like Remark~\ref{rem:fi-transfer} this is a list of
 differences, not a proof that no route exists.
 \end{remark}
 
+\section{What the level of distribution alone gives: Bombieri's asymptotic sieve}\label{sec:bomb}
+
+Section~\ref{sec:fi} asked what must be \emph{added} to linear information to
+detect primes. This section records the complementary statement: what linear
+information alone gives for the twin-prime sequence, and what is known to be
+insufficient. Throughout, $a_n=\Lambda(n+2)$, $A(x)=x$, $g(d)=1/\varphi(d)$ for odd
+$d$ and $g(d)=0$ for even $d$, so that $H=\prod_p(1-g(p))(1-1/p)^{-1}=2C_2$.
+
+\subsection{The theorems}
+\lbl{Literature} \cite{Fo04} (arXiv:math/0401215v1, pp.~1--4). The level
+hypothesis is
+\[
+R(\nu):\qquad \sum_{d\le x^\nu}|r_d(x)|\ll_{\nu,B}A(x)(\log x)^{-B}\quad(\forall B>0),
+\]
+with $A_d(x)=\sum_{n\le x,\,d\mid n}a_n=g(d)A(x)+r_d(x)$. For the twin-prime
+sequence $R(\nu)$ holds for $\nu<\frac12$ (Bombieri--Vinogradov), and
+$R(\nu)$ for all $\nu<1$ is a form of the Elliott--Halberstam conjecture
+(EH), as Ford notes (p.~2).
+\begin{itemize}
+\item Bombieri's theorem, as quoted by Ford \cite[(1.3)]{Fo04}: if $R(\nu)$
+  holds for all $\nu<1$ (with mild conditions on $A$ and $g$, ``all trivially
+  satisfied if $A(x)=x$ and $g(d)=1/d$''), then for every $k\ge2$
+  \[
+  S_k(x):=\sum_{n\le x}a_n\Lambda_k(n)\sim kHA(x)(\log x)^{k-1},\qquad
+  \Lambda_k=\mu\star\log^k .
+  \]
+  Ford summarises Bombieri: $R(\nu)$ for all $\nu<1$ ``implies an asymptotic
+  formula for $\sum_{n\le x}a_nf(n)$ if and only if $f$ gives `equal weight'
+  to numbers with an even number of prime factors and an odd number of prime
+  factors''. Bombieri's papers \cite{Bo76} were not opened by us.
+\item Ford, Theorem~1: for each fixed $\nu<1$ there is a sequence with
+  $R(\nu)$, $A(x)=x$, $g(d)=1/d$, for which (1.3) fails for every $k\ge1$.
+\item Ford, Theorem~2: the same holds for all $k\ge2$ even if the sequence
+  also has no global parity bias, $P(x)=\sum_{n\le x}a_n\mu(n)\ll_Bx(\log x)^{-B}$
+  (Ford's (1.6)); these sequences do satisfy (1.3) for $k=1$.
+\item Ford, p.~3--4: whether Hooley's averaged condition
+  \[\sum_{d\le x^\alpha}\left|\sum_{n\le x,\,d\mid n}\mu(n)a_n\right|\ll_Bx(\log x)^{-B}\]
+  together with $R(\nu)$ suffices is open when $\alpha+\nu>1$.
+\end{itemize}
+
+\subsection{The twin-prime sequence under EH}
+
+\begin{proposition}[\lbl{Proved here}, elementary, folklore; conditional on Bombieri's theorem as quoted in \cite{Fo04} applying to $a_n=\Lambda(n+2)$]\label{prop:bomb-twin}
+Assume $R(\nu)$ for all $\nu<1$ for $a_n=\Lambda(n+2)$, and that the
+conclusion of Bombieri's theorem holds for this sequence with $k=2$. Then
+\begin{enumerate}
+\item $\displaystyle\sum_{n\le x}\Lambda(n+2)\Lambda(n)\log n+\sum_{n\le x}\Lambda(n+2)(\Lambda\star\Lambda)(n)=(4C_2+o(1))\,x\log x$;
+\item $\displaystyle\sum_{n\le x}\Lambda(n)\Lambda(n+2)\sim2C_2x$ if and only if
+  $\displaystyle\sum_{n\le x}\Lambda(n+2)(\Lambda\star\Lambda)(n)\sim2C_2x\log x$;
+\item $\displaystyle\sum_{n\le x}\Lambda(n)\Lambda(n+2)\le(4C_2+o(1))\,x$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) is the case $k=2$ with $H=2C_2$, since $\Lambda_2=\Lambda\log+\Lambda\star\Lambda$.
+Put $T(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)$ and $U(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)\log n$.
+By partial summation $U(x)=T(x)\log x-\int_2^xT(t)\,dt/t$ and
+$T(x)=U(x)/\log x+\int_2^xU(t)\,dt/(t\log^2t)$. By the upper-bound sieve
+(or by (1)), $T(t)\ll t$ and $U(t)\ll t\log t$, so both integrals
+are $O(x)$ and $O(x/\log x)$ respectively. Hence $T(x)\sim2C_2x$ if and only if
+$U(x)\sim2C_2x\log x$, which by (1) is equivalent to the statement about
+$\Lambda\star\Lambda$. (3): $\Lambda\star\Lambda\ge0$, so (1) gives $U(x)\le(4C_2+o(1))x\log x$,
+and $T(x)=U(x)/\log x+O(x/\log x)$.
+\end{proof}
+
+So under EH the twin-prime problem is \emph{equivalent} to the asymptotic
+for $p+2=p_1p_2$ counted with the weight $(\Lambda\star\Lambda)$: the level of
+distribution fixes the sum of the two pieces and nothing more. This is the parity
+problem in Bombieri's language; the factor~$2$ in (3) matches the factor that
+the Selberg upper-bound sieve loses at level $x^{1-\varepsilon}$ (our remark). In the language of Section~\ref{sec:parity}: if
+the twisted sequence $a'_n=\Lambda(n+2)(1+\lambda(n))\ge0$ also satisfied
+$R(\nu)$ for all $\nu<1$ (a Chowla-type statement for $\lambda$ on shifted primes
+in progressions, \lbl{Open}; predicted by the M\"obius randomness heuristic), it would have
+prime piece $0$ and $\Lambda\star\Lambda$ piece $4C_2x\log x$ (since $\lambda=+1$
+on products of two primes), consistent with (1). Ford's Theorem~1 is an
+unconditional version of this phenomenon for sequences with $g(d)=1/d$.
+
+\begin{remark}[Ford's extra conditions for this sequence]\label{rem:ford-twin}
+For $a_n=\Lambda(n+2)$, Ford's condition (1.6) reads
+$\sum_{3\le p\le x+2}\mu(p-2)\log p\ll_Bx(\log x)^{-B}$ (prime powers $p^j$, $j\ge2$,
+contribute $O(\sqrt x\log x)$). This is a quantitative form of the folklore
+conjecture $\sum_{p\le X}\mu(p+h)=o(\pi(X))$ with $h=-2$, which
+Lichtman proves only on average over shifts $0<h\le H$ with $\log H/\log\log X\to\infty$
+\cite[Theorem~1.1]{Li21} (\lbl{Literature}). Hooley's condition reads
+\[
+\sum_{d\le x^\alpha}\left|\sum_{p\le x+2,\,p\equiv2\,(d)}\mu(p-2)\log p\right|\ll_Bx(\log x)^{-B},
+\]
+a level-$\alpha$ version. Under EH ($\nu\to1$) every $\alpha>0$ is in the range
+$\alpha+\nu>1$ that Ford leaves open. So for twin primes the question ``is
+EH plus an averaged absence of parity bias enough?'' is open in the abstract
+setting, and its hypothesis is itself open for this sequence. (Our reading; not
+stated in \cite{Fo04}.)
+\end{remark}
+
+\begin{remark}[A localised version, and its constant]\label{rem:debouzy}
+\lbl{Claimed} (preprint, proof not checked): Debouzy
+\cite[Theorem~0.2, Corollary~2.7]{De19} localises Bombieri's sieve and states, under an
+EH-type conjecture for $\psi(y;d,2)$, that
+\[
+\sum_{n\le X}\Lambda(n)\Lambda(n+2)+\frac1{\gamma-\beta}\sum_{n\le X}\Lambda(n+2)\sum_{\substack{d_1d_2=n\\ n^\beta\le d_1\le n^\gamma}}\frac{\Lambda(d_1)\Lambda(d_2)}{\log n}=2\mathfrak S_2X(1+o(1)),
+\]
+with $\mathfrak S_2=\prod_{p\ge3}p(p-2)/(p-1)^2=C_2$. The printed constant
+appears to be too small by a factor~$2$; we believe $4C_2$ is meant. Three
+reasons: (a) for $\nu_1=\nu_2=1$ her Corollary~2.7 gives
+$\sum_{n\le X}\Lambda(n+2)\Lambda_2(n)\sim2C_2X\log X$, against $4C_2X\log X$ from
+Bombieri's theorem as quoted in \cite[(1.3)]{Fo04}; (b) her (65) takes the
+product $V_\sigma(z)/V_{\sigma_0}(z)$ over $3\le p\le z$ only, which omits the
+local factor $(1-\sigma(2))/(1-\sigma_0(2))=2$ at $p=2$ (if instead her
+convention of summing over $n$ coprime to $\mathfrak f=2$ is meant to remove
+$p=2$, then the model sum of $f_0=1$ over odd $n\le y/d$ is about $y/(2d)$, not
+$\sigma_0(d)F(y)=y/d$ as used before her (66), and the same factor is lost); (c) with the printed
+constant the prime piece alone would have to be at most $2C_2X(1+o(1))$, so
+the Hardy--Littlewood prediction $2C_2X$ would force the non-negative
+semiprime piece to be $o(X)$, whereas numerically it is comparable to the
+prime piece (second table of Section~\ref{sec:num}). Her qualitative
+conclusion (infinitely many $p$ with $p-2$ prime or $p_1p_2$, $p_1<X^\varepsilon$, under
+EH) is unaffected. (a), (b): our reading of her pp.~1--3, 36--37, confirmed
+by a fresh-context adversarial check that tried and failed to find a
+normalisation under which the printed constant is right; (c) is \lbl{Heuristic}.
+Not communicated to the author; a pointer, not a correction of record.
+\end{remark}
+
 \section{Twin primes over \texorpdfstring{$\mathbb F_q[T]$}{Fq[T]}, and what the integers lack}\label{sec:ss}
 
 \subsection{The theorem}
@@ -1655,6 +1774,34 @@ residue-class distributions modulo $3,5,7$ to two to three decimals, while all
 the twin-prime pairs, about $3$--$5\%$ of the weight, lie in the ``$+$''
 measure. This is Selberg's phenomenon made visible; it proves nothing.
 
+\lbl{Heuristic.} The two pieces of Proposition~\ref{prop:bomb-twin}(1),
+$P(x)=\sum_{n\le x}\Lambda(n+2)\Lambda(n)\log n$ and
+$Q(x)=\sum_{n\le x}\Lambda(n+2)(\Lambda\star\Lambda)(n)$, normalised by
+$M(x)=2C_2(x\log x-x)$, and the localised piece $D_\gamma$ of
+Remark~\ref{rem:debouzy} ($\beta=0$) together with the prime piece
+$P_0(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)$, normalised by $2C_2x$
+(script \texttt{bombieri\_twin\_split.py} in \texttt{code/parity/}, floating
+point, with $\Lambda\star\Lambda(p^aq^b)=2\log p\log q$ for all $a,b\ge1$; output \texttt{bombieri\_twin\_split.out}):
+
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$x$ & $P/M$ & $Q/M$ & $(P+Q)/2M$ & $\sum_{n\le x}(\Lambda\star\Lambda)(n)/(x\log x-x)$ & $(P_0+D_{1/2})/(4C_2x)$\\
+\midrule
+$10^6$ & $0.9943$ & $0.9426$ & $0.9684$ & $0.9103$ & $0.9680$\\
+$10^7$ & $1.0052$ & $0.9435$ & $0.9744$ & $0.9238$ & $0.9742$\\
+$3\cdot10^7$ & $1.0009$ & $0.9493$ & $0.9751$ & $0.9288$ & $0.9750$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent The $\Lambda\star\Lambda$ piece approaches its predicted size slowly, as the
+untwisted sum does (whose second-order term is $-(1+2\gamma_0)x$, $\gamma_0$
+Euler's constant, so that the untwisted column is
+$1-2\gamma_0/(\log x-1)+o(1/\log x)$, which the script reproduces to four
+decimals), and $(P+Q)/2M$ creeps towards $1$, as Bombieri's
+constant $4C_2$ predicts; with the constant $2C_2$ printed in
+\cite[Corollary~2.7]{De19} the same ratio would tend to $\frac12$.
+
 \section{Open questions}\label{sec:open}
 
 \begin{enumerate}
@@ -1717,6 +1864,12 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   allows more than $2.14$ at $\varepsilon=\frac18$ (Proposition~\ref{prop:orth-relax});
   tools to try are alternating projections with an explicit rate, or a
   finite-element dual with error control (Lemma~\ref{lem:dual}(2)).
+\item (\lbl{Open}; Ford \cite[p.~4]{Fo04} in the abstract setting) Do EH and
+  Hooley's averaged parity condition at some level $x^\alpha$, which for twin
+  primes is the display in Remark~\ref{rem:ford-twin},
+  together imply the twin-prime asymptotic? Ford's
+  constructions do not cover $\alpha+\nu>1$; even the single-modulus case
+  $\alpha=0$ is the open problem of the M\"obius function on shifted primes.
 \end{enumerate}
 
 \subsection*{Plan for later versions}
@@ -1751,7 +1904,8 @@ suffice). Nothing enters before it is read in the source.
   Math.\ (2022), journal version not consulted.
 \bibitem{MR16} K.~Matom\"aki and M.~Radziwi\l\l, \emph{Multiplicative functions in short intervals}, Ann. of Math. (2) \textbf{183} (2016) (journal version not consulted; reference as supplied, not printed in the PDF); arXiv:1501.04585v4 (15 Oct 2017; read: pp.~1--19, 21--24, 29--31, 36--38).
 \bibitem{Li21} J.~D.~Lichtman, \emph{Averages of the M\"obius function on
-  shifted primes}, arXiv:2009.08969v2 (20 Oct 2021) (read: abstract, p.~1).
+  shifted primes}, arXiv:2009.08969v2 (20 Oct 2021) (read: abstract,
+  pp.~1--2, Theorem~1.1).
 \bibitem{MV17} M.~R.~Murty and A.~Vatwani, \emph{Twin primes and the parity
   problem}, J.\ Number Theory \textbf{180} (2017), 643--659 (not opened; known to
   us only through \cite{Cit26}).
@@ -1765,6 +1919,16 @@ suffice). Nothing enters before it is read in the source.
   moduli, and shifted primes without large prime factors}, arXiv:2211.09641v1;
   \emph{Primes in arithmetic progressions to large moduli and Goldbach beyond the
   square-root barrier}, arXiv:2309.08522v1.
+\bibitem{Fo04} K.~Ford, \emph{On Bombieri's asymptotic sieve}, arXiv:math/0401215v1
+  (18 Jan 2004) (read: pp.~1--5, statements (1.1)--(1.6), Theorems~1--2; any journal
+  version not consulted).
+\bibitem{Bo76} E.~Bombieri, \emph{The asymptotic sieve}, Mem.\ Accad.\ Naz.\ dei
+  XL \textbf{1/2} (1976), 243--269, and \emph{Le grand crible dans la th\'eorie
+  analytique des nombres}, Ast\'erisque \textbf{18} (1974/1987) (not opened;
+  known to us only as quoted in \cite{Fo04}).
+\bibitem{De19} N.~Debouzy, \emph{Twins almost prime under a
+  Elliott--Halberstam's conjecture}, arXiv:1907.06393v1 (15 Jul 2019), preprint
+  (read: pp.~1--3, 36--37).
 \bibitem{Tao14b} T.~Tao, \emph{A general parity problem obstruction}, blog
   post, What's new, 21 November 2014,
   \url{https://terrytao.wordpress.com/2014/11/21/a-general-parity-problem-obstruction/}
@@ -1856,6 +2020,14 @@ suffice). Nothing enters before it is read in the source.
   \emph{Correction of attribution}: the core of Proposition~\ref{prop:bipartite}
   is in Tao's 2014 blog post \cite{Tao14b}, found by this run's literature check
   (new Remark~\ref{rem:tao14b}; label, section opening and abstract changed).
+\item[0.9] (15 Nov 2026) New Section~\ref{sec:bomb} (thread~3, hypotheses
+  that do not suffice): Bombieri's theorem and Ford's Theorems~1--2 read in
+  \cite{Fo04}; Proposition~\ref{prop:bomb-twin} (under EH, twin primes are
+  equivalent to the $\Lambda\star\Lambda$-weighted count of $p+2=p_1p_2$; folklore);
+  Remark~\ref{rem:ford-twin} (Ford's and Hooley's conditions for this
+  sequence); Remark~\ref{rem:debouzy} (a probable factor-$2$ slip in the
+  constant of \cite{De19}); second table in Section~\ref{sec:num}; open
+  question~7. Abstract shortened.
 \item[0.8] (15 Nov 2026) New Subsection~\ref{subsec:window}: a Schur-test
   reduction of the $k=3$ problem without marginal condition to a
   one-dimensional inequality (Proposition~\ref{prop:unc-ceiling}), and

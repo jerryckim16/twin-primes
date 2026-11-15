@@ -1,0 +1,8 @@
+x = 1.0e+07: #p = 664577, sum mu(p-2) log p / x = -0.00071, squarefree share = 0.7478
+alpha = 0.25: D = 56, H/x = 0.0041, random model H/x = 0.0055 (+- 0.0004), ratio = 0.732
+alpha = 0.4: D = 630, H/x = 0.0153, random model H/x = 0.0180 (+- 0.0019), ratio = 0.850
+alpha = 0.5: D = 3162, H/x = 0.0361, random model H/x = 0.0403 (+- 0.0017), ratio = 0.896
+
+real	0m13.297s
+user	0m13.286s
+sys	0m0.076s

@@ -61,3 +61,10 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   sigma_3(eps): > 2 at 2/9, 1/4, 7/24; < 2 for eps >= 0.439. Depends on nothing analytic. Feeds into: open question 6; an
   honest statement of how robust "H1 <= 6 under GEH" is within PM8b's Theorem 3.14 (it works only in a narrow eps-window,
   heuristically (0.19, 0.31)). Missing for anything bigger: as before, this is the variational shadow, not primes.
+- (Session 24) Section sec:bomb (parity paper v0.9): Prop. prop:bomb-twin (under EH, via Bombieri's theorem as quoted by Ford:
+  twin primes <=> the (Lambda*Lambda)-weighted count of p+2 = p1 p2; folklore), Remarks rem:ford-twin, rem:debouzy.
+  Depends on: Bombieri's theorem (originals not opened; Ford's quotation) and EH (open). Feeds into: thread 3 of the parity
+  paper, the sharpest sourced form of "EH alone does not suffice"; together with Prop. prop:fi-twin it brackets the problem:
+  (R) at level > 2/3 plus (B) suffices (FI98 Thm 2); level alone fixes only the prime + P2 total. Missing: any proof of a
+  parity-sensitive input for Lambda(n+2) -- (B), Hooley's averaged condition (open question 7), or even Moebius on the
+  single shift p-2. Nothing here moves the project closer to twin primes; it locates the gap more precisely.

@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 24 -- Does mu(p-2) show a parity bias in progressions that Hooley's condition would see? (numerical experiment / probabilistic model)
+- Idea: Ford's open case (parity paper open question 7) asks whether EH plus Hooley's averaged absence of parity bias,
+  sum_{d <= x^alpha} |sum_{p <= x, p = 2 (d)} mu(p-2) log p| << x (log x)^{-B}, suffices. Risky question: does the twin sequence
+  show any structure (bias in classes, correlation across d) beyond square-root cancellation, which might either refute the
+  condition numerically or suggest a mechanism?
+- Tried: code/explore/hooley_twin_parity.py (.out): the sum against a random-sign model on the same support (squarefree p-2,
+  4 seeds), x = 1e6 and 1e7, alpha = 0.25, 0.4, 0.5.
+- Outcome: inconclusive (no structure): ratio actual / random model = 1.54, 1.27 at x = 1e6 and 0.73, 0.85, 0.90 at x = 1e7;
+  i.e. square-root cancellation, as the random model predicts (H/x ~ x^{(alpha-1)/2}, so Hooley's condition is "true by
+  heuristics" for every alpha < 1). Nothing to exploit; proving it remains the Moebius-on-shifted-primes problem.
+
 ## 2026-11-15, Session 23 -- Is the constant of the k = 3 Schur problem a closed form? (numerical experiment / constants)
 - Idea: the 1D Schur problem of parity paper Prop. prop:unc-ceiling is scale-invariant, so the supremum of the k = 3 problem
   without marginal condition is (numerically) 3/2 + kappa (1-eps) for eps in [1/4, 1/2). A closed form for kappa would give

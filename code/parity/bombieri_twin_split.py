@@ -58,8 +58,9 @@ r1s = np.where(is_pk, 2, r1)            # dummy for prime powers
 p2, k2, r2 = strip(r1s)
 two = (~is_pk) & (r2 == 1)
 lp2 = np.log(p2.astype(np.float64))
-LL = np.where(is_pk, (k1 - 1) * lp1 * lp1, 0.0) + np.where(two & (k1 == 1) & (k2 == 1), 2 * lp1 * lp2, 0.0)
-# p^a q^b with a+b >= 3: Lambda*Lambda(n) = 0 unless a = b = 1 (Lambda(d1)Lambda(d2) needs d1, d2 prime powers)
+LL = np.where(is_pk, (k1 - 1) * lp1 * lp1, 0.0) + np.where(two, 2 * lp1 * lp2, 0.0)
+# n = p^a q^b (p != q, a, b >= 1): (Lambda*Lambda)(n) = Lambda(p^a)Lambda(q^b) + Lambda(q^b)Lambda(p^a) = 2 log p log q
+# (fixed in Session 24 after the audit: an earlier draft kept only a = b = 1)
 Q = float(np.sum(lam2 * LL))
 S2 = 1.0
 for q in range(3, 10**6):
@@ -73,14 +74,14 @@ print(f"Q/main = {Q/main:.6f}   (Lambda*Lambda piece)")
 allm = np.arange(2, x + 1, dtype=np.int64)
 a1, b1, c1 = strip(allm); la = np.log(a1.astype(np.float64))
 c1s = np.where(c1 == 1, 2, c1); a2, b2, c2 = strip(c1s); lb = np.log(a2.astype(np.float64))
-base = float(np.sum(np.where(c1 == 1, (b1 - 1) * la * la, 0.0)) + np.sum(np.where((c1 > 1) & (c2 == 1) & (b1 == 1) & (b2 == 1), 2 * la * lb, 0.0)))
+base = float(np.sum(np.where(c1 == 1, (b1 - 1) * la * la, 0.0)) + np.sum(np.where((c1 > 1) & (c2 == 1), 2 * la * lb, 0.0)))
 del allm, a1, b1, c1, c1s, a2, b2, c2, la, lb
 print(f"baseline sum (Lambda*Lambda)(n) / (x log x - x) = {base/(x*math.log(x)-x):.6f}  (Q/main should track this)")
 print(f"(P+Q)/(2 main) = {(P+Q)/(2*main):.6f}   (Bombieri under EH: -> 1)")
 # Debouzy localisation: only squarefree n = p1 p2, ordered pairs (d1, d2) with d1 <= n^g
 for g in (0.1, 0.25, 0.5, 0.75):
-    sel = two & (k1 == 1) & (k2 == 1)
-    w = np.where(sel, (lp1 <= g * logn).astype(np.float64) + (lp2 <= g * logn).astype(np.float64), 0.0)
+    # ordered pairs (d1, d2) = (p^a, q^b) or (q^b, p^a), condition d1 <= n^g, i.e. log d1 <= g log n
+    w = np.where(two, (k1 * lp1 <= g * logn).astype(np.float64) + (k2 * lp2 <= g * logn).astype(np.float64), 0.0)
     D = float(np.sum(lam2 * w * lp1 * lp2 / logn)) / g
     Pp = float(np.sum(lam2 * LamN))
     mainx = 2 * S2 * x
