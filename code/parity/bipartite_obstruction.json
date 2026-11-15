@@ -1,0 +1,115 @@
+{
+ "remark81_n_le_20000": {
+  "4": {
+   "printed_nonzero_count": 0,
+   "corrected_nonzero_count": 13452,
+   "corrected_but_close_primes": 2
+  },
+  "6": {
+   "printed_nonzero_count": 0,
+   "corrected_nonzero_count": 8496,
+   "corrected_but_close_primes": 0
+  },
+  "8": {
+   "printed_nonzero_count": 0,
+   "corrected_nonzero_count": 5572,
+   "corrected_but_close_primes": 0
+  },
+  "12": {
+   "printed_nonzero_count": 0,
+   "corrected_nonzero_count": 2228,
+   "corrected_but_close_primes": 0
+  }
+ },
+ "lp_vs_bipartite": {
+  "graphs": 400,
+  "agree": 400,
+  "non_bipartite": 185
+ },
+ "H_of_k": {
+  "2": [
+   0,
+   [
+    0,
+    0
+   ]
+  ],
+  "3": [
+   6,
+   [
+    0,
+    2,
+    6
+   ]
+  ],
+  "4": [
+   8,
+   [
+    0,
+    2,
+    6,
+    8
+   ]
+  ],
+  "5": [
+   12,
+   [
+    0,
+    2,
+    6,
+    8,
+    12
+   ]
+  ],
+  "6": [
+   16,
+   [
+    0,
+    4,
+    6,
+    10,
+    12,
+    16
+   ]
+  ],
+  "7": [
+   20,
+   [
+    0,
+    2,
+    6,
+    8,
+    12,
+    18,
+    20
+   ]
+  ],
+  "8": [
+   26,
+   [
+    0,
+    2,
+    6,
+    8,
+    12,
+    18,
+    20,
+    26
+   ]
+  ],
+  "9": [
+   30,
+   [
+    0,
+    2,
+    6,
+    8,
+    12,
+    18,
+    20,
+    26,
+    30
+   ]
+  ]
+ }
+}
