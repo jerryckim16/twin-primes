@@ -1,0 +1,57 @@
+[    20 s, maxrss 0.93 GB] setup: N = 393216, n = 393177, caps [140306, 141720, 141724, 177528, 177542, 179967, 186253, 196608, 246256], outer [((0, 352697), 246256), ((352698, 376449), 196608), ((376450, 393176), 186253)], face0 [((0, 334253), 246256), ((334254, 343163), 177542), ((343164, 355047), 140306)], face1 [((0, 336274), 246256), ((336275, 343169), 179967), ((343170, 359896), 141724)], rfirst 56104, Z = [7966.674668651398901755432 +/- 2.06e-22], prec 128
+[   205 s, maxrss 1.90 GB] layer 0 (b = 140306): marginal, 5 groups, 115 products
+[   375 s, maxrss 2.21 GB] layer 1 (b = 141720): marginal, 5 groups, 115 products
+[   416 s, maxrss 2.44 GB] cap 140306: moments, monomials of length 0 done (0 products)
+[   490 s, maxrss 3.25 GB] cap 140306: moments, monomials of length 1 done (11 products)
+[   726 s, maxrss 3.50 GB] cap 140306: moments, monomials of length 2 done (45 products)
+[  1033 s, maxrss 3.50 GB] cap 140306: moments, monomials of length 3 done (91 products)
+[  1274 s, maxrss 3.50 GB] cap 140306: moments, monomials of length 4 done (128 products)
+[  1396 s, maxrss 3.50 GB] cap 140306: moments, monomials of length 5 done (147 products)
+[  1436 s, maxrss 3.50 GB] cap 140306: moments, monomials of length 6 done (153 products)
+[  1454 s, maxrss 3.50 GB] cap 140306: term +1 (layer 0): J0 [5.6269556267679137100e-11 +/- 4.51e-31], J+ [4.0443831180332437205e-13 +/- 3.87e-33]
+[  1471 s, maxrss 3.50 GB] cap 140306: term -1 (layer 1): J0 [5.4807793838497253903e-11 +/- 4.94e-31], J+ [1.8662007409852075691e-12 +/- 3.38e-33]
+[  1472 s, maxrss 3.50 GB] cap 140306: J0 part [1.461762429181883197042755e-12 +/- 1.47e-37], J+ part [-1.461762429181883197042755e-12 +/- 1.46e-37]
+[  1605 s, maxrss 3.50 GB] layer 2 (b = 141724): marginal, 4 groups, 92 products
+[  1642 s, maxrss 3.50 GB] cap 141720: moments, monomials of length 0 done (0 products)
+[  1718 s, maxrss 3.50 GB] cap 141720: moments, monomials of length 1 done (11 products)
+[  1965 s, maxrss 3.58 GB] cap 141720: moments, monomials of length 2 done (45 products)
+[  2284 s, maxrss 3.58 GB] cap 141720: moments, monomials of length 3 done (91 products)
+[  2528 s, maxrss 3.58 GB] cap 141720: moments, monomials of length 4 done (128 products)
+[  2646 s, maxrss 3.58 GB] cap 141720: moments, monomials of length 5 done (147 products)
+[  2684 s, maxrss 3.58 GB] cap 141720: moments, monomials of length 6 done (153 products)
+[  2700 s, maxrss 3.58 GB] cap 141720: term +1 (layer 1): J0 [5.4818326414932778626e-11 +/- 7.9e-34], J+ [1.8694769997095936405e-12 +/- 3.08e-32]
+[  2717 s, maxrss 3.58 GB] cap 141720: term -1 (layer 2): J0 [3.9166428525569783555e-11 +/- 6.46e-32], J+ [1.2034887740807699022e-12 +/- 2.15e-33]
+[  2717 s, maxrss 3.58 GB] cap 141720: J0 part [1.565189788936299507106377e-11 +/- 2.26e-36], J+ part [6.659882256288237382671318e-13 +/- 4.56e-38]
+[  2846 s, maxrss 3.58 GB] layer 3 (b = 177528): marginal, 4 groups, 92 products
+[  2888 s, maxrss 3.58 GB] cap 141724: moments, monomials of length 0 done (0 products)
+[  2968 s, maxrss 3.58 GB] cap 141724: moments, monomials of length 1 done (11 products)
+[  3220 s, maxrss 3.63 GB] cap 141724: moments, monomials of length 2 done (45 products)
+[  3538 s, maxrss 3.63 GB] cap 141724: moments, monomials of length 3 done (91 products)
+[  3787 s, maxrss 3.63 GB] cap 141724: moments, monomials of length 4 done (128 products)
+[  3911 s, maxrss 3.63 GB] cap 141724: moments, monomials of length 5 done (147 products)
+[  3948 s, maxrss 3.63 GB] cap 141724: moments, monomials of length 6 done (153 products)
+[  3965 s, maxrss 3.63 GB] cap 141724: term +1 (layer 2): J0 [3.9166450295954636532e-11 +/- 2.71e-31], J+ [1.2034934889363469059e-12 +/- 4.65e-32]
+[  3980 s, maxrss 3.63 GB] cap 141724: term -1 (layer 3): J0 [3.9166450295954636532e-11 +/- 2.71e-31], J+ [6.2939102179590840818e-16 +/- 2.99e-36]
+[  3981 s, maxrss 3.63 GB] cap 141724: J0 part [+/- 2.50e-40], J+ part [1.202864097914550997538262e-12 +/- 3.35e-37]
+[  4065 s, maxrss 3.63 GB] layer 4 (b = 177542): marginal, 3 groups, 69 products
+[  4107 s, maxrss 3.63 GB] cap 177528: moments, monomials of length 0 done (0 products)
+[  4189 s, maxrss 3.63 GB] cap 177528: moments, monomials of length 1 done (11 products)
+[  4431 s, maxrss 3.68 GB] cap 177528: moments, monomials of length 2 done (45 products)
+[  4740 s, maxrss 3.69 GB] cap 177528: moments, monomials of length 3 done (91 products)
+[  4978 s, maxrss 3.69 GB] cap 177528: moments, monomials of length 4 done (128 products)
+[  5098 s, maxrss 3.69 GB] cap 177528: moments, monomials of length 5 done (147 products)
+[  5134 s, maxrss 3.69 GB] cap 177528: moments, monomials of length 6 done (153 products)
+[  5150 s, maxrss 3.69 GB] cap 177528: term +1 (layer 3): J0 [3.9247200229446745237e-11 +/- 3.71e-31], J+ [6.3882947375116542970e-16 +/- 3.14e-36]
+[  5165 s, maxrss 3.69 GB] cap 177528: term -1 (layer 4): J0 [2.2356641799051261541e-11 +/- 5.88e-32], J+ [7.3913877222010306506e-16 +/- 3.12e-36]
+[  5165 s, maxrss 3.69 GB] cap 177528: J0 part [1.689055843039548369631191e-11 +/- 3.27e-36], J+ part [-1.003092984689376353537551e-16 +/- 4.40e-41]
+[  5251 s, maxrss 3.69 GB] layer 5 (b = 179967): marginal, 3 groups, 69 products
+[  5291 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 0 done (0 products)
+[  5365 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 1 done (11 products)
+[  5604 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 2 done (45 products)
+[  5918 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 3 done (91 products)
+[  6175 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 4 done (128 products)
+[  6295 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 5 done (147 products)
+[  6334 s, maxrss 3.69 GB] cap 177542: moments, monomials of length 6 done (153 products)
+[  6351 s, maxrss 3.69 GB] cap 177542: term +1 (layer 4): J0 [2.2356648623240610014e-11 +/- 2.02e-31], J+ [7.3913988087911660946e-16 +/- 2.03e-36]
+[  6368 s, maxrss 3.69 GB] cap 177542: term -1 (layer 5): J0 [2.1011112952278362418e-11 +/- 6.76e-32], J+ [1.3462748108431267129e-12 +/- 2.17e-32]
+[  6369 s, maxrss 3.69 GB] cap 177542: J0 part [1.345535670962247596268844e-12 +/- 1.54e-37], J+ part [-1.345535670962247596268844e-12 +/- 1.54e-37]

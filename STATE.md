@@ -38,7 +38,8 @@ Each session works on the claude/... branch its system instructions name (create
 - Literature for open question 1: notes/sources-chowla-quantitative.md (HR, Pilatte, Tao-Teravainen, Guo, Hughes).
 - 3g: notes/hm-programme.md, code/hm/pm8b_mk_lower.py (PM8b Thm 6.7 reproduced: k = 35410 MPZ, 41588 BV-only).
 - Exploration: code/explore/residue_parity_lp.py (dead end; global fairness is the wrong notion).
-- RUNG 182 J second program: STATUS182
+- RUNG 182 J second program DONE: code/sharifi182_check2_J.py (--cap b, --combine, --selftest), results code/data182/check2_J_result.json and check2_J_cap_<b>.json; J0, J+ balls above the published lower bounds; vs program 1 rel 2e-23 (J0), 2e-32 (J+). Report notes/check2-J-182-report.md. 2 workers x 3.7 GB, ~107 min.
+- RUNG 182 TAIL: STATUS182TAIL
 - Wolfram and mathbox NOT available.
 
 ## Session 17 (7:34 PM CT slot, 14 Nov; started 01:34 UTC 15 Nov; no wait) -- additions
