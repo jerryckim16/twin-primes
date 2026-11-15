@@ -128,7 +128,7 @@
   },
   {
    "label": "Computed",
-   "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 3.99 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 3.99 (ball arithmetic; sigma = 4 certified at 5000 and 6500 bits with two block splits, sigma = 3.99 at 6500 bits). The Gram weights reproduce capped_check.py exactly at a random integer vector (Schwartz-Zippel: failure probability < 2^-31). The best P in the space gives 3.98555 (Gram, floating point). So the draft's claimed 4.00438 (also 846 coefficients) must belong to its Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation.",
+   "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 3.99 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 3.99 (ball arithmetic; sigma = 4 certified at 5000 and 6500 bits with two block splits, sigma = 3.99 at 6500 bits). The Gram weights reproduce capped_check.py exactly at a random integer vector (Schwartz-Zippel: failure probability < 2^-31). The best P in the space gives 3.98555 (Gram, floating point). So the draft's claimed 4.00438 (also 846 coefficients) must belong to its Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation. Session 24: the Gram weights' Schwartz-Zippel test point is now evaluated by BOTH exact programs (capped_check.py and capped_exact.py, I_T and J_T equal exactly; code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out).",
    "where": "paper, Proposition 33 and Remark 34; code/capped_gram.py; runs/gram45_lemma91_recheck.log, runs/gram45_rand_selftest.log, code/cap6/check_rand45_lemma91.json"
   },
   {
@@ -293,7 +293,7 @@
   },
   {
    "label": "Computed",
-   "text": "Ceiling for Charton et al.'s capped quantity at k = 45: at most 4.126 (two-zone dual weight, interval arithmetic).",
+   "text": "Ceiling for Charton et al.'s capped quantity at k = 45: at most 4.126 (two-zone dual weight, interval arithmetic). Session 24: the Gram weights' Schwartz-Zippel test point is now evaluated by BOTH exact programs (capped_check.py and capped_exact.py, I_T and J_T equal exactly; code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out).",
    "where": "paper, Remark 30"
   },
   {
@@ -718,10 +718,10 @@
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.10",
+   "version": "0.11",
    "status": "active",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and all 97 raw loss bounds of the 186 companion (the dominant group by two programs); the four ingredients of the 182 cap quotient, each by two programs. Analytic inputs and restoration steps not verified; the 182 minorant's mass deficit kappa_true by two methods; v0.10: printed arithmetic of the 182 restoration step re-done exactly and the 98 source rows checked against the printed definitions."
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and all 97 raw loss bounds of the 186 companion (the dominant group by two programs); the four ingredients of the 182 cap quotient, each by two programs. Analytic inputs and restoration steps not verified; the 182 minorant's mass deficit kappa_true by two methods; v0.10: printed arithmetic of the 182 restoration step re-done exactly and the 98 source rows checked against the printed definitions. v0.11: the Lemma 9.1 ceiling's Gram weights now checked against both exact programs at a random point."
   }
  ],
  "last_review": null,

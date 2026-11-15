@@ -7,7 +7,7 @@ Each session works on the claude/... branch its system instructions name (create
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.9, verification-note v0.10 (or v0.11 if the k = 45 check landed, see below). H_m programme scoped
+- Active papers: parity-barrier v0.9, verification-note v0.11. H_m programme scoped
   (notes/hm-programme.md), NOT started as a paper. Main paper v0.24.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
@@ -24,8 +24,7 @@ Each session works on the claude/... branch its system instructions name (create
    for twins): any structured twin-type sequence where it is provable?; (c) weights that change the twisted main terms (open
    question 2); (d) Murty-Vatwani in the original if it arrives.
 3. Bound share, rung 182: per-component restoration data still requested (notes/sources-needed.md). Nothing else to do without it.
-4. Optional, low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Lemma 9.1 weights Schwartz-Zippel check
-   (Session 24 resumed it; see the Session 24 block for its status).
+4. Optional, low priority: one-sided --bonf certificate on the Song-Yue witness; (k = 45 Schwartz-Zippel check: done in Session 24).
 
 ## Session 24 (11:34 AM CT slot, started on time 17:35 UTC 15 Nov; no wait) -- additions
 - Parity paper v0.9: new Section sec:bomb (Prop. prop:bomb-twin, Remarks rem:ford-twin, rem:debouzy), second table in sec:num,
@@ -36,7 +35,8 @@ Each session works on the claude/... branch its system instructions name (create
 - Scripts: code/parity/bombieri_twin_split.py [x] (numpy, ~4 GB at 3e7; 1e8 is OOM-killed at 13 GB: do not run it), output .out;
   code/explore/hooley_twin_parity.py [x] [alpha...] (.out).
 - k = 45 Schwartz-Zippel (capped_exact on code/cap6/P_rand45_lemma91_u.json) resumed from 74/273 pieces with 3 procs, /usr/bin/python3
-  (python-flint is installed for /usr/bin/python3, not for /usr/local/bin/python3). STATUS: see the end of this block.
+  (python-flint is installed for /usr/bin/python3, not for /usr/local/bin/python3). DONE (~72 min): I_T, J_T equal check_rand45_lemma91.json
+  exactly (code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out). Verification note v0.11, main paper v0.24 Prop. prop:cha-ceiling.
 - Wolfram and mathbox NOT available.
 
 ## Session 23 (back-to-back run 2 of 3, continued in the same conversation as Session 22 at Jerry's request; no wait) -- additions

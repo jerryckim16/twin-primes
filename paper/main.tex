@@ -1415,7 +1415,7 @@ cost (about $9\%$): in this test space the margin of the variational step of
 \cite{Sta26} is $0.0124$, and the caps cost $0.0038$ even for the best
 polynomial of degree~$20$.
 
-\begin{proposition}[\lbl{Computed}, ball arithmetic, certified at $\sigma=3.99$; it rests on the Gram weights of one program (\texttt{capped\_check.py} run backwards), checked at one random point (Schwartz--Zippel test; the second exact program's run at that point is not finished); versions 0.8--0.9]\label{prop:cha-ceiling}
+\begin{proposition}[\lbl{Computed}, ball arithmetic, certified at $\sigma=3.99$; Gram weights from \texttt{capped\_check.py} run backwards, checked at one random point against both exact programs (Schwartz--Zippel test; second program completed in version 0.24); versions 0.8--0.9]\label{prop:cha-ceiling}
 Let $T'$ be the support of \cite{Cha26} at $k=45$ with the caps of their
 Lemma~9.1 ($C_1=C_2=31/50$, $C_m=17/25$ for $m\ge3$; $L=53/50$,
 $\tau=249/250$, $g=41/625$), and let $V$ be our $846$-dimensional space
@@ -1452,11 +1452,13 @@ values. So the proposition rests on \texttt{capped\_check.py} (which agrees
 exactly with the independent \texttt{capped\_exact.py} at Stadlmann's and at
 Charton et al.'s Table~3 parameters, Theorem~\ref{thm:capped-exact} and
 Proposition~\ref{prop:cha-capped}) up to a failure probability below
-$2^{-31}$ for each functional. The same random point has not yet been
-evaluated by \texttt{capped\_exact.py}. That run needs about four hours here
-and was stopped after $153$ of its pieces (\texttt{runs/exact\_rand45\_lemma91.log}),
-so the cross-check of \texttt{capped\_check.py} itself at these caps is still
-to come. The exact weights used for both tests were loaded from a file outside
+$2^{-31}$ for each functional. In version 0.24 the independent
+\texttt{capped\_exact.py} finished evaluating the same random point (all $273$
+pieces, resumed from a checkpoint; \texttt{runs/exact\_rand45.log}): its
+$I_{T'}$ and $J_{T'}$ equal those of \texttt{capped\_check.py} exactly
+(\texttt{code/cap6/res\_rand45\_lemma91.json}, \texttt{compare\_rand45\_lemma91.out}),
+so \texttt{capped\_check.py} is also cross-checked at these caps, with the same
+failure probability. The exact weights used for both tests were loaded from a file outside
 the repository and are not yet archived.
 
 \begin{sloppypar}
@@ -2561,7 +2563,8 @@ The $182$ restoration data are requested from Jerry Kim.
 $\varepsilon$ the $k=3$ GEH criterion of Polymath8b works).
 \item[0.24] (15 Nov 2026) Related results: parity paper version~0.9 (Bombieri's
 asymptotic sieve for $\Lambda(n+2)$; Ford's limits; a probable slip in a
-preprint's constant).
+preprint's constant). Proposition~\ref{prop:cha-ceiling}: the second exact
+program now agrees at the random test point of the Lemma~9.1 weights.
 \end{itemize}
 
 \begin{thebibliography}{99}

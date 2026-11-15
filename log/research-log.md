@@ -1,5 +1,399 @@
 # Research log
 
+## 2026-11-15 - Session 24 (11:34 AM CT, started on time 17:35 UTC; no wait): What the level of distribution alone gives for twin primes: Bombieri's asymptotic sieve read through Ford (parity paper v0.9); k = 45 Lemma 9.1 weights checked by the second exact program
+
+- Parity paper v0.9 (thread 3, hypotheses that do not suffice): new Section on Bombieri's asymptotic sieve, read in Ford's 2004 paper (arXiv:math/0401215v1). Bombieri's theorem as Ford quotes it says that level of distribution x^nu for all nu < 1 (EH) gives the asymptotic for sum a_n Lambda_k(n), k >= 2, and Ford proves that no fixed nu < 1 suffices.
+- Prop. prop:bomb-twin (Proved here, folklore, conditional on Bombieri's theorem applying to a_n = Lambda(n+2)): under EH the twin-prime sum and the (Lambda*Lambda)-weighted count of p-2 = p1 p2 add up to 4 C_2 x log x, so twin primes are equivalent to that semiprime asymptotic, and EH gives the familiar factor-2 upper bound. New open question 7: Hooley's averaged parity condition for twins (a Moebius-on-shifted-primes statement) is open, and so is whether it would suffice.
+- Probable factor-2 slip found in Debouzy's 2019 preprint (twins almost prime under EH): the printed constant 2 S_2 should be 4 S_2. The p = 2 local factor is dropped in her eq. (65). Numerics (Heuristic): (P+Q)/(2M) = 0.968, 0.974, 0.975 at x = 1e6, 1e7, 3e7, tending to 1 for 4 S_2, against 1/2 for the printed constant. An adversarial audit confirmed it and also found a bug in our script, fixed before anything entered the paper.
+- Bound share: the k = 45 Schwartz-Zippel check finished (capped_exact.py, 273 pieces, resumed from 74). Its exact I_T and J_T at the random test point equal capped_check.py's exactly (347- and 352-digit numerators), so the Lemma 9.1 ceiling < 3.99 now rests on two exact programs. Verification note v0.11, main paper v0.24.
+- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
+
+Flag for Jerry: (minor) Debouzy arXiv:1907.06393v1: the main constant 2 S_2 appears to be off by a factor 2 (4 S_2 meant); qualitative result unaffected; confirmed by an independent audit and numerics (notes/flags-for-jerry.md).
+
+Parity attempt: Attempt: what Type I / level information alone gives for Lambda(n+2) (Bombieri, Ford). Classification: located (literature plus a folklore reduction). Under EH the barrier is exactly the prime / P2 split of the Lambda_2 sum. First unresolved implication: whether EH plus Hooley's averaged absence of parity bias suffices (open per Ford), and whether that condition holds for mu(p-2) at all. No parity-breaking content.
+
+Explored: Does mu(p-2) show a parity bias in progressions that Hooley's averaged condition would see? Inconclusive (no structure): against a random-sign model the ratio is 0.73-1.54 at x = 1e6, 1e7, i.e. square-root cancellation only.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- u
+- s
+- e
+- d
+- :
+-  
+- 2
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+- ,
+-  
+- 5
+-  
+- e
+- r
+- r
+- o
+- r
+- s
+-  
+- f
+- i
+- x
+- e
+- d
+- ,
+-  
+- i
+- n
+- c
+- l
+- u
+- d
+- i
+- n
+- g
+-  
+- p
+- +
+- 2
+-  
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+-  
+- f
+- o
+- r
+-  
+- p
+- -
+- 2
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- x
+-  
+- =
+-  
+- 1
+- e
+- 8
+-  
+- n
+- u
+- m
+- e
+- r
+- i
+- c
+- a
+- l
+-  
+- r
+- u
+- n
+-  
+- w
+- a
+- s
+-  
+- O
+- O
+- M
+- -
+- k
+- i
+- l
+- l
+- e
+- d
+-  
+- a
+- t
+-  
+- 1
+- 3
+-  
+- G
+- B
+-  
+- (
+- 3
+- e
+- 7
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- B
+- o
+- m
+- b
+- i
+- e
+- r
+- i
+- '
+- s
+-  
+- o
+- r
+- i
+- g
+- i
+- n
+- a
+- l
+-  
+- p
+- a
+- p
+- e
+- r
+- s
+-  
+- w
+- e
+- r
+- e
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+-  
+- (
+- o
+- n
+- l
+- y
+-  
+- F
+- o
+- r
+- d
+- '
+- s
+-  
+- q
+- u
+- o
+- t
+- a
+- t
+- i
+- o
+- n
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- 3
+- g
+-  
+- s
+- h
+- a
+- r
+- e
+-  
+- w
+- a
+- s
+-  
+- t
+- h
+- i
+- n
+- :
+-  
+- n
+- o
+-  
+- n
+- e
+- w
+-  
+- s
+- m
+- a
+- l
+- l
+- -
+- r
+- e
+- s
+- u
+- l
+- t
+- s
+-  
+- l
+- i
+- n
+- e
+-  
+- b
+- e
+- f
+- o
+- r
+- e
+-  
+- t
+- h
+- e
+-  
+- w
+- e
+- e
+- k
+- l
+- y
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+- .
+
+Next: Monday 16 Nov 3:34 AM CT run: the first weekly review before other work (is the k = 3 GEH line worth more runs; second small-results paper). Parity: open question 7, or a candidate the review picks. 182: restoration data if supplied.
+
 ## 2026-11-15 - Session 23 (back-to-back run 2 of 3 at Jerry's request, continued in the same conversation as Session 22 right after its merge, ~16:45 UTC; no wait): For which eps does Polymath8b's k = 3 GEH criterion beat the parity value 2? Above 2 at eps = 2/9, 1/4, 7/24; provably below 2 for every eps >= 0.439 (parity paper v0.8)
 
 - Parity paper v0.8 (this run's parity attempt): for eps >= 1/4 the k = 3 problem of Polymath8b's Theorem 3.14 without the marginal condition reduces, by a Schur test, to a one-dimensional inequality (Prop. prop:unc-ceiling, proved here). Any positive phi satisfying it gives a ceiling for that eps and every larger one.
