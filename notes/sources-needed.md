@@ -46,3 +46,9 @@
 - Tried (bonus run, 15 Nov 2026, helper): doi.org redirects to projecteuclid.org, which returned a 1157-byte Incapsula challenge page. Not worked around.
 - Status: needed (low priority; the secondary quotes are enough for the open question).
 
+
+## Restoration-step data of the claimed 182 (GPT-6 Astra / R. Sharifi): repository romyar1/prime-gaps-lean, `inputs/source_certificates/` (the three `independent_components` arrays) or any file listing the 197 restoration components
+- What: for each of the 197 source components of the support restoration (Thm 8.1, (8.6); 60 outer, 137 inner; families G1-G6 and C of the bundle's Sec. 9.1), the values A_j and M_j, the low-witness bin windows, the Chernoff parameter beta, the count prefixes R and the dyadic scale Q. These are the inputs of the 197 restoration integrals, the last unchecked numerical piece of rung 182.
+- Why: rung 182. The cap quotient (I, J0, J+, T, kappa_true) is reproduced by two programs and the printed restoration arithmetic is re-done exactly (Session 21), but the restoration loss sum (2 sum sqrt(A_j M_j) etc., about 155e-6 of the 211e-6 total) cannot be recomputed without the per-component data, which the expository bundle says are "in the digital supplement".
+- Tried: TrialData182_part1..3.lean (in code/data182/) contain the trial function, the 43 + 55 source rows and T0, but no A_j, M_j, beta, R, Q or witness windows (grep for chernoff / witness / beta / window: no hits; Session 22, 15 Nov 2026). The repository is outside this session's GitHub scope, so it was not fetched.
+- Status: needed.
