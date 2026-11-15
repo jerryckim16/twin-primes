@@ -1,0 +1,49 @@
+eps=1/8 n=24 orbits=1347 constraints=100 nullity=1295 float_max=2.127209
+exact ratio 3J/I = 3041668955706663/1429887418917416 = 2.127208699
+  ratio > 2: True
+  ratio > 209/100: True
+  ratio > 21/10: True
+  ratio > 53/25: True
+  ratio > 107/50: False
+eps=1/8 n=32 orbits=3164 constraints=187 nullity=3068 float_max=2.140870
+exact ratio 3J/I = 13523319026150757/6316738844612720 = 2.140870370
+  ratio > 2: True
+  ratio > 209/100: True
+  ratio > 21/10: True
+  ratio > 53/25: True
+  ratio > 107/50: True
+eps=1/4 n=16 orbits=406 constraints=39 nullity=386 float_max=2.024711
+exact ratio 3J/I = 3043680574584981/1503266328633296 = 2.024711468
+  ratio > 2: True
+  ratio > 209/100: False
+  ratio > 21/10: False
+  ratio > 53/25: False
+  ratio > 107/50: False
+eps=1/4 n=24 orbits=1347 constraints=100 nullity=1296 float_max=2.052230
+exact ratio 3J/I = 4502143336095055/2193780547136928 = 2.052230494
+  ratio > 2: True
+  ratio > 209/100: False
+  ratio > 21/10: False
+  ratio > 53/25: False
+  ratio > 107/50: False
+eps=1/4 n=32 orbits=3164 constraints=189 nullity=3068 float_max=2.065759
+exact ratio 3J/I = 39699868771187709/19218050037559040 = 2.065759465
+  ratio > 2: True
+  ratio > 209/100: False
+  ratio > 21/10: False
+  ratio > 53/25: False
+  ratio > 107/50: False
+eps=3/8 n=16 orbits=406 constraints=18 nullity=397 float_max=1.940020
+exact ratio 3J/I = 759702220208825/391595095400688 = 1.940019753
+  ratio > 2: False
+  ratio > 209/100: False
+  ratio > 21/10: False
+  ratio > 53/25: False
+  ratio > 107/50: False
+eps=3/8 n=32 orbits=3164 constraints=111 nullity=3108 float_max=1.979334
+exact ratio 3J/I = 7351370661201273/3714062162313856 = 1.979334308
+  ratio > 2: False
+  ratio > 209/100: False
+  ratio > 21/10: False
+  ratio > 53/25: False
+  ratio > 107/50: False
