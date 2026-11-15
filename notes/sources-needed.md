@@ -27,3 +27,9 @@
 - Why: to see whether Remark 8.1's weight (printed in arXiv v4 as a product over 0 <= i <= i' <= H, identically zero; see notes/flags-for-jerry.md, 15 Nov) was corrected in the published version. Low priority.
 - Tried (Session 18, 15 Nov 2026): curl https://link.springer.com/content/pdf/10.1186/s40687-014-0012-7.pdf and https://resmathsci.springeropen.com/counter/pdf/10.1186/s40687-014-0012-7.pdf: both HTTP 200 but an HTML "Client Challenge" page instead of the PDF (bot check). Not worked around.
 - Status: needed.
+
+## Heath-Brown, "Primes represented by x^3 + 2y^3", Acta Math. 186 (2001), 1-84, doi:10.1007/BF02392715
+- Why: parity paper thread 2 (results that break or sidestep parity): the exact theorem, which sieve it uses (Harman's, according to X. Li, arXiv:2111.05403, p. 2), and the structure of its bilinear (Type II) estimate (Lemmas 3.1, 5.1, 9.3, 13.1 as cited by Li), plus any remark on the limits of the method.
+- Tried (Session 19, 15 Nov 2026, helper): no arXiv copy found (arXiv math/0007012 is a different paper); intlpress.com Acta archive: HTTP 403; projecteuclid.org: Incapsula bot-challenge page; link.springer.com: paywall (preview only); people.maths.ox.ac.uk/hbrown/: HTTP 404. A third-party mirror was not used. Not worked around.
+- What we have: secondary descriptions only (Maynard arXiv:1507.05080v2; X. Li arXiv:2111.05403v1), in notes/sources-hb-x3-2y3.md. Nothing from Heath-Brown's paper enters the parity paper until the primary source is read.
+- Status: needed.
