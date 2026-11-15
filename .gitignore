@@ -14,3 +14,4 @@ papers/*/*.fdb_latexmk
 papers/*/*.fls
 papers/*/*.log
 papers/*/*.out
+runs/loss_outer2_cache/

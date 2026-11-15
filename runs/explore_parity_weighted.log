@@ -1,0 +1,20 @@
+X=1e+07 theta=0.2 R=25.1  A=1.81524e+06  B/A=0.000358  T/A=0.032491  (#twins 58980)
+Traceback (most recent call last):
+  File "/home/user/twin-primes/code/explore/parity_weighted_liouville.py", line 54, in <module>
+    print(f"  pattern lam(n)={a:+d}, lam(n+2)={b:+d}: weight share {w[sel].sum()/A:.5f}, count share {sel.mean():.5f}")
+BrokenPipeError: [Errno 32] Broken pipe
+X=1e+07 theta=0.25 R=56.2  A=1.2048e+06  B/A=0.000595  T/A=0.048952  (#twins 58980)
+Traceback (most recent call last):
+  File "/home/user/twin-primes/code/explore/parity_weighted_liouville.py", line 54, in <module>
+    print(f"  pattern lam(n)={a:+d}, lam(n+2)={b:+d}: weight share {w[sel].sum()/A:.5f}, count share {sel.mean():.5f}")
+BrokenPipeError: [Errno 32] Broken pipe
+X=1e+08 theta=0.2 R=39.8  A=1.42163e+07  B/A=0.000042  T/A=0.030972  (#twins 440312)
+Traceback (most recent call last):
+  File "/home/user/twin-primes/code/explore/parity_weighted_liouville.py", line 54, in <module>
+    print(f"  pattern lam(n)={a:+d}, lam(n+2)={b:+d}: weight share {w[sel].sum()/A:.5f}, count share {sel.mean():.5f}")
+BrokenPipeError: [Errno 32] Broken pipe
+X=1e+08 theta=0.25 R=100.0  A=9.44311e+06  B/A=0.000043  T/A=0.046627  (#twins 440312)
+Traceback (most recent call last):
+  File "/home/user/twin-primes/code/explore/parity_weighted_liouville.py", line 54, in <module>
+    print(f"  pattern lam(n)={a:+d}, lam(n+2)={b:+d}: weight share {w[sel].sum()/A:.5f}, count share {sel.mean():.5f}")
+BrokenPipeError: [Errno 32] Broken pipe

@@ -119,6 +119,10 @@ ideas = "\n".join(f'<tr><td>{chip(i["status"], STATUS_CLASS.get(i["status"], "li
 def entry(e):
     out = [f'<article class="entry"><header><span class="when">{esc(e["date"])} &middot; {esc(e["slot"])}</span><h3>{tx(e["title"])}</h3></header>']
     out.append("<ul>" + "".join(f"<li>{tx(x)}</li>" for x in e.get("did", [])) + "</ul>")
+    if e.get("flag"):
+        out.append(f'<p class="next"><span class="sub">Flag for Jerry</span> {tx(e["flag"])}</p>')
+    if e.get("parity"):
+        out.append(f'<p class="next"><span class="sub">Parity attempt</span> {tx(e["parity"])}</p>')
     if e.get("explored"):
         out.append(f'<p class="next"><span class="sub">Explored</span> {tx(e["explored"])}</p>')
     if e.get("failed"):
@@ -364,6 +368,8 @@ md = ["# Research log\n"]
 for e in log:
     md.append(f"## {e['date']} - {e['slot']}: {e['title']}\n")
     md += [f"- {x}" for x in e.get("did", [])]
+    if e.get("flag"): md += ["", f"Flag for Jerry: {e['flag']}"]
+    if e.get("parity"): md += ["", f"Parity attempt: {e['parity']}"]
     if e.get("explored"): md += ["", f"Explored: {e['explored']}"]
     if e.get("failed"): md += ["", "Did not work or is blocked:"] + [f"- {x}" for x in e["failed"]]
     if e.get("next"): md += ["", f"Next: {e['next']}"]

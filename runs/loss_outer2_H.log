@@ -1,0 +1,43 @@
+[      4 s] arrays built: {"L": 19660, "K": 46580}
+[      8 s] power sums built (48 polys)
+[      8 s] 3129 numeric monomials (R 1145, V 1984)
+[      9 s] v rows ready
+[     16 s] V weights ready
+[     25 s] P_0 powers 30..39
+[    139 s] lambda 1/77, monomials 342/3129, products 530 (112 s in GMP), rss 1123 MB
+[    406 s] lambda 11/77, monomials 1305/3129, products 1523 (342 s in GMP), rss 1144 MB
+[    580 s] lambda 21/77, monomials 1863/3129, products 2120 (493 s in GMP), rss 1166 MB
+[    706 s] lambda 31/77, monomials 2242/3129, products 2539 (603 s in GMP), rss 1189 MB
+[    814 s] lambda 41/77, monomials 2550/3129, products 2887 (698 s in GMP), rss 1218 MB
+[    896 s] lambda 51/77, monomials 2743/3129, products 3120 (771 s in GMP), rss 1243 MB
+[    969 s] lambda 61/77, monomials 2914/3129, products 3331 (837 s in GMP), rss 1268 MB
+[   1031 s] lambda 71/77, monomials 3058/3129, products 3515 (893 s in GMP), rss 1294 MB
+[   1064 s] RESULT H: A ours 15056954287477 (mid 15056954287477) table 15056954296612 ratio 0.999999999393 | B ours 2833062482791 (up 2833063171905) table 2833062492447 ratio 0.999999996592
+{
+ "component": "H",
+ "group": "O5/2",
+ "kind": "H",
+ "info": {
+  "L": 19660,
+  "K": 46580
+ },
+ "R": "3.566287476398691591496017e-19",
+ "R_up": "3.56628747639871110523514e-19",
+ "R_numerr": "1.9514e-33",
+ "V": "6.71019852974787842264517e-20",
+ "V_numerr": "1.6198e-26",
+ "V_rad": "1.2405e-28",
+ "A_ours": 15056954287477,
+ "A_ours_mid": 15056954287477,
+ "B_ours": 2833062482791,
+ "B_ours_up": 2833063171905,
+ "A_table": 15056954296612,
+ "B_table": 2833062492447,
+ "A_ratio": 0.9999999993933036,
+ "B_ratio": 0.9999999965916742,
+ "products": 3610,
+ "gmp_seconds": 923.1,
+ "monomials": 3129,
+ "seconds": 1064.1,
+ "peak_rss_MB": 1312.0
+}

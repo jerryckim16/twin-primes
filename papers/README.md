@@ -4,7 +4,8 @@ Each line of work that grows into its own result gets its own paper here: `paper
 
 | slug | title | version | status | one line |
 |---|---|---|---|---|
-| `verification-note` | An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft | 0.6 (draft, 14 Nov 2026; raw loss bounds of the 186 companion re-evaluated) | active | Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song–Yue (236) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; the main terms and most raw loss bounds of OpenAI's 186 companion recomputed. The analytic inputs are not verified. |
+| `parity-barrier` | The parity barrier and twin primes: what is known and what is missing | 0.1 (draft, 15 Nov 2026) | active | The Polymath8b parity obstruction and Selberg's example read in the sources; the Friedlander–Iwaniec asymptotic sieve specialised to Λ(n+2) (what is missing: a Type I bound beyond level x^(2/3) and the bilinear bound, which has no cancellation for the parity-twisted sequence); the twisted Type I input proved in a weak, log-averaged form from Tao's two-point theorem. No claim of progress on the twin prime conjecture. |
+| `verification-note` | An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft | 0.7 (draft, 15 Nov 2026; all 186 loss bounds re-evaluated, the decisive group by two programs) | active | Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song–Yue (236) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; the main terms and all 97 raw loss bounds of OpenAI's 186 companion recomputed (the decisive group by two independent programs). The analytic inputs are not verified. |
 
 ## Updating `verification-note`
 

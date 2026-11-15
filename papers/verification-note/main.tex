@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.6 (draft), 14 November 2026}
+\date{Version 0.7 (draft), 15 November 2026}
 
 \begin{document}
 
@@ -539,15 +539,19 @@ Proposition on the 186 main terms; \texttt{code/oai186\_IH.py},
 \texttt{code/oai186\_J.py}; a second program in ball arithmetic,
 \texttt{code/oai186\_check2.py}, agrees to $7\cdot10^{-17}$). The criterion
 also needs the loss bound $L^+/I_H\le696075110\cdot10^{-12}$, a sum of $97$
-component bounds. In version~0.6 we re-evaluated their raw forms in ball
-arithmetic, in our own code, from the companion's formulas
-(\cite{Kim26}, the paragraph on the raw loss bounds; one program, not an
-outward-rounded certificate). All $45$ inner components are at most their table
-entries and agree with them to $5\cdot10^{-10}$ for most components; rounding
-up reproduces the four inner group totals exactly. Of the $52$ outer
-components, the $33$ largest (all but $1.2\cdot10^{-6}$ of $L^+$ together with the inner
-ones) are at most their table entries, within $5\cdot10^{-9}$ for the rank-two and
-factorial components and within $3.4\cdot10^{-5}$ in every case. The final
+component bounds. In versions~0.6--0.7 we re-evaluated their raw forms from the companion's
+formulas, in our own code (\cite{Kim26}, the paragraphs on the raw loss
+bounds). A first program (Arb balls) evaluated all $97$ components: every value
+is at most its table entry, rounding up reproduces the four inner group totals
+exactly, and the outer group totals come out $1$ and $3$ units of $10^{-12}$
+below the table; the rank-two and factorial components agree with the table to
+$5\cdot10^{-9}$, and the largest relative gaps ($\le2.7\%$, always on our
+side) occur in tiny renewal-branch components. A second, independent program
+(GMP integer products and \texttt{mpmath}, a different moment algorithm,
+written without access to the first) evaluated the $17$ components that carry
+$99.95\%$ of the decisive group $O_{5/2}$ ($89.4\%$ of $L^+$); it agrees with the
+first to $1.4\cdot10^{-12}$ on the rank-two and factorial components and to
+$2.2\cdot10^{-9}$ on the low bins. The final
 margin is sensitive almost only to the group $O_{5/2}$ ($89.5\%$ of $L^+$, at most
 $2.06\%$ slack if the margin must exceed $1/50000$). What this does not check:
 that the forms majorise the true support-failure integrals (the companion's
@@ -591,6 +595,9 @@ version 0.12).
 
 \section*{Changes}
 \begin{description}
+\item[0.7] (15 November 2026) Remark~\ref{rem:186}: all $97$ raw loss components
+by one program, and the $17$ components carrying $99.95\%$ of $O_{5/2}$ by a second,
+independent program.
 \item[0.6] (14 November 2026) Remark~\ref{rem:186}: the raw loss bounds of the
 $186$ companion re-evaluated (all $45$ inner and the $33$ largest outer components), and the
 sensitivity of its final margin to each loss group.

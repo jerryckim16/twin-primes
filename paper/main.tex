@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.16, 14 November 2026}
+\date{Version 0.17, 15 November 2026}
 
 \begin{document}
 
@@ -87,7 +87,10 @@ companion from its formulas ($78$ of its $97$ components, all but $1.2\cdot10^{-
 loss $L^+$; all at most the published values, most within $5\cdot10^{-9}$ of them; one
 program, not an outward-rounded certificate) and shows that the final margin of
 that certificate depends almost only on one loss group
-(Proposition~\ref{prop:oai186-budget}); and
+(Proposition~\ref{prop:oai186-budget}); version~0.17 completes this with two programs for the decisive group
+($99.95\%$ of it; the majorisation lemmas and the analytic inputs are not
+checked, and $186$ is not adopted), and the project moves to the companion
+papers of Section~\ref{sec:related}; and
 (iv) a programme of original
 directions that later versions will test. Every statement carries one of the
 labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
@@ -2064,8 +2067,19 @@ $c=q/10^6$, our values give component bounds $E$ whose sums over the finished
 components equal the table's sums for $O_2$ and fall $3\cdot10^{-12}$ below them for
 $O_{5/2}$. The remaining $19$ components (low bins of $O_{5/2}$ and $O_2$) carry
 a fraction $1.2\cdot10^{-6}$ of $L^+$ in the tables; by Proposition~\ref{prop:oai186-budget} they could
-not affect the margin even if they were off by a factor of $10^4$. They were not
-run for lack of time (resume commands in \texttt{STATE.md}).
+not affect the margin even if they were off by a factor of $10^4$. Version~0.17
+runs them (\lbl{Computed}, same program): at $128$ bits the $15$ smallest bins
+were rejected by the companion's own test (``reject a nonpositive lower
+endpoint'' in the renewal recurrence (2.3)), because the ball width of the
+sliding sum outgrows the majorant before it reaches $10^{-40}$; at $256$ bits all
+pass. All $19$ values are at most their table entries; the largest relative
+gaps are again in $V_G$ of renewal-branch bins ($2.7\%$, $1.0\%$, $0.5\%$ below the
+table for $L_{13}$ of $O_{5/2}$, $L_3$ of $O_2$, $L_{14}$ of $O_{5/2}$, components
+whose bounds $E$ are at most $14\cdot10^{-12}$). With all $97$ components, the
+component bounds $E$ computed from our values with the published Young
+parameters sum to $38927521$ and $622829238$ for $O_2$ and $O_{5/2}$ (table:
+$38927522$, $622829241$) and reproduce the four inner totals exactly; every raw
+value is at most its table entry (\texttt{code/cap6/oai186\_loss\_summary.json}).
 A fresh-context audit of both programs against the companion (items: clipping,
 slopes, bin lists, branch rule, closed form, masks and weights, $P$-sets and
 prefactors, rank-two and factorial arrays, the erased-coordinate correlation;
@@ -2075,6 +2089,58 @@ discrepancy. It flagged one reading as open: we take ``the appropriate rows of
 about $39$ top indices of the next, smaller-cap row are kept. That reading is
 the one that matches the tables.
 \end{sloppypar}
+
+\begin{sloppypar}\noindent\emph{A second program for the decisive group, version~0.17}
+(\lbl{Computed}, two independent programs). A fresh-context helper wrote
+\texttt{code/oai186\_loss\_outer2.py} from the companion alone, without
+opening the first program or its results until its numbers were final
+(\texttt{notes/}\allowbreak\texttt{loss-outer2-report.md}). It differs from
+the first program in arithmetic (exact integer polynomial products by
+Kronecker substitution in GMP, rounded at $2^{-192}$ with a running error bound,
+and \texttt{mpmath} at $320$ bits for logarithms and exponentials, instead of
+Arb balls through \texttt{python-flint}), in the moment algorithm (a
+generating series in auxiliary variables for the power sums, expanded into
+exact integer coefficients and checked by brute force on tiny grids, instead
+of the set-partition sum (2.10); it reproduces the marking-ring identity
+(1.43), $[xy]Q^{40}=40P^{39}C+1560P^{38}AB$, and gives the analogue
+$[y^3]=40F_0^{39}F_3+1560F_0^{38}F_1F_2+9880F_0^{37}F_1^3$ for the
+factorial component), and in the cap rows (2.13) (prefix sums after a binomial
+expansion). It evaluated the $12$ rank-two components, the third-factorial
+component and the low bins $L_{19}$--$L_{22}$ of $O_{5/2}$: $99.95\%$ of that
+group's published bound and $89.4\%$ of $L^+$. Every raw value lies below its
+Table~2.2 entry (by $1.2\cdot10^{-9}$ for $A$ in the rank-two bins, as for the
+first program; the common offset is therefore in the companion's production
+run, which can only make its bounds larger), and the two programs agree to
+$2.5\cdot10^{-14}$ ($A$) and $1.4\cdot10^{-12}$ ($B$) on the rank-two and
+factorial components and to $2.2\cdot10^{-9}$ on the low bins, inside the
+second program's own error bound for the cell enclosures (2.2). The second
+program has no renewal branch, so the smallest low bins (with the inner groups
+and $O_2$, $10.6\%$ of $L^+$) rest on the first program alone; by
+Proposition~\ref{prop:oai186-budget}, $O_2$ could be $33\%$ and the inner groups
+$10$--$230$ times too small, and the unchecked low bins of $O_{5/2}$ ($0.05\%$ of
+the group) $2\%$, without changing the sign of the margin above $1/50000$. The
+ambiguous readings of the companion that both programs had to fix (barred
+$d$ in (2.9) as point enclosures with the stated cap roundings, the radial
+mask of (1.25), the clipping (1.26) with $c_t=a_t$, $V_t=A_t$, the strict
+inequality in (2.18), the erased coordinate in (2.20)) were made
+independently and coincide.
+\end{sloppypar}
+
+\begin{remark}[what this does and does not establish; the switch to the second phase]\label{rem:186-status}
+With version~0.17 both numerical halves of the $186$ criterion, the main terms
+$I_H$, $J_{\lambda,H}$ and the loss bound $L^+$, have been re-evaluated by two
+programs each (for $L^+$ in the sense just stated). This is a re-evaluation of
+the companion's computational forms: we have \emph{not} checked its Lemmas
+1.4--1.7, 2.3 and 2.4 (that the forms majorise the true support-failure
+integrals and that the cover is complete), its restoration step
+(Proposition~1.3, resting on the main paper's Proposition~4.6), or any of the
+analytic inputs, which stay \lbl{Claimed}. So the project does not adopt
+$186$, even conditionally; its bound stays at $236$ (conditional). By the plan
+recorded in \texttt{STATE.md} (``switch as soon as rung $186$ is finished''), the
+project now moves to its second phase: most of each run goes to the
+companion papers of Section~\ref{sec:related}, first the paper on the parity
+barrier, while rung $182$ continues at a smaller share.
+\end{remark}
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic on the published integers; version~0.16]\label{prop:oai186-budget}
 Let $\mu(L):=(\rho^*(J^--L)-I^+)/I^+$ with $\rho^*=2624989/10^7$ and $I^\pm$, $J^-$
@@ -2219,6 +2285,34 @@ apply to supports with several bands, where $J$ contains cross terms between
 bands, nor to the constructions behind $186$ and $182$, which we have not
 read in enough detail.
 \end{remark}
+
+\section{Related results}\label{sec:related}
+\begin{sloppypar}
+Lines of work that grow into their own results live in separate papers
+(index: \texttt{papers/README.md}; PDFs on the project website). Each carries the
+same labels as this paper.
+\begin{itemize}
+\item \emph{An independent exact verification of the variational step behind
+the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps
+of a $212$ draft} (\texttt{papers/verification-note/}). The exact
+recomputations of Section~\ref{sec:stad}, written up as a short note: the
+variational criteria of Stadlmann ($240$) and Kintali / Song--Yue ($236$), each
+by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
+and the re-evaluation of the main terms and loss bounds of the $186$ companion.
+None of it verifies the analytic inputs.
+\item \emph{The parity barrier and twin primes: what is known and what is
+missing} (\texttt{papers/parity-barrier/}, from version~0.17 of this paper). The
+obstacle between bounded gaps and twin primes: the Polymath8b parity
+obstruction (why the method stops at $6$ even under GEH), the
+Friedlander--Iwaniec asymptotic sieve specialised to $\Lambda(n+2)$ (all its
+hypotheses except the Type~I bound at level $x^{2/3+}$ and the bilinear bound
+hold, and the bilinear bound has no cancellation for the parity-twisted
+sequence), and the remark that the twisted Type~I input of the obstruction is a
+theorem for bounded-level, logarithmically averaged weights (a consequence of
+Tao's two-point theorem \cite{Tao16}). It makes no claim of progress on the
+twin prime conjecture, which is open.
+\end{itemize}
+\end{sloppypar}
 
 \section{Programme}\label{sec:prog}
 

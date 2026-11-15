@@ -1,0 +1,48 @@
+[      2 s] arrays built: {"a": 0.34770356773332267, "b": 0.35998975913566855, "Lambda": 0.03472528428610074, "Mb": 33866, "Mrp": 26238, "Mrm": 25775, "first_nonzero": {"P": 0, "A": 32710, "B": 25775, "C": 58947}}
+[      6 s] power sums built (48 polys)
+[      7 s] 2025 numeric monomials (R 758, V 1267)
+[      7 s] v rows ready
+[     14 s] V weights ready
+[     22 s] P_0 powers 31..39
+[     75 s] lambda 1/77, monomials 185/2025, products 268 (54 s in GMP), rss 1011 MB
+[    238 s] lambda 11/77, monomials 783/2025, products 886 (193 s in GMP), rss 1026 MB
+[    350 s] lambda 21/77, monomials 1147/2025, products 1279 (291 s in GMP), rss 1056 MB
+[    435 s] lambda 31/77, monomials 1407/2025, products 1569 (366 s in GMP), rss 1078 MB
+[    511 s] lambda 41/77, monomials 1617/2025, products 1809 (434 s in GMP), rss 1104 MB
+[    567 s] lambda 51/77, monomials 1753/2025, products 1975 (484 s in GMP), rss 1131 MB
+[    620 s] lambda 61/77, monomials 1873/2025, products 2125 (531 s in GMP), rss 1156 MB
+[    666 s] lambda 71/77, monomials 1975/2025, products 2257 (573 s in GMP), rss 1181 MB
+[    690 s] RESULT P5: A ours 53862830737854 (mid 53862830737854) table 53862830801099 ratio 0.999999998826 | B ours 13997130855541 (up 13997130877129) table 13997130877252 ratio 0.999999998449
+{
+ "component": "P5",
+ "group": "O5/2",
+ "kind": "P",
+ "info": {
+  "a": 0.34770356773332267,
+  "b": 0.35998975913566855,
+  "Lambda": 0.03472528428610074,
+  "Mb": 33866,
+  "Mrp": 26238,
+  "Mrm": 25775,
+  "first_nonzero": "{'P': 0, 'A': 32710, 'B': 25775, 'C': 58947}"
+ },
+ "R": "1.275758264495481879220458e-18",
+ "R_up": "1.275758264495481888731664e-18",
+ "R_numerr": "9.5112e-36",
+ "V": "3.315264928256274126711932e-19",
+ "V_numerr": "2.1847e-29",
+ "V_rad": "4.8947e-28",
+ "A_ours": 53862830737854,
+ "A_ours_mid": 53862830737854,
+ "B_ours": 13997130855541,
+ "B_ours_up": 13997130877129,
+ "A_table": 53862830801099,
+ "B_table": 13997130877252,
+ "A_ratio": 0.9999999988258137,
+ "B_ratio": 0.9999999984488964,
+ "products": 2325,
+ "gmp_seconds": 594.4,
+ "monomials": 2025,
+ "seconds": 689.9,
+ "peak_rss_MB": 1188.9
+}

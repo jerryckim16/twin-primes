@@ -1,0 +1,8 @@
+[     0 s] group O2: m=2 z=49152 p=24576 chi = 89197..95638; components ['L1']
+[    39 s] marginals shell 0 done
+[    51 s] marginals shell 1 done
+[    63 s] marginals shell 2 done
+[    75 s] P(0,z_G) = [2, 3]; 53 eta, 77 block multisets; pair weights ready
+[   108 s] L1: L=2331 H=3498 theta=189 J=32 branch=renewal (first failed test 18572) lower index 94919
+[   864 s] L1: A = [10.396040185127 +/- 1.35e-14] (table 11, ratio 0.945094562284)  B = [2.5132044351470 +/- 3.90e-14] (table 10, ratio 0.251320443515)
+[   864 s] {"group": "O2", "components": {"L1": {"A": 10.396040185127013, "A_rad": 8.833495428031085e-66, "B": 2.513204435147039, "B_rad": 2.7918939102777424e-67, "table_A": 11, "table_B": 10, "L": 2331, "H": 3498, "theta": 189, "branch": "renewal", "delay_first_failed": 18572, "lower_index": 94919, "clip": {"eligible": 20, "absorbed_eligible": 0, "clipped": true, "below_all_absorbed": false, "order3_min_is_bG": null}}}, "prec": 256, "seconds": 864, "peak_rss_MB": 2171}

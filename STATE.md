@@ -3,6 +3,43 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
+## POSITION (after Session 17, 15 Nov 2026): PHASE B
+- Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
+- PHASE B since Session 17. Rung 186 finished in the sense of the relayed decision: main terms by two programs (Session 14), loss
+  L^+ by program 1 for all 97 components (code/cap6/oai186_loss_summary.json) and by an independent program 2
+  (code/oai186_loss_outer2.py, notes/loss-outer2-report.md) for the 17 components with 99.95% of O_{5/2} (89.4% of L^+).
+  186 NOT adopted (Lemmas 1.4-1.7, 2.3, 2.4, restoration Prop. 1.3 and analytic inputs unchecked). Paper Rem. rem:186-status.
+- Phase B time split: ~35% parity programme (papers/parity-barrier, notes/parity-programme.md, one attempt per run in
+  notes/parity-attempts/), ~25% other small-results programmes (3g), ~20% bound work (rung 182 first), ~15-20% exploration.
+- Active papers: parity-barrier v0.1 (new), verification-note v0.7. At most 3 active.
+- First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), before other work.
+
+## Next steps (in order; Phase B)
+1. Parity paper, thread 2 (one bounded step): read Friedlander-Iwaniec x^2+y^4 (Annals 1998; arXiv math/9811185 if it exists --
+   check) and state exactly which bilinear (Type II) estimate they prove and which structure (norm form, Jacobi symbol) it uses;
+   or Sawin-Shusterman (arXiv:1808.04001): which step has no integer analogue. Sources via curl https://arxiv.org/pdf/<id> worked
+   this session (FI98, PM8b, Tao16; hashes in notes/parity-programme.md). Every Literature sentence read in the source.
+2. Parity attempt (one per run, route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov), Tao two-point along
+   periodic weights (15 Nov). Candidates: uniform-in-modulus two-point log Chowla ON AVERAGE over q (literature first: Tao-Teravainen,
+   Helfgott-Radziwill, Pilatte?); a parity-sensitive quantity of the 2026 capped supports; the function-field step.
+3. Second small-results paper (3g programme (1) H_m bounds with the 2026 supports, or (2) theory of the capped variational problem:
+   floors/ceilings, Thms 13/15/25 and the k = 45/49 ceilings). Literature-check first.
+4. Bound share: rung 182 -- second program for J0, J+ (structure of code/sharifi182_check2.py with the face masks of
+   code/sharifi182_J.py; at most 2 workers, ~6 GB each); the tail term needs the kernel K of [M] (5.6) transcribed.
+5. Optional 186 follow-ups: renewal branch in program 2 (would cover O_2 and the small low bins); a third look at why the
+   renewal-branch V of small bins sits up to 2.7% below the table (likely interval widening in their recurrence).
+6. Low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume (commands below).
+
+## Session 17 (7:34 PM CT slot, 14 Nov; started 01:34 UTC 15 Nov; no wait) -- additions
+- 186 program 1: the 19 remaining outer components. NOTE: at --prec 128 the 15 smallest bins (O2 L1, L2; O5/2 L1-L13) abort with
+  "renewal: nonpositive lower endpoint" (the paper's own rejection rule): use runs/oai186_outer_job256.sh (256 bits, ~14 min each,
+  2 in parallel). Combined: code/cap6/oai186_loss_outer.json, summary code/cap6/oai186_loss_summary.json (97/97, all <= table).
+- 186 program 2: code/oai186_loss_outer2.py (--comp X --out f; --selftest; --ihcheck), results code/cap6/loss_outer2/part_*.json
+  (P1-P12, H, L19-L22 of O5/2), ~12 min per P, 18 min H, 6 min L, 1.3 GB. No renewal branch: L18 and below abort (assertion in the
+  delay recurrence). runs/loss_outer2_cache/ is a regenerable 31 MB pickle (gitignored).
+- Parity paper v0.1 + route card 2026-11-15; exploration code/explore/parity_weighted_liouville.py.
+- Wolfram and mathbox NOT available.
+
 ## RELAYED DECISION (Jerry Kim via the coordinator session, 14 Nov 15:26 UTC; received by Session 16 after its merge)
 - SWITCH TO PHASE B AS SOON AS RUNG 186 IS FINISHED: its variational step INCLUDING the loss bound L^+ reproduced by two independent programs, or shown to fail as stated, or blocked. Do not wait for rung 182 (it continues inside Phase B's ~20% bound share). When the switch happens, record it in STATE.md, status.json (phase "B") and the log; Phase B top priority is the parity-barrier programme (papers/parity-barrier/, notes/parity-programme.md, one bounded attempt per run in notes/parity-attempts/), ~35%.
 - Status after Session 16: NOT yet finished. L^+ has been re-evaluated by ONE program for 78 of 97 components (all but 1.2e-6 of L^+). Still needed: the 19 small outer components, and a second, independent program (at least for the decisive group O_{5/2}). Until then, prioritise 186's loss bound.
@@ -135,18 +172,8 @@ Thm 1 Lean; Thm 2, 4 certificates; Lemma 3 EGF; Cor 5 (270); Thm 6; Cor 7 (246);
 ## Bound history
 - log/bound-history.json: 578 -> 330 -> 288 -> 278 -> 272 -> 270 -> 246 -> 240 (session 6, conditional on [Sta26]'s equidistribution input; stated in the "how" field).
 
-## Next steps (in order)
-000. (Session 16) Rung 186 loss: finish the 19 remaining small outer components (resume command in the Session 16 section; ~13 min per low bin, ~60 min per rank-two/H, 4 in parallel), recombine (`python3 code/oai186_loss_outer.py --combine code/cap6/loss_outer/part_*.json; python3 code/oai186_loss_summary.py`). Then, because O_{5/2} must be right to ~2% (Prop. oai186-budget) and everything so far is ONE program: a second, independent program for O_{5/2} (y-series moments as in code/oai186_check2.py, own kernel code), and ideally outward rounding. Even then 186 stays "not adopted" unless Lemmas 1.4-1.7, 2.3, 2.4 (that the forms majorise the true losses) are checked, and the analytic inputs stay Claimed.
-00. (Session 15) Rung 186 loss: I2old done. NEXT: the other groups (O2 outer components R_j, V_j; the 5/2 groups need their radial intervals b_G, t_G and the row cores c_t / thresholds V_t of (1.22)/(1.26), NOT in notes/sources-186-loss.md -- if absent, list the exact missing items in notes/sources-needed.md and ask Jerry). Rung 182: second program for J0, J+ (reuse code/sharifi182_check2.py's structure with the face masks of code/sharifi182_J.py); the tail term needs the kernel K of [M] (5.6), not transcribed (bundle PDF not kept) -> ask Jerry for Sec. 5-6 of the bundle if needed.
-0a. (Session 14 follow-up 2) Rung 182: trial data in code/data182/ (verbatim TrialData182.lean, checked by code/sharifi182_data.py). I(F) done by code/sharifi182_I.py (inside the published enclosure; per-cap pieces code/data182/I_cap_*.json; ~19 min on 2 cores, ~4 GB per process). J0, J+ DONE in follow-up 3 (code/sharifi182_J.py --cap b for the 9 caps, then --combine; at most 2 workers at a time, ~6 GB each; just above the published lower bounds). NEXT: the tail term over H_C^c with the kernel K of [M] (5.6) (needs its transcription), then a second program for I(F) (arb, y-series, like code/oai186_check2.py with n0 = 393177 and the layer/component structure), then J0, J+ (faces H_0, H_1 of trialShells) and the tail over H_C^c, compared with trialJ0Lower, trialJPlusLower, trialTailUpper in code/data182/TrialData182_part1.lean.
-0. (Session 14 follow-up) Rung 186 loss bound: the companion PDF was supplied by Jerry (not committed, not available to later runs). Source data and masks recomputed exactly (code/oai186_support_data.py), table arithmetic checked (code/oai186_tables_check.py), forms transcribed in notes/sources-186-loss.md. NEXT: implement the raw component bounds from (2.16)-(2.21), starting with group I2old (7 components; Table 2.3 gives A = 25777, 1511410893, ... in units 1e-18 I_H^-), with the machinery of code/oai186_J.py (same layered marginals); then O2.
-1. Rung 186: (a) DONE in Session 14: second program agrees (code/oai186_check2.json; I_H ball [2.36853178533302e-14 +/- 3e-30], ratio [1.00020608684 +/- 4e-12]); (b) the loss bound L^+ once Jerry supplies Sec. 2.4 of short_gaps_numerics.pdf (notes/sources-needed.md); (c) only then could 186 be "variational step reproduced" (still conditional on its analytic inputs; Lean tuple exists).
-2. Rung 182: blocked until the 726 coefficients arrive (notes/sources-needed.md). Meanwhile its I-type main term needs only the 186 machinery on a 4x finer grid (N = 393216: products 4x longer, fine for GMP).
-3. One-sided certificate on the Song-Yue witness with --jonly --bonf (no j = 3 pieces; about half of the 32 core-hours), as a third, cheaper confirmation of 236's variational step.
-4. k = 45 random point (Schwartz-Zippel) resume, low priority (command above).
-5. Phase B NOT yet triggered: 186 had certified progress this session; 182 is blocked on data (counting towards "3 sessions without progress" from Session 14).
-5b. Main paper: the internal referee report on v0.12 (referee/2026-11-14-companion-paper/report.md) -- Session 14 applied the localized fixes FC1-FC11 (see the log); STILL TO DO: FC12 reorganisation toward a v1.0 shape (one-sentence abstract split, version narration out of headings, own results moved up, notation cleanup), and the FC3 question (certify the weight psi_m near a = 1.037: if below 4.1515 it improves the scaling bound at (50, 1/25); Open).
-6. First weekly review is due on the first run that starts on Monday 16 Nov (Central time).
+## Older next-step notes (Phase A; superseded by the list at the top)
+- Resume commands for old jobs are in the session sections above.
 
 ## Rotation of areas to explore (one per session, about half the effort)
 variational/spectral methods; convex duality and LP/SDP bounds; exponential sums and l-adic methods (Type III); automorphic methods and large moduli (Maynard, Lichtman); zero-density and large values (Guth-Maynard); function fields (Sawin-Shusterman); Siegel zeros; multiplicative functions and entropy (Tao, Matomaki-Radziwill); additive combinatorics; probabilistic models of primes.
