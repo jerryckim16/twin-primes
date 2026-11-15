@@ -1,0 +1,180 @@
+PM8b Thm 3.14, k=3, eps=1/6: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement
+=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 5/6, B = 7/6 ===
+k=2 n=12: orbits=300 constraint rows=19 rank=19 free=271  Heuristic max J/I = 2.000000000000   extremal step F: exact I=5/6, J=5/3, J/I=2   affinity checks=24  (0.11s)
+k=2 test PASSED
+Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {u2+u3<1} (n=4 scaled), 20 3D cells have non-affine fibre length, e.g. [(((0, 0, 0), (0, 0, 0), 1), ['1/10', '1/10', '1/10', '1/5']), (((0, 0, 0), (0, 1, 0), 1), ['1/5', '0', '1/10', '0'])]  -> the u2-u3 = m lines are needed (refined triangles used).
+
+=== k=3 n=12: refined u-cells=648 orbits=1869 J-cells=200 constraint rows=662  assembly 2.5s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 127
+  constraint rank=224  active orbits=1829  free=1605  rref 0.1s  eig (dense eigh) 0.5s
+  Heuristic: max J/I = 1.989957032387
+  sanity (3) Monte Carlo at n=12, random c (not constrained): exact I=0.790666 MC I=0.791671+-0.001298 (+0.77 sigma);  exact J=0.047119 MC J=0.047030+-0.000512 (-0.17 sigma)
+  rounded (free-coordinate denominator 100): exact J/I = 1.989718026715160  (J/I - 2 = -1.028e-02)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.989954577911632  (J/I - 2 = -1.005e-02)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.989957008575318  (J/I - 2 = -1.004e-02)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.989957032160523  (J/I - 2 = -1.004e-02)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.989957032384593  (J/I - 2 = -1.004e-02)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.989957032386812  (J/I - 2 = -1.004e-02)  constraints exact: OK
+  best exact rounded ratio at n=12: 1.989957032386812  > 2 ? False
+  n=12 total 17.7s
+
+=== k=3 n=24: refined u-cells=2592 orbits=13944 J-cells=800 constraint rows=2858  assembly 18.1s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 497
+  constraint rank=960  active orbits=13680  free=12720  rref 24.1s  eig (sparse eigsh) 0.9s
+  Heuristic: max J/I = 1.990936526148
+  rounded (free-coordinate denominator 100): exact J/I = 1.990650703492341  (J/I - 2 = -9.349e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.990933421753090  (J/I - 2 = -9.067e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.990936496140555  (J/I - 2 = -9.064e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.990936525825167  (J/I - 2 = -9.063e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.990936526145195  (J/I - 2 = -9.063e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.990936526148356  (J/I - 2 = -9.063e-03)  constraints exact: OK
+  best exact rounded ratio at n=24: 1.990936526148356  > 2 ? False
+  n=24 total 49.8s
+total runtime 67.6s
+PM8b Thm 3.14, k=3, eps=1/5: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement
+=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 4/5, B = 6/5 ===
+k=2 n=10: orbits=210 constraint rows=15 rank=15 free=185  Heuristic max J/I = 2.000000000000   extremal step F: exact I=4/5, J=8/5, J/I=2   affinity checks=20  (0.06s)
+k=2 n=20: orbits=820 constraint rows=31 rank=31 free=753  Heuristic max J/I = 2.000000000000   extremal step F: exact I=4/5, J=8/5, J/I=2   affinity checks=40  (0.29s)
+k=2 test PASSED
+Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {u2+u3<1} (n=4 scaled), 20 3D cells have non-affine fibre length, e.g. [(((0, 0, 0), (0, 0, 0), 1), ['1/10', '1/10', '1/10', '1/5']), (((0, 0, 0), (0, 1, 0), 1), ['1/5', '0', '1/10', '0'])]  -> the u2-u3 = m lines are needed (refined triangles used).
+
+=== k=3 n=10: refined u-cells=450 orbits=1111 J-cells=128 constraint rows=398  assembly 1.2s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 101
+  constraint rank=135  active orbits=1071  free=936  rref 0.0s  eig (dense eigh) 0.1s
+  Heuristic: max J/I = 1.996796312320
+  sanity (3) Monte Carlo at n=10, random c (not constrained): exact I=0.766897 MC I=0.765754+-0.001255 (-0.91 sigma);  exact J=0.055311 MC J=0.055544+-0.000627 (+0.37 sigma)
+  rounded (free-coordinate denominator 100): exact J/I = 1.996574351975089  (J/I - 2 = -3.426e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.996794040220413  (J/I - 2 = -3.206e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.996796290629659  (J/I - 2 = -3.204e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.996796312119878  (J/I - 2 = -3.204e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.996796312318034  (J/I - 2 = -3.204e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.996796312320012  (J/I - 2 = -3.204e-03)  constraints exact: OK
+  best exact rounded ratio at n=10: 1.996796312320012  > 2 ? False
+  n=10 total 13.9s
+
+=== k=3 n=20: refined u-cells=1800 orbits=8185 J-cells=512 constraint rows=1766  assembly 12.1s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 367
+  constraint rank=594  active orbits=7921  free=7327  rref 4.0s  eig (sparse eigsh) 0.2s
+  Heuristic: max J/I = 1.998161514657
+  rounded (free-coordinate denominator 100): exact J/I = 1.997874839646814  (J/I - 2 = -2.125e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.998158437348386  (J/I - 2 = -1.842e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.998161484092887  (J/I - 2 = -1.839e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.998161514352051  (J/I - 2 = -1.838e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.998161514654349  (J/I - 2 = -1.838e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.998161514657441  (J/I - 2 = -1.838e-03)  constraints exact: OK
+  best exact rounded ratio at n=20: 1.998161514657441  > 2 ? False
+  n=20 total 18.6s
+total runtime 32.8s
+PM8b Thm 3.14, k=3, eps=2/9: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement
+=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 7/9, B = 11/9 ===
+k=2 n=18: orbits=666 constraint rows=27 rank=27 free=603  Heuristic max J/I = 2.000000000000   extremal step F: exact I=7/9, J=14/9, J/I=2   affinity checks=36  (0.22s)
+k=2 test PASSED
+Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {u2+u3<1} (n=4 scaled), 20 3D cells have non-affine fibre length, e.g. [(((0, 0, 0), (0, 0, 0), 1), ['1/10', '1/10', '1/10', '1/5']), (((0, 0, 0), (0, 1, 0), 1), ['1/5', '0', '1/10', '0'])]  -> the u2-u3 = m lines are needed (refined triangles used).
+
+=== k=3 n=18: refined u-cells=1458 orbits=6023 J-cells=392 constraint rows=1310  assembly 7.8s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 271
+  constraint rank=441  active orbits=5759  free=5318  rref 1.4s  eig (sparse eigsh) 0.1s
+  Heuristic: max J/I = 2.000896130725
+  sanity (3) Monte Carlo at n=18, random c (not constrained): exact I=0.789435 MC I=0.792283+-0.001294 (+2.20 sigma);  exact J=0.030526 MC J=0.031987+-0.000351 (+4.16 sigma)
+  rounded (free-coordinate denominator 100): exact J/I = 2.000615192246520  (J/I - 2 = 6.152e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 2.000893128430655  (J/I - 2 = 8.931e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 2.000896103010685  (J/I - 2 = 8.961e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 2.000896130446821  (J/I - 2 = 8.961e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 2.000896130721611  (J/I - 2 = 8.961e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 2.000896130724556  (J/I - 2 = 8.961e-04)  constraints exact: OK
+  best exact rounded ratio at n=18: 2.000896130724556  > 2 ? True
+  candidate check: max |f_1(u)| over 300 random rational u in {11/9 < u1+u2 < 3/2} (exact, fibre at u) = 0
+  candidate check: J from pointwise f_1 + exact interior quadrature == exact J ? True
+  Computed (exact certificate): eps=2/9, n=18, rounding denominator 100: exact J/I = 1112212327/555935160 = 2 + 342007/555935160 (2.000615192246520); I = 4632793/139968000, J = 1112212327/16796160000  -> code/parity/k3_arrangement_cert_2_9_n18.json
+  n=18 total 32.6s
+total runtime 32.9s
+PM8b Thm 3.14, k=3, eps=7/24: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement
+=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 17/24, B = 31/24 ===
+k=2 n=24: orbits=1176 constraint rows=33 rank=33 free=1038  Heuristic max J/I = 2.000000000000   extremal step F: exact I=17/24, J=17/12, J/I=2   affinity checks=48  (0.56s)
+k=2 test PASSED
+Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {u2+u3<1} (n=4 scaled), 20 3D cells have non-affine fibre length, e.g. [(((0, 0, 0), (0, 0, 0), 1), ['1/10', '1/10', '1/10', '1/5']), (((0, 0, 0), (0, 1, 0), 1), ['1/5', '0', '1/10', '0'])]  -> the u2-u3 = m lines are needed (refined triangles used).
+
+=== k=3 n=24: refined u-cells=2592 orbits=13944 J-cells=578 constraint rows=1796  assembly 20.1s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 497
+  constraint rank=603  active orbits=12649  free=12046  rref 3.0s  eig (sparse eigsh) 0.3s
+  Heuristic: max J/I = 2.000094371826
+  sanity (3) Monte Carlo at n=24, random c (not constrained): exact I=0.777166 MC I=0.776752+-0.001276 (-0.32 sigma);  exact J=0.019471 MC J=0.020479+-0.000207 (+4.87 sigma)
+  rounded (free-coordinate denominator 100): exact J/I = 1.999767319823461  (J/I - 2 = -2.327e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 2.000090851197313  (J/I - 2 = 9.085e-05)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 2.000094340403906  (J/I - 2 = 9.434e-05)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 2.000094371504300  (J/I - 2 = 9.437e-05)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 2.000094371822731  (J/I - 2 = 9.437e-05)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 2.000094371825987  (J/I - 2 = 9.437e-05)  constraints exact: OK
+  best exact rounded ratio at n=24: 2.000094371825987  > 2 ? True
+  candidate check: max |f_1(u)| over 300 random rational u in {31/24 < u1+u2 < 3/2} (exact, fibre at u) = 0
+  candidate check: J from pointwise f_1 + exact interior quadrature == exact J ? True
+  Computed (exact certificate): eps=7/24, n=24, rounding denominator 1000: exact J/I = 93300685983/46648223968 = 2 + 4238047/46648223968 (2.000090851197313); I = 1457756999/55296000000, J = 10366742887/196608000000  -> code/parity/k3_arrangement_cert_7_24_n24.json
+  n=24 total 50.0s
+total runtime 50.5s
+PM8b Thm 3.14, k=3, eps=3/10: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement
+=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 7/10, B = 13/10 ===
+k=2 n=10: orbits=210 constraint rows=13 rank=13 free=176  Heuristic max J/I = 2.000000000000   extremal step F: exact I=7/10, J=7/5, J/I=2   affinity checks=20  (0.07s)
+k=2 n=20: orbits=820 constraint rows=27 rank=27 free=715  Heuristic max J/I = 2.000000000000   extremal step F: exact I=7/10, J=7/5, J/I=2   affinity checks=40  (0.26s)
+k=2 test PASSED
+Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {u2+u3<1} (n=4 scaled), 20 3D cells have non-affine fibre length, e.g. [(((0, 0, 0), (0, 0, 0), 1), ['1/10', '1/10', '1/10', '1/5']), (((0, 0, 0), (0, 1, 0), 1), ['1/5', '0', '1/10', '0'])]  -> the u2-u3 = m lines are needed (refined triangles used).
+
+=== k=3 n=10: refined u-cells=450 orbits=1111 J-cells=98 constraint rows=248  assembly 1.1s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 101
+  constraint rank=84  active orbits=992  free=908  rref 0.0s  eig (dense eigh) 0.1s
+  Heuristic: max J/I = 1.997516501989
+  sanity (3) Monte Carlo at n=10, random c (not constrained): exact I=0.766897 MC I=0.765754+-0.001255 (-0.91 sigma);  exact J=0.047107 MC J=0.047003+-0.000518 (-0.20 sigma)
+  rounded (free-coordinate denominator 100): exact J/I = 1.997273854489064  (J/I - 2 = -2.726e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.997513960696869  (J/I - 2 = -2.486e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.997516479852517  (J/I - 2 = -2.484e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.997516501758292  (J/I - 2 = -2.483e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.997516501986240  (J/I - 2 = -2.483e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.997516501988494  (J/I - 2 = -2.483e-03)  constraints exact: OK
+  best exact rounded ratio at n=10: 1.997516501988494  > 2 ? False
+  n=10 total 12.1s
+
+=== k=3 n=20: refined u-cells=1800 orbits=8185 J-cells=392 constraint rows=1166  assembly 8.8s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 367
+  constraint rank=392  active orbits=7353  free=6961  rref 0.7s  eig (sparse eigsh) 0.1s
+  Heuristic: max J/I = 1.999029295917
+  rounded (free-coordinate denominator 100): exact J/I = 1.998738792275374  (J/I - 2 = -1.261e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.999026154241798  (J/I - 2 = -9.738e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.999029265649609  (J/I - 2 = -9.707e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.999029295599803  (J/I - 2 = -9.707e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.999029295913485  (J/I - 2 = -9.707e-04)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.999029295916848  (J/I - 2 = -9.707e-04)  constraints exact: OK
+  best exact rounded ratio at n=20: 1.999029295916848  > 2 ? False
+  n=20 total 11.6s
+total runtime 24.1s
+PM8b Thm 3.14, k=3, eps=1/3: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement
+=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 2/3, B = 4/3 ===
+k=2 n=12: orbits=300 constraint rows=15 rank=15 free=249  Heuristic max J/I = 2.000000000000   extremal step F: exact I=2/3, J=4/3, J/I=2   affinity checks=24  (0.07s)
+k=2 test PASSED
+Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {u2+u3<1} (n=4 scaled), 20 3D cells have non-affine fibre length, e.g. [(((0, 0, 0), (0, 0, 0), 1), ['1/10', '1/10', '1/10', '1/5']), (((0, 0, 0), (0, 1, 0), 1), ['1/5', '0', '1/10', '0'])]  -> the u2-u3 = m lines are needed (refined triangles used).
+
+=== k=3 n=12: refined u-cells=648 orbits=1869 J-cells=128 constraint rows=302  assembly 2.0s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 127
+  constraint rank=102  active orbits=1605  free=1503  rref 0.0s  eig (dense eigh) 0.3s
+  Heuristic: max J/I = 1.994051861452
+  sanity (3) Monte Carlo at n=12, random c (not constrained): exact I=0.790666 MC I=0.791671+-0.001298 (+0.77 sigma);  exact J=0.034160 MC J=0.034925+-0.000387 (+1.98 sigma)
+  rounded (free-coordinate denominator 100): exact J/I = 1.993795884743743  (J/I - 2 = -6.204e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.994048932921269  (J/I - 2 = -5.951e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.994051835301205  (J/I - 2 = -5.948e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.994051861184252  (J/I - 2 = -5.948e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.994051861449519  (J/I - 2 = -5.948e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.994051861451921  (J/I - 2 = -5.948e-03)  constraints exact: OK
+  best exact rounded ratio at n=12: 1.994051861451921  > 2 ? False
+  n=12 total 13.9s
+
+=== k=3 n=24: refined u-cells=2592 orbits=13944 J-cells=512 constraint rows=1418  assembly 15.0s
+  sanity (2): total cell volume (t-units) = 9/16 (expected 9/16); F=1 marginal = 3/2-u1-u2 at all refined-cell vertices: OK; exact affinity re-checks: 497
+  constraint rank=476  active orbits=12040  free=11564  rref 1.2s  eig (sparse eigsh) 0.3s
+  Heuristic: max J/I = 1.995150572218
+  rounded (free-coordinate denominator 100): exact J/I = 1.994815074791528  (J/I - 2 = -5.185e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000): exact J/I = 1.995147345655453  (J/I - 2 = -4.853e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000): exact J/I = 1.995150539005406  (J/I - 2 = -4.849e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 100000): exact J/I = 1.995150571888787  (J/I - 2 = -4.849e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 1000000): exact J/I = 1.995150572214818  (J/I - 2 = -4.849e-03)  constraints exact: OK
+  rounded (free-coordinate denominator 10000000): exact J/I = 1.995150572218179  (J/I - 2 = -4.849e-03)  constraints exact: OK
+  best exact rounded ratio at n=24: 1.995150572218179  > 2 ? False
+  n=24 total 20.4s
+total runtime 34.3s
