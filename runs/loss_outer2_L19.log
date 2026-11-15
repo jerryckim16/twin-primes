@@ -1,0 +1,51 @@
+[     10 s] arrays built: {"l0": 0.124416, "u0": 0.1492992, "theta": 47, "L": 11704, "H": 14046, "K": 46580, "J": 8, "cG": 1.0166236774089747, "chi": [95599, 98263], "cG_equals_bG": true}
+[     13 s] power sums built (24 polys)
+[     14 s] 509 numeric monomials (R 216, V 293)
+[     14 s] v rows ready
+[     20 s] V weights ready
+[     27 s] P_0 powers 32..39
+[     40 s] lambda 1/77, monomials 25/509, products 46 (20 s in GMP), rss 901 MB
+[    113 s] lambda 11/77, monomials 145/509, products 176 (81 s in GMP), rss 910 MB
+[    165 s] lambda 21/77, monomials 231/509, products 281 (124 s in GMP), rss 930 MB
+[    205 s] lambda 31/77, monomials 303/509, products 373 (159 s in GMP), rss 957 MB
+[    240 s] lambda 41/77, monomials 363/509, products 453 (189 s in GMP), rss 984 MB
+[    269 s] lambda 51/77, monomials 409/509, products 519 (214 s in GMP), rss 1015 MB
+[    295 s] lambda 61/77, monomials 451/509, products 581 (238 s in GMP), rss 1038 MB
+[    322 s] lambda 71/77, monomials 489/509, products 639 (262 s in GMP), rss 1066 MB
+[    337 s] RESULT L19: A ours 3006707962473 (mid 3006707962467) table 3006707964277 ratio 0.999999999400 | B ours 529135125550 (up 529138087105) table 529135146833 ratio 0.999999959778
+{
+ "component": "L19",
+ "group": "O5/2",
+ "kind": "L",
+ "info": {
+  "l0": 0.124416,
+  "u0": 0.1492992,
+  "theta": 47,
+  "L": 11704,
+  "H": 14046,
+  "K": 46580,
+  "J": 8,
+  "cG": 1.0166236774089747,
+  "chi": "(95599, 98263)",
+  "cG_equals_bG": true
+ },
+ "R": "7.121483367092268340360961e-20",
+ "R_up": "7.121483367105215756297546e-20",
+ "R_numerr": "1.2947e-31",
+ "V": "1.253273361624720396173149e-20",
+ "V_numerr": "7.0103e-26",
+ "V_rad": "4.2838e-29",
+ "A_ours": 3006707962473,
+ "A_ours_mid": 3006707962467,
+ "B_ours": 529135125550,
+ "B_ours_up": 529138087105,
+ "A_table": 3006707964277,
+ "B_table": 529135146833,
+ "A_ratio": 0.9999999994000083,
+ "B_ratio": 0.9999999597777617,
+ "products": 671,
+ "gmp_seconds": 274.8,
+ "monomials": 509,
+ "seconds": 336.6,
+ "peak_rss_MB": 1084.6
+}

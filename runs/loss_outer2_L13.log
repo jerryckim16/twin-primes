@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/user/twin-primes/code/oai186_loss_outer2.py", line 1193, in <module>
+    main()
+  File "/home/user/twin-primes/code/oai186_loss_outer2.py", line 1163, in main
+    arr, chi, Wfix, BW, Wcoef, info = low_bin_arrays(G, int(comp[1:]), log)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/twin-primes/code/oai186_loss_outer2.py", line 1042, in low_bin_arrays
+    _, du = dickman(L, N)
+            ^^^^^^^^^^^^^
+  File "/home/user/twin-primes/code/oai186_loss_outer2.py", line 443, in dickman
+    assert 0 <= dl[j] <= du[j] <= ONE and dl[j + 1] <= dl[j] and du[j + 1] <= du[j]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
