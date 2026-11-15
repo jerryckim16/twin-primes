@@ -15,6 +15,9 @@ The twin prime conjecture is open. Nothing in this programme claims to prove it 
 | PM8b (again) | §8 incl. Remark 8.1 (p. 70), Thm 1.4 (pp. 2-3) | arXiv:1407.4897v4 | same hash | 15 Nov (Session 18) |
 | TT25 | Tao–Teräväinen, Quantitative correlations and some problems on prime factors of consecutive integers (preprint) | arXiv:2512.01739v2 | see notes/sources-chowla-quantitative.md | Thm 3.1, Remarks 3.2, pp. 24-25 (re-checked by the coordinator) |
 | HR, Pil, Guo, Hughes | Helfgott–Radziwiłł 2103.06853v2; Pilatte 2310.19357v3; Guo 2608.23500; Hughes 2609.28526 | arXiv | notes/sources-chowla-quantitative.md | helper reading only (statements, uniformity ranges); not used in the paper yet |
+| TT25 (again) | Thm 3.1, Remarks 3.2, §1.6, §3.2 opening (pp. 9-10, 24-27) | arXiv:2512.01739v2 | ce10e83b10c6544e1dbff037a5e4efa0e387892e0fc596ae09dce76025d7b41e | Session 19 (helper + independent auditor, same hash) |
+| MRT15 | Matomäki–Radziwiłł–Tao, An averaged form of Chowla's conjecture, ANT 9 (2015) | arXiv:1503.05121v3 | 8a2633b1594615fe0c340bbca01ad059be5bd66d3495bd028e7e9d2264f1e688 | eq. (1.12), Thm 1.6 (pp. 5-6); Session 19 |
+| HB01 (secondary only) | Heath-Brown x^3+2y^3 as described by Maynard arXiv:1507.05080v2 and X. Li arXiv:2111.05403v1 | primary NOT opened (403 / bot challenge / paywall) | see notes/sources-hb-x3-2y3.md | Session 19; requested from Jerry (notes/sources-needed.md) |
 | Li21 | Lichtman, Averages of the Möbius function on shifted primes | arXiv:2009.08969v2 | (14 Nov) | abstract, §1 |
 
 Not opened yet: Bombieri, Le grand crible / The asymptotic sieve (1976); Opera de Cribro (paywalled); Selberg's original parity papers;
@@ -24,8 +27,9 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 ## Threads and status (one bounded step per run)
 1. Selberg's parity problem / PM8b obstruction: v0.1 Section 2 (Literature, re-read 15 Nov). Next: a Lean check of the finite
    combinatorial fact that omega vanishes on A_1 and on the twin set (trivial; only if it costs nothing); Bombieri's formal statement.
-2. Known parity-breaking results: only Tao16 Thm 1.2 so far (used in Prop. prop:tao-weight). Next: FI x^2+y^4 statement and the
-   structure it uses (norm form, Type II for the Jacobi symbol), then Heath-Brown, then Sawin–Shusterman.
+2. Known parity-breaking results: Tao16 Thm 1.2 (Prop. prop:tao-weight), TT25 Thm 3.1 (Prop. prop:tao-weight-logc, v0.3), FI x^2+y^4
+   (v0.2). Heath-Brown x^3+2y^3: primary source blocked (Session 19), secondary notes only; waiting for Jerry. Next: Sawin–Shusterman
+   (arXiv:1808.04001) and the step with no integer analogue.
 3. Conditional statements: FI98 Thm 2 specialised to Lambda(n+2) (Prop. prop:fi-twin). Next: which hypotheses are known NOT to suffice
    (EH/GEH for sieve methods: PM8b §8).
 4. Numerical illustrations: Selberg-weighted lambda(n)lambda(n+2) (Sec. 4, Heuristic).

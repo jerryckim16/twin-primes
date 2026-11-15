@@ -1,0 +1,27 @@
+[    11 s, maxrss 0.31 GB] cap 141720: p arrays on rows [352699, 393177)
+[    36 s, maxrss 0.48 GB] cap 141720: layer 0 (b = 141720) marginals, 5 groups
+[    50 s, maxrss 0.55 GB] cap 141720: layer 1 (b = 177528) marginals, 4 groups
+[    74 s, maxrss 0.94 GB] cap 141720: coordinate arrays (12 exponents)
+[    92 s, maxrss 1.22 GB] cap 141720: powers 32..38 of the base array
+[   295 s, maxrss 1.50 GB] cap 141720: 77 moment arrays (sliced to the tail rows)
+[   296 s, maxrss 1.50 GB] cap 141720: term +1 (layer 0, b = 141720): 21505 tail rows
+[   298 s, maxrss 1.50 GB] cap 141720: term -1 (layer 1, b = 177528): 21505 tail rows
+[   298 s, maxrss 1.50 GB] cap 141720: T part [8.60156859724779029829399714900e-14 +/- 1.74e-44] (written code/data182/tail2_cap_141720.json)
+[   309 s, maxrss 1.50 GB] cap 177528: p arrays on rows [352699, 393177)
+[   325 s, maxrss 1.50 GB] cap 177528: layer 1 (b = 177528) marginals, 4 groups
+[   333 s, maxrss 1.50 GB] cap 177528: layer 2 (b = 186253) marginals, 3 groups
+[   352 s, maxrss 1.50 GB] cap 177528: coordinate arrays (12 exponents)
+[   369 s, maxrss 1.50 GB] cap 177528: powers 32..38 of the base array
+[   570 s, maxrss 1.50 GB] cap 177528: 77 moment arrays (sliced to the tail rows)
+[   572 s, maxrss 1.50 GB] cap 177528: term +1 (layer 1, b = 177528): 21505 tail rows
+[   573 s, maxrss 1.50 GB] cap 177528: term -1 (layer 2, b = 186253): 21505 tail rows
+[   574 s, maxrss 1.50 GB] cap 177528: T part [1.46076845055165300440330018262e-13 +/- 4.45e-44] (written code/data182/tail2_cap_177528.json)
+[   584 s, maxrss 1.50 GB] cap 186253: p arrays on rows [352699, 393177)
+[   594 s, maxrss 1.50 GB] cap 186253: layer 2 (b = 186253) marginals, 3 groups
+[   598 s, maxrss 1.50 GB] cap 186253: layer 3 (b = 186491) marginals, 2 groups
+[   616 s, maxrss 1.50 GB] cap 186253: coordinate arrays (12 exponents)
+[   633 s, maxrss 1.50 GB] cap 186253: powers 32..38 of the base array
+[   831 s, maxrss 1.50 GB] cap 186253: 77 moment arrays (sliced to the tail rows)
+[   832 s, maxrss 1.50 GB] cap 186253: term +1 (layer 2, b = 186253): 21505 tail rows
+[   833 s, maxrss 1.50 GB] cap 186253: term -1 (layer 3, b = 186491): 21505 tail rows
+[   834 s, maxrss 1.50 GB] cap 186253: T part [2.81232192312247049279384943125e-13 +/- 2.01e-43] (written code/data182/tail2_cap_186253.json)

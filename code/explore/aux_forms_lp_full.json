@@ -1,0 +1,114 @@
+[
+ {
+  "target": "DHL[4,3]",
+  "aux": 0,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 11
+ },
+ {
+  "target": "DHL[4,3]",
+  "aux": 1,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 22
+ },
+ {
+  "target": "DHL[4,3]",
+  "aux": 2,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 44
+ },
+ {
+  "target": "DHL[4,3]",
+  "aux": 1,
+  "dependent": "aux = -tuple[0]",
+  "blocked": false,
+  "patterns": 11
+ },
+ {
+  "target": "DHL[5,3]",
+  "aux": 0,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 16
+ },
+ {
+  "target": "DHL[5,3]",
+  "aux": 1,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 32
+ },
+ {
+  "target": "DHL[5,3]",
+  "aux": 2,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 64
+ },
+ {
+  "target": "DHL[5,3]",
+  "aux": 1,
+  "dependent": "aux = -tuple[0]",
+  "blocked": false,
+  "patterns": 16
+ },
+ {
+  "target": "DHL[3,2]",
+  "aux": 0,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 4
+ },
+ {
+  "target": "DHL[3,2]",
+  "aux": 1,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 8
+ },
+ {
+  "target": "DHL[3,2]",
+  "aux": 2,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 16
+ },
+ {
+  "target": "DHL[3,2]",
+  "aux": 1,
+  "dependent": "aux = -tuple[0]",
+  "blocked": false,
+  "patterns": 4
+ },
+ {
+  "target": "PM8b path {0,2},{2,6} on (0,2,6)",
+  "aux": 0,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 5
+ },
+ {
+  "target": "PM8b path {0,2},{2,6} on (0,2,6)",
+  "aux": 1,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 10
+ },
+ {
+  "target": "PM8b path {0,2},{2,6} on (0,2,6)",
+  "aux": 2,
+  "dependent": false,
+  "blocked": false,
+  "patterns": 20
+ },
+ {
+  "target": "PM8b path {0,2},{2,6} on (0,2,6)",
+  "aux": 1,
+  "dependent": "aux = -tuple[0]",
+  "blocked": false,
+  "patterns": 5
+ }
+]

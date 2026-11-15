@@ -1,0 +1,9 @@
+[    10 s, maxrss 0.31 GB] cap 196608: p arrays on rows [352699, 393177)
+[    15 s, maxrss 0.38 GB] cap 196608: layer 4 (b = 196608) marginals, 2 groups
+[    15 s, maxrss 0.38 GB] cap 196608: layer 5 (b = 246256) marginals, 1 groups
+[    32 s, maxrss 0.74 GB] cap 196608: coordinate arrays (12 exponents)
+[    43 s, maxrss 0.96 GB] cap 196608: powers 32..38 of the base array
+[   177 s, maxrss 1.19 GB] cap 196608: 77 moment arrays (sliced to the tail rows)
+[   179 s, maxrss 1.19 GB] cap 196608: term +1 (layer 4, b = 196608): 40478 tail rows
+[   179 s, maxrss 1.19 GB] cap 196608: term -1 (layer 5, b = 246256): 40478 tail rows
+[   180 s, maxrss 1.19 GB] cap 196608: T part [4.3882631297368e-13 +/- 5.33e-27] (written code/data182/tail2_cap_196608_P192B160.json)

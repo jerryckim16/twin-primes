@@ -1,0 +1,15 @@
+real config: H_C rows [(0, 352698, 246256), (352699, 371671, 186491)], outer rows [(0, 352697, 246256), (352698, 376449, 196608), (376450, 393176, 186253)], first tail row 352699
+kernel vs literal mpmath (7 sampled r'): bins failing the rounding check 0, K - K_lit in [1.39e-22, 9.75e-22]
+  mutation hinge_lo: bins failing 506, K - K_lit in [-7.26e-03, -1.01e-03] -> caught
+Dickman cell masses vs quadrature of the delay equation: max rel. dev 8.40e-37
+k=3 n=32 (tail rows from 13): brute 23.47475768929500983904995033103 (2 s)  pipeline [23.4747576892950098390499503310 +/- 3.46e-29]  rel dev 4.17e-58
+  low precision P = B = 40: ball [23.475 +/- 3.15e-4], contains brute: True, rel radius 3.1e-06
+  mutation noK  : rel dev 7.36e-01 -> caught
+  mutation gt   : rel dev 6.09e-01 -> caught
+  mutation cmin : rel dev 1.78e-03 -> caught
+k=4 n=24 (tail rows from 9): brute 1.418627861992070818040931266463 (7 s)  pipeline [1.41862786199207081804093126646 +/- 3.81e-30]  rel dev 5.88e-57
+  low precision P = B = 40: ball [1.419 +/- 5.51e-4], contains brute: True, rel radius 1.3e-04
+  mutation noK  : rel dev 6.26e-01 -> caught
+  mutation gt   : rel dev 3.67e+00 -> caught
+  mutation cmin : rel dev 2.33e-03 -> caught
+SELFTEST PASSED

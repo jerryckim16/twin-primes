@@ -1,5 +1,24 @@
 # Research log
 
+## 2026-11-15 - Session 19 (3:34 AM CT slot, started on time; no wait, no other run active): The 182 tail term by a second program (all four ingredients of its cap quotient now by two programs); the parity obstruction's twisted Type I input at level (log x)^{c0}, conditional on a preprint
+
+- Rung 182 (bound share): a second, independent program for the tail term (own exact kernel, GMP fixed-point contraction with directed error bounds, brute-force self-test with four deliberate mutations) gives T = 5.28634880592807710064e-13 with radius 1.4e-45, inside the first program's ball and below the published bound (relative gap 8.4e-12). So I, J0, J+ and T, the four ingredients of the 182 cap quotient, are each reproduced by two programs, and q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4. The restoration losses and the analytic inputs are unchecked, so 182 stays claimed.
+- The same program settles a reading of the 182 source: with the nominal last kernel block the paper's own kernel bound K <= 2.194 fails (K_511 = 2.19637) and the tail would exceed the published bound by 5e-7 relative, so only the reading r_max = n0 - 1 used by both programs fits.
+- Parity paper v0.3: expanding the sieve weight in the moduli [d1,d2] <= R^2 (not in its period) and applying Tao-Teravainen's quantitative correlation theorem (arXiv:2512.01739v2 Thm 3.1, an unrefereed preprint) class by class shows that Selberg-type weights of level R <= (log x)^{c0} cannot tell lambda(n)lambda(n+2) = +1 from -1, uniformly in |lambda_d| <= 1 (Prop. prop:tao-weight-logc; proved here, conditional on the preprint). A fresh-context auditor re-read both sources and found it sound; its wording fixes are in. This only confirms the input of the obstruction at a larger level. Shorter abstract, contents list, open questions updated.
+- Small results (3g): verification note v0.8 adds Remark rem:182 (the 182 cap quotient, each ingredient by two programs) and a shorter abstract; main paper v0.19. Heath-Brown's x^3+2y^3 paper (parity thread 2) could not be opened (403, bot challenge, paywall); a helper read two secondary descriptions (Maynard, X. Li), kept in notes only and requested from Jerry.
+- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). News search: nothing new since the last entry.
+
+Parity attempt: Tao-Teravainen's Theorem 3.1 gives the twisted Type I input of the parity obstruction at level (log x)^{c0}: proved, conditional on that preprint (audited); the first unresolved implication is cancellation for moduli far beyond powers of log x, and even that would only confirm the obstruction.
+
+Explored: Can Liouville signs at extra linear forms enlarge the class of parity weights (open question 2)? No: fairness and the kill condition only see the law of the tuple coordinates, so the tuple marginal is an ordinary pattern weight; LPs for DHL[4,3], DHL[5,3], DHL[3,2] and the PM8b target agree (dead end, code/explore/aux_forms_lp.py).
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits and a proofreader used instead).
+- Heath-Brown, Acta Math. 186 (2001): intlpress 403, Project Euclid bot challenge, Springer paywall, author page 404; recorded in notes/sources-needed.md.
+- The two 182 tail programs share the reading of the source and the layered derivation of the contraction; they check arithmetic and code, not that reading.
+
+Next: Weekly review first (Monday 16 Nov run). Then: parity attempt (Sawin-Shusterman's function-field step, or Maynard two-variable weights at level (log x)^{c0}); parity thread 2 when Heath-Brown arrives; rung 182 restoration losses (scope the 197 source integrals); decide on a second small-results paper.
+
 ## 2026-11-15 - Session 18 (3:34 AM CT slot, started early at Jerry's request, 10:23 PM CT 14 Nov; no wait, Session 17 had merged as PR #36): An exact criterion for what the parity obstruction blocks (it explains the 6, and gives H_m < H(2m+1) for this class of weights); rung 182's numerators by a second program and its tail term recomputed
 
 - Parity paper v0.2 (papers/parity-barrier): for Polymath8b-type weights built from Liouville signs on the tuple, a weight that blocks a target exists exactly when (1/2,...,1/2) is a convex combination of target-free sets (Prop. prop:bipartite, proved here, possibly folklore). Consequences: a pair target is blocked iff its graph is bipartite; DHL[k,m+1] iff k <= 2m; and the class blocks every tuple exactly when g < H(2m+1), i.e. H_1 < 6, H_2 < 12, H_3 < 20, while the known sieve bounds for H_2 are 270 (EH) and 252 (GEH). Finite cases Lean-checked (lean/TwinPrimes/Parity.lean); H(3..9) = 6, 8, 12, 16, 20, 26, 30 by exhaustive search.

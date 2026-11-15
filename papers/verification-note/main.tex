@@ -20,34 +20,34 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.7 (draft), 15 November 2026}
+\date{Version 0.8 (draft), 15 November 2026}
 
 \begin{document}
 
 \begin{abstract}
 Several 2026 preprints claim improvements of the Polymath8b bound
-$H_1\le246$. Each combines equidistribution estimates and a reduction theorem
-with a \emph{variational step}: a test function on a capped region whose sieve
-ratio exceeds a threshold ($4$ in the Polymath scaling). We recompute the
-variational step of three claims in exact rational arithmetic, each capped
-ratio by two independent programs, and do not address the analytic input. (i)
-Stadlmann's support ($k=49$, claimed $240$): our test function gives
-$4.0120389\ldots$, and $4.0124198\ldots$ after optimising on the capped region.
-(ii) The support of Kintali and of Song--Yue ($k=48$, claimed $236$): for the
-published witness of Song and Yue, the cap-free mass and the capped numerator
-equal their reference integers ($655$ and $715$ digits) exactly, so their
-criterion $48J/I_0>2001/2000$ holds, by a margin of $1.6\cdot10^{-4}$; the
-capped ratio $4.0030988\ldots$ agrees with all $33$ digits printed by Kintali;
-our own test function gives $4.0060814\ldots$. (iii) The draft of Charton et
-al.\ ($k=45$, claimed $212$): the criterion holds for the caps of its Table~3
-($4.0027351\ldots$), but for the caps of its Lemma~9.1 no polynomial in the
-authors' own $846$-dimensional space reaches $3.99$ (ball arithmetic, from one
-program's Gram weights). This locates an inconsistency in the draft, not an
-error in its result. None of this verifies the analytic input, and none of it
-bears on the twin prime conjecture, which remains open.
+$H_1\le246$. Each combines unverified analytic input with a numerical
+\emph{variational step}. We recompute the variational steps exactly (or in
+ball arithmetic), each capped ratio by two independent programs, and do not
+address the analytic input. (i) Stadlmann ($k=49$, claimed $240$): our test function gives
+$4.0120389>4$, and $4.0124198$ after optimising on the capped region. (ii)
+Kintali and Song--Yue ($k=48$, claimed $236$): Song and Yue's cap-free mass and
+capped numerator equal their reference integers exactly, so their criterion
+holds (margin $1.6\cdot10^{-4}$); our own test function gives $4.0060814$.
+(iii) Charton et al.\ ($k=45$, claimed $212$): the criterion holds for the caps
+of their Table~3 ($4.0027351$), but for those of their Lemma~9.1 no polynomial
+in their $846$-dimensional space reaches $3.99$ (one program's Gram weights), an inconsistency in the draft.
+(iv) For the claimed $186$ and $182$ we recompute the main terms, the $186$ loss
+bounds (the decisive group by two programs, the rest by one) and the four
+ingredients of the $182$ cap quotient (two programs each), all consistent with
+the published values. None of this verifies the analytic inputs or the $182$
+restoration losses, so no claim is verified, and none of it bears on the twin
+prime conjecture, which remains open.
 \end{abstract}
 
 \maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
 
 \section{Introduction}
 
@@ -105,6 +105,8 @@ $236$, our own $F$ & $4.0060814$ & \lbl{Computed}, two programs\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in their $846$-dim.\ space & \lbl{Computed}, ball arithm.,\\
  & & one program's weights\\
+$186$, $182$ & other criteria: Remarks~\ref{rem:186}, \ref{rem:182} & \lbl{Computed}, two programs\\
+ & & (186 losses: decisive group)\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -558,6 +560,37 @@ that the forms majorise the true support-failure integrals (the companion's
 Lemmas~1.4--1.7, 2.3, 2.4), that the cover is complete, and the analytic inputs.
 \end{remark}
 
+\begin{remark}[the last claim, $182$; \lbl{Computed}, two independent programs]\label{rem:182}
+The claimed $H_1\le182$ of GPT-6 Astra, prompted by R.~Sharifi \cite{Sha26},
+uses the framework of \cite{OAI26} at $k=39$ on a grid of $393216$ cells, with
+a trial function of $726$ rational coefficients (taken from the authors' Lean
+data, supplied to the project). Its numerical criterion is a cap quotient
+$q_H=\rho^*(J_0+(1-\ell)J_+-d_hT)/I$ with certified $q_H-1\ge\mu^-=2.766919\cdot10^{-4}$,
+followed by a restoration loss of at most $2.115\cdot10^{-4}$. We recomputed
+the four ingredients of $q_H$, each by two programs (\cite{Kim26}, Remark on
+the last rung; reports in \texttt{notes/}):
+\begin{itemize}
+\item the denominator $I=1.4896341008114\cdot10^{-11}$, inside the published
+  enclosure (relative agreement of the two programs $1.7\cdot10^{-22}$);
+\item the numerators $J_0=5.6364590899237\cdot10^{-11}$ and
+  $J_+=4.0824074296643\cdot10^{-13}$, just above the published lower bounds
+  (agreement $2\cdot10^{-23}$ and $2\cdot10^{-32}$);
+\item the tail term $T=5.2863488059281\cdot10^{-13}$, with the step kernel of
+  \cite[(5.5)--(5.6)]{Sha26} computed exactly, just below the published upper
+  bound (relative gap $8\cdot10^{-12}$; the second program's enclosure, of
+  radius $1.4\cdot10^{-45}$, lies inside the first one's).
+\end{itemize}
+From these, $q_H-1=2.767059\cdot10^{-4}\ge\mu^-$. Each pair of programs shares the reading of the source (cap layers, face
+mask, and for the tail the layered derivation), so they check arithmetic and
+code, not that reading. One point of the reading, where the last kernel block
+ends, is constrained by the published bound: only $r_{\max}=n_0-1$ is
+consistent with it. With the nominal block end the kernel violates the paper's
+own bound $K\le2.194$, and the tail exceeds the published bound by $5\cdot10^{-7}$
+in relative terms (an effect on $q_H$ of about $4\cdot10^{-11}$). Not checked:
+the restoration losses, the analytic lemmas behind the kernel and the
+minorant, and the analytic inputs (new Type~II and Type~III estimates).
+\end{remark}
+
 \begin{remark}[what would change the picture]
 The variational steps examined here have margins of $0.0027$ to $0.012$
 above the threshold $4$; against Song and Yue's own criterion $48J/I_0>2001/2000$
@@ -595,6 +628,10 @@ version 0.12).
 
 \section*{Changes}
 \begin{description}
+\item[0.8] (15 November 2026) Remark~\ref{rem:182}: the four ingredients of the
+cap quotient of the claimed $182$, each by two programs (the tail term by a
+second program this version), and the block-end reading of its kernel. Table of
+contents; shorter abstract.
 \item[0.7] (15 November 2026) Remark~\ref{rem:186}: all $97$ raw loss components
 by one program, and the $17$ components carrying $99.95\%$ of $O_{5/2}$ by a second,
 independent program.
@@ -655,6 +692,9 @@ dated 30 August 2026, with the repository \texttt{openai/PrimeGaps186}.
 \bibitem{PM8a} D.~H.~J.~Polymath, \emph{New equidistribution estimates of Zhang type}, Algebra Number Theory \textbf{8} (2014), 2067--2199.
 \bibitem{Pol14b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and
 bounded intervals containing many primes}, Res. Math. Sci. 1 (2014).
+\bibitem{Sha26} GPT-6 Astra (OpenAI), prompted by R.~Sharifi, \emph{A
+fixed-profile proof for prime gaps of at most 182}, expository bundle dated
+18 September 2026, \url{https://www.math.ucla.edu/~sharifi/AI/prime_gaps_182_expository_bundle.pdf}.
 \bibitem{SY26} Z.~Song, S.~Yue, \emph{Bounded gaps between primes: an upper
 bound of 236}, IACR ePrint 2026/1893, version of 2 September 2026.
 \bibitem{Sta26} J.~Stadlmann, \emph{Bounded gaps between primes},

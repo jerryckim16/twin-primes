@@ -3,6 +3,21 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 19 -- Do Liouville signs at extra linear forms enlarge the class of parity weights? (optimisation duality / LP)
+- Idea: open question 2 of the parity paper asks for weights outside the Liouville-pattern class. The cheapest enlargement is to let
+  the weight also depend on lambda(L(n)) at further linear forms L (independent ones, or dependent ones such as
+  lambda(2(n+h_1)) = -lambda(n+h_1)), hoping that the extra coordinates make DHL[5,3] blockable.
+- Tried: exact-support LPs (code/explore/aux_forms_lp.py, scipy HiGHS, floating point) for DHL[4,3], DHL[5,3], DHL[3,2] and the
+  PM8b path target, with 0, 1, 2 auxiliary coordinates and one dependent one; results code/explore/aux_forms_lp.json.
+- Outcome: dead end, and provably so. Fairness and the kill condition involve only the law of the set {i : lambda(n+h_i) = -1} on
+  the tuple coordinates (singleton coefficients and the support), so the tuple marginal of any enlarged weight is an ordinary
+  pattern weight with the same properties: auxiliary coordinates never help. The LPs agree (DHL[4,3] and the path blocked,
+  DHL[5,3] and DHL[3,2] not, for every number of auxiliary coordinates). With the stronger all-orders notion (--full) nothing is
+  blocked, not even the PM8b target: that notion makes Omega constant, so it is the wrong one.
+- Why it matters: it narrows open question 2. Any weight that could block DHL[5,3] must change the twisted main terms themselves
+  (functions whose values at primes are not fixed, or non-fair residue-class dependence), not just add more Liouville signs.
+  Too elementary for the paper; not added there.
+
 ## 2026-11-15, Session 18 -- Can residue-class-dependent parity weights beat the k <= 2m criterion? (optimisation duality / LP)
 - Idea: the parity paper's Prop. prop:bipartite covers weights that depend only on Liouville signs. A weight may also depend on
   n mod q; in classes where p | n + h_j the position j cannot hold a prime, so it needs no fairness and no kill condition. Risky
