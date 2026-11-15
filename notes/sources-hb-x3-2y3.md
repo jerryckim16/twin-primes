@@ -1,3 +1,6 @@
+# NOTE (Session 19 follow-up, 15 Nov 2026): the PRIMARY SOURCE has now been read; see the section
+# "Primary source (read 15 Nov 2026)" at the end. Where it differs from the secondary descriptions below, the primary source wins.
+
 # Source notes: Heath-Brown, "Primes represented by x^3+2y^3"
 
 Compiled 2026-11-15 by a helper agent. Nothing here is a new result.
@@ -262,3 +265,46 @@ also absent. We do not claim that no other route exists.
 
 **Mine:** the remark is labelled Heuristic. It is not an argument and must not be labelled Proved
 here.
+
+
+## Primary source (read 15 Nov 2026, Session 19 follow-up)
+
+- File: journal scan of Acta Math. 186 (2001), 1-84, supplied by Jerry Kim (upload "Download.pdf", 84 pages, PDF metadata
+  "PageGenie PDFGenerator", 2006). SHA-256 96ffd7eb27e724d1ddecd6c738e7261c739c329f02fb222a9c964d0046ec10ae. Not committed
+  (copyright). Read as page images (pp. 2-10, 17-21, 66-69, 72-73, 78-79) and via pdftotext (imperfect OCR) for searching.
+  PDF page = journal page.
+- Theorem (p. 2), Q: "There are infinitely many primes of the form x^3+2y^3 with integer x, y. More specifically, there is a
+  positive constant c such that, if eta = eta(X) = (log X)^{-c}, then the number of such primes with X < x, y <= X(1+eta) is
+  sigma_0 eta^2 X^2/(3 log X) {1 + O((log log X)^{-1/6})} as X -> infinity, where sigma_0 = prod_p (1 - (nu_p - 1)/p) and nu_p
+  denotes the number of solutions of the congruence x^3 = 2 (mod p)."
+- p. 3: exponent alpha(f); Q: "Our theorem corresponds to the still smaller value alpha = 2/3, while the conjecture that x^2+1
+  takes infinitely many prime values has alpha = 1/2." FI x^2+y^4 has alpha = 3/4. Q: "The groundbreaking work of Friedlander
+  and Iwaniec was the inspiration for the present paper, although the techniques used are quite different."
+- p. 4, Q: "our approach to the sieve procedure has much in common with that given by Friedlander and Iwaniec [3]. ... Unfortunately
+  their condition (R1) is not quite met in our case, so that their work cannot be used as it stands. ... we have chosen instead
+  to present our own version of the sieve argument. ... it is the 'Type II' bound, described below, which is the most novel part
+  of our proof, and not the sieve procedure."
+  - CORRECTION to the secondary notes above: X. Li's description ("Harman's alternative sieve ... as used in Heath-Brown's work")
+    is Li's characterisation; Heath-Brown himself calls it his own version of a sieve argument close to FI's (Buchstab
+    iterations, p. 7-9). The word "Harman" does not occur in the text layer.
+- pp. 4-5: A = {x^3+2y^3 : x,y in (X, X(1+eta)], (x,y)=1}; B = {N(J) in (3X^3, 3X^3(1+eta)]}, J integral ideals of K = Q(cbrt 2);
+  aim pi(A) = kappa pi(B) + O(...) (2.4). Lemma 2.1 (p. 5): Type I for A, level X^{2-eps}; Lemma 2.2 (p. 6): for B, level X^{3-eps}.
+  p. 6, Q: "it is the fact that the form x^3+2y^3 factorizes which enables such a strong Type I bound to be established."
+- p. 7: Type II sums sum_{U<a<=2U} sum_{V<b<=2V: ab in A} phi_a psi_b for X^{1+eps} << V << X^{3/2-eps}; Vaughan needs
+  X^{1-eps} << V << X^{3/2+eps}; the gaps [X^{1-eps}, X^{1+eps}] and [X^{3/2-eps}, X^{3/2+eps}] are bounded below by 0 and above by
+  a crude sieve (pp. 7-8).
+- pp. 9-10: Lambda = Lambda_1 + Lambda_2, Lambda_1(n) = sum_{d|n, d<L} mu(d) log(L/d), L = X^{tau/2}; Q: "Instead the saving will
+  come from sign changes in psi_b." "Eventually the estimation is made to depend on a large sieve inequality."
+- p. 19: Lemma 3.8 (Siegel-Walfisz type bound for f in residue classes mod q <= (log X)^A and cubes); Q: "the implied constant is
+  ineffective, as a result of potential problems with Siegel zeros." Proved with Hecke Groessencharacters (Section 9, p. 52).
+- p. 20: Lemma 3.10 (the Type II estimate), Q: "This result, which is our Type II estimate, is the most novel part of our entire
+  argument, and it is here that the structure of the form x^3+2y^3 is most crucially used."
+- pp. 66-69 (Section 11): generators alpha, beta of R, S; Cauchy's inequality over alpha (p. 68); off-diagonal: alpha beta_i =
+  x_i + y_i cbrt2 gives r w_i + s v_i + t u_i = 0, so alpha-hat = +- D^{-1}(v1u2 - u1v2, u1w2 - w1u2, w1v2 - v1w2) (11.4), D the hcf.
+- pp. 72-73 (Section 12): separation of the variables beta_1, beta_2; hypercube covering.
+- pp. 78-79 (Section 13): D | v rewritten as beta2-hat = lambda beta1-hat (mod D); additive characters; Lemma 13.1 (3-dim large
+  sieve): sum_{Q<q<=2Q} sum*_{b mod q} |S(q^{-1} b)|^2 << (S0^3 + Q^2 S0^2 + Q^4) sum |G|^2; "the estimate of Huxley [13] would have
+  the factor S0^3 + Q^6 ... and this is too large."
+- Searched the text layer for "twin", "parity", "Selberg", "Harman": only "Selberg's upper bound sieve" (Section 7). No remark on
+  twin primes or on the parity problem by name (OCR is imperfect, so this is not conclusive).
+- Used in: papers/parity-barrier v0.4, Section subsec:hb-x3 and Remark rem:hb-transfer (quotes re-checked against the page images).

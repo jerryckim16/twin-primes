@@ -17,7 +17,7 @@ The twin prime conjecture is open. Nothing in this programme claims to prove it 
 | HR, Pil, Guo, Hughes | Helfgott–Radziwiłł 2103.06853v2; Pilatte 2310.19357v3; Guo 2608.23500; Hughes 2609.28526 | arXiv | notes/sources-chowla-quantitative.md | helper reading only (statements, uniformity ranges); not used in the paper yet |
 | TT25 (again) | Thm 3.1, Remarks 3.2, §1.6, §3.2 opening (pp. 9-10, 24-27) | arXiv:2512.01739v2 | ce10e83b10c6544e1dbff037a5e4efa0e387892e0fc596ae09dce76025d7b41e | Session 19 (helper + independent auditor, same hash) |
 | MRT15 | Matomäki–Radziwiłł–Tao, An averaged form of Chowla's conjecture, ANT 9 (2015) | arXiv:1503.05121v3 | 8a2633b1594615fe0c340bbca01ad059be5bd66d3495bd028e7e9d2264f1e688 | eq. (1.12), Thm 1.6 (pp. 5-6); Session 19 |
-| HB01 (secondary only) | Heath-Brown x^3+2y^3 as described by Maynard arXiv:1507.05080v2 and X. Li arXiv:2111.05403v1 | primary NOT opened (403 / bot challenge / paywall) | see notes/sources-hb-x3-2y3.md | Session 19; requested from Jerry (notes/sources-needed.md) |
+| HB01 | Heath-Brown, Primes represented by x^3+2y^3, Acta Math. 186 (2001) 1-84 | journal scan supplied by Jerry | 96ffd7eb27e724d1ddecd6c738e7261c739c329f02fb222a9c964d0046ec10ae | pp. 2-10, 17-21, 52, 66-69, 72-73, 78-79; Session 19 follow-up (secondary notes by Maynard, X. Li also in notes/sources-hb-x3-2y3.md) |
 | Li21 | Lichtman, Averages of the Möbius function on shifted primes | arXiv:2009.08969v2 | (14 Nov) | abstract, §1 |
 
 Not opened yet: Bombieri, Le grand crible / The asymptotic sieve (1976); Opera de Cribro (paywalled); Selberg's original parity papers;
@@ -28,7 +28,7 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 1. Selberg's parity problem / PM8b obstruction: v0.1 Section 2 (Literature, re-read 15 Nov). Next: a Lean check of the finite
    combinatorial fact that omega vanishes on A_1 and on the twin set (trivial; only if it costs nothing); Bombieri's formal statement.
 2. Known parity-breaking results: Tao16 Thm 1.2 (Prop. prop:tao-weight), TT25 Thm 3.1 (Prop. prop:tao-weight-logc, v0.3), FI x^2+y^4
-   (v0.2). Heath-Brown x^3+2y^3: primary source blocked (Session 19), secondary notes only; waiting for Jerry. Next: Sawin–Shusterman
+   (v0.2). Heath-Brown x^3+2y^3: read in the source (v0.4, Session 19 follow-up). Next: Sawin–Shusterman
    (arXiv:1808.04001) and the step with no integer analogue.
 3. Conditional statements: FI98 Thm 2 specialised to Lambda(n+2) (Prop. prop:fi-twin). Next: which hypotheses are known NOT to suffice
    (EH/GEH for sieve methods: PM8b §8).

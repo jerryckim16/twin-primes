@@ -1,5 +1,16 @@
 # Research log
 
+## 2026-11-15 - Session 19 follow-up (after Jerry uploaded Heath-Brown's paper, same day; no wait): Heath-Brown's x^3+2y^3 read in the source: what its bilinear estimate uses (parity paper v0.4)
+
+- Jerry supplied the journal scan of Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 186 (2001)), requested in Session 19. Read in the source (theorem, outline, Lemmas 2.1, 3.8, 3.10, Sections 11-13) and added to the parity paper as Section subsec:hb-x3 (Literature) with Remark rem:hb-transfer (Heuristic).
+- The structure: Heath-Brown uses his own sieve close to Friedlander-Iwaniec's (their condition (R1) is not met); the Type I level X^{2-eps} comes from the factorisation of the form over Q(cbrt 2); in the Type II estimate the condition that alpha*beta_i has no cbrt4-coefficient makes the outer variable the cross product of the two inner ones, and the rest is a 3-dimensional large sieve plus Hecke Groessencharacters. Nothing like this exists for Lambda(n+2), where the same step leads back to a binary prime correlation.
+- The primary source corrects one point of the secondary notes (X. Li calls the sieve Harman's; Heath-Brown calls it his own version). Source request marked received. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Twin prime conjecture open.
+
+Did not work or is blocked:
+- Wolfram and mathbox not available. Quotes checked against the page images by the run itself, not by a second reader.
+
+Next: Weekly review first (Monday 16 Nov). Parity thread 2 next: Sawin-Shusterman (function fields) or Matomaki-Radziwill.
+
 ## 2026-11-15 - Session 19 (3:34 AM CT slot, started on time; no wait, no other run active): The 182 tail term by a second program (all four ingredients of its cap quotient now by two programs); the parity obstruction's twisted Type I input at level (log x)^{c0}, conditional on a preprint
 
 - Rung 182 (bound share): a second, independent program for the tail term (own exact kernel, GMP fixed-point contraction with directed error bounds, brute-force self-test with four deliberate mutations) gives T = 5.28634880592807710064e-13 with radius 1.4e-45, inside the first program's ball and below the published bound (relative gap 8.4e-12). So I, J0, J+ and T, the four ingredients of the 182 cap quotient, are each reproduced by two programs, and q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4. The restoration losses and the analytic inputs are unchecked, so 182 stays claimed.

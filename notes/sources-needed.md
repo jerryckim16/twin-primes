@@ -32,4 +32,4 @@
 - Why: parity paper thread 2 (results that break or sidestep parity): the exact theorem, which sieve it uses (Harman's, according to X. Li, arXiv:2111.05403, p. 2), and the structure of its bilinear (Type II) estimate (Lemmas 3.1, 5.1, 9.3, 13.1 as cited by Li), plus any remark on the limits of the method.
 - Tried (Session 19, 15 Nov 2026, helper): no arXiv copy found (arXiv math/0007012 is a different paper); intlpress.com Acta archive: HTTP 403; projecteuclid.org: Incapsula bot-challenge page; link.springer.com: paywall (preview only); people.maths.ox.ac.uk/hbrown/: HTTP 404. A third-party mirror was not used. Not worked around.
 - What we have: secondary descriptions only (Maynard arXiv:1507.05080v2; X. Li arXiv:2111.05403v1), in notes/sources-hb-x3-2y3.md. Nothing from Heath-Brown's paper enters the parity paper until the primary source is read.
-- Status: needed.
+- Status: received (journal scan uploaded by Jerry Kim, 15 Nov 2026, Session 19 follow-up; SHA-256 96ffd7eb...ec10ae, not committed; notes in notes/sources-hb-x3-2y3.md, used in parity paper v0.4).

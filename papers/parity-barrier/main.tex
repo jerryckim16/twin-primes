@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.3 (draft), 15 November 2026}
+\date{Version 0.4 (draft), 15 November 2026}
 
 \begin{document}
 
@@ -37,7 +37,8 @@ bounded level (from Tao's two-point theorem) and, conditionally on an unrefereed
 of Tao and Ter\"av\"ainen (whose proof we have not checked), at level $(\log x)^{c_0}$; and a weight of the
 Polymath8b kind can block a close-prime target exactly when its target graph
 is bipartite, which explains the number $6$, gives the analogue $H_m<H(2m+1)$,
-and corrects the printed weight of Polymath8b's Remark~8.1.
+and corrects the printed weight of Polymath8b's Remark~8.1. We also record which
+structure the bilinear estimates for $a^2+b^4$ and $x^3+2y^3$ use.
 \end{abstract}
 
 \maketitle
@@ -732,6 +733,85 @@ paper \cite[p.~71]{PM8b}.
 We do not claim this list is complete, or that no other route exists.
 \end{remark}
 
+
+\subsection{A sparser sequence: \texorpdfstring{$x^3+2y^3$}{x\textasciicircum 3+2y\textasciicircum 3}}\label{subsec:hb-x3}
+\lbl{Literature} \cite{HB01} (the Acta Mathematica scan; ``p.~$N$'' is the
+journal page). The Theorem (p.~2): there are infinitely many primes of the
+form $x^3+2y^3$; more precisely, for $\eta=(\log X)^{-c}$ with a suitable
+$c>0$, the number of such primes with $X<x,y\le X(1+\eta)$ is
+\[
+\sigma_0\frac{\eta^2X^2}{3\log X}\left\{1+O\left((\log\log X)^{-1/6}\right)\right\},
+\qquad\sigma_0=\prod_p\left(1-\frac{\nu_p-1}{p}\right),
+\]
+where $\nu_p$ is the number of solutions of $x^3\equiv2\pmod p$. The values of
+the form up to $X$ number about $X^{2/3}$: Heath-Brown's exponent is
+$\alpha=2/3$, against $3/4$ for $a^2+b^4$ and $1/2$ for $n^2+1$ (p.~3). An
+implied constant is ineffective because of possible Siegel zeros (p.~19).
+
+\emph{The sieve.} The approach ``has much in common with'' the
+asymptotic sieve of Friedlander and Iwaniec, but ``their condition (R1) is not
+quite met in our case, so that their work cannot be used as it stands''; the
+paper therefore uses its own sieve argument, and ``it is the `Type~II' bound
+\dots\ which is the most novel part of our proof, and not the sieve
+procedure'' (p.~4). The sequence $\mathcal A$ of values with
+$x,y\in(X,X(1+\eta)]$, $(x,y)=1$, is compared with the sequence $\mathcal B$
+of norms of all integral ideals of $K=\mathbb Q(\sqrt[3]2)$ in
+$(3X^3,3X^3(1+\eta)]$, whose primes are counted by the prime ideal theorem
+(pp.~4--5). The Type~I bound has level $X^{2-\varepsilon}$ for $\mathcal A$
+(Lemma~2.1, p.~5), and ``it is the fact that the form $x^3+2y^3$ factorizes
+which enables such a strong Type~I bound'' (p.~6). The Type~II sums are
+$\sum_{U<a\le2U}\sum_{V<b\le2V,\,ab\in\mathcal A}\phi_a\psi_b$ for
+$X^{1+\varepsilon}\ll V\ll X^{3/2-\varepsilon}$; Vaughan's identity would need
+$X^{1-\varepsilon}\ll V\ll X^{3/2+\varepsilon}$, and the two short gaps are
+bounded above by a crude sieve and below by zero (pp.~7--8). Before the
+Type~II step a leading term is removed: $\Lambda=\Lambda_1+\Lambda_2$ with
+$\Lambda_1(n)=\sum_{d\mid n,\,d<L}\mu(d)\log(L/d)$, $L=X^{\tau/2}$, so that
+``the saving will come from sign changes in $\psi_b$'', the part coming from
+$\Lambda_2$ (pp.~9--10).
+
+\emph{The structure the Type~II estimate uses} (\lbl{Literature}, same
+source). The estimate is Lemma~3.10 (p.~20), ``the most novel part of our
+entire argument, and it is here that the structure of the form $x^3+2y^3$ is
+most crucially used''. Its hypothesis (3.14) is a Siegel--Walfisz type bound
+for the coefficients in residue classes and cubes, which is proved with Hecke
+Gr\"ossencharacters of $K$ (Lemma~3.8, Section~9, p.~52). Its proof
+(Sections~11--13) runs in $\mathbb Z[\sqrt[3]2]$:
+\begin{enumerate}
+\item ideals are replaced by generators $\alpha,\beta$, and Cauchy's
+  inequality is applied over the outer variable $\alpha$ (p.~68);
+\item in the off-diagonal terms, $\alpha\beta_i=x_i+y_i\sqrt[3]2$ ($i=1,2$)
+  says that the coefficient of $\sqrt[3]4$ vanishes, a linear condition
+  $rw_i+sv_i+tu_i=0$ on $\alpha=r+s\sqrt[3]2+t\sqrt[3]4$; so for
+  $\beta_1\ne\beta_2$ the vector $(r,s,t)$ is $\pm D^{-1}$ times the cross
+  product of the coefficient vectors of $\beta_1$ and $\beta_2$, with $D$ the
+  gcd of its entries ((11.4), p.~69);
+\item after the variables are separated (Section~12), the condition
+  $D\mid\mathbf v$ (equivalently $\hat\beta_2\equiv\lambda\hat\beta_1\pmod D$)
+  is detected with additive characters, and the sum is bounded by a
+  three-dimensional large sieve, Lemma~13.1 (p.~79):
+  $\sum_{Q<q\le2Q}\sum^{*}_{\mathbf b\,(q)}|S(q^{-1}\mathbf b)|^2\ll(S_0^3+Q^2S_0^2+Q^4)\sum|G_{\hat\beta}|^2$.
+\end{enumerate}
+In the text layer of the scan (imperfect OCR) we found no mention of twin
+primes or of the parity problem by name.
+
+\begin{remark}[Why this does not transfer either, as far as we can see]\label{rem:hb-transfer}
+\lbl{Heuristic} (our reading, not a statement of \cite{HB01}). The decisive
+step is (2): the values are the norms of the elements of the rank-two
+sublattice $\mathbb Z+\mathbb Z\sqrt[3]2$ of the rank-three ring
+$\mathbb Z[\sqrt[3]2]$, so ``$ab$ is a value'' becomes one linear condition on
+the product of two ring elements, and two such conditions determine the
+outer variable. After Cauchy--Schwarz the problem is a lattice problem
+detected by a large sieve, not a correlation of primes. For $a_n=\Lambda(n+2)$
+the condition ``$mn+2$ is prime'' has no such algebraic form, and the same
+step leads back to the binary correlation of
+Proposition~\ref{prop:B-parity}(3). Thinness is again essential: the Type~I
+level $X^{2-\varepsilon}$, against a sequence of size about $X^2$ inside
+$[1,X^3]$, comes from the factorisation of the form (p.~6), and the comparison
+sequence $\mathcal B$, whose primes the prime ideal theorem counts, has no
+analogue for $n+2$. Like Remark~\ref{rem:fi-transfer} this is a list of
+differences, not a proof that no route exists.
+\end{remark}
+
 \section{A numerical illustration}\label{sec:num}
 
 \lbl{Heuristic.} For odd $n\le X$ let
@@ -804,9 +884,7 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
 
 \subsection*{Plan for later versions}
 Each run adds one bounded step: Friedlander--Iwaniec $x^2+y^4$ and
-Heath-Brown $x^3+2y^3$ (statements and the structure each uses; the primary
-source for Heath-Brown could not be opened on 15 Nov, so only secondary
-descriptions have been read, and none of it is used here);
+Heath-Brown $x^3+2y^3$ (both now read in the source);
 Matom\"aki--Radziwi\l\l(--Tao) and Tao--Ter\"av\"ainen; Sawin--Shusterman in
 $\mathbb F_q[T]$ and the step with no integer analogue; conditional
 statements (which hypotheses imply twin primes, which are known not to
@@ -820,6 +898,9 @@ suffice). Nothing enters before it is read in the source.
   arXiv:math/9811185v1.
 \bibitem{PM8b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and bounded
   intervals containing many primes}, arXiv:1407.4897v4 (22 Dec 2014) (cited by its page numbers, of 80).
+\bibitem{HB01} D.~R.~Heath-Brown, \emph{Primes represented by $x^3+2y^3$},
+  Acta Math.\ \textbf{186} (2001), 1--84 (read in the journal scan; SHA-256 in
+  \texttt{notes/}\allowbreak\texttt{sources-hb-x3-2y3.md}).
 \bibitem{MRT15} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{An averaged
   form of Chowla's conjecture}, Algebra Number Theory \textbf{9} (2015),
   2167--2196; arXiv:1503.05121v3 (read: eq.~(1.12)).
@@ -868,6 +949,10 @@ suffice). Nothing enters before it is read in the source.
   period $2\prod_{3\le p\le R}p$); proofread afterwards (period of $w_R$,
   low range of the proof, wording).
   Shorter abstract; open question~1 updated; new open question~5.
+\item[0.4] (15 Nov 2026) New Section~\ref{subsec:hb-x3} on Heath-Brown's
+  $x^3+2y^3$, read in the journal scan supplied by Jerry Kim (sieve, Type~I
+  level, the Type~II Lemma~3.10 and the structure its proof uses), and
+  Remark~\ref{rem:hb-transfer}.
 \end{itemize}
 
 \end{document}

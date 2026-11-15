@@ -330,6 +330,11 @@
    "label": "Proved here, conditional on a preprint",
    "text": "Twisted Type I input of the parity obstruction at level R <= (log x)^{c0}: for w_R(n) = (sum_{d | n(n+2), d <= R} lambda_d)^2 with lambda_1 = 1, |lambda_d| <= 1, the log-averaged sum of w_R(n) lambda(n) lambda(n+2)/n is at most (log x)^{-c0} times the sum of w_R(n)/n; conditional on Tao-Teravainen arXiv:2512.01739v2 Thm 3.1 (unrefereed). Fresh-context audit: sound. Only confirms the obstruction's input; no lower bound for twin primes.",
    "where": "papers/parity-barrier v0.3 Prop. prop:tao-weight-logc; notes/parity-attempts/2026-11-15-tt25-level-logc.md, 2026-11-15-tt25-audit.md"
+  },
+  {
+   "label": "Literature",
+   "text": "Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 2001) read in the source: own sieve close to Friedlander-Iwaniec's (their (R1) not met), Type I level X^{2-eps} from the factorisation of the form, Type II Lemma 3.10 via the vanishing cbrt4-coefficient (outer variable = cross product of the two inner ones), a 3-dimensional large sieve and Hecke Groessencharacters; why this does not transfer to Lambda(n+2) recorded as Heuristic.",
+   "where": "papers/parity-barrier v0.4 Section subsec:hb-x3, Remark rem:hb-transfer; notes/sources-hb-x3-2y3.md"
   }
  ],
  "ideas": [
@@ -579,10 +584,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.3",
+   "version": "0.4",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; an exact criterion for which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (target graph bipartite; DHL[k,m+1] iff k <= 2m; so the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind their a^2+b^4 bilinear estimate; the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}. No progress on the twin prime conjecture is claimed."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; an exact criterion for which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (target graph bipartite; DHL[k,m+1] iff k <= 2m; so the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}. No progress on the twin prime conjecture is claimed."
   },
   {
    "slug": "verification-note",
