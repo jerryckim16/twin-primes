@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.1 (draft), 15 November 2026}
+\date{Version 0.2 (draft), 15 November 2026}
 
 \begin{document}
 
@@ -39,7 +39,13 @@ sequence, and that Cauchy--Schwarz only moves the parity problem into an
 off-diagonal correlation. We also note that the simplest instance of the input
 of the parity heuristic, smallness of Liouville-twisted sums along a periodic
 weight, holds in logarithmically averaged form (a direct consequence of Tao's
-two-point theorem), and we give a small numerical illustration. Every
+two-point theorem), and we give a small numerical illustration. We then ask
+exactly which ``close-prime'' targets a weight of the Polymath8b kind can
+block, and show that it can do so precisely when the target graph is
+bipartite, or, for $m+1$ primes, when no interval of the relevant length holds
+$2m+1$ elements of the tuple. This explains the number $6$ and shows that the
+printed weight of Polymath8b's Remark~8.1 needs a small correction. Finally we
+record which structure the bilinear estimate for $a^2+b^4$ uses. Every
 mathematical statement carries a label saying how it was checked.
 \end{abstract}
 
@@ -218,6 +224,184 @@ tell $\lambda(n)\lambda(n+2)=+1$ from $-1$, which is exactly why it cannot
 see twin primes. It does not give a lower bound for twin primes.
 \end{remark}
 
+\section{Which close-prime targets the obstruction blocks}\label{sec:bip}
+
+The weight in \cite[\S8]{PM8b} is tailored to one target (two primes at
+distance $\le4$ among $n,n+2,n+6$). Here we ask, for an arbitrary target, when
+a weight of the same kind exists. The answer is a clean combinatorial
+criterion. It explains why the parity limit of the method is $6$, it gives
+the corresponding statement for $H_m$, and it shows that the weight printed in
+\cite[Remark~8.1]{PM8b} needs a small correction. The criterion concerns
+only the class of weights described next; that this class captures ``what
+sieve methods can see'' is the heuristic part of Section~\ref{sec:parity}, and
+nothing here removes it.
+
+\subsection{The class of weights}
+Fix an admissible tuple $\mathcal H=\{h_1<\dots<h_k\}$ and a family
+$\mathcal E$ of non-empty subsets of $\{1,\dots,k\}$ (the \emph{target}: the
+sieve is asked to find $n$ such that $n+h_i$ is prime for all $i\in e$, for
+some $e\in\mathcal E$). A \emph{pattern weight} is
+$\omega(n)=\Omega(\lambda(n+h_1),\dots,\lambda(n+h_k))$ with
+$\Omega:\{\pm1\}^k\to[0,\infty)$ not identically zero. Write
+$\widehat\Omega(S)=2^{-k}\sum_{\varepsilon}\Omega(\varepsilon)\prod_{i\in S}\varepsilon_i$.
+\begin{itemize}
+\item $\Omega$ \emph{kills} $\mathcal E$ if $\Omega(\varepsilon)=0$ whenever
+  $\{i:\varepsilon_i=-1\}\supseteq e$ for some $e\in\mathcal E$. Since
+  $\lambda(p)=-1$ for every prime $p$, then $\omega(n)=0$ whenever the target
+  is hit at $n$.
+\item $\Omega$ is \emph{fair} if $\widehat\Omega(\{i\})=0$ for every $i$, and
+  \emph{weakly fair} if $\widehat\Omega(\{i\})\le0$ for every $i$.
+\end{itemize}
+Expanding $\Omega$ in the characters $\prod_{i\in S}\varepsilon_i$ and
+applying the M\"obius-randomness heuristic of \cite[p.~70]{PM8b} (every sum
+in which a non-empty product of Liouville values at positions other than that
+of $f$ remains is negligible), the twisted inputs become, for $f=1$ and for
+$f=\Lambda$ at position $i$ (where $\lambda(n+h_i)=-1$ on the support),
+\[
+\sum_n\nu(n)\omega(n)\approx\widehat\Omega(\emptyset)\sum_n\nu(n),\qquad
+\sum_n\nu(n)\omega(n)\Lambda(n+h_i)\approx\left(\widehat\Omega(\emptyset)-\widehat\Omega(\{i\})\right)\sum_n\nu(n)\Lambda(n+h_i).
+\]
+So for a fair weight every main term is multiplied by the same constant
+$\widehat\Omega(\emptyset)>0$ and the sieve computation is unchanged; for a
+weakly fair weight the prime sums only grow, which does not hurt an argument
+that needs lower bounds for them and an asymptotic for $\sum\nu$. A fair (or
+weakly fair) weight that kills $\mathcal E$ is therefore a parity obstruction
+of the type of \cite[\S8]{PM8b} to proving $\sum_n\nu(n)1_{A_{\mathcal E}}(n)>0$
+by such an argument. The weight of \cite[p.~70, after (147)]{PM8b} for $\{0,2,6\}$ and
+$\mathcal E=\{\{1,2\},\{2,3\}\}$ is $\Omega=(1-\varepsilon_1\varepsilon_2)
+(1-\varepsilon_2\varepsilon_3)$; it is non-negative, fair and kills
+$\mathcal E$, but not $\{1,3\}$ (\lbl{Lean-checked}:
+\texttt{pm8b\_path\_weight\_nonneg}, \texttt{\_fair}, \texttt{\_kills} in
+\texttt{lean/TwinPrimes/Parity.lean}).
+
+\subsection{The criterion}
+Call $I\subseteq\{1,\dots,k\}$ \emph{$\mathcal E$-free} if it contains no
+$e\in\mathcal E$.
+
+\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:bipartite}
+The following are equivalent:
+\begin{enumerate}
+\item there is a fair pattern weight that kills $\mathcal E$;
+\item there is a weakly fair pattern weight that kills $\mathcal E$;
+\item the point $(\tfrac12,\dots,\tfrac12)$ is a convex combination of
+  indicator vectors of $\mathcal E$-free sets.
+\end{enumerate}
+In particular:
+\begin{enumerate}
+\item[(a)] if $\mathcal E$ is the edge set of a graph $G$ on
+  $\{1,\dots,k\}$, these hold if and only if $G$ is bipartite;
+\item[(b)] if $\mathcal E$ consists of all $(m+1)$-element subsets \textup{(}the
+  target of $\mathrm{DHL}[k,m+1]$\textup{)}, they hold if and only if $k\le 2m$;
+\item[(c)] if $\mathcal E$ consists of the $(m+1)$-element subsets
+  $e$ with $\max_{e}h-\min_{e}h\le g$, they hold if and only if every interval
+  of length $g$ contains at most $2m$ elements of $\mathcal H$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For $\Omega\ge0$, not identically zero, let $\mu=\Omega/\sum\Omega$, a
+probability measure on $\{\pm1\}^k$, and identify $\varepsilon$ with
+$I(\varepsilon)=\{i:\varepsilon_i=-1\}$. Then
+$\widehat\Omega(\{i\})=2^{-k}\left(\sum\Omega\right)\left(1-2\mu(i\in I)\right)$.
+So $\Omega$ is fair (weakly fair) if and only if $\mu(i\in I)=\tfrac12$
+(respectively $\ge\tfrac12$) for all $i$, and $\Omega$ kills $\mathcal E$ if and
+only if $\mu$ is supported on $\mathcal E$-free sets. Hence (1)$\Leftrightarrow$(3),
+and (1)$\Rightarrow$(2) is trivial. For (2)$\Rightarrow$(1): given $\mu$ on
+$\mathcal E$-free sets with $p_i=\mu(i\in I)\ge\tfrac12$, delete each $i$ from
+the random set $I$ independently with probability $1-1/(2p_i)$. Subsets of
+$\mathcal E$-free sets are $\mathcal E$-free, and the new marginals are
+$p_i\cdot 1/(2p_i)=\tfrac12$.
+
+(a) If $G$ is bipartite with colour classes $A\sqcup B=\{1,\dots,k\}$ (put
+isolated vertices in $A$), both classes are independent and
+$\tfrac12 1_A+\tfrac12 1_B=(\tfrac12,\dots,\tfrac12)$. If $G$ contains an odd
+cycle $C$ of length $2r+1$, every independent set meets $C$ in at most $r$
+vertices, so any convex combination $x$ of independent sets has
+$\sum_{i\in C}x_i\le r<\tfrac{2r+1}2$.
+
+(b) Here the $\mathcal E$-free sets are the sets of size at most $m$. If
+$k\le 2m$, take a uniformly random $m$-subset with probability $k/(2m)$ and the
+empty set otherwise; each marginal is $\tfrac{k}{2m}\cdot\tfrac mk=\tfrac12$.
+Conversely $\mathbb E|I|=k/2$ must be at most $m$.
+
+(c) If some interval of length $g$ contains $w\ge 2m+1$ elements of
+$\mathcal H$, then $\mathbb E|I\cap J|=w/2>m$ for the set $J$ of their
+indices, while an $\mathcal E$-free $I$ has $|I\cap J|\le m$. Conversely,
+let $A$ be the set of odd indices and $B$ the set of even indices; the
+elements of $\mathcal H$ in an interval of length $g$ have consecutive indices,
+at most $2m$ of them, so at most $m$ lie in $A$ and at most $m$ in $B$; take
+$\tfrac12 1_A+\tfrac12 1_B$.
+\end{proof}
+
+\begin{remark}[Extra coordinates do not help]\label{rem:marg}
+If $\Omega$ also depends on Liouville values at shifts outside $\mathcal H$,
+averaging over those coordinates gives a pattern weight on $\mathcal H$ that
+is still non-negative and still kills $\mathcal E$, with the same singleton
+coefficients at the positions of $\mathcal H$. So the criterion is the same
+for weights built from $\lambda$ at any finite set of shifts. Weights of other
+kinds (depending on residue classes of $n$ together with $\lambda$, or on
+functions other than $\lambda$) are not covered.
+\end{remark}
+
+\subsection{Consequences}
+\begin{corollary}[\lbl{Proved here}, from Proposition~\ref{prop:bipartite}]\label{cor:six}
+Let $H(j)$ be the smallest diameter of an admissible $j$-tuple. Within the class
+of pattern weights, the targets ``some $m+1$ of the $n+h_i$ lying in an interval
+of length $g$ are all prime'' are blocked for every admissible tuple if and
+only if $g<H(2m+1)$. For $m=1$: $H(3)=6$, so the class blocks every attempt at
+$H_1\le4$ and blocks no attempt at $H_1\le 6$ (for $\{0,2,6\}$ the
+target graph at $g=6$ is a triangle). This is consistent with
+\cite[Theorem~1.4(xii)]{PM8b}, $H_1\le6$ under GEH via
+$\mathrm{DHL}[3,2]$, which by (b) is not blocked ($3>2$).
+\end{corollary}
+
+\begin{proof}
+If an admissible $\mathcal H$ has $2m+1$ elements in an interval of length $g$,
+they form an admissible $(2m+1)$-tuple of diameter at most $g$, so $g\ge
+H(2m+1)$; conversely, a narrowest admissible $(2m+1)$-tuple has all its
+elements in one interval of length $H(2m+1)$. Apply (c). For $m=1$,
+$\{0,2,6\}$ is admissible and no admissible triple has diameter $<6$ (a triple
+of the same parity in an interval of length $4$ is $\{a,a+2,a+4\}$, which
+covers all classes modulo~$3$).
+\end{proof}
+
+\lbl{Computed} (exhaustive search, \texttt{code/parity/bipartite\_obstruction.py}):
+$H(3),\dots,H(9)=6,8,12,16,20,26,30$; the witnesses $\{0,2,6,8,12\}$ and
+$\{0,2,6,8,12,18,20\}$ are \lbl{Lean-checked} admissible
+(\texttt{narrow5\_admissible}, \texttt{narrow7\_admissible}). So the class
+forbids exactly $H_2<12$, $H_3<20$. HMBOUNDS The case $m=1$ is the only one in
+which the class matches what sieve methods achieve.
+
+\lbl{Lean-checked} (\texttt{triangle\_no\_fair\_weight}): a non-negative,
+integer-valued fair weight on $\{\pm1\}^3$ that kills all three pairs is
+identically zero. This is the case $k=3$, $m=1$ of (b), for integer weights
+(rational weights reduce to it by scaling; real ones by rationality of the
+linear program).
+
+\subsection{The weight in Remark 8.1 of Polymath8b}\label{subsec:rem81}
+\lbl{Literature} \cite[Remark~8.1, p.~70]{PM8b} considers
+$A_H=\{n:\exists\,n\le p_1<p_2\le n+H,\ p_1,p_2\text{ prime},\ p_2-p_1\le4\}$
+and the weight
+\[
+\omega(n)=\prod_{\substack{0\le i\le i'\le H;\ (n+i,3)=(n+i',3)=1;\ i'-i\le4}}
+\left(1-\lambda(n+i)\lambda(n+i')\right),
+\]
+leaving ``the details to the interested reader''. Taken literally this weight
+vanishes identically: the factor with $i=i'$ is $1-\lambda(n+i)^2=0$. With
+$i<i'$ it still vanishes for every $n$ once $H\ge4$
+(\lbl{Computed} for $n<2000$; \lbl{Proved here}: among $n,\dots,n+4$ the
+integers prime to $3$ contain three at pairwise distances $\le4$, e.g.\
+$n+1,n+2,n+4$ if $3\mid n$, and on such a triangle the three factors cannot
+all be non-zero). In the language of Proposition~\ref{prop:bipartite}, the
+printed graph has odd cycles. The intended weight is presumably the one with
+$i<i'$ and $n+i$, $n+i'$ odd. The positions $\equiv\pm1\pmod 6$ have gaps
+alternating $2,4$, so the graph of pairs at distance $\le4$ is a path, hence
+bipartite. That weight works as intended: for $n<20000$ and
+$H\in\{4,6,8,12\}$ it is non-zero for many $n$ and vanishes whenever two
+primes $>3$ at distance $\le4$ lie in $[n,n+H]$ (\lbl{Computed}; the only
+exceptions, $n=1,2$, involve the prime $3$). This is a typo-level slip; no
+result of \cite{PM8b} depends on it.
+
 \section{The asymptotic sieve and the twin-prime sequence}\label{sec:fi}
 
 \subsection{The theorem}
@@ -360,6 +544,70 @@ $\Lambda(dm+2)$: ``we do not know of any plausible way to control such
 bilinear expressions'' \cite[p.~71]{PM8b}.
 \end{remark}
 
+\subsection{A sequence for which the bilinear axiom is proved: $a^2+b^4$}\label{subsec:fi-x2y4}
+\lbl{Literature} \cite{FI98b} (arXiv:math/9811185v1; ``p.~$N$'' is the Annals
+page). Theorem~1 (p.~946) gives
+\[
+\sum\sum_{a^2+b^4\le x}\Lambda(a^2+b^4)=4\pi^{-1}\kappa\,x^{3/4}\left(1+O\left(\frac{\log\log x}{\log x}\right)\right),
+\]
+$\kappa=\int_0^1(1-t^4)^{1/2}\,dt$, with $a,b$ positive integers; the
+implied constant is not effective (p.~1012). The authors place the
+difficulty exactly where Section~\ref{sec:fi} does: ``In its classical format
+the sieve is unable to detect primes for a very intrinsic reason, first
+pointed out by Selberg [Se] and known as the parity problem'', and ``we
+introduce (see (2.11)) an additional axiom which overcomes the parity
+problem'' (pp.~947--948). The sequence is $a_n=\#\{(a,c)\in\mathbb Z^2:
+a^2+c^4=n\}$ (p.~962), of size $A(x)\asymp x^{3/4}$. The Type~I hypothesis
+holds with $D=x^{3/4-5\varepsilon}$ (Proposition~3.5, p.~962), and the bilinear
+hypothesis is their Proposition~4.1 (p.~963): for $\eta,A>0$,
+\[
+\sum_m\sum_{\substack{N<n\le2N,\ mn\le x\\ (n,m\Pi)=1}}\beta(n)a_{mn}\ll A(x)(\log x)^{4-A},
+\qquad x^{1/4+\eta}<N<x^{1/2}(\log x)^{-B},
+\]
+with $\beta(n)=\mu(n)\sum_{c\mid n,\,c\le C}\mu(c)$, $1\le C\le N^{1-\eta}$,
+and $\Pi$ the product of the primes below a parameter $P$ (their (4.3)--(4.4)).
+
+\emph{The structure it uses} (\lbl{Literature}, same source; our summary of
+Sections~5--25). (i) A norm form: since $(m,n)=1$, unique factorisation in
+$\mathbb Z[i]$ gives $a_{mn}=\tfrac14\sum_{|w|^2=m}\sum_{|z|^2=n}Z(\mathrm{Re}\,wz)$,
+with $Z(b)=2$ if $b=c^2>0$, $Z(0)=1$ and $Z(b)=0$ otherwise (pp.~960, 967).
+The condition ``$mn$ is a value of the form'' thus becomes a condition
+$\mathrm{Re}(wz)=c^2$ on a pair of Gaussian integers, and Cauchy--Schwarz is
+applied over the outer variable $w$ only. (ii) After squaring, the pairs
+$(z_1,z_2)$ lead to counting lattice points modulo
+$\Delta=\mathrm{Im}\,\bar z_1z_2$ in a region of the thin set; the count
+produces a Jacobi symbol, and in the range of large moduli a ``spin''
+symbol of $z$ coming from quadratic reciprocity (Lemma~17.1, p.~1013). (iii)
+The remaining task is cancellation in sums of the M\"obius-type $\beta_z$
+twisted by this spin over Gaussian integers (Proposition~17.2, p.~1016),
+proved in the later sections of the paper (cf.\ their Theorem~2, the
+equidistribution of the spins of primes $p=r^2+s^2$, p.~948). The authors add that the method ``fails however
+to produce primes of the type $\varphi(a,b^2)$ where $\varphi$ is a
+non-homogeneous quadratic polynomial'' (p.~947). The paper says nothing about
+twin primes or linear forms.
+
+\begin{remark}[Why this does not transfer, as far as we can see]\label{rem:fi-transfer}
+\lbl{Heuristic} (our reading, not a statement of \cite{FI98b}). Compare with
+Proposition~\ref{prop:B-parity}(3). For $a_n=\Lambda(n+2)$ the inner variable
+$n$ and the outer variable $m$ enter only through the product $mn$, and after
+Cauchy--Schwarz over $m$ the off-diagonal (OD) is a correlation
+$\sum_m\Lambda(mn_1+2)\Lambda(mn_2+2)$ of primes in two linear forms, a binary
+problem of the same kind as the one we started from. In \cite{FI98b} the same
+step leads instead to a lattice-point problem in which the primality is no
+longer present (the multiplicity of representations is ``released'' into the
+outer Gaussian variable before squaring, p.~966), and the arithmetic that is
+left is a real character (the spin) of the inner Gaussian variable, for which
+cancellation is a statement about Gaussian primes in a single variable. Three
+features have no counterpart for $n+2$: the factorisation of the condition
+through a norm form; the thinness ($A(x)\asymp x^{3/4}$), which makes the
+Type~I level $x^{3/4}$ attainable and is used up in the error term of the
+lattice count; and the symbol produced by reciprocity. Polymath8b, right after saying they know no ``plausible way to control such
+bilinear expressions'' for $\Lambda(dm+2)$, note that ``there are some other
+situations in which bilinear sieve axioms may be established'', citing this
+paper \cite[p.~71]{PM8b}.
+We do not claim this list is complete, or that no other route exists.
+\end{remark}
+
 \section{A numerical illustration}\label{sec:num}
 
 \lbl{Heuristic.} For odd $n\le X$ let
@@ -398,7 +646,23 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   $\sum_{n\le x,\,n\equiv c\,(q)}\lambda(n)\lambda(n+2)/n=o(\log x/q)$
   uniformly for $q\le x^{\theta}$, on average over $q$? This is the twisted
   Type~I input of Section~\ref{sec:parity} in log-averaged form; even a positive
-  answer would confirm the obstruction rather than break it.
+  answer would confirm the obstruction rather than break it. \lbl{Literature,
+  preprint}: Tao and Ter\"av\"ainen \cite[Theorem~3.1, p.~24]{TT25} prove a
+  quantitative correlation bound for 1-bounded multiplicative $g_1,g_2$ in
+  progressions $n\equiv b\pmod W$, uniformly for $W\le L^{c}$ and shifts
+  $O(L^c)$ ($L\le\log X$ a parameter), outside a set of scales of logarithmic
+  density $\ll L^{-c}$. If it applies to $\lambda$ with $L$ a power of
+  $\log x$ (their Remarks~3.2 indicate this), it should allow levels
+  $R=(\log x)^{c_0}$ in place of the very slowly growing $R(x)$ of
+  Proposition~\ref{prop:tao-weight}; we have not written or checked this
+  deduction. Nothing we found reaches $R=x^{\theta}$
+  (sources in \texttt{notes/sources-chowla-quantitative.md}).
+\item (\lbl{Open}) Does some weight outside the class of
+  Section~\ref{sec:bip} (depending on residue classes of $n$ as well as on
+  Liouville values, or on other functions) block a non-bipartite target, for
+  instance $\mathrm{DHL}[5,3]$ (which Proposition~\ref{prop:bipartite}(b) does
+  not block)? Conversely, is $\mathrm{DHL}[5,3]$, i.e.\ $H_2\le12$, provable
+  under GEH? The known sieve bounds for $H_2$ are far weaker.
 \item Is there post-2014 progress on absolute-value, fixed-residue
   equidistribution of primes beyond level $x^{1/2}$, so that (R$_3$) at
   $x^{2/3+}$ is not a second, independent barrier? (Not yet checked.)
@@ -418,11 +682,17 @@ suffice). Nothing enters before it is read in the source.
 \begin{thebibliography}{9}
 \bibitem{FI98} J.~Friedlander and H.~Iwaniec, \emph{Asymptotic sieve for primes},
   Ann.\ of Math.\ \textbf{148} (1998), 1041--1065; arXiv:math/9811186v1.
+\bibitem{FI98b} J.~Friedlander and H.~Iwaniec, \emph{The polynomial $X^2+Y^4$
+  captures its primes}, Ann.\ of Math.\ \textbf{148} (1998), 945--1040;
+  arXiv:math/9811185v1.
 \bibitem{PM8b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and bounded
   intervals containing many primes}, arXiv:1407.4897v4 (22 Dec 2014) (cited by its page numbers, of 80).
 \bibitem{Tao16} T.~Tao, \emph{The logarithmically averaged Chowla and Elliott
   conjectures for two-point correlations}, arXiv:1509.05422v4 (29 Jul 2016;
   journal version not consulted).
+\bibitem{TT25} T.~Tao and J.~Ter\"av\"ainen, \emph{Quantitative correlations
+  and some problems on prime factors of consecutive integers},
+  arXiv:2512.01739v2 (25 Apr 2026), preprint.
 \end{thebibliography}
 
 \section*{Changelog}
@@ -438,6 +708,15 @@ suffice). Nothing enters before it is read in the source.
   $\Delta$ in Proposition~\ref{prop:B-parity}; the diagonal choice of $R(x)$;
   softened claims about the scope of Proposition~\ref{prop:tao-weight} and
   about the Type~I level).
+\item[0.2] (15 Nov 2026) New Section~\ref{sec:bip}: the criterion of
+  Proposition~\ref{prop:bipartite} (parity attempt of 15 Nov, second route card),
+  Corollary~\ref{cor:six}, Remark~\ref{rem:marg}, the Lean-checked finite cases,
+  and the correction to \cite[Remark~8.1]{PM8b} (Section~\ref{subsec:rem81}).
+  New Section~\ref{subsec:fi-x2y4} on Friedlander--Iwaniec $a^2+b^4$ (read in
+  arXiv:math/9811185v1, SHA-256 in \texttt{notes/parity-programme.md}) and
+  Remark~\ref{rem:fi-transfer}. Open question~1 updated with the preprint
+  \cite{TT25}; new open question on weights outside the class.
+  AUDITNOTE
 \end{itemize}
 
 \end{document}

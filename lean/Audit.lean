@@ -20,3 +20,9 @@ import TwinPrimes
 #print axioms TwinPrimes.boundedGaps_186_of_DHL_40'
 #print axioms TwinPrimes.boundedGaps_236_of_DHL_48
 #print axioms TwinPrimes.boundedGaps_182_of_DHL_39'
+#print axioms TwinPrimes.triangle_no_fair_weight
+#print axioms TwinPrimes.pm8b_path_weight_nonneg
+#print axioms TwinPrimes.pm8b_path_weight_fair
+#print axioms TwinPrimes.pm8b_path_weight_kills
+#print axioms TwinPrimes.narrow5_admissible
+#print axioms TwinPrimes.narrow7_admissible
