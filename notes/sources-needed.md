@@ -22,3 +22,8 @@
 - Why: rung 186. Session 15 reproduced the 7 raw bounds of group I2old (code/oai186_loss_I2old.py) but had to infer the radial interval and the delay/renewal choice from the table; for the 5/2 groups the clipping (1.26) is active and cannot be inferred. notes/sources-186-loss.md does not contain these items.
 - Tried: the PDF supplied in the Session 14 follow-up was not committed (copyright) and is not available to later runs; its GitHub repository (openai/PrimeGaps186) is outside this session's GitHub scope (Session 15, 14 Nov 2026).
 - Status: received (14 Nov 2026: the coordinator session fetched the public, Apache-2.0 repository openai/PrimeGaps186 at commit 61340d0b at Jerry's request; the PDF itself, which the licence allows us to redistribute, and the authors' certificate script are now committed in code/third_party/openai186/ (see its README). The group data are (1.22), (1.26) with Lemma 1.6, and (2.3) in the PDF, and build_inputs() in the script. Use the script only as a reference, not as one of our two independent programs.)
+
+## Polymath8b, journal version: "Variants of the Selberg sieve, and bounded intervals containing many primes", Res. Math. Sci. 1 (2014), Art. 12, doi:10.1186/s40687-014-0012-7
+- Why: to see whether Remark 8.1's weight (printed in arXiv v4 as a product over 0 <= i <= i' <= H, identically zero; see notes/flags-for-jerry.md, 15 Nov) was corrected in the published version. Low priority.
+- Tried (Session 18, 15 Nov 2026): curl https://link.springer.com/content/pdf/10.1186/s40687-014-0012-7.pdf and https://resmathsci.springeropen.com/counter/pdf/10.1186/s40687-014-0012-7.pdf: both HTTP 200 but an HTML "Client Challenge" page instead of the PDF (bot check). Not worked around.
+- Status: needed.
