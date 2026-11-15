@@ -1088,8 +1088,8 @@ Cauchy--Schwarz
 \[
 \left(\int F\,dt_i\right)^2\le\int\frac{F^2}{h}\,dt_i\cdot\int h\,dt_i .
 \]
-On this fibre the term with index $i$ of $h$ is $g(u)$. The term for the
-coordinate $x$ is $\mathbf 1[t_i+y\le a]\,g(t_i,y)$, and $a-y\le\frac32-x-y$
+On this fibre the term with index $i$ of $h$ is $g(u)$. The term whose index
+$j$ has $t_j=x$ (so $t_{-j}=\{t_i,y\}$) is $\mathbf 1[t_i+y\le a]\,g(t_i,y)$, and $a-y\le\frac32-x-y$
 because $x\le a\le\frac32-a$ (this is where $\varepsilon\ge\frac14$ is used). So
 \[
 \int h\,dt_i=\left(\tfrac32-x-y\right)g(u)+\int_0^{a-y}g(\tau,y)\,d\tau+\int_0^{a-x}g(\tau,x)\,d\tau
@@ -1105,13 +1105,17 @@ For $\varepsilon'>\varepsilon$ each $J_{i,1-\varepsilon'}(F)\le J_{i,1-\varepsil
 non-negative integrand), while the support $D$ does not depend on $\varepsilon$.
 \end{proof}
 
-This is a Schur test. With the exact Perron eigenfunction it is sharp for
-the problem without marginal condition: the eigenfunction of that problem has
-the form $\sum_i\mathbf 1[|t_{-i}|\le a]g(t_{-i})$, and $g$ has the form above.
-So for $\varepsilon\ge\frac14$ the three-dimensional problem reduces to a
-one-dimensional one (\lbl{Heuristic} check: the 1D, 2D and 3D computations
-agree to $10^{-4}$, \texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{k3\_\allowbreak{}unc\_\allowbreak{}1d.py},
-\texttt{k3\_\allowbreak{}unc\_\allowbreak{}kernel.py}).
+This is a Schur test. If $\varphi>0$ solves $\Phi=\varphi$ exactly, then $F=h$ has
+$\int h\,dt_i=Cg(t_{-i})$, so $h$ attains the bound and the test is sharp for
+the problem without marginal condition. Conversely, an eigenfunction of that
+problem, if one exists, has this form (integrate the eigenvalue equation along
+the fibres). \lbl{Heuristic}: the supremum is attained this way, so for
+$\varepsilon\ge\frac14$ the three-dimensional problem reduces to a one-dimensional
+one. The 1D computation (\texttt{k3\_\allowbreak{}unc\_\allowbreak{}1d.py}), the 2D one
+(\texttt{k3\_\allowbreak{}unc\_\allowbreak{}kernel.py}) and the 3D cube grids without marginal
+condition (\texttt{k3\_\allowbreak{}thm314\_\allowbreak{}dual.py}, mode \texttt{none}) agree to
+$10^{-4}$ (outputs \texttt{k3\_\allowbreak{}unc\_\allowbreak{}1d.out}, \texttt{k3\_\allowbreak{}unc\_\allowbreak{}kernel.out}
+in \texttt{code/}\allowbreak\texttt{parity/}).
 
 \begin{theorem}[\lbl{Computed}; each certificate checked by two independent programs]\label{thm:k3-window}
 Let $\sigma_3(\varepsilon)$ be the supremum of the Theorem~3.14 ratio at $k=3$.
@@ -1124,9 +1128,11 @@ Let $\sigma_3(\varepsilon)$ be the supremum of the Theorem~3.14 ratio at $k=3$.
   $\sigma_3(\varepsilon)\le1.995$ for $\varepsilon\ge0.45$. Also $\sigma_3(\frac14)\le2.17$ and
   $\sigma_3(\frac38)\le2.057$.
 \end{enumerate}
-So, under GEH, Theorem~3.14 with $k=3$ proves $\mathrm{DHL}[3,2]$ for
-$\varepsilon=\frac29,\frac14,\frac7{24}$ (and $\varepsilon=\frac14$ is \cite[Theorem~3.15]{PM8b}),
-and cannot prove it for any $\varepsilon\in[0.439,\frac12)$.
+So, under GEH, the criterion of Theorem~3.14 with $k=3$ gives $\mathrm{DHL}[3,2]$
+for $\varepsilon=\frac29,\frac14,\frac7{24}$ (the case $\varepsilon=\frac14$ is the
+computation behind \cite[Theorem~3.15]{PM8b}, $H_1\le6$ under GEH), and it
+cannot give $\mathrm{DHL}[3,2]$ for any $\varepsilon\in[0.439,\frac12)$. This says
+nothing about whether $\mathrm{DHL}[3,2]$ itself holds.
 \end{theorem}
 
 \begin{sloppypar}
@@ -1157,6 +1163,11 @@ for $(sa,s\mu)$ (substitute $\tau=s\tau'$, $y=sy'$). Apply this to the
 certificate at $\varepsilon=0.439$, $\mu=0.4999$, with $s=(1-\varepsilon)/0.561$.
 \end{proof}
 
+The corollary sharpens Theorem~\ref{thm:k3-window}(2): it gives
+$\sigma_3(\frac14)\le2.1684$, $\sigma_3(\frac38)\le2.0570$ and $\sigma_3(\varepsilon)<2$ for
+every $\varepsilon>\frac{2194}{4999}=0.43889\ldots$. The certificates at $\frac14$,
+$\frac38$ and $0.45$ remain as independent cross-checks.
+
 \begin{sloppypar}
 By the same scaling the critical value is $\mu^*=\kappa(1-\varepsilon)$. Numerically
 $\kappa\approx0.8901675$ (\lbl{Heuristic}; Richardson extrapolation of the 1D
@@ -1175,14 +1186,14 @@ for $\kappa$.
   (Section~\ref{subsec:dual}).
 \item Exact lower bounds at $\varepsilon=\frac16$, $\frac15$, $\frac3{10}$, $\frac13$ stay
   below $2$: $1.9909$, $1.9982$, $1.9990$, $1.9952$ at $24$, $20$, $20$, $24$
-  cells per unit (\texttt{k3\_\allowbreak{}}\allowbreak\texttt{arrangement\_\allowbreak{}}\allowbreak\texttt{eps2.out}). At
-  $\frac15$ and $\frac3{10}$ they are still rising with $n$, so these cases are
-  undecided. With the cube-grid extrapolations of Remark~\ref{rem:k3-eps},
+  cells per unit (\texttt{k3\_\allowbreak{}}\allowbreak\texttt{arrangement\_\allowbreak{}}\allowbreak\texttt{eps2.out}). All four are still rising with $n$, so none is decided rigorously; at
+  $\frac15$ and $\frac3{10}$ the gap to $2$ is so small that even the
+  extrapolations do not settle them. With the cube-grid extrapolations of Remark~\ref{rem:k3-eps},
   the picture is a window of roughly $\varepsilon\in(0.19,0.31)$ in which
   $\sigma_3(\varepsilon)>2$, with a maximum of about $2.003$.
 \item A rigorous upper bound below $2$ for small $\varepsilon$, or anywhere in
-  $[0.31,0.439)$, needs the marginal condition: without it the supremum
-  exceeds $2$ there.
+  $[0.31,0.4383)$, needs the marginal condition: without it the supremum
+  exceeds $2$ there (heuristically, for $\varepsilon<\varepsilon^*\approx0.43831$).
 \end{enumerate}
 \end{remark}
 
@@ -1695,11 +1706,12 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
 \item (\lbl{Open}, partly answered) What is the exact supremum $\sigma_3(\varepsilon)$ of the
   Theorem~3.14 ratio at $k=3$, and for which $\varepsilon$ does it exceed $2$?
   Theorem~\ref{thm:k3-window}: it exceeds $2$ at $\varepsilon=\frac29,\frac14,\frac7{24}$
-  and is below $2$ for all $\varepsilon\ge0.439$; $\sigma_3(\frac14)\in(2.0001,2.17]$.
+  and is below $2$ for all $\varepsilon>0.43889$; $\sigma_3(\frac14)\in(2.0001,2.1684]$
+  (two programs each; the first program alone gives $2.00255$ from below).
   Heuristically the set where it exceeds $2$ is an interval of about
   $(0.19,0.31)$ with maximum about $2.003$ (Remarks~\ref{rem:k3-eps},
   \ref{rem:k3-window}). Open: a rigorous ceiling below $2$ for small $\varepsilon$
-  or in $[0.31,0.439)$, which needs the marginal condition. The variance
+  or in $[0.31,0.4383)$, which needs the marginal condition. The variance
   argument of Theorem~\ref{thm:k2} does not extend directly
   (Proposition~\ref{prop:overlap}), and the clean-column relaxation alone
   allows more than $2.14$ at $\varepsilon=\frac18$ (Proposition~\ref{prop:orth-relax});
@@ -1847,12 +1859,16 @@ suffice). Nothing enters before it is read in the source.
 \item[0.8] (15 Nov 2026) New Subsection~\ref{subsec:window}: a Schur-test
   reduction of the $k=3$ problem without marginal condition to a
   one-dimensional inequality (Proposition~\ref{prop:unc-ceiling}), and
-  Theorem~\ref{thm:k3-window}: the $k=3$ criterion exceeds $2$ at
+  Theorem~\ref{thm:k3-window}: the supremum of the $k=3$ criterion exceeds $2$ at
   $\varepsilon=\frac29,\frac14,\frac7{24}$ and is below $2$ for all $\varepsilon\ge0.439$
   (each certificate by two programs), and Corollary~\ref{cor:k3-linear}
   (a ceiling linear in $\varepsilon$, by scaling). Open question~6 partly answered.
   Parity attempt of this run (route card
-  \texttt{2026-11-15-k3-window.md}).
+  \texttt{2026-11-15-}\allowbreak\texttt{k3-window.md}). Fresh-context adversarial audit
+  (\texttt{notes/}\allowbreak\texttt{audit-}\allowbreak\texttt{parity-v08.md}): no errors; fixes: labels on the
+  sharpness remark, the corollary's improvement of part~(2), the interval in
+  Remark~\ref{rem:k3-window}(3), wording of the conclusion and of the
+  undecided cases.
 \end{itemize}
 
 \end{document}

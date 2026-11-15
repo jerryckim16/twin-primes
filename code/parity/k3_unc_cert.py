@@ -1,10 +1,10 @@
 """Computed (rigorous, arb ball arithmetic). Certificate that the k = 3 Theorem 3.14 ratio, even WITHOUT the vanishing
 marginal condition, is at most C at eps (1/4 <= eps < 1/2), via the 1D Schur condition of the parity paper
-(Prop. prop:unc-ceiling): phi >= 0 on [0,a], phi > 0 on [0,a/2], a = 1-eps, mu = C - 3/2 > 0, and
+(Prop. prop:unc-ceiling): phi > 0 on [0,a] (all node values positive), a = 1-eps, mu = C - 3/2 > 0, and
    Phi(y) := int_0^{a-y} (phi(t)+phi(y))/(mu+t+y) dt <= phi(y)   for all y in [0,a].
 phi: piecewise linear with rational values at the nodes k a/N (the numerical Perron vector of the 1D operator plus a
 small constant, rounded to rationals). Check on boxes [y0,y1] (adaptive bisection): for y in the box, the integrand is
-non-negative and decreasing in y, so Phi(y) <= Phi+ := int_0^{a-y0} (phi(t)+max_box phi)/(mu+t+y0) dt, computed exactly
+non-negative, and after replacing phi(y) by its box maximum it is decreasing in y, so Phi(y) <= Phi+ := int_0^{a-y0} (phi(t)+max_box phi)/(mu+t+y0) dt, computed exactly
 in closed form (linear pieces: int (al+be t)/(s+t) = be*len + (al - be s) log(...)) with arb balls; require
 upper(Phi+) < lower(min_box phi). Writes code/parity/k3_unc_cert_<p>_<q>.json.
 Run: /usr/bin/python3 -I code/parity/k3_unc_cert.py eps_p eps_q C_p C_q [N] [delta]
