@@ -1,0 +1,11860 @@
+{
+ "label": "Computed (exact certificate)",
+ "k": 3,
+ "eps": "1/4",
+ "n": 8,
+ "cell_convention": "scaled x = n t; cell = {x: floor(x)=cube, [y_i+y_j>1]=pair_bits for pairs (0,1),(0,2),(1,2), floor(y1+y2+y3)=level}, y=x-cube; orbit = all permutations; F = coef on every cell of the orbit, 0 on orbits not listed",
+ "rounding_denominator": 1000,
+ "cells": [
+  {
+   "orbit": 0,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     0
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "1/6"
+   ],
+   "orbit_volume": "1/3072",
+   "coef": "1"
+  },
+  {
+   "orbit": 1,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     0
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/12",
+    "1/2",
+    "1/6"
+   ],
+   "orbit_volume": "1/6144",
+   "coef": "973/1000"
+  },
+  {
+   "orbit": 2,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     0
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "2/3",
+    "1/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "116/125"
+  },
+  {
+   "orbit": 3,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     0
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "11/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "883/1000"
+  },
+  {
+   "orbit": 4,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "7/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "421/500"
+  },
+  {
+   "orbit": 5,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "17/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "819/1000"
+  },
+  {
+   "orbit": 6,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "5/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "773/1000"
+  },
+  {
+   "orbit": 7,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "23/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "363/500"
+  },
+  {
+   "orbit": 8,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "13/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "141/200"
+  },
+  {
+   "orbit": 9,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "29/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "171/250"
+  },
+  {
+   "orbit": 10,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "8/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "659/1000"
+  },
+  {
+   "orbit": 11,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "35/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "127/200"
+  },
+  {
+   "orbit": 12,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "157/250"
+  },
+  {
+   "orbit": 13,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "41/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "609/1000"
+  },
+  {
+   "orbit": 14,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "591/1000"
+  },
+  {
+   "orbit": 15,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "287/500"
+  },
+  {
+   "orbit": 16,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "72/125"
+  },
+  {
+   "orbit": 17,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "557/1000"
+  },
+  {
+   "orbit": 18,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "543/1000"
+  },
+  {
+   "orbit": 19,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "529/1000"
+  },
+  {
+   "orbit": 20,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "267/500"
+  },
+  {
+   "orbit": 21,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "129/250"
+  },
+  {
+   "orbit": 22,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "421/1000"
+  },
+  {
+   "orbit": 23,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 24,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "333/1000"
+  },
+  {
+   "orbit": 25,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 26,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 27,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 28,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "333/1000"
+  },
+  {
+   "orbit": 29,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "89/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 30,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 31,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "95/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 32,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "49/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "333/1000"
+  },
+  {
+   "orbit": 33,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "101/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 34,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "26/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 35,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "107/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 36,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "55/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "333/1000"
+  },
+  {
+   "orbit": 37,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "1/6",
+    "113/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 38,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "1/2",
+    "29/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "79/500"
+  },
+  {
+   "orbit": 45,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     0
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/12",
+    "5/6",
+    "1/2"
+   ],
+   "orbit_volume": "1/6144",
+   "coef": "419/500"
+  },
+  {
+   "orbit": 46,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     0
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/6",
+    "1/2"
+   ],
+   "orbit_volume": "1/3072",
+   "coef": "102/125"
+  },
+  {
+   "orbit": 47,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "13/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "193/250"
+  },
+  {
+   "orbit": 48,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "4/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "727/1000"
+  },
+  {
+   "orbit": 49,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "19/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "681/1000"
+  },
+  {
+   "orbit": 50,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "11/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "331/500"
+  },
+  {
+   "orbit": 51,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "25/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "16/25"
+  },
+  {
+   "orbit": 52,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "7/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/200"
+  },
+  {
+   "orbit": 53,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "31/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "59/100"
+  },
+  {
+   "orbit": 54,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "17/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "143/250"
+  },
+  {
+   "orbit": 55,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "37/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "563/1000"
+  },
+  {
+   "orbit": 56,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "68/125"
+  },
+  {
+   "orbit": 57,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "43/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "527/1000"
+  },
+  {
+   "orbit": 58,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "23/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/100"
+  },
+  {
+   "orbit": 59,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "51/100"
+  },
+  {
+   "orbit": 60,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "62/125"
+  },
+  {
+   "orbit": 61,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "481/1000"
+  },
+  {
+   "orbit": 62,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "233/500"
+  },
+  {
+   "orbit": 63,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "469/1000"
+  },
+  {
+   "orbit": 64,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/8"
+  },
+  {
+   "orbit": 65,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 66,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "34/125"
+  },
+  {
+   "orbit": 67,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 68,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 69,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 70,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "41/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "34/125"
+  },
+  {
+   "orbit": 71,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "85/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 72,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 73,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "91/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 74,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "47/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "34/125"
+  },
+  {
+   "orbit": 75,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "97/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 76,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "25/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 77,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "103/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 78,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "53/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "34/125"
+  },
+  {
+   "orbit": 79,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     9
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "109/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 80,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     9
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "5/6",
+    "28/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/1000"
+  },
+  {
+   "orbit": 81,
+   "rep_key": {
+    "cube": [
+     0,
+     0,
+     9
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "1/2",
+    "115/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "-13/250"
+  },
+  {
+   "orbit": 86,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "7/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "689/1000"
+  },
+  {
+   "orbit": 87,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "17/12",
+    "7/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "67/100"
+  },
+  {
+   "orbit": 88,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "5/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "623/1000"
+  },
+  {
+   "orbit": 89,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "23/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "301/500"
+  },
+  {
+   "orbit": 90,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "13/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "579/1000"
+  },
+  {
+   "orbit": 91,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "29/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "561/1000"
+  },
+  {
+   "orbit": 92,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "8/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "267/500"
+  },
+  {
+   "orbit": 93,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "35/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "259/500"
+  },
+  {
+   "orbit": 94,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "127/250"
+  },
+  {
+   "orbit": 95,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "41/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "491/1000"
+  },
+  {
+   "orbit": 96,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "471/1000"
+  },
+  {
+   "orbit": 97,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "461/1000"
+  },
+  {
+   "orbit": 98,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "459/1000"
+  },
+  {
+   "orbit": 99,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "111/250"
+  },
+  {
+   "orbit": 100,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "427/1000"
+  },
+  {
+   "orbit": 101,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "349/1000"
+  },
+  {
+   "orbit": 102,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "71/200"
+  },
+  {
+   "orbit": 103,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "343/1000"
+  },
+  {
+   "orbit": 104,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/500"
+  },
+  {
+   "orbit": 105,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 106,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "127/500"
+  },
+  {
+   "orbit": 107,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 108,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/500"
+  },
+  {
+   "orbit": 109,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 110,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "127/500"
+  },
+  {
+   "orbit": 111,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "89/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 112,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/500"
+  },
+  {
+   "orbit": 113,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "95/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 114,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "49/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "127/500"
+  },
+  {
+   "orbit": 115,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "101/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 116,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "26/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/500"
+  },
+  {
+   "orbit": 117,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "107/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "53/500"
+  },
+  {
+   "orbit": 118,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "55/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "11/100"
+  },
+  {
+   "orbit": 119,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "7/6",
+    "113/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/1000"
+  },
+  {
+   "orbit": 123,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "4/3",
+    "3/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "577/1000"
+  },
+  {
+   "orbit": 124,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "19/12",
+    "3/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "557/1000"
+  },
+  {
+   "orbit": 125,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "11/6",
+    "3/2"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "541/1000"
+  },
+  {
+   "orbit": 126,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "25/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "259/500"
+  },
+  {
+   "orbit": 127,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "7/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "491/1000"
+  },
+  {
+   "orbit": 128,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "31/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "237/500"
+  },
+  {
+   "orbit": 129,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "17/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "459/1000"
+  },
+  {
+   "orbit": 130,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "37/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "223/500"
+  },
+  {
+   "orbit": 131,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "17/40"
+  },
+  {
+   "orbit": 132,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "43/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "207/500"
+  },
+  {
+   "orbit": 133,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "23/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "2/5"
+  },
+  {
+   "orbit": 134,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "397/1000"
+  },
+  {
+   "orbit": 135,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "381/1000"
+  },
+  {
+   "orbit": 136,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "151/500"
+  },
+  {
+   "orbit": 137,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "73/250"
+  },
+  {
+   "orbit": 138,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "37/125"
+  },
+  {
+   "orbit": 139,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 140,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 141,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "39/200"
+  },
+  {
+   "orbit": 142,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 143,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 144,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 145,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "41/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "39/200"
+  },
+  {
+   "orbit": 146,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "85/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 147,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 148,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "91/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 149,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "47/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "39/200"
+  },
+  {
+   "orbit": 150,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "97/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 151,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "25/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 152,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "103/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "23/500"
+  },
+  {
+   "orbit": 155,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     9
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "28/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-109/1000"
+  },
+  {
+   "orbit": 156,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     9
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "3/2",
+    "115/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-53/500"
+  },
+  {
+   "orbit": 157,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "7/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "501/1000"
+  },
+  {
+   "orbit": 158,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "217/500"
+  },
+  {
+   "orbit": 159,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "317/1000"
+  },
+  {
+   "orbit": 160,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "297/1000"
+  },
+  {
+   "orbit": 161,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 162,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "201/1000"
+  },
+  {
+   "orbit": 163,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "11/6",
+    "25/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "23/1000"
+  },
+  {
+   "orbit": 165,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/3",
+    "3/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/20"
+  },
+  {
+   "orbit": 166,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "8/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/200"
+  },
+  {
+   "orbit": 167,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "12/25"
+  },
+  {
+   "orbit": 168,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "73/200"
+  },
+  {
+   "orbit": 169,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "43/125"
+  },
+  {
+   "orbit": 170,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "31/125"
+  },
+  {
+   "orbit": 171,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "31/125"
+  },
+  {
+   "orbit": 172,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "26/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "23/250"
+  },
+  {
+   "orbit": 173,
+   "rep_key": {
+    "cube": [
+     0,
+     1,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "3/2",
+    "29/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "53/500"
+  },
+  {
+   "orbit": 174,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "13/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "12/25"
+  },
+  {
+   "orbit": 175,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "29/12",
+    "13/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "463/1000"
+  },
+  {
+   "orbit": 176,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "8/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "11/25"
+  },
+  {
+   "orbit": 177,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "35/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "211/500"
+  },
+  {
+   "orbit": 178,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "413/1000"
+  },
+  {
+   "orbit": 179,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "41/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "199/500"
+  },
+  {
+   "orbit": 180,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/50"
+  },
+  {
+   "orbit": 181,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "38/125"
+  },
+  {
+   "orbit": 182,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "307/1000"
+  },
+  {
+   "orbit": 183,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "37/125"
+  },
+  {
+   "orbit": 184,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "281/1000"
+  },
+  {
+   "orbit": 185,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "141/500"
+  },
+  {
+   "orbit": 186,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "143/500"
+  },
+  {
+   "orbit": 187,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "69/250"
+  },
+  {
+   "orbit": 188,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 189,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 190,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "93/500"
+  },
+  {
+   "orbit": 191,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 192,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 193,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 194,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "93/500"
+  },
+  {
+   "orbit": 195,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "89/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 196,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 197,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "95/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "23/1000"
+  },
+  {
+   "orbit": 198,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "49/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "3/125"
+  },
+  {
+   "orbit": 199,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "13/6",
+    "101/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/250"
+  },
+  {
+   "orbit": 203,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/3",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "52/125"
+  },
+  {
+   "orbit": 204,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "31/12",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "199/500"
+  },
+  {
+   "orbit": 205,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "17/6",
+    "5/2"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "383/1000"
+  },
+  {
+   "orbit": 206,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "37/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "93/250"
+  },
+  {
+   "orbit": 207,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "71/200"
+  },
+  {
+   "orbit": 208,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "43/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "279/1000"
+  },
+  {
+   "orbit": 209,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "23/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "269/1000"
+  },
+  {
+   "orbit": 210,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "271/1000"
+  },
+  {
+   "orbit": 211,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "32/125"
+  },
+  {
+   "orbit": 212,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "257/1000"
+  },
+  {
+   "orbit": 213,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 214,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/4"
+  },
+  {
+   "orbit": 215,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 216,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 217,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "3/20"
+  },
+  {
+   "orbit": 218,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 219,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 220,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 221,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "41/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "3/20"
+  },
+  {
+   "orbit": 222,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "85/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 223,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/250"
+  },
+  {
+   "orbit": 224,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "91/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/1000"
+  },
+  {
+   "orbit": 227,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "25/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-3/250"
+  },
+  {
+   "orbit": 228,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "5/2",
+    "103/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-3/250"
+  },
+  {
+   "orbit": 229,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "17/6",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "149/500"
+  },
+  {
+   "orbit": 230,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "17/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "34/125"
+  },
+  {
+   "orbit": 231,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "17/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "251/1000"
+  },
+  {
+   "orbit": 232,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "17/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 233,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "17/6",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/50"
+  },
+  {
+   "orbit": 235,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "8/3",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "223/500"
+  },
+  {
+   "orbit": 236,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/2",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "323/1000"
+  },
+  {
+   "orbit": 237,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "297/1000"
+  },
+  {
+   "orbit": 238,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "69/250"
+  },
+  {
+   "orbit": 239,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "179/1000"
+  },
+  {
+   "orbit": 240,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/2",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "33/1000"
+  },
+  {
+   "orbit": 241,
+   "rep_key": {
+    "cube": [
+     0,
+     2,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "5/2",
+    "26/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/250"
+  },
+  {
+   "orbit": 242,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/200"
+  },
+  {
+   "orbit": 243,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "41/12",
+    "19/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "57/200"
+  },
+  {
+   "orbit": 244,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "53/200"
+  },
+  {
+   "orbit": 245,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "267/1000"
+  },
+  {
+   "orbit": 246,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "269/1000"
+  },
+  {
+   "orbit": 247,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "259/1000"
+  },
+  {
+   "orbit": 248,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "243/1000"
+  },
+  {
+   "orbit": 249,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "61/250"
+  },
+  {
+   "orbit": 250,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "31/125"
+  },
+  {
+   "orbit": 251,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "119/500"
+  },
+  {
+   "orbit": 252,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "71/500"
+  },
+  {
+   "orbit": 253,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "71/500"
+  },
+  {
+   "orbit": 254,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "37/250"
+  },
+  {
+   "orbit": 255,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "71/500"
+  },
+  {
+   "orbit": 256,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "71/500"
+  },
+  {
+   "orbit": 257,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/50"
+  },
+  {
+   "orbit": 258,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "21/1000"
+  },
+  {
+   "orbit": 259,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "19/6",
+    "89/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/100"
+  },
+  {
+   "orbit": 263,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "10/3",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "123/500"
+  },
+  {
+   "orbit": 264,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "43/12",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "247/1000"
+  },
+  {
+   "orbit": 265,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "23/6",
+    "7/2"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "119/500"
+  },
+  {
+   "orbit": 266,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "239/1000"
+  },
+  {
+   "orbit": 267,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "223/1000"
+  },
+  {
+   "orbit": 268,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/40"
+  },
+  {
+   "orbit": 269,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "27/125"
+  },
+  {
+   "orbit": 270,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/500"
+  },
+  {
+   "orbit": 271,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/1000"
+  },
+  {
+   "orbit": 272,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "31/250"
+  },
+  {
+   "orbit": 273,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "119/1000"
+  },
+  {
+   "orbit": 274,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "31/250"
+  },
+  {
+   "orbit": 275,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "123/1000"
+  },
+  {
+   "orbit": 276,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/1000"
+  },
+  {
+   "orbit": 279,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/100"
+  },
+  {
+   "orbit": 280,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "7/2",
+    "91/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/100"
+  },
+  {
+   "orbit": 281,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "23/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "241/1000"
+  },
+  {
+   "orbit": 282,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "23/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "11/50"
+  },
+  {
+   "orbit": 283,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "23/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/500"
+  },
+  {
+   "orbit": 285,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "11/3",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "143/500"
+  },
+  {
+   "orbit": 286,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "7/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "261/1000"
+  },
+  {
+   "orbit": 287,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "7/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "6/25"
+  },
+  {
+   "orbit": 288,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "7/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "29/1000"
+  },
+  {
+   "orbit": 289,
+   "rep_key": {
+    "cube": [
+     0,
+     3,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "7/2",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/100"
+  },
+  {
+   "orbit": 290,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "121/500"
+  },
+  {
+   "orbit": 291,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "53/12",
+    "25/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "233/1000"
+  },
+  {
+   "orbit": 292,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "27/125"
+  },
+  {
+   "orbit": 293,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "219/1000"
+  },
+  {
+   "orbit": 294,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "221/1000"
+  },
+  {
+   "orbit": 295,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "53/250"
+  },
+  {
+   "orbit": 296,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "23/200"
+  },
+  {
+   "orbit": 297,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/500"
+  },
+  {
+   "orbit": 298,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "19/1000"
+  },
+  {
+   "orbit": 299,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "25/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/125"
+  },
+  {
+   "orbit": 303,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "13/3",
+    "9/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "1/5"
+  },
+  {
+   "orbit": 304,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "55/12",
+    "9/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "101/500"
+  },
+  {
+   "orbit": 305,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "29/6",
+    "9/2"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "97/500"
+  },
+  {
+   "orbit": 306,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "9/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "49/250"
+  },
+  {
+   "orbit": 307,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "9/2",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/10"
+  },
+  {
+   "orbit": 308,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "9/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/500"
+  },
+  {
+   "orbit": 311,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "9/2",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/125"
+  },
+  {
+   "orbit": 312,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "9/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/125"
+  },
+  {
+   "orbit": 313,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "29/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "99/1000"
+  },
+  {
+   "orbit": 315,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "14/3",
+    "9/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "47/200"
+  },
+  {
+   "orbit": 316,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "9/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "29/250"
+  },
+  {
+   "orbit": 317,
+   "rep_key": {
+    "cube": [
+     0,
+     4,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "9/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/125"
+  },
+  {
+   "orbit": 318,
+   "rep_key": {
+    "cube": [
+     0,
+     5,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "31/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "1/10"
+  },
+  {
+   "orbit": 319,
+   "rep_key": {
+    "cube": [
+     0,
+     5,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/2",
+    "65/12",
+    "31/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "12/125"
+  },
+  {
+   "orbit": 323,
+   "rep_key": {
+    "cube": [
+     0,
+     5,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "16/3",
+    "11/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "-12/125"
+  },
+  {
+   "orbit": 324,
+   "rep_key": {
+    "cube": [
+     0,
+     5,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/6",
+    "67/12",
+    "11/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "-97/1000"
+  },
+  {
+   "orbit": 325,
+   "rep_key": {
+    "cube": [
+     0,
+     5,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "1/6",
+    "17/3",
+    "11/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "97/1000"
+  },
+  {
+   "orbit": 326,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "7/6"
+   ],
+   "orbit_volume": "1/3072",
+   "coef": "27/50"
+  },
+  {
+   "orbit": 327,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/12",
+    "3/2",
+    "7/6"
+   ],
+   "orbit_volume": "1/6144",
+   "coef": "263/500"
+  },
+  {
+   "orbit": 328,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "5/3",
+    "3/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "101/200"
+  },
+  {
+   "orbit": 329,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     1
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "23/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "121/250"
+  },
+  {
+   "orbit": 330,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "13/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "457/1000"
+  },
+  {
+   "orbit": 331,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "29/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "111/250"
+  },
+  {
+   "orbit": 332,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "8/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "17/40"
+  },
+  {
+   "orbit": 333,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "35/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "407/1000"
+  },
+  {
+   "orbit": 334,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "49/125"
+  },
+  {
+   "orbit": 335,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "41/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "379/1000"
+  },
+  {
+   "orbit": 336,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "183/500"
+  },
+  {
+   "orbit": 337,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "353/1000"
+  },
+  {
+   "orbit": 338,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "87/250"
+  },
+  {
+   "orbit": 339,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "42/125"
+  },
+  {
+   "orbit": 340,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/200"
+  },
+  {
+   "orbit": 341,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 342,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 343,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 344,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 345,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 346,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 347,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 348,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 349,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 350,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 351,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "89/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 352,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 353,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "95/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 354,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "49/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 355,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "101/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "7/40"
+  },
+  {
+   "orbit": 356,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "3/2",
+    "26/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/1000"
+  },
+  {
+   "orbit": 357,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "107/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "-53/500"
+  },
+  {
+   "orbit": 358,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     9
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "7/6",
+    "55/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-11/100"
+  },
+  {
+   "orbit": 359,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "19/12",
+    "11/6",
+    "3/2"
+   ],
+   "orbit_volume": "1/6144",
+   "coef": "58/125"
+  },
+  {
+   "orbit": 360,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     1
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "11/6",
+    "3/2"
+   ],
+   "orbit_volume": "1/3072",
+   "coef": "453/1000"
+  },
+  {
+   "orbit": 361,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "25/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "107/250"
+  },
+  {
+   "orbit": 362,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "7/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/125"
+  },
+  {
+   "orbit": 363,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "31/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "39/100"
+  },
+  {
+   "orbit": 364,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "17/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "189/500"
+  },
+  {
+   "orbit": 365,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "37/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "361/1000"
+  },
+  {
+   "orbit": 366,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "347/1000"
+  },
+  {
+   "orbit": 367,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "43/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "167/500"
+  },
+  {
+   "orbit": 368,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "23/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "323/1000"
+  },
+  {
+   "orbit": 369,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "79/250"
+  },
+  {
+   "orbit": 370,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "47/200"
+  },
+  {
+   "orbit": 371,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 372,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "151/1000"
+  },
+  {
+   "orbit": 373,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 374,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "77/500"
+  },
+  {
+   "orbit": 375,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 376,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "151/1000"
+  },
+  {
+   "orbit": 377,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 378,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "77/500"
+  },
+  {
+   "orbit": 379,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 380,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "41/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "151/1000"
+  },
+  {
+   "orbit": 381,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "85/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 382,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "77/500"
+  },
+  {
+   "orbit": 383,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "91/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 384,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "47/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "151/1000"
+  },
+  {
+   "orbit": 385,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "97/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "31/200"
+  },
+  {
+   "orbit": 386,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "11/6",
+    "25/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-23/1000"
+  },
+  {
+   "orbit": 387,
+   "rep_key": {
+    "cube": [
+     1,
+     1,
+     8
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "3/2",
+    "103/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "-157/1000"
+  },
+  {
+   "orbit": 388,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "13/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "193/500"
+  },
+  {
+   "orbit": 389,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "29/12",
+    "13/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "93/250"
+  },
+  {
+   "orbit": 390,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "8/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "179/500"
+  },
+  {
+   "orbit": 391,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "35/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "337/1000"
+  },
+  {
+   "orbit": 392,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "81/250"
+  },
+  {
+   "orbit": 393,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "41/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "39/125"
+  },
+  {
+   "orbit": 394,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "303/1000"
+  },
+  {
+   "orbit": 395,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "223/1000"
+  },
+  {
+   "orbit": 396,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "111/500"
+  },
+  {
+   "orbit": 397,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "107/500"
+  },
+  {
+   "orbit": 398,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "137/1000"
+  },
+  {
+   "orbit": 399,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/500"
+  },
+  {
+   "orbit": 400,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "139/1000"
+  },
+  {
+   "orbit": 401,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/500"
+  },
+  {
+   "orbit": 402,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "137/1000"
+  },
+  {
+   "orbit": 403,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/500"
+  },
+  {
+   "orbit": 404,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "139/1000"
+  },
+  {
+   "orbit": 405,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/500"
+  },
+  {
+   "orbit": 406,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "137/1000"
+  },
+  {
+   "orbit": 407,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/500"
+  },
+  {
+   "orbit": 408,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "139/1000"
+  },
+  {
+   "orbit": 409,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "89/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/500"
+  },
+  {
+   "orbit": 410,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "137/1000"
+  },
+  {
+   "orbit": 411,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "95/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-23/1000"
+  },
+  {
+   "orbit": 412,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     8
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "13/6",
+    "49/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "-3/125"
+  },
+  {
+   "orbit": 413,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/3",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "43/125"
+  },
+  {
+   "orbit": 414,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "31/12",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "323/1000"
+  },
+  {
+   "orbit": 415,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "17/6",
+    "5/2"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "31/100"
+  },
+  {
+   "orbit": 416,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "37/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "37/125"
+  },
+  {
+   "orbit": 417,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "143/500"
+  },
+  {
+   "orbit": 418,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "43/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "26/125"
+  },
+  {
+   "orbit": 419,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "23/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "1/5"
+  },
+  {
+   "orbit": 420,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "199/1000"
+  },
+  {
+   "orbit": 421,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/25"
+  },
+  {
+   "orbit": 422,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/500"
+  },
+  {
+   "orbit": 423,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "57/500"
+  },
+  {
+   "orbit": 424,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/500"
+  },
+  {
+   "orbit": 425,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/25"
+  },
+  {
+   "orbit": 426,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/500"
+  },
+  {
+   "orbit": 427,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "57/500"
+  },
+  {
+   "orbit": 428,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/500"
+  },
+  {
+   "orbit": 429,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/25"
+  },
+  {
+   "orbit": 430,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/500"
+  },
+  {
+   "orbit": 431,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "41/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "57/500"
+  },
+  {
+   "orbit": 432,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "85/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "59/500"
+  },
+  {
+   "orbit": 433,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/25"
+  },
+  {
+   "orbit": 434,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "5/2",
+    "91/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-7/250"
+  },
+  {
+   "orbit": 435,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "17/6",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/500"
+  },
+  {
+   "orbit": 436,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "17/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "49/250"
+  },
+  {
+   "orbit": 437,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "17/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "29/250"
+  },
+  {
+   "orbit": 438,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "17/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "29/250"
+  },
+  {
+   "orbit": 439,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "17/6",
+    "22/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/50"
+  },
+  {
+   "orbit": 440,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "8/3",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "351/1000"
+  },
+  {
+   "orbit": 441,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "5/2",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "233/1000"
+  },
+  {
+   "orbit": 442,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "5/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "53/250"
+  },
+  {
+   "orbit": 443,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "5/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "33/250"
+  },
+  {
+   "orbit": 444,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "5/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "33/250"
+  },
+  {
+   "orbit": 445,
+   "rep_key": {
+    "cube": [
+     1,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "5/2",
+    "23/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-7/500"
+  },
+  {
+   "orbit": 446,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "53/250"
+  },
+  {
+   "orbit": 447,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "41/12",
+    "19/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "51/250"
+  },
+  {
+   "orbit": 448,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "193/1000"
+  },
+  {
+   "orbit": 449,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "191/1000"
+  },
+  {
+   "orbit": 450,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "19/100"
+  },
+  {
+   "orbit": 451,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "91/500"
+  },
+  {
+   "orbit": 452,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "103/1000"
+  },
+  {
+   "orbit": 453,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/500"
+  },
+  {
+   "orbit": 454,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "53/500"
+  },
+  {
+   "orbit": 455,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/500"
+  },
+  {
+   "orbit": 456,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "103/1000"
+  },
+  {
+   "orbit": 457,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/500"
+  },
+  {
+   "orbit": 458,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "53/500"
+  },
+  {
+   "orbit": 459,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "51/500"
+  },
+  {
+   "orbit": 460,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "103/1000"
+  },
+  {
+   "orbit": 461,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/50"
+  },
+  {
+   "orbit": 462,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "19/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "-21/1000"
+  },
+  {
+   "orbit": 463,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "10/3",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "181/1000"
+  },
+  {
+   "orbit": 464,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "43/12",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 465,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "23/6",
+    "7/2"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "173/1000"
+  },
+  {
+   "orbit": 466,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "171/1000"
+  },
+  {
+   "orbit": 467,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "91/1000"
+  },
+  {
+   "orbit": 468,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/100"
+  },
+  {
+   "orbit": 469,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "43/500"
+  },
+  {
+   "orbit": 470,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/100"
+  },
+  {
+   "orbit": 471,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "91/1000"
+  },
+  {
+   "orbit": 472,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/100"
+  },
+  {
+   "orbit": 473,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "43/500"
+  },
+  {
+   "orbit": 474,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/100"
+  },
+  {
+   "orbit": 475,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "91/1000"
+  },
+  {
+   "orbit": 476,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "7/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/40"
+  },
+  {
+   "orbit": 477,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "23/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "169/1000"
+  },
+  {
+   "orbit": 478,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "23/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "89/1000"
+  },
+  {
+   "orbit": 479,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "23/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-9/500"
+  },
+  {
+   "orbit": 480,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "11/3",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "101/500"
+  },
+  {
+   "orbit": 481,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "7/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "181/1000"
+  },
+  {
+   "orbit": 482,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "7/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "101/1000"
+  },
+  {
+   "orbit": 483,
+   "rep_key": {
+    "cube": [
+     1,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "7/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-13/1000"
+  },
+  {
+   "orbit": 484,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "21/125"
+  },
+  {
+   "orbit": 485,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "53/12",
+    "25/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "161/1000"
+  },
+  {
+   "orbit": 486,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "81/1000"
+  },
+  {
+   "orbit": 487,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "2/25"
+  },
+  {
+   "orbit": 488,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "21/250"
+  },
+  {
+   "orbit": 489,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "2/25"
+  },
+  {
+   "orbit": 490,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "81/1000"
+  },
+  {
+   "orbit": 491,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-9/500"
+  },
+  {
+   "orbit": 492,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "25/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "-19/1000"
+  },
+  {
+   "orbit": 498,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "11/6",
+    "9/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-99/1000"
+  },
+  {
+   "orbit": 499,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "29/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-99/1000"
+  },
+  {
+   "orbit": 500,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "14/3",
+    "9/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "4/25"
+  },
+  {
+   "orbit": 501,
+   "rep_key": {
+    "cube": [
+     1,
+     4,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "7/6",
+    "9/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-19/1000"
+  },
+  {
+   "orbit": 502,
+   "rep_key": {
+    "cube": [
+     1,
+     5,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "3/2",
+    "31/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "-1/10"
+  },
+  {
+   "orbit": 503,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "5/2",
+    "13/6"
+   ],
+   "orbit_volume": "1/3072",
+   "coef": "163/500"
+  },
+  {
+   "orbit": 504,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "29/12",
+    "5/2",
+    "13/6"
+   ],
+   "orbit_volume": "1/6144",
+   "coef": "39/125"
+  },
+  {
+   "orbit": 505,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "8/3",
+    "5/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "59/200"
+  },
+  {
+   "orbit": 506,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     2
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "35/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "139/500"
+  },
+  {
+   "orbit": 507,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "67/250"
+  },
+  {
+   "orbit": 508,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "41/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "32/125"
+  },
+  {
+   "orbit": 509,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "5/2",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "9/50"
+  },
+  {
+   "orbit": 510,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 511,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/1000"
+  },
+  {
+   "orbit": 512,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 513,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "5/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 514,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 515,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/1000"
+  },
+  {
+   "orbit": 516,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 517,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "5/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 518,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 519,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/1000"
+  },
+  {
+   "orbit": 520,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "77/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 521,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "5/2",
+    "20/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 522,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "83/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "13/125"
+  },
+  {
+   "orbit": 523,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     7
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "13/6",
+    "43/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "109/1000"
+  },
+  {
+   "orbit": 524,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "31/12",
+    "17/6",
+    "5/2"
+   ],
+   "orbit_volume": "1/6144",
+   "coef": "261/1000"
+  },
+  {
+   "orbit": 525,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     2
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "17/6",
+    "5/2"
+   ],
+   "orbit_volume": "1/3072",
+   "coef": "249/1000"
+  },
+  {
+   "orbit": 526,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "37/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "119/500"
+  },
+  {
+   "orbit": 527,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "17/6",
+    "10/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "163/1000"
+  },
+  {
+   "orbit": 528,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "43/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 529,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     3
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "23/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "83/1000"
+  },
+  {
+   "orbit": 530,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "49/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 531,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "17/6",
+    "13/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 532,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "55/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 533,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     4
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "29/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "83/1000"
+  },
+  {
+   "orbit": 534,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "61/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 535,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "17/6",
+    "16/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 536,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "67/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 537,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     5
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 2
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "35/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "83/1000"
+  },
+  {
+   "orbit": 538,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "73/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 539,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "17/6",
+    "19/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 540,
+   "rep_key": {
+    "cube": [
+     2,
+     2,
+     6
+    ],
+    "pair_bits": [
+     1,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "17/6",
+    "5/2",
+    "79/12"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "87/1000"
+  },
+  {
+   "orbit": 541,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "19/6"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "4/25"
+  },
+  {
+   "orbit": 542,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "41/12",
+    "19/6"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "19/125"
+  },
+  {
+   "orbit": 543,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "11/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/40"
+  },
+  {
+   "orbit": 544,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "47/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  },
+  {
+   "orbit": 545,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "25/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "2/25"
+  },
+  {
+   "orbit": 546,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "53/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  },
+  {
+   "orbit": 547,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/40"
+  },
+  {
+   "orbit": 548,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "59/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  },
+  {
+   "orbit": 549,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "31/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "2/25"
+  },
+  {
+   "orbit": 550,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "65/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  },
+  {
+   "orbit": 551,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     0
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "3/40"
+  },
+  {
+   "orbit": 552,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     1,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "71/12"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  },
+  {
+   "orbit": 553,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     6
+    ],
+    "pair_bits": [
+     0,
+     0,
+     0
+    ],
+    "level": 0
+   },
+   "rep_point_scaled": [
+    "5/2",
+    "19/6",
+    "37/6"
+   ],
+   "orbit_volume": "1/512",
+   "coef": "2/25"
+  },
+  {
+   "orbit": 566,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     3
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "11/3",
+    "7/2"
+   ],
+   "orbit_volume": "1/2048",
+   "coef": "153/1000"
+  },
+  {
+   "orbit": 567,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     4
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "7/2",
+    "14/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  },
+  {
+   "orbit": 568,
+   "rep_key": {
+    "cube": [
+     2,
+     3,
+     5
+    ],
+    "pair_bits": [
+     0,
+     0,
+     1
+    ],
+    "level": 1
+   },
+   "rep_point_scaled": [
+    "13/6",
+    "7/2",
+    "17/3"
+   ],
+   "orbit_volume": "1/1024",
+   "coef": "19/250"
+  }
+ ],
+ "I": "241672427/6144000000",
+ "J": "2578076273/32768000000",
+ "ratio": "7734228819/3866758832",
+ "ratio_minus_2": "711155/3866758832",
+ "ratio_float": 2.0001839150127787
+}
