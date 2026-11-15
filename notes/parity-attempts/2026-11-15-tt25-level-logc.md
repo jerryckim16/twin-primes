@@ -354,6 +354,6 @@ for twin primes.
 (The draft cites `MRT15`, which is not in the paper's bibliography yet. Entry: K. Matomäki, M. Radziwiłł, T. Tao, *An averaged form
 of Chowla's conjecture*, Algebra Number Theory 9 (2015), no. 9, 2167–2196; arXiv:1503.05121.)
 
-- **Disposition:** closed (conditional proof written; adversarial self-audit above; an independent fresh-context audit is still to
+- **Disposition:** closed. Independent fresh-context audit done (2026-11-15-tt25-audit.md: sound, conditional on [TT25]; fixes F1, F2, G2, G4 applied in the paper version, G1 became open question 5). Earlier text: (conditional proof written; adversarial self-audit above; an independent fresh-context audit is still to
   be done before anything goes into the paper). Continuation: an averaged-over-W version of TT (3.4) for W up to x^{θ} (Open; no
   source known).

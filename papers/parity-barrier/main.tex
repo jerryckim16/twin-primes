@@ -19,37 +19,30 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.2 (draft), 15 November 2026}
+\date{Version 0.3 (draft), 15 November 2026}
 
 \begin{document}
 
 \begin{abstract}
-This is a survey-with-checks, not a research announcement: the twin prime
-conjecture is open and nothing here proves it or comes close. We state, with
-exact quotations checked in the sources, the (heuristic) parity obstruction
-by which sieve methods of the Maynard--Tao type cannot go beyond $H_1\le 6$
-even under the generalised Elliott--Halberstam conjecture, and the
-Friedlander--Iwaniec asymptotic sieve, a sieve framework whose bilinear axiom
-breaks parity. For the twin-prime sequence $a_n=\Lambda(n+2)$ we check that every
-hypothesis of the asymptotic sieve except the Type~I and bilinear ones is satisfied, so that the
-Hardy--Littlewood asymptotic would follow from a Type~I bound at level
-$x^{2/3+}$ and a family of bilinear bounds; we show that already the simplest
-of these bilinear bounds has no cancellation at all for the parity-twisted
-sequence, and that Cauchy--Schwarz only moves the parity problem into an
-off-diagonal correlation. We also note that the simplest instance of the input
-of the parity heuristic, smallness of Liouville-twisted sums along a periodic
-weight, holds in logarithmically averaged form (a direct consequence of Tao's
-two-point theorem), and we give a small numerical illustration. We then ask
-exactly which ``close-prime'' targets a weight of the Polymath8b kind can
-block, and show that it can do so precisely when the target graph is
-bipartite, or, for $m+1$ primes, when no interval of the relevant length holds
-$2m+1$ elements of the tuple. This explains the number $6$ and shows that the
-printed weight of Polymath8b's Remark~8.1 needs a small correction. Finally we
-record which structure the bilinear estimate for $a^2+b^4$ uses. Every
-mathematical statement carries a label saying how it was checked.
+A survey with checks, not a research announcement: the twin prime conjecture
+is open and nothing here proves it or comes close. We state, with quotations
+checked in the sources, the (heuristic) parity obstruction that stops sieve
+methods of Maynard--Tao type at $H_1\le6$ even under GEH, and the
+Friedlander--Iwaniec asymptotic sieve, whose bilinear axiom breaks parity. For
+$a_n=\Lambda(n+2)$ every hypothesis of that sieve except the Type~I and
+bilinear ones holds, and the simplest bilinear bound has no cancellation for
+the parity-twisted sequence. Our own results (labelled ``Proved here''): the
+twisted Type~I input of the obstruction holds for log-averaged sieve weights of
+bounded level (from Tao's two-point theorem) and, conditionally on a preprint
+of Tao and Ter\"av\"ainen, at level $(\log x)^{c_0}$; and a weight of the
+Polymath8b kind can block a close-prime target exactly when its target graph
+is bipartite, which explains the number $6$, gives the analogue $H_m<H(2m+1)$,
+and corrects the printed weight of Polymath8b's Remark~8.1.
 \end{abstract}
 
 \maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
 
 \section{Introduction}
 
@@ -92,7 +85,7 @@ $\tfrac12(1-\lambda(n))$ have the same density $g(d)$, and both satisfy (R),
 but only the second contains primes; Friedlander and Iwaniec record the
 remainder as $2r_d(x)=\lambda(d)\sum_{\ell\le x/d}\lambda(\ell)+O(1)$.
 
-\subsection{The obstruction for $H_1$}
+\subsection{The obstruction for \texorpdfstring{$H_1$}{H1}}
 \lbl{Literature} \cite[\S8, pp.~68--71]{PM8b}. Polymath8b argue, ``somewhat
 informal and heuristic in nature'', that sieve methods cannot prove anything
 stronger than $H_1\le 6$, ``even on the assumption of strong distributional
@@ -222,6 +215,112 @@ as we know. Even with it, Proposition~\ref{prop:tao-weight} would only
 confirm the input of the obstruction: it says that the sieve weight cannot
 tell $\lambda(n)\lambda(n+2)=+1$ from $-1$, which is exactly why it cannot
 see twin primes. It does not give a lower bound for twin primes.
+\end{remark}
+
+
+\subsection{The same input at level \texorpdfstring{$(\log x)^{c_0}$}{(log x)\textasciicircum c0}, conditionally on a preprint}
+The proof of Proposition~\ref{prop:tao-weight} expands $w$ over its period
+$\operatorname{lcm}(d\le R)\approx e^{R}$, so it allows only very slowly growing
+$R$. A quantitative correlation estimate of Tao and Ter\"av\"ainen
+\cite[Theorem~3.1]{TT25} (an unrefereed preprint), applied modulus by modulus,
+gives an explicit polylogarithmic level. The deduction was audited by a fresh-context
+referee (\texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-15-tt25-audit.md}): no error affecting the statement;
+its wording fixes are applied below. The proof of \cite[Theorem~3.1]{TT25} itself was not checked.
+\begin{proposition}[\lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25} (preprint)}]
+\label{prop:tao-weight-logc}
+There are absolute constants $c_0>0$ and $x_0$ such that the following holds
+for $x\ge x_0$. Let $1\le R\le(\log x)^{c_0}$, let $(\lambda_d)_{d\le R}$ be
+real with $\lambda_1=1$ and $|\lambda_d|\le1$, and let
+$w_R(n)=\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$. Then
+\[
+\left|\sum_{n\le x}\frac{w_R(n)\lambda(n)\lambda(n+2)}{n}\right|
+\le(\log x)^{-c_0}\sum_{n\le x}\frac{w_R(n)}{n},
+\]
+and consequently
+$\sum_{n\le x,\ \lambda(n)\lambda(n+2)=\pm1}w_R(n)/n
+=\left(\tfrac12+O((\log x)^{-c_0})\right)\sum_{n\le x}w_R(n)/n$
+for both signs. One may take $c_0=c/16$, where $c$ is the constant of
+\cite[Theorem~3.1]{TT25}; $c_0$ and $x_0$ are not claimed to be effective.
+\end{proposition}
+
+\begin{proof}
+\emph{Input.} We use only the last inequality of \cite[(1.12)]{MRT15} (a lower
+bound, for $\varepsilon>0$, for the infimum over $|t|\le Y$ and characters of
+modulus $q\le(\log Y)^{1/125}$ of $\sum_{\exp((\log Y)^{2/3+\varepsilon})\le p\le Y}(1+\operatorname{Re}\chi(p)p^{it})/p$),
+applied at $Y=X^2$ with $\varepsilon=1/12$; dropping the non-negative terms of
+the small primes and shrinking the range of moduli gives
+$M(\lambda;X^2,\log^{1/125}X)\ge\frac14\log\log X-O(1)$. So (3.3) of
+\cite{TT25} holds for $g_1=\lambda$ with $L=(\log X)^{1/4}$
+(\cite[Remarks~3.2]{TT25} assert that $\lambda$ satisfies (3.3); this value of
+$L$ is our derivation). Put $\kappa=c/4$.
+\cite[Theorem~3.1(ii)]{TT25} with $g_1=g_2=\lambda$, $\delta_N=0$, $h_1=0$,
+$h_2=2$ then gives, for $X\ge X_*$, a set $E(X)\subset[\sqrt X,X]$ with
+$\int_{E(X)}dt/t\ll(\log X)^{1-\kappa}$ such that
+\begin{equation}\label{eq:TT-input}
+\left|\sum_{\substack{N<n\le2N\\ n\equiv b\ (W)}}\lambda(n)\lambda(n+2)\right|
+\ll(\log X)^{-\kappa}\frac NW
+\end{equation}
+for all integers $1\le W\le(\log X)^{\kappa}$, all $b$, and all
+$N\in[\sqrt X,X]\setminus E(X)$; $E(X)$ does not depend on $W,b$, and the
+implied constants are absolute.
+
+\emph{One residue class.} Let $e\le(\log x)^{\kappa/2}$, $0\le c<e$, and
+\[
+F(N)=\sum_{N<n\le\min(2N,x),\ n\equiv c\,(e)}\lambda(n)\lambda(n+2).
+\]
+Since
+$\int_{n/2}^{n}N^{-2}\,dN=1/n$,
+\[
+S(e,c;x):=\sum_{n\le x,\,n\equiv c(e)}\frac{\lambda(n)\lambda(n+2)}{n}=\int_0^xF(N)N^{-2}\,dN.
+\]
+Let $X_0=x$, $X_{j+1}=X_j^{1/2}$ and $J=\max\{j:\log X_j\ge(\log x)^{1/2}\}$.
+We use $|F(N)|\le N/e+1$ on $(x/2,x]$, on $E(X_j)$, and on $(0,X_{J+1})$, and
+\eqref{eq:TT-input} with $X=X_j$, $W=e$ (admissible, since
+$e\le(\log X_j)^{\kappa}$) on $[X_{j+1},X_j]\setminus E(X_j)$ (on
+$[X_1,x/2]$ for $j=0$), where $F(N)$ is a full dyadic sum. Since
+$\sum_j\log X_j\le2\log x$, we get
+\[
+|S(e,c;x)|\ll\frac{(\log x)^{1-\kappa/2}}{e}+\frac{(\log x)^{1/2}}{e}+1
+\ll\frac{(\log x)^{1-\kappa/2}}{e}+1,
+\]
+where the term $1$ comes from the term $n=c$ in the range $n\le2X_{J+1}$.
+
+\emph{Summation.} Expanding the square,
+$w_R(n)=\sum_{d_1,d_2\le R}\lambda_{d_1}\lambda_{d_2}
+\sum_{c\in\mathcal C_{[d_1,d_2]}}1_{n\equiv c\,([d_1,d_2])}$,
+where $\mathcal C_e=\{0\le c<e:e\mid c(c+2)\}$ has $\rho(e)\le2^{\omega(e)+1}$
+elements. Since $[d_1,d_2]\le R^2\le(\log x)^{\kappa/2}$ for $c_0\le\kappa/4$,
+and $\#\{(d_1,d_2):[d_1,d_2]=e\}=\tau(e^2)$,
+\begin{align*}
+\left|\sum_{n\le x}\frac{w_R(n)\lambda(n)\lambda(n+2)}{n}\right|
+&\ll(\log x)^{1-\kappa/2}\sum_{e\le R^2}\frac{\rho(e)\tau(e^2)}{e}
++\sum_{d_1,d_2\le R}\rho([d_1,d_2])\\
+&\ll(\log R+1)^6(\log x)^{1-\kappa/2}+R^{2+o(1)}.
+\end{align*}
+
+\emph{Main term.} If $n$ is odd and $p\nmid n(n+2)$ for $3\le p\le R$, then
+$w_R(n)=\lambda_1^2=1$; these $n$ form a union of classes modulo
+$P=2\prod_{3\le p\le R}p$ of density
+$\delta_R=\frac12\prod_{3\le p\le R}(1-2/p)\gg(\log R+1)^{-2}$. Since $w_R\ge0$ and
+$\log P\le2R=o(\log x)$, partial summation gives
+$\sum_{n\le x}w_R(n)/n\ge\delta_R\log(x/P)-1\gg(\log R+1)^{-2}\log x$.
+
+\emph{Conclusion.} The ratio is
+$\ll(\log x)^{-\kappa/2+o(1)}+(\log x)^{\kappa/2-1+o(1)}\le(\log x)^{-\kappa/4}$
+for $x\ge x_0$, as $\kappa<1$. Take $c_0=\kappa/4$. The second display follows
+from $1_{\lambda(n)\lambda(n+2)=\pm1}=\frac12(1\pm\lambda(n)\lambda(n+2))$.
+\end{proof}
+
+\begin{remark}\label{rem:tao-weight-logc}
+This replaces the non-explicit $R(x)\to\infty$ of
+Proposition~\ref{prop:tao-weight} by $R=(\log x)^{c_0}$, uniformly in the
+weights, for weights of the stated form $w_R$ and the shift $2$ (the earlier proposition also covers general periodic $w$, which this one does not), but only conditionally on the preprint \cite{TT25}, whose proof we
+have not checked. Note that one must expand in the moduli $[d_1,d_2]\le R^2$
+and not in the period $\prod_{p\le R}p$ of $w_R$. The range of moduli
+$W\le L^c$ in \cite[Theorem~3.1]{TT25} is the binding constraint; level
+$x^{\theta}$ remains \lbl{Open}, and even at that level the statement would
+only confirm the input of the parity obstruction, not give a lower bound
+for twin primes.
 \end{remark}
 
 \section{Which close-prime targets the obstruction blocks}\label{sec:bip}
@@ -456,7 +555,7 @@ stumbling block is that in this case we have no idea how to prove that the
 relevant sequence satifies the condition (B). Even proving (R) to such a high
 level is currently beyond reach.''
 
-\subsection{Specialisation to $a_n=\Lambda(n+2)$}
+\subsection{Specialisation to \texorpdfstring{$a_n=\Lambda(n+2)$}{a(n) = Lambda(n+2)}}
 
 \begin{proposition}[\lbl{Proved here}, from the prime number theorem and the Brun--Titchmarsh inequality]
 \label{prop:fi-twin}
@@ -563,7 +662,7 @@ $\Lambda(dm+2)$: ``we do not know of any plausible way to control such
 bilinear expressions'' \cite[p.~71]{PM8b}.
 \end{remark}
 
-\subsection{A sequence for which the bilinear axiom is proved: $a^2+b^4$}\label{subsec:fi-x2y4}
+\subsection{A sequence for which the bilinear axiom is proved: \texorpdfstring{$a^2+b^4$}{a\textasciicircum 2+b\textasciicircum 4}}\label{subsec:fi-x2y4}
 \lbl{Literature} \cite{FI98b} (arXiv:math/9811185v1; ``p.~$N$'' is the Annals
 page). Theorem~1 (p.~946) gives
 \[
@@ -675,15 +774,12 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   quantitative correlation bound for 1-bounded multiplicative $g_1,g_2$ in
   progressions $n\equiv b\pmod W$, uniformly for $W\le L^{c}$ and shifts
   $O(L^c)$ ($L\le\log X$ a parameter), outside a set of scales of logarithmic
-  density $\ll L^{-c}$. If it applies to $\lambda$ with $L$ a power of
-  $\log x$ ($\lambda$ falls under their non-pretentious case (ii); their
-  Remarks~3.2 indicate this), it should allow levels $R=(\log x)^{c_0}$ in place
-  of the very slowly growing $R(x)$ of Proposition~\ref{prop:tao-weight}. Not by
-  the proof given there (which uses the period $\operatorname{lcm}(d\le R)
-  \approx e^{R}$ and would give only $R\asymp\log\log x$): one would expand the
-  square, apply \cite[Theorem~3.1]{TT25} with $W=[d_1,d_2]\le R^2$, and pass
-  from dyadic averages outside the exceptional scales to logarithmic averages.
-  We have not written or checked this deduction. Nothing we found reaches $R=x^{\theta}$
+  density $\ll L^{-c}$. Applied to $\lambda$ with $L=(\log X)^{1/4}$ it gives
+  the level $R=(\log x)^{c_0}$ (Proposition~\ref{prop:tao-weight-logc},
+  conditional on that preprint). The question is what lies beyond: moduli $W$
+  far larger than a power of $\log x$, at least on average over
+  $W\le x^{2\theta}$ weighted by $\rho(W)\tau(W^2)/W$. Nothing we found reaches
+  this, let alone $R=x^{\theta}$
   (sources in \texttt{notes/sources-chowla-quantitative.md}).
 \item (\lbl{Open}) Does some weight outside the class of
   Section~\ref{sec:bip} (depending on other functions, or on residue classes
@@ -697,11 +793,19 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
 \item Is there a sequence closely tied to twin primes (for instance with a
   norm-form structure, as in Friedlander--Iwaniec's $a^2+b^4$, cited in
   \cite[p.~71]{PM8b}) for which a (B)-type estimate is provable?
+\item (\lbl{Open}) Weights of Maynard's two-variable form
+  $\left(\sum_{d_1\mid n,\,d_2\mid n+2}\lambda_{d_1,d_2}\right)^2$ are not of the
+  form treated in Proposition~\ref{prop:tao-weight-logc}. The same proof should
+  apply with moduli up to $R^4$ (each pair of conditions is at most two classes
+  modulo $[d_1,e_1][d_2,e_2]$) and $\lambda_{1,1}\ne0$; this was suggested by
+  the audit and has not been written out.
 \end{enumerate}
 
 \subsection*{Plan for later versions}
 Each run adds one bounded step: Friedlander--Iwaniec $x^2+y^4$ and
-Heath-Brown $x^3+2y^3$ (statements and the structure each uses);
+Heath-Brown $x^3+2y^3$ (statements and the structure each uses; the primary
+source for Heath-Brown could not be opened on 15 Nov, so only secondary
+descriptions have been read, and none of it is used here);
 Matom\"aki--Radziwi\l\l(--Tao) and Tao--Ter\"av\"ainen; Sawin--Shusterman in
 $\mathbb F_q[T]$ and the step with no integer analogue; conditional
 statements (which hypotheses imply twin primes, which are known not to
@@ -715,6 +819,9 @@ suffice). Nothing enters before it is read in the source.
   arXiv:math/9811185v1.
 \bibitem{PM8b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and bounded
   intervals containing many primes}, arXiv:1407.4897v4 (22 Dec 2014) (cited by its page numbers, of 80).
+\bibitem{MRT15} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{An averaged
+  form of Chowla's conjecture}, Algebra Number Theory \textbf{9} (2015),
+  2167--2196; arXiv:1503.05121v3 (read: eq.~(1.12)).
 \bibitem{Tao16} T.~Tao, \emph{The logarithmically averaged Chowla and Elliott
   conjectures for two-point correlations}, arXiv:1509.05422v4 (29 Jul 2016;
   journal version not consulted).
@@ -751,6 +858,15 @@ suffice). Nothing enters before it is read in the source.
   class-by-class reading, the cases $k\le m$ and $m\ge1$ in (b), the weakly fair
   case restricted to $f=\Lambda$, the route to level $(\log x)^{c_0}$ in open
   question~1, several quotations and page numbers.
+\item[0.3] (15 Nov 2026) New Proposition~\ref{prop:tao-weight-logc}
+  (parity attempt of 15 Nov, third route card,
+  \texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-15-tt25-level-logc.md}): the
+  twisted Type~I input at level $(\log x)^{c_0}$, conditional on
+  \cite[Theorem~3.1]{TT25}; fresh-context audit applied (wording of the
+  \cite{MRT15} input, scope of the statement, period $2\prod_{3\le p\le R}p$).
+  Shorter abstract; open question~1 updated; new open question~5.
 \end{itemize}
 
 \end{document}
+
+
