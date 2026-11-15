@@ -21,8 +21,5 @@
   B/A = 4.3e-5, twin pairs carry 4.7% of the weight, all in the "+" class.
 - **Disposition:** closed (proved in the weak regime; the strong regime is Open and would only confirm the obstruction).
 - **Continuations:** (a) uniform-in-modulus two-point log Chowla on average over q <= x^theta (Open; search literature: none found in
-  one search, 15 Nov); (b) the analogous statement for three-point weights (Tao–Teräväinen odd-order cases) to cover the PM8b weight
-  (1-lambda(n)lambda(n+2))(1-lambda(n+2)lambda(n+6)), whose expansion contains the 4-point-free terms only (two-point products), so
-  (b) is actually covered already by two-point results: each term of omega is a product of two lambdas. Check in the next run that
-  the whole PM8b weight for H_1 <= 4 involves only two-point correlations (it does: omega = 1 - ll(0,2) - ll(2,6) + ll(0,6)).
-- **Review:** audited by a fresh-context helper (see log, Session 17); literature-check: one web search, no prior statement found.
+  one search, 15 Nov); (b) DONE in the same run: the proposition is stated for any two distinct shifts h != h', so the PM8b weight (1-lambda(n)lambda(n+2))(1-lambda(n+2)lambda(n+6)) = 1 - ll(0,2) - ll(2,6) + ll(0,6), which involves only two-point products, is covered in the same weak regime (f = 1, log-averaged, fixed modulus). f = Lambda or alpha*beta is NOT covered.
+- **Review:** adversarial fresh-context audit (Session 17): correct with fixable gaps (diagonal choice of R(x) made explicit; Tao's Remark 1.4 says 'in principle effective'); all fixes applied in paper v0.1. Literature-check: one web search, no prior statement found (possibly folklore).
