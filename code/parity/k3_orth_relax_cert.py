@@ -5,6 +5,7 @@ columns, whose fibres meet no other constraint cylinder), and certifies EXACTLY 
 3 J_{1,1-eps}(F)/I(F) exceeds the printed bound. J is computed only on cell columns fully inside {t2+t3 <= 1-eps},
 which only lowers J. Requires n with 1/2-eps, 1-eps, 1+eps multiples of 1/n.
 Run: /usr/bin/python3 -I code/parity/k3_orth_relax_cert.py p q n     (eps = p/q)
+Writes the vector to code/parity/data/orth_relax_<p>_<q>_n<n>.json; second check: k3_orth_relax_verify.py.
 """
 import sys, itertools, numpy as np, scipy.linalg as sl, flint
 from fractions import Fraction as Fr
@@ -40,5 +41,10 @@ J_int = sum(sum(d[o]*x[o] for o in d)**2 for d in Jcols)                # J_1 = 
 ratio = 3*h*Fr(J_int, I_int)
 print(f"eps={eps} n={n} orbits={N} constraints={len(Ccols)} nullity={nul} float_max={w[-1]:.6f}")
 print(f"exact ratio 3J/I = {ratio.numerator}/{ratio.denominator} = {float(ratio):.9f}")
+import json, os
+os.makedirs("code/parity/data", exist_ok=True)
+inv = {o: k for k, o in orb.items()}
+json.dump({"eps": f"{eps}", "n": n, "orbit_coef": {",".join(map(str, inv[o])): str(x[o]) for o in range(N) if x[o]},
+           "ratio": f"{ratio}"}, open(f"code/parity/data/orth_relax_{p}_{q}_n{n}.json", "w"))
 for t in (Fr(2), Fr(209, 100), Fr(21, 10), Fr(212, 100), Fr(214, 100)):
     print(f"  ratio > {t}: {ratio > t}")

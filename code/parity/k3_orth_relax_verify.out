@@ -1,0 +1,2 @@
+eps=1/8 n=32 cubes=17114 clean-column violations=0 ratio=2.140870370 equals cert: True
+eps=1/4 n=32 cubes=16230 clean-column violations=0 ratio=2.065759465 equals cert: True

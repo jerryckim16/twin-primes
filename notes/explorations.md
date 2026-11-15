@@ -3,6 +3,18 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 22 -- Does the k = 3 extremal of Polymath8b's Theorem 3.14 keep the k = 2 structure (constant marginal)? (variational structure / spectral)
+- Idea: at k = 2 the extremal step function F_eps has marginal f = 1 on the whole J-interval [0, 1-eps]. If the k = 3 extremal
+  also had (nearly) constant marginal on {t2+t3 <= 1-eps}, the supremum would reduce to a minimum-norm problem (min I subject
+  to f_i = 1 on the J-region and f_i = 0 on the forbidden region), whose dual is a finite set of fibre equations: a possible
+  route to the exact k = 3 value (open question 6).
+- Tried: code/explore/k3_extremal_marginal.py (floating point, cube grid n = 24, eps = 1/4 and 1/8; output .out): the marginal
+  of the grid eigenvector, and the exact minimum-norm F with constant marginal.
+- Outcome: dead end. The extremal marginal is far from constant (relative std 0.43 at eps = 1/4, 0.48 at eps = 1/8; it falls
+  from about 2.65 at the origin to 0.5 at the corner of the J-region), and the constant-marginal ansatz gives only 1.736
+  (eps = 1/4) and 1.457 (eps = 1/8) against 1.959 / 1.934 for the same grid. The k = 2 structure does not persist at k = 3;
+  this matches the route card 2026-11-15-k3-dual-orthogonal.md (the overlap constraints change the problem).
+
 ## 2026-11-15, Session 21 -- How far above the parity value is Polymath8b's k = 3 criterion? (numerical experiment / variational structure)
 - Idea: this run proved (parity paper Thm thm:k2) that the Thm 3.14 ratio at k = 2 is exactly the parity value 2. At k = 3 PM8b's
   Thm 3.15 certificate gives J/I = 2 + 5.77e-8 (exact fraction re-checked), i.e. barely above 2. Risky question: is the true k = 3

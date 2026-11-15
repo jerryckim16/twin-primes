@@ -24,7 +24,12 @@ plus exact re-check of affinity of fibre lengths at random interior points; (3) 
 Results (see .out): Heuristic max J/I = 1.99546 (n=4), 2.000186 (8), 2.001549 (12), 2.002107 (16), 2.002387 (20),
 2.002547 (24); exact certificate at n = 8 with J/I = 7734228819/3866758832 = 2 + 711155/3866758832.
 
-Run:  /usr/bin/python3 -I code/parity/k3_arrangement_exact.py [n ...]      (default n = 4 8 12 16)
+Run:  /usr/bin/python3 -I code/parity/k3_arrangement_exact.py [--eps p/q] [--cert-each] [n ...]
+      (default eps = 1/4, n = 4 8 12 16; n must be even with n*eps integer.  The k = 2 test is run at the same eps:
+      its extremal F = 1 on [0,a]^2, 1/2 on the strips gives exactly 2 for every eps.)
+      k3_arrangement_exact.out:  ... k3_arrangement_exact.py 4 8 12 16 20 24
+      k3_arrangement_eps.out:    --eps 1/8 --cert-each 8 16 24 32 ; --eps 3/8 --cert-each 8 16 24 ;
+                                 --eps 1/4 --cert-each 24   (concatenated)
 Output is written to stdout (redirect to code/parity/k3_arrangement_exact.out); a certificate, if the exact
 ratio exceeds 2 for some n, goes to code/parity/k3_arrangement_cert.json.
 """
@@ -38,7 +43,7 @@ import scipy.sparse as sp
 import scipy.sparse.linalg as spla
 import flint
 
-EPS = Fr(1, 4); AA = 1 - EPS; BB = 1 + EPS
+EPS = Fr(1, 4)   # default; set by --eps
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -47,9 +52,12 @@ def log(*a):
 
 
 class Problem:
-    def __init__(self, k, n):
-        assert k in (2, 3) and n % 4 == 0
-        self.k, self.n = k, n
+    def __init__(self, k, n, eps=None):
+        eps = EPS if eps is None else Fr(eps)
+        assert k in (2, 3) and n % 2 == 0 and (n * eps).denominator == 1, \
+            "need n even and n*eps integer (planes 1-eps, 1+eps, 1/2-eps, 3/2 in the arrangement)"
+        AA, BB = 1 - eps, 1 + eps
+        self.k, self.n, self.eps = k, n, eps
         self.S = Fr(2) if k == 2 else Fr(3, 2)
         self.N = int(self.S * n)                 # scaled sum bound (integer)
         self.Aj = int(AA * n); self.Bc = int(BB * n)
@@ -405,7 +413,7 @@ def J_pointwise_quadrature(P, c):
 
 def nonaffine_demo():
     """show that fibre lengths are NOT affine on the unrefined 2D cell {u2,u3 in (0,1), u2+u3 < 1}."""
-    P = Problem(3, 4); ex = P.crossings()
+    P = Problem(3, 4, Fr(1, 4)); ex = P.crossings()   # eps-independent geometry
     # parallelogram P1 + P2 = P3 + P4 inside the triangle, no point on u2 = u3 (generic for the walls)
     pts = [(Fr(1, 10), Fr(3, 10)), (Fr(3, 10), Fr(1, 10)), (Fr(1, 10), Fr(1, 5)), (Fr(3, 10), Fr(1, 5))]
     D = []
@@ -423,12 +431,13 @@ def nonaffine_demo():
     return bad
 
 
-def k2_test(ns):
-    log("=== Sanity test (1): k = 2, D = {x+y <= 2}, a = 3/4, B = 5/4 ===")
+def k2_test(ns, eps):
+    AA, BB = 1 - eps, 1 + eps
+    log(f"=== Sanity test (1): k = 2, D = {{x+y <= 2}}, a = {AA}, B = {BB} ===")
     ok = True
     for n in ns:
         t0 = time.time()
-        P = Problem(2, n); st = P.assemble(verify_frac=1.0, rng=random.Random(1)); P.build_B()
+        P = Problem(2, n, eps); st = P.assemble(verify_frac=1.0, rng=random.Random(1)); P.build_B()
         sol = solve(P)
         # known extremal: F = 1 on [0,a]^2, 1/2 on the strips [0,a]x(a,B], (a,B]x[0,a], 0 elsewhere
         c = {}
@@ -447,11 +456,42 @@ def k2_test(ns):
     return ok
 
 
+def write_cert(path, P, c, It, Jt, r, D):
+    n = P.n
+    cells = []
+    for o, key in enumerate(P.orbit_rep):
+        if o in c:
+            cells.append(dict(orbit=o, rep_key=dict(cube=list(key[0]), pair_bits=list(key[1]), level=key[2]),
+                              rep_point_scaled=[str(Fr(x)) for x in P.orbit_pt[o]],
+                              orbit_volume=str(P.A[o] / Fr(n) ** 3), coef=str(c[o])))
+    out = dict(label="Computed (exact certificate)", k=3, eps=str(P.eps), n=n,
+               cell_convention="scaled x = n t; cell = {x: floor(x)=cube, [y_i+y_j>1]=pair_bits for pairs "
+                               "(0,1),(0,2),(1,2), floor(y1+y2+y3)=level}, y=x-cube; orbit = all permutations;"
+                               " F = coef on every cell of the orbit, 0 on orbits not listed",
+               rounding_denominator=D, cells=cells, I=str(It), J=str(Jt), ratio=str(r),
+               ratio_minus_2=str(r - 2), ratio_float=float(r))
+    with open(path, "w") as fh:
+        json.dump(out, fh, indent=1)
+
+
 def main():
-    ns = [int(a) for a in sys.argv[1:]] or [4, 8, 12, 16]
+    global EPS
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("ns", nargs="*", type=int, default=[4, 8, 12, 16])
+    ap.add_argument("--eps", default="1/4", help="eps as p/q (default 1/4)")
+    ap.add_argument("--cert-each", action="store_true",
+                    help="write code/parity/k3_arrangement_cert_<p>_<q>_n<n>.json for EVERY n whose exact rounded "
+                         "ratio exceeds 2 (instead of the legacy k3_arrangement_cert.json, eps = 1/4 only)")
+    args = ap.parse_args()
+    EPS = Fr(args.eps); ns = args.ns
+    assert 0 < EPS < Fr(1, 2)
+    for n in ns:
+        assert n % 2 == 0 and (n * EPS).denominator == 1, f"n={n}: need n even and n*eps integer"
+    n2 = [m for m in (4, 8, 12, 16) if (m * EPS).denominator == 1] or ns[:2]
     T0 = time.time()
-    log("PM8b Thm 3.14, k=3, eps=1/4: symmetric F piecewise constant on the {t_i, t_i+t_j, sum t} = m/n arrangement")
-    if not k2_test([4, 8, 12, 16]):
+    log(f"PM8b Thm 3.14, k=3, eps={EPS}: symmetric F piecewise constant on the {{t_i, t_i+t_j, sum t}} = m/n arrangement")
+    if not k2_test(n2, EPS):
         log("k = 2 sanity test failed; aborting"); return
     bad = nonaffine_demo()
     log(f"Geometry check: on the UNREFINED 2D cell (0,1)^2 cap {{u2+u3<1}} (n=4 scaled), {len(bad)} 3D cells have "
@@ -459,7 +499,7 @@ def main():
     best = None
     for n in ns:
         t0 = time.time()
-        P = Problem(3, n)
+        P = Problem(3, n, EPS)
         rng = random.Random(n)
         st = P.assemble(verify_frac=1.0 if n <= 8 else 0.2, rng=rng)
         P.build_B()
@@ -472,12 +512,12 @@ def main():
         log(f"  constraint rank={sol['rank']}  active orbits={sol['m']}  free={len(sol['free'])}"
             f"  rref {sol['t_rref']:.1f}s  eig ({sol['how']}) {sol['t_eig']:.1f}s")
         log(f"  Heuristic: max J/I = {sol['lam']:.12f}")
-        if n == 4:
+        if n == ns[0]:
             rr = random.Random(7)
             c = {o: Fr(rr.randint(-20, 20), 10) for o in range(len(P.orbit_rep))}
             It, Jt = P.to_t(P.I_exact(c), P.J_exact_direct(c))
             Imc, Ise, Jmc, Jse = mc_check(P, c, random.Random(11))
-            log(f"  sanity (3) Monte Carlo, random c (not constrained): exact I={float(It):.6f} MC I={Imc:.6f}+-{Ise:.6f}"
+            log(f"  sanity (3) Monte Carlo at n={n}, random c (not constrained): exact I={float(It):.6f} MC I={Imc:.6f}+-{Ise:.6f}"
                 f" ({(Imc-float(It))/Ise:+.2f} sigma);  exact J={float(Jt):.6f} MC J={Jmc:.6f}+-{Jse:.6f}"
                 f" ({(Jmc-float(Jt))/Jse:+.2f} sigma)")
         res = round_and_certify(P, sol)
@@ -488,14 +528,20 @@ def main():
         log(f"  best exact rounded ratio at n={n}: {float(r):.15f}  > 2 ? {r > 2}")
         if r > 2:
             worst = cert_checks(P, c, random.Random(100 + n))
-            log(f"  candidate check: max |f_1(u)| over 300 random rational u in {{5/4 < u1+u2 < 3/2}} (exact, fibre at u) = {worst}")
+            log(f"  candidate check: max |f_1(u)| over 300 random rational u in {{{1+EPS} < u1+u2 < 3/2}} (exact, fibre at u) = {worst}")
             Jq = J_pointwise_quadrature(P, c) / Fr(n) ** 4
             log(f"  candidate check: J from pointwise f_1 + exact interior quadrature == exact J ? {Jq == Jt}")
             if n <= 8:
                 Imc, Ise, Jmc, Jse = mc_check(P, c, random.Random(1000 + n))
                 log(f"  candidate Monte Carlo: I exact {float(It):.6e} MC {Imc:.6e}+-{Ise:.1e} ({(Imc-float(It))/Ise:+.2f} sigma);"
                     f" J exact {float(Jt):.6e} MC {Jmc:.6e}+-{Jse:.1e} ({(Jmc-float(Jt))/Jse:+.2f} sigma)")
-        if r > 2 and best is None:
+        if r > 2 and args.cert_each:
+            Dm, cm, Im, Jm, rm = next(z for z in res if z[4] > 2)
+            fn = f"k3_arrangement_cert_{EPS.numerator}_{EPS.denominator}_n{n}.json"
+            write_cert(os.path.join(HERE, fn), P, cm, Im, Jm, rm, Dm)
+            log(f"  Computed (exact certificate): eps={EPS}, n={n}, rounding denominator {Dm}: exact J/I = {rm} "
+                f"= 2 + {rm-2} ({float(rm):.15f}); I = {Im}, J = {Jm}  -> code/parity/{fn}")
+        if r > 2 and best is None and not args.cert_each and EPS == Fr(1, 4):
             # certificate = smallest n reaching > 2, with the SMALLEST rounding denominator that still gives > 2
             D, c, It, Jt, r = next(z for z in res if z[4] > 2)
             best = (n, P, c, It, Jt, r, D)
@@ -504,24 +550,10 @@ def main():
         n, P, c, It, Jt, r, D = best
         log(f"\nComputed (exact certificate): n={n}, exact J/I = {r} = {float(r):.15f} > 2 "
             f"(J/I - 2 = {r-2}); I = {It}, J = {Jt}")
-        sizes = defaultdict(int)
-        cells = []
-        for o, key in enumerate(P.orbit_rep):
-            if o in c:
-                cells.append(dict(orbit=o, rep_key=dict(cube=list(key[0]), pair_bits=list(key[1]), level=key[2]),
-                                  rep_point_scaled=[str(Fr(x)) for x in P.orbit_pt[o]],
-                                  orbit_volume=str(P.A[o] / Fr(n) ** 3), coef=str(c[o])))
-        out = dict(label="Computed (exact certificate)", k=3, eps="1/4", n=n,
-                   cell_convention="scaled x = n t; cell = {x: floor(x)=cube, [y_i+y_j>1]=pair_bits for pairs "
-                                   "(0,1),(0,2),(1,2), floor(y1+y2+y3)=level}, y=x-cube; orbit = all permutations;"
-                                   " F = coef on every cell of the orbit, 0 on orbits not listed",
-                   rounding_denominator=D, cells=cells, I=str(It), J=str(Jt), ratio=str(r),
-                   ratio_minus_2=str(r - 2), ratio_float=float(r))
-        with open(os.path.join(HERE, "k3_arrangement_cert.json"), "w") as fh:
-            json.dump(out, fh, indent=1)
+        write_cert(os.path.join(HERE, "k3_arrangement_cert.json"), P, c, It, Jt, r, D)
         log("certificate written to code/parity/k3_arrangement_cert.json")
-    else:
-        log("\nNo exact certificate: no rounded rational F reached J/I > 2 for the n tried.")
+    elif not args.cert_each:
+        log("\nNo exact certificate written (none reached J/I > 2, or eps != 1/4 without --cert-each).")
     log(f"total runtime {time.time()-T0:.1f}s")
 
 

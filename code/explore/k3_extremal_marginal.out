@@ -1,0 +1,8 @@
+eps=0.25 n=24: extremal ratio 1.958854; marginal on J-columns: mean 1, min 0.4996, max 2.6493, rel std 0.4323
+  constant-marginal F: ratio 1.735649 (residual 4.3e-15)
+  f_1 along t3=0: 2.649 2.369 2.163 1.982 1.799 1.581 1.439 1.323 1.224 1.138 1.063 0.996 0.934 0.878 0.825 0.774 0.724
+  f_1 along t2=t3: 2.649 2.089 1.677 1.354 1.151 1.016 0.793 0.627 0.500
+eps=0.125 n=24: extremal ratio 1.933761; marginal on J-columns: mean 1, min 0.4555, max 2.7835, rel std 0.4845
+  constant-marginal F: ratio 1.456725 (residual 6.9e-15)
+  f_1 along t3=0: 2.783 2.514 2.333 2.185 2.051 1.922 1.790 1.641 1.450 1.337 1.233 1.135 1.039 0.944 0.838 0.765 0.699 0.636 0.579 0.531
+  f_1 along t2=t3: 2.783 2.245 1.882 1.586 1.319 1.127 0.985 0.868 0.782 0.627
