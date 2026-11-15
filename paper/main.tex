@@ -28,80 +28,25 @@
 \begin{abstract}
 This is a living working paper. It does \emph{not} prove the twin prime
 conjecture, and it does not improve the best known bound on small gaps between
-primes. It records (i) the state of the problem as of the date above, (ii) what
-this project has verified for itself, by exact computation and by the Lean~4
-kernel, now including the established bound $H_1\le246$ of Polymath8b,
-reproduced end to end through a certified lower bound for $M_{50,1/25}$,
-(iii) small results of our own: a no-go statement for a natural
-attempt to sharpen the pigeonhole step, on the plain and on the
-$\varepsilon$-enlarged simplex; a generating-function formula that makes
-certified computation with all symmetric test functions cheap; an upper
-bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
-itself, reach any $k\le29$; numerical evidence, \lbl{Heuristic} only, that at
-$(k,\varepsilon)=(50,1/25)$ no dual weight depending only on $t_m$ and
-$t_1+\dots+t_k$ does much better than ours (version~0.15 certifies
-$M_{50,1/25}<4.1459$ with ours, and proves that a weight that sees the active
-set, after reducing its supremum over all fibers to two parameters, gives only
-$4.1463$),
-and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
-$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
-floor (no $k\le28$ at his level of distribution, whatever the caps), and an
-exact formula for his capped functionals, which gives a certified capped
-ratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two
-independent programs: the variational step of Stadlmann's $H_1\le240$ is
-thereby reproduced, while his reduction \cite[Prop.~1]{Sta26} and his new
-equidistribution estimates, on which $240$ rests, have not been verified by us; the same computation confirms the
-variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
-of their Table~3 but not, with our test function, for the different caps of
-their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
-$846$-dimensional space reaches $3.99$ (a ceiling certified in ball
-arithmetic at $3.99$; it rests on the Gram weights of one program, checked
-exactly at one random point); optimising the test function on Stadlmann's
-capped support itself, with exact Gram matrices obtained by running the exact
-evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
-for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
-function of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and
-for the published witness of Song and Yue (same support) we recompute their
-capped numerator exactly: it equals their reference integer digit for digit,
-as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
-holds; since version~0.11 this is confirmed by a second, independent exact
-program, so the variational step of $H_1\le236$ is reproduced (its analytic
-input \cite[Thm.~4.18]{SY26} and the reduction \cite[Thm.~4.33,
-\S\S4.12--4.14]{SY26} are not verified by us, and the project's bound $236$ is
-conditional on them); version~0.12 adds an elementary observation (Bonferroni) that lets a
-one-sided certificate skip the most expensive inclusion--exclusion pieces
-(Proposition~\ref{prop:bonf}), and version~0.13 extends it so that no piece
-with three forced coordinates is needed (Proposition~\ref{prop:bonf2},
-$4.012038868>4$ for the $240$ vector); for the next rung, $186$, version~0.13
-recomputes independently the two main terms $I_H$ and $J_{\lambda,H}$ of the
-numerical companion of OpenAI's preprint and finds them inside its published
-enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
-and its analytic inputs are not checked; version~0.14 recomputes its source
-data and cap masks exactly from their rational definitions and checks the
-arithmetic of its loss tables, not yet the raw loss bounds); for the last
-rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
-criterion, recomputed from the trial data, agree with its published enclosures
-(Remark~\ref{rem:sha182}; for $I(F)$ by two independent programs since
-version~0.15, for $J_0$, $J_+$ since version~0.18, and its tail term by one program, just below its published bound); version~0.16 re-evaluates the raw loss bounds of the $186$
-companion from its formulas ($78$ of its $97$ components, all but $1.2\cdot10^{-6}$ of its
-loss $L^+$; all at most the published values, most within $5\cdot10^{-9}$ of them; one
-program, not an outward-rounded certificate) and shows that the final margin of
-that certificate depends almost only on one loss group
-(Proposition~\ref{prop:oai186-budget}); version~0.17 completes this with two programs for the decisive group
-($99.95\%$ of it; the majorisation lemmas and the analytic inputs are not
-checked, and $186$ is not adopted), and the project moves to the companion
-papers of Section~\ref{sec:related}; and
-(iv) a programme of original
-directions that later versions will test. Every statement carries one of the
-labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
-\lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
-verified), or \lbl{Open}; \lbl{Literature (preprint)} marks our reading of a
-definition in an unrefereed preprint, \lbl{Computed (floating point)} a
-numerical value that is not a certified bound, and \lbl{Heuristic} an argument
-that is not a proof.
+primes. It records three things. First, the state of the problem, keeping three
+numbers apart: the established bound $H_1\le246$ (Polymath8b), the smallest
+claimed bound $182$ (2026 preprints), and what this project reproduces for
+itself: $246$ unconditionally, and $240$ and $236$ conditionally on analytic
+inputs we have not verified. Second, what we have checked independently: the
+combinatorial half in Lean~4, and the variational step of the 2026 claims
+$240$, $236$, $212$ and $186$ in exact or ball arithmetic, each by two
+independent programs. Third, small results of our own: a rigidity theorem for
+the pigeonhole step, floors and ceilings for the $\varepsilon$-enlarged and
+capped variational problems, exact formulas for capped functionals, and
+one-sided certificates. Every statement carries a label (\lbl{Lean-checked},
+\lbl{Computed}, \lbl{Proved here}, \lbl{Literature}, \lbl{Claimed},
+\lbl{Open}, \lbl{Heuristic}); the history of the document is in
+Appendix~\ref{app:history}.
 \end{abstract}
 
 \maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
 
 \section{The problem and the honest position}
 
@@ -148,33 +93,43 @@ $^{\S}$ Its two main terms $I_H$, $J_{\lambda,H}$ are recomputed here and lie in
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
-\cite{Axiom26}. The bounds from $240$ to $186$ appeared within one week.
-They rest on Stadlmann's idea of enlarging the support of the sieve weights
-using equidistribution estimates for moduli with a large smooth factor. The
-Lean development accompanying the bound $186$ is conditional on three stated
-inputs (two exponential-sum bounds and a family of numerical integral bounds)
-\cite{OAI26}. An independent re-run of that repository, dated 7 and 8 November
-2026, reproduced the build and the numerical certificate and describes the
-result as ``conditionally supported, with the computation independently
+\cite{Axiom26}. The bounds from $240$ to $186$ appeared within one week. They
+rest on Stadlmann's idea of enlarging the support of the sieve weights using
+equidistribution estimates for moduli with a large smooth factor.
+
+\begin{itemize}
+\item \emph{186.} The Lean development accompanying it is conditional on three
+stated inputs (two exponential-sum bounds and a family of numerical integral
+bounds) \cite{OAI26}. An independent re-run of that repository, dated 7 and 8
+November 2026, reproduced the build and the numerical certificate and describes
+the result as ``conditionally supported, with the computation independently
 reproduced; not yet settled''; the two exponential-sum bounds remain axioms
-\cite{NM26}. A further document, dated 18 September 2026 and naming an AI
+\cite{NM26}.
+\item \emph{182.} A further document, dated 18 September 2026 and naming an AI
 system as its author, claims $\DHL[39,2]$ and hence $182$; by its own abstract
 its Lean development verifies the last implication ``under explicit numerical
-and finite-field premises'' \cite{Sha26}. We had missed it in earlier
-versions. (These details were read by an earlier run of this project; on
-12 November the file was too large for our reader and direct download was
-refused, so we have not re-checked them since.) As of 7 September 2026 a standard reference still listed $246$ as
-the best fully established value \cite{MW}, and the page read the same on 12
-November. On the date of this version we found no report of complete
-independent verification of any of the 2026 claims and no claimed bound below
-$182$. We therefore keep three numbers apart throughout: \emph{established}
-($246$), \emph{claimed} ($182$), and \emph{reproduced by this project}:
-$246$ unconditionally; since version~0.6 also $240$, conditionally on
-the reduction \cite[Prop.~1]{Sta26} and the equidistribution estimates of
-\cite{Sta26}, which we have not verified (Corollary~\ref{cor:240}); and since
-version~0.11 also $236$, conditionally on the equidistribution theorem of
-\cite{SY26} and their reduction \cite[Thm.~4.33, \S\S4.12--4.14]{SY26}
+and finite-field premises'' \cite{Sha26}. We had missed it in earlier versions.
+(These details were read by an earlier run of this project; on 12 November the
+file was too large for our reader and direct download was refused, so we have
+not re-checked them since.)
+\item \emph{Status elsewhere.} As of 7 September 2026 a standard reference still
+listed $246$ as the best fully established value \cite{MW}, and the page read
+the same on 12 November. On the date of this version we found no report of
+complete independent verification of any of the 2026 claims and no claimed
+bound below $182$.
+\end{itemize}
+
+We therefore keep three numbers apart throughout:
+\begin{itemize}
+\item \emph{established}: $246$;
+\item \emph{claimed}: $182$;
+\item \emph{reproduced by this project}: $246$ unconditionally; $240$,
+conditionally on the reduction \cite[Prop.~1]{Sta26} and the equidistribution
+estimates of \cite{Sta26}, which we have not verified (Corollary~\ref{cor:240});
+and $236$, conditionally on the equidistribution theorem of \cite{SY26} and
+their reduction \cite[Thm.~4.33, \S\S4.12--4.14]{SY26}
 (Corollary~\ref{cor:236}), which we have not verified either.
+\end{itemize}
 
 \subsection*{Why \texorpdfstring{$2$}{2} is a different problem}
 Under the generalised Elliott--Halberstam conjecture the sieve gives $H_1\le6$,
@@ -920,7 +875,7 @@ variational problem), plus one web search on 14 November 2026 that found no
 explicit numerical upper bound for $M_{50,\varepsilon}$; it is not exhaustive.
 \end{remark}
 
-\subsection*{The limit of weights that see only \texorpdfstring{$t_m$}{t\_m} and \texorpdfstring{$S$}{S} (version 0.4)}
+\subsection*{The limit of weights that see only \texorpdfstring{$t_m$}{t\_m} and \texorpdfstring{$S$}{S}}
 Every weight used so far has the form
 $\psi_m(t)=\Psi(S-t_m,t_m)$: Polymath8b's $\lambda(a-S+kt_m)$ and both zones of
 Theorem~\ref{thm:floor}. Call this family $\mathcal W$. For weights in
@@ -1013,7 +968,7 @@ equidistribution estimates. A floor for those is the Problem in the next
 section.
 \end{remark}
 
-\section{Stadlmann-type supports (versions 0.5--0.9)}\label{sec:stad}
+\section{Stadlmann-type supports}\label{sec:stad}
 
 This section takes the first steps on the next rung, Stadlmann's region for
 $H_1\le240$ \cite{Sta26}, and gives a first rigorous answer to the Problem in
@@ -1159,7 +1114,7 @@ condition $u_i>g$ in the union bound failed badly ($E/I\approx146$ for the
 cap-free optimiser; \texttt{runs/stad49\_caps\_D20.log}).
 \end{sloppypar}
 
-\subsection*{The capped functionals exactly (version 0.6)}
+\subsection*{The capped functionals exactly}
 Version~0.5 bounded $J_T(P\,1_T)$ through Proposition~\ref{prop:caps}, and the
 Cauchy--Schwarz step there turned out to be the whole difficulty. We now
 compute $I_T(P\,1_T)$ and $J_T(P\,1_T)$ exactly. Notation as above: $u$ in the
@@ -1321,7 +1276,7 @@ so a ceiling that sees the caps needs a weight that sees the large
 coordinates (\lbl{Open}).
 \end{remark}
 
-\subsection*{The next rung: the support of \texorpdfstring{\cite{Cha26}}{Charton et al.} (version 0.7)}
+\subsection*{The next rung: the support of \texorpdfstring{\cite{Cha26}}{Charton et al.}}
 The same computation applies to the one-band support of \cite{Cha26}
 ($k=45$, $H(45)=212$), whose caps change with $m$. In the Polymath scaling
 their Table~3 gives $L=53/50$, $\tau=249/250$, $g=41/625$ and
@@ -1402,7 +1357,7 @@ the largest coordinate $C_1=0.6216$ moves the floating-point ceiling of this
 weight only from $4.12481$ to $4.12446$.
 \end{remark}
 
-\subsection*{Optimising the test function on the capped support (version 0.8)}
+\subsection*{Optimising the test function on the capped support}
 Up to version~0.7 every capped value came from a polynomial optimised
 \emph{without} the caps and then truncated to $T$. Both capped functionals
 are quadratic forms in the coefficients $c$ of $P$:
@@ -1538,7 +1493,7 @@ not quadratically. The heuristic is ruled out as a
 quantitative tool.
 \end{remark}
 
-\subsection*{The rung \texorpdfstring{$236$}{236}: the support of Kintali (versions 0.8--0.9)}
+\subsection*{The rung \texorpdfstring{$236$}{236}: the support of Kintali}
 \cite{Kin26} uses Stadlmann's criterion with one band at $k=48$ and the
 support ``D182'' (\lbl{Literature (preprint)}, read in \cite[\S2]{Kin26}):
 $\varepsilon=3/400$, $A=253/1000$, $\delta=91/5000$ and a single cap
@@ -1600,7 +1555,7 @@ function. This is \emph{not} a verification of $236$: the analytic input
 (Stadlmann's equidistribution estimates, with the corrections described in
 \cite{Kin26}) is \lbl{Claimed} and unverified by us.
 
-\subsection*{The witness of Song and Yue, recomputed exactly (version 0.10)}
+\subsection*{The witness of Song and Yue, recomputed exactly}
 Appendix~A of \cite{SY26} prints the witness as $1295$ integer triples
 $(a,\alpha,c)$, $P(z)=\sum c\,(\frac{26}{25}-s(z))^{a}m_\alpha(z)$ with
 monomial symmetric functions $m_\alpha$ and $a+|\alpha|\le25$, used as
@@ -1730,7 +1685,7 @@ stay \lbl{Literature}; and \S4.12, the Selberg main term and Lemma~4.32 of
 (Corollary~\ref{cor:236}).
 \end{remark}
 
-\subsection*{One-sided certificates without the thin pieces (version 0.12)}
+\subsection*{One-sided certificates without the thin pieces}
 Exact equality of two programs is the strongest check, but the criterion
 itself only needs a lower bound for $J_T$ and an upper bound for $I_T$. The
 following observation lets a one-sided certificate omit the most expensive
@@ -2426,6 +2381,89 @@ programs) and its
 combinatorial step is Lean-checked; every unverified analytic input is named
 next to it. Ideas are
 logged with their outcome, including failures. Nothing here is peer reviewed.
+
+
+\appendix
+\section{History of this document}\label{app:history}
+Earlier versions carried a long abstract recording each step as it was made.
+It is kept here verbatim (up to version~0.18) as a record; version numbers
+refer to the changes of this living paper.
+
+\begin{quote}\small
+This is a living working paper. It does \emph{not} prove the twin prime
+conjecture, and it does not improve the best known bound on small gaps between
+primes. It records (i) the state of the problem as of the date above, (ii) what
+this project has verified for itself, by exact computation and by the Lean~4
+kernel, now including the established bound $H_1\le246$ of Polymath8b,
+reproduced end to end through a certified lower bound for $M_{50,1/25}$,
+(iii) small results of our own: a no-go statement for a natural
+attempt to sharpen the pigeonhole step, on the plain and on the
+$\varepsilon$-enlarged simplex; a generating-function formula that makes
+certified computation with all symmetric test functions cheap; an upper
+bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
+itself, reach any $k\le29$; numerical evidence, \lbl{Heuristic} only, that at
+$(k,\varepsilon)=(50,1/25)$ no dual weight depending only on $t_m$ and
+$t_1+\dots+t_k$ does much better than ours (version~0.15 certifies
+$M_{50,1/25}<4.1459$ with ours, and proves that a weight that sees the active
+set, after reducing its supremum over all fibers to two parameters, gives only
+$4.1463$),
+and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
+$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
+floor (no $k\le28$ at his level of distribution, whatever the caps), and an
+exact formula for his capped functionals, which gives a certified capped
+ratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two
+independent programs: the variational step of Stadlmann's $H_1\le240$ is
+thereby reproduced, while his reduction \cite[Prop.~1]{Sta26} and his new
+equidistribution estimates, on which $240$ rests, have not been verified by us; the same computation confirms the
+variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
+of their Table~3 but not, with our test function, for the different caps of
+their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
+$846$-dimensional space reaches $3.99$ (a ceiling certified in ball
+arithmetic at $3.99$; it rests on the Gram weights of one program, checked
+exactly at one random point); optimising the test function on Stadlmann's
+capped support itself, with exact Gram matrices obtained by running the exact
+evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
+for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
+function of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and
+for the published witness of Song and Yue (same support) we recompute their
+capped numerator exactly: it equals their reference integer digit for digit,
+as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
+holds; since version~0.11 this is confirmed by a second, independent exact
+program, so the variational step of $H_1\le236$ is reproduced (its analytic
+input \cite[Thm.~4.18]{SY26} and the reduction \cite[Thm.~4.33,
+\S\S4.12--4.14]{SY26} are not verified by us, and the project's bound $236$ is
+conditional on them); version~0.12 adds an elementary observation (Bonferroni) that lets a
+one-sided certificate skip the most expensive inclusion--exclusion pieces
+(Proposition~\ref{prop:bonf}), and version~0.13 extends it so that no piece
+with three forced coordinates is needed (Proposition~\ref{prop:bonf2},
+$4.012038868>4$ for the $240$ vector); for the next rung, $186$, version~0.13
+recomputes independently the two main terms $I_H$ and $J_{\lambda,H}$ of the
+numerical companion of OpenAI's preprint and finds them inside its published
+enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
+and its analytic inputs are not checked; version~0.14 recomputes its source
+data and cap masks exactly from their rational definitions and checks the
+arithmetic of its loss tables, not yet the raw loss bounds); for the last
+rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
+criterion, recomputed from the trial data, agree with its published enclosures
+(Remark~\ref{rem:sha182}; for $I(F)$ by two independent programs since
+version~0.15, for $J_0$, $J_+$ since version~0.18, and its tail term by one program, just below its published bound); version~0.16 re-evaluates the raw loss bounds of the $186$
+companion from its formulas ($78$ of its $97$ components, all but $1.2\cdot10^{-6}$ of its
+loss $L^+$; all at most the published values, most within $5\cdot10^{-9}$ of them; one
+program, not an outward-rounded certificate) and shows that the final margin of
+that certificate depends almost only on one loss group
+(Proposition~\ref{prop:oai186-budget}); version~0.17 completes this with two programs for the decisive group
+($99.95\%$ of it; the majorisation lemmas and the analytic inputs are not
+checked, and $186$ is not adopted), and the project moves to the companion
+papers of Section~\ref{sec:related}; and
+(iv) a programme of original
+directions that later versions will test. Every statement carries one of the
+labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
+\lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
+verified), or \lbl{Open}; \lbl{Literature (preprint)} marks our reading of a
+definition in an unrefereed preprint, \lbl{Computed (floating point)} a
+numerical value that is not a certified bound, and \lbl{Heuristic} an argument
+that is not a proof.
+\end{quote}
 
 \begin{thebibliography}{99}
 \bibitem{Axiom26} E.~Chen, S.~Hariharan, K.~Lau, B.~Mehta, A.~A.~Swaminathan,
