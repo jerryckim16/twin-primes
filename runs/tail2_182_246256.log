@@ -1,0 +1,4 @@
+[    10 s, maxrss 0.31 GB] cap 246256: p arrays on rows [352699, 393177)
+[    11 s, maxrss 0.33 GB] cap 246256: layer 5 (b = 246256) marginals, 1 groups
+[    11 s, maxrss 0.33 GB] cap 246256: all marginals vanish on the tail rows: contribution exactly 0
+[    11 s, maxrss 0.33 GB] cap 246256: T part 0 (written code/data182/tail2_cap_246256.json)

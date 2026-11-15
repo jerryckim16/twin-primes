@@ -1,7 +1,7 @@
 {
- "version": "0.18",
+ "version": "0.19",
  "updated": "2026-11-15",
- "session_count": 18,
+ "session_count": 19,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -320,6 +320,16 @@
    "label": "Computed",
    "text": "182 tail term E_{H_C^c} (one program, arb balls; kernel K of [M] (5.6) exact): T = 5.286348805928e-13 +- 1e-40, below the published trialTailUpper 5.286348805973e-13; with the balls for I, J0, J+ the cap surplus q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4.",
    "where": "code/sharifi182_tail.py, code/data182/tail_result.json, notes/tail-182-report.md; paper v0.18 Remark rem:sha182"
+  },
+  {
+   "label": "Computed",
+   "text": "182 tail term by a second, independent program (own exact kernel, GMP fixed point with directed error bounds): T in [5.2863488059280771006442311847e-13 +- 1.4e-45], inside program 1's ball and below the published trialTailUpper. With the nominal last kernel block (r_max = 768*512-1) the kernel bound (5.7) fails (K_511 = 2.19637) and T exceeds trialTailUpper by 5e-7 relative, so the Lean premise fits only r_max = n0-1. All four ingredients of the 182 cap quotient (I, J0, J+, T) now by two programs; restoration losses and analytic inputs unchecked, 182 stays claimed.",
+   "where": "code/sharifi182_tail2.py, code/data182/tail2_result.json, notes/tail2-182-report.md; paper v0.19 Remark rem:sha182; verification note v0.8 Remark rem:182"
+  },
+  {
+   "label": "Proved here, conditional on a preprint",
+   "text": "Twisted Type I input of the parity obstruction at level R <= (log x)^{c0}: for w_R(n) = (sum_{d | n(n+2), d <= R} lambda_d)^2 with lambda_1 = 1, |lambda_d| <= 1, the log-averaged sum of w_R(n) lambda(n) lambda(n+2)/n is at most (log x)^{-c0} times the sum of w_R(n)/n; conditional on Tao-Teravainen arXiv:2512.01739v2 Thm 3.1 (unrefereed). Fresh-context audit: sound. Only confirms the obstruction's input; no lower bound for twin primes.",
+   "where": "papers/parity-barrier v0.3 Prop. prop:tao-weight-logc; notes/parity-attempts/2026-11-15-tt25-level-logc.md, 2026-11-15-tt25-audit.md"
   }
  ],
  "ideas": [
@@ -548,8 +558,20 @@
   {
    "idea": "Tao-Teravainen (arXiv:2512.01739v2, Thm 3.1) to push Prop. prop:tao-weight to level R = (log x)^{c0}",
    "origin": "own",
+   "status": "works",
+   "note": "Done in Session 19 (parity paper v0.3, Prop. prop:tao-weight-logc), conditional on the preprint; expanding in the moduli [d1,d2] <= R^2, not the period, is the key; audited."
+  },
+  {
+   "idea": "Enlarge the Liouville-pattern weight class by Liouville signs at extra linear forms (open question 2 of the parity paper)",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Fairness and the kill condition only see the law of the tuple coordinates, so the tuple marginal is an ordinary pattern weight: no gain (LPs in code/explore/aux_forms_lp.py agree)."
+  },
+  {
+   "idea": "Maynard two-variable weights (sum_{d1|n, d2|n+2} lambda_{d1,d2})^2 at level (log x)^{c0} via TT25, moduli up to R^4",
+   "origin": "own",
    "status": "open",
-   "note": "Needs expanding the square with W = [d1,d2] <= R^2 and dyadic-to-log averaging outside exceptional scales; deduction not written; conditional on a preprint."
+   "note": "Suggested by the Session 19 audit; same proof should work; not written."
   }
  ],
  "phase": "B",
@@ -557,18 +579,18 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.2",
+   "version": "0.3",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; an exact criterion for which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (target graph bipartite; DHL[k,m+1] iff k <= 2m; so the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind their a^2+b^4 bilinear estimate; the twisted Type I input proved in a weak log-averaged form. No progress on the twin prime conjecture is claimed."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; an exact criterion for which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (target graph bipartite; DHL[k,m+1] iff k <= 2m; so the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind their a^2+b^4 bilinear estimate; the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}. No progress on the twin prime conjecture is claimed."
   },
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.7",
+   "version": "0.8",
    "status": "active",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and all 97 raw loss bounds of the 186 companion recomputed (the dominant group by two programs). Analytic inputs not verified."
+   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and all 97 raw loss bounds of the 186 companion (the dominant group by two programs); the four ingredients of the 182 cap quotient, each by two programs. Analytic inputs and restoration steps not verified."
   }
  ],
  "last_review": null,

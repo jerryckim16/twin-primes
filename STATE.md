@@ -3,29 +3,41 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 18, 15 Nov 2026): PHASE B
+## POSITION (after Session 19, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.2, verification-note v0.7 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
-  NOT started as a paper.
-- First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), before other work.
+- Active papers: parity-barrier v0.3, verification-note v0.8 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+  NOT started as a paper. Main paper v0.19.
+- First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
 ## Next steps (in order; Phase B)
-1. Parity attempt (one per run; route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov); Tao two-point along
-   periodic weights (15 Nov); bipartite criterion for Liouville-pattern weights (15 Nov, Session 18); residue-class weights with
-   classwise fairness (exploration, 15 Nov: nothing new). Candidates: (a) write and audit the deduction "Tao-Teravainen
-   (arXiv:2512.01739v2, Thm 3.1, preprint) => Prop. prop:tao-weight at level R = (log x)^{c0}" (expand the square, W = [d1,d2] <= R^2,
-   dyadic -> log averages outside the exceptional scales; label conditional on the preprint); (b) the function-field step
-   (Sawin-Shusterman); (c) a weight class beyond Liouville patterns that blocks DHL[5,3]? (open question 3 of the paper).
-2. Parity paper thread 2: Heath-Brown x^3+2y^3 (Acta Math. 186 (2001)) -- statement and the structure its Type II estimate uses;
-   then Sawin-Shusterman (arXiv:1808.04001). Every Literature sentence read in the source; adversarial audit before release.
-3. Bound share, rung 182: I, J0, J+ now by two programs; tail by one (Session 18). Next: a second, genuinely different program
-   for the tail (e.g. program 1's fixed-point/GMP style, code/sharifi182_J.py, with the K mask), then the restoration losses.
-4. 3g share: decide on a second small-results paper at the weekly review (options: capped-variational theory (programme 2), or the
-   H_m (varpi, delta) region (programme 1, notes/hm-programme.md)).
-5. Optional 186 follow-ups: renewal branch in program 2; why renewal-branch V of small bins sits up to 2.7% below the table.
-6. Low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume (commands below).
+1. Weekly review (Monday 16 Nov run).
+2. Parity attempt (one per run; route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov); Tao two-point along
+   periodic weights (15 Nov); bipartite criterion for Liouville-pattern weights (15 Nov); TT25 at level (log x)^{c0} (Session 19,
+   done); extra Liouville coordinates (exploration, Session 19: provably nothing); residue-class weights with classwise fairness
+   (exploration, Session 18). Candidates: (a) the function-field step (Sawin-Shusterman arXiv:1808.04001: which step has no integer
+   analogue); (b) Maynard two-variable weights at level (log x)^{c0} via TT25 (moduli up to R^4; open question 5 of the paper);
+   (c) weights that change the twisted main terms (open question 2).
+3. Parity paper thread 2: Heath-Brown x^3+2y^3 is BLOCKED (notes/sources-needed.md, requested from Jerry; secondary notes in
+   notes/sources-hb-x3-2y3.md, not to be used as Literature). Next instead: Sawin-Shusterman, or Matomaki-Radziwill.
+4. Bound share, rung 182: I, J0, J+, T all by two programs (Session 19). Next: scope the restoration losses (Thm 8.1, (8.6); 197 source
+   integrals, 60 outer + 137 inner; row tables partly underspecified in the PDF, see notes/sources-182.md section 7 item 3).
+5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta) region).
+6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+
+## Session 19 (3:34 AM CT slot, started on time 09:34 UTC 15 Nov; no wait) -- additions
+- News search (WebSearch, standard, 3 queries; Science News article of 11 Sep opened): nothing new.
+- RUNG 182 TAIL second program DONE: code/sharifi182_tail2.py (--selftest; --cap b,...; --combine), results code/data182/tail2_result.json
+  and tail2_cap_<b>.json (+ precision check tail2_cap_196608_P192B160.json), report notes/tail2-182-report.md. T ball radius 1.4e-45
+  inside program 1's ball; nominal r_max gives T above trialTailUpper (5e-7 rel), so r_max = n0 - 1 is forced. 2 workers x 1.5 GB,
+  14 min. Spot-checked here: selftest re-run PASSED; nesting of the two balls and T_upper <= trialTailUpper checked exactly.
+- PARITY ATTEMPT: notes/parity-attempts/2026-11-15-tt25-level-logc.md + audit 2026-11-15-tt25-audit.md (sound; fixes applied);
+  paper v0.3 Prop. prop:tao-weight-logc, Remark rem:tao-weight-logc, open questions 1 and 5, bib MRT15.
+- Exploration: code/explore/aux_forms_lp.py (dead end, notes/explorations.md).
+- Heath-Brown x^3+2y^3: blocked; notes/sources-hb-x3-2y3.md (secondary only).
+- Verification note v0.8 (Remark rem:182, TOC, abstract); main paper v0.19 (rem:sha182 paragraph, Related results, history list).
+- Wolfram and mathbox NOT available.
 
 ## Session 18 (3:34 AM CT slot started early at Jerry's request, 04:23 UTC 15 Nov; no wait, Session 17 merged as PR #36) -- additions
 - News search (WebSearch, standard): nothing new since the last entry.

@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.18, 15 November 2026}
+\date{Version 0.19, 15 November 2026}
 
 \begin{document}
 
@@ -2183,11 +2183,26 @@ size). Both programs share the reading of which caps form the layers and what
 the face mask in a layer is, which the source does not spell out. The tail term
 $E_{H_C^c}$ (\cite{Sha26}, (6.5)--(6.7) with $H_C$ for $C$, and the step kernel
 $K$ of (5.6), computed exactly in rationals; (5.7), $0\le K\le2.194$, holds when
-the last block ends at $n_0-1$) is evaluated by one program so far
+the last block ends at $n_0-1$) is evaluated by two programs
 (\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_tail.py}, report
 \texttt{notes/}\allowbreak\texttt{tail-182-report.md}):
 $T\in[5.286348805928077\cdot10^{-13}\pm1.1\cdot10^{-40}]$, just below the published
-upper bound $5.286348805972699\cdot10^{-13}$ (relative gap $8\cdot10^{-12}$). From
+upper bound $5.286348805972699\cdot10^{-13}$ (relative gap $8\cdot10^{-12}$).
+In version~0.19 a second program for the tail (\lbl{Computed},
+\texttt{code/}\allowbreak\texttt{sharifi182\_tail2.py}, report
+\texttt{notes/}\allowbreak\texttt{tail2-182-report.md}) confirms it. It has its
+own exact kernel, GMP fixed-point Kronecker products in the style of the first
+$I$ and $J$ programs with directed error bounds, its own B-splines, and a
+brute-force self-test with four deliberate mutations. It gives the enclosure
+$T\in[5.28634880592807710064423118475\cdot10^{-13}\pm1.4\cdot10^{-45}]$, which lies
+inside the first program's ball; its exact upper end is below the published
+bound. Both programs share the reading of the source and the layered
+derivation of the contraction, so they check arithmetic and code, not that
+reading. The second program also settles the block-end ambiguity of (5.6): with
+the nominal last block ($r_{\max}=768\cdot512-1$), (5.7) fails
+($K_{511}=2.19637$) and the tail would exceed the published bound by $5\cdot10^{-7}$
+in relative terms. So the Lean premise fits only $r_{\max}=n_0-1$, the reading
+both programs use; the effect on $q_H$ would be about $4\cdot10^{-11}$. From
 the balls for $I$, $J_0$, $J_+$ and $T$ the cap surplus is
 $q_H-1=2.767059\cdot10^{-4}$, above the certified $\mu^-=2.766919\cdot10^{-4}$;
 the tail costs $7.86\cdot10^{-5}$ of $q_H$, so the claimed final margin
@@ -2296,7 +2311,12 @@ forbids precisely $H_m<H(2m+1)$, where $H(j)$ is the narrowest admissible
 $j$-tuple; for $m=1$ this is the familiar limit $6$. It also notes that the
 weight printed in Polymath8b's Remark~8.1 vanishes identically as written (a
 typo-level slip), and records which structure the Friedlander--Iwaniec bilinear
-estimate for $a^2+b^4$ uses. It makes no claim of progress on the
+estimate for $a^2+b^4$ uses. Its version~0.3 (version~0.19 of this paper)
+proves the twisted Type~I input at the explicit level $R=(\log x)^{c_0}$ for
+Selberg-type weights $\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$,
+uniformly in $|\lambda_d|\le1$, conditionally on a quantitative correlation
+theorem of Tao and Ter\"av\"ainen (an unrefereed preprint); this only confirms
+the input of the obstruction at a larger level. It makes no claim of progress on the
 twin prime conjecture, which is open.
 \end{itemize}
 \end{sloppypar}
@@ -2464,6 +2484,15 @@ definition in an unrefereed preprint, \lbl{Computed (floating point)} a
 numerical value that is not a certified bound, and \lbl{Heuristic} an argument
 that is not a proof.
 \end{quote}
+
+Later versions, one item each:
+\begin{itemize}
+\item[0.19] (15 Nov 2026) The tail term of the $182$ criterion by a second,
+independent program (Remark~\ref{rem:sha182}); the block-end reading of its
+kernel is now forced by the published bound. Related results: the parity
+paper's version~0.3 (the twisted Type~I input at level $(\log x)^{c_0}$,
+conditional on a preprint).
+\end{itemize}
 
 \begin{thebibliography}{99}
 \bibitem{Axiom26} E.~Chen, S.~Hariharan, K.~Lau, B.~Mehta, A.~A.~Swaminathan,

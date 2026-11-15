@@ -1,0 +1,18 @@
+[    11 s, maxrss 0.31 GB] cap 196608: p arrays on rows [352699, 393177)
+[    18 s, maxrss 0.39 GB] cap 196608: layer 4 (b = 196608) marginals, 2 groups
+[    18 s, maxrss 0.39 GB] cap 196608: layer 5 (b = 246256) marginals, 1 groups
+[    35 s, maxrss 0.82 GB] cap 196608: coordinate arrays (12 exponents)
+[    51 s, maxrss 1.10 GB] cap 196608: powers 32..38 of the base array
+[   256 s, maxrss 1.37 GB] cap 196608: 77 moment arrays (sliced to the tail rows)
+[   257 s, maxrss 1.37 GB] cap 196608: term +1 (layer 4, b = 196608): 40478 tail rows
+[   258 s, maxrss 1.37 GB] cap 196608: term -1 (layer 5, b = 246256): 40478 tail rows
+[   259 s, maxrss 1.37 GB] cap 196608: T part [4.38826312973675870232573488917e-13 +/- 4.30e-43] (written code/data182/tail2_cap_196608.json)
+[   269 s, maxrss 1.37 GB] cap 186491: p arrays on rows [352699, 393177)
+[   276 s, maxrss 1.37 GB] cap 186491: layer 3 (b = 186491) marginals, 2 groups
+[   280 s, maxrss 1.37 GB] cap 186491: layer 4 (b = 196608) marginals, 2 groups
+[   297 s, maxrss 1.37 GB] cap 186491: coordinate arrays (12 exponents)
+[   314 s, maxrss 1.37 GB] cap 186491: powers 32..38 of the base array
+[   515 s, maxrss 1.41 GB] cap 186491: 77 moment arrays (sliced to the tail rows)
+[   516 s, maxrss 1.41 GB] cap 186491: term +1 (layer 3, b = 186491): 21505 tail rows
+[   518 s, maxrss 1.41 GB] cap 186491: term -1 (layer 4, b = 196608): 40478 tail rows
+[   518 s, maxrss 1.41 GB] cap 186491: T part [-4.23516155720758412870805303320e-13 +/- 3.65e-43] (written code/data182/tail2_cap_186491.json)
