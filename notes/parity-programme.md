@@ -18,6 +18,8 @@ The twin prime conjecture is open. Nothing in this programme claims to prove it 
 | TT25 (again) | Thm 3.1, Remarks 3.2, §1.6, §3.2 opening (pp. 9-10, 24-27) | arXiv:2512.01739v2 | ce10e83b10c6544e1dbff037a5e4efa0e387892e0fc596ae09dce76025d7b41e | Session 19 (helper + independent auditor, same hash) |
 | MRT15 | Matomäki–Radziwiłł–Tao, An averaged form of Chowla's conjecture, ANT 9 (2015) | arXiv:1503.05121v3 | 8a2633b1594615fe0c340bbca01ad059be5bd66d3495bd028e7e9d2264f1e688 | eq. (1.12), Thm 1.6 (pp. 5-6); Session 19 |
 | HB01 | Heath-Brown, Primes represented by x^3+2y^3, Acta Math. 186 (2001) 1-84 | journal scan supplied by Jerry | 96ffd7eb27e724d1ddecd6c738e7261c739c329f02fb222a9c964d0046ec10ae | pp. 2-10, 17-21, 52, 66-69, 72-73, 78-79; Session 19 follow-up (secondary notes by Maynard, X. Li also in notes/sources-hb-x3-2y3.md) |
+| MR16 | Matomäki–Radziwiłł, Multiplicative functions in short intervals, Ann. Math. 183 (2016) | arXiv:1501.04585v4 | ec546fdf256b3b3b26b161886c5bab5efb372978ab430c0032e55919f5329277 | Thm 1, Cor 1-6, pp. 1-19, 21-24, 29-31, 36-38 (helper; Thm 1 and Cor 2 re-checked by the coordinator); Session 21 (notes/sources-mr16.md) |
+| PM8b (again) | Thms 3.8, 3.12-3.15 (pp. 13-16), Cor 6.4, Prop 6.5, Remark 6.6, M_{2,eps} (pp. 44-46), Sec. 7.4 (pp. 62-68) | arXiv:1407.4897v4 | same hash | Session 21 (coordinator) |
 | Li21 | Lichtman, Averages of the Möbius function on shifted primes | arXiv:2009.08969v2 | (14 Nov) | abstract, §1 |
 
 Not opened yet: Bombieri, Le grand crible / The asymptotic sieve (1976); Opera de Cribro (paywalled); Selberg's original parity papers;
@@ -60,3 +62,12 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Next attempt candidates: (b') weights that change the twisted main terms (open question 2); (c) an integer structure in
   which "mu restricted to a line is a character" has a substitute (we know none for n -> n+2).
 
+
+## Session 21 (15 Nov, bonus run started 14:54 UTC) updates
+- Thread 2: Matomäki–Radziwiłł read in the source (paper v0.6, subsec:mr16, Remark rem:mr16-transfer). Next in thread 2: MRT averaged
+  Chowla in more detail only if needed; otherwise thread 2 is complete for the planned list (FI, HB, Tao, TT, MR, SS).
+- Thread 1/3 and this run's attempt: new Section sec:ceil (ceilings for the PM8b GEH criteria; Thm thm:k2: k = 2 exactly at the parity
+  value; Cor cor:consistent; Remark rem:pm65 on PM8b Prop 6.5). Route card notes/parity-attempts/2026-11-15-geh-ceilings-k2.md.
+- Open question 2 partly answered (DHL[5,3] not by PM8b's GEH criteria); new open question 6 (exact k = 3 supremum).
+- Next attempt candidates: (a) a dual certificate for the k = 3 supremum (open question 6; exploration of this run suggests about
+  2.003 at eps = 1/4); (b) weights that change the twisted main terms (open question 2); (c) Murty–Vatwani in the original if it arrives.

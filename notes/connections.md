@@ -27,6 +27,14 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   prop:tao-weight-logc to two-variable weights and, like it, is conditional on TT25.
 - Open question 3 answered from the literature: (R_3) at x^{2/3+} is a second hypothesis, logically independent of (B).
   No fixed-residue all-moduli absolute-value level beyond 1/2 is known.
+- Sec. sec:ceil (Session 21): Prop. prop:ceil / Cor. cor:ceil: PM8b's three GEH criteria have ratio <= k^2 log k/(k-1)^2, so they
+  cannot give DHL[k,3] for k <= 45 (parity blocks only k <= 4); Thm thm:k2: at k = 2 the Thm 3.14 ratio is <= 2 with equality;
+  Cor. cor:consistent: criteria and parity class agree on every blocked case. Depends on: PM8b Cor 6.4 and the statements of
+  Thms 3.8/3.12/3.14 only. Feeds into: the H_m line (any H_2 <= 12-type result needs a new criterion, not a better F; relevant to
+  notes/hm-programme.md); open question 6 (exact k = 3 supremum, heuristically about 2.003 at eps = 1/4). It is a statement about
+  the method, not about primes, and is no step toward twin primes.
+- Subsec. subsec:mr16 (Session 21): Matomaki-Radziwill read in the source; needs multiplicativity of a single function, so it says
+  nothing about lambda(n)lambda(n+2) or Lambda(n+2) directly (Remark rem:mr16-transfer, our reading).
 - Missing for twin primes: a bilinear (Type II) estimate for Lambda(n+2)-type sequences, an integer substitute for T_D,
   or any non-sieve input. Not in sight.
 
@@ -36,6 +44,8 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 
 - Bonus run (15 Nov): the mass deficit kappa_true of the 182 minorant was recomputed by two independent methods (58 digits);
   the printed bracket and kappa-bar <= kappa_cvx hold. This checks one constant; the restoration losses are still unchecked.
+- Session 21: the printed arithmetic of the restoration step (8.3), Sec. 10 totals, (10.2)-(10.3), Secs. 3.7, 13.3 re-done exactly
+  (86 checks pass, code/sharifi182_arith.py). The 197 component integrals are not printed, so they cannot be checked from the bundle.
 
 ## H_m programme (scoped, not started as a paper; notes/hm-programme.md)
 - PM8b Thm 6.7 lower bound reproduced (code/hm/pm8b_mk_lower.py): k = 35410 (MPZ) and 41588 (BV only) match.

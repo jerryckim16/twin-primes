@@ -1,0 +1,7 @@
+eps=0.25 n=6 cells=84 orbits=23 ratio>= 1.666667
+eps=0.25 n=8 cells=220 orbits=53 ratio>= 1.870106
+eps=0.25 n=10 cells=455 orbits=102 ratio>= 1.805602
+eps=0.25 n=12 cells=816 orbits=174 ratio>= 1.914315
+eps=0.25 n=16 cells=2024 orbits=406 ratio>= 1.936593
+eps=0.25 n=20 cells=4060 orbits=785 ratio>= 1.949958
+eps=0.25 n=24 cells=7140 orbits=1347 ratio>= 1.958854

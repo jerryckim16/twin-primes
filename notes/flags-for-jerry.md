@@ -1,5 +1,20 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-15 (Session 21) — (minor) Polymath8b, Proposition 6.5: one step of the printed proof is not justified (no result changes)
+- **What.** In D. H. J. Polymath, *Variants of the Selberg sieve...* (arXiv:1407.4897v4, Prop. 6.5, p. 44), the bound
+  M_{k,eps} <= k/(k-1) log(2k-1) is proved by Cauchy-Schwarz on fibres with the weight w_i = 1 - t_1 - ... - t_k + k t_i, followed by
+  "integrating and summing". That last step needs w_i >= 0 also off the fibres used. This fails when t_1 + ... + t_k > 1: for
+  example t_i = 0 and sum = 1 + eps give w_i = -eps. The same issue affects Remark 6.6 for a > 1/(1+eps). At eps = 0 the proof is fine.
+- **Why it might matter.** Hardly at all. Nothing in Polymath8b depends on it; the authors use it only to say that the gains from
+  enlarging the support are modest. A corrected argument gives (k/(k-1) + eps) log(2k-1). For small eps the scaling bound
+  (1+eps) k/(k-1) log k (the endpoint a = 1/(1+eps) of their own Remark 6.6) is stronger anyway. At k = 2 the printed constant
+  does hold, by this run's Theorem thm:k2.
+- **Evidence label:** Proved here (our reading of the printed proof; parity paper v0.6, Remark rem:pm65). Found while working on
+  this run's parity attempt; confirmed by a fresh-context adversarial auditor (notes/audit-parity-v06.md item 23: "the gap is
+  real ... the corrected bound is right"; at k = 2 the point (0, 1+eps) breaks the needed inequality pointwise).
+- **Not checked:** the journal version (Res. Math. Sci. 2014); whether the printed constant is true for all eps < 1 and k >= 3.
+- **Needs outside expert review:** no. It is a pointer to a proof slip in a remark-level proposition.
+
 ## 2026-11-15 (bonus run) — (minor) Sawin–Shusterman, Theorem 4.5: two different saving exponents in one proof (most likely a harmless slip)
 - **What.** In W. Sawin, M. Shusterman, *On the Chowla and twin primes conjectures over F_q[T]* (arXiv:1808.04001v2), the
   saving of Theorem 4.5 is stated as << |M_d|^{1 - beta/p} ((4.8), (4.35)). The proof on p. 22 says "we obtain a savings in each

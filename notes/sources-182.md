@@ -368,3 +368,14 @@ axiom reports are "standard-only" and "certify these conditional theorems, not t
   masks follow from the continuous shells by the grid rule of the 186 companion (1.19).
 - Next: I(F) by code/sharifi182_I.py (own derivation of the layered contraction; see its docstring), then J0, J+,
   tail with the 186 machinery.
+
+## 11. Session 21 (15 Nov 2026): printed arithmetic and source rows
+- Printed arithmetic of (8.3), Sec. 10 tables, (10.2)-(10.3), Sec. 3.7, Sec. 13.3 re-done exactly: code/sharifi182_arith.py,
+  notes/arith-182-report.md (86 PASS; one cosmetic NOTE: p. 15 radius decimal is rounded, not truncated).
+- Section 7 item 3 partly resolved: the 43 + 55 source rows ARE in the trial data (code/data182/TrialData182_part3_sources.lean),
+  and they satisfy every printed row definition exactly (code/sharifi182_rows.py, 30 PASS). Field reading: lowerBand = B,
+  upperBand = B^+, activation = xi, outerCore = a_r, innerCore = b_r, outerThreshold = A_r, innerThreshold = C_r, plateau = L.
+  The rows give T0 = 2491228441011/2624989000000 (= .2491228441011/rho*, so the printed decimal is exact) and S as printed;
+  the new ladder's T is T1.
+- Still not available: the individual A_j, M_j of the 197 components; low-witness bin windows, Chernoff beta, R, Q;
+  the size guards of [17, Lemma 4.1] per row (said to be checked, not printed).

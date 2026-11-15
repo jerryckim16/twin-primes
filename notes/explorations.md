@@ -3,6 +3,19 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-15, Session 21 -- How far above the parity value is Polymath8b's k = 3 criterion? (numerical experiment / variational structure)
+- Idea: this run proved (parity paper Thm thm:k2) that the Thm 3.14 ratio at k = 2 is exactly the parity value 2. At k = 3 PM8b's
+  Thm 3.15 certificate gives J/I = 2 + 5.77e-8 (exact fraction re-checked), i.e. barely above 2. Risky question: is the true k = 3
+  supremum also (essentially) 2, which would make H_1 <= 6 under GEH a knife-edge, or is there visible room?
+- Tried: code/explore/k3_thm314_grid.py (floating point; symmetric piecewise-constant F on cubes of side 1/n inside (3/2)R_3,
+  vanishing marginal imposed on every cell meeting the forbidden region, J only on cells fully inside (1-eps)R_2; eps = 1/4).
+  Output code/explore/k3_thm314_grid.out: n = 16, 20, 24 give 1.9366, 1.9500, 1.9589 (lower bounds for the grid class only).
+- Outcome: inconclusive, leaning "room exists but is small". Linear and quadratic extrapolation in 1/n both give about 2.003, so the
+  supremum at eps = 1/4 looks like roughly 2.003 (Heuristic), consistent with PM8b's > 2 and far below our ceiling c(3) = 2.472. The grid
+  class converges slowly (boundary loss O(1/n)); no certificate. Not promising enough for a flag.
+- Next if resumed: optimise over eps and use piecewise-linear elements on PM8b's polytope decomposition (their Sec. 7.4) to get an honest
+  lower bound above 2 and a dual (upper) certificate; that would answer open question 6 of the parity paper.
+
 ## 2026-11-15, bonus run (Session 20) -- Barban-Davenport-Halberstam variance for lambda(n)lambda(n+2): can L^2 information reach the twisted Type I input beyond level 1/2? (large sieve / probabilistic models)
 - Idea: the twisted Type I input of the parity obstruction is a statement about sum_{n = 0 (d)} lambda(n)lambda(n+2) for d up to x^theta.
   An L^2 (BDH-type) statement over all classes might be easier than a pointwise one. The BDH variance

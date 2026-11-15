@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.20, 15 November 2026}
+\date{Version 0.21, 15 November 2026}
 
 \begin{document}
 
@@ -2218,8 +2218,15 @@ exact simplex moment series after checking that the simplices tile the region
 \texttt{notes/}\allowbreak\texttt{kappa-182-report.md}). They agree to $58$ digits:
 $\kappa_{\mathrm{true}}=9.33070883240611992\ldots\cdot10^{-5}$, inside the printed
 bracket and below $\bar\kappa$ and $\kappa_{\mathrm{cvx}}$.
-Still unchecked: the restoration losses ($2.115\cdot10^{-4}$ claimed) and the
-analytic inputs.
+In version~0.21 the printed arithmetic of the restoration step was re-done
+exactly (\lbl{Computed}, one program, \texttt{code/}\allowbreak\texttt{sharifi182\_arith.py},
+report \texttt{notes/}\allowbreak\texttt{arith-182-report.md}; $86$ checks pass): the
+constants of (8.3), the four Section~10 subtotals from the printed group
+totals, $\bar L$ of (10.2), the margin of (10.3), and the inequalities of
+Sections~3.7 and 13.3. The bundle prints only group totals, so the $197$
+component integrals themselves cannot be checked from it. The $98$ source rows of the trial data satisfy the printed row definitions exactly ($30$ checks, \texttt{code/}\allowbreak\texttt{sharifi182\_rows.py}), and they give $T_0=2491228441011/2624989000000$ exactly.
+Still unchecked: the restoration integrals ($2.115\cdot10^{-4}$ claimed in
+total) and the analytic inputs.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
@@ -2339,6 +2346,13 @@ of this paper) does three things:
   only reformulates the problem as a M\"obius--prime correlation (compare a
   related theorem of Murty and Vatwani).
 \end{itemize}
+Its version~0.6 (version~0.21 of this paper) adds a section on where
+Polymath8b's GEH criteria stop (\lbl{Proved here}, elementary): their ratio is
+at most $k^2\log k/(k-1)^2$, so they cannot give $\mathrm{DHL}[k,3]$ for
+$k\le45$ although parity blocks only $k\le4$; and at $k=2$ the strongest of
+them reaches exactly the parity value $2$ and never exceeds it. It also reads
+Matom\"aki--Radziwi\l\l's short-interval theorem and records why it does not
+transfer to twin primes.
 It makes no claim of progress on the twin prime conjecture, which is open.
 \end{itemize}
 \end{sloppypar}
@@ -2520,6 +2534,9 @@ read in the source).
 \item[0.20] (15 Nov 2026) Mass deficit $\kappa_{\mathrm{true}}$ of the $182$
 minorant by two methods (Remark~\ref{rem:sha182}). Related results: parity
 paper version~0.5, verification note version~0.9.
+\item[0.21] (15 Nov 2026) Printed arithmetic of the $182$ restoration step
+re-done exactly, source rows checked (Remark~\ref{rem:sha182}). Related results: parity paper
+version~0.6, verification note version~0.10.
 \end{itemize}
 
 \begin{thebibliography}{99}

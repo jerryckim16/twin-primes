@@ -1,5 +1,24 @@
 # Research log
 
+## 2026-11-15 - Session 21 (bonus run at Jerry's request, started 8:54 AM CT / 14:54 UTC; no wait, no other run active): Where Polymath8b's GEH criteria stop: a ceiling k^2 log k/(k-1)^2 (no DHL[k,3] for k <= 45) and, at k = 2, exactly the parity value 2 (parity paper v0.6); the 182 restoration arithmetic and source rows checked
+
+- Parity paper v0.6 (this run's parity attempt): Polymath8b's three GEH criteria (Thms 3.8, 3.12(ii), 3.14) have ratio at most c(k) = k^2 log k/(k-1)^2 (Prop. prop:ceil, proved here by scaling their Cor 6.4). So they cannot give DHL[k,3] for any k <= 45, DHL[5,3] in particular (c(5) = 2.515 < 4), although Liouville-pattern weights block only k <= 4. Thresholds 46, 392, 2965, 22007 for m = 2..5 are certified with ball arithmetic.
+- New Theorem thm:k2 (proved here, possibly folklore): at k = 2 the Theorem 3.14 ratio is at most 2 for every eps in (0,1), with equality for an explicit step function. So the strongest GEH criterion reaches exactly the parity value 2 and never exceeds it; with Cor. cor:consistent the criteria agree with the parity class on every blocked case. This confirms the obstruction; it does not break it.
+- Also in v0.6: the printed proof of Polymath8b's Prop 6.5 has an unjustified step (a weight can be -eps off the fibres used); corrected constant (k/(k-1)+eps) log(2k-1); nothing in Polymath8b depends on it. Matomaki-Radziwill (arXiv:1501.04585v4) read in the source (thread 2). A fresh-context adversarial audit found no errors and 3 gaps (attribution to PM8b Remark 6.6, the m = 1 case of Cor. cor:consistent, a numerics reference), all fixed.
+- Bound share, rung 182: the printed arithmetic of the restoration step ((8.3), Sec. 10 totals, (10.2)-(10.3), Secs. 3.7, 13.3) was re-done exactly (86 checks pass), and the 43 + 55 source rows of the trial data satisfy every printed row definition (30 checks). The rows give T0 = 2491228441011/2624989000000 exactly. The 197 restoration integrals are not printed and remain unchecked. Verification note v0.10, main paper v0.21.
+- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
+
+Flag for Jerry: Minor: one step of the printed proof of Polymath8b's Proposition 6.5 is not justified (corrected constant (k/(k-1)+eps) log(2k-1)); no Polymath8b result depends on it.
+
+Parity attempt: Attempt: ceilings for Polymath8b's GEH criteria and the exact k = 2 value. Classification: proved (confirms and locates the obstruction): for 5 <= k <= 45 the failure to give DHL[k,3] is a variational ceiling, not a parity block, and at k = 2 the criterion sits exactly at 2. No parity-breaking content.
+
+Explored: How far above the parity value 2 is the Theorem 3.14 ratio at k = 3 (eps = 1/4)? Symmetric cube grids give 1.959 at n = 24 and extrapolate to about 2.003 (Heuristic), consistent with Polymath8b's certificate 2 + 5.8e-8; inconclusive (no certificate), recorded as open question 6.
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox not available (audits by fresh-context helper agents). Murty-Vatwani (JNT 2017) and BFI (Acta 1986) are still needed (notes/sources-needed.md). The k = 3 grid exploration converges too slowly to certify anything.
+
+Next: Weekly review first (Monday 16 Nov run). Parity: a certified answer to open question 6 (k = 3 supremum: piecewise-polynomial elements plus a dual bound), or weights that change the twisted main terms. Rung 182: the restoration integrals need the per-component data (not printed).
+
 ## 2026-11-15 - Session 20 (bonus run at Jerry's request, started 5:37 AM CT / 11:37 UTC; no wait, no other run active): What the integers lack compared with F_q[T]: Sawin-Shusterman's twin-prime proof read in the source and its split written over Z (parity paper v0.5); the 182 minorant's mass deficit by two methods
 
 - Parity paper v0.5 (thread 2 and this run's parity attempt): Sawin-Shusterman's proof of twin primes in F_q[T] (arXiv:1808.04001v2) read in the source. It has no sieve. It splits Lambda = -mu log * 1 at a level D, and handles the large-Mobius range through a characteristic-p identity (their Lemma 3.2: (r+s^p)' = r', so mu on a line is a quadratic character) together with character sums below the Burgess range.
