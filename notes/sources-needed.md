@@ -33,3 +33,16 @@
 - Tried (Session 19, 15 Nov 2026, helper): no arXiv copy found (arXiv math/0007012 is a different paper); intlpress.com Acta archive: HTTP 403; projecteuclid.org: Incapsula bot-challenge page; link.springer.com: paywall (preview only); people.maths.ox.ac.uk/hbrown/: HTTP 404. A third-party mirror was not used. Not worked around.
 - What we have: secondary descriptions only (Maynard arXiv:1507.05080v2; X. Li arXiv:2111.05403v1), in notes/sources-hb-x3-2y3.md. Nothing from Heath-Brown's paper enters the parity paper until the primary source is read.
 - Status: received (journal scan uploaded by Jerry Kim, 15 Nov 2026, Session 19 follow-up; SHA-256 96ffd7eb...ec10ae, not committed; notes in notes/sources-hb-x3-2y3.md, used in parity paper v0.4).
+
+## Murty, Vatwani: "Twin primes and the parity problem", J. Number Theory 180 (2017), 643-659, doi:10.1016/j.jnt.2017.05.011
+- Why: parity paper v0.5, Prop. prop:ss-split. It is essentially their Thm 1.1 (as quoted by Cantarini, arXiv:2607.09110v1, p. 2).
+  We need the exact statement, its hypotheses, and whether the unconditional BV-level form is in it.
+- Tried (bonus run, 15 Nov 2026): https://mast.queensu.ca/~murty/TwinPrimes-Parity.pdf returned HTTP 200, but the content was an HTML page
+  (the Queen's website), not the PDF. No arXiv version found (one standard web search). Not worked around.
+- Status: needed.
+
+## Bombieri, Friedlander, Iwaniec: "Primes in arithmetic progressions to large moduli", Acta Math. 156 (1986), 203-251, doi:10.1007/BF02399204
+- Why: parity paper open question 3 (fixed-residue level beyond 1/2: "Theorem A" and Theorem 10, known to us only as quoted by Maynard and Lichtman).
+- Tried (bonus run, 15 Nov 2026, helper): doi.org redirects to projecteuclid.org, which returned a 1157-byte Incapsula challenge page. Not worked around.
+- Status: needed (low priority; the secondary quotes are enough for the open question).
+

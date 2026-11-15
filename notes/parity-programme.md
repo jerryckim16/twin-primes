@@ -47,3 +47,16 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   as a strengthening of Prop. prop:tao-weight, labelled conditional on the preprint).
 - Next attempt candidates: (a) the deduction above; (b) weights outside the class (residue-class version explored: classwise
   fairness gives nothing new, global fairness is the wrong notion; see notes/explorations.md); (c) the function-field step.
+
+## Bonus run (15 Nov, after Session 19) updates
+- Sources read: SS19 arXiv:1808.04001v2 (SHA-256 5b762a0888363d2d1140bb9831a6d940586208f690b4dda3fa6e712337e0a687; notes/sources-sawin-shusterman.md);
+  Li21 again (p. 1); Cantarini arXiv:2607.09110v1 (15625c8524d6a89944f085ece4dd75c8ab0d5dc4e04fd98f2ebeb531114afc9c; pp. 1-3, quoting Murty-Vatwani);
+  for open question 3 (helper): Polymath8a 1402.0811v3, Maynard 2006.06572v2 / 2006.07088v1 / 2006.08250v1, Lichtman 2211.09641v1 / 2309.08522v1
+  (hashes in notes/sources-oq3-level.md). Not opened: Murty-Vatwani (JNT 2017), BFI (Acta 1986); see notes/sources-needed.md.
+- Thread 2: Sawin-Shusterman done (paper v0.5, Section sec:ss). Next: Matomaki-Radziwill (2016) or the original Murty-Vatwani.
+- Thread 3: Prop. prop:ss-split. Open question 3 answered from the literature (no all-moduli fixed-residue absolute-value result
+  beyond x^{1/2}; weighted records 17/32 bilinear and 66/107 well-factorable; none reaches 2/3).
+- Open question 5 answered conditionally (Cor. cor:maynard-logc).
+- Next attempt candidates: (b') weights that change the twisted main terms (open question 2); (c) an integer structure in
+  which "mu restricted to a line is a character" has a substitute (we know none for n -> n+2).
+

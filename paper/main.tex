@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.19, 15 November 2026}
+\date{Version 0.20, 15 November 2026}
 
 \begin{document}
 
@@ -2210,6 +2210,14 @@ $q_H-1=2.767059\cdot10^{-4}$, above the certified $\mu^-=2.766919\cdot10^{-4}$;
 the tail costs $7.86\cdot10^{-5}$ of $q_H$, so the claimed final margin
 ($6.52\cdot10^{-5}$) would be lost if the true tail were about $1.83$ times
 larger.
+In version~0.20 the mass deficit $\kappa_{\mathrm{true}}$ of the five-prime
+minorant (\cite{Sha26}, (4.2)) was recomputed by two methods: our own
+reduction to three variables with Gauss--Legendre quadrature, and the paper's
+exact simplex moment series after checking that the simplices tile the region
+(\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_kappa.py}, report
+\texttt{notes/}\allowbreak\texttt{kappa-182-report.md}). They agree to $58$ digits:
+$\kappa_{\mathrm{true}}=9.33070883240611992\ldots\cdot10^{-5}$, inside the printed
+bracket and below $\bar\kappa$ and $\kappa_{\mathrm{cvx}}$.
 Still unchecked: the restoration losses ($2.115\cdot10^{-4}$ claimed) and the
 analytic inputs.
 \end{remark}
@@ -2320,8 +2328,18 @@ effective) for Selberg-type weights
 $\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$, uniformly in $\lambda_1=1$,
 $|\lambda_d|\le1$, conditionally on a quantitative correlation
 theorem of Tao and Ter\"av\"ainen (an unrefereed preprint); this only confirms
-the input of the obstruction at a larger level. It makes no claim of progress on the
-twin prime conjecture, which is open.
+the input of the obstruction at a larger level. Its version~0.5 (version~0.20
+of this paper) does three things:
+\begin{itemize}
+\item it extends this to Maynard's two-variable weights;
+\item it answers its open question on the level of (R$_3$) from the literature;
+\item it reads Sawin--Shusterman's proof of twin primes in $\mathbb F_q[T]$ and
+  locates the step with no integer analogue (a characteristic-$p$ identity
+  that turns $\mu$ on a line into a character). Over $\mathbb Z$ the same split
+  only reformulates the problem as a M\"obius--prime correlation (essentially a
+  theorem of Murty and Vatwani).
+\end{itemize}
+It makes no claim of progress on the twin prime conjecture, which is open.
 \end{itemize}
 \end{sloppypar}
 
@@ -2499,6 +2517,9 @@ consistent with the published bound. The $182$ claim remains unverified
 paper's version~0.3 (the twisted Type~I input at level $(\log x)^{c_0}$,
 conditional on a preprint), and its version~0.4 (Heath-Brown's $x^3+2y^3$,
 read in the source).
+\item[0.20] (15 Nov 2026) Mass deficit $\kappa_{\mathrm{true}}$ of the $182$
+minorant by two methods (Remark~\ref{rem:sha182}). Related results: parity
+paper version~0.5, verification note version~0.9.
 \end{itemize}
 
 \begin{thebibliography}{99}
