@@ -3,28 +3,43 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 19, 15 Nov 2026): PHASE B
+## POSITION (after Session 20, a bonus run, 15 Nov 2026): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.4, verification-note v0.8 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
-  NOT started as a paper. Main paper v0.19.
+- Active papers: parity-barrier v0.5, verification-note v0.9 (at most 3 active). H_m programme scoped (notes/hm-programme.md),
+  NOT started as a paper. Main paper v0.20.
 - First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
 
 ## Next steps (in order; Phase B)
 1. Weekly review (Monday 16 Nov run).
 2. Parity attempt (one per run; route card + README line). Not to repeat: FI (B) for Lambda(n+2) (14 Nov); Tao two-point along
-   periodic weights (15 Nov); bipartite criterion for Liouville-pattern weights (15 Nov); TT25 at level (log x)^{c0} (Session 19,
-   done); extra Liouville coordinates (exploration, Session 19: provably nothing); residue-class weights with classwise fairness
-   (exploration, Session 18). Candidates: (a) the function-field step (Sawin-Shusterman arXiv:1808.04001: which step has no integer
-   analogue); (b) Maynard two-variable weights at level (log x)^{c0} via TT25 (moduli up to R^4; open question 5 of the paper);
-   (c) weights that change the twisted main terms (open question 2).
-3. Parity paper thread 2: Heath-Brown x^3+2y^3 DONE (v0.4, Session 19 follow-up, journal scan supplied by Jerry). Next:
-   Sawin-Shusterman (arXiv:1808.04001), or Matomaki-Radziwill.
-4. Bound share, rung 182: I, J0, J+, T all by two programs (Session 19). Next: scope the restoration losses (Thm 8.1, (8.6); 197 source
-   integrals, 60 outer + 137 inner; row tables partly underspecified in the PDF, see notes/sources-182.md section 7 item 3).
+   periodic weights (15 Nov); bipartite criterion for Liouville-pattern weights (15 Nov); TT25 at level (log x)^{c0} (Session 19;
+   two-variable weights done in Session 20); extra Liouville coordinates (exploration, Session 19); residue-class weights with
+   classwise fairness (exploration, Session 18); integer transposition of Sawin-Shusterman's split (Session 20: only relocates the
+   problem into T_D, notes/parity-attempts/2026-11-15-ss-step-over-Z.md); L^2/BDH route to the twisted Type I input (exploration,
+   Session 20: capped at level 1/2). Candidates: (a) weights that change the twisted main terms (open question 2);
+   (b) an integer structure where "mu on a line is a character" has a substitute (none known for n -> n+2).
+3. Parity paper thread 2: done for FI a^2+b^4, Heath-Brown x^3+2y^3, Sawin-Shusterman. Next: Matomaki-Radziwill (2016), or the
+   original Murty-Vatwani (JNT 2017; requested, notes/sources-needed.md) to pin down prop:ss-split's relation to it.
+   Thread 3: which hypotheses are known NOT to suffice (EH/GEH for sieve methods: PM8b sec 8).
+4. Bound share, rung 182: I, J0, J+, T by two programs (Sessions 18-19); kappa_true by two methods (Session 20). Next: scope the
+   restoration losses (Thm 8.1, (8.6); 197 source integrals; row tables partly underspecified in the PDF, see notes/sources-182.md
+   section 7 item 3; TrialData182_part3_sources.lean may contain the rows), or the (8.3)/(10.2)-(10.3) rational arithmetic (cheap).
 5. 3g share: decide on a second small-results paper at the weekly review (capped-variational theory, or the H_m (varpi, delta) region).
 6. Optional 186 follow-ups; low priority: one-sided --bonf certificate on the Song-Yue witness; k = 45 Schwartz-Zippel resume.
+
+## Session 20 (bonus run at Jerry's request, 11:37 UTC 15 Nov; no wait) -- additions
+- Parity paper v0.5: Section sec:ss (Sawin-Shusterman read in arXiv:1808.04001v2, notes/sources-sawin-shusterman.md),
+  Prop. prop:ss-split (over Z, unconditionally: twin asymptotic iff T_D(x) = o(x); compare Murty-Vatwani, known to us only via
+  Cantarini arXiv:2607.09110v1), Remark rem:ss-transfer; Cor. cor:maynard-logc (two-variable weights, conditional on TT25);
+  open question 3 answered from the literature (notes/sources-oq3-level.md). Audit notes/audit-parity-v05.md (all fixed).
+- Rung 182: code/sharifi182_kappa.py (run with /usr/bin/python3 -I; python-flint is installed only there), result
+  code/data182/kappa_result.json, notes/kappa-182-report.md, notes/sources-182-kappa.md. Verification note v0.9, main paper v0.20.
+- Exploration: code/explore/bdh_twin_liouville.py (dead end, notes/explorations.md).
+- Minor flag: Sawin-Shusterman Thm 4.5 saving exponent beta/p vs beta/(2p) (notes/flags-for-jerry.md).
+- Sources needed: Murty-Vatwani (JNT 2017), BFI (Acta 1986).
+- Wolfram and mathbox NOT available.
 
 ## Session 19 follow-up (15 Nov, after the merge of PR #39)
 - Jerry uploaded Heath-Brown's x^3+2y^3 (journal scan, SHA-256 in notes/sources-hb-x3-2y3.md; not committed). Parity paper v0.4:

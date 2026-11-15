@@ -29,19 +29,18 @@ is open and nothing here proves it or comes close. We state, with quotations
 checked in the sources, the (heuristic) parity obstruction that stops sieve
 methods of Maynard--Tao type at $H_1\le6$ even under GEH, and the
 Friedlander--Iwaniec asymptotic sieve, whose bilinear axiom breaks parity. For
-$a_n=\Lambda(n+2)$ every hypothesis of that sieve except the Type~I and
-bilinear ones holds, and the simplest bilinear bound has no cancellation for
-the parity-twisted sequence. Our own results (labelled ``Proved here''): the
+$a_n=\Lambda(n+2)$ all its hypotheses except the Type~I and bilinear ones
+hold, and the bilinear one fails for the parity-twisted sequence. Our own results (labelled ``Proved here''): the
 twisted Type~I input of the obstruction holds for log-averaged sieve weights of
 bounded level and, conditionally on an unrefereed preprint
-of Tao and Ter\"av\"ainen, at level $(\log x)^{c_0}$; and a weight of the
+of Tao and Ter\"av\"ainen (whose proof we have not checked), at level $(\log x)^{c_0}$; and a weight of the
 Polymath8b kind can block a close-prime target exactly when its target graph
 is bipartite, which explains the number $6$, gives the analogue $H_m<H(2m+1)$,
 and corrects the printed weight of Polymath8b's Remark~8.1. We also record which
 structure the bilinear estimates for $a^2+b^4$ and $x^3+2y^3$ use, and which
 step of Sawin--Shusterman's proof of twin primes in $\mathbb F_q[T]$ has no
 integer analogue: over $\mathbb Z$ the same split leaves a M\"obius--prime
-correlation that is as hard as the original problem.
+correlation that is no easier than the original problem.
 \end{abstract}
 
 \maketitle
@@ -333,8 +332,9 @@ version~0.3, suggested by the audit of Proposition~\ref{prop:tao-weight-logc}).
 
 \begin{corollary}[\lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25} (preprint)}]
 \label{cor:maynard-logc}
-Let $c$ be the constant of \cite[Theorem~3.1]{TT25} and $c_0'=c/32$. For
-$x\ge x_0$, $1\le R\le(\log x)^{c_0'}$ and real $(\lambda_{d_1,d_2})_{d_1,d_2\le R}$
+Let $c$ be the constant of \cite[Theorem~3.1]{TT25} and $c_0'=c/32$. There is
+an absolute $x_0$ such that for $x\ge x_0$, $1\le R\le(\log x)^{c_0'}$ and real
+$(\lambda_{d_1,d_2})_{d_1,d_2\le R}$
 with $\lambda_{1,1}=1$ and $|\lambda_{d_1,d_2}|\le1$, put
 \[
 w(n)=\left(\sum_{d_1\mid n,\ d_2\mid n+2,\ d_1,d_2\le R}\lambda_{d_1,d_2}\right)^2 .
@@ -346,12 +346,12 @@ Then $\left|\sum_{n\le x}w(n)\lambda(n)\lambda(n+2)/n\right|\le(\log x)^{-c_0'}\
 We reuse the steps of the proof of Proposition~\ref{prop:tao-weight-logc},
 with $\kappa=c/4$. Expanding the square,
 \[
-w(n)=\sum_{d_1,d_2,e_1,e_2\le R}\lambda_{d_1,d_2}\lambda_{e_1,e_2}\,
-1_{A\mid n}\,1_{B\mid n+2},\qquad A=[d_1,e_1],\ B=[d_2,e_2].
+w(n)=\sum_{d_1,d_2,d_1',d_2'\le R}\lambda_{d_1,d_2}\lambda_{d_1',d_2'}\,
+1_{A\mid n}\,1_{B\mid n+2},\qquad A=[d_1,d_1'],\ B=[d_2,d_2'].
 \]
 The conditions $A\mid n$, $B\mid n+2$ are solvable only if $(A,B)\mid2$, and
 then, by the Chinese remainder theorem, they define a single class modulo
-$e=[A,B]=[d_1,d_2,e_1,e_2]\le R^4\le(\log x)^{\kappa/2}$. The bound for one
+$e=[A,B]=[d_1,d_2,d_1',d_2']\le R^4\le(\log x)^{\kappa/2}$. The bound for one
 class, $|S(e,c;x)|\ll(\log x)^{1-\kappa/2}/e+1$, is proved there for every
 $e\le(\log x)^{\kappa/2}$ and every residue $c$, so
 \[
@@ -371,6 +371,13 @@ The ratio is therefore
 $\ll(\log x)^{-\kappa/2+o(1)}+(\log x)^{\kappa/2-1+o(1)}\le(\log x)^{-\kappa/8}$
 for $x\ge x_0$, and $\kappa/8=c/32$.
 \end{proof}
+
+Maynard's own weights are not normalised to $\lambda_{1,1}=1\ge|\lambda_{d_1,d_2}|$;
+since the inequality is homogeneous, weights with
+$\max|\lambda_{d_1,d_2}|\le M|\lambda_{1,1}|$ are covered at the cost of a
+factor $M^2$ on the right. Like Proposition~\ref{prop:tao-weight-logc}, this
+only confirms the input of the parity obstruction and gives no lower bound for
+twin primes; the proof of \cite[Theorem~3.1]{TT25} was not checked.
 
 \section{Which close-prime targets the obstruction blocks}\label{sec:bip}
 
@@ -868,7 +875,7 @@ $q>685090\,p^2$. For every nonzero $h\in\mathbb F_q[T]$, the number of $f$
 with $|f|=X$ such that $f$ and $f+h$ are both irreducible is
 $\sim\mathfrak S_q(h)\,X/\log_q^2X$ as $X\to\infty$ through powers of $q$, with
 a power saving. So $q$ is fixed and the degree tends to infinity; this is not
-a large-$q$ limit (their Remark~1.6, p.~5, contrasts it with that regime).
+a large-$q$ limit (their Remark~1.6, p.~5, discusses that regime separately).
 They say (p.~2): ``The main ingredient in the proof of Theorem~1.1 is the
 removal of the `parity barrier'.''
 
@@ -878,7 +885,7 @@ We list the steps as read in \cite{SS19} (notes and page references in
 \begin{enumerate}
 \item \emph{Deduction.} Only the identity $\Lambda=-1\star(\mu\cdot\deg)$
   \cite[(5.7), p.~25]{SS19} is used, and the degree of the M\"obius variable is
-  split into two ranges \cite[(6.19)--(6.22), pp.~30--31]{SS19}. No sieve
+  split into two ranges \cite[(6.19)--(6.26), pp.~30--31]{SS19}. No sieve
   is used. Type~I and Type~II sums occur only in Appendix~A, in the analogue
   of a Fouvry--Michel bound for $\mu$ twisted by additive characters.
 \item \emph{Small M\"obius variable.} This range uses $\Lambda$ in
@@ -898,8 +905,9 @@ We list the steps as read in \cite{SS19} (notes and page references in
     properties of the M\"obius function (in positive characteristic)''
     (p.~3).
   \item Short character sums below the Burgess range, from vanishing cycles
-    and Deligne's theorem, once $q$ is large compared with $p^2$ (Section~2;
-    Corollary~2.7, p.~13). Over $\mathbb Z$, ``the exponent $1/4$ has not yet
+    and Deligne's theorem (Section~2; Corollary~2.7, p.~13). Because
+    Lemma~3.2 shortens the sums by a factor $p$, this needs $q$ large
+    compared with $p^2$ (Theorem~4.5, (4.33)). Over $\mathbb Z$, ``the exponent $1/4$ has not yet
     been improved (even conditionally)'' (p.~4).
   \end{itemize}
 \end{enumerate}
@@ -916,20 +924,21 @@ and, for $1\le D\le x$,
 T_D(x)=\sum_{e<x/D}\ \sum_{D<d\le x/e}\mu(d)\log d\ \Lambda(de+2).
 \]
 
-\begin{proposition}[\lbl{Proved here}; elementary, and essentially contained in \cite{MV17} as quoted in \cite{Cit26}]\label{prop:ss-split}
+\begin{proposition}[\lbl{Proved here}; elementary, possibly folklore; compare \cite{MV17}]\label{prop:ss-split}
 Let $A>0$, and let $x^{c}\le D\le x^{1-c}$ for some fixed $c>0$. Suppose that
 \[
 \textup{(EH}_D\textup{)}\qquad
 \sum_{\substack{d\le D\\ d\text{ odd}}}\mu^2(d)\left|\sum_{\substack{n\le x\\ d\mid n}}\Lambda(n+2)-\frac{x}{\varphi(d)}\right|\ll_A\frac{x}{(\log x)^{A+1}}.
 \]
-Then $\sum_{n\le x}\Lambda(n)\Lambda(n+2)=2C_2x-T_D(x)+O_A(x(\log x)^{-A})$.
+Then $\sum_{n\le x}\Lambda(n)\Lambda(n+2)=2C_2x-T_D(x)+O_{A,c}(x(\log x)^{-A})$.
 By the Bombieri--Vinogradov theorem, (EH$_D$) holds for
 $D=x^{1/2}(\log x)^{-B(A)}$. Hence, unconditionally,
 \[
 \sum_{n\le x}\Lambda(n)\Lambda(n+2)\sim2C_2x\iff T_D(x)=o(x)\qquad\text{for }D=x^{1/2}(\log x)^{-B(A)}.
 \]
-The same equivalence holds for $D=x^{\theta}$, $\theta<1$, under the
-Elliott--Halberstam conjecture for the residue class $2$.
+The same equivalence holds for $D=x^{\theta}$, $\theta<1$, whenever
+(EH$_D$) holds there, that is, under the Elliott--Halberstam conjecture with
+absolute values for the fixed residue $2$ and odd moduli.
 \end{proposition}
 
 \begin{proof}
@@ -967,22 +976,28 @@ sum is $\psi(x+2;d,2)+O(1)$ for odd $d$.
 \lbl{Literature and Heuristic.}
 \begin{itemize}
 \item For $D$ close to $x$ (under EH) only $e<x^{c}$ remains in $T_D$. The
-  term $e=1$ is essentially $\sum_{p}\mu(p-2)\log p\log(p-2)$. That
-  $\sum_{p\le X}\mu(p+h)=o(\pi(X))$ for fixed $h\ne0$ is called a folklore
-  conjecture by Lichtman \cite[p.~1]{Li21}, who proves it on average over
-  $h\le H$ when $\log H/\log\log X\to\infty$ \cite[Theorem~1.1]{Li21}.
-\item Murty and Vatwani's theorem, as quoted in \cite[Theorem~3, p.~2]{Cit26}
-  (we could not open \cite{MV17} itself), states the same equivalence in the
-  form $\sum_{n\le N}\Lambda(n)\mu(n+h)=o(N)$, under EH and an
-  Elliott--Halberstam hypothesis for $\Lambda(n)\mu(n+h)$.
-\item Over $\mathbb F_q[T]$ the quantity $T_D$ is exactly what
-  \cite[Corollary~6.1]{SS19} bounds, through the characteristic-$p$ identity
-  of step~(4). The integers have no subring like $\mathbb F_q[T^p]$ and no
+  term $e=1$ is essentially $\sum_{p}\mu(p-2)\log p\log(p-2)$, whose trivial
+  size is about $x\log x$. That $\sum_{p\le X}\mu(p+h)=o(\pi(X))$ for fixed
+  $h>0$ is called a folklore conjecture by Lichtman \cite[p.~1]{Li21}, who
+  proves it on average over $h\le H<X$ when $\log H/\log\log X\to\infty$
+  \cite[Theorem~1.1]{Li21}. The shift $-2$ needed here is the same kind of
+  statement, but the bound $o(x)$ needed for this term is stronger than the
+  conjecture by more than a factor $\log x$.
+\item A related equivalence is due to Murty and Vatwani, as quoted in
+  \cite[Theorem~3, p.~3]{Cit26} (we could not open \cite{MV17} itself): under
+  EH at level $N^{\theta}$ and an Elliott--Halberstam hypothesis for
+  $\Lambda(n)\mu(n+h)$ at the complementary level $N^{1-\theta}$, the
+  asymptotic for $\sum\Lambda(n)\Lambda(n+h)$ is equivalent to
+  $\sum_{n\le N}\Lambda(n)\mu(n+h)=o(N)$. Their condition is a different
+  quantity from $T_D$, and their statement is conditional.
+\item Over $\mathbb F_q[T]$ the analogue of $T_D$ is \cite[(6.22)]{SS19},
+  which they bound by applying \cite[Corollary~6.1]{SS19} to each innermost
+  sum, through the characteristic-$p$ identity of step~(4). The integers have no subring like $\mathbb F_q[T^p]$ and no
   derivative with $(r+s^p)'=r'$, so as far as we can see the step with no
   integer analogue is Lemma~3.2 of \cite{SS19}, together with the
   sub-Burgess character sums it feeds.
 \item $T_D$ is a correlation of $\mu$ at large arguments with primes, of the
-  kind that Proposition~\ref{prop:B-parity}(3) shows carries the parity
+  kind that Proposition~\ref{prop:B-parity}(1)--(2) shows carries the parity
   information. The split is a reformulation, not progress: the first
   unresolved implication is $T_D(x)=o(x)$ for even one admissible $D$.
 \end{itemize}
@@ -1159,7 +1174,11 @@ suffice). Nothing enters before it is read in the source.
   Remark~\ref{rem:ss-transfer}; Corollary~\ref{cor:maynard-logc}
   (two-variable weights, answering open question~5 conditionally); open
   question~3 answered from the literature. Fresh-context audit applied
-  (file \texttt{audit-parity-v05.md} in \texttt{notes/}).
+  (file \texttt{audit-parity-v05.md} in \texttt{notes/}); fixes: the
+  relation to Murty--Vatwani weakened to ``compare'', the page of Cantarini's
+  Theorem~3, the folklore conjecture is weaker than what the $e=1$ term needs,
+  the source of the condition $q\gg p^2$, the normalisation of Maynard's
+  weights, several page references.
 \end{itemize}
 
 \end{document}

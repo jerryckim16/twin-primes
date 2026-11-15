@@ -1,5 +1,24 @@
 # Research log
 
+## 2026-11-15 - Session 20 (bonus run at Jerry's request, started 5:37 AM CT / 11:37 UTC; no wait, no other run active): What the integers lack compared with F_q[T]: Sawin-Shusterman's twin-prime proof read in the source and its split written over Z (parity paper v0.5); the 182 minorant's mass deficit by two methods
+
+- Parity paper v0.5 (thread 2 and this run's parity attempt): Sawin-Shusterman's proof of twin primes in F_q[T] (arXiv:1808.04001v2) read in the source. It has no sieve. It splits Lambda = -mu log * 1 at a level D, and handles the large-Mobius range through a characteristic-p identity (their Lemma 3.2: (r+s^p)' = r', so mu on a line is a quadratic character) together with character sums below the Burgess range.
+- Written over Z, the same split gives (Prop. prop:ss-split, proved here, elementary, possibly folklore; compare a related theorem of Murty-Vatwani, known to us only as quoted): unconditionally, by Bombieri-Vinogradov, sum Lambda(n)Lambda(n+2) ~ 2C_2 x holds if and only if T_D(x) = o(x), where T_D is a Mobius-prime correlation; under EH the same holds for any D = x^theta. This is a reformulation, not progress. Even the folklore conjecture on Mobius at shifted primes is weaker, by a factor log x, than what the e = 1 term of T_D needs.
+- Also in v0.5: Corollary cor:maynard-logc extends the twisted Type I input at level (log x)^{c/32} to Maynard's two-variable weights (conditional on the Tao-Teravainen preprint). Open question 3 is answered from the literature: no fixed-residue, absolute-value level beyond x^{1/2} for all moduli is known; the weighted records are 17/32 and 66/107; none reaches the 2/3 that the asymptotic sieve needs. A fresh-context adversarial audit found 2 errors, 3 gaps and 10 wording points, all fixed before release (notes/audit-parity-v05.md).
+- Bound share, rung 182: the mass deficit kappa_true of the five-prime minorant was recomputed by two independent methods: our own 3-variable reduction with Gauss-Legendre quadrature, and the paper's exact simplex moment series after checking that the simplices tile the region. They agree to 58 digits, kappa_true = 9.3307088324061199e-5. It lies inside the printed bracket and below kappa-bar and kappa_cvx. Verification note v0.9, main paper v0.20.
+- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
+
+Flag for Jerry: Minor: Sawin-Shusterman's Theorem 4.5 states its saving exponent as beta/p, but its proof (p. 22) says beta/(2p). Most likely a harmless slip; the Annals version was not checked.
+
+Parity attempt: Attempt: locate the step of Sawin-Shusterman's twin-prime proof that has no integer analogue. Classification: located (reformulation). Over Z their split leaves T_D, a Mobius-prime correlation; the missing step is their characteristic-p Lemma 3.2. First unresolved implication: T_D(x) = o(x) for one admissible D.
+
+Explored: Can L^2 (Barban-Davenport-Halberstam) information on lambda(n)lambda(n+2) replace the pointwise twisted Type I input? Dead end: Cauchy-Schwarz caps any such route at level 1/2 even with random-sign variance, and the numerics at 10^7 look random (V(200)/(200N) = 0.983).
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox not available (audits done by fresh-context helper agents). Murty-Vatwani (JNT 2017): the Queen's URL returned an HTML page, not the PDF; BFI (Acta 1986): bot challenge. Both are recorded in notes/sources-needed.md.
+
+Next: Weekly review first (Monday 16 Nov run). Then parity: Matomaki-Radziwill, or the Murty-Vatwani original if it arrives; attempt candidate: weights that change the twisted main terms (open question 2). Rung 182: the restoration losses (row tables partly underspecified).
+
 ## 2026-11-15 - Session 19 follow-up (after Jerry uploaded Heath-Brown's paper, same day; no wait): Heath-Brown's x^3+2y^3 read in the source: what its bilinear estimate uses (parity paper v0.4)
 
 - Jerry supplied the journal scan of Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 186 (2001)), requested in Session 19. Read in the source (theorem, outline, Lemmas 2.1, 3.8, 3.10, Sections 11-13) and added to the parity paper as Section subsec:hb-x3 (Literature) with Remark rem:hb-transfer (Heuristic).

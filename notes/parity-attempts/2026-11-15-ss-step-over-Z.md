@@ -1,6 +1,6 @@
 # Route card: the step of Sawin-Shusterman's twin-prime proof that has no integer analogue (15 Nov 2026, bonus run)
 
-Status: **located (reformulation; proved here, elementary; essentially Murty-Vatwani Thm 1.1 as quoted secondhand)**.
+Status: **located (reformulation; proved here, elementary, possibly folklore; compare Murty-Vatwani Thm 1.1 as quoted secondhand)**.
 The twin prime conjecture is open. Nothing here claims progress on it.
 
 ## Question
@@ -32,16 +32,18 @@ Which step of their proof has no integer analogue? And if the other steps are tr
   - The main term is -x Sum_{d odd} mu(d) log d/phi(d) = 2 C_2 x, by the Euler product.
 - Paper v0.5, Prop. prop:ss-split, unconditionally: the twin prime asymptotic holds iff T_D(x) = o(x) at
   D = x^{1/2}(log x)^{-B}. Under EH the same holds at any D = x^theta, theta < 1.
-- When D is near x, the e = 1 part of T_D is Lichtman's folklore conjecture with shift -2.
+- When D is near x, the e = 1 part of T_D is of the type of Lichtman's folklore conjecture (shift -2). But o(x) for it is
+  stronger than that conjecture by more than a factor log x (audit, item 4).
 - In F_q[T], T_D is exactly the sum that SS bound in Cor 6.1, through Thm 4.5 and Lemma 3.2: in characteristic p,
   (r+s^p)' = r', and Pellet's formula then turns mu(r+s^p) into a quadratic character in s.
 
 ## Classification
 - **No-go reached.** The step with no integer analogue is SS Lemma 3.2 (with the sub-Burgess character sums of their
   Sec. 2 that it feeds). Transposed to Z, SS's split is a reformulation: it moves the whole problem into T_D, a
-  mu-Lambda correlation. Prop. prop:B-parity(3) shows that a correlation of this kind carries the parity information.
+  mu-Lambda correlation. Prop. prop:B-parity(1)-(2) shows that a correlation of this kind carries the parity information.
 - First unresolved implication: T_D(x) = o(x) for even one admissible D.
-- Not new: the equivalence is essentially Murty-Vatwani Thm 1.1 (as quoted). Our version is unconditional at the
+- Not new in spirit: compare Murty-Vatwani Thm 1.1 (as quoted). Theirs is conditional (EH plus a Mobius-twisted EH) and
+  uses a different quantity. Audit: notes/audit-parity-v05.md (2 errors, 3 gaps, all fixed). Our version is unconditional at the
   BV level, and its residual is written in SS's variables.
 - Not to repeat: integer transpositions of SS's split without a new input for T_D.
 - Possible next inputs (open): an integer substitute for "mu restricted to a line is a character". The nearest

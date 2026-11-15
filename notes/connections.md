@@ -21,8 +21,8 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Props. prop:fi-twin, prop:B-parity, Remark rem:fi-transfer: what the asymptotic sieve would need for Lambda(n+2); the bilinear
   estimate is exactly the parity-sensitive missing piece; FI's a^2+b^4 shows which structure made it provable there.
 - Prop. prop:ss-split, Remark rem:ss-transfer (bonus run, 15 Nov): written over Z, Sawin-Shusterman's split leaves
-  T_D, a mu-Lambda correlation. Unconditionally, twin primes ~ 2C_2 x iff T_D(x) = o(x). This is essentially Murty-Vatwani
-  Thm 1.1, as quoted. Depends on: BV, or EH for larger D. Feeds into: a sharp statement of what F_q[T] has and Z lacks
+  T_D, a mu-Lambda correlation. Unconditionally, twin primes ~ 2C_2 x iff T_D(x) = o(x). A related equivalence is Murty-Vatwani
+  Thm 1.1, as quoted (conditional, different quantity). Depends on: BV, or EH for larger D. Feeds into: a sharp statement of what F_q[T] has and Z lacks
   (SS Lemma 3.2: mu on a line is a character). It is a reformulation and gives no progress. Cor. cor:maynard-logc extends
   prop:tao-weight-logc to two-variable weights and, like it, is conditional on TT25.
 - Open question 3 answered from the literature: (R_3) at x^{2/3+} is a second hypothesis, logically independent of (B).
