@@ -873,87 +873,96 @@ shows that the ratio exceeds $2$. Fix $k\ge2$ and $0<\varepsilon<\frac1{k-1}$, a
 write $a=1-\varepsilon$, $B=1+\varepsilon$, $c=\frac k{k-1}$, $D=c\,\mathcal R_k$ and
 $H=L^2(D)$. For $t\in D$ let $|t_{-j}|=\sum_{l\ne j}t_l$, and put
 \[
-Z_j=\{t\in D:|t_{-j}|>B\},\qquad V_j=\{\psi(t_{-j})\mathbf 1_{Z_j}(t)\}\cap H ,
+Z_j=\{t\in D:|t_{-j}|>B\},\qquad \mathcal V_j=\{\psi(t_{-j})\mathbf 1_{Z_j}(t)\}\cap H ,
 \]
 where $\psi$ ranges over measurable functions of the $k-1$ coordinates other
-than $t_j$. Let $W$ be the closure of $V_1+\dots+V_k$ and $K=W^\perp$. Define
+than $t_j$. Let $W$ be the closure of $\mathcal V_1+\dots+\mathcal V_k$ and $K=W^\perp$. Define
 $P:H\to\bigoplus_{i=1}^kL^2(a\mathcal R_{k-1})$ by $(PF)_i=\int F\,dt_i$
 (restricted to $a\mathcal R_{k-1}$), so that
 $\sum_iJ_{i,1-\varepsilon}(F)=\|PF\|^2$, and let
-$S_k(\varepsilon)=\sup\{\|PF\|^2/\|F\|^2:0\ne F\in K\}$.
+$\sigma_k(\varepsilon)=\sup\{\|PF\|^2/\|F\|^2:0\ne F\in K\}$.
 
 \begin{lemma}[\lbl{Proved here}; standard Hilbert-space duality]\label{lem:dual}
 \begin{enumerate}
 \item $K$ is exactly the set of $F\in H$ that satisfy the vanishing marginal
-  condition of Theorem~3.14, so $S_k(\varepsilon)$ is the supremum of the
+  condition of Theorem~3.14, so $\sigma_k(\varepsilon)$ is the supremum of the
   Theorem~3.14 ratio.
 \item $P^*f=\sum_if_i(t_{-i})\mathbf 1[|t_{-i}|\le a]$, and
   \[
-  S_k(\varepsilon)=\|\Pi_KP^*\|^2=\sup_{f\ne0}\frac{\operatorname{dist}(P^*f,W)^2}{\|f\|^2}.
+  \sigma_k(\varepsilon)=\|\Pi_KP^*\|^2=\sup_{f\ne0}\frac{\operatorname{dist}(P^*f,W)^2}{\|f\|^2}.
   \]
-  Hence any rule $f\mapsto v(f)\in V_1+\dots+V_k$ with
-  $\|P^*f-v(f)\|^2\le C\|f\|^2$ for all $f$ proves $S_k(\varepsilon)\le C$, and the
+  Hence any rule $f\mapsto v(f)\in W$ with
+  $\|P^*f-v(f)\|^2\le C\|f\|^2$ for all $f$ proves $\sigma_k(\varepsilon)\le C$, and the
   projection $v(f)=\Pi_WP^*f$ gives the exact value.
-\item If $V'_j\subseteq V_j$ are closed subspaces, the class
-  $K'=\bigcap_j(V'_j)^\perp$ contains $K$, so its supremum $S'$ satisfies
-  $S'\ge S_k(\varepsilon)$. If the $V'_j$ are supported on pairwise disjoint sets,
+\item If $\mathcal V'_j\subseteq \mathcal V_j$ are closed subspaces, the class
+  $K'=\bigcap_j(\mathcal V'_j)^\perp$ contains $K$, so its supremum $\sigma'$ satisfies
+  $\sigma'\ge \sigma_k(\varepsilon)$. If the $\mathcal V'_j$ are supported on pairwise disjoint sets,
   they are mutually orthogonal and $\Pi_{K'}=I-\sum_jE'_j$, where $E'_j$ is
-  the orthogonal projection onto $V'_j$.
+  the orthogonal projection onto $\mathcal V'_j$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 By Cauchy--Schwarz on fibres, $\left(\int F\,dt_i\right)^2\le c\int F^2\,dt_i$, so
 $\|PF\|^2\le kc\|F\|^2$ and $P$ is bounded; the formula for $P^*$ is Fubini.
-(1) For $v=\psi(t_{-j})\mathbf 1_{Z_j}\in V_j$, Fubini gives
+(1) For $v=\psi(t_{-j})\mathbf 1_{Z_j}\in \mathcal V_j$, Fubini gives
 $\langle F,v\rangle=\int_{|u|>B}\psi(u)f_j(u)\,du$ with $f_j=\int F\,dt_j$. If $f_j=0$
 a.e.\ on $\{|u|>B\}$ this vanishes. Conversely, taking
 $\psi=\operatorname{sign}(f_j)\mathbf 1[|f_j|\le M]$ (bounded, so $v\in H$) and letting
-$M\to\infty$ shows that $\langle F,V_j\rangle=0$ forces $f_j=0$ a.e.\ there.
-(2) $S_k(\varepsilon)=\|P\Pi_K\|^2=\|(P\Pi_K)^*\|^2=\|\Pi_KP^*\|^2$, and
+$M\to\infty$ shows that $\langle F,\mathcal V_j\rangle=0$ forces $f_j=0$ a.e.\ there.
+(2) $\sigma_k(\varepsilon)=\|P\Pi_K\|^2=\|(P\Pi_K)^*\|^2=\|\Pi_KP^*\|^2$, and
 $\|\Pi_Kg\|=\operatorname{dist}(g,W)$ because $\Pi_K=I-\Pi_W$.
-(3) $V'_j\subseteq V_j$ gives $(V'_j)^\perp\supseteq V_j^\perp$, hence $K'\supseteq K$.
+(3) $\mathcal V'_j\subseteq \mathcal V_j$ gives $(\mathcal V'_j)^\perp\supseteq \mathcal V_j^\perp$, hence $K'\supseteq K$.
 Functions with disjoint supports are orthogonal; for mutually orthogonal
 closed subspaces the projection onto the closure of their sum is the sum of
 the projections.
 \end{proof}
 
-For $V_j$ itself, $E_j$ is the fibre mean: $(E_jg)(t)=\mathbf 1_{Z_j}(t)$ times the
+Each $\mathcal V_j$ is closed: it is the range of the fibre-mean projection $E_j$,
+where $(E_jg)(t)=\mathbf 1_{Z_j}(t)$ times the
 mean of $g$ over the fibre $\{s\in D:s_{-j}=t_{-j}\}$. At $k=2$, $Z_1\cap Z_2=\emptyset$
-because $x+y\le2<2B$, so Lemma~\ref{lem:dual}(3) applies with $V'_j=V_j$:
+because $x+y\le2<2B$, so Lemma~\ref{lem:dual}(3) applies with $\mathcal V'_j=\mathcal V_j$:
 $\Pi_K=I-E_1-E_2$. The function $\Phi$ in the proof of Theorem~\ref{thm:k2}
-is exactly $(I-E_1-E_2)P^*f$ (on $U_1$ it is $f(x)-\bar f(y)$, the subtracted
-fibre mean, and $P^*f$ elsewhere), so that proof computes the dual
-expression exactly; this is why it is sharp.
+is exactly $(I-E_1-E_2)P^*(g,f)$ in the notation of that proof (on $U_1$ it is
+$f(x)-\bar f(y)$, the subtracted fibre mean, and $P^*$ elsewhere), so that
+proof bounds the dual expression with the exact projection. Sharpness then
+comes from the two remaining inequalities ($2uv\le u^2+v^2$ and the mean
+minimising the squared deviation), which are equalities for constant
+marginals.
 
 \begin{proposition}[\lbl{Proved here}; elementary]\label{prop:overlap}
 Let $k\ge3$ and $0<\varepsilon<\frac1{k-1}$. For all $i\ne j$ the set $Z_i\cap Z_j$
-has positive measure, so $V_i$ and $V_j$ are not orthogonal and $\Pi_K$ is not
-$I-\sum_jE_j$.
+has positive measure, so $\mathcal V_i$ and $\mathcal V_j$ are not orthogonal and $\Pi_W$ is not
+$\sum_jE_j$.
 \end{proposition}
 
 \begin{proof}
-Pick $m\notin\{i,j\}$. Since $\varepsilon<\frac1{k-1}$ we have $B<c$, so the set of
-$t\in D$ with $B<t_m<c$ and $\sum_{l\ne m}t_l<c-t_m$ is a non-empty open set.
-Each of its points has $|t_{-i}|\ge t_m>B$ and $|t_{-j}|\ge t_m>B$, so it lies
-in $Z_i\cap Z_j$. With $\psi=\mathbf 1$ on a bounded region, the inner product of
-$\mathbf 1_{Z_i}$ and $\mathbf 1_{Z_j}$ restricted to it is that region's volume, which
-is positive.
+Pick $r\notin\{i,j\}$. Since $\varepsilon<\frac1{k-1}$ we have $B<c$, so the set of
+$t\in D$ with $B<t_r<c$ and $\sum_{l\ne r}t_l<c-t_r$ is a non-empty open set.
+Each of its points has $|t_{-i}|\ge t_r>B$ and $|t_{-j}|\ge t_r>B$, so it lies
+in $Z_i\cap Z_j$. Since $D$ is bounded, $\mathbf 1_{Z_i}\in \mathcal V_i$ and
+$\mathbf 1_{Z_j}\in \mathcal V_j$, and $\langle\mathbf 1_{Z_i},\mathbf 1_{Z_j}\rangle=|Z_i\cap Z_j|>0$.
+If $\Pi_W$ were $\sum_lE_l$, then for $v\in \mathcal V_i$ we would have
+$\|v\|^2\ge\langle\Pi_Wv,v\rangle=\|v\|^2+\sum_{l\ne i}\|E_lv\|^2$, so $E_lv=0$ for all
+$l\ne i$, that is, $\mathcal V_i\perp \mathcal V_l$, a contradiction.
 \end{proof}
 
 So the step of the $k=2$ proof that fails at $k\ge3$ is the exact evaluation of
 the projection: two marginal conditions act at the same points. One can still
 discard the overlapping constraints. At $k=3$ the fibre in direction $j$ at
 $u=(t_l,t_m)$ meets $Z_l$ or $Z_m$ exactly when $\min(t_l,t_m)<\frac12-\varepsilon$
-(it meets $Z_l$ iff $c-t_l>B$). Let $V'_j\subseteq V_j$ be the functions
-supported on the \emph{clean} columns $\{|u|>B,\ \min(u)\ge\frac12-\varepsilon\}$.
-These are supported on pairwise disjoint sets, so Lemma~\ref{lem:dual}(3)
-gives an orthogonal relaxation with supremum $S'_3(\varepsilon)\ge S_3(\varepsilon)$, of
+(it meets $Z_l$ iff $c-t_l>B$). Let $\mathcal V'_j\subseteq \mathcal V_j$ be the functions
+supported on the \emph{clean} columns $\{|u|>B,\ \min(u)\ge\frac12-\varepsilon\}$;
+it is closed, being the range of the fibre mean restricted to those columns.
+On a clean fibre in direction $j$, $t_j+t_r\le c-t_l\le B$ for $\{l,r\}=\{1,2,3\}\setminus\{j\}$,
+so the point lies in no other $Z$. Hence the $\mathcal V'_j$ are supported on pairwise
+disjoint sets, and Lemma~\ref{lem:dual}(3)
+gives an orthogonal relaxation with supremum $\sigma'_3(\varepsilon)\ge \sigma_3(\varepsilon)$, of
 the kind the $k=2$ method can handle.
 
 \begin{proposition}[\lbl{Computed}, exact certificate, two programs]\label{prop:orth-relax}
-$S'_3(\frac18)>\frac{13523319026150757}{6316738844612720}>2.1408$ and
-$S'_3(\frac14)>\frac{39699868771187709}{19218050037559040}>2.0657$.
+$\sigma'_3(\frac18)>\frac{13523319026150757}{6316738844612720}>2.1408$ and
+$\sigma'_3(\frac14)>\frac{39699868771187709}{19218050037559040}>2.0657$.
 \end{proposition}
 
 The certificates are symmetric step functions on cubes of side $\frac1{32}$
@@ -989,8 +998,11 @@ polynomial printed in \cite[\S7.4]{PM8b} exceeds $2$ by only about $6\cdot10^{-8
   \texttt{k3\_arrangement\_cert.json}).
 \item Second program: \texttt{k3\_arrangement\_verify.py} (same folder). It uses
   only the cells' labels and coefficients. It integrates $F$ and $F^2$ exactly
-  along each fibre and checks that both are affine on the triangles cut out by
-  $u_j=m$, $u_2\pm u_3=m$. It reproduces $I$ and $J$ exactly and checks the
+  along each fibre. On each triangle cut out by $u_j=m$, $u_2\pm u_3=m$ (scaled
+  coordinates $u=8t_{-1}$, $m\in\mathbb Z$) the fibre breakpoints $m$, $m-u_2$,
+  $m-u_3$, $m-u_2-u_3$ and the end point keep their order, so both integrals
+  are affine there; the script evaluates each piece at three interior points
+  (and spot-checks two more). It reproduces $I$ and $J$ exactly and checks the
   marginal condition.
 \end{itemize}
 One point of geometry matters. The marginals jump across the lines
@@ -1002,14 +1014,16 @@ ratios of rounded eigenvectors, first program only; file
 \texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{exact.out}).
 
 \begin{remark}[\lbl{Heuristic}: the $k=3$ supremum as a function of $\varepsilon$]\label{rem:k3-eps}
-The same grids, with all marginal conditions imposed, give lower bounds for
-$S_3(\varepsilon)$ that converge like $1/n$ (cubes fully inside $D$ lose a
-boundary layer). Extrapolating from $n=32,40$ (models $L-c/n$ and
-$L-c/n-d/n^2$ agree to $2\cdot10^{-4}$):
+The cube grids (cubes of side $1/n$ inside $D$), with all marginal conditions
+imposed, give lower bounds for $\sigma_3(\varepsilon)$ that converge like $1/n$, since
+they lose a boundary layer. We fit $L-\gamma/n$ to $n=32,40$ and
+$L-\gamma/n-\delta/n^2$ to $n=24,32,40$. The fits agree to $2\cdot10^{-4}$ in the
+first column and to $10^{-3}$ in the others; the table shows the second fit,
+rounded:
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
-$\varepsilon$ & all conditions, $S_3(\varepsilon)$ & clean columns only, $S'_3(\varepsilon)$ & no condition \\
+$\varepsilon$ & all conditions, $\sigma_3(\varepsilon)$ & clean columns only, $\sigma'_3(\varepsilon)$ & no condition \\
 \midrule
 $\frac18$ & $1.976$ & $2.181$ & $2.273$\\
 $\frac14$ & $2.003$ & $2.105$ & $2.168$\\
@@ -1017,17 +1031,26 @@ $\frac38$ & $1.990$ & $2.017$ & $2.056$\\
 \bottomrule
 \end{tabular}
 \end{center}
-(\texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{k3\_thm314\_dual.py} and
-\texttt{k3\_extrapolate.py}; floating point, not a certificate.) Three things
-follow, all heuristic; the arrangement values above agree with the extrapolated $2.003$ at $\varepsilon=\frac14$. First, the $k=3$ ratio exceeds the parity value $2$
-only for $\varepsilon$ in a window around $\frac14$, and then by about $0.15\%$:
-the $H_1\le6$ of \cite[Theorem~3.15]{PM8b} has very little room. Second, at
-$\varepsilon=\frac18$ the overlapping constraints alone push the supremum from
-about $2.18$ down to about $1.98$, below $2$. Third, an upper bound of the
-$k=2$ type, which sees only an orthogonal family of constraints, cannot prove
-$S_3(\varepsilon)\le2$ for any $\varepsilon$ in the table; by
-Proposition~\ref{prop:orth-relax} this is certain for $\varepsilon=\frac18$ and our
-choice of clean columns.
+(Extrapolated values; scripts \texttt{k3\_}\allowbreak\texttt{thm314\_}\allowbreak\texttt{dual.py} and
+\texttt{k3\_extrapolate.py} in \texttt{code/}\allowbreak\texttt{parity/}; floating point, not a certificate.) Two-point fits
+at $\varepsilon=0.05$, $0.15$, $0.35$, $0.45$ give $1.936$, $1.986$, $1.994$, $1.972$
+for the first column. The arrangement class of Proposition~\ref{prop:k3-step}
+converges much faster. It gives $1.97619$ ($\varepsilon=\frac18$, $n=32$), $1.98923$
+($\varepsilon=\frac38$, $n=24$) and $2.00255$ ($\varepsilon=\frac14$, $n=24$); these are
+exact ratios of admissible $F$, so true lower bounds, and they are consistent
+with the table (\texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{eps.out}).
+Three things follow, all heuristic.
+\begin{enumerate}
+\item Of the sampled values of $\varepsilon$, only $\frac14$ gives a ratio above the
+  parity value $2$, and then by about $0.15\%$: the $H_1\le6$ of
+  \cite[Theorem~3.15]{PM8b} has very little room.
+\item At $\varepsilon=\frac18$ the overlapping constraints push the supremum from
+  about $2.18$ down to about $1.98$, below $2$.
+\item The clean-column relaxation cannot prove $\sigma_3(\varepsilon)\le2$ at $\varepsilon=\frac18$
+  or $\frac14$ (certain, by Proposition~\ref{prop:orth-relax}); its extrapolated
+  values exceed $2$ at all three sampled $\varepsilon$. Other orthogonal subfamilies of
+  the constraints exist and were not tried.
+\end{enumerate}
 \end{remark}
 
 \section{The asymptotic sieve and the twin-prime sequence}\label{sec:fi}
@@ -1536,17 +1559,17 @@ measure. This is Selberg's phenomenon made visible; it proves nothing.
   two-variable weights at level $(\log x)^{c/32}$, conditional on \cite{TT25}.
   What remains \lbl{Open} is the same as in question~1: any level beyond a power
   of $\log x$.
-\item (\lbl{Open}) What is the exact supremum $S_3(\varepsilon)$ of the Theorem~3.14
-  ratio at $k=3$? \cite[Theorem~3.15]{PM8b} shows $S_3(\frac14)>2$ (independently:
+\item (\lbl{Open}) What is the exact supremum $\sigma_3(\varepsilon)$ of the Theorem~3.14
+  ratio at $k=3$? \cite[Theorem~3.15]{PM8b} shows $\sigma_3(\frac14)>2$ (independently:
   Proposition~\ref{prop:k3-step}), and Proposition~\ref{prop:ceil} gives at most
-  $c(3)=2.472$. Heuristically $S_3(\frac14)\approx2.003$ and $S_3(\frac18)\approx1.976<2$
-  (Remark~\ref{rem:k3-eps}). Is $S_3(\varepsilon)>2$ only on an interval of $\varepsilon$, and
-  is $\sup_\varepsilon S_3(\varepsilon)$ close to $2.003$? The variance argument of
+  $c(3)=2.472$. Heuristically $\sigma_3(\frac14)\approx2.003$ and $\sigma_3(\frac18)\approx1.976<2$
+  (Remark~\ref{rem:k3-eps}). Is $\sigma_3(\varepsilon)>2$ only on an interval of $\varepsilon$, and
+  is $\sup_\varepsilon \sigma_3(\varepsilon)$ close to $2.003$? The variance argument of
   Theorem~\ref{thm:k2} does not extend directly (Proposition~\ref{prop:overlap}):
-  a sharp ceiling must use the overlapping constraints, for example through
+  a sharp ceiling will presumably have to use the overlapping constraints, for example through
   alternating projections with an explicit rate, or a finite-element dual with
-  error control (Lemma~\ref{lem:dual}(2)). The orthogonal part of the constraints
-  alone allows more than $2.14$ at $\varepsilon=\frac18$
+  error control (Lemma~\ref{lem:dual}(2)). It cannot come from the clean-column
+  relaxation alone, which allows more than $2.14$ at $\varepsilon=\frac18$
   (Proposition~\ref{prop:orth-relax}).
 \end{enumerate}
 
@@ -1670,7 +1693,7 @@ suffice). Nothing enters before it is read in the source.
   \cite[Remark~6.6]{PM8b} for the $(1+\varepsilon)$ bound, the $m=1$ case of
   Corollary~\ref{cor:consistent} for Theorems~3.8 and 3.12, ``heuristic'' for
   the parity argument, the wording on $\vartheta$, scope of the numerics.
-\item[0.7] (15 Nov 2026) New Section~\ref{subsec:dual}: the dual formula
+\item[0.7] (15 Nov 2026) New Subsection~\ref{subsec:dual}: the dual formula
   (Lemma~\ref{lem:dual}), which shows that the proof of Theorem~\ref{thm:k2} is
   the exact projection; the overlap of the constraint cylinders for $k\ge3$
   (Proposition~\ref{prop:overlap}); exact certificates that the orthogonal
@@ -1680,6 +1703,10 @@ suffice). Nothing enters before it is read in the source.
   (Proposition~\ref{prop:k3-step}); heuristic $\varepsilon$-dependence of the $k=3$
   supremum (Remark~\ref{rem:k3-eps}). Parity attempt of this run (route card
   \texttt{2026-11-15-k3-dual-}\allowbreak\texttt{orthogonal.md}). Open question~6 sharpened.
+  Fresh-context adversarial audit (\texttt{notes/}\allowbreak\texttt{audit-parity-v07.md}):
+  no mathematical errors; fixes: the fits in Remark~\ref{rem:k3-eps}, the
+  non-orthogonality argument, closedness of the $\mathcal V_j$, $v(f)\in W$, the source
+  of sharpness at $k=2$, scope of the heuristic conclusions.
   \emph{Correction of attribution}: the core of Proposition~\ref{prop:bipartite}
   is in Tao's 2014 blog post \cite{Tao14b}, found by this run's literature check
   (new Remark~\ref{rem:tao14b}; label, section opening and abstract changed).
