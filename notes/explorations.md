@@ -3,6 +3,22 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-16, Session 25 -- Do small values of L(1, chi) come with few small split primes? (class numbers / Siegel-zero heuristics)
+- Idea: the parity attempt of this run (route card 2026-11-16-siegel-world-typeI.md) leaves open whether a Siegel character
+  must have few small split primes (sum_{w<p<R0, chi(p)=1} 1/p < 1/4). Risky question: in the actual world, do the
+  characters with the smallest L(1, chi) have s'(q) = sum_{3<p<=q^{1/4}, chi(p)=1} 1/p < 1/4? Also, can the class-number
+  bound (reduced forms of norm < sqrt(q)/2 are inequivalent) control the reciprocal sum of small split primes?
+- Tried: code/explore/l1_small_split.py (all 9005 primes q = 3 mod 4, 3 < q <= 2e5; h from h = -(1/q) sum a chi(a); output
+  l1_small_split.out, 11 s). Plus the reduced-form argument on paper.
+- Outcome: INCONCLUSIVE, and the data cannot decide it. corr(log L(1), s') = +0.36. Bottom 1% of L(1) (<= 0.308): mean
+  s' = 0.029, none with s' >= 1/4. Bottom 5%: 0.4% have s' >= 1/4. All q: 53%. The twelve smallest L(1) have s' = 0 except one
+  (0.053). This is close to tautological: in the actual world log L(1, chi) is dominated by sum chi(p)/p over small primes. In
+  a Siegel world, L(1) is small because of the large primes in [R0, x] (TT Cor. 3.6), and the data cannot see that regime.
+  The reduced-form argument bounds the NUMBER of split primes below sqrt(q)/2 by about 2h(-q), and
+  h ~ sqrt(q) log q / eta is huge, so it gives no control of the reciprocal sum (counts vs 1/p-sums; small split primes are
+  unconstrained). A Wirsing-type lower bound for split-smooth numbers would need a lower-bound sieve of dimension ~1 up to
+  the full range, which is exactly the parity problem again. Heuristic / exploratory only.
+
 ## 2026-11-15, Session 24 -- Does mu(p-2) show a parity bias in progressions that Hooley's condition would see? (numerical experiment / probabilistic model)
 - Idea: Ford's open case (parity paper open question 7) asks whether EH plus Hooley's averaged absence of parity bias,
   sum_{d <= x^alpha} |sum_{p <= x, p = 2 (d)} mu(p-2) log p| << x (log x)^{-B}, suffices. Risky question: does the twin sequence

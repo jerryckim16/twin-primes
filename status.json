@@ -1,7 +1,7 @@
 {
- "version": "0.24",
- "updated": "2026-11-15",
- "session_count": 24,
+ "version": "0.25",
+ "updated": "2026-11-16",
+ "session_count": 25,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,11 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Proved here",
+   "text": "Parity paper v0.10, Prop. prop:siegel-bias and Cor. cor:siegel-typeI: for a real character chi mod q and a +-1 completely multiplicative f, the chi(b)chi(b+2)-weighted class sums of f(n)f(n+2) mod Q = lcm(prod_{p<=w} p, q) are >= rho x (1 - 4 s1 - (4/rho)(s2 + P2/x) - (Q/x)(1+4P1)), s1, s2 the 1/p-sums of primes where f != chi; with a Siegel zero (Tao-Teravainen (1.4), (3.22)-(3.23)), a per-modulus unweighted discrepancy bound eps x/Q for lambda(n)lambda(n+2) at Q = Wq forces the split primes in (w, q^{1/log^{1-eps'} eta}) to have 1/p-sum >= (1-eps)/4 - o(1). Elementary; possibly folklore. Locates where Heath-Brown's Siegel-zero route escapes the obstruction; no bearing on twin primes in the actual world.",
+   "where": "papers/parity-barrier (sec:siegel); code/parity/siegel_class_bias.py; notes/parity-attempts/2026-11-16-siegel-world-typeI.md; notes/audit-parity-v010.md"
+  },
   {
    "label": "Proved here",
    "text": "Parity paper v0.6, Thm thm:k2: at k = 2 the Polymath8b Theorem 3.14 ratio (support 2R_2, vanishing marginals beyond 1+eps, J over t <= 1-eps) is at most 2 for every eps in (0,1), with equality for an explicit step function: the strongest GEH criterion sits exactly at the parity value and never exceeds it (variance argument; audited, no errors). Possibly folklore. Confirms, does not break, the obstruction.",
@@ -399,6 +404,24 @@
  ],
  "ideas": [
   {
+   "idea": "Own idea: weaken the small-s hypothesis of prop:siegel-bias to bounded s via a two-point mean value for pretentious functions (bias ~ prod (p-3)/(p+1) for random exceptional sets).",
+   "origin": "own",
+   "status": "open",
+   "note": "Session 25 numerics: for random F the mean bias tracks the Euler product (below it, above 1-4s); for character-structured F (the actual split primes) it vanishes. A rigorous version would need a uniform Elliott/Klurman-type correlation theorem; not attempted."
+  },
+  {
+   "idea": "Parity attempt (thread 3): where the obstruction's hypothesis fails in a Siegel-zero world (Heath-Brown 1983 via Tao-Teravainen 2022).",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 25: located (paper Prop. prop:siegel-bias, Cor. cor:siegel-typeI): the per-modulus twisted Type I input fails at Wq if the Siegel character has few split primes in (w, T); open: whether a Siegel zero forces that (open question 8), and whether the averaged input fails."
+  },
+  {
+   "idea": "Exploration: do small values of L(1, chi_{-q}) come with few small split primes (s' < 1/4)?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 25: in the actual world yes (bottom 1% of L(1) among 9005 primes q <= 2e5: mean s' = 0.029, none >= 1/4), but this is near-tautological (log L(1) is dominated by small primes) and cannot see the Siegel regime; the class-number argument bounds counts, not 1/p-sums. code/explore/l1_small_split.py."
+  },
+  {
    "idea": "Parity attempt (thread 3): what the level of distribution alone gives for Lambda(n+2), via Bombieri's asymptotic sieve and Ford's limits.",
    "origin": "own",
    "status": "works",
@@ -710,10 +733,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.9",
+   "version": "0.10",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: the class forbids exactly H_m < H(2m+1), = 6 for m = 1), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post. v0.8: for which eps the k = 3 criterion works: above 2 at eps = 2/9, 1/4, 7/24 (exact), provably below 2 for all eps >= 0.439 (Schur-test certificates, two programs). v0.9: what the level of distribution alone gives (Bombieri's asymptotic sieve as quoted by Ford 2004): under EH twin primes are equivalent to the (Lambda*Lambda)-weighted count of p-2 = p1 p2 and nothing more (folklore); Ford: no fixed level below 1 suffices; Hooley's averaged parity condition for twins is open (open question 7); a probable factor-2 slip in the constant of Debouzy's 2019 preprint."
+   "summary": "Polymath8b's parity obstruction and Selberg's example read in the sources; a window form of Tao's (2014 blog) convex-hull criterion for which close-prime targets a Polymath8b-type weight can block (bipartite target graph, DHL[k,m+1] iff k <= 2m, as in Tao's post; windows: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound), with a correction to Polymath8b's Remark 8.1; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) and the structure behind the bilinear estimates for a^2+b^4 (Friedlander-Iwaniec) and x^3+2y^3 (Heath-Brown); the twisted Type I input proved for bounded-level log-averaged weights and, conditionally on a Tao-Teravainen preprint, at level (log x)^{c0}.; the same at level (log x)^{c/32} for Maynard two-variable weights; Sawin-Shusterman's F_q[T] twin-prime proof read in the source, with the integer version of its split (a reformulation as a Mobius-prime correlation, related to Murty-Vatwani) and the step with no integer analogue; the level of (R_3) answered from the literature. No progress on the twin prime conjecture is claimed. v0.6: ceilings for Polymath8b's three GEH criteria (no DHL[k,3] for k <= 45, although parity blocks only k <= 4) and, at k = 2, a direct proof that the strongest criterion reaches exactly the parity value 2 and never exceeds it; a gap in the printed proof of PM8b Prop 6.5; Matomaki-Radziwill read in the source. v0.7: a dual formula for the Theorem 3.14 supremum, why the sharp k = 2 argument fails at k = 3 (overlapping constraints; orthogonal relaxation > 2.14 at eps = 1/8, exact), an exact step-function check of PM8b's DHL[3,2] under GEH (ratio 2 + 1.8e-4, two programs); credit to Tao's 2014 blog post. v0.8: for which eps the k = 3 criterion works: above 2 at eps = 2/9, 1/4, 7/24 (exact), provably below 2 for all eps >= 0.439 (Schur-test certificates, two programs). v0.9: what the level of distribution alone gives (Bombieri's asymptotic sieve as quoted by Ford 2004): under EH twin primes are equivalent to the (Lambda*Lambda)-weighted count of p-2 = p1 p2 and nothing more (folklore); Ford: no fixed level below 1 suffices; Hooley's averaged parity condition for twins is open (open question 7); a probable factor-2 slip in the constant of Debouzy's 2019 preprint. v0.10: the Siegel-zero world read in Tao-Teravainen (arXiv:2109.06291v2): elementary bias of class sums of lambda(n)lambda(n+2) at the exceptional modulus Wq if the character has few small split primes, so a per-modulus form of the obstruction's twisted Type I input fails there while two-point Chowla holds (averaged input not shown to fail; Siegel zeros conjectured not to exist); full referee pass."
   },
   {
    "slug": "verification-note",

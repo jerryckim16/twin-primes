@@ -39,6 +39,14 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Missing for twin primes: a bilinear (Type II) estimate for Lambda(n+2)-type sequences, an integer substitute for T_D,
   or any non-sieve input. Not in sight.
 
+### Session 25 addition: the Siegel-zero world (paper sec:siegel)
+- Depends on: Tao-Teraeväinen arXiv:2109.06291v2 Cor. 3.6 (read), elementary counting; Heath-Brown 1983 only as quoted.
+- Feeds into: the meta-remark rem:meta (the obstruction's hypothesis is Chowla IN PROGRESSIONS; in a Siegel world with few
+  small split primes its per-modulus form fails while two-point Chowla holds; the averaged form is not shown to fail);
+  open question 8 (a per-modulus unweighted input would constrain Siegel characters; open question 1 as stated is different).
+- Missing for anything bigger: control of the small split primes of a Siegel character; and in any case Siegel zeros are
+  conjectured not to exist, so this route says nothing about twin primes in the actual world.
+
 ## Bound work, rung 182 (Session 19)
 - All four ingredients of the 182 cap quotient (I, J0, J+, tail T) now by two programs; q_H - 1 >= mu-. Missing before 182 could
   even be considered reproduced: the restoration losses (197 source integrals, partly underspecified), and the analytic inputs.
