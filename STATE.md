@@ -3,34 +3,48 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 25, 7:34 PM CT slot of 15 Nov, run 01:34 UTC 16 Nov): PHASE B
+## POSITION (after Session 26, 3:34 AM CT slot of 16 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
-- PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
-  ~15-20% exploration.
-- Active papers: parity-barrier v0.10, verification-note v0.11. H_m programme scoped
-  (notes/hm-programme.md), NOT started as a paper. Main paper v0.25.
-- First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work. Session 25 was the
-  Sunday 7:34 PM CT slot, so it did NOT do the review.
+- PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
+- Active papers: parity-barrier v0.11, verification-note v0.12. Main paper v0.26. H_m programme scoped, paused.
+- Weekly review done: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
+  Its priorities override the default ordering this week.
 
-## Next steps (in order; Phase B)
-1. Weekly review (Monday 16 Nov run). Inputs new since Session 24: the full referee report of the parity paper
-   (referee/2026-11-16-parity-barrier/report.md). Its section 5 proposes cuts (delete Prop. k3-step, which is
-   cross-referenced in subsec:window and the changelog; shrink sec. 4.4 to Prop. orth-relax; turn Prop. tao-weight,
-   Cor. maynard-logc, Prop. B-parity, Prop. fi-twin, Prop. bomb-twin and Prop. ss-split into short remarks; halve the
-   FI98b/HB01/SS19/MR16 digests; merge Remarks k3-eps and k3-window), notation renames (lambda_d, pattern Omega, region D),
-   and items 2.4-2.7, 3 (labels of thm:k3-window(2), rem:ss-transfer, unlocated literature such as PM8b Thm 1.4 pages, BV,
-   BT, Mertens, OEIS A008407). The review should decide which to apply. Also from the Session 24 list: is the k = 3 GEH
-   thread (sec:ceil / subsec:dual / subsec:window) worth more runs? Is thread 2 complete? Should a second small-results
-   paper start (capped-variational theory, or the H_m (varpi, delta) region)?
-2. Parity attempt (one per run; route card + README line). Not to repeat: everything in notes/parity-attempts/README.md, now also
-   the Siegel-world bias (Session 25). Candidates: (a) open question 8 (does a Siegel zero force few split primes below
-   T = q^{1/log^{1-eps} eta}?), or a log-averaged / averaged-over-q version of Prop. prop:siegel-bias (the audit,
-   notes/audit-parity-v010.md item 15, says that scales below Q R_0 cost a (1 - theta)-type constant: write it out before
-   claiming anything); (b) open question 7 (a Hooley-type averaged parity condition for twins); (c) weights that change the
-   twisted main terms (open question 2); (d) Murty-Vatwani or Heath-Brown 1983 in the original, if they arrive.
-3. Bound share, rung 182: per-component restoration data still requested (notes/sources-needed.md). The UCLA directory
-   (https://www.math.ucla.edu/~sharifi/AI/) was re-checked on 16 Nov: it lists only the bundle (2026-10-04).
-4. Optional, low priority: one-sided --bonf certificate on the Song-Yue witness (many core-hours; resumable via --ckpt).
+## Next steps (in order; from the weekly review of 16 Nov)
+1. Verification note v1.0 (the bound share): one precise sentence per number saying one program / two programs / probabilistic
+   check; a short appendix with the capped-variational facts (instead of a separate paper); then freeze as v1.0 so that Jerry can
+   decide whether to send it to the preprint authors (flag the Polymath8a Lemma 6.25 item first).
+2. Parity paper toward v1.0 (~20 pp.), continuing the cuts (done in v0.11: subsec:dual shortened, Prop. k3-step merged into
+   Thm k3-window, Remarks k3-eps/k3-window merged, Prop. tao-weight -> remark, OQ 5 and the plan removed, changelog shortened).
+   Still to do: Sec. siegel -> one short subsection; Prop. B-parity / fi-twin / bomb-twin / ss-split -> about 5 lines each;
+   Cor. maynard-logc -> short remark; merge Prop. ceil with Cor. consistent; Remark pm65 -> footnote; halve the FI98b / HB01 /
+   SS19 / MR16 digests (MR16 to one paragraph); Debouzy constant to a footnote; notation renames (lambda_d vs Liouville
+   lambda; pattern Omega; region D); referee items 2.4-2.7 and 3 (referee/2026-11-16-parity-barrier/report.md).
+3. Main paper: demote prop:family, prop:adjoint, prop:psi-weight to remarks; merge prop:bonf/bonf2; cut rem:k49 and
+   rem:prediction to a sentence; relabel rem:sha182 (contains Computed results); shorten the History appendix; make the
+   paper a thin index pointing to the small-results papers.
+4. One parity attempt per run, entering the paper only if it proves something new, as one short subsection or remark.
+   Candidates (not repeats): (b) Chen's switching as a consistency test of Prop. bipartite (target {p prime, p+2 in P_2});
+   (c) Green-Tao-Ziegler: why twin primes have infinite complexity (Gowers-norm vs parity barrier); (d) Matomaki-Radziwill-Tao
+   averaged Hardy-Littlewood over shifts. Pintz-type disjunctions are done (Session 26); its 4-tuple version is a dead end.
+   Literature to check for the Pintz-Maynard result: Pintz's post-2013 surveys (is it known?).
+5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist; Jerry could ask the author); H_m (at most one
+   scoping run for the (varpi, delta) region of Stadlmann 2026). Optional, low priority: one-sided --bonf certificate on the
+   Song-Yue witness (resumable via --ckpt).
+
+## Session 26 (3:34 AM CT slot of 16 Nov, started on time; no wait) -- additions
+- Weekly review notes/reviews/2026-11-16.md (fresh-context helper review, checked against the files).
+- Parity paper v0.11: Section subsec:pintz (Thm thm:pintz-maynard, Cor cor:pintz12, Rem rem:pintz-parity), bib Pi10
+  (arXiv:1004.1065v1, SHA-256 45d7a850...69d693) and May15 (arXiv:1311.4600v3, SHA-256 dce1a7a0...63cda9); first review
+  cuts; abstract 174 words; audit notes/audit-parity-v011.md (no errors, 11 fixes applied). Route card
+  notes/parity-attempts/2026-11-16-pintz-dichotomy-maynard.md. Flag (minor) in notes/flags-for-jerry.md.
+- Scripts: code/parity/pintz_maynard.py [maynard5 | opt K DEG] (seconds; /usr/bin/python3 has scipy), vectors in
+  code/parity/pintz_maynard_vectors.json; second program code/parity/pintz_maynard_check2.py (~3.5 min), output .out.
+- Verification note v0.12 (wording of the Lemma 9.1 ceiling); main paper v0.26 (version tags out of headings, Related results).
+- Exploration: 4-tuple version of the dichotomy needs level 0.5423 (dead end with current inputs).
+- News search (3:34 AM run): nothing new found on the 2026 claims or on parity (three searches); status table unchanged.
+- Lean: lake build and Audit.lean pass (no Lean changes). Wolfram and mathbox NOT available.
+- Note: /usr/local/bin/python3 lacks scipy/flint; use /usr/bin/python3 for the scripts.
 
 ## Session 25 (7:34 PM CT slot of 15 Nov, started on time 01:34 UTC 16 Nov; no wait) -- additions
 - Parity paper v0.10: new Section sec:siegel (Prop. prop:siegel-bias, Cor. cor:siegel-typeI, Remarks rem:siegel-locates,

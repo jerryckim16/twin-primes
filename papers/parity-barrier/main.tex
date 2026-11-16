@@ -27,21 +27,22 @@
 A survey with checks, not a research announcement: the twin prime conjecture
 is open and nothing here proves it or comes close. We state, checked in the
 sources, the (heuristic) parity obstruction that stops Maynard--Tao sieves at
-$H_1\le6$ even under GEH; Bombieri's asymptotic sieve (as quoted by Ford),
-under which EH would make twin primes equivalent to a weighted count of
-$p-2=p_1p_2$, if his conditions hold for this sequence;
-and the Friedlander--Iwaniec bilinear axiom that breaks parity. Our own
-results (``Proved here''): the twisted Type~I input of the obstruction for
-log-averaged weights of bounded level (and of level $(\log x)^{c_0}$,
-conditionally on a preprint of Tao and Ter\"av\"ainen); a window form of
-Tao's convex-hull criterion: Liouville-pattern weights block a proof of
-$H_m\le g$ exactly when $g<H(2m+1)$; at $k=2$ Polymath8b's strongest GEH criterion
-reaches the parity value $2$ exactly, and at $k=3$ it works for
-$\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not for $\varepsilon\ge0.439$. We also
-record what the proofs for $a^2+b^4$, $x^3+2y^3$, short intervals and
-$\mathbb F_q[T]$ use, and why none of it transfers. In a Siegel-zero world two-point Chowla holds, but
-a per-modulus form of Chowla in progressions fails at the exceptional modulus if
-the character has few small split primes.
+$H_1\le6$ even under GEH, Bombieri's and Friedlander--Iwaniec's asymptotic
+sieves for $\Lambda(n+2)$, and what the proofs for $a^2+b^4$, $x^3+2y^3$ and
+$\mathbb F_q[T]$ use that twin primes lack. Our own results (``Proved here''):
+\begin{itemize}
+\item a window form of Tao's convex-hull criterion: Liouville-pattern weights
+  block a proof of $H_m\le g$ exactly when $g<H(2m+1)$;
+\item at $k=2$ Polymath8b's strongest GEH criterion reaches the parity value $2$
+  exactly; at $k=3$ it works for $\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not
+  for $\varepsilon\ge0.439$;
+\item Pintz's parity-sensitive dichotomy with Maynard's weights: some even
+  $d$ with $0<|d|\le12$ has $\lambda(p+d)=-1$ for infinitely many primes $p$
+  (Pintz: $16$). The criterion predicts this, and predicts that no single
+  prescribed $d$ is reachable this way;
+\item the twisted Type~I input of the obstruction for log-averaged weights of
+  small level, and a Siegel-zero world in which a per-modulus form of it fails.
+\end{itemize}
 \end{abstract}
 
 \maketitle
@@ -618,13 +619,14 @@ result of \cite{PM8b} depends on it.
 
 \subsection{A parity-sensitive statement that the class does not block: Pintz's dichotomy}\label{subsec:pintz}
 
-The criterion of Proposition~\ref{prop:bipartite} also predicts which
-statements about the \emph{parity} of shifted primes a sieve can reach. Pintz
+The criterion of Proposition~\ref{prop:bipartite} also predicts,
+heuristically, which statements about the \emph{parity} of shifted primes a
+sieve can reach. Pintz
 \cite{Pi10} found such a statement. Here we read it in the source and redo it
 with Maynard's weights.
 
 \lbl{Literature} \cite[Theorems~1, 3 and \S3, pp.~2, 6--10]{Pi10}: for every
-admissible $6$-tuple $\mathcal H$ and every integer $r\notin\mathcal H$ there are
+admissible $6$-tuple $\mathcal H$ and every integer $r\ne0$, $r\notin\mathcal H$, there are
 infinitely many $n$ such that either $n+\mathcal H$ contains two primes, or
 some $n+h_i$ is prime and $\lambda(n+r)=-1$. With $\mathcal H=\{0,4,6,10,12,16\}$
 and $r=8$ this gives an even $d$ with $0<|d|\le16$ and $\lambda(p+d)=-1$ for
@@ -632,8 +634,11 @@ infinitely many primes $p$. The proof uses GPY weights $a_n$ and
 $s(n)=\sum_i\mathbf 1_{\mathcal P}(n+h_i)+\frac12(1-\lambda(n+r))$. It shows
 $\sum a_ns(n)>\sum a_n$, using $\sum a_n\lambda(n+r)=o(\sum a_n)$, which
 follows from a Bombieri--Vinogradov theorem for $\lambda$ \cite[Lemmas~3,
-4]{Pi10}. Pintz notes that even under EH one cannot get $\lambda(p+d)=-1$
-infinitely often for a single prescribed $d$ \cite[p.~3]{Pi10}.
+4]{Pi10}. Pintz states that theorem as Lemma~3, with the remark that its proof
+is the same as Vaughan's for $\mu$; classes $a$ with $(a,q)>1$ reduce to coprime
+ones through $\lambda(gm)=\lambda(g)\lambda(m)$. Pintz also notes that even under EH
+his method cannot give $\lambda(p+d)=-1$ infinitely often for a single
+prescribed $d$ \cite[p.~3]{Pi10}.
 
 \begin{theorem}[\lbl{Proved here}; possibly folklore]\label{thm:pintz-maynard}
 Let $0<\theta<1$ be a level of distribution for the primes and for $\lambda$
@@ -645,18 +650,25 @@ infinitely many $n$ such that either at least two of the $n+h_i$ are prime, or
 some $n+h_i$ is prime and $\lambda(n+r)=\sigma$.
 \end{theorem}
 
+(The proof works for any fixed $r$; $r\notin\mathcal H$ only makes the statement
+non-trivial, and gives $d\ne0$ below. For $k=1$, $M_1=1$, so $\theta M_1>1$
+never holds, in line with Remark~\ref{rem:pintz-parity}.)
+
 The bounded-gaps criterion needs $\theta M_k>2$ \cite[Proposition~4.2]{May15}.
 Here $\theta M_k>1$ suffices: the second alternative costs half a prime,
 because $\lambda(n+r)=\sigma$ on half of the weight. For $k=5$,
 \cite[(8.17)]{May15} gives $M_5\ge\frac{1417255}{708216}>2$, so the dichotomy
-holds unconditionally for $5$-tuples. Pintz's GPY weights needed $k=6$.
+holds unconditionally for $5$-tuples. Pintz's GPY weights needed $k=6$: his
+inequality \cite[(3.22)]{Pi10}, optimised in $u$, needs $\theta>0.5126$ for $k=5$
+(our floating-point optimisation).
 
 \begin{proof}
 Take Maynard's set-up \cite[\S\S4--5]{May15}: $W=\prod_{p\le D_0}p$ with
 $D_0=\log\log\log N$, a class $v_0\bmod W$ with every $v_0+h_i$ coprime to $W$,
 $R=N^{\theta/2-\delta}$, and weights $w_n=\left(\sum_{d_i\mid n+h_i}\lambda_{d_1,\dots,d_k}\right)^2$
 built from a fixed polynomial $F$ supported on $\mathcal R_k$. The $\lambda_{\mathbf d}$ are supported on
-squarefree $d=\prod d_i<R$ coprime to $W$, with $|\lambda_{\mathbf d}|\ll(\log R)^k$. For
+squarefree $d=\prod d_i<R$ coprime to $W$, with $|\lambda_{\mathbf d}|\ll(\log R)^k$
+\cite[(5.9)]{May15}. For
 $N\le n<2N$, $n\equiv v_0\pmod W$, \cite[Proposition~4.1]{May15} gives
 $S_1=\sum w_n\sim\frac{\varphi(W)^kN(\log R)^kI_k(F)}{W^{k+1}}$ and
 $\sum w_n\mathbf 1_{\mathcal P}(n+h_m)\sim\frac{\log R}{\log N}\,J_k^{(m)}(F)\,\frac{S_1}{I_k(F)}$.
@@ -664,12 +676,14 @@ $\sum w_n\mathbf 1_{\mathcal P}(n+h_m)\sim\frac{\log R}{\log N}\,J_k^{(m)}(F)\,\
 We claim $\sum w_n\lambda(n+r)\ll_AN(\log N)^{-A}$. Expanding the square, the
 conditions $d_i,e_i\mid n+h_i$ and $n\equiv v_0\pmod W$ define one class modulo
 $q=W\prod_i[d_i,e_i]$ when the $[d_i,e_i]$ are pairwise coprime. Otherwise the sum
-is empty, since a common prime would divide some $h_i-h_j$ and hence be at most
-$D_0$. So $n+r$ runs over one class modulo $q<WR^2\le N^{\theta-\delta}$ in an
+is empty, since a common prime would divide some $h_i-h_j$, hence be at most
+$h_k-h_1<D_0$ for large $N$, contradicting $(\prod d_ie_i,W)=1$. So $n+r$ runs over one class modulo $q<WR^2\le N^{\theta-\delta}$ in an
 interval of length $N$, and the inner sum is at most $2E(q)$, where
 $E(q)=\max_{y\le3N}\max_b\left|\sum_{m\le y,\,m\equiv b\,(q)}\lambda(m)\right|$.
 A squarefree $q/W$ arises from at most $\tau_{3k}(q/W)$ pairs $(\mathbf d,\mathbf e)$.
-By Cauchy--Schwarz, $E(q)\le3N/q+1$ and \cite[(2.2)]{Pi10}, the sum is
+As in \cite[(5.18)--(5.20)]{May15} and \cite[(3.14)--(3.16)]{Pi10}, by
+Cauchy--Schwarz, $E(q)\le3N/q+1$ and \cite[(2.2)]{Pi10} (applied with $3N$ in place
+of $N$), the sum is
 \[
 \ll(\log R)^{2k}\left(\sum_{q'<R^2}\tau_{3k}(q')^2\left(\tfrac{3N}{q'}+1\right)\right)^{1/2}
 \left(\sum_{q\le N^{\theta-\delta}}E(q)\right)^{1/2}\ll N(\log N)^{2k+(9k^2-A)/2}.
@@ -683,50 +697,58 @@ Put $\chi(n)=\frac12(1+\sigma\lambda(n+r))\in\{0,1\}$. Then
 \]
 which is positive for large $N$ once $\delta$ is small and $F$ is chosen with
 $\theta\sum_mJ_k^{(m)}(F)/I_k(F)>1$. So some $n\in[N,2N)$ has
-$\sum_m\mathbf 1_{\mathcal P}(n+h_m)+\chi(n)\ge2$. Since $r\notin\mathcal H$, this means two
+$\sum_m\mathbf 1_{\mathcal P}(n+h_m)+\chi(n)\ge2$. As $\chi(n)\in\{0,1\}$, this means two
 primes, or one prime together with $\lambda(n+r)=\sigma$. Let $N\to\infty$.
 \end{proof}
 
 \begin{corollary}[\lbl{Proved here} + \lbl{Computed}]\label{cor:pintz12}
 \begin{enumerate}
 \item There is an even $d$ with $0<|d|\le12$ such that $\lambda(p+d)=-1$ for
-  infinitely many primes $p$. Pintz has $16$.
-\item There is an even $d$ with $0<d\le14$ such that $\lambda(p+d)=-1$ for
-  infinitely many primes $p$. Pintz has $18$.
+  infinitely many primes $p$. Pintz has $16$ \cite[Theorem~1]{Pi10}; his
+  Theorems~5 and~7 give $5$-tuples and $12$ only for $\theta>0.515$, and this now
+  holds unconditionally.
+\item There is an even $d$ with $0<d\le14$, and a $d$ with $0<d\le13$, such that
+  $\lambda(p+d)=-1$ for infinitely many primes $p$. Pintz has $18$ and $17$
+  \cite[Theorem~1'' and the remark after it]{Pi10}.
 \item Either $\liminf(p_{n+1}-p_n)\le12$, or for each $\sigma\in\{\pm1\}$ there is
   $d\in\{\pm2,\pm4,-8\}$ such that $\lambda(p+d)=\sigma$ for infinitely many $p$.
   Pintz has $16$ for the gap.
 \item If $\theta$ is a level for primes and $\lambda$ with $\theta>0.72154$,
   $0.60752$ or $0.54230$, the dichotomy holds for admissible $2$-, $3$- or
-  $4$-tuples. Pintz needs $0.729$, $0.616$ and $0.554$ \cite[Theorem~5]{Pi10}.
-  In particular Pintz's conditional ``$|d|\le12$ for $\theta>0.515$''
-  \cite[Theorem~7]{Pi10} now holds unconditionally, by part~(1).
+  $4$-tuples, and so does \cite[Theorem~7]{Pi10} with $C_3=2$, $6$, $8$. Pintz
+  states $0.729$, $0.616$, $0.554$ \cite[Theorem~5]{Pi10}; his inequality (3.22),
+  optimised in $u$, gives $0.7230$, $0.6126$, $0.5516$. So the gain is small for
+  $k\le4$; it matters at $k=5$, where it crosses $\frac12$.
 \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-Use Theorem~\ref{thm:pintz-maynard} with $\mathcal H=\{0,2,6,8,12\}$, which is
-admissible (\lbl{Lean-checked}: \texttt{narrow5\_}\allowbreak\texttt{admissible}).
+Use Theorem~\ref{thm:pintz-maynard} with $\mathcal H=\{0,2,6,8,12\}$. This tuple
+is admissible; the Lean proof is \texttt{narrow5\_admissible} (\lbl{Lean-checked}).
 
 For (1), take $r=4$ and $\sigma=-1$. In the first alternative, the two primes
 $p<p'$ satisfy $\lambda(p+(p'-p))=\lambda(p')=-1$ with $0<p'-p\le12$. In the
 second, $d=r-h_i\in\{4,2,-2,-4,-8\}$. Each $n$ yields a prime $p\ge n$, so
 infinitely many pairs $(p,d)$ arise, and some $d$ occurs infinitely often.
 
-For (2), take $r=14$, so $r-h_i\in\{14,12,8,6,2\}$.
+For (2), take $r=14$, so $r-h_i\in\{14,12,8,6,2\}$, or $r=13$, so
+$r-h_i\in\{13,11,7,5,1\}$.
 
 For (3), take $r=4$. If the first alternative holds for only finitely many
 $n$, the second holds infinitely often, for each $\sigma$.
 
-For (4), the thresholds are $1/M$, where $M$ is the exact ratio of a rational
-symmetric polynomial of degree $6$ in $(1-P_1)$ and $P_2$ (see the
-computation below), for $k=2,3,4$. Then use the tuples $\{0,2\}$ (with $r=1$),
-$\{0,2,6\}$ and $\{0,2,6,8\}$.
+For (4), the thresholds are $1/M$, rounded up, where $M$ is the exact ratio of
+a rational combination of the polynomials $(1-P_1)^bP_2^c$ with $b+2c\le6$ (see
+the computation below), for $k=2,3,4$. For Theorem~7 use $\{0,2\}$ with $r=1$,
+and $\{0,2,6\}$, $\{0,2,6,8\}$ with $r=4$.
 \end{proof}
 
-\lbl{Computed} (\texttt{pintz\_}\allowbreak\texttt{maynard.py}, exact Dirichlet-formula integration;
-second program \texttt{pintz\_}\allowbreak\texttt{maynard\_}\allowbreak\texttt{check2.py}, iterated symbolic
-integration, written independently; both in \texttt{code/}\allowbreak\texttt{parity/}):
+\begin{sloppypar}
+\lbl{Computed}, by two programs in the folder \texttt{code/parity/}:
+\texttt{pintz\_maynard.py} (exact Dirichlet-formula integration) and
+\texttt{pintz\_maynard\_check2.py} (iterated symbolic integration, written
+independently). They agree exactly:
+\end{sloppypar}
 \begin{itemize}
 \item Maynard's $k=5$ polynomial gives exactly $\frac{1417255}{708216}=2.0011620\ldots$.
 \item The optimised rational vectors give $M_2\ge1.3859332$, $M_3\ge1.6460391$,
@@ -740,20 +762,24 @@ Theorem~\ref{thm:pintz-maynard} with $\sigma=-1$ is killed exactly when $\Omega$
 vanishes whenever $\varepsilon_i=\varepsilon_j=-1$ ($i\ne j$ in $\mathcal H$) or
 $\varepsilon_i=\varepsilon_r=-1$. This is the edge set of the complete graph on
 $\mathcal H\cup\{r\}$. For $k\ge2$ it contains a triangle, so no fair pattern weight
-kills it (Proposition~\ref{prop:bipartite}(a); the finite case is
-\lbl{Lean-checked} as \texttt{triangle\_no\_fair\_weight}). For $\sigma=+1$, replace
-$\varepsilon_r$ by $-\varepsilon_r$. Fairness at the position $r$ is exactly the
-estimate $\sum w_n\lambda(n+r)=o(S_1)$ in the proof.
+kills it (Proposition~\ref{prop:bipartite}(a); the case $k=2$ with integer
+weights is \lbl{Lean-checked} as \texttt{triangle\_no\_fair\_weight}, and larger $k$
+reduce to it by averaging out the other coordinates, as in
+Remark~\ref{rem:marg}). For $\sigma=+1$, replace $\varepsilon_r$ by $-\varepsilon_r$.
+Fairness at $r$ is what keeps the input $\sum w_n\lambda(n+r)=o(S_1)$ valid after
+twisting: heuristically $\sum w_n\omega(n)\lambda(n+r)\approx\widehat\Omega(\{r\})\sum w_n$, in the normalisation of Section~\ref{sec:bip}.
 
 Without the first alternative, the target is the star with centre $r$, which
-is bipartite. So the class blocks it, under any level of distribution. For one
-edge this is Pintz's remark that even EH does not give $\lambda(p+d)=-1$ for a
-prescribed $d$.
+is bipartite. So the class blocks it, under any level of distribution. The
+one-edge case is consistent with Pintz's remark that even under EH his method
+does not give $\lambda(p+d)=-1$ for a prescribed $d$.
 
-So the parity obstruction blocks ``a prime next to an odd number of prime
-factors'' but not ``two primes, or a prime next to an odd number''. Pintz's
-theorem is the second statement, which sidesteps the obstruction instead of
-breaking it. It says nothing about $\lambda(p+2)$ for $d=2$ alone.
+So the class blocks ``some $n+h_i$ is prime and $\lambda(n+r)=-1$'' when the
+position $r$ is never itself asked to be prime (a star), but not the same
+statement when every position that carries $\lambda=-1$ may itself be one of the
+primes (a complete graph). Pintz's theorem is of the second kind: it sidesteps
+the obstruction, it does not break it. It says nothing about $\lambda(p+2)$
+for the single shift $d=2$.
 \end{remark}
 
 \section{Where the GEH criteria stop: ceilings, and the case \texorpdfstring{$k=2$}{k=2}}\label{sec:ceil}

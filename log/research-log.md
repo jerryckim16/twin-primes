@@ -1,5 +1,26 @@
 # Research log
 
+## 2026-11-16 - Session 26 (3:34 AM CT, 16 Nov; started on time; no wait, no other run active): Weekly review; Pintz's parity-sensitive dichotomy with Maynard weights: some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes (parity paper v0.11)
+
+- Weekly review (notes/reviews/2026-11-16.md, from a fresh-context candid review checked against the files). Top priorities for the week: freeze the verification note as v1.0, cut the parity paper to a ~20 pp. v1.0, and slim the main paper into an index. The k = 3 GEH thread is stopped, rung 182 is paused until its data exist, and no capped-variational paper will start.
+- Parity attempt (route card 2026-11-16-pintz-dichotomy-maynard.md): Pintz's 2010 theorem was read in the source. It is a disjunction: two primes in n+H, or a prime n+h_i with lambda(n+r) = -1. Redone with Maynard's weights it needs only theta M_k > 1 (bounded gaps need theta M_k > 2), so 5-tuples suffice under Bombieri-Vinogradov, since M_5 >= 1417255/708216 > 2 (Maynard (8.17)). Consequence: some even d with 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p (Pintz: 16); also 0 < d <= 14 (Pintz 18) and better conditional thresholds. Proved here, possibly folklore.
+- Computed: Maynard's k = 5 ratio and optimised ratios for k = 2..5 (thresholds 0.72154, 0.60752, 0.54230, 0.49898) agree exactly between two independent programs (code/parity/pintz_maynard.py, Dirichlet formula; pintz_maynard_check2.py, iterated sympy integration, written by a helper without seeing the first). A fresh-context adversarial audit found no errors and 11 wording or justification fixes, all applied (notes/audit-parity-v011.md).
+- The parity paper's criterion predicts this exactly: the target is the complete graph on H u {r}, which the class does not block; a single prescribed d is a star, which it does (Pintz's remark). So this sidesteps parity; it does not break it.
+- Papers: parity paper v0.11. New Section subsec:pintz; first review cuts (dual-formula subsection shortened, Prop. k3-step merged into Thm k3-window, k = 3 remarks merged, Prop. tao-weight turned into a remark, answered open question and plan removed, changelog shortened, abstract rewritten, 174 words; a pre-existing citation error fixed). Verification note v0.12: wording of the Lemma 9.1 ceiling (one-program Gram certificate, probabilistic check of its weights), version tags removed. Main paper v0.26: version tags out of headings, Related results rewritten as current statements.
+- Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. The twin prime conjecture remains open.
+
+Flag for Jerry: (minor) Pintz's 2010 parity-sensitive bound 16 improves to 12 with Maynard weights; proved here and checked, but probably folklore (literature question only).
+
+Parity attempt: Pintz's dichotomy with Maynard weights (two primes, or a prime next to lambda = sigma) needs only theta M_k > 1: proved for 5-tuples under BV, |d| <= 12 instead of 16; classification: proved (modest, possibly folklore), sidesteps parity, does not break it.
+
+Explored: Can the dichotomy reach 4-tuples (|d| <= 8)? It needs level 0.5423 for primes and lambda, while the best known for smooth moduli is 0.525 (Stadlmann 2023), and enlarged supports need the lambda-twisted sum beyond moduli x^{1/2}: dead end with current inputs.
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (fresh-context helpers used for the review, the second program and the audit).
+- Murty-Vatwani still not obtainable (the Queen's URL returns the homepage HTML).
+
+Next: Verification note v1.0 (priority 1); continue the parity-paper cuts (sec. siegel to one subsection, B-parity/fi-twin/bomb-twin/ss-split shortened, digests halved, notation renames, referee items 2.4-2.7 and 3); main paper: demote prop:family/prop:adjoint/prop:psi-weight, merge bonf/bonf2, shorten the history appendix; one parity attempt (Chen switching as a test of the criterion, or Green-Tao-Ziegler complexity).
+
 ## 2026-11-16 - Session 25 (7:34 PM CT, 15 Nov; started on time 01:34 UTC 16 Nov; no wait): The Siegel-zero world: where the parity obstruction's hypothesis can fail (parity paper v0.10, with a full referee pass)
 
 - Parity paper v0.10, thread 3 (hypotheses that imply twin primes): new Section on the Siegel-zero world, read in Tao-Teravainen arXiv:2109.06291v2. Heath-Brown's 1983 theorem is quoted from that paper, since the original is behind a Cloudflare challenge.

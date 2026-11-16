@@ -76,3 +76,11 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   (R) at level > 2/3 plus (B) suffices (FI98 Thm 2); level alone fixes only the prime + P2 total. Missing: any proof of a
   parity-sensitive input for Lambda(n+2) -- (B), Hooley's averaged condition (open question 7), or even Moebius on the
   single shift p-2. Nothing here moves the project closer to twin primes; it locates the gap more precisely.
+- (Session 26) Thm. thm:pintz-maynard / Cor. cor:pintz12 / Remark rem:pintz-parity (parity paper v0.11): Pintz's dichotomy
+  with Maynard weights; some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes (Pintz: 16). Depends on:
+  Maynard 2015 Prop. 4.1 (Literature), BV for lambda (Pintz Lemma 3, quoting Vaughan's method), M_5 > 2 (Computed, two
+  programs). Feeds into: the parity paper's thesis that the bipartite criterion predicts which parity-sensitive statements
+  are reachable (complete graph: reachable; star: blocked). Missing for anything bigger: a single prescribed shift (d = 2)
+  is a star target and is blocked; a k = 4 version needs level 0.5423 for primes and lambda (known: 0.525 for smooth moduli).
+  This is a sidestep of parity, not a break, and not a step toward twin primes.
+
