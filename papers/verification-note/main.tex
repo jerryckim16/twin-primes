@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.12 (draft), 16 November 2026}
+\date{Version 1.0, 16 November 2026}
 
 \begin{document}
 
@@ -28,21 +28,20 @@
 Several 2026 preprints claim improvements of the Polymath8b bound
 $H_1\le246$. Each combines unverified analytic input with a numerical
 \emph{variational step}. We recompute the variational steps exactly (or in
-ball arithmetic), each capped ratio by two independent programs, and do not
-address the analytic input. (i) Stadlmann ($k=49$, claimed $240$): our test function gives
-$4.0120389>4$, and $4.0124198$ after optimising on the capped region. (ii)
-Kintali and Song--Yue ($k=48$, claimed $236$): Song and Yue's cap-free mass and
-capped numerator equal their reference integers exactly, so their criterion
-holds (margin $1.6\cdot10^{-4}$); our own test function gives $4.0060814$.
-(iii) Charton et al.\ ($k=45$, claimed $212$): the criterion holds for the caps
-of their Table~3 ($4.0027351$), but for those of their Lemma~9.1 no polynomial
-in their $846$-dimensional space reaches $3.99$ (Gram weights checked against two exact programs at a random point), an inconsistency in the draft.
-(iv) For the claimed $186$ and $182$ we recompute the main terms, the $186$ loss
-bounds (the decisive group by two programs, the rest by one) and the four
-ingredients of the $182$ cap quotient (two programs each), all consistent with
-the published values. None of this verifies the analytic inputs or the $182$
-restoration losses, so no claim is verified, and none of it bears on the twin
-prime conjecture, which remains open.
+ball arithmetic) and do not address the analytic input; Section~\ref{sec:basis}
+says, number by number, whether a value rests on one program, two independent
+programs, or a probabilistic check. (i) Stadlmann ($k=49$, claimed $240$): ratio
+$4.0120389>4$, and $4.0124198$ after optimising on the capped region (two
+programs). (ii) Kintali and Song--Yue ($k=48$, claimed $236$): Song and Yue's
+cap-free mass and capped numerator equal their reference integers exactly (two
+programs), so their criterion holds with margin $1.6\cdot10^{-4}$. (iii) Charton
+et al.\ ($k=45$, claimed $212$): the criterion holds for the caps of their
+Table~3 ($4.0027351$, two programs), but for the caps of their Lemma~9.1 no
+polynomial in their $846$-dimensional space reaches $3.99$, an inconsistency in
+the draft. (iv) For the claimed $186$ and $182$ the main terms and most loss
+ingredients agree with the published values. No claimed bound is thereby
+verified, and nothing here bears on the twin prime conjecture, which remains
+open.
 \end{abstract}
 
 \maketitle
@@ -104,9 +103,9 @@ $236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \
 $236$, our own $F$ & $4.0060814$ & \lbl{Computed}, two programs\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in their $846$-dim.\ space & \lbl{Computed}, ball arithm.,\\
- & & two programs (weights)\\
-$186$, $182$ & other criteria: Remarks~\ref{rem:186}, \ref{rem:182} & \lbl{Computed}, two programs\\
- & & (186 losses: decisive group)\\
+ & & one program (weights checked\\
+ & & at a random point)\\
+$186$, $182$ & other criteria: Remarks~\ref{rem:186}, \ref{rem:182} & \lbl{Computed}; see \S\ref{sec:basis}\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -651,6 +650,49 @@ that shrinks the admissible caps should be re-checked against the variational
 step, which our programs can do in hours.
 \end{remark}
 
+\section{What each number rests on}\label{sec:basis}
+``Two programs'' means two programs written in separate contexts, without
+access to each other's code, that return the same exact rationals (or
+overlapping rigorous enclosures, where stated). ``One program'' means a single
+exact or rigorous computation that has not been repeated independently.
+\begin{itemize}
+\item \emph{240, Theorem~\ref{thm:240}.} Both ratios ($4.0120389$ and
+  $4.0124198$): two programs, exact. The ceiling $4.14$: one program
+  (interval arithmetic, dual weights). The one-sided value $4.012038868$
+  of Remark~\ref{rem:bonf}: one program (the Bonferroni mode of
+  \texttt{capped\_exact.py}).
+\item \emph{236, Theorem~\ref{thm:sy}.} $I_0=I_{\mathrm{ref}}$ and
+  $J_T=J_{\mathrm{ref}}$: two programs each, exact integer equalities. The
+  capped denominator $I_T$ (only in the ratio $48J_T/I_T$, not in the criterion
+  of \cite{SY26}): one program. The witness itself rests on one extraction from
+  the PDF, checked for completeness and form, with the conversion to power sums
+  checked exactly at random rational points.
+\item \emph{236, Proposition~\ref{prop:kin-own}} (our own $k=48$ vector):
+  two programs, exact.
+\item \emph{212, Proposition~\ref{prop:212}} (Table~3 caps, $4.0027351$): two
+  programs, exact. The value $3.9736870$ of the same vector with the caps of
+  Lemma~9.1 (Appendix~\ref{app:facts}): one program, exact.
+\item \emph{212, Proposition~\ref{prop:ceiling}} (Lemma~9.1 caps, $<3.99$): a
+  one-program positive-definiteness certificate in ball arithmetic. Its Gram
+  weights were compared with both exact programs at one random integer point;
+  this is a probabilistic check (failure probability below $2^{-31}$ per form),
+  not a second derivation of the weights. The optimum $3.98555$ is floating
+  point and is not a certificate.
+\item \emph{186, Remark~\ref{rem:186}.} The two main terms: two programs
+  (agreement to $7\cdot10^{-17}$). The loss bound $L^+$: all $97$ components by
+  one program; the $17$ components carrying $99.95\%$ of the decisive group
+  $O_{5/2}$ also by a second program; the remaining components by one program
+  only.
+\item \emph{182, Remark~\ref{rem:182}.} $I$, $J_0$, $J_+$ and $T$: two programs
+  each, but both programs share one reading of the source, so they check
+  arithmetic and code, not that reading. $\kappa_{\mathrm{true}}$: two
+  quadrature methods in one script. The printed restoration arithmetic and the
+  $98$ source rows: one program each. The $197$ restoration integrals: not
+  checked (their data are not published).
+\item \emph{Admissible tuples} of diameters $212$, $236$, $240$, $246$ and the
+  counting lemmas behind Proposition~\ref{prop:fibre}: \lbl{Lean-checked}.
+\end{itemize}
+
 \section{Reproducibility}
 \emph{How this work was produced.} The programs, the Lean files, the text and
 the internal referee reports were written by AI agents (Claude, Anthropic)
@@ -673,69 +715,65 @@ the counting lemmas used in Proposition~\ref{prop:fibre}. The companion paper
 \cite{Kim26} contains the full derivations and the history of each
 computation: the dual-weight ceilings in its \S4, and the capped supports,
 the two evaluators and the Gram matrices in its \S5 (section numbers of its
-version 0.12).
+version 0.27).
+
+\appendix
+\section{Facts about the capped problem used above}\label{app:facts}
+Collected here so that the main text can stay short. All values are in the
+Polymath scaling (threshold $4$); ``cap-free'' means the same $P$ on $L\R_k$.
+\begin{enumerate}
+\item \emph{Caps can only lower the optimum} (\lbl{Proved here}, trivial):
+  a function supported on $T$ is supported on $L\R_k$, with the same
+  functionals, so $\sup_F kJ_T/I_T\le M_k(L,\tau)$, the cap-free constant.
+  Dual-weight ceilings for $M_k(L,\tau)$ (\cite[\S4]{Kim26}; \lbl{Computed},
+  one program, interval arithmetic) give the brackets
+  \[
+  k=49:\ (4.0124,\,4.14],\qquad k=45\ \text{(Table~3 caps)}:\ (4.0027,\,4.126].
+  \]
+\item \emph{What the caps cost the cap-free optimiser} (\lbl{Computed}):
+  $k=49$: $4.016176\to4.012039$ ($0.0041$); $k=48$, our vector:
+  $4.0064115\to4.0060814$ ($0.00033$); $k=48$, the witness of \cite{SY26}:
+  $4.0036348\to4.0030988$ ($0.00054$); $k=45$, Table~3 caps:
+  $4.012272\to4.002735$ ($0.0095$); $k=45$, Lemma~9.1 caps:
+  $4.012272\to3.973687$ ($0.0386$).
+\item \emph{How much re-optimising on $T$ regains} (\lbl{Computed};
+  floating point for the optima): at $k=49$, $0.00038$ of $0.0041$ ($9\%$); at
+  $k=45$ with the Lemma~9.1 caps, $0.0119$ of $0.0386$ ($31\%$). The fraction
+  grows with the size of the loss; a guess that it stays near a tenth was wrong
+  (\cite[\S5]{Kim26}).
+\item \emph{The cap condition} $g<C_m\le C_{m+1}\le C_m+g$ for $m\ge1$ holds
+  for all four cap sets and fails at $m=0$; it is what makes the fibre
+  description of Proposition~\ref{prop:fibre} valid.
+\item \emph{One-sided certificates} need no piece with three forced
+  coordinates (Remark~\ref{rem:bonf}): for nonnegative integrands, Bonferroni
+  truncation after level $1$ (lower bounds for $J_T$) and level $2$ (upper
+  bounds for $I_T$) suffices, at a cost of $3.5\cdot10^{-8}$ at $k=49$.
+\item \emph{Sensitivity} (Remark on what would change the picture): the margins
+  are $0.0027$--$0.012$; a change of caps of the size of the difference between
+  Table~3 and Lemma~9.1 of \cite{Cha26} is enough to move the best value in
+  $V_{21}$ below $4$.
+\end{enumerate}
 
 \section*{Changes}
 \begin{description}
-\item[0.12] (16 November 2026) Wording after the weekly review: the ceiling of
-Proposition~\ref{prop:ceiling} is a one-program Gram certificate whose weights
-agree with both exact programs at one random point (a probabilistic check, not
-a second derivation); the item 0.11 below said too much. Version tags removed
-from the body.
-\item[0.11] (15 November 2026) Proposition~\ref{prop:ceiling}: the second
-exact program has evaluated the random test point of the Lemma~9.1 Gram
-weights and agrees exactly with the first, so the ceiling no longer rests on
-one program.
-\item[0.10] (15 November 2026) Remark~\ref{rem:182}: the printed arithmetic of
-the restoration step (constants (8.3), the Section~10 totals, (10.2)--(10.3),
-Sections~3.7 and 13.3) re-done exactly; the $98$ source rows checked
-against the printed row definitions.
-\item[0.9] (15 November 2026) Remark~\ref{rem:182}: the mass deficit
-$\kappa_{\mathrm{true}}$ of the $182$ minorant recomputed by two methods.
-\item[0.8] (15 November 2026) Remark~\ref{rem:182}: the four ingredients of the
-cap quotient of the claimed $182$, each by two programs (the tail term by a
-second program this version), and the block-end reading of its kernel. Table of
-contents; shorter abstract.
-\item[0.7] (15 November 2026) Remark~\ref{rem:186}: all $97$ raw loss components
-by one program, and the $17$ components carrying $99.95\%$ of $O_{5/2}$ by a second,
-independent program.
-\item[0.6] (14 November 2026) Remark~\ref{rem:186}: the raw loss bounds of the
-$186$ companion re-evaluated (all $45$ inner and the $33$ largest outer components), and the
-sensitivity of its final margin to each loss group.
-\item[0.5] (14 November 2026) Remark~\ref{rem:bonf} (one-sided certificates
-without the three-coordinate pieces) and Remark~\ref{rem:186} (the main terms of
-the $186$ companion). Remark~\ref{rem:lemma5} now mentions the internal audit
-of \cite[Thm.~4.18]{SY26}. This version also contains the revisions made
-after the internal referee report of 14 November on version~0.4 (directory
-\texttt{referee/2026-11-14-verification-note/}; abstract, the three-part
-description of each claim, the label definitions).
-\item[0.4] (14 November 2026) The second exact program confirms
-Proposition~\ref{prop:kin-own} (our own $k=48$ test function): same $I_T$ and
-$J_T$ as exact rationals. The one-program qualifiers for it are removed from
-the abstract, the table, the proposition and the corollary.
-\item[0.3] (13 November 2026) The second exact program confirms the capped
-numerator of the witness of \cite{SY26} (Theorem~\ref{thm:sy}); the
-one-program qualifiers for it are removed from the abstract, the table, the
-theorem and the corollary.
-\item[0.2] (13 November 2026) Revised after an internal referee report
-(in the directory \texttt{referee/} of the repository).
-The normalisations are now stated (new paragraph in \S2) and the $236$ ratios
-in Theorem~\ref{thm:sy} and the results table are given in one scaling;
-the one-program status of the $236$ capped numerators is marked in the table,
-the theorem and the corollary, and the corollary no longer claims the
-criterion of \cite{SY26} for our own test function; the cap-free agreement of
-the second evaluator is attributed correctly; the $4.14$ ceiling has its
-provenance; ``certified twice'' is corrected for the $3.99$ ceiling, and the
-statements after Proposition~\ref{prop:ceiling} are restricted to $V_{21}$,
-with a conjecture about the drafting of \cite{Cha26} removed;
-Proposition~\ref{prop:fibre} sets $C_0=0$ and assumes the cap condition for
-$m\ge1$ only, with the case $m(u')=0$ added to the proof; the Lean
-attributions name the theorems and what they bound; the test spaces $V_D$ are
-defined; overloaded symbols are renamed ($\mathcal L$, $\theta$,
-$U_{\mathrm{SY}}$, $I_0$, $J_0$); ``$m\ge4$'' is corrected to ``$m\ge1$'';
-truncated digits are corrected; Remark~\ref{rem:lemma5} now discusses which
-$236$ argument may depend on the step it describes.
-\item[0.1] (13 November 2026) First draft.
+\item[1.0] (16 November 2026) Frozen version. New Section~\ref{sec:basis}
+(one sentence per number: one program, two programs, or a probabilistic
+check); Appendix~\ref{app:facts} (facts about the capped problem, instead of a
+separate paper); shorter abstract; changelog shortened.
+\item[0.12] (16 November 2026) The ceiling of Proposition~\ref{prop:ceiling}
+described as a one-program Gram certificate with a probabilistic check of its
+weights; version tags removed from the body.
+\item[0.8--0.11] (15 November 2026) Remark~\ref{rem:182}: the four ingredients of
+the $182$ cap quotient by two programs each, $\kappa_{\mathrm{true}}$ by two
+methods, the printed restoration arithmetic and the source rows; the random
+test point of Proposition~\ref{prop:ceiling} evaluated by the second exact program.
+\item[0.5--0.7] (14--15 November 2026) Remark~\ref{rem:bonf}; Remark~\ref{rem:186}
+(main terms, then all $97$ raw loss components, the decisive group by two
+programs); internal referee report of 14 November applied.
+\item[0.1--0.4] (13--14 November 2026) First draft; second program confirms the
+capped numerator of the $236$ witness and our own $k=48$ vector; internal
+referee report of 13 November applied (normalisations, labels, one-program
+qualifiers).
 \end{description}
 
 \begin{thebibliography}{99}

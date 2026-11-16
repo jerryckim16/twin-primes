@@ -336,66 +336,28 @@ only confirms the input of the parity obstruction and gives no lower bound for
 twin primes; the proof of \cite[Theorem~3.1]{TT25} was not checked.
 
 \subsection{Multiplicative functions in short intervals}\label{subsec:mr16}
-\lbl{Literature} \cite{MR16} (arXiv:1501.04585v4; PDF page $=$ printed page).
-Theorem~1 (pp.~1--2): let $f:\mathbb N\to[-1,1]$ be multiplicative. There are
-absolute constants $C,C'>1$ such that for any $2\le h\le X$ and $\delta>0$,
-\[
-\left|\frac1h\sum_{x\le n\le x+h}f(n)-\frac1X\sum_{X\le n\le2X}f(n)\right|
-\le\delta+C'\frac{\log\log h}{\log h}
-\]
-for all but at most
-$CX\left((\log h)^{1/3}\delta^{-2}h^{-\delta/25}+\delta^{-2}(\log X)^{-1/50}\right)$
-integers $x\in[X,2X]$; one can take $C'=20000$. So $f$ is real-valued,
-$1$-bounded and multiplicative (not necessarily completely multiplicative),
-and the statement is non-trivial as soon as $h\to\infty$. Consequences (pp.~3--5):
-$\frac1X\left|\sum_{n\le X}\lambda(n)\lambda(n+h)\right|\le1-\delta(h)$ for
-every $h\ge1$ (Corollary~2), and for $f:\mathbb N\to\mathbb R$ multiplicative,
-negative somewhere and non-zero on a positive proportion of integers, almost
-every $[x,x+\psi(x)]$ with $\psi(x)\to\infty$ contains a sign change of $f$
-(Corollary~4). In particular, every $[n,n+C\sqrt n]$ contains integers
-with an even number and with an odd number of prime factors (p.~5, from
-Corollary~5). The structure of the proof is set out on pp.~6--11:
-\begin{enumerate}
-\item \emph{Typical integers.} Restrict to the set $S$ of $n\in[X,2X]$
-  with a prime factor in each of a chain of ranges $[P_j,Q_j]$, where
-  $Q_1\le\exp(\sqrt{\log X})$. Most $n$ lie in $S$, and the rest are removed by
-  the fundamental lemma of the sieve (pp.~6, 30--31).
-\item \emph{Parseval.} The variance over $x$ reduces to the mean square
-  of $\sum_{n\in S}f(n)n^{-1-it}$ over $(\log X)^{1/15}\le|t|\le X/h$
-  (p.~7, (5); Lemma~14, p.~21).
-\item \emph{Factorisation.} Where the prime polynomial
-  $\sum_{P_j\le p\le Q_j}f(p)p^{-1-it}$ is small, ``a variant of Ramar\'e's
-  identity'' factors out this polynomial. A pointwise bound for it is combined
-  with the mean value theorem for the cofactor, and moments are used for $j>1$
-  (pp.~9--10; Lemma~12, p.~19).
-\item \emph{Large values and Hal\'asz.} The remaining sparse set of $t$ is
-  handled with Hal\'asz-type large-value inequalities (Lemmas~9 and~11,
-  pp.~16--17) and Hal\'asz's theorem. That theorem makes the long average the
-  benchmark and uses that $f$ is real (pp.~10--13).
-\end{enumerate}
-The authors say that the result fails for complex $f$ (for example
-$f(p)=p^{it}$), and that it cannot hold in all intervals of length
-$\asymp\sqrt X$, because ``the large primes factors'' are ``completely arbitrary
-for general $f$'' (pp.~2, 5). They note that Chowla's conjecture ``is believed
-to be at least as deep as the twin prime conjecture'' (p.~3). The word
-``parity'' does not occur in the paper.
+\lbl{Literature} \cite[Theorem~1, Corollaries~2, 4, 5, pp.~1--11]{MR16}
+(arXiv:1501.04585v4). For every multiplicative $f:\mathbb N\to[-1,1]$ and
+$2\le h\le X$, the average of $f$ over $[x,x+h]$ is within
+$\delta+C'\log\log h/\log h$ of its average over $[X,2X]$ for all but
+$O\left(X\left((\log h)^{1/3}\delta^{-2}h^{-\delta/25}+\delta^{-2}(\log X)^{-1/50}\right)\right)$
+values $x\in[X,2X]$. Consequences include
+$|\sum_{n\le X}\lambda(n)\lambda(n+h)|\le(1-\delta(h))X$ and sign changes of
+$\lambda$ in every $[n,n+C\sqrt n]$. The proof restricts to integers with a
+prime factor in each of a chain of short ranges, factors $n=pm$ there by a
+variant of Ramar\'e's identity, and treats the remaining frequencies with
+Hal\'asz-type large-value estimates; the authors note that it fails for
+complex $f$ and that Chowla's conjecture ``is believed to be at least as deep
+as the twin prime conjecture'' (p.~3).
 
-\begin{remark}[Why this does not transfer to twin primes]\label{rem:mr16-transfer}
-\lbl{Heuristic} (our reading, not a statement of \cite{MR16}). Every step
-above applies to a single function $f(n)$ that is multiplicative, real and
-bounded by~$1$. Step~(3) uses multiplicativity to factor $n=pm$ (p.~9; written there for completely multiplicative $f$). The function
-$n\mapsto\lambda(n)\lambda(n+2)$ is not multiplicative, and
-$\Lambda(n+2)$ is neither bounded nor multiplicative in~$n$. So
-Theorem~1 says nothing about either of them directly. For
-$\lambda(n)\lambda(n+h)$ the paper gets only $1-\delta(h)$, through sign
-changes (pp.~37--38). The two-point results we use come from a different
-argument, \cite[Theorem~1.2]{Tao16}. It holds only with logarithmic averaging,
-and its proof uses $\lambda(pn)=-\lambda(n)$ at small primes in a new
-bilinear estimate (Section~\ref{sec:parity}); we have not checked here how it
-uses \cite{MR16}. Twin primes need more than a short-interval average of
-one function: they need a correlation $\sum_n\Lambda(n)\Lambda(n+2)$ of
-$\Lambda$ with a shift of itself. Nothing in \cite{MR16} addresses that
-correlation; its asymptotic is \lbl{Open}.
+\begin{remark}[Why this does not transfer to twin primes; \lbl{Heuristic}, our reading]\label{rem:mr16-transfer}
+Every step uses that a single function $f(n)$ is real, $1$-bounded and
+multiplicative (the factorisation $n=pm$). Neither $\lambda(n)\lambda(n+2)$
+nor $\Lambda(n+2)$ is of that kind, and twin primes need the correlation
+$\sum_n\Lambda(n)\Lambda(n+2)$ of $\Lambda$ with a shift of itself, which
+\cite{MR16} does not address. The two-point results used in
+Section~\ref{sec:parity} come from a different argument
+\cite[Theorem~1.2]{Tao16}, with logarithmic averaging.
 \end{remark}
 
 
@@ -1618,219 +1580,87 @@ Not communicated to the author; a pointer, not a correction of record.
 
 \section{The Siegel-zero world: where the obstruction's hypothesis can fail}\label{sec:siegel}
 \begin{sloppypar}
+\lbl{Literature} \cite[Definition~1.4, Theorem~1.5, Corollaries~1.8 and
+3.6]{TT22}. A \emph{Siegel zero} is a real zero $\beta=1-1/(\eta\log q)$ of
+$L(s,\chi)$, $\chi$ a primitive quadratic character of conductor $q$, with
+quality $\eta\ge10$. Heath-Brown's theorem \cite{HB83}, as quoted in
+\cite[Theorem~1.5(i)]{TT22} (we have not opened \cite{HB83}), says that
+infinitely many Siegel zeros would give infinitely many twin primes. Tao and
+Ter\"av\"ainen sharpen the range and show that in the same world two-point
+Chowla holds for $q^{1/2+\varepsilon_0}\le x\le q^{\eta^{1/2}}$, with error
+$\log^{-1/10}\eta$. The mechanism is that $\lambda$ ``pretends'' to be $\chi$:
+by their Proposition~3.5 and Corollary~3.6 the primes with $\chi(p)\ne-1$ have
+small $1/p$-sum above about $T=q^{1/\log^{1-\varepsilon'}\eta}$; nothing in
+\cite{TT22} controls those below $T$.
 
-A classical conditional route to twin primes that needs no unproved
-equidistribution input is the existence of Siegel zeros, a hypothesis that is
-widely believed to be false. This section reads the statements in \cite{TT22}
-and locates, with a short elementary proof, the step of the obstruction of
-Section~\ref{sec:parity} that would fail in that world, under a condition on
-the small split primes of the exceptional character.
+Which hypothesis of the obstruction of Section~\ref{sec:parity} fails there?
+Let $w$ be fixed, $W=\prod_{p\le w}p$, $Q=Wq$ with $q>w$ an odd prime (so
+$\chi$ is the Legendre symbol mod $q$), $G$ the set of classes $b$ mod $Q$ with
+$(b(b+2),Q)=1$, and $S_b$ the sum of $\lambda(n)\lambda(n+2)$ over
+$n\in I$, $n\equiv b$ $(Q)$, where $I=(0,x]$ or $(x,2x]$.
 
-\subsection{The theorems}
-\lbl{Literature} \cite[Definition~1.4, Theorem~1.5, Theorem~1.6,
-Corollary~1.8]{TT22}. A \emph{Siegel zero} is a real zero
-$\beta=1-1/(\eta\log q_\chi)$ of $L(s,\chi)$, $\chi$ a primitive quadratic
-character of conductor $q_\chi$, with quality $\eta\ge10$.
-\begin{itemize}
-\item Heath-Brown \cite{HB83}, as stated in \cite[Theorem~1.5(i)]{TT22}:
-  $\mathbb E_{n\le x}\Lambda(n+h_1)\Lambda(n+h_2)=\mathfrak S+O(1/\log\log\eta)$
-  uniformly for $q_\chi^{250}\le x\le q_\chi^{300}$. So infinitely many Siegel
-  zeros (with $\eta\to\infty$) would give infinitely many twin primes.
-\item Tao and Ter\"av\"ainen \cite[Corollary~1.8(i),(ii)]{TT22}: the same
-  with error $O(\log^{-1/20}\eta)$ for $q_\chi^{41/2+\varepsilon_0}\le x\le
-  q_\chi^{\eta^{1/2}}$, and, in the same world, two-point Chowla:
-  $\mathbb E_{n\le x}\lambda(n)\lambda(n+h)\ll\log^{-1/10}\eta$ for
-  $q_\chi^{1/2+\varepsilon_0}\le x\le q_\chi^{\eta^{1/2}}$.
-\item The mechanism \cite[\S1.2]{TT22}: $\lambda$ ``pretends'' to be $\chi$,
-  and $\Lambda$ to be $\chi\ast\log$. Quantitatively
-  \cite[Corollary~3.6]{TT22}: with $R_0=x^{1/\sqrt{\log\eta}}$,
-  \begin{equation}\label{eq:tt-exc}
-  \sum_{R_0\le p\le x,\ \chi(p)\ne-1}\frac1p\ll\exp\left(-\tfrac12\sqrt{\log\eta}\right)
-  \qquad(q_\chi^{(1+\varepsilon)/2}\le x\le q_\chi^{\eta^{1/2}}).
-  \end{equation}
-  This comes from \cite[Proposition~3.5]{TT22}. Its bound (3.23), summed over
-  $m$, controls the exceptional primes down to about
-  $q_\chi^{1/\log^{1-\varepsilon}\eta}$ (their remark after Proposition~3.5).
-  Nothing in \cite{TT22} controls the primes below that.
-\end{itemize}
-We have not opened \cite{HB83}; the first item is quoted from \cite{TT22}.
-
-\subsection{Twisted class sums are biased}
-Let $\chi$ be a real primitive character mod $q$,
-$f\colon\mathbb N\to\{-1,1\}$ completely multiplicative, $w\ge2$,
-$W=\prod_{p\le w}p$ and $Q=\mathrm{lcm}(W,q)$. Put
+\begin{proposition}[\lbl{Proved here}; elementary, possibly folklore]\label{prop:siegel-bias}
+Let $s_1$ and $s_2$ be the $1/p$-sums of the primes $p>w$ with $\chi(p)=1$
+in $(w,x/Q]$ and in $(x/Q,2x+2]$. Let $\overline S$ be the sum of
+$\lambda(n)\lambda(n+2)$ over the $n\in I$ coprime to $Q$, divided by
+$\varphi(Q)$. If $|S_b-\overline S|\le\varepsilon x/Q$ for every $b\in G$,
+then, as $x/Q\to\infty$,
 \[
-G=\{b\bmod Q:\ (b(b+2),Q)=1\},\qquad \rho=|G|/Q,\qquad
-F=\{p>w:\ p\nmid q,\ f(p)\ne\chi(p)\}.
+\varepsilon\ \ge\ 1-4s_1-O_w(s_2)-\frac1{q-2}-o(1).
 \]
-For an interval $I=(y,y+x]$ with $x\ge Q$ let
-$S_b=\sum_{n\in I,\,n\equiv b\,(Q)}f(n)f(n+2)$, and
-\begin{gather*}
-s_1=\sum_{p\in F,\ p\le x/Q}\frac1p,\qquad
-s_2=\sum_{p\in F,\ x/Q<p\le y+x+2}\frac1p,\\
-P_1=\#\{p\in F: p\le x/Q\},\qquad P_2=\#\{p\in F: x/Q<p\le y+x+2\}.
-\end{gather*}
-For $f=\lambda$ the set $F$ is the set of primes $p>w$ with $\chi(p)=+1$.
-
-\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:siegel-bias}
-\begin{enumerate}
-\item If $(n(n+2),Q)=1$ then
-  $f(n)f(n+2)=\chi(n)\chi(n+2)(-1)^{\Omega_F(n)+\Omega_F(n+2)}$, where
-  $\Omega_F$ counts prime factors in $F$ with multiplicity.
-\item
-  \[
-  \frac{1}{\rho x}\sum_{b\in G}\chi(b)\chi(b+2)S_b\ \ge\
-  1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)-\frac{Q}{x}\left(1+4P_1\right).
-  \]
-\item Let $q$ be an odd prime, $q>w$ (so $\chi$ is the Legendre symbol mod $q$), and suppose the discrepancies
-  \[
-  \Delta_b=S_b-\frac{1}{\varphi(Q)}\sum_{n\in I,\,(n,Q)=1}f(n)f(n+2)
-  \]
-  satisfy $|\Delta_b|\le\varepsilon x/Q$ for every $b\in G$. Then
-  \begin{multline*}
-  \varepsilon\ \ge\ 1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)\\
-  -\frac{Q}{x}\left(1+4P_1\right)-\frac{1+Q/x}{q-2}.
-  \end{multline*}
-\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-(1) Every prime factor $p$ of $n(n+2)$ satisfies $p>w$ and $p\nmid q$, so
-$\chi(p)=\pm1$ and $f(p)=\chi(p)\varepsilon_p$ with $\varepsilon_p=-1$ if
-$p\in F$ and $\varepsilon_p=1$ otherwise. Complete multiplicativity of $f$
-and $\chi$ gives the identity.
-
-(2) For $b\in G$, every $n\equiv b\ (Q)$ has $(n(n+2),Q)=1$ and
-$\chi(n)\chi(n+2)=\chi(b)\chi(b+2)=\pm1$. By (1),
-$\chi(b)\chi(b+2)f(n)f(n+2)=(-1)^{\Omega_F(n)+\Omega_F(n+2)}$, which is $1$
-unless some $p\in F$ divides $n(n+2)$, and is $\ge-1$ in any case. Hence
-$\sum_{b\in G}\chi(b)\chi(b+2)S_b\ge\sum_{b\in G}N_b-2B$, where
-$N_b=\#\{n\in I: n\equiv b\ (Q)\}\ge x/Q-1$ and
-$B=\sum_{p\in F}\#\{n\in I:\ (n(n+2),Q)=1,\ p\mid n(n+2)\}$.
-Primes $p\in F$ do not divide $Q$. If $p\le x/Q$, then for each $b\in G$ the
-conditions $n\equiv b\ (Q)$, $p\mid n$ fix one class mod $pQ$, which meets $I$
-at most $x/(pQ)+1$ times, and the same holds for $p\mid n+2$; this
-contributes at most $2|G|(x/(pQ)+1)$. If $p>x/Q$, we drop the condition on
-the class: $p$ divides at most $x/p+1$ elements of $I$ and at most $x/p+1$
-elements of $I+2$, and none if $p>y+x+2$. So
+If $(n(n+2),Q)=1$, every prime factor $p$ of $n(n+2)$ has $\chi(p)=\pm1$ and
+$\lambda(p)=-1$, so $\lambda(n)\lambda(n+2)=\chi(n)\chi(n+2)$ unless a prime
+with $\chi(p)=1$ divides $n(n+2)$, and the product is $\ge-1$ in any case.
+Hence, for $b\in G$, $\chi(b)\chi(b+2)S_b\ge x/Q-1-2B_b$, where $B_b$ counts
+the $n\equiv b$ $(Q)$ in $I$ with such a prime factor. Counting one class mod
+$pQ$ (for $n$ and for $n+2$) when $p\le x/Q$, and all multiples of $p$ when
+$p>x/Q$, gives $\sum_{b\in G}B_b\le2|G|(x/Q)s_1+2xs_2+2|G|\pi(x/Q)+2\pi(2x+2)$.
+By the Chinese remainder theorem,
+$\sum_{b\in G}\chi(b)\chi(b+2)=\frac{|G|}{q-2}\sum_{c\bmod q}\left(\frac{c^2-1}{q}\right)
+=-\frac{|G|}{q-2}$ (the Jacobsthal sum equals $-1$), and $|\overline S|\le
+x/Q+1$. Therefore
 \[
-B\le 2|G|\frac{x}{Q}s_1+2|G|P_1+2xs_2+2P_2 .
+\varepsilon\frac xQ|G|\ \ge\ \sum_{b\in G}\chi(b)\chi(b+2)(S_b-\overline S)
+\ \ge\ |G|\left(\frac xQ-1\right)-2\sum_bB_b-\left(\frac xQ+1\right)\frac{|G|}{q-2}.
 \]
-Divide by $\rho x=|G|x/Q$:
-$\sum_{b\in G}N_b/(\rho x)\ge1-Q/x$ and
-$2B/(\rho x)\le4s_1+4QP_1/x+(4/\rho)(s_2+P_2/x)$.
-
-(3) Let $M=\varphi(Q)^{-1}\sum_{n\in I,(n,Q)=1}f(n)f(n+2)$; then $|M|\le
-x/Q+1$. Since $q\nmid W$, the Chinese remainder theorem gives
-$\sum_{b\in G}\chi(b)\chi(b+2)=|G_W|\sum_{b\bmod q}\chi(b(b+2))$, where $G_W$
-is the analogue of $G$ mod $W$ and $|G_W|=|G|/(q-2)$. The classical
-evaluation $\sum_{c\bmod q}\left(\frac{c^2-1}{q}\right)=-1$ (write
-$b(b+2)=c^2-1$ with $c=b+1$; the equation $c^2-y^2=1$ has exactly $q-1$
-solutions mod $q$, since $(c-y)(c+y)=1$, and also
-$\sum_c(1+(\frac{c^2-1}{q}))$ solutions) gives
-$\left|\sum_{b\in G}\chi(b)\chi(b+2)\right|=|G|/(q-2)$. So
-\[
-\varepsilon\frac{x}{Q}|G|\ \ge\ \left|\sum_{b\in G}\chi(b)\chi(b+2)\Delta_b\right|
-\ \ge\ \sum_{b\in G}\chi(b)\chi(b+2)S_b-\left(\frac xQ+1\right)\frac{|G|}{q-2},
-\]
-and dividing by $\rho x$ and using (2) gives (3).
+Divide by $|G|x/Q$ and use $Q/|G|\ll_w1$, $\pi(x/Q)\ll(x/Q)/\log(x/Q)$ and
+$\pi(2x+2)/x\to0$.
 \end{proof}
 
-The error terms are small in the intended range. For $w$ fixed one has
-$1/\rho\ll\log^2w$, $QP_1/x\le Q\pi(x/Q)/x\ll1/\log(x/Q)$ and
-$P_2/x\le\pi(y+x+2)/x\ll1/\log x$ for $y\ll x$. So, if $x/Q\to\infty$ and
-$x\to\infty$, the right-hand side of (3) is $1-4s_1-(4/\rho)s_2-1/(q-2)-o(1)$.
-Since $f(n)f(n+2)=1-\omega(n)$ for the obstruction's weight
-$\omega=1-f(n)f(n+2)$, and the discrepancy of the constant function $1$ is at most
-$1$ in absolute value, (3) is equally a statement about the discrepancies of
-$\omega$; and it holds for $I=(x,2x]$ as in \cite[(144)]{PM8b}.
-
-\begin{corollary}[\lbl{Proved here}, from {\cite[(1.4), Proposition~3.5]{TT22}}; possibly folklore]\label{cor:siegel-typeI}
-Let $\chi$ have a Siegel zero of quality $\eta$ and odd prime conductor
-$q>w$ ($\chi$ is then the Legendre symbol mod $q$), with $w$ fixed. Fix
-$0<\varepsilon'<1$, put $M=\lfloor\log^{1-\varepsilon'}\eta\rfloor$ and
-$T=q^{1/M}$, and let $q^{(1+\varepsilon_0)/2}\le x\le q^{\eta^{1/2}}$ and
-$Q=Wq\le x/T$. Take $f=\lambda$ and $I=(0,x]$ or $I=(x,2x]$. Suppose the
-discrepancies of $\lambda(n)\lambda(n+2)$ at the single modulus $Q$ are at most
-$\varepsilon x/Q$ in every class $b\in G$ (a per-modulus, unweighted form of
-\cite[(144)]{PM8b}). Then
-\[
-\sum_{w<p<T,\ \chi(p)=1}\frac1p\ \ge\ \frac{1-\varepsilon}{4}-o(1)
-\qquad(\eta\to\infty).
-\]
+\begin{corollary}[\lbl{Proved here}, from {\cite[(1.4), (3.22), (3.23)]{TT22}}]\label{cor:siegel-typeI}
+Let $\chi$ have a Siegel zero of quality $\eta\to\infty$ and odd prime
+conductor $q>w$, fix $0<\varepsilon'<1$, put $T=q^{1/M}$ with
+$M=\lfloor\log^{1-\varepsilon'}\eta\rfloor$, and let
+$q^{(1+\varepsilon_0)/2}\le x\le q^{\eta^{1/2}}$ with $Wq\le x/T$. If the
+discrepancies of $\lambda(n)\lambda(n+2)$ at the single modulus $Wq$ are at
+most $\varepsilon x/(Wq)$ in every class of $G$ (a per-modulus, unweighted form
+of \cite[(144)]{PM8b}), then
+$\sum_{w<p<T,\,\chi(p)=1}1/p\ge(1-\varepsilon)/4-o(1)$.
 \end{corollary}
 
 \begin{proof}
-By \cite[(1.4)]{TT22}, $\eta\ll q$, so $\eta\to\infty$ forces $q\to\infty$,
-and $\log T=\log q/M\ge(\log q)^{\varepsilon'}(1+o(1))\to\infty$. Hence $x/Q\ge T$
-gives $Q/x\to0$ and $1/\log(x/Q)\to0$, and also $1/(q-2)\to0$.
-
-Next, the exceptional primes above $T$. By \cite[(3.22)]{TT22} (with their
-$\varepsilon=1$), those in $(q,2x+2]$ contribute
-$\ll\log_q(3x)/\eta\ll\eta^{-1/2}$. By \cite[(3.23)]{TT22}, uniformly in $m\ge2$,
-those in $(q^{1/m},q^{1/(m-1)}]$ contribute $\ll m\eta^{-1/m}$. Summing over
-$2\le m\le M$ gives $\ll M^2\eta^{-1/M}\le\log^2\eta\cdot
-\exp(-\log^{\varepsilon'}\eta)\to0$.
-
-So $\sum_{T<p\le 2x+2,\,\chi(p)=1}1/p=o(1)$. This gives $s_2=o(1)$ (as
-$x/Q\ge T$) and shows that the primes in $(T,x/Q]$ contribute $o(1)$ to $s_1$.
-For $f=\lambda$ the set $F$ is $\{p>w:\chi(p)=1\}$. Insert all this into
-Proposition~\ref{prop:siegel-bias}(3).
+By \cite[(1.4)]{TT22}, $\eta\ll q$, so $q\to\infty$, $x/Q\ge T\to\infty$ and
+$1/(q-2)\to0$. By \cite[(3.22)]{TT22} the primes with $\chi(p)=1$ in
+$(q,2x+2]$ contribute $\ll\eta^{-1/2}$, and by \cite[(3.23)]{TT22} those in
+$(q^{1/m},q^{1/(m-1)}]$ contribute $\ll m\eta^{-1/m}$; the sum over $2\le
+m\le M$ is $\ll M^2\eta^{-1/M}=o(1)$. So $s_2=o(1)$ and only the primes below
+$T$ remain in $s_1$; apply Proposition~\ref{prop:siegel-bias}.
 \end{proof}
 
-\begin{remark}[What this locates]\label{rem:siegel-locates}
-\begin{itemize}
-\item In the range $q^{1/2+\varepsilon_0}\le x\le q^{\eta^{1/2}}$ two-point
-  Chowla holds in a Siegel world, with error $\log^{-1/10}\eta$
-  \cite[Corollary~1.8(ii)]{TT22}.
-\item Suppose the exceptional character has few split primes in $(w,T)$
-  (weighted sum $<\frac14-c$). Then the per-modulus form of the twisted input
-  (144) fails at the single modulus $Q=Wq$. On average over $b\in G$ the class
-  sums of $\lambda(n)\lambda(n+2)$ are then $\gg x/Q$, with sign
-  $\chi(b)\chi(b+2)$. Heuristically their total cancels, since
-  $\sum_b\chi(b)\chi(b+2)$ is small.
-\item In such a world this instance of the obstruction's hypothesis is not
-  available, and Heath-Brown's theorem shows that twin primes do follow there.
-\item This does \emph{not} show that the averaged input (an EH-type bound
-  summed over $q\le x^{\theta}$) fails. One bad modulus is compatible with an
-  average bound once $Q\ge\log^Ax$. It also says nothing about Siegel
-  characters with many small split primes.
-\item Whether a Siegel zero by itself forces few split primes in $(w,T)$ is
-  open to us. \cite{TT22} controls the exceptional primes only above $T$, so
-  this is the first unresolved implication of this section. Siegel zeros are
-  conjectured not to exist, and nothing here bears on twin primes in the
-  actual world.
-\end{itemize}
-\end{remark}
-
-\begin{remark}[Numerical check, \lbl{Computed} and \lbl{Heuristic}]\label{rem:siegel-num}
-The script \texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.py} in
-\texttt{code/}\allowbreak\texttt{parity/} takes $f=\chi$ off a random set $F$ of
-primes $\ge50$ ($f=-\chi$ on $F$), for $q=163$, $w=3$, $Q=978$ at $x=10^7$ and
-$5\cdot10^7$, and for $q=1009$, $w=5$, $Q=30270$ at $x=10^7$. It checks two
-things exactly:
-\begin{itemize}
-\item the pointwise inequality $|S_b-\chi(b)\chi(b+2)N_b|\le2\,\#\{\text{bad }n\}$
-  in every class; and
-\item the inequality (2), which is non-vacuous in $10$ of the $30$ cases.
-\end{itemize}
-Both pass in all $30$ cases
-(\texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.out}). Part~(3)
-and the Jacobsthal step were checked separately by the auditor
-(\texttt{notes/}\allowbreak\texttt{audit-parity-v010.md}).
-
-\lbl{Heuristic}: for random $F$ with $s=\sum_{p\in F}1/p\le0.2$, the mean
-normalised bias lies below $\prod_{p\in F}\frac{p-3}{p+1}$ in every case, and
-above or within $0.003$ of the crude comparison value $1-4s$. For example, at
-$s=0.199$ it is $0.394$, against $0.203$ and $0.450$.
-
-For $f=\lambda$, where $F$ is the set of split primes of $\chi_{163}$, the
-bias is $5\cdot10^{-4}$, while the independence heuristic would give $0.045$.
-The reason is that the class fixes $\chi(n)$, and hence the parity of the
-number of inert prime factors. In the actual world there is no Siegel-type bias
-at these scales.
-\end{remark}
-
+So in a Siegel world whose character has few small split primes, two-point
+Chowla holds, but the per-modulus form of the twisted input fails at the one
+modulus $Wq$; this is where Heath-Brown's route escapes the obstruction. It
+does not show that the averaged (EH-type) input fails, and whether a Siegel
+zero forces few split primes below $T$ is open to us (open
+question~\ref{oq:siegel}). The script
+\texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{siegel\_class\_bias.py}
+checks the pointwise inequality and the class-sum bound exactly in $30$ cases
+($q=163,1009$; $x\le5\cdot10^7$; \lbl{Computed}). For $\lambda$ and the actual
+$\chi_{163}$ the class bias is $5\cdot10^{-4}$ (\lbl{Heuristic}): there is no
+Siegel-type bias at these scales. Siegel zeros are conjectured not to exist.
 \end{sloppypar}
 
 \section{Twin primes over \texorpdfstring{$\mathbb F_q[T]$}{Fq[T]}, and what the integers lack}\label{sec:ss}
@@ -2096,7 +1926,7 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   constructions concern one fixed level $\nu$ and do not decide it. Separately,
   the hypothesis itself is open for this sequence: even its single-modulus
   case $\alpha=0$ is the open problem of the M\"obius function on shifted primes.
-\item (\lbl{Open}) Does a Siegel zero of quality $\eta$ and prime conductor
+\item\label{oq:siegel} (\lbl{Open}) Does a Siegel zero of quality $\eta$ and prime conductor
   force $\sum_{w<p<T,\,\chi(p)=1}1/p<\frac14-c$, with $T$ as in
   Corollary~\ref{cor:siegel-typeI}? If so, a per-modulus, unweighted form of
   the twisted Type~I input at the moduli $Wq\le x^{\theta}$ would exclude
