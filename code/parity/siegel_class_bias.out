@@ -1,0 +1,36 @@
+x=10000000 q=163 w=3 seed=1; f = chi off F, -chi on F (p > w)
+random F, target s=0.0       Q=   978 s= 0.0000 1-4s=  1.0000 euler=1.0000e+00 meanbias=+1.0000e+00 minbias=+1.0000e+00 maxbias=+1.0000e+00 avg=+1.0000>=bound=+0.9999 exactcheck=PASS resid_rms/sqrt(x/Q)=0.00
+random F, target s=0.02      Q=   978 s= 0.0220 1-4s=  0.9122 euler=9.1582e-01 meanbias=+9.1202e-01 minbias=+9.0416e-01 maxbias=+9.1726e-01 avg=+0.9120>=bound=+0.7107 exactcheck=PASS resid_rms/sqrt(x/Q)=0.28
+random F, target s=0.05      Q=   978 s= 0.0401 1-4s=  0.8396 euler=8.5171e-01 meanbias=+8.4052e-01 minbias=+8.3237e-01 maxbias=+8.4958e-01 avg=+0.8405>=bound=+0.3618 exactcheck=PASS resid_rms/sqrt(x/Q)=0.33
+random F, target s=0.1       Q=   978 s= 0.1014 1-4s=  0.5943 euler=6.6527e-01 meanbias=+6.3859e-01 minbias=+6.2582e-01 maxbias=+6.5711e-01 avg=+0.6386>=bound=-0.3713 exactcheck=PASS resid_rms/sqrt(x/Q)=0.57
+random F, target s=0.2       Q=   978 s= 0.1923 1-4s=  0.2306 euler=4.6254e-01 meanbias=+3.9986e-01 minbias=+3.7995e-01 maxbias=+4.1535e-01 avg=+0.3999>=bound=-1.6968 exactcheck=PASS resid_rms/sqrt(x/Q)=0.73
+random F, target s=0.5       Q=   978 s= 0.4328 1-4s= -0.7312 euler=1.7670e-01 meanbias=+5.4416e-02 minbias=+3.4328e-02 maxbias=+8.3423e-02 avg=+0.0544>=bound=-5.5878 exactcheck=PASS resid_rms/sqrt(x/Q)=1.03
+random F, target s=1.0       Q=   978 s= 1.0125 1-4s= -3.0499 euler=1.7201e-02 meanbias=+2.9526e-02 minbias=+1.6626e-03 maxbias=+5.8386e-02 avg=+0.0295>=bound=-12.7695 exactcheck=PASS resid_rms/sqrt(x/Q)=1.00
+random F, target s=1.5       Q=   978 s= 1.3737 1-4s= -4.4947 euler=4.0444e-03 meanbias=+4.7028e-02 minbias=+2.1614e-02 maxbias=+6.8166e-02 avg=+0.0470>=bound=-17.8749 exactcheck=PASS resid_rms/sqrt(x/Q)=0.88
+F = all p in (w,200]         Q=   978 s= 1.1096 1-4s= -3.4383 euler=6.7481e-03 meanbias=+9.1968e-03 minbias=-1.5159e-02 maxbias=+3.1785e-02 avg=+0.0092>=bound=-3.4552 exactcheck=PASS resid_rms/sqrt(x/Q)=1.01
+Liouville (F = split primes) Q=   978 s= 0.7256 1-4s= -1.9022 euler=5.4145e-02 meanbias=+5.8438e-04 minbias=-2.5917e-02 maxbias=+3.1589e-02 avg=+0.0006>=bound=-8.6115 exactcheck=PASS resid_rms/sqrt(x/Q)=1.03
+ALL EXACT CHECKS PASS
+x=50000000 q=163 w=3 seed=1; f = chi off F, -chi on F (p > w)
+random F, target s=0.0       Q=   978 s= 0.0000 1-4s=  1.0000 euler=1.0000e+00 meanbias=+1.0000e+00 minbias=+1.0000e+00 maxbias=+1.0000e+00 avg=+1.0000>=bound=+1.0000 exactcheck=PASS resid_rms/sqrt(x/Q)=0.00
+random F, target s=0.02      Q=   978 s= 0.0262 1-4s=  0.8951 euler=9.0021e-01 meanbias=+8.9677e-01 minbias=+8.9434e-01 maxbias=+8.9958e-01 avg=+0.8968>=bound=+0.7350 exactcheck=PASS resid_rms/sqrt(x/Q)=0.25
+random F, target s=0.05      Q=   978 s= 0.0670 1-4s=  0.7319 euler=7.6353e-01 meanbias=+7.5306e-01 minbias=+7.4901e-01 maxbias=+7.5883e-01 avg=+0.7531>=bound=+0.3223 exactcheck=PASS resid_rms/sqrt(x/Q)=0.41
+random F, target s=0.1       Q=   978 s= 0.0842 1-4s=  0.6634 euler=7.1395e-01 meanbias=+6.8976e-01 minbias=+6.8329e-01 maxbias=+6.9839e-01 avg=+0.6898>=bound=-0.1439 exactcheck=PASS resid_rms/sqrt(x/Q)=0.53
+random F, target s=0.2       Q=   978 s= 0.1994 1-4s=  0.2026 euler=4.4966e-01 meanbias=+3.9404e-01 minbias=+3.8664e-01 maxbias=+4.0169e-01 avg=+0.3940>=bound=-1.4176 exactcheck=PASS resid_rms/sqrt(x/Q)=0.72
+random F, target s=0.5       Q=   978 s= 0.5438 1-4s= -1.1752 euler=1.1283e-01 meanbias=+3.5468e-02 minbias=+2.2005e-02 maxbias=+5.0406e-02 avg=+0.0355>=bound=-5.2201 exactcheck=PASS resid_rms/sqrt(x/Q)=1.07
+random F, target s=1.0       Q=   978 s= 1.0105 1-4s= -3.0419 euler=1.7351e-02 meanbias=+1.6958e-02 minbias=+3.8533e-03 maxbias=+2.7090e-02 avg=+0.0170>=bound=-11.0974 exactcheck=PASS resid_rms/sqrt(x/Q)=0.87
+random F, target s=1.5       Q=   978 s= 1.4688 1-4s= -4.8754 euler=2.7639e-03 meanbias=+1.7465e-02 minbias=+3.2470e-03 maxbias=+2.7677e-02 avg=+0.0175>=bound=-16.7149 exactcheck=PASS resid_rms/sqrt(x/Q)=0.94
+F = all p in (w,200]         Q=   978 s= 1.1096 1-4s= -3.4383 euler=6.7481e-03 meanbias=+4.1800e-03 minbias=-6.1614e-03 maxbias=+1.4905e-02 avg=+0.0042>=bound=-3.4416 exactcheck=PASS resid_rms/sqrt(x/Q)=1.01
+Liouville (F = split primes) Q=   978 s= 0.7732 1-4s= -2.0927 euler=4.4757e-02 meanbias=+4.9956e-04 minbias=-1.2949e-02 maxbias=+1.3359e-02 avg=+0.0005>=bound=-8.0186 exactcheck=PASS resid_rms/sqrt(x/Q)=1.01
+ALL EXACT CHECKS PASS
+x=10000000 q=1009 w=5 seed=2; f = chi off F, -chi on F (p > w)
+random F, target s=0.0       Q= 30270 s= 0.0000 1-4s=  1.0000 euler=1.0000e+00 meanbias=+1.0000e+00 minbias=+1.0000e+00 maxbias=+1.0000e+00 avg=+1.0000>=bound=+0.9970 exactcheck=PASS resid_rms/sqrt(x/Q)=0.00
+random F, target s=0.02      Q= 30270 s= 0.0195 1-4s=  0.9220 euler=9.2481e-01 meanbias=+9.1990e-01 minbias=+8.4848e-01 maxbias=+9.7583e-01 avg=+0.9199>=bound=+0.3659 exactcheck=PASS resid_rms/sqrt(x/Q)=0.32
+random F, target s=0.05      Q= 30270 s= 0.0410 1-4s=  0.8360 euler=8.4865e-01 meanbias=+8.3430e-01 minbias=+7.1601e-01 maxbias=+9.2145e-01 avg=+0.8343>=bound=-0.5984 exactcheck=PASS resid_rms/sqrt(x/Q)=0.51
+random F, target s=0.1       Q= 30270 s= 0.0925 1-4s=  0.6301 euler=6.8980e-01 meanbias=+6.5865e-01 minbias=+5.4079e-01 maxbias=+7.9394e-01 avg=+0.6586>=bound=-2.0128 exactcheck=PASS resid_rms/sqrt(x/Q)=0.65
+random F, target s=0.2       Q= 30270 s= 0.1923 1-4s=  0.2310 euler=4.6249e-01 meanbias=+3.9417e-01 minbias=+2.3867e-01 maxbias=+5.8182e-01 avg=+0.3942>=bound=-5.3049 exactcheck=PASS resid_rms/sqrt(x/Q)=0.85
+random F, target s=0.5       Q= 30270 s= 0.4979 1-4s= -0.9918 euler=1.3560e-01 meanbias=+3.5894e-02 minbias=-1.4545e-01 maxbias=+2.0242e-01 avg=+0.0359>=bound=-15.2882 exactcheck=PASS resid_rms/sqrt(x/Q)=1.01
+random F, target s=1.0       Q= 30270 s= 1.0291 1-4s= -3.1164 euler=1.6094e-02 meanbias=+2.3808e-02 minbias=-1.8429e-01 maxbias=+2.0000e-01 avg=+0.0238>=bound=-32.4229 exactcheck=PASS resid_rms/sqrt(x/Q)=1.02
+random F, target s=1.5       Q= 30270 s= 1.3788 1-4s= -4.5152 euler=3.9614e-03 meanbias=+3.4545e-02 minbias=-1.7221e-01 maxbias=+2.1212e-01 avg=+0.0345>=bound=-44.4118 exactcheck=PASS resid_rms/sqrt(x/Q)=0.98
+F = all p in (w,200]         Q= 30270 s= 0.9157 1-4s= -2.6628 euler=1.9751e-02 meanbias=+3.2574e-02 minbias=-1.4804e-01 maxbias=+2.4848e-01 avg=+0.0326>=bound=-3.1865 exactcheck=PASS resid_rms/sqrt(x/Q)=1.00
+Liouville (F = split primes) Q= 30270 s= 0.8918 1-4s= -2.5673 euler=2.4575e-02 meanbias=+1.6951e-03 minbias=-1.9637e-01 maxbias=+2.0846e-01 avg=+0.0017>=bound=-22.4300 exactcheck=PASS resid_rms/sqrt(x/Q)=0.99
+ALL EXACT CHECKS PASS
