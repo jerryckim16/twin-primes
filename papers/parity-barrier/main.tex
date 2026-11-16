@@ -38,11 +38,10 @@ Tao's convex-hull criterion: Liouville-pattern weights block a proof of
 $H_m\le g$ exactly when $g<H(2m+1)$; at $k=2$ Polymath8b's strongest GEH criterion
 reaches the parity value $2$ exactly, and at $k=3$ it works for
 $\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not for $\varepsilon\ge0.439$. We also
-record what the proofs for $a^2+b^4$, $x^3+2y^3$, short intervals and twin
-primes in $\mathbb F_q[T]$ use, why none of it transfers, and a probable
-factor-$2$ slip in a preprint's constant. In a Siegel-zero world, two-point Chowla holds
-but Chowla in progressions fails at the exceptional modulus, unless the character
-has many small split primes.
+record what the proofs for $a^2+b^4$, $x^3+2y^3$, short intervals and
+$\mathbb F_q[T]$ use, and why none of it transfers. In a Siegel-zero world two-point Chowla holds, but
+a per-modulus form of Chowla in progressions fails at the exceptional modulus if
+the character has few small split primes.
 \end{abstract}
 
 \maketitle
@@ -1627,14 +1626,15 @@ constant is right); the numerical part of (c) is \lbl{Heuristic}.
 Not communicated to the author; a pointer, not a correction of record.
 \end{remark}
 
-\section{The Siegel-zero world: where the obstruction's hypothesis fails}\label{sec:siegel}
+\section{The Siegel-zero world: where the obstruction's hypothesis can fail}\label{sec:siegel}
 \begin{sloppypar}
 
 A classical conditional route to twin primes that needs no unproved
 equidistribution input is the existence of Siegel zeros, a hypothesis that is
-widely believed to be false. This section reads the statement in the
-source and locates, with a short elementary proof, the step of the obstruction
-of Section~\ref{sec:parity} that fails in that world.
+widely believed to be false. This section reads the statements in \cite{TT22}
+and locates, with a short elementary proof, the step of the obstruction of
+Section~\ref{sec:parity} that would fail in that world, under a condition on
+the small split primes of the exceptional character.
 
 \subsection{The theorems}
 \lbl{Literature} \cite[Definition~1.4, Theorem~1.5, Theorem~1.6,
@@ -1658,7 +1658,10 @@ character of conductor $q_\chi$, with quality $\eta\ge10$.
   \sum_{R_0\le p\le x,\ \chi(p)\ne-1}\frac1p\ll\exp\left(-\tfrac12\sqrt{\log\eta}\right)
   \qquad(q_\chi^{(1+\varepsilon)/2}\le x\le q_\chi^{\eta^{1/2}}).
   \end{equation}
-  Nothing comparable is stated for the primes below $R_0$.
+  This comes from \cite[Proposition~3.5]{TT22}. Its bound (3.23), summed over
+  $m$, controls the exceptional primes down to about
+  $q_\chi^{1/\log^{1-\varepsilon}\eta}$ (their remark after Proposition~3.5).
+  Nothing in \cite{TT22} controls the primes below that.
 \end{itemize}
 We have not opened \cite{HB83}; the first item is quoted from \cite{TT22}.
 
@@ -1689,7 +1692,7 @@ For $f=\lambda$ the set $F$ is the set of primes $p>w$ with $\chi(p)=+1$.
   \frac{1}{\rho x}\sum_{b\in G}\chi(b)\chi(b+2)S_b\ \ge\
   1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)-\frac{Q}{x}\left(1+4P_1\right).
   \]
-\item Let $q$ be an odd prime, $q>w$, and suppose the discrepancies
+\item Let $q$ be an odd prime, $q>w$ (so $\chi$ is the Legendre symbol mod $q$), and suppose the discrepancies
   \[
   \Delta_b=S_b-\frac{1}{\varphi(Q)}\sum_{n\in I,\,(n,Q)=1}f(n)f(n+2)
   \]
@@ -1743,79 +1746,100 @@ $\left|\sum_{b\in G}\chi(b)\chi(b+2)\right|=|G|/(q-2)$. So
 and dividing by $\rho x$ and using (2) gives (3).
 \end{proof}
 
-The error terms are small in the intended range. One has $1/\rho\ll\log^2w$,
-$QP_1/x\le Q\pi(x/Q)/x\ll1/\log(x/Q)$ and $P_2/x\le\pi(y+x+2)/x\ll1/\log x$ for
-$y\ll x$. So, for $Q\le x^{1-\delta}$ and $x\to\infty$, the right-hand side of
-(3) is $1-4s_1-(4/\rho)s_2-1/(q-2)-o(1)$.
+The error terms are small in the intended range. For $w$ fixed one has
+$1/\rho\ll\log^2w$, $QP_1/x\le Q\pi(x/Q)/x\ll1/\log(x/Q)$ and
+$P_2/x\le\pi(y+x+2)/x\ll1/\log x$ for $y\ll x$. So, if $x/Q\to\infty$ and
+$x\to\infty$, the right-hand side of (3) is $1-4s_1-(4/\rho)s_2-1/(q-2)-o(1)$.
+Since $f(n)f(n+2)=1-\omega(n)$ for the obstruction's weight
+$\omega=1-f(n)f(n+2)$, and the discrepancy of the constant function $1$ is at most
+$1$ in absolute value, (3) is equally a statement about the discrepancies of
+$\omega$; and it holds for $I=(x,2x]$ as in \cite[(144)]{PM8b}.
 
-\begin{corollary}[\lbl{Proved here}, from \eqref{eq:tt-exc}; possibly folklore]\label{cor:siegel-typeI}
-Let $\chi$ have a Siegel zero of quality $\eta$ and odd prime conductor $q>w$.
-Let $x$ satisfy $q^{(1+\varepsilon)/2}\le x\le q^{\eta^{1/2}}$ and
-$Q=Wq\le x^{1-1/\sqrt{\log\eta}}$, and take $f=\lambda$, $I=(0,x]$. If the
+\begin{corollary}[\lbl{Proved here}, from \cite[(1.4), Proposition~3.5]{TT22}; possibly folklore]\label{cor:siegel-typeI}
+Let $\chi$ have a Siegel zero of quality $\eta$ and odd prime conductor
+$q>w$ ($\chi$ is then the Legendre symbol mod $q$), with $w$ fixed. Fix
+$0<\varepsilon'<1$, put $M=\lfloor\log^{1-\varepsilon'}\eta\rfloor$ and
+$T=q^{1/M}$, and let $q^{(1+\varepsilon_0)/2}\le x\le q^{\eta^{1/2}}$ and
+$Q=Wq\le x/T$. Take $f=\lambda$ and $I=(0,x]$ or $I=(x,2x]$. Suppose the
 discrepancies of $\lambda(n)\lambda(n+2)$ at the single modulus $Q$ are at most
-$\varepsilon x/Q$ in every class $b\in G$, then
+$\varepsilon x/Q$ in every class $b\in G$ (a per-modulus, unweighted form of
+\cite[(144)]{PM8b}). Then
 \[
-\sum_{w<p\le x/Q,\ \chi(p)=1}\frac1p\ \ge\ \frac{1-\varepsilon}{4}-\frac{1}{4(q-2)}-o(1)
-\qquad(\eta,\,x\to\infty,\ w\text{ fixed}),
+\sum_{w<p<T,\ \chi(p)=1}\frac1p\ \ge\ \frac{1-\varepsilon}{4}-o(1)
+\qquad(\eta\to\infty).
 \]
-and, by \eqref{eq:tt-exc} again, the same lower bound holds for the sum over
-$w<p<R_0$.
 \end{corollary}
 
 \begin{proof}
-$x/Q\ge R_0$, so $s_2\le\sum_{R_0\le p\le x+2,\chi(p)=1}1/p$. By
-\eqref{eq:tt-exc} this is $o(1)$ as $\eta\to\infty$ (the prime in $(x,x+2]$, if
-any, adds at most $1/x$). Insert this into Proposition~\ref{prop:siegel-bias}(3).
-The primes in $[R_0,x/Q]$ contribute $o(1)$ to $s_1$ by \eqref{eq:tt-exc}.
+By \cite[(1.4)]{TT22}, $\eta\ll q$, so $\eta\to\infty$ forces $q\to\infty$,
+and $\log T=\log q/M\ge(\log q)^{\varepsilon'}(1+o(1))\to\infty$. Hence $x/Q\ge T$
+gives $Q/x\to0$ and $1/\log(x/Q)\to0$, and also $1/(q-2)\to0$.
+
+Next, the exceptional primes above $T$. By \cite[(3.22)]{TT22} (with their
+$\varepsilon=1$), those in $(q,2x+2]$ contribute
+$\ll\log_q(3x)/\eta\ll\eta^{-1/2}$. By \cite[(3.23)]{TT22}, uniformly in $m\ge2$,
+those in $(q^{1/m},q^{1/(m-1)}]$ contribute $\ll m\eta^{-1/m}$. Summing over
+$2\le m\le M$ gives $\ll M^2\eta^{-1/M}\le\log^2\eta\cdot
+\exp(-\log^{\varepsilon'}\eta)\to0$.
+
+So $\sum_{T<p\le 2x+2,\,\chi(p)=1}1/p=o(1)$. This gives $s_2=o(1)$ (as
+$x/Q\ge T$) and shows that the primes in $(T,x/Q]$ contribute $o(1)$ to $s_1$.
+For $f=\lambda$ the set $F$ is $\{p>w:\chi(p)=1\}$. Insert all this into
+Proposition~\ref{prop:siegel-bias}(3).
 \end{proof}
 
 \begin{remark}[What this locates]\label{rem:siegel-locates}
 \begin{itemize}
-\item In the Siegel world, two-point Chowla holds \cite[Corollary~1.8(ii)]{TT22}.
-  Yet if the exceptional character has few split primes above $w$ (weighted
-  sum $<\frac14-c$), the twisted Type~I input (144) of the obstruction fails at
-  the single modulus $Q=Wq\le x^{\theta}$. The class sums of
-  $\lambda(n)\lambda(n+2)$ are then of size $\gg x/Q$, with sign
-  $\chi(b)\chi(b+2)$, while their total cancels because
+\item In the range $q^{1/2+\varepsilon_0}\le x\le q^{\eta^{1/2}}$ two-point
+  Chowla holds in a Siegel world, with error $\log^{-1/10}\eta$
+  \cite[Corollary~1.8(ii)]{TT22}.
+\item Suppose the exceptional character has few split primes in $(w,T)$
+  (weighted sum $<\frac14-c$). Then the per-modulus form of the twisted input
+  (144) fails at the single modulus $Q=Wq$. On average over $b\in G$ the class
+  sums of $\lambda(n)\lambda(n+2)$ are then $\gg x/Q$, with sign
+  $\chi(b)\chi(b+2)$. Heuristically their total cancels, since
   $\sum_b\chi(b)\chi(b+2)$ is small.
-\item There the weight $\omega(n)=1-\lambda(n)\lambda(n+2)$ is visible to
-  linear (Type~I) information, and the obstruction says nothing. This is
-  consistent with Heath-Brown's theorem holding in that world.
-\item So the obstruction rests on Chowla \emph{in progressions} to moduli
-  $x^{\theta}$, which is strictly stronger than Chowla in any world of this
-  kind. Read the other way, Corollary~\ref{cor:siegel-typeI} says that a
-  positive answer to open question~1 at a modulus $Wq$ would force every Siegel
-  character of conductor $q$ to have split primes of reciprocal sum
-  $\ge\frac14-o(1)$ below $R_0$.
-\item We do not know whether a Siegel zero by itself controls the split primes
-  below $R_0$. \cite[(3.23)]{TT22} controls them only down to about
-  $q^{1/\log^{1-\varepsilon}\eta}$, with a bound that is not small there. This
-  is the first unresolved implication of this section: if it held, open
-  question~1 at level $x^{\theta}$ would imply that there are no Siegel zeros.
-\item Siegel zeros are conjectured not to exist. Nothing here bears on twin
-  primes in the actual world.
+\item In such a world this instance of the obstruction's hypothesis is not
+  available, and Heath-Brown's theorem shows that twin primes do follow there.
+\item This does \emph{not} show that the averaged input (an EH-type bound
+  summed over $q\le x^{\theta}$) fails. One bad modulus is compatible with an
+  average bound once $Q\ge\log^Ax$. It also says nothing about Siegel
+  characters with many small split primes.
+\item Whether a Siegel zero by itself forces few split primes in $(w,T)$ is
+  open to us. \cite{TT22} controls the exceptional primes only above $T$, so
+  this is the first unresolved implication of this section. Siegel zeros are
+  conjectured not to exist, and nothing here bears on twin primes in the
+  actual world.
 \end{itemize}
 \end{remark}
 
 \begin{remark}[Numerical check, \lbl{Computed} and \lbl{Heuristic}]\label{rem:siegel-num}
-The script \texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.py} in \texttt{code/}\allowbreak\texttt{parity/} takes $q=163$ or $1009$ and
-$f=\chi$ off a random set $F$ of primes $\ge50$ ($f=-\chi$ on $F$), and checks
-two things exactly ($q=163$, $w=3$, $Q=978$ at $x=10^7$ and $5\cdot10^7$;
-$q=1009$, $w=5$, $Q=30270$ at $x=10^7$): the
-pointwise inequality $|S_b-\chi(b)\chi(b+2)N_b|\le2\,\#\{\text{bad }n\}$ in
-every class, and (2). Both pass in all $30$ cases
-(\texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.out}).
+The script \texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.py} in
+\texttt{code/}\allowbreak\texttt{parity/} takes $f=\chi$ off a random set $F$ of
+primes $\ge50$ ($f=-\chi$ on $F$), for $q=163$, $w=3$, $Q=978$ at $x=10^7$ and
+$5\cdot10^7$, and for $q=1009$, $w=5$, $Q=30270$ at $x=10^7$. It checks two
+things exactly:
 \begin{itemize}
-\item \lbl{Heuristic}: for random $F$ with $s=\sum_{p\in F}1/p\le0.2$ the mean
-  normalised bias lies between $1-4s$ and $\prod_{p\in F}\frac{p-3}{p+1}$
-  (for example $0.394$ against $0.203$ and $0.450$ at $s=0.199$).
-\item For $f=\lambda$, where $F$ is the set of split primes of $\chi_{163}$,
-  the bias is $5\cdot10^{-4}$, while the independence heuristic would give
-  $0.045$. The class fixes $\chi(n)$, and hence the parity of the number of
-  inert prime factors, so $F$ is not ``random''. In the actual world there is
-  no Siegel-type bias at these scales (compare the twisted sums of the
-  Session~16 exploration in \texttt{notes/explorations.md}).
+\item the pointwise inequality $|S_b-\chi(b)\chi(b+2)N_b|\le2\,\#\{\text{bad }n\}$
+  in every class; and
+\item the inequality (2), which is non-vacuous in $10$ of the $30$ cases.
 \end{itemize}
+Both pass in all $30$ cases
+(\texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.out}). Part~(3)
+and the Jacobsthal step were checked separately by the auditor
+(\texttt{notes/}\allowbreak\texttt{audit-parity-v010.md}).
+
+\lbl{Heuristic}: for random $F$ with $s=\sum_{p\in F}1/p\le0.2$, the mean
+normalised bias lies below $\prod_{p\in F}\frac{p-3}{p+1}$ in every case, and
+above or within $0.003$ of the crude comparison value $1-4s$. For example, at
+$s=0.199$ it is $0.394$, against $0.203$ and $0.450$.
+
+For $f=\lambda$, where $F$ is the set of split primes of $\chi_{163}$, the
+bias is $5\cdot10^{-4}$, while the independence heuristic would give $0.045$.
+The reason is that the class fixes $\chi(n)$, and hence the parity of the
+number of inert prime factors. In the actual world there is no Siegel-type bias
+at these scales (compare the Session~16 exploration in
+\texttt{notes/explorations.md}).
 \end{remark}
 
 \end{sloppypar}
@@ -2088,13 +2112,15 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   constructions concern one fixed level $\nu$ and do not decide it. Separately,
   the hypothesis itself is open for this sequence: even its single-modulus
   case $\alpha=0$ is the open problem of the M\"obius function on shifted primes.
-\item (\lbl{Open}) Does a Siegel zero of quality $\eta$ force
-  $\sum_{w<p<x^{1/\sqrt{\log\eta}},\,\chi(p)=1}1/p<\frac14-c$ in the range of
-  Corollary~\ref{cor:siegel-typeI}? If so, the twisted Type~I input at level
-  $x^{\theta}$ (question~1) would exclude Siegel zeros. A Type~I weight built
-  from the approximant $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22},
-  with controlled $\ell^1$ norm, might avoid the small-prime condition; we have
-  not checked this.
+\item (\lbl{Open}) Does a Siegel zero of quality $\eta$ and prime conductor
+  force $\sum_{w<p<T,\,\chi(p)=1}1/p<\frac14-c$, with $T$ as in
+  Corollary~\ref{cor:siegel-typeI}? If so, a per-modulus, unweighted form of
+  the twisted Type~I input at the moduli $Wq\le x^{\theta}$ would exclude
+  sequences of such Siegel zeros with $\eta\to\infty$. This is not the
+  log-averaged, averaged-over-$q$ statement of question~1, and we do not know
+  whether that one would suffice. A Type~I weight built from the approximant
+  $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22}, with controlled
+  $\ell^1$ norm, might avoid the small-prime condition; we have not checked this.
 \end{enumerate}
 
 \subsection*{Plan for later versions}
@@ -2278,6 +2304,20 @@ it is read in the source.
   $p+2$ for $p-2$, a wrong attribution of Selberg's phenomenon to Ford's
   Theorem~1, and a missing Bombieri reference
   (\texttt{notes/}\allowbreak\texttt{audit-parity-v09.md}).
+\item[0.10] (16 Nov 2026) New Section~\ref{sec:siegel} (thread~3, parity
+  attempt of 16 Nov; route card in \texttt{notes/}\allowbreak\texttt{parity-attempts/}):
+  Tao--Ter\"av\"ainen's Siegel-zero paper read in arXiv:2109.06291v2;
+  Proposition~\ref{prop:siegel-bias}, Corollary~\ref{cor:siegel-typeI}, Remarks
+  \ref{rem:siegel-locates}, \ref{rem:siegel-num}; open question~8. Fresh-context
+  audit (\texttt{notes/}\allowbreak\texttt{audit-parity-v010.md}); fixes: the
+  threshold $T$ from (3.22)--(3.23) instead of $R_0$, the error terms, a
+  per-modulus (not averaged) reading of (144), no claim of ``strictly stronger'',
+  the relation to open question~1, the numerical sentence. Full referee pass
+  (in \texttt{referee/}): the
+  $H(2m+1)$ criterion stated as a barrier for proofs, not a bound; Bombieri's
+  conditions in the abstract; all seven labels defined; stale text and history
+  notes removed from the body; changelog order. Cuts proposed by the referee are
+  left to the weekly review.
 \end{itemize}
 
 \end{document}

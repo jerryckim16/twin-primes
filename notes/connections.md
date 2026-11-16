@@ -41,8 +41,9 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 
 ### Session 25 addition: the Siegel-zero world (paper sec:siegel)
 - Depends on: Tao-Teraeväinen arXiv:2109.06291v2 Cor. 3.6 (read), elementary counting; Heath-Brown 1983 only as quoted.
-- Feeds into: the meta-remark rem:meta (the obstruction's hypothesis is Chowla IN PROGRESSIONS, strictly stronger than
-  Chowla in a Siegel world); open question 1 (a uniform answer would constrain Siegel characters); open question 8.
+- Feeds into: the meta-remark rem:meta (the obstruction's hypothesis is Chowla IN PROGRESSIONS; in a Siegel world with few
+  small split primes its per-modulus form fails while two-point Chowla holds; the averaged form is not shown to fail);
+  open question 8 (a per-modulus unweighted input would constrain Siegel characters; open question 1 as stated is different).
 - Missing for anything bigger: control of the small split primes of a Siegel character; and in any case Siegel zeros are
   conjectured not to exist, so this route says nothing about twin primes in the actual world.
 

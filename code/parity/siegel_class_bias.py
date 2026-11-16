@@ -11,7 +11,8 @@ every class b mod Q with gcd(b(b+2), Q) = 1 we compute exactly
 and check the exact inequality of the proof,
     |S_b - chi(b)chi(b+2) N_b| <= 2 Bad_b                       (deterministic),
 then compare the mean normalised bias  B = mean_b chi(b)chi(b+2) S_b / N_b  with
-    the proved lower bound 1 - 4 s   (s = sum_{p in F, p <= x+2} 1/p, crude form),
+    a crude comparison value 1 - 4 s (s = sum_{p in F, p <= x+2} 1/p; NOT the proved bound,
+    which is part (2) of the proposition, checked as "avg>=bound"),
     the Euler-product heuristic prod_{p in F} (p-3)/(p+1).
 Also runs f = Liouville (F = {p > w : chi(p) = +1}, plus primes where chi(p) = 0 are excluded
 by the class condition).

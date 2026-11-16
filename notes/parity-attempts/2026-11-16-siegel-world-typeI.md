@@ -27,22 +27,24 @@ must fail in that world. Which of its hypotheses fails, and where exactly?
   (1/(rho x)) sum_{b in G} chi(b)chi(b+2) S_b >= 1 - 4 s1 - (4/rho)(s2 + P2/x) - (Q/x)(1 + 4 P1); and for q an odd prime > w,
   discrepancies (against the coprime average, as in PM8b (144)) at modulus Q are at least that minus (1+Q/x)/(q-2) times x/Q.
   Elementary (counting in classes; Jacobsthal sum = -1).
-- Cor. cor:siegel-typeI: with a Siegel zero (TT Cor. 3.6 controls exceptional primes in [x^{1/sqrt(log eta)}, x]),
-  the twisted input at the single modulus Wq <= x^{1-1/sqrt(log eta)} with constant eps forces
-  sum_{w<p<R0, chi(p)=1} 1/p >= (1-eps)/4 - 1/(4(q-2)) - o(1).
-- Reading: in the Siegel world two-point Chowla holds (TT Cor. 1.8(ii)) but, unless the exceptional character has many
-  small split primes, Chowla in progressions fails at modulus Wq: the obstruction weight 1 - lambda(n)lambda(n+2) becomes
-  visible to Type I information, consistent with Heath-Brown's theorem.
+- Cor. cor:siegel-typeI (corrected after the audit): with a Siegel zero, TT (3.22)-(3.23) summed over m <= M = log^{1-eps'} eta
+  control the exceptional primes above T = q^{1/M}; a PER-MODULUS, UNWEIGHTED discrepancy bound eps x/Q at the single modulus
+  Q = Wq <= x/T forces sum_{w<p<T, chi(p)=1} 1/p >= (1-eps)/4 - o(1) (eta -> infinity; prime conductor).
+- Reading: in the Siegel world two-point Chowla holds (TT Cor. 1.8(ii)) but, if the exceptional character has few split
+  primes in (w, T), the per-modulus form of PM8b (144) fails at modulus Wq, consistent with Heath-Brown's theorem.
+  NOT shown: failure of the averaged (EH-type) input; anything for characters with many small split primes.
 
 ## First unresolved implication
-Whether a Siegel zero forces sum_{w<p<R0, chi(p)=1} 1/p < 1/4 - c. TT (3.23) controls exceptional primes only down to
-about q^{1/log^{1-eps} eta}, with a bound that is not small there. If it held, open question 1 at level x^theta would exclude
-Siegel zeros. Alternative route (not checked): a Type I weight from TT's lambda^sharp_Siegel (sec. 6) with an l^1 bound.
+Whether a Siegel zero forces sum_{w<p<T, chi(p)=1} 1/p < 1/4 - c (TT controls nothing below T = q^{1/log^{1-eps'} eta}).
+If it held, a per-modulus unweighted twisted Type I input at the moduli Wq <= x^theta would exclude sequences of Siegel zeros
+with eta -> infinity (prime conductor). Open question 1 as stated (log-averaged, averaged over q) is a different statement. Alternative route (not checked): a Type I weight from TT's lambda^sharp_Siegel (sec. 6) with an l^1 bound.
 
 ## Checks
 - code/parity/siegel_class_bias.py (/usr/bin/python3 -I; x q w seed), output code/parity/siegel_class_bias.out: the pointwise
   inequality and part (2) checked exactly in 30 cases (q = 163, 1009; x = 1e7, 5e7). PASS.
-- Fresh-context adversarial audit: notes/audit-parity-v010.md.
+- Fresh-context adversarial audit: notes/audit-parity-v010.md (3 errors: misreading of TT (3.23), 'strictly stronger' overstatement,
+  a numerical sentence; 3 gaps: error terms with delta -> 0, per-modulus vs averaged (144), OQ1 mismatch; all fixed in v0.10).
+- Full-paper referee pass: referee/2026-11-16-parity-barrier/report.md.
 - Literature check (2 standard web searches, 16 Nov): no source found stating the progression bias of lambda(n)lambda(n+h)
   under an exceptional character; hence "possibly folklore".
 
