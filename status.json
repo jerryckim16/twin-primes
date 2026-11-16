@@ -1,7 +1,7 @@
 {
- "version": "0.26",
+ "version": "0.27",
  "updated": "2026-11-16",
- "session_count": 26,
+ "session_count": 27,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -743,6 +743,18 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Needs level 0.5423 for primes and lambda; best known for smooth moduli 0.525 (Stadlmann 2023); enlarged supports need the lambda-twisted sum at moduli beyond x^{1/2}. Session 26."
+  },
+  {
+   "idea": "Chen's theorem as a consistency test of the bipartite criterion",
+   "origin": "own",
+   "status": "works",
+   "note": "Class does not block 'p prime, p+2 in P_2' (no weakly fair killing weight, Lean-checked) but blocks each half (1 -/+ e1 e2); matches Tao 2007 and Pintz 2010. Folklore in substance. Parity paper v0.12, Remark rem:chen."
+  },
+  {
+   "idea": "Mod-q analogue of the parity obstruction (weights in Omega(n) mod q)",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Fair Z/q pattern weights killing DHL[k,m+1] exist iff k <= q m, so q = 3 would 'block' DHL[3,2] (proved under GEH): the randomness heuristic fails for z = e(1/q), since Selberg-Delange gives a main term with 1/Gamma(z) != 0; only z = -1 is invisible. Session 27, code/explore/omega_mod_q_weights.py."
   }
  ],
  "phase": "B",
@@ -750,18 +762,18 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.11",
+   "version": "0.12",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; v0.11: Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore), and the first cuts after the weekly review. No claim of progress on the twin prime conjecture."
+   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); v0.12: Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half), and cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
   },
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "0.12",
-   "status": "active",
+   "version": "1.0",
+   "status": "frozen",
    "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236; two programs) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps; one-sided Bonferroni certificates; the main terms and all 97 raw loss bounds of the 186 companion (the dominant group by two programs); the four ingredients of the 182 cap quotient, each by two programs. Analytic inputs and restoration steps not verified; the 182 minorant's mass deficit kappa_true by two methods; v0.10: printed arithmetic of the 182 restoration step re-done exactly and the 98 source rows checked against the printed definitions. v0.11: the Lemma 9.1 ceiling's Gram weights now checked against both exact programs at a random point."
+   "summary": "Frozen v1.0 (16 Nov 2026). Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236) and Charton et al. (212, Table 3 caps), each by two independent programs; ceiling < 3.99 for the 212 draft's Lemma 9.1 caps (one-program Gram certificate, weights checked at a random point); main terms and loss components of the 186 companion and the cap-quotient ingredients of 182 (numerical agreement of two implementations). A section states, number by number, what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified; no claimed bound is verified."
   }
  ],
  "last_review": "2026-11-16",

@@ -3,34 +3,46 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 26, 3:34 AM CT slot of 16 Nov): PHASE B
+## POSITION (after Session 27, 11:34 AM CT slot of 16 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Active papers: parity-barrier v0.11, verification-note v0.12. Main paper v0.26. H_m programme scoped, paused.
-- Weekly review done: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
+- Papers: verification-note v1.0 FROZEN (errata only, as v1.0.x); parity-barrier v0.12 (active); main paper v0.27.
+  H_m programme scoped, paused.
+- Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
   Its priorities override the default ordering this week.
 
-## Next steps (in order; from the weekly review of 16 Nov)
-1. Verification note v1.0 (the bound share): one precise sentence per number saying one program / two programs / probabilistic
-   check; a short appendix with the capped-variational facts (instead of a separate paper); then freeze as v1.0 so that Jerry can
-   decide whether to send it to the preprint authors (flag the Polymath8a Lemma 6.25 item first).
-2. Parity paper toward v1.0 (~20 pp.), continuing the cuts (done in v0.11: subsec:dual shortened, Prop. k3-step merged into
-   Thm k3-window, Remarks k3-eps/k3-window merged, Prop. tao-weight -> remark, OQ 5 and the plan removed, changelog shortened).
-   Still to do: Sec. siegel -> one short subsection; Prop. B-parity / fi-twin / bomb-twin / ss-split -> about 5 lines each;
-   Cor. maynard-logc -> short remark; merge Prop. ceil with Cor. consistent; Remark pm65 -> footnote; halve the FI98b / HB01 /
-   SS19 / MR16 digests (MR16 to one paragraph); Debouzy constant to a footnote; notation renames (lambda_d vs Liouville
-   lambda; pattern Omega; region D); referee items 2.4-2.7 and 3 (referee/2026-11-16-parity-barrier/report.md).
-3. Main paper: demote prop:family, prop:adjoint, prop:psi-weight to remarks; merge prop:bonf/bonf2; cut rem:k49 and
-   rem:prediction to a sentence; relabel rem:sha182 (contains Computed results); shorten the History appendix; make the
-   paper a thin index pointing to the small-results papers.
-4. One parity attempt per run, entering the paper only if it proves something new, as one short subsection or remark.
-   Candidates (not repeats): (b) Chen's switching as a consistency test of Prop. bipartite (target {p prime, p+2 in P_2});
-   (c) Green-Tao-Ziegler: why twin primes have infinite complexity (Gowers-norm vs parity barrier); (d) Matomaki-Radziwill-Tao
-   averaged Hardy-Littlewood over shifts. Pintz-type disjunctions are done (Session 26); its 4-tuple version is a dead end.
-   Literature to check for the Pintz-Maynard result: Pintz's post-2013 surveys (is it known?).
-5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist; Jerry could ask the author); H_m (at most one
-   scoping run for the (varpi, delta) region of Stadlmann 2026). Optional, low priority: one-sided --bonf certificate on the
-   Song-Yue witness (resumable via --ckpt).
+## Next steps (in order; from the weekly review of 16 Nov, updated by Session 27)
+1. (DONE in Session 27) Verification note v1.0. Deferred minor referee items (referee/2026-11-16-verification-note-v1/report.md):
+   19 (state the hypotheses of the Lean lemmas stadlmann/kintali_extra_le_three; no Lean lemma for the "free mass below L - C_1"
+   branch), 26 (the paper says 5000 bits for the first sigma = 4 run, the log 4800: fix the main paper), 28 (title omits 186/182;
+   rem:lemma5 run-on sentence, label the audit result; record the cap-free SY comparison in a compare_sy236_capfree.json with the
+   factor 2^96 3^10 7^2 11^2 521^50). Do these as erratum v1.0.1 only if worth it. Jerry decides whether to send the note to the
+   preprint authors (flag the Polymath8a Lemma 6.25 item first).
+2. Parity paper toward v1.0 (~20 pp.; now 28 pp.). Done in v0.12: sec. siegel shortened (217 -> ~95 lines), MR16 digest to a
+   paragraph, proofs of fi-twin / bomb-twin / ss-split shortened, B-parity reduced. Still to do: merge Prop. ceil with
+   Cor. consistent; Remark pm65 -> footnote; halve the FI98b / HB01 / SS19 digests; Debouzy constant to a footnote; notation
+   renames (lambda_d vs Liouville lambda; pattern Omega; region D); referee items 2.4-2.7 and 3
+   (referee/2026-11-16-parity-barrier/report.md).
+3. Main paper: done in v0.27: prop:family, prop:adjoint, prop:psi-weight demoted to remarks. Still: merge prop:bonf/bonf2; cut
+   rem:k49 and rem:prediction to a sentence; relabel rem:sha182; shorten the History appendix and the ~60 "version 0.x" mentions in
+   the body; make the paper a thin index.
+4. One parity attempt per run (enters the paper only as a short remark if new). Done: Pintz (S26), Chen consistency (S27).
+   Remaining candidates: (c) Green-Tao-Ziegler: why twin primes have infinite complexity (Gowers-norm barrier vs parity);
+   (d) Matomaki-Radziwill-Tao averaged Hardy-Littlewood over shifts. Pintz-Maynard folklore check: a literature helper (S27)
+   found no improvement of Pintz's 16 in the 10 citing papers (notes/sources-chen-parity.md, Q4).
+5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist); H_m. Optional: one-sided --bonf certificate on
+   the Song-Yue witness (resumable via --ckpt).
+
+## Session 27 (11:34 AM CT slot of 16 Nov, started on time 17:34 UTC; no wait) -- additions
+- Verification note v1.0 (frozen): Section sec:basis (per-number basis), Appendix app:facts, abstract 204 words; internal referee
+  pass referee/2026-11-16-verification-note-v1/report.md (8 errors, 8 gaps, all fixed; minor items partly deferred, see above).
+- Parity paper v0.12: Remark rem:chen; cuts (see Next steps 2); bib Tao07, Tao15c. Audit of the rewrites by a fresh-context helper
+  (see the log entry). Route card notes/parity-attempts/2026-11-16-chen-consistency-test.md.
+- Lean: chen_no_weakly_fair_weight, chen_twin_half_weight, chen_semiprime_half_weight (Parity.lean; in Audit.lean).
+- Literature: notes/sources-chen-parity.md (Chen constants: Wu 1.104, R. Li 1.2759 (preprint); twin upper bound Lichtman 3.29956;
+  Tao 2007 / 2015 / 2016 blog posts; Pintz 2010; Selberg-Delange only via Klazar's notes (Tenenbaum's book not opened)).
+- Exploration: code/explore/omega_mod_q_weights.py [x] (/usr/bin/python3 -I; 14 s at 1e7), output .out: dead end (mod-q analogue).
+- Main paper v0.27. Wolfram and mathbox NOT available.
 
 ## Session 26 (3:34 AM CT slot of 16 Nov, started on time; no wait) -- additions
 - Weekly review notes/reviews/2026-11-16.md (fresh-context helper review, checked against the files).
