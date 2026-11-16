@@ -337,8 +337,9 @@ twin primes; the proof of \cite[Theorem~3.1]{TT25} was not checked.
 
 \subsection{Multiplicative functions in short intervals}\label{subsec:mr16}
 \lbl{Literature} \cite[Theorem~1, Corollaries~2, 4, 5, pp.~1--11]{MR16}
-(arXiv:1501.04585v4). For every multiplicative $f:\mathbb N\to[-1,1]$ and
-$2\le h\le X$, the average of $f$ over $[x,x+h]$ is within
+(arXiv:1501.04585v4; PDF page $=$ printed page). There are absolute constants
+$C,C'$ ($C'=20000$ works) such that for every multiplicative $f:\mathbb N\to[-1,1]$ and
+$2\le h\le X$ and $\delta>0$, the average of $f$ over $[x,x+h]$ is within
 $\delta+C'\log\log h/\log h$ of its average over $[X,2X]$ for all but
 $O\left(X\left((\log h)^{1/3}\delta^{-2}h^{-\delta/25}+\delta^{-2}(\log X)^{-1/50}\right)\right)$
 values $x\in[X,2X]$. Consequences include
@@ -351,13 +352,14 @@ complex $f$ and that Chowla's conjecture ``is believed to be at least as deep
 as the twin prime conjecture'' (p.~3).
 
 \begin{remark}[Why this does not transfer to twin primes; \lbl{Heuristic}, our reading]\label{rem:mr16-transfer}
-Every step uses that a single function $f(n)$ is real, $1$-bounded and
-multiplicative (the factorisation $n=pm$). Neither $\lambda(n)\lambda(n+2)$
+Every step applies to a single function $f(n)$ that is real, $1$-bounded and
+multiplicative (multiplicativity enters through the factorisation $n=pm$). Neither $\lambda(n)\lambda(n+2)$
 nor $\Lambda(n+2)$ is of that kind, and twin primes need the correlation
 $\sum_n\Lambda(n)\Lambda(n+2)$ of $\Lambda$ with a shift of itself, which
 \cite{MR16} does not address. The two-point results used in
 Section~\ref{sec:parity} come from a different argument
-\cite[Theorem~1.2]{Tao16}, with logarithmic averaging.
+\cite[Theorem~1.2]{Tao16}, with logarithmic averaging; we have not checked how
+it uses \cite{MR16}.
 \end{remark}
 
 
@@ -549,22 +551,27 @@ total mass $0$, hence (being non-negative) is identically zero. This is the case
 linear program).
 
 \begin{remark}[Chen's theorem as a consistency test; \lbl{Proved here} for the class, folklore in substance]\label{rem:chen}
-Take $\mathcal H=\{0,2\}$ with signs $(\varepsilon_1,\varepsilon_2)$. Pattern
+Take $\mathcal H=\{0,2\}$ with signs $(\varepsilon_1,\varepsilon_2)$, and say
+that a weight kills a target if it vanishes on every sign pattern the target
+can produce. Pattern
 weights see primality only through $\lambda=-1$, and a number in $P_2$ can have
 either sign. So a weight that kills Chen's target ``$n$ prime and $n+2\in P_2$''
 must vanish whenever $\varepsilon_1=-1$, and no non-negative weakly fair weight
 does that: the class does not block Chen's theorem (\lbl{Literature},
 \cite[Theorem~5]{Tao15c}), as it must not. Each half of the target is blocked,
-however: $1-\varepsilon_1\varepsilon_2$ kills ``$n+2$ prime'' and
+however: $1-\varepsilon_1\varepsilon_2$ kills ``$n$ and $n+2$ prime'' and
 $1+\varepsilon_1\varepsilon_2$ kills ``$n+2$ a product of exactly two primes''
 (\lbl{Lean-checked}: \texttt{chen\_no\_weakly\_fair\_weight},
-\texttt{chen\_twin\_half\_weight}, \texttt{chen\_semiprime\_half\_weight}). This
-matches the literature: sieve theory ``cannot hope to \dots\ just count
-semiprimes'' \cite{Tao07}, and it is ``not known whether there are infinitely
+\texttt{chen\_twin\_half\_weight}, \texttt{chen\_semiprime\_half\_weight}; the
+first for integer-valued weights, to which rational ones reduce by scaling).
+This
+matches the literature: ``we cannot hope to use plain sieve theory to
+\dots\ just count semiprimes'' \cite{Tao07}, and it is ``not known whether there are infinitely
 many primes $p$ such that $p+2$ has an odd number of prime factors''
-\cite[p.~1]{Pi10}. Under EH, Proposition~\ref{prop:bomb-twin}(1) is the
+\cite[p.~1]{Pi10}. Under $R(\nu)$ for all $\nu<1$, and if Bombieri's theorem
+applies to this sequence, Proposition~\ref{prop:bomb-twin}(1) is the
 quantitative form for the mirror target ($n+2$ prime, $n$ prime or a product of
-two primes): the two halves, weighted by $\Lambda\log$ and
+two primes, up to prime powers): the two halves, weighted by $\Lambda\log$ and
 $\Lambda\star\Lambda$, add up to $4C_2x\log x$, and nothing separates them. The test confirms the criterion; it adds no new statement.
 \end{remark}
 
@@ -1226,9 +1233,9 @@ Hardy--Littlewood twin-prime asymptotic.
 For odd $d$, $A_d(t)=\psi(t+2;d,2)+O(\log t)$ with $(2,d)=1$, so the density is
 $1/\varphi(d)$; for even $d$, $d\mid n$ and $\Lambda(n+2)\ne0$ force $n+2$ to
 be a power of $2$, so $g(2^j)=0$. Conditions (1.8), (1.9), (9.1) follow from
-$g(p)=1/(p-1)\le\frac12$ and Mertens' theorem with the prime-number-theorem
+$g(2)=0$, $g(p)=1/(p-1)\le\frac12$ and $g(p^2)=1/(p(p-1))\ll p^{-2}$ for odd $p$, and Mertens' theorem with the prime-number-theorem
 error term; (1.4) and (9.2) from $A(x)\sim x$ and $\sum_{n\le x}a_n^2\le
-x\log^2(x+2)$; (1.6) from Brun--Titchmarsh, $A_d(x)\ll x/\varphi(d)$ for odd
+x\log^2(x+2)\le x^{-2/3}A(x)^2$; (1.6) from Brun--Titchmarsh, $A_d(x)\ll x/\varphi(d)$ for odd
 $d\le x^{1/3}$, and $d/\varphi(d)\le\tau(d)$. Finally
 $H=\prod_p(1-g(p))(1-1/p)^{-1}=2\prod_{p\ge3}\frac{p(p-2)}{(p-1)^2}=2C_2$.
 \end{proof}
@@ -1264,9 +1271,14 @@ Section~\ref{sec:parity} Type~I data do not \cite[p.~70]{PM8b}: $a^+_p=0$ for
 every prime $p$, yet $a$ and $2a^+$ have, heuristically, the same Type~I data.
 (That (B) actually fails for $a^+$ needs enough primes $q$ with $q-2$
 squarefree, $\lambda(q-2)=1$ and a divisor of $q-2$ in $(N,2N]$; expected, not
-proved here.) By Cauchy--Schwarz in $m$, (B) at $C=1$ reduces to an
-off-diagonal bound for $\sum\mu(n_1)\mu(n_2)\sum_m\mu^2(m)\Lambda(mn_1+2)\Lambda(mn_2+2)$,
-the diagonal being acceptable by Brun--Titchmarsh in the range of (B). Polymath8b
+proved here.) If $\Delta(x)\le x^{1/3}(\log x)^{-2^{23}-3}$, then by
+Cauchy--Schwarz in $m$, (B) at $C=1$ reduces to the off-diagonal bound
+\[
+\left|\sum_{\substack{n_1\ne n_2\\ N<n_i\le2N}}\mu(n_1)\mu(n_2)\sum_{\substack{m\le x/\max(n_1,n_2)\\(m,n_1n_2)=1}}\mu^2(m)\Lambda(mn_1+2)\Lambda(mn_2+2)\right|\le\tfrac14Nx(\log x)^{-2^{23}},
+\]
+the diagonal being acceptable by Brun--Titchmarsh since then
+$N\ge(\log x)^{2^{23}+3}$; for $a^+$ in place of $a$ every off-diagonal term
+is $\ge0$. Polymath8b
 say of such bilinear sums for $\Lambda(dm+2)$: ``we do not know of any
 plausible way to control such bilinear expressions'' \cite[p.~71]{PM8b}.
 \end{remark}
@@ -1492,7 +1504,8 @@ the two pieces and, by Bombieri's principle as Ford summarises it, essentially
 nothing that distinguishes them. The twisted sequence
 $\Lambda(n+2)(1+\lambda(n))$, if it also had level $\nu$ for all $\nu<1$
 (\lbl{Open}; predicted by the M\"obius randomness heuristic), would have prime
-piece $0$ and $\Lambda\star\Lambda$ piece $4C_2x\log x$: the twin-prime analogue
+piece $0$ and $\Lambda\star\Lambda$ piece $4C_2x\log x$ (since $\lambda=+1$
+on products of two primes): the twin-prime analogue
 of Selberg's example $1+\lambda(n)$ \cite[p.~2]{Fo04}.
 
 \begin{remark}[Ford's extra conditions for this sequence]\label{rem:ford-twin}
@@ -1610,9 +1623,11 @@ $\sum_{w<p<T,\,\chi(p)=1}1/p\ge(1-\varepsilon)/4-o(1)$.
 \end{corollary}
 
 \begin{proof}
-By \cite[(1.4)]{TT22}, $\eta\ll q$, so $q\to\infty$, $x/Q\ge T\to\infty$ and
-$1/(q-2)\to0$. By \cite[(3.22)]{TT22} the primes with $\chi(p)=1$ in
-$(q,2x+2]$ contribute $\ll\eta^{-1/2}$, and by \cite[(3.23)]{TT22} those in
+By \cite[(1.4)]{TT22}, $\eta\ll q$, so $q\to\infty$ and $\log T=\log q/M\ge(\log
+q)^{\varepsilon'}(1+o(1))$; hence $x/Q\ge T\to\infty$ and
+$1/(q-2)\to0$. By \cite[(3.22)]{TT22} (their $\varepsilon=1$) the primes with $\chi(p)=1$ in
+$(q,2x+2]$ contribute $\ll\eta^{-1/2}$, and by \cite[(3.23)]{TT22}, uniformly in
+$m\ge2$, those in
 $(q^{1/m},q^{1/(m-1)}]$ contribute $\ll m\eta^{-1/m}$; the sum over $2\le
 m\le M$ is $\ll M^2\eta^{-1/M}=o(1)$. So $s_2=o(1)$ and only the primes below
 $T$ remain in $s_1$; apply Proposition~\ref{prop:siegel-bias}.
@@ -1620,13 +1635,15 @@ $T$ remain in $s_1$; apply Proposition~\ref{prop:siegel-bias}.
 
 So in a Siegel world whose character has few small split primes, two-point
 Chowla holds, but the per-modulus form of the twisted input fails at the one
-modulus $Wq$; this is where Heath-Brown's route escapes the obstruction. It
+modulus $Wq$: in such a world this instance of the obstruction's hypothesis is
+unavailable, and \cite{HB83} shows that twin primes follow there. It
 does not show that the averaged (EH-type) input fails, and whether a Siegel
 zero forces few split primes below $T$ is open to us (open
 question~\ref{oq:siegel}). The script
 \texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{siegel\_class\_bias.py}
-checks the pointwise inequality and the class-sum bound exactly in $30$ cases
-($q=163,1009$; $x\le5\cdot10^7$; \lbl{Computed}). For $\lambda$ and the actual
+checks the pointwise inequality and the analogous class-sum bound for $f=\chi$
+off a random set of primes $\ge50$ ($f=-\chi$ there) exactly in $30$ cases
+(non-vacuous in $10$; $q=163,1009$; $x\le5\cdot10^7$; \lbl{Computed}). For $\lambda$ and the actual
 $\chi_{163}$ the class bias is $5\cdot10^{-4}$ (\lbl{Heuristic}): there is no
 Siegel-type bias at these scales. Siegel zeros are conjectured not to exist.
 \end{sloppypar}
