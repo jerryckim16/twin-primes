@@ -1621,6 +1621,193 @@ constant is right); the numerical part of (c) is \lbl{Heuristic}.
 Not communicated to the author; a pointer, not a correction of record.
 \end{remark}
 
+\section{The Siegel-zero world: where the obstruction's hypothesis fails}\label{sec:siegel}
+
+A classical conditional route to twin primes that needs no unproved
+equidistribution input is the existence of Siegel zeros, a hypothesis that is
+widely believed to be false. This section reads the statement in the
+source and locates, with a short elementary proof, the step of the obstruction
+of Section~\ref{sec:parity} that fails in that world.
+
+\subsection{The theorems}
+\lbl{Literature} \cite[Definition~1.4, Theorem~1.5, Theorem~1.6,
+Corollary~1.8]{TT22}. A \emph{Siegel zero} is a real zero
+$\beta=1-1/(\eta\log q_\chi)$ of $L(s,\chi)$, $\chi$ a primitive quadratic
+character of conductor $q_\chi$, with quality $\eta\ge10$.
+\begin{itemize}
+\item Heath-Brown \cite{HB83}, as stated in \cite[Theorem~1.5(i)]{TT22}:
+  $\mathbb E_{n\le x}\Lambda(n+h_1)\Lambda(n+h_2)=\mathfrak S+O(1/\log\log\eta)$
+  uniformly for $q_\chi^{250}\le x\le q_\chi^{300}$. So infinitely many Siegel
+  zeros (with $\eta\to\infty$) would give infinitely many twin primes.
+\item Tao and Ter\"av\"ainen \cite[Corollary~1.8(i),(ii)]{TT22}: the same
+  with error $O(\log^{-1/20}\eta)$ for $q_\chi^{41/2+\varepsilon_0}\le x\le
+  q_\chi^{\eta^{1/2}}$, and, in the same world, two-point Chowla:
+  $\mathbb E_{n\le x}\lambda(n)\lambda(n+h)\ll\log^{-1/10}\eta$ for
+  $q_\chi^{1/2+\varepsilon_0}\le x\le q_\chi^{\eta^{1/2}}$.
+\item The mechanism \cite[\S1.2]{TT22}: $\lambda$ ``pretends'' to be $\chi$,
+  and $\Lambda$ to be $\chi\ast\log$. Quantitatively
+  \cite[Corollary~3.6]{TT22}: with $R_0=x^{1/\sqrt{\log\eta}}$,
+  \begin{equation}\label{eq:tt-exc}
+  \sum_{R_0\le p\le x,\ \chi(p)\ne-1}\frac1p\ll\exp\left(-\tfrac12\sqrt{\log\eta}\right)
+  \qquad(q_\chi^{(1+\varepsilon)/2}\le x\le q_\chi^{\eta^{1/2}}).
+  \end{equation}
+  Nothing comparable is stated for the primes below $R_0$.
+\end{itemize}
+We have not opened \cite{HB83}; the first item is quoted from \cite{TT22}.
+
+\subsection{Twisted class sums are biased}
+Let $\chi$ be a real primitive character mod $q$,
+$f\colon\mathbb N\to\{-1,1\}$ completely multiplicative, $w\ge2$,
+$W=\prod_{p\le w}p$ and $Q=\mathrm{lcm}(W,q)$. Put
+\[
+G=\{b\bmod Q:\ (b(b+2),Q)=1\},\qquad \rho=|G|/Q,\qquad
+F=\{p>w:\ p\nmid q,\ f(p)\ne\chi(p)\}.
+\]
+For an interval $I=(y,y+x]$ with $x\ge Q$ let
+$S_b=\sum_{n\in I,\,n\equiv b\,(Q)}f(n)f(n+2)$, and
+\[
+s_1=\sum_{p\in F,\ p\le x/Q}\frac1p,\quad
+s_2=\sum_{p\in F,\ x/Q<p\le y+x+2}\frac1p,\quad
+P_1=\#\{p\in F: p\le x/Q\},\quad P_2=\#\{p\in F: x/Q<p\le y+x+2\}.
+\]
+For $f=\lambda$ the set $F$ is the set of primes $p>w$ with $\chi(p)=+1$.
+
+\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:siegel-bias}
+\begin{enumerate}
+\item If $(n(n+2),Q)=1$ then
+  $f(n)f(n+2)=\chi(n)\chi(n+2)(-1)^{\Omega_F(n)+\Omega_F(n+2)}$, where
+  $\Omega_F$ counts prime factors in $F$ with multiplicity.
+\item
+  \[
+  \frac{1}{\rho x}\sum_{b\in G}\chi(b)\chi(b+2)S_b\ \ge\
+  1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)-\frac{Q}{x}\left(1+4P_1\right).
+  \]
+\item Let $q$ be an odd prime, $q>w$, and suppose the discrepancies
+  $\Delta_b=S_b-\varphi(Q)^{-1}\sum_{n\in I,\,(n,Q)=1}f(n)f(n+2)$ satisfy
+  $|\Delta_b|\le\varepsilon x/Q$ for every $b\in G$. Then
+  \[
+  \varepsilon\ \ge\ 1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)-\frac{Q}{x}\left(1+4P_1\right)-\frac{1+Q/x}{q-2}.
+  \]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) Every prime factor $p$ of $n(n+2)$ satisfies $p>w$ and $p\nmid q$, so
+$\chi(p)=\pm1$ and $f(p)=\chi(p)\varepsilon_p$ with $\varepsilon_p=-1$ if
+$p\in F$ and $\varepsilon_p=1$ otherwise. Complete multiplicativity of $f$
+and $\chi$ gives the identity.
+
+(2) For $b\in G$, every $n\equiv b\ (Q)$ has $(n(n+2),Q)=1$ and
+$\chi(n)\chi(n+2)=\chi(b)\chi(b+2)=\pm1$. By (1),
+$\chi(b)\chi(b+2)f(n)f(n+2)=(-1)^{\Omega_F(n)+\Omega_F(n+2)}$, which is $1$
+unless some $p\in F$ divides $n(n+2)$, and is $\ge-1$ in any case. Hence
+$\sum_{b\in G}\chi(b)\chi(b+2)S_b\ge\sum_{b\in G}N_b-2B$, where
+$N_b=\#\{n\in I: n\equiv b\ (Q)\}\ge x/Q-1$ and
+$B=\sum_{p\in F}\#\{n\in I:\ (n(n+2),Q)=1,\ p\mid n(n+2)\}$.
+Primes $p\in F$ do not divide $Q$. If $p\le x/Q$, then for each $b\in G$ the
+conditions $n\equiv b\ (Q)$, $p\mid n$ fix one class mod $pQ$, which meets $I$
+at most $x/(pQ)+1$ times, and the same holds for $p\mid n+2$; this
+contributes at most $2|G|(x/(pQ)+1)$. If $p>x/Q$, we drop the condition on
+the class: $p$ divides at most $x/p+1$ elements of $I$ and at most $x/p+1$
+elements of $I+2$, and none if $p>y+x+2$. So
+\[
+B\le 2|G|\frac{x}{Q}s_1+2|G|P_1+2xs_2+2P_2 .
+\]
+Divide by $\rho x=|G|x/Q$:
+$\sum_{b\in G}N_b/(\rho x)\ge1-Q/x$ and
+$2B/(\rho x)\le4s_1+4QP_1/x+(4/\rho)(s_2+P_2/x)$.
+
+(3) Let $M=\varphi(Q)^{-1}\sum_{n\in I,(n,Q)=1}f(n)f(n+2)$; then $|M|\le
+x/Q+1$. Since $q\nmid W$, the Chinese remainder theorem gives
+$\sum_{b\in G}\chi(b)\chi(b+2)=|G_W|\sum_{b\bmod q}\chi(b(b+2))$, where $G_W$
+is the analogue of $G$ mod $W$ and $|G_W|=|G|/(q-2)$. The classical
+evaluation $\sum_{c\bmod q}\left(\frac{c^2-1}{q}\right)=-1$ (write
+$b(b+2)=c^2-1$ with $c=b+1$; the equation $c^2-y^2=1$ has exactly $q-1$
+solutions mod $q$, since $(c-y)(c+y)=1$, and also
+$\sum_c(1+(\frac{c^2-1}{q}))$ solutions) gives
+$\left|\sum_{b\in G}\chi(b)\chi(b+2)\right|=|G|/(q-2)$. So
+\[
+\varepsilon\frac{x}{Q}|G|\ \ge\ \left|\sum_{b\in G}\chi(b)\chi(b+2)\Delta_b\right|
+\ \ge\ \sum_{b\in G}\chi(b)\chi(b+2)S_b-\left(\frac xQ+1\right)\frac{|G|}{q-2},
+\]
+and dividing by $\rho x$ and using (2) gives (3).
+\end{proof}
+
+The error terms are small in the intended range. One has $1/\rho\ll\log^2w$,
+$QP_1/x\le Q\pi(x/Q)/x\ll1/\log(x/Q)$ and $P_2/x\le\pi(y+x+2)/x\ll1/\log x$ for
+$y\ll x$. So, for $Q\le x^{1-\delta}$ and $x\to\infty$, the right-hand side of
+(3) is $1-4s_1-(4/\rho)s_2-1/(q-2)-o(1)$.
+
+\begin{corollary}[\lbl{Proved here}, from \eqref{eq:tt-exc}; possibly folklore]\label{cor:siegel-typeI}
+Let $\chi$ have a Siegel zero of quality $\eta$ and odd prime conductor $q>w$.
+Let $x$ satisfy $q^{(1+\varepsilon)/2}\le x\le q^{\eta^{1/2}}$ and
+$Q=Wq\le x^{1-1/\sqrt{\log\eta}}$, and take $f=\lambda$, $I=(0,x]$. If the
+discrepancies of $\lambda(n)\lambda(n+2)$ at the single modulus $Q$ are at most
+$\varepsilon x/Q$ in every class $b\in G$, then
+\[
+\sum_{w<p\le x/Q,\ \chi(p)=1}\frac1p\ \ge\ \frac{1-\varepsilon}{4}-\frac{1}{4(q-2)}-o(1)
+\qquad(\eta,\,x\to\infty,\ w\text{ fixed}),
+\]
+and, by \eqref{eq:tt-exc} again, the same lower bound holds for the sum over
+$w<p<R_0$.
+\end{corollary}
+
+\begin{proof}
+$x/Q\ge R_0$, so $s_2\le\sum_{R_0\le p\le x+2,\chi(p)=1}1/p$. By
+\eqref{eq:tt-exc} this is $o(1)$ as $\eta\to\infty$ (the prime in $(x,x+2]$, if
+any, adds at most $1/x$). Insert this into Proposition~\ref{prop:siegel-bias}(3).
+The primes in $[R_0,x/Q]$ contribute $o(1)$ to $s_1$ by \eqref{eq:tt-exc}.
+\end{proof}
+
+\begin{remark}[What this locates]\label{rem:siegel-locates}
+\begin{itemize}
+\item In the Siegel world, two-point Chowla holds \cite[Corollary~1.8(ii)]{TT22}.
+  Yet if the exceptional character has few split primes above $w$ (weighted
+  sum $<\frac14-c$), the twisted Type~I input (144) of the obstruction fails at
+  the single modulus $Q=Wq\le x^{\theta}$. The class sums of
+  $\lambda(n)\lambda(n+2)$ are then of size $\gg x/Q$, with sign
+  $\chi(b)\chi(b+2)$, while their total cancels because
+  $\sum_b\chi(b)\chi(b+2)$ is small.
+\item There the weight $\omega(n)=1-\lambda(n)\lambda(n+2)$ is visible to
+  linear (Type~I) information, and the obstruction says nothing. This is
+  consistent with Heath-Brown's theorem holding in that world.
+\item So the obstruction rests on Chowla \emph{in progressions} to moduli
+  $x^{\theta}$, which is strictly stronger than Chowla in any world of this
+  kind. Read the other way, Corollary~\ref{cor:siegel-typeI} says that a
+  positive answer to open question~1 at a modulus $Wq$ would force every Siegel
+  character of conductor $q$ to have split primes of reciprocal sum
+  $\ge\frac14-o(1)$ below $R_0$.
+\item We do not know whether a Siegel zero by itself controls the split primes
+  below $R_0$. \cite[(3.23)]{TT22} controls them only down to about
+  $q^{1/\log^{1-\varepsilon}\eta}$, with a bound that is not small there. This
+  is the first unresolved implication of this section: if it held, open
+  question~1 at level $x^{\theta}$ would imply that there are no Siegel zeros.
+\item Siegel zeros are conjectured not to exist. Nothing here bears on twin
+  primes in the actual world.
+\end{itemize}
+\end{remark}
+
+\begin{remark}[Numerical check, \lbl{Computed} and \lbl{Heuristic}]\label{rem:siegel-num}
+\texttt{code/parity/siegel\_class\_bias.py} takes $q=163$ or $1009$ and
+$f=\chi$ off a random set $F$ of primes $\ge50$ ($f=-\chi$ on $F$), and checks
+two things exactly ($q=163$, $w=3$, $Q=978$ at $x=10^7$ and $5\cdot10^7$;
+$q=1009$, $w=5$, $Q=30270$ at $x=10^7$): the
+pointwise inequality $|S_b-\chi(b)\chi(b+2)N_b|\le2\,\#\{\text{bad }n\}$ in
+every class, and (2). Both pass in all $30$ cases
+(\texttt{siegel\_class\_bias.out}).
+\begin{itemize}
+\item \lbl{Heuristic}: for random $F$ with $s=\sum_{p\in F}1/p\le0.2$ the mean
+  normalised bias lies between $1-4s$ and $\prod_{p\in F}\frac{p-3}{p+1}$
+  (for example $0.394$ against $0.203$ and $0.450$ at $s=0.199$).
+\item For $f=\lambda$, where $F$ is the set of split primes of $\chi_{163}$,
+  the bias is $5\cdot10^{-4}$, while the independence heuristic would give
+  $0.045$. The class fixes $\chi(n)$, and hence the parity of the number of
+  inert prime factors, so $F$ is not ``random''. In the actual world there is
+  no Siegel-type bias at these scales (compare the twisted sums of the
+  Session~16 exploration in \texttt{notes/explorations.md}).
+\end{itemize}
+\end{remark}
+
 \section{Twin primes over \texorpdfstring{$\mathbb F_q[T]$}{Fq[T]}, and what the integers lack}\label{sec:ss}
 
 \subsection{The theorem}
@@ -1889,6 +2076,13 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   constructions concern one fixed level $\nu$ and do not decide it. Separately,
   the hypothesis itself is open for this sequence: even its single-modulus
   case $\alpha=0$ is the open problem of the M\"obius function on shifted primes.
+\item (\lbl{Open}) Does a Siegel zero of quality $\eta$ force
+  $\sum_{w<p<x^{1/\sqrt{\log\eta}},\,\chi(p)=1}1/p<\frac14-c$ in the range of
+  Corollary~\ref{cor:siegel-typeI}? If so, the twisted Type~I input at level
+  $x^{\theta}$ (question~1) would exclude Siegel zeros. A Type~I weight built
+  from the approximant $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22},
+  with controlled $\ell^1$ norm, might avoid the small-prime condition; we have
+  not checked this.
 \end{enumerate}
 
 \subsection*{Plan for later versions}
@@ -1950,6 +2144,13 @@ suffice). Nothing enters before it is read in the source.
 \bibitem{De19} N.~Debouzy, \emph{Twins almost prime under a
   Elliott--Halberstam's conjecture}, arXiv:1907.06393v1 (15 Jul 2019), preprint
   (read: pp.~1--3, 36--38).
+\bibitem{TT22} T.~Tao and J.~Ter\"av\"ainen, \emph{The Hardy--Littlewood--Chowla
+  conjecture in the presence of a Siegel zero}, arXiv:2109.06291v2 (6 Jun 2022;
+  read: pp.~1--10, 11--14, 20--25, Definition~1.4, Theorems~1.5--1.6,
+  Corollary~1.8, Proposition~3.5, Corollary~3.6, (4.1)).
+\bibitem{HB83} D.~R.~Heath-Brown, \emph{Prime twins and Siegel zeros}, Proc.\
+  London Math.\ Soc.\ (3) \textbf{47} (1983), 193--224 (not opened; quoted
+  from \cite[Theorem~1.5(i)]{TT22}).
 \bibitem{Tao14b} T.~Tao, \emph{A general parity problem obstruction}, blog
   post, What's new, 21 November 2014,
   \url{https://terrytao.wordpress.com/2014/11/21/a-general-parity-problem-obstruction/}

@@ -52,3 +52,8 @@
 - Why: rung 182. The cap quotient (I, J0, J+, T, kappa_true) is reproduced by two programs and the printed restoration arithmetic is re-done exactly (Session 21), but the restoration loss sum (2 sum sqrt(A_j M_j) etc., about 155e-6 of the 211e-6 total) cannot be recomputed without the per-component data, which the expository bundle says are "in the digital supplement".
 - Tried: TrialData182_part1..3.lean (in code/data182/) contain the trial function, the 43 + 55 source rows and T0, but no A_j, M_j, beta, R, Q or witness windows (grep for chernoff / witness / beta / window: no hits; Session 22, 15 Nov 2026). The repository is outside this session's GitHub scope, so it was not fetched.
 - Status: needed.
+
+## Heath-Brown, "Prime twins and Siegel zeros", Proc. London Math. Soc. (3) 47 (1983), 193-224, doi:10.1112/plms/s3-47.2.193
+- Why: parity paper v0.10, Section sec:siegel quotes Heath-Brown's theorem only as stated in Tao-Teraeväinen, arXiv:2109.06291v2, Thm 1.5(i). The original would let us state its exact hypotheses and see how its proof uses the exceptional character at small primes (the first unresolved implication of the 16 Nov route card).
+- Tried (Session 25, 16 Nov 2026): curl https://doi.org/10.1112/plms/s3-47.2.193 -> redirected to doi.wiley.com, HTTP 403, a Cloudflare "Just a moment..." challenge page; https://londmathsoc.onlinelibrary.wiley.com/doi/pdf/10.1112/plms/s3-47.2.193 -> HTTP 403, same challenge. Not worked around. No arXiv copy (1983). One standard web search found only secondary statements.
+- Status: needed (low priority; the secondary statement is enough for the current section).
