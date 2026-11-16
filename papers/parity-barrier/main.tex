@@ -1203,25 +1203,14 @@ Hardy--Littlewood twin-prime asymptotic.
 \end{proposition}
 
 \begin{proof}
-For odd $d$, $A_d(t)=\sum_{m\le t+2,\ m\equiv2\,(d)}\Lambda(m)+O(\log t)
-=\psi(t+2;d,2)+O(\log t)$, and $(2,d)=1$, so the natural density is
-$1/\varphi(d)$. For even $d$, $d\mid n$ and $\Lambda(n+2)\ne0$ force
-$n+2$ to be a power of $2$, so $A_d(t)=O((\log t)^2)$, and we take $g(d)=0$.
-So $g(p^j)=1/\varphi(p^j)$ for odd $p$ and $g(2^j)=0$. Then $0\le g(p)\le
-\tfrac12<1$ and $g(p)\ll1/p$, which is (1.8); (1.9) follows from Mertens'
-theorem in its prime-number-theorem form,
-$\sum_{p\le y}1/p=\log\log y+M+O(\exp(-c\sqrt{\log y}))$, together with
-$\sum_{p>y}1/(p(p-1))=O(1/y)$, which give
-$\sum_{p\le y}g(p)=\log\log y+c'+O((\log y)^{-10})$; (9.1) holds since
-$g(p^2)=1/(p(p-1))\le 1/(p-1)$ and $\ll p^{-2}$. By the prime number theorem
-$A(x)\sim x$, giving (1.4), and $\sum_{n\le x}a_n^2\le x\log^2(x+2)\le
-x^{-2/3}A(x)^2$ for large $x$, giving (9.2). For (1.6), Brun--Titchmarsh
-(which bounds $\pi(x;d,a)$) and partial summation give
-$A_d(x)\le\psi(x+2;d,2)+O(\log x)\ll x\log x/(\varphi(d)\log(x/d))+\sqrt x\log x
-\ll x/\varphi(d)$ for odd $d\le x^{1/3}$, and
-$d/\varphi(d)\le 2^{\omega(d)}\le\tau(d)$. Finally
-$H=\prod_p(1-g(p))(1-1/p)^{-1}=2\prod_{p\ge3}\frac{p-2}{p-1}\cdot\frac{p}{p-1}
-=2C_2$.
+For odd $d$, $A_d(t)=\psi(t+2;d,2)+O(\log t)$ with $(2,d)=1$, so the density is
+$1/\varphi(d)$; for even $d$, $d\mid n$ and $\Lambda(n+2)\ne0$ force $n+2$ to
+be a power of $2$, so $g(2^j)=0$. Conditions (1.8), (1.9), (9.1) follow from
+$g(p)=1/(p-1)\le\frac12$ and Mertens' theorem with the prime-number-theorem
+error term; (1.4) and (9.2) from $A(x)\sim x$ and $\sum_{n\le x}a_n^2\le
+x\log^2(x+2)$; (1.6) from Brun--Titchmarsh, $A_d(x)\ll x/\varphi(d)$ for odd
+$d\le x^{1/3}$, and $d/\varphi(d)\le\tau(d)$. Finally
+$H=\prod_p(1-g(p))(1-1/p)^{-1}=2\prod_{p\ge3}\frac{p(p-2)}{(p-1)^2}=2C_2$.
 \end{proof}
 
 So two inputs are missing. (R$_3$) at a level $D>x^{2/3}$ is a fixed-residue
@@ -1236,62 +1225,30 @@ discussed next.
 \subsection{The bilinear hypothesis carries the parity information}
 
 \begin{proposition}[\lbl{Proved here}]\label{prop:B-parity}
-Let $a_n=\Lambda(n+2)$ and $a^{+}_n=\Lambda(n+2)\tfrac12(1+\lambda(n))$.
-\begin{enumerate}
-\item With $C=1$, the inner sum of \textup{(B)} for $a$ is
-  $\sum_n\mu^2(mn)\lambda(mn)\Lambda(mn+2)$: \textup{(B)} at $C=1$ is a bilinear
-  estimate for $k\mapsto\mu(k)\Lambda(k+2)=\mu^2(k)\lambda(k)\Lambda(k+2)$.
-\item With $C=1$, every term $\mu(mn)a^+_{mn}$ is $\ge0$, so the left side of
-  \textup{(B)} for $a^+$ equals its trivial bound
-  $\sum_{m}\sum_{N<n\le2N,\,mn\le x}\mu^2(mn)a^+_{mn}$.
-\item Suppose $\Delta(x)\le x^{1/3}(\log x)^{-2^{23}-3}$ \textup{(}e.g.\
-  $\Delta=x^{\eta}$ with $\eta<1/3$\textup{)}. Bound the left side of \textup{(B)}
-  for $a$ at $C=1$ by Cauchy--Schwarz in $m$. The diagonal $n_1=n_2$ is acceptable, and the following off-diagonal bound
-  suffices for \textup{(B)} at $C=1$:
-  \[
-  \text{(OD)}\qquad\left|\sum_{\substack{n_1\ne n_2\\ N<n_i\le 2N}}\mu(n_1)\mu(n_2)
-  \sum_{\substack{m\le x/\max(n_1,n_2)\\(m,n_1n_2)=1}}\mu^2(m)
-  \Lambda(mn_1+2)\Lambda(mn_2+2)\right|\le \tfrac14 Nx(\log x)^{-2^{23}}.
-  \]
-  For $a^+$ in place of $a$ every term of the corresponding sum is $\ge0$.
-\end{enumerate}
+Let $a_n=\Lambda(n+2)$ and $a^{+}_n=\Lambda(n+2)\tfrac12(1+\lambda(n))$. With
+$C=1$, the inner sum of \textup{(B)} for $a$ is
+$\sum_n\mu^2(mn)\lambda(mn)\Lambda(mn+2)$, so \textup{(B)} is a bilinear
+estimate for $k\mapsto\mu(k)\Lambda(k+2)$; and for $a^+$ every term
+$\mu(mn)a^+_{mn}$ is $\ge0$, so the left side of \textup{(B)} for $a^+$ equals
+its trivial bound.
 \end{proposition}
 
 \begin{proof}
-(1) $\gamma(n,1)=1$, and $\mu(k)\ne0$ implies $\mu(k)=\lambda(k)$.
-(2) If $\mu(k)\ne0$ then $\mu(k)\cdot\tfrac12(1+\lambda(k))=\tfrac12(\mu(k)+1)
-\in\{0,1\}$, and $\Lambda\ge0$.
-(3) Put $S_m=\sum_{N<n\le2N,\,mn\le x}\mu(mn)a_{mn}$; only $m\le x/N$ occur.
-By Cauchy--Schwarz, $(\sum_m|S_m|)^2\le (x/N)\sum_m|S_m|^2$, and for
-$(m,n)=1$, $\mu(mn)=\mu(m)\mu(n)$, so
-$\sum_m|S_m|^2=\sum_{n_1,n_2}\mu(n_1)\mu(n_2)\sum_{m}\mu^2(m)
-a_{mn_1}a_{mn_2}$ with $m\le x/\max(n_1,n_2)$, $(m,n_1n_2)=1$ and $n_i$
-squarefree (terms with $\mu(mn_i)=0$ vanish). The diagonal is
-$\sum_n\sum_{m\le x/n}\Lambda(mn+2)^2\ll\sum_{n\le2N}(x/\varphi(n))\log x\ll
-x(\log x)^2$ by Brun--Titchmarsh (for odd $n$; even $n$ contribute only
-prime powers of $2$), so its share of $(\sum_m|S_m|)^2$ is $\ll
-(x^2/N)(\log x)^2$, which is $\le\tfrac14 x^2(\log x)^{-2^{23}}$ as soon as
-$N\ge(\log x)^{2^{23}+3}$ and $x$ is large; this holds in the range of (B),
-since $N>\Delta^{-1}\sqrt D>\Delta^{-1}x^{1/3}$. With (OD)
-the off-diagonal share is at most $(x/N)\cdot\tfrac14Nx(\log x)^{-2^{23}}$, so
-$(\sum_m|S_m|)^2\le\tfrac12x^2(\log x)^{-2^{23}}\le A(x)^2(\log x)^{-2^{23}}$
-for large $x$, since $A(x)\sim x$. For $a^+$: if $a^+_{mn_i}\ne0$ with $mn_i$
-squarefree then $\lambda(mn_i)=\mu(m)\mu(n_i)=1$, so $\mu(n_i)=\mu(m)$ and
-$\mu(n_1)\mu(n_2)=1$; all terms are $\ge0$.
+$\gamma(n,1)=1$, and $\mu(k)\ne0$ implies $\mu(k)=\lambda(k)$; then
+$\mu(k)\tfrac12(1+\lambda(k))=\tfrac12(\mu(k)+1)\in\{0,1\}$ and $\Lambda\ge0$.
 \end{proof}
 
 \begin{remark}
-Proposition~\ref{prop:B-parity}(2) says (B) separates $a$ from $a^+$; by the
-heuristic of Section~\ref{sec:parity}, Type~I data do not
-\cite[p.~70]{PM8b}. That (B) actually fails for $a^+$ needs the trivial bound to
-be $\gg A(x)(\log x)^{-2^{22}}$, i.e.\ enough primes $q$ with $q-2$
-squarefree, $\lambda(q-2)=1$ and $q-2$ having a divisor in $(N,2N]$; this is
-expected but we have not proved it. The parity point is that $a^+_p=0$ for every prime $p$ (since $\lambda(p)=-1$),
-while $a$ and $2a^+$ have, heuristically, the same Type~I data. Part (3)
-extends to general $C$ via $|\gamma(n,C)|\le\tau(n)$, at the cost of more powers of
-$\log x$ in the diagonal. Polymath8b say of such bilinear sums for
-$\Lambda(dm+2)$: ``we do not know of any plausible way to control such
-bilinear expressions'' \cite[p.~71]{PM8b}.
+So (B) separates $a$ from $a^+$, while by the heuristic of
+Section~\ref{sec:parity} Type~I data do not \cite[p.~70]{PM8b}: $a^+_p=0$ for
+every prime $p$, yet $a$ and $2a^+$ have, heuristically, the same Type~I data.
+(That (B) actually fails for $a^+$ needs enough primes $q$ with $q-2$
+squarefree, $\lambda(q-2)=1$ and a divisor of $q-2$ in $(N,2N]$; expected, not
+proved here.) By Cauchy--Schwarz in $m$, (B) at $C=1$ reduces to an
+off-diagonal bound for $\sum\mu(n_1)\mu(n_2)\sum_m\mu^2(m)\Lambda(mn_1+2)\Lambda(mn_2+2)$,
+the diagonal being acceptable by Brun--Titchmarsh in the range of (B). Polymath8b
+say of such bilinear sums for $\Lambda(dm+2)$: ``we do not know of any
+plausible way to control such bilinear expressions'' \cite[p.~71]{PM8b}.
 \end{remark}
 
 \subsection{A sequence for which the bilinear axiom is proved: \texorpdfstring{$a^2+b^4$}{a\textasciicircum 2+b\textasciicircum 4}}\label{subsec:fi-x2y4}
@@ -1339,9 +1296,9 @@ twin primes or about primes in pairs of linear forms.
 
 \begin{remark}[Why this does not transfer, as far as we can see]\label{rem:fi-transfer}
 \lbl{Heuristic} (our reading, not a statement of \cite{FI98b}). Compare with
-Proposition~\ref{prop:B-parity}(3). For $a_n=\Lambda(n+2)$ the inner variable
+the remark after Proposition~\ref{prop:B-parity}. For $a_n=\Lambda(n+2)$ the inner variable
 $n$ and the outer variable $m$ enter only through the product $mn$, and after
-Cauchy--Schwarz over $m$ the off-diagonal (OD) is a correlation
+Cauchy--Schwarz over $m$ the off-diagonal is a correlation
 $\sum_m\Lambda(mn_1+2)\Lambda(mn_2+2)$ of primes in two linear forms, a binary
 problem of the same kind as the one we started from. In \cite{FI98b} the same
 step leads instead to a lattice-point problem: $a_n$ never involves primes
@@ -1434,7 +1391,7 @@ outer variable. After Cauchy--Schwarz the problem is a lattice problem
 detected by a large sieve, not a correlation of primes. For $a_n=\Lambda(n+2)$
 the condition ``$mn+2$ is prime'' has no such algebraic form, and the same
 step leads back to the binary correlation of
-Proposition~\ref{prop:B-parity}(3). Thinness is again essential: the Type~I
+the remark after Proposition~\ref{prop:B-parity}. Thinness is again essential: the Type~I
 level $X^{2-\varepsilon}$, against a sequence of size about $X^2$ inside
 $[1,X^3]$, comes from the factorisation of the form (p.~6), and the comparison
 sequence $\mathcal B$, whose primes the prime ideal theorem counts, has no
@@ -1794,7 +1751,7 @@ sum is $\psi(x+2;d,2)+O(1)$ for odd $d$.
   integer analogue is Lemma~3.2 of \cite{SS19}, together with the
   sub-Burgess character sums it feeds.
 \item $T_D$ is a correlation of $\mu$ at large arguments with primes, of the
-  kind that Proposition~\ref{prop:B-parity}(1)--(2) shows carries the parity
+  kind that Proposition~\ref{prop:B-parity} shows carries the parity
   information. The split is a reformulation, not progress: the first
   unresolved implication is $T_D(x)=o(x)$ for even one admissible $D$.
 \end{itemize}
