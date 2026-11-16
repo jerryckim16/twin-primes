@@ -27,19 +27,18 @@
 \begin{abstract}
 Several 2026 preprints claim improvements of the Polymath8b bound
 $H_1\le246$. Each combines unverified analytic input with a numerical
-\emph{variational step}. We recompute the variational steps exactly (or in
-ball arithmetic) and do not address the analytic input; Section~\ref{sec:basis}
+\emph{variational step}. We recompute the variational steps exactly and do not address the analytic input; Section~\ref{sec:basis}
 says, number by number, whether a value rests on one program, two independent
 programs, or a probabilistic check. (i) Stadlmann ($k=49$, claimed $240$): ratio
-$4.0120389>4$, and $4.0124198$ after optimising on the capped region (two
-programs). (ii) Kintali and Song--Yue ($k=48$, claimed $236$): Song and Yue's
+$4.0120389>4$ (two programs). (ii) Kintali and Song--Yue ($k=48$, claimed $236$): the
 cap-free mass and capped numerator equal their reference integers exactly (two
 programs), so their criterion holds with margin $1.6\cdot10^{-4}$. (iii) Charton
 et al.\ ($k=45$, claimed $212$): the criterion holds for the caps of their
 Table~3 ($4.0027351$, two programs), but for the caps of their Lemma~9.1 no
-polynomial in their $846$-dimensional space reaches $3.99$, an inconsistency in
-the draft. (iv) For the claimed $186$ and $182$ the main terms and most loss
-ingredients agree with the published values. No claimed bound is thereby
+polynomial in their $846$-dimensional space reaches $3.99$ (one program, with
+a randomised check of its weights). (iv) For the claimed $186$ and $182$ the
+main terms and the $186$ loss components agree with the published values; the
+$182$ restoration loss is checked only through its printed totals. No claimed bound is thereby
 verified, and nothing here bears on the twin prime conjecture, which remains
 open.
 \end{abstract}
@@ -86,7 +85,10 @@ support with ratio above the threshold). We check only the variational part, and
 tuple of the stated diameter exists. Throughout we label statements
 \lbl{Computed} (a machine computation, in exact rational arithmetic or in
 rigorous ball or interval arithmetic as stated, with a script that reproduces
-it; ``two programs'' means two independent programs agree exactly),
+it; ``two programs'' means two programs written in separate contexts, without
+access to each other's code, that return the same exact rationals or
+overlapping rigorous enclosures; weaker forms of agreement are named where they
+occur, in Section~\ref{sec:basis}),
 \lbl{Proved here}, \lbl{Lean-checked}, \lbl{Literature} (read in the source),
 or \lbl{Claimed} (asserted in a preprint and not verified by us).
 
@@ -98,8 +100,9 @@ Ratios in the Polymath scaling, where the threshold is $4$:
 claim & variational ratio & status here\\
 \midrule
 $240$ & $4.0120389$; optimised on $T$: $4.0124198$ & \lbl{Computed}, two programs\\
-$236$, witness of \cite{SY26} & $48J_T/I_T=4.0030988$; $48J_T/I_0=4.0026597$ & \lbl{Computed}, two programs\\
- & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & ($J_T$; $I_T$ one)\\
+$236$, witness of \cite{SY26} & $48J_T/I_0=4.0026597$ & \lbl{Computed}, two programs\\
+ & \quad($=4\times1.00066492$; SY criterion $>2001/2000$) & \\
+ & $48J_T/I_T=4.0030988$ & $I_T$ by one program\\
 $236$, our own $F$ & $4.0060814$ & \lbl{Computed}, two programs\\
 $212$, Table~3 caps & $4.0027351$ & \lbl{Computed}, two programs\\
 $212$, Lemma~9.1 caps & $<3.99$ for all $F$ in their $846$-dim.\ space & \lbl{Computed}, ball arithm.,\\
@@ -112,8 +115,8 @@ $186$, $182$ & other criteria: Remarks~\ref{rem:186}, \ref{rem:182} & \lbl{Compu
 
 \subsection*{What this note does not do}
 It does not verify the equidistribution estimates of \cite{Sta26},
-\cite{Kin26}, \cite{SY26} or \cite{Cha26}, nor their reduction theorems; all
-three claimed bounds remain conditional on them, and the established bound is
+\cite{Kin26}, \cite{SY26}, \cite{Cha26}, \cite{OAI26} or \cite{Sha26}, nor
+their reduction theorems; all five claimed bounds remain conditional on them, and the established bound is
 still $246$. Song and Yue
 \cite[Remark~4.23]{SY26} point to a missing hypothesis in one step of the
 proof of \cite[Lemma~5]{Sta26}; we read that step and comment on it, and on
@@ -180,7 +183,8 @@ Proposition~\ref{prop:fibre} assumes it only for $m\ge1$.
 All integrals reduce to moments over simplices.
 
 \begin{lemma}[\lbl{Proved here}; elementary]\label{lem:egf}
-Let $P_j=\sum_iu_i^j$, $X_1,\dots,X_k$ independent exponential variables of
+Let $P_j=\sum_iu_i^j$ (power sums; the identity is one of formal power
+series in $s$), $X_1,\dots,X_k$ independent exponential variables of
 mean $1$, and $E_k(b)=\mathbb E\prod_jP_j(X)^{b_j}$. Then, with
 $w(b)=\sum_jjb_j$,
 \[
@@ -230,8 +234,10 @@ marginal $Q(u',R)$.
 By symmetry each correction is a finite signed sum, over the size $m$ of the
 large set and over $j\ge0$ further coordinates forced above $g$ (inclusion and
 exclusion for ``all other coordinates are at most $g$''), of integrals of
-polynomials over polygons in two radial variables; so every term is an exact
-rational number. The ranges that occur are short (\lbl{Proved here},
+polynomials over polygons in two radial variables (this uses $g\ge L-\tau$,
+which holds for all supports here: $L-\tau=0.06$ against $g=0.112$ and
+$0.0728$, and $0.064$ against $0.0656$; it gives $|u'|<L-g\le\tau$ wherever
+$\theta<R$); so every term is an exact rational number. The ranges that occur are short (\lbl{Proved here},
 elementary: $m$ coordinates above $g$ have sum $>mg$). The integer arithmetic
 behind each bound is checked in Lean, in units of $1/1000$, $1/1250$ and
 $1/2500$ (file \texttt{lean/TwinPrimes/Caps.lean}; the Lean statements are
@@ -245,7 +251,8 @@ coordinates stops at $j\le3$, $3$, $6$ respectively
 (\texttt{stadlmann\_extra\_le\_three}, \texttt{kintali\_extra\_le\_three},
 \texttt{charton\_extra\_le\_six}; the last assumes the large set carries at
 least $777/1250$, so it covers the caps of Table~3 but not those of Lemma~9.1,
-for which only \texttt{capped\_check.py} is used). The correction pieces themselves include
+$C_1=775/1250$; for those caps the range of the inclusion--exclusion used by
+both programs is not Lean-checked). The correction pieces themselves include
 non-admissible bases, whose size $m$ is bounded only by the total length (up
 to about $14$ for \cite{Kin26}). The reduction to two radial variables is
 written out in \cite[\S5]{Kim26}.
@@ -285,7 +292,8 @@ certified when both programs return the same two rationals.
 Both functionals are quadratic forms, $I_T=c^\top G_Ic$ and $J_T=c^\top G_Jc$,
 in the coefficients $c$ of $P$. Running the chain of exact linear maps of
 \texttt{capped\_check.py} backwards gives the Gram matrices at about the cost
-of one evaluation (\texttt{capped\_gram.py}; \lbl{Proved here}, elementary).
+of one evaluation (\texttt{capped\_gram.py}; a description of the method,
+validated by exact self-tests, not a proved statement).
 We use them in two ways. First, to \emph{find} a good vector (the top
 generalised eigenvector), which is then rounded and re-evaluated exactly by
 the evaluators; only that exact value is stated as a certificate. Second, to
@@ -431,7 +439,9 @@ For the published witness, the variational criteria of both \cite{Kin26}
 our independent test function only the capped criterion $48J_T/I_T>4$ was
 computed, and it holds (two programs). With the
 \lbl{Lean-checked} admissible $48$-tuple of diameter $236$, $H_1\le236$
-follows from their equidistribution input, which we have not verified.
+follows from their reduction \cite[Thm.~4.33]{SY26} (or Kintali's use of
+\cite[Prop.~1]{Sta26}) and their equidistribution input, neither of which we
+have verified.
 \end{corollary}
 
 \subsection*{The draft of Charton et al.\ ($k=45$, claimed $H_1\le212$)}
@@ -478,8 +488,10 @@ quadratic forms then agree identically, except with probability below
 $2^{-31}$ for each form. The saved weights themselves are not
 in the repository (they are regenerated by \texttt{capped\_gram.py}). The best
 $P$ in $V$ gives about $3.98555$ (floating point, from the Gram matrices).
-Since $V$ is the authors' own space, the caps of Lemma~9.1 cannot give their
-$4.00438$, which is consistent with the caps of Table~3. We report this as a
+Since $V$ is the authors' own space, this suggests that the caps of Lemma~9.1
+cannot give their $4.00438$, which is consistent with the caps of Table~3; we
+have not compared their support and fibre conventions with ours in every
+detail. We report this as a
 located inconsistency for the authors to resolve, not as an error in their
 result.
 
@@ -521,20 +533,30 @@ Proposition~\ref{prop:212} are unaffected either way.
 \end{remark}
 
 \begin{remark}[one-sided certificates; \lbl{Proved here}, Bonferroni]\label{rem:bonf}
-Only a lower bound for $J_T$ and an upper bound for $I_T$ are needed. In the
-inclusion--exclusion over the coordinates forced above $g$, every piece of
-$\int_VP^2$, of $\mathrm{Corr}_1$, and of the two nonnegative parts
-$\int Q(u',R)^2$ and $\int Q(u',U)^2$ of $\mathrm{Corr}_2$ has a nonnegative
-integrand, so the Bonferroni inequalities allow truncation after level $2$ (upper bounds)
-or level $1$ (lower bounds), and no piece with three forced coordinates is
-needed (\cite{Kim26}, Propositions on Bonferroni truncation). For the vector of
-Theorem~\ref{thm:240}(1) this gives $49J_{\mathrm{low}}/I_{\mathrm{up}}=4.012038868>4$,
+Only a lower bound for $J_T$ and an upper bound for $I_T$ are needed. In
+Proposition~\ref{prop:fibre} write $M=\int_{L\R_k\setminus T}P^2$ (the removed
+mass), $\mathrm{Corr}_1$ for the integral over non-admissible $u'$, and
+$\mathrm{Corr}_2=\mathrm{Corr}_2^R-\mathrm{Corr}_2^\theta$ for the last
+integral, split into its parts with $Q(u',R)^2$ and $Q(u',\theta)^2$. Expand
+each in the inclusion--exclusion over the number $j$ of further coordinates
+forced above $g$, as $\sum_j(-1)^jS_j$ (with $S'_j$, $S_j$, $S^R_j$,
+$S^\theta_j$ for $M$, $\mathrm{Corr}_1$, $\mathrm{Corr}_2^R$,
+$\mathrm{Corr}_2^\theta$). All integrands are nonnegative, so the Bonferroni
+inequalities give
+\[
+J_T\ge J_0-(S_0-S_1+S_2)-(S^R_0-S^R_1+S^R_2)+(S^\theta_0-S^\theta_1),\qquad
+I_T\le I_0-S'_0+S'_1,
+\]
+and no piece with three forced coordinates is needed (\cite{Kim26},
+Propositions on Bonferroni truncation). For the vector of
+Theorem~\ref{thm:240}(1) this gives $49J_{\mathrm{low}}/I_{\mathrm{up}}=4.012038868>4$
+(\lbl{Computed}, one program),
 $3.5\cdot10^{-8}$ below the exact value, as exact rationals
 (\texttt{capped\_exact.py --bonf};
 \texttt{code/}\allowbreak\texttt{cap6/}\allowbreak\texttt{compare\_capfree\_D20\_bonf.json}).
 \end{remark}
 
-\begin{remark}[the next claim, $186$; \lbl{Computed}, two independent programs]\label{rem:186}
+\begin{remark}[the next claim, $186$; \lbl{Computed}; see Section~\ref{sec:basis} for what rests on one program]\label{rem:186}
 The claimed $H_1\le186$ of OpenAI \cite{OAI26} uses a different criterion,
 on fragment configurations with Dickman-distributed coordinate totals, at
 $k=40$. We recomputed the two main terms of its numerical companion from the
@@ -544,9 +566,9 @@ $I_H$ and above the published lower bound for $J_{\lambda,H}$, so that
 $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (\cite{Kim26},
 Proposition on the 186 main terms; \texttt{code/oai186\_IH.py},
 \texttt{code/oai186\_J.py}; a second program in ball arithmetic,
-\texttt{code/oai186\_check2.py}, agrees to $7\cdot10^{-17}$). The criterion
+\texttt{code/oai186\_check2.py}, agrees to $7\cdot10^{-17}$ relative). The criterion
 also needs the loss bound $L^+/I_H\le696075110\cdot10^{-12}$, a sum of $97$
-component bounds. In versions~0.6--0.7 we re-evaluated their raw forms from the companion's
+component bounds. We re-evaluated their raw forms from the companion's
 formulas, in our own code (\cite{Kim26}, the paragraphs on the raw loss
 bounds). A first program (Arb balls) evaluated all $97$ components: every value
 is at most its table entry, rounding up reproduces the four inner group totals
@@ -559,13 +581,15 @@ written without access to the first) evaluated the $17$ components that carry
 $99.95\%$ of the decisive group $O_{5/2}$ ($89.4\%$ of $L^+$); it agrees with the
 first to $1.4\cdot10^{-12}$ on the rank-two and factorial components and to
 $2.2\cdot10^{-9}$ on the low bins. The final
-margin is sensitive almost only to the group $O_{5/2}$ ($89.5\%$ of $L^+$, at most
-$2.06\%$ slack if the margin must exceed $1/50000$). What this does not check:
-that the forms majorise the true support-failure integrals (the companion's
-Lemmas~1.4--1.7, 2.3, 2.4), that the cover is complete, and the analytic inputs.
+margin is sensitive almost only to the whole group $O_{5/2}$ ($89.5\%$ of
+$L^+$; the group could grow by at most $2.06\%$ before the margin fell below
+$1/50000$). What this does not check: that the forms majorise the true
+support-failure integrals (the companion's Lemmas~1.4--1.7, 2.3, 2.4), that the
+cover is complete, the restoration step of the companion, and the analytic
+inputs.
 \end{remark}
 
-\begin{remark}[the last claim, $182$; \lbl{Computed}, two independent programs]\label{rem:182}
+\begin{remark}[the last claim, $182$; \lbl{Computed}; see Section~\ref{sec:basis} for the kind of agreement]\label{rem:182}
 The claimed $H_1\le182$ of GPT-6 Astra, prompted by R.~Sharifi \cite{Sha26},
 uses the framework of \cite{OAI26} at $k=39$ on a grid of $393216$ cells, with
 a trial function of $726$ rational coefficients (taken from the authors' Lean
@@ -602,7 +626,7 @@ also recomputed (\texttt{code/sharifi182\_kappa.py}; report in
 \item the paper's exact moment series on its three simplices, after checking
   that the simplices tile the region.
 \end{itemize}
-The two agree to $58$ digits:
+The two agree to $47$ guaranteed digits:
 $\kappa_{\mathrm{true}}=9.3307088324061199\ldots\cdot10^{-5}$. This lies inside
 the printed bracket, below $\bar\kappa$ of (4.3) by $8\cdot10^{-19}$, and below
 the constant $\kappa_{\mathrm{cvx}}=11696/125000000$ used in the authors' Lean
@@ -651,10 +675,10 @@ step, which our programs can do in hours.
 \end{remark}
 
 \section{What each number rests on}\label{sec:basis}
-``Two programs'' means two programs written in separate contexts, without
-access to each other's code, that return the same exact rationals (or
-overlapping rigorous enclosures, where stated). ``One program'' means a single
-exact or rigorous computation that has not been repeated independently.
+``Two programs'' is used in the sense of the introduction. ``One program''
+means a single exact or rigorous computation that has not been repeated
+independently. Where two implementations agree only numerically, or were not
+written blind, we say so.
 \begin{itemize}
 \item \emph{240, Theorem~\ref{thm:240}.} Both ratios ($4.0120389$ and
   $4.0124198$): two programs, exact. The ceiling $4.14$: one program
@@ -679,13 +703,20 @@ exact or rigorous computation that has not been repeated independently.
   not a second derivation of the weights. The optimum $3.98555$ is floating
   point and is not a certificate.
 \item \emph{186, Remark~\ref{rem:186}.} The two main terms: two programs
-  (agreement to $7\cdot10^{-17}$). The loss bound $L^+$: all $97$ components by
+  (agreement to $7\cdot10^{-17}$ relative), sharing one transcription of the
+  companion's formulas. The loss bound $L^+$: all $97$ components by
   one program; the $17$ components carrying $99.95\%$ of the decisive group
   $O_{5/2}$ also by a second program; the remaining components by one program
   only.
-\item \emph{182, Remark~\ref{rem:182}.} $I$, $J_0$, $J_+$ and $T$: two programs
-  each, but both programs share one reading of the source, so they check
-  arithmetic and code, not that reading. $\kappa_{\mathrm{true}}$: two
+\item \emph{182, Remark~\ref{rem:182}.} $I$, $J_0$, $J_+$ and $T$: two
+  implementations each, agreeing numerically (relative differences
+  $\le2\cdot10^{-22}$; for $I$, $J_0$, $J_+$ the first is fixed point and not rigorous, and for three
+  caps of $J_0$ its value lies just outside the second's balls, by about
+  $10^{-33}$); the comparisons with the published bounds rest on the second
+  implementation's ball enclosures. Both share one reading of the source, so
+  they check arithmetic and code, not that reading; for $T$ the second
+  implementation's author saw the first's kernel function, and both use one
+  data parser. $\kappa_{\mathrm{true}}$: two
   quadrature methods in one script. The printed restoration arithmetic and the
   $98$ source rows: one program each. The $197$ restoration integrals: not
   checked (their data are not published).
@@ -707,7 +738,7 @@ matrices and ceilings come from \texttt{code/capped\_gram.py}; the Song--Yue
 witness and reference integers, as extracted, are
 \texttt{code/cap6/songyue236\_witness.json} and
 \texttt{code/cap6/songyue236\_appC.json}, with the conversion and comparison
-scripts \texttt{code/songyue\_*.py}. Running times above are for four cores
+scripts \texttt{code/songyue\_*.py}. Running times above are for three or four cores (as stated)
 and $16$~GB of memory. The admissible tuples of diameters $212$, $236$, $240$
 and $246$ are checked by the Lean~4 kernel (core Lean, no Mathlib, no
 \texttt{sorry}; axioms \texttt{propext} and \texttt{Quot.sound} only), as are
@@ -731,7 +762,8 @@ Polymath scaling (threshold $4$); ``cap-free'' means the same $P$ on $L\R_k$.
   k=49:\ (4.0124,\,4.14],\qquad k=45\ \text{(Table~3 caps)}:\ (4.0027,\,4.126].
   \]
 \item \emph{What the caps cost the cap-free optimiser} (\lbl{Computed}):
-  $k=49$: $4.016176\to4.012039$ ($0.0041$); $k=48$, our vector:
+  $k=49$: $4.016176\to4.012039$ ($0.0041$; for the
+  vector optimised on $T$, $4.0158303\to4.0124198$); $k=48$, our vector:
   $4.0064115\to4.0060814$ ($0.00033$); $k=48$, the witness of \cite{SY26}:
   $4.0036348\to4.0030988$ ($0.00054$); $k=45$, Table~3 caps:
   $4.012272\to4.002735$ ($0.0095$); $k=45$, Lemma~9.1 caps:
@@ -742,12 +774,13 @@ Polymath scaling (threshold $4$); ``cap-free'' means the same $P$ on $L\R_k$.
   grows with the size of the loss; a guess that it stays near a tenth was wrong
   (\cite[\S5]{Kim26}).
 \item \emph{The cap condition} $g<C_m\le C_{m+1}\le C_m+g$ for $m\ge1$ holds
-  for all four cap sets and fails at $m=0$; it is what makes the fibre
-  description of Proposition~\ref{prop:fibre} valid.
+  for all four cap sets and fails at $m=0$; its part $C_{m+1}\le C_m+g$
+  ($m\ge1$) is what Proposition~\ref{prop:fibre} uses.
 \item \emph{One-sided certificates} need no piece with three forced
-  coordinates (Remark~\ref{rem:bonf}): for nonnegative integrands, Bonferroni
-  truncation after level $1$ (lower bounds for $J_T$) and level $2$ (upper
-  bounds for $I_T$) suffices, at a cost of $3.5\cdot10^{-8}$ at $k=49$.
+  coordinates (Remark~\ref{rem:bonf}): the lower bound for $J_T$ uses levels
+  $j\le2$ of $\mathrm{Corr}_1$ and $\mathrm{Corr}_2^R$ and $j\le1$ of
+  $\mathrm{Corr}_2^\theta$; the upper bound for $I_T$ uses $j\le1$ of the
+  removed mass. The cost is $3.5\cdot10^{-8}$ at $k=49$.
 \item \emph{Sensitivity} (Remark on what would change the picture): the margins
   are $0.0027$--$0.012$; a change of caps of the size of the difference between
   Table~3 and Lemma~9.1 of \cite{Cha26} is enough to move the best value in
@@ -759,7 +792,13 @@ Polymath scaling (threshold $4$); ``cap-free'' means the same $P$ on $L\R_k$.
 \item[1.0] (16 November 2026) Frozen version. New Section~\ref{sec:basis}
 (one sentence per number: one program, two programs, or a probabilistic
 check); Appendix~\ref{app:facts} (facts about the capped problem, instead of a
-separate paper); shorter abstract; changelog shortened.
+separate paper); shorter abstract; changelog shortened. Internal referee pass on
+the candidate (\texttt{referee/}\allowbreak\texttt{2026-11-16-verification-note-v1/}):
+labels of the $186$/$182$ remarks and of the Gram method corrected, the
+$182$ agreements described as numerical and not blind where they are, the
+one-sided certificate written out with its definitions and correct levels,
+``cannot'' softened to ``suggests'' for the Lemma~9.1 caps, the reduction
+theorems named in the $236$ corollary, and the condition $g\ge L-\tau$ stated.
 \item[0.12] (16 November 2026) The ceiling of Proposition~\ref{prop:ceiling}
 described as a one-program Gram certificate with a probabilistic check of its
 weights; version tags removed from the body.

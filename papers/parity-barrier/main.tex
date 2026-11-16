@@ -548,6 +548,26 @@ total mass $0$, hence (being non-negative) is identically zero. This is the case
 (rational weights reduce to it by scaling; real ones by rationality of the
 linear program).
 
+\begin{remark}[Chen's theorem as a consistency test; \lbl{Proved here} for the class, folklore in substance]\label{rem:chen}
+Take $\mathcal H=\{0,2\}$ with signs $(\varepsilon_1,\varepsilon_2)$. Pattern
+weights see primality only through $\lambda=-1$, and a number in $P_2$ can have
+either sign. So a weight that kills Chen's target ``$n$ prime and $n+2\in P_2$''
+must vanish whenever $\varepsilon_1=-1$, and no non-negative weakly fair weight
+does that: the class does not block Chen's theorem (\lbl{Literature},
+\cite[Theorem~5]{Tao15c}), as it must not. Each half of the target is blocked,
+however: $1-\varepsilon_1\varepsilon_2$ kills ``$n+2$ prime'' and
+$1+\varepsilon_1\varepsilon_2$ kills ``$n+2$ a product of exactly two primes''
+(\lbl{Lean-checked}: \texttt{chen\_no\_weakly\_fair\_weight},
+\texttt{chen\_twin\_half\_weight}, \texttt{chen\_semiprime\_half\_weight}). This
+matches the literature: sieve theory ``cannot hope to \dots\ just count
+semiprimes'' \cite{Tao07}, and it is ``not known whether there are infinitely
+many primes $p$ such that $p+2$ has an odd number of prime factors''
+\cite[p.~1]{Pi10}. Under EH, Proposition~\ref{prop:bomb-twin}(1) is the
+quantitative form for the mirror target ($n+2$ prime, $n$ prime or a product of
+two primes): the two halves, weighted by $\Lambda\log$ and
+$\Lambda\star\Lambda$, add up to $4C_2x\log x$, and nothing separates them. The test confirms the criterion; it adds no new statement.
+\end{remark}
+
 \subsection{The weight in Remark 8.1 of Polymath8b}\label{subsec:rem81}
 \lbl{Literature} \cite[Remark~8.1, p.~70]{PM8b} considers
 $A_H=\{n:\exists\,n\le p_1<p_2\le n+H,\ p_1,p_2\text{ prime},\ p_2-p_1\le4\}$
@@ -1924,6 +1944,8 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
 \bibitem{HB83} D.~R.~Heath-Brown, \emph{Prime twins and Siegel zeros}, Proc.\
   London Math.\ Soc.\ (3) \textbf{47} (1983), 193--224 (not opened; quoted
   from \cite[Theorem~1.5(i)]{TT22}).
+\bibitem{Tao07} T.~Tao, \emph{Open question: the parity problem in sieve theory}, blog post, 5 June 2007, \url{https://terrytao.wordpress.com/2007/06/05/open-question-the-parity-problem-in-sieve-theory/} (read 16 Nov 2026).
+\bibitem{Tao15c} T.~Tao, \emph{254A, Supplement 5: The linear sieve and Chen's theorem (optional)}, blog post, 29 Jan 2015, \url{https://terrytao.wordpress.com/2015/01/29/254a-supplement-5-the-linear-sieve-and-chens-theorem-optional/} (read 16 Nov 2026).
 \bibitem{Tao14b} T.~Tao, \emph{A general parity problem obstruction}, blog
   post, What's new, 21 November 2014,
   \url{https://terrytao.wordpress.com/2014/11/21/a-general-parity-problem-obstruction/}
