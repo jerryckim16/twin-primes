@@ -779,13 +779,12 @@ is exactly $\beta a$ wherever some index is active, so by Lemma~\ref{lem:dual}
 M_k(L,\tau)\le a\sup_{t'\in\tau\R_{k-1}}I(a,t'),\qquad
 I(a,t')=\int_0^{L-|t'|}\frac{n\,du}{a-S_A+nu}.
 \]
-Version~0.12 evaluated $I$ only on the fibers $t'=(x,\dots,x,0,\dots,0)$ and
-only for $a\ge1.05$, and concluded wrongly that the weight is worse than
-scaling; version~0.14 corrected the range of $a$ and left the question open.
-Version~0.15 settles it (Proposition~\ref{prop:psi-weight}).
+An earlier version evaluated $I$ only on special fibers and concluded wrongly
+that the weight is worse than scaling; Remark~\ref{prop:psi-weight} settles
+the question.
 \end{remark}
 
-\begin{proposition}[\lbl{Proved here}, with a computer-assisted step (\lbl{Computed}: ball arithmetic, two programs); possibly folklore]\label{prop:psi-weight}
+\begin{remark}[\lbl{Proved here}, with a computer-assisted step (\lbl{Computed}: ball arithmetic, two programs); possibly folklore]\label{prop:psi-weight}
 Let $k\ge2$, $\tau<L$, $W=L-\tau$, $a>\tau$, $c_0=a-\tau$, and for
 $t'=(x_1,\dots,x_{k-1})\in\tau\R_{k-1}$ put $s=\tau-|t'|$ and
 $\nu=1+W^{-1}\sum_j\min(x_j,W)$. Then
@@ -802,7 +801,7 @@ Proposition~\ref{prop:eps-first}, but above the bound $4.1459$ that the
 two-zone weight of Theorem~\ref{thm:floor} gives (remark after
 Theorem~\ref{thm:floor}). So this weight does not improve the best upper bound for
 $M_{50,1/25}$ that we know.
-\end{proposition}
+\end{remark}
 
 \begin{proof}
 \emph{Splitting the fiber.} Index $j$ is active at $(t',u)$ iff
@@ -885,7 +884,7 @@ point $t$ gives a linear condition $\sum_{m\text{ active}}\Psi(S-t_m,t_m)\le\Lam
 So its optimum can be approximated, and the approximation suggests how far a
 weight in $\mathcal W$ can go.
 
-\begin{proposition}[\lbl{Computed (floating point)}, discretised; not a rigorous bound in either direction; \lbl{Heuristic}]\label{prop:family}
+\begin{remark}[\lbl{Computed (floating point)}, discretised; not a rigorous bound in either direction; \lbl{Heuristic}]\label{prop:family}
 Discretise $\Psi=\rho\cdot(L-\sigma+(k-1)u)$ with $\rho$ constant on cells of
 an $N\times{}$(geometric) grid in $(S,u)$, impose the fiber conditions exactly
 on the grid $\sigma\in\frac LN\mathbb Z$, and impose the pointwise condition
@@ -903,7 +902,7 @@ $(30,1/4)$  & 4.0501 & 4.0345 & 4.0240 & 4.0021 (Thm.~\ref{thm:floor}) & --\\
 \bottomrule
 \end{tabular}
 \end{center}
-\end{proposition}
+\end{remark}
 
 At $\varepsilon=0$ the optimum over the whole family is the classical weight:
 the solver, started anywhere, returns $\frac{k}{k-1}\log k$. At
@@ -1363,7 +1362,7 @@ Up to version~0.7 every capped value came from a polynomial optimised
 are quadratic forms in the coefficients $c$ of $P$:
 $I_T(P\,1_T)=c^{\top}G_Ic$ and $J_T(P\,1_T)=c^{\top}G_Jc$.
 
-\begin{proposition}[\lbl{Computed}; a description of the method, validated by the exact self-tests below, not a proved statement]\label{prop:adjoint}
+\begin{remark}[\lbl{Computed}; a description of the method, validated by the exact self-tests below, not a proved statement]\label{prop:adjoint}
 In the direct method of \texttt{code/capped\_check.py}, $I_T$ is a linear
 function of the coefficient products
 $\kappa_I[F](y)=\sum_{F_1+F_2=F}p_{F_1}(y)p_{F_2}(y)$ and $J_T$ a linear
@@ -1377,7 +1376,7 @@ $G_I[t_1,t_2]=w_I[F_1+F_2][a_1+a_2]$ for basis terms
 $t_i=(L-P_1)^{a_i}\prod_jP_j^{F_{i,j}}$, and $G_J=Q^{\top}HQ$ with
 $H[(F_1,b_1,\gamma_1),(F_2,b_2,\gamma_2)]=w_J[F_1+F_2][(b_1+b_2,\gamma_1+\gamma_2)]$
 and $Q$ the (sparse, explicit) map from basis terms to the $q_F$.
-\end{proposition}
+\end{remark}
 \begin{sloppypar}
 The reverse pass costs about one forward evaluation
 (\texttt{code/capped\_gram.py}). Its self-test is exact: for the input
@@ -1426,7 +1425,7 @@ $3.99\,G_I-45\,G_J$ is positive definite, so
 \]
 \end{proposition}
 \begin{sloppypar}
-The weights $w_I,w_J$ of Proposition~\ref{prop:adjoint} were computed exactly
+The weights $w_I,w_J$ of Remark~\ref{prop:adjoint} were computed exactly
 ($88$ minutes on two cores, version~0.8). $G_J$ was assembled with absolute
 error at most $2^{-P}$ per weight, and the resulting entrywise error bound was
 put into the balls. Positive definiteness was certified by recursive Schur
@@ -2359,7 +2358,7 @@ project's bound is $240$ \emph{conditionally on the unverified reduction
 their Table~3 (Proposition~\ref{prop:cha-capped}); before the project's bound
 can move, the discrepancy between their Table~3 and Lemma~9.1 must be
 resolved; version~0.8 has the tool for optimising on the capped support
-(Proposition~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
+(Remark~\ref{prop:adjoint}), and for the caps of Lemma~9.1 no polynomial in
 our $846$-dimensional space reaches $3.99$ (Proposition~\ref{prop:cha-ceiling},
 resting on one program's Gram weights and a randomised check), which suggests
 that the draft's value belongs to its Table~3 caps. For $236$ ($k=48$) the variational criterion of \cite{Kin26} holds with
@@ -2377,7 +2376,7 @@ simplex the dual bound $M_k\le\frac{k}{k-1}\log k$ shows where the method
 stops ($k\ge51$). For the $\varepsilon$-enlarged simplex
 Theorem~\ref{thm:floor} gives $k\ge30$, which is still far from the expected
 truth near $50$; Section~4 explains what a sharper weight must do, and
-Proposition~\ref{prop:family} indicates (\lbl{Heuristic}) that it must
+Remark~\ref{prop:family} indicates (\lbl{Heuristic}) that it must
 depend on more of $t$ than $t_m$ and $S$ (a Collatz--Wielandt weight $\psi_m=\int F\,dt_m/F$ built
 from a good positive test function $F$ is the natural candidate). For the
 one-band hybrid supports of \cite{Sta26,Cha26},

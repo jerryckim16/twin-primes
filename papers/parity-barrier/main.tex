@@ -1456,33 +1456,24 @@ conclusion of Bombieri's theorem holds for this sequence with $k=2$. Then
 
 \begin{proof}
 (1) is the case $k=2$ with $H=2C_2$, since $\Lambda_2=\Lambda\log+\Lambda\star\Lambda$.
-Put $T(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)$ and $U(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)\log n$.
-By partial summation $U(x)=T(x)\log x-\int_2^xT(t)\,dt/t$ and
-$T(x)=U(x)/\log x+\int_2^xU(t)\,dt/(t\log^2t)$. By the upper-bound sieve
-(or by (1)), $T(t)\ll t$ and $U(t)\ll t\log t$, so the integrals
-are $O(x)$ and $O(x/\log x)$ respectively. Hence $T(x)\sim2C_2x$ if and only if
-$U(x)\sim2C_2x\log x$, which by (1) is equivalent to the statement about
-$\Lambda\star\Lambda$. (3): $\Lambda\star\Lambda\ge0$, so (1) gives $U(x)\le(4C_2+o(1))x\log x$,
-and $T(x)=U(x)/\log x+O(x/\log x)$. (The hypothesis $R(\nu)$ enters only
-through Bombieri's conclusion, which is assumed; Ford's remark that his
-auxiliary conditions are ``trivially satisfied'' concerns $g(d)=1/d$, not our
-$g$, and we have not read Bombieri's conditions.)
+Let $T(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)$ and
+$U(x)=\sum_{n\le x}\Lambda(n)\Lambda(n+2)\log n$. Partial summation and
+the upper-bound sieve ($T(t)\ll t$) give $T(x)=U(x)/\log x+O(x/\log x)$,
+which with (1) yields (2); and
+$\Lambda\star\Lambda\ge0$ with (1) gives (3). (The hypothesis $R(\nu)$ enters
+only through Bombieri's conclusion, which is assumed; we have not read
+Bombieri's auxiliary conditions.)
 \end{proof}
 
-So, if Bombieri's theorem applies to this sequence, under EH the
-twin-prime problem is \emph{equivalent} to the asymptotic
-for $p-2=p_1p_2$ counted with the weight $(\Lambda\star\Lambda)$: the level of
-distribution fixes the sum of the two pieces (and, by Bombieri's principle as
-Ford summarises it, essentially nothing that distinguishes them). This is the parity
-problem in Bombieri's language; the factor~$2$ in (3) matches the factor that
-the Selberg upper-bound sieve loses at level $x^{1-\varepsilon}$ (our remark). In the language of Section~\ref{sec:parity}: if
-the twisted sequence $a'_n=\Lambda(n+2)(1+\lambda(n))\ge0$ also satisfied
-$R(\nu)$ for all $\nu<1$ (a Chowla-type statement for $\lambda$ on shifted primes
-in progressions, \lbl{Open}; predicted by the M\"obius randomness heuristic), it would have
-prime piece $0$ and $\Lambda\star\Lambda$ piece $4C_2x\log x$ (since $\lambda=+1$
-on products of two primes), consistent with (1). This is the twin-prime analogue of Selberg's example
-$1+\lambda(n)$ \cite[p.~2]{Fo04} (Section~\ref{sec:parity}), for which $R(\nu)$
-holds for every $\nu<1$, (1.3) holds for $k\ge2$, and the primes vanish.
+So, if Bombieri's theorem applies to this sequence, under EH the twin-prime
+problem is \emph{equivalent} to the asymptotic for $p-2=p_1p_2$ counted with
+the weight $\Lambda\star\Lambda$: the level of distribution fixes the sum of
+the two pieces and, by Bombieri's principle as Ford summarises it, essentially
+nothing that distinguishes them. The twisted sequence
+$\Lambda(n+2)(1+\lambda(n))$, if it also had level $\nu$ for all $\nu<1$
+(\lbl{Open}; predicted by the M\"obius randomness heuristic), would have prime
+piece $0$ and $\Lambda\star\Lambda$ piece $4C_2x\log x$: the twin-prime analogue
+of Selberg's example $1+\lambda(n)$ \cite[p.~2]{Fo04}.
 
 \begin{remark}[Ford's extra conditions for this sequence]\label{rem:ford-twin}
 For $a_n=\Lambda(n+2)$, Ford's condition (1.6) reads
@@ -1696,34 +1687,14 @@ absolute values for the fixed residue $2$ and odd moduli.
 \end{proposition}
 
 \begin{proof}
-Since $\Lambda(n)=-\sum_{d\mid n}\mu(d)\log d$, we have
-\[
-\sum_{n\le x}\Lambda(n)\Lambda(n+2)=-\sum_{d\le x}\mu(d)\log d\sum_{n\le x,\ d\mid n}\Lambda(n+2).
-\]
-For $d>D$ write $n=de$, so that $e=n/d<x/D$; these terms add up to
-$-T_D(x)$. Now take the terms with $d\le D$.
-\begin{itemize}
-\item \emph{Even squarefree $d$.} If $d$ is even and $d\mid n$, then $n+2$
-  is even, so $\Lambda(n+2)\ne0$ only if $n+2$ is a power of $2$. These terms
-  contribute $\ll D(\log x)^2$.
-\item \emph{Odd $d$, error terms.} By (EH$_D$) they contribute
-  $\ll x(\log x)^{-A}$.
-\item \emph{Odd $d$, main term.} It is
-  $-x\sum_{d\le D,\ d\text{ odd}}\mu(d)\log d/\varphi(d)$. Put
-  \[F(s)=\sum_{d\text{ odd}}\frac{\mu(d)}{\varphi(d)d^{s}}=\prod_{p>2}\left(1-\frac{1}{(p-1)p^{s}}\right).\]
-  Then $F(s)\zeta(s+1)$ is holomorphic near $s=0$, and its value there is
-  $2\prod_{p>2}(1-(p-1)^{-2})=2C_2$, because
-  $(1-\frac1{p-1})(1-\frac1p)^{-1}=1-\frac1{(p-1)^2}$ and the factor $p=2$
-  of $\zeta$ gives $2$. Since $\zeta(s+1)^{-1}=s+O(s^2)$, we get
-  $F(0)=0$, $F'(0)=2C_2$, and
-  $\sum_{d\text{ odd}}\mu(d)\log d/\varphi(d)=-F'(0)=-2C_2$. The tail
-  $\sum_{d>D,\ d\text{ odd}}\mu(d)\log d/\varphi(d)\ll_A(\log D)^{-A}$
-  follows from the prime number theorem with the classical error term, in
-  the standard way.
-\end{itemize}
-Since $D(\log x)^2\le x^{1-c}(\log x)^2$, this proves the formula. The
-equivalence follows. For the Bombieri--Vinogradov step, note that the inner
-sum is $\psi(x+2;d,2)+O(1)$ for odd $d$.
+Insert $\Lambda(n)=-\sum_{d\mid n}\mu(d)\log d$; the terms with $d>D$ give
+$-T_D(x)$. For even squarefree $d\le D$, $d\mid n$ forces $n+2$ even, so these
+terms contribute $\ll D(\log x)^2\le x^{1-c}(\log x)^2$. For odd $d\le D$ the
+inner sum is $\psi(x+2;d,2)+O(1)$; (EH$_D$) bounds the error terms, and the main
+term is $-x\sum_{d\le D,\,d\text{ odd}}\mu(d)\log d/\varphi(d)=2C_2x+O_A(x(\log
+D)^{-A})$: with $F(s)=\prod_{p>2}(1-(p-1)^{-1}p^{-s})$, $F(s)\zeta(s+1)$ is
+holomorphic at $0$ with value $2C_2$, so $-F'(0)=-2C_2$ is the full sum, and the
+tail is bounded by the prime number theorem with classical error term.
 \end{proof}
 
 \begin{remark}[What is relocated, and what is missing]\label{rem:ss-transfer}
