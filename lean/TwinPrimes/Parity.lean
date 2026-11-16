@@ -59,4 +59,42 @@ minimality is a computation, `code/parity/bipartite_obstruction.py`). -/
 theorem narrow5_admissible : Admissible [0, 2, 6, 8, 12] := admissible_of_check (by decide)
 theorem narrow7_admissible : Admissible [0, 2, 6, 8, 12, 18, 20] := admissible_of_check (by decide)
 
+
+/-!
+## Chen's target as a consistency test (parity paper, Remark `rem:chen`)
+
+Two positions `(n, n+2)` with Liouville signs `(a, b)`.  Chen's target "`n` prime and `n+2 ∈ P₂`"
+does not restrict `b` (a `P₂` number can have either sign), so a weight that kills it vanishes on
+both patterns with `a = -1`.  Its two halves are each killed by a fair weight: `1 - a b` kills
+"`n+2` prime" (pattern `(-1,-1)`), `1 + a b` kills "`n+2` a product of two primes" (pattern `(-1,1)`).
+-/
+
+/-- Sum of `f` over the four sign patterns of a pair. -/
+def patSum2 (f : Int → Int → Int) : Int := f 1 1 + f 1 (-1) + f (-1) 1 + f (-1) (-1)
+
+/-- No non-negative, weakly fair weight kills Chen's target: it is identically zero. -/
+theorem chen_no_weakly_fair_weight (w : Int → Int → Int)
+    (hnn : ∀ a b, 0 ≤ w a b)
+    (k1 : w (-1) 1 = 0) (k2 : w (-1) (-1) = 0)
+    -- weakly fair at the first position: singleton coefficient `≤ 0`
+    (f1 : patSum2 (fun a b => w a b * a) ≤ 0) :
+    patSum2 w = 0 := by
+  simp only [patSum2] at *
+  have := hnn 1 1; have := hnn 1 (-1)
+  omega
+
+/-- The twin-prime half: `1 - a b` is non-negative, fair, and kills `(-1,-1)` but not `(-1,1)`. -/
+theorem chen_twin_half_weight :
+    (∀ a ∈ signs, ∀ b ∈ signs, 0 ≤ 1 - a * b) ∧
+    patSum2 (fun a b => (1 - a * b) * a) = 0 ∧ patSum2 (fun a b => (1 - a * b) * b) = 0 ∧
+    patSum2 (fun a b => 1 - a * b) = 4 ∧
+    (1 - (-1) * (-1) : Int) = 0 ∧ (1 - (-1) * 1 : Int) ≠ 0 := by decide
+
+/-- The semiprime half: `1 + a b` is non-negative, fair, and kills `(-1,1)` but not `(-1,-1)`. -/
+theorem chen_semiprime_half_weight :
+    (∀ a ∈ signs, ∀ b ∈ signs, 0 ≤ 1 + a * b) ∧
+    patSum2 (fun a b => (1 + a * b) * a) = 0 ∧ patSum2 (fun a b => (1 + a * b) * b) = 0 ∧
+    patSum2 (fun a b => 1 + a * b) = 4 ∧
+    (1 + (-1) * 1 : Int) = 0 ∧ (1 + (-1) * (-1) : Int) ≠ 0 := by decide
+
 end TwinPrimes

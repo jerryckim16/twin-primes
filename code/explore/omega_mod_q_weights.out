@@ -1,0 +1,22 @@
+(A) fair Z/q pattern weights killing DHL[k,m+1]  (exists iff k <= q m?)
+  q=2 m=1: k=2:yes  k=3:no  k=4:no  k=5:no  k=6:no
+  q=2 m=2: k=2:yes  k=3:yes  k=4:yes  k=5:no  k=6:no
+  q=3 m=1: k=2:yes  k=3:yes  k=4:no  k=5:no  k=6:no
+  q=3 m=2: k=2:yes  k=3:yes  k=4:yes  k=5:yes  k=6:yes
+  q=4 m=1: k=2:yes  k=3:yes  k=4:yes  k=5:no
+  q=4 m=2: k=2:yes  k=3:yes  k=4:yes  k=5:yes
+  q=2 is the parity case (k <= 2m, Prop. bipartite (b)); q=3, m=1 'blocks' DHL[3,2],
+  which PM8b proves under GEH: the randomness heuristic must fail for z = e(1/3).
+
+(B1) Selberg-Delange at x = 1e+07
+  z=-1      |S|/x = 8.420e-05   predicted main term |.|/x = 0.000e+00   S/pred = nan
+  z=e(1/3)  |S|/x = 2.662e-02   predicted main term |.|/x = 2.640e-02   S/pred = (0.9707770924705637-0.27220846806942817j)
+  z=e(1/4)  |S|/x = 8.863e-02   predicted main term |.|/x = 9.649e-02   S/pred = (0.9120838356250643-0.10870365870054667j)
+  z=e(1/6)  |S|/x = 2.654e-01   predicted main term |.|/x = 2.784e-01   S/pred = (0.9531069489290245-0.012104629131832344j)
+
+(B2) one-dimensional Selberg-type weight, R = x^0.4 = 630
+  z=-1      sum nu z^Omega / sum nu = -0.0578+0.0000j  (|.| = 0.0578)
+  z=e(1/3)  sum nu z^Omega / sum nu = -0.4363+0.0456j  (|.| = 0.4387)
+  z=e(1/4)  sum nu z^Omega / sum nu = -0.4092+0.4509j  (|.| = 0.6089)
+  z=e(1/6)  sum nu z^Omega / sum nu = -0.0175+0.7483j  (|.| = 0.7485)
+  share of sum nu on primes (Omega = 1) = 0.4725  (each class mod q gets 1/q under the heuristic)
