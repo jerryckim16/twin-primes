@@ -4,8 +4,8 @@ Each line of work that grows into its own result gets its own paper here: `paper
 
 | slug | title | version | status | one line |
 |---|---|---|---|---|
-| `parity-barrier` | The parity barrier and twin primes: what is known and what is missing | 0.11 (draft, 16 Nov 2026) | active | Survey of the obstacle between bounded gaps and twin primes with own results: which targets Polymath8b-type weights can block (bipartite criterion, as in Tao 2014; window form H_m < H(2m+1)); where PM8b's GEH criteria stop (k = 2 at the parity value; the k = 3 eps-window); Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < \|d\| <= 12 has lambda(p+d) = -1 infinitely often; Pintz: 16; possibly folklore). Being cut toward a ~20 pp. v1.0 (weekly review, 16 Nov). No claim of progress on the twin prime conjecture. |
-| `verification-note` | An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft | 0.12 (draft, 16 Nov 2026) | active | Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song–Yue (236) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps (one-program Gram certificate; weights checked at a random point against both programs); the main terms and all 97 raw loss bounds of OpenAI's 186 companion recomputed (the decisive group by two independent programs). The analytic inputs are not verified. |
+| `parity-barrier` | The parity barrier and twin primes: what is known and what is missing | 0.12 (draft, 16 Nov 2026) | active | Survey of the obstacle between bounded gaps and twin primes with own results: which targets Polymath8b-type weights can block (bipartite criterion, as in Tao 2014; window form H_m < H(2m+1)); where PM8b's GEH criteria stop (k = 2 at the parity value; the k = 3 eps-window); Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < \|d\| <= 12 has lambda(p+d) = -1 infinitely often; Pintz: 16; possibly folklore); Chen's theorem as a consistency test (v0.12). Being cut toward a ~20 pp. v1.0 (weekly review, 16 Nov). No claim of progress on the twin prime conjecture. |
+| `verification-note` | An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft | 1.0 (16 Nov 2026) | frozen | Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song–Yue (236) and Charton et al. (212, Table 3 caps); ceiling < 3.99 for the Lemma 9.1 caps (one-program Gram certificate; weights checked at a random point against both programs); the main terms and all 97 raw loss bounds of OpenAI's 186 companion recomputed (the decisive group by two independent programs). A section states per number what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified. |
 
 ## Updating `verification-note`
 
@@ -15,6 +15,10 @@ Each line of work that grows into its own result gets its own paper here: `paper
 - (Done in v0.4, Session 13) Proposition 6 (our own k = 48 vector) confirmed by the second program.
 - (Done in v0.11, Session 24) `capped_exact.py` evaluated the random point used for the Lemma 9.1 weights: exact agreement.
 - Bump the version, add a changelog line at the end of the paper, recompile, and copy the PDF to `docs/papers/verification-note.pdf`.
+
+## Status note (Session 27)
+
+- Verification note frozen as v1.0 after an internal referee pass (referee/2026-11-16-verification-note-v1/); deferred minor items listed in STATE.md. Further changes only as dated errata (v1.0.x) if an error is found.
 
 ## Weekly review decisions (16 Nov 2026)
 

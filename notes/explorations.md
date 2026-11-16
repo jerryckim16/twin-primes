@@ -3,6 +3,24 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-16, Session 27 -- Is there a "mod q" analogue of the parity obstruction? (Selberg-Delange / combinatorics of pattern weights)
+- Idea: replace lambda(n) = (-1)^Omega(n) by the class of Omega(n) mod q (z = e(1/q)). If sieve weights could not see
+  z^Omega either, the pattern-weight criterion would give obstructions for other targets: a fair (uniform-marginal) measure on
+  (Z/q)^k with at most m coordinates equal to 1 (primes have Omega = 1) would block DHL[k, m+1].
+- Tried: code/explore/omega_mod_q_weights.py (output .out; 14 s). (A) LP over (Z/q)^k, q = 2, 3, 4, k <= 6, m = 1, 2, with an
+  exact rational witness (independent random injections into Z/q on blocks of q coordinates): a fair killing weight exists iff
+  k <= q m (q = 2 recovers Prop. bipartite (b)). For q = 3, m = 1 it would "block" DHL[3,2], which Polymath8b proves under GEH,
+  so the randomness heuristic must fail for z = e(1/3). (B) Why: Selberg-Delange, sum_{n<=x} z^Omega(n) ~ x (log x)^{z-1}
+  G(z)/Gamma(z), and 1/Gamma(z) vanishes only at z = 0, -1, -2, ...: among |z| = 1 only z = -1 has a negligible mean. At
+  x = 1e7 the partial sums match the predicted main term to 3-9% (ratio 0.97-0.27i for e(1/3), 0.91-0.11i for i, 0.95-0.01i for
+  e(1/6)), while for z = -1 the prediction is 0 and |S|/x = 8e-5. With a one-dimensional Selberg-type weight
+  nu = (sum_{d|n, d<=x^0.4} mu(d) log(R/d)/log R)^2, the normalised twisted sum is -0.058 for z = -1 (Selberg's example: small)
+  but has modulus 0.44, 0.61, 0.75 for z = e(1/3), i, e(1/6): the sieve sees z^Omega as a sieve problem of dimension z.
+- Outcome: DEAD END for new obstructions (as expected), with a clean explanation of why parity is special: the only twists
+  invisible to sieve weights among z^Omega are z = +-1, because 1/Gamma(z) = 0 exactly there. Almost certainly folklore (the
+  literature helper of this run searched for a source; see notes/sources-chen-parity.md). Heuristic / exploratory only; not for
+  a paper unless a source is found, and then at most a footnote.
+
 ## 2026-11-16, Session 26 -- Can the Pintz-Maynard dichotomy reach 4-tuples (|d| <= 8)? (levels of distribution / enlarged supports)
 - Idea: the dichotomy of this run's parity attempt needs theta M_k > 1. For k = 4 that is theta > 1/M_4 >= ... = 0.54230
   (deg-6 vector; the true M_4 is about 1.845, so about 0.542 at best). Risky question: do known level-of-distribution results

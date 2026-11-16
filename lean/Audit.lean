@@ -26,3 +26,6 @@ import TwinPrimes
 #print axioms TwinPrimes.pm8b_path_weight_kills
 #print axioms TwinPrimes.narrow5_admissible
 #print axioms TwinPrimes.narrow7_admissible
+#print axioms TwinPrimes.chen_no_weakly_fair_weight
+#print axioms TwinPrimes.chen_twin_half_weight
+#print axioms TwinPrimes.chen_semiprime_half_weight
