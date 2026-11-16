@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.11 (draft), 15 November 2026}
+\date{Version 0.12 (draft), 16 November 2026}
 
 \begin{document}
 
@@ -397,7 +397,7 @@ value are
 48J_T/I_T=4.00309880474987377905390044599145775\ldots.
 \]
 
-\emph{Second program (version 0.3).} The second evaluator,
+\emph{Second program.} The second evaluator,
 \texttt{capped\_exact.py} (cap-free value minus $126$ inclusion--exclusion
 correction pieces, each an exact rational; about $32$ core-hours), gives the
 same $J_T$ as \texttt{capped\_check.py} as an exact rational, so item (2)
@@ -411,8 +411,7 @@ comparison was made when the run finished and is recorded in the project log
 (\texttt{log/}\allowbreak\texttt{entries.json}, Session~12), not in that file.
 The capped denominator $I_T$, which enters only the ratio $48J_T/I_T$ and not
 the criterion of \cite{SY26}, rests on \texttt{capped\_check.py} alone.
-Proposition~\ref{prop:kin-own} below is also confirmed by both programs
-(version 0.4).
+Proposition~\ref{prop:kin-own} below is also confirmed by both programs.
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs]\label{prop:kin-own}
 For our own cap-free optimiser in $V_{22}$ for this $(L,\tau)$ at $k=48$
@@ -453,7 +452,7 @@ already above $4$. The draft, however, also states caps in its Lemma~9.1,
 namely $C_1=C_2=31/50$ and $C_m=17/25$ for $m\ge3$, which are smaller than
 those of Table~3 for every $m\ge1$. With these the conclusion changes.
 
-\begin{proposition}[\lbl{Computed}, ball arithmetic; Gram weights checked against two exact programs at a random point]\label{prop:ceiling}
+\begin{proposition}[\lbl{Computed}, ball arithmetic; one program's Gram weights, checked against two exact programs at a random point]\label{prop:ceiling}
 Let $T'$ be the support with the caps of Lemma~9.1 of \cite{Cha26} and
 $V=V_{21}$. Then $3.99\,G_I-45\,G_J$ is positive definite on
 $V$, so
@@ -678,6 +677,11 @@ version 0.12).
 
 \section*{Changes}
 \begin{description}
+\item[0.12] (16 November 2026) Wording after the weekly review: the ceiling of
+Proposition~\ref{prop:ceiling} is a one-program Gram certificate whose weights
+agree with both exact programs at one random point (a probabilistic check, not
+a second derivation); the item 0.11 below said too much. Version tags removed
+from the body.
 \item[0.11] (15 November 2026) Proposition~\ref{prop:ceiling}: the second
 exact program has evaluated the random test point of the Lemma~9.1 Gram
 weights and agrees exactly with the first, so the ceiling no longer rests on

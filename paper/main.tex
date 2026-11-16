@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.25, 16 November 2026}
+\date{Version 0.26, 16 November 2026}
 
 \begin{document}
 
@@ -65,7 +65,7 @@ be the least diameter $h_k-h_1$ of an admissible $k$-tuple. Then
 and $\DHL[2,2]$ applied to $\{0,2\}$ is the twin prime conjecture. All progress
 on $H_1$ since 2013 consists of proving $\DHL[k,2]$ for smaller $k$.
 
-\subsection*{Where the bound stands (14 November 2026)}
+\subsection*{Where the bound stands}
 
 \begin{center}
 \begin{tabular}{@{}rlll@{}}
@@ -1415,7 +1415,7 @@ cost (about $9\%$): in this test space the margin of the variational step of
 \cite{Sta26} is $0.0124$, and the caps cost $0.0038$ even for the best
 polynomial of degree~$20$.
 
-\begin{proposition}[\lbl{Computed}, ball arithmetic, certified at $\sigma=3.99$; Gram weights from \texttt{capped\_check.py} run backwards, checked at one random point against both exact programs (Schwartz--Zippel test; second program completed in version 0.24); versions 0.8--0.9]\label{prop:cha-ceiling}
+\begin{proposition}[\lbl{Computed}, ball arithmetic, certified at $\sigma=3.99$; one program's Gram weights, checked at one random point against both exact programs (a probabilistic Schwartz--Zippel check, not a second derivation)]\label{prop:cha-ceiling}
 Let $T'$ be the support of \cite{Cha26} at $k=45$ with the caps of their
 Lemma~9.1 ($C_1=C_2=31/50$, $C_m=17/25$ for $m\ge3$; $L=53/50$,
 $\tau=249/250$, $g=41/625$), and let $V$ be our $846$-dimensional space
@@ -1523,7 +1523,7 @@ The authors state that a fresh regeneration of their capped numerator is
 still pending. An exact recomputation of it from their table is a natural
 next step for us.
 
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs; versions 0.9 and 0.12]\label{prop:kin-capped}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic, two independent programs]\label{prop:kin-capped}
 Let $P$ be our cap-free optimiser of degree $22$ for $M_{48,15/506}$ ($1041$
 coefficients, even power sums; certified Rayleigh quotient $3.9589046383$, so
 $kJ/I=\frac{253}{250}\cdot3.9589046=4.0064115$ without caps), rounded to
@@ -1877,7 +1877,7 @@ This checks one input of the companion; it is not yet an evaluation of
 $I_H$ or $J_{\lambda,H}$.
 \end{remark}
 
-\begin{proposition}[\lbl{Computed}, two independent programs, the second in ball arithmetic; version 0.13]\label{prop:oai186-main}
+\begin{proposition}[\lbl{Computed}, two independent programs, the second in ball arithmetic]\label{prop:oai186-main}
 Evaluate the forms of \cite{OAI26}'s companion, as transcribed in
 \texttt{notes/}\allowbreak\texttt{sources-186-forms.md}, with the layered cap
 measure of (2.15) read as follows (our derivation): split the retained $39$
@@ -2099,7 +2099,7 @@ companion papers of Section~\ref{sec:related}, first the paper on the parity
 barrier, while rung $182$ continues at a smaller share.
 \end{remark}
 
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic on the published integers; version~0.16]\label{prop:oai186-budget}
+\begin{proposition}[\lbl{Computed}, exact rational arithmetic on the published integers]\label{prop:oai186-budget}
 Let $\mu(L):=(\rho^*(J^--L)-I^+)/I^+$ with $\rho^*=2624989/10^7$ and $I^\pm$, $J^-$
 the endpoints of \cite[(2.33)]{OAI26}. With $L=L^+$ at the value of Table~2.7,
 $\mu=2.336\cdot10^{-5}$. The total loss may exceed its published bound by at most
@@ -2314,74 +2314,33 @@ by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
 and the re-evaluation of the main terms and loss bounds of the $186$ companion.
 None of it verifies the analytic inputs.
 \item \emph{The parity barrier and twin primes: what is known and what is
-missing} (\texttt{papers/parity-barrier/}, from version~0.17 of this paper). The
-obstacle between bounded gaps and twin primes: the Polymath8b parity
-obstruction (why the method stops at $6$ even under GEH), the
-Friedlander--Iwaniec asymptotic sieve specialised to $\Lambda(n+2)$ (all its
-hypotheses except the Type~I bound at level $x^{2/3+}$ and the bilinear bound
-hold, and the bilinear bound has no cancellation for the parity-twisted
-sequence), and the remark that the twisted Type~I input of the obstruction is a
-theorem for bounded-level, logarithmically averaged weights (a consequence of
-Tao's two-point theorem \cite{Tao16}). Its version~0.2 (version~0.18 of this
-paper) adds an exact criterion for which ``close-prime'' targets a weight of the
-Polymath8b kind can block (\lbl{Proved here} for that class of weights; its
-core, the convex-hull, bipartite and ``$k/2$'' cases, is in a 2014 blog post of
-Tao, which the parity paper credits from its version~0.7): exactly those whose
-target graph is bipartite, so that the class
-forbids precisely $H_m<H(2m+1)$, where $H(j)$ is the narrowest admissible
-$j$-tuple; for $m=1$ this is the familiar limit $6$. It also notes that the
-weight printed in Polymath8b's Remark~8.1 vanishes identically as written (a
-typo-level slip), and records which structure the Friedlander--Iwaniec bilinear
-estimate for $a^2+b^4$ uses (and, from its version~0.4, Heath-Brown's for
-$x^3+2y^3$). Its version~0.3 (version~0.19 of this paper)
-proves the twisted Type~I input at level $R=(\log x)^{c_0}$ ($c_0$ not
-effective) for Selberg-type weights
-$\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$, uniformly in $\lambda_1=1$,
-$|\lambda_d|\le1$, conditionally on a quantitative correlation
-theorem of Tao and Ter\"av\"ainen (an unrefereed preprint); this only confirms
-the input of the obstruction at a larger level. Its version~0.5 (version~0.20
-of this paper) does three things:
+missing} (\texttt{papers/parity-barrier/}, version~0.11). A survey of the
+obstacle between bounded gaps and twin primes, read in the sources, with some
+own results. Current main statements:
 \begin{itemize}
-\item it extends this to Maynard's two-variable weights;
-\item it answers its open question on the level of (R$_3$) from the literature;
-\item it reads Sawin--Shusterman's proof of twin primes in $\mathbb F_q[T]$ and
-  locates the step with no integer analogue (a characteristic-$p$ identity
-  that turns $\mu$ on a line into a character). Over $\mathbb Z$ the same split
-  only reformulates the problem as a M\"obius--prime correlation (compare a
-  related theorem of Murty and Vatwani).
+\item an exact criterion for which close-prime targets a Polymath8b-type
+  (Liouville-pattern) weight can block: the target graph must be bipartite, so
+  the class blocks exactly $H_m<H(2m+1)$, i.e.\ $6$ for $m=1$ (a heuristic
+  barrier, not a bound; the core is in a 2014 blog post of Tao, credited);
+\item ceilings for Polymath8b's GEH criteria (no $\mathrm{DHL}[k,3]$ for $k\le45$),
+  the case $k=2$ exactly at the parity value $2$, and for which $\varepsilon$ the
+  $k=3$ criterion beats $2$ (above $2$ at $\varepsilon=\frac29,\frac14,\frac7{24}$; provably
+  below $2$ for $\varepsilon\ge0.439$; \lbl{Computed}, two programs each);
+\item new in version 0.11: Pintz's parity-sensitive dichotomy redone with
+  Maynard's weights. It needs only $\theta M_k>1$, so it holds for admissible
+  $5$-tuples unconditionally, and some even $d$ with $0<|d|\le12$ has
+  $\lambda(p+d)=-1$ for infinitely many primes $p$ (Pintz: $16$).
+  \lbl{Proved here}, possibly folklore; the ratios are exact and checked by two
+  programs. The obstruction blocks ``a prime next to an odd number of prime
+  factors'' but not this disjunction;
+\item what the Friedlander--Iwaniec and Bombieri asymptotic sieves need for
+  $\Lambda(n+2)$, Heath-Brown's and Friedlander--Iwaniec's bilinear structures,
+  Sawin--Shusterman's $\mathbb F_q[T]$ proof and the step with no integer
+  analogue, the twisted Type~I input in the log-averaged regime (conditionally
+  up to level $(\log x)^{c_0}$), and the Siegel-zero world;
+\item several small corrections to the literature (Polymath8b Remark~8.1 and
+  Proposition~6.5, a constant in a 2019 preprint).
 \end{itemize}
-Its version~0.6 (version~0.21 of this paper) adds a section on where
-Polymath8b's GEH criteria stop (\lbl{Proved here}, elementary): their ratio is
-at most $k^2\log k/(k-1)^2$, so they cannot give $\mathrm{DHL}[k,3]$ for
-$k\le45$ although parity blocks only $k\le4$; and at $k=2$ the strongest of
-them reaches exactly the parity value $2$ and never exceeds it. It also reads
-Matom\"aki--Radziwi\l\l's short-interval theorem and records why it does not
-transfer to twin primes. Its version~0.7 (version~0.22 of this paper) gives a
-dual formula for the supremum of Polymath8b's Theorem~3.14 ratio, shows why the
-sharp $k=2$ argument does not extend to $k=3$ (two marginal conditions act at
-the same points, and dropping the overlapping ones lets the ratio exceed $2.14$
-at $\varepsilon=\frac18$, \lbl{Computed}), and checks Polymath8b's $\mathrm{DHL}[3,2]$
-under GEH with an exact step function of ratio $2+1.8\cdot10^{-4}$ (two programs).
-Its version~0.8 (version~0.23 of this paper) determines, in part, for which
-$\varepsilon$ that $k=3$ criterion works: its supremum exceeds $2$ at
-$\varepsilon=\frac29,\frac14,\frac7{24}$ and is provably below $2$ for every $\varepsilon\ge0.439$
-(Schur-test certificates; \lbl{Computed}, two programs each).
-Its version~0.9 (version~0.24 of this paper) records what the level of
-distribution alone gives, through Bombieri's asymptotic sieve as quoted by
-Ford: under EH twin primes are equivalent to a weighted count of $p-2=p_1p_2$,
-and nothing more (folklore); Ford's theorems say no fixed level below $1$
-suffices. It also points out a probable factor-$2$ slip in the constant of a
-2019 preprint on twins almost prime under EH.
-Its version~0.10 (version~0.25 of this paper) reads Tao and Ter\"av\"ainen's
-paper on Siegel zeros and proves (\lbl{Proved here}, elementary, possibly
-folklore) that in a world with an exceptional real character $\chi$ mod $q$, the
-class sums of $\lambda(n)\lambda(n+2)$ modulo $\prod_{p\le w}p\cdot q$ are, on
-average, biased with sign $\chi(b)\chi(b+2)$ if $\chi$ has few small split primes.
-In such a world two-point Chowla holds, but a per-modulus form of the twisted
-Type~I input of the obstruction fails at that modulus (the averaged input is
-not shown to fail). Siegel zeros are conjectured not to exist. The same
-version takes in a full referee pass (wording of the $H(2m+1)$ criterion, labels,
-stale text).
 It makes no claim of progress on the twin prime conjecture, which is open.
 \end{itemize}
 \end{sloppypar}
@@ -2578,6 +2537,11 @@ program now agrees at the random test point of the Lemma~9.1 weights.
 \item[0.25] (16 Nov 2026) Related results: parity paper version~0.10 (the
 Siegel-zero world: a per-modulus form of Chowla in progressions can fail at the exceptional modulus;
 referee pass). Rung $182$ still waits for its restoration data.
+\item[0.26] (16 Nov 2026) Weekly review: version tags removed from headings; the
+$212$ ceiling's label made precise (one-program Gram certificate, probabilistic
+check of its weights); the parity-paper paragraph of Section~\ref{sec:related}
+rewritten as a list of current statements. Related results: parity paper
+version~0.11 (Pintz's dichotomy with Maynard weights).
 \end{itemize}
 
 \begin{thebibliography}{99}
