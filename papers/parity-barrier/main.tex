@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.9 (draft), 15 November 2026}
+\date{Version 0.10 (draft), 16 November 2026}
 
 \begin{document}
 
@@ -29,18 +29,20 @@ is open and nothing here proves it or comes close. We state, checked in the
 sources, the (heuristic) parity obstruction that stops Maynard--Tao sieves at
 $H_1\le6$ even under GEH; Bombieri's asymptotic sieve (as quoted by Ford),
 under which EH would make twin primes equivalent to a weighted count of
-$p-2=p_1p_2$;
+$p-2=p_1p_2$, if his conditions hold for this sequence;
 and the Friedlander--Iwaniec bilinear axiom that breaks parity. Our own
 results (``Proved here''): the twisted Type~I input of the obstruction for
 log-averaged weights of bounded level (and of level $(\log x)^{c_0}$,
 conditionally on a preprint of Tao and Ter\"av\"ainen); a window form of
-Tao's convex-hull criterion, giving $H_m<H(2m+1)$ as the exact reach of
-Polymath8b-type weights; at $k=2$ Polymath8b's strongest GEH criterion
+Tao's convex-hull criterion: Liouville-pattern weights block a proof of
+$H_m\le g$ exactly when $g<H(2m+1)$; at $k=2$ Polymath8b's strongest GEH criterion
 reaches the parity value $2$ exactly, and at $k=3$ it works for
 $\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not for $\varepsilon\ge0.439$. We also
 record what the proofs for $a^2+b^4$, $x^3+2y^3$, short intervals and twin
 primes in $\mathbb F_q[T]$ use, why none of it transfers, and a probable
-factor-$2$ slip in a preprint's constant.
+factor-$2$ slip in a preprint's constant. In a Siegel-zero world, two-point Chowla holds
+but Chowla in progressions fails at the exceptional modulus, unless the character
+has many small split primes.
 \end{abstract}
 
 \maketitle
@@ -63,14 +65,18 @@ the parity barrier, in the form argued (``somewhat informal and heuristic in
 nature'') in \cite[\S8]{PM8b}; Polymath8b prove $H_1\le6$ under GEH. The aim of this paper is narrow: to state precisely
 what the barrier is, which known results get around it and why their
 mechanism does not obviously transfer to twin primes, and exactly which
-estimate is missing. It grows run by run (see the changelog), and new
-material enters only after it has been read in its source or proved in full.
+estimate is missing. New material enters only after it has been read in its
+source or proved in full.
 
 \subsection*{Labels}
-\lbl{Literature}: read in the cited source (version and location given).
+\lbl{Literature}: read in the cited source (version and location given;
+``as quoted by'' when only a secondary source was read).
 \lbl{Proved here}: full proof given here; ``possibly folklore'' unless a
-literature search says otherwise. \lbl{Heuristic}: numerical or informal;
-never used as an input. \lbl{Open}: not known.
+literature search says otherwise. \lbl{Lean-checked}: compiles in core Lean 4
+with no \texttt{sorry}, no \texttt{native\_decide} and only the standard axioms.
+\lbl{Computed}: exact certificate, with the script that reproduces it.
+\lbl{Claimed}: stated in a preprint, not verified here. \lbl{Heuristic}:
+numerical or informal; never used as an input. \lbl{Open}: not known.
 
 \section{The parity obstruction for sieve methods}\label{sec:parity}
 
@@ -226,9 +232,7 @@ The proof of Proposition~\ref{prop:tao-weight} expands $w$ over its period
 $\operatorname{lcm}(d\le R)\approx e^{R}$, so it allows only very slowly growing
 $R$. A quantitative correlation estimate of Tao and Ter\"av\"ainen
 \cite[Theorem~3.1]{TT25} (an unrefereed preprint), applied modulus by modulus,
-gives a polylogarithmic level $(\log x)^{c_0}$. The deduction was audited by a fresh-context
-referee (\texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-15-tt25-audit.md}): no error affecting the statement;
-its wording fixes are applied below. The proof of \cite[Theorem~3.1]{TT25} itself was not checked.
+gives a polylogarithmic level $(\log x)^{c_0}$. The proof of \cite[Theorem~3.1]{TT25} itself was not checked.
 \begin{proposition}[\lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25} (preprint)}]
 \label{prop:tao-weight-logc}
 There are absolute constants $c_0>0$ and $x_0$ such that the following holds
@@ -311,7 +315,10 @@ $\sum_{n\le x}w_R(n)/n\ge\delta_R\log(x/P)-1\gg(\log R+1)^{-2}\log x$.
 
 \emph{Conclusion.} The ratio is
 $\ll(\log x)^{-\kappa/2+o(1)}+(\log x)^{\kappa/2-1+o(1)}\le(\log x)^{-\kappa/4}$
-for $x\ge x_0$, as $\kappa<1$. Take $c_0=\kappa/4$. The second display follows
+for $x\ge x_0$, as $\kappa<1$ (true because \cite[Theorem~3.1]{TT25} allows $c$
+to be any sufficiently small absolute constant); the $o(1)$ in the exponents
+absorbs the factors $(\log R+1)^{O(1)}$ and $R^{2+o(1)}$, which is where
+$R\le(\log x)^{c_0}$ is used. Take $c_0=\kappa/4$. The second display follows
 from $1_{\lambda(n)\lambda(n+2)=\pm1}=\frac12(1\pm\lambda(n)\lambda(n+2))$.
 \end{proof}
 
@@ -327,8 +334,7 @@ only confirm the input of the parity obstruction, not give a lower bound
 for twin primes.
 \end{remark}
 
-The same argument covers Maynard's two-variable weights (open question~5 of
-version~0.3, suggested by the audit of Proposition~\ref{prop:tao-weight-logc}).
+The same argument covers Maynard's two-variable weights.
 
 \begin{corollary}[\lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25} (preprint)}]
 \label{cor:maynard-logc}
@@ -450,9 +456,9 @@ distance $\le4$ among $n,n+2,n+6$). Here we ask, for an arbitrary target, when
 a weight of the same kind exists. The answer is a clean combinatorial
 criterion. Its core is \emph{not new}: it is the convex-hull criterion of
 Tao's 2014 blog post \cite{Tao14b}, with the graph and ``$k/2$'' cases (see
-Remark~\ref{rem:tao14b}, added in version~0.7; earlier versions of this paper
-missed the post). What we add is the window form (c), the resulting statement
-$H_m<H(2m+1)$ for $H_m$, and a small correction to the weight printed in
+Remark~\ref{rem:tao14b}). What we add is the window form (c), the resulting
+statement that these weights block a proof of $H_m\le g$ exactly when
+$g<H(2m+1)$ (a heuristic barrier, not a bound on $H_m$), and a small correction to the weight printed in
 \cite[Remark~8.1]{PM8b}. The criterion concerns
 only the class of weights described next; that this class captures ``what
 sieve methods can see'' is the heuristic part of Section~\ref{sec:parity}, and
@@ -696,7 +702,7 @@ For every $\varepsilon\ge0$ also $M_{k,\varepsilon}\le(1+\varepsilon)\frac k{k-1
 
 The second bound is also the endpoint $a=1/(1+\varepsilon)$ of
 \cite[Remark~6.6, p.~45]{PM8b}, where the weight there is non-negative on the
-whole support, so their argument applies (pointed out by our auditor).
+whole support, so their argument applies.
 
 \begin{proof}
 All three supports lie in $c\,\mathcal R_k$ with $c=\frac k{k-1}$ (for
@@ -816,8 +822,8 @@ $I(F_\varepsilon)=a^2+2\cdot\frac14\cdot a\cdot2\varepsilon=a(a+\varepsilon)=a$.
   unit length is $2.000000000000000$ to rounding error for
   $\varepsilon\in\{0.1,0.2,0.25,0.3,0.5,0.9\}$ (except $\varepsilon=0.9$ with $8$
   cells, where the $J$-region contains no whole cell and the value is $0$).
-  An independent non-symmetric optimiser of the auditor also found nothing
-  above $2$ (\texttt{notes/}\allowbreak\texttt{audit-parity-v06.md}).
+  An independent non-symmetric optimiser also found nothing above $2$
+  (\texttt{notes/}\allowbreak\texttt{audit-parity-v06.md}).
 \end{enumerate}
 \end{remark}
 
@@ -990,7 +996,7 @@ So, by \cite[Theorem~3.14]{PM8b}, $\mathrm{DHL}[3,2]$ holds under GEH. This is
 \cite[Theorem~3.15]{PM8b}; nothing new is proved. The proposition is an independent
 exact check of its variational step with a simple test function. The
 polynomial printed in \cite[\S7.4]{PM8b} exceeds $2$ by only about $6\cdot10^{-8}$
-(our recomputation, Session~21, \texttt{notes/}\allowbreak\texttt{explorations.md}).
+(our recomputation, \texttt{notes/}\allowbreak\texttt{explorations.md}).
 \begin{itemize}
 \item First program: the script \texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{exact.py}
   in \texttt{code/}\allowbreak\texttt{parity/} (exact cell volumes, exact Gram matrices, exact null space; certificate
@@ -1135,7 +1141,7 @@ nothing about whether $\mathrm{DHL}[3,2]$ itself holds.
 
 \begin{sloppypar}
 \begin{itemize}
-\item Part~(1): \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}exact.py} (helper-written) and the
+\item Part~(1): \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}exact.py} and the
   independent \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}verify.py}; certificates
   \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert\_\allowbreak{}2\_\allowbreak{}9\_\allowbreak{}n18.json}, \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert.json},
   \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert\_\allowbreak{}7\_\allowbreak{}24\_\allowbreak{}n24.json}.
@@ -1271,10 +1277,10 @@ So two inputs are missing. (R$_3$) at a level $D>x^{2/3}$ is a fixed-residue
 Elliott--Halberstam bound with absolute values. Bombieri--Vinogradov gives
 level $x^{1/2}(\log x)^{-B}$ for all moduli; \cite[Theorem~2.3]{PM8b} calls it the
 best partial result towards EH (which takes the supremum over residue classes) and
-says nothing about fixed residues, where results beyond $x^{1/2}$ for restricted
-moduli exist in a literature we have not yet read (\lbl{Open} here). (B) for $\Lambda(n+2)$ is the bilinear estimate
-discussed next. Whether there is progress after 2014 on absolute-value,
-fixed-residue level beyond $x^{1/2}$ has not yet been checked (Section~\ref{sec:open}).
+says nothing about fixed residues. Beyond $x^{1/2}$ there are results only for
+restricted moduli or with weights, none reaching $x^{2/3}$ (open question~3 of
+Section~\ref{sec:open}). (B) for $\Lambda(n+2)$ is the bilinear estimate
+discussed next.
 
 \subsection{The bilinear hypothesis carries the parity information}
 
@@ -1622,6 +1628,7 @@ Not communicated to the author; a pointer, not a correction of record.
 \end{remark}
 
 \section{The Siegel-zero world: where the obstruction's hypothesis fails}\label{sec:siegel}
+\begin{sloppypar}
 
 A classical conditional route to twin primes that needs no unproved
 equidistribution input is the existence of Siegel zeros, a hypothesis that is
@@ -1665,11 +1672,11 @@ F=\{p>w:\ p\nmid q,\ f(p)\ne\chi(p)\}.
 \]
 For an interval $I=(y,y+x]$ with $x\ge Q$ let
 $S_b=\sum_{n\in I,\,n\equiv b\,(Q)}f(n)f(n+2)$, and
-\[
-s_1=\sum_{p\in F,\ p\le x/Q}\frac1p,\quad
-s_2=\sum_{p\in F,\ x/Q<p\le y+x+2}\frac1p,\quad
-P_1=\#\{p\in F: p\le x/Q\},\quad P_2=\#\{p\in F: x/Q<p\le y+x+2\}.
-\]
+\begin{gather*}
+s_1=\sum_{p\in F,\ p\le x/Q}\frac1p,\qquad
+s_2=\sum_{p\in F,\ x/Q<p\le y+x+2}\frac1p,\\
+P_1=\#\{p\in F: p\le x/Q\},\qquad P_2=\#\{p\in F: x/Q<p\le y+x+2\}.
+\end{gather*}
 For $f=\lambda$ the set $F$ is the set of primes $p>w$ with $\chi(p)=+1$.
 
 \begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:siegel-bias}
@@ -1683,11 +1690,14 @@ For $f=\lambda$ the set $F$ is the set of primes $p>w$ with $\chi(p)=+1$.
   1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)-\frac{Q}{x}\left(1+4P_1\right).
   \]
 \item Let $q$ be an odd prime, $q>w$, and suppose the discrepancies
-  $\Delta_b=S_b-\varphi(Q)^{-1}\sum_{n\in I,\,(n,Q)=1}f(n)f(n+2)$ satisfy
-  $|\Delta_b|\le\varepsilon x/Q$ for every $b\in G$. Then
   \[
-  \varepsilon\ \ge\ 1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)-\frac{Q}{x}\left(1+4P_1\right)-\frac{1+Q/x}{q-2}.
+  \Delta_b=S_b-\frac{1}{\varphi(Q)}\sum_{n\in I,\,(n,Q)=1}f(n)f(n+2)
   \]
+  satisfy $|\Delta_b|\le\varepsilon x/Q$ for every $b\in G$. Then
+  \begin{multline*}
+  \varepsilon\ \ge\ 1-4s_1-\frac4\rho\left(s_2+\frac{P_2}{x}\right)\\
+  -\frac{Q}{x}\left(1+4P_1\right)-\frac{1+Q/x}{q-2}.
+  \end{multline*}
 \end{enumerate}
 \end{proposition}
 
@@ -1788,13 +1798,13 @@ The primes in $[R_0,x/Q]$ contribute $o(1)$ to $s_1$ by \eqref{eq:tt-exc}.
 \end{remark}
 
 \begin{remark}[Numerical check, \lbl{Computed} and \lbl{Heuristic}]\label{rem:siegel-num}
-\texttt{code/parity/siegel\_class\_bias.py} takes $q=163$ or $1009$ and
+The script \texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.py} in \texttt{code/}\allowbreak\texttt{parity/} takes $q=163$ or $1009$ and
 $f=\chi$ off a random set $F$ of primes $\ge50$ ($f=-\chi$ on $F$), and checks
 two things exactly ($q=163$, $w=3$, $Q=978$ at $x=10^7$ and $5\cdot10^7$;
 $q=1009$, $w=5$, $Q=30270$ at $x=10^7$): the
 pointwise inequality $|S_b-\chi(b)\chi(b+2)N_b|\le2\,\#\{\text{bad }n\}$ in
 every class, and (2). Both pass in all $30$ cases
-(\texttt{siegel\_class\_bias.out}).
+(\texttt{siegel\_}\allowbreak\texttt{class\_}\allowbreak\texttt{bias.out}).
 \begin{itemize}
 \item \lbl{Heuristic}: for random $F$ with $s=\sum_{p\in F}1/p\le0.2$ the mean
   normalised bias lies between $1-4s$ and $\prod_{p\in F}\frac{p-3}{p+1}$
@@ -1807,6 +1817,8 @@ every class, and (2). Both pass in all $30$ cases
   Session~16 exploration in \texttt{notes/explorations.md}).
 \end{itemize}
 \end{remark}
+
+\end{sloppypar}
 
 \section{Twin primes over \texorpdfstring{$\mathbb F_q[T]$}{Fq[T]}, and what the integers lack}\label{sec:ss}
 
@@ -1924,7 +1936,7 @@ sum is $\psi(x+2;d,2)+O(1)$ for odd $d$.
   proves it on average over $h\le H<X$ when $\log H/\log\log X\to\infty$
   \cite[Theorem~1.1]{Li21}. The shift $-2$ needed here is the same kind of
   statement, but the bound $o(x)$ needed for this term is stronger than the
-  conjecture by more than a factor $\log x$.
+  conjecture by a factor $\log x$.
 \item A related equivalence is due to Murty and Vatwani, as quoted in
   \cite[Theorem~3, p.~3]{Cit26} (we could not open \cite{MV17} itself): under
   EH at level $N^{\theta}$ and an Elliott--Halberstam hypothesis for
@@ -2086,11 +2098,10 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
 \end{enumerate}
 
 \subsection*{Plan for later versions}
-Each run adds one bounded step: Friedlander--Iwaniec $x^2+y^4$ and
-Heath-Brown $x^3+2y^3$, Sawin--Shusterman, Matom\"aki--Radziwi\l\l{} (all now
-read in the source); Murty--Vatwani in the original; conditional
-statements (which hypotheses imply twin primes, which are known not to
-suffice). Nothing enters before it is read in the source.
+Each run adds one bounded step. Next: the original papers of Heath-Brown (1983)
+and Murty--Vatwani, if they can be obtained; the small split primes of a Siegel
+character (question~8); hypotheses known not to suffice. Nothing enters before
+it is read in the source.
 
 \begin{thebibliography}{9}
 \bibitem{FI98} J.~Friedlander and H.~Iwaniec, \emph{Asymptotic sieve for primes},
@@ -2242,18 +2253,6 @@ suffice). Nothing enters before it is read in the source.
   \emph{Correction of attribution}: the core of Proposition~\ref{prop:bipartite}
   is in Tao's 2014 blog post \cite{Tao14b}, found by this run's literature check
   (new Remark~\ref{rem:tao14b}; label, section opening and abstract changed).
-\item[0.9] (15 Nov 2026) New Section~\ref{sec:bomb} (thread~3, hypotheses
-  that do not suffice): Bombieri's theorem and Ford's Theorems~1--2 read in
-  \cite{Fo04}; Proposition~\ref{prop:bomb-twin} (under EH, twin primes are
-  equivalent to the $\Lambda\star\Lambda$-weighted count of $p-2=p_1p_2$; folklore);
-  Remark~\ref{rem:ford-twin} (Ford's and Hooley's conditions for this
-  sequence); Remark~\ref{rem:debouzy} (a probable factor-$2$ slip in the
-  constant of \cite{De19}); second table in Section~\ref{sec:num}; open
-  question~7. Abstract shortened. Two fresh-context audits (the Debouzy
-  constant; the whole section): five errors fixed before release, among them
-  $p+2$ for $p-2$, a wrong attribution of Selberg's phenomenon to Ford's
-  Theorem~1, and a missing Bombieri reference
-  (\texttt{notes/}\allowbreak\texttt{audit-parity-v09.md}).
 \item[0.8] (15 Nov 2026) New Subsection~\ref{subsec:window}: a Schur-test
   reduction of the $k=3$ problem without marginal condition to a
   one-dimensional inequality (Proposition~\ref{prop:unc-ceiling}), and
@@ -2267,6 +2266,18 @@ suffice). Nothing enters before it is read in the source.
   sharpness remark, the corollary's improvement of part~(2), the interval in
   Remark~\ref{rem:k3-window}(3), wording of the conclusion and of the
   undecided cases.
+\item[0.9] (15 Nov 2026) New Section~\ref{sec:bomb} (thread~3, hypotheses
+  that do not suffice): Bombieri's theorem and Ford's Theorems~1--2 read in
+  \cite{Fo04}; Proposition~\ref{prop:bomb-twin} (under EH, twin primes are
+  equivalent to the $\Lambda\star\Lambda$-weighted count of $p-2=p_1p_2$; folklore);
+  Remark~\ref{rem:ford-twin} (Ford's and Hooley's conditions for this
+  sequence); Remark~\ref{rem:debouzy} (a probable factor-$2$ slip in the
+  constant of \cite{De19}); second table in Section~\ref{sec:num}; open
+  question~7. Abstract shortened. Two fresh-context audits (the Debouzy
+  constant; the whole section): five errors fixed before release, among them
+  $p+2$ for $p-2$, a wrong attribution of Selberg's phenomenon to Ford's
+  Theorem~1, and a missing Bombieri reference
+  (\texttt{notes/}\allowbreak\texttt{audit-parity-v09.md}).
 \end{itemize}
 
 \end{document}

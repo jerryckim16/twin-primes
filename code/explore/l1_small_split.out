@@ -1,0 +1,8 @@
+primes q = 3 mod 4 up to 200000: 9005
+corr(log L1, s') = +0.363
+bottom   1.0% of L(1) (<= 0.308): n=   91  mean s'=0.029  frac s'>=1/4: 0.000
+bottom   5.0% of L(1) (<= 0.398): n=  451  mean s'=0.089  frac s'>=1/4: 0.004
+bottom  25.0% of L(1) (<= 0.743): n= 2252  mean s'=0.211  frac s'>=1/4: 0.394
+bottom  50.0% of L(1) (<= 1.286): n= 4503  mean s'=0.224  frac s'>=1/4: 0.412
+bottom 100.0% of L(1) (<= 5.467): n= 9005  mean s'=0.267  frac s'>=1/4: 0.534
+smallest L(1): [(166147, 29, np.float64(0.224), np.float64(0.0)), (191563, 33, np.float64(0.237), np.float64(0.0)), (90787, 23, np.float64(0.24), np.float64(0.0)), (163, 1, np.float64(0.246), np.float64(0.0)), (175723, 33, np.float64(0.247), np.float64(0.0)), (134227, 29, np.float64(0.249), np.float64(0.0)), (128923, 29, np.float64(0.254), np.float64(0.0)), (34483, 15, np.float64(0.254), np.float64(0.0)), (93307, 25, np.float64(0.257), np.float64(0.0)), (161947, 33, np.float64(0.258), np.float64(0.053)), (160483, 33, np.float64(0.259), np.float64(0.0)), (32323, 15, np.float64(0.262), np.float64(0.0))]
