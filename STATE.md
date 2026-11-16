@@ -3,28 +3,47 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 24, 11:34 AM CT slot, 15 Nov 2026): PHASE B
+## POSITION (after Session 25, 7:34 PM CT slot of 15 Nov, run 01:34 UTC 16 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work (rung 182 first),
   ~15-20% exploration.
-- Active papers: parity-barrier v0.9, verification-note v0.11. H_m programme scoped
-  (notes/hm-programme.md), NOT started as a paper. Main paper v0.24.
-- First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work.
+- Active papers: parity-barrier v0.10, verification-note v0.11. H_m programme scoped
+  (notes/hm-programme.md), NOT started as a paper. Main paper v0.25.
+- First weekly review: the Monday 16 Nov 3:34 AM CT run (notes/reviews/2026-11-16.md), BEFORE other work. Session 25 was the
+  Sunday 7:34 PM CT slot, so it did NOT do the review.
 
 ## Next steps (in order; Phase B)
-1. Weekly review (Monday 16 Nov run). Candid questions for it: is sec:ceil / subsec:dual / subsec:window of the parity paper
-   (three runs on the k = 3 GEH criterion) worth more runs, or is it a variational side-show? Is the new sec:bomb (Session 24)
-   mostly a literature summary plus a folklore reduction (honestly: yes; its value is the sharp sourced statement and the
-   Debouzy constant)? Search terrytao.wordpress.com / MathOverflow for our "Proved here" items (lesson of Session 22).
-   Is thread 2 complete (FI, HB, Tao, TT, MR, SS)? Thread 3 now has FI98 Thm 2, PM8b sec. 8, Bombieri/Ford.
-   Decide on a second small-results paper (capped-variational theory, or the H_m (varpi, delta) region).
+1. Weekly review (Monday 16 Nov run). Inputs new since Session 24: the full referee report of the parity paper
+   (referee/2026-11-16-parity-barrier/report.md). Its section 5 proposes cuts (delete Prop. k3-step, which is
+   cross-referenced in subsec:window and the changelog; shrink sec. 4.4 to Prop. orth-relax; turn Prop. tao-weight,
+   Cor. maynard-logc, Prop. B-parity, Prop. fi-twin, Prop. bomb-twin and Prop. ss-split into short remarks; halve the
+   FI98b/HB01/SS19/MR16 digests; merge Remarks k3-eps and k3-window), notation renames (lambda_d, pattern Omega, region D),
+   and items 2.4-2.7, 3 (labels of thm:k3-window(2), rem:ss-transfer, unlocated literature such as PM8b Thm 1.4 pages, BV,
+   BT, Mertens, OEIS A008407). The review should decide which to apply. Also from the Session 24 list: is the k = 3 GEH
+   thread (sec:ceil / subsec:dual / subsec:window) worth more runs? Is thread 2 complete? Should a second small-results
+   paper start (capped-variational theory, or the H_m (varpi, delta) region)?
 2. Parity attempt (one per run; route card + README line). Not to repeat: everything in notes/parity-attempts/README.md, now also
-   "what the level alone gives" (Bombieri/Ford, Session 24). Candidates: (a) open question 6 (rigorous k = 3 ceiling < 2 for small
-   eps, needs the marginal condition) -- only if the review keeps it; (b) open question 7 (Hooley-type averaged parity condition
-   for twins): any structured twin-type sequence where it is provable?; (c) weights that change the twisted main terms (open
-   question 2); (d) Murty-Vatwani in the original if it arrives.
-3. Bound share, rung 182: per-component restoration data still requested (notes/sources-needed.md). Nothing else to do without it.
-4. Optional, low priority: one-sided --bonf certificate on the Song-Yue witness; (k = 45 Schwartz-Zippel check: done in Session 24).
+   the Siegel-world bias (Session 25). Candidates: (a) open question 8 (does a Siegel zero force few split primes below
+   T = q^{1/log^{1-eps} eta}?), or a log-averaged / averaged-over-q version of Prop. prop:siegel-bias (the audit,
+   notes/audit-parity-v010.md item 15, says that scales below Q R_0 cost a (1 - theta)-type constant: write it out before
+   claiming anything); (b) open question 7 (a Hooley-type averaged parity condition for twins); (c) weights that change the
+   twisted main terms (open question 2); (d) Murty-Vatwani or Heath-Brown 1983 in the original, if they arrive.
+3. Bound share, rung 182: per-component restoration data still requested (notes/sources-needed.md). The UCLA directory
+   (https://www.math.ucla.edu/~sharifi/AI/) was re-checked on 16 Nov: it lists only the bundle (2026-10-04).
+4. Optional, low priority: one-sided --bonf certificate on the Song-Yue witness (many core-hours; resumable via --ckpt).
+
+## Session 25 (7:34 PM CT slot of 15 Nov, started on time 01:34 UTC 16 Nov; no wait) -- additions
+- Parity paper v0.10: new Section sec:siegel (Prop. prop:siegel-bias, Cor. cor:siegel-typeI, Remarks rem:siegel-locates,
+  rem:siegel-num, eq. eq:tt-exc), open question 8, bib TT22 (arXiv:2109.06291v2, SHA-256 d0b968ce...08956) and HB83
+  (quoted only). Route card notes/parity-attempts/2026-11-16-siegel-world-typeI.md. Audit notes/audit-parity-v010.md
+  (3 errors, 3 gaps, all fixed). Full referee pass referee/2026-11-16-parity-barrier/report.md (+ checks/), framing fixes
+  applied, cuts deferred to the review. Abstract 197 words (TeX source count).
+- Scripts: code/parity/siegel_class_bias.py [x q w seed] (/usr/bin/python3 -I; ~1 min at 5e7, < 2 GB), output .out.
+  Exploration code/explore/l1_small_split.py [QMAX] (.out; 11 s).
+- Sources: Matomaki-Merikoski arXiv:2112.11412 downloaded (SHA-256 2e664b17...521ff), not read. Heath-Brown 1983 needed
+  (Cloudflare 403).
+- Main paper v0.25 (Related results, history item). Lean: lake build and Audit.lean pass (no Lean changes).
+- Wolfram and mathbox NOT available.
 
 ## Session 24 (11:34 AM CT slot, started on time 17:35 UTC 15 Nov; no wait) -- additions
 - Parity paper v0.9: new Section sec:bomb (Prop. prop:bomb-twin, Remarks rem:ford-twin, rem:debouzy), second table in sec:num,
