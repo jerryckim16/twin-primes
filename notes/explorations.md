@@ -3,6 +3,18 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-16, Session 26 -- Can the Pintz-Maynard dichotomy reach 4-tuples (|d| <= 8)? (levels of distribution / enlarged supports)
+- Idea: the dichotomy of this run's parity attempt needs theta M_k > 1. For k = 4 that is theta > 1/M_4 >= ... = 0.54230
+  (deg-6 vector; the true M_4 is about 1.845, so about 0.542 at best). Risky question: do known level-of-distribution results
+  for sieve weights, or Polymath8b's enlarged supports (which work with BV alone for the bounded-gaps criterion), reach it?
+- Tried: (a) the best published level for smooth moduli: Stadlmann arXiv:2309.00425 (abstract read on arXiv, 16 Nov): moduli up
+  to x^{1/2+1/40} = x^{0.525}; (b) the enlarged-support argument on paper.
+- Outcome: DEAD END with current inputs. (a) 0.525 < 0.5423, and the lambda-analogue of such an estimate is also needed (not
+  checked in any source). (b) Enlarged supports need only an upper bound for S_1 and lower bounds for the prime sums, but the
+  lambda-twisted sum sum w_n lambda(n+r) must be o(S_1) in absolute value, and for weights of level beyond x^{1/4} (moduli
+  beyond x^{1/2}) BV for lambda does not give that. The 2026 claimed inputs (Stadlmann 240 etc.) were not examined for a
+  lambda-analogue. Heuristic / exploratory only.
+
 ## 2026-11-16, Session 25 -- Do small values of L(1, chi) come with few small split primes? (class numbers / Siegel-zero heuristics)
 - Idea: the parity attempt of this run (route card 2026-11-16-siegel-world-typeI.md) leaves open whether a Siegel character
   must have few small split primes (sum_{w<p<R0, chi(p)=1} 1/p < 1/4). Risky question: in the actual world, do the

@@ -1,5 +1,21 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-16 (Session 26) — (minor) Pintz's 2010 parity-sensitive theorem improved from 16 to 12 with Maynard weights (probably folklore)
+- **What.** J. Pintz (arXiv:1004.1065v1, 2010) proved that some even d with 0 < |d| <= 16 has lambda(p+d) = -1 for infinitely
+  many primes p (lambda = Liouville), a statement that sidesteps the parity barrier. Redone with Maynard's weights, the same
+  argument needs only theta M_k > 1 instead of the GPY condition, so 5-tuples suffice under Bombieri-Vinogradov
+  (M_5 >= 1417255/708216, Maynard 2015 (8.17)), giving 0 < |d| <= 12. Also 0 < d <= 14 (Pintz 18), and better conditional
+  thresholds (0.72154 / 0.60752 / 0.54230 against Pintz's 0.729 / 0.616 / 0.554).
+- **Why it might matter.** Only as a small, honest improvement of a published parity-sensitive result, and as a test of the
+  parity paper's criterion (it predicts exactly this: the disjunction is reachable, a single prescribed d is not). It says
+  nothing about lambda(p+2) alone and nothing about twin primes.
+- **Evidence label:** Proved here (parity paper v0.11, Thm. thm:pintz-maynard, Cor. cor:pintz12); the ratios are Computed
+  and agree exactly between two independent programs (code/parity/pintz_maynard.py, code/parity/pintz_maynard_check2.py).
+  Fresh-context adversarial audit: notes/audit-parity-v011.md.
+- **Not checked:** whether this is already in the literature. Three web searches found no improvement of Pintz's 16, but
+  someone (Pintz himself, or a survey) has very likely noted it after 2013. No MathSciNet / citation search.
+- **Needs outside expert review:** only a literature question (is it known?). Most likely folklore.
+
 ## 2026-11-15 (Session 24) — (minor) Debouzy, "Twins almost prime under a Elliott-Halberstam's conjecture": the main constant appears to be off by a factor 2 (qualitative result unaffected)
 - **What.** N. Debouzy, arXiv:1907.06393v1 (2019; no journal version found). Theorem 0.2 and Corollaries 0.3, 2.7 state, under an EH-type
   conjecture, that the twin-prime sum plus a localised semiprime sum equals 2 S_2 X (1+o(1)), with S_2 = prod_{p>=3} p(p-2)/(p-1)^2 = 0.66.
@@ -105,5 +121,8 @@
   different caps stated in Lemma 9.1, no polynomial in their own 846-dimensional space reaches $3.99$.
 - **Evidence label:** Computed (ball arithmetic). The ceiling uses one program's Gram weights, checked
   at a random point.
+- **Update (16 Nov 2026, Session 26):** since Session 24 the second exact program (capped_exact.py) also evaluates
+  the random point and agrees exactly. The Gram certificate itself is still one program's; the random-point agreement is a
+  probabilistic (Schwartz-Zippel) check of its weights, not a second derivation of the ceiling.
 - **Status:** reported in the verification note as a located inconsistency for the authors to resolve,
   not as an error in their result.

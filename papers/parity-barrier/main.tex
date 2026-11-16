@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.10 (draft), 16 November 2026}
+\date{Version 0.11 (draft), 16 November 2026}
 
 \begin{document}
 
@@ -27,21 +27,22 @@
 A survey with checks, not a research announcement: the twin prime conjecture
 is open and nothing here proves it or comes close. We state, checked in the
 sources, the (heuristic) parity obstruction that stops Maynard--Tao sieves at
-$H_1\le6$ even under GEH; Bombieri's asymptotic sieve (as quoted by Ford),
-under which EH would make twin primes equivalent to a weighted count of
-$p-2=p_1p_2$, if his conditions hold for this sequence;
-and the Friedlander--Iwaniec bilinear axiom that breaks parity. Our own
-results (``Proved here''): the twisted Type~I input of the obstruction for
-log-averaged weights of bounded level (and of level $(\log x)^{c_0}$,
-conditionally on a preprint of Tao and Ter\"av\"ainen); a window form of
-Tao's convex-hull criterion: Liouville-pattern weights block a proof of
-$H_m\le g$ exactly when $g<H(2m+1)$; at $k=2$ Polymath8b's strongest GEH criterion
-reaches the parity value $2$ exactly, and at $k=3$ it works for
-$\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not for $\varepsilon\ge0.439$. We also
-record what the proofs for $a^2+b^4$, $x^3+2y^3$, short intervals and
-$\mathbb F_q[T]$ use, and why none of it transfers. In a Siegel-zero world two-point Chowla holds, but
-a per-modulus form of Chowla in progressions fails at the exceptional modulus if
-the character has few small split primes.
+$H_1\le6$ even under GEH, Bombieri's and Friedlander--Iwaniec's asymptotic
+sieves for $\Lambda(n+2)$, and what the proofs for $a^2+b^4$, $x^3+2y^3$ and
+$\mathbb F_q[T]$ use that twin primes lack. Our own results (``Proved here''):
+\begin{itemize}
+\item a window form of Tao's convex-hull criterion: Liouville-pattern weights
+  block a proof of $H_m\le g$ exactly when $g<H(2m+1)$;
+\item at $k=2$ Polymath8b's strongest GEH criterion reaches the parity value $2$
+  exactly; at $k=3$ it works for $\varepsilon=\frac29,\frac14,\frac7{24}$ but provably not
+  for $\varepsilon\ge0.439$;
+\item Pintz's parity-sensitive dichotomy with Maynard's weights: some even
+  $d$ with $0<|d|\le12$ has $\lambda(p+d)=-1$ for infinitely many primes $p$
+  (Pintz: $16$). The criterion predicts this, and predicts that no single
+  prescribed $d$ is reachable this way;
+\item the twisted Type~I input of the obstruction for log-averaged weights of
+  small level, and a Siegel-zero world in which a per-modulus form of it fails.
+\end{itemize}
 \end{abstract}
 
 \maketitle
@@ -141,7 +142,7 @@ inserting a non-negative weight, would also prove a false statement, as long
 as the twisted inputs (144)--(145) hold. Two things are heuristic: that the
 twisted inputs hold at the level needed (this is a family of Chowla-type
 conjectures in progressions), and that ``sieve-theoretic'' arguments are
-weight-insensitive in this sense. Proposition~\ref{prop:tao-weight} below
+weight-insensitive in this sense. Remark~\ref{prop:tao-weight} below
 proves only the simplest instance of the first: $f=1$, two-point twists,
 logarithmic averaging over $n\le x$ (not the dyadic sums of (144)), and
 periodic weights of fixed modulus. It says nothing about $f=\Lambda$ or
@@ -160,74 +161,24 @@ estimate that uses the multiplicativity $\lambda(pn)=-\lambda(n)$ at small
 primes; and that the method does ``not appear to have any bearing as yet on
 twin prime-type sums'' \cite[pp.~3--5]{Tao16}.
 
-\begin{proposition}[\lbl{Proved here}; possibly folklore]\label{prop:tao-weight}
-Let $w:\mathbb N\to\mathbb R$ be periodic with period $q$, and let $h\ne h'$ be
-non-negative integers. Then
-\[
-\sum_{n\le x}\frac{w(n)\lambda(n+h)\lambda(n+h')}{n}=o(\log x)\qquad(x\to\infty).
-\]
-In particular, if $R\ge1$ is fixed, $(\lambda_d)_{d\le R}$ are real with
-$\lambda_1=1$, and $w(n)=\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$,
-then with $c_w:=\lim_{x\to\infty}(\log x)^{-1}\sum_{n\le x}w(n)/n>0$,
-\[
-\sum_{\substack{n\le x\\ \lambda(n)\lambda(n+2)=\pm1}}\frac{w(n)}{n}
-=\left(\tfrac12+o(1)\right)c_w\log x
-\]
-for both signs. Moreover, if a family $(\lambda^{(R)}_d)_{d\le R}$ is fixed
-for every $R\in\mathbb N$ (with $\lambda^{(R)}_1=1$) and $w_R$ is the
-corresponding weight, then there is $R(x)\to\infty$ such that the last display
-holds with $w=w_{R(x)}$, in the relative form
-$\sum_{n\le x,\ \lambda(n)\lambda(n+2)=\pm1}w_{R(x)}(n)/n=(\tfrac12+o(1))
-\sum_{n\le x}w_{R(x)}(n)/n$.
-\end{proposition}
-
-\begin{proof}
-Write $w$ as a linear combination of the indicators of the residue classes
-$c\bmod q$, $1\le c\le q$. For one class, $n=qm+c$ with $m\ge0$; the term
-$m=0$ contributes $O(1)$, and for $m\ge1$, $1/n=1/(qm)+O(1/m^2)$. Hence
-\[
-\sum_{\substack{n\le x\\ n\equiv c\ (q)}}\frac{\lambda(n)\lambda(n+2)}{n}
-=\frac1q\sum_{1\le m\le (x-c)/q}\frac{\lambda(qm+c)\lambda(qm+c+2)}{m}+O(1).
-\]
-(written for $h=0$, $h'=2$; in general replace $c$, $c+2$ by $c+h$, $c+h'$).
-Apply \cite[Theorem~1.2]{Tao16} with $a_1=a_2=q$, $b_1=c$, $b_2=c+2$
-(so $a_1b_2-a_2b_1=2q\ne0$; in general $q(h'-h)\ne0$) and $\omega(y)=y$ at $y=(x-c)/q$: the sum over
-$m$ is $o(\log x)$. Summing over the $q$ classes gives the first claim.
-
-For the second, $w$ is periodic modulo $q=\prod_{d\le R}d$ (indeed modulo the
-least common multiple of the $d$), because $1_{d\mid n(n+2)}$ depends only on
-$n\bmod d$. A periodic $w\ge0$ has $\sum_{n\le x}w(n)/n=c_w\log x+O_w(1)$ with
-$c_w$ the mean of $w$ over a period. If $n$ is odd and $n\not\equiv0,-2
-\pmod p$ for every odd prime $p\le R$ then the only $d\le R$ dividing $n(n+2)$
-is $d=1$, so $w(n)=\lambda_1^2=1$; such $n$ form a non-empty union of classes
-modulo $\prod_{p\le R}p$ (choose $n\equiv1\pmod 2$, $n\equiv 2\pmod 3$ and,
-for $p\ge5$, any $n\not\equiv0,-2$), hence $c_w>0$. Since
-$1_{\lambda(n)\lambda(n+2)=\pm1}=\tfrac12(1\pm\lambda(n)\lambda(n+2))$ for
-$n\ge1$, the first claim gives the second. Finally, put
-$E_R(x):=\left|\sum_{n\le x}w_R(n)\lambda(n)\lambda(n+2)/n\right|/
-\sum_{n\le x}w_R(n)/n$; for each fixed $R$, $E_R(x)\to0$. Choose
-$x_1<x_2<\cdots$ such that $E_R(x)<1/j$ for all $x\ge x_j$ and all $R\le j$
-(possible since there are finitely many such $R$), and put $R(x)=j$ for
-$x_j\le x<x_{j+1}$. Then $E_{R(x)}(x)<1/j\to0$, which gives the relative
-statement.
-\end{proof}
-
-\begin{remark}[What is missing]\label{rem:tao-missing}
-Sieve weights for twin primes need level $R=x^{\theta}$ with $\theta>0$
-fixed. Proposition~\ref{prop:tao-weight} needs $R$ fixed or growing as slowly
-as the dependence of Tao's theorem on $a_1,b_1,b_2$ allows; that dependence is
-``in principle effective'' but not made explicit, and expected to be poor
-\cite[Remark~1.4 and footnote~2]{Tao16}. Uniformity of
-\cite[Theorem~1.2]{Tao16} over moduli $q\le x^{\theta}$ is \lbl{Open} as far
-as we know. Even with it, Proposition~\ref{prop:tao-weight} would only
-confirm the input of the obstruction: it says that the sieve weight cannot
-tell $\lambda(n)\lambda(n+2)=+1$ from $-1$, which is exactly why it cannot
-see twin primes. It does not give a lower bound for twin primes.
+\begin{remark}[\lbl{Proved here}; a direct corollary of {\cite[Theorem~1.2]{Tao16}}]\label{prop:tao-weight}
+If $w$ is periodic with period $q$ and $h\ne h'$, then
+$\sum_{n\le x}w(n)\lambda(n+h)\lambda(n+h')/n=o(\log x)$: split into classes
+$n=qm+c$ and apply the theorem with $a_1=a_2=q$, $b_1=c+h$, $b_2=c+h'$. A Selberg
+weight $w(n)=\left(\sum_{d\mid n(n+2),\,d\le R}\lambda_d\right)^2$ of fixed level $R$
+(with $\lambda_1=1$) is periodic with positive mean, so
+$\sum_{n\le x,\ \lambda(n)\lambda(n+2)=\pm1}w(n)/n=(\frac12+o(1))\sum_{n\le x}w(n)/n$ for
+both signs, and by a diagonal choice the same holds for some level $R(x)\to\infty$.
+Sieve weights for twin primes need $R=x^{\theta}$. The dependence of Tao's
+theorem on the coefficients is ``in principle effective'' but not explicit
+\cite[Remark~1.4]{Tao16}, and uniformity over moduli $q\le x^{\theta}$ is
+\lbl{Open} as far as we know. Even with it, the statement would only confirm the
+input of the obstruction; it gives no lower bound for twin primes.
 \end{remark}
 
 
 \subsection{The same input at level \texorpdfstring{$(\log x)^{c_0}$}{(log x)\textasciicircum c0}, conditionally on a preprint}
-The proof of Proposition~\ref{prop:tao-weight} expands $w$ over its period
+The proof of Remark~\ref{prop:tao-weight} expands $w$ over its period
 $\operatorname{lcm}(d\le R)\approx e^{R}$, so it allows only very slowly growing
 $R$. A quantitative correlation estimate of Tao and Ter\"av\"ainen
 \cite[Theorem~3.1]{TT25} (an unrefereed preprint), applied modulus by modulus,
@@ -323,7 +274,7 @@ from $1_{\lambda(n)\lambda(n+2)=\pm1}=\frac12(1\pm\lambda(n)\lambda(n+2))$.
 
 \begin{remark}\label{rem:tao-weight-logc}
 This replaces the non-explicit $R(x)\to\infty$ of
-Proposition~\ref{prop:tao-weight} by $R=(\log x)^{c_0}$, uniformly in the
+Remark~\ref{prop:tao-weight} by $R=(\log x)^{c_0}$, uniformly in the
 weights, for weights of the stated form $w_R$ and the shift $2$ (the earlier proposition also covers general periodic $w$ and arbitrary shifts $h\ne h'$, which this one does not), but only conditionally on the preprint \cite{TT25}, whose proof we
 have not checked. Note that the proof expands in the moduli $[d_1,d_2]\le R^2$,
 not in the period $\operatorname{lcm}(d\le R)\approx e^{R}$ of $w_R$. The range of moduli
@@ -666,6 +617,171 @@ two primes at distance $\le4$ in the window are not seen are $n=1,2$, which
 involve the prime $3$). This is a typo-level slip; no
 result of \cite{PM8b} depends on it.
 
+\subsection{A parity-sensitive statement that the class does not block: Pintz's dichotomy}\label{subsec:pintz}
+
+The criterion of Proposition~\ref{prop:bipartite} also predicts,
+heuristically, which statements about the \emph{parity} of shifted primes a
+sieve can reach. Pintz
+\cite{Pi10} found such a statement. Here we read it in the source and redo it
+with Maynard's weights.
+
+\lbl{Literature} \cite[Theorems~1, 3 and \S3, pp.~2, 6--10]{Pi10}: for every
+admissible $6$-tuple $\mathcal H$ and every integer $r\ne0$, $r\notin\mathcal H$, there are
+infinitely many $n$ such that either $n+\mathcal H$ contains two primes, or
+some $n+h_i$ is prime and $\lambda(n+r)=-1$. With $\mathcal H=\{0,4,6,10,12,16\}$
+and $r=8$ this gives an even $d$ with $0<|d|\le16$ and $\lambda(p+d)=-1$ for
+infinitely many primes $p$. The proof uses GPY weights $a_n$ and
+$s(n)=\sum_i\mathbf 1_{\mathcal P}(n+h_i)+\frac12(1-\lambda(n+r))$. It shows
+$\sum a_ns(n)>\sum a_n$, using $\sum a_n\lambda(n+r)=o(\sum a_n)$, which
+follows from a Bombieri--Vinogradov theorem for $\lambda$ \cite[Lemmas~3,
+4]{Pi10}. Pintz states that theorem as Lemma~3, with the remark that its proof
+is the same as Vaughan's for $\mu$; classes $a$ with $(a,q)>1$ reduce to coprime
+ones through $\lambda(gm)=\lambda(g)\lambda(m)$. Pintz also notes that even under EH
+his method cannot give $\lambda(p+d)=-1$ infinitely often for a single
+prescribed $d$ \cite[p.~3]{Pi10}.
+
+\begin{theorem}[\lbl{Proved here}; possibly folklore]\label{thm:pintz-maynard}
+Let $0<\theta<1$ be a level of distribution for the primes and for $\lambda$
+in the sense of \cite[(2.1), (2.2)]{Pi10}. By Bombieri--Vinogradov and
+\cite[Lemma~3]{Pi10}, $\theta=\frac12$ is one. Let $\mathcal H$ be an admissible
+$k$-tuple, $r\in\mathbb Z\setminus\mathcal H$ and $\sigma\in\{\pm1\}$. If $\theta M_k>1$,
+where $M_k$ is Maynard's constant \cite[Proposition~4.2]{May15}, then there are
+infinitely many $n$ such that either at least two of the $n+h_i$ are prime, or
+some $n+h_i$ is prime and $\lambda(n+r)=\sigma$.
+\end{theorem}
+
+(The proof works for any fixed $r$; $r\notin\mathcal H$ only makes the statement
+non-trivial, and gives $d\ne0$ below. For $k=1$, $M_1=1$, so $\theta M_1>1$
+never holds, in line with Remark~\ref{rem:pintz-parity}.)
+
+The bounded-gaps criterion needs $\theta M_k>2$ \cite[Proposition~4.2]{May15}.
+Here $\theta M_k>1$ suffices: the second alternative costs half a prime,
+because $\lambda(n+r)=\sigma$ on half of the weight. For $k=5$,
+\cite[(8.17)]{May15} gives $M_5\ge\frac{1417255}{708216}>2$, so the dichotomy
+holds unconditionally for $5$-tuples. Pintz's GPY weights needed $k=6$: his
+inequality \cite[(3.22)]{Pi10}, optimised in $u$, needs $\theta>0.5126$ for $k=5$
+(our floating-point optimisation).
+
+\begin{proof}
+Take Maynard's set-up \cite[\S\S4--5]{May15}: $W=\prod_{p\le D_0}p$ with
+$D_0=\log\log\log N$, a class $v_0\bmod W$ with every $v_0+h_i$ coprime to $W$,
+$R=N^{\theta/2-\delta}$, and weights $w_n=\left(\sum_{d_i\mid n+h_i}\lambda_{d_1,\dots,d_k}\right)^2$
+built from a fixed polynomial $F$ supported on $\mathcal R_k$. The $\lambda_{\mathbf d}$ are supported on
+squarefree $d=\prod d_i<R$ coprime to $W$, with $|\lambda_{\mathbf d}|\ll(\log R)^k$
+\cite[(5.9)]{May15}. For
+$N\le n<2N$, $n\equiv v_0\pmod W$, \cite[Proposition~4.1]{May15} gives
+$S_1=\sum w_n\sim\frac{\varphi(W)^kN(\log R)^kI_k(F)}{W^{k+1}}$ and
+$\sum w_n\mathbf 1_{\mathcal P}(n+h_m)\sim\frac{\log R}{\log N}\,J_k^{(m)}(F)\,\frac{S_1}{I_k(F)}$.
+
+We claim $\sum w_n\lambda(n+r)\ll_AN(\log N)^{-A}$. Expanding the square, the
+conditions $d_i,e_i\mid n+h_i$ and $n\equiv v_0\pmod W$ define one class modulo
+$q=W\prod_i[d_i,e_i]$ when the $[d_i,e_i]$ are pairwise coprime. Otherwise the sum
+is empty, since a common prime would divide some $h_i-h_j$, hence be at most
+$h_k-h_1<D_0$ for large $N$, contradicting $(\prod d_ie_i,W)=1$. So $n+r$ runs over one class modulo $q<WR^2\le N^{\theta-\delta}$ in an
+interval of length $N$, and the inner sum is at most $2E(q)$, where
+$E(q)=\max_{y\le3N}\max_b\left|\sum_{m\le y,\,m\equiv b\,(q)}\lambda(m)\right|$.
+A squarefree $q/W$ arises from at most $\tau_{3k}(q/W)$ pairs $(\mathbf d,\mathbf e)$.
+As in \cite[(5.18)--(5.20)]{May15} and \cite[(3.14)--(3.16)]{Pi10}, by
+Cauchy--Schwarz, $E(q)\le3N/q+1$ and \cite[(2.2)]{Pi10} (applied with $3N$ in place
+of $N$), the sum is
+\[
+\ll(\log R)^{2k}\left(\sum_{q'<R^2}\tau_{3k}(q')^2\left(\tfrac{3N}{q'}+1\right)\right)^{1/2}
+\left(\sum_{q\le N^{\theta-\delta}}E(q)\right)^{1/2}\ll N(\log N)^{2k+(9k^2-A)/2}.
+\]
+Since $W\ll(\log\log N)^2$, this is $o(S_1)$.
+
+Put $\chi(n)=\frac12(1+\sigma\lambda(n+r))\in\{0,1\}$. Then
+\[
+\sum w_n\left(\sum_m\mathbf 1_{\mathcal P}(n+h_m)+\chi(n)-1\right)
+=S_1\left(\left(\tfrac\theta2-\delta\right)\frac{\sum_mJ_k^{(m)}(F)}{I_k(F)}-\tfrac12+o(1)\right),
+\]
+which is positive for large $N$ once $\delta$ is small and $F$ is chosen with
+$\theta\sum_mJ_k^{(m)}(F)/I_k(F)>1$. So some $n\in[N,2N)$ has
+$\sum_m\mathbf 1_{\mathcal P}(n+h_m)+\chi(n)\ge2$. As $\chi(n)\in\{0,1\}$, this means two
+primes, or one prime together with $\lambda(n+r)=\sigma$. Let $N\to\infty$.
+\end{proof}
+
+\begin{corollary}[\lbl{Proved here} + \lbl{Computed}]\label{cor:pintz12}
+\begin{enumerate}
+\item There is an even $d$ with $0<|d|\le12$ such that $\lambda(p+d)=-1$ for
+  infinitely many primes $p$. Pintz has $16$ \cite[Theorem~1]{Pi10}; his
+  Theorems~5 and~7 give $5$-tuples and $12$ only for $\theta>0.515$, and this now
+  holds unconditionally.
+\item There is an even $d$ with $0<d\le14$, and a $d$ with $0<d\le13$, such that
+  $\lambda(p+d)=-1$ for infinitely many primes $p$. Pintz has $18$ and $17$
+  \cite[Theorem~1'' and the remark after it]{Pi10}.
+\item Either $\liminf(p_{n+1}-p_n)\le12$, or for each $\sigma\in\{\pm1\}$ there is
+  $d\in\{\pm2,\pm4,-8\}$ such that $\lambda(p+d)=\sigma$ for infinitely many $p$.
+  Pintz has $16$ for the gap.
+\item If $\theta$ is a level for primes and $\lambda$ with $\theta>0.72154$,
+  $0.60752$ or $0.54230$, the dichotomy holds for admissible $2$-, $3$- or
+  $4$-tuples, and so does \cite[Theorem~7]{Pi10} with $C_3=2$, $6$, $8$. Pintz
+  states $0.729$, $0.616$, $0.554$ \cite[Theorem~5]{Pi10}; his inequality (3.22),
+  optimised in $u$, gives $0.7230$, $0.6126$, $0.5516$. So the gain is small for
+  $k\le4$; it matters at $k=5$, where it crosses $\frac12$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Use Theorem~\ref{thm:pintz-maynard} with $\mathcal H=\{0,2,6,8,12\}$. This tuple
+is admissible; the Lean proof is \texttt{narrow5\_admissible} (\lbl{Lean-checked}).
+
+For (1), take $r=4$ and $\sigma=-1$. In the first alternative, the two primes
+$p<p'$ satisfy $\lambda(p+(p'-p))=\lambda(p')=-1$ with $0<p'-p\le12$. In the
+second, $d=r-h_i\in\{4,2,-2,-4,-8\}$. Each $n$ yields a prime $p\ge n$, so
+infinitely many pairs $(p,d)$ arise, and some $d$ occurs infinitely often.
+
+For (2), take $r=14$, so $r-h_i\in\{14,12,8,6,2\}$, or $r=13$, so
+$r-h_i\in\{13,11,7,5,1\}$.
+
+For (3), take $r=4$. If the first alternative holds for only finitely many
+$n$, the second holds infinitely often, for each $\sigma$.
+
+For (4), the thresholds are $1/M$, rounded up, where $M$ is the exact ratio of
+a rational combination of the polynomials $(1-P_1)^bP_2^c$ with $b+2c\le6$ (see
+the computation below), for $k=2,3,4$. For Theorem~7 use $\{0,2\}$ with $r=1$,
+and $\{0,2,6\}$, $\{0,2,6,8\}$ with $r=4$.
+\end{proof}
+
+\begin{sloppypar}
+\lbl{Computed}, by two programs in the folder \texttt{code/parity/}:
+\texttt{pintz\_maynard.py} (exact Dirichlet-formula integration) and
+\texttt{pintz\_maynard\_check2.py} (iterated symbolic integration, written
+independently). They agree exactly:
+\end{sloppypar}
+\begin{itemize}
+\item Maynard's $k=5$ polynomial gives exactly $\frac{1417255}{708216}=2.0011620\ldots$.
+\item The optimised rational vectors give $M_2\ge1.3859332$, $M_3\ge1.6460391$,
+  $M_4\ge1.8440154$ and $M_5\ge2.0041054$.
+\end{itemize}
+The vectors are in \texttt{pintz\_maynard\_vectors.json}.
+
+\begin{remark}[\lbl{Proved here}; consistency with Proposition~\ref{prop:bipartite}]\label{rem:pintz-parity}
+Put pattern weights on the positions $\mathcal H\cup\{r\}$. The target of
+Theorem~\ref{thm:pintz-maynard} with $\sigma=-1$ is killed exactly when $\Omega$
+vanishes whenever $\varepsilon_i=\varepsilon_j=-1$ ($i\ne j$ in $\mathcal H$) or
+$\varepsilon_i=\varepsilon_r=-1$. This is the edge set of the complete graph on
+$\mathcal H\cup\{r\}$. For $k\ge2$ it contains a triangle, so no fair pattern weight
+kills it (Proposition~\ref{prop:bipartite}(a); the case $k=2$ with integer
+weights is \lbl{Lean-checked} as \texttt{triangle\_no\_fair\_weight}, and larger $k$
+reduce to it by averaging out the other coordinates, as in
+Remark~\ref{rem:marg}). For $\sigma=+1$, replace $\varepsilon_r$ by $-\varepsilon_r$.
+Fairness at $r$ is what keeps the input $\sum w_n\lambda(n+r)=o(S_1)$ valid after
+twisting: heuristically $\sum w_n\omega(n)\lambda(n+r)\approx\widehat\Omega(\{r\})\sum w_n$, in the normalisation of Section~\ref{sec:bip}.
+
+Without the first alternative, the target is the star with centre $r$, which
+is bipartite. So the class blocks it, under any level of distribution. The
+one-edge case is consistent with Pintz's remark that even under EH his method
+does not give $\lambda(p+d)=-1$ for a prescribed $d$.
+
+So the class blocks ``some $n+h_i$ is prime and $\lambda(n+r)=-1$'' when the
+position $r$ is never itself asked to be prime (a star), but not the same
+statement when every position that carries $\lambda=-1$ may itself be one of the
+primes (a complete graph). Pintz's theorem is of the second kind: it sidesteps
+the obstruction, it does not break it. It says nothing about $\lambda(p+2)$
+for the single shift $d=2$.
+\end{remark}
+
 \section{Where the GEH criteria stop: ceilings, and the case \texorpdfstring{$k=2$}{k=2}}\label{sec:ceil}
 
 Section~\ref{sec:bip} says which targets a Liouville-pattern weight can block.
@@ -871,192 +987,51 @@ example for all $\varepsilon\le\frac1{k-1}$ when $k\ge4$.
 
 \subsection{A dual formula, and what changes at \texorpdfstring{$k=3$}{k=3}}\label{subsec:dual}
 
-This subsection explains why the proof of Theorem~\ref{thm:k2} works and
-why it does not extend directly to $k=3$, where \cite[Theorem~3.15]{PM8b}
-shows that the ratio exceeds $2$. Fix $k\ge2$ and $0<\varepsilon<\frac1{k-1}$, and
-write $a=1-\varepsilon$, $B=1+\varepsilon$, $c=\frac k{k-1}$, $D=c\,\mathcal R_k$ and
-$H=L^2(D)$. For $t\in D$ let $|t_{-j}|=\sum_{l\ne j}t_l$, and put
-\[
-Z_j=\{t\in D:|t_{-j}|>B\},\qquad \mathcal V_j=\{\psi(t_{-j})\mathbf 1_{Z_j}(t)\}\cap H ,
-\]
-where $\psi$ ranges over measurable functions of the $k-1$ coordinates other
-than $t_j$. Let $W$ be the closure of $\mathcal V_1+\dots+\mathcal V_k$ and $K=W^\perp$. Define
-$P:H\to\bigoplus_{i=1}^kL^2(a\mathcal R_{k-1})$ by $(PF)_i=\int F\,dt_i$
-(restricted to $a\mathcal R_{k-1}$), so that
-$\sum_iJ_{i,1-\varepsilon}(F)=\|PF\|^2$, and let
-$\sigma_k(\varepsilon)=\sup\{\|PF\|^2/\|F\|^2:0\ne F\in K\}$.
+Fix $k\ge2$, $0<\varepsilon<\frac1{k-1}$, $a=1-\varepsilon$, $B=1+\varepsilon$, $c=\frac k{k-1}$,
+$\mathcal D=c\,\mathcal R_k$ and $H=L^2(\mathcal D)$. For $t\in\mathcal D$ let $|t_{-j}|=\sum_{l\ne j}t_l$,
+$Z_j=\{t\in\mathcal D:|t_{-j}|>B\}$, and let $\mathcal V_j\subseteq H$ be the closed subspace of
+functions $\psi(t_{-j})\mathbf 1_{Z_j}(t)$. Let $W$ be the closure of
+$\mathcal V_1+\dots+\mathcal V_k$, $K=W^\perp$, and $(PF)_i=\int F\,dt_i$ restricted to
+$a\mathcal R_{k-1}$, so that $\sum_iJ_{i,1-\varepsilon}(F)=\|PF\|^2$.
 
 \begin{lemma}[\lbl{Proved here}; standard Hilbert-space duality]\label{lem:dual}
-\begin{enumerate}
-\item $K$ is exactly the set of $F\in H$ that satisfy the vanishing marginal
-  condition of Theorem~3.14, so $\sigma_k(\varepsilon)$ is the supremum of the
-  Theorem~3.14 ratio.
-\item $P^*f=\sum_if_i(t_{-i})\mathbf 1[|t_{-i}|\le a]$, and
-  \[
-  \sigma_k(\varepsilon)=\|\Pi_KP^*\|^2=\sup_{f\ne0}\frac{\operatorname{dist}(P^*f,W)^2}{\|f\|^2}.
-  \]
-  Hence any rule $f\mapsto v(f)\in W$ with
-  $\|P^*f-v(f)\|^2\le C\|f\|^2$ for all $f$ proves $\sigma_k(\varepsilon)\le C$, and the
-  projection $v(f)=\Pi_WP^*f$ gives the exact value.
-\item If $\mathcal V'_j\subseteq \mathcal V_j$ are closed subspaces, the class
-  $K'=\bigcap_j(\mathcal V'_j)^\perp$ contains $K$, so its supremum $\sigma'$ satisfies
-  $\sigma'\ge \sigma_k(\varepsilon)$. If the $\mathcal V'_j$ are supported on pairwise disjoint sets,
-  they are mutually orthogonal and $\Pi_{K'}=I-\sum_jE'_j$, where $E'_j$ is
-  the orthogonal projection onto $\mathcal V'_j$.
-\end{enumerate}
+$K$ is the set of $F\in H$ satisfying the vanishing marginal condition of
+Theorem~3.14, and the supremum $\sigma_k(\varepsilon)$ of the Theorem~3.14 ratio is
+\[
+\sigma_k(\varepsilon)=\|\Pi_KP^*\|^2=\sup_{f\ne0}\frac{\operatorname{dist}(P^*f,W)^2}{\|f\|^2},
+\qquad P^*f=\sum_if_i(t_{-i})\mathbf 1[|t_{-i}|\le a].
+\]
+If closed subspaces $\mathcal V'_j\subseteq\mathcal V_j$ have pairwise disjoint supports, the class
+$K'=\bigcap_j(\mathcal V'_j)^\perp\supseteq K$ has supremum $\sigma'\ge\sigma_k(\varepsilon)$ and
+$\Pi_{K'}=I-\sum_jE'_j$, with $E'_j$ the orthogonal projection onto $\mathcal V'_j$.
 \end{lemma}
 
 \begin{proof}
-By Cauchy--Schwarz on fibres, $\left(\int F\,dt_i\right)^2\le c\int F^2\,dt_i$, so
-$\|PF\|^2\le kc\|F\|^2$ and $P$ is bounded; the formula for $P^*$ is Fubini.
-(1) For $v=\psi(t_{-j})\mathbf 1_{Z_j}\in \mathcal V_j$, Fubini gives
-$\langle F,v\rangle=\int_{|u|>B}\psi(u)f_j(u)\,du$ with $f_j=\int F\,dt_j$. If $f_j=0$
-a.e.\ on $\{|u|>B\}$ this vanishes. Conversely, taking
-$\psi=\operatorname{sign}(f_j)\mathbf 1[|f_j|\le M]$ (bounded, so $v\in H$) and letting
-$M\to\infty$ shows that $\langle F,\mathcal V_j\rangle=0$ forces $f_j=0$ a.e.\ there.
-(2) $\sigma_k(\varepsilon)=\|P\Pi_K\|^2=\|(P\Pi_K)^*\|^2=\|\Pi_KP^*\|^2$, and
-$\|\Pi_Kg\|=\operatorname{dist}(g,W)$ because $\Pi_K=I-\Pi_W$.
-(3) $\mathcal V'_j\subseteq \mathcal V_j$ gives $(\mathcal V'_j)^\perp\supseteq \mathcal V_j^\perp$, hence $K'\supseteq K$.
-Functions with disjoint supports are orthogonal; for mutually orthogonal
-closed subspaces the projection onto the closure of their sum is the sum of
-the projections.
+$\langle F,\psi(t_{-j})\mathbf 1_{Z_j}\rangle=\int_{|u|>B}\psi(u)\left(\int F\,dt_j\right)(u)\,du$
+by Fubini, which gives the description of $K$ (take $\psi$ a truncated sign of
+the marginal). Then $\sigma_k=\|P\Pi_K\|^2=\|\Pi_KP^*\|^2$ and
+$\|\Pi_Kg\|=\operatorname{dist}(g,W)$. Subspaces with disjoint supports are
+orthogonal, so the projection onto their sum is the sum of the projections.
 \end{proof}
 
-Each $\mathcal V_j$ is closed: it is the range of the fibre-mean projection $E_j$,
-where $(E_jg)(t)=\mathbf 1_{Z_j}(t)$ times the
-mean of $g$ over the fibre $\{s\in D:s_{-j}=t_{-j}\}$. At $k=2$, $Z_1\cap Z_2=\emptyset$
-because $x+y\le2<2B$, so Lemma~\ref{lem:dual}(3) applies with $\mathcal V'_j=\mathcal V_j$:
-$\Pi_K=I-E_1-E_2$. The function $\Phi$ in the proof of Theorem~\ref{thm:k2}
-is exactly $(I-E_1-E_2)P^*(g,f)$ in the notation of that proof (on $U_1$ it is
-$f(x)-\bar f(y)$, the subtracted fibre mean, and $P^*$ elsewhere), so that
-proof bounds the dual expression with the exact projection. Sharpness then
-comes from the two remaining inequalities ($2uv\le u^2+v^2$ and the mean
-minimising the squared deviation), which are equalities for constant
-marginals.
-
-\begin{proposition}[\lbl{Proved here}; elementary]\label{prop:overlap}
-Let $k\ge3$ and $0<\varepsilon<\frac1{k-1}$. For all $i\ne j$ the set $Z_i\cap Z_j$
-has positive measure, so $\mathcal V_i$ and $\mathcal V_j$ are not orthogonal and $\Pi_W$ is not
-$\sum_jE_j$.
-\end{proposition}
-
-\begin{proof}
-Pick $r\notin\{i,j\}$. Since $\varepsilon<\frac1{k-1}$ we have $B<c$, so the set of
-$t\in D$ with $B<t_r<c$ and $\sum_{l\ne r}t_l<c-t_r$ is a non-empty open set.
-Each of its points has $|t_{-i}|\ge t_r>B$ and $|t_{-j}|\ge t_r>B$, so it lies
-in $Z_i\cap Z_j$. Since $D$ is bounded, $\mathbf 1_{Z_i}\in \mathcal V_i$ and
-$\mathbf 1_{Z_j}\in \mathcal V_j$, and $\langle\mathbf 1_{Z_i},\mathbf 1_{Z_j}\rangle=|Z_i\cap Z_j|>0$.
-If $\Pi_W$ were $\sum_lE_l$, then for $v\in \mathcal V_i$ we would have
-$\|v\|^2\ge\langle\Pi_Wv,v\rangle=\|v\|^2+\sum_{l\ne i}\|E_lv\|^2$, so $E_lv=0$ for all
-$l\ne i$, that is, $\mathcal V_i\perp \mathcal V_l$, a contradiction.
-\end{proof}
-
-So the step of the $k=2$ proof that fails at $k\ge3$ is the exact evaluation of
-the projection: two marginal conditions act at the same points. One can still
-discard the overlapping constraints. At $k=3$ the fibre in direction $j$ at
-$u=(t_l,t_m)$ meets $Z_l$ or $Z_m$ exactly when $\min(t_l,t_m)<\frac12-\varepsilon$
-(it meets $Z_l$ iff $c-t_l>B$). Let $\mathcal V'_j\subseteq \mathcal V_j$ be the functions
-supported on the \emph{clean} columns $\{|u|>B,\ \min(u)\ge\frac12-\varepsilon\}$;
-it is closed, being the range of the fibre mean restricted to those columns.
-On a clean fibre in direction $j$, $t_j+t_r\le c-t_l\le B$ for $\{l,r\}=\{1,2,3\}\setminus\{j\}$,
-so the point lies in no other $Z$. Hence the $\mathcal V'_j$ are supported on pairwise
-disjoint sets, and Lemma~\ref{lem:dual}(3)
-gives an orthogonal relaxation with supremum $\sigma'_3(\varepsilon)\ge \sigma_3(\varepsilon)$, of
-the kind the $k=2$ method can handle.
+At $k=2$ the sets $Z_1,Z_2$ are disjoint ($x+y\le2<2B$), so
+$\Pi_K=I-E_1-E_2$, where $E_j$ is the fibre mean on $Z_j$; the function $\Phi$
+in the proof of Theorem~\ref{thm:k2} is exactly $\Pi_KP^*(g,f)$, so that proof
+evaluates the dual expression exactly. For $k\ge3$ and $i\ne j$, $Z_i\cap Z_j$
+contains the open set $\{B<t_r<c,\ \sum_{l\ne r}t_l<c-t_r\}$ for any
+$r\notin\{i,j\}$, so $\mathcal V_i\not\perp\mathcal V_j$ and the exact projection is no longer a
+sum. One can keep only the \emph{clean} columns $\{|u|>B,\ \min(u)\ge\frac12-\varepsilon\}$
+at $k=3$, which have disjoint supports; this orthogonal relaxation is too weak.
 
 \begin{proposition}[\lbl{Computed}, exact certificate, two programs]\label{prop:orth-relax}
-$\sigma'_3(\frac18)>\frac{13523319026150757}{6316738844612720}>2.1408$ and
-$\sigma'_3(\frac14)>\frac{39699868771187709}{19218050037559040}>2.0657$.
+The clean-column relaxation has supremum $\sigma'_3(\frac18)>2.1408$ and
+$\sigma'_3(\frac14)>2.0657$ (exact ratios
+$\frac{13523319026150757}{6316738844612720}$ and
+$\frac{39699868771187709}{19218050037559040}$ of symmetric step functions on cubes of
+side $\frac1{32}$; scripts \texttt{k3\_orth\_relax\_cert.py} and
+\texttt{k3\_orth\_relax\_verify.py} in \texttt{code/}\allowbreak\texttt{parity/}).
+So it cannot prove $\sigma_3\le2$ at these $\varepsilon$.
 \end{proposition}
-
-The certificates are symmetric step functions on cubes of side $\frac1{32}$
-lying inside $D$. Their marginals vanish on every clean column, and $J$ is
-counted only on columns inside $\{|u|\le a\}$, which can only lower it. Integer
-null spaces and the exact ratios are computed by
-\texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{k3\_orth\_relax\_cert.py}
-(python-flint; output \texttt{k3\_orth\_relax\_cert.out}). A second script,
-\texttt{k3\_orth\_relax\_verify.py}, expands the vector to all cubes, recomputes
-$I$ and all three $J_{i,3/4}$ cell by cell, and checks the marginal condition on
-the clean columns in all three directions; it gives the same fractions.
-
-
-\begin{proposition}[\lbl{Computed}, exact certificate, two independent programs]\label{prop:k3-step}
-Let $\varepsilon=\frac14$. There is a symmetric $F$ on $\frac32\mathcal R_3$, constant on
-each cell of the arrangement $\{t_i=\frac m8\}$, $\{t_i+t_j=\frac m8\}$,
-$\{t_1+t_2+t_3=\frac m8\}$, with coefficients in $\frac1{1000}\mathbb Z$, that
-satisfies the vanishing marginal condition of Theorem~3.14 and has
-\[
-I(F)=\tfrac{241672427}{6144000000},\qquad \sum_{i=1}^3J_{i,3/4}(F)=\tfrac{2578076273}{32768000000},
-\qquad \frac{\sum_iJ_{i,3/4}(F)}{I(F)}=2+\tfrac{711155}{3866758832}>2.00018 .
-\]
-\end{proposition}
-
-So, by \cite[Theorem~3.14]{PM8b}, $\mathrm{DHL}[3,2]$ holds under GEH. This is
-\cite[Theorem~3.15]{PM8b}; nothing new is proved. The proposition is an independent
-exact check of its variational step with a simple test function. The
-polynomial printed in \cite[\S7.4]{PM8b} exceeds $2$ by only about $6\cdot10^{-8}$
-(our recomputation, \texttt{notes/}\allowbreak\texttt{explorations.md}).
-\begin{itemize}
-\item First program: the script \texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{exact.py}
-  in \texttt{code/}\allowbreak\texttt{parity/} (exact cell volumes, exact Gram matrices, exact null space; certificate
-  \texttt{k3\_arrangement\_cert.json}).
-\item Second program: \texttt{k3\_arrangement\_verify.py} (same folder). It uses
-  only the cells' labels and coefficients. It integrates $F$ and $F^2$ exactly
-  along each fibre. On each triangle cut out by $u_j=m$, $u_2\pm u_3=m$ (scaled
-  coordinates $u=8t_{-1}$, $m\in\mathbb Z$) the fibre breakpoints $m$, $m-u_2$,
-  $m-u_3$, $m-u_2-u_3$ and the end point keep their order, so both integrals
-  are affine there; the script evaluates each piece at three interior points
-  (and spot-checks two more). It reproduces $I$ and $J$ exactly and checks the
-  marginal condition.
-\end{itemize}
-One point of geometry matters. The marginals jump across the lines
-$u_j=m$ and $u_2+u_3=m$ (they come from planes that contain the fibre
-direction), and they are affine only after the lines $u_2-u_3=m$ are added.
-Both programs handle this. The same class at $8$, $12$, $16$, $20$, $24$ cells
-per unit gives $2.00019$, $2.00155$, $2.00211$, $2.00239$, $2.00255$ (exact
-ratios of rounded eigenvectors, first program only; file
-\texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{exact.out}).
-
-\begin{remark}[\lbl{Heuristic}: the $k=3$ supremum as a function of $\varepsilon$]\label{rem:k3-eps}
-The cube grids (cubes of side $1/n$ inside $D$), with all marginal conditions
-imposed, give lower bounds for $\sigma_3(\varepsilon)$ that converge like $1/n$, since
-they lose a boundary layer. We fit $L-\gamma/n$ to $n=32,40$ and
-$L-\gamma/n-\delta/n^2$ to $n=24,32,40$. The fits agree to $2\cdot10^{-4}$ in the
-first column and to $10^{-3}$ in the others; the table shows the second fit,
-rounded:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-$\varepsilon$ & all conditions, $\sigma_3(\varepsilon)$ & clean columns only, $\sigma'_3(\varepsilon)$ & no condition \\
-\midrule
-$\frac18$ & $1.976$ & $2.181$ & $2.273$\\
-$\frac14$ & $2.003$ & $2.105$ & $2.168$\\
-$\frac38$ & $1.990$ & $2.017$ & $2.056$\\
-\bottomrule
-\end{tabular}
-\end{center}
-(Extrapolated values; scripts \texttt{k3\_}\allowbreak\texttt{thm314\_}\allowbreak\texttt{dual.py} and
-\texttt{k3\_extrapolate.py} in \texttt{code/}\allowbreak\texttt{parity/}; floating point, not a certificate.) Two-point fits
-at $\varepsilon=0.05$, $0.15$, $0.35$, $0.45$ give $1.936$, $1.986$, $1.994$, $1.972$
-for the first column. The arrangement class of Proposition~\ref{prop:k3-step}
-converges much faster. It gives $1.97619$ ($\varepsilon=\frac18$, $n=32$), $1.98923$
-($\varepsilon=\frac38$, $n=24$) and $2.00255$ ($\varepsilon=\frac14$, $n=24$); these are
-exact ratios of admissible $F$, so true lower bounds, and they are consistent
-with the table (\texttt{k3\_}\allowbreak\texttt{arrangement\_}\allowbreak\texttt{eps.out}).
-Three things follow, all heuristic.
-\begin{enumerate}
-\item Of the values sampled here, only $\frac14$ gives a ratio above the
-  parity value $2$ (Theorem~\ref{thm:k3-window} adds $\frac29$ and $\frac7{24}$),
-  and then by about $0.15\%$: the $H_1\le6$ of
-  \cite[Theorem~3.15]{PM8b} has very little room.
-\item At $\varepsilon=\frac18$ the overlapping constraints push the supremum from
-  about $2.18$ down to about $1.98$, below $2$.
-\item The clean-column relaxation cannot prove $\sigma_3(\varepsilon)\le2$ at $\varepsilon=\frac18$
-  or $\frac14$ (certain, by Proposition~\ref{prop:orth-relax}); its extrapolated
-  values exceed $2$ at all three sampled $\varepsilon$. Other orthogonal subfamilies of
-  the constraints exist and were not tried.
-\end{enumerate}
-\end{remark}
 
 \subsection{For which \texorpdfstring{$\varepsilon$}{eps} does the \texorpdfstring{$k=3$}{k=3} criterion work?}\label{subsec:window}
 
@@ -1123,17 +1098,19 @@ in \texttt{code/}\allowbreak\texttt{parity/}).
 \begin{theorem}[\lbl{Computed}; each certificate checked by two independent programs]\label{thm:k3-window}
 Let $\sigma_3(\varepsilon)$ be the supremum of the Theorem~3.14 ratio at $k=3$.
 \begin{enumerate}
-\item $\sigma_3(\varepsilon)>2$ for $\varepsilon=\frac29,\frac14,\frac7{24}$. Exact step functions on
-  the arrangement of Proposition~\ref{prop:k3-step} (with $n=18$, $8$, $24$
-  cells per unit) give ratios $2+\frac{342007}{555935160}$,
+\item $\sigma_3(\varepsilon)>2$ for $\varepsilon=\frac29,\frac14,\frac7{24}$. Symmetric step functions with
+  coefficients in $\frac1{1000}\mathbb Z$, constant on the cells of the arrangement
+  $\{t_i=\frac mn\}$, $\{t_i+t_j=\frac mn\}$, $\{t_1+t_2+t_3=\frac mn\}$ (with $n=18$, $8$,
+  $24$) and satisfying the vanishing marginal condition, give ratios $2+\frac{342007}{555935160}$,
   $2+\frac{711155}{3866758832}$ and $2+\frac{4238047}{46648223968}$.
 \item $\sigma_3(\varepsilon)\le\frac{19999}{10000}<2$ for every $\varepsilon\in[0.439,\frac12)$, and
   $\sigma_3(\varepsilon)\le1.995$ for $\varepsilon\ge0.45$. Also $\sigma_3(\frac14)\le2.17$ and
   $\sigma_3(\frac38)\le2.057$.
 \end{enumerate}
 So, under GEH, the criterion of Theorem~3.14 with $k=3$ gives $\mathrm{DHL}[3,2]$
-for $\varepsilon=\frac29,\frac14,\frac7{24}$ (the case $\varepsilon=\frac14$ is the
-computation behind \cite[Theorem~3.15]{PM8b}, $H_1\le6$ under GEH), and it
+for $\varepsilon=\frac29,\frac14,\frac7{24}$ (the case $\varepsilon=\frac14$ is an independent exact check of the
+variational step of \cite[Theorem~3.15]{PM8b}, $H_1\le6$ under GEH, whose own
+polynomial exceeds $2$ by about $6\cdot10^{-8}$; nothing new is proved there), and it
 cannot give $\mathrm{DHL}[3,2]$ for any $\varepsilon\in[0.439,\frac12)$. This says
 nothing about whether $\mathrm{DHL}[3,2]$ itself holds.
 \end{theorem}
@@ -1181,22 +1158,35 @@ equals $2$ at $\varepsilon^*=1-\frac1{2\kappa}\approx0.43831$. We found no close
 for $\kappa$.
 \end{sloppypar}
 
-\begin{remark}[\lbl{Heuristic}; what is left]\label{rem:k3-window}
+\begin{remark}[\lbl{Heuristic}; the $k=3$ supremum as a function of $\varepsilon$, and what is left]\label{rem:k3-window}
+Cube grids (side $1/n$, all marginal conditions imposed) converge like $1/n$;
+fitting $L-\gamma/n-\delta/n^2$ to $n=24,32,40$ gives (floating point,
+\texttt{k3\_thm314\_dual.py}, \texttt{k3\_extrapolate.py}):
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+$\varepsilon$ & all conditions, $\sigma_3(\varepsilon)$ & clean columns only & no condition \\
+\midrule
+$\frac18$ & $1.977$ & $2.181$ & $2.273$\\
+$\frac14$ & $2.003$ & $2.105$ & $2.168$\\
+$\frac38$ & $1.990$ & $2.017$ & $2.056$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The fits are accurate to about $10^{-3}$. At $\varepsilon=\frac18$ the exact
+arrangement lower bound $1.97619$ is a true lower bound and agrees with the
+first column to that accuracy. Exact lower bounds at
+$\varepsilon=\frac16,\frac15,\frac3{10},\frac13$ are $1.9909$, $1.9982$, $1.9990$,
+$1.9952$, all still rising with $n$ (\texttt{k3\_arrangement\_eps2.out}).
 \begin{enumerate}
-\item Without the marginal condition, the supremum equals $2$ at about
-  $\varepsilon=0.43831$; so this method cannot push part~(2) much further. At $\varepsilon=\frac14$ it gives $2.17$ against a true value near
-  $2.003$; in the middle range the marginal condition matters
-  (Section~\ref{subsec:dual}).
-\item Exact lower bounds at $\varepsilon=\frac16$, $\frac15$, $\frac3{10}$, $\frac13$ stay
-  below $2$: $1.9909$, $1.9982$, $1.9990$, $1.9952$ at $24$, $20$, $20$, $24$
-  cells per unit (\texttt{k3\_\allowbreak{}}\allowbreak\texttt{arrangement\_\allowbreak{}}\allowbreak\texttt{eps2.out}). All four are still rising with $n$, so none is decided rigorously; at
-  $\frac15$ and $\frac3{10}$ the gap to $2$ is so small that even the
-  extrapolations do not settle them. With the cube-grid extrapolations of Remark~\ref{rem:k3-eps},
-  the picture is a window of roughly $\varepsilon\in(0.19,0.31)$ in which
-  $\sigma_3(\varepsilon)>2$, with a maximum of about $2.003$.
-\item A rigorous upper bound below $2$ for small $\varepsilon$, or anywhere in
-  $[0.31,0.4383)$, needs the marginal condition: without it the supremum
-  exceeds $2$ there (heuristically, for $\varepsilon<\varepsilon^*\approx0.43831$).
+\item The picture is a window of roughly $\varepsilon\in(0.19,0.31)$ in which
+  $\sigma_3(\varepsilon)>2$, with maximum about $2.003$: the $H_1\le6$ of
+  \cite[Theorem~3.15]{PM8b} has very little room.
+\item The overlapping constraints matter: at $\varepsilon=\frac18$ they push the
+  supremum from about $2.18$ (clean columns only) to about $1.98$.
+\item A rigorous upper bound below $2$ for small $\varepsilon$, or in
+  $[0.31,0.4383)$, needs the marginal condition, since without it the supremum
+  exceeds $2$ there.
 \end{enumerate}
 \end{remark}
 
@@ -1755,7 +1745,7 @@ $\omega=1-f(n)f(n+2)$, and the discrepancy of the constant function $1$ is at mo
 $1$ in absolute value, (3) is equally a statement about the discrepancies of
 $\omega$; and it holds for $I=(x,2x]$ as in \cite[(144)]{PM8b}.
 
-\begin{corollary}[\lbl{Proved here}, from \cite[(1.4), Proposition~3.5]{TT22}; possibly folklore]\label{cor:siegel-typeI}
+\begin{corollary}[\lbl{Proved here}, from {\cite[(1.4), Proposition~3.5]{TT22}}; possibly folklore]\label{cor:siegel-typeI}
 Let $\chi$ have a Siegel zero of quality $\eta$ and odd prime conductor
 $q>w$ ($\chi$ is then the Legendre symbol mod $q$), with $w$ fixed. Fix
 $0<\varepsilon'<1$, put $M=\lfloor\log^{1-\varepsilon'}\eta\rfloor$ and
@@ -1838,8 +1828,7 @@ For $f=\lambda$, where $F$ is the set of split primes of $\chi_{163}$, the
 bias is $5\cdot10^{-4}$, while the independence heuristic would give $0.045$.
 The reason is that the class fixes $\chi(n)$, and hence the parity of the
 number of inert prime factors. In the actual world there is no Siegel-type bias
-at these scales (compare the Session~16 exploration in
-\texttt{notes/explorations.md}).
+at these scales.
 \end{remark}
 
 \end{sloppypar}
@@ -2087,21 +2076,16 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
 \item Is there a sequence closely tied to twin primes (for instance with a
   norm-form structure, as in Friedlander--Iwaniec's $a^2+b^4$, cited in
   \cite[p.~71]{PM8b}) for which a (B)-type estimate is provable?
-\item (Answered conditionally in Corollary~\ref{cor:maynard-logc}.) Maynard's
-  two-variable weights at level $(\log x)^{c/32}$, conditional on \cite{TT25}.
-  What remains \lbl{Open} is the same as in question~1: any level beyond a power
-  of $\log x$.
 \item (\lbl{Open}, partly answered) What is the exact supremum $\sigma_3(\varepsilon)$ of the
   Theorem~3.14 ratio at $k=3$, and for which $\varepsilon$ does it exceed $2$?
   Theorem~\ref{thm:k3-window}: it exceeds $2$ at $\varepsilon=\frac29,\frac14,\frac7{24}$
   and is below $2$ for all $\varepsilon>0.43889$; $\sigma_3(\frac14)\in(2.0001,2.1684]$
   (two programs each; the first program alone gives $2.00255$ from below).
   Heuristically the set where it exceeds $2$ is an interval of about
-  $(0.19,0.31)$ with maximum about $2.003$ (Remarks~\ref{rem:k3-eps},
-  \ref{rem:k3-window}). Open: a rigorous ceiling below $2$ for small $\varepsilon$
+  $(0.19,0.31)$ with maximum about $2.003$ (Remark~\ref{rem:k3-window}). Open: a rigorous ceiling below $2$ for small $\varepsilon$
   or in $[0.31,0.4383)$, which needs the marginal condition. The variance
   argument of Theorem~\ref{thm:k2} does not extend directly
-  (Proposition~\ref{prop:overlap}), and the clean-column relaxation alone
+  (Section~\ref{subsec:dual}), and the clean-column relaxation alone
   allows more than $2.14$ at $\varepsilon=\frac18$ (Proposition~\ref{prop:orth-relax});
   tools to try are alternating projections with an explicit rate, or a
   finite-element dual with error control (Lemma~\ref{lem:dual}(2)).
@@ -2122,12 +2106,6 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22}, with controlled
   $\ell^1$ norm, might avoid the small-prime condition; we have not checked this.
 \end{enumerate}
-
-\subsection*{Plan for later versions}
-Each run adds one bounded step. Next: the original papers of Heath-Brown (1983)
-and Murty--Vatwani, if they can be obtained; the small split primes of a Siegel
-character (question~8); hypotheses known not to suffice. Nothing enters before
-it is read in the source.
 
 \begin{thebibliography}{9}
 \bibitem{FI98} J.~Friedlander and H.~Iwaniec, \emph{Asymptotic sieve for primes},
@@ -2194,130 +2172,29 @@ it is read in the source.
   (read 15 Nov 2026: Claim~1, the ``at least $j$ of $k$'' example, Example~4).
 \bibitem{Ake25} M.~Akeno, \emph{Small gaps between Goldbach primes},
   arXiv:2508.02769v3 (30 Nov 2025) (read: \S5, footnote~3, p.~38).
+\bibitem{Pi10} J.~Pintz, \emph{An approximation to the twin prime conjecture and the parity phenomenon}, arXiv:1004.1065v1 (7 Apr 2010; read in full: Theorems 1--7, \S3; SHA-256 45d7a850\ldots69d693).
+
+\bibitem{May15} J.~Maynard, \emph{Small gaps between primes}, Ann. of Math. (2) \textbf{181} (2015), 383--413; arXiv:1311.4600v3 (read: Propositions 4.1--4.3, \S8; SHA-256 dce1a7a0\ldots63cda9).
+
 \end{thebibliography}
 
+
 \section*{Changelog}
+Audit reports, route cards and the referee report for each version are in the
+project repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attempts/},
+\texttt{referee/}).
 \begin{itemize}
-\item[0.1] (15 Nov 2026) First version: Sections 2--3 from the sources read
-  on 14--15 Nov (SHA-256 of the files in \texttt{notes/parity-programme.md});
-  Proposition~\ref{prop:fi-twin} and Proposition~\ref{prop:B-parity} from
-  the 14 Nov route card (\texttt{notes/parity-attempts/}), re-derived;
-  Proposition~\ref{prop:tao-weight} (parity attempt of 15 Nov); numerical
-  illustration. Fresh-context adversarial audit applied before release
-  (fixes: Tao's Remark~1.4 says ``in principle effective'', not ineffective;
-  error term in (1.9); Brun--Titchmarsh for $\psi$; the range condition on
-  $\Delta$ in Proposition~\ref{prop:B-parity}; the diagonal choice of $R(x)$;
-  softened claims about the scope of Proposition~\ref{prop:tao-weight} and
-  about the Type~I level).
-\item[0.2] (15 Nov 2026) New Section~\ref{sec:bip}: the criterion of
-  Proposition~\ref{prop:bipartite} (parity attempt of 15 Nov, second route card),
-  Corollary~\ref{cor:six}, Remark~\ref{rem:marg}, the Lean-checked finite cases,
-  and the correction to \cite[Remark~8.1]{PM8b} (Section~\ref{subsec:rem81}).
-  New Section~\ref{subsec:fi-x2y4} on Friedlander--Iwaniec $a^2+b^4$ (read in
-  arXiv:math/9811185v1, SHA-256 in \texttt{notes/}\allowbreak\texttt{parity-programme.md}) and
-  Remark~\ref{rem:fi-transfer}. Open question~1 updated with the preprint
-  \cite{TT25}; new open question on weights outside the class.
-  Fresh-context adversarial audit before release
-  (\texttt{notes/}\allowbreak\texttt{audit-parity-v02.md}); fixes: the scope of
-  Corollary~\ref{cor:six} (``not every attempt'' at $H_1\le6$), page of the
-  Polymath8b weight (p.~69), fairness of the corrected Remark~8.1 weight and its
-  class-by-class reading, the cases $k\le m$ and $m\ge1$ in (b), the weakly fair
-  case restricted to $f=\Lambda$, the route to level $(\log x)^{c_0}$ in open
-  question~1, several quotations and page numbers.
-\item[0.3] (15 Nov 2026) New Proposition~\ref{prop:tao-weight-logc}
-  (parity attempt of 15 Nov, third route card,
-  \texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-15-tt25-level-logc.md}): the
-  twisted Type~I input at level $(\log x)^{c_0}$, conditional on
-  \cite[Theorem~3.1]{TT25}; fresh-context audit applied (wording of the
-  \cite{MRT15} input, the source of $L=(\log X)^{1/4}$, scope of the statement,
-  period $2\prod_{3\le p\le R}p$); proofread afterwards (period of $w_R$,
-  low range of the proof, wording).
-  Shorter abstract; open question~1 updated; new open question~5.
-\item[0.4] (15 Nov 2026) New Section~\ref{subsec:hb-x3} on Heath-Brown's
-  $x^3+2y^3$, read in the journal scan supplied by Jerry Kim (sieve, Type~I
-  level, the Type~II Lemma~3.10 and the structure its proof uses), and
-  Remark~\ref{rem:hb-transfer}.
-\item[0.5] (15 Nov 2026) New Section~\ref{sec:ss} on Sawin--Shusterman
-  (read in arXiv v2), with Proposition~\ref{prop:ss-split} (the
-  same split over $\mathbb Z$; elementary, essentially in \cite{MV17}) and
-  Remark~\ref{rem:ss-transfer}; Corollary~\ref{cor:maynard-logc}
-  (two-variable weights, answering open question~5 conditionally); open
-  question~3 answered from the literature. Fresh-context audit applied
-  (file \texttt{audit-parity-v05.md} in \texttt{notes/}); fixes: the
-  relation to Murty--Vatwani weakened to ``compare'', the page of Cantarini's
-  Theorem~3, the folklore conjecture is weaker than what the $e=1$ term needs,
-  the source of the condition $q\gg p^2$, the normalisation of Maynard's
-  weights, several page references.
-\item[0.6] (15 Nov 2026) New Section~\ref{sec:ceil}: the ceiling
-  $k^2\log k/(k-1)^2$ for Polymath8b's three GEH criteria
-  (Proposition~\ref{prop:ceil}, Corollary~\ref{cor:ceil}: no
-  $\mathrm{DHL}[k,3]$ for $k\le45$), Theorem~\ref{thm:k2} (at $k=2$ the
-  Theorem~3.14 ratio is at most $2$, with equality), Corollary~\ref{cor:consistent}, and a remark on the
-  printed proof of \cite[Proposition~6.5]{PM8b}; parity attempt of this run
-  (route card \texttt{2026-11-15-geh-}\allowbreak\texttt{ceilings-k2.md}). New
-  Section~\ref{subsec:mr16} on Matom\"aki--Radziwi\l\l{} (read in arXiv v4)
-  and Remark~\ref{rem:mr16-transfer}. Open question~2 partly answered; new
-  open question~6. Fresh-context adversarial audit
-  (\texttt{notes/}\allowbreak\texttt{audit-parity-v06.md}): no errors; fixes: credit to
-  \cite[Remark~6.6]{PM8b} for the $(1+\varepsilon)$ bound, the $m=1$ case of
-  Corollary~\ref{cor:consistent} for Theorems~3.8 and 3.12, ``heuristic'' for
-  the parity argument, the wording on $\vartheta$, scope of the numerics.
-\item[0.7] (15 Nov 2026) New Subsection~\ref{subsec:dual}: the dual formula
-  (Lemma~\ref{lem:dual}), which shows that the proof of Theorem~\ref{thm:k2} is
-  the exact projection; the overlap of the constraint cylinders for $k\ge3$
-  (Proposition~\ref{prop:overlap}); exact certificates that the orthogonal
-  relaxation at $k=3$ exceeds $2.14$ ($\varepsilon=\frac18$) and $2.06$ ($\varepsilon=\frac14$)
-  (Proposition~\ref{prop:orth-relax}); an exact step-function check of
-  \cite[Theorem~3.15]{PM8b}, ratio $2+1.84\cdot10^{-4}$, by two programs
-  (Proposition~\ref{prop:k3-step}); heuristic $\varepsilon$-dependence of the $k=3$
-  supremum (Remark~\ref{rem:k3-eps}). Parity attempt of this run (route card
-  \texttt{2026-11-15-k3-dual-}\allowbreak\texttt{orthogonal.md}). Open question~6 sharpened.
-  Fresh-context adversarial audit (\texttt{notes/}\allowbreak\texttt{audit-parity-v07.md}):
-  no mathematical errors; fixes: the fits in Remark~\ref{rem:k3-eps}, the
-  non-orthogonality argument, closedness of the $\mathcal V_j$, $v(f)\in W$, the source
-  of sharpness at $k=2$, scope of the heuristic conclusions.
-  \emph{Correction of attribution}: the core of Proposition~\ref{prop:bipartite}
-  is in Tao's 2014 blog post \cite{Tao14b}, found by this run's literature check
-  (new Remark~\ref{rem:tao14b}; label, section opening and abstract changed).
-\item[0.8] (15 Nov 2026) New Subsection~\ref{subsec:window}: a Schur-test
-  reduction of the $k=3$ problem without marginal condition to a
-  one-dimensional inequality (Proposition~\ref{prop:unc-ceiling}), and
-  Theorem~\ref{thm:k3-window}: the supremum of the $k=3$ criterion exceeds $2$ at
-  $\varepsilon=\frac29,\frac14,\frac7{24}$ and is below $2$ for all $\varepsilon\ge0.439$
-  (each certificate by two programs), and Corollary~\ref{cor:k3-linear}
-  (a ceiling linear in $\varepsilon$, by scaling). Open question~6 partly answered.
-  Parity attempt of this run (route card
-  \texttt{2026-11-15-}\allowbreak\texttt{k3-window.md}). Fresh-context adversarial audit
-  (\texttt{notes/}\allowbreak\texttt{audit-}\allowbreak\texttt{parity-v08.md}): no errors; fixes: labels on the
-  sharpness remark, the corollary's improvement of part~(2), the interval in
-  Remark~\ref{rem:k3-window}(3), wording of the conclusion and of the
-  undecided cases.
-\item[0.9] (15 Nov 2026) New Section~\ref{sec:bomb} (thread~3, hypotheses
-  that do not suffice): Bombieri's theorem and Ford's Theorems~1--2 read in
-  \cite{Fo04}; Proposition~\ref{prop:bomb-twin} (under EH, twin primes are
-  equivalent to the $\Lambda\star\Lambda$-weighted count of $p-2=p_1p_2$; folklore);
-  Remark~\ref{rem:ford-twin} (Ford's and Hooley's conditions for this
-  sequence); Remark~\ref{rem:debouzy} (a probable factor-$2$ slip in the
-  constant of \cite{De19}); second table in Section~\ref{sec:num}; open
-  question~7. Abstract shortened. Two fresh-context audits (the Debouzy
-  constant; the whole section): five errors fixed before release, among them
-  $p+2$ for $p-2$, a wrong attribution of Selberg's phenomenon to Ford's
-  Theorem~1, and a missing Bombieri reference
-  (\texttt{notes/}\allowbreak\texttt{audit-parity-v09.md}).
-\item[0.10] (16 Nov 2026) New Section~\ref{sec:siegel} (thread~3, parity
-  attempt of 16 Nov; route card in \texttt{notes/}\allowbreak\texttt{parity-attempts/}):
-  Tao--Ter\"av\"ainen's Siegel-zero paper read in arXiv:2109.06291v2;
-  Proposition~\ref{prop:siegel-bias}, Corollary~\ref{cor:siegel-typeI}, Remarks
-  \ref{rem:siegel-locates}, \ref{rem:siegel-num}; open question~8. Fresh-context
-  audit (\texttt{notes/}\allowbreak\texttt{audit-parity-v010.md}); fixes: the
-  threshold $T$ from (3.22)--(3.23) instead of $R_0$, the error terms, a
-  per-modulus (not averaged) reading of (144), no claim of ``strictly stronger'',
-  the relation to open question~1, the numerical sentence. Full referee pass
-  (in \texttt{referee/}): the
-  $H(2m+1)$ criterion stated as a barrier for proofs, not a bound; Bombieri's
-  conditions in the abstract; all seven labels defined; stale text and history
-  notes removed from the body; changelog order. Cuts proposed by the referee are
-  left to the weekly review.
+\item[0.1] (15 Nov 2026) First version: the obstruction, Selberg's example, the asymptotic sieve for $\Lambda(n+2)$, the log-averaged twisted Type~I input.
+\item[0.2] (15 Nov 2026) The criterion for which targets pattern weights block; the Remark~8.1 correction; Friedlander--Iwaniec $a^2+b^4$.
+\item[0.3] (15 Nov 2026) The twisted Type~I input at level $(\log x)^{c_0}$, conditional on \cite{TT25}.
+\item[0.4] (15 Nov 2026) Heath-Brown's $x^3+2y^3$, from the journal scan.
+\item[0.5] (15 Nov 2026) Sawin--Shusterman and the same split over $\mathbb Z$; two-variable weights.
+\item[0.6] (15 Nov 2026) Ceilings for the GEH criteria; the case $k=2$; Matom\"aki--Radziwi\l\l.
+\item[0.7] (15 Nov 2026) The dual formula and the $k=3$ overlap; credit of the criterion's core to \cite{Tao14b}.
+\item[0.8] (15 Nov 2026) For which $\varepsilon$ the $k=3$ criterion works.
+\item[0.9] (15 Nov 2026) Bombieri's asymptotic sieve through Ford; the Debouzy constant.
+\item[0.10] (16 Nov 2026) The Siegel-zero world; full referee pass.
+\item[0.11] (16 Nov 2026) Pintz's parity-sensitive dichotomy with Maynard weights (Section~\ref{subsec:pintz}). First cuts after the weekly review: the dual-formula subsection shortened, the step-function proposition merged into Theorem~\ref{thm:k3-window}, the two $k=3$ remarks merged, the log-averaged proposition turned into a remark, an answered open question and the plan for later versions removed, changelog shortened.
 \end{itemize}
 
 \end{document}
