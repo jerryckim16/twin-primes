@@ -3,6 +3,7 @@
 The twin prime conjecture is open. Nothing below is a step that is known to lead to it.
 
 ## Bound work (main paper, verification note)
+- Session 27: the verification note is frozen as v1.0 (per-number account of one-program / two-program / probabilistic results).
 - Depends on: the 2026 preprints' analytic inputs (equidistribution estimates; NOT verified by us) and their reductions.
 - Feeds into: the reproduced conditional bounds (240, 236; 212 / 186 / 182 variational parts). These are statements about
   DHL[k,2] for k around 39-50, i.e. far from k = 2 (twin primes) and, by the parity barrier, unable to reach below 6 even under GEH.
@@ -46,6 +47,15 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   open question 8 (a per-modulus unweighted input would constrain Siegel characters; open question 1 as stated is different).
 - Missing for anything bigger: control of the small split primes of a Siegel character; and in any case Siegel zeros are
   conjectured not to exist, so this route says nothing about twin primes in the actual world.
+
+### Session 27 addition: Chen's theorem as a consistency test (paper rem:chen)
+- Depends on: Prop. bipartite's class of pattern weights; Lean lemmas chen_* (lean/TwinPrimes/Parity.lean); Tao 2007, Tao 2015
+  (Supplement 5), Pintz 2010 (notes/sources-chen-parity.md).
+- Feeds into: nothing new; it checks that the criterion does not "block" a theorem (Chen), and predicts correctly that each
+  parity half (p+2 prime; p+2 exactly two primes) is out of reach of sieve methods alone.
+- Missing for anything bigger: the same as before (a parity-breaking input for Lambda(n)Lambda(n+2)). The exploration of this
+  run shows the only twists sieve weights cannot see among z^Omega are z = +-1 (Selberg-Delange, 1/Gamma(z) = 0 only at
+  non-positive integers), so there is no "mod 3" analogue of the barrier to exploit or to fear.
 
 ## Bound work, rung 182 (Session 19)
 - All four ingredients of the 182 cap quotient (I, J0, J+, tail T) now by two programs; q_H - 1 >= mu-. Missing before 182 could
