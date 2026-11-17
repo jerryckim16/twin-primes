@@ -468,7 +468,7 @@ ratio of the norms is of the expected order $L^{1/4}$).
 \end{remark}
 
 \subsection{Averaging over the shift}\label{subsec:mrt17}
-\lbl{Literature} \cite[Theorem~1.3(i), (13), footnotes~4--5, pp.~4--11]{MRT17}
+\lbl{Literature} \cite[Theorem~1.3(i), (13), footnote~4, pp.~4--11]{MRT17}
 (arXiv:1707.01315v3). Let $\sigma=8/33$, $A>0$, $0<\varepsilon<1/2$,
 $X^{\sigma+\varepsilon}\le H\le X^{1-\varepsilon}$ and $0\le h_0\le X^{1-\varepsilon}$. Then
 \[
@@ -479,17 +479,18 @@ Before this, the exponent was $1/3$ (Mikawa; Perelli--Pintz, as quoted on
 p.~5). The proof uses the circle method; after Cauchy--Schwarz the task is to
 bound $\int_{\beta-1/H}^{\beta+1/H}|S(\alpha)|^2\,d\alpha$ on minor arcs, which
 by Gallagher's lemma is controlled by mean squares over $x$ of the short sums
-$\sum_{x\le n\le x+H}\Lambda(n)e(\beta n)$, and these are bounded through
-Dirichlet polynomials of Type~$d_3$, $d_4$ (pp.~10--11). The authors note
-that such arguments cannot work for $H$ below $\log X$, even under GLH, GRH
-or EH, because the term $h=0$ dominates (footnote~4), and that for most
-$h=O(X^{1/6-\varepsilon})$ the conclusion would give the prime number theorem
-in most intervals $[X,X+X^{1/6-\varepsilon}]$, which is not known (p.~5).
-For $\lambda$ the averaged problem is solved at every scale: by the abstract
-of \cite{MRT15},
+$\sum_{x\le n\le x+H}\Lambda(n)e(\beta n)$, and these by mean values of
+Dirichlet polynomials (pp.~10--11); after a Heath-Brown decomposition the new
+difficulties are the ``Type~$d_3$'' and ``Type~$d_4$'' sums (abstract). The
+authors note that such arguments cannot work for $H$ below $\log X$, even
+under GLH, GRH or EH, because the term $h=0$ would dominate (footnote~4),
+and that the conclusion for most $h=O(X^{1/6-\varepsilon})$ would give the
+prime number theorem in most intervals $[X,X+X^{1/6-\varepsilon}]$, which is not
+known (p.~5). For $\lambda$ the averaged problem is solved at every scale,
+with a qualitative saving: by the abstract of \cite{MRT15},
 $\sum_{h\le H}\left|\sum_{n\le X}\lambda(n)\lambda(n+h)\right|=o(HX)$ whenever
-$H=H(X)\to\infty$; footnote~4 of \cite{MRT17} explains that this argument
-relies on multiplicativity at small primes, which $\Lambda$ lacks.
+$H=H(X)\le X$ and $H\to\infty$; footnote~4 of \cite{MRT17} explains that this
+argument relies on multiplicativity at small primes, which $\Lambda$ lacks.
 
 \begin{remark}[What averaging buys; \lbl{Heuristic}, our reading unless cited]\label{rem:mrt17}
 Averaging over $h$ turns a correlation, quadratic in $\Lambda$, into an
@@ -500,36 +501,48 @@ $L^2$ norm of a linear object. In its simplest form this is the elementary
 c_f(h)=\sum_nf(n)\overline{f(n+h)},
 \]
 since the pair $(n,n+h)$ lies in exactly $K-|h|$ windows. With $V(K)$ the
-left side ($V(0)=0$) and real $f$, $V(K+1)-2V(K)+V(K-1)=2c_f(K)$ for $K\ge1$:
-the twin count $c_f(2)$ is a second difference in $K$ of the second moment of
-the primes in windows of length $K$. So a second-moment statement for windows of
-fixed length is as hard as twin primes, and the useful averaged statements
-are those at scales where the diagonal $V(1)=\sum_n|f(n)|^2\approx X\log X$ for
-$f=\Lambda1_{(X,2X]}$ is negligible, i.e.\ $H\gg\log X$ (footnote~4 of
-\cite{MRT17}). On average over shifts the picture is then:
+left side ($V(0)=0$) and real $f$, $V(K+1)-2V(K)+V(K-1)=2c_f(K)$ for $K\ge1$.
+So the twin count $c_f(2)$ is half the second difference
+$V(3)-2V(2)+V(1)$ of the second moment of the primes in windows of fixed
+length. For $f=\Lambda1_{(X,2X]}$ one has $V(1)\sim X\log X$, and $V(2)$
+is known by the prime number theorem; so an asymptotic for $V(3)$ with error
+$o(X)$, a relative error $o(1/\log X)$, is equivalent to the twin-prime
+asymptotic. Methods that pass through second moments of $\Lambda$ in windows
+of length $H$ (as \cite{MRT17} do via Gallagher's lemma) need the diagonal
+$V(1)$ to be negligible against $H^2X$, i.e.\ $H/\log X\to\infty$
+(footnote~4 of \cite{MRT17}). On average over shifts the picture is then:
 \begin{itemize}
-\item the parity part is solved: \cite{MRT15} handles $\lambda(n)\lambda(n+h)$
-  for almost all $h\le H$ as soon as $H\to\infty$;
+\item the Liouville model of the parity problem is solved on average: by
+  \cite{MRT15}, for $H\to\infty$, $H\le X$, one has
+  $\sum_{n\le X}\lambda(n)\lambda(n+h)=o(X)$ for all but $o(H)$ values of
+  $h\le H$; this says nothing directly about $\Lambda$;
 \item the prime part is proved for $H\ge X^{8/33+\varepsilon}$. The sequel
   \cite{MRT17b} (abstract) reaches $H=(\log X)^{10000k\log k}$ for
   $d_k(n)d_l(n+h)$ and $\Lambda(n)d_k(n+h)$, with weaker error terms, and
-  says that $\Lambda(n)\Lambda(n+h)$ needed $H=X^{8/33+\varepsilon}$; we have not found
-  a proof for shorter $H$ in print (brief search). In that range the obstruction
-  named in \cite{MRT17} is the distribution of $\Lambda$ in short intervals
-  (footnote~5), not the parity of $\Omega(n)$;
-\item a single shift is out of reach of any averaged statement of this kind,
-  because the bound on its exceptional set is $\ge1$ for every admissible $H$.
+  recalls that $\Lambda(n)\Lambda(n+h)$ was treated in \cite{MRT17} only for
+  $H\ge X^{8/33+\varepsilon}$; we have not found a proof for shorter $H$ in print
+  (brief search). For $H\le X^{1/6-\varepsilon}$ the obstruction named in
+  \cite[p.~5]{MRT17} is the distribution of $\Lambda$ in almost all short
+  intervals, not the parity of $\Omega(n)$; between $X^{1/6}$ and $X^{8/33}$
+  the limit is one of method;
+\item Theorem~1.3 of \cite{MRT17} says nothing about a prescribed $h$ such as
+  $h=2$: the exceptional $h$ are not identified, and their number
+  $O(H(\log X)^{-A})$ exceeds $1$ throughout the range. An averaged statement
+  reaches a fixed $h$ only when its exceptional count drops below $1$, that
+  is, when it becomes a statement for all $h$ in the range.
 \end{itemize}
 What sieves give for a fixed window is positivity, not an asymptotic: some even
-$h\le246$ occurs infinitely often \cite{PM8b}, and the parity obstruction of
-Section~\ref{sec:parity} stops this at windows of length~$6$.
+$h\le246$ occurs infinitely often \cite{PM8b}, and even under GEH, where
+sieves give $H_1\le6$, the parity obstruction of Section~\ref{sec:parity}
+prevents them from going below $6$ \cite{PM8b}.
 Script \texttt{code/parity/mrt\_averaged\_hl.py} (output \texttt{.out}) checks
-the identity exactly for $K=2,3,7$ on a window of length $10^6$ at $10^8$ and
-computes $r(h)=c(h)/(\mathfrak S(h)\int_X^{2X}dt/(\log t\log(t+h)))$ for prime pairs in
-$(10^8,2\cdot10^8]$ and even $h\le2000$: $r(2)=0.99906$, mean $0.99992$, standard
-deviation $0.00088$, no shift with $|r(h)-1|>0.005$ (\lbl{Heuristic}).
+the identity exactly for $K=2,3,7$ on a window of length $10^6$ at $10^8$,
+and $V(3)-2V(2)+V(1)=2c(2)$ there, and computes
+$r(h)=c(h)/(\mathfrak S(h)\int_X^{2X}dt/(\log t\log(t+h)))$ for the prime-pair
+counts $c(h)=\#\{X<p\le2X:\ p+h\text{ prime}\}$, $X=10^8$, even $h\le2000$:
+$r(2)=0.99906$, mean $0.99992$, standard deviation $0.00088$ (below the
+Poisson value $0.0014$), no shift with $|r(h)-1|>0.005$ (\lbl{Heuristic}).
 \end{remark}
-
 
 \section{Which close-prime targets the obstruction blocks}\label{sec:bip}
 
@@ -2000,10 +2013,11 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22}, with controlled
   $\ell^1$ norm, might avoid the small-prime condition; we have not checked this.
 \item (\lbl{Open}) What is the smallest $H=H(X)$ for which the averaged
-  Hardy--Littlewood statement of Section~\ref{subsec:mrt17} holds, under GRH
-  or EH? \cite[p.~5]{MRT17} say that these hypotheses allow much shorter
-  ranges and that the methods cannot go below $\log X$; we have not found the
-  conditional ranges in print.
+  Hardy--Littlewood statement of Section~\ref{subsec:mrt17} holds, under GLH,
+  GRH or EH? \cite[p.~5]{MRT17} say that these hypotheses allow one to do
+  much better than $X^{1/6}$, and \cite[footnote~4]{MRT17} that the methods
+  cannot go below $\log X$ even then; the authors defer these conditional
+  results, and we have not found them in print.
 \end{enumerate}
 
 \begin{thebibliography}{9}
@@ -2019,7 +2033,7 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   \texttt{notes/}\allowbreak\texttt{sources-hb-x3-2y3.md}).
 \bibitem{MRT15} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{An averaged
   form of Chowla's conjecture}, Algebra Number Theory \textbf{9} (2015),
-  2167--2196; arXiv:1503.05121v3 (read: eq.~(1.12)).
+  2167--2196; arXiv:1503.05121v3 (read: eq.~(1.12) and the abstract).
 \bibitem{MRT17} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{Correlations of the von Mangoldt and higher divisor functions I. Long shift ranges}, arXiv:1707.01315v3 (18 Feb 2019; read pp.~1--11; journal version not consulted).
 \bibitem{MRT17b} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{Correlations of the von Mangoldt and higher divisor functions II. Divisor correlations in short ranges}, arXiv:1712.08840 (read: abstract only).
 \bibitem{Tao16} T.~Tao, \emph{The logarithmically averaged Chowla and Elliott

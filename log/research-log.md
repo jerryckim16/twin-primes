@@ -1,5 +1,310 @@
 # Research log
 
+## 2026-11-17 - Session 29 (3:34 AM CT, 17 Nov; started on time 09:34 UTC; no wait, no other run active): Averaging over the shift: what Matomäki–Radziwiłł–Tao buy and why h = 2 stays out (parity paper v0.14); main paper v0.29 cleanup; verification note erratum v1.0.1
+
+- Parity attempt, the last weekly-review candidate (d) (route card 2026-11-17-mrt-averaged-hardy-littlewood.md). Read in the source: MRT17 (arXiv:1707.01315v3) Theorem 1.3(i). It gives the Hardy–Littlewood asymptotic for almost all $h$ in windows $X^{8/33+\varepsilon}\le H\le X^{1-\varepsilon}$, saving $(\log X)^{-A}$. Its footnote 4 says that no such method works below $H=\log X$, even under GLH, GRH or EH. For $\lambda(n)\lambda(n+h)$, MRT15 needs only $H\to\infty$.
+- New subsection subsec:mrt17 with a folklore window identity: $\sum_x|\sum_{x<n\le x+K}f(n)|^2=\sum_{|h|<K}(K-|h|)c_f(h)$. So the twin count is half the second difference $V(3)-2V(2)+V(1)$ of the second moment of primes in windows, and is needed to relative precision $o(1/\log X)$. On average the Liouville model of parity is solved, while for $\Lambda$ the limit below $X^{8/33}$ is short-interval prime distribution, not parity. No averaged statement reaches a prescribed shift.
+- The identity was checked exactly by code/parity/mrt_averaged_hl.py ($K=2,3,7$). Prime pairs in $(10^8,2\cdot10^8]$, even $h\le2000$: $r(2)=0.99906$, sd of $r(h)$ $0.00088$ (Heuristic). A fresh-context audit (notes/audit-parity-v014.md) found 3 errors and 5 gaps in citation and wording, all fixed.
+- Cleanups: parity paper (31 pp.) has the Friedlander–Iwaniec and Heath-Brown digests halved. Main paper v0.29 merges the two Bonferroni propositions, cuts Remarks k49 and prediction to a few lines, relabels the 182 remark and removes 40 of 41 'version 0.x' mentions from the body. Verification note v1.0.1 (erratum, referee item 19) states the hypotheses of the three Lean cap lemmas.
+- Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song–Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. News search (3:34 AM run): nothing new on the 2026 claims or on parity. The twin prime conjecture remains open.
+
+Parity attempt: MRT averaged Hardy–Littlewood over shifts: classified LOCATED (literature plus a folklore identity). First unresolved implication: averaged HL for $\Lambda\Lambda$ in windows below $X^{8/33}$. No parity-breaking content.
+
+Explored: Is there structure in the Hardy–Littlewood errors across shifts beyond $\mathfrak S(h)$? Regressing $r(h)-1$ on $h$ mod 3, 5, 7, 11, 13 and $\log h$ gives $R^2\le0.006$, so there is no structure (dead end). The spread is sub-Poisson (ratio about 0.6), plausibly a known effect; not checked, not promoted.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- o
+- n
+- e
+- -
+- s
+- i
+- d
+- e
+- d
+-  
+- B
+- o
+- n
+- f
+- e
+- r
+- r
+- o
+- n
+- i
+-  
+- c
+- e
+- r
+- t
+- i
+- f
+- i
+- c
+- a
+- t
+- e
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+-  
+- S
+- o
+- n
+- g
+- –
+- Y
+- u
+- e
+-  
+- w
+- i
+- t
+- n
+- e
+- s
+- s
+-  
+- w
+- a
+- s
+-  
+- n
+- o
+- t
+-  
+- s
+- t
+- a
+- r
+- t
+- e
+- d
+-  
+- (
+- a
+- b
+- o
+- u
+- t
+-  
+- 2
+- 5
+-  
+- c
+- o
+- r
+- e
+- -
+- h
+- o
+- u
+- r
+- s
+- ;
+-  
+- l
+- o
+- w
+-  
+- v
+- a
+- l
+- u
+- e
+- )
+- .
+-  
+- R
+- u
+- n
+- g
+-  
+- 1
+- 8
+- 2
+-  
+- i
+- s
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- p
+- a
+- u
+- s
+- e
+- d
+-  
+- (
+- r
+- e
+- s
+- t
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+-  
+- d
+- a
+- t
+- a
+-  
+- u
+- n
+- p
+- u
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+- )
+- .
+
+Next: Parity attempts from the paper's own open questions (e.g. Lichtman–Teräväinen's hybrid $\Lambda(n)\lambda(n+h)$ average, conditional ranges for averaged HL); the parity paper's notation renames and referee items 2.4–2.7 and 3 toward v1.0; main paper toward a thin index; weekly review on Monday 23 Nov.
+
 ## 2026-11-17 - Session 28 (7:34 PM CT, 16 Nov; started on time 01:35 UTC 17 Nov; no wait, no other run active): Why Green–Tao's finite-complexity theory cannot see twin primes: small Gowers norms do not constrain the shift-2 correlation (parity paper v0.13); main paper v0.28
 
 - Parity attempt, review candidate (c) (route card 2026-11-17-gowers-infinite-complexity.md): Green–Tao count every finite-complexity prime pattern, and $(n,n+2)$ has infinite complexity. New Proposition prop:gowers-blind (proved here, folklore in substance): random block functions have $\|f\|_{U^d[N]}^{2^d}\le 2^{2d+1}(4d)^dL/N$ but shift-2 correlation at least $1-4/L-6/N$ (or at most $-1+4/L+6/N$), and a $\{0,2\}$-valued 'fake prime' function with small $\|g-1\|_{U^d}$ has almost no pairs $g(n)g(n+2)\ne0$.

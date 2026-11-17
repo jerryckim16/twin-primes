@@ -115,3 +115,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Thread 2/5: new subsection subsec:gowers (paper v0.13): Prop. prop:gowers-blind, Remark rem:gowers. Route card
   notes/parity-attempts/2026-11-17-gowers-infinite-complexity.md. Weekly-review candidate (c) done; (d) MRT averaged
   Hardy-Littlewood over shifts remains.
+
+## Session 29 (17 Nov, 3:34 AM CT slot) updates
+- Sources read (SHA-256; PDFs not kept): MRT17 Matomaki-Radziwill-Tao, Correlations of the von Mangoldt and higher divisor
+  functions I, arXiv:1707.01315v3 (e93924c5a97b7813320ca84dcbf4619a958b47781e2e7ab36f6e2fd11a9493a1), pp. 1-11;
+  MRT17b arXiv:1712.08840 (abstract); MRT15 abstract (arXiv:1503.05121).
+- Thread 2/3: new subsection subsec:mrt17 (paper v0.14), Remark rem:mrt17, one open question (conditional ranges). Route card
+  notes/parity-attempts/2026-11-17-mrt-averaged-hardy-littlewood.md; audit notes/audit-parity-v014.md. All four weekly-review
+  candidates (a)-(d) are now done. Cuts: FI98b and HB01 digests halved. Next attempts: from the open questions of the paper.
+- Noted, not read: Lichtman-Teravainen, On the Hardy-Littlewood-Chowla conjecture on average (arXiv:2111.08912; hybrid
+  Lambda(n) lambda(n+h) averaged over h, H >= (log X)^{1+eps} per a search snippet) -- a candidate source for a later run.

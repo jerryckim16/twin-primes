@@ -1,7 +1,7 @@
 {
- "version": "0.28",
+ "version": "0.29",
  "updated": "2026-11-17",
- "session_count": 28,
+ "session_count": 29,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -414,6 +414,12 @@
  ],
  "ideas": [
   {
+   "idea": "Exploration: structure in the Hardy-Littlewood errors across shifts beyond S(h) (regression of r(h)-1 on h mod small primes and log h; spread vs Poisson).",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 29: R^2 <= 0.006, all |t| < 2 at X = 1e7, 1e8; spread sub-Poisson (ratio ~0.6), plausibly the known variance reduction of primes in short intervals; not promoted."
+  },
+  {
    "idea": "Own idea: weaken the small-s hypothesis of prop:siegel-bias to bounded s via a two-point mean value for pretentious functions (bias ~ prod (p-3)/(p+1) for random exceptional sets).",
    "origin": "own",
    "status": "open",
@@ -779,15 +785,15 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.13",
+   "version": "0.14",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); v0.13: global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
+   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; v0.14: averaging over the shift (Matomaki-Radziwill-Tao): the Liouville model of parity is solved on average for any H -> infinity, Lambda(n)Lambda(n+h) only in windows H >= X^{8/33+eps}, and no averaged statement reaches a prescribed shift; cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
   },
   {
    "slug": "verification-note",
    "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "1.0",
+   "version": "1.0.1",
    "status": "frozen",
    "pdf": "docs/papers/verification-note.pdf",
    "summary": "Frozen v1.0 (16 Nov 2026). Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236) and Charton et al. (212, Table 3 caps), each by two independent programs; ceiling < 3.99 for the 212 draft's Lemma 9.1 caps (one-program Gram certificate, weights checked at a random point); main terms and loss components of the 186 companion and the cap-quotient ingredients of 182 (numerical agreement of two implementations). A section states, number by number, what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified; no claimed bound is verified."

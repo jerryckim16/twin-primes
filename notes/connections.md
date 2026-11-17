@@ -68,6 +68,13 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   MRT15) relies on multiplicativity at small primes and on local uniformity at scales H -> infinity slowly; for Lambda neither is available (Lambda - 1 is not locally uniform below
   scale log X). Nothing here moves toward twin primes.
 
+### Session 29 addition: averaging over the shift (paper subsec:mrt17)
+- Depends on: MRT17 Thm 1.3 (arXiv:1707.01315v3), MRT15 (abstract), MRT17b (abstract); the folklore window identity.
+- Feeds into: a precise map of what is known on average over shifts: the Liouville model of parity is solved for any H -> infinity;
+  Lambda Lambda only for H >= X^{8/33+eps}; below that the limit is short-interval distribution of primes, not parity.
+- Missing for anything bigger: a prescribed shift. No averaged statement with an unidentified exceptional set reaches h = 2, and
+  the fixed-window second moment needs relative precision o(1/log X). Nothing here moves toward twin primes.
+
 ## Bound work, rung 182 (Session 19)
 - All four ingredients of the 182 cap quotient (I, J0, J+, tail T) now by two programs; q_H - 1 >= mu-. Missing before 182 could
   even be considered reproduced: the restoration losses (197 source integrals, partly underspecified), and the analytic inputs.

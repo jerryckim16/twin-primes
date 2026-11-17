@@ -20,7 +20,7 @@
 \title[Verifying the variational step of the 2026 gap bounds]{An independent exact verification of the variational step behind the claimed 2026 bounds $H_1\le240$ and $H_1\le236$, with a remark on the caps of a $212$ draft}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). All programs, certificates and Lean sources are in the repository \url{https://github.com/jerryckim16/twin-primes}; a living companion paper with full details is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 1.0, 16 November 2026}
+\date{Version 1.0.1, 17 November 2026}
 
 \begin{document}
 
@@ -249,9 +249,11 @@ coordinates of a point of $L\R_{45}$ exceed $g$ for \cite{Cha26}
 (\texttt{charton\_large\_count}); and the inclusion--exclusion over further
 coordinates stops at $j\le3$, $3$, $6$ respectively
 (\texttt{stadlmann\_extra\_le\_three}, \texttt{kintali\_extra\_le\_three},
-\texttt{charton\_extra\_le\_six}; the last assumes the large set carries at
-least $777/1250$, so it covers the caps of Table~3 but not those of Lemma~9.1,
-$C_1=775/1250$; for those caps the range of the inclusion--exclusion used by
+\texttt{charton\_extra\_le\_six}; these assume that the large set carries at
+least $0.6$, more than $1899/2500$, and at least $777/1250$ respectively,
+which holds in every correction piece because there the large set exceeds a
+cap (for the last, a cap of Table~3; it does not cover the caps of
+Lemma~9.1, $C_1=775/1250$); for those caps the range of the inclusion--exclusion used by
 both programs is not Lean-checked). The correction pieces themselves include
 non-admissible bases, whose size $m$ is bounded only by the total length (up
 to about $14$ for \cite{Kin26}). The reduction to two radial variables is
@@ -813,6 +815,8 @@ programs); internal referee report of 14 November applied.
 capped numerator of the $236$ witness and our own $k=48$ vector; internal
 referee report of 13 November applied (normalisations, labels, one-program
 qualifiers).
+\item[1.0.1] (17 November 2026) Erratum: the hypotheses of the three Lean
+lemmas that stop the inclusion--exclusion are now stated (referee item~19).
 \end{description}
 
 \begin{thebibliography}{99}
