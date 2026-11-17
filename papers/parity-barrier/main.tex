@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.14 (draft), 17 November 2026}
+\date{Version 0.15 (draft), 17 November 2026}
 
 \begin{document}
 
@@ -53,7 +53,7 @@ $\mathbb F_q[T]$ use that twin primes lack, and why Gowers norms cannot see twin
 \section{Introduction}
 
 Let $H_1=\liminf_n (p_{n+1}-p_n)$. After Zhang's finiteness theorem and
-Maynard's and Tao's method, Polymath8b proved $H_1\le 246$ \cite{PM8b}
+Maynard's and Tao's method, Polymath8b proved $H_1\le 246$ \cite[Theorem~1.4(i), p.~2]{PM8b}
 (\lbl{Literature}). Several 2026 preprints claim smaller bounds
 (\lbl{Claimed}; they are listed, and their numerical parts re-checked, in the
 companion papers of this project). The twin prime conjecture is the statement $H_1=2$. It is open.
@@ -544,6 +544,62 @@ $r(2)=0.99906$, mean $0.99992$, standard deviation $0.00088$ (below the
 Poisson value $0.0014$), no shift with $|r(h)-1|>0.005$ (\lbl{Heuristic}).
 \end{remark}
 
+\begin{remark}[Hybrid averages stop at the mean prime gap]\label{rem:lt22}
+\lbl{Literature} \cite[Thm.~1.2, Cor.~1.4, Prop.~3.2, \S4]{LT22}
+(arXiv:2111.08912v3). If the averaged shift carries the multiplicative
+function, the range is far shorter than for $\Lambda(n)\Lambda(n+h)$:
+$\sum_{p\le X}\mu(p+h)=o(\pi(X))$, and likewise for $\lambda$, for all but
+$o(H)$ shifts $h\le H$ once $H\ge(\log X)^{1+\varepsilon}$ (improving \cite{Li21}).
+The proof writes $\sum_{h\le H}\sum_nf(n+h)g(n)$ with $f=\mu1_S1_{[0,X]}$ and
+$g(n)=\Lambda(n+a_1)$ as an integral of short exponential sums. It uses only three
+facts: (i) $|f|\le1$, and a sieve bound for the terms with $n+h\notin S$; (ii) the
+hypothesis $\mathrm{H}_2(X,H,\eta)$,
+$\sup_\alpha\int_0^X\left|\sum_{x\le n\le x+2H}f(n)e(n\alpha)\right|^2dx\le\eta H^2X$,
+with $\eta\ll H^{-\delta}$ (from Matom\"aki--Radziwi\l\l--Tao); and (iii)
+moment bounds for $g$ that need $H\ge(\log X)^{p/(p-2)}$
+(their Prop.~2.7). For $g=\Lambda$ the diagonal terms alone give a $p$-th
+moment $\gg HX(\log X)^{p-1}$ (compare their Remark~2.8), so (iii) fails
+for $H=o(\log X)$.
+
+\lbl{Proved here; elementary, folklore in substance.} Input (ii) fails at the
+same scale. Normalise $\mathrm{H}_2$ with $E_f=1$ (allowed for $|f|\le1$;
+\cite{LT22} write $\eta H^2XE_f(X)^2$). Let $P$ be the primes up to $X-H$,
+$U=\{p+h:p\in P,\ 1\le h\le H\}$, and let $\mu'$ equal $1$ on $U$ and $\mu$
+elsewhere. Then:
+\begin{itemize}
+\item $\mu'$ has everything the proof uses about $\mu$. Since $f'=\mu'1_S1_{[0,X]}$
+  differs from $f=\mu1_S1_{[0,X]}$ only on $U$, (i) holds verbatim. If $f$
+  satisfies $\mathrm{H}_2(X,H,\eta)$, then $f'$ satisfies
+  $\mathrm{H}_2(X,H,2\eta+(216+o(1))H/\log X)$. Indeed, $[x,x+2H]$ meets $U$
+  only for $x$ in a set of measure at most $3H|P|$, where the difference sum is
+  at most $2(2H+1)\le6H$ in absolute value. So its mean square is at most
+  $108H^3|P|$, and $|a+b|^2\le2|a|^2+2|b|^2$ gives the claim.
+\item The conclusion fails for $\mu'$:
+  $\sum_{h\le H}\sum_{n\le X}\mu'(n+h)\Lambda(n)\ge H\theta(X-H)-H(\psi(X)-\theta(X-H))=(1+o(1))HX$.
+\end{itemize}
+For $f=\mu1_S$, \cite[Prop.~2.1, Remark~2.2]{LT22} give $\eta\ll H^{-\delta}$
+for all $3\le H\le(\log X)^C$. So if $H^{1+\delta}\le c\log X$, then $f'$
+satisfies (ii) with $\eta'\le(2+216c+o(1))H^{-\delta}$, as well as $f$ does up
+to a constant. Hence for $H=o(\log X)$, no argument that uses only (i) and (ii)
+about $\mu$ can give cancellation along primes, whatever it knows about the primes.
+
+Both inputs therefore break down near $\log X$, the mean gap between primes,
+where a typical window holds no prime. The case $k=\ell=1$ of the hybrid
+problem, $\sum_p\mu(p+h)$ (or $\lambda$), is called a model case for the parity
+problem in \cite[p.~3]{LT22}. It is solved on average down to
+$(\log X)^{1+\varepsilon}$, but its fixed-shift form is still open. Twin primes
+are not a hybrid case at all: they need $\Lambda$ at both places and one fixed
+shift. At bounded $H$, (ii) cannot hold with $\eta\to0$: averaging over
+$\alpha$ gives $\eta\ge2H^{-1}X^{-1}\sum_{2H\le n\le X}|f(n)|^2$.
+
+Script \texttt{code/parity/hybrid\_shifted\_primes.py} (output \texttt{.out};
+$X=2\cdot10^7$, $\log X=16.8$) checks discrete analogues of both bounds for
+$H=2,4,\dots,64$ and five values of $\alpha$, with integer $x$ and $P$ the
+primes up to $X$. It finds $\max_{h\le64}|\sum_{p\le X}\lambda(p+h)|/\pi(X)=0.0025$
+(at $h=42$; $0.0018$ at $h=2$), and $|U|/X=0.13$, $0.44$, $0.91$ for $H=2$,
+$8$, $32$ (\lbl{Heuristic}).
+\end{remark}
+
 \section{Which close-prime targets the obstruction blocks}\label{sec:bip}
 
 The weight in \cite[\S8]{PM8b} is tailored to one target (two primes at
@@ -727,9 +783,9 @@ case known in which the class matches what sieve methods achieve.
 
 \lbl{Lean-checked} (\texttt{triangle\_no\_fair\_weight}): a non-negative,
 integer-valued fair weight on $\{\pm1\}^3$ that kills all three pairs has
-total mass $0$, hence (being non-negative) is identically zero. This is the case $k=3$, $m=1$ of (b), for integer weights
-(rational weights reduce to it by scaling; real ones by rationality of the
-linear program).
+total mass $0$, hence (being non-negative) is identically zero. This is the case $k=3$, $m=1$ of (b), for integer weights.
+The reductions from rational weights (by scaling) and from real ones (by
+rationality of the linear program) are \lbl{Proved here}, not Lean-checked.
 
 \begin{remark}[Chen's theorem as a consistency test; \lbl{Proved here} for the class, folklore in substance]\label{rem:chen}
 Take $\mathcal H=\{0,2\}$ with signs $(\varepsilon_1,\varepsilon_2)$, and say
@@ -933,8 +989,8 @@ vanishes whenever $\varepsilon_i=\varepsilon_j=-1$ ($i\ne j$ in $\mathcal H$) or
 $\varepsilon_i=\varepsilon_r=-1$. This is the edge set of the complete graph on
 $\mathcal H\cup\{r\}$. For $k\ge2$ it contains a triangle, so no fair pattern weight
 kills it (Proposition~\ref{prop:bipartite}(a); the case $k=2$ with integer
-weights is \lbl{Lean-checked} as \texttt{triangle\_no\_fair\_weight}, and larger $k$
-reduce to it by averaging out the other coordinates, as in
+weights is \lbl{Lean-checked} as \texttt{triangle\_no\_fair\_weight}; larger $k$
+reduce to it (\lbl{Proved here}) by averaging out the other coordinates, as in
 Remark~\ref{rem:marg}). For $\sigma=+1$, replace $\varepsilon_r$ by $-\varepsilon_r$.
 Fairness at $r$ is what keeps the input $\sum w_n\lambda(n+r)=o(S_1)$ valid after
 twisting: heuristically $\sum w_n\omega(n)\lambda(n+r)\approx\widehat\Omega(\{r\})\sum w_n$, in the normalisation of Section~\ref{sec:bip}.
@@ -1253,7 +1309,7 @@ condition (\texttt{k3\_\allowbreak{}thm314\_\allowbreak{}dual.py}, mode \texttt{
 $10^{-4}$ (outputs \texttt{k3\_\allowbreak{}unc\_\allowbreak{}1d.out}, \texttt{k3\_\allowbreak{}unc\_\allowbreak{}kernel.out}
 in \texttt{code/}\allowbreak\texttt{parity/}).
 
-\begin{theorem}[\lbl{Computed}; each certificate checked by two independent programs]\label{thm:k3-window}
+\begin{theorem}[\lbl{Computed} and \lbl{Proved here}; each certificate checked by two independent programs]\label{thm:k3-window}
 Let $\sigma_3(\varepsilon)$ be the supremum of the Theorem~3.14 ratio at $k=3$.
 \begin{enumerate}
 \item $\sigma_3(\varepsilon)>2$ for $\varepsilon=\frac29,\frac14,\frac7{24}$. Symmetric step functions with
@@ -1338,7 +1394,9 @@ $\varepsilon=\frac16,\frac15,\frac3{10},\frac13$ are $1.9909$, $1.9982$, $1.9990
 $1.9952$, all still rising with $n$ (\texttt{k3\_arrangement\_eps2.out}).
 \begin{enumerate}
 \item The picture is a window of roughly $\varepsilon\in(0.19,0.31)$ in which
-  $\sigma_3(\varepsilon)>2$, with maximum about $2.003$: the $H_1\le6$ of
+  $\sigma_3(\varepsilon)>2$, with maximum about $2.003$. Since the values at
+  $\varepsilon=\frac14$ are still rising with $n$, both the window and the
+  maximum may be underestimates: the $H_1\le6$ of
   \cite[Theorem~3.15]{PM8b} has very little room.
 \item The overlapping constraints matter: at $\varepsilon=\frac18$ they push the
   supremum from about $2.18$ (clean columns only) to about $1.98$.
@@ -1579,7 +1637,7 @@ sequence $R(\nu)$ holds for $\nu<\frac12$ (Bombieri--Vinogradov), and
 follows from the Elliott--Halberstam conjecture (EH), which we use below as
 shorthand for it.
 \begin{itemize}
-\item Bombieri's theorem, as quoted by Ford \cite[(1.3)]{Fo04}: if $R(\nu)$
+\item Bombieri's theorem (\lbl{Literature, secondary}: as quoted by Ford \cite[(1.3)]{Fo04}): if $R(\nu)$
   holds for all $\nu<1$ (with mild conditions on $A$ and $g$, ``all trivially
   satisfied if $A(x)=x$ and $g(d)=1/d$''), then for every $k\ge2$
   \[
@@ -1642,7 +1700,7 @@ $\sum_{3\le p\le x+2}\mu(p-2)\log p\ll_Bx(\log x)^{-B}$ (prime powers $p^j$, $j\
 contribute $O(\sqrt x\log x)$). This is a quantitative form of the folklore
 conjecture $\sum_{p\le X}\mu(p+h)=o(\pi(X))$ for fixed $h>0$ (here: its
 analogue for $h=-2$), which Lichtman proves only on average over shifts $0<h\le H$ with $\log H/\log\log X\to\infty$
-\cite[Theorem~1.1]{Li21} (\lbl{Literature}). Hooley's condition reads
+\cite[Theorem~1.1]{Li21}, and Lichtman--Ter\"av\"ainen for $H\ge(\log X)^{1+\varepsilon}$ \cite[Cor.~1.4]{LT22} (\lbl{Literature}; see Remark~\ref{rem:lt22}). Hooley's condition reads
 \[
 \sum_{d\le x^\alpha}\left|\sum_{p\le x+2,\,p\equiv2\,(d)}\mu(p-2)\log p\right|\ll_Bx(\log x)^{-B},
 \]
@@ -1989,7 +2047,7 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   and is below $2$ for all $\varepsilon>0.43889$; $\sigma_3(\frac14)\in(2.0001,2.1684]$
   (two programs each; the first program alone gives $2.00255$ from below).
   Heuristically the set where it exceeds $2$ is an interval of about
-  $(0.19,0.31)$ with maximum about $2.003$ (Remark~\ref{rem:k3-window}). Open: a rigorous ceiling below $2$ for small $\varepsilon$
+  $(0.19,0.31)$ with maximum about $2.003$, both possibly underestimates (Remark~\ref{rem:k3-window}). Open: a rigorous ceiling below $2$ for small $\varepsilon$
   or in $[0.31,0.4383)$, which needs the marginal condition. The variance
   argument of Theorem~\ref{thm:k2} does not extend directly
   (Section~\ref{subsec:dual}), and the clean-column relaxation alone
@@ -2058,6 +2116,7 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   \cite[Theorem~1.1]{MV17} as quoted there).
 \bibitem{Ma20} J.~Maynard, \emph{Primes in arithmetic progressions to large
   moduli I, II}, arXiv:2006.06572v2, arXiv:2006.07088v1.
+\bibitem{LT22} J.~D.~Lichtman and J.~Ter\"av\"ainen, \emph{On the Hardy--Littlewood--Chowla conjecture on average}, Forum Math.\ Sigma (2022), doi:10.1017/fms.2022.54 (journal version not consulted); arXiv:2111.08912v3 (21 Jun 2022; read in full, SHA-256 87410676\ldots68464014).
 \bibitem{Li23} J.~D.~Lichtman, \emph{Primes in arithmetic progressions to large
   moduli, and shifted primes without large prime factors}, arXiv:2211.09641v1;
   \emph{Primes in arithmetic progressions to large moduli and Goldbach beyond the
@@ -2117,6 +2176,7 @@ project repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attem
 \item[0.11] (16 Nov 2026) Pintz's parity-sensitive dichotomy with Maynard weights (Section~\ref{subsec:pintz}). First cuts after the weekly review: the dual-formula subsection shortened, the step-function proposition merged into Theorem~\ref{thm:k3-window}, the two $k=3$ remarks merged, the log-averaged proposition turned into a remark, an answered open question and the plan for later versions removed, changelog shortened.
 \item[0.12] (16 Nov 2026) Remark~\ref{rem:chen}: Chen's theorem as a consistency test of the criterion (Lean-checked weights). Cuts after the weekly review: the Siegel-zero section reduced to one short section; the Matom\"aki--Radziwi\l\l{} digest to one paragraph and a short remark; the proofs of Propositions~\ref{prop:fi-twin}, \ref{prop:bomb-twin} and \ref{prop:ss-split} shortened; Proposition~\ref{prop:B-parity} reduced to its parity statement, its Cauchy--Schwarz reduction moved to a remark.
 \item[0.13] (17 Nov 2026) Section~\ref{subsec:gowers}: small global Gowers norms do not constrain the shift-$2$ correlation (Proposition~\ref{prop:gowers-blind}, folklore in substance), with what Tao's localisation does for $\lambda$ and why it does not reach $\Lambda$ (internal audit: 3 errors, 5 gaps in the first draft of the remark, all fixed). Remarks~\ref{rem:pm65} and~\ref{rem:debouzy} shortened (the Debouzy constant to a footnote).
+\item[0.15] (17 Nov 2026) Remark~\ref{rem:lt22}: hybrid averages (Lichtman--Ter\"av\"ainen) and why both of their inputs stop at the mean prime gap; referee items 2.6, 2.7 and three labelling items.
 \item[0.14] (17 Nov 2026) Section~\ref{subsec:mrt17}: what averaging over the shift buys (Matom\"aki--Radziwi\l\l--Tao), the window identity, and why a single shift stays out; one new open question. The digests of \cite{FI98b} and \cite{HB01} halved.
 \end{itemize}
 

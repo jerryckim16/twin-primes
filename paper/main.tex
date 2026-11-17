@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.29, 17 November 2026}
+\date{Version 0.30, 17 November 2026}
 
 \begin{document}
 
@@ -2288,7 +2288,7 @@ by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
 and the re-evaluation of the main terms and loss bounds of the $186$ companion.
 None of it verifies the analytic inputs.
 \item \emph{The parity barrier and twin primes: what is known and what is
-missing} (\texttt{papers/parity-barrier/}, version~0.14). A survey of the
+missing} (\texttt{papers/parity-barrier/}, version~0.15). A survey of the
 obstacle between bounded gaps and twin primes, read in the sources, with some
 own results. Current main statements:
 \begin{itemize}
@@ -2326,6 +2326,11 @@ own results. Current main statements:
   difference of the second moment of primes in windows of fixed length, and
   no averaged statement of this kind reaches a single shift
   (\lbl{Literature}, with our reading);
+\item hybrid averages (Lichtman--Ter\"av\"ainen): $\sum_{p\le X}\mu(p+h)=o(\pi(X))$
+  for almost all $h\le H$ once $H\ge(\log X)^{1+\varepsilon}$; an elementary
+  construction shows that their input on $\mu$, like their input on $\Lambda$,
+  stops at the mean prime gap $\log X$ (\lbl{Literature} and \lbl{Proved here},
+  folklore in substance);
 \item what the Friedlander--Iwaniec and Bombieri asymptotic sieves need for
   $\Lambda(n+2)$, Heath-Brown's and Friedlander--Iwaniec's bilinear structures,
   Sawin--Shusterman's $\mathbb F_q[T]$ proof and the step with no integer
@@ -2475,6 +2480,7 @@ Remarks~\ref{rem:k49} and~\ref{rem:prediction} cut to a few lines,
 Remark~\ref{rem:sha182} relabelled, most ``version~0.x'' mentions removed
 from the body. Related results: parity paper version~0.14 (averaging over
 the shift).
+\item[0.30] (17 Nov 2026) Related results: parity paper version~0.15 (hybrid averages and the mean prime gap). Bounds unchanged.
 \end{itemize}
 
 \begin{thebibliography}{99}

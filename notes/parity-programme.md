@@ -125,3 +125,11 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   candidates (a)-(d) are now done. Cuts: FI98b and HB01 digests halved. Next attempts: from the open questions of the paper.
 - Noted, not read: Lichtman-Teravainen, On the Hardy-Littlewood-Chowla conjecture on average (arXiv:2111.08912; hybrid
   Lambda(n) lambda(n+h) averaged over h, H >= (log X)^{1+eps} per a search snippet) -- a candidate source for a later run.
+
+## Session 30 (17 Nov, 11:34 AM CT slot) updates
+- Sources read (SHA-256; PDFs not kept): LT22 Lichtman-Teravainen, On the Hardy-Littlewood-Chowla conjecture on average,
+  arXiv:2111.08912v3 (87410676f879ac750cc23e4e0703e073e8b8f459a3cde2d85b6a0c8468464014), read in full (16 pp.).
+- Thread 2/3: Remark rem:lt22 (paper v0.15): hybrid averages stop at the mean prime gap (both inputs); Li21 citations
+  updated. Route card notes/parity-attempts/2026-11-17-hybrid-averages-mean-gap.md; audit notes/audit-parity-v015.md.
+- Referee items 2.6, 2.7 and three section-3 labelling items applied. Still open: notation renames; cuts (sec. num, k = 3).
+- Next attempt candidates: conditional ranges for averaged HL under GRH/EH (open question); nothing else from the review list.

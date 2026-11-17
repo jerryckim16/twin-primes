@@ -112,3 +112,13 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   is a star target and is blocked; a k = 4 version needs level 0.5423 for primes and lambda (known: 0.525 for smooth moduli).
   This is a sidestep of parity, not a break, and not a step toward twin primes.
 
+### Session 30 addition: hybrid averages (paper rem:lt22)
+- Depends on: LT22 (arXiv:2111.08912v3) Thm 1.2, Cor. 1.4, Props 2.1, 2.7, 3.2; an elementary modification argument.
+- Feeds into: the open question on the smallest averaging range (sec. open questions) and the Ford / Murty-Vatwani remarks,
+  where sum_p mu(p+h) for one fixed shift is exactly the extra condition needed.
+- Honest distance: the hybrid case with mu at the averaged position is solved down to (log X)^{1+eps}; below log X both its
+  inputs fail. Twin primes need Lambda at both positions at a single shift; no averaging argument of this type applies.
+  Nothing here moves toward the conjecture.
+- H_m side (notes/hm-programme.md section 6): Stadlmann's MPZ region is bounded by the combinatorial lemma (sigma > 1/10),
+  not by the estimates; so H_2 gains from 2026 inputs could only come from hybrid supports, not from MPZ.
+

@@ -1,5 +1,246 @@
 # Research log
 
+## 2026-11-17 - Session 30 (11:34 AM CT, 17 Nov; started on time 17:35 UTC; no wait, no other run active): Hybrid averages and the mean prime gap (parity paper v0.15); H_m MPZ-region scoping; main paper v0.30
+
+- Parity paper v0.15: new Remark rem:lt22 on Lichtman-Teravainen (arXiv:2111.08912v3, read in full): sum_{p<=X} mu(p+h) = o(pi(X)) for almost all h <= H once H >= (log X)^{1+eps}. An elementary construction (mu' = +1 on every window after a prime) satisfies their input on mu with eta' <= 2 eta + (216+o(1)) H/log X but has no cancellation, so that input stops at H^{1+delta} ~ log X; their Lambda-side moments fail for H = o(log X). A fresh-context audit found 5 errors and 3 gaps in the first draft (e.g. the quoted maximum 0.0018 was really 0.0025 at h = 42), all fixed.
+- Parity paper referee items 2.6 (the k = 3 window and maximum may be underestimates) and 2.7 (scaling/LP reductions relabelled Proved here, not Lean-checked), plus three labelling items; Lichtman 2021 citations updated with LT22.
+- Bound share (H_m scoping, notes/hm-programme.md section 6): exact check (code/hm/mpz_region_check.py) that in Stadlmann's MPZ region 80w + 80d/3 < 1 the binding constraint is the combinatorial lemma's sigma > 1/10, not Type III; in our reading the 2026 Type I/II lemmas do not enlarge it; below sigma = 1/10 one needs Type IV/V estimates nobody has. H_m stays paused.
+- Main paper v0.30 (Related results, history item). Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Lichtman-Teravainen hybrid averages: both inputs of their method stop at the mean prime gap log X (elementary conspiracy for the mu side, diagonal terms for the Lambda side); the fixed-shift parity model and twin primes (Lambda at both places) stay out. Classification: located (literature + elementary lemma; folklore in substance).
+
+Explored: Polya-type sign bias of lambda(p+h) across shifts h <= 64 at X = 2e7: 23 of 32 even shifts negative, mean -0.00045 pi(X) (Polya size), but the sums are strongly correlated across h; inconclusive.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- 2
+- 0
+- 2
+- 6
+-  
+- M
+- P
+- Z
+- -
+- r
+- e
+- g
+- i
+- o
+- n
+-  
+- r
+- e
+- a
+- d
+- i
+- n
+- g
+-  
+- a
+- s
+- s
+- u
+- m
+- e
+- s
+-  
+- x
+- ^
+- d
+- e
+- l
+- t
+- a
+- -
+- s
+- m
+- o
+- o
+- t
+- h
+-  
+- m
+- o
+- d
+- u
+- l
+- i
+-  
+- l
+- i
+- e
+-  
+- i
+- n
+-  
+- S
+- t
+- a
+- d
+- l
+- m
+- a
+- n
+- n
+- '
+- s
+-  
+- s
+- p
+- e
+- c
+- i
+- a
+- l
+-  
+- m
+- o
+- d
+- u
+- l
+- i
+-  
+- s
+- e
+- t
+- s
+- ;
+-  
+- n
+- o
+- t
+-  
+- c
+- e
+- r
+- t
+- i
+- f
+- i
+- e
+- d
+- .
+
+Next: Parity paper toward v1.0: notation renames (lambda_d vs Liouville lambda; pattern Omega; region D) and cuts (sec. num, k = 3 subsections); main paper thin-index cleanup (shorten the 186/182 remarks); one parity attempt (candidates: conditional ranges for averaged HL under GRH/EH).
+
 ## 2026-11-17 - Session 29 (3:34 AM CT, 17 Nov; started on time 09:34 UTC; no wait, no other run active): Averaging over the shift: what Matomäki–Radziwiłł–Tao buy and why h = 2 stays out (parity paper v0.14); main paper v0.29 cleanup; verification note erratum v1.0.1
 
 - Parity attempt, the last weekly-review candidate (d) (route card 2026-11-17-mrt-averaged-hardy-littlewood.md). Read in the source: MRT17 (arXiv:1707.01315v3) Theorem 1.3(i). It gives the Hardy–Littlewood asymptotic for almost all $h$ in windows $X^{8/33+\varepsilon}\le H\le X^{1-\varepsilon}$, saving $(\log X)^{-A}$. Its footnote 4 says that no such method works below $H=\log X$, even under GLH, GRH or EH. For $\lambda(n)\lambda(n+h)$, MRT15 needs only $H\to\infty$.
