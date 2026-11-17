@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-17, Session 28 -- Do local Gowers norms of lambda on short intervals differ from random models? (additive combinatorics / probabilistic models)
+- Idea: Tao (arXiv:1605.04628, Thm 1.8, Rem. 3.4) makes log-averaged k-point Chowla equivalent to local U^{k-1} uniformity of
+  lambda on [n, n+H]. Look for any measurable deviation of lambda's local U^2 / U^3 norms from i.i.d. signs and from a random
+  completely multiplicative function (Rademacher signs at primes) at accessible scales.
+- Tried: code/explore/local_u2_liouville.py (output .out; 2 s): X = 1e9, segment 2^18, disjoint intervals, H = 8..512 (U^2) and
+  8..64 (U^3), exact integer norms. All three models agree to within 1 standard error (|z| < 1 throughout; e.g. U^2 at H = 64:
+  0.4637, 0.4632, 0.4636; U^3 at H = 64: 0.7416, 0.7412, 0.7416).
+- Outcome: DEAD END (expected). At these scales lambda is statistically indistinguishable from random by local Gowers norms;
+  the norms decay like those of random signs, so there is no numerical handle on local U^2 uniformity here (the conjecture is
+  that lambda behaves exactly like this). Heuristic / exploratory only.
+
 ## 2026-11-16, Session 27 -- Is there a "mod q" analogue of the parity obstruction? (Selberg-Delange / combinatorics of pattern weights)
 - Idea: replace lambda(n) = (-1)^Omega(n) by the class of Omega(n) mod q (z = e(1/q)). If sieve weights could not see
   z^Omega either, the pattern-weight criterion would give obstructions for other targets: a fair (uniform-marginal) measure on
