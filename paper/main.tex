@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.27, 16 November 2026}
+\date{Version 0.28, 17 November 2026}
 
 \begin{document}
 
@@ -1429,9 +1429,10 @@ The weights $w_I,w_J$ of Remark~\ref{prop:adjoint} were computed exactly
 ($88$ minutes on two cores, version~0.8). $G_J$ was assembled with absolute
 error at most $2^{-P}$ per weight, and the resulting entrywise error bound was
 put into the balls. Positive definiteness was certified by recursive Schur
-complements in ball arithmetic: for $\sigma=4$ at $P=5000$ bits with halving
-blocks (version~0.8), and again for $\sigma=4$ and $\sigma=3.99$ at
-$P=6500$ bits with blocks split $1:2$ (version~0.9;
+complements in ball arithmetic: for $\sigma=4$ with $P=5000$ (so $4800$-bit
+balls in the Schur step, as the code uses $P-200$; command recorded in the
+project's handoff file) and halving blocks (version~0.8), and again for
+$\sigma=4$ and $\sigma=3.99$ with \texttt{--prec 6500} and blocks split $1:2$ (version~0.9;
 \texttt{code/capped\_gram.py --ceiling 4/1,3990/1000 --split 1/3}, log
 \texttt{runs/gram45\_lemma91\_recheck.log}).
 \end{sloppypar}
@@ -2315,7 +2316,7 @@ by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
 and the re-evaluation of the main terms and loss bounds of the $186$ companion.
 None of it verifies the analytic inputs.
 \item \emph{The parity barrier and twin primes: what is known and what is
-missing} (\texttt{papers/parity-barrier/}, version~0.12). A survey of the
+missing} (\texttt{papers/parity-barrier/}, version~0.13). A survey of the
 obstacle between bounded gaps and twin primes, read in the sources, with some
 own results. Current main statements:
 \begin{itemize}
@@ -2338,6 +2339,14 @@ own results. Current main statements:
   ``$p$ prime, $p+2\in P_2$'', while it blocks each half ($p+2$ prime; $p+2$ a
   product of exactly two primes), as the literature says (\lbl{Lean-checked}
   for the weights);
+\item small global Gowers norms (of any fixed order) do not constrain the shift-$2$
+  correlation: random block functions with small $U^d$ norms have
+  correlation near $\pm1$, and a $\{0,2\}$-valued ``fake prime'' function
+  with small $\|g-1\|_{U^d}$ has almost no pairs $g(n)g(n+2)\ne0$
+  (\lbl{Proved here}, folklore in substance); so the Green--Tao
+  finite-complexity theory cannot see twins; Tao's localisation for $\lambda$
+  (an equivalence of open conjectures) relies on multiplicativity at small
+  primes and has no analogue for $\Lambda$ at short scales;
 \item what the Friedlander--Iwaniec and Bombieri asymptotic sieves need for
   $\Lambda(n+2)$, Heath-Brown's and Friedlander--Iwaniec's bilinear structures,
   Sawin--Shusterman's $\mathbb F_q[T]$ proof and the step with no integer
@@ -2434,85 +2443,11 @@ logged with their outcome, including failures. Nothing here is peer reviewed.
 
 \appendix
 \section{History of this document}\label{app:history}
-Earlier versions carried a long abstract recording each step as it was made.
-It is kept here verbatim (up to version~0.18) as a record; version numbers
-refer to the changes of this living paper.
-
-\begin{quote}\small
-This is a living working paper. It does \emph{not} prove the twin prime
-conjecture, and it does not improve the best known bound on small gaps between
-primes. It records (i) the state of the problem as of the date above, (ii) what
-this project has verified for itself, by exact computation and by the Lean~4
-kernel, now including the established bound $H_1\le246$ of Polymath8b,
-reproduced end to end through a certified lower bound for $M_{50,1/25}$,
-(iii) small results of our own: a no-go statement for a natural
-attempt to sharpen the pigeonhole step, on the plain and on the
-$\varepsilon$-enlarged simplex; a generating-function formula that makes
-certified computation with all symmetric test functions cheap; an upper
-bound showing that the $\varepsilon$-enlargement of Polymath8b cannot, by
-itself, reach any $k\le29$; numerical evidence, \lbl{Heuristic} only, that at
-$(k,\varepsilon)=(50,1/25)$ no dual weight depending only on $t_m$ and
-$t_1+\dots+t_k$ does much better than ours (version~0.15 certifies
-$M_{50,1/25}<4.1459$ with ours, and proves that a weight that sees the active
-set, after reducing its supremum over all fibers to two parameters, gives only
-$4.1463$),
-and heuristic evidence that the $\varepsilon$-enlarged simplex stops at
-$k=50$; and, for the one-band hybrid supports of Stadlmann, a rigorous
-floor (no $k\le28$ at his level of distribution, whatever the caps), and an
-exact formula for his capped functionals, which gives a certified capped
-ratio $kJ_T/I_T=4.0120>4$ at $k=49$, computed in exact arithmetic by two
-independent programs: the variational step of Stadlmann's $H_1\le240$ is
-thereby reproduced, while his reduction \cite[Prop.~1]{Sta26} and his new
-equidistribution estimates, on which $240$ rests, have not been verified by us; the same computation confirms the
-variational criterion of Charton et al.\ at $k=45$ ($4.0027>4$) for the caps
-of their Table~3 but not, with our test function, for the different caps of
-their Lemma~9.1 ($3.9737$), and with those caps no polynomial in our
-$846$-dimensional space reaches $3.99$ (a ceiling certified in ball
-arithmetic at $3.99$; it rests on the Gram weights of one program, checked
-exactly at one random point); optimising the test function on Stadlmann's
-capped support itself, with exact Gram matrices obtained by running the exact
-evaluator backwards, raises his margin only from $4.0120$ to $4.0124$;
-for the support of Kintali at $k=48$ (claimed $H_1\le236$), our own test
-function of degree~$22$ gives $4.0061>4$ (two independent exact programs since version~0.12), and
-for the published witness of Song and Yue (same support) we recompute their
-capped numerator exactly: it equals their reference integer digit for digit,
-as does their cap-free denominator, so their criterion $48J/I_0>2001/2000$
-holds; since version~0.11 this is confirmed by a second, independent exact
-program, so the variational step of $H_1\le236$ is reproduced (its analytic
-input \cite[Thm.~4.18]{SY26} and the reduction \cite[Thm.~4.33,
-\S\S4.12--4.14]{SY26} are not verified by us, and the project's bound $236$ is
-conditional on them); version~0.12 adds an elementary observation (Bonferroni) that lets a
-one-sided certificate skip the most expensive inclusion--exclusion pieces
-(Proposition~\ref{prop:bonf}), and version~0.13 extends it so that no piece
-with three forced coordinates is needed (Proposition~\ref{prop:bonf2},
-$4.012038868>4$ for the $240$ vector); for the next rung, $186$, version~0.13
-recomputes independently the two main terms $I_H$ and $J_{\lambda,H}$ of the
-numerical companion of OpenAI's preprint and finds them inside its published
-enclosures, by two independent programs, $\rho^*J_{\lambda,H}/I_H=1.000206087>500103/500000$ (its loss bound
-and its analytic inputs are not checked; version~0.14 recomputes its source
-data and cap masks exactly from their rational definitions and checks the
-arithmetic of its loss tables, not yet the raw loss bounds); for the last
-rung, $182$, the denominator $I(F)$ and the numerators $J_0$, $J_+$ of the
-criterion, recomputed from the trial data, agree with its published enclosures
-(Remark~\ref{rem:sha182}; for $I(F)$ by two independent programs since
-version~0.15, for $J_0$, $J_+$ since version~0.18, and its tail term by one program, just below its published bound); version~0.16 re-evaluates the raw loss bounds of the $186$
-companion from its formulas ($78$ of its $97$ components, all but $1.2\cdot10^{-6}$ of its
-loss $L^+$; all at most the published values, most within $5\cdot10^{-9}$ of them; one
-program, not an outward-rounded certificate) and shows that the final margin of
-that certificate depends almost only on one loss group
-(Proposition~\ref{prop:oai186-budget}); version~0.17 completes this with two programs for the decisive group
-($99.95\%$ of it; the majorisation lemmas and the analytic inputs are not
-checked, and $186$ is not adopted), and the project moves to the companion
-papers of Section~\ref{sec:related}; and
-(iv) a programme of original
-directions that later versions will test. Every statement carries one of the
-labels \lbl{Lean-checked}, \lbl{Computed}, \lbl{Proved here},
-\lbl{Literature}, \lbl{Claimed} (a preprint not yet independently
-verified), or \lbl{Open}; \lbl{Literature (preprint)} marks our reading of a
-definition in an unrefereed preprint, \lbl{Computed (floating point)} a
-numerical value that is not a certified bound, and \lbl{Heuristic} an argument
-that is not a proof.
-\end{quote}
+Versions~0.1--0.18 (12--15 November 2026) carried a long abstract that
+recorded each step as it was made; it is preserved in the repository's git
+history (\texttt{paper/main.tex} at commit \texttt{66c97f2}) and, session by
+session, in the project log (\texttt{log/research-log.md}). Its content is
+in the body of this paper and in the verification note.
 
 Later versions, one item each:
 \begin{itemize}
@@ -2552,6 +2487,10 @@ floating-point family, the Gram method, the $\psi$-weight bound) and a history
 passage removed from the body. Related results: verification note version~1.0
 (frozen, with a per-number account of one-program and two-program results);
 parity paper version~0.12 (Chen's theorem as a consistency test, cuts).
+\item[0.28] (17 Nov 2026) The verbatim pre-0.19 abstract removed from this
+appendix (kept in git); precision of the first Lemma~9.1 ceiling run stated
+exactly ($4800$-bit balls). Related results: parity paper version~0.13 (global
+Gowers norms are blind to the shift-$2$ correlation; cuts).
 \end{itemize}
 
 \begin{thebibliography}{99}

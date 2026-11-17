@@ -19,17 +19,17 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.12 (draft), 16 November 2026}
+\date{Version 0.13 (draft), 17 November 2026}
 
 \begin{document}
 
 \begin{abstract}
-A survey with checks, not a research announcement: the twin prime conjecture
-is open and nothing here proves it or comes close. We state, checked in the
+A survey with checks, not an announcement: the twin prime conjecture
+is open and nothing here proves it or comes close. We state, from the
 sources, the (heuristic) parity obstruction that stops Maynard--Tao sieves at
 $H_1\le6$ even under GEH, Bombieri's and Friedlander--Iwaniec's asymptotic
-sieves for $\Lambda(n+2)$, and what the proofs for $a^2+b^4$, $x^3+2y^3$ and
-$\mathbb F_q[T]$ use that twin primes lack. Our own results (``Proved here''):
+sieves for $\Lambda(n+2)$, what the proofs for $a^2+b^4$, $x^3+2y^3$ and
+$\mathbb F_q[T]$ use that twin primes lack, and why Gowers norms cannot see twins. Our own results (``Proved here''):
 \begin{itemize}
 \item a window form of Tao's convex-hull criterion: Liouville-pattern weights
   block a proof of $H_m\le g$ exactly when $g<H(2m+1)$;
@@ -40,14 +40,15 @@ $\mathbb F_q[T]$ use that twin primes lack. Our own results (``Proved here''):
   $d$ with $0<|d|\le12$ has $\lambda(p+d)=-1$ for infinitely many primes $p$
   (Pintz: $16$). The criterion predicts this, and predicts that no single
   prescribed $d$ is reachable this way;
-\item the twisted Type~I input of the obstruction for log-averaged weights of
-  small level, and a Siegel-zero world in which a per-modulus form of it fails.
+\item the twisted Type~I input for log-averaged weights of small level; a
+  Siegel-zero world where a per-modulus form of it fails.
 \end{itemize}
 \end{abstract}
 
 \maketitle
 \setcounter{tocdepth}{1}
 \tableofcontents
+\enlargethispage{4pt}
 
 \section{Introduction}
 
@@ -358,8 +359,112 @@ nor $\Lambda(n+2)$ is of that kind, and twin primes need the correlation
 $\sum_n\Lambda(n)\Lambda(n+2)$ of $\Lambda$ with a shift of itself, which
 \cite{MR16} does not address. The two-point results used in
 Section~\ref{sec:parity} come from a different argument
-\cite[Theorem~1.2]{Tao16}, with logarithmic averaging; we have not checked how
-it uses \cite{MR16}.
+\cite[Theorem~1.2]{Tao16}, with logarithmic averaging; by its abstract it
+uses the estimate of \cite{MRT15} for short sums of $\lambda$ modulated by
+$e(\alpha n)$, which builds on \cite{MR16} \cite[p.~4]{Tao16}, together with
+the circle method and an entropy decrement argument (see
+Section~\ref{subsec:gowers}).
+\end{remark}
+
+\subsection{Gowers norms, and why the finite-complexity theory is blind to twins}\label{subsec:gowers}
+\lbl{Literature} \cite[pp.~7--9, 26--27]{GT10} (arXiv:math/0606088v2;
+Definition~1.5, Lemma~1.6, the Main Theorem, Proposition~7.1 and
+Theorem~7.2). Green and Tao prove the Hardy--Littlewood asymptotic
+for every system of affine-linear forms of \emph{finite complexity}
+(no two forms affinely dependent), conditional on the inverse conjecture
+GI$(s)$ and the M\"obius--nilsequence conjecture MN$(s)$. MN$(s)$ is proved in
+\cite{GT12} (abstract; \S6 carries it over to $\lambda$) by Vinogradov's
+method of Type~I and II sums \cite[\S3]{GT12}; GI$(s)$ is due to Green, Tao
+and Ziegler (as cited in \cite[p.~4, ref.~32]{Tao16b}; not opened here).
+The system $(n,n+2)$ ``which counts twin primes, has infinite complexity''
+\cite[p.~7]{GT10}. The mechanism is a generalised von Neumann theorem: for
+functions bounded by a pseudorandom majorant, averages over a
+finite-complexity system are controlled by the $U^{s+1}[N]$ norms of the
+factors, and the arithmetic input is $\|\Lambda'_{b,W}-1\|_{U^{s+1}[N]}=o(1)$ for
+the $W$-tricked primes. For $\lambda$, Gowers uniformity on intervals of
+length $\gg X$ is known \cite[p.~4]{Tao16b}. The next statement shows that
+smallness of these norms does not by itself constrain the shift-$2$
+correlation.
+
+\begin{proposition}[\lbl{Proved here}; folklore in substance]\label{prop:gowers-blind}
+Use the local norm $\|f\|_{U^d[N]}=\|f1_{[N]}\|_{U^d(\mathbb Z)}/\|1_{[N]}\|_{U^d(\mathbb Z)}$
+of \cite[p.~4]{Tao16b} (comparable, up to constants depending on $d$, with the
+norm of \cite{GT10}). Let $d\ge1$, $L\ge2$, $N\ge4d$ and $c_d=2^{2d+1}(4d)^d$.
+\begin{enumerate}
+\item There are $f_\pm:[N]\to\{-1,1\}$ with $\|f_\pm\|_{U^d[N]}^{2^d}\le c_dL/N$ and
+  $\pm\frac1N\sum_{n\le N-2}f_\pm(n)f_\pm(n+2)\ge1-\frac4L-\frac6N$.
+\item There is $g:[N]\to\{0,2\}$ with $\|g-1\|_{U^d[N]}^{2^d}\le3c_dL/N$,
+  $\left|\frac1N\sum_{n\le N}g(n)-1\right|\le(3L/N)^{1/2}$ and
+  $\frac1N\sum_{n\le N-2}g(n)g(n+2)\le\frac4L+2(3L/N)^{1/2}+\frac8N$.
+\end{enumerate}
+Applying Markov's inequality to the norms for $d=1,\dots,D$ at once, the same
+holds for all $d\le D$ simultaneously, with $c_d$ replaced by $(D+2)c_d$.
+\end{proposition}
+
+\begin{proof}
+Give $n$ the label $\ell(n)=(\lfloor n/L\rfloor,\,n\bmod 2)$, take independent
+uniform signs $\epsilon_\ell$, and put $f(n)=s(n)\epsilon_{\ell(n)}$ with
+$s\equiv1$ for $f_+$ and $s(n)=(-1)^{\lfloor n/2\rfloor}$ for $f_-$ (the parity
+coordinate of the label makes $n$, $n+2$ share a sign $\epsilon$ while
+$s(n)s(n+2)=-1$). For real $f$, $\|f\|_{U^d}^{2^d}\ge0$ is a sum over cubes
+$x+\omega\cdot h$ ($\omega\in\{0,1\}^d$, $h\in\mathbb Z^d$). The expectation
+of the product over a cube is $\pm1$ if every label occurs an even number of
+times and $0$ otherwise. In the first case the vertex $x$ shares its label,
+hence its block, with a vertex $x+\omega\cdot h$, $\omega\ne0$, so $|\omega\cdot h|<L$.
+For fixed $\omega$ with $\omega_i=1$ there are at most $N(2N)^{d-1}\cdot2L$ such
+cubes in $[N]$ ($h_j\in[1-N,N-1]$ for $j\ne i$, and fewer than $2L$ values of
+$h_i$); summing over the $2^d-1$ nonzero $\omega$, the expected numerator of
+$\|f\|_{U^d[N]}^{2^d}$ is at most $2^{2d}LN^d$. The denominator is at least
+$\frac N2(\frac N{4d})^d$ (take $x\le\lceil N/2\rceil$, $0\le h_i<\lfloor N/2d\rfloor$).
+Hence $\mathbb E\|f\|_{U^d[N]}^{2^d}\le c_dL/N$. Deterministically,
+$f(n)f(n+2)=s(n)s(n+2)=\pm1$ unless $n\bmod L\in\{L-2,L-1\}$, which happens for
+at most $2N/L+2$ values of $n$; this gives (1), taking for each sign a
+realisation whose norm is at most its mean. For (2) take $g=1+f_-$. Since
+$\mathbb E f(m)f(n)=0$ unless $\ell(m)=\ell(n)$, $\mathbb E S^2\le NL$ for
+$S=\sum_{n\le N}f(n)$; by Markov's inequality some realisation has both
+$\|f\|^{2^d}\le3c_dL/N$ and $(S/N)^2\le3L/N$. Expand
+$g(n)g(n+2)=1+f(n)+f(n+2)+f(n)f(n+2)$: the two linear sums are at most
+$2|S|+4$, and $\sum_{n\le N-2}f(n)f(n+2)\le-(N-2)+4N/L+4$.
+\end{proof}
+
+\begin{remark}[What this locates; \lbl{Heuristic}, our reading unless cited]\label{rem:gowers}
+Small Gowers norms of any fixed order are compatible with a shift-$2$
+correlation near $+1$ or $-1$, and with a ``fake prime'' function of the
+right density with almost no pairs $g(n)g(n+2)\ne0$. (After the $W$-trick the
+twin count is $\mathbb E_n\Lambda'_{b,W}(n)\Lambda'_{b+2,W}(n)$, a pointwise
+product of two functions; there $1\pm f$ with any Gowers-uniform $\pm1$
+function $f$, e.g.\ random signs, already makes the point.) So, beyond the
+pseudorandom majorant, the only arithmetic input of the finite-complexity
+theory, the smallness of global Gowers norms, does not by itself constrain
+$\sum\lambda(n)\lambda(n+2)$ or the twin count. This is a second barrier, of a
+different kind from parity: the finite-complexity counts get past parity
+because MN$(s)$ uses bilinear Type~I/II information \cite[\S3]{GT12}, while
+sieve weights alone give upper bounds only up to a constant factor, with
+``significant barriers (the `parity problem')'' to doing better
+\cite[pp.~9, 67--68]{GT10}.
+
+For $\lambda$, Tao reformulates the problem by localising: the
+logarithmically averaged Chowla conjecture is equivalent to logarithmically
+averaged Gowers uniformity of $\lambda$ on short intervals $[n,n+H]$,
+$H\to\infty$ slowly \cite[Thm.~1.8, p.~5]{Tao16b} (an equivalence of open
+conjectures; the cases $d>1$ ``remain open'', p.~4), and for $k\ge3$ points
+local $U^{k-1}$ suffices \cite[Remark~3.4, p.~18]{Tao16b}. The only case
+proved, $k=2$, came earlier \cite[Theorem~1.2]{Tao16}, with the \cite{MRT15}
+bound for short sums of $\lambda(n)e(\alpha n)$ as the uniformity input.
+Local $U^1$ uniformity alone does not suffice: $f_-$ above has sums $O(1)$
+over every interval, so it is locally $U^1$-uniform, yet its shift-$2$
+correlation is near $-1$; it fails local Fourier uniformity (it correlates
+with $e(n/4)$ on every block). Tao's arguments ``rely in an essential fashion
+on multiplicativity at small primes'' and so do not ``appear to have any
+bearing as yet on twin prime-type sums'' \cite[p.~5]{Tao16}. Moreover
+$\Lambda-1$ is not locally uniform at short scales: for $H=o(\log X)$, at
+most $(H+1)\pi(2X)=o(X)$ of the $x\le X$ have a prime in $[x,x+H]$, and on the
+other intervals the average of $\Lambda-1$ is $-1$ up to prime powers.
+Script \texttt{code/parity/gowers\_twin\_blocks.py} (output \texttt{.out})
+gives measured values at $N=32768$, $L=64$, where the Proposition's bound is
+still vacuous: $\|f_+\|_{U^2[N]}=0.209$ with correlation $0.969$, while
+$\lambda$ on $[10^7,10^7+N)$ has $0.098$ and $-0.004$ (\lbl{Heuristic}; the
+ratio of the norms is of the expected order $L^{1/4}$).
 \end{remark}
 
 
@@ -952,26 +1057,14 @@ the script \texttt{geh\_ceiling.py} checks $c(k)<2m$ for all $2\le k\le2m$
 \end{proof}
 
 \begin{remark}[On the printed proof of {\cite[Proposition~6.5]{PM8b}}]\label{rem:pm65}
-\lbl{Proved here} (our reading of the printed proof). Proposition~6.5 states
-$M_{k,\varepsilon}\le\frac k{k-1}\log(2k-1)$ for $0\le\varepsilon<1$ (p.~44). The proof
-applies Cauchy--Schwarz on each fibre with the weight
-$w_i=1-t_1-\dots-t_k+kt_i$, which is positive on the fibres used. It then
-``integrates and sums'', which needs $\sum_i\int_{U_i}w_iF^2\le\int\sum_iw_iF^2=kI(F)$,
-where $U_i$ is the set where $\sum_{j\ne i}t_j\le1-\varepsilon$. Off $U_i$ the
-weight $w_i$ can be negative when $t_1+\dots+t_k>1$ (e.g.\ $t_i=0$,
-$\sum_jt_j=1+\varepsilon$ gives $w_i=-\varepsilon$), so this step is not
-justified as written (it is fine for $\varepsilon=0$; the same issue affects
-Remark~6.6 for $a>1/(1+\varepsilon)$). Bounding the negative parts ($|w_i^-|\le\varepsilon$, for
-at most $k-1$ indices at each point) gives the weaker
-$M_{k,\varepsilon}\le\left(\frac k{k-1}+\varepsilon\right)\log(2k-1)$. We have not
-decided whether the printed constant is true for all $\varepsilon<1$; at $k=2$
-it is, since $M_{2,\varepsilon}\le2<2\log3$ by Theorem~\ref{thm:k2} (the Theorem~3.12
-class lies in the Theorem~3.14 class, see the proof of
-Corollary~\ref{cor:consistent}). Nothing in
-\cite{PM8b} depends on it (the proposition is cited again only in Remark~6.6, as far as we
-searched the text). The scaling bound $(1+\varepsilon)\frac k{k-1}\log k$ of
-Proposition~\ref{prop:ceil} is stronger whenever $k^\varepsilon<2-\frac1k$, for
-example for all $\varepsilon\le\frac1{k-1}$ when $k\ge4$.
+Proposition~6.5 of \cite{PM8b} states $M_{k,\varepsilon}\le\frac k{k-1}\log(2k-1)$
+for $0\le\varepsilon<1$ (p.~44). Its proof sums fibrewise Cauchy--Schwarz
+inequalities with weights $w_i=1-t_1-\dots-t_k+kt_i$, which can be negative off
+the fibres used when $\varepsilon>0$ (e.g.\ $t_i=0$, $\sum_jt_j=1+\varepsilon$ gives
+$w_i=-\varepsilon$), so one step is not justified as written; bounding the
+negative parts gives $\left(\frac k{k-1}+\varepsilon\right)\log(2k-1)$ (\lbl{Proved here},
+our reading). Nothing in \cite{PM8b} depends on it, and
+Proposition~\ref{prop:ceil} is stronger whenever $k^\varepsilon<2-\frac1k$.
 \end{remark}
 
 \subsection{A dual formula, and what changes at \texorpdfstring{$k=3$}{k=3}}\label{subsec:dual}
@@ -1528,35 +1621,19 @@ hypothesis holds for this sequence at all. (Our reading; not
 stated in \cite{Fo04}.)
 \end{remark}
 
-\begin{remark}[A localised version, and its constant]\label{rem:debouzy}
-\lbl{Claimed} (preprint, proof not checked): Debouzy
-\cite[Theorem~0.2, Corollary~2.7]{De19} localises Bombieri's sieve and states, under an
-EH-type conjecture for $\psi(y;d,2)$, that
-\[
-\sum_{n\le X}\Lambda(n)\Lambda(n+2)+\frac1{\gamma-\beta}\sum_{n\le X}\Lambda(n+2)\sum_{\substack{d_1d_2=n\\ n^\beta\le d_1\le n^\gamma}}\frac{\Lambda(d_1)\Lambda(d_2)}{\log n}=2\mathfrak S_2X(1+o(1)),
-\]
-with $\mathfrak S_2=\prod_{p\ge3}p(p-2)/(p-1)^2=C_2$. The printed constant
-appears to be too small by a factor~$2$; we believe $4C_2$ is meant. Three
-reasons: (a) for $\nu_1=\nu_2=1$ her Corollary~2.7 gives
-$\sum_{n\le X}\Lambda(n+2)\Lambda_2(n)\sim2C_2X\log X$, against $4C_2X\log X$ from
-Bombieri's theorem as quoted in \cite[(1.3)]{Fo04}; (b) her (65) takes the
-product $V_\sigma(z)/V_{\sigma_0}(z)$ over $3\le p\le z$ only, which omits the
-local factor $(1-\sigma(2))/(1-\sigma_0(2))=2$ at $p=2$ (if instead her
-convention of summing over $n$ coprime to $\mathfrak f=2$ is meant to remove
-$p=2$, then the model sum of $f_0=1$ over odd $n\le y/d$ is about $y/(2d)$, not
-$\sigma_0(d)F(y)=y/d$ as used before her (66), and the same factor is lost); (c) on her p.~1 she writes
-$\sum_{n\le X}\Lambda(n)\Lambda(n+2)\sim\mathfrak S_2X$ ``as a consequence of
-Hardy--Littlewood'', off by the same factor (the standard prediction, which
-she uses for $\Pi(X)$ a few lines later, is $2\mathfrak S_2X$); with the printed
-constant the prime piece alone would have to be at most $2C_2X(1+o(1))$, so
-the Hardy--Littlewood prediction $2C_2X$ would force the non-negative
-semiprime piece to be $o(X)$, whereas numerically it is comparable to the
-prime piece (second table of Section~\ref{sec:num}). Her qualitative
-conclusion (infinitely many $p$ with $p-2$ prime or $p_1p_2$, $p_1<X^\varepsilon$, under
-EH) is unaffected. (a), (b): our reading of her pp.~1--3, 36--38,
-independently rechecked (no normalisation was found under which the printed
-constant is right); the numerical part of (c) is \lbl{Heuristic}.
-Not communicated to the author; a pointer, not a correction of record.
+\begin{remark}[A localised version; \lbl{Claimed}]\label{rem:debouzy}
+Debouzy \cite[Thm.~0.2, Cor.~2.7]{De19} (a preprint; proof not checked)
+localises Bombieri's sieve under an EH-type conjecture for $\psi(y;d,2)$: the
+sum of $\Lambda(n)\Lambda(n+2)$ over $n\le X$ plus $(\gamma-\beta)^{-1}$ times the
+$\Lambda(n+2)$-weighted count of $n=d_1d_2$ with $n^\beta\le d_1\le n^\gamma$
+(weight $\Lambda(d_1)\Lambda(d_2)/\log n$) is a constant times $X(1+o(1))$.\footnote{The
+printed constant is $2\mathfrak S_2=2C_2$; we believe $4C_2$ is meant: for
+$\nu_1=\nu_2=1$ her Corollary~2.7 gives $\sum\Lambda(n+2)\Lambda_2(n)\sim2C_2X\log X$,
+against $4C_2X\log X$ from Bombieri's theorem as quoted in \cite[(1.3)]{Fo04},
+and her (65) omits the local factor $2$ at $p=2$ (our reading of her
+pp.~1--3, 36--38, rechecked independently; not communicated to the author).}
+Her qualitative conclusion (under EH, infinitely many $p$ with $p-2$ prime or
+$p_1p_2$, $p_1<X^\varepsilon$) does not depend on the constant.
 \end{remark}
 
 \section{The Siegel-zero world: where the obstruction's hypothesis can fail}\label{sec:siegel}
@@ -1961,6 +2038,9 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
 \bibitem{HB83} D.~R.~Heath-Brown, \emph{Prime twins and Siegel zeros}, Proc.\
   London Math.\ Soc.\ (3) \textbf{47} (1983), 193--224 (not opened; quoted
   from \cite[Theorem~1.5(i)]{TT22}).
+\bibitem{GT10} B.~Green and T.~Tao, \emph{Linear equations in primes}, Ann. of Math. (2) \textbf{171} (2010) (journal version not consulted); arXiv:math/0606088v2 (22 Apr 2008; read pp.~1--10, 26--27, 67--68).
+\bibitem{GT12} B.~Green and T.~Tao, \emph{The M\"obius function is strongly orthogonal to nilsequences}, Ann. of Math. (2) \textbf{175} (2012) (journal version not consulted); arXiv:0807.1736v4 (29 May 2011; read: abstract, \S1, start of \S3, \S6).
+\bibitem{Tao16b} T.~Tao, \emph{Equivalence of the logarithmically averaged Chowla and Sarnak conjectures}, arXiv:1605.04628v1 (16 May 2016; read pp.~1--7, 11, 18; journal version not consulted).
 \bibitem{Tao07} T.~Tao, \emph{Open question: the parity problem in sieve theory}, blog post, 5 June 2007, \url{https://terrytao.wordpress.com/2007/06/05/open-question-the-parity-problem-in-sieve-theory/} (read 16 Nov 2026).
 \bibitem{Tao15c} T.~Tao, \emph{254A, Supplement 5: The linear sieve and Chen's theorem (optional)}, blog post, 29 Jan 2015, \url{https://terrytao.wordpress.com/2015/01/29/254a-supplement-5-the-linear-sieve-and-chens-theorem-optional/} (read 16 Nov 2026).
 \bibitem{Tao14b} T.~Tao, \emph{A general parity problem obstruction}, blog
@@ -1993,6 +2073,7 @@ project repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attem
 \item[0.10] (16 Nov 2026) The Siegel-zero world; full referee pass.
 \item[0.11] (16 Nov 2026) Pintz's parity-sensitive dichotomy with Maynard weights (Section~\ref{subsec:pintz}). First cuts after the weekly review: the dual-formula subsection shortened, the step-function proposition merged into Theorem~\ref{thm:k3-window}, the two $k=3$ remarks merged, the log-averaged proposition turned into a remark, an answered open question and the plan for later versions removed, changelog shortened.
 \item[0.12] (16 Nov 2026) Remark~\ref{rem:chen}: Chen's theorem as a consistency test of the criterion (Lean-checked weights). Cuts after the weekly review: the Siegel-zero section reduced to one short section; the Matom\"aki--Radziwi\l\l{} digest to one paragraph and a short remark; the proofs of Propositions~\ref{prop:fi-twin}, \ref{prop:bomb-twin} and \ref{prop:ss-split} shortened; Proposition~\ref{prop:B-parity} reduced to its parity statement, its Cauchy--Schwarz reduction moved to a remark.
+\item[0.13] (17 Nov 2026) Section~\ref{subsec:gowers}: small global Gowers norms do not constrain the shift-$2$ correlation (Proposition~\ref{prop:gowers-blind}, folklore in substance), with what Tao's localisation does for $\lambda$ and why it does not reach $\Lambda$ (internal audit: 3 errors, 5 gaps in the first draft of the remark, all fixed). Remarks~\ref{rem:pm65} and~\ref{rem:debouzy} shortened (the Debouzy constant to a footnote).
 \end{itemize}
 
 \end{document}

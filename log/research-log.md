@@ -1,5 +1,23 @@
 # Research log
 
+## 2026-11-17 - Session 28 (7:34 PM CT, 16 Nov; started on time 01:35 UTC 17 Nov; no wait, no other run active): Why Green–Tao's finite-complexity theory cannot see twin primes: small Gowers norms do not constrain the shift-2 correlation (parity paper v0.13); main paper v0.28
+
+- Parity attempt, review candidate (c) (route card 2026-11-17-gowers-infinite-complexity.md): Green–Tao count every finite-complexity prime pattern, and $(n,n+2)$ has infinite complexity. New Proposition prop:gowers-blind (proved here, folklore in substance): random block functions have $\|f\|_{U^d[N]}^{2^d}\le 2^{2d+1}(4d)^dL/N$ but shift-2 correlation at least $1-4/L-6/N$ (or at most $-1+4/L+6/N$), and a $\{0,2\}$-valued 'fake prime' function with small $\|g-1\|_{U^d}$ has almost no pairs $g(n)g(n+2)\ne0$.
+- Sources read: Green–Tao 2010 (Linear equations in primes), Green–Tao 2012 (Möbius and nilsequences), Tao's two-point log-Chowla paper and his Chowla–Sarnak equivalence paper (hashes in notes/parity-programme.md). Tao's localisation (log-averaged Chowla is equivalent to local Gowers uniformity) is an equivalence of open conjectures. The proved case k = 2 uses the MRT15 bound for $\lambda(n)e(\alpha n)$. It relies on multiplicativity at small primes, which $\Lambda$ lacks.
+- A fresh-context audit (notes/audit-parity-v013.md) confirmed the Proposition with all constants, by brute force over all sign choices for small cases. It found 3 errors and 5 gaps in the first draft of the remark, all fixed. Among them: $f_-$ is locally $U^1$-uniform yet has shift-2 correlation about $-1$, so local $U^1$ alone does not give two-point Chowla.
+- Parity paper v0.13 (30 pp.): the new subsection, plus review cuts (Remark pm65 shortened, the Debouzy constant moved to a footnote). Main paper v0.28: the verbatim pre-0.19 abstract was removed from the History appendix (it stays in git). Referee item 26 fixed: the first Lemma 9.1 ceiling run used weights to $2^{-5000}$ and 4800-bit balls.
+- Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song–Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Gowers norms and the infinite complexity of twin primes: small global Gowers norms do not constrain the shift-2 correlation (Prop. prop:gowers-blind). Classification: located (proved; folklore in substance); no parity-breaking content.
+
+Explored: Do local Gowers norms of $\lambda$ on short intervals differ from random models? At $X=10^9$, $H=8..512$, local $U^2$ and $U^3$ of $\lambda$ agree with i.i.d. signs and with a random multiplicative function within one standard error: dead end (code/explore/local_u2_liouville.py).
+
+Did not work or is blocked:
+- Wolfram connector not available in this session; mathbox skills not available (a fresh-context helper did the audit).
+- The first draft of the remark overstated what localisation does (3 errors, caught by the audit). The Green–Tao–Ziegler inverse theorem was not opened (quoted through Tao 2016). Murty–Vatwani is still not obtainable.
+
+Next: Parity paper toward v1.0: notation renames (lambda_d vs Liouville lambda), halve the FI98b/HB01 digests, referee items 2.4-2.7 and 3. Main paper: merge bonf/bonf2 and trim the version mentions in the body. Parity attempt: review candidate (d), the Matomaki–Radziwill–Tao averaged Hardy–Littlewood over shifts. Next weekly review: Monday 23 Nov.
+
 ## 2026-11-16 - Session 27 (11:34 AM CT, 16 Nov; started on time 17:34 UTC; no wait, no other run active): Verification note frozen as v1.0, with a per-number account of what rests on one or two programs; Chen's theorem as a consistency test of the parity criterion (parity paper v0.12)
 
 - Verification note v1.0 (the bound share, priority 1 of the weekly review): a new section says for every number whether it rests on one program, two independent programs or a probabilistic check, and an appendix collects the facts about the capped problem (cap costs 0.0041 at k = 49, 0.00033 and 0.00054 at k = 48, 0.0095 and 0.0386 at k = 45; ceilings 4.14 and 4.126). An internal referee pass on the candidate found 8 errors and 8 gaps, all fixed before the freeze. Among them: the 182 tail's second program was not written blind; the Bonferroni levels in the new appendix were reversed; and 'cannot reach 4.00438' for the Lemma 9.1 caps was too strong (now 'suggests').
