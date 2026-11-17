@@ -63,6 +63,7 @@ print("   ", " ".join(f"{h}:{Sh[h-1]/piX:+.4f}({Sh[h-1]})" for h in range(1, 9))
 odd = np.abs(Sh[0::2]) / piX; even = np.abs(Sh[1::2]) / piX
 print(f"    mean |S(h)|/pi(X): odd h {odd.mean():.5f}, even h {even.mean():.5f}; pi(X)^(-1/2) = {piX**-0.5:.5f}")
 print(f"    mean S(h)/pi(X): odd h {Sh[0::2].mean()/piX:+.5f}, even h {Sh[1::2].mean()/piX:+.5f}")
+k = int(np.argmax(np.abs(Sh))); print(f"    max_h |S(h)|/pi(X) = {abs(Sh[k])/piX:.5f} at h = {k+1}")
 print(f"    number of h with S(h) < 0: {(Sh < 0).sum()} of {HMAX} (odd h: {(Sh[0::2] < 0).sum()}, even h: {(Sh[1::2] < 0).sum()})")
 
 # --- 3. conspiracy -----------------------------------------------------------------------------------

@@ -169,3 +169,31 @@ derive the feasible (ϖ, δ) region with exact rational inequalities.
 constraint function swapped, to get each input's k_min for m = 2 (and m = 3–5 at no extra cost).
 Step (ii) for Stadlmann 2023 is already done here (k = 35262). Only if some 2026 region gives k clearly below
 35262 should the hybrid-support Theorem 6.7 analogue (item 4) be derived.
+
+## 6. Session 30 (17 Nov 2026): step (i) started — where the MPZ region binds
+
+Sources read this run (pdftotext, untrusted data): Stadlmann arXiv:2309.00425v3 pp. 8-9 (Prop. 1, Lemma 1,
+Cor. 2 and its proof; SHA-256 d356514b...9ea399); Polymath8a arXiv:1402.0811 (latest version), Def. 2.6, Lemma 2.7,
+Thm 2.8, Remark 3.2 (pp. 10-11, 20; SHA-256 f4b4556f...98b65c); Stadlmann arXiv:2608.31126v1, Lemmas 3-7 (pp. 12-13;
+SHA-256 4296e63a...ee994).
+
+- **Computed (exact rationals; `code/hm/mpz_region_check.py`, output `.out`).** Stadlmann's own proof of Cor. 2
+  needs max(1/18+28w/9+2d/9, 1/10) < min(1/4-12w-4d, 1/2-32w-10d) and 72w+24d < 1. Split into linear pieces:
+  A (Type III vs Type I/II end) 544w+152d < 7; B 553w+161d < 7; C (sigma > 1/10 of PM8a Lemma 2.7) 560w+560d/3 < 7,
+  which is exactly her 80w+80d/3 < 1; D, E weaker. On a 401x401 rational grid the full region equals C at every
+  point. So **the binding constraint is the combinatorial lemma's sigma > 1/10, not the Type III estimate**, and
+  not the Type I/II estimate except through its lower end 1/4+12w+4d.
+- **Our reading (not certified) of the 2026 lemmas for x^delta-smooth moduli.** Lemma 6 (variant of her 2023 Thm 1)
+  covers gamma in (1/4+12w+4d, 1/2-4w-2d); Lemma 4 needs gamma > 1/3+8w+7d/3; Lemma 3 (Type II) gamma > 2/5+24w/5+7d/5,
+  and at gamma = 1/2-2w it reduces to 68w+14d < 1 = PM8a Thm 2.8(iv); Lemma 7's Type III, with its gamma read as
+  1/2 - sigma, needs sigma > 1/18+28w/9+8d/9 (weaker in d than PM8a (v)). The lower end of Type I/II coverage is still
+  1/4+12w+4d, so with sigma > 1/10 binding, **the 2026 lemmas do not enlarge the MPZ region** in this reading. (Lemma 5
+  needs a smooth beta, which Def. 2.6 Type I does not allow; Song-Yue Rem. 4.23 flags it anyway.) Caveat: the 2026
+  lemmas are stated for special moduli sets D_*(x; w, gamma, delta; eps); we assumed x^delta-smooth moduli lie in them.
+- **Explored (hypothetical).** PM8a Remark 3.2: Lemma 2.7 extends to sigma > 1/14 if Type IV and Type V estimates
+  hold; PM8a say their methods "do not seem to give enough Type V estimates". With that extension A would bind:
+  w < 7/544 = 0.012868 at d -> 0, against 1/80 = 0.0125. So a 2026-input gain for H_2 through MPZ would need new Type V
+  estimates, not the 2026 Type I/II lemmas. The remaining route is the hybrid support (BV simplex + capped Zhang band,
+  item 4 of section 4), which needs the Theorem 6.7 analogue.
+- Decision: H_m stays paused. Next step if resumed: derive the hybrid-support Theorem 6.7 analogue (section 4, item 4),
+  since MPZ-region gains are ruled out with present estimates (in our reading).
