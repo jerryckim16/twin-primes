@@ -1,0 +1,25 @@
+X = 100000000, H = 2000, Pi_2 = 0.660161820
+h = 2: c(2) = 373059, prediction S(2)L(2) = 373410.9, r(2) = 0.999058
+even h <= H (1000 shifts): mean r = 0.999921, sd r = 0.000875, min 0.997247, max 1.002859
+Poisson prediction for sd (mean of 1/sqrt(S(h)L(h))): 0.001396
+normalised (r-1)/poisson: mean -0.065, sd 0.619
+fraction of shifts with |r(h)-1| > 0.005: 0.0000
+fraction of shifts with |r(h)-1| > 0.01: 0.0000
+fraction of shifts with |r(h)-1| > 0.02: 0.0000
+fraction of shifts with |r(h)-1| > 0.05: 0.0000
+identity K = 2: lhs = 108416, rhs = 108416, equal = True
+identity K = 3: lhs = 170338, rhs = 170338, equal = True
+identity K = 7: lhs = 456858, rhs = 456858, equal = True
+second difference V(3) - 2V(2) + V(1) = 7714, 2*c(2) on the window = 7714
+  fit const : -0.000253  (se 0.000190, t = -1.33)
+  fit 3|h   : -0.000110  (se 0.000059, t = -1.88)
+  fit 5|h   : -0.000003  (se 0.000069, t = -0.04)
+  fit 7|h   : -0.000010  (se 0.000079, t = -0.13)
+  fit 11|h  : +0.000011  (se 0.000097, t = +0.11)
+  fit 13|h  : -0.000093  (se 0.000105, t = -0.89)
+  fit log h : +0.000033  (se 0.000028, t = +1.18)
+R^2 = 0.0057
+
+real	0m38.964s
+user	0m24.939s
+sys	0m13.939s

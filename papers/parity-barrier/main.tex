@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.13 (draft), 17 November 2026}
+\date{Version 0.14 (draft), 17 November 2026}
 
 \begin{document}
 
@@ -465,6 +465,69 @@ gives measured values at $N=32768$, $L=64$, where the Proposition's bound is
 still vacuous: $\|f_+\|_{U^2[N]}=0.209$ with correlation $0.969$, while
 $\lambda$ on $[10^7,10^7+N)$ has $0.098$ and $-0.004$ (\lbl{Heuristic}; the
 ratio of the norms is of the expected order $L^{1/4}$).
+\end{remark}
+
+\subsection{Averaging over the shift}\label{subsec:mrt17}
+\lbl{Literature} \cite[Theorem~1.3(i), (13), footnotes~4--5, pp.~4--11]{MRT17}
+(arXiv:1707.01315v3). Let $\sigma=8/33$, $A>0$, $0<\varepsilon<1/2$,
+$X^{\sigma+\varepsilon}\le H\le X^{1-\varepsilon}$ and $0\le h_0\le X^{1-\varepsilon}$. Then
+\[
+\sum_{X<n\le2X}\Lambda(n)\Lambda(n+h)=\mathfrak S(h)X+O_{A,\varepsilon}\left(X(\log X)^{-A}\right)
+\]
+for all but $O_{A,\varepsilon}(H(\log X)^{-A})$ values of $h$ with $|h-h_0|\le H$.
+Before this, the exponent was $1/3$ (Mikawa; Perelli--Pintz, as quoted on
+p.~5). The proof uses the circle method; after Cauchy--Schwarz the task is to
+bound $\int_{\beta-1/H}^{\beta+1/H}|S(\alpha)|^2\,d\alpha$ on minor arcs, which
+by Gallagher's lemma is controlled by mean squares over $x$ of the short sums
+$\sum_{x\le n\le x+H}\Lambda(n)e(\beta n)$, and these are bounded through
+Dirichlet polynomials of Type~$d_3$, $d_4$ (pp.~10--11). The authors note
+that such arguments cannot work for $H$ below $\log X$, even under GLH, GRH
+or EH, because the term $h=0$ dominates (footnote~4), and that for most
+$h=O(X^{1/6-\varepsilon})$ the conclusion would give the prime number theorem
+in most intervals $[X,X+X^{1/6-\varepsilon}]$, which is not known (p.~5).
+For $\lambda$ the averaged problem is solved at every scale: by the abstract
+of \cite{MRT15},
+$\sum_{h\le H}\left|\sum_{n\le X}\lambda(n)\lambda(n+h)\right|=o(HX)$ whenever
+$H=H(X)\to\infty$; footnote~4 of \cite{MRT17} explains that this argument
+relies on multiplicativity at small primes, which $\Lambda$ lacks.
+
+\begin{remark}[What averaging buys; \lbl{Heuristic}, our reading unless cited]\label{rem:mrt17}
+Averaging over $h$ turns a correlation, quadratic in $\Lambda$, into an
+$L^2$ norm of a linear object. In its simplest form this is the elementary
+(folklore) identity, valid for any finitely supported $f$ and $K\ge1$:
+\[
+\sum_{x\in\mathbb Z}\left|\sum_{x<n\le x+K}f(n)\right|^2=\sum_{|h|<K}(K-|h|)\,c_f(h),\qquad
+c_f(h)=\sum_nf(n)\overline{f(n+h)},
+\]
+since the pair $(n,n+h)$ lies in exactly $K-|h|$ windows. With $V(K)$ the
+left side ($V(0)=0$) and real $f$, $V(K+1)-2V(K)+V(K-1)=2c_f(K)$ for $K\ge1$:
+the twin count $c_f(2)$ is a second difference in $K$ of the second moment of
+the primes in windows of length $K$. So a second-moment statement for windows of
+fixed length is as hard as twin primes, and the useful averaged statements
+are those at scales where the diagonal $V(1)=\sum_n|f(n)|^2\approx X\log X$ for
+$f=\Lambda1_{(X,2X]}$ is negligible, i.e.\ $H\gg\log X$ (footnote~4 of
+\cite{MRT17}). On average over shifts the picture is then:
+\begin{itemize}
+\item the parity part is solved: \cite{MRT15} handles $\lambda(n)\lambda(n+h)$
+  for almost all $h\le H$ as soon as $H\to\infty$;
+\item the prime part is proved for $H\ge X^{8/33+\varepsilon}$. The sequel
+  \cite{MRT17b} (abstract) reaches $H=(\log X)^{10000k\log k}$ for
+  $d_k(n)d_l(n+h)$ and $\Lambda(n)d_k(n+h)$, with weaker error terms, and
+  says that $\Lambda(n)\Lambda(n+h)$ needed $H=X^{8/33+\varepsilon}$; we have not found
+  a proof for shorter $H$ in print (brief search). In that range the obstruction
+  named in \cite{MRT17} is the distribution of $\Lambda$ in short intervals
+  (footnote~5), not the parity of $\Omega(n)$;
+\item a single shift is out of reach of any averaged statement of this kind,
+  because the bound on its exceptional set is $\ge1$ for every admissible $H$.
+\end{itemize}
+What sieves give for a fixed window is positivity, not an asymptotic: some even
+$h\le246$ occurs infinitely often \cite{PM8b}, and the parity obstruction of
+Section~\ref{sec:parity} stops this at windows of length~$6$.
+Script \texttt{code/parity/mrt\_averaged\_hl.py} (output \texttt{.out}) checks
+the identity exactly for $K=2,3,7$ on a window of length $10^6$ at $10^8$ and
+computes $r(h)=c(h)/(\mathfrak S(h)\int_X^{2X}dt/(\log t\log(t+h)))$ for prime pairs in
+$(10^8,2\cdot10^8]$ and even $h\le2000$: $r(2)=0.99906$, mean $0.99992$, standard
+deviation $0.00088$, no shift with $|r(h)-1|>0.005$ (\lbl{Heuristic}).
 \end{remark}
 
 
@@ -1977,6 +2040,11 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   whether that one would suffice. A Type~I weight built from the approximant
   $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22}, with controlled
   $\ell^1$ norm, might avoid the small-prime condition; we have not checked this.
+\item (\lbl{Open}) What is the smallest $H=H(X)$ for which the averaged
+  Hardy--Littlewood statement of Section~\ref{subsec:mrt17} holds, under GRH
+  or EH? \cite[p.~5]{MRT17} say that these hypotheses allow much shorter
+  ranges and that the methods cannot go below $\log X$; we have not found the
+  conditional ranges in print.
 \end{enumerate}
 
 \begin{thebibliography}{9}
@@ -1993,6 +2061,8 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
 \bibitem{MRT15} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{An averaged
   form of Chowla's conjecture}, Algebra Number Theory \textbf{9} (2015),
   2167--2196; arXiv:1503.05121v3 (read: eq.~(1.12)).
+\bibitem{MRT17} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{Correlations of the von Mangoldt and higher divisor functions I. Long shift ranges}, arXiv:1707.01315v3 (18 Feb 2019; read pp.~1--11; journal version not consulted).
+\bibitem{MRT17b} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{Correlations of the von Mangoldt and higher divisor functions II. Divisor correlations in short ranges}, arXiv:1712.08840 (read: abstract only).
 \bibitem{Tao16} T.~Tao, \emph{The logarithmically averaged Chowla and Elliott
   conjectures for two-point correlations}, arXiv:1509.05422v4 (29 Jul 2016;
   journal version not consulted).
@@ -2074,6 +2144,7 @@ project repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attem
 \item[0.11] (16 Nov 2026) Pintz's parity-sensitive dichotomy with Maynard weights (Section~\ref{subsec:pintz}). First cuts after the weekly review: the dual-formula subsection shortened, the step-function proposition merged into Theorem~\ref{thm:k3-window}, the two $k=3$ remarks merged, the log-averaged proposition turned into a remark, an answered open question and the plan for later versions removed, changelog shortened.
 \item[0.12] (16 Nov 2026) Remark~\ref{rem:chen}: Chen's theorem as a consistency test of the criterion (Lean-checked weights). Cuts after the weekly review: the Siegel-zero section reduced to one short section; the Matom\"aki--Radziwi\l\l{} digest to one paragraph and a short remark; the proofs of Propositions~\ref{prop:fi-twin}, \ref{prop:bomb-twin} and \ref{prop:ss-split} shortened; Proposition~\ref{prop:B-parity} reduced to its parity statement, its Cauchy--Schwarz reduction moved to a remark.
 \item[0.13] (17 Nov 2026) Section~\ref{subsec:gowers}: small global Gowers norms do not constrain the shift-$2$ correlation (Proposition~\ref{prop:gowers-blind}, folklore in substance), with what Tao's localisation does for $\lambda$ and why it does not reach $\Lambda$ (internal audit: 3 errors, 5 gaps in the first draft of the remark, all fixed). Remarks~\ref{rem:pm65} and~\ref{rem:debouzy} shortened (the Debouzy constant to a footnote).
+\item[0.14] (17 Nov 2026) Section~\ref{subsec:mrt17}: what averaging over the shift buys (Matom\"aki--Radziwi\l\l--Tao), the window identity, and why a single shift stays out; one new open question.
 \end{itemize}
 
 \end{document}
