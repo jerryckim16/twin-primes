@@ -1464,48 +1464,34 @@ with $\beta(n)=\mu(n)\sum_{c\mid n,\,c\le C}\mu(c)$, $1\le C\le N^{1-\eta}$,
 (4.3)--(4.4)), and $B=B(\eta,A)$ sufficiently large.
 
 \emph{The structure it uses} (\lbl{Literature}, same source; our summary of
-Sections~5--25). (i) A norm form: since $(m,n)=1$, unique factorisation in
-$\mathbb Z[i]$ gives $a_{mn}=\tfrac14\sum_{|w|^2=m}\sum_{|z|^2=n}Z(\mathrm{Re}\,wz)$,
-with $Z(b)=2$ if $b=c^2>0$, $Z(0)=1$ and $Z(b)=0$ otherwise (pp.~960, 967).
-The condition ``$mn$ is a value of the form'' thus becomes a condition
-$\mathrm{Re}(wz)=c^2$ on a pair of Gaussian integers, and Cauchy--Schwarz is
-applied over the outer variable $w$ only. (ii) After squaring, the pairs
-$(z_1,z_2)$ lead to counting lattice points modulo
-$\Delta=\mathrm{Im}\,\bar z_1z_2$ in a region of the thin set; the count
-produces a Jacobi symbol, and in the range of large moduli a ``spin''
-symbol of $z$ coming from quadratic reciprocity (Lemma~17.1, p.~1013). (iii)
-The remaining task is cancellation in sums of the M\"obius-type $\beta_z$
-twisted by this spin over Gaussian integers (Proposition~17.2, p.~1016),
-proved in the later sections of the paper (cf.\ their Theorem~2, the
-equidistribution of the spins of primes $p=r^2+s^2$, p.~948). The authors add that the method ``fails however
-to produce primes of the type $\varphi(a,b^2)$ where $\varphi$ is a
-non-homogeneous quadratic polynomial'' (p.~947). The paper says nothing about
-twin primes or about primes in pairs of linear forms.
+Sections~5--25). (i) Unique factorisation in $\mathbb Z[i]$ turns ``$mn$ is
+a value of the form'' into $\mathrm{Re}(wz)=c^2$ for Gaussian integers
+$|w|^2=m$, $|z|^2=n$ (pp.~960, 967), and Cauchy--Schwarz is applied over the
+outer variable $w$ only. (ii) The off-diagonal pairs $(z_1,z_2)$ lead to
+lattice points modulo $\mathrm{Im}\,\bar z_1z_2$, whose count produces a
+Jacobi symbol and, for large moduli, a ``spin'' symbol of $z$ from quadratic
+reciprocity (Lemma~17.1, p.~1013). (iii) What remains is cancellation in
+Gaussian M\"obius-type sums twisted by the spin (Proposition~17.2, p.~1016;
+cf.\ Theorem~2, p.~948). The method ``fails however to produce primes of the
+type $\varphi(a,b^2)$ where $\varphi$ is a non-homogeneous quadratic
+polynomial'' (p.~947); the paper says nothing about twin primes.
 
 \begin{remark}[Why this does not transfer, as far as we can see]\label{rem:fi-transfer}
-\lbl{Heuristic} (our reading, not a statement of \cite{FI98b}). Compare with
-the remark after Proposition~\ref{prop:B-parity}. For $a_n=\Lambda(n+2)$ the inner variable
-$n$ and the outer variable $m$ enter only through the product $mn$, and after
-Cauchy--Schwarz over $m$ the off-diagonal is a correlation
-$\sum_m\Lambda(mn_1+2)\Lambda(mn_2+2)$ of primes in two linear forms, a binary
-problem of the same kind as the one we started from. In \cite{FI98b} the same
-step leads instead to a lattice-point problem: $a_n$ never involves primes
-(they enter only through the M\"obius-type $\beta$), and the multiplicity of
-representations is moved into the outer Gaussian variable before squaring
-(``we release that part of the multiplicity which is accommodated in the outer
-variable'', p.~966). The arithmetic that is
-left is a real character (the spin) of the inner Gaussian variable, for which
-cancellation is a statement about Gaussian primes in a single variable. Three
-features have no counterpart for $n+2$: the factorisation of the condition
-through a norm form; the thinness ($A(x)\asymp x^{3/4}$), which makes the
-Type~I level $x^{3/4}$ attainable and is used up in the error term of the
-lattice count (Friedlander and Iwaniec obtain the level itself through a
-Davenport--Halberstam large-sieve argument, Section~3); and the symbol
-produced by reciprocity. Polymath8b, right after saying they know no ``plausible way to control such
-bilinear expressions'' for $\Lambda(dm+2)$, note that ``there are some other
-situations in which bilinear sieve axioms may be established'', citing this
-paper \cite[p.~71]{PM8b}.
-We do not claim this list is complete, or that no other route exists.
+\lbl{Heuristic} (our reading, not a statement of \cite{FI98b}). For
+$a_n=\Lambda(n+2)$ the variables enter only through $mn$, and after
+Cauchy--Schwarz over $m$ the off-diagonal is again a binary correlation
+$\sum_m\Lambda(mn_1+2)\Lambda(mn_2+2)$ (the remark after
+Proposition~\ref{prop:B-parity}). In \cite{FI98b} the same step gives a
+lattice-point problem: $a_n$ involves no primes, the multiplicity is moved
+into the outer variable before squaring (p.~966), and what is left is a real
+character of one Gaussian variable. Three features have no counterpart for
+$n+2$: the norm-form factorisation; the thinness $A(x)\asymp x^{3/4}$, which
+makes the Type~I level $x^{3/4}$ attainable (via a Davenport--Halberstam
+argument, Section~3) and pays for the lattice count; and the reciprocity
+symbol. Polymath8b know no ``plausible way to control such bilinear
+expressions'' for $\Lambda(dm+2)$ and cite this paper among the ``other
+situations in which bilinear sieve axioms may be established''
+\cite[p.~71]{PM8b}. This list of differences is not a proof that no route exists.
 \end{remark}
 
 
@@ -1523,68 +1509,41 @@ the form up to $X$ number about $X^{2/3}$: Heath-Brown's exponent is
 $\alpha=2/3$, against $3/4$ for $a^2+b^4$ and $1/2$ for $n^2+1$ (p.~3). An
 implied constant is ineffective because of possible Siegel zeros (p.~19).
 
-\emph{The sieve.} The approach ``has much in common with'' the
-asymptotic sieve of Friedlander and Iwaniec, but ``their condition (R1) is not
-quite met in our case, so that their work cannot be used as it stands''; the
-paper therefore uses its own sieve argument, and ``it is the `Type~II' bound
-\dots\ which is the most novel part of our proof, and not the sieve
-procedure'' (p.~4). The sequence $\mathcal A$ of values with
-$x,y\in(X,X(1+\eta)]$, $(x,y)=1$, is compared with the sequence $\mathcal B$
-of norms of all integral ideals of $K=\mathbb Q(\sqrt[3]2)$ in
-$(3X^3,3X^3(1+\eta)]$, whose primes are counted by the prime ideal theorem
-(pp.~4--5). The Type~I bound has level $X^{2-\varepsilon}$ for $\mathcal A$
-(Lemma~2.1, p.~5), and ``it is the fact that the form $x^3+2y^3$ factorizes
-which enables such a strong Type~I bound'' (p.~6). The Type~II sums are
-$\sum_{U<a\le2U}\sum_{V<b\le2V,\,ab\in\mathcal A}\phi_a\psi_b$ for
-$X^{1+\varepsilon}\ll V\ll X^{3/2-\varepsilon}$; Vaughan's identity would need
-$X^{1-\varepsilon}\ll V\ll X^{3/2+\varepsilon}$, and the two short gaps are
-bounded above by a crude sieve and below by zero (pp.~7--8). Before the
-Type~II step a leading term is removed: $\Lambda=\Lambda_1+\Lambda_2$ with
-$\Lambda_1(n)=\sum_{d\mid n,\,d<L}\mu(d)\log(L/d)$, $L=X^{\tau/2}$, so that
-``the saving will come from sign changes in $\psi_b$'', the part coming from
-$\Lambda_2$ (pp.~9--10).
-
-\emph{The structure the Type~II estimate uses} (\lbl{Literature}, same
-source). The estimate is Lemma~3.10 (p.~20), ``the most novel part of our
-entire argument, and it is here that the structure of the form $x^3+2y^3$ is
-most crucially used''. Its hypothesis (3.14) is a Siegel--Walfisz type bound
-for the coefficients in residue classes and cubes, which is proved with Hecke
-Gr\"ossencharacters of $K$ (Lemma~3.8, Section~9, p.~52). Its proof
-(Sections~11--13) runs in $\mathbb Z[\sqrt[3]2]$:
-\begin{enumerate}
-\item ideals are replaced by generators $\alpha,\beta$, and Cauchy's
-  inequality is applied over the outer variable $\alpha$ (p.~68);
-\item in the off-diagonal terms, $\alpha\beta_i=x_i+y_i\sqrt[3]2$ ($i=1,2$)
-  says that the coefficient of $\sqrt[3]4$ vanishes, a linear condition
-  $rw_i+sv_i+tu_i=0$ on $\alpha=r+s\sqrt[3]2+t\sqrt[3]4$; so for
-  $\beta_1\ne\beta_2$ the vector $(r,s,t)$ is $\pm D^{-1}$ times the cross
-  product of the coefficient vectors of $\beta_1$ and $\beta_2$, with $D$ the
-  gcd of its entries ((11.4), p.~69);
-\item after the variables are separated (Section~12), the condition
-  $D\mid\mathbf v$ (equivalently $\hat\beta_2\equiv\lambda\hat\beta_1\pmod D$)
-  is detected with additive characters, and the sum is bounded by a
-  three-dimensional large sieve, Lemma~13.1 (p.~79):
-  $\sum_{Q<q\le2Q}\sum^{*}_{\mathbf b\,(q)}|S(q^{-1}\mathbf b)|^2\ll(S_0^3+Q^2S_0^2+Q^4)\sum|G_{\hat\beta}|^2$.
-\end{enumerate}
-In the text layer of the scan (imperfect OCR) we found no mention of twin
-primes or of the parity problem by name.
+\emph{The sieve and the Type~II step} (\lbl{Literature}, same source). The
+paper uses its own sieve argument, since condition (R1) of Friedlander and
+Iwaniec ``is not quite met in our case'', and ``it is the `Type~II' bound
+\dots\ which is the most novel part of our proof'' (p.~4). The values are
+compared with the norms of all ideals of $K=\mathbb Q(\sqrt[3]2)$ in the
+same range, whose primes the prime ideal theorem counts (pp.~4--5). The
+Type~I level is $X^{2-\varepsilon}$ (Lemma~2.1, p.~5), because ``the form
+$x^3+2y^3$ factorizes'' (p.~6); the Type~II range is
+$X^{1+\varepsilon}\ll V\ll X^{3/2-\varepsilon}$, the two short gaps to
+Vaughan's range being bounded above by a crude sieve and below by zero
+(pp.~7--8). The Type~II
+estimate, Lemma~3.10 (p.~20), is where ``the structure of the form
+$x^3+2y^3$ is most crucially used''; its Siegel--Walfisz type hypothesis is
+proved with Hecke Gr\"ossencharacters (Lemma~3.8, Section~9). In the proof
+(Sections~11--13), after Cauchy over the outer variable $\alpha\in\mathbb
+Z[\sqrt[3]2]$ (p.~68), the condition that $\alpha\beta_i=x_i+y_i\sqrt[3]2$
+has no $\sqrt[3]4$ term is linear in $\alpha$, so for $\beta_1\ne\beta_2$
+the outer variable is determined by a cross product ((11.4), p.~69); the
+resulting congruence is detected by additive characters and a
+three-dimensional large sieve (Lemma~13.1, p.~79). In the text layer of the
+scan (imperfect OCR) we found no mention of twin primes or of the parity
+problem by name.
 
 \begin{remark}[Why this does not transfer either, as far as we can see]\label{rem:hb-transfer}
-\lbl{Heuristic} (our reading, not a statement of \cite{HB01}). The decisive
-step is (2): the values are the norms of the elements of the rank-two
-sublattice $\mathbb Z+\mathbb Z\sqrt[3]2$ of the rank-three ring
-$\mathbb Z[\sqrt[3]2]$, so ``$ab$ is a value'' becomes one linear condition on
-the product of two ring elements, and two such conditions determine the
-outer variable. After Cauchy--Schwarz the problem is a lattice problem
-detected by a large sieve, not a correlation of primes. For $a_n=\Lambda(n+2)$
-the condition ``$mn+2$ is prime'' has no such algebraic form, and the same
-step leads back to the binary correlation of
-the remark after Proposition~\ref{prop:B-parity}. Thinness is again essential: the Type~I
-level $X^{2-\varepsilon}$, against a sequence of size about $X^2$ inside
-$[1,X^3]$, comes from the factorisation of the form (p.~6), and the comparison
-sequence $\mathcal B$, whose primes the prime ideal theorem counts, has no
-analogue for $n+2$. Like Remark~\ref{rem:fi-transfer} this is a list of
-differences, not a proof that no route exists.
+\lbl{Heuristic} (our reading, not a statement of \cite{HB01}). The values
+are norms from the rank-two sublattice $\mathbb Z+\mathbb Z\sqrt[3]2$ of the
+rank-three ring, so ``$ab$ is a value'' is one linear condition on a product
+of ring elements, and after Cauchy--Schwarz one has a lattice problem
+detected by a large sieve, not a correlation of primes. For
+$\Lambda(n+2)$ the condition ``$mn+2$ is prime'' has no such algebraic form,
+and the step leads back to the binary correlation. Thinness (about $X^2$
+values in $[1,X^3]$) and the comparison sequence of ideal norms are again
+essential and have no analogue for $n+2$. As in
+Remark~\ref{rem:fi-transfer}, this is a list of differences, not a proof
+that no route exists.
 \end{remark}
 
 \section{What the level of distribution alone gives: Bombieri's asymptotic sieve}\label{sec:bomb}
@@ -2144,7 +2103,7 @@ project repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attem
 \item[0.11] (16 Nov 2026) Pintz's parity-sensitive dichotomy with Maynard weights (Section~\ref{subsec:pintz}). First cuts after the weekly review: the dual-formula subsection shortened, the step-function proposition merged into Theorem~\ref{thm:k3-window}, the two $k=3$ remarks merged, the log-averaged proposition turned into a remark, an answered open question and the plan for later versions removed, changelog shortened.
 \item[0.12] (16 Nov 2026) Remark~\ref{rem:chen}: Chen's theorem as a consistency test of the criterion (Lean-checked weights). Cuts after the weekly review: the Siegel-zero section reduced to one short section; the Matom\"aki--Radziwi\l\l{} digest to one paragraph and a short remark; the proofs of Propositions~\ref{prop:fi-twin}, \ref{prop:bomb-twin} and \ref{prop:ss-split} shortened; Proposition~\ref{prop:B-parity} reduced to its parity statement, its Cauchy--Schwarz reduction moved to a remark.
 \item[0.13] (17 Nov 2026) Section~\ref{subsec:gowers}: small global Gowers norms do not constrain the shift-$2$ correlation (Proposition~\ref{prop:gowers-blind}, folklore in substance), with what Tao's localisation does for $\lambda$ and why it does not reach $\Lambda$ (internal audit: 3 errors, 5 gaps in the first draft of the remark, all fixed). Remarks~\ref{rem:pm65} and~\ref{rem:debouzy} shortened (the Debouzy constant to a footnote).
-\item[0.14] (17 Nov 2026) Section~\ref{subsec:mrt17}: what averaging over the shift buys (Matom\"aki--Radziwi\l\l--Tao), the window identity, and why a single shift stays out; one new open question.
+\item[0.14] (17 Nov 2026) Section~\ref{subsec:mrt17}: what averaging over the shift buys (Matom\"aki--Radziwi\l\l--Tao), the window identity, and why a single shift stays out; one new open question. The digests of \cite{FI98b} and \cite{HB01} halved.
 \end{itemize}
 
 \end{document}
