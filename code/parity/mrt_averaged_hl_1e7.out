@@ -1,0 +1,5 @@
+h = 2: c(2) = 48427, prediction S(2)L(2) = 48491.9, r(2) = 0.998662
+even h <= H (1000 shifts): mean r = 1.000116, sd r = 0.002310, min 0.991633, max 1.009525
+Poisson prediction for sd (mean of 1/sqrt(S(h)L(h))): 0.003875
+normalised (r-1)/poisson: mean 0.029, sd 0.573
+R^2 = 0.0034

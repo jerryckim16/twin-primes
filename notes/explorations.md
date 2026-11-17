@@ -3,6 +3,19 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-17, Session 29 -- Is there structure in the Hardy-Littlewood errors across shifts beyond S(h)? (probabilistic models of primes)
+- Idea: for prime pairs (p, p+h) in (X, 2X], look at the normalised counts r(h) = c(h)/(S(h) L(h)) over 1000 even shifts and
+  ask (a) whether their spread matches a Poisson (Cramer-type) model with the singular series, and (b) whether the residual
+  r(h) - 1 depends on h mod small primes or on log h in a way S(h) does not explain (a hidden secondary term would be a
+  handle on individual shifts).
+- Tried: code/parity/mrt_averaged_hl.py (the same run as the parity attempt; .out, 39 s at X = 1e8; _1e7.out): least-squares
+  fit of r(h) - 1 on [3|h], [5|h], [7|h], [11|h], [13|h], log h.
+- Outcome: INCONCLUSIVE / DEAD END for (b): R^2 = 0.006 (X = 1e8) and 0.003 (1e7), every |t| < 2; S(h) explains the
+  h-dependence at this precision. For (a) the spread is clearly SUB-Poisson: sd 0.00088 vs Poisson 0.0014 (ratio 0.62) at
+  1e8, 0.0023 vs 0.0039 (0.57) at 1e7. Plausibly the known reduction of variance of primes in short intervals below the
+  Cramer model (Montgomery-Soundararajan type; not read, not checked) and the common use of the same primes for all h.
+  Not a result; not promoted. Heuristic / exploratory only.
+
 ## 2026-11-17, Session 28 -- Do local Gowers norms of lambda on short intervals differ from random models? (additive combinatorics / probabilistic models)
 - Idea: Tao (arXiv:1605.04628, Thm 1.8, Rem. 3.4) makes log-averaged k-point Chowla equivalent to local U^{k-1} uniformity of
   lambda on [n, n+H]. Look for any measurable deviation of lambda's local U^2 / U^3 norms from i.i.d. signs and from a random
