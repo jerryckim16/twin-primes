@@ -100,3 +100,18 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Next attempt candidates: (a) the k = 3 small-eps ceiling (open question 6; review to decide whether to continue);
   (b) Murty-Vatwani in the original if it arrives; (c) the Hooley-type question for twins (open question 7): is there ANY
   structured sequence of the twin type (a_n = Lambda(n+2) times a nice weight) for which the averaged condition is provable?
+
+## Session 28 (17 Nov, 7:34 PM CT slot of 16 Nov) updates
+- Sources read (SHA-256 of the copies read; PDFs not kept):
+  GT10 Green-Tao, Linear equations in primes, arXiv:math/0606088v2
+  (4cc772cfa6f2f9fa2af82d07b6323669c8150ac1911e83a245cc667f956500f5), pp. 1-10, 27 (Def. 1.5, Lemma 1.6, Main Theorem,
+  Prop. 7.1, Thm 7.2), p. 68 (parity remark after Thm D.3);
+  GT12 Green-Tao, Moebius strongly orthogonal to nilsequences, arXiv:0807.1736v4
+  (1983964ece08526e3ceca872c011d1fd6d95d689670e3715bcc6c3a20749d577), abstract, Sec. 1, Sec. 6;
+  Tao16 again, arXiv:1509.05422v4 (467329ae414b669808555fddf131be3bc07025777ae3af8ccdea6e98db6722e9), abstract and Sec. 1;
+  Tao16b Tao, Equivalence of the log-averaged Chowla and Sarnak conjectures, arXiv:1605.04628v1
+  (0ea72ada5def4f1a8abacaa02b67ac3a4f5c9efb5b804fdcac06e69505e0e99d), pp. 1-7, 18.
+  Not opened: Green-Tao-Ziegler inverse theorem (quoted through Tao16b and GT12).
+- Thread 2/5: new subsection subsec:gowers (paper v0.13): Prop. prop:gowers-blind, Remark rem:gowers. Route card
+  notes/parity-attempts/2026-11-17-gowers-infinite-complexity.md. Weekly-review candidate (c) done; (d) MRT averaged
+  Hardy-Littlewood over shifts remains.

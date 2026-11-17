@@ -1,7 +1,7 @@
 {
- "version": "0.27",
- "updated": "2026-11-16",
- "session_count": 27,
+ "version": "0.28",
+ "updated": "2026-11-17",
+ "session_count": 28,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,11 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Proved here",
+   "text": "Parity paper v0.13, Prop. prop:gowers-blind (folklore in substance): with Tao's local norm ||f||_{U^d[N]}, for d >= 1, L >= 2, N >= 4d there are f_+-: [N] -> {-1,1} with ||f||_{U^d[N]}^{2^d} <= 2^{2d+1}(4d)^d L/N and +-(1/N) sum f(n)f(n+2) >= 1 - 4/L - 6/N, and a {0,2}-valued g with ||g-1||_{U^d}^{2^d} <= 3 c_d L/N, mean within (3L/N)^{1/2} of 1, and (1/N) sum g(n)g(n+2) <= 4/L + 2(3L/N)^{1/2} + 8/N (random block functions). So global Gowers uniformity (all that the Green-Tao finite-complexity theory uses) says nothing about two-point Chowla or twin primes; Tao's localisation (arXiv:1605.04628) sidesteps this for lambda only.",
+   "where": "papers/parity-barrier (subsec:gowers); code/parity/gowers_twin_blocks.py; notes/parity-attempts/2026-11-17-gowers-infinite-complexity.md; notes/audit-parity-v013.md"
+  },
   {
    "label": "Proved here",
    "text": "Parity paper v0.10, Prop. prop:siegel-bias and Cor. cor:siegel-typeI: for a real character chi mod q and a +-1 completely multiplicative f, the chi(b)chi(b+2)-weighted class sums of f(n)f(n+2) mod Q = lcm(prod_{p<=w} p, q) are >= rho x (1 - 4 s1 - (4/rho)(s2 + P2/x) - (Q/x)(1+4P1)), s1, s2 the 1/p-sums of primes where f != chi; with a Siegel zero (Tao-Teravainen (1.4), (3.22)-(3.23)), a per-modulus unweighted discrepancy bound eps x/Q for lambda(n)lambda(n+2) at Q = Wq forces the split primes in (w, q^{1/log^{1-eps'} eta}) to have 1/p-sum >= (1-eps)/4 - o(1). Elementary; possibly folklore. Locates where Heath-Brown's Siegel-zero route escapes the obstruction; no bearing on twin primes in the actual world.",
@@ -755,6 +760,18 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Fair Z/q pattern weights killing DHL[k,m+1] exist iff k <= q m, so q = 3 would 'block' DHL[3,2] (proved under GEH): the randomness heuristic fails for z = e(1/q), since Selberg-Delange gives a main term with 1/Gamma(z) != 0; only z = -1 is invisible. Session 27, code/explore/omega_mod_q_weights.py."
+  },
+  {
+   "idea": "Gowers-norm (infinite-complexity) barrier for twin primes, compared with parity",
+   "origin": "own",
+   "status": "works",
+   "note": "Settled as Prop. prop:gowers-blind (parity paper v0.13; folklore in substance): random block functions make every global U^d norm small while the shift-2 correlation is +-1 + O(1/L). Session 28."
+  },
+  {
+   "idea": "Local Gowers norms of lambda on short intervals vs random models (numerical)",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "At X = 1e9, H = 8..512, local U^2 and U^3 of lambda agree with i.i.d. signs and a random multiplicative function within one standard error: no numerical handle. Session 28, code/explore/local_u2_liouville.py."
   }
  ],
  "phase": "B",
@@ -762,10 +779,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.12",
+   "version": "0.13",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); v0.12: Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half), and cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
+   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); v0.13: global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
   },
   {
    "slug": "verification-note",

@@ -57,6 +57,17 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   run shows the only twists sieve weights cannot see among z^Omega are z = +-1 (Selberg-Delange, 1/Gamma(z) = 0 only at
   non-positive integers), so there is no "mod 3" analogue of the barrier to exploit or to fear.
 
+### Session 28 addition: Gowers norms and infinite complexity (paper subsec:gowers)
+- Depends on: Green-Tao, Linear equations in primes (arXiv:math/0606088v2: complexity, generalised von Neumann, Thm 7.2);
+  Green-Tao 2012 (MN(s), also for lambda); Tao arXiv:1605.04628 (local Gowers norms, Thm 1.8, Remark 3.4); Tao arXiv:1509.05422.
+  Own: Prop. gowers-blind (random block functions; proof audited, notes/audit-parity-v013.md); code/parity/gowers_twin_blocks.py.
+- Feeds into: a second, separate barrier next to parity: global Gowers uniformity (all that the finite-complexity theory uses)
+  is compatible with any shift-2 correlation and with "fake primes" without twins. Twin primes need information beyond global
+  Gowers norms, just as they need information beyond Type I sums.
+- Missing for anything bigger: Tao's localisation for lambda (an equivalence of open conjectures; only k = 2 is proved, via
+  MRT15) relies on multiplicativity at small primes and on local uniformity at scales H -> infinity slowly; for Lambda neither is available (Lambda - 1 is not locally uniform below
+  scale log X). Nothing here moves toward twin primes.
+
 ## Bound work, rung 182 (Session 19)
 - All four ingredients of the 182 cap quotient (I, J0, J+, tail T) now by two programs; q_H - 1 >= mu-. Missing before 182 could
   even be considered reproduced: the restoration losses (197 source integrals, partly underspecified), and the analytic inputs.

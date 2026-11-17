@@ -3,35 +3,47 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 27, 11:34 AM CT slot of 16 Nov): PHASE B
+## POSITION (after Session 28, 7:34 PM CT slot of 16 Nov; ran 17 Nov UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0 FROZEN (errata only, as v1.0.x); parity-barrier v0.12 (active); main paper v0.27.
+- Papers: verification-note v1.0 FROZEN (errata only, as v1.0.x); parity-barrier v0.13 (active, 30 pp.); main paper v0.28.
   H_m programme scoped, paused.
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
   Its priorities override the default ordering this week.
 
-## Next steps (in order; from the weekly review of 16 Nov, updated by Session 27)
+## Next steps (in order; from the weekly review of 16 Nov, updated by Session 28)
 1. (DONE in Session 27) Verification note v1.0. Deferred minor referee items (referee/2026-11-16-verification-note-v1/report.md):
-   19 (state the hypotheses of the Lean lemmas stadlmann/kintali_extra_le_three; no Lean lemma for the "free mass below L - C_1"
-   branch), 26 (the paper says 5000 bits for the first sigma = 4 run, the log 4800: fix the main paper), 28 (title omits 186/182;
-   rem:lemma5 run-on sentence, label the audit result; record the cap-free SY comparison in a compare_sy236_capfree.json with the
-   factor 2^96 3^10 7^2 11^2 521^50). Do these as erratum v1.0.1 only if worth it. Jerry decides whether to send the note to the
-   preprint authors (flag the Polymath8a Lemma 6.25 item first).
-2. Parity paper toward v1.0 (~20 pp.; now 28 pp.). Done in v0.12: sec. siegel shortened (217 -> ~95 lines), MR16 digest to a
-   paragraph, proofs of fi-twin / bomb-twin / ss-split shortened, B-parity reduced. Still to do: merge Prop. ceil with
-   Cor. consistent; Remark pm65 -> footnote; halve the FI98b / HB01 / SS19 digests; Debouzy constant to a footnote; notation
-   renames (lambda_d vs Liouville lambda; pattern Omega; region D); referee items 2.4-2.7 and 3
-   (referee/2026-11-16-parity-barrier/report.md).
-3. Main paper: done in v0.27: prop:family, prop:adjoint, prop:psi-weight demoted to remarks. Still: merge prop:bonf/bonf2; cut
-   rem:k49 and rem:prediction to a sentence; relabel rem:sha182; shorten the History appendix and the ~60 "version 0.x" mentions in
-   the body; make the paper a thin index.
-4. One parity attempt per run (enters the paper only as a short remark if new). Done: Pintz (S26), Chen consistency (S27).
-   Remaining candidates: (c) Green-Tao-Ziegler: why twin primes have infinite complexity (Gowers-norm barrier vs parity);
-   (d) Matomaki-Radziwill-Tao averaged Hardy-Littlewood over shifts. Pintz-Maynard folklore check: a literature helper (S27)
-   found no improvement of Pintz's 16 in the 10 citing papers (notes/sources-chen-parity.md, Q4).
+   19 (hypotheses of the Lean lemmas stadlmann/kintali_extra_le_three), 28 (title omits 186/182; rem:lemma5 run-on sentence;
+   compare_sy236_capfree.json with the factor 2^96 3^10 7^2 11^2 521^50). Item 26 is RESOLVED in the main paper (v0.28): the first
+   Lemma 9.1 ceiling run was `--prec 5000` (command recorded further down in this file), i.e. weights to 2^-5000 and 4800-bit balls in
+   the Schur step (the code uses prec - 200); the note's wording ("the project log records 4800 bits") is consistent, no erratum
+   needed. Jerry decides whether to send the note to the preprint authors (flag the Polymath8a Lemma 6.25 item first).
+2. Parity paper toward v1.0 (~20 pp.; now 30). Done in v0.12-v0.13: sec. siegel, MR16 digest, proofs of fi-twin / bomb-twin /
+   ss-split, B-parity, rem:pm65 and rem:debouzy shortened. Still to do: notation renames (lambda_d vs Liouville lambda; pattern
+   Omega; region D); halve the FI98b / HB01 digests (SS19 judged already tight); referee items 2.4-2.7 and 3
+   (referee/2026-11-16-parity-barrier/report.md); merging Prop. ceil with Cor. consistent was judged not worth it (the corollary
+   needs Thm k2, which comes later).
+3. Main paper: done in v0.27-v0.28: three non-propositions demoted; the verbatim pre-0.19 abstract removed from the History
+   appendix. Still: merge prop:bonf/bonf2; cut rem:k49 and rem:prediction to a sentence; relabel rem:sha182; trim the ~60
+   "version 0.x" mentions in the body; make the paper a thin index.
+4. One parity attempt per run (enters the paper only as a short remark/subsection if new). Done: Pintz (S26), Chen (S27),
+   Gowers/infinite complexity (S28). Remaining review candidate: (d) Matomaki-Radziwill-Tao averaged Hardy-Littlewood over shifts
+   h <= H (what averaging over the shift buys, and why a single shift h = 2 is out of reach). Then new candidates from the
+   open questions of the parity paper.
 5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist); H_m. Optional: one-sided --bonf certificate on
    the Song-Yue witness (resumable via --ckpt).
+
+## Session 28 (7:34 PM CT slot of 16 Nov, started on time 01:35 UTC 17 Nov; no wait) -- additions
+- Parity paper v0.13: subsec:gowers (Prop. prop:gowers-blind, Remark rem:gowers), bib GT10, GT12, Tao16b; rem:mr16-transfer
+  corrected (MRT15 builds on MR16); rem:pm65 and rem:debouzy shortened; abstract one clause longer (\enlargethispage{4pt} after
+  the TOC keeps page 1 clean). Audit notes/audit-parity-v013.md (3 errors, 5 gaps in the first draft of the remark, all fixed).
+  Route card notes/parity-attempts/2026-11-17-gowers-infinite-complexity.md.
+- Scripts: code/parity/gowers_twin_blocks.py [N L seed] (/usr/bin/python3 -I; 19 s; output .out); exploration
+  code/explore/local_u2_liouville.py [X M seed] (2 s; .out; dead end).
+- Sources read: GT10 arXiv:math/0606088v2, GT12 arXiv:0807.1736v4, Tao arXiv:1509.05422v4, arXiv:1605.04628v1 (hashes in
+  notes/parity-programme.md). GTZ inverse theorem not opened.
+- Main paper v0.28. Lean: lake build and Audit.lean pass (no Lean changes). Wolfram and mathbox NOT available.
+- No news search (not the 3:34 AM run).
 
 ## Session 27 (11:34 AM CT slot of 16 Nov, started on time 17:34 UTC; no wait) -- additions
 - Verification note v1.0 (frozen): Section sec:basis (per-number basis), Appendix app:facts, abstract 204 words; internal referee

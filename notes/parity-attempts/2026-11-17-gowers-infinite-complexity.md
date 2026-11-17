@@ -33,11 +33,17 @@ sharply? Where does Tao's log-averaged two-point Chowla theorem get around it, a
   {0,2}-valued g = 1 + f_- with ||g-1||_{U^d} small, mean ~1 and (1/N) sum g(n) g(n+2) <= 4/L + 2(3L/N)^{1/2} + 8/N.
 - Script code/parity/gowers_twin_blocks.py (+ .out): U^2 exact, U^3 floating; block f: U^2 0.209, shift-2 0.969 at N = 32768,
   L = 64; lambda on [1e7, 1e7+N): 0.098, -0.004 (Heuristic illustration).
-- Remark rem:gowers: the two barriers differ (Green-Tao count patterns that sieve weights alone cannot); Tao sidesteps the Gowers
-  barrier for lambda by localising (local U^{k-1} on [n, n+H], H slowly growing, log averaging); the block functions are not
-  locally uniform at scales below L, so they are no counterexample there. For Lambda the route has no analogue at the scale it
-  needs: the entropy decrement uses lambda(pn) = -lambda(n), and Lambda - 1 is not locally uniform on intervals of length
-  H << log X (mostly no primes).
+- Remark rem:gowers: the two barriers differ (finite-complexity counts get past parity via the Type I/II input of MN(s), GT12
+  Sec. 3); Tao reformulates the problem for lambda by localising (log-averaged Chowla <=> log-averaged local Gowers uniformity,
+  an equivalence of open conjectures; local U^{k-1} suffices for k >= 3); the only proved case, k = 2, uses the MRT15 bound for
+  lambda(n) e(alpha n). The block function f_- is locally U^1-uniform with shift-2 correlation ~ -1. For Lambda the route has
+  no analogue at the scale it
+  needs: Tao's arguments "rely in an essential fashion on multiplicativity at small primes" (Tao16 p. 5), and Lambda - 1 is not
+  locally uniform on intervals of length H = o(log X) (most contain no prime).
+- Audit (fresh-context helper, notes/audit-parity-v013.md): the Proposition is correct with all constants (brute force over all
+  sign choices for small d, N, L). 3 errors and 5 gaps in the first draft of the remark, all fixed. Notably: f_- is locally
+  U^1-uniform yet has shift-2 correlation ~ -1, so local U^1 alone does not give two-point Chowla (Tao's k = 2 proof uses the
+  MRT15 bound for lambda(n) e(alpha n)); Tao16b's localisation is an equivalence of open conjectures for k >= 3.
 
 ## Classification
 LOCATED (proved, folklore in substance). Confirms that twin primes need information beyond global Gowers norms, just as
