@@ -1,7 +1,7 @@
 {
- "version": "0.29",
+ "version": "0.30",
  "updated": "2026-11-17",
- "session_count": 29,
+ "session_count": 30,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Proved here",
+   "text": "Parity paper v0.15, Remark rem:lt22 (elementary, folklore in substance): if mu' = 1 on U = {p+h: p <= X-H prime, 1 <= h <= H} and mu' = mu elsewhere, then mu' 1_S satisfies the Lichtman-Teravainen hypothesis H_2(X,H,eta') with eta' <= 2 eta + (216+o(1)) H/log X (eta that of mu 1_S, << H^{-delta} by their Prop. 2.1), while sum_{h<=H} sum_{n<=X} mu'(n+h) Lambda(n) >= (1+o(1)) H X. So their input on mu cannot give cancellation along primes once H^{1+delta} <= c log X; their Lambda-side moment bounds fail for H = o(log X). Both stop at the mean prime gap. Audited by a fresh-context helper (8 items fixed). Script code/parity/hybrid_shifted_primes.py (Heuristic).",
+   "where": "papers/parity-barrier rem:lt22"
+  },
+  {
+   "label": "Computed",
+   "text": "H_m scoping (notes/hm-programme.md section 6; code/hm/mpz_region_check.py, exact rationals): in Stadlmann's proof of her MPZ region 80w + 80d/3 < 1 (arXiv:2309.00425v3, Cor. 2) the binding constraint is sigma > 1/10 of Polymath8a's combinatorial Lemma 2.7, not the Type III estimate; in our (uncertified) reading the 2026 Type I/II lemmas of arXiv:2608.31126 do not enlarge the MPZ region; going below sigma = 1/10 needs Type IV/V estimates (PM8a Remark 3.2) that are not available.",
+   "where": "notes/hm-programme.md section 6"
+  },
   {
    "label": "Proved here",
    "text": "Parity paper v0.13, Prop. prop:gowers-blind (folklore in substance): with Tao's local norm ||f||_{U^d[N]}, for d >= 1, L >= 2, N >= 4d there are f_+-: [N] -> {-1,1} with ||f||_{U^d[N]}^{2^d} <= 2^{2d+1}(4d)^d L/N and +-(1/N) sum f(n)f(n+2) >= 1 - 4/L - 6/N, and a {0,2}-valued g with ||g-1||_{U^d}^{2^d} <= 3 c_d L/N, mean within (3L/N)^{1/2} of 1, and (1/N) sum g(n)g(n+2) <= 4/L + 2(3L/N)^{1/2} + 8/N (random block functions). So global Gowers uniformity (all that the Green-Tao finite-complexity theory uses) says nothing about two-point Chowla or twin primes; Tao's localisation (arXiv:1605.04628) sidesteps this for lambda only.",
@@ -778,6 +788,24 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "At X = 1e9, H = 8..512, local U^2 and U^3 of lambda agree with i.i.d. signs and a random multiplicative function within one standard error: no numerical handle. Session 28, code/explore/local_u2_liouville.py."
+  },
+  {
+   "idea": "Hybrid averages below the mean prime gap: can the Lichtman-Teravainen mu-side input reach H = o(log X)?",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "A mu' equal to +1 on every window after a prime satisfies the same input (eta' <= 2 eta + 217 H/log X) with no cancellation; Session 30, parity paper rem:lt22."
+  },
+  {
+   "idea": "Enlarge the MPZ region for H_m with the 2026 Type I/II lemmas",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "The binding constraint in Stadlmann 2023 Cor. 2 is sigma > 1/10 (combinatorial lemma); the 2026 lemmas have the same Type I/II lower end 1/4+12w+4d (our reading, not certified). Session 30, notes/hm-programme.md section 6."
+  },
+  {
+   "idea": "Polya-type sign bias of lambda on shifted primes across shifts h",
+   "origin": "exploration",
+   "status": "open",
+   "note": "X = 2e7, h <= 64: 23 of 32 even h negative, mean -0.00045 pi(X), of Polya size, but S(h) are strongly correlated; inconclusive. Session 30."
   }
  ],
  "phase": "B",
@@ -785,10 +813,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.14",
+   "version": "0.15",
    "status": "active",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; v0.14: averaging over the shift (Matomaki-Radziwill-Tao): the Liouville model of parity is solved on average for any H -> infinity, Lambda(n)Lambda(n+h) only in windows H >= X^{8/33+eps}, and no averaged statement reaches a prescribed shift; cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
+   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; v0.14: averaging over the shift (Matomaki-Radziwill-Tao): the Liouville model of parity is solved on average for any H -> infinity, Lambda(n)Lambda(n+h) only in windows H >= X^{8/33+eps}, and no averaged statement reaches a prescribed shift; v0.15: hybrid averages (Lichtman-Teravainen solve sum_p mu(p+h) on average for H >= (log X)^{1+eps}); an elementary construction shows that their input on mu, like their input on Lambda, stops at the mean prime gap log X (folklore in substance); cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
   },
   {
    "slug": "verification-note",

@@ -3,31 +3,39 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 29, 3:34 AM CT slot of 17 Nov): PHASE B
+## POSITION (after Session 30, 11:34 AM CT slot of 17 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN (errata only); parity-barrier v0.14 (active, 31 pp.); main paper v0.29.
-  H_m programme scoped, paused.
+- Papers: verification-note v1.0.1 FROZEN (errata only); parity-barrier v0.15 (active, 32 pp.); main paper v0.30.
+  H_m programme scoped, paused (Session 30: MPZ-region gains ruled out in our reading; see notes/hm-programme.md section 6).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
   Its priorities override the default ordering this week.
 
-## Next steps (in order; from the weekly review of 16 Nov, updated by Session 29)
-1. (DONE) Verification note v1.0; erratum v1.0.1 (Session 29) fixed referee item 19 (hypotheses of the Lean cap lemmas). Still
-   deferred (minor, not errors): item 28 (title omits 186/182; rem:lemma5 run-on sentence; compare_sy236_capfree.json factor).
-   Jerry decides whether to send the note to the preprint authors (flag the Polymath8a Lemma 6.25 item first).
-2. Parity paper toward v1.0 (~20 pp.; now 31). Done: sec. siegel, MR16 digest, fi-twin / bomb-twin / ss-split proofs, B-parity,
-   rem:pm65, rem:debouzy shortened (v0.12-0.13); FI98b and HB01 digests halved (v0.14). Still to do: notation renames
-   (lambda_d vs Liouville lambda; pattern Omega; region D); referee items 2.4-2.7 and 3
-   (referee/2026-11-16-parity-barrier/report.md); consider shortening sec. num and the k = 3 subsections.
-3. Main paper: done in v0.27-v0.29: non-propositions demoted; Bonferroni propositions merged; rem:k49, rem:prediction cut;
-   rem:sha182 relabelled; 40 of 41 body "version 0.x" mentions removed (the one left names the parity paper version in
-   Related results). Still: make the paper a thin index (shorten the long 186/182 remarks, move detail to the note).
-4. One parity attempt per run. All four review candidates done: Pintz (S26), Chen (S27), Gowers (S28), MRT averaged HL (S29).
-   Next candidates (new mechanisms only, check notes/parity-attempts/README.md): Lichtman-Teravainen hybrid average of
-   Lambda(n)lambda(n+h) over h (arXiv:2111.08912, not yet read: what a hybrid parity-prime average buys); conditional ranges
-   for averaged HL under GRH/EH (paper open question); Siegel open question 8 judged niche.
-5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist); H_m. Optional, low value: one-sided --bonf
-   certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
+## Next steps (in order; from the weekly review of 16 Nov, updated by Session 30)
+1. (DONE) Verification note v1.0 / v1.0.1. Still deferred (minor, not errors): item 28 (title omits 186/182; rem:lemma5 run-on
+   sentence; compare_sy236_capfree.json factor). Jerry decides whether to send the note to the preprint authors.
+2. Parity paper toward v1.0 (~20 pp.; now 32). Done through v0.15: the review cuts listed in earlier sessions; referee items
+   2.1-2.7 and the section-3 labelling items. Still to do: notation renames (lambda_d vs Liouville lambda; pattern Omega;
+   region D); shorten sec. num and the k = 3 subsections; consider merging rem:mrt17 and rem:lt22 if the section grows.
+3. Main paper: make it a thin index (shorten the long 186/182 remarks, move detail to the note). Not done in v0.30.
+4. One parity attempt per run (new mechanisms only, check notes/parity-attempts/README.md). Done: Pintz (S26), Chen (S27),
+   Gowers (S28), MRT averaged HL (S29), Lichtman-Teravainen hybrid averages (S30). Next candidates: conditional ranges for
+   averaged HL under GRH/EH (paper open question; source: MRT17 p. 5 defers them -- search for a later paper first);
+   Siegel open question 8 judged niche.
+5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist); H_m (next step if resumed: the hybrid-support
+   Theorem 6.7 analogue, notes/hm-programme.md section 4 item 4). Optional, low value: one-sided --bonf certificate on the
+   Song-Yue witness (~25 core-hours; resumable via --ckpt).
+
+## Session 30 (11:34 AM CT slot of 17 Nov, started on time 17:35 UTC; no wait) -- additions
+- Parity paper v0.15: Remark rem:lt22 (LT22 arXiv:2111.08912v3 read in full, SHA-256 87410676...68464014; bib LT22),
+  rem:ford-twin updated; referee items 2.6, 2.7, three labelling items. Audit notes/audit-parity-v015.md (5 errors, 3 gaps in
+  the first draft, all fixed). Route card notes/parity-attempts/2026-11-17-hybrid-averages-mean-gap.md.
+- Script: code/parity/hybrid_shifted_primes.py [X HMAX] (/usr/bin/python3 -I; ~2 min at 2e7, < 2 GB); output .out
+  (also the exploration: Polya-type bias across shifts, inconclusive).
+- H_m scoping: code/hm/mpz_region_check.py (exact, seconds; .out); notes/hm-programme.md section 6. Sources read: Stadlmann
+  2309.00425v3 pp. 8-9, PM8a 1402.0811 Def. 2.6 / Lemma 2.7 / Thm 2.8 / Remark 3.2, Stadlmann 2608.31126v1 Lemmas 3-7.
+- Main paper v0.30 (Related results, history item). Lean: lake build and Audit.lean pass (no Lean changes).
+- Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 29 (3:34 AM CT slot of 17 Nov, started on time 09:34 UTC; no wait) -- additions
 - Parity paper v0.14: subsec:mrt17 (Literature: MRT17 Thm 1.3(i), footnote 4, p. 5; MRT15 and MRT17b abstracts), Remark

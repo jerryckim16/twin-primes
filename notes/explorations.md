@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-17, Session 30 -- A Polya-type sign bias of lambda on shifted primes? (probabilistic models / Polya's problem)
+- Idea: Polya-type bias makes partial sums of lambda negative for a long time, at relative size about x^{-1/2}. Ask whether
+  S(h) = sum_{p<=X} lambda(p+h) shows a uniform sign across shifts h, and whether it depends on the parity of h (p+h odd for
+  even h, even for odd h), which would be a small structured deviation from the Hardy-Littlewood-Chowla prediction S(h) = o(pi(X)).
+- Tried: part 2 of code/parity/hybrid_shifted_primes.py (same run as the parity attempt; X = 2e7, h <= 64; .out).
+- Outcome: INCONCLUSIVE. 39 of 64 S(h) are negative (even h: 23 of 32, mean S/pi = -0.00045; odd h: 16 of 32, mean -0.00008),
+  max |S|/pi = 0.0025 (h = 42), against the random-sign scale pi(X)^{-1/2} = 0.00089 and X^{-1/2} = 0.00022. The even-h mean
+  is of the order of a Polya-type term, but the S(h) share the same primes (strongly correlated across h), so no significance can
+  be claimed, and one X is not a trend. Would need several X and a model of the square contribution (p+h = m^2) before saying
+  anything. Not promoted. Heuristic / exploratory only.
+
 ## 2026-11-17, Session 29 -- Is there structure in the Hardy-Littlewood errors across shifts beyond S(h)? (probabilistic models of primes)
 - Idea: for prime pairs (p, p+h) in (X, 2X], look at the normalised counts r(h) = c(h)/(S(h) L(h)) over 1000 even shifts and
   ask (a) whether their spread matches a Poisson (Cramer-type) model with the singular series, and (b) whether the residual
