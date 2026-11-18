@@ -19,7 +19,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 0.15 (draft), 17 November 2026}
+\date{Version 0.16 (draft), 18 November 2026}
 
 \begin{document}
 
@@ -598,6 +598,68 @@ $H=2,4,\dots,64$ and five values of $\alpha$, with integer $x$ and $P$ the
 primes up to $X$. It finds $\max_{h\le64}|\sum_{p\le X}\lambda(p+h)|/\pi(X)=0.0025$
 (at $h=42$; $0.0018$ at $h=2$), and $|U|/X=0.13$, $0.44$, $0.91$ for $H=2$,
 $8$, $32$ (\lbl{Heuristic}).
+\end{remark}
+
+\begin{remark}[Fejér averages, pair correlation, and the scale $\log X$]\label{rem:gm}
+Let $f=\Lambda1_{[1,N]}$, $c(j)=\sum_nf(n)f(n+j)$, $W_K(x)=\sum_{x<n\le x+K}f(n)$,
+$I(K)=\sum_{0\le x<N}(W_K(x)-K)^2$, and let
+$F(K)=\sum_{1\le j<K}(K-j)c(j)\big/\left(N\binom K2\right)$ be the Fejér
+mean of $c(j)/N$; by Gallagher's lemma \cite[(1.5)]{Mer16} the Hardy--Littlewood
+value of $F(K)$ tends to $1$.
+For integer $x$, $I(K)$ is the integral $\int_0^N(\psi(x+K)-\psi(x)-K)^2dx$ of
+\cite[Thm.~7, (9.3)]{Gol04}, up to windows near $N$.
+
+\lbl{Proved here; elementary, folklore in substance.} Let $1\le K\le N^{1/3}$.
+The window identity of Remark~\ref{rem:mrt17} and $\sum_{0\le x<N}W_K(x)=K\psi(N)+O(K^2\log N)$ give
+\[
+2\sum_{1\le j<K}(K-j)c(j)=I(K)-K\,c(0)+K^2N+2K^2(\psi(N)-N)+O(K^3\log^2N). \tag{$*$}
+\]
+With $c(0)=N\log N-N+o(N)$, the upper-bound sieve ($c(j)\ll\mathfrak S(j)N$) and
+the prime number theorem, $(*)$ gives four statements.
+\begin{enumerate}
+\item[(a)] \emph{Unconditionally,} $F(K)\ge1-(1+o(1))\log N/K+o(1)$ as $K\to\infty$
+  (Cauchy--Schwarz on $\sum_xW_K(x)^2$); this is the $\Lambda$-form of
+  \cite[Main Thm.~2]{Mer16}, which proves the same bound for prime counts.
+\item[(b)] \emph{If $K=o(\log N)$,} then $I(K)\sim KN\log(N/K)$ holds
+  unconditionally. So in this range the Goldston--Montgomery asymptotic is
+  the diagonal $Kc(0)$ alone and says nothing about prime pairs.
+\item[(c)] \emph{Under RH and the strong pair correlation conjecture,} which by
+  \cite[Thm.~7 and (9.3)]{Gol04} (Goldston--Montgomery) is equivalent on RH to
+  $I(K)\sim KN\log(N/K)$ uniformly for $1\le K\le N^{1-\varepsilon}$, we get
+  $F(K)\to1$ whenever $\liminf K/\log N>0$. The error is
+  $O(\log K/K)+o(\log N/K)+o(1)$. Conversely, for $K\asymp\log N$, $F(K)\to1$
+  implies $I(K)\sim KN\log N$. So at the mean gap the Fejér-averaged
+  Hardy--Littlewood statement and the variance asymptotic are the same
+  statement. For $K/\log N\to\infty$ the variance asymptotic is finer: it fixes
+  the second-order term $-KN\log K$. This matches Goldston's formula
+  \cite[(47)]{MS04}
+  \[2\sum_{m\le h}(h-m)\mathfrak S(m)=h^2-h\log h+Bh+O(h^{1/2+\varepsilon}),\qquad B=1-\gamma-\log2\pi.\]
+\item[(d)] \emph{A fixed shift.} Taking second differences of $(*)$ in $K$ gives
+  \[c(2)=N+\tfrac12\left(I(3)-2I(2)+I(1)\right)+O(|\psi(N)-N|+\log^2N).\]
+  So $c(2)\sim\mathfrak S(2)N$ is equivalent to
+  $I(3)-2I(2)+I(1)=2(\mathfrak S(2)-1)N+o(N)$, where $\mathfrak S(2)=1.3203\ldots$. Here the main terms $KN\log N$ cancel,
+  so the precision needed is $o(N)$: one logarithm beyond any form of
+  $I(K)\sim KN\log(N/K)$.
+\end{enumerate}
+Thus the conditional answer to question~\ref{oq:mrtcond} (Section~\ref{sec:open})
+for the Fejér form is $H\ge c\log X$, under RH and the pair correlation
+conjecture. This is the scale below which, by footnote~4 of \cite{MRT17}, the
+methods cannot go. The hypothesis is about zeros, not a sieve axiom, and the
+missing step to a fixed shift is precision, not parity. The required
+lower-order terms are, through $(*)$, equivalent to Hardy--Littlewood at
+$h\le2$ itself; Keating--Smith \cite{KS19} state heuristically that this
+corresponds to lower-order terms in the two-point correlation of the zeros.
+The statement is not the almost-all form of \cite{MRT17}, for which we found no
+conditional range in print.
+
+Script \texttt{code/parity/variance\_fejer.py} (output \texttt{.out}) checks
+the identity exactly and computes these quantities at $N=10^8$ ($\log N=18.4$),
+with $\theta$-weights (\lbl{Heuristic}). The values $F(K)$ stay within
+$4\cdot10^{-4}$ of the Hardy--Littlewood means for $3\le K\le80$ ($F(40)=0.8946$).
+The bound in (a) is $0.58$ at $K=40$. The quantity $(I(K)-KN\log(N/K))/(KN)$ is
+$-2.40\pm0.03$ for $24\le K\le80$, near the value $B-1=-2.415$ predicted by
+\cite[Thm.~3]{MS04}. At $K=1,2,3$ it is $-2.002,-2.308,-2.023$, and these three
+values carry $c(2)$.
 \end{remark}
 
 \section{Which close-prime targets the obstruction blocks}\label{sec:bip}
@@ -2070,12 +2132,15 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   whether that one would suffice. A Type~I weight built from the approximant
   $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22}, with controlled
   $\ell^1$ norm, might avoid the small-prime condition; we have not checked this.
-\item (\lbl{Open}) What is the smallest $H=H(X)$ for which the averaged
-  Hardy--Littlewood statement of Section~\ref{subsec:mrt17} holds, under GLH,
-  GRH or EH? \cite[p.~5]{MRT17} say that these hypotheses allow one to do
-  much better than $X^{1/6}$, and \cite[footnote~4]{MRT17} that the methods
-  cannot go below $\log X$ even then; the authors defer these conditional
-  results, and we have not found them in print.
+\item\label{oq:mrtcond} (\lbl{Open}) What is the smallest $H=H(X)$ for which the
+  almost-all form of the averaged Hardy--Littlewood statement of
+  Section~\ref{subsec:mrt17} holds, under GLH, GRH or EH? \cite[p.~5]{MRT17}
+  say that these hypotheses allow one to do much better than $X^{1/6}$, and
+  \cite[footnote~4]{MRT17} that the methods cannot go below $\log X$ even then;
+  the authors defer these conditional results, and we have not found them in
+  print. For the weaker Fejér-averaged form the answer is $H\ge c\log X$ under
+  RH and the pair correlation conjecture (Remark~\ref{rem:gm}(c)); which range
+  RH, GRH or EH alone give is still open here.
 \end{enumerate}
 
 \begin{thebibliography}{9}
@@ -2094,6 +2159,10 @@ $\nu_1=\nu_2=1$), and so would the last column (her Theorem~0.2).
   2167--2196; arXiv:1503.05121v3 (read: eq.~(1.12) and the abstract).
 \bibitem{MRT17} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{Correlations of the von Mangoldt and higher divisor functions I. Long shift ranges}, arXiv:1707.01315v3 (18 Feb 2019; read pp.~1--11; journal version not consulted).
 \bibitem{MRT17b} K.~Matom\"aki, M.~Radziwi\l\l{} and T.~Tao, \emph{Correlations of the von Mangoldt and higher divisor functions II. Divisor correlations in short ranges}, arXiv:1712.08840 (read: abstract only).
+\bibitem{Mer16} J.~Merikoski, \emph{Averaged form of the Hardy--Littlewood conjecture}, arXiv:1605.04757v1 (read: Main Theorems~1, 2, Corollaries~1, 2 and the proofs, pp.~1--6).
+\bibitem{Gol04} D.~A.~Goldston, \emph{Notes on pair correlation of zeros and prime numbers}, arXiv:math/0412313v1 (read: \S\S6, 8, 9, Theorem~7 and (9.3), pp.~11--19).
+\bibitem{MS04} H.~L.~Montgomery and K.~Soundararajan, \emph{Primes in short intervals}, Comm.\ Math.\ Phys.\ \textbf{252} (2004), 589--617; arXiv:math/0409258v1 (read: \S0, Theorems~2, 3, (16), (17), (47)).
+\bibitem{KS19} J.~P.~Keating and D.~J.~Smith, \emph{Twin prime correlations from the pair correlation of Riemann zeros}, arXiv:1903.07057v1 (read: abstract only; a heuristic calculation).
 \bibitem{Tao16} T.~Tao, \emph{The logarithmically averaged Chowla and Elliott
   conjectures for two-point correlations}, arXiv:1509.05422v4 (29 Jul 2016;
   journal version not consulted).
@@ -2176,8 +2245,9 @@ project repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attem
 \item[0.11] (16 Nov 2026) Pintz's parity-sensitive dichotomy with Maynard weights (Section~\ref{subsec:pintz}). First cuts after the weekly review: the dual-formula subsection shortened, the step-function proposition merged into Theorem~\ref{thm:k3-window}, the two $k=3$ remarks merged, the log-averaged proposition turned into a remark, an answered open question and the plan for later versions removed, changelog shortened.
 \item[0.12] (16 Nov 2026) Remark~\ref{rem:chen}: Chen's theorem as a consistency test of the criterion (Lean-checked weights). Cuts after the weekly review: the Siegel-zero section reduced to one short section; the Matom\"aki--Radziwi\l\l{} digest to one paragraph and a short remark; the proofs of Propositions~\ref{prop:fi-twin}, \ref{prop:bomb-twin} and \ref{prop:ss-split} shortened; Proposition~\ref{prop:B-parity} reduced to its parity statement, its Cauchy--Schwarz reduction moved to a remark.
 \item[0.13] (17 Nov 2026) Section~\ref{subsec:gowers}: small global Gowers norms do not constrain the shift-$2$ correlation (Proposition~\ref{prop:gowers-blind}, folklore in substance), with what Tao's localisation does for $\lambda$ and why it does not reach $\Lambda$ (internal audit: 3 errors, 5 gaps in the first draft of the remark, all fixed). Remarks~\ref{rem:pm65} and~\ref{rem:debouzy} shortened (the Debouzy constant to a footnote).
-\item[0.15] (17 Nov 2026) Remark~\ref{rem:lt22}: hybrid averages (Lichtman--Ter\"av\"ainen) and why both of their inputs stop at the mean prime gap; referee items 2.6, 2.7 and three labelling items.
 \item[0.14] (17 Nov 2026) Section~\ref{subsec:mrt17}: what averaging over the shift buys (Matom\"aki--Radziwi\l\l--Tao), the window identity, and why a single shift stays out; one new open question. The digests of \cite{FI98b} and \cite{HB01} halved.
+\item[0.15] (17 Nov 2026) Remark~\ref{rem:lt22}: hybrid averages (Lichtman--Ter\"av\"ainen) and why both of their inputs stop at the mean prime gap; referee items 2.6, 2.7 and three labelling items.
+\item[0.16] (18 Nov 2026) Remark~\ref{rem:gm}: Fejér-averaged prime pairs and the variance of primes in short windows; under RH and pair correlation the Fejér form holds down to $c\log X$, and a fixed shift needs one more logarithm of precision. Open question~\ref{oq:mrtcond} partly answered; changelog order fixed.
 \end{itemize}
 
 \end{document}
