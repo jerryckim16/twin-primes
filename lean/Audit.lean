@@ -29,3 +29,9 @@ import TwinPrimes
 #print axioms TwinPrimes.chen_no_weakly_fair_weight
 #print axioms TwinPrimes.chen_twin_half_weight
 #print axioms TwinPrimes.chen_semiprime_half_weight
+#print axioms TwinPrimes.exists_of_wsum_lt
+#print axioms TwinPrimes.two_of_countP
+#print axioms TwinPrimes.dhl_of_sieveInequality
+#print axioms TwinPrimes.sieveInequality_of_ratio
+#print axioms TwinPrimes.theta_of_ratio_gt_four
+#print axioms TwinPrimes.boundedGaps_246_of_sieveInequality_50
