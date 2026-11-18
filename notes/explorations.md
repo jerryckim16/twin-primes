@@ -3,6 +3,27 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-18, Session 32 -- Does the LP "parity margin" t*(E) carry quantitative sieve information? (combinatorics of pattern weights / LP duality)
+- Idea: Prop. prop:bipartite is the 0/1 test "(1/2,...,1/2) in the hull P(E) of E-free indicators". Define the margin
+  rho_crit(E) = max{rho : (rho on prime positions, 1/2 on lambda-positions) in P(E)} (= t*(E) = 1/chi_f for pure graph
+  targets) and ask whether it predicts the sieve thresholds (theta M_k > 2m for DHL[k,m+1], theta M_k > 1 for Pintz), i.e.
+  which parity-unblocked targets a Maynard-type sieve actually reaches.
+- Tried: code/explore/parity_margin_lp.py (scipy/HiGHS, primal and dual rationalised and verified exactly with Fraction; 1.5 s;
+  output .out): DHL[k,m+1] for 10 (k,m), window targets on {0,2,6}, {0,2,6,8,12}, {0,2,8,12}, {0,4,6,10,12,16}, P4, C5, C7,
+  Petersen, K4, Pintz K_{k+1} with one lambda-position (k = 2..6), stars, four mixed families (two lambda-positions, "3 primes
+  or 2 primes + lambda", a lambda pair), Chen-type with an uncapped P_2 position. All 49 LPs certified.
+- Result: DHL[k,m+1] gives m/k and Pintz gives 1/(2k) exactly, so "rho = theta M_k/(2k) > rho_crit" reproduces theta M_k > 2m and
+  theta M_k > 1. But this is a TAUTOLOGY: by LP duality rho > rho_crit says that some linear inequality a.x <= b valid on E-free
+  sets fails in mean under the sieve weight, which is exactly the first-moment argument of Maynard and Pintz (the optimal duals
+  are the uniform weights those proofs use). Side facts, all expected: a second lambda-position (either "or" or "and") never
+  lowers rho_crit (the LP only sees marginals; a conjunction would need a lambda-lambda correlation, i.e. Chowla); "3 primes or
+  2 primes + lambda" needs theta M_k > 2k*rho_crit = 3 (k = 4, 5, 6), the expected half-prime saving.
+- Outcome: DEAD END (tautology). The margin adds nothing beyond the 0/1 criterion and the known thresholds: the hypothesis that
+  rho_crit < 1/2 predicts provability fails at once. Since M_k <= k log k/(k-1), a first-moment sieve at theta <= 1 needs
+  rho_crit < log k/(2(k-1)), and targets with rho_crit in [log k/(2(k-1)), 1/2) (DHL[3,2], C5, DHL[5,3], window g = 6 on
+  {0,2,6,8,12}) are parity-free but out of reach. The LP is silent on that gap, which is where Polymath8b's epsilon-enlargement
+  and GEH work. Not promoted. Heuristic / exploratory only.
+
 ## 2026-11-18, Session 31 -- The window identity in F_q[T]: what Keating-Rudnick's variance says about single shifts (function fields)
 - Idea: in F_q[T] short intervals I(A;h) = A + P_{<=h} are cosets of a subspace, so they partition the monic polynomials and
   the window identity becomes an UNWEIGHTED ball sum: sum over cosets nu^2 = sum_{deg D <= h} c(D). Ask whether Keating-
