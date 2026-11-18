@@ -133,3 +133,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   updated. Route card notes/parity-attempts/2026-11-17-hybrid-averages-mean-gap.md; audit notes/audit-parity-v015.md.
 - Referee items 2.6, 2.7 and three section-3 labelling items applied. Still open: notation renames; cuts (sec. num, k = 3).
 - Next attempt candidates: conditional ranges for averaged HL under GRH/EH (open question); nothing else from the review list.
+
+## Session 31 (18 Nov) updates
+- Sources read: Merikoski arXiv:1605.04757v1 (SHA-256 0a719f3949793b82b7a1bd035d4e2d93e4da95325017bbb903f4284f487efd51; pp. 1-6);
+  Goldston arXiv:math/0412313v1 (d4107ba6b463294ffffd409842ee6beae394dc9f80c6dc0e8fc52f9c4615473c; sections 6, 8, 9);
+  Montgomery-Soundararajan arXiv:math/0409258v1 (4814387da412faf35d86f7e5d84a789cfa6743b08a6dff1e47fbc7632d7a8176; section 0,
+  Thms 2-3, (16), (17), (47)); Keating-Rudnick arXiv:1204.0708v3 (54d6ae76d339aeb3c0af867288021c863bb1b4f3d6816904aac21e496dfc52dd;
+  pp. 1-5, exploration only). Abstracts only: Keating-Smith 1903.07057v1, Conrey-Keating 1604.06124v2.
+- Thread 3/5: Remark rem:gm (paper v0.16); open question oq:mrtcond partly answered (Fejér form under RH + SPC).
+- Next attempt candidates: the almost-all form of MRT17 under GRH or EH (still not found in print); Selberg's RH mean-square
+  bound (not opened) would give the Fejér form for K/log^2 N -> infinity.

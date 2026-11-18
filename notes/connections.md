@@ -122,3 +122,11 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - H_m side (notes/hm-programme.md section 6): Stadlmann's MPZ region is bounded by the combinatorial lemma (sigma > 1/10),
   not by the estimates; so H_2 gains from 2026 inputs could only come from hybrid supports, not from MPZ.
 
+### Session 31 addition: Fejér averages and pair correlation (paper rem:gm)
+- Depends on: the window identity (rem:mrt17); Goldston-Montgomery as stated in Goldston's notes (arXiv:math/0412313v1,
+  Thm 7, (9.3)); Merikoski Main Thm 2 (arXiv:1605.04757v1); Goldston's singular-series formula as quoted in MS04 (47).
+- Feeds into: open question oq:mrtcond (partly answered for the Fejér form); the parity paper's thesis that below the mean gap
+  averaged statements are empty and that a fixed shift needs a different kind of input.
+- Honest distance: under RH + strong pair correlation the Fejér-averaged HL holds down to c log X, but a single shift needs the
+  variance at bounded K to o(N), which is equivalent to HL at h = 2 itself. Nothing here moves toward the conjecture; SPC is
+  open even under GRH.

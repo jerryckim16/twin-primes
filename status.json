@@ -1,832 +1,844 @@
 {
- "version": "0.30",
- "updated": "2026-11-17",
- "session_count": 30,
- "bounds": {
-  "target": 2,
-  "sieve_limit_geh": 6,
-  "claimed": 182,
-  "established": 246,
-  "project": 236,
-  "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
- },
- "results": [
-  {
-   "label": "Proved here",
-   "text": "Parity paper v0.15, Remark rem:lt22 (elementary, folklore in substance): if mu' = 1 on U = {p+h: p <= X-H prime, 1 <= h <= H} and mu' = mu elsewhere, then mu' 1_S satisfies the Lichtman-Teravainen hypothesis H_2(X,H,eta') with eta' <= 2 eta + (216+o(1)) H/log X (eta that of mu 1_S, << H^{-delta} by their Prop. 2.1), while sum_{h<=H} sum_{n<=X} mu'(n+h) Lambda(n) >= (1+o(1)) H X. So their input on mu cannot give cancellation along primes once H^{1+delta} <= c log X; their Lambda-side moment bounds fail for H = o(log X). Both stop at the mean prime gap. Audited by a fresh-context helper (8 items fixed). Script code/parity/hybrid_shifted_primes.py (Heuristic).",
-   "where": "papers/parity-barrier rem:lt22"
-  },
-  {
-   "label": "Computed",
-   "text": "H_m scoping (notes/hm-programme.md section 6; code/hm/mpz_region_check.py, exact rationals): in Stadlmann's proof of her MPZ region 80w + 80d/3 < 1 (arXiv:2309.00425v3, Cor. 2) the binding constraint is sigma > 1/10 of Polymath8a's combinatorial Lemma 2.7, not the Type III estimate; in our (uncertified) reading the 2026 Type I/II lemmas of arXiv:2608.31126 do not enlarge the MPZ region; going below sigma = 1/10 needs Type IV/V estimates (PM8a Remark 3.2) that are not available.",
-   "where": "notes/hm-programme.md section 6"
-  },
-  {
-   "label": "Proved here",
-   "text": "Parity paper v0.13, Prop. prop:gowers-blind (folklore in substance): with Tao's local norm ||f||_{U^d[N]}, for d >= 1, L >= 2, N >= 4d there are f_+-: [N] -> {-1,1} with ||f||_{U^d[N]}^{2^d} <= 2^{2d+1}(4d)^d L/N and +-(1/N) sum f(n)f(n+2) >= 1 - 4/L - 6/N, and a {0,2}-valued g with ||g-1||_{U^d}^{2^d} <= 3 c_d L/N, mean within (3L/N)^{1/2} of 1, and (1/N) sum g(n)g(n+2) <= 4/L + 2(3L/N)^{1/2} + 8/N (random block functions). So global Gowers uniformity (all that the Green-Tao finite-complexity theory uses) says nothing about two-point Chowla or twin primes; Tao's localisation (arXiv:1605.04628) sidesteps this for lambda only.",
-   "where": "papers/parity-barrier (subsec:gowers); code/parity/gowers_twin_blocks.py; notes/parity-attempts/2026-11-17-gowers-infinite-complexity.md; notes/audit-parity-v013.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "Parity paper v0.10, Prop. prop:siegel-bias and Cor. cor:siegel-typeI: for a real character chi mod q and a +-1 completely multiplicative f, the chi(b)chi(b+2)-weighted class sums of f(n)f(n+2) mod Q = lcm(prod_{p<=w} p, q) are >= rho x (1 - 4 s1 - (4/rho)(s2 + P2/x) - (Q/x)(1+4P1)), s1, s2 the 1/p-sums of primes where f != chi; with a Siegel zero (Tao-Teravainen (1.4), (3.22)-(3.23)), a per-modulus unweighted discrepancy bound eps x/Q for lambda(n)lambda(n+2) at Q = Wq forces the split primes in (w, q^{1/log^{1-eps'} eta}) to have 1/p-sum >= (1-eps)/4 - o(1). Elementary; possibly folklore. Locates where Heath-Brown's Siegel-zero route escapes the obstruction; no bearing on twin primes in the actual world.",
-   "where": "papers/parity-barrier (sec:siegel); code/parity/siegel_class_bias.py; notes/parity-attempts/2026-11-16-siegel-world-typeI.md; notes/audit-parity-v010.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "Parity paper v0.6, Thm thm:k2: at k = 2 the Polymath8b Theorem 3.14 ratio (support 2R_2, vanishing marginals beyond 1+eps, J over t <= 1-eps) is at most 2 for every eps in (0,1), with equality for an explicit step function: the strongest GEH criterion sits exactly at the parity value and never exceeds it (variance argument; audited, no errors). Possibly folklore. Confirms, does not break, the obstruction.",
-   "where": "papers/parity-barrier (sec:ceil); code/parity/k2_thm314_numeric.py; notes/parity-attempts/2026-11-15-geh-ceilings-k2.md; notes/audit-parity-v06.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "Parity paper v0.6, Prop. prop:ceil / Cor. cor:ceil / Cor. cor:consistent: Polymath8b's three GEH criteria (Thms 3.8, 3.12(ii), 3.14) have ratio <= k^2 log k/(k-1)^2 (scaling of PM8b Cor 6.4), so they cannot give DHL[k,3] for k <= 45 (DHL[5,3] in particular) although Liouville-pattern weights block only k <= 4; they agree with the parity class on every blocked case. Thresholds certified with arb balls. Remark rem:pm65: the printed proof of PM8b Prop 6.5 has a gap (fixed with a weaker constant; no PM8b result affected).",
-   "where": "papers/parity-barrier (sec:ceil); code/parity/geh_ceiling.py"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 182: printed arithmetic of the restoration step ((8.3), Sec. 10 totals, (10.2)-(10.3), Secs. 3.7, 13.3) re-done exactly (86 checks pass); the 43 + 55 source rows of the trial data satisfy every printed row definition (30 checks) and give T0 = 2491228441011/2624989000000 exactly. The 197 component integrals are not printed and remain unchecked; 182 not adopted.",
-   "where": "code/sharifi182_arith.py, code/sharifi182_rows.py, notes/arith-182-report.md, notes/sources-182.md section 11; verification note v0.10"
-  },
-  {
-   "label": "Literature",
-   "text": "Matomaki-Radziwill (arXiv:1501.04585v4) read in the source for the parity paper (Thm 1, Cor 2, 4): it needs multiplicativity of a single function, so it says nothing directly about lambda(n)lambda(n+2) or Lambda(n+2).",
-   "where": "papers/parity-barrier subsec:mr16; notes/sources-mr16.md"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 182: the mass deficit kappa_true of the five-prime minorant ((4.2) of the 182 bundle) recomputed by two independent methods (own 3-variable reduction + Gauss-Legendre; the paper's exact simplex moment series, after checking that the 3 printed simplices tile the region): 9.330708832406119916...e-5, agreement 58 digits; inside the printed bracket, below kappa-bar (by 8e-19) and kappa_cvx. One constant only; 182 not adopted.",
-   "where": "code/sharifi182_kappa.py, code/data182/kappa_result.json, notes/kappa-182-report.md, notes/sources-182-kappa.md; verification note Rem. rem:182; main paper Rem. rem:sha182"
-  },
-  {
-   "label": "Proved here",
-   "text": "(elementary, possibly folklore; compare the related Murty-Vatwani JNT 2017 Thm 1.1 as quoted by Cantarini arXiv:2607.09110v1) Sawin-Shusterman's split Lambda = -mu log * 1 written over Z: unconditionally (Bombieri-Vinogradov), sum Lambda(n)Lambda(n+2) ~ 2C_2 x iff T_D(x) = o(x), where T_D is a mu-Lambda correlation (D = x^{1/2}(log x)^{-B}); under EH for any D = x^theta. In F_q[T] T_D is bounded through a characteristic-p identity (SS Lemma 3.2) with no integer analogue. A reformulation, not progress.",
-   "where": "papers/parity-barrier Prop. prop:ss-split, Remark rem:ss-transfer; notes/parity-attempts/2026-11-15-ss-step-over-Z.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "(conditional on Tao-Teravainen arXiv:2512.01739v2 Thm 3.1, an unrefereed preprint) The twisted Type I input of the parity obstruction for Maynard two-variable weights (sum_{d1|n, d2|n+2} lambda_{d1,d2})^2 at level R <= (log x)^{c/32}. Only confirms the obstruction's input.",
-   "where": "papers/parity-barrier Cor. cor:maynard-logc"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 186 loss bound L+ of OpenAI's numerical companion: all 97 raw component bounds re-evaluated by one program (all at most the published values; outer group totals 1 and 3 units of 1e-12 below the table, inner totals equal), and the 17 components carrying 99.95% of the decisive group O_{5/2} (89.4% of L+) by a second, independent program (GMP integer products + mpmath, generating-series moments), agreeing with the first to 1.4e-12 (rank-two, factorial) and 2.2e-9 (low bins). Re-evaluation of the published forms; the majorisation lemmas, restoration step and analytic inputs are not checked; 186 not adopted.",
-   "where": "code/oai186_loss_outer.py, code/oai186_loss_outer2.py, code/cap6/oai186_loss_summary.json, code/cap6/loss_outer2/, notes/loss-outer2-report.md; paper Rem. rem:186-status"
-  },
-  {
-   "label": "Proved here",
-   "text": "(possibly folklore) For every periodic weight w and shifts h != h', sum_{n<=x} w(n)lambda(n+h)lambda(n+h')/n = o(log x) (from Tao's log-averaged two-point Chowla theorem); so Selberg-type weights of fixed (or slowly growing) level split their log-weighted mass equally between lambda(n)lambda(n+2) = +1 and -1. This confirms, in a weak regime, the input of the parity obstruction; it gives nothing for twin primes.",
-   "where": "papers/parity-barrier Prop. prop:tao-weight; notes/parity-attempts/2026-11-15-tao-twisted-typeI-weights.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "For a_n = Lambda(n+2), all hypotheses of Friedlander-Iwaniec's asymptotic sieve (Thm 2) except (R3) at level x^{2/3+} and the bilinear (B) hold, with H = 2C_2; (B) at C = 1 has no cancellation at all for the parity-twisted sequence Lambda(n+2)(1+lambda(n))/2, and Cauchy-Schwarz reduces (B) at C = 1 to an off-diagonal bound whose twisted analogue has only non-negative terms.",
-   "where": "papers/parity-barrier Props. prop:fi-twin, prop:B-parity"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 182 (GPT-6 Astra / Sharifi, k = 39): the trial data TrialData182.lean (supplied by Jerry Kim) checked for integrity, and the denominator I(F) of the criterion evaluated independently from it: I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] (relative position 0.49993). One program, high precision (floor-only rounding at 2^-224), not a rigorous enclosure. The numerators: J0 = 5.6364590899e-11 and J+ = 4.0824074297e-13, each just above the published lower bound (relative excess 4e-11 and 5e-12; code/sharifi182_J.py); with the published tail bound (not recomputed) the cap surplus is q_H - 1 = 2.76706e-4, consistent with the certified mu- = 2.76692e-4. The tail, the restoration losses and the analytic inputs (including the unproved Type III local Fourier proposition) are NOT checked; 182 stays Claimed.",
-   "where": "paper, Remark sha182 (v0.14); code/sharifi182_I.py, code/sharifi182_data.py, code/data182/, code/sharifi182_J.py, code/data182/J_result.json, code/data182/qH_check.json"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 186, source data and loss-table arithmetic (exact rationals, from the companion PDF supplied by Jerry Kim): the source ladders (29 / 43 rows), retained rows, boundary values, continuous caps and the integer cap masks (1.5), and the six group parameters with all guards of Lemma 1.1, recomputed from the printed rational definitions -- every printed value reproduced; for the 97 component bounds of Tables 2.1-2.6, every Young inequality and inner weighting, the group totals, L^+/I_H <= 696075110e-12 < 697e-6 and the final margins (2.34)-(2.35) hold exactly. The raw component bounds themselves (forms (2.16)-(2.21)) are NOT yet recomputed; the analytic comparisons of Lemma 1.1 are not checked.",
-   "where": "paper, after Proposition oai186-main (v0.14); code/oai186_support_data.py, code/oai186_tables_check.py, code/oai186_tables_2_1_to_2_6.json; notes/sources-186-forms.md, notes/sources-186-loss.md"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 186 (OpenAI): independent recomputation of the two main terms of the numerical companion (formulas (2.12)-(2.15), with our own derivation of the layered cap measure): I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_lambda,H = 9.0248755655e-14, 5.9e-9 (relative) above the published lower bound 90248755123e-24; rho* J/I_H = 1.000206087 > 500103/500000. Two independent programs: GMP integer products with directed rounding (rho_D, g, Z at 110 digits), and arb ball arithmetic with y-series combinatorics (I_H in [2.36853178533302e-14 +/- 3e-30], ratio in [1.00020608684 +/- 4e-12]); they agree to 7e-17. The loss bound L^+ and the analytic inputs are NOT checked; the project bound does not move.",
-   "where": "paper, Proposition oai186-main (v0.13); code/oai186_IH.py, code/oai186_J.py, code/oai186_IH.json, code/oai186_J.json, code/oai186_check2.py, code/oai186_check2.json"
-  },
-  {
-   "label": "Proved here",
-   "text": "Split Bonferroni certificate (folklore in substance): Corr2 = (Q(R)^2 part) - (Q(U)^2 part), both with nonnegative integrands piece by piece, so a one-sided certificate needs no piece with three forced coordinates (Q(R)^2, Corr1 to level 2; Q(U)^2 and int_V P^2 to level 1). On the 240 vector (k = 49): 49 J_low/I_up = 4.012038868083 > 4, 3.5e-8 below the exact 4.0120389035705, exact rationals, 98 pieces.",
-   "where": "paper, Proposition bonf2 (v0.13); capped_exact.py --split/--bonf; code/cap6/compare_capfree_D20_bonf.json"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "The 39-tuple printed in the 182 bundle of GPT-6 Astra / R. Sharifi is admissible of diameter 182 (boundedGaps_182_of_DHL_39').",
-   "where": "lean/TwinPrimes/Tuples.lean: sharifi39"
-  },
-  {
-   "label": "Literature",
-   "text": "Rung 182 read (GPT-6 Astra / Sharifi bundle, 132 pp.): k = 39, fragment-measure framework of the 186 paper on a 4x finer grid, 726-coefficient profile not printed in the bundle (it is in a separate repository not obtained), so no part of its variational step can be recomputed yet.",
-   "where": "paper, Remark sha182; notes/sources-182.md; notes/sources-needed.md"
-  },
-  {
-   "label": "Computed",
-   "text": "Our own k = 48 degree-22 vector on the support of Kintali / Song-Yue: capped_exact.py (176 checkpointed inclusion-exclusion pieces, 15.5 core-hours) and capped_check.py give the SAME I_T and J_T as exact rationals; 48 J_T/I_T = 4.0060814208 > 4 by two independent programs. Variational step only; the analytic input of 236 is NOT verified.",
-   "where": "paper, Proposition kin-capped (v0.12); verification note Prop. kin-own (v0.4); code/cap6/compare_kin48_D22r.json"
-  },
-  {
-   "label": "Proved here",
-   "text": "Bonferroni one-sided certificates (folklore in substance): the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be omitted when only k J_T/I_T > 4 is needed (their integrands are >= 0). On our k = 48 vector the one-sided ratio is 4.006081420807 (3.5e-12 below exact) and the omitted pieces are 28% of the running time; all 96 + 46 exact Corr1/I-correction pieces have the predicted sign (-1)^j.",
-   "where": "paper, Proposition bonf (v0.12); code/compare_two_programs.py, code/thin_bound.py"
-  },
-  {
-   "label": "Computed",
-   "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (363,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.35e-10 cell units). One input checked (I_H and J_{lambda,H}: see the Session 14 entry).",
-   "where": "paper, Remark oai186 (v0.12); code/oai186_dickman_cells.py, notes/sources-186-forms.md"
-  },
-  {
-   "label": "Computed",
-   "text": "Song-Yue's 236 witness: the capped numerator J_T computed by a SECOND independent exact program (capped_exact.py --jonly, cap-free minus 126 inclusion-exclusion corrections, ~32 core-hours) equals capped_check.py's J_T exactly, hence (99!)^2 (26!)^2 10^196 5^150 521^50 J_T = Jref; its cap-free I, J equal the monomial-basis I0, J0. Criterion 48 J_T/I0 = 1.000664921591 > 2001/2000. Variational step of 236 reproduced; H1 <= 236 then follows from Song-Yue's Theorem 4.33 + Theorem 4.18 (equidistribution), which we have NOT verified.",
-   "where": "paper, Proposition sy-exact and Corollary cor:236 (v0.11)"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "The 40-tuple printed in OpenAI's 186 preprint (display 1.3) is admissible of diameter 186 (boundedGaps_186_of_DHL_40', Session 11).",
-   "where": "paper, Remark oai186"
-  },
-  {
-   "label": "Computed",
-   "text": "Song-Yue's published 236 witness (IACR ePrint 2026/1893, App. A; 1295 rows, degree 25, k = 48, D182 support) recomputed exactly: the cap-free denominator I0 and the capped numerator J_T, normalised to their integer coordinates, EQUAL their reference integers Iref (655 digits) and Jref (715 digits) exactly. Hence 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026596864 in Polymath scaling); with the capped denominator 4.0030988047 and without caps 4.0036348167, both equal to Kintali's claimed values to every printed digit. I0 and J0 by an independent monomial-basis program; J_T by capped_check.py (second program capped_exact.py --jonly: see the log). The authors list the regeneration of Jref as pending; this is a reproduction of the variational step only, the equidistribution input of 236 is Claimed and unverified.",
-   "where": "paper, Proposition sy-exact; code/songyue_convert.py, songyue_I0.py, songyue_J0.py, songyue_compare.py; code/cap6/check_sy236.json, compare_sy236.json"
-  },
-  {
-   "label": "Computed",
-   "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. Confirmed by the second program in Session 13 (see the entry above). The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound is 236 only conditionally, through Song-Yue's route (see bounds.project_note).",
-   "where": "paper, Proposition kin-capped; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cap6/compare_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
-  },
-  {
-   "label": "Computed",
-   "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 3.99 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 3.99 (ball arithmetic; sigma = 4 certified at 5000 and 6500 bits with two block splits, sigma = 3.99 at 6500 bits). The Gram weights reproduce capped_check.py exactly at a random integer vector (Schwartz-Zippel: failure probability < 2^-31). The best P in the space gives 3.98555 (Gram, floating point). So the draft's claimed 4.00438 (also 846 coefficients) must belong to its Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation. Session 24: the Gram weights' Schwartz-Zippel test point is now evaluated by BOTH exact programs (capped_check.py and capped_exact.py, I_T and J_T equal exactly; code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out).",
-   "where": "paper, Proposition 33 and Remark 34; code/capped_gram.py; runs/gram45_lemma91_recheck.log, runs/gram45_rand_selftest.log, code/cap6/check_rand45_lemma91.json"
-  },
-  {
-   "label": "Computed",
-   "text": "Test function optimised on Stadlmann's capped support itself (k = 49, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 > 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.",
-   "where": "paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json"
-  },
-  {
-   "label": "Proved here",
-   "text": "Gram matrices of the capped functionals by reverse mode: I_T and J_T are linear in the coefficient products of P and of its fibre integral, so running capped_check.py's exact linear maps backwards gives exact weights, and G_I[t1,t2] = w_I[F1+F2][a1+a2], G_J = Q^T H Q. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly (k = 12 and k = 49). A rigorous ceiling mode certifies sigma G_I - k G_J positive definite by recursive Schur complements in ball arithmetic.",
-   "where": "paper, Proposition 31; code/capped_gram.py"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "Kintali's support for 236 (k = 48, g = 91/1250, one cap 1899/2500, L = 1.042 in Polymath scaling): at most ten coordinates exceed g, and every cap-violation piece has at most three further large coordinates.",
-   "where": "lean/TwinPrimes/Caps.lean: kintali_large_count, kintali_extra_le_three"
-  },
-  {
-   "label": "Proved here",
-   "text": "Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give DHL[k,2] only if M_k(4(A1+eps), 4(A1-eps)) > 4. Certified false for every eps: k ≤ 29 (omega = 0), k ≤ 28 (omega = 0.003 and 1/300, Stadlmann's level), k ≤ 26 (omega = 0.007, the level of Charton et al.), k ≤ 22 (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.",
-   "where": "paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json"
-  },
-  {
-   "label": "Computed",
-   "text": "SUPERSEDED (session 6): with a Cauchy-Schwarz bound on the capped marginals the ratio was only certified ≥ 3.95972 for Stadlmann's support (degree 20); computing J_T exactly gives 4.0120 (truncated cap-free optimiser) and 4.0124 (optimised on the support), see below. The loss came from Proposition 23, not from the caps.",
-   "where": "paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log"
-  },
-  {
-   "label": "Proved here",
-   "text": "Proposition 23: for F = P 1_T, I_T ≤ I(P) and J_T ≥ J(P) − 2 sqrt(J(P) L E(P)), where E(P) is an exact union bound for the integral of P^2 over the cap-violation set; the pieces {m coordinates above delta, their sum above the cap} are integrated exactly with shifted power sums (checked against Lemma 3 and against sympy for k = 3).",
-   "where": "paper, Proposition 23; code/caps_exact.py"
-  },
-  {
-   "label": "Computed",
-   "text": "Cap-free parts of the 2026 supports: M_{49,15/506} ≥ 3.9685535 (degree 20) and M_{45,8/257} ≥ 3.9029887 (degree 21, dimension 846, equal to the dimension stated by Charton et al.), so by dilation the cap-free ratios are ≥ 4.016176 (Stadlmann's (L, tau) = (1.042, 0.982)) and ≥ 4.012272 (Charton et al.'s (1.06, 0.996)). Compared with their claimed capped value 4.00438, the caps seem to cost about 0.008 at k = 45 (a comparison, not a verification).",
-   "where": "paper, Proposition 22; code/cert_stad49_capfree_D20e.json, code/cert_ax45_capfree_D21e.json; re-check with code/verify_cert.py"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "Counting large coordinates: if every entry of a list exceeds g then length × g ≤ sum; so (in units of 1/1000) at most 9 coordinates of a point of Stadlmann's support exceed 4 delta = 112, and 7 such coordinates always exceed every cap (680).",
-   "where": "lean/TwinPrimes/Caps.lean"
-  },
-  {
-   "label": "Computed",
-   "text": "M_{50,1/25} ≥ 4.0012466 (degree 25, 1780 coefficients) and ≥ 4.0043063 (degree 27, 2526 coefficients) on Polymath8b's epsilon-enlarged simplex, even power sums. With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives H1 ≤ 246 end to end, the established bound. Agrees with Polymath8b's 4.00124 (d=25) and 4.0043 (d=27) to every printed digit; Gram formulas checked against direct sympy integration. Reproduction, not new.",
-   "where": "code/cert_M50e25_D25e.json, code/cert_M50e25_D27e.json; re-check with code/verify_cert.py; code/check_eps_sympy.py"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "BoundedGaps 1 is false, and {0, d} is admissible iff d is even: 2 is the smallest possible bound.",
-   "where": "lean/TwinPrimes/Basic.lean: not_boundedGaps_one, admissible_pair_iff"
-  },
-  {
-   "label": "Computed",
-   "text": "Proposition 19 (floating point, discretised, not rigorous): the best dual weight depending only on (t_m, S), found as a convex program, is the classical k/(k-1) log k at eps = 0 and about 4.14 at (k, eps) = (50, 1/25), far above M_{50,1/25} ≥ 4.0012. Sharper floors need weights that see more of t.",
-   "where": "code/dual_lp.py; runs/dual_lp_conv.log, runs/dual_lp_floor.log"
-  },
-  {
-   "label": "Computed",
-   "text": "Certified M_{k,eps} values for k = 49, 50, degrees 10-24, eps in {0, 1/50, 1/40, 1/30, 1/25, 1/20}; heuristic geometric extrapolation in the degree (checked against the known degree 22/25/27 values at k = 50) suggests sup_eps M_{49,eps} ≈ 3.991-3.994 < 4 (Remark 20, Open); a prediction registered before the degree-24 run (3.98230) came out 3.98218.",
-   "where": "runs/scan_k49.jsonl, runs/scan_k50.jsonl; code/scan_eps.py, code/extrapolate_eps.py"
-  },
-  {
-   "label": "Open",
-   "text": "Polymath8b Prop. 6.5: re-read in the arXiv text; as printed the argument gives (k/(k-1)+eps) log(2k-1), not k/(k-1) log(2k-1) (Remark 16). Whether the stated bound holds is open.",
-   "where": "paper, Remark 16"
-  },
-  {
-   "label": "Computed",
-   "text": "M_54 ≥ 4.0023860 with even power sums of degree 23 (1236 coefficients). With the Lean tuple (54, 270), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 270 end to end. Agrees with Polymath8b's 4.00238 to every printed digit; a second run (the 3:34 AM session's certificate, recovered from a bundle) gives the same value. Reproduction, not new.",
-   "where": "code/cert_M54_D23e.json; re-check with code/verify_cert.py"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "DHL.mono: DHL[k,2] implies DHL[k',2] for every k' ≥ k (delete shifts), with Admissible.sublist.",
-   "where": "lean/TwinPrimes/Basic.lean"
-  },
-  {
-   "label": "Proved here",
-   "text": "Proposition 14: M_{k,eps} ≤ (1+eps) M_k, and M_{k,eps} ≥ (1+eps) M_k − 64k²eps²/M_k for small eps, so the enlargement gains exactly (1+eps) to first order. Possibly folklore.",
-   "where": "paper, Proposition 14"
-  },
-  {
-   "label": "Proved here",
-   "text": "Theorem 15 (floor of the epsilon-enlarged simplex): M_{k,eps} < 3.99 for every k ≤ 29 and every 0 ≤ eps < 1, so the enlarged simplex alone cannot give DHL[k,2] for k ≤ 29 from Bombieri-Vinogradov or any level θ ≤ 0.501. Inequality proved; numerical part Computed in interval arithmetic and re-checked with a second library.",
-   "where": "paper, Theorem 15; code/cert_floor_k29.json, dual_eps_cert.py, check_floor_cert.py"
-  },
-  {
-   "label": "Computed",
-   "text": "M_55 ≥ 4.00516 with even power sums of degree 20 (707 coefficients). With the Lean tuple (55, 272), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 272 end to end. Reproduction, not new.",
-   "where": "code/cert_M55_D20e.json; re-check with code/verify_cert.py"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "The twin prime conjecture is equivalent to BoundedGaps 2.",
-   "where": "lean/TwinPrimes/Basic.lean: twin_iff"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "A finite Boolean check certifies admissibility (pigeonhole handles large primes).",
-   "where": "Basic.lean: admissible_of_check"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "DHL[k,2] implies gaps at most D for 56 explicit pairs (k, D): every k from 2 to 55, plus (102, 578) and (105, 600). DHL[2,2] implies the twin prime conjecture.",
-   "where": "lean/TwinPrimes/Tuples.lean"
-  },
-  {
-   "label": "Proved here",
-   "text": "Pigeonhole rigidity: unequal weights on the shifts never certify a smaller gap than the best sub-tuple does (Proposition 8). Possibly folklore.",
-   "where": "paper, Section 3"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "Nine more explicit tuples: DHL[k,2] gives BoundedGaps D for (56,278), (57,282), (58,288), (59,300), (60,304), (61,310), (62,320), (63,324), (64,330).",
-   "where": "lean/TwinPrimes/Tuples.lean"
-  },
-  {
-   "label": "Computed",
-   "text": "With polynomials in 1-P1 and P2 only: M_105 ≥ 4.00207, M_102 ≥ 4.00271, M_5 ≥ 2.00411. This family stops at k = 102.",
-   "where": "code/cert_M105.json, cert_M102.json, cert_M5.json"
-  },
-  {
-   "label": "Computed",
-   "text": "With all symmetric polynomials (new generating-function formula): M_105 ≥ 4.17427, M_64 ≥ 4.00363 (degree 12); even power sums: M_58 ≥ 4.00927 (degree 16), M_56 ≥ 4.00519 (degree 18). M_55 reaches only 3.99153 at degree 18.",
-   "where": "code/mk_general.py; cert_M64_D12.json, cert_M58_D16e.json, cert_M56_D18e.json"
-  },
-  {
-   "label": "Proved here",
-   "text": "Exponential-moment formula: integrals of (1-P1)^A times products of power sums over the simplex are A!/(k+A+w)! times E[prod P_j(X)^b_j] for iid Exp(1) variables, an integer given by an EGF power (Lemma 3). Possibly folklore.",
-   "where": "paper, Lemma 3"
-  },
-  {
-   "label": "Proved here",
-   "text": "Pigeonhole rigidity also holds on Polymath8b's epsilon-enlarged simplex (Proposition 10): weights never beat the best sub-tuple. Possibly folklore.",
-   "where": "paper, Proposition 10; notes/enlarged-rigidity.md"
-  },
-  {
-   "label": "Literature",
-   "text": "With Bombieri-Vinogradov and Maynard's Prop. 4.2, the M_54 certificate and the Lean tuple (54, 270) give H1 ≤ 270 end to end inside this project (was 278; superseded by 246 in session 4).",
-   "where": "paper, Corollary 5"
-  },
-  {
-   "label": "Computed",
-   "text": "Exact capped functionals on Stadlmann's support: for F = P 1_T with the degree-20 cap-free optimiser P, k J_T/I_T = 4.0120389 > 4 at k = 49, in exact rational arithmetic, with identical I_T and J_T from two independent programs (code/capped_exact.py, code/capped_check.py). The variational step of [Sta26] is independently reproduced; H1 <= 240 then follows from his Prop. 1 and his equidistribution theorem, which we have not verified.",
-   "where": "paper, Theorem 26 and Corollary 27"
-  },
-  {
-   "label": "Proved here",
-   "text": "Exact reduction of the capped functionals: fibres of T are [0, min(R, max(g, C_{m+1} - s))]; I_T and J_T equal the cap-free values minus three corrections, each a signed inclusion-exclusion sum (m <= 9 large, j <= 3 extra coordinates) of polygon integrals of polynomials in two variables.",
-   "where": "paper, Proposition 25"
-  },
-  {
-   "label": "Computed",
-   "text": "Ceiling: Stadlmann's capped quantity at k = 49 is at most 4.14 (two-zone dual weight, interval arithmetic); cutting fibres at the Lean-checked coordinate bound 0.6 barely moves this weight's ceiling (4.13785 -> 4.13753, floating point).",
-   "where": "paper, Remark 28"
-  },
-  {
-   "label": "Computed",
-   "text": "Charton et al.'s capped support (k = 45, caps of their Table 3): our degree-21 cap-free optimiser truncated to T gives 45 J_T/I_T = 4.0027351 > 4, with identical exact I_T, J_T from two independent programs (their claimed value with their own F: 4.00438). With the different caps of their Lemma 9.1 the same P gives 3.9736870 < 4. The project bound is not lowered to 212 (caps discrepancy; analytic input Claimed).",
-   "where": "paper, Proposition 29"
-  },
-  {
-   "label": "Computed",
-   "text": "Ceiling for Charton et al.'s capped quantity at k = 45: at most 4.126 (two-zone dual weight, interval arithmetic). Session 24: the Gram weights' Schwartz-Zippel test point is now evaluated by BOTH exact programs (capped_check.py and capped_exact.py, I_T and J_T equal exactly; code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out).",
-   "where": "paper, Remark 30"
-  },
-  {
-   "label": "Proved here (computer-assisted: ball arithmetic, two programs)",
-   "text": "The dual weight psi_m = (beta/n)(a - S_A + n t_m), whose fiber supremum reduces to two parameters by an equalisation lemma, gives M_{50,1/25} < 4.1463 (a = 10373/10000): below scaling 4.1515 but above the two-zone weight's 4.1459, so it does not improve the best upper bound.",
-   "where": "paper v0.15, Prop. psi-weight"
-  },
-  {
-   "label": "Computed",
-   "text": "Two-zone weight of Theorem floor certifies M_{50,1/25} < 4.1459 (arb, 1154 pieces; code/twozone_50_cert.py). Corrects an earlier sentence that it did not beat scaling.",
-   "where": "paper v0.15, remark after Theorem floor"
-  },
-  {
-   "label": "Computed",
-   "text": "182 criterion: second, independent ball-arithmetic program for I(F): [1.48963410081137215290e-11 +/- 5.2e-40], inside the published enclosure; agrees with the first program to 1.7e-22 (code/sharifi182_check2.py).",
-   "where": "paper v0.15, Remark sha182"
-  },
-  {
-   "label": "Computed",
-   "text": "186 companion: raw loss bounds of group I2old (7 of 97 components) re-evaluated from the transcribed forms; each at or just below its Table 2.3 value (two readings stated; one inferred from the numbers).",
-   "where": "paper v0.15, after Prop. oai186-main"
-  },
-  {
-   "label": "Computed",
-   "text": "186 companion: raw loss bounds re-evaluated from its formulas for 78 of 97 components (all but 1.2e-6 of L^+; all 45 inner, 33 outer); every value at most the published one and within 3.4e-5 (mostly within 5e-9); inner group totals of Table 2.7 reproduced exactly. One program, ball arithmetic, not an outward-rounded certificate.",
-   "where": "paper v0.16, after Prop. oai186-main; verification note v0.6, Remark rem:186"
-  },
-  {
-   "label": "Computed",
-   "text": "186 margin budget from the printed integers (exact rationals): O_{5/2} is 89.5% of L^+ and may be at most 2.06% too small before the margin falls to 1/50000 (14.3% before 0).",
-   "where": "paper v0.16, Prop. oai186-budget"
-  },
-  {
-   "label": "Proved here",
-   "text": "(core NOT new: the convex-hull, bipartite and k/2 cases are in Tao's blog post \"A general parity problem obstruction\", 21 Nov 2014, credited from parity paper v0.7; the window form and H_m < H(2m+1) are ours as far as we read; for the class of Liouville-pattern weights, which is the heuristic part) A fair pattern weight blocking a target exists iff (1/2,...,1/2) is a convex combination of target-free sets: for pairs iff the target graph is bipartite; for DHL[k,m+1] iff k <= 2m; for m+1 primes in windows of length g iff no closed window holds 2m+1 tuple elements. Hence the class blocks every tuple exactly when g < H(2m+1): H_1 < 6, H_2 < 12, H_3 < 20 (H(k) by exhaustive search; witnesses Lean-checked admissible).",
-   "where": "papers/parity-barrier v0.2, Prop. prop:bipartite, Cor. cor:six; notes/parity-attempts/2026-11-15-bipartite-criterion.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "Polymath8b Remark 8.1's printed weight (product over 0 <= i <= i' <= H, positions prime to 3) is identically zero, and stays zero with i < i' once H >= 4 (odd cycles among positions prime to 3); the corrected weight (i < i', odd positions) is fair and works. Typo-level; no result changes.",
-   "where": "papers/parity-barrier v0.2, Sec. subsec:rem81; code/parity/bipartite_obstruction.py; notes/flags-for-jerry.md"
-  },
-  {
-   "label": "Lean-checked",
-   "text": "A non-negative integer fair weight on {+-1}^3 that kills all three pairs has total mass 0; the Polymath8b weight (1-ab)(1-bc) is non-negative, fair and kills {0,2},{2,6}; {0,2,6,8,12} and {0,2,6,8,12,18,20} are admissible.",
-   "where": "lean/TwinPrimes/Parity.lean"
-  },
-  {
-   "label": "Computed",
-   "text": "182 cap numerators by a second program (arb balls): J0 = 5.63645908992367166973506e-11 +- 1.7e-39, J+ = 4.08240742966433656776654e-13 +- 2.5e-40, both above the published lower bounds; agree with program 1 to 2e-23 / 2e-32 relative.",
-   "where": "code/sharifi182_check2_J.py, code/data182/check2_J_result.json, notes/check2-J-182-report.md; paper v0.18 Remark rem:sha182"
-  },
-  {
-   "label": "Computed",
-   "text": "Polymath8b Thm 6.7 lower bound for M_k reproduced in ball arithmetic: smallest k for DHL[k,3] is 35410 in PM8b's MPZ region and 41588 with BV only, both equal to Polymath8b's.",
-   "where": "code/hm/pm8b_mk_lower.py, notes/hm-programme.md"
-  },
-  {
-   "label": "Computed",
-   "text": "182 tail term E_{H_C^c} (one program, arb balls; kernel K of [M] (5.6) exact): T = 5.286348805928e-13 +- 1e-40, below the published trialTailUpper 5.286348805973e-13; with the balls for I, J0, J+ the cap surplus q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4.",
-   "where": "code/sharifi182_tail.py, code/data182/tail_result.json, notes/tail-182-report.md; paper v0.18 Remark rem:sha182"
-  },
-  {
-   "label": "Computed",
-   "text": "182 tail term by a second, independent program (own exact kernel, GMP fixed point with directed error bounds): T in [5.2863488059280771006442311847e-13 +- 1.4e-45], inside program 1's ball and below the published trialTailUpper. With the nominal last kernel block (r_max = 768*512-1) the kernel bound (5.7) fails (K_511 = 2.19637) and T exceeds trialTailUpper by 5e-7 relative, so the Lean premise fits only r_max = n0-1. All four ingredients of the 182 cap quotient (I, J0, J+, T) now by two programs; restoration losses and analytic inputs unchecked, 182 stays claimed.",
-   "where": "code/sharifi182_tail2.py, code/data182/tail2_result.json, notes/tail2-182-report.md; paper v0.19 Remark rem:sha182; verification note v0.8 Remark rem:182"
-  },
-  {
-   "label": "Proved here, conditional on a preprint",
-   "text": "Twisted Type I input of the parity obstruction at level R <= (log x)^{c0}: for w_R(n) = (sum_{d | n(n+2), d <= R} lambda_d)^2 with lambda_1 = 1, |lambda_d| <= 1, the log-averaged sum of w_R(n) lambda(n) lambda(n+2)/n is at most (log x)^{-c0} times the sum of w_R(n)/n; conditional on Tao-Teravainen arXiv:2512.01739v2 Thm 3.1 (unrefereed). Fresh-context audit: sound. Only confirms the obstruction's input; no lower bound for twin primes.",
-   "where": "papers/parity-barrier v0.3 Prop. prop:tao-weight-logc; notes/parity-attempts/2026-11-15-tt25-level-logc.md, 2026-11-15-tt25-audit.md"
-  },
-  {
-   "label": "Literature",
-   "text": "Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 2001) read in the source: own sieve close to Friedlander-Iwaniec's (their (R1) not met), Type I level X^{2-eps} from the factorisation of the form, Type II Lemma 3.10 via the vanishing cbrt4-coefficient (outer variable = cross product of the two inner ones), a 3-dimensional large sieve and Hecke Groessencharacters; why this does not transfer to Lambda(n+2) recorded as Heuristic.",
-   "where": "papers/parity-barrier v0.4 Section subsec:hb-x3, Remark rem:hb-transfer; notes/sources-hb-x3-2y3.md"
-  },
-  {
-   "label": "Proved here",
-   "text": "Dual formula for the supremum S_k(eps) of Polymath8b's Theorem 3.14 ratio: S = |Pi_K P^*|^2 = sup_f dist(P^* f, W)^2/|f|^2 (standard Hilbert-space duality); the proof of our k = 2 theorem is exactly this projection, because at k = 2 the two constraint cylinders are disjoint. For k >= 3 any two cylinders overlap in positive measure, so the k = 2 argument does not transfer.",
-   "where": "papers/parity-barrier v0.7 Lemma lem:dual, Prop. prop:overlap"
-  },
-  {
-   "label": "Computed",
-   "text": "k = 3: the orthogonal relaxation (marginal condition kept only on columns whose fibres meet no other constraint) has supremum > 2.1408 at eps = 1/8 and > 2.0657 at eps = 1/4 (exact certificates, two scripts); heuristically the full supremum is about 1.976 at eps = 1/8, so the overlapping constraints decide whether the criterion beats the parity value 2.",
-   "where": "papers/parity-barrier v0.7 Prop. prop:orth-relax, Remark rem:k3-eps; code/parity/k3_orth_relax_cert.py, k3_orth_relax_verify.py, k3_thm314_dual.py"
-  },
-  {
-   "label": "Computed",
-   "text": "Independent exact check of Polymath8b Theorem 3.15 (DHL[3,2] under GEH, eps = 1/4): a symmetric step function on the arrangement {t_i, t_i+t_j, sum t = m/8} has ratio 2 + 711155/3866758832 > 2.00018, by two independent programs (PM8b's printed polynomial: about 2 + 6e-8). Nothing new is proved.",
-   "where": "papers/parity-barrier v0.7 Prop. prop:k3-step; code/parity/k3_arrangement_exact.py, k3_arrangement_verify.py, k3_arrangement_cert.json"
-  },
-  {
-   "label": "Proved here",
-   "text": "(possibly folklore) Schur-test reduction: for k = 3 and 1/4 <= eps < 1/2, any positive phi on [0,1-eps] with int_0^{a-y}(phi(t)+phi(y))/(C-3/2+t+y)dt <= phi(y) proves that the Theorem 3.14 ratio (even without the vanishing marginal condition) is <= C for all eps' >= eps; the condition is scale-invariant.",
-   "where": "papers/parity-barrier v0.8 Prop. prop:unc-ceiling, Cor. cor:k3-linear"
-  },
-  {
-   "label": "Computed",
-   "text": "For which eps Polymath8b's k = 3 GEH criterion works: the supremum sigma_3(eps) exceeds 2 at eps = 2/9, 1/4, 7/24 (exact step functions), and is <= 1.9999 < 2 for every eps in [0.439, 1/2) (Schur certificates); sigma_3(1/4) in (2.0001, 2.17], and sigma_3(eps) <= 3/2 + 0.89109(1-eps) on [1/4, 1/2). Each certificate by two independent programs. Heuristic: the good set is about (0.19, 0.31) with maximum about 2.003.",
-   "where": "papers/parity-barrier v0.8 Thm. thm:k3-window; code/parity/k3_unc_cert.py, k3_unc_verify.py, k3_arrangement_exact.py, k3_arrangement_verify.py"
-  },
-  {
-   "label": "Proved here",
-   "text": "Pintz's dichotomy with Maynard weights: for an admissible k-tuple H, r not in H, sigma = +-1, if theta M_k > 1 (theta a level for primes and for lambda; theta = 1/2 by BV) then infinitely many n have two primes in n+H or a prime n+h_i with lambda(n+r) = sigma. Hence (k = 5, M_5 >= 1417255/708216) some even 0 < |d| <= 12 (and some even 0 < d <= 14) has lambda(p+d) = -1 for infinitely many primes p (Pintz 2010: 16 and 18). Possibly folklore (three web searches found no improvement of Pintz). Ratios exact by two programs. The target is the complete graph on H u {r} (not blocked by the parity class); a single prescribed d is a star (blocked).",
-   "where": "papers/parity-barrier v0.11 Thm. thm:pintz-maynard, Cor. cor:pintz12, Rem. rem:pintz-parity; code/parity/pintz_maynard.py, pintz_maynard_check2.py"
-  }
- ],
- "ideas": [
-  {
-   "idea": "Exploration: structure in the Hardy-Littlewood errors across shifts beyond S(h) (regression of r(h)-1 on h mod small primes and log h; spread vs Poisson).",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 29: R^2 <= 0.006, all |t| < 2 at X = 1e7, 1e8; spread sub-Poisson (ratio ~0.6), plausibly the known variance reduction of primes in short intervals; not promoted."
-  },
-  {
-   "idea": "Own idea: weaken the small-s hypothesis of prop:siegel-bias to bounded s via a two-point mean value for pretentious functions (bias ~ prod (p-3)/(p+1) for random exceptional sets).",
-   "origin": "own",
-   "status": "open",
-   "note": "Session 25 numerics: for random F the mean bias tracks the Euler product (below it, above 1-4s); for character-structured F (the actual split primes) it vanishes. A rigorous version would need a uniform Elliott/Klurman-type correlation theorem; not attempted."
-  },
-  {
-   "idea": "Parity attempt (thread 3): where the obstruction's hypothesis fails in a Siegel-zero world (Heath-Brown 1983 via Tao-Teravainen 2022).",
-   "origin": "own",
-   "status": "partial",
-   "note": "Session 25: located (paper Prop. prop:siegel-bias, Cor. cor:siegel-typeI): the per-modulus twisted Type I input fails at Wq if the Siegel character has few split primes in (w, T); open: whether a Siegel zero forces that (open question 8), and whether the averaged input fails."
-  },
-  {
-   "idea": "Exploration: do small values of L(1, chi_{-q}) come with few small split primes (s' < 1/4)?",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 25: in the actual world yes (bottom 1% of L(1) among 9005 primes q <= 2e5: mean s' = 0.029, none >= 1/4), but this is near-tautological (log L(1) is dominated by small primes) and cannot see the Siegel regime; the class-number argument bounds counts, not 1/p-sums. code/explore/l1_small_split.py."
-  },
-  {
-   "idea": "Parity attempt (thread 3): what the level of distribution alone gives for Lambda(n+2), via Bombieri's asymptotic sieve and Ford's limits.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 24: located, folklore reduction (paper Prop. prop:bomb-twin): under EH, twin primes <=> (Lambda*Lambda)-weighted P2-twins; Ford: no fixed level suffices; Hooley-type condition open (open question 7). Side result: probable factor-2 slip in Debouzy's constant (flag)."
-  },
-  {
-   "idea": "Exploration: does mu(p-2) show parity bias in progressions (Hooley's averaged condition) beyond square-root cancellation?",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 24: no; ratio to a random-sign model 0.73-1.54 at x = 1e6, 1e7 (code/explore/hooley_twin_parity.py). Nothing to exploit."
-  },
-  {
-   "idea": "Parity attempt: ceilings for Polymath8b's GEH criteria, and the exact k = 2 value of the Theorem 3.14 ratio.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 21: ratio <= k^2 log k/(k-1)^2 for all three criteria (no DHL[k,3] for k <= 45); at k = 2 exactly 2, attained, never exceeded (parity paper Thm thm:k2)."
-  },
-  {
-   "idea": "Exploration: how far above the parity value 2 is the Theorem 3.14 ratio at k = 3?",
-   "origin": "exploration",
-   "status": "open",
-   "note": "Session 21: symmetric cube grids at eps = 1/4 give 1.959 at n = 24, extrapolating to about 2.003 (Heuristic); PM8b's certificate is 2 + 5.8e-8. A certified answer needs piecewise-polynomial elements and a dual bound (parity paper open question 6)."
-  },
-  {
-   "idea": "Parity attempt: transpose Sawin-Shusterman's twin-prime deduction to Z and locate the step with no integer analogue.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Bonus run 15 Nov: the split only relocates the problem into T_D (a mu-Lambda correlation, related to Murty-Vatwani); the missing step is SS Lemma 3.2 (mu on a line is a character in characteristic p)."
-  },
-  {
-   "idea": "Exploration: Barban-Davenport-Halberstam (L^2) information on lambda(n)lambda(n+2) as a substitute for the pointwise twisted Type I input.",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Bonus run 15 Nov: Cauchy-Schwarz caps any L^2 route at level 1/2 even with random-sign variance; numerics at 1e7 random-like."
-  },
-  {
-   "idea": "Parity attempt: transfer Tao's log-averaged two-point Chowla theorem to sieve-weighted sums sum w(n)lambda(n)lambda(n+2)/n, to see whether the twisted Type I input of the parity obstruction can be proved for actual sieve weights.",
-   "origin": "own",
-   "status": "partial",
-   "note": "Session 17: proved for periodic weights (fixed or slowly growing level); level x^theta needs uniformity in the modulus, which is open, and would only confirm the obstruction."
-  },
-  {
-   "idea": "Exploration: measure what a GPY/Selberg weight sees of the parity of n(n+2) (weighted lambda(n)lambda(n+2), parity-pattern shares, class distributions of the two twisted measures).",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 17: as expected (B/A ~ 4e-5 at 1e8, equal class shares, all twins in the + measure); kept as the parity paper's numerical illustration, not a result."
-  },
-  {
-   "idea": "Rung 182: read the 182 trial's component caps as a layered sum over the largest fragment (layers over the union of component and outer-shell caps, active coefficients = components with cap >= layer value), processed cap by cap through linearity.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 14 follow-up: I(F) lands at the midpoint of the published enclosure (code/sharifi182_I.py)."
-  },
-  {
-   "idea": "Rung 186: read the underspecified layered cap convolution (2.15) of OpenAI's companion as a split of the retained configuration by the layer of its largest fragment over ALL cap values occurring in the outer and face domains, with the erased coordinate admitted in the outer shells whose cap is >= the layer value.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 14: with this reading our J_lambda,H lands 5.9e-9 above the published lower bound and the ratio matches (code/oai186_J.py); a fresh-context audit found no defect."
-  },
-  {
-   "idea": "Exploration: could the slack in Song-Yue's exponent conditions raise the level enough to move the variational criterion from k = 48 to k = 47?",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 14: k = 47 needs d omega >= 5.8e-4; the loosest printed margin (Type III (52)) allows 1.4e-4, IIa (33) 2.2e-5 (code/explore/level_slack.py; heuristic)."
-  },
-  {
-   "idea": "Probabilistic model check: prime pairs in translates of the Lean-checked 236-tuple vs the Hardy-Littlewood prediction, and whether data can say anything about DHL[48,2].",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 13: HL fits to 3e-4 at X = 1e8 (known); the mean number of primes per translate is 48/log X > 1 until X ~ 7e20, so no computable range bears on DHL[48,2]. notes/explorations.md."
-  },
-  {
-   "idea": "Split Corr2 into its Q(u',R)^2 and Q(u',U)^2 parts (both >= 0) and apply the Bonferroni truncation to each (upper bound with j <= 2 for the first, lower bound with j <= 1 for the second), so that one-sided certificates need no j = 3 pieces at all.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 14: paper Prop. prop:bonf2 and capped_exact.py --bonf. On the 240 vector: 4.012038868083 > 4 from 98 pieces (no j = 3 piece), 3.5e-8 below exact; the R and U parts are each ~35x their difference but their levels decay fast."
-  },
-  {
-   "idea": "Skip the thin inclusion-exclusion pieces (j = 3 extra coordinates above g) with a rigorous a priori bound (volume of the thin region times a sup bound for the integrand) when only the sign of the criterion is needed, not exact equality.",
-   "origin": "own",
-   "status": "partial",
-   "note": "Session 13: Bonferroni (paper Prop. prop:bonf, Proved here): for a one-sided certificate the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be dropped (their integrands are >= 0), no bound needed; on the Song-Yue witness the dropped Corr1 level is -2.5e-69 J and cost 7.1 of 32.2 core-hours. The crude a priori bound (code/thin_bound.py: coefficient-sum sup times region volume) gives 1.4e-14 J for Corr1 j = 3 but 6e32 J for Corr2 j = 3, so it does not settle Corr2 (unsigned integrand)."
-  },
-  {
-   "idea": "Toy capped problem at k = 3 with per-m caps (caps on single coordinates and on pair sums): does the cap pattern explain the 31% regain at k = 45?",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Session 12: pair caps give a SMALLER regain (0.04-0.085) than single caps (<= 0.13); mixing never exceeds ~13%. The cap pattern alone does not explain k = 45 (notes/explorations.md)."
-  },
-  {
-   "idea": "Integrate products of monomial symmetric functions over the simplex by summing over partial matchings of their parts (bitmask DP), so a witness given in the monomial basis can be checked without converting to power sums.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 10: songyue_I0.py / songyue_J0.py reproduce Song-Yue's Iref exactly in 25 s and the cap-free J0 in 33 s; an independent check of the power-sum route."
-  },
-  {
-   "idea": "Read the step of [Sta26, Lemma 5] that Song-Yue (Remark 4.23) say lacks a hypothesis.",
-   "origin": "exploration",
-   "status": "partial",
-   "note": "Session 10: confirmed against arXiv v1 that the gamma in (1/2, 1/2+2omega+eps] step applies Lemma 3 with alpha as the short factor without a Siegel-Walfisz hypothesis on alpha; whether the alphas that occur satisfy it (a repair) is not checked."
-  },
-  {
-   "idea": "Dilation identity M_k(L,tau) = 4 A1 M_{k, eps/A1} plus the two-zone dual weight, to bound the one-band hybrid supports of 2026 as a function of the level omega.",
-   "origin": "own",
-   "status": "works",
-   "note": "Theorem 25: no k ≤ 28 at Stadlmann's omega = 0.003, no k ≤ 26 at omega = 0.007, no k ≤ 22 for omega ≤ 1/68, for any delta, caps and minorant. The same weight fails at the next k."
-  },
-  {
-   "idea": "Rigorous capped ratio from a polynomial P: penalise the exact integral of P^2 over the cap-violation set in a generalised eigenproblem, bound J_T by Cauchy-Schwarz.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Superseded in session 6: the Cauchy-Schwarz treatment of J_T, not the caps, caused the loss (3.9597); exact J_T gives 4.0120."
-  },
-  {
-   "idea": "Union bound for the cap-violation set over m-subsets with sum above the cap, dropping the condition that each coordinate exceeds delta.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Hopelessly loose: E/I ≈ 146 for the cap-free optimiser at degree 20 (the m = 4..6 terms explode)."
-  },
-  {
-   "idea": "Optimise Lemma 13 over ALL weights psi_m = Psi(S - t_m, t_m) (the family containing Cor. 6.4 and the two-zone weight) as a convex program, to learn the limit of this family.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Discretised optimum ≈ 4.14 at (k, eps) = (50, 1/25) vs truth ≥ 4.0012; equals k/(k-1) log k at eps = 0. The family cannot reach the true threshold; need weights seeing more of t (Proposition 19)."
-  },
-  {
-   "idea": "Degree extrapolation of certified M_{k,eps}: does the eps-enlarged simplex reach k = 49?",
-   "origin": "own",
-   "status": "partial",
-   "note": "Geometric model validated at k = 50 (optimistic by ≤ 0.0012) predicts sup_eps M_{49,eps} ≈ 3.991-3.994 < 4: heuristic evidence that the method stops at 50 (Remark 20)."
-  },
-  {
-   "idea": "Collatz-Wielandt weights psi_m = (int F dt_m)/F from a positive approximate extremal F, to approach the true floor near k = 50.",
-   "origin": "own",
-   "status": "open",
-   "note": "Exact for the extremal F; the obstacle is controlling sup over t of the ratio for a polynomial F."
-  },
-  {
-   "idea": "Active-count-normalised weight (beta/n)(a − S_A + n t_m) to beat scaling at small eps.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Exact fiber evaluation at k = 50, eps = 1/25: never below 4.178, worse than the scaling bound 4.1515 (Remark 18)."
-  },
-  {
-   "idea": "Two-zone dual weight (linear in t_m below s1, proportional to t_m/S above) in Polymath8b's Lemma 6.1 with the marginal region kept, to bound M_{k,eps} uniformly in eps.",
-   "origin": "own",
-   "status": "works",
-   "note": "Theorem 15: no k ≤ 29 for any eps < 1, beating the k ≤ 23 floor from Polymath8b Prop. 6.5."
-  },
-  {
-   "idea": "Exponential-moment generating function for simplex integrals of power-sum products, to make certified high-degree computations cheap.",
-   "origin": "own",
-   "status": "works",
-   "note": "Lemma 3. Builds a 471x471 exact Gram pair in about 15 s."
-  },
-  {
-   "idea": "Weighted pigeonhole: give the shifts unequal weights to force two primes closer than the tuple's diameter.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Convexity plus perfection of unit interval graphs. Proved as Proposition 8; checked numerically for k = 3."
-  },
-  {
-   "idea": "Floor of the method: a rigorous upper bound (dual certificate) for the 2026 hybrid sieve supports, to learn how far below 186 the present inputs can go.",
-   "origin": "own",
-   "status": "partial",
-   "note": "eps-enlarged simplex down to k ≤ 29 (Theorem 15). Session 5: one-band hybrid supports (Stadlmann, Charton et al.) cannot reach k ≤ 28 at omega = 0.003, k ≤ 26 at omega = 0.007, whatever the caps (Theorem 25). Multi-band supports and the 186/182 constructions still open; a floor that sees the caps is next."
-  },
-  {
-   "idea": "Does the slicing lemma behind Proposition 8 survive on enlarged supports?",
-   "origin": "own",
-   "status": "works",
-   "note": "Yes: a single rescaling by (1+eps-|u|)/(1+eps) keeps each slice inside the eps-problem's J-region. Proposition 10; checked numerically for k = 3 and eps up to 1/3."
-  },
-  {
-   "idea": "Richer symmetric test functions to pass k = 102 and reach M_54 > 4 (270).",
-   "origin": "literature",
-   "status": "works",
-   "note": "M_54 ≥ 4.0023860 at degree 23 (1236 coefficients): 270 reproduced. Next rung needs the enlarged simplex."
-  },
-  {
-   "idea": "One explicit bilinear hypothesis that implies twin primes, formalised in Lean.",
-   "origin": "own",
-   "status": "open",
-   "note": "Track B. Start from Bombieri's asymptotic sieve and Heath-Brown's Siegel-zero theorem."
-  },
-  {
-   "idea": "Compute the capped marginal functional J_T exactly via the fibre formula and cap-free-minus-corrections with inclusion-exclusion over the large set.",
-   "origin": "own",
-   "status": "works",
-   "note": "Capped ratio 4.0120 > 4 at k = 49 (degree 20), confirmed exactly by an independent program; caps cost only 0.0041 (Prop. 25, Thm 26)."
-  },
-  {
-   "idea": "Cap-aware dual ceiling: cut the fibres of the two-zone dual weight at the maximal coordinate 0.6 of Stadlmann's support.",
-   "origin": "own",
-   "status": "partial",
-   "note": "Valid ceiling 4.14 (certified), but caps move this weight's sup only from 4.13785 to 4.13753: the sup sits where fibres are short. Needs a weight that sees large coordinates."
-  },
-  {
-   "idea": "Use the exact capped evaluator to test which of Charton et al.'s two cap sets (Table 3 vs Lemma 9.1) supports their k = 45 criterion.",
-   "origin": "own",
-   "status": "works",
-   "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: no P in our 846-dim space reaches 4 (certified ceiling, session 8), so the draft's 4.00438 must use Table 3's caps."
-  },
-  {
-   "idea": "Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.",
-   "origin": "own",
-   "status": "works",
-   "note": "Exact self-tests at k = 12, 49, 45 plus an exact Schwartz-Zippel test at a random vector (k = 45); k = 49 optimum 4.0124198 (two exact programs); Lemma 9.1 ceiling 3.99 certified."
-  },
-  {
-   "idea": "Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "Registered prediction 3.977-3.981 for the Lemma 9.1 caps; the optimum is 3.98555. Re-optimising regains 9% of the truncation loss at k = 49 but 31% at k = 45, so a fixed fraction is wrong, and a pure second-order (loss^2/gap) rule is wrong too."
-  },
-  {
-   "idea": "Schwartz-Zippel check of the reverse pass: compare the quadratic forms from the Gram weights with an exact forward evaluator at one random integer vector, instead of trusting a few structured self-tests.",
-   "origin": "own",
-   "status": "works",
-   "note": "Exact agreement at k = 45 (Lemma 9.1 caps) with capped_check.py: the two degree-2 forms agree with failure probability < 2^-31 each."
-  },
-  {
-   "idea": "FC3 question: does the dual weight psi_m = (beta/n)(a - S_A + n t_m), which sees the set of active indices, beat the scaling bound at (k, eps) = (50, 1/25)? Reduce sup over all 49-dimensional fibers to two parameters (s, nu) by an equalisation lemma (concavity + Chebyshev), then certify on cells.",
-   "origin": "own",
-   "status": "works",
-   "note": "Session 15, paper Prop. psi-weight (Proved here + two ball/interval certificates): M_{50,1/25} < 4.1463, below scaling 4.1515 but above the two-zone weight's 4.1459 (certified the same session), so it does not improve the best upper bound; the reduction lemma is the reusable part. Equal-fiber conjecture refuted at a = 1.036."
-  },
-  {
-   "idea": "Margin budget for the 186 certificate: from the printed integers alone (Lemma 2.5, Table 2.7), how much each loss group could be too small before the final margin (2.35) fails.",
-   "origin": "own",
-   "status": "works",
-   "note": "Exact rationals (code/oai186_margin_budget.py): O_{5/2} is 89.5% of L^+ and could be at most 2.06% too small if the margin must exceed 1/50000 (14.3% if it need only be positive); the four inner groups have 10-230x headroom. So the verification of 186's loss bound is decided by O_{5/2}."
-  },
-  {
-   "idea": "Replace the inferred delay/renewal choice of Session 15 by the acceptance test stated after (2.1) of the 186 companion (ordered intervals in [0,1], both endpoint sequences nonincreasing) and test it as a prediction.",
-   "origin": "own",
-   "status": "works",
-   "note": "The test selects renewal exactly for the bins where Session 15 had inferred it from the numbers (I2old L2, L3 fail at j = 39411 and later; L4, L5 pass); the fresh-context audit predicted the same branch pattern by a float simulation."
-  },
-  {
-   "idea": "Pretentious twin statistic sum lambda(n)lambda(n+2)chi_D(n)chi_D(n+2) for class-number-one discriminants: any Siegel-world signal in the twin correlation at small scales?",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Dead end: |S2|/sqrt(X) <= 1.8 for all nine D at X = 2e7. Only signal: sum lambda chi_{-163} ~ 27 sqrt(X), a square-root secondary term (pole of zeta(2s) gives 14.5 sqrt(X); the rest is consistent with the low zero of L(s, chi_{-163}) near 1/2 + 0.2i). notes/explorations.md."
-  },
-  {
-   "idea": "Which close-prime targets can a Polymath8b-type Liouville-pattern weight block? Exact criterion via fractional stable sets.",
-   "origin": "own",
-   "status": "works",
-   "note": "Proved: bipartite target graph / k <= 2m / windows with <= 2m elements; the class forbids exactly H_m < H(2m+1); explains the 6. Parity paper v0.2 Prop. prop:bipartite (audited)."
-  },
-  {
-   "idea": "Residue-class-dependent parity weights: can dead positions (p | n+h_j) let a weight block DHL[3,2]?",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Classwise fairness (what the sieve's Type I main terms see) gives nothing beyond k <= 2m; global fairness would 'block' DHL[3,2] at q = 5*7*11, contradicting Polymath8b's GEH theorem, so it is the wrong notion. code/explore/residue_parity_lp.py."
-  },
-  {
-   "idea": "Tao-Teravainen (arXiv:2512.01739v2, Thm 3.1) to push Prop. prop:tao-weight to level R = (log x)^{c0}",
-   "origin": "own",
-   "status": "works",
-   "note": "Done in Session 19 (parity paper v0.3, Prop. prop:tao-weight-logc), conditional on the preprint; expanding in the moduli [d1,d2] <= R^2, not the period, is the key; audited."
-  },
-  {
-   "idea": "Enlarge the Liouville-pattern weight class by Liouville signs at extra linear forms (open question 2 of the parity paper)",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Fairness and the kill condition only see the law of the tuple coordinates, so the tuple marginal is an ordinary pattern weight: no gain (LPs in code/explore/aux_forms_lp.py agree)."
-  },
-  {
-   "idea": "Maynard two-variable weights (sum_{d1|n, d2|n+2} lambda_{d1,d2})^2 at level (log x)^{c0} via TT25, moduli up to R^4",
-   "origin": "own",
-   "status": "open",
-   "note": "Suggested by the Session 19 audit; same proof should work; not written."
-  },
-  {
-   "idea": "Variance/fibre-mean argument of the k = 2 theorem extended to k = 3 (sharp ceiling for PM8b Thm 3.14)",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "In its direct form: at k = 3 the constraint cylinders overlap (Prop. prop:overlap) and the orthogonal relaxation already exceeds 2.14 at eps = 1/8 while the true sup is ~1.976 (Prop. prop:orth-relax). A sharp ceiling needs the overlapping constraints (alternating projections with a rate, or a finite-element dual)."
-  },
-  {
-   "idea": "k = 3 extremal has constant marginal on the J-region (as at k = 2), reducing the problem to a minimum-norm problem",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Grid extremal marginal varies by a factor ~5; constant-marginal ansatz gives 1.736 vs 1.959 (eps = 1/4, n = 24). notes/explorations.md, Session 22."
-  },
-  {
-   "idea": "Schur test with fibre-integral eigenfunction structure for the k = 3 Thm 3.14 problem without marginal condition (1D reduction)",
-   "origin": "own",
-   "status": "works",
-   "note": "Rigorous ceilings: < 2 for eps >= 0.439; 2.17 at eps = 1/4. Parity paper v0.8 Prop. prop:unc-ceiling, Thm. thm:k3-window."
-  },
-  {
-   "idea": "Closed form for the constant kappa = 0.8901675 of the 1D Schur problem",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "mpmath.identify gives only overfitted noise; notes/explorations.md, Session 23."
-  },
-  {
-   "idea": "Rigorous ceiling < 2 for the k = 3 Thm 3.14 ratio at small eps or eps in [0.31, 0.439), using the marginal condition",
-   "origin": "own",
-   "status": "open",
-   "note": "Needs the overlapping constraints (Session 22); alternating projections with a rate or a finite-element dual. Thread stopped by the weekly review of 16 Nov (adequately answered)."
-  },
-  {
-   "idea": "Pintz-type disjunction 'two primes, or a prime next to lambda = sigma' with Maynard weights",
-   "origin": "own",
-   "status": "works",
-   "note": "Needs theta M_k > 1 instead of > 2; 5-tuples under BV give |d| <= 12 (Pintz 16). Parity paper v0.11."
-  },
-  {
-   "idea": "Pintz-Maynard dichotomy for 4-tuples (|d| <= 8) via larger levels or enlarged supports",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Needs level 0.5423 for primes and lambda; best known for smooth moduli 0.525 (Stadlmann 2023); enlarged supports need the lambda-twisted sum at moduli beyond x^{1/2}. Session 26."
-  },
-  {
-   "idea": "Chen's theorem as a consistency test of the bipartite criterion",
-   "origin": "own",
-   "status": "works",
-   "note": "Class does not block 'p prime, p+2 in P_2' (no weakly fair killing weight, Lean-checked) but blocks each half (1 -/+ e1 e2); matches Tao 2007 and Pintz 2010. Folklore in substance. Parity paper v0.12, Remark rem:chen."
-  },
-  {
-   "idea": "Mod-q analogue of the parity obstruction (weights in Omega(n) mod q)",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "Fair Z/q pattern weights killing DHL[k,m+1] exist iff k <= q m, so q = 3 would 'block' DHL[3,2] (proved under GEH): the randomness heuristic fails for z = e(1/q), since Selberg-Delange gives a main term with 1/Gamma(z) != 0; only z = -1 is invisible. Session 27, code/explore/omega_mod_q_weights.py."
-  },
-  {
-   "idea": "Gowers-norm (infinite-complexity) barrier for twin primes, compared with parity",
-   "origin": "own",
-   "status": "works",
-   "note": "Settled as Prop. prop:gowers-blind (parity paper v0.13; folklore in substance): random block functions make every global U^d norm small while the shift-2 correlation is +-1 + O(1/L). Session 28."
-  },
-  {
-   "idea": "Local Gowers norms of lambda on short intervals vs random models (numerical)",
-   "origin": "exploration",
-   "status": "ruled out",
-   "note": "At X = 1e9, H = 8..512, local U^2 and U^3 of lambda agree with i.i.d. signs and a random multiplicative function within one standard error: no numerical handle. Session 28, code/explore/local_u2_liouville.py."
-  },
-  {
-   "idea": "Hybrid averages below the mean prime gap: can the Lichtman-Teravainen mu-side input reach H = o(log X)?",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "A mu' equal to +1 on every window after a prime satisfies the same input (eta' <= 2 eta + 217 H/log X) with no cancellation; Session 30, parity paper rem:lt22."
-  },
-  {
-   "idea": "Enlarge the MPZ region for H_m with the 2026 Type I/II lemmas",
-   "origin": "own",
-   "status": "ruled out",
-   "note": "The binding constraint in Stadlmann 2023 Cor. 2 is sigma > 1/10 (combinatorial lemma); the 2026 lemmas have the same Type I/II lower end 1/4+12w+4d (our reading, not certified). Session 30, notes/hm-programme.md section 6."
-  },
-  {
-   "idea": "Polya-type sign bias of lambda on shifted primes across shifts h",
-   "origin": "exploration",
-   "status": "open",
-   "note": "X = 2e7, h <= 64: 23 of 32 even h negative, mean -0.00045 pi(X), of Polya size, but S(h) are strongly correlated; inconclusive. Session 30."
-  }
- ],
- "phase": "B",
- "papers": [
-  {
-   "slug": "parity-barrier",
-   "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "0.15",
-   "status": "active",
-   "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; v0.14: averaging over the shift (Matomaki-Radziwill-Tao): the Liouville model of parity is solved on average for any H -> infinity, Lambda(n)Lambda(n+h) only in windows H >= X^{8/33+eps}, and no averaged statement reaches a prescribed shift; v0.15: hybrid averages (Lichtman-Teravainen solve sum_p mu(p+h) on average for H >= (log X)^{1+eps}); an elementary construction shows that their input on mu, like their input on Lambda, stops at the mean prime gap log X (folklore in substance); cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture."
-  },
-  {
-   "slug": "verification-note",
-   "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
-   "version": "1.0.1",
-   "status": "frozen",
-   "pdf": "docs/papers/verification-note.pdf",
-   "summary": "Frozen v1.0 (16 Nov 2026). Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236) and Charton et al. (212, Table 3 caps), each by two independent programs; ceiling < 3.99 for the 212 draft's Lemma 9.1 caps (one-program Gram certificate, weights checked at a random point); main terms and loss components of the 186 companion and the cap-quotient ingredients of 182 (numerical agreement of two implementations). A section states, number by number, what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified; no claimed bound is verified."
-  }
- ],
- "last_review": "2026-11-16",
- "phase_note": "Phase B since Session 17 (15 Nov 2026): rung 186 finished in the sense of the plan (main terms and loss bound L+ re-evaluated by two programs, L+ by two programs for the 17 components carrying 99.95% of the decisive group O_{5/2}; the rest by one program, with large margin slack). 186 is NOT adopted (majorisation lemmas, restoration step and analytic inputs unchecked). Rung 182 continues inside Phase B's bound share."
+  "version": "0.31",
+  "updated": "2026-11-18",
+  "session_count": 31,
+  "bounds": {
+    "target": 2,
+    "sieve_limit_geh": 6,
+    "claimed": 182,
+    "established": 246,
+    "project": 236,
+    "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
+  },
+  "results": [
+    {
+      "label": "Proved here",
+      "text": "Parity paper v0.15, Remark rem:lt22 (elementary, folklore in substance): if mu' = 1 on U = {p+h: p <= X-H prime, 1 <= h <= H} and mu' = mu elsewhere, then mu' 1_S satisfies the Lichtman-Teravainen hypothesis H_2(X,H,eta') with eta' <= 2 eta + (216+o(1)) H/log X (eta that of mu 1_S, << H^{-delta} by their Prop. 2.1), while sum_{h<=H} sum_{n<=X} mu'(n+h) Lambda(n) >= (1+o(1)) H X. So their input on mu cannot give cancellation along primes once H^{1+delta} <= c log X; their Lambda-side moment bounds fail for H = o(log X). Both stop at the mean prime gap. Audited by a fresh-context helper (8 items fixed). Script code/parity/hybrid_shifted_primes.py (Heuristic).",
+      "where": "papers/parity-barrier rem:lt22"
+    },
+    {
+      "label": "Computed",
+      "text": "H_m scoping (notes/hm-programme.md section 6; code/hm/mpz_region_check.py, exact rationals): in Stadlmann's proof of her MPZ region 80w + 80d/3 < 1 (arXiv:2309.00425v3, Cor. 2) the binding constraint is sigma > 1/10 of Polymath8a's combinatorial Lemma 2.7, not the Type III estimate; in our (uncertified) reading the 2026 Type I/II lemmas of arXiv:2608.31126 do not enlarge the MPZ region; going below sigma = 1/10 needs Type IV/V estimates (PM8a Remark 3.2) that are not available.",
+      "where": "notes/hm-programme.md section 6"
+    },
+    {
+      "label": "Proved here",
+      "text": "Parity paper v0.13, Prop. prop:gowers-blind (folklore in substance): with Tao's local norm ||f||_{U^d[N]}, for d >= 1, L >= 2, N >= 4d there are f_+-: [N] -> {-1,1} with ||f||_{U^d[N]}^{2^d} <= 2^{2d+1}(4d)^d L/N and +-(1/N) sum f(n)f(n+2) >= 1 - 4/L - 6/N, and a {0,2}-valued g with ||g-1||_{U^d}^{2^d} <= 3 c_d L/N, mean within (3L/N)^{1/2} of 1, and (1/N) sum g(n)g(n+2) <= 4/L + 2(3L/N)^{1/2} + 8/N (random block functions). So global Gowers uniformity (all that the Green-Tao finite-complexity theory uses) says nothing about two-point Chowla or twin primes; Tao's localisation (arXiv:1605.04628) sidesteps this for lambda only.",
+      "where": "papers/parity-barrier (subsec:gowers); code/parity/gowers_twin_blocks.py; notes/parity-attempts/2026-11-17-gowers-infinite-complexity.md; notes/audit-parity-v013.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "Parity paper v0.10, Prop. prop:siegel-bias and Cor. cor:siegel-typeI: for a real character chi mod q and a +-1 completely multiplicative f, the chi(b)chi(b+2)-weighted class sums of f(n)f(n+2) mod Q = lcm(prod_{p<=w} p, q) are >= rho x (1 - 4 s1 - (4/rho)(s2 + P2/x) - (Q/x)(1+4P1)), s1, s2 the 1/p-sums of primes where f != chi; with a Siegel zero (Tao-Teravainen (1.4), (3.22)-(3.23)), a per-modulus unweighted discrepancy bound eps x/Q for lambda(n)lambda(n+2) at Q = Wq forces the split primes in (w, q^{1/log^{1-eps'} eta}) to have 1/p-sum >= (1-eps)/4 - o(1). Elementary; possibly folklore. Locates where Heath-Brown's Siegel-zero route escapes the obstruction; no bearing on twin primes in the actual world.",
+      "where": "papers/parity-barrier (sec:siegel); code/parity/siegel_class_bias.py; notes/parity-attempts/2026-11-16-siegel-world-typeI.md; notes/audit-parity-v010.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "Parity paper v0.6, Thm thm:k2: at k = 2 the Polymath8b Theorem 3.14 ratio (support 2R_2, vanishing marginals beyond 1+eps, J over t <= 1-eps) is at most 2 for every eps in (0,1), with equality for an explicit step function: the strongest GEH criterion sits exactly at the parity value and never exceeds it (variance argument; audited, no errors). Possibly folklore. Confirms, does not break, the obstruction.",
+      "where": "papers/parity-barrier (sec:ceil); code/parity/k2_thm314_numeric.py; notes/parity-attempts/2026-11-15-geh-ceilings-k2.md; notes/audit-parity-v06.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "Parity paper v0.6, Prop. prop:ceil / Cor. cor:ceil / Cor. cor:consistent: Polymath8b's three GEH criteria (Thms 3.8, 3.12(ii), 3.14) have ratio <= k^2 log k/(k-1)^2 (scaling of PM8b Cor 6.4), so they cannot give DHL[k,3] for k <= 45 (DHL[5,3] in particular) although Liouville-pattern weights block only k <= 4; they agree with the parity class on every blocked case. Thresholds certified with arb balls. Remark rem:pm65: the printed proof of PM8b Prop 6.5 has a gap (fixed with a weaker constant; no PM8b result affected).",
+      "where": "papers/parity-barrier (sec:ceil); code/parity/geh_ceiling.py"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 182: printed arithmetic of the restoration step ((8.3), Sec. 10 totals, (10.2)-(10.3), Secs. 3.7, 13.3) re-done exactly (86 checks pass); the 43 + 55 source rows of the trial data satisfy every printed row definition (30 checks) and give T0 = 2491228441011/2624989000000 exactly. The 197 component integrals are not printed and remain unchecked; 182 not adopted.",
+      "where": "code/sharifi182_arith.py, code/sharifi182_rows.py, notes/arith-182-report.md, notes/sources-182.md section 11; verification note v0.10"
+    },
+    {
+      "label": "Literature",
+      "text": "Matomaki-Radziwill (arXiv:1501.04585v4) read in the source for the parity paper (Thm 1, Cor 2, 4): it needs multiplicativity of a single function, so it says nothing directly about lambda(n)lambda(n+2) or Lambda(n+2).",
+      "where": "papers/parity-barrier subsec:mr16; notes/sources-mr16.md"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 182: the mass deficit kappa_true of the five-prime minorant ((4.2) of the 182 bundle) recomputed by two independent methods (own 3-variable reduction + Gauss-Legendre; the paper's exact simplex moment series, after checking that the 3 printed simplices tile the region): 9.330708832406119916...e-5, agreement 58 digits; inside the printed bracket, below kappa-bar (by 8e-19) and kappa_cvx. One constant only; 182 not adopted.",
+      "where": "code/sharifi182_kappa.py, code/data182/kappa_result.json, notes/kappa-182-report.md, notes/sources-182-kappa.md; verification note Rem. rem:182; main paper Rem. rem:sha182"
+    },
+    {
+      "label": "Proved here",
+      "text": "(elementary, possibly folklore; compare the related Murty-Vatwani JNT 2017 Thm 1.1 as quoted by Cantarini arXiv:2607.09110v1) Sawin-Shusterman's split Lambda = -mu log * 1 written over Z: unconditionally (Bombieri-Vinogradov), sum Lambda(n)Lambda(n+2) ~ 2C_2 x iff T_D(x) = o(x), where T_D is a mu-Lambda correlation (D = x^{1/2}(log x)^{-B}); under EH for any D = x^theta. In F_q[T] T_D is bounded through a characteristic-p identity (SS Lemma 3.2) with no integer analogue. A reformulation, not progress.",
+      "where": "papers/parity-barrier Prop. prop:ss-split, Remark rem:ss-transfer; notes/parity-attempts/2026-11-15-ss-step-over-Z.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "(conditional on Tao-Teravainen arXiv:2512.01739v2 Thm 3.1, an unrefereed preprint) The twisted Type I input of the parity obstruction for Maynard two-variable weights (sum_{d1|n, d2|n+2} lambda_{d1,d2})^2 at level R <= (log x)^{c/32}. Only confirms the obstruction's input.",
+      "where": "papers/parity-barrier Cor. cor:maynard-logc"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 186 loss bound L+ of OpenAI's numerical companion: all 97 raw component bounds re-evaluated by one program (all at most the published values; outer group totals 1 and 3 units of 1e-12 below the table, inner totals equal), and the 17 components carrying 99.95% of the decisive group O_{5/2} (89.4% of L+) by a second, independent program (GMP integer products + mpmath, generating-series moments), agreeing with the first to 1.4e-12 (rank-two, factorial) and 2.2e-9 (low bins). Re-evaluation of the published forms; the majorisation lemmas, restoration step and analytic inputs are not checked; 186 not adopted.",
+      "where": "code/oai186_loss_outer.py, code/oai186_loss_outer2.py, code/cap6/oai186_loss_summary.json, code/cap6/loss_outer2/, notes/loss-outer2-report.md; paper Rem. rem:186-status"
+    },
+    {
+      "label": "Proved here",
+      "text": "(possibly folklore) For every periodic weight w and shifts h != h', sum_{n<=x} w(n)lambda(n+h)lambda(n+h')/n = o(log x) (from Tao's log-averaged two-point Chowla theorem); so Selberg-type weights of fixed (or slowly growing) level split their log-weighted mass equally between lambda(n)lambda(n+2) = +1 and -1. This confirms, in a weak regime, the input of the parity obstruction; it gives nothing for twin primes.",
+      "where": "papers/parity-barrier Prop. prop:tao-weight; notes/parity-attempts/2026-11-15-tao-twisted-typeI-weights.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "For a_n = Lambda(n+2), all hypotheses of Friedlander-Iwaniec's asymptotic sieve (Thm 2) except (R3) at level x^{2/3+} and the bilinear (B) hold, with H = 2C_2; (B) at C = 1 has no cancellation at all for the parity-twisted sequence Lambda(n+2)(1+lambda(n))/2, and Cauchy-Schwarz reduces (B) at C = 1 to an off-diagonal bound whose twisted analogue has only non-negative terms.",
+      "where": "papers/parity-barrier Props. prop:fi-twin, prop:B-parity"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 182 (GPT-6 Astra / Sharifi, k = 39): the trial data TrialData182.lean (supplied by Jerry Kim) checked for integrity, and the denominator I(F) of the criterion evaluated independently from it: I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] (relative position 0.49993). One program, high precision (floor-only rounding at 2^-224), not a rigorous enclosure. The numerators: J0 = 5.6364590899e-11 and J+ = 4.0824074297e-13, each just above the published lower bound (relative excess 4e-11 and 5e-12; code/sharifi182_J.py); with the published tail bound (not recomputed) the cap surplus is q_H - 1 = 2.76706e-4, consistent with the certified mu- = 2.76692e-4. The tail, the restoration losses and the analytic inputs (including the unproved Type III local Fourier proposition) are NOT checked; 182 stays Claimed.",
+      "where": "paper, Remark sha182 (v0.14); code/sharifi182_I.py, code/sharifi182_data.py, code/data182/, code/sharifi182_J.py, code/data182/J_result.json, code/data182/qH_check.json"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 186, source data and loss-table arithmetic (exact rationals, from the companion PDF supplied by Jerry Kim): the source ladders (29 / 43 rows), retained rows, boundary values, continuous caps and the integer cap masks (1.5), and the six group parameters with all guards of Lemma 1.1, recomputed from the printed rational definitions -- every printed value reproduced; for the 97 component bounds of Tables 2.1-2.6, every Young inequality and inner weighting, the group totals, L^+/I_H <= 696075110e-12 < 697e-6 and the final margins (2.34)-(2.35) hold exactly. The raw component bounds themselves (forms (2.16)-(2.21)) are NOT yet recomputed; the analytic comparisons of Lemma 1.1 are not checked.",
+      "where": "paper, after Proposition oai186-main (v0.14); code/oai186_support_data.py, code/oai186_tables_check.py, code/oai186_tables_2_1_to_2_6.json; notes/sources-186-forms.md, notes/sources-186-loss.md"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 186 (OpenAI): independent recomputation of the two main terms of the numerical companion (formulas (2.12)-(2.15), with our own derivation of the layered cap measure): I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_lambda,H = 9.0248755655e-14, 5.9e-9 (relative) above the published lower bound 90248755123e-24; rho* J/I_H = 1.000206087 > 500103/500000. Two independent programs: GMP integer products with directed rounding (rho_D, g, Z at 110 digits), and arb ball arithmetic with y-series combinatorics (I_H in [2.36853178533302e-14 +/- 3e-30], ratio in [1.00020608684 +/- 4e-12]); they agree to 7e-17. The loss bound L^+ and the analytic inputs are NOT checked; the project bound does not move.",
+      "where": "paper, Proposition oai186-main (v0.13); code/oai186_IH.py, code/oai186_J.py, code/oai186_IH.json, code/oai186_J.json, code/oai186_check2.py, code/oai186_check2.json"
+    },
+    {
+      "label": "Proved here",
+      "text": "Split Bonferroni certificate (folklore in substance): Corr2 = (Q(R)^2 part) - (Q(U)^2 part), both with nonnegative integrands piece by piece, so a one-sided certificate needs no piece with three forced coordinates (Q(R)^2, Corr1 to level 2; Q(U)^2 and int_V P^2 to level 1). On the 240 vector (k = 49): 49 J_low/I_up = 4.012038868083 > 4, 3.5e-8 below the exact 4.0120389035705, exact rationals, 98 pieces.",
+      "where": "paper, Proposition bonf2 (v0.13); capped_exact.py --split/--bonf; code/cap6/compare_capfree_D20_bonf.json"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "The 39-tuple printed in the 182 bundle of GPT-6 Astra / R. Sharifi is admissible of diameter 182 (boundedGaps_182_of_DHL_39').",
+      "where": "lean/TwinPrimes/Tuples.lean: sharifi39"
+    },
+    {
+      "label": "Literature",
+      "text": "Rung 182 read (GPT-6 Astra / Sharifi bundle, 132 pp.): k = 39, fragment-measure framework of the 186 paper on a 4x finer grid, 726-coefficient profile not printed in the bundle (it is in a separate repository not obtained), so no part of its variational step can be recomputed yet.",
+      "where": "paper, Remark sha182; notes/sources-182.md; notes/sources-needed.md"
+    },
+    {
+      "label": "Computed",
+      "text": "Our own k = 48 degree-22 vector on the support of Kintali / Song-Yue: capped_exact.py (176 checkpointed inclusion-exclusion pieces, 15.5 core-hours) and capped_check.py give the SAME I_T and J_T as exact rationals; 48 J_T/I_T = 4.0060814208 > 4 by two independent programs. Variational step only; the analytic input of 236 is NOT verified.",
+      "where": "paper, Proposition kin-capped (v0.12); verification note Prop. kin-own (v0.4); code/cap6/compare_kin48_D22r.json"
+    },
+    {
+      "label": "Proved here",
+      "text": "Bonferroni one-sided certificates (folklore in substance): the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be omitted when only k J_T/I_T > 4 is needed (their integrands are >= 0). On our k = 48 vector the one-sided ratio is 4.006081420807 (3.5e-12 below exact) and the omitted pieces are 28% of the running time; all 96 + 46 exact Corr1/I-correction pieces have the predicted sign (-1)^j.",
+      "where": "paper, Proposition bonf (v0.12); code/compare_two_programs.py, code/thin_bound.py"
+    },
+    {
+      "label": "Computed",
+      "text": "Rung 186, first independent check: closed-form (log, Li2) Dickman cell masses for the seven grid caps of OpenAI's numerical companion (363,450 cells, 40-digit floating point) all lie inside the companion's recurrence and cell enclosures as we transcribed them (widths <= 8.35e-10 cell units). One input checked (I_H and J_{lambda,H}: see the Session 14 entry).",
+      "where": "paper, Remark oai186 (v0.12); code/oai186_dickman_cells.py, notes/sources-186-forms.md"
+    },
+    {
+      "label": "Computed",
+      "text": "Song-Yue's 236 witness: the capped numerator J_T computed by a SECOND independent exact program (capped_exact.py --jonly, cap-free minus 126 inclusion-exclusion corrections, ~32 core-hours) equals capped_check.py's J_T exactly, hence (99!)^2 (26!)^2 10^196 5^150 521^50 J_T = Jref; its cap-free I, J equal the monomial-basis I0, J0. Criterion 48 J_T/I0 = 1.000664921591 > 2001/2000. Variational step of 236 reproduced; H1 <= 236 then follows from Song-Yue's Theorem 4.33 + Theorem 4.18 (equidistribution), which we have NOT verified.",
+      "where": "paper, Proposition sy-exact and Corollary cor:236 (v0.11)"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "The 40-tuple printed in OpenAI's 186 preprint (display 1.3) is admissible of diameter 186 (boundedGaps_186_of_DHL_40', Session 11).",
+      "where": "paper, Remark oai186"
+    },
+    {
+      "label": "Computed",
+      "text": "Song-Yue's published 236 witness (IACR ePrint 2026/1893, App. A; 1295 rows, degree 25, k = 48, D182 support) recomputed exactly: the cap-free denominator I0 and the capped numerator J_T, normalised to their integer coordinates, EQUAL their reference integers Iref (655 digits) and Jref (715 digits) exactly. Hence 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026596864 in Polymath scaling); with the capped denominator 4.0030988047 and without caps 4.0036348167, both equal to Kintali's claimed values to every printed digit. I0 and J0 by an independent monomial-basis program; J_T by capped_check.py (second program capped_exact.py --jonly: see the log). The authors list the regeneration of Jref as pending; this is a reproduction of the variational step only, the equidistribution input of 236 is Claimed and unverified.",
+      "where": "paper, Proposition sy-exact; code/songyue_convert.py, songyue_I0.py, songyue_J0.py, songyue_compare.py; code/cap6/check_sy236.json, compare_sy236.json"
+    },
+    {
+      "label": "Computed",
+      "text": "Kintali's support for 236 (k = 48, L = 1.042, tau = 0.982, g = 91/1250, one cap 1899/2500): our own cap-free optimiser of degree 22 (1041 coefficients; certified M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps) truncated to the support gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact). The caps cost only 0.00033. Confirmed by the second program in Session 13 (see the entry above). The analytic input (Stadlmann's estimates with Kintali's corrections) is Claimed; the project bound is 236 only conditionally, through Song-Yue's route (see bounds.project_note).",
+      "where": "paper, Proposition kin-capped; code/cap6/P_kin48_D22r_u.json, code/cap6/check_kin48_D22r.json, code/cap6/compare_kin48_D22r.json, code/cert_kin48_capfree_D22e.json"
+    },
+    {
+      "label": "Computed",
+      "text": "Ceiling for Charton et al.'s Lemma 9.1 caps (k = 45, C1 = C2 = 31/50, Cm = 17/25): 3.99 G_I - 45 G_J is positive definite on our whole 846-dimensional degree-21 space, so no P there gives 45 J_T/I_T ≥ 3.99 (ball arithmetic; sigma = 4 certified at 5000 and 6500 bits with two block splits, sigma = 3.99 at 6500 bits). The Gram weights reproduce capped_check.py exactly at a random integer vector (Schwartz-Zippel: failure probability < 2^-31). The best P in the space gives 3.98555 (Gram, floating point). So the draft's claimed 4.00438 (also 846 coefficients) must belong to its Table 3 caps, where our truncated vector already gives 4.0027. A located discrepancy, not a refutation. Session 24: the Gram weights' Schwartz-Zippel test point is now evaluated by BOTH exact programs (capped_check.py and capped_exact.py, I_T and J_T equal exactly; code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out).",
+      "where": "paper, Proposition 33 and Remark 34; code/capped_gram.py; runs/gram45_lemma91_recheck.log, runs/gram45_rand_selftest.log, code/cap6/check_rand45_lemma91.json"
+    },
+    {
+      "label": "Computed",
+      "text": "Test function optimised on Stadlmann's capped support itself (k = 49, his parameters, the same 707-dimensional degree-20 space): k J_T/I_T = 4.0124198475 > 4, against 4.0120389 for the truncated cap-free optimiser and 4.0161761 without caps. capped_check.py and capped_exact.py agree on I_T and J_T as exact rationals. Optimising on the support regains only 0.00038 of the 0.0041 lost to truncation. Reproduction of the variational step of [Sta26], not a new bound; 240 still rests on his unverified equidistribution estimates.",
+      "where": "paper, Proposition 32; code/cap6/P_opt49_D20r_u.json, code/cap6/check_opt49_D20r.json, code/cap6/res_opt49_D20r.json"
+    },
+    {
+      "label": "Proved here",
+      "text": "Gram matrices of the capped functionals by reverse mode: I_T and J_T are linear in the coefficient products of P and of its fibre integral, so running capped_check.py's exact linear maps backwards gives exact weights, and G_I[t1,t2] = w_I[F1+F2][a1+a2], G_J = Q^T H Q. Self-test: the weights reproduce I_T and J_T of capped_check.py exactly (k = 12 and k = 49). A rigorous ceiling mode certifies sigma G_I - k G_J positive definite by recursive Schur complements in ball arithmetic.",
+      "where": "paper, Proposition 31; code/capped_gram.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "Kintali's support for 236 (k = 48, g = 91/1250, one cap 1899/2500, L = 1.042 in Polymath scaling): at most ten coordinates exceed g, and every cap-violation piece has at most three further large coordinates.",
+      "where": "lean/TwinPrimes/Caps.lean: kintali_large_count, kintali_extra_le_three"
+    },
+    {
+      "label": "Proved here",
+      "text": "Theorem 25 (floor for one-band hybrid supports): a one-band Stadlmann support with A1 ≤ 1/4 + omega, any delta, any caps and any minorant can give DHL[k,2] only if M_k(4(A1+eps), 4(A1-eps)) > 4. Certified false for every eps: k ≤ 29 (omega = 0), k ≤ 28 (omega = 0.003 and 1/300, Stadlmann's level), k ≤ 26 (omega = 0.007, the level of Charton et al.), k ≤ 22 (omega ≤ 1/68). Reduction proved; table Computed in interval arithmetic and re-checked with a second library. Far from 49 and 45; it ignores the caps.",
+      "where": "paper, Theorem 25; code/floor_hybrid.py, code/cert_floor_hybrid_*.json"
+    },
+    {
+      "label": "Computed",
+      "text": "SUPERSEDED (session 6): with a Cauchy-Schwarz bound on the capped marginals the ratio was only certified ≥ 3.95972 for Stadlmann's support (degree 20); computing J_T exactly gives 4.0120 (truncated cap-free optimiser) and 4.0124 (optimised on the support), see below. The loss came from Proposition 23, not from the caps.",
+      "where": "paper, Proposition 24; code/stadlmann_caps_opt.py, code/cert_stad49_caps_D20e.json, runs/stad49_capsopt_D20.log"
+    },
+    {
+      "label": "Proved here",
+      "text": "Proposition 23: for F = P 1_T, I_T ≤ I(P) and J_T ≥ J(P) − 2 sqrt(J(P) L E(P)), where E(P) is an exact union bound for the integral of P^2 over the cap-violation set; the pieces {m coordinates above delta, their sum above the cap} are integrated exactly with shifted power sums (checked against Lemma 3 and against sympy for k = 3).",
+      "where": "paper, Proposition 23; code/caps_exact.py"
+    },
+    {
+      "label": "Computed",
+      "text": "Cap-free parts of the 2026 supports: M_{49,15/506} ≥ 3.9685535 (degree 20) and M_{45,8/257} ≥ 3.9029887 (degree 21, dimension 846, equal to the dimension stated by Charton et al.), so by dilation the cap-free ratios are ≥ 4.016176 (Stadlmann's (L, tau) = (1.042, 0.982)) and ≥ 4.012272 (Charton et al.'s (1.06, 0.996)). Compared with their claimed capped value 4.00438, the caps seem to cost about 0.008 at k = 45 (a comparison, not a verification).",
+      "where": "paper, Proposition 22; code/cert_stad49_capfree_D20e.json, code/cert_ax45_capfree_D21e.json; re-check with code/verify_cert.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "Counting large coordinates: if every entry of a list exceeds g then length × g ≤ sum; so (in units of 1/1000) at most 9 coordinates of a point of Stadlmann's support exceed 4 delta = 112, and 7 such coordinates always exceed every cap (680).",
+      "where": "lean/TwinPrimes/Caps.lean"
+    },
+    {
+      "label": "Computed",
+      "text": "M_{50,1/25} ≥ 4.0012466 (degree 25, 1780 coefficients) and ≥ 4.0043063 (degree 27, 2526 coefficients) on Polymath8b's epsilon-enlarged simplex, even power sums. With the Lean tuple (50, 246), Bombieri-Vinogradov and Polymath8b Thm 3.12(i) this gives H1 ≤ 246 end to end, the established bound. Agrees with Polymath8b's 4.00124 (d=25) and 4.0043 (d=27) to every printed digit; Gram formulas checked against direct sympy integration. Reproduction, not new.",
+      "where": "code/cert_M50e25_D25e.json, code/cert_M50e25_D27e.json; re-check with code/verify_cert.py; code/check_eps_sympy.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "BoundedGaps 1 is false, and {0, d} is admissible iff d is even: 2 is the smallest possible bound.",
+      "where": "lean/TwinPrimes/Basic.lean: not_boundedGaps_one, admissible_pair_iff"
+    },
+    {
+      "label": "Computed",
+      "text": "Proposition 19 (floating point, discretised, not rigorous): the best dual weight depending only on (t_m, S), found as a convex program, is the classical k/(k-1) log k at eps = 0 and about 4.14 at (k, eps) = (50, 1/25), far above M_{50,1/25} ≥ 4.0012. Sharper floors need weights that see more of t.",
+      "where": "code/dual_lp.py; runs/dual_lp_conv.log, runs/dual_lp_floor.log"
+    },
+    {
+      "label": "Computed",
+      "text": "Certified M_{k,eps} values for k = 49, 50, degrees 10-24, eps in {0, 1/50, 1/40, 1/30, 1/25, 1/20}; heuristic geometric extrapolation in the degree (checked against the known degree 22/25/27 values at k = 50) suggests sup_eps M_{49,eps} ≈ 3.991-3.994 < 4 (Remark 20, Open); a prediction registered before the degree-24 run (3.98230) came out 3.98218.",
+      "where": "runs/scan_k49.jsonl, runs/scan_k50.jsonl; code/scan_eps.py, code/extrapolate_eps.py"
+    },
+    {
+      "label": "Open",
+      "text": "Polymath8b Prop. 6.5: re-read in the arXiv text; as printed the argument gives (k/(k-1)+eps) log(2k-1), not k/(k-1) log(2k-1) (Remark 16). Whether the stated bound holds is open.",
+      "where": "paper, Remark 16"
+    },
+    {
+      "label": "Computed",
+      "text": "M_54 ≥ 4.0023860 with even power sums of degree 23 (1236 coefficients). With the Lean tuple (54, 270), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 270 end to end. Agrees with Polymath8b's 4.00238 to every printed digit; a second run (the 3:34 AM session's certificate, recovered from a bundle) gives the same value. Reproduction, not new.",
+      "where": "code/cert_M54_D23e.json; re-check with code/verify_cert.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "DHL.mono: DHL[k,2] implies DHL[k',2] for every k' ≥ k (delete shifts), with Admissible.sublist.",
+      "where": "lean/TwinPrimes/Basic.lean"
+    },
+    {
+      "label": "Proved here",
+      "text": "Proposition 14: M_{k,eps} ≤ (1+eps) M_k, and M_{k,eps} ≥ (1+eps) M_k − 64k²eps²/M_k for small eps, so the enlargement gains exactly (1+eps) to first order. Possibly folklore.",
+      "where": "paper, Proposition 14"
+    },
+    {
+      "label": "Proved here",
+      "text": "Theorem 15 (floor of the epsilon-enlarged simplex): M_{k,eps} < 3.99 for every k ≤ 29 and every 0 ≤ eps < 1, so the enlarged simplex alone cannot give DHL[k,2] for k ≤ 29 from Bombieri-Vinogradov or any level θ ≤ 0.501. Inequality proved; numerical part Computed in interval arithmetic and re-checked with a second library.",
+      "where": "paper, Theorem 15; code/cert_floor_k29.json, dual_eps_cert.py, check_floor_cert.py"
+    },
+    {
+      "label": "Computed",
+      "text": "M_55 ≥ 4.00516 with even power sums of degree 20 (707 coefficients). With the Lean tuple (55, 272), Bombieri-Vinogradov and Maynard's Prop. 4.2 this gives H1 ≤ 272 end to end. Reproduction, not new.",
+      "where": "code/cert_M55_D20e.json; re-check with code/verify_cert.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "The twin prime conjecture is equivalent to BoundedGaps 2.",
+      "where": "lean/TwinPrimes/Basic.lean: twin_iff"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "A finite Boolean check certifies admissibility (pigeonhole handles large primes).",
+      "where": "Basic.lean: admissible_of_check"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "DHL[k,2] implies gaps at most D for 56 explicit pairs (k, D): every k from 2 to 55, plus (102, 578) and (105, 600). DHL[2,2] implies the twin prime conjecture.",
+      "where": "lean/TwinPrimes/Tuples.lean"
+    },
+    {
+      "label": "Proved here",
+      "text": "Pigeonhole rigidity: unequal weights on the shifts never certify a smaller gap than the best sub-tuple does (Proposition 8). Possibly folklore.",
+      "where": "paper, Section 3"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "Nine more explicit tuples: DHL[k,2] gives BoundedGaps D for (56,278), (57,282), (58,288), (59,300), (60,304), (61,310), (62,320), (63,324), (64,330).",
+      "where": "lean/TwinPrimes/Tuples.lean"
+    },
+    {
+      "label": "Computed",
+      "text": "With polynomials in 1-P1 and P2 only: M_105 ≥ 4.00207, M_102 ≥ 4.00271, M_5 ≥ 2.00411. This family stops at k = 102.",
+      "where": "code/cert_M105.json, cert_M102.json, cert_M5.json"
+    },
+    {
+      "label": "Computed",
+      "text": "With all symmetric polynomials (new generating-function formula): M_105 ≥ 4.17427, M_64 ≥ 4.00363 (degree 12); even power sums: M_58 ≥ 4.00927 (degree 16), M_56 ≥ 4.00519 (degree 18). M_55 reaches only 3.99153 at degree 18.",
+      "where": "code/mk_general.py; cert_M64_D12.json, cert_M58_D16e.json, cert_M56_D18e.json"
+    },
+    {
+      "label": "Proved here",
+      "text": "Exponential-moment formula: integrals of (1-P1)^A times products of power sums over the simplex are A!/(k+A+w)! times E[prod P_j(X)^b_j] for iid Exp(1) variables, an integer given by an EGF power (Lemma 3). Possibly folklore.",
+      "where": "paper, Lemma 3"
+    },
+    {
+      "label": "Proved here",
+      "text": "Pigeonhole rigidity also holds on Polymath8b's epsilon-enlarged simplex (Proposition 10): weights never beat the best sub-tuple. Possibly folklore.",
+      "where": "paper, Proposition 10; notes/enlarged-rigidity.md"
+    },
+    {
+      "label": "Literature",
+      "text": "With Bombieri-Vinogradov and Maynard's Prop. 4.2, the M_54 certificate and the Lean tuple (54, 270) give H1 ≤ 270 end to end inside this project (was 278; superseded by 246 in session 4).",
+      "where": "paper, Corollary 5"
+    },
+    {
+      "label": "Computed",
+      "text": "Exact capped functionals on Stadlmann's support: for F = P 1_T with the degree-20 cap-free optimiser P, k J_T/I_T = 4.0120389 > 4 at k = 49, in exact rational arithmetic, with identical I_T and J_T from two independent programs (code/capped_exact.py, code/capped_check.py). The variational step of [Sta26] is independently reproduced; H1 <= 240 then follows from his Prop. 1 and his equidistribution theorem, which we have not verified.",
+      "where": "paper, Theorem 26 and Corollary 27"
+    },
+    {
+      "label": "Proved here",
+      "text": "Exact reduction of the capped functionals: fibres of T are [0, min(R, max(g, C_{m+1} - s))]; I_T and J_T equal the cap-free values minus three corrections, each a signed inclusion-exclusion sum (m <= 9 large, j <= 3 extra coordinates) of polygon integrals of polynomials in two variables.",
+      "where": "paper, Proposition 25"
+    },
+    {
+      "label": "Computed",
+      "text": "Ceiling: Stadlmann's capped quantity at k = 49 is at most 4.14 (two-zone dual weight, interval arithmetic); cutting fibres at the Lean-checked coordinate bound 0.6 barely moves this weight's ceiling (4.13785 -> 4.13753, floating point).",
+      "where": "paper, Remark 28"
+    },
+    {
+      "label": "Computed",
+      "text": "Charton et al.'s capped support (k = 45, caps of their Table 3): our degree-21 cap-free optimiser truncated to T gives 45 J_T/I_T = 4.0027351 > 4, with identical exact I_T, J_T from two independent programs (their claimed value with their own F: 4.00438). With the different caps of their Lemma 9.1 the same P gives 3.9736870 < 4. The project bound is not lowered to 212 (caps discrepancy; analytic input Claimed).",
+      "where": "paper, Proposition 29"
+    },
+    {
+      "label": "Computed",
+      "text": "Ceiling for Charton et al.'s capped quantity at k = 45: at most 4.126 (two-zone dual weight, interval arithmetic). Session 24: the Gram weights' Schwartz-Zippel test point is now evaluated by BOTH exact programs (capped_check.py and capped_exact.py, I_T and J_T equal exactly; code/cap6/res_rand45_lemma91.json, compare_rand45_lemma91.out).",
+      "where": "paper, Remark 30"
+    },
+    {
+      "label": "Proved here (computer-assisted: ball arithmetic, two programs)",
+      "text": "The dual weight psi_m = (beta/n)(a - S_A + n t_m), whose fiber supremum reduces to two parameters by an equalisation lemma, gives M_{50,1/25} < 4.1463 (a = 10373/10000): below scaling 4.1515 but above the two-zone weight's 4.1459, so it does not improve the best upper bound.",
+      "where": "paper v0.15, Prop. psi-weight"
+    },
+    {
+      "label": "Computed",
+      "text": "Two-zone weight of Theorem floor certifies M_{50,1/25} < 4.1459 (arb, 1154 pieces; code/twozone_50_cert.py). Corrects an earlier sentence that it did not beat scaling.",
+      "where": "paper v0.15, remark after Theorem floor"
+    },
+    {
+      "label": "Computed",
+      "text": "182 criterion: second, independent ball-arithmetic program for I(F): [1.48963410081137215290e-11 +/- 5.2e-40], inside the published enclosure; agrees with the first program to 1.7e-22 (code/sharifi182_check2.py).",
+      "where": "paper v0.15, Remark sha182"
+    },
+    {
+      "label": "Computed",
+      "text": "186 companion: raw loss bounds of group I2old (7 of 97 components) re-evaluated from the transcribed forms; each at or just below its Table 2.3 value (two readings stated; one inferred from the numbers).",
+      "where": "paper v0.15, after Prop. oai186-main"
+    },
+    {
+      "label": "Computed",
+      "text": "186 companion: raw loss bounds re-evaluated from its formulas for 78 of 97 components (all but 1.2e-6 of L^+; all 45 inner, 33 outer); every value at most the published one and within 3.4e-5 (mostly within 5e-9); inner group totals of Table 2.7 reproduced exactly. One program, ball arithmetic, not an outward-rounded certificate.",
+      "where": "paper v0.16, after Prop. oai186-main; verification note v0.6, Remark rem:186"
+    },
+    {
+      "label": "Computed",
+      "text": "186 margin budget from the printed integers (exact rationals): O_{5/2} is 89.5% of L^+ and may be at most 2.06% too small before the margin falls to 1/50000 (14.3% before 0).",
+      "where": "paper v0.16, Prop. oai186-budget"
+    },
+    {
+      "label": "Proved here",
+      "text": "(core NOT new: the convex-hull, bipartite and k/2 cases are in Tao's blog post \"A general parity problem obstruction\", 21 Nov 2014, credited from parity paper v0.7; the window form and H_m < H(2m+1) are ours as far as we read; for the class of Liouville-pattern weights, which is the heuristic part) A fair pattern weight blocking a target exists iff (1/2,...,1/2) is a convex combination of target-free sets: for pairs iff the target graph is bipartite; for DHL[k,m+1] iff k <= 2m; for m+1 primes in windows of length g iff no closed window holds 2m+1 tuple elements. Hence the class blocks every tuple exactly when g < H(2m+1): H_1 < 6, H_2 < 12, H_3 < 20 (H(k) by exhaustive search; witnesses Lean-checked admissible).",
+      "where": "papers/parity-barrier v0.2, Prop. prop:bipartite, Cor. cor:six; notes/parity-attempts/2026-11-15-bipartite-criterion.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "Polymath8b Remark 8.1's printed weight (product over 0 <= i <= i' <= H, positions prime to 3) is identically zero, and stays zero with i < i' once H >= 4 (odd cycles among positions prime to 3); the corrected weight (i < i', odd positions) is fair and works. Typo-level; no result changes.",
+      "where": "papers/parity-barrier v0.2, Sec. subsec:rem81; code/parity/bipartite_obstruction.py; notes/flags-for-jerry.md"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "A non-negative integer fair weight on {+-1}^3 that kills all three pairs has total mass 0; the Polymath8b weight (1-ab)(1-bc) is non-negative, fair and kills {0,2},{2,6}; {0,2,6,8,12} and {0,2,6,8,12,18,20} are admissible.",
+      "where": "lean/TwinPrimes/Parity.lean"
+    },
+    {
+      "label": "Computed",
+      "text": "182 cap numerators by a second program (arb balls): J0 = 5.63645908992367166973506e-11 +- 1.7e-39, J+ = 4.08240742966433656776654e-13 +- 2.5e-40, both above the published lower bounds; agree with program 1 to 2e-23 / 2e-32 relative.",
+      "where": "code/sharifi182_check2_J.py, code/data182/check2_J_result.json, notes/check2-J-182-report.md; paper v0.18 Remark rem:sha182"
+    },
+    {
+      "label": "Computed",
+      "text": "Polymath8b Thm 6.7 lower bound for M_k reproduced in ball arithmetic: smallest k for DHL[k,3] is 35410 in PM8b's MPZ region and 41588 with BV only, both equal to Polymath8b's.",
+      "where": "code/hm/pm8b_mk_lower.py, notes/hm-programme.md"
+    },
+    {
+      "label": "Computed",
+      "text": "182 tail term E_{H_C^c} (one program, arb balls; kernel K of [M] (5.6) exact): T = 5.286348805928e-13 +- 1e-40, below the published trialTailUpper 5.286348805973e-13; with the balls for I, J0, J+ the cap surplus q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4.",
+      "where": "code/sharifi182_tail.py, code/data182/tail_result.json, notes/tail-182-report.md; paper v0.18 Remark rem:sha182"
+    },
+    {
+      "label": "Computed",
+      "text": "182 tail term by a second, independent program (own exact kernel, GMP fixed point with directed error bounds): T in [5.2863488059280771006442311847e-13 +- 1.4e-45], inside program 1's ball and below the published trialTailUpper. With the nominal last kernel block (r_max = 768*512-1) the kernel bound (5.7) fails (K_511 = 2.19637) and T exceeds trialTailUpper by 5e-7 relative, so the Lean premise fits only r_max = n0-1. All four ingredients of the 182 cap quotient (I, J0, J+, T) now by two programs; restoration losses and analytic inputs unchecked, 182 stays claimed.",
+      "where": "code/sharifi182_tail2.py, code/data182/tail2_result.json, notes/tail2-182-report.md; paper v0.19 Remark rem:sha182; verification note v0.8 Remark rem:182"
+    },
+    {
+      "label": "Proved here, conditional on a preprint",
+      "text": "Twisted Type I input of the parity obstruction at level R <= (log x)^{c0}: for w_R(n) = (sum_{d | n(n+2), d <= R} lambda_d)^2 with lambda_1 = 1, |lambda_d| <= 1, the log-averaged sum of w_R(n) lambda(n) lambda(n+2)/n is at most (log x)^{-c0} times the sum of w_R(n)/n; conditional on Tao-Teravainen arXiv:2512.01739v2 Thm 3.1 (unrefereed). Fresh-context audit: sound. Only confirms the obstruction's input; no lower bound for twin primes.",
+      "where": "papers/parity-barrier v0.3 Prop. prop:tao-weight-logc; notes/parity-attempts/2026-11-15-tt25-level-logc.md, 2026-11-15-tt25-audit.md"
+    },
+    {
+      "label": "Literature",
+      "text": "Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 2001) read in the source: own sieve close to Friedlander-Iwaniec's (their (R1) not met), Type I level X^{2-eps} from the factorisation of the form, Type II Lemma 3.10 via the vanishing cbrt4-coefficient (outer variable = cross product of the two inner ones), a 3-dimensional large sieve and Hecke Groessencharacters; why this does not transfer to Lambda(n+2) recorded as Heuristic.",
+      "where": "papers/parity-barrier v0.4 Section subsec:hb-x3, Remark rem:hb-transfer; notes/sources-hb-x3-2y3.md"
+    },
+    {
+      "label": "Proved here",
+      "text": "Dual formula for the supremum S_k(eps) of Polymath8b's Theorem 3.14 ratio: S = |Pi_K P^*|^2 = sup_f dist(P^* f, W)^2/|f|^2 (standard Hilbert-space duality); the proof of our k = 2 theorem is exactly this projection, because at k = 2 the two constraint cylinders are disjoint. For k >= 3 any two cylinders overlap in positive measure, so the k = 2 argument does not transfer.",
+      "where": "papers/parity-barrier v0.7 Lemma lem:dual, Prop. prop:overlap"
+    },
+    {
+      "label": "Computed",
+      "text": "k = 3: the orthogonal relaxation (marginal condition kept only on columns whose fibres meet no other constraint) has supremum > 2.1408 at eps = 1/8 and > 2.0657 at eps = 1/4 (exact certificates, two scripts); heuristically the full supremum is about 1.976 at eps = 1/8, so the overlapping constraints decide whether the criterion beats the parity value 2.",
+      "where": "papers/parity-barrier v0.7 Prop. prop:orth-relax, Remark rem:k3-eps; code/parity/k3_orth_relax_cert.py, k3_orth_relax_verify.py, k3_thm314_dual.py"
+    },
+    {
+      "label": "Computed",
+      "text": "Independent exact check of Polymath8b Theorem 3.15 (DHL[3,2] under GEH, eps = 1/4): a symmetric step function on the arrangement {t_i, t_i+t_j, sum t = m/8} has ratio 2 + 711155/3866758832 > 2.00018, by two independent programs (PM8b's printed polynomial: about 2 + 6e-8). Nothing new is proved.",
+      "where": "papers/parity-barrier v0.7 Prop. prop:k3-step; code/parity/k3_arrangement_exact.py, k3_arrangement_verify.py, k3_arrangement_cert.json"
+    },
+    {
+      "label": "Proved here",
+      "text": "(possibly folklore) Schur-test reduction: for k = 3 and 1/4 <= eps < 1/2, any positive phi on [0,1-eps] with int_0^{a-y}(phi(t)+phi(y))/(C-3/2+t+y)dt <= phi(y) proves that the Theorem 3.14 ratio (even without the vanishing marginal condition) is <= C for all eps' >= eps; the condition is scale-invariant.",
+      "where": "papers/parity-barrier v0.8 Prop. prop:unc-ceiling, Cor. cor:k3-linear"
+    },
+    {
+      "label": "Computed",
+      "text": "For which eps Polymath8b's k = 3 GEH criterion works: the supremum sigma_3(eps) exceeds 2 at eps = 2/9, 1/4, 7/24 (exact step functions), and is <= 1.9999 < 2 for every eps in [0.439, 1/2) (Schur certificates); sigma_3(1/4) in (2.0001, 2.17], and sigma_3(eps) <= 3/2 + 0.89109(1-eps) on [1/4, 1/2). Each certificate by two independent programs. Heuristic: the good set is about (0.19, 0.31) with maximum about 2.003.",
+      "where": "papers/parity-barrier v0.8 Thm. thm:k3-window; code/parity/k3_unc_cert.py, k3_unc_verify.py, k3_arrangement_exact.py, k3_arrangement_verify.py"
+    },
+    {
+      "label": "Proved here",
+      "text": "Pintz's dichotomy with Maynard weights: for an admissible k-tuple H, r not in H, sigma = +-1, if theta M_k > 1 (theta a level for primes and for lambda; theta = 1/2 by BV) then infinitely many n have two primes in n+H or a prime n+h_i with lambda(n+r) = sigma. Hence (k = 5, M_5 >= 1417255/708216) some even 0 < |d| <= 12 (and some even 0 < d <= 14) has lambda(p+d) = -1 for infinitely many primes p (Pintz 2010: 16 and 18). Possibly folklore (three web searches found no improvement of Pintz). Ratios exact by two programs. The target is the complete graph on H u {r} (not blocked by the parity class); a single prescribed d is a star (blocked).",
+      "where": "papers/parity-barrier v0.11 Thm. thm:pintz-maynard, Cor. cor:pintz12, Rem. rem:pintz-parity; code/parity/pintz_maynard.py, pintz_maynard_check2.py"
+    }
+  ],
+  "ideas": [
+    {
+      "idea": "Own idea: conditional ranges for averaged Hardy-Littlewood via the window identity and Goldston-Montgomery's variance equivalence.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 31, parity paper rem:gm: under RH + strong pair correlation the Fejer form holds for K >= c log N; for K = o(log N) the variance asymptotic is automatic; a fixed shift needs the variance at K <= 3 to o(N). Elementary, folklore in substance; audited (3 errors, 4 gaps fixed)."
+    },
+    {
+      "idea": "Exploration: the window identity in F_q[T] (ultrametric balls) and Keating-Rudnick's variance: can ball variances reach a single shift?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 31: identity exact (small q); the symmetry f(T) -> lambda^{-n} f(lambda T) makes all constant shifts equal when gcd(n, q-1) = 1, so the h = 0 variance gives the single twin count; large-q results live in the regime window >> mean gap; no integer analogue (Z has only c(h) = c(-h)). Likely known; not promoted."
+    },
+    {
+      "idea": "Exploration: structure in the Hardy-Littlewood errors across shifts beyond S(h) (regression of r(h)-1 on h mod small primes and log h; spread vs Poisson).",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 29: R^2 <= 0.006, all |t| < 2 at X = 1e7, 1e8; spread sub-Poisson (ratio ~0.6), plausibly the known variance reduction of primes in short intervals; not promoted."
+    },
+    {
+      "idea": "Own idea: weaken the small-s hypothesis of prop:siegel-bias to bounded s via a two-point mean value for pretentious functions (bias ~ prod (p-3)/(p+1) for random exceptional sets).",
+      "origin": "own",
+      "status": "open",
+      "note": "Session 25 numerics: for random F the mean bias tracks the Euler product (below it, above 1-4s); for character-structured F (the actual split primes) it vanishes. A rigorous version would need a uniform Elliott/Klurman-type correlation theorem; not attempted."
+    },
+    {
+      "idea": "Parity attempt (thread 3): where the obstruction's hypothesis fails in a Siegel-zero world (Heath-Brown 1983 via Tao-Teravainen 2022).",
+      "origin": "own",
+      "status": "partial",
+      "note": "Session 25: located (paper Prop. prop:siegel-bias, Cor. cor:siegel-typeI): the per-modulus twisted Type I input fails at Wq if the Siegel character has few split primes in (w, T); open: whether a Siegel zero forces that (open question 8), and whether the averaged input fails."
+    },
+    {
+      "idea": "Exploration: do small values of L(1, chi_{-q}) come with few small split primes (s' < 1/4)?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 25: in the actual world yes (bottom 1% of L(1) among 9005 primes q <= 2e5: mean s' = 0.029, none >= 1/4), but this is near-tautological (log L(1) is dominated by small primes) and cannot see the Siegel regime; the class-number argument bounds counts, not 1/p-sums. code/explore/l1_small_split.py."
+    },
+    {
+      "idea": "Parity attempt (thread 3): what the level of distribution alone gives for Lambda(n+2), via Bombieri's asymptotic sieve and Ford's limits.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 24: located, folklore reduction (paper Prop. prop:bomb-twin): under EH, twin primes <=> (Lambda*Lambda)-weighted P2-twins; Ford: no fixed level suffices; Hooley-type condition open (open question 7). Side result: probable factor-2 slip in Debouzy's constant (flag)."
+    },
+    {
+      "idea": "Exploration: does mu(p-2) show parity bias in progressions (Hooley's averaged condition) beyond square-root cancellation?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 24: no; ratio to a random-sign model 0.73-1.54 at x = 1e6, 1e7 (code/explore/hooley_twin_parity.py). Nothing to exploit."
+    },
+    {
+      "idea": "Parity attempt: ceilings for Polymath8b's GEH criteria, and the exact k = 2 value of the Theorem 3.14 ratio.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 21: ratio <= k^2 log k/(k-1)^2 for all three criteria (no DHL[k,3] for k <= 45); at k = 2 exactly 2, attained, never exceeded (parity paper Thm thm:k2)."
+    },
+    {
+      "idea": "Exploration: how far above the parity value 2 is the Theorem 3.14 ratio at k = 3?",
+      "origin": "exploration",
+      "status": "open",
+      "note": "Session 21: symmetric cube grids at eps = 1/4 give 1.959 at n = 24, extrapolating to about 2.003 (Heuristic); PM8b's certificate is 2 + 5.8e-8. A certified answer needs piecewise-polynomial elements and a dual bound (parity paper open question 6)."
+    },
+    {
+      "idea": "Parity attempt: transpose Sawin-Shusterman's twin-prime deduction to Z and locate the step with no integer analogue.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Bonus run 15 Nov: the split only relocates the problem into T_D (a mu-Lambda correlation, related to Murty-Vatwani); the missing step is SS Lemma 3.2 (mu on a line is a character in characteristic p)."
+    },
+    {
+      "idea": "Exploration: Barban-Davenport-Halberstam (L^2) information on lambda(n)lambda(n+2) as a substitute for the pointwise twisted Type I input.",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Bonus run 15 Nov: Cauchy-Schwarz caps any L^2 route at level 1/2 even with random-sign variance; numerics at 1e7 random-like."
+    },
+    {
+      "idea": "Parity attempt: transfer Tao's log-averaged two-point Chowla theorem to sieve-weighted sums sum w(n)lambda(n)lambda(n+2)/n, to see whether the twisted Type I input of the parity obstruction can be proved for actual sieve weights.",
+      "origin": "own",
+      "status": "partial",
+      "note": "Session 17: proved for periodic weights (fixed or slowly growing level); level x^theta needs uniformity in the modulus, which is open, and would only confirm the obstruction."
+    },
+    {
+      "idea": "Exploration: measure what a GPY/Selberg weight sees of the parity of n(n+2) (weighted lambda(n)lambda(n+2), parity-pattern shares, class distributions of the two twisted measures).",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 17: as expected (B/A ~ 4e-5 at 1e8, equal class shares, all twins in the + measure); kept as the parity paper's numerical illustration, not a result."
+    },
+    {
+      "idea": "Rung 182: read the 182 trial's component caps as a layered sum over the largest fragment (layers over the union of component and outer-shell caps, active coefficients = components with cap >= layer value), processed cap by cap through linearity.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 14 follow-up: I(F) lands at the midpoint of the published enclosure (code/sharifi182_I.py)."
+    },
+    {
+      "idea": "Rung 186: read the underspecified layered cap convolution (2.15) of OpenAI's companion as a split of the retained configuration by the layer of its largest fragment over ALL cap values occurring in the outer and face domains, with the erased coordinate admitted in the outer shells whose cap is >= the layer value.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 14: with this reading our J_lambda,H lands 5.9e-9 above the published lower bound and the ratio matches (code/oai186_J.py); a fresh-context audit found no defect."
+    },
+    {
+      "idea": "Exploration: could the slack in Song-Yue's exponent conditions raise the level enough to move the variational criterion from k = 48 to k = 47?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 14: k = 47 needs d omega >= 5.8e-4; the loosest printed margin (Type III (52)) allows 1.4e-4, IIa (33) 2.2e-5 (code/explore/level_slack.py; heuristic)."
+    },
+    {
+      "idea": "Probabilistic model check: prime pairs in translates of the Lean-checked 236-tuple vs the Hardy-Littlewood prediction, and whether data can say anything about DHL[48,2].",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 13: HL fits to 3e-4 at X = 1e8 (known); the mean number of primes per translate is 48/log X > 1 until X ~ 7e20, so no computable range bears on DHL[48,2]. notes/explorations.md."
+    },
+    {
+      "idea": "Split Corr2 into its Q(u',R)^2 and Q(u',U)^2 parts (both >= 0) and apply the Bonferroni truncation to each (upper bound with j <= 2 for the first, lower bound with j <= 1 for the second), so that one-sided certificates need no j = 3 pieces at all.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 14: paper Prop. prop:bonf2 and capped_exact.py --bonf. On the 240 vector: 4.012038868083 > 4 from 98 pieces (no j = 3 piece), 3.5e-8 below exact; the R and U parts are each ~35x their difference but their levels decay fast."
+    },
+    {
+      "idea": "Skip the thin inclusion-exclusion pieces (j = 3 extra coordinates above g) with a rigorous a priori bound (volume of the thin region times a sup bound for the integrand) when only the sign of the criterion is needed, not exact equality.",
+      "origin": "own",
+      "status": "partial",
+      "note": "Session 13: Bonferroni (paper Prop. prop:bonf, Proved here): for a one-sided certificate the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be dropped (their integrands are >= 0), no bound needed; on the Song-Yue witness the dropped Corr1 level is -2.5e-69 J and cost 7.1 of 32.2 core-hours. The crude a priori bound (code/thin_bound.py: coefficient-sum sup times region volume) gives 1.4e-14 J for Corr1 j = 3 but 6e32 J for Corr2 j = 3, so it does not settle Corr2 (unsigned integrand)."
+    },
+    {
+      "idea": "Toy capped problem at k = 3 with per-m caps (caps on single coordinates and on pair sums): does the cap pattern explain the 31% regain at k = 45?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 12: pair caps give a SMALLER regain (0.04-0.085) than single caps (<= 0.13); mixing never exceeds ~13%. The cap pattern alone does not explain k = 45 (notes/explorations.md)."
+    },
+    {
+      "idea": "Integrate products of monomial symmetric functions over the simplex by summing over partial matchings of their parts (bitmask DP), so a witness given in the monomial basis can be checked without converting to power sums.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 10: songyue_I0.py / songyue_J0.py reproduce Song-Yue's Iref exactly in 25 s and the cap-free J0 in 33 s; an independent check of the power-sum route."
+    },
+    {
+      "idea": "Read the step of [Sta26, Lemma 5] that Song-Yue (Remark 4.23) say lacks a hypothesis.",
+      "origin": "exploration",
+      "status": "partial",
+      "note": "Session 10: confirmed against arXiv v1 that the gamma in (1/2, 1/2+2omega+eps] step applies Lemma 3 with alpha as the short factor without a Siegel-Walfisz hypothesis on alpha; whether the alphas that occur satisfy it (a repair) is not checked."
+    },
+    {
+      "idea": "Dilation identity M_k(L,tau) = 4 A1 M_{k, eps/A1} plus the two-zone dual weight, to bound the one-band hybrid supports of 2026 as a function of the level omega.",
+      "origin": "own",
+      "status": "works",
+      "note": "Theorem 25: no k ≤ 28 at Stadlmann's omega = 0.003, no k ≤ 26 at omega = 0.007, no k ≤ 22 for omega ≤ 1/68, for any delta, caps and minorant. The same weight fails at the next k."
+    },
+    {
+      "idea": "Rigorous capped ratio from a polynomial P: penalise the exact integral of P^2 over the cap-violation set in a generalised eigenproblem, bound J_T by Cauchy-Schwarz.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Superseded in session 6: the Cauchy-Schwarz treatment of J_T, not the caps, caused the loss (3.9597); exact J_T gives 4.0120."
+    },
+    {
+      "idea": "Union bound for the cap-violation set over m-subsets with sum above the cap, dropping the condition that each coordinate exceeds delta.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Hopelessly loose: E/I ≈ 146 for the cap-free optimiser at degree 20 (the m = 4..6 terms explode)."
+    },
+    {
+      "idea": "Optimise Lemma 13 over ALL weights psi_m = Psi(S - t_m, t_m) (the family containing Cor. 6.4 and the two-zone weight) as a convex program, to learn the limit of this family.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Discretised optimum ≈ 4.14 at (k, eps) = (50, 1/25) vs truth ≥ 4.0012; equals k/(k-1) log k at eps = 0. The family cannot reach the true threshold; need weights seeing more of t (Proposition 19)."
+    },
+    {
+      "idea": "Degree extrapolation of certified M_{k,eps}: does the eps-enlarged simplex reach k = 49?",
+      "origin": "own",
+      "status": "partial",
+      "note": "Geometric model validated at k = 50 (optimistic by ≤ 0.0012) predicts sup_eps M_{49,eps} ≈ 3.991-3.994 < 4: heuristic evidence that the method stops at 50 (Remark 20)."
+    },
+    {
+      "idea": "Collatz-Wielandt weights psi_m = (int F dt_m)/F from a positive approximate extremal F, to approach the true floor near k = 50.",
+      "origin": "own",
+      "status": "open",
+      "note": "Exact for the extremal F; the obstacle is controlling sup over t of the ratio for a polynomial F."
+    },
+    {
+      "idea": "Active-count-normalised weight (beta/n)(a − S_A + n t_m) to beat scaling at small eps.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Exact fiber evaluation at k = 50, eps = 1/25: never below 4.178, worse than the scaling bound 4.1515 (Remark 18)."
+    },
+    {
+      "idea": "Two-zone dual weight (linear in t_m below s1, proportional to t_m/S above) in Polymath8b's Lemma 6.1 with the marginal region kept, to bound M_{k,eps} uniformly in eps.",
+      "origin": "own",
+      "status": "works",
+      "note": "Theorem 15: no k ≤ 29 for any eps < 1, beating the k ≤ 23 floor from Polymath8b Prop. 6.5."
+    },
+    {
+      "idea": "Exponential-moment generating function for simplex integrals of power-sum products, to make certified high-degree computations cheap.",
+      "origin": "own",
+      "status": "works",
+      "note": "Lemma 3. Builds a 471x471 exact Gram pair in about 15 s."
+    },
+    {
+      "idea": "Weighted pigeonhole: give the shifts unequal weights to force two primes closer than the tuple's diameter.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Convexity plus perfection of unit interval graphs. Proved as Proposition 8; checked numerically for k = 3."
+    },
+    {
+      "idea": "Floor of the method: a rigorous upper bound (dual certificate) for the 2026 hybrid sieve supports, to learn how far below 186 the present inputs can go.",
+      "origin": "own",
+      "status": "partial",
+      "note": "eps-enlarged simplex down to k ≤ 29 (Theorem 15). Session 5: one-band hybrid supports (Stadlmann, Charton et al.) cannot reach k ≤ 28 at omega = 0.003, k ≤ 26 at omega = 0.007, whatever the caps (Theorem 25). Multi-band supports and the 186/182 constructions still open; a floor that sees the caps is next."
+    },
+    {
+      "idea": "Does the slicing lemma behind Proposition 8 survive on enlarged supports?",
+      "origin": "own",
+      "status": "works",
+      "note": "Yes: a single rescaling by (1+eps-|u|)/(1+eps) keeps each slice inside the eps-problem's J-region. Proposition 10; checked numerically for k = 3 and eps up to 1/3."
+    },
+    {
+      "idea": "Richer symmetric test functions to pass k = 102 and reach M_54 > 4 (270).",
+      "origin": "literature",
+      "status": "works",
+      "note": "M_54 ≥ 4.0023860 at degree 23 (1236 coefficients): 270 reproduced. Next rung needs the enlarged simplex."
+    },
+    {
+      "idea": "One explicit bilinear hypothesis that implies twin primes, formalised in Lean.",
+      "origin": "own",
+      "status": "open",
+      "note": "Track B. Start from Bombieri's asymptotic sieve and Heath-Brown's Siegel-zero theorem."
+    },
+    {
+      "idea": "Compute the capped marginal functional J_T exactly via the fibre formula and cap-free-minus-corrections with inclusion-exclusion over the large set.",
+      "origin": "own",
+      "status": "works",
+      "note": "Capped ratio 4.0120 > 4 at k = 49 (degree 20), confirmed exactly by an independent program; caps cost only 0.0041 (Prop. 25, Thm 26)."
+    },
+    {
+      "idea": "Cap-aware dual ceiling: cut the fibres of the two-zone dual weight at the maximal coordinate 0.6 of Stadlmann's support.",
+      "origin": "own",
+      "status": "partial",
+      "note": "Valid ceiling 4.14 (certified), but caps move this weight's sup only from 4.13785 to 4.13753: the sup sits where fibres are short. Needs a weight that sees large coordinates."
+    },
+    {
+      "idea": "Use the exact capped evaluator to test which of Charton et al.'s two cap sets (Table 3 vs Lemma 9.1) supports their k = 45 criterion.",
+      "origin": "own",
+      "status": "works",
+      "note": "Table 3 caps: 4.0027 > 4 (two programs). Lemma 9.1 caps: no P in our 846-dim space reaches 4 (certified ceiling, session 8), so the draft's 4.00438 must use Table 3's caps."
+    },
+    {
+      "idea": "Reverse-mode (adjoint) differentiation of the exact capped evaluator to get the Gram matrices of I_T and J_T at the cost of one evaluation, then optimise P on the capped support and certify ceilings for a whole test space.",
+      "origin": "own",
+      "status": "works",
+      "note": "Exact self-tests at k = 12, 49, 45 plus an exact Schwartz-Zippel test at a random vector (k = 45); k = 49 optimum 4.0124198 (two exact programs); Lemma 9.1 ceiling 3.99 certified."
+    },
+    {
+      "idea": "Heuristic: re-optimising on the capped support regains only a small fraction (about 10%) of what truncation costs, because the truncation acts as a perturbation and the Rayleigh quotient gains only to second order.",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Registered prediction 3.977-3.981 for the Lemma 9.1 caps; the optimum is 3.98555. Re-optimising regains 9% of the truncation loss at k = 49 but 31% at k = 45, so a fixed fraction is wrong, and a pure second-order (loss^2/gap) rule is wrong too."
+    },
+    {
+      "idea": "Schwartz-Zippel check of the reverse pass: compare the quadratic forms from the Gram weights with an exact forward evaluator at one random integer vector, instead of trusting a few structured self-tests.",
+      "origin": "own",
+      "status": "works",
+      "note": "Exact agreement at k = 45 (Lemma 9.1 caps) with capped_check.py: the two degree-2 forms agree with failure probability < 2^-31 each."
+    },
+    {
+      "idea": "FC3 question: does the dual weight psi_m = (beta/n)(a - S_A + n t_m), which sees the set of active indices, beat the scaling bound at (k, eps) = (50, 1/25)? Reduce sup over all 49-dimensional fibers to two parameters (s, nu) by an equalisation lemma (concavity + Chebyshev), then certify on cells.",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 15, paper Prop. psi-weight (Proved here + two ball/interval certificates): M_{50,1/25} < 4.1463, below scaling 4.1515 but above the two-zone weight's 4.1459 (certified the same session), so it does not improve the best upper bound; the reduction lemma is the reusable part. Equal-fiber conjecture refuted at a = 1.036."
+    },
+    {
+      "idea": "Margin budget for the 186 certificate: from the printed integers alone (Lemma 2.5, Table 2.7), how much each loss group could be too small before the final margin (2.35) fails.",
+      "origin": "own",
+      "status": "works",
+      "note": "Exact rationals (code/oai186_margin_budget.py): O_{5/2} is 89.5% of L^+ and could be at most 2.06% too small if the margin must exceed 1/50000 (14.3% if it need only be positive); the four inner groups have 10-230x headroom. So the verification of 186's loss bound is decided by O_{5/2}."
+    },
+    {
+      "idea": "Replace the inferred delay/renewal choice of Session 15 by the acceptance test stated after (2.1) of the 186 companion (ordered intervals in [0,1], both endpoint sequences nonincreasing) and test it as a prediction.",
+      "origin": "own",
+      "status": "works",
+      "note": "The test selects renewal exactly for the bins where Session 15 had inferred it from the numbers (I2old L2, L3 fail at j = 39411 and later; L4, L5 pass); the fresh-context audit predicted the same branch pattern by a float simulation."
+    },
+    {
+      "idea": "Pretentious twin statistic sum lambda(n)lambda(n+2)chi_D(n)chi_D(n+2) for class-number-one discriminants: any Siegel-world signal in the twin correlation at small scales?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Dead end: |S2|/sqrt(X) <= 1.8 for all nine D at X = 2e7. Only signal: sum lambda chi_{-163} ~ 27 sqrt(X), a square-root secondary term (pole of zeta(2s) gives 14.5 sqrt(X); the rest is consistent with the low zero of L(s, chi_{-163}) near 1/2 + 0.2i). notes/explorations.md."
+    },
+    {
+      "idea": "Which close-prime targets can a Polymath8b-type Liouville-pattern weight block? Exact criterion via fractional stable sets.",
+      "origin": "own",
+      "status": "works",
+      "note": "Proved: bipartite target graph / k <= 2m / windows with <= 2m elements; the class forbids exactly H_m < H(2m+1); explains the 6. Parity paper v0.2 Prop. prop:bipartite (audited)."
+    },
+    {
+      "idea": "Residue-class-dependent parity weights: can dead positions (p | n+h_j) let a weight block DHL[3,2]?",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Classwise fairness (what the sieve's Type I main terms see) gives nothing beyond k <= 2m; global fairness would 'block' DHL[3,2] at q = 5*7*11, contradicting Polymath8b's GEH theorem, so it is the wrong notion. code/explore/residue_parity_lp.py."
+    },
+    {
+      "idea": "Tao-Teravainen (arXiv:2512.01739v2, Thm 3.1) to push Prop. prop:tao-weight to level R = (log x)^{c0}",
+      "origin": "own",
+      "status": "works",
+      "note": "Done in Session 19 (parity paper v0.3, Prop. prop:tao-weight-logc), conditional on the preprint; expanding in the moduli [d1,d2] <= R^2, not the period, is the key; audited."
+    },
+    {
+      "idea": "Enlarge the Liouville-pattern weight class by Liouville signs at extra linear forms (open question 2 of the parity paper)",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Fairness and the kill condition only see the law of the tuple coordinates, so the tuple marginal is an ordinary pattern weight: no gain (LPs in code/explore/aux_forms_lp.py agree)."
+    },
+    {
+      "idea": "Maynard two-variable weights (sum_{d1|n, d2|n+2} lambda_{d1,d2})^2 at level (log x)^{c0} via TT25, moduli up to R^4",
+      "origin": "own",
+      "status": "open",
+      "note": "Suggested by the Session 19 audit; same proof should work; not written."
+    },
+    {
+      "idea": "Variance/fibre-mean argument of the k = 2 theorem extended to k = 3 (sharp ceiling for PM8b Thm 3.14)",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "In its direct form: at k = 3 the constraint cylinders overlap (Prop. prop:overlap) and the orthogonal relaxation already exceeds 2.14 at eps = 1/8 while the true sup is ~1.976 (Prop. prop:orth-relax). A sharp ceiling needs the overlapping constraints (alternating projections with a rate, or a finite-element dual)."
+    },
+    {
+      "idea": "k = 3 extremal has constant marginal on the J-region (as at k = 2), reducing the problem to a minimum-norm problem",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Grid extremal marginal varies by a factor ~5; constant-marginal ansatz gives 1.736 vs 1.959 (eps = 1/4, n = 24). notes/explorations.md, Session 22."
+    },
+    {
+      "idea": "Schur test with fibre-integral eigenfunction structure for the k = 3 Thm 3.14 problem without marginal condition (1D reduction)",
+      "origin": "own",
+      "status": "works",
+      "note": "Rigorous ceilings: < 2 for eps >= 0.439; 2.17 at eps = 1/4. Parity paper v0.8 Prop. prop:unc-ceiling, Thm. thm:k3-window."
+    },
+    {
+      "idea": "Closed form for the constant kappa = 0.8901675 of the 1D Schur problem",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "mpmath.identify gives only overfitted noise; notes/explorations.md, Session 23."
+    },
+    {
+      "idea": "Rigorous ceiling < 2 for the k = 3 Thm 3.14 ratio at small eps or eps in [0.31, 0.439), using the marginal condition",
+      "origin": "own",
+      "status": "open",
+      "note": "Needs the overlapping constraints (Session 22); alternating projections with a rate or a finite-element dual. Thread stopped by the weekly review of 16 Nov (adequately answered)."
+    },
+    {
+      "idea": "Pintz-type disjunction 'two primes, or a prime next to lambda = sigma' with Maynard weights",
+      "origin": "own",
+      "status": "works",
+      "note": "Needs theta M_k > 1 instead of > 2; 5-tuples under BV give |d| <= 12 (Pintz 16). Parity paper v0.11."
+    },
+    {
+      "idea": "Pintz-Maynard dichotomy for 4-tuples (|d| <= 8) via larger levels or enlarged supports",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Needs level 0.5423 for primes and lambda; best known for smooth moduli 0.525 (Stadlmann 2023); enlarged supports need the lambda-twisted sum at moduli beyond x^{1/2}. Session 26."
+    },
+    {
+      "idea": "Chen's theorem as a consistency test of the bipartite criterion",
+      "origin": "own",
+      "status": "works",
+      "note": "Class does not block 'p prime, p+2 in P_2' (no weakly fair killing weight, Lean-checked) but blocks each half (1 -/+ e1 e2); matches Tao 2007 and Pintz 2010. Folklore in substance. Parity paper v0.12, Remark rem:chen."
+    },
+    {
+      "idea": "Mod-q analogue of the parity obstruction (weights in Omega(n) mod q)",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Fair Z/q pattern weights killing DHL[k,m+1] exist iff k <= q m, so q = 3 would 'block' DHL[3,2] (proved under GEH): the randomness heuristic fails for z = e(1/q), since Selberg-Delange gives a main term with 1/Gamma(z) != 0; only z = -1 is invisible. Session 27, code/explore/omega_mod_q_weights.py."
+    },
+    {
+      "idea": "Gowers-norm (infinite-complexity) barrier for twin primes, compared with parity",
+      "origin": "own",
+      "status": "works",
+      "note": "Settled as Prop. prop:gowers-blind (parity paper v0.13; folklore in substance): random block functions make every global U^d norm small while the shift-2 correlation is +-1 + O(1/L). Session 28."
+    },
+    {
+      "idea": "Local Gowers norms of lambda on short intervals vs random models (numerical)",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "At X = 1e9, H = 8..512, local U^2 and U^3 of lambda agree with i.i.d. signs and a random multiplicative function within one standard error: no numerical handle. Session 28, code/explore/local_u2_liouville.py."
+    },
+    {
+      "idea": "Hybrid averages below the mean prime gap: can the Lichtman-Teravainen mu-side input reach H = o(log X)?",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "A mu' equal to +1 on every window after a prime satisfies the same input (eta' <= 2 eta + 217 H/log X) with no cancellation; Session 30, parity paper rem:lt22."
+    },
+    {
+      "idea": "Enlarge the MPZ region for H_m with the 2026 Type I/II lemmas",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "The binding constraint in Stadlmann 2023 Cor. 2 is sigma > 1/10 (combinatorial lemma); the 2026 lemmas have the same Type I/II lower end 1/4+12w+4d (our reading, not certified). Session 30, notes/hm-programme.md section 6."
+    },
+    {
+      "idea": "Polya-type sign bias of lambda on shifted primes across shifts h",
+      "origin": "exploration",
+      "status": "open",
+      "note": "X = 2e7, h <= 64: 23 of 32 even h negative, mean -0.00045 pi(X), of Polya size, but S(h) are strongly correlated; inconclusive. Session 30."
+    }
+  ],
+  "phase": "B",
+  "papers": [
+    {
+      "slug": "parity-barrier",
+      "title": "The parity barrier and twin primes: what is known and what is missing",
+      "version": "0.16",
+      "status": "active",
+      "pdf": "docs/papers/parity-barrier.pdf",
+      "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; v0.14: averaging over the shift (Matomaki-Radziwill-Tao): the Liouville model of parity is solved on average for any H -> infinity, Lambda(n)Lambda(n+h) only in windows H >= X^{8/33+eps}, and no averaged statement reaches a prescribed shift; v0.15: hybrid averages (Lichtman-Teravainen solve sum_p mu(p+h) on average for H >= (log X)^{1+eps}); an elementary construction shows that their input on mu, like their input on Lambda, stops at the mean prime gap log X (folklore in substance); cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture. v0.16: Fejer averages and pair correlation: by the window identity the Fejer-averaged twin correlations are the Goldston-Montgomery mean square minus the diagonal; under RH and the strong pair correlation conjecture the Fejer form holds down to c log X, below log X the variance route is empty, and a fixed shift needs one more logarithm of precision (folklore in substance)."
+    },
+    {
+      "slug": "verification-note",
+      "title": "An independent exact verification of the variational step behind the claimed 2026 bounds H1 <= 240 and H1 <= 236, with a remark on the caps of a 212 draft",
+      "version": "1.0.1",
+      "status": "frozen",
+      "pdf": "docs/papers/verification-note.pdf",
+      "summary": "Frozen v1.0 (16 Nov 2026). Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236) and Charton et al. (212, Table 3 caps), each by two independent programs; ceiling < 3.99 for the 212 draft's Lemma 9.1 caps (one-program Gram certificate, weights checked at a random point); main terms and loss components of the 186 companion and the cap-quotient ingredients of 182 (numerical agreement of two implementations). A section states, number by number, what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified; no claimed bound is verified."
+    }
+  ],
+  "last_review": "2026-11-16",
+  "phase_note": "Phase B since Session 17 (15 Nov 2026): rung 186 finished in the sense of the plan (main terms and loss bound L+ re-evaluated by two programs, L+ by two programs for the 17 components carrying 99.95% of the decisive group O_{5/2}; the rest by one program, with large margin slack). 186 is NOT adopted (majorisation lemmas, restoration step and analytic inputs unchecked). Rung 182 continues inside Phase B's bound share."
 }

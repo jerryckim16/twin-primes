@@ -1,5 +1,383 @@
 # Research log
 
+## 2026-11-18 - Session 31 (7:34 PM CT, 17 Nov; started on time 01:35 UTC 18 Nov; no wait, no other run active): Fejér averages, pair correlation and the scale log X (parity paper v0.16); main paper v0.31
+
+- Parity paper v0.16: new Remark rem:gm. Combining the window identity with the Goldston-Montgomery mean square I(K) gives 2 sum_{j<K}(K-j)c(j) = I(K) - K c(0) + K^2 N + O(...). Consequences: unconditionally the Fejér mean F(K) >= 1 - log N/K (the Lambda form of Merikoski's Main Thm 2). For K = o(log N) the variance asymptotic holds automatically and says nothing about pairs. Under RH and the strong pair correlation conjecture F(K) -> 1 for K >= c log N, and at K ~ log N the two statements are equivalent. A fixed shift is a second difference that needs I(K), K <= 3, to o(N), one logarithm beyond SPC.
+- Sources read in full where used: Merikoski arXiv:1605.04757v1, Goldston's notes arXiv:math/0412313v1 (Thm 7, (9.3)), Montgomery-Soundararajan arXiv:math/0409258v1 ((47), Thm 3); Keating-Smith and Conrey-Keating abstracts only (heuristic). A fresh-context adversarial audit found 3 errors (SPC misnamed in three places, two misquoted numerical ranges) and 4 gaps; all fixed. Open question oq:mrtcond partly answered (Fejér form).
+- Numerics (Heuristic): code/parity/variance_fejer.py at N = 1e8 checks the identity exactly; F(K) is within 5e-4 of the Hardy-Littlewood means for the tabulated 3 <= K <= 80; (I(K) - KN log(N/K))/(KN) is about -2.41 against B - 1 = -2.415 (MS04).
+- Bound share: main paper v0.31 thin-index step. Remark rem:oai186 (the 186 rung) condensed from about 45 lines to a short list; Related results now cover parity v0.16. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Conditional ranges for averaged Hardy-Littlewood: under RH + strong pair correlation the Fejér form holds down to c log X; below log X the variance route is empty; a fixed shift needs one more logarithm of precision, which is equivalent to HL at h = 2 itself. Classification: located (conditional; literature + elementary identity; folklore in substance).
+
+Explored: Window identity in F_q[T]: ultrametric intervals make it an unweighted ball sum (exact, code/explore/ff_ball_variance.py). The symmetry f(T) -> lambda^{-n} f(lambda T) equalises all constant shifts when gcd(n, q-1) = 1, so the smallest-ball variance gives the single twin count. Large-q results thus live in the regime window >> mean gap, and nothing transfers to Z. Inconclusive, likely known.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- a
+- l
+- m
+- o
+- s
+- t
+- -
+- a
+- l
+- l
+-  
+- (
+- M
+- R
+- T
+- 1
+- 7
+- )
+-  
+- f
+- o
+- r
+- m
+-  
+- u
+- n
+- d
+- e
+- r
+-  
+- G
+- R
+- H
+- /
+- E
+- H
+-  
+- i
+- s
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- n
+- o
+- t
+-  
+- f
+- o
+- u
+- n
+- d
+-  
+- i
+- n
+-  
+- p
+- r
+- i
+- n
+- t
+- ;
+-  
+- S
+- e
+- l
+- b
+- e
+- r
+- g
+-  
+- 1
+- 9
+- 4
+- 3
+-  
+- (
+- a
+- n
+-  
+- R
+- H
+-  
+- m
+- e
+- a
+- n
+- -
+- s
+- q
+- u
+- a
+- r
+- e
+-  
+- b
+- o
+- u
+- n
+- d
+- )
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+- .
+-  
+- T
+- h
+- e
+-  
+- f
+- i
+- r
+- s
+- t
+-  
+- e
+- x
+- p
+- l
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+-  
+- r
+- u
+- n
+-  
+- a
+- t
+-  
+- q
+-  
+- =
+-  
+- 1
+- 3
+-  
+- w
+- a
+- s
+-  
+- t
+- o
+- o
+-  
+- s
+- l
+- o
+- w
+-  
+- a
+- n
+- d
+-  
+- w
+- a
+- s
+-  
+- k
+- i
+- l
+- l
+- e
+- d
+-  
+- (
+- r
+- e
+- p
+- l
+- a
+- c
+- e
+- d
+-  
+- b
+- y
+-  
+- q
+-  
+- =
+-  
+- 3
+- ,
+-  
+- 5
+- ,
+-  
+- 7
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- n
+- o
+- t
+-  
+- t
+- h
+- e
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+
+Next: Parity paper toward v1.0: notation renames (lambda_d vs Liouville lambda; pattern Omega; region D), shorten sec. num and the k = 3 subsections; main paper: condense rem:sha182 like rem:oai186; one parity attempt (candidates: the almost-all averaged HL form under GRH/EH; a genuinely new mechanism from the route-card index). Weekly review on Monday 23 Nov.
+
 ## 2026-11-17 - Session 30 (11:34 AM CT, 17 Nov; started on time 17:35 UTC; no wait, no other run active): Hybrid averages and the mean prime gap (parity paper v0.15); H_m MPZ-region scoping; main paper v0.30
 
 - Parity paper v0.15: new Remark rem:lt22 on Lichtman-Teravainen (arXiv:2111.08912v3, read in full): sum_{p<=X} mu(p+h) = o(pi(X)) for almost all h <= H once H >= (log X)^{1+eps}. An elementary construction (mu' = +1 on every window after a prime) satisfies their input on mu with eta' <= 2 eta + (216+o(1)) H/log X but has no cancellation, so that input stops at H^{1+delta} ~ log X; their Lambda-side moments fail for H = o(log X). A fresh-context audit found 5 errors and 3 gaps in the first draft (e.g. the quoted maximum 0.0018 was really 0.0025 at h = 42), all fixed.

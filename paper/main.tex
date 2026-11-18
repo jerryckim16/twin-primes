@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.30, 17 November 2026}
+\date{Version 0.31, 18 November 2026}
 
 \begin{document}
 
@@ -1808,47 +1808,31 @@ of its proof found no swapped-factor step there (Remark~\ref{rem:sy-audit}).
 \begin{remark}[the next rung, $186$; \lbl{Literature (preprint)} reading and one \lbl{Lean-checked} fact]\label{rem:oai186}
 We read \cite{OAI26} and its numerical companion (the file
 \texttt{short\_gaps\_numerics.pdf} of the repository \texttt{openai/PrimeGaps186}).
-Their criterion is not a capped simplex ratio of the kind treated above.
-The sieve has one outer sum and, for each coordinate, two nested inner sums,
-and the criterion \cite[Theorem~4.5]{OAI26} is a ``signed minorant''
-inequality. It involves $I=\|F\|^2$, the inner masses
-$J_{0,i}$ and $J_{+,i}$, and a residual $E_{0,i}$ weighted by the negative
-part of Stadlmann's prime minorant, at $k=40$.
-The test function lives on ``fragment configurations'': each coordinate carries
-a Poisson process with intensity $dv/v$, so coordinate totals have Dickman
-densities. It is a $77$-coefficient rational step function on a grid of
-$98304$ cells per coordinate. Their Lemma~2.5 states
-$\rho^*J^-/I^+>\frac{500103}{500000}$ and a loss bound
-$L^+/I^-\le 696075110\cdot10^{-12}$ (from $97$ components). We checked only the
-final rational arithmetic of their (2.34)--(2.35) (exact; it holds as printed),
-not any integral. The $40$-tuple of \cite[(1.3)]{OAI26} is admissible of diameter
-$186$ (\lbl{Lean-checked}: \texttt{boundedGaps\_186\_of\_DHL\_40'}; the project
-already had another such tuple). Reproducing the variational step of $186$ therefore
-requires a new evaluator: the fragment-measure forms, and the loss cover for the
-support failures. The pipeline of this paper does not cover it. We transcribed the forms $I_H$ and $J_{\lambda,H}$ of the companion and its
-table of $77$ coefficients (\texttt{notes/sources-186-forms.md}). Two facts
-shape any reproduction. First, the cell masses of the Dickman densities are
-transcendental, so an independent check can only be an interval computation, not an
-exact rational one. Second, by symmetry everything reduces to one-dimensional
-arrays of length about $10^5$, so the cost is a few thousand long polynomial
-products at a few hundred bits (our estimate). One formula of the companion,
-its layered cap convolution, is not specified completely in the text.
-The analytic inputs (a triply densely divisible variant of Stadlmann's
-bilinear estimate, the prime minorant, and the exponential-sum bounds that are
-axioms of their Lean development) remain \lbl{Claimed}.
-We made a first independent check of one ingredient
-(\lbl{Computed (floating point)}, $40$ digits, not interval arithmetic;
-\texttt{code/oai186\_dickman\_cells.py}). On $[0,3]$ the Dickman function has
-closed forms, $\rho_D(u)=1-\log u$ on $[1,2]$ and
-$\rho_D(u)=1-\log u+\frac12\log^2u+\mathrm{Li}_2(1/u)-\frac12\log^22-\mathrm{Li}_2(\frac12)$
-on $[2,3]$, and so does $\int\rho_D$. With these we evaluated every cell mass of the seven grid caps
-of the companion ($363{,}450$ cells; \texttt{code/oai186\_dickman\_cells.json}).
-All lie inside the enclosures given by
-its recurrence and cell bound, as we transcribed them, and the enclosures have
-width at most $8.35\cdot10^{-10}$ in units of the cell. One transcription doubt
-(which of two bars is the upper one) turns out not to matter at this precision.
-This checks one input of the companion; it is not yet an evaluation of
-$I_H$ or $J_{\lambda,H}$.
+\begin{itemize}
+\item Their criterion \cite[Theorem~4.5]{OAI26} is a ``signed minorant''
+  inequality at $k=40$, not a capped simplex ratio: it involves $I=\|F\|^2$,
+  inner masses $J_{0,i}$, $J_{+,i}$ and a residual $E_{0,i}$. The test function
+  is a $77$-coefficient rational step function on fragment configurations
+  (Dickman densities), on $98304$ cells per coordinate.
+\item Their Lemma~2.5 states $\rho^*J^-/I^+>\frac{500103}{500000}$ and
+  $L^+/I^-\le696075110\cdot10^{-12}$ (from $97$ loss components). The final
+  rational arithmetic of their (2.34)--(2.35) holds as printed (exact check).
+\item The $40$-tuple of \cite[(1.3)]{OAI26} is admissible of diameter
+  $186$ (\lbl{Lean-checked}; Lean name
+  \texttt{boundedGaps\_186\_}\allowbreak\texttt{of\_DHL\_40'}).
+\item The Dickman cell masses are transcendental, so independent checks are
+  interval computations. A floating-point check ($40$ digits, closed forms of the
+  Dickman function on $[0,3]$) puts all $363{,}450$ cell masses of the seven
+  grid caps inside the companion's enclosures, as we transcribed them
+  (\texttt{code/oai186\_dickman\_cells.py}, \texttt{.json}).
+\item The analytic inputs (a triply densely divisible variant of Stadlmann's
+  bilinear estimate, the prime minorant, and the exponential-sum bounds that are
+  axioms of their Lean development) remain \lbl{Claimed}.
+\end{itemize}
+Transcriptions: \texttt{notes/sources-186-forms.md},
+\texttt{notes/sources-186-loss.md}. Full details, with the one-program /
+two-program status of every number, are in the verification note
+(\texttt{papers/verification-note/}).
 \end{remark}
 
 \begin{proposition}[\lbl{Computed}, two independent programs, the second in ball arithmetic]\label{prop:oai186-main}
@@ -2288,7 +2272,7 @@ by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
 and the re-evaluation of the main terms and loss bounds of the $186$ companion.
 None of it verifies the analytic inputs.
 \item \emph{The parity barrier and twin primes: what is known and what is
-missing} (\texttt{papers/parity-barrier/}, version~0.15). A survey of the
+missing} (\texttt{papers/parity-barrier/}, version~0.16). A survey of the
 obstacle between bounded gaps and twin primes, read in the sources, with some
 own results. Current main statements:
 \begin{itemize}
@@ -2331,6 +2315,11 @@ own results. Current main statements:
   construction shows that their input on $\mu$, like their input on $\Lambda$,
   stops at the mean prime gap $\log X$ (\lbl{Literature} and \lbl{Proved here},
   folklore in substance);
+\item Fejér averages and pair correlation: under RH and the strong pair
+  correlation conjecture (via Goldston--Montgomery) the Fejér-averaged
+  Hardy--Littlewood statement holds for shifts up to $H\ge c\log X$; below
+  $\log X$ the variance route is empty, and a fixed shift needs one more
+  logarithm of precision (\lbl{Proved here}, elementary, folklore in substance);
 \item what the Friedlander--Iwaniec and Bombieri asymptotic sieves need for
   $\Lambda(n+2)$, Heath-Brown's and Friedlander--Iwaniec's bilinear structures,
   Sawin--Shusterman's $\mathbb F_q[T]$ proof and the step with no integer
@@ -2481,6 +2470,7 @@ Remark~\ref{rem:sha182} relabelled, most ``version~0.x'' mentions removed
 from the body. Related results: parity paper version~0.14 (averaging over
 the shift).
 \item[0.30] (17 Nov 2026) Related results: parity paper version~0.15 (hybrid averages and the mean prime gap). Bounds unchanged.
+\item[0.31] (18 Nov 2026) Remark~\ref{rem:oai186} condensed to a list (detail in the verification note and the repository); Related results: parity paper version~0.16 (Fejér averages and pair correlation). Bounds unchanged.
 \end{itemize}
 
 \begin{thebibliography}{99}
