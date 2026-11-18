@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.31, 18 November 2026}
+\date{Version 0.32, 18 November 2026}
 
 \begin{document}
 
@@ -2272,62 +2272,25 @@ by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
 and the re-evaluation of the main terms and loss bounds of the $186$ companion.
 None of it verifies the analytic inputs.
 \item \emph{The parity barrier and twin primes: what is known and what is
-missing} (\texttt{papers/parity-barrier/}, version~0.16). A survey of the
-obstacle between bounded gaps and twin primes, read in the sources, with some
-own results. Current main statements:
-\begin{itemize}
-\item an exact criterion for which close-prime targets a Polymath8b-type
-  (Liouville-pattern) weight can block: the target graph must be bipartite, so
-  the class blocks exactly $H_m<H(2m+1)$, i.e.\ $6$ for $m=1$ (a heuristic
-  barrier, not a bound; the core is in a 2014 blog post of Tao, credited);
-\item ceilings for Polymath8b's GEH criteria (no $\mathrm{DHL}[k,3]$ for $k\le45$),
-  the case $k=2$ exactly at the parity value $2$, and for which $\varepsilon$ the
-  $k=3$ criterion beats $2$ (above $2$ at $\varepsilon=\frac29,\frac14,\frac7{24}$; provably
-  below $2$ for $\varepsilon\ge0.439$; \lbl{Computed}, two programs each);
-\item Pintz's parity-sensitive dichotomy redone with
-  Maynard's weights. It needs only $\theta M_k>1$, so it holds for admissible
-  $5$-tuples unconditionally, and some even $d$ with $0<|d|\le12$ has
-  $\lambda(p+d)=-1$ for infinitely many primes $p$ (Pintz: $16$).
-  \lbl{Proved here}, possibly folklore; the ratios are exact and checked by two
-  programs. The obstruction blocks ``a prime next to an odd number of prime
-  factors'' but not this disjunction;
-\item a consistency test against Chen's theorem: the class does not block
-  ``$p$ prime, $p+2\in P_2$'', while it blocks each half ($p+2$ prime; $p+2$ a
-  product of exactly two primes), as the literature says (\lbl{Lean-checked}
-  for the weights);
-\item small global Gowers norms (of any fixed order) do not constrain the shift-$2$
-  correlation: random block functions with small $U^d$ norms have
-  correlation near $\pm1$, and a $\{0,2\}$-valued ``fake prime'' function
-  with small $\|g-1\|_{U^d}$ has almost no pairs $g(n)g(n+2)\ne0$
-  (\lbl{Proved here}, folklore in substance); so the Green--Tao
-  finite-complexity theory cannot see twins; Tao's localisation for $\lambda$
-  (an equivalence of open conjectures) relies on multiplicativity at small
-  primes and has no analogue for $\Lambda$ at short scales;
-\item averaging over the shift (Matom\"aki--Radziwi\l\l--Tao): for almost all
-  $h$ in windows of length $X^{8/33+\varepsilon}$ the Hardy--Littlewood
-  asymptotic is proved, and for $\lambda(n)\lambda(n+h)$ any $H\to\infty$
-  suffices; a window identity shows that the twin count is a second
-  difference of the second moment of primes in windows of fixed length, and
-  no averaged statement of this kind reaches a single shift
-  (\lbl{Literature}, with our reading);
-\item hybrid averages (Lichtman--Ter\"av\"ainen): $\sum_{p\le X}\mu(p+h)=o(\pi(X))$
-  for almost all $h\le H$ once $H\ge(\log X)^{1+\varepsilon}$; an elementary
-  construction shows that their input on $\mu$, like their input on $\Lambda$,
-  stops at the mean prime gap $\log X$ (\lbl{Literature} and \lbl{Proved here},
-  folklore in substance);
-\item Fejér averages and pair correlation: under RH and the strong pair
-  correlation conjecture (via Goldston--Montgomery) the Fejér-averaged
-  Hardy--Littlewood statement holds for shifts up to $H\ge c\log X$; below
-  $\log X$ the variance route is empty, and a fixed shift needs one more
-  logarithm of precision (\lbl{Proved here}, elementary, folklore in substance);
-\item what the Friedlander--Iwaniec and Bombieri asymptotic sieves need for
-  $\Lambda(n+2)$, Heath-Brown's and Friedlander--Iwaniec's bilinear structures,
-  Sawin--Shusterman's $\mathbb F_q[T]$ proof and the step with no integer
-  analogue, the twisted Type~I input in the log-averaged regime (conditionally
-  up to level $(\log x)^{c_0}$), and the Siegel-zero world;
-\item several small corrections to the literature (Polymath8b Remark~8.1 and
-  Proposition~6.5, a constant in a 2019 preprint).
-\end{itemize}
+missing} (\texttt{papers/parity-barrier/}, version~1.0, frozen, 23 pages). A
+survey of the obstacle between bounded gaps and twin primes, read in the
+sources, with own results, each labelled in the paper: a window form of Tao's
+convex-hull criterion (Liouville-pattern weights block a proof of $H_m\le g$
+exactly when $g<H(2m+1)$, i.e.\ $6$ for $m=1$; a heuristic barrier, not a
+bound); ceilings for Polymath8b's GEH criteria (no $\mathrm{DHL}[k,3]$ for
+$k\le45$), the case $k=2$ exactly at the parity value $2$, and the $k=3$
+criterion above $2$ at $\varepsilon=\frac29,\frac14,\frac7{24}$ and provably below $2$ for
+$\varepsilon\ge0.439$ (\lbl{Computed}, two programs each); Pintz's dichotomy with
+Maynard's weights (some even $0<|d|\le12$ has $\lambda(p+d)=-1$ for infinitely
+many primes; Pintz: $16$; possibly folklore); consistency tests (Chen's
+theorem); why global Gowers norms, averages over the shift, hybrid averages
+and Fej\'er averages (under RH and pair correlation) stop at or above the mean
+gap $\log X$ and never reach a fixed shift (folklore in substance); what the
+asymptotic sieves of Friedlander--Iwaniec and Bombieri need for $\Lambda(n+2)$;
+the bilinear structures behind $a^2+b^4$, $x^3+2y^3$ and $\mathbb F_q[T]$; the
+twisted Type~I input at small level; the Siegel-zero world; and small
+corrections to the literature (Polymath8b Remark~8.1 and Proposition~6.5, a
+constant in a 2019 preprint). Nothing in it breaks the parity barrier.
 It makes no claim of progress on the twin prime conjecture, which is open.
 \end{itemize}
 \end{sloppypar}
@@ -2471,6 +2434,7 @@ from the body. Related results: parity paper version~0.14 (averaging over
 the shift).
 \item[0.30] (17 Nov 2026) Related results: parity paper version~0.15 (hybrid averages and the mean prime gap). Bounds unchanged.
 \item[0.31] (18 Nov 2026) Remark~\ref{rem:oai186} condensed to a list (detail in the verification note and the repository); Related results: parity paper version~0.16 (Fejér averages and pair correlation). Bounds unchanged.
+\item[0.32] (18 Nov 2026) Related results: the parity paper is frozen as version~1.0 (cut from 33 to 23 pages after a five-lane internal referee pass); its entry shortened to one paragraph. Bounds unchanged.
 \end{itemize}
 
 \begin{thebibliography}{99}
