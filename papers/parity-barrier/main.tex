@@ -33,7 +33,8 @@ norms and averages over the shift do not reach a fixed shift. Our own
 results (``Proved here'', several possibly folklore):
 \begin{itemize}
 \item a window form of Tao's convex-hull criterion: Liouville-pattern weights
-  block a proof of $H_m\le g$ exactly when $g<H(2m+1)$;
+  block a proof of $H_m\le g$ exactly when $g<H(2m+1)$ (a statement about
+  this weight class, not a bound on $H_m$);
 \item at $k=2$ Polymath8b's strongest GEH criterion reaches the parity value
   $2$ exactly; at $k=3$ it works for $\varepsilon=\frac29,\frac14,\frac7{24}$ but
   provably not for $\varepsilon\ge0.439$;
@@ -59,15 +60,15 @@ conjecture is the statement $H_1=2$. It is open.
 
 Sieve methods that control primes only through \emph{linear} information
 (the distribution of primes and related functions in arithmetic
-progressions) cannot reach $H_1=2$. In the Maynard--Tao framework they
-cannot go below $H_1\le6$ even if the strongest conjectured linear input is
+progressions) are argued, heuristically, not to reach $H_1=2$, and in the
+Maynard--Tao framework not to go below $H_1\le6$ even if the strongest conjectured linear input is
 granted: Polymath8b prove $H_1\le6$ under GEH \cite[Theorem~1.4(xii),
 p.~3]{PM8b}, and argue (``somewhat informal and heuristic in nature'') that
 this is the limit \cite[\S8]{PM8b}. This paper states precisely what the
 barrier is, which known results get around it and why their mechanism does
 not obviously transfer to twin primes, and which estimate is missing. Every
-literature statement was read in its source; every own statement is proved
-in full or labelled otherwise.
+literature statement was read in its source or is marked ``as quoted by'';
+every own statement is proved in full or labelled otherwise.
 
 \subsection*{Labels}
 \lbl{Literature}: read in the cited source (version and location given;
@@ -80,7 +81,7 @@ with no \texttt{sorry}, no \texttt{native\_decide} and only the standard axioms.
 numerical or informal; never used as an input. \lbl{Open}: not known.
 
 \subsection*{Notation}
-$\lambda(n)=(-1)^{\Omega(n)}$ is the Liouville function and $\Omega(n)$ the
+$H_m=\liminf_n(p_{n+m}-p_n)$. $\lambda(n)=(-1)^{\Omega(n)}$ is the Liouville function and $\Omega(n)$ the
 number of prime factors with multiplicity; sieve coefficients are written
 $y_d$ (Maynard's $\lambda_{\mathbf d}$). $\mathrm{DHL}[k,j]$ is the statement
 that every admissible $k$-tuple $\mathcal H$ has infinitely many translates
@@ -89,7 +90,8 @@ Elliott--Halberstam conjecture and its generalisation, as stated in \cite[Claims
 $\mathrm{GEH}[\vartheta]$ is GEH at level $\vartheta$. $H(j)$ is the smallest
 diameter of an admissible $j$-tuple. $C_2=\prod_{p>2}(1-(p-1)^{-2})$ and
 $\mathfrak S(h)$ is the Hardy--Littlewood singular series, so
-$\mathfrak S(2)=2C_2$.
+$\mathfrak S(2)=2C_2=1.3203\ldots$. $P_2$ denotes the integers with at most two
+prime factors, and GLH, GRH the generalised Lindel\"of and Riemann hypotheses.
 
 \section{The parity obstruction for sieve methods}\label{sec:parity}
 
@@ -131,12 +133,13 @@ Selberg sieve''. The argument has four steps.
   bounds that are believed to hold for (142), (143) should also hold (up to
   minor changes in the implied constants) for (144), (145)''
   \cite[p.~70]{PM8b}. Note $(\alpha\star\beta)\lambda=(\alpha\lambda)\star
-  (\beta\lambda)$, so the twist preserves the GEH class.
+  (\beta\lambda)$, so the twist preserves the GEH class (though its main
+  term changes).
 \end{enumerate}
 For twin primes the weight $\omega(n)=1-\lambda(n)\lambda(n+2)$ suffices,
 ``and the argument is essentially due to Selberg'' \cite[p.~70]{PM8b}.
 
-\begin{remark}[What kind of statement this is]\label{rem:meta}
+\begin{remark}[What kind of statement this is; \lbl{Heuristic}, our reading]\label{rem:meta}
 The obstruction is not a theorem about all proofs. It says that an argument
 using only the linear inputs (142)--(143), in a way that is insensitive to
 inserting a non-negative weight, would also prove a false statement, as long
@@ -162,14 +165,16 @@ does ``not appear to have any bearing as yet on twin prime-type sums''
 \begin{remark}[\lbl{Proved here}; a direct corollary of {\cite[Theorem~1.2]{Tao16}}]\label{prop:tao-weight}
 If $w$ is periodic and $h\ne h'$, then
 $\sum_{n\le x}w(n)\lambda(n+h)\lambda(n+h')/n=o(\log x)$: split into classes
-modulo the period and apply the theorem with $a_1=a_2$ equal to the period. A
+$n=qm+c$ modulo the period $q$ and apply the theorem with $a_1=a_2=q$,
+$b_1=c+h$, $b_2=c+h'$. A
 Selberg weight $w(n)=\left(\sum_{d\mid n(n+2),\,d\le R}y_d\right)^2$ of fixed
 level $R$ ($y_1=1$) is periodic with positive mean, so the sets
 $\lambda(n)\lambda(n+2)=\pm1$ each carry half of $\sum_{n\le x}w(n)/n$, and by
 a diagonal choice the same holds for some level $R(x)\to\infty$. Sieve
 weights for twin primes need $R=x^{\theta}$; the dependence of Tao's theorem
 on the coefficients is ``in principle effective'' but not explicit
-\cite[Remark~1.4]{Tao16}.
+\cite[Remark~1.4, on Theorem~1.3]{Tao16}, and uniformity over moduli
+$q\le x^{\theta}$ is \lbl{Open} (question~\ref{oq:uniform}).
 \end{remark}
 
 A quantitative correlation estimate of Tao and Ter\"av\"ainen
@@ -189,7 +194,8 @@ $w_R(n)=\left(\sum_{d\mid n(n+2),\,d\le R}y_d\right)^2$ satisfies
 Hence $\sum_{n\le x,\ \lambda(n)\lambda(n+2)=\pm1}w_R(n)/n
 =\left(\tfrac12+O((\log x)^{-c_0})\right)\sum_{n\le x}w_R(n)/n$ for both signs.
 One may take $c_0=c/16$, with $c$ the constant of \cite[Theorem~3.1]{TT25};
-$c_0$ and $x_0$ are not claimed to be effective.
+$c_0$ and $x_0$ are not claimed to be effective. (It covers only the weights
+$w_R$ and the shift $2$, not general periodic $w$.)
 \end{proposition}
 
 \begin{proof}
@@ -211,25 +217,25 @@ $\int_{E(X)}dt/t\ll(\log X)^{1-\kappa}$, not depending on $W,b$, such that
 \end{equation}
 with absolute implied constants.
 
-\begin{sloppypar}\emph{One residue class.} Let $e\le(\log x)^{\kappa/2}$, $0\le c<e$,
-$F(N)=\sum_{N<n\le\min(2N,x),\ n\equiv c\,(e)}\lambda(n)\lambda(n+2)$. Since
+\begin{sloppypar}\emph{One residue class.} Let $e\le(\log x)^{\kappa/2}$, $0\le r<e$,
+$F(N)=\sum_{N<n\le\min(2N,x),\ n\equiv r\,(e)}\lambda(n)\lambda(n+2)$. Since
 $\int_{n/2}^{n}N^{-2}\,dN=1/n$, the sum
-$S(e,c;x)=\sum_{n\le x,\,n\equiv c\,(e)}\lambda(n)\lambda(n+2)/n$ equals
+$S(e,r;x)=\sum_{n\le x,\,n\equiv r\,(e)}\lambda(n)\lambda(n+2)/n$ equals
 $\int_0^xF(N)N^{-2}\,dN$. Let $X_0=x$, $X_{j+1}=X_j^{1/2}$ and
 $J=\max\{j:\log X_j\ge(\log x)^{1/2}\}$. Use $|F(N)|\le N/e+1$ on $(x/2,x]$
 and on $E(X_j)$; bound\end{sloppypar}
-\[\int_0^{X_{J+1}}|F|N^{-2}\,dN\le\sum_{n<2X_{J+1},\,n\equiv c\,(e)}\frac1n\le1+\frac{2+(\log x)^{1/2}}{e};\]
+\[\int_0^{X_{J+1}}|F|N^{-2}\,dN\le\sum_{n<2X_{J+1},\,n\equiv r\,(e)}\frac1n\le1+\frac{2+(\log x)^{1/2}}{e};\]
 and use \eqref{eq:TT-input} with $X=X_j$,
 $W=e\le(\log X_j)^{\kappa}$ on $[X_{j+1},X_j]\setminus E(X_j)$ (on $[X_1,x/2]$
 for $j=0$), where $F(N)$ is a full dyadic sum. Since
 $\sum_j\log X_j\le2\log x$,
 \[
-|S(e,c;x)|\ll(\log x)^{1-\kappa/2}/e+1 .
+|S(e,r;x)|\ll(\log x)^{1-\kappa/2}/e+1 .
 \]
 
 \emph{Summation.} Expanding the square,
-$w_R(n)=\sum_{d_1,d_2\le R}y_{d_1}y_{d_2}\sum_{c\in\mathcal C_{[d_1,d_2]}}
-1_{n\equiv c\,([d_1,d_2])}$, where $\mathcal C_e=\{0\le c<e:e\mid c(c+2)\}$ has
+$w_R(n)=\sum_{d_1,d_2\le R}y_{d_1}y_{d_2}\sum_{r\in\mathcal C_{[d_1,d_2]}}
+1_{n\equiv r\,([d_1,d_2])}$, where $\mathcal C_e=\{0\le r<e:e\mid r(r+2)\}$ has
 $\rho(e)\le2\tau(e)$ elements. As $[d_1,d_2]\le R^2\le(\log x)^{\kappa/2}$ for
 $c_0\le\kappa/4$, and $\#\{(d_1,d_2):[d_1,d_2]=e\}=\tau(e^2)$, the twisted sum is
 \[
@@ -252,17 +258,17 @@ The second statement follows from
 $1_{\lambda(n)\lambda(n+2)=\pm1}=\frac12(1\pm\lambda(n)\lambda(n+2))$.
 \end{proof}
 
-\begin{remark}[Two-variable weights; \lbl{Proved here, conditional on \cite[Theorem~3.1]{TT25}}]\label{cor:maynard-logc}
-The same proof covers Maynard-type weights
-$w(n)=\left(\sum_{d_1\mid n,\ d_2\mid n+2,\ d_1,d_2\le R}y_{d_1,d_2}\right)^2$
+\begin{remark}[Two-variable weights; \lbl{Proved here, conditional on a preprint}]\label{cor:maynard-logc}
+Conditionally on \cite[Theorem~3.1]{TT25}, the same proof covers Maynard-type weights
+\[w(n)=\left(\sum_{d_1\mid n,\ d_2\mid n+2,\ d_1,d_2\le R}y_{d_1,d_2}\right)^2\]
 with $y_{1,1}=1\ge|y_{d_1,d_2}|$ and $R\le(\log x)^{c/32}$, with saving
 $(\log x)^{-c/32}$. Expanding the square, $d_1,d_1'\mid n$ and
 $d_2,d_2'\mid n+2$ define one class modulo
 $e=[d_1,d_2,d_1',d_2']\le R^4\le(\log x)^{\kappa/2}$ (or none), the number of
 quadruples with least common multiple $e$ is multiplicative with
-$g(p^a)=(a+1)^4-a^4$, so $\sum_{e\le R^4}g(e)/e\ll(\log R+1)^{15}$, and the main
+$g(p^a)=(a+1)^4-a^4$, so the sum of $g(e)/e$ over the $e\le R^4$ with all prime factors $\le R$ is $\ll(\log R+1)^{15}$, and the main
 term is bounded below as before; the ratio is $\le(\log x)^{-\kappa/8}$.
-Weights with $\max|y_{d_1,d_2}|\le M|y_{1,1}|$ cost a factor $M^2$. Like
+Weights with $\max|y_{d_1,d_2}|\le A|y_{1,1}|$ cost a factor $A^2$. Like
 Proposition~\ref{prop:tao-weight-logc}, this confirms the input of the
 obstruction and gives no lower bound for twin primes; level $x^{\theta}$ is
 \lbl{Open}.
@@ -297,7 +303,7 @@ $\widehat\Psi(S)=2^{-k}\sum_{\mathbf s}\Psi(\mathbf s)\prod_{i\in S}s_i$.
   \emph{weakly fair} if $\widehat\Psi(\{i\})\le0$ for every $i$.
 \end{itemize}
 Expanding $\Psi$ in the characters $\prod_{i\in S}s_i$ and applying the
-M\"obius-randomness heuristic of \cite[p.~70]{PM8b} (a sum in which a
+M\"obius-randomness heuristic of \cite[pp.~69--70]{PM8b} (a sum in which a
 non-empty product of Liouville values at positions other than that of $f$
 remains is negligible), the twisted inputs become, for $f=1$ and for
 $f=\Lambda$ at position $i$ (prime powers are negligible),
@@ -391,12 +397,12 @@ $j\ge k/2+1$) and (a) (a graph property is subject to the parity problem
 ``precisely when'' the graph is two-colourable). The window form (c) and
 Corollary~\ref{cor:six} do not appear in the post as far as we could read it
 (through a text extract; its formulas are images). Akeno
-\cite[\S5, footnote~3]{Ake25} credits a related argument to Zeb Brady and Tao
+\cite[\S5, footnote~3]{Ake25} (preprint) credits a related argument to Zeb Brady and Tao
 in another setting (Goldbach primes).
 \end{sloppypar}
 \end{remark}
 
-\begin{remark}[Extra coordinates do not help]\label{rem:marg}
+\begin{remark}[Extra coordinates do not help; \lbl{Proved here}]\label{rem:marg}
 If $\Psi$ also depends on Liouville values at shifts outside $\mathcal H$,
 averaging over those coordinates gives a pattern weight on $\mathcal H$ that
 is still non-negative, still kills $\mathcal E$, and has the same singleton
@@ -410,7 +416,7 @@ classes of $n$ as well, or on functions other than $\lambda$) are not covered.
 Within the class of pattern weights, the targets ``some $m+1$ of the $n+h_i$
 lying in an interval of length $g$ are all prime'' are blocked for every
 admissible tuple if and only if $g<H(2m+1)$. For $m=1$: $H(3)=6$, so the class
-blocks every attempt at $H_1\le4$, but not every attempt at $H_1\le 6$; in
+blocks every target of this form for $H_1\le4$, but not every one for $H_1\le 6$; in
 particular not the one through $\{0,2,6\}$, whose target graph at $g=6$ is a
 triangle. (Some tuples are blocked at $g=6$, e.g.\ $\{0,2,8,12\}$.) This is
 consistent with $H_1\le6$ under GEH via $\mathrm{DHL}[3,2]$
@@ -434,24 +440,26 @@ $\{0,2,6,8,12,18,20\}$ are \lbl{Lean-checked} admissible
 (\texttt{narrow5\_admissible}, \texttt{narrow7\_admissible}). So the class
 blocks every tuple exactly when $g<12$ for $H_2$ and $g<20$ for $H_3$, while the
 best sieve bounds are $H_2\le270$ under EH and $H_2\le252$ under GEH
-\cite[Theorem~1.4(vii), (xiii)]{PM8b}. So $m=1$ is the only case in which the
-class matches what sieve methods achieve. \lbl{Lean-checked}
+\cite[Theorem~1.4(vii), (xiii)]{PM8b} (\lbl{Literature}). So $m=1$ is the only case known in which the
+class matches the known sieve bounds. \lbl{Lean-checked}
 (\texttt{triangle\_no\_fair\_weight}): a non-negative, integer-valued fair
-weight on $\{\pm1\}^3$ that kills all three pairs is identically zero (the
-case $k=3$, $m=1$ of (b)); the reductions from rational weights (by scaling)
+weight on $\{\pm1\}^3$ that kills all three pairs has total mass $0$ (the
+case $k=3$, $m=1$ of (b)), hence, being non-negative, vanishes identically; the reductions from rational weights (by scaling)
 and real ones (by rationality of the linear program) are \lbl{Proved here}.
 \end{sloppypar}
 
 \begin{remark}[Chen's theorem as a consistency test; \lbl{Proved here} for the class, folklore in substance]\label{rem:chen}
-Take $\mathcal H=\{0,2\}$. A number in $P_2$ can have either sign of
-$\lambda$, so a weight killing Chen's target ``$n$ prime and $n+2\in P_2$''
+Take $\mathcal H=\{0,2\}$, and say that a weight kills a target if it
+vanishes on every sign pattern the target can produce. A number in $P_2$ can
+have either sign of $\lambda$, so a weight killing Chen's target ``$n$ prime and $n+2\in P_2$''
 must vanish whenever $s_1=-1$, and no non-negative weakly fair weight does:
 the class does not block Chen's theorem \cite[Theorem~5]{Tao15c}, as it must
 not. Each half is blocked: $1-s_1s_2$ kills ``$n$ and $n+2$ prime'' and
-$1+s_1s_2$ kills ``$n+2$ a product of exactly two primes''
+$1+s_1s_2$ kills ``$n$ prime and $n+2$ a product of exactly two primes''
 (\lbl{Lean-checked}: \texttt{chen\_no\_weakly\_fair\_weight},
 \texttt{chen\_twin\_half\_weight}, \texttt{chen\_semiprime\_half\_weight}; the
-first for integer-valued weights, to which rational ones reduce by scaling).
+first for integer-valued weights, to which rational ones reduce by scaling and
+real ones by rationality of the linear program, \lbl{Proved here}).
 This matches ``we cannot hope to use plain sieve theory to \dots\ just count
 semiprimes'' \cite{Tao07}, and it is ``not known whether there are infinitely
 many primes $p$ such that $p+2$ has an odd number of prime factors''
@@ -469,8 +477,10 @@ weight vanishes identically (the factor $i=i'$ is $1-\lambda(n+i)^2=0$); with
 $i<i'$ it still vanishes for every $n$ once $H\ge4$, since among
 $n,\dots,n+4$ the integers prime to $3$ contain three at pairwise distances
 $\le4$ (e.g.\ $n+1,n+2,n+4$ if $3\mid n$), on which the three factors cannot
-all be non-zero (\lbl{Computed} for $n<20000$, $H\in\{4,6,8,12\}$). The
-intended weight is presumably the one with $i<i'$ and $n+i$, $n+i'$ odd: the
+all be non-zero (\lbl{Computed} for $n<20000$, $H\in\{4,6,8,12\}$). On a
+fixed class of $n$ modulo $6$ these weights are pattern weights on the
+positions involved, so Proposition~\ref{prop:bipartite} applies class by
+class: the printed graph has odd cycles. The intended weight is presumably the one with $i<i'$ and $n+i$, $n+i'$ odd: the
 positions $\equiv\pm1\pmod6$ have gaps alternating $2,4$, so their graph of
 pairs at distance $\le4$ is a path, hence bipartite, and the product over its
 edges is supported on the two alternating patterns with equal mass, so it is
@@ -481,8 +491,8 @@ many $n$ (\lbl{Computed}, same range). A typo-level slip; no result of
 
 \subsection{A parity-sensitive statement the class does not block: Pintz's dichotomy}\label{subsec:pintz}
 
-\lbl{Literature} \cite[Theorems~1, 3 and \S3, pp.~2, 6--10]{Pi10}: for every
-admissible $6$-tuple $\mathcal H$ and integer $r\notin\mathcal H$ there are
+\lbl{Literature} \cite[Theorems~1, 3 and \S3, pp.~2--3, 6--10]{Pi10}: for every
+admissible $6$-tuple $\mathcal H$ and integer $r\ne0$, $r\notin\mathcal H$, there are
 infinitely many $n$ such that either $n+\mathcal H$ contains two primes, or
 some $n+h_i$ is prime and $\lambda(n+r)=-1$. With $\mathcal H=\{0,4,6,10,12,16\}$
 and $r=8$ this gives an even $d$ with $0<|d|\le16$ and $\lambda(p+d)=-1$ for
@@ -496,24 +506,27 @@ $\lambda(p+d)=-1$ infinitely often for a single prescribed $d$ \cite[p.~3]{Pi10}
 Let $0<\theta<1$ be a level of distribution for the primes and for $\lambda$
 in the sense of \cite[(2.1), (2.2)]{Pi10}; by Bombieri--Vinogradov and
 \cite[Lemma~3]{Pi10}, $\theta=\frac12$ is one. Let $\mathcal H$ be an
-admissible $k$-tuple, $r\in\mathbb Z\setminus\mathcal H$ and $\sigma\in\{\pm1\}$.
+admissible $k$-tuple, $r\in\mathbb Z\setminus\mathcal H$ and $\varsigma\in\{\pm1\}$.
 If $\theta M_k>1$, with $M_k$ Maynard's constant \cite[Proposition~4.2]{May15},
 then there are infinitely many $n$ such that either at least two of the
-$n+h_i$ are prime, or some $n+h_i$ is prime and $\lambda(n+r)=\sigma$.
+$n+h_i$ are prime, or some $n+h_i$ is prime and $\lambda(n+r)=\varsigma$.
 \end{theorem}
 
 Bounded gaps need $\theta M_k>2$ \cite[Proposition~4.2]{May15}; here the second
-alternative costs half a prime, because $\lambda(n+r)=\sigma$ on half of the
+alternative costs half a prime, because $\lambda(n+r)=\varsigma$ on half of the
 weight. For $k=5$, \cite[(8.17)]{May15} gives $M_5\ge\frac{1417255}{708216}>2$,
-so the dichotomy holds unconditionally for $5$-tuples; Pintz's inequality
+so the dichotomy holds unconditionally for $5$-tuples (for $k=1$, $M_1=1$
+and the theorem is void, consistent with Remark~\ref{rem:pintz-parity}); Pintz's inequality
 \cite[(3.22)]{Pi10}, optimised in its parameter, needs $\theta>0.5126$ for
-$k=5$ (our floating-point optimisation).
+$k=5$ (\lbl{Heuristic}: our floating-point optimisation).
 
 \begin{proof}
 Take Maynard's set-up \cite[\S\S4--5]{May15}: $W=\prod_{p\le D_0}p$ with
 $D_0=\log\log\log N$, a class $v_0\bmod W$ with every $v_0+h_i$ coprime to $W$,
 $R=N^{\theta/2-\delta}$, and $w_n=\left(\sum_{d_i\mid n+h_i}y_{d_1,\dots,d_k}\right)^2$
-built from a fixed polynomial $F$ supported on $\mathcal R_k$; the
+built from a fixed polynomial $F$ supported on $\mathcal R_k$ (in Maynard's notation
+$I_k(F)=\int F^2$, $J_k^{(m)}(F)=\int(\int F\,dt_m)^2$, and $M_k$ is the supremum of
+$\sum_mJ_k^{(m)}/I_k$); the
 $y_{\mathbf d}$ are supported on squarefree $d=\prod d_i<R$ coprime to $W$, with
 $|y_{\mathbf d}|\ll(\log R)^k$ \cite[(5.9)]{May15}. For $N\le n<2N$,
 $n\equiv v_0\pmod W$, \cite[Proposition~4.1]{May15} gives
@@ -526,7 +539,10 @@ $q=W\prod_i[d_i,e_i]$ when the $[d_i,e_i]$ are pairwise coprime; otherwise the
 sum is empty, since a common prime would divide some $h_i-h_j$, hence be
 $<D_0$ for large $N$. So $n+r$ runs over one class modulo $q<WR^2\le
 N^{\theta-\delta}$ in an interval of length $N$, and the inner sum is at most
-$2E(q)$, $E(q)=\max_{y\le3N}\max_b\left|\sum_{m\le y,\,m\equiv b\,(q)}\lambda(m)\right|$.
+$2E(q)$, $E(q)=\max_{y\le3N}\max_b\left|\sum_{m\le y,\,m\equiv b\,(q)}\lambda(m)\right|$
+(classes with $(b,q)=g>1$ reduce to coprime classes modulo $q/g$ at length
+$3N/g$ through $\lambda(gm)=\lambda(g)\lambda(m)$, as in \cite{Pi10}, at the cost of
+one factor $\tau(q)$).
 A squarefree $q/W$ arises from at most $\tau_{3k}(q/W)$ pairs
 $(\mathbf d,\mathbf e)$. As in \cite[(5.18)--(5.20)]{May15} and
 \cite[(3.14)--(3.16)]{Pi10}, Cauchy--Schwarz, $E(q)\le3N/q+1$ and
@@ -537,15 +553,16 @@ $(\mathbf d,\mathbf e)$. As in \cite[(5.18)--(5.20)]{May15} and
 \]
 which is $o(S_1)$ since $W\ll(\log\log N)^2$.
 
-Put $\chi(n)=\frac12(1+\sigma\lambda(n+r))\in\{0,1\}$. Then
+Put $\chi(n)=\frac12(1+\varsigma\lambda(n+r))\in\{0,1\}$. Then
 \[
 \sum w_n\left(\sum_m\mathbf 1_{\mathcal P}(n+h_m)+\chi(n)-1\right)
 =S_1\left(\left(\tfrac\theta2-\delta\right)\frac{\sum_mJ_k^{(m)}(F)}{I_k(F)}-\tfrac12+o(1)\right),
 \]
 which is positive for large $N$ once $\delta$ is small and
-$\theta\sum_mJ_k^{(m)}(F)/I_k(F)>1$. So some $n\in[N,2N)$ has
+$\theta\sum_mJ_k^{(m)}(F)/I_k(F)>1$; such a polynomial $F$ exists because
+$\theta M_k>1$ and $M_k$ is a supremum over such $F$ \cite[Proposition~4.2]{May15}. So some $n\in[N,2N)$ has
 $\sum_m\mathbf 1_{\mathcal P}(n+h_m)+\chi(n)\ge2$: two primes, or one prime and
-$\lambda(n+r)=\sigma$. Let $N\to\infty$.
+$\lambda(n+r)=\varsigma$. Let $N\to\infty$.
 \end{proof}
 
 \begin{corollary}[\lbl{Proved here} + \lbl{Computed}]\label{cor:pintz12}
@@ -556,8 +573,8 @@ $\lambda(n+r)=\sigma$. Let $N\to\infty$.
 \item There is an even $d$ with $0<d\le14$, and a $d$ with $0<d\le13$, such that
   $\lambda(p+d)=-1$ for infinitely many primes $p$. Pintz has $18$ and $17$
   \cite[Theorem~1'' and the remark after it]{Pi10}.
-\item Either $\liminf(p_{n+1}-p_n)\le12$, or for each $\sigma\in\{\pm1\}$ there is
-  $d\in\{\pm2,\pm4,-8\}$ such that $\lambda(p+d)=\sigma$ for infinitely many $p$.
+\item Either $\liminf(p_{n+1}-p_n)\le12$, or for each $\varsigma\in\{\pm1\}$ there is
+  $d\in\{\pm2,\pm4,-8\}$ such that $\lambda(p+d)=\varsigma$ for infinitely many $p$.
   Pintz has $16$ for the gap.
 \item If $\theta$ is a level for primes and $\lambda$ with $\theta>0.72154$,
   $0.60752$ or $0.54230$, the dichotomy holds for admissible $2$-, $3$- or
@@ -570,14 +587,14 @@ $\lambda(n+r)=\sigma$. Let $N\to\infty$.
 \begin{sloppypar}
 Use Theorem~\ref{thm:pintz-maynard} with $\mathcal H=\{0,2,6,8,12\}$
 (\lbl{Lean-checked} admissible: \texttt{narrow5\_admissible}). For (1), take
-$r=4$, $\sigma=-1$: in the first alternative the primes $p<p'$ satisfy
+$r=4$, $\varsigma=-1$: in the first alternative the primes $p<p'$ satisfy
 $\lambda(p+(p'-p))=-1$ with $0<p'-p\le12$; in the second,
 $d=r-h_i\in\{4,2,-2,-4,-8\}$. Each $n$ yields a prime $p\ge n$, so some $d$
 occurs infinitely often. For (2), take $r=14$ ($r-h_i\in\{14,12,8,6,2\}$) or
 $r=13$ ($\{13,11,7,5,1\}$). For (3), take $r=4$: if the first alternative holds
 for finitely many $n$ only, the second holds infinitely often, for each
-$\sigma$. For (4), the thresholds are $1/M$, rounded up, where $M$ is the
-exact ratio of a rational combination of the polynomials $(1-P_1)^bP_2^c$ with
+$\varsigma$. For (4), the thresholds are $1/M$, rounded up, where $M$ is the
+exact ratio of a rational combination of Maynard's polynomials $(1-P_1)^bP_2^c$ ($P_j=\sum_it_i^j$) with
 $b+2c\le6$, for $k=2,3,4$; for Theorem~7 use $\{0,2\}$ with $r=1$, and
 $\{0,2,6\}$, $\{0,2,6,8\}$ with $r=4$.
 \end{sloppypar}
@@ -594,12 +611,15 @@ $M_3\ge1.6460391$, $M_4\ge1.8440154$, $M_5\ge2.0041054$.
 \end{sloppypar}
 
 \begin{remark}[\lbl{Proved here}; consistency with Proposition~\ref{prop:bipartite}]\label{rem:pintz-parity}
-Put pattern weights on $\mathcal H\cup\{r\}$. With $\sigma=-1$ the target of
+Put pattern weights on $\mathcal H\cup\{r\}$. With $\varsigma=-1$ the target of
 Theorem~\ref{thm:pintz-maynard} is killed exactly when $\Psi$ vanishes whenever
 $s_i=s_j=-1$ ($i\ne j$ in $\mathcal H$) or $s_i=s_r=-1$: the edge set of the
 complete graph on $\mathcal H\cup\{r\}$. For $k\ge2$ it contains a triangle, so
 no fair pattern weight kills it (Proposition~\ref{prop:bipartite}(a)); for
-$\sigma=+1$ replace $s_r$ by $-s_r$. Without the first alternative the target
+$\varsigma=+1$ replace $s_r$ by $-s_r$. (Admissibility of $\mathcal H\cup\{r\}$ is not used
+in Proposition~\ref{prop:bipartite}. Fairness at $r$ is what keeps the input
+$\sum w_n\lambda(n+r)=o(S_1)$ valid after twisting: heuristically
+$\sum w_n\omega(n)\lambda(n+r)\approx\widehat\Psi(\{r\})\sum w_n$.) \lbl{Heuristic}, our reading: Without the first alternative the target
 is a star with centre $r$, which is bipartite, so the class blocks it under
 any level of distribution, consistent with Pintz's remark on a prescribed
 $d$. Pintz's theorem sidesteps the obstruction; it does not break it, and it
@@ -616,7 +636,7 @@ $J_{i,1-\varepsilon}(F)=\int_{(1-\varepsilon)\mathcal R_{k-1}}
 \left(\int_0^\infty F\,dt_i\right)^2$ (integration over the other $k-1$ variables).
 
 \lbl{Literature} \cite[Theorems~3.8, 3.12, 3.14, pp.~13--16]{PM8b}. Under
-$\mathrm{GEH}[\vartheta]$ ($0<\vartheta<1$), $\mathrm{DHL}[k,m+1]$ follows if
+$\mathrm{GEH}[\vartheta]$ ($0<\vartheta<1$; $\mathrm{EH}[\vartheta]$ suffices for Theorem~3.8), $\mathrm{DHL}[k,m+1]$ follows if
 $\sum_iJ_{i,1-\varepsilon}(F)/I(F)>2m/\vartheta$ for some non-zero square-integrable
 $F$ that is
 \begin{itemize}
@@ -650,13 +670,13 @@ Let $k\ge2$ and $m\ge1$.
 \end{proposition}
 
 \begin{proof}
-(1) All three supports lie in $c\,\mathcal R_k$, $c=\frac k{k-1}$, and
-$(1-\varepsilon)\mathcal R_{k-1}\subseteq c\,\mathcal R_{k-1}$; the integrands of
+(1) All three supports lie in $\beta\mathcal R_k$, $\beta=\frac k{k-1}$, and
+$(1-\varepsilon)\mathcal R_{k-1}\subseteq \beta\mathcal R_{k-1}$; the integrands of
 the $J_{i,1-\varepsilon}$ are non-negative, so enlarging their domains only
-increases them. For $G(t)=F(ct)$, supported on $\mathcal R_k$, the substitution
-$t=cu$ gives $I(F)=c^kI(G)$ and $\int_{c\mathcal R_{k-1}}(\int F\,dt_i)^2=c^{k+1}
+increases them. For $G(t)=F(\beta t)$, supported on $\mathcal R_k$, the substitution
+$t=\beta u$ gives $I(F)=\beta^kI(G)$ and $\int_{\beta\mathcal R_{k-1}}(\int F\,dt_i)^2=\beta^{k+1}
 \int_{\mathcal R_{k-1}}(\int G\,du_i)^2$. Hence the ratio is at most
-$cM_k\le c\frac k{k-1}\log k$. The same argument with $c=1+\varepsilon$ gives the
+$\beta M_k\le\beta\frac k{k-1}\log k$. The same argument with $\beta=1+\varepsilon$ gives the
 second bound, which is also the endpoint $a=1/(1+\varepsilon)$ of
 \cite[Remark~6.6, p.~45]{PM8b}.\footnote{\cite[Proposition~6.5, p.~44]{PM8b}
 states $M_{k,\varepsilon}\le\frac k{k-1}\log(2k-1)$ for $0\le\varepsilon<1$. Its proof
@@ -677,15 +697,15 @@ For $m\ge2$, $c(k)\le4\log k\le4\log(2m)$, which is $<2m$ for $m\ge5$; for
 $m=2,3,4$ the script checks $c(k)<2m$ for all $2\le k\le2m$.
 \end{proof}
 
-Polymath8b's printed lower bounds lie below these ceilings, as they must
+\lbl{Literature} + \lbl{Computed}: Polymath8b's printed lower bounds lie below these ceilings, as they must
 \cite[Theorems~3.13, 3.15]{PM8b}: $M_{50,1/25}>4.0043$ against $4.152$,
 $M_{51,1/50}>4.00156$ against $4.091$, $M_{4,0.168}>2.00558$ against $2.159$, and
 the $k=3$ ratio $>2$ of Theorem~3.15 against $c(3)=2.472$.
 
-\begin{remark}[What this locates]\label{rem:ceil-locates}
+\begin{remark}[What this locates; \lbl{Heuristic}, our reading]\label{rem:ceil-locates}
 By Proposition~\ref{prop:bipartite}(b), pattern weights block
 $\mathrm{DHL}[k,3]$ only for $k\le4$. So for $5\le k\le45$ the failure of these
-criteria to give $\mathrm{DHL}[k,3]$ is not a parity block but a limit of the
+criteria to give $\mathrm{DHL}[k,3]$ is not a block by pattern weights but a limit of the
 variational method itself: between ``not blocked by parity'' ($k\ge5$) and
 ``not excluded by the ceiling'' ($k\ge46$; \cite{PM8b} use $k=51$) lies a gap
 in the method. This is our reading; \cite[Corollary~6.4]{PM8b} makes the
@@ -821,8 +841,8 @@ $\varepsilon$.
 \end{proof}
 
 This is a Schur test; if $\Phi=\varphi$ exactly, $F=h$ attains the bound, so
-the test is sharp for the problem without marginal condition
-(\lbl{Heuristic}: 1D, 2D and 3D computations, \texttt{k3\_unc\_1d.py},
+the test would be sharp for the problem without marginal condition (that such
+a $\varphi$ exists is \lbl{Heuristic}: 1D, 2D and 3D computations, \texttt{k3\_unc\_1d.py},
 \texttt{k3\_unc\_kernel.py}, \texttt{k3\_thm314\_dual.py}, agree to $10^{-4}$).
 
 \begin{theorem}[\lbl{Computed} and \lbl{Proved here}; each certificate checked by two independent programs]\label{thm:k3-window}
@@ -882,7 +902,8 @@ $n=24,32,40$ give $\sigma_3\approx1.977$, $2.003$, $1.990$ at
 $\varepsilon=\frac18,\frac14,\frac38$ (clean columns only: $2.181$, $2.105$, $2.017$;
 no condition: $2.273$, $2.168$, $2.056$; accuracy about $10^{-3}$). Exact lower
 bounds at $\varepsilon=\frac18,\frac16,\frac15,\frac3{10},\frac13$ are $1.97619$, $1.9909$,
-$1.9982$, $1.9990$, $1.9952$, still rising with $n$. So the picture is a window
+$1.9982$, $1.9990$, $1.9952$; the first agrees with the extrapolation, the
+others are still rising with $n$. So the picture is a window
 of roughly $\varepsilon\in(0.19,0.31)$ with maximum about $2.003$, both possibly
 underestimates: the $H_1\le6$ of \cite[Theorem~3.15]{PM8b} has very little
 room. A rigorous bound below $2$ for small $\varepsilon$, or in $[0.31,0.4383)$,
@@ -943,8 +964,7 @@ $\mathfrak H=2\prod_{p\ge3}\frac{p(p-2)}{(p-1)^2}=2C_2$.
 So two inputs are missing. (R$_3$) at a level $D>x^{2/3}$ is a fixed-residue
 Elliott--Halberstam bound with absolute values; Bombieri--Vinogradov gives
 level $x^{1/2}(\log x)^{-B}$, and beyond $x^{1/2}$ there are results only for
-restricted moduli or with weights, none reaching $x^{2/3}$ (open
-question~\ref{oq:level}). (B) for $\Lambda(n+2)$ carries the parity
+restricted moduli or with weights, none reaching $x^{2/3}$ (question~\ref{oq:level} of Section~\ref{sec:open}). (B) for $\Lambda(n+2)$ carries the parity
 information:
 
 \begin{proposition}[\lbl{Proved here}]\label{prop:B-parity}
@@ -960,17 +980,19 @@ $\gamma(n,1)=1$; $\mu(k)\ne0$ implies $\mu(k)=\lambda(k)$, and then
 $\mu(k)\tfrac12(1+\lambda(k))=\tfrac12(\mu(k)+1)\in\{0,1\}$.
 \end{proof}
 
-So (B) separates $a$ from $a^+$ ($a^+_p=0$ for every prime $p$), while by the
+So (B) at $C=1$ separates $a$ from $a^+$ ($a^+_p=0$ for every prime $p$), while by the
 heuristic of Section~\ref{sec:parity} $a$ and $2a^+$ have the same Type~I data.
 (That (B) actually fails for $a^+$ needs enough primes $q$ with $q-2$
 squarefree, $\lambda(q-2)=1$ and a divisor in $(N,2N]$; expected, not proved
-here.) After Cauchy--Schwarz in $m$, (B) becomes an off-diagonal bound for
+here.) If $\Delta(x)\le x^{1/3}(\log x)^{-2^{23}-3}$, so that the diagonal is
+acceptable by Brun--Titchmarsh, then by Cauchy--Schwarz in $m$, (B) at $C=1$
+follows from an off-diagonal bound for
 $\sum_m\mu^2(m)\Lambda(mn_1+2)\Lambda(mn_2+2)$, a binary correlation of
 primes; Polymath8b: ``we do not know of any plausible way to control such
 bilinear expressions'' \cite[p.~71]{PM8b}.
 
 \subsection{What the level of distribution alone gives: Bombieri's asymptotic sieve}\label{sec:bomb}
-\lbl{Literature} \cite{Fo04} (arXiv:math/0401215v1, pp.~1--4). With $A_d(x)$
+\lbl{Literature} \cite{Fo04} (arXiv:math/0401215v1, pp.~1--4), with our reading of the specialisation. With $A_d(x)$
 as above, the level hypothesis is $R(\nu)$:
 $\sum_{d\le x^\nu}|r_d(x)|\ll_{\nu,B}A(x)(\log x)^{-B}$ for all $B$. For
 $a_n=\Lambda(n+2)$ ($A(x)=x$, $g$ as in Proposition~\ref{prop:fi-twin}),
@@ -1022,7 +1044,7 @@ Selberg's example \cite[p.~2]{Fo04}. The same split, with the halves weighted
 by $\Lambda\log$ and $\Lambda\star\Lambda$, is the quantitative form of the Chen
 test of Remark~\ref{rem:chen} for the mirror target.
 
-\begin{remark}[Ford's extra conditions for this sequence; our reading]\label{rem:ford-twin}
+\begin{remark}[Ford's extra conditions for this sequence; \lbl{Literature} + \lbl{Heuristic}, our reading]\label{rem:ford-twin}
 For $a_n=\Lambda(n+2)$, Ford's no-bias condition reads
 $\sum_{3\le p\le x+2}\mu(p-2)\log p\ll_Bx(\log x)^{-B}$ (prime powers contribute
 $O(\sqrt x\log x)$): a quantitative form of the folklore conjecture
@@ -1049,7 +1071,7 @@ independently; not communicated to the author). The numerics of
 Section~\ref{sec:num} agree with $4C_2$. Her qualitative conclusion does not
 depend on the constant.\end{sloppypar}}\end{sloppypar}
 
-\section{Where parity is broken, and what twin primes lack}\label{sec:broken}
+\section{Where parity is broken or bypassed, and what twin primes lack}\label{sec:broken}
 
 \subsection{\texorpdfstring{$a^2+b^4$}{a\textasciicircum 2+b\textasciicircum 4}}\label{subsec:fi-x2y4}
 \lbl{Literature} \cite{FI98b} (arXiv:math/9811185v1; Annals pages). Theorem~1
@@ -1157,20 +1179,21 @@ prime number theorem with classical error term.
 
 \begin{remark}[What is relocated; \lbl{Literature and Heuristic}]\label{rem:ss-transfer}
 Under EH only $e<x^{c}$ remains in $T_D$; the term $e=1$ is essentially
-$\sum_p\mu(p-2)\log p\log(p-2)$, and the bound $o(x)$ needed for it is stronger
-by a factor $\log x$ than the folklore conjecture $\sum_{p\le X}\mu(p+h)=o(\pi(X))$
+$\sum_p\mu(p-2)\log p\log(p-2)$, and a bound $o(x)$ for that term alone would be
+stronger by a factor $\log x$ than the folklore conjecture $\sum_{p\le X}\mu(p+h)=o(\pi(X))$
 \cite[p.~1]{Li21}. A related conditional equivalence is due to Murty and
-Vatwani, as quoted in \cite[Theorem~3, p.~3]{Cit26} (\cite{MV17} not opened):
+Vatwani, as quoted in the preprint \cite[Theorem~3, p.~3]{Cit26} (\cite{MV17} not opened):
 under EH at level $N^{\theta}$ and an EH-type hypothesis for
 $\Lambda(n)\mu(n+h)$ at level $N^{1-\theta}$, the asymptotic for
-$\sum\Lambda(n)\Lambda(n+h)$ is equivalent to $\sum_{n\le N}\Lambda(n)\mu(n+h)=o(N)$.
+$\sum\Lambda(n)\Lambda(n+h)$ is equivalent to $\sum_{n\le N}\Lambda(n)\mu(n+h)=o(N)$, a
+quantity different from $T_D$.
 Over $\mathbb F_q[T]$ the analogue of $T_D$ is \cite[(6.22)]{SS19}, bounded
 through Lemma~3.2; the integers have no subring like $\mathbb F_q[T^p]$ and no
 derivative with $(r+s^p)'=r'$, so as far as we can see the step without an
 integer analogue is that lemma, with the sub-Burgess character sums it feeds.
 $T_D$ is a correlation of $\mu$ with primes of the kind that
 Proposition~\ref{prop:B-parity} shows carries the parity information: the
-split is a reformulation, and the first unresolved implication is
+split is a reformulation, not progress, and the first unresolved implication is
 $T_D(x)=o(x)$ for one admissible $D$.
 \end{remark}
 
@@ -1186,17 +1209,17 @@ $q^{1/2+\varepsilon_0}\le x\le q^{\eta^{1/2}}$, because $\lambda$ ``pretends'' t
 $\chi$: the primes with $\chi(p)\ne-1$ have small $1/p$-sum above about
 $T=q^{1/\log^{1-\varepsilon'}\eta}$ (Prop.~3.5, Cor.~3.6); nothing in \cite{TT22}
 controls those below $T$. Which hypothesis of the obstruction fails there? Let
-$W=\prod_{p\le w}p$, $Q=Wq$ with $q>w$ an odd prime, $G$ the set of classes
+$w$ be fixed, $W=\prod_{p\le w}p$, $Q=Wq$ with $q>w$ an odd prime, $G$ the set of classes
 $b\bmod Q$ with $(b(b+2),Q)=1$, and $S_b$ the sum of $\lambda(n)\lambda(n+2)$ over
 $n\in I$, $n\equiv b\ (Q)$, where $I=(0,x]$ or $(x,2x]$.
 \end{sloppypar}
 
 \begin{proposition}[\lbl{Proved here}; elementary, possibly folklore]\label{prop:siegel-bias}
-Let $s_1$, $s_2$ be the $1/p$-sums of the primes $p>w$ with $\chi(p)=1$ in
+Let $\Sigma_1$, $\Sigma_2$ be the $1/p$-sums of the primes $p>w$ with $\chi(p)=1$ in
 $(w,x/Q]$ and in $(x/Q,2x+2]$, and $\overline S$ the sum of
 $\lambda(n)\lambda(n+2)$ over the $n\in I$ coprime to $Q$, divided by
-$\varphi(Q)$. If $|S_b-\overline S|\le\varepsilon x/Q$ for every $b\in G$, then, as
-$x/Q\to\infty$, $\varepsilon\ge1-4s_1-O_w(s_2)-\frac1{q-2}-o(1)$.
+$\varphi(Q)$. If $|S_b-\overline S|\le\delta x/Q$ for every $b\in G$, then, as
+$x/Q\to\infty$, $\delta\ge1-4\Sigma_1-O_w(\Sigma_2)-\frac1{q-2}-o(1)$.
 \end{proposition}
 
 \begin{proof}
@@ -1204,11 +1227,11 @@ If $(n(n+2),Q)=1$, every prime factor $p$ of $n(n+2)$ has $\chi(p)=\pm1$ and
 $\lambda(p)=-1$, so $\lambda(n)\lambda(n+2)=\chi(n)\chi(n+2)$ unless a prime with
 $\chi(p)=1$ divides $n(n+2)$. Hence $\chi(b)\chi(b+2)S_b\ge x/Q-1-2B_b$, where
 $B_b$ counts the $n\equiv b\ (Q)$ in $I$ with such a prime factor, and
-$\sum_{b\in G}B_b\le2|G|(x/Q)s_1+2xs_2+2|G|\pi(x/Q)+2\pi(2x+2)$. By the Chinese
+$\sum_{b\in G}B_b\le2|G|(x/Q)\Sigma_1+2x\Sigma_2+2|G|\pi(x/Q)+2\pi(2x+2)$. By the Chinese
 remainder theorem and the Jacobsthal sum,
 $\sum_{b\in G}\chi(b)\chi(b+2)=\frac{|G|}{q-2}\sum_{c\bmod q}\left(\frac{c^2-1}{q}\right)
 =-\frac{|G|}{q-2}$, and $|\overline S|\le x/Q+1$. So
-$\varepsilon\frac xQ|G|\ge\sum_{b\in G}\chi(b)\chi(b+2)(S_b-\overline S)\ge
+$\delta\frac xQ|G|\ge\sum_{b\in G}\chi(b)\chi(b+2)(S_b-\overline S)\ge
 |G|(\frac xQ-1)-2\sum_bB_b-(\frac xQ+1)\frac{|G|}{q-2}$; divide by $|G|x/Q$ and use
 $Q/|G|\ll_w1$.
 \end{proof}
@@ -1219,22 +1242,22 @@ conductor $q>w$, fix $0<\varepsilon'<1$, put $T=q^{1/M}$ with
 $M=\lfloor\log^{1-\varepsilon'}\eta\rfloor$, and let
 $q^{(1+\varepsilon_0)/2}\le x\le q^{\eta^{1/2}}$ with $Wq\le x/T$. If the
 discrepancies of $\lambda(n)\lambda(n+2)$ at the single modulus $Wq$ are at most
-$\varepsilon x/(Wq)$ in every class of $G$ (a per-modulus, unweighted form of
-\cite[(144)]{PM8b}), then $\sum_{w<p<T,\,\chi(p)=1}1/p\ge(1-\varepsilon)/4-o(1)$.
+$\delta x/(Wq)$ in every class of $G$ (a per-modulus, unweighted form of
+\cite[(144)]{PM8b}), then $\sum_{w<p<T,\,\chi(p)=1}1/p\ge(1-\delta)/4-o(1)$.
 \end{corollary}
 
 \begin{proof}
 By \cite[(1.4)]{TT22}, $\eta\ll q$, so $q\to\infty$, $\log T\ge(\log q)^{\varepsilon'}(1+o(1))$,
-$x/Q\ge T\to\infty$. By \cite[(3.22)]{TT22} the split primes in $(q,2x+2]$
-contribute $\ll\eta^{-1/2}$, and by \cite[(3.23)]{TT22} those in
+$x/Q\ge T\to\infty$. By \cite[(3.22)]{TT22} (their $\varepsilon=1$) the split primes in $(q,2x+2]$
+contribute $\ll\eta^{-1/2}$ (as $x\le q^{\eta^{1/2}}$), and by \cite[(3.23)]{TT22} those in
 $(q^{1/m},q^{1/(m-1)}]$ contribute $\ll m\eta^{-1/m}$, uniformly in $m\ge2$;
-the sum over $2\le m\le M$ is $\ll M^2\eta^{-1/M}=o(1)$. So $s_2=o(1)$ and only
-the primes below $T$ remain in $s_1$.
+the sum over $2\le m\le M$ is $\ll M^2\eta^{-1/M}=o(1)$. So $\Sigma_2=o(1)$ and only
+the primes below $T$ remain in $\Sigma_1$.
 \end{proof}
 
 So in a Siegel world whose character has few small split primes, two-point
 Chowla holds, but the per-modulus form of the twisted input fails at the one
-modulus $Wq$; \cite{HB83} shows that twin primes follow there. It does not
+modulus $Wq$; by \cite{HB83} (as quoted in \cite{TT22}) twin primes follow there. It does not
 show that the averaged (EH-type) input fails (open question~\ref{oq:siegel}).
 \texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{siegel\_class\_bias.py} checks the
 pointwise inequality and the class-sum bound for a model $f$ exactly in $30$
@@ -1268,7 +1291,7 @@ conjecture MN$(s)$; MN$(s)$ is proved in \cite{GT12} by Type~I and II sums
 \cite[p.~4, ref.~32]{Tao16b}; not opened). The system $(n,n+2)$ ``which counts
 twin primes, has infinite complexity'' \cite[p.~7]{GT10}. The arithmetic input
 of the theory is the smallness of $\|\Lambda'_{b,W}-1\|_{U^{s+1}[N]}$ for the
-$W$-tricked primes. The next statement shows that such smallness does not by
+$W$-tricked primes $\Lambda'_{b,W}(n)=\frac{\varphi(W)}W\Lambda(Wn+b)$. The next statement shows that such smallness does not by
 itself constrain the shift-$2$ correlation.
 
 \begin{proposition}[\lbl{Proved here}; folklore in substance]\label{prop:gowers-blind}
@@ -1321,8 +1344,9 @@ constant, with ``significant barriers (the `parity problem')'' to doing better
 averaged Chowla is equivalent to logarithmically averaged Gowers uniformity of
 $\lambda$ on short intervals \cite[Thm.~1.8, p.~5]{Tao16b} (an equivalence of
 open conjectures), and the proved case $k=2$ \cite{Tao16} uses \cite{MRT15} as
-the uniformity input. Local $U^1$ uniformity alone does not suffice: $f_-$ has
-bounded sums over every interval yet correlation near $-1$. And $\Lambda-1$ is
+the uniformity input. Local $U^1$ uniformity alone does not suffice: for $4\mid L$, $f_-$ has
+bounded sums over every interval yet correlation near $-1$ (it correlates with
+$e(n/4)$ on every block, so it fails local Fourier uniformity). And $\Lambda-1$ is
 not locally uniform at short scales: for $H=o(\log X)$ almost no interval
 $[x,x+H]$, $x\le X$, contains a prime. Measured values
 (\texttt{code/}\allowbreak\texttt{parity/}\allowbreak\texttt{gowers\_twin\_blocks.py}, $N=32768$,
@@ -1357,9 +1381,10 @@ c_f(h)=\sum_nf(n)\overline{f(n+h)},
 since the pair $(n,n+h)$ lies in exactly $K-|h|$ windows. With $V(K)$ the left
 side and real $f$, $V(K+1)-2V(K)+V(K-1)=2c_f(K)$. So the twin count is half the
 second difference $V(3)-2V(2)+V(1)$ of the second moment of primes in windows
-of length $\le3$; for $f=\Lambda1_{(X,2X]}$, $V(1)\sim X\log X$, so an asymptotic for
+of length $\le3$; for $f=\Lambda1_{(X,2X]}$, $V(1)\sim X\log X$ and $V(2)$ is known to $o(X)$ by the
+prime number theorem, so an asymptotic for
 $V(3)$ with error $o(X)$ (relative error $o(1/\log X)$) is equivalent to the
-twin-prime asymptotic. Methods through second moments in windows of length $H$
+twin-prime asymptotic. (\lbl{Heuristic}:) methods through second moments in windows of length $H$
 need the diagonal $V(1)$ negligible against $H^2X$, i.e.\ $H/\log X\to\infty$.
 
 \emph{Hybrid averages} (\lbl{Literature} \cite[Thm.~1.2, Cor.~1.4, Prop.~3.2,
@@ -1381,10 +1406,12 @@ with $E_f=1$ (\cite{LT22} write $\eta H^2XE_f(X)^2$). Let $P$ be the primes up t
 $X-H$, $U=\{p+h:p\in P,\ 1\le h\le H\}$, and let $\mu'$ be $1$ on $U$ and $\mu$
 elsewhere. Then $f'=\mu'1_S1_{[0,X]}$ satisfies (i) verbatim; if $f$ satisfies
 $\mathrm{H}_2(X,H,\eta)$, then $f'$ satisfies $\mathrm{H}_2(X,H,2\eta+(216+o(1))H/\log X)$;
-and $\sum_{h\le H}\sum_{n\le X}\mu'(n+h)\Lambda(n)\ge(1+o(1))HX$. Since
+and $\sum_{h\le H}\sum_{n\le X}\mu'(n+h)\Lambda(n)\ge(1+o(1))HX$, and the same for
+$f'$ in place of $\mu'$, since by the sieve bound of (i) the shifted primes
+outside $S$ contribute $o(HX)$. Since
 \cite[Prop.~2.1, Remark~2.2]{LT22} give $\eta\ll H^{-\delta}$ for $f=\mu1_S$ and
 $3\le H\le(\log X)^C$, if $H^{1+\delta}\le c\log X$ then $f'$ satisfies (ii) with
-$\eta'\ll(1+c)H^{-\delta}$, as $f$ does. So for $H=o(\log X)$ no argument that uses
+$\eta'\ll(1+c)H^{-\delta}$, as $f$ does. So for $H\le(c\log X)^{1/(1+\delta)}$ no argument that uses
 only (i) and (ii) about $\mu$ gives cancellation along primes.
 \end{proposition}
 
@@ -1403,7 +1430,7 @@ $I(K)=\sum_{0\le x<N}(W_K(x)-K)^2$ (for integer $x$, the integral of
 $F(K)=\sum_{1\le j<K}(K-j)c(j)/(N\binom K2)$, the Fej\'er mean of $c(j)/N$, whose
 Hardy--Littlewood value tends to $1$ \cite[(1.5), p.~4]{Mer16}.
 
-\begin{proposition}[\lbl{Proved here}; elementary, folklore in substance]\label{prop:gm}
+\begin{proposition}[\lbl{Proved here}; elementary, folklore in substance; (c) conditional on RH, SPC and our reading of \cite{Gol04}]\label{prop:gm}
 For $1\le K\le N^{1/3}$, \eqref{eq:window} and $\sum_{0\le x<N}W_K(x)=K\psi(N)+O(K^2\log N)$ give
 \[
 2\sum_{1\le j<K}(K-j)c(j)=I(K)-K\,c(0)+K^2N+2K^2(\psi(N)-N)+O(K^3\log^2N). \tag{$*$}
@@ -1418,8 +1445,8 @@ With $c(0)=N\log N-N+o(N)$, the upper-bound sieve and the prime number theorem:
 \item[(c)] under RH and the strong pair correlation conjecture (SPC), which by
   \cite[Thm.~7, (9.3)]{Gol04} is equivalent on RH to $I(K)\sim KN\log(N/K)$ for
   $1\le K\le N^{1-\varepsilon}$ (read as uniform in $K$), $F(K)\to1$ whenever
-  $\liminf K/\log N>0$, with error $O(\log K/K)+o(\log N/K)+o(1)$; for
-  $K\asymp\log N$ the two statements are equivalent;
+  $\liminf K/\log N>0$ and $K\le N^{1/3}$, with error $O(\log K/K)+o(\log N/K)+o(1)$; for
+  $K\asymp\log N$ the two statements are equivalent (unconditionally);
 \item[(d)] a fixed shift is a second difference:
   $c(2)=N+\tfrac12(I(3)-2I(2)+I(1))+O(|\psi(N)-N|+\log^2N)$, so
   $c(2)\sim\mathfrak S(2)N$ is equivalent to $I(3)-2I(2)+I(1)=2(\mathfrak S(2)-1)N+o(N)$,
@@ -1432,13 +1459,15 @@ On average over shifts the Liouville model of parity is solved for any
 $H\to\infty$, while the prime part is proved only for $H\ge X^{8/33+\varepsilon}$;
 below $X^{1/6}$ the obstruction named in \cite[p.~5]{MRT17} is the distribution
 of $\Lambda$ in almost all short intervals, not the parity of $\Omega(n)$. Hybrid
-averages stop at the mean prime gap (Proposition~\ref{prop:lt22}), as do the
+averages stop near the mean prime gap (Proposition~\ref{prop:lt22}: below
+$(c\log X)^{1/(1+\delta)}$), as do the
 Fej\'er averages under RH and SPC (Proposition~\ref{prop:gm}(b), (c)), which is
 also where, by \cite[footnote~4]{MRT17}, the methods stop. An averaged
 statement reaches a prescribed $h$ such as $2$ only when its exceptional count
 drops below $1$, i.e.\ when it becomes a statement for all $h$ in the range;
 Proposition~\ref{prop:gm}(d) puts the missing step for $h=2$ in precision, not
-parity, and Keating--Smith \cite{KS19} state heuristically that the needed
+parity; but through $(*)$ the required lower-order terms are equivalent to
+Hardy--Littlewood at $h=2$ itself, so this is a reformulation. Keating--Smith \cite{KS19} state heuristically that the needed
 lower-order terms correspond to lower-order terms in the pair correlation of
 the zeros. Goldston's formula $2\sum_{m\le h}(h-m)\mathfrak
 S(m)=h^2-h\log h+Bh+O(h^{1/2+\varepsilon})$, $B=1-\gamma-\log2\pi$ \cite[(47)]{MS04},
@@ -1471,7 +1500,8 @@ $M(x)=2C_2(x\log x-x)$, one has $P/M=1.0009$, $Q/M=0.9493$ and
 $(P+Q)/2M=0.9751$ at $x=3\cdot10^7$; $Q$ approaches its predicted size as slowly
 as the untwisted $\sum(\Lambda\star\Lambda)(n)/(x\log x-x)=0.9288$, whose second-order
 term $-(1+2\gamma_0)x$ the script reproduces to within $4\cdot10^{-4}$. With
-Debouzy's printed constant $2C_2$, $(P+Q)/2M$ would tend to $\frac12$.
+Debouzy's printed constant $2C_2$ the predicted value of $(P+Q)/2M$ would be
+$\frac12$, not $1$.
 \end{sloppypar}
 
 \section{Open questions}\label{sec:open}
@@ -1492,7 +1522,7 @@ Debouzy's printed constant $2C_2$, $(P+Q)/2M$ would tend to $\frac12$.
   GEH? Not by the three GEH criteria of \cite{PM8b}
   (Proposition~\ref{prop:ceil}(2)): it would need a genuinely different
   criterion, not a better test function.
-\item\label{oq:level} (Answered from the literature, as far as we searched.)
+\item\label{oq:level} (\lbl{Literature}: answered negatively as far as we searched.)
   No result we found gives absolute-value, fixed-residue equidistribution of
   primes for all moduli beyond $x^{1/2}$ with a saving of a power of $\log x$.
   Beyond $x^{1/2}$ there are results for restricted moduli ($11/21$
@@ -1502,7 +1532,7 @@ Debouzy's printed constant $2C_2$, $(P+Q)/2M$ would tend to $\frac12$.
   of (B) (our reading; notes in \texttt{notes/}\allowbreak\texttt{sources-oq3-level.md};
   the 1986 paper of Bombieri, Friedlander and Iwaniec is known to us only as
   quoted by Maynard).
-\item Is there a sequence closely tied to twin primes (for instance with a
+\item (\lbl{Open}) Is there a sequence closely tied to twin primes (for instance with a
   norm-form structure, as in \cite{FI98b}) for which a (B)-type estimate is
   provable?
 \item (\lbl{Open}, partly answered) What is $\sigma_3(\varepsilon)$, and for which
@@ -1519,9 +1549,10 @@ Debouzy's printed constant $2C_2$, $(P+Q)/2M$ would tend to $\frac12$.
   open problem of the M\"obius function on shifted primes.
 \item\label{oq:siegel} (\lbl{Open}) Does a Siegel zero of quality $\eta$ and prime
   conductor force $\sum_{w<p<T,\,\chi(p)=1}1/p<\frac14-c$, with $T$ as in
-  Corollary~\ref{cor:siegel-typeI}? If so, the per-modulus twisted input at the
+  Corollary~\ref{cor:siegel-typeI}? If so, the per-modulus, unweighted twisted input at the
   moduli $Wq\le x^{\theta}$ would exclude sequences of such Siegel zeros with
-  $\eta\to\infty$. A Type~I weight built from the approximant
+  $\eta\to\infty$. This is not the log-averaged, averaged-over-$q$ statement of
+  question~\ref{oq:uniform}. A Type~I weight built from the approximant
   $\lambda^\sharp_{\mathrm{Siegel}}$ of \cite[\S6]{TT22} might avoid the
   small-prime condition; we have not checked this.
 \item\label{oq:mrtcond} (\lbl{Open}) What is the smallest $H=H(X)$ for which the
