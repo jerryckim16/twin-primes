@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.32, 18 November 2026}
+\date{Version 0.33, 18 November 2026}
 
 \begin{document}
 
@@ -146,7 +146,8 @@ Our Lean development is written in core Lean~4, without Mathlib. It defines
 primality, the twin prime conjecture, the predicate \texttt{BoundedGaps B}
 (infinitely many pairs of distinct primes at distance at most $B$),
 admissibility, and $\DHL[k,2]$. It contains no \texttt{sorry}, and the only
-axioms it uses are \texttt{propext} and \texttt{Quot.sound}. The statement
+axioms it uses are \texttt{propext}, \texttt{Quot.sound} and (from version
+0.33, for a classical count of primes) \texttt{Classical.choice}. The statement
 $\DHL[k,2]$ is always a hypothesis, never an axiom.
 
 \begin{theorem}[\lbl{Lean-checked}]\label{thm:lean}
@@ -169,6 +170,14 @@ pair $\{0,d\}$ is admissible if and only if $d$ is even
 (\texttt{admissible\_pair\_iff}). So $2$ is the smallest bound of this form
 that can hold, and the twin prime conjecture is the strongest statement of the
 form \texttt{BoundedGaps D}.
+\item (\texttt{Reduction.lean}) If for every admissible increasing $k$-tuple
+$\mathcal H$ and every $N$ there are non-negative integer weights $w$ on a
+finite set of $n\ge N$ with $\sum w(n)<\sum w(n)\,\#\{h\in\mathcal H:n+h\text{ prime}\}$,
+then $\DHL[k,2]$ holds (\texttt{dhl\_of\_\allowbreak sieveInequality}); a ratio bound
+$q\sum w\#\{\dots\}\ge p\sum w$ with $p>q$ and $\sum w>0$ gives that inequality
+(\texttt{sieveInequality\_\allowbreak of\_ratio}); and a variational ratio $p/q>4$ leaves
+room for a level $\theta=a/b<1/2$ with $\theta(p/q)/2>1$
+(\texttt{theta\_of\_\allowbreak ratio\_gt\_four}).
 \end{enumerate}
 \end{theorem}
 
@@ -197,7 +206,10 @@ $k$&$D$&$k$&$D$&$k$&$D$&$k$&$D$&$k$&$D$&$k$&$D$\\
 Theorem~\ref{thm:lean} is elementary. Its value is that implication
 \eqref{eq:reduction} is now a checked interface: any future proof of
 $\DHL[k,2]$, by anyone, yields the corresponding gap bound with nothing left
-to trust on the combinatorial side.
+to trust on the combinatorial side. Item~6 extends the interface one step
+back, to the sieve inequality itself; the analytic asymptotics that turn the
+variational ratio into that inequality are not formalised and appear only as a
+hypothesis.
 
 \subsection{The sieve constant, with exact certificates}
 
@@ -2040,20 +2052,15 @@ inequality in (2.18), the erased coordinate in (2.20)) were made
 independently and coincide.
 \end{sloppypar}
 
-\begin{remark}[what this does and does not establish; the switch to the second phase]\label{rem:186-status}
-Now both numerical halves of the $186$ criterion, the main terms
-$I_H$, $J_{\lambda,H}$ and the loss bound $L^+$, have been re-evaluated by two
-programs each (for $L^+$ in the sense just stated). This is a re-evaluation of
-the companion's computational forms: we have \emph{not} checked its Lemmas
-1.4--1.7, 2.3 and 2.4 (that the forms majorise the true support-failure
-integrals and that the cover is complete), its restoration step
-(Proposition~1.3, resting on the main paper's Proposition~4.6), or any of the
-analytic inputs, which stay \lbl{Claimed}. So the project does not adopt
-$186$, even conditionally; its bound stays at $236$ (conditional). By the plan
-recorded in \texttt{STATE.md} (``switch as soon as rung $186$ is finished''), the
-project now moves to its second phase: most of each run goes to the
-companion papers of Section~\ref{sec:related}, first the paper on the parity
-barrier, while rung $182$ continues at a smaller share.
+\begin{remark}[what this does and does not establish]\label{rem:186-status}
+Both numerical halves of the $186$ criterion (the main terms $I_H$,
+$J_{\lambda,H}$ and the loss bound $L^+$) have been re-evaluated by two
+programs each, $L^+$ in the sense just stated. This re-evaluates the
+companion's computational forms only. Not checked: its Lemmas 1.4--1.7, 2.3
+and 2.4 (that the forms majorise the true support-failure integrals and that
+the cover is complete), its restoration step (Proposition~1.3, resting on the
+main paper's Proposition~4.6), and the analytic inputs, which stay
+\lbl{Claimed}. So the project does not adopt $186$, even conditionally.
 \end{remark}
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic on the published integers]\label{prop:oai186-budget}
@@ -2072,119 +2079,41 @@ computation. We have not checked which of the two thresholds the restoration ste
 main $186$ paper (\cite{OAI26}, its reference [8, Prop.~4.6]) requires (\texttt{code/oai186\_margin\_budget.py}).
 
 \begin{remark}[the last rung, $182$; \lbl{Literature (preprint)}, with \lbl{Computed} checks where stated]\label{rem:sha182}
-We read \cite{Sha26} (a $132$-page bundle: the main paper
-and two analytic companions; notes in \texttt{notes/}\allowbreak\texttt{sources-182.md}).
-It claims $\mathrm{DHL}[39,2]$ and hence $H_1\le182$ (its Theorem~1.2). Its
-framework is the fragment-measure framework of \cite{OAI26} on a grid four
-times finer ($393216$ cells), with four cap domains, a profile of $726$
-rational coefficients (the factor $g$ of \cite{OAI26} and its $11$
-power-sum signatures times $22$ cubic B-splines), a new five-prime minorant
-and a support restoration step. The claimed surplus before restoration is
-$>2.7669\cdot10^{-4}$, the restoration costs at most $2.1148\cdot10^{-4}$, and
-the final margin exceeds $6.52\cdot10^{-5}$. The analytic inputs (a new
-incidence Type~II estimate and a new Type~III estimate, proved in the
-companions) are \lbl{Claimed}; its Lean development takes $262$ numerical
-inequalities as hypotheses. The top-level file of that development (shown to us later; not compiled here, since it needs Mathlib and modules we do not
-have) states $H_1\le182$ and $\mathrm{DHL}[39,2]$ under four hypotheses: those
-$262$ inequalities, two published prime-local bounds, a published rank-four
-Kloosterman bound (from which the new incidence Type~II estimate is derived
-inside Lean), and a new Type~III local Fourier proposition that the file itself
-calls an unproved input. The $39$-tuple printed in \cite[\S12]{Sha26} is
-admissible of diameter $182$ (\lbl{Lean-checked}:
-\texttt{boundedGaps\_182\_of\_DHL\_39'}; the project already had another
-such tuple). The $726$ coefficients and the source-row tables
-of the restoration step are not printed in the bundle; they are in a separate
-repository that this project has not obtained. Jerry Kim supplied
-that data (the file \texttt{TrialData182.lean}; verbatim copy in
-\texttt{code/}\allowbreak\texttt{data182/}, with integrity checks: cell-aligned caps,
-knots, and the defining relations of all $98$ source rows). From it we
-evaluated the denominator of the $182$ criterion, $I(F)=\|F\|^2$, independently
-(\lbl{Computed}, one program, high precision, not a rigorous enclosure;
-\texttt{code/sharifi182\_I.py}): splitting by the layer of the largest fragment
-over the five cap values $141720h<177528h<186253h<196608h<246256h$, with the
-active coefficient vector on each layer the sum of the components whose cap
-is at least the layer value, gives $I(F)=1.489634100811\cdot10^{-11}$, inside
-the published enclosure $[1.48963408009,\,1.48963412154]\cdot10^{-11}$, at
-relative position $0.49993$. The two cap numerators follow in the same way
-(\texttt{code/sharifi182\_J.py}; the erased coordinate is capped by the smaller
-of its component cap and its outer-shell cap, and the retained configuration is
-split over all nine cap values that occur): $J_0=5.6364590899\cdot10^{-11}$ and
-$J_+=4.0824074297\cdot10^{-13}$, each just above the published lower bound
-(relative excess $4\cdot10^{-11}$ and $5\cdot10^{-12}$). With the published upper
-bound for the tail term, which we have not recomputed, these give a cap surplus
-$q_H-1=2.76706\cdot10^{-4}$, consistent with the certified $\mu^-=2.76692\cdot10^{-4}$
-of \cite{Sha26}. A second, independent program for $I(F)$
-(\lbl{Computed}, arb ball arithmetic throughout;
-\texttt{code/sharifi182\_check2.py}) gives the rigorous ball
-$I(F)\in[1.48963410081137215290\cdot10^{-11}\pm5.2\cdot10^{-40}]$, inside the
-published enclosure. It has its own parser of the Lean data, its own Dickman
-closed form ($\rho(u)=1-\log u+\log u\log(u-1)+\mathrm{Li}_2(1-u)+\pi^2/12$ on
-$[2,3]$), pointwise Cox--de Boor B-splines in exact rationals, and moments from
-the power series $A(y)^{39}$ instead of the set-partition formula; it shares
-with the first program the reading of $F$ and the layered decomposition over the
-caps, so it checks the arithmetic and the code, not that reading. The two
-programs agree to $1.7\cdot10^{-22}$ in relative terms; the first program's
-value lies just outside the ball, which a test on a coarser grid traces to its
-fixed-point rounding at $2^{-224}$ (at $400$ bits the difference drops to
-$3\cdot10^{-34}$). The same second program was extended to the
-cap numerators (\lbl{Computed}, arb balls at $128$ bits;
-\texttt{code/}\allowbreak\texttt{sharifi182\_check2\_J.py}, report
-\texttt{notes/}\allowbreak\texttt{check2-J-182-report.md}; row tables derived from
-the Lean shells and checked against the paper's table, the $J_+$ mask taken
-literally as $\chi_1(1-\chi_0)$, a brute-force self-test at $k=3,4$):
-$J_0\in[5.63645908992367166973506\cdot10^{-11}\pm1.7\cdot10^{-39}]$ and
-$J_+\in[4.08240742966433656776654\cdot10^{-13}\pm2.5\cdot10^{-40}]$, both
-above the published lower bounds (as exact rationals), agreeing with the
-first program to $2\cdot10^{-23}$ and $2\cdot10^{-32}$ in relative terms
-(the $J_0$ gap sits on the same three caps as the $I$ gap and has the same
-size). Both programs share the reading of which caps form the layers and what
-the face mask in a layer is, which the source does not spell out. The tail term
-$E_{H_C^c}$ (\cite{Sha26}, (6.5)--(6.7) with $H_C$ for $C$, and the step kernel
-$K$ of (5.6), computed exactly in rationals; (5.7), $0\le K\le2.194$, holds when
-the last block ends at $n_0-1$) is evaluated by two programs
-(\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_tail.py}, report
-\texttt{notes/}\allowbreak\texttt{tail-182-report.md}):
-$T\in[5.28634880592807710064423118475\cdot10^{-13}\pm1.1\cdot10^{-40}]$, just below the published
-upper bound $5.286348805972699\cdot10^{-13}$ (relative gap $8\cdot10^{-12}$).
-A second, independently written program for the tail (\lbl{Computed},
-\texttt{code/}\allowbreak\texttt{sharifi182\_tail2.py}, report
-\texttt{notes/}\allowbreak\texttt{tail2-182-report.md}) reproduces it. It has its
-own exact kernel, GMP fixed-point Kronecker products in the style of the first
-$I$ and $J$ programs with directed error bounds, its own B-splines, and a
-self-test (kernel check and brute force) with four deliberate mutations. It gives the enclosure
-$T\in[5.2863488059280771006442311847462\cdot10^{-13}\pm3.2\cdot10^{-45}]$, which lies
-inside the first program's ball; its exact upper end is below the published
-bound. Both programs share the reading of the source, the layered
-derivation of the contraction and the Lean parser (and the second author had
-seen the first program's kernel function), so they check arithmetic and code,
-not that reading. The second program also quantifies the block-end ambiguity of
-(5.6), already noted by the first: with
-the nominal last block ($r_{\max}=768\cdot512-1$), (5.7) fails
-($K_{511}=2.19637$) and the tail would exceed the published bound by $5\cdot10^{-7}$
-in relative terms. So the Lean premise is consistent only with $r_{\max}=n_0-1$, the reading
-both programs use; the effect on $q_H$ would be about $4\cdot10^{-11}$. From
-the balls for $I$, $J_0$, $J_+$ and $T$ the cap surplus is
-$q_H-1=2.767059\cdot10^{-4}$, above the certified $\mu^-=2.766919\cdot10^{-4}$;
-the tail costs $7.86\cdot10^{-5}$ of $q_H$, so the claimed final margin
-($6.52\cdot10^{-5}$) would be lost if the true tail were about $1.83$ times
-larger.
-The mass deficit $\kappa_{\mathrm{true}}$ of the five-prime
-minorant (\cite{Sha26}, (4.2)) was recomputed by two methods: our own
-reduction to three variables with Gauss--Legendre quadrature, and the paper's
-exact simplex moment series after checking that the simplices tile the region
-(\lbl{Computed}, \texttt{code/}\allowbreak\texttt{sharifi182\_kappa.py}, report
-\texttt{notes/}\allowbreak\texttt{kappa-182-report.md}). They agree to $58$ digits:
-$\kappa_{\mathrm{true}}=9.33070883240611992\ldots\cdot10^{-5}$, inside the printed
-bracket and below $\bar\kappa$ and $\kappa_{\mathrm{cvx}}$.
-The printed arithmetic of the restoration step was re-done
-exactly (\lbl{Computed}, one program, \texttt{code/}\allowbreak\texttt{sharifi182\_arith.py},
-report \texttt{notes/}\allowbreak\texttt{arith-182-report.md}; $86$ checks pass): the
-constants of (8.3), the four Section~10 subtotals from the printed group
-totals, $\bar L$ of (10.2), the margin of (10.3), and the inequalities of
-Sections~3.7 and 13.3. The bundle prints only group totals, so the $197$
-component integrals themselves cannot be checked from it. The $98$ source rows of the trial data satisfy the printed row definitions exactly ($30$ checks, \texttt{code/}\allowbreak\texttt{sharifi182\_rows.py}), and they give $T_0=2491228441011/2624989000000$ exactly.
+The bundle \cite{Sha26}, a main paper and two analytic companions (our
+notes: \texttt{notes/}\allowbreak\texttt{sources-182.md}), claims $\mathrm{DHL}[39,2]$
+and hence $H_1\le182$. It uses the framework of \cite{OAI26} on a grid of
+$393216$ cells, a profile of $726$ rational coefficients, a new five-prime
+minorant and a support restoration step. The claimed surplus before
+restoration is $>2.7669\cdot10^{-4}$, the restoration costs at most
+$2.1148\cdot10^{-4}$, and the final margin exceeds $6.52\cdot10^{-5}$. The
+analytic inputs (new Type~II and Type~III estimates) are \lbl{Claimed}; the
+authors' Lean development takes $262$ numerical inequalities and an unproved
+Type~III proposition as hypotheses.
+
+What this project has checked, from the trial data supplied by Jerry Kim
+(\texttt{code/}\allowbreak\texttt{data182/}; full account, with the program
+status of every number, in the verification note):
+\begin{itemize}
+\item the printed $39$-tuple is admissible of diameter $182$
+  (\lbl{Lean-checked}:\\ \texttt{boundedGaps\_182\_of\_DHL\_39'});
+\item $I(F)$, $J_0$, $J_+$ and the tail term $T$, each by two programs, the
+  second in arb ball arithmetic (\lbl{Computed}; the programs share the reading
+  of the cap layers, so they check arithmetic and code, not that reading):
+  each is inside or on the correct side of the published bound, and the cap
+  surplus is $q_H-1=2.767059\cdot10^{-4}$, above the certified
+  $\mu^-=2.766919\cdot10^{-4}$;
+\item the tail kernel bound (5.7) of \cite{Sha26} holds only if the last block
+  ends at $n_0-1$; with the nominal last block it fails ($K_{511}=2.19637$), an
+  effect of about $4\cdot10^{-11}$ on $q_H$;
+\item the mass deficit $\kappa_{\mathrm{true}}=9.33070883240611992\ldots\cdot10^{-5}$
+  of the five-prime minorant, by two methods agreeing to $58$ digits, inside the
+  printed bracket;
+\item the printed arithmetic of the restoration step ($86$ exact checks, one
+  program) and the $98$ source rows of the trial data ($30$ exact checks).
+\end{itemize}
 Still unchecked: the restoration integrals ($2.115\cdot10^{-4}$ claimed in
-total) and the analytic inputs.
+total; the bundle prints only group totals and the source-row integrals are
+unpublished) and the analytic inputs. Rung $182$ is therefore paused.
 \end{remark}
 
 \subsection*{A floor for one-band hybrid supports (our own)}
@@ -2435,6 +2364,7 @@ the shift).
 \item[0.30] (17 Nov 2026) Related results: parity paper version~0.15 (hybrid averages and the mean prime gap). Bounds unchanged.
 \item[0.31] (18 Nov 2026) Remark~\ref{rem:oai186} condensed to a list (detail in the verification note and the repository); Related results: parity paper version~0.16 (Fejér averages and pair correlation). Bounds unchanged.
 \item[0.32] (18 Nov 2026) Related results: the parity paper is frozen as version~1.0 (cut from 33 to 24 pages after a five-lane internal referee pass); its entry shortened to one paragraph. Bounds unchanged.
+\item[0.33] (18 Nov 2026) Theorem~\ref{thm:lean}, item 6: the pigeonhole step from the sieve inequality to $\DHL[k,2]$ in Lean (\texttt{Reduction.lean}). Remarks~\ref{rem:186-status} and \ref{rem:sha182} condensed (detail stays in the verification note). Bounds unchanged.
 \end{itemize}
 
 \begin{thebibliography}{99}

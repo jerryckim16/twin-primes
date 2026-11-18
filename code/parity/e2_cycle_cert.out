@@ -1,0 +1,11 @@
+1. Template T(d), d = 4t, 3 nmid d
+  identities + admissibility checked for 200 values of d <= 1200: 0 failures
+  d = 4 forms: ['1m+0', '1m+2', '3m+4', '3m+8', '3m+10']
+  signed edges (i, j, sigma_i, sigma_j): [(0, 2, -1, 1), (2, 3, 1, 1), (0, 1, -1, -1), (1, 4, -1, 1), (4, 3, -1, -1)]
+  cycle sign product: 1 ; target-free patterns: 8 of 32
+  Farkas certificate (c, c0, c.(1/2..)): ((1, 1, -3, -2, 0), -2, Fraction(-3, 2)) -> UNBLOCKED
+  antipodal target-free pairs: 0
+2. Triangle, 12 | d: m, m+d/2, m+d
+  identities/admissibility ok for d = 12, 24, 36; Farkas: ((-3, 1, -3), -3, Fraction(-5, 2))
+3. Bipartite signed graphs with cycle product +1 are blocked (antipodal pair), random check
+  2000 random bipartite signed graphs: eps and -eps target-free in all

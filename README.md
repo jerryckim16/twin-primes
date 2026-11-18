@@ -21,6 +21,8 @@ A working paper by **Jerry Kim** (prepared with the assistance of Claude) on sma
 
 Index: `papers/README.md`.
 
+- Parity route cards since v1.0 (not in a paper): E2 pairs at a fixed difference d — in the linear-forms-with-multipliers model the parity obstruction survives every change of coordinates iff 4 ∤ d (2-adic colouring; [route card](notes/parity-attempts/2026-11-18-e2-odd-cycles.md), Session 33). A statement about a heuristic weight class, not about twin primes.
+
 ## Flags for Jerry
 
 Open pointers for a human expert's look (details, evidence labels and what has been checked: [`notes/flags-for-jerry.md`](notes/flags-for-jerry.md)). None is a claim of a new result.
@@ -42,7 +44,7 @@ Each session reads `STATE.md`, does one reproduction step and tests one idea of 
 | Path | What it is |
 |---|---|
 | `paper/main.tex` | The paper (amsart). `latexmk -pdf main.tex` |
-| `lean/` | Core Lean 4.35.0 project, no Mathlib, no `sorry`: twin primes ⇔ `BoundedGaps 2`, admissibility certificates, explicit tuples, `DHL.mono`, `not_boundedGaps_one`, counting large coordinates (`Caps.lean`). `lake build`, then `lake env lean Audit.lean` |
+| `lean/` | Core Lean 4.35.0 project, no Mathlib, no `sorry`: twin primes ⇔ `BoundedGaps 2`, admissibility certificates, explicit tuples, `DHL.mono`, `not_boundedGaps_one`, counting large coordinates (`Caps.lean`), parity-pattern weights (`Parity.lean`), the pigeonhole step from the sieve inequality to DHL[k,2] (`Reduction.lean`, Session 33; the analytic asymptotics stay a hypothesis). `lake build`, then `lake env lean Audit.lean` |
 | `code/mk_general.py` | Exact Gram matrices for Maynard's M_k with all symmetric polynomials, and (`--eps p/q`) for Polymath8b's epsilon-enlarged simplex M_{k,eps}; certified lower bounds |
 | `code/scan_eps.py`, `code/extrapolate_eps.py`, `runs/scan_k*.jsonl` | Certified M_{k,eps} on a grid of (k, degree, eps) and the heuristic degree extrapolation (Remark 20) |
 | `code/dual_lp.py`, `runs/dual_lp_*.log` | Convex optimisation of dual weights depending on (t_m, S) (Proposition 19; floating point) |

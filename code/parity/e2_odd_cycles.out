@@ -1,0 +1,35 @@
+d = 1, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 10529
+admissible odd cycles found, by length: {}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 94922 edges checked (odd multipliers)
+d = 2, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 10158
+admissible odd cycles found, by length: {}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 94922 edges checked (odd multipliers)
+d = 3, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 14953
+admissible odd cycles found, by length: {}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 144544 edges checked (odd multipliers)
+d = 4, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 10281
+admissible odd cycles found, by length: {5: 189}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 94922 edges checked (odd multipliers)
+d = 6, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 14067
+admissible odd cycles found, by length: {}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 144544 edges checked (odd multipliers)
+d = 8, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 11328
+admissible odd cycles found, by length: {5: 212}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 94922 edges checked (odd multipliers)
+d = 12, odd cycles of length <= 5 through starts a0 <= 8, multipliers [1, 2, 3, 5, 7, 11, 13]
+distinct odd-cycle vertex sets examined: 15041
+admissible odd cycles found, by length: {3: 52, 5: 789}
+multiplier set contains 2: colouring check skipped
+2-adic colouring: bit v2(d) of b * (odd part of a)^-1 flips on all 144544 edges checked (odd multipliers)

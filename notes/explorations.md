@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-18, Session 33 -- Quadratic parametrisations of E2 pairs at distance 2 (products of prime-valued forms)
+- Idea: the 2-adic no-go of this session's parity card covers only x = c L(m). A product x = L1(m) L2(m) of two prime
+  values is E2 too, so identities L1 L2 + 2 = L3 L4 give hyperedge targets (four primes at once) that might break the
+  bipartite structure for d = 2.
+- Tried: code/explore/e2_quadratic_hyperedges.py [AMAX BMAX] (scipy LP, < 1 s; output .out). It enumerates admissible
+  identities with a <= 6, |b| <= 24 (118 found, e.g. (2m-7)(3m-4) + 2 = (2m-3)(3m-10)), adds all linear E2 edges among the
+  forms, and tests blocking for each identity alone and for 74 pairs of identities.
+- Result: all 118 single and 74 paired systems are blocked (LP floating point; not certified exactly).
+- Outcome: DEAD END in this range. A hyperedge requiring four primes is easy for a fair weight to avoid. Not promoted.
+  Heuristic / exploratory only.
+
 ## 2026-11-18, Session 32 -- Does the LP "parity margin" t*(E) carry quantitative sieve information? (combinatorics of pattern weights / LP duality)
 - Idea: Prop. prop:bipartite is the 0/1 test "(1/2,...,1/2) in the hull P(E) of E-free indicators". Define the margin
   rho_crit(E) = max{rho : (rho on prime positions, 1/2 on lambda-positions) in P(E)} (= t*(E) = 1/chi_f for pure graph

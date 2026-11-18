@@ -1,7 +1,7 @@
 {
-  "version": "0.32",
+  "version": "0.33",
   "updated": "2026-11-18",
-  "session_count": 32,
+  "session_count": 33,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
@@ -830,6 +830,24 @@
       "origin": "own",
       "status": "works",
       "note": "Consistent: GGPY's theorems are not blocked in the forms they use; their gap 6 between E2 numbers sits exactly at the window limit H(3) = 6; the class blocks a choice of forms, not a statement. Route card only (paper frozen). Session 32."
+    },
+    {
+      "idea": "E2 pairs at a fixed difference d through odd cycles of linear forms with multipliers",
+      "origin": "own",
+      "status": "works",
+      "note": "Proved (model-restricted): blocked in every parametrisation iff 4 does not divide d (2-adic colouring); unblocked 5-cycles for 4 | d all contain a prime-pair edge at distance d/2. Route card 2026-11-18-e2-odd-cycles.md; audited. Session 33."
+    },
+    {
+      "idea": "Quadratic parametrisations x = L1 L2 of E2 pairs at distance 2 (hyperedges)",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "All 118 identities L1 L2 + 2 = L3 L4 (a <= 6, |b| <= 24), alone and in 74 pairs, are blocked (LP). Dead end in that range. Session 33."
+    },
+    {
+      "idea": "Lean formalisation of the reduction 'ratio > 4 => bounded gaps' (programme 4), first step",
+      "origin": "own",
+      "status": "partial",
+      "note": "lean/TwinPrimes/Reduction.lean: sieve inequality => DHL[k,2] (pigeonhole), ratio bound => sieve inequality, ratio > 4 => admissible level theta < 1/2. The analytic asymptotics are not formalised (hypothesis). Session 33."
     }
   ],
   "phase": "B",

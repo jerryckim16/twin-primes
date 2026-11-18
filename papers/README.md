@@ -31,3 +31,7 @@ Each line of work that grows into its own result gets its own paper here: `paper
 ## Status note (Session 32)
 
 - Parity paper frozen as v1.0 (18 Nov 2026): cut from 33 to 24 pages, notation renamed (y_d, Psi with signs s_i, region T), referee items of 16 Nov applied, five-lane referee pass (referee/2026-11-18-parity-barrier-v1/) applied. No paper is active now; per Jerry's rules, at most 3 active at a time. Candidates for the next active line: a short note only if a parity attempt proves something not already implied by v1.0.
+
+## Status note (Session 33)
+
+- No paper changed except the main paper (v0.33). Parity attempt (E2 pairs at a fixed difference, 2-adic no-go for 4 ∤ d) recorded as a route card only; together with the Session 32 E2 card it is a candidate for one remark in a parity-paper v1.1, to be decided by the weekly review of 23 Nov. Programme (4) started in Lean only (`lean/TwinPrimes/Reduction.lean`), not as a paper.
