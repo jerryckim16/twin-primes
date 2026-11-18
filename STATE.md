@@ -3,28 +3,39 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 30, 11:34 AM CT slot of 17 Nov): PHASE B
+## POSITION (after Session 31, 7:34 PM CT slot of 17 Nov, run 01:35 UTC 18 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN (errata only); parity-barrier v0.15 (active, 32 pp.); main paper v0.30.
+- Papers: verification-note v1.0.1 FROZEN (errata only); parity-barrier v0.16 (active, 33 pp.); main paper v0.31.
   H_m programme scoped, paused (Session 30: MPZ-region gains ruled out in our reading; see notes/hm-programme.md section 6).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
   Its priorities override the default ordering this week.
 
-## Next steps (in order; from the weekly review of 16 Nov, updated by Session 30)
+## Next steps (in order; from the weekly review of 16 Nov, updated by Session 31)
 1. (DONE) Verification note v1.0 / v1.0.1. Still deferred (minor, not errors): item 28 (title omits 186/182; rem:lemma5 run-on
    sentence; compare_sy236_capfree.json factor). Jerry decides whether to send the note to the preprint authors.
-2. Parity paper toward v1.0 (~20 pp.; now 32). Done through v0.15: the review cuts listed in earlier sessions; referee items
-   2.1-2.7 and the section-3 labelling items. Still to do: notation renames (lambda_d vs Liouville lambda; pattern Omega;
-   region D); shorten sec. num and the k = 3 subsections; consider merging rem:mrt17 and rem:lt22 if the section grows.
-3. Main paper: make it a thin index (shorten the long 186/182 remarks, move detail to the note). Not done in v0.30.
+2. Parity paper toward v1.0 (~20 pp.; now 33). Still to do: notation renames (lambda_d vs Liouville lambda; pattern Omega;
+   region D); shorten sec. num and the k = 3 subsections; consider merging rem:mrt17, rem:lt22 and rem:gm into one subsection
+   on averaged statements if the section grows further.
+3. Main paper: thin index. Session 31 condensed rem:oai186; next: condense rem:sha182 (lines ~2050-2220) and rem:186-status the
+   same way (detail stays in the verification note / repository notes).
 4. One parity attempt per run (new mechanisms only, check notes/parity-attempts/README.md). Done: Pintz (S26), Chen (S27),
-   Gowers (S28), MRT averaged HL (S29), Lichtman-Teravainen hybrid averages (S30). Next candidates: conditional ranges for
-   averaged HL under GRH/EH (paper open question; source: MRT17 p. 5 defers them -- search for a later paper first);
-   Siegel open question 8 judged niche.
+   Gowers (S28), MRT averaged HL (S29), Lichtman-Teravainen (S30), Fejér/pair correlation (S31). Next candidates: the almost-all
+   form of averaged HL under GRH or EH (not in print as far as we found); Selberg's RH mean-square bound (not opened) for the
+   Fejér form at K/log^2 N -> infinity; otherwise a genuinely new mechanism.
 5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist); H_m (next step if resumed: the hybrid-support
    Theorem 6.7 analogue, notes/hm-programme.md section 4 item 4). Optional, low value: one-sided --bonf certificate on the
    Song-Yue witness (~25 core-hours; resumable via --ckpt).
+
+## Session 31 (7:34 PM CT slot of 17 Nov, started on time 01:35 UTC 18 Nov; no wait) -- additions
+- Parity paper v0.16: Remark rem:gm (Fejér averages, pair correlation, scale log X), open question oq:mrtcond relabelled and
+  partly answered, bib Mer16, Gol04, MS04, KS19; changelog order fixed. Fresh-context audit (3 errors, 4 gaps; all fixed).
+  Route card notes/parity-attempts/2026-11-18-pair-correlation-variance.md.
+- Scripts: code/parity/variance_fejer.py [X KMAX] (/usr/bin/python3 -I; 2 min at 1e8, < 2 GB), output .out;
+  exploration code/explore/ff_ball_variance.py q n (python-flint; seconds for q^n <= 2e4; q = 13, n = 5 is too slow), output .out.
+- Sources: hashes in notes/parity-programme.md (Session 31 section).
+- Main paper v0.31: rem:oai186 condensed; Related results item for rem:gm; history item.
+- Lean: lake build and Audit.lean pass (no Lean changes). Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 30 (11:34 AM CT slot of 17 Nov, started on time 17:35 UTC; no wait) -- additions
 - Parity paper v0.15: Remark rem:lt22 (LT22 arXiv:2111.08912v3 read in full, SHA-256 87410676...68464014; bib LT22),

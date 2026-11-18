@@ -1,0 +1,16 @@
+q = 5, n = 6, q^n = 15625, sum Lambda' = 15624, c(0)/q^n = 5.970176
+h = 0: identity True; #shifts 4; mean c(D)/q^n over D != 0 = 0.61056; Var/(q^(h+1)(n-h-2)) = 0.8533; min/max c(D)/q^n (D!=0) = 0.576/0.645
+h = 1: identity True; #shifts 24; mean c(D)/q^n over D != 0 = 0.89011; Var/(q^(h+1)(n-h-2)) = 0.7787; min/max c(D)/q^n (D!=0) = 0.576/0.946
+h = 2: identity True; #shifts 124; mean c(D)/q^n over D != 0 = 0.98041; Var/(q^(h+1)(n-h-2)) = 1.2788; min/max c(D)/q^n (D!=0) = 0.576/1.294
+h = 3: identity True; #shifts 624; mean c(D)/q^n over D != 0 = 0.99319; Var/(q^(h+1)(n-h-2)) = 0.8001; min/max c(D)/q^n (D!=0) = 0.576/1.716
+q = 7, n = 5, q^n = 16807, sum Lambda' = 16806, c(0)/q^n = 4.998275
+h = 0: identity True; #shifts 6; mean c(D)/q^n over D != 0 = 0.83299; Var/(q^(h+1)(n-h-2)) = 0.9990; min/max c(D)/q^n (D!=0) = 0.833/0.833
+h = 1: identity True; #shifts 48; mean c(D)/q^n over D != 0 = 0.95883; Var/(q^(h+1)(n-h-2)) = 1.0139; min/max c(D)/q^n (D!=0) = 0.833/0.977
+h = 2: identity True; #shifts 342; mean c(D)/q^n over D != 0 = 0.99071; Var/(q^(h+1)(n-h-2)) = 0.8622; min/max c(D)/q^n (D!=0) = 0.820/1.188
+q = 3, n = 8, q^n = 6561, sum Lambda' = 6560, c(0)/q^n = 7.947264
+h = 0: identity True; #shifts 2; mean c(D)/q^n over D != 0 = 0.40969; Var/(q^(h+1)(n-h-2)) = 0.9613; min/max c(D)/q^n (D!=0) = 0.410/0.410
+h = 1: identity True; #shifts 8; mean c(D)/q^n over D != 0 = 0.68770; Var/(q^(h+1)(n-h-2)) = 0.8903; min/max c(D)/q^n (D!=0) = 0.410/0.780
+h = 2: identity True; #shifts 26; mean c(D)/q^n over D != 0 = 0.87885; Var/(q^(h+1)(n-h-2)) = 0.9514; min/max c(D)/q^n (D!=0) = 0.410/1.677
+h = 3: identity True; #shifts 80; mean c(D)/q^n over D != 0 = 0.94223; Var/(q^(h+1)(n-h-2)) = 0.7836; min/max c(D)/q^n (D!=0) = 0.263/3.175
+h = 4: identity True; #shifts 242; mean c(D)/q^n over D != 0 = 0.97978; Var/(q^(h+1)(n-h-2)) = 1.0645; min/max c(D)/q^n (D!=0) = 0.263/3.175
+h = 5: identity True; #shifts 728; mean c(D)/q^n over D != 0 = 0.99107; Var/(q^(h+1)(n-h-2)) = 0.6668; min/max c(D)/q^n (D!=0) = 0.263/3.573

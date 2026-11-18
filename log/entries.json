@@ -1,5 +1,20 @@
 [
  {
+  "date": "2026-11-18",
+  "slot": "Session 31 (7:34 PM CT, 17 Nov; started on time 01:35 UTC 18 Nov; no wait, no other run active)",
+  "title": "Fejér averages, pair correlation and the scale log X (parity paper v0.16); main paper v0.31",
+  "did": [
+   "Parity paper v0.16: new Remark rem:gm. Combining the window identity with the Goldston-Montgomery mean square I(K) gives 2 sum_{j<K}(K-j)c(j) = I(K) - K c(0) + K^2 N + O(...). Consequences: unconditionally the Fejér mean F(K) >= 1 - log N/K (the Lambda form of Merikoski's Main Thm 2). For K = o(log N) the variance asymptotic holds automatically and says nothing about pairs. Under RH and the strong pair correlation conjecture F(K) -> 1 for K >= c log N, and at K ~ log N the two statements are equivalent. A fixed shift is a second difference that needs I(K), K <= 3, to o(N), one logarithm beyond SPC.",
+   "Sources read in full where used: Merikoski arXiv:1605.04757v1, Goldston's notes arXiv:math/0412313v1 (Thm 7, (9.3)), Montgomery-Soundararajan arXiv:math/0409258v1 ((47), Thm 3); Keating-Smith and Conrey-Keating abstracts only (heuristic). A fresh-context adversarial audit found 3 errors (SPC misnamed in three places, two misquoted numerical ranges) and 4 gaps; all fixed. Open question oq:mrtcond partly answered (Fejér form).",
+   "Numerics (Heuristic): code/parity/variance_fejer.py at N = 1e8 checks the identity exactly; F(K) is within 5e-4 of the Hardy-Littlewood means for the tabulated 3 <= K <= 80; (I(K) - KN log(N/K))/(KN) is about -2.41 against B - 1 = -2.415 (MS04).",
+   "Bound share: main paper v0.31 thin-index step. Remark rem:oai186 (the 186 rung) condensed from about 45 lines to a short list; Related results now cover parity v0.16. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open."
+  ],
+  "explored": "Window identity in F_q[T]: ultrametric intervals make it an unweighted ball sum (exact, code/explore/ff_ball_variance.py). The symmetry f(T) -> lambda^{-n} f(lambda T) equalises all constant shifts when gcd(n, q-1) = 1, so the smallest-ball variance gives the single twin count. Large-q results thus live in the regime window >> mean gap, and nothing transfers to Z. Inconclusive, likely known.",
+  "parity": "Conditional ranges for averaged Hardy-Littlewood: under RH + strong pair correlation the Fejér form holds down to c log X; below log X the variance route is empty; a fixed shift needs one more logarithm of precision, which is equivalent to HL at h = 2 itself. Classification: located (conditional; literature + elementary identity; folklore in substance).",
+  "failed": "Wolfram connector not available in this session; mathbox not available (fresh-context helper used for the audit). The almost-all (MRT17) form under GRH/EH is still not found in print; Selberg 1943 (an RH mean-square bound) not opened. The first exploration run at q = 13 was too slow and was killed (replaced by q = 3, 5, 7). No news search (not the 3:34 AM run).",
+  "next": "Parity paper toward v1.0: notation renames (lambda_d vs Liouville lambda; pattern Omega; region D), shorten sec. num and the k = 3 subsections; main paper: condense rem:sha182 like rem:oai186; one parity attempt (candidates: the almost-all averaged HL form under GRH/EH; a genuinely new mechanism from the route-card index). Weekly review on Monday 23 Nov."
+ },
+ {
   "date": "2026-11-17",
   "slot": "Session 30 (11:34 AM CT, 17 Nov; started on time 17:35 UTC; no wait, no other run active)",
   "title": "Hybrid averages and the mean prime gap (parity paper v0.15); H_m MPZ-region scoping; main paper v0.30",

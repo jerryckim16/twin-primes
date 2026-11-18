@@ -3,6 +3,23 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-18, Session 31 -- The window identity in F_q[T]: what Keating-Rudnick's variance says about single shifts (function fields)
+- Idea: in F_q[T] short intervals I(A;h) = A + P_{<=h} are cosets of a subspace, so they partition the monic polynomials and
+  the window identity becomes an UNWEIGHTED ball sum: sum over cosets nu^2 = sum_{deg D <= h} c(D). Ask whether Keating-
+  Rudnick's theorem (arXiv:1204.0708v3, Thm 2.1: Var nu ~ q^{h+1}(n-h-2) as q -> infinity, h < n-3; read pp. 1-5) can
+  reach a single shift, which the integer second-difference trick cannot do at SPC precision (paper rem:gm(d)).
+- Tried: code/explore/ff_ball_variance.py q n (exact, python-flint factorisation; seconds), output .out for (q,n) = (5,6),
+  (7,5), (3,8). The identity holds exactly in all cases. The mean of c(D)/q^n over nonzero D of degree <= h rises to 1 with h
+  (0.61, 0.89, 0.98, 0.99 for q = 5, n = 6). The KR ratio Var/(q^{h+1}(n-h-2)) is 0.67-1.28 at these small q.
+- Observation: the substitution f(T) -> lambda^{-n} f(lambda T) maps monic polynomials to monic ones and sends the constant
+  shift a to lambda^{-n} a. So when gcd(n, q-1) = 1 all q-1 constant shifts have the same correlation (seen: min = max at
+  h = 0 for q = 7, n = 5), and the smallest-ball variance (h = 0) determines the single twin count c(1) exactly. In the large-q
+  limit that ball has q elements, much more than the mean gap n. So large-q twin results live in the integer regime
+  "window >> log X", where averages work, and the symmetry turns an average into a single shift. Z has no such symmetry
+  (only c(h) = c(-h)).
+- Outcome: INCONCLUSIVE (structural, very likely known; the large-q twin-prime literature, e.g. Bary-Soroker, was not opened).
+  Nothing transfers to Z. Not promoted. Heuristic / exploratory only.
+
 ## 2026-11-17, Session 30 -- A Polya-type sign bias of lambda on shifted primes? (probabilistic models / Polya's problem)
 - Idea: Polya-type bias makes partial sums of lambda negative for a long time, at relative size about x^{-1/2}. Ask whether
   S(h) = sum_{p<=X} lambda(p+h) shows a uniform sign across shifts h, and whether it depends on the parity of h (p+h odd for
