@@ -152,3 +152,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Attempt: E2 numbers as a parity-even consistency test (route card 2026-11-18-e2-consistency-test.md): consistent. Sources
   GGPY arXiv:math/0609615v1 (SHA-256 411a638e...), 0803.2636v1 (7dc2b242...), math/0506067v1 (e7b065dd...).
 - From now on: v1.0 changes only as errata (1.0.x); a v1.1 or short note only for an attempt that proves something not implied.
+
+## Session 33 (18 Nov 2026, 11:34 AM CT slot)
+- Attempt: E2 pairs at a fixed difference through odd cycles of forms (route card 2026-11-18-e2-odd-cycles.md): proved
+  (located), model-restricted. "x, x+d both E2" is blocked in every linear parametrisation with multipliers iff 4 does not
+  divide d (2-adic colouring). Unblocked 5-cycles for 4 | d contain a prime-pair edge at distance d/2. Scripts
+  code/parity/e2_odd_cycles.py, code/parity/e2_cycle_cert.py (exact). Fresh-context audit: no errors, gaps fixed.
+- Literature check: GGPY-a/b/c (read in Session 32) and two web searches; possibly folklore.
+- Parity paper unchanged (v1.0 frozen). Candidate for a v1.1 remark (the two E2 cards together); left to the weekly review
+  of 23 Nov.
+

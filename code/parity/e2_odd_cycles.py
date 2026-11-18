@@ -2,7 +2,7 @@
 """Search for odd cycles of linear forms realising 'x, x+d both E2' (route card 2026-11-18-e2-odd-cycles).
 
 A vertex is a form L(m) = a m + b (a > 0).  An edge (L, c, L', c', s) means the polynomial identity
-    c L(m) + s d = c' L'(m),  s = +-1, c, c' in MULT = {1} u odd primes.
+    c L(m) + s d = c' L'(m),  s = +-1, c, c' in MULT (default {1, 3, 5, 7, 11, 13}; pass a list such as 1,2,3,5,7,11,13 to include 2).
 On the edge event, x = c L(m) and x + s d = c' L'(m) are both E2 when:
     c = 1 -> L(m) is E2 (lambda = +1);  c prime -> L(m) is a prime != c (lambda = -1).
 So the edge requires the sign pair (sigma, sigma') = ((-1)^{Omega(c)}, (-1)^{Omega(c')}).

@@ -130,3 +130,11 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Honest distance: under RH + strong pair correlation the Fejér-averaged HL holds down to c log X, but a single shift needs the
   variance at bounded K to o(N), which is equivalent to HL at h = 2 itself. Nothing here moves toward the conjecture; SPC is
   open even under GRH.
+
+### Sessions 32-33 addition: E2 numbers (route cards only; paper v1.0 frozen)
+- Depends on: the bipartite criterion (paper sec:bip, the fair version (1) <=> (3), which carries over to sign-pair
+  targets); GGPY arXiv:math/0609615, 0803.2636, math/0506067 (read in Session 32).
+- Result: in the linear-forms-with-multipliers model, "x, x+d both E2" is blocked in every parametrisation iff 4 does not
+  divide d (2-adic colouring); for 4 | d the unblocked systems all contain a prime-pair event at distance d/2.
+- Honest distance: this is about a heuristic class of weights, not about what can be proved. For n, n+2 both E2 it says that
+  GGPY-type changes of coordinates cannot evade the parity obstruction; it says nothing about twin primes beyond that.

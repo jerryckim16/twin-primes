@@ -109,8 +109,9 @@ for trial in range(2000):
     for i in range(n):
         for j in range(i + 1, n):
             if col[i] != col[j] and random.random() < 0.6:
-                si = random.choice((1, -1)); sj = si * tau[i] * tau[j]
-                edges.append((i, j, si, sj))
+                for _ in range(random.randint(1, 3)):   # parallel edges on the same pair, different multipliers
+                    si = random.choice((1, -1)); sj = si * tau[i] * tau[j]
+                    edges.append((i, j, si, sj))
     # explicit eps: eps_i = tau_i * (-1)^{col_i}
     eps = tuple(tau[i] * (-1) ** col[i] for i in range(n))
     tf = set(target_free(n, edges))
