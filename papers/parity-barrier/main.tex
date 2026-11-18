@@ -610,7 +610,7 @@ $\frac{1417255}{708216}=2.0011620\ldots$, and the optimised rational vectors
 $M_3\ge1.6460391$, $M_4\ge1.8440154$, $M_5\ge2.0041054$.
 \end{sloppypar}
 
-\begin{remark}[\lbl{Proved here}; consistency with Proposition~\ref{prop:bipartite}]\label{rem:pintz-parity}
+\begin{remark}[\lbl{Proved here}, with a \lbl{Heuristic} reading; consistency with Proposition~\ref{prop:bipartite}]\label{rem:pintz-parity}
 Put pattern weights on $\mathcal H\cup\{r\}$. With $\varsigma=-1$ the target of
 Theorem~\ref{thm:pintz-maynard} is killed exactly when $\Psi$ vanishes whenever
 $s_i=s_j=-1$ ($i\ne j$ in $\mathcal H$) or $s_i=s_r=-1$: the edge set of the
@@ -619,7 +619,7 @@ no fair pattern weight kills it (Proposition~\ref{prop:bipartite}(a)); for
 $\varsigma=+1$ replace $s_r$ by $-s_r$. (Admissibility of $\mathcal H\cup\{r\}$ is not used
 in Proposition~\ref{prop:bipartite}. Fairness at $r$ is what keeps the input
 $\sum w_n\lambda(n+r)=o(S_1)$ valid after twisting: heuristically
-$\sum w_n\omega(n)\lambda(n+r)\approx\widehat\Psi(\{r\})\sum w_n$.) \lbl{Heuristic}, our reading: Without the first alternative the target
+$\sum w_n\omega(n)\lambda(n+r)\approx\widehat\Psi(\{r\})\sum w_n$.) Without the first alternative the target
 is a star with centre $r$, which is bipartite, so the class blocks it under
 any level of distribution, consistent with Pintz's remark on a prescribed
 $d$. Pintz's theorem sidesteps the obstruction; it does not break it, and it
@@ -681,8 +681,10 @@ second bound, which is also the endpoint $a=1/(1+\varepsilon)$ of
 \cite[Remark~6.6, p.~45]{PM8b}.\footnote{\cite[Proposition~6.5, p.~44]{PM8b}
 states $M_{k,\varepsilon}\le\frac k{k-1}\log(2k-1)$ for $0\le\varepsilon<1$. Its proof
 uses fibrewise Cauchy--Schwarz with weights $w_i=1-t_1-\dots-t_k+kt_i$, which
-can be negative when $\varepsilon>0$ (e.g.\ $w_i=-\varepsilon$ at $t_i=0$,
-$\sum_jt_j=1+\varepsilon$); bounding the negative parts gives
+can be negative off the fibres used when $\varepsilon>0$ (e.g.\ $w_i=-\varepsilon$ at
+$t_i=0$, $\sum_jt_j=1+\varepsilon$), so the step bounding the included sum of the $w_i$
+by $k$ is not justified as written. Since $\sum_iw_i=k$, at most $k-1$ of them are
+negative, each $\ge-\varepsilon$, so the included sum is at most $k+(k-1)\varepsilon$, which gives
 $\left(\frac k{k-1}+\varepsilon\right)\log(2k-1)$ (\lbl{Proved here}, our reading).
 Nothing in \cite{PM8b} depends on it.} The marginal condition is not used.
 
@@ -699,7 +701,8 @@ $m=2,3,4$ the script checks $c(k)<2m$ for all $2\le k\le2m$.
 
 \lbl{Literature} + \lbl{Computed}: Polymath8b's printed lower bounds lie below these ceilings, as they must
 \cite[Theorems~3.13, 3.15]{PM8b}: $M_{50,1/25}>4.0043$ against $4.152$,
-$M_{51,1/50}>4.00156$ against $4.091$, $M_{4,0.168}>2.00558$ against $2.159$, and
+$M_{51,1/50}>4.00156$ against $4.091$ (here $\varepsilon=\frac1{k-1}$, the endpoint;
+the ceiling needs only $1+\varepsilon\le\frac k{k-1}$), $M_{4,0.168}>2.00558$ against $2.159$, and
 the $k=3$ ratio $>2$ of Theorem~3.15 against $c(3)=2.472$.
 
 \begin{remark}[What this locates; \lbl{Heuristic}, our reading]\label{rem:ceil-locates}
@@ -763,7 +766,7 @@ is admissible; for $x\le a$, $f(x)=a+\frac12\cdot2\varepsilon=1$, so $J=2a$, whi
 $I(F_\varepsilon)=a^2+2\cdot\frac14\cdot a\cdot2\varepsilon=a$.
 \end{proof}
 
-\begin{remark}\label{rem:k2}
+\begin{remark}[\lbl{Heuristic} where marked; our reading]\label{rem:k2}
 The marginal condition is essential: without it a piecewise-constant $F$ on
 $\mathcal T$ with $8$ cells per unit length already gives $2.445$ at
 $\varepsilon=0.1$ (\lbl{Heuristic}, floating point,
@@ -771,7 +774,7 @@ $\varepsilon=0.1$ (\lbl{Heuristic}, floating point,
 also finds the constrained maximum over symmetric step functions equal to $2$
 to rounding error for several $\varepsilon$). Theorem~\ref{thm:k2} is a
 variational shadow of the parity obstruction: the criterion reaches the parity
-value $2$ but never exceeds it, and needs a ratio above $2/\vartheta\ge2$; it
+value $2$ but never exceeds it, and needs a ratio above $2/\vartheta>2$; it
 does not prove the obstruction. $M_{2,\varepsilon}$ (whose class lies in the
 Theorem~3.14 class) increases to $2$ only as $\varepsilon\to1$ \cite[p.~46]{PM8b},
 while at $k=3$ Theorem~3.14 exceeds $2$ \cite[Theorem~3.15]{PM8b}, giving
@@ -784,14 +787,14 @@ $H_1\le6$.
 $0<\varepsilon<\frac1{k-1}$ let $Z_j=\{t\in\frac k{k-1}\mathcal R_k:\sum_{l\ne j}t_l>1+\varepsilon\}$
 and let $\mathcal V_j$ be the closed subspace of functions
 $\psi(t_{-j})\mathbf 1_{Z_j}$. By Fubini the Theorem~3.14 class is the orthogonal
-complement $K$ of $\mathcal V_1+\dots+\mathcal V_k$, so the supremum of the ratio is
+complement $K$ of $\mathcal V_1+\dots+\mathcal V_k$ (equivalently, of its closure), so the supremum of the ratio is
 $\sigma_k(\varepsilon)=\|\Pi_KP^*\|^2$, where $(PF)_i=\int F\,dt_i$ on
 $(1-\varepsilon)\mathcal R_{k-1}$. At $k=2$ the sets $Z_1,Z_2$ are disjoint, $\Pi_K$ is
 $I$ minus two fibre means, and $\Phi$ in the proof of Theorem~\ref{thm:k2} is
 exactly $\Pi_KP^*(g,f)$. For $k\ge3$ the $Z_j$ overlap in open sets, so the
 projection is no longer a sum. Keeping only the disjoint \emph{clean} columns
 $\{\sum_{l\ne j}t_l>1+\varepsilon,\ \min_{l\ne j}t_l\ge\frac12-\varepsilon\}$ at $k=3$ gives a
-relaxation that is too weak:
+larger class:
 
 \begin{proposition}[\lbl{Computed}, exact certificate, two programs]\label{prop:orth-relax}
 The clean-column relaxation has supremum $>2.1408$ at $\varepsilon=\frac18$ and
@@ -801,6 +804,9 @@ $\frac{39699868771187709}{19218050037559040}$ of symmetric step functions on cub
 side $\frac1{32}$; \texttt{k3\_orth\_relax\_cert.py} and
 \texttt{k3\_orth\_relax\_verify.py} in \texttt{code/}\allowbreak\texttt{parity/}).
 \end{proposition}
+\noindent At $\varepsilon=\frac18$ this exceeds the extrapolated $\sigma_3(\frac18)\approx1.977$ of
+Remark~\ref{rem:k3-window} (\lbl{Heuristic}), so there the relaxation loses; at
+$\varepsilon=\frac14$, where $\sigma_3>2$ anyway, it says nothing.
 
 Polymath8b took $\varepsilon=\frac14$ for convenience: their partition of
 $\frac32\mathcal R_3$ works for $\varepsilon\in[\frac14,\frac13]$, ``but the endpoint
@@ -812,7 +818,7 @@ condition at all.
 Let $k=3$, $\frac14\le\varepsilon<\frac12$, $a=1-\varepsilon$, $C>\frac32$ and
 $\mu=C-\frac32$. Suppose $\varphi:[0,a]\to(0,\infty)$ is continuous and
 \[
-\Phi(y):=\int_0^{a-y}\frac{\varphi(\tau)+\varphi(y)}{\mu+\tau+y}\,d\tau\le\varphi(y)\qquad(0\le y\le a).
+\Theta(y):=\int_0^{a-y}\frac{\varphi(\tau)+\varphi(y)}{\mu+\tau+y}\,d\tau\le\varphi(y)\qquad(0\le y\le a).
 \]
 Then for every $\varepsilon'\in[\varepsilon,\frac12)$ and every
 $F\in L^2(\frac32\mathcal R_3)$, with or without the marginal condition,
@@ -832,7 +838,7 @@ On this fibre the term with index $i$ of $h$ is $g(u)$; the term whose index
 $j$ has $t_j=x$ is $\mathbf 1[t_i+y\le a]\,g(t_i,y)$, and $a-y\le\frac32-x-y$
 because $x\le a\le\frac32-a$ (this is where $\varepsilon\ge\frac14$ is used). So
 \[
-\int h\,dt_i=\left(\tfrac32-x-y\right)g(u)+\Phi(y)+\Phi(x)\le\left(\tfrac32-x-y\right)g(u)+(\mu+x+y)g(u)=Cg(u),
+\int h\,dt_i=\left(\tfrac32-x-y\right)g(u)+\Theta(y)+\Theta(x)\le\left(\tfrac32-x-y\right)g(u)+(\mu+x+y)g(u)=Cg(u),
 \]
 and $\sum_iJ_{i,1-\varepsilon}(F)\le C\sum_i\int_{\{|t_{-i}|\le a\}}F^2g(t_{-i})/h\,dt
 =C\int_{\{h>0\}}F^2\le C\,I(F)$. For $\varepsilon'>\varepsilon$ each
@@ -840,7 +846,7 @@ $J_{i,1-\varepsilon'}\le J_{i,1-\varepsilon}$, while the support does not depend
 $\varepsilon$.
 \end{proof}
 
-This is a Schur test; if $\Phi=\varphi$ exactly, $F=h$ attains the bound, so
+This is a Schur test; if $\Theta=\varphi$ exactly, $F=h$ attains the bound, so
 the test would be sharp for the problem without marginal condition (that such
 a $\varphi$ exists is \lbl{Heuristic}: 1D, 2D and 3D computations, \texttt{k3\_unc\_1d.py},
 \texttt{k3\_unc\_kernel.py}, \texttt{k3\_thm314\_dual.py}, agree to $10^{-4}$).
@@ -851,16 +857,18 @@ Let $\sigma_3(\varepsilon)$ be the supremum of the Theorem~3.14 ratio at $k=3$.
 \item $\sigma_3(\varepsilon)>2$ for $\varepsilon=\frac29,\frac14,\frac7{24}$: symmetric step
   functions with coefficients in $\frac1{1000}\mathbb Z$, constant on the cells of
   the arrangement $\{t_i=\frac mn\}$, $\{t_i+t_j=\frac mn\}$,
-  $\{t_1+t_2+t_3=\frac mn\}$ ($n=18$, $8$, $24$) and satisfying the marginal
+  $\{t_1+t_2+t_3=\frac mn\}$ ($n=18$, $8$, $24$; for $\frac29$ the coefficients lie in
+  $\frac1{100}\mathbb Z$) and satisfying the marginal
   condition, give ratios $2+\frac{342007}{555935160}$,
   $2+\frac{711155}{3866758832}$ and $2+\frac{4238047}{46648223968}$.
-\item $\sigma_3(\varepsilon)\le\frac{19999}{10000}<2$ for every $\varepsilon\in[0.439,\frac12)$,
-  and $\sigma_3(\varepsilon)\le1.995$ for $\varepsilon\ge0.45$.
+\item $\sigma_3(\varepsilon)\le\frac{19999}{10000}<2$ for every $\varepsilon\in[0.439,\frac12)$
+  (a separate certificate at $\varepsilon=0.45$ gives $1.995$).
 \end{enumerate}
 So under GEH the criterion of Theorem~3.14 with $k=3$ gives $\mathrm{DHL}[3,2]$
 for $\varepsilon=\frac29,\frac14,\frac7{24}$ (at $\frac14$ this is an independent exact
 check of the variational step of \cite[Theorem~3.15]{PM8b}, whose own
-polynomial exceeds $2$ by about $6\cdot10^{-8}$), and cannot give it for any
+polynomial exceeds $2$ by $286648173/4966595189139280\approx5.8\cdot10^{-8}$
+\cite[Theorem~3.15]{PM8b}), and cannot give it for any
 $\varepsilon\in[0.439,\frac12)$. This says nothing about whether $\mathrm{DHL}[3,2]$
 itself holds.
 \end{theorem}
@@ -871,7 +879,7 @@ Part~(1): \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}exact.py} and the i
 \texttt{k3\_\allowbreak{}arrangement\_\allowbreak{}cert*.json}. Part~(2):
 Proposition~\ref{prop:unc-ceiling} with a piecewise-linear $\varphi$ (rational
 node values); \texttt{k3\_\allowbreak{}unc\_\allowbreak{}cert.py} checks the inequality on
-adaptive boxes with arb balls (bounding $\Phi$ on a box by its monotone
+adaptive boxes with arb balls (bounding $\Theta$ on a box by its monotone
 majorant), and \texttt{k3\_\allowbreak{}unc\_\allowbreak{}verify.py}, written separately,
 re-checks each certificate file with mpmath interval arithmetic. All in
 \texttt{code/}\allowbreak\texttt{parity/}.
@@ -888,13 +896,14 @@ $\varepsilon>\frac{2194}{4999}=0.43889\ldots$.
 \begin{proof}
 The hypothesis of Proposition~\ref{prop:unc-ceiling} is invariant under
 scaling: if $\varphi$ works for $(a,\mu)$ and $s>0$, then $\varphi(\cdot/s)$ works
-for $(sa,s\mu)$. Apply this to the certificate at $\varepsilon=0.439$,
-$\mu=0.4999$, with $s=(1-\varepsilon)/0.561$.
+for $(sa,s\mu)$. Apply this to the certificate at $\varepsilon=0.439$ ($a=0.561$,
+$\mu=0.4999$) with $s=(1-\varepsilon)/0.561$: the new $a=1-\varepsilon\in(\frac12,\frac34]$ is in the
+range of the proposition, and $C=\frac32+s\mu=\frac32+\frac{4999}{5610}(1-\varepsilon)$.
 \end{proof}
 
 \begin{remark}[\lbl{Heuristic}; the $k=3$ supremum as a function of $\varepsilon$]\label{rem:k3-window}
-By the same scaling the critical $\mu$ without marginal condition is
-$\kappa_3(1-\varepsilon)$ with $\kappa_3\approx0.8901675$ (Richardson extrapolation,
+By the same scaling the critical $\mu$ without marginal condition is, for
+$\varepsilon\in[\frac14,\frac12)$, $\kappa_3(1-\varepsilon)$ with $\kappa_3\approx0.8901675$ (Richardson extrapolation,
 \texttt{code/}\allowbreak\texttt{explore/}\allowbreak\texttt{kappa\_closed\_form.py}; no closed form
 found), so the unconstrained supremum equals $2$ at about $\varepsilon=0.43831$.
 With all marginal conditions, cube grids of side $1/n$ extrapolated from
@@ -902,7 +911,8 @@ $n=24,32,40$ give $\sigma_3\approx1.977$, $2.003$, $1.990$ at
 $\varepsilon=\frac18,\frac14,\frac38$ (clean columns only: $2.181$, $2.105$, $2.017$;
 no condition: $2.273$, $2.168$, $2.056$; accuracy about $10^{-3}$). Exact lower
 bounds at $\varepsilon=\frac18,\frac16,\frac15,\frac3{10},\frac13$ are $1.97619$, $1.9909$,
-$1.9982$, $1.9990$, $1.9952$; the first agrees with the extrapolation, the
+$1.9981$, $1.9990$, $1.9951$ (\lbl{Computed}, exact, truncated;
+\texttt{k3\_arrangement\_eps2.out}); the first agrees with the extrapolation, the
 others are still rising with $n$. So the picture is a window
 of roughly $\varepsilon\in(0.19,0.31)$ with maximum about $2.003$, both possibly
 underestimates: the $H_1\le6$ of \cite[Theorem~3.15]{PM8b} has very little
@@ -984,7 +994,7 @@ So (B) at $C=1$ separates $a$ from $a^+$ ($a^+_p=0$ for every prime $p$), while 
 heuristic of Section~\ref{sec:parity} $a$ and $2a^+$ have the same Type~I data.
 (That (B) actually fails for $a^+$ needs enough primes $q$ with $q-2$
 squarefree, $\lambda(q-2)=1$ and a divisor in $(N,2N]$; expected, not proved
-here.) If $\Delta(x)\le x^{1/3}(\log x)^{-2^{23}-3}$, so that the diagonal is
+here.) If $\Delta\le x^{1/3}(\log x)^{-2^{23}-3}$, so that the diagonal is
 acceptable by Brun--Titchmarsh, then by Cauchy--Schwarz in $m$, (B) at $C=1$
 follows from an off-diagonal bound for
 $\sum_m\mu^2(m)\Lambda(mn_1+2)\Lambda(mn_2+2)$, a binary correlation of
@@ -1421,6 +1431,8 @@ difference of the exponential sums is at most $6H$ in absolute value; so its
 mean square is at most $108H^3|P|$, and $|a+b|^2\le2|a|^2+2|b|^2$ with
 $|P|\sim X/\log X$ gives the second claim. For the third,
 $\sum_{h\le H}\sum_{n\le X}\mu'(n+h)\Lambda(n)\ge H\theta(X-H)-H(\psi(X)-\theta(X-H))$.
+For $f'$, the sieve bound of (i) shows that the $n=p$ with $p+h\notin S$
+contribute $o(HX)$, so the same lower bound holds.
 \end{proof}
 
 \emph{Fej\'er averages and pair correlation.} Let $f=\Lambda1_{[1,N]}$,

@@ -3,29 +3,37 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 31, 7:34 PM CT slot of 17 Nov, run 01:35 UTC 18 Nov): PHASE B
+## POSITION (after Session 32, 3:34 AM CT slot of 18 Nov, run 09:34 UTC 18 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN (errata only); parity-barrier v0.16 (active, 33 pp.); main paper v0.31.
-  H_m programme scoped, paused (Session 30: MPZ-region gains ruled out in our reading; see notes/hm-programme.md section 6).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.32.
+  No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
-  Its priorities override the default ordering this week.
 
-## Next steps (in order; from the weekly review of 16 Nov, updated by Session 31)
-1. (DONE) Verification note v1.0 / v1.0.1. Still deferred (minor, not errors): item 28 (title omits 186/182; rem:lemma5 run-on
-   sentence; compare_sy236_capfree.json factor). Jerry decides whether to send the note to the preprint authors.
-2. Parity paper toward v1.0 (~20 pp.; now 33). Still to do: notation renames (lambda_d vs Liouville lambda; pattern Omega;
-   region D); shorten sec. num and the k = 3 subsections; consider merging rem:mrt17, rem:lt22 and rem:gm into one subsection
-   on averaged statements if the section grows further.
-3. Main paper: thin index. Session 31 condensed rem:oai186; next: condense rem:sha182 (lines ~2050-2220) and rem:186-status the
-   same way (detail stays in the verification note / repository notes).
-4. One parity attempt per run (new mechanisms only, check notes/parity-attempts/README.md). Done: Pintz (S26), Chen (S27),
-   Gowers (S28), MRT averaged HL (S29), Lichtman-Teravainen (S30), Fejér/pair correlation (S31). Next candidates: the almost-all
-   form of averaged HL under GRH or EH (not in print as far as we found); Selberg's RH mean-square bound (not opened) for the
-   Fejér form at K/log^2 N -> infinity; otherwise a genuinely new mechanism.
-5. Paused: k = 3 GEH thread (stopped); rung 182 (until restoration data exist); H_m (next step if resumed: the hybrid-support
-   Theorem 6.7 analogue, notes/hm-programme.md section 4 item 4). Optional, low value: one-sided --bonf certificate on the
-   Song-Yue witness (~25 core-hours; resumable via --ckpt).
+## Next steps (in order)
+1. Parity programme after v1.0 (Jerry, 18 Nov): one bounded attempt per run as a route card (notes/parity-attempts/); an
+   attempt enters the paper (as v1.1, one short subsection or remark, after proof-audit and literature-check) or a new short
+   note ONLY if it proves something not already implied by v1.0. Errors found in v1.0 -> dated erratum 1.0.x.
+   Done mechanisms: see notes/parity-attempts/README.md (latest: E2 consistency test, S32). Open candidates: whether an odd
+   cycle of >= 5 linear forms realises "n, n+2 both E2" (E2 card); the almost-all MRT17 form under GRH/EH (not in print as
+   far as we found); otherwise a genuinely new mechanism (not another "where does averaging stop near log X").
+2. Choose the next active small-results line (25% share): candidates (a) the Lean formalisation of the reduction
+   "ratio > 4 => bounded gaps" (programme 4), (b) the exact-certification toolkit note (programme 5), (c) resume H_m only with
+   the hybrid-support Theorem 6.7 analogue (notes/hm-programme.md section 4 item 4). The weekly review of 23 Nov should decide.
+3. Main paper thin index: condense rem:sha182 (lines ~2050-2220) and rem:186-status (detail stays in the verification note).
+4. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
+   certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
+5. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
+   MR16, GT10, GT12.
+
+## Session 32 (3:34 AM CT slot of 18 Nov, started on time 09:34 UTC; no wait) -- additions
+- Parity paper v1.0 (frozen): restructured from 33 to 24 pages (see notes/parity-programme.md, Session 32), five-lane referee
+  pass referee/2026-11-18-parity-barrier-v1/ (report.md + lane files) applied, plus a sixth helper checking the fixes.
+- Parity attempt: route card notes/parity-attempts/2026-11-18-e2-consistency-test.md (consistent); script
+  code/parity/e2_consistency.py (/usr/bin/python3, ~2 min), output .out.
+- Exploration: code/explore/parity_margin_lp.py (1.5 s), output .out: parity-margin LP is a tautology (dead end).
+- Main paper v0.32 (Related results: parity paper frozen, entry shortened). News search (3:34 AM run): nothing new.
+- Lean: lake build and Audit.lean pass (no Lean changes). Wolfram and mathbox NOT available.
 
 ## Session 31 (7:34 PM CT slot of 17 Nov, started on time 01:35 UTC 18 Nov; no wait) -- additions
 - Parity paper v0.16: Remark rem:gm (Fejér averages, pair correlation, scale log X), open question oq:mrtcond relabelled and

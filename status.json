@@ -1,7 +1,7 @@
 {
-  "version": "0.31",
+  "version": "0.32",
   "updated": "2026-11-18",
-  "session_count": 31,
+  "session_count": 32,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
@@ -818,6 +818,18 @@
       "origin": "exploration",
       "status": "open",
       "note": "X = 2e7, h <= 64: 23 of 32 even h negative, mean -0.00045 pi(X), of Polya size, but S(h) are strongly correlated; inconclusive. Session 30."
+    },
+    {
+      "idea": "Parity margin: the LP value t*(E) (largest uniform marginal of an E-free distribution) as a quantitative predictor of sieve thresholds",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Reproduces theta M_k > 2m and Pintz's theta M_k > 1 exactly, but by LP duality it is the same first-moment argument (tautology), and it says nothing about the gap between 'not blocked' and 'reachable' (e.g. DHL[5,3]). Session 32, code/explore/parity_margin_lp.py."
+    },
+    {
+      "idea": "E2 numbers (lambda = +1) as a parity-even consistency test of the pattern-weight criterion",
+      "origin": "own",
+      "status": "works",
+      "note": "Consistent: GGPY's theorems are not blocked in the forms they use; their gap 6 between E2 numbers sits exactly at the window limit H(3) = 6; the class blocks a choice of forms, not a statement. Route card only (paper frozen). Session 32."
     }
   ],
   "phase": "B",
@@ -825,10 +837,10 @@
     {
       "slug": "parity-barrier",
       "title": "The parity barrier and twin primes: what is known and what is missing",
-      "version": "0.16",
-      "status": "active",
+      "version": "1.0",
+      "status": "frozen",
       "pdf": "docs/papers/parity-barrier.pdf",
-      "summary": "Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results: which close-prime targets a Polymath8b-type (Liouville-pattern) weight can block (bipartite target graphs, as in Tao's 2014 blog post; window form: such weights block a proof of H_m <= g exactly when g < H(2m+1), = 6 for m = 1; a heuristic barrier, not a bound); where Polymath8b's GEH criteria stop (k = 2 exactly at the parity value 2; the k = 3 eps-window); the twisted Type I input in the log-averaged regime and a Siegel-zero world where a per-modulus form fails; Pintz's parity-sensitive dichotomy with Maynard weights (some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p; Pintz 2010: 16; possibly folklore); Chen's theorem as a consistency test (the class does not block p prime, p+2 in P_2, but blocks each half); global Gowers norms are blind to the shift-2 correlation (random block functions), so the Green-Tao finite-complexity theory cannot see twins; v0.14: averaging over the shift (Matomaki-Radziwill-Tao): the Liouville model of parity is solved on average for any H -> infinity, Lambda(n)Lambda(n+h) only in windows H >= X^{8/33+eps}, and no averaged statement reaches a prescribed shift; v0.15: hybrid averages (Lichtman-Teravainen solve sum_p mu(p+h) on average for H >= (log X)^{1+eps}); an elementary construction shows that their input on mu, like their input on Lambda, stops at the mean prime gap log X (folklore in substance); cuts toward a ~20 pp. v1.0. No claim of progress on the twin prime conjecture. v0.16: Fejer averages and pair correlation: by the window identity the Fejer-averaged twin correlations are the Goldston-Montgomery mean square minus the diagonal; under RH and the strong pair correlation conjecture the Fejer form holds down to c log X, below log X the variance route is empty, and a fixed shift needs one more logarithm of precision (folklore in substance)."
+      "summary": "Frozen v1.0 (18 Nov 2026, 24 pp.). Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion (Liouville-pattern weights block a proof of H_m <= g exactly when g < H(2m+1); a statement about the weight class, not a bound); GEH ceilings, k = 2 exactly at the parity value 2, the k = 3 criterion above 2 at eps = 2/9, 1/4, 7/24 and provably below 2 for eps >= 0.439; Pintz's dichotomy with Maynard weights (|d| <= 12; Pintz 16; possibly folklore); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. Five-lane internal referee pass applied. No claim of progress on the twin prime conjecture."
     },
     {
       "slug": "verification-note",
@@ -840,5 +852,5 @@
     }
   ],
   "last_review": "2026-11-16",
-  "phase_note": "Phase B since Session 17 (15 Nov 2026): rung 186 finished in the sense of the plan (main terms and loss bound L+ re-evaluated by two programs, L+ by two programs for the 17 components carrying 99.95% of the decisive group O_{5/2}; the rest by one program, with large margin slack). 186 is NOT adopted (majorisation lemmas, restoration step and analytic inputs unchecked). Rung 182 continues inside Phase B's bound share."
+  "phase_note": "Phase B since Session 17 (15 Nov 2026): rung 186 finished in the sense of the plan (main terms and loss bound L+ re-evaluated by two programs, L+ by two programs for the 17 components carrying 99.95% of the decisive group O_{5/2}; the rest by one program, with large margin slack). 186 is NOT adopted (majorisation lemmas, restoration step and analytic inputs unchecked). Rung 182 continues inside Phase B's bound share. Session 32: parity paper frozen as v1.0 (24 pp.) after a five-lane internal referee pass."
 }
