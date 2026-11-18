@@ -143,3 +143,12 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Thread 3/5: Remark rem:gm (paper v0.16); open question oq:mrtcond partly answered (Fejér form under RH + SPC).
 - Next attempt candidates: the almost-all form of MRT17 under GRH or EH (still not found in print); Selberg's RH mean-square
   bound (not opened) would give the Fejér form for K/log^2 N -> infinity.
+
+## Session 32 (18 Nov 2026)
+- Parity paper FROZEN as v1.0 (24 pp., from 33): weekly-review cuts and referee items of 16 Nov applied, notation renamed
+  (sieve coefficients y_d; pattern functions Psi with signs s_i; k = 2 region T), averaging remarks merged into one subsection
+  with two short propositions (prop:lt22, prop:gm), five-lane referee pass referee/2026-11-18-parity-barrier-v1/ (no false
+  statement of substance; two wrong-as-written statements, two rounded-up bounds and several lost caveats fixed).
+- Attempt: E2 numbers as a parity-even consistency test (route card 2026-11-18-e2-consistency-test.md): consistent. Sources
+  GGPY arXiv:math/0609615v1 (SHA-256 411a638e...), 0803.2636v1 (7dc2b242...), math/0506067v1 (e7b065dd...).
+- From now on: v1.0 changes only as errata (1.0.x); a v1.1 or short note only for an attempt that proves something not implied.

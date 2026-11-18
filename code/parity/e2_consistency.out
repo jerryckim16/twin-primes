@@ -1,0 +1,102 @@
+A. 'at least j of the k positions are E2' (events: every j-set with sign +1).
+   prediction (sign flip of Prop. prop:bipartite(b)): blocked iff k <= 2(j-1)
+   k=1..8, all j: 0 mismatches
+  two E2 among 2 positions (n, n+d both E2)                      k=2 BLOCKED   fair measure {+-:1/2, -+:1/2}  [as predicted]
+  two E2 among 3 positions (GGPY 0609615 Thm 2 / Basic Thm)      k=3 UNBLOCKED  c=['1', '1', '1'] c0=1 margin=1/2  [as predicted]
+  two E2 among 8 positions (GGPY 0506067: 8-tuple)               k=8 UNBLOCKED  c=['1', '1', '1', '1', '1', '1', '1', '1'] c0=1 margin=3  [as predicted]
+   GGPY 0609615 Thm 1 needs k >= C1(nu) = (4e^-g/B)(1+o(1)) e^{B nu/4} forms for nu+1 E2 values;
+   the class blocks nu+1 of k iff k <= 2 nu.  (4e^-g/B) e^{B nu/4} at B=4 (BV), B=2 (EH) vs 2 nu:
+     nu=1  C1(B=4)~      1.5  C1(B=2)~   1.85  2nu= 2
+     nu=2  C1(B=4)~      4.1  C1(B=2)~   3.05  2nu= 4
+     nu=3  C1(B=4)~     11.3  C1(B=2)~   5.03  2nu= 6
+     nu=4  C1(B=4)~     30.7  C1(B=2)~   8.30  2nu= 8
+     nu=5  C1(B=4)~     83.3  C1(B=2)~  13.68  2nu=10
+     nu=6  C1(B=4)~    226.5  C1(B=2)~  22.55  2nu=12
+     nu=7  C1(B=4)~    615.7  C1(B=2)~  37.19  2nu=14
+     nu=8  C1(B=4)~   1673.7  C1(B=2)~  61.31  2nu=16
+   (main term only; o(1) -> 0 as nu -> oo.  For nu = 1 they prove k = 3 > 2 directly, Thm 2.)
+
+B. windows: 'two E2 among n+h_i at distance <= g' on admissible shift tuples
+   prediction (sign flip of (c)): blocked iff every [a,a+g] holds <= 2 elements of H
+  H=(0, 2, 6), g=2                                               k=3 BLOCKED   fair measure {+-+:1/2, -+-:1/2}  [as predicted]
+  H=(0, 2, 6), g=4                                               k=3 BLOCKED   fair measure {+-+:1/2, -+-:1/2}  [as predicted]
+  H=(0, 2, 6), g=6                                               k=3 UNBLOCKED  c=['1', '1', '1'] c0=1 margin=1/2  [as predicted]
+  H=(0, 4, 6), g=4                                               k=3 BLOCKED   fair measure {+-+:1/2, -+-:1/2}  [as predicted]
+  H=(0, 4, 6), g=6                                               k=3 UNBLOCKED  c=['1', '1', '1'] c0=1 margin=1/2  [as predicted]
+  H=(0, 2, 8, 12), g=6                                           k=4 BLOCKED   fair measure {+-+-:1/2, -+-+:1/2}  [as predicted]
+  H=(0, 2, 8, 12), g=8                                           k=4 UNBLOCKED  c=['1', '1', '1', '0'] c0=1 margin=1/2  [as predicted]
+  H=(0, 2, 6, 8, 12), g=6                                        k=5 UNBLOCKED  c=['0', '1', '1', '1', '0'] c0=1 margin=1/2  [as predicted]
+  H=(0, 2, 6, 8, 12), g=8                                        k=5 UNBLOCKED  c=['1', '1', '1', '1', '0'] c0=1 margin=1  [as predicted]
+   So within pure shifts the class blocks liminf(q_{n+1}-q_n) <= g exactly for g < H(3) = 6, and
+   not g = 6: GGPY's bound 6 (0609615 Cor 2, via {0,2,6}) sits exactly at the class's limit.
+
+C. mixed targets (one E2 and one prime)
+  n+h_1 E2 and n+h_2 prime                                       k=2 BLOCKED   fair measure {++:1/2, --:1/2}  [as predicted]
+  n E2 & n+2 prime, or n prime & n+2 E2                          k=2 BLOCKED   fair measure {++:1/2, --:1/2}  [as predicted]
+  some n+h_i E2 and some n+h_j prime (any i != j)                k=2 BLOCKED   fair measure {++:1/2, --:1/2}  [as predicted]
+  some n+h_i E2 and some n+h_j prime (any i != j)                k=3 BLOCKED   fair measure {+++:1/2, ---:1/2}  [as predicted]
+  some n+h_i E2 and some n+h_j prime (any i != j)                k=4 BLOCKED   fair measure {++++:1/2, ----:1/2}  [as predicted]
+  some n+h_i E2 and some n+h_j prime (any i != j)                k=5 BLOCKED   fair measure {+++++:1/2, -----:1/2}  [as predicted]
+  some n+h_i E2 and some n+h_j prime (any i != j)                k=6 BLOCKED   fair measure {++++++:1/2, ------:1/2}  [as predicted]
+  Chen-type: n prime and n+2 in {prime, E2}                      k=2 UNBLOCKED  c=['-1', '0'] c0=-1 margin=1/2  [as predicted]
+
+D. Erdos-type consecutive integers (GGPY 0803.2636)
+   direct: positions x, x+1, target Omega(x)=Omega(x+1)=A forces lambda(x)=lambda(x+1)=(-1)^A:
+  x, x+1 with Omega = 4 (shift coordinates)                      k=2 BLOCKED   fair measure {+-:1/2, -+:1/2}  [as predicted]
+  x, x+1 with Omega = 5 (shift coordinates)                      k=2 BLOCKED   fair measure {+-:1/2, -+:1/2}  [as predicted]
+   GGPY's route: forms L1,L2,L3 in m; target 'two of them E2' (Basic Theorem) -> triangle:
+  two of L1(m),L2(m),L3(m) E2 (forms coordinates)                k=3 UNBLOCKED  c=['1', '1', '1'] c0=1 margin=1/2  [as predicted]
+   any weight in lambda(c*L_i(m)) is a function of (lambda(L_i)) (lambda(cL)=lambda(c)lambda(L)),
+   so no weight in the derived integers x blocks it either (cf. Remark rem:marg).
+   identity 4L1 - 3L2 = 1  (1.12)                    OK
+   identity 3L1 - 2L3 = 1  (1.12)                    OK
+   identity 9L2 - 8L3 = 1  (1.12)                    OK
+   (1.11) admissible: (True, None)
+   identity 5L1 - 4L2 = 1  (2.2)                     OK
+   identity 3L1 - 2L3 = 1  (2.2)                     OK
+   identity 6L2 - 5L3 = 1  (2.2)                     OK
+   (2.4) K-system admissible: (True, None)  K_i(l)*r_i = L_i(77l+8): True
+   (2.6) admissible: (True, None)  3L1=72m+3, 2L2=72m+2: OK
+
+E. E2 pairs at a FIXED difference d
+   (i) pure shifts, E2 values used directly: target graph {i~j : |h_i-h_j| = d} is bipartite
+       (colour h by floor(h/d) mod 2), so blocked for every tuple.  Exhaustive check, shifts in [0,24]:
+       25123 tuples (k=2..4, d in {1,2,4,6,12}) with an edge: 0 not blocked
+   (ii) multipliers: X = c*L(m) is E2 if c = 1 and L(m) is E2, or c = prime and L(m) is prime.
+        Triple m, m+6, m+12: 2(m+6)-2m = 12, 2(m+12)-2(m+6) = 12, (m+12)-m = 12.
+        target: (m, m+6) both prime, or (m+6, m+12) both prime, or (m, m+12) both E2;
+        each event gives x, x+12 both E2 (for m > 2):
+        admissible {m, m+6, m+12}: (True, None)
+  triangle {0,6,12}: PR-PR, PR-PR, E2-E2                         k=3 UNBLOCKED  c=['1', '-1', '1'] c0=0 margin=1/2  [as predicted]
+        signed-cycle lemma: an edge (i,j) using multipliers (c_i,c_j) needs c_i a_i = c_j a_j, and
+        forbids the signs s_i = (-1)^Omega(c_i), s_j = (-1)^Omega(c_j); so s_i s_j = (-1)^(Omega(a_i)+Omega(a_j))
+        and the product of s_i s_j around any cycle is +1.  Check: all signed graphs on 3 and 4
+        vertices (one forbidden sign pair per edge): blocked <=> the system eps_i eps_j = -s_i s_j is
+        solvable (switching-balanced), and hence, for cycle products +1, <=> the graph is bipartite:
+        n=3: 125 signed graphs, 0 mismatches
+        n=4: 15625 signed graphs, 0 mismatches
+   (iii) search: admissible triples of forms a_i m + b_i (a_1 <= 12, a_2, a_3 <= 72) and multipliers in
+        {1,2,3,5,7,11,13} such that EVERY pair (i,j) has an identity c_i L_i - c_j L_j = +-d
+        (a triangle, hence unblocked by (ii)).  Smallest example per d:
+        d= 1: none in range
+        d= 2: none in range
+        d= 4: none in range
+        d= 6: none in range
+        d= 8: none in range
+        d=12: L=(1m+0, 1m+12, 1m+6)  mult (1,2)=(1, 1) (1,3)=(2, 2) (2,3)=(2, 2)  [L1,L2 E2,E2; L1,L3 prime,prime; L2,L3 prime,prime]
+
+F. numeric sanity for the {m, m+6, m+12} target, m < 10^6
+   #(m,m+6 prime)=16386  #(m+6,m+12 prime)=16384  #(m,m+12 E2)=69937  (each event -> x,x+12 both E2: asserted)
+   #(m, m+2 both E2), m<10^6: 51981
+
+G. GGPY's own sieve functional vs the class (0609615 Thms 7-8, (8.1)): the method gives nu+1 E2
+   among k forms iff rho = k(k-1)(J1+J2+J3)/(B J0) > nu for some polynomial P.  The class blocks
+   'nu+1 of k E2' iff k <= 2 nu, so consistency requires max_P rho <= ceil(k/2) (heuristically <= k/2).
+   rho is a ratio of quadratic forms in the coefficients of P (deg <= D): generalized eigenvalue,
+   Gauss-Legendre quadrature (floating point, not a certificate).
+   check vs paper (Thm 2: k=3, B=4, eta=1/144, P=1+6x): J0 = 2.533333 (paper 38/15 = 2.533333), rho = 1.000065 > 1
+   B=4      eta=0, D<=6  max rho  k=2:0.7576  k=3:1.0039  k=4:1.2078  k=5:1.3823  k=6:1.5351  k=7:1.6711  k=8:1.7938
+   B=3      eta=0, D<=6  max rho  k=2:0.8604  k=3:1.1645  k=4:1.4194  k=5:1.6390  k=6:1.8323  k=7:2.0049  k=8:2.1611
+   B=2.0001 eta=0, D<=6  max rho  k=2:0.9614  k=3:1.3629  k=4:1.7090  k=5:2.0115  k=6:2.2801  k=7:2.5214  k=8:2.7407
+   max over the table of rho/(k/2) = 0.9614  (< 1: no case blocked by the class is reached)
+done

@@ -1,5 +1,322 @@
 # Research log
 
+## 2026-11-18 - Session 32 (3:34 AM CT, 18 Nov; started on time 09:34 UTC; no wait, no other run active): Parity paper frozen as v1.0 (33 -> 24 pages, five-lane referee pass); main paper v0.32
+
+- Parity paper v1.0 (frozen), following Jerry's 'v1.0 first' rule: the paper was restructured from 33 to 24 pages. The weekly-review cuts and the 16 Nov referee items were applied; overlapping statements were merged (the GEH ceilings with their consequences in one proposition; the averaging remarks into one subsection with two short propositions). The dual formula is now a paragraph, the remark on Polymath8b Prop. 6.5 a footnote, and session history is gone from the body. Notation renamed: sieve coefficients y_d, pattern functions Psi with signs s_i, the k = 2 region T.
+- A full referee pass by five fresh-context reviewers (sections 1-3, section 4 with certificates re-run, sections 5-7 with identity (*) re-tested, literature fidelity against 11 arXiv sources, framing/labels/notation) found no false statement of substance. It found two statements wrong as written: the Chen half-weight 1 + s1 s2 kills 'n prime and n+2 = p1 p2', and the hybrid-average range should be H <= (c log X)^{1/(1+delta)}, not H = o(log X). Two exact lower bounds were rounded up (1.9982 -> 1.9981, 1.9952 -> 1.9951), and several hypotheses had been lost in the condensation. All fixed; a sixth helper checked the fixes. Reports in referee/2026-11-18-parity-barrier-v1/.
+- Every number in v1.0 appears in v0.16 (script check); no new results were added to the paper. The abstract has 171 words and fits on page 1.
+- Bound share: main paper v0.32 (Related results: the parity entry shortened to one paragraph). Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+- News search (3:34 AM run, three searches): nothing new on the 2026 claims or on parity.
+
+Parity attempt: E2 numbers (lambda = +1) as a parity-even consistency test of the pattern-weight criterion. Classification: consistent. 'At least j of k positions E2' is blocked iff k <= 2(j-1). Goldston-Graham-Pintz-Yildirim's theorems are not blocked in the forms they use; their gap 6 between E2 numbers sits exactly at the class's window limit H(3) = 6. The class blocks a choice of forms, not a statement (route card only, exact certificates). Parity paper: v1.0 frozen this run (24 pp.).
+
+Explored: Parity margin: the LP value t*(E) (largest uniform marginal of a target-free distribution) reproduces theta M_k > 2m and Pintz's theta M_k > 1 exactly. By LP duality this is the same first-moment argument, so it is a tautology, and it is silent on the gap between 'not blocked' and 'reachable' (e.g. DHL[5,3]). Dead end; code/explore/parity_margin_lp.py.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- a
+- l
+- l
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- f
+- e
+- r
+- e
+- e
+-  
+- p
+- a
+- s
+- s
+- )
+- .
+-  
+- L
+- a
+- n
+- e
+-  
+- 4
+-  
+- c
+- o
+- u
+- l
+- d
+-  
+- n
+- o
+- t
+-  
+- r
+- e
+- -
+- v
+- e
+- r
+- i
+- f
+- y
+-  
+- a
+-  
+- f
+- e
+- w
+-  
+- l
+- o
+- c
+- a
+- t
+- i
+- o
+- n
+- s
+-  
+- i
+- n
+-  
+- t
+- h
+- e
+-  
+- t
+- i
+- m
+- e
+-  
+- (
+- M
+- R
+- T
+- 1
+- 7
+-  
+- p
+- p
+- .
+-  
+- 1
+- 0
+- -
+- 1
+- 1
+- ,
+-  
+- F
+- I
+- 9
+- 8
+-  
+- T
+- h
+- m
+-  
+- 2
+-  
+- p
+- a
+- g
+- e
+- ,
+-  
+- T
+- T
+- 2
+- 2
+-  
+- s
+- e
+- c
+- .
+-  
+- 6
+- ,
+-  
+- S
+- S
+- 1
+- 9
+-  
+- p
+- .
+-  
+- 2
+- 2
+- )
+- ;
+-  
+- t
+- h
+- e
+- y
+-  
+- w
+- e
+- r
+- e
+-  
+- r
+- e
+- a
+- d
+-  
+- i
+- n
+-  
+- e
+- a
+- r
+- l
+- i
+- e
+- r
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- s
+- .
+
+Next: Weekly review on Monday 23 Nov: choose the next active small-results line (Lean reduction 'ratio > 4 => bounded gaps', or the certification toolkit note). One parity attempt per run as a route card (v1.0 changes only as errata). Main paper: condense rem:sha182 and rem:186-status.
+
 ## 2026-11-18 - Session 31 (7:34 PM CT, 17 Nov; started on time 01:35 UTC 18 Nov; no wait, no other run active): Fejér averages, pair correlation and the scale log X (parity paper v0.16); main paper v0.31
 
 - Parity paper v0.16: new Remark rem:gm. Combining the window identity with the Goldston-Montgomery mean square I(K) gives 2 sum_{j<K}(K-j)c(j) = I(K) - K c(0) + K^2 N + O(...). Consequences: unconditionally the Fejér mean F(K) >= 1 - log N/K (the Lambda form of Merikoski's Main Thm 2). For K = o(log N) the variance asymptotic holds automatically and says nothing about pairs. Under RH and the strong pair correlation conjecture F(K) -> 1 for K >= c log N, and at K ~ log N the two statements are equivalent. A fixed shift is a second difference that needs I(K), K <= 3, to o(N), one logarithm beyond SPC.
