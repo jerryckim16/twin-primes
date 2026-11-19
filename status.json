@@ -1,7 +1,7 @@
 {
-  "version": "0.34",
+  "version": "0.35",
   "updated": "2026-11-19",
-  "session_count": 34,
+  "session_count": 35,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
@@ -11,6 +11,14 @@
     "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
   },
   "results": [
+    {
+      "label": "Lean-checked",
+      "text": "Counting.lean (Session 35): #{n < N : d | n} = ceil(N/d) (two-sided bounds, residue classes too); the Selberg expansion sum_{n<N} (sum_{d|n} y_d)^2 = sum_{d,e} y_d y_e #{n < N : [d,e] | n}; and the division-free error bound |S1 - N sum y_d y_e/[d,e]| <= sum |y_d y_e|. Axioms propext, Quot.sound, Classical.choice only. Main paper Thm thm:lean item 8."
+    },
+    {
+      "label": "Proved here",
+      "text": "Route card 2026-11-19 smooth-middle (not in a paper; elementary, folklore in substance): Type II structure in the middle m = p+1 of a twin pair cannot separate twins from the fake weight 1 - lambda(m-1)lambda(m+1) unless bilinear two-point Chowla fails (fixed-a log-averaged slices known small by Tao16 Thm 1.2); cut-norm numerics at X = 1e8 (Computed, heuristic evidence) match a random sign matrix."
+    },
     {
       "label": "Proved here",
       "text": "Route card 2026-11-19 (not in a paper; elementary, folklore in substance): Green-Sawhney's mechanism (arXiv:2410.04189v3: Type II for one norm form, Type I/II proved from Gowers-norm smallness of one coordinate weight) cannot carry a fixed-shift twin condition: inside a coordinate the needed U^k-smallness already contains the twin asymptotic with a power-of-log error; in the outer detector no bilinear structure is known (FI98 (B)); on a conic or line there is no 2D averaging; as the non-small factor it violates Prop. 3.4's majorant and the error term is (log log X)^2 too weak, and the main term still counts twins. Classification: located. Audited (3 errors in the draft, fixed).",
@@ -433,6 +441,24 @@
     }
   ],
   "ideas": [
+    {
+      "idea": "Own idea: does Type II structure in the MIDDLE of a twin pair (smooth m = p+1 = ab) separate twins from the parity-fake weight?",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Session 35 route card: the fake weight 1 - lambda(m-1)lambda(m+1) matches all middle-bilinear data up to bilinear two-point Chowla errors (fixed-a log-averaged slices known small by Tao16; X = 1e8 numerics look like a random sign matrix); parity-breaking Type II must be in a sifted variable with multiplicative structure."
+    },
+    {
+      "idea": "Exploration: mean of the Liouville function at twin-prime centres k (6k +- 1 prime).",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 35: small-K negative bias follows a sieve-only proxy and vanishes by K = 1e7 (z = -0.22, +0.21 at 1e7, 1e8); dead end."
+    },
+    {
+      "idea": "Lean: finite Type I identities behind S1 (counting multiples, Selberg expansion, division-free error term).",
+      "origin": "own",
+      "status": "works",
+      "note": "Session 35: lean/TwinPrimes/Counting.lean (countDvd_bounds, countRes_bounds, selberg_expand, selberg_error); main paper Thm thm:lean item 8."
+    },
     {
       "idea": "Own idea: does Green-Sawhney's Gowers-norm route to Type II sums transfer to a fixed-shift twin condition?",
       "origin": "own",

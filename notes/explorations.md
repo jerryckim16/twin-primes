@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-19, Session 35 -- The Liouville function at the centres of twin primes (numerical experiment / Chowla-type correlation)
+- Idea: for twin primes 6k-1, 6k+1 the middle is 6k and lambda(6k) = lambda(k). Twin centres k are divisible by p >= 5
+  with density 1/(p-2) (not 1/p), so a naive local model shifts Omega(k); is the mean of lambda(k) over twin centres
+  biased, beyond what a sieve-only proxy (6k +- 1 free of primes < 100) shows?
+- Tried: code/explore/liouville_twin_centres.py [K] (/usr/bin/python3 -I; 76 s at K = 1e8, < 4 GB), output .out.
+  Mean of lambda(k) over twin centres k <= K: -0.0494, -0.0405, -0.0142, -0.00041, +0.00015 for K = 1e4 ... 1e8
+  (z-scores -1.41, -2.96, -2.77, -0.22, +0.21; 2166300 twin pairs at 1e8); sieve proxy -0.0340, -0.0211, -0.0035,
+  -0.00021, +0.00006.
+- Outcome: dead end. The small-K negative bias follows the sieve proxy and disappears by K = 1e7; no sign of a
+  correlation between lambda(middle) and the twin condition. Heuristic / exploratory only.
+
 ## 2026-11-19, Session 34 -- Carrying a twin weight through the Green-Sawhney sum: does the "carried" form hold numerically? (numerical experiment / Bateman-Horn)
 - Idea: GS (arXiv:2410.04189v3) replace Lam'(y) by a Cramer model Lam_Cramer,Q(y) when the other coordinate weight is
   arbitrary. Test numerically whether T(X) = sum Lam(x)Lam(x+2)Lam(y) 1[x^2+4y^2 prime] (x, y > 0) matches (a) the
