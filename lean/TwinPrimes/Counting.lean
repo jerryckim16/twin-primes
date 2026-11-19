@@ -17,6 +17,12 @@ no Mathlib, list-based sums):
   `|M · S₁ − N · ∑_{d,e} y_d y_e (M / lcm(d,e))| ≤ M · ∑_{d,e} |y_d y_e|`,
   the division-free form of `|S₁ − N ∑ y_d y_e / lcm(d,e)| ≤ ∑ |y_d y_e|`.
 
+* `crt_residue`, `crt_count_bounds`, `crt_count_div`: for `gcd(d, W) = 1` and `v₀ < W`,
+  `#{n < N : n ≡ v₀ (W), d ∣ n + h}` is a single residue class mod `W d`, hence equals
+  `N / (W d)` up to an error `< 1`;
+* `crt_selberg_expand`, `crt_selberg_error`: the analogues of the above for
+  `∑_{n < N, n ≡ v₀ (W)} λ(n + h)²` when every `d ∈ D` is coprime to `W`.
+
 NOT formalised here: the asymptotic evaluation of the main term
 `N ∑ y_d y_e / lcm(d,e)` for the Maynard weights.
 -/
@@ -218,6 +224,230 @@ theorem selberg_error (D : List Nat) (y : Nat → Int) (N M : Nat)
   apply Nat.mul_le_mul_left
   rw [Int.natAbs_mul, Int.natAbs_natCast, Nat.mul_comm L k]
   apply Nat.mul_le_mul_left
+  omega
+
+/-! ## CRT step: counting in a residue class `n ≡ v₀ (mod W)` -/
+
+/-- Bezout over `Int`. -/
+theorem crt_bezout (a b : Nat) : ∃ x y : Int, (a : Int) * x + (b : Int) * y = (Nat.gcd a b : Int) := by
+  refine Nat.gcd.induction a b (fun n => ⟨0, 1, by simp⟩) ?_
+  intro m n _ ih
+  obtain ⟨x, y, h⟩ := ih
+  rw [Nat.gcd_rec m n]
+  refine ⟨y - ((n / m : Nat) : Int) * x, x, ?_⟩
+  have e : ((n % m : Nat) : Int) + (m : Int) * ((n / m : Nat) : Int) = n := by
+    exact_mod_cast Nat.mod_add_div n m
+  rw [← h, ← e]
+  generalize ((n % m : Nat) : Int) = r
+  generalize ((n / m : Nat) : Int) = q
+  grind
+
+/-- A multiplicative inverse of `W` modulo `d` (for coprime `W`, `d`). -/
+theorem crt_inverse {W d : Nat} (hd : 0 < d) (hc : Nat.gcd W d = 1) :
+    ∃ u : Nat, (W * u) % d = 1 % d := by
+  obtain ⟨x, y, h⟩ := crt_bezout W d
+  rw [hc] at h
+  refine ⟨(x % d).toNat, ?_⟩
+  have hnn : 0 ≤ x % (d : Int) := Int.emod_nonneg _ (by omega)
+  apply Int.ofNat_inj.mp
+  push_cast
+  rw [Int.toNat_of_nonneg hnn]
+  have h2 : (W : Int) * (x % d) = 1 + (d : Int) * (-(y + W * (x / d))) := by
+    have := Int.emod_add_mul_ediv x d
+    grind
+  rw [h2, Int.add_mul_emod_self_left]
+
+/-- CRT uniqueness: agreeing modulo coprime `W` and `d` means agreeing modulo `W * d`. -/
+theorem crt_mod_eq {W d a b : Nat} (hc : Nat.gcd W d = 1)
+    (h1 : a % W = b % W) (h2 : a % d = b % d) : a % (W * d) = b % (W * d) := by
+  have key : ∀ a b : Nat, a % W = b % W → a % d = b % d → b ≤ a →
+      a % (W * d) = b % (W * d) := by
+    intro a b h1 h2 hab
+    have dW : W ∣ a - b := Nat.dvd_of_mod_eq_zero (Nat.sub_mod_eq_zero_of_mod_eq h1)
+    have dd : d ∣ a - b := Nat.dvd_of_mod_eq_zero (Nat.sub_mod_eq_zero_of_mod_eq h2)
+    obtain ⟨k, hk⟩ := Nat.Coprime.mul_dvd_of_dvd_of_dvd hc dW dd
+    have : a = b + W * d * k := by omega
+    rw [this, Nat.add_mul_mod_self_left]
+  rcases Nat.le_total b a with hab | hab
+  · exact key a b h1 h2 hab
+  · exact (key b a h1.symm h2.symm hab).symm
+
+theorem crt_add_mod_cancel {a b h k : Nat} (H : (a + h) % k = (b + h) % k) : a % k = b % k := by
+  obtain ⟨k₁, k₂, e⟩ := Nat.mod_eq_mod_iff.mp H
+  exact Nat.mod_eq_mod_iff.mpr ⟨k₁, k₂, by omega⟩
+
+/-- CRT existence: for coprime `d`, `W` the conditions `n ≡ v₀ (mod W)`, `n ≡ -h (mod d)`
+cut out a single residue class `r` modulo `W * d`. -/
+theorem crt_residue {W d v0 : Nat} (h : Nat) (hv : v0 < W) (hd : 0 < d)
+    (hc : Nat.gcd d W = 1) :
+    ∃ r, r < W * d ∧ ∀ n, (n % W = v0 ∧ (n + h) % d = 0) ↔ n % (W * d) = r := by
+  have hW : 0 < W := by omega
+  obtain ⟨u, hu⟩ := crt_inverse hd (by rw [Nat.gcd_comm]; exact hc)
+  obtain ⟨s, hs_def⟩ : ∃ s, s = (v0 + h) % d := ⟨_, rfl⟩
+  have hs : s < d := hs_def ▸ Nat.mod_lt _ hd
+  obtain ⟨t, ht⟩ : ∃ t, t + s = d := ⟨d - s, by omega⟩
+  obtain ⟨m, hm⟩ : ∃ m, m = v0 + W * (u * t) := ⟨_, rfl⟩
+  have hmW : m % W = v0 := by
+    rw [hm, Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt hv]
+  have hmd : (m + h) % d = 0 := by
+    have e1 := Nat.mod_add_div (v0 + h) d
+    rw [← hs_def] at e1
+    have e2 := Nat.mod_add_div (W * u) d
+    rw [hu] at e2
+    apply Nat.mod_eq_zero_of_dvd
+    by_cases hd1 : d = 1
+    · subst hd1; exact Nat.one_dvd _
+    have h1 : 1 % d = 1 := Nat.mod_eq_of_lt (by omega)
+    rw [h1] at e2
+    refine ⟨(v0 + h) / d + (W * u) / d * t + 1, ?_⟩
+    generalize (v0 + h) / d = q at e1
+    generalize (W * u) / d = k at e2
+    rw [hm, ← Nat.mul_assoc, ← e2]
+    clear hm hs_def hu hc
+    grind
+  refine ⟨m % (W * d), Nat.mod_lt _ (Nat.mul_pos hW hd), fun n => ⟨?_, ?_⟩⟩
+  · rintro ⟨h1, h2⟩
+    apply crt_mod_eq (by rw [Nat.gcd_comm]; exact hc)
+    · rw [h1, hmW]
+    · exact crt_add_mod_cancel (h := h) (by rw [h2, hmd])
+  · intro hn
+    have h1 : n % W = m % W := by
+      rw [← Nat.mod_mul_right_mod n W d, hn, Nat.mod_mul_right_mod]
+    have h2 : n % d = m % d := by
+      rw [← Nat.mod_mul_left_mod n W d, hn, Nat.mod_mul_left_mod]
+    refine ⟨by rw [h1, hmW], ?_⟩
+    rw [Nat.add_mod, h2, ← Nat.add_mod, hmd]
+
+/-- The CRT count is a plain residue-class count modulo `W * d`. -/
+theorem crt_count_eq_countRes {W d v0 : Nat} (h : Nat) (hv : v0 < W) (hd : 0 < d)
+    (hc : Nat.gcd d W = 1) :
+    ∃ r, r < W * d ∧ ∀ N, (List.range N).countP (fun n => n % W == v0 && (n + h) % d == 0)
+      = countRes (W * d) r N := by
+  obtain ⟨r, hr, hiff⟩ := crt_residue h hv hd hc
+  refine ⟨r, hr, fun N => ?_⟩
+  unfold countRes
+  congr 1
+  funext n
+  rw [Bool.eq_iff_iff]
+  simp only [Bool.and_eq_true, beq_iff_eq]
+  exact hiff n
+
+/-- CRT counting, division-free: `c = #{n < N : n ≡ v₀ (W), d ∣ n + h}` satisfies
+`N < W d (c + 1)` and `W d c < N + W d`, i.e. `|W d · c − N| < W d`. -/
+theorem crt_count_bounds {W d v0 : Nat} (h : Nat) (hv : v0 < W) (hd : 0 < d)
+    (hc : Nat.gcd d W = 1) (N : Nat) :
+    N < W * d * ((List.range N).countP (fun n => n % W == v0 && (n + h) % d == 0) + 1) ∧
+    W * d * (List.range N).countP (fun n => n % W == v0 && (n + h) % d == 0) < N + W * d := by
+  obtain ⟨r, hr, heq⟩ := crt_count_eq_countRes h hv hd hc
+  rw [heq N]
+  have hWd : 0 < W * d := Nat.mul_pos (by omega) hd
+  obtain ⟨b1, b2⟩ := countRes_bounds hWd hr N
+  rw [Nat.mul_add, Nat.mul_one]
+  omega
+
+/-- CRT counting with floors: `⌊N / (W d)⌋ ≤ c ≤ ⌊N / (W d)⌋ + 1`. -/
+theorem crt_count_div {W d v0 : Nat} (h : Nat) (hv : v0 < W) (hd : 0 < d)
+    (hc : Nat.gcd d W = 1) (N : Nat) :
+    N / (W * d) ≤ (List.range N).countP (fun n => n % W == v0 && (n + h) % d == 0) ∧
+    (List.range N).countP (fun n => n % W == v0 && (n + h) % d == 0) ≤ N / (W * d) + 1 := by
+  obtain ⟨b1, b2⟩ := crt_count_bounds h hv hd hc N
+  generalize (List.range N).countP (fun n => n % W == v0 && (n + h) % d == 0) = c at b1 b2 ⊢
+  have hWd : 0 < W * d := Nat.mul_pos (by omega) hd
+  constructor
+  · have := (Nat.div_lt_iff_lt_mul hWd).mpr (by rw [Nat.mul_comm]; exact b1)
+    omega
+  · have e := Nat.mod_add_div N (W * d)
+    have hm := Nat.mod_lt N hWd
+    have : W * d * c < W * d * (N / (W * d) + 2) := by rw [Nat.mul_add]; omega
+    have := Nat.lt_of_mul_lt_mul_left this
+    omega
+
+
+/-! ## Selberg expansion restricted to a residue class `n ≡ v₀ (mod W)` -/
+
+/-- Pointwise square expansion of the sieve weight (as in `selberg_expand`). -/
+theorem crt_sieveSum_sq (D : List Nat) (y : Nat → Int) (m : Nat) :
+    sieveSum D y m * sieveSum D y m
+      = (D.map fun d => (D.map fun e =>
+          if m % Nat.lcm d e == 0 then y d * y e else 0).sum).sum := by
+  unfold sieveSum
+  rw [isum_sq]
+  apply isum_congr; intro d _; apply isum_congr; intro e _
+  have : (m % Nat.lcm d e == 0) = (decide (d ∣ m) && decide (e ∣ m)) := by
+    have := @lcm_dvd_iff d e m
+    rw [Nat.dvd_iff_mod_eq_zero] at this
+    by_cases hd : d ∣ m <;> by_cases he : e ∣ m <;> simp_all
+  rw [this]
+  by_cases hd : d ∣ m <;> by_cases he : e ∣ m <;> simp [hd, he]
+
+/-- Selberg expansion on `n ≡ v₀ (mod W)` for the shifted weight `λ(n + h)`:
+`∑_{n<N, n%W=v₀} λ(n+h)² = ∑_{d,e ∈ D} y_d y_e · #{n < N : n%W = v₀, lcm(d,e) ∣ n + h}`. -/
+theorem crt_selberg_expand (D : List Nat) (y : Nat → Int) (W v0 h N : Nat) :
+    ((List.range N).map fun n =>
+        if n % W = v0 then sieveSum D y (n + h) * sieveSum D y (n + h) else 0).sum
+      = (D.map fun d => (D.map fun e =>
+          y d * y e * (((List.range N).countP fun n =>
+            n % W == v0 && (n + h) % Nat.lcm d e == 0 : Nat) : Int)).sum).sum := by
+  have h1 : ∀ n, (if n % W = v0 then sieveSum D y (n + h) * sieveSum D y (n + h) else 0)
+      = (D.map fun d => (D.map fun e =>
+          if (n % W == v0 && (n + h) % Nat.lcm d e == 0) then y d * y e else 0).sum).sum := by
+    intro n
+    by_cases hn : n % W = v0
+    · simp only [hn, ite_true, beq_self_eq_true, Bool.true_and]
+      exact crt_sieveSum_sq D y (n + h)
+    · simp only [hn, ite_false]
+      have hb : (n % W == v0) = false := by simp [hn]
+      simp only [hb, Bool.false_and]
+      symm
+      simp only [Bool.false_eq_true, ite_false]
+      rw [isum_congr (fun d _ => isum_zero D)]
+      exact isum_zero D
+  rw [isum_congr (fun n _ => h1 n), isum_comm]
+  apply isum_congr; intro d _
+  rw [isum_comm]
+  apply isum_congr; intro e _
+  exact isum_ite_count (fun n => n % W == v0 && (n + h) % Nat.lcm d e == 0) _ _
+
+/-- Error term of the restricted `S₁`, division-free: if every `d ∈ D` is positive and coprime
+to `W`, `v₀ < W`, and `M` is a common multiple of all `lcm(d,e)`, then
+`|W M · S₁(v₀) − N · ∑_{d,e} y_d y_e (M / lcm(d,e))| ≤ W M · ∑_{d,e} |y_d y_e|`,
+i.e. `|S₁(v₀) − (N/W) ∑ y_d y_e / lcm(d,e)| ≤ ∑ |y_d y_e|` after dividing by `W M`. -/
+theorem crt_selberg_error (D : List Nat) (y : Nat → Int) (W v0 h N M : Nat) (hv : v0 < W)
+    (hD : ∀ d ∈ D, 0 < d) (hDW : ∀ d ∈ D, Nat.gcd d W = 1)
+    (hM : ∀ d ∈ D, ∀ e ∈ D, Nat.lcm d e ∣ M) :
+    (((W * M : Nat) : Int) * ((List.range N).map fun n =>
+          if n % W = v0 then sieveSum D y (n + h) * sieveSum D y (n + h) else 0).sum
+      - (N : Int) * (D.map fun d => (D.map fun e =>
+          y d * y e * ((M / Nat.lcm d e : Nat) : Int)).sum).sum).natAbs
+      ≤ W * M * (D.map fun d => (D.map fun e => (y d * y e).natAbs).sum).sum := by
+  rw [crt_selberg_expand, ← isum_mul_left, ← isum_mul_left, ← isum_sub, ← nsum_mul_left]
+  refine Nat.le_trans (natAbs_isum_le _ _) (nsum_le ?_)
+  intro d hd
+  rw [← isum_mul_left, ← isum_mul_left, ← isum_sub, ← nsum_mul_left]
+  refine Nat.le_trans (natAbs_isum_le _ _) (nsum_le ?_)
+  intro e he
+  have hL : 0 < Nat.lcm d e := Nat.lcm_pos (hD d hd) (hD e he)
+  have hLW : Nat.gcd (Nat.lcm d e) W = 1 := by
+    have hde : Nat.Coprime (d * e) W := Nat.Coprime.mul_left (hDW d hd) (hDW e he)
+    exact Nat.Coprime.coprime_dvd_left
+      (Nat.lcm_dvd (Nat.dvd_mul_right d e) (Nat.dvd_mul_left e d)) hde
+  obtain ⟨b1, b2⟩ := crt_count_bounds h hv hL hLW N
+  generalize (List.range N).countP (fun n => n % W == v0 && (n + h) % Nat.lcm d e == 0) = c
+    at b1 b2 ⊢
+  have hk := Nat.mul_div_cancel' (hM d hd e he)
+  generalize M / Nat.lcm d e = k at hk
+  generalize Nat.lcm d e = L at hL b1 b2 hk
+  subst hk
+  have : (↑(W * (L * k)) : Int) * (y d * y e * (c : Int)) - (N : Int) * (y d * y e * (k : Int))
+      = y d * y e * ((k : Int) * ((W * L * c : Nat) - (N : Int))) := by
+    simp only [Int.natCast_mul, Int.mul_sub]
+    simp only [Int.mul_assoc, Int.mul_comm, Int.mul_left_comm]
+  rw [this, Int.natAbs_mul, Nat.mul_comm (W * (L * k))]
+  apply Nat.mul_le_mul_left
+  rw [Int.natAbs_mul, Int.natAbs_natCast,
+    show W * (L * k) = k * (W * L) by rw [Nat.mul_comm k, Nat.mul_assoc]]
+  apply Nat.mul_le_mul_left
+  rw [Nat.mul_add, Nat.mul_one] at b1
   omega
 
 end TwinPrimes

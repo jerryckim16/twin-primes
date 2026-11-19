@@ -49,3 +49,14 @@ import TwinPrimes
 #print axioms TwinPrimes.lcm_dvd_iff
 #print axioms TwinPrimes.selberg_expand
 #print axioms TwinPrimes.selberg_error
+#print axioms TwinPrimes.crt_bezout
+#print axioms TwinPrimes.crt_inverse
+#print axioms TwinPrimes.crt_mod_eq
+#print axioms TwinPrimes.crt_add_mod_cancel
+#print axioms TwinPrimes.crt_residue
+#print axioms TwinPrimes.crt_count_eq_countRes
+#print axioms TwinPrimes.crt_count_bounds
+#print axioms TwinPrimes.crt_count_div
+#print axioms TwinPrimes.crt_sieveSum_sq
+#print axioms TwinPrimes.crt_selberg_expand
+#print axioms TwinPrimes.crt_selberg_error
