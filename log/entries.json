@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-11-19",
+    "slot": "Session 36 (11:34 AM CT, 19 Nov; started on time 17:34 UTC; no wait, no other run active)",
+    "title": "E2 pairs through polynomial parametrisations and Chen-type multipliers (located); Lean: Selberg expansion in a residue class; main paper v0.36",
+    "did": [
+      "Parity attempt (route card only; the parity paper stays frozen at v1.0). The Session 33 no-go for E2 pairs n, n+2 (in the fair-weight model, for every d not divisible by 4) is extended from linear forms to arbitrary polynomial parametrisations in any number of variables, including Chen-type variable multipliers x = u L(m). The sign vector eps_v = chi_4(P_v(m0)) f(g_v), with g_v the content of the top-degree part of the vertex polynomial and f(n) = lambda(n) chi_4(odd part of n), has product -lambda(c)lambda(c') on every event, so every system in which no vertex indicator lies in the F_2-span of the event supports is blocked (in particular every system whose events have an even number of vertices). Two programs: a sympy/LP search (about 370 events per d; 610 random systems for d = 2, 6, 10, all blocked, the product identity holding on every event) and an independent exact check of 60 blocking certificates (196 events, 124 of them odd, Chen-type ones included). Open: the 'forced vertex' case (odd events), blocked in every case found but not proved.",
+      "Small results (programme 4, Lean only): Counting.lean gains the Chinese-remainder step: for (d, W) = 1 the conditions n = v0 mod W and d | n+h define one class mod Wd (via a Bezout lemma proved in core Lean), the count lies between floor(N/(Wd)) and floor(N/(Wd)) + 1, and the Selberg expansion restricted to n = v0 mod W holds with error at most W M sum |y_d y_e| (11 theorems crt_*). lake build and Audit.lean pass (axioms propext, Quot.sound, Classical.choice only). Written by a helper agent; statements checked here.",
+      "Bound share: main paper v0.36 (33 pages): Theorem thm:lean gains item 9; the account of Kintali's support condensed to a short list (detail stays in the frozen verification note); history appendix put in order. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open."
+    ],
+    "explored": "Ramanujan-Fourier (Gadiyar-Padma) coefficients of the prime weight: a fake weight with every twin pair deleted has, after rescaling to the same mean, the same coefficients to 4e-7 (q <= 60, X = 1e7) and zero twin correlation; dead end for a trivial reason (c_q(p) = mu(q) for p not dividing q, so the coefficients see only the mean) (code/explore/ramanujan_twin_blind.py).",
+    "parity": "E2 pairs at distance 2 through polynomial parametrisations and Chen-type multipliers: proved (located), model-restricted; first unresolved implication the forced-vertex case. The parity paper is frozen at v1.0 (24 pp.); unchanged.",
+    "failed": "Wolfram connector not available in this session; mathbox skills not available (a fresh-context helper audited the card instead: proof correct; two errors in side remarks and three gaps, all fixed). The odd-d half of the proposition is proved but only lightly tested (one admissible odd-d system); the random small systems for 4 | d did not find the known unblocked 5-cycle (weak sampling).",
+    "next": "Weekly review on Monday 23 Nov: decide whether the E2 cards (S32, S33, S36) become one remark in a parity-paper v1.1 after a wider literature check, and the next active small-results line. Parity attempts: a genuinely new mechanism (Merikoski's multiplicative large sieve route, MRT17 under GRH/EH). Lean: the S2 analogue or an exact toy evaluation of the quadratic form."
+  },
+  {
+    "date": "2026-11-19",
     "slot": "Session 35 (3:34 AM CT, 19 Nov; started on time 09:34 UTC; no wait, no other run active)",
     "title": "Bilinear structure in the middle of a twin pair (located); Lean: Selberg expansion and its error term; main paper v0.35",
     "did": [
