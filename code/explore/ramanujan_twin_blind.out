@@ -1,0 +1,24 @@
+X = 1e+07, QMAX = 60
+ q   a_q(true)   a_q(fake)   a_q(fake)/r   mu(q)/phi(q)
+  1  +0.99952    +0.82321    +0.99952      +1.00000
+  2  -0.99952    -0.82321    -0.99952      -1.00000
+  3  -0.49976    -0.41160    -0.49976      -0.50000
+  4  -0.00000    -0.00000    -0.00000      +0.00000
+  5  -0.24988    -0.20580    -0.24988      -0.25000
+  6  +0.49976    +0.41160    +0.49976      +0.50000
+  7  -0.16659    -0.13720    -0.16659      -0.16667
+  8  +0.00000    +0.00000    +0.00000      +0.00000
+  9  -0.00000    +0.00000    +0.00000      +0.00000
+ 10  +0.24988    +0.20580    +0.24988      +0.25000
+ 11  -0.09995    -0.08232    -0.09995      -0.10000
+ 12  +0.00000    +0.00000    +0.00000      +0.00000
+ 30  -0.12494    -0.10290    -0.12494      -0.12500
+ 60  -0.00000    -0.00000    -0.00000      +0.00000
+max_q |a_q(fake)/r - a_q(true)| = 4.15e-07
+Wiener-Khintchine sum over q <= 60: true 1.3129, rescaled fake 1.3129, from mu/phi 1.3142  (2 C2 = 1.3203)
+actual (1/X) sum f(n) f(n+2): true 1.3260, rescaled fake 0.0000
+mass removed from f1 by the fake: 0.1764 (compare 2 * 1.32 / log X = 0.1638; both members of each pair are removed)
+max_q |a_q(fake)/r - a_q(true)| = 3.49e-08
+Wiener-Khintchine sum over q <= 30: true 1.3131, rescaled fake 1.3131, from mu/phi 1.3134  (2 C2 = 1.3203)
+actual (1/X) sum f(n) f(n+2): true 1.3201, rescaled fake 0.0000
+mass removed from f1 by the fake: 0.1522 (compare 2 * 1.32 / log X = 0.1433; both members of each pair are removed)

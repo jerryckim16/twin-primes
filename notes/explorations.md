@@ -3,6 +3,19 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-19, Session 36 -- Ramanujan-Fourier expansions of the prime weight and the twin correlation (harmonic analysis / Wiener-Khintchine heuristic)
+- Idea: Gadiyar-Padma-type heuristics expand Lambda (or Lambda(n) phi(n)/n) in Ramanujan sums c_q(n) and read the twin
+  constant off a Wiener-Khintchine identity, sum_q a_q^2 c_q(2) = 2 C2. Is there any parity-sensitive information in the
+  coefficients a_q = mean of f(n) c_q(n) / phi(q)? Test against a fake prime weight that deletes both members of every twin pair.
+- Tried: code/explore/ramanujan_twin_blind.py [X QMAX] (/usr/bin/python3 -I; 15 s at 1e7, about 2 min at 1e8), output .out.
+  After rescaling the fake to the same mean (it loses 17.6% of the mass at 1e7, 15.2% at 1e8; compare 2.64/log X),
+  max_q |a_q(fake) - a_q(true)| = 4e-7 (q <= 60, X = 1e7) and 3.5e-8 (q <= 30, X = 1e8); the truncated Wiener-Khintchine
+  sums agree (1.3129 / 1.3131) while the actual twin correlations are 1.326 / 1.320 (true) and 0 (fake).
+- Outcome: dead end, and for a trivial reason: for a prime p not dividing q, c_q(p) = mu(q), so the Ramanujan coefficients
+  of ANY weight supported on primes (above QMAX) are mu(q)/phi(q) times its mean. They carry no information beyond the mean,
+  let alone parity information; the Wiener-Khintchine step is where the twin constant is assumed, not derived. Folklore.
+  Heuristic / exploratory only.
+
 ## 2026-11-19, Session 35 -- The Liouville function at the centres of twin primes (numerical experiment / Chowla-type correlation)
 - Idea: for twin primes 6k-1, 6k+1 the middle is 6k and lambda(6k) = lambda(k). Twin centres k are divisible by p >= 5
   with density 1/(p-2) (not 1/p), so a naive local model shifts Omega(k); is the mean of lambda(k) over twin centres

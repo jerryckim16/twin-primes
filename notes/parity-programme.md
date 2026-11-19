@@ -181,3 +181,14 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - News search (3:34 AM run): nothing new on the 2026 claims or on parity.
 - Next attempt candidates: m-dependent multipliers in the E2 model; otherwise a genuinely new mechanism (not index-set
   structure, not "where averaging stops near log X").
+
+## Session 36 (19 Nov 2026, 11:34 AM CT slot)
+- Route card notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md (proved (located), model-restricted): the 2-adic
+  no-go for E2 pairs at distance d (4 not dividing d) extends to polynomial parametrisations in several variables and to
+  Chen-type multipliers, except for systems with a "forced vertex" (odd events). Scripts code/parity/e2_poly_gauge.py and
+  code/parity/e2_poly_gauge_check.py. No new sources read (model question).
+- For the weekly review of 23 Nov: the three E2 cards (S32, S33, S36) now form one coherent model-restricted statement;
+  if anything enters a parity-paper v1.1 it should be one remark stating the S36 form (which contains S33's d = 2 case),
+  after a wider literature check.
+- Next attempt candidates: the forced-vertex case (cheap, but more E2 -- only if the review wants it); otherwise a
+  genuinely new mechanism.
