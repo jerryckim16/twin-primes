@@ -1,7 +1,7 @@
 {
-  "version": "0.35",
+  "version": "0.36",
   "updated": "2026-11-19",
-  "session_count": 35,
+  "session_count": 36,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
@@ -440,6 +440,14 @@
       "label": "Proved here",
       "text": "Pintz's dichotomy with Maynard weights: for an admissible k-tuple H, r not in H, sigma = +-1, if theta M_k > 1 (theta a level for primes and for lambda; theta = 1/2 by BV) then infinitely many n have two primes in n+H or a prime n+h_i with lambda(n+r) = sigma. Hence (k = 5, M_5 >= 1417255/708216) some even 0 < |d| <= 12 (and some even 0 < d <= 14) has lambda(p+d) = -1 for infinitely many primes p (Pintz 2010: 16 and 18). Possibly folklore (three web searches found no improvement of Pintz). Ratios exact by two programs. The target is the complete graph on H u {r} (not blocked by the parity class); a single prescribed d is a star (blocked).",
       "where": "papers/parity-barrier v0.11 Thm. thm:pintz-maynard, Cor. cor:pintz12, Rem. rem:pintz-parity; code/parity/pintz_maynard.py, pintz_maynard_check2.py"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "Counting.lean (Session 36): CRT step. For (d, W) = 1 the conditions n = v0 mod W and d | n + h define one class mod Wd (crt_residue, via a Bezout lemma in core Lean); the count lies between floor(N/(Wd)) and floor(N/(Wd)) + 1 (crt_count_div); the Selberg expansion restricted to n = v0 mod W with error bound W M sum |y_d y_e| (crt_selberg_expand, crt_selberg_error). Axioms propext, Quot.sound, Classical.choice."
+    },
+    {
+      "label": "Proved here",
+      "text": "(route card, not in a paper; model-restricted, possibly folklore) E2 pairs at distance d, 4 not dividing d, through polynomial parametrisations in any number of variables (including Chen-type multipliers): in the fair-weight model every system in which no vertex indicator lies in the F_2-span of the event supports is blocked (notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md; two programs)."
     }
   ],
   "ideas": [
@@ -898,6 +906,18 @@
       "origin": "own",
       "status": "partial",
       "note": "lean/TwinPrimes/Reduction.lean: sieve inequality => DHL[k,2] (pigeonhole), ratio bound => sieve inequality, ratio > 4 => admissible level theta < 1/2. The analytic asymptotics are not formalised (hypothesis). Session 33."
+    },
+    {
+      "idea": "E2 pairs at distance d through polynomial parametrisations (several variables, Chen-type multipliers x = u L(m))",
+      "origin": "own",
+      "status": "partial",
+      "note": "Session 36 route card: for 4 not dividing d the sign vector eps_v = chi_4(P_v(m0)) f(g_v) has the wrong product on every event, so every system without a forced vertex (all-even systems always) is blocked in the fair-weight model; forced-vertex case open (blocked in every case found). Model-restricted; not about twin primes."
+    },
+    {
+      "idea": "Ramanujan-Fourier (Gadiyar-Padma) coefficients of the prime weight as parity information",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 36: c_q(p) = mu(q) for p not dividing q, so the coefficients of any weight supported on primes are mu(q)/phi(q) times its mean; a twin-free fake has the same coefficients (4e-7 at 1e7) and zero twin correlation. Folklore."
     }
   ],
   "phase": "B",

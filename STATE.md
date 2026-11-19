@@ -3,34 +3,47 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 35, 3:34 AM CT slot of 19 Nov, run 09:34 UTC): PHASE B
+## POSITION (after Session 36, 11:34 AM CT slot of 19 Nov, run 17:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.35 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.36 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
 
 ## Next steps (in order)
-1. Weekly review of 23 Nov decides: (a) whether the two E2 route cards (S32 consistency test; S33 2-adic no-go for 4 nmid d)
-   become ONE remark in a parity-paper v1.1 (they pass "proves something not implied by v1.0"; audit done, literature check
-   limited: GGPY + two web searches; do a wider literature-check first); the S34 Green-Sawhney card is folklore in
-   substance and should at most be one sentence; (b) the next active small-results line.
+1. Weekly review of 23 Nov decides: (a) whether the E2 route cards (S32 consistency test; S33 2-adic no-go for 4 nmid d
+   in the linear model; S36 extension to polynomial parametrisations and Chen-type multipliers, which contains the S33
+   d = 2 case) become ONE remark in a parity-paper v1.1 (do a wider literature-check first: GGPY citations, MathSciNet if
+   reachable); the S34 Green-Sawhney card is folklore in substance and should at most be one sentence; (b) the next
+   active small-results line (candidates: the Lean programme (4) as a short note; the exact-certification toolkit (5)).
 2. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
-   bilinear structure in the middle of a twin pair, S35). Open candidates: m-dependent multipliers (Chen-type x = p L(m), p varying) in
-   the E2 model; Merikoski's multiplicative-large-sieve route to GS-type Type I (remark after GS Prop. 4.2, not opened);
-   the almost-all MRT17 form under GRH/EH; otherwise a genuinely new mechanism (not another "where does averaging stop
-   near log X").
-3. Small results: programme (4) in Lean only (lean/TwinPrimes/Reduction.lean: asymptotics => sieve inequality (S34) =>
-   DHL[k,2] => BoundedGaps; ratio > 4 => level theta < 1/2; Counting.lean (S35): counting multiples, Selberg expansion
-   and its division-free error term). Possible next Lean step: the same expansion restricted to n = v0 mod W (CRT step:
-   #{n < N : n = v0 mod W, [d,e] | n + h} for (de, W) = 1), or the S2 analogue with one prime position.
-   Alternatives: (b) exact-certification toolkit note (programme 5), (c) H_m with the hybrid-support Thm 6.7 analogue.
-4. Main paper thin index: 186 loss account condensed (v0.34), Song-Yue account shortened (v0.35); further candidates: the 240 and Kintali subsections of
-   sec:stad (detail is in the frozen verification note).
+   E2 polynomial gauge, S36). The E2 line is now mapped except the "forced vertex" case (odd events whose vertex indicator
+   lies in the F_2-span of the event supports); do it only if the review asks. Prefer a genuinely new mechanism:
+   Merikoski's multiplicative-large-sieve route to GS-type Type I (remark after GS Prop. 4.2, not opened); the
+   almost-all MRT17 form under GRH/EH; not another "where does averaging stop near log X", not index-set structure.
+3. Small results: programme (4) in Lean only. Done: Reduction.lean (asymptotics => sieve inequality => DHL[k,2] =>
+   BoundedGaps; ratio > 4 => level theta < 1/2); Counting.lean (counting multiples, Selberg expansion and error term,
+   S35; CRT step and the expansion in the class n = v0 mod W, crt_* theorems, S36). Possible next Lean step: the S2
+   analogue with one prime position (needs a prime-counting hypothesis as an explicit assumption), or the evaluation of
+   the diagonalised quadratic form for a toy y_d (e.g. Selberg's y_d for k = 1, small D) as an exact identity.
+4. Main paper thin index: Kintali account condensed (v0.36); further candidate: the 240 subsections of sec:stad (detail
+   is in the frozen verification note).
 5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 6. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 36 (11:34 AM CT slot of 19 Nov, started on time 17:34 UTC; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md (proved (located), model-restricted).
+  Scripts: code/parity/e2_poly_gauge.py [cert.json] (/usr/bin/python3 -I; ~10 min, sympy + scipy; .out; writes
+  code/parity/e2_poly_gauge_cert.json), code/parity/e2_poly_gauge_check.py [cert.json] (independent exact check, 0.5 s; .out).
+  Fresh-context adversarial audit (recorded in the card).
+- Exploration: code/explore/ramanujan_twin_blind.py [X QMAX] (15 s at 1e7; .out): dead end (Ramanujan coefficients of
+  prime-supported weights only see the mean).
+- Lean: TwinPrimes/Counting.lean crt_* (11 theorems, in Audit.lean; written by a helper agent, statements checked here);
+  lake build and Audit.lean pass.
+- Main paper v0.36 (thm:lean item 9; Kintali account condensed). Wolfram and mathbox NOT available. No news search
+  (not the 3:34 AM run).
 
 ## Session 35 (3:34 AM CT slot of 19 Nov, started on time 09:34 UTC; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-19-smooth-middle-bilinear.md (located). Script
