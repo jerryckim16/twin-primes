@@ -1,0 +1,14 @@
+singular series (p <= 2000): 2.91729
+X = 1e+08: T = 6.45442e+06; BH prediction 6.59991e+06; ratio 0.9780
+  Q = 3: carried R_Q = 8.10134e+06; T/R_Q = 0.7967
+  Q = 10: carried R_Q = 6.74402e+06; T/R_Q = 0.9571
+  Q = 30: carried R_Q = 6.48853e+06; T/R_Q = 0.9947
+  Q = 100: carried R_Q = 7.17437e+06; T/R_Q = 0.8997
+  Q = 1000: carried R_Q = 7.62014e+06; T/R_Q = 0.8470
+singular series (p <= 2000): 2.91729
+X = 1e+09: T = 5.65646e+07; BH prediction 5.82500e+07; ratio 0.9711
+  Q = 3: carried R_Q = 7.03693e+07; T/R_Q = 0.8038
+  Q = 10: carried R_Q = 5.87126e+07; T/R_Q = 0.9634
+  Q = 30: carried R_Q = 5.70886e+07; T/R_Q = 0.9908
+  Q = 100: carried R_Q = 5.64531e+07; T/R_Q = 1.0020
+  Q = 1000: carried R_Q = 7.43432e+07; T/R_Q = 0.7609

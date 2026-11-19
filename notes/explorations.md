@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-19, Session 34 -- Carrying a twin weight through the Green-Sawhney sum: does the "carried" form hold numerically? (numerical experiment / Bateman-Horn)
+- Idea: GS (arXiv:2410.04189v3) replace Lam'(y) by a Cramer model Lam_Cramer,Q(y) when the other coordinate weight is
+  arbitrary. Test numerically whether T(X) = sum Lam(x)Lam(x+2)Lam(y) 1[x^2+4y^2 prime] (x, y > 0) matches (a) the
+  Bateman-Horn prediction for the system {x, x+2, y, x^2+4y^2} and (b) the "carried" sum with Lam(y) -> Lam_Cramer,Q(y).
+- Tried: code/explore/gs_twin_carry.py [X] [Q...] (/usr/bin/python3 -I; ~1 min at 1e9), output gs_twin_carry.out.
+  Singular series (p <= 2000) 2.9173; T/BH = 0.978 (X = 1e8), 0.971 (1e9). T/R_Q at X = 1e9: 0.804 (Q = 3), 0.963 (10),
+  0.991 (30), 1.002 (100), 0.761 (1000).
+- Outcome: dead end. Both forms agree with Hardy-Littlewood-type heuristics when Q is small against the y-range (GS take
+  Q = exp((log X^{1/2})^{1/10}), tiny); at Q = 1000 the model is too coarse for y <= 15811 (expected). No unexpected
+  structure; and by the route card of this run (item 4) GS's error term cannot carry a weight of twin density anyway.
+
 ## 2026-11-18, Session 33 -- Quadratic parametrisations of E2 pairs at distance 2 (products of prime-valued forms)
 - Idea: the 2-adic no-go of this session's parity card covers only x = c L(m). A product x = L1(m) L2(m) of two prime
   values is E2 too, so identities L1 L2 + 2 = L3 L4 give hyperedge targets (four primes at once) that might break the
