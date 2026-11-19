@@ -13,11 +13,13 @@
   "results": [
     {
       "label": "Lean-checked",
-      "text": "Counting.lean (Session 35): #{n < N : d | n} = ceil(N/d) (two-sided bounds, residue classes too); the Selberg expansion sum_{n<N} (sum_{d|n} y_d)^2 = sum_{d,e} y_d y_e #{n < N : [d,e] | n}; and the division-free error bound |S1 - N sum y_d y_e/[d,e]| <= sum |y_d y_e|. Axioms propext, Quot.sound, Classical.choice only. Main paper Thm thm:lean item 8."
+      "text": "Counting.lean (Session 35): #{n < N : d | n} = ceil(N/d) (two-sided bounds, residue classes too); the Selberg expansion sum_{n<N} (sum_{d|n} y_d)^2 = sum_{d,e} y_d y_e #{n < N : [d,e] | n}; and the division-free error bound |S1 - N sum y_d y_e/[d,e]| <= sum |y_d y_e|. Axioms propext, Quot.sound, Classical.choice only. Main paper Thm thm:lean item 8.",
+      "where": "lean/TwinPrimes/Counting.lean; paper Thm thm:lean (8)"
     },
     {
       "label": "Proved here",
-      "text": "Route card 2026-11-19 smooth-middle (not in a paper; elementary, folklore in substance): Type II structure in the middle m = p+1 of a twin pair cannot separate twins from the fake weight 1 - lambda(m-1)lambda(m+1) unless bilinear two-point Chowla fails (fixed-a log-averaged slices known small by Tao16 Thm 1.2); cut-norm numerics at X = 1e8 (Computed, heuristic evidence) match a random sign matrix."
+      "text": "Route card 2026-11-19 smooth-middle (not in a paper; elementary, folklore in substance): Type II structure in the middle m = p+1 of a twin pair cannot separate twins from the fake weight 1 - lambda(m-1)lambda(m+1) unless bilinear two-point Chowla fails (fixed-a log-averaged slices known small by Tao16 Thm 1.2); cut-norm numerics at X = 1e8 (Computed, heuristic evidence) match a random sign matrix.",
+      "where": "notes/parity-attempts/2026-11-19-smooth-middle-bilinear.md; code/parity/middle_bilinear.py"
     },
     {
       "label": "Proved here",

@@ -1,5 +1,228 @@
 # Research log
 
+## 2026-11-19 - Session 35 (3:34 AM CT, 19 Nov; started on time 09:34 UTC; no wait, no other run active): Bilinear structure in the middle of a twin pair (located); Lean: Selberg expansion and its error term; main paper v0.35
+
+- Parity attempt (route card only; the parity paper stays frozen at v1.0). For twin primes p, p+2 the middle m = p+1 = 6k can be y-smooth and then factors as m = ab in any ranges, a Type II structure in the index variable. The parity-fake weight 1 - lambda(m-1)lambda(m+1), which vanishes on every twin middle, has the same middle-bilinear data up to sums of alpha_a beta_b lambda(ab-1)lambda(ab+1), so such data cannot break parity unless bilinear two-point Chowla fails. Tao's 2016 theorem gives the fixed-a, log-averaged slices, and at X = 1e8 (a, b in (3000, 6000]) the cut-norm lower bound of the middle twist is that of a random sign matrix (0.026 AB), against exactly AB for the sifted twist lambda(ab). Kontorovich's pseudo-twin theorem (arXiv:math/0507569v3, read pp. 1-6) breaks parity with bilinear structure in the sifted variable, consistent with this. A fresh-context adversarial audit was applied.
+- Small results (programme 4, Lean only): new lean/TwinPrimes/Counting.lean. #{n < N : d | n} = ceil(N/d) (and two-sided bounds in residue classes); the Selberg expansion sum_{n<N}(sum_{d|n} y_d)^2 = sum_{d,e} y_d y_e #{n < N : [d,e] | n}; and the division-free error bound |S1 - N sum y_d y_e/[d,e]| <= sum |y_d y_e|. lake build and Audit.lean pass (axioms propext, Quot.sound, Classical.choice only). Written by a helper agent; statements checked here.
+- Bound share: main paper v0.35 (33 pages): Theorem thm:lean gains item 8; the account of the exact recomputation of the Song-Yue witness is shortened (detail stays in the frozen verification note). Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+- News search (3:34 AM run, three searches): nothing new on the 2026 claims (240, 236, 212, 186, 182) or on the parity problem.
+
+Parity attempt: Bilinear structure in the middle (index) variable of a twin pair: located (no-go modulo bilinear two-point Chowla, which would confirm the obstruction; folklore in substance). The parity paper is frozen at v1.0 (24 pp.); unchanged.
+
+Explored: Liouville function at twin-prime centres k (6k +- 1 prime): the mean of lambda(k) is -0.014 at K = 1e6 (z = -2.8) but -0.0004 and +0.0002 at 1e7 and 1e8 (z = -0.22, +0.21), following a sieve-only proxy; dead end (code/explore/liouville_twin_centres.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- c
+- u
+- t
+- -
+- n
+- o
+- r
+- m
+-  
+- n
+- u
+- m
+- e
+- r
+- i
+- c
+- s
+-  
+- a
+- r
+- e
+-  
+- l
+- o
+- w
+- e
+- r
+-  
+- b
+- o
+- u
+- n
+- d
+- s
+-  
+- f
+- r
+- o
+- m
+-  
+- a
+- l
+- t
+- e
+- r
+- n
+- a
+- t
+- i
+- n
+- g
+-  
+- m
+- a
+- x
+- i
+- m
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+- ,
+-  
+- n
+- o
+- t
+-  
+- c
+- e
+- r
+- t
+- i
+- f
+- i
+- c
+- a
+- t
+- e
+- s
+- .
+
+Next: Weekly review on Monday 23 Nov (E2 cards as a possible v1.1 remark; next small-results line). Lean: the Selberg expansion restricted to n = v0 mod W. Parity: a genuinely new mechanism.
+
 ## 2026-11-19 - Session 34 (7:34 PM CT, 18 Nov; started on time 01:35 UTC 19 Nov; no wait, no other run active): Green-Sawhney's Gowers-norm Type II sums and twin primes (located); Lean limit step from asymptotics to the sieve inequality; main paper v0.34
 
 - Parity attempt (route card only; the parity paper stays frozen at v1.0). Green and Sawhney (arXiv:2410.04189v3) break parity for primes x^2 + n y^2 with x, y prime: Type II structure from the multiplicativity of one norm form, with the Type I/II estimates proved from Gowers-norm smallness of one coordinate weight. We read Section 1, Prop. 3.4 and Section 4 and checked whether a fixed-shift twin condition can be placed in this framework. Every placement fails: inside a coordinate the needed U^k-smallness already contains the twin asymptotic with a power-of-log error; in the outer detector no bilinear structure is known (the FI98 (B) input); on a conic or a line the two-dimensional averaging is lost; carried as the non-small factor, the weight violates the majorant of Prop. 3.4, GS's error term is (log log X)^2 too weak, and the main term still counts twins.
