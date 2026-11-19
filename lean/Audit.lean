@@ -35,3 +35,8 @@ import TwinPrimes
 #print axioms TwinPrimes.sieveInequality_of_ratio
 #print axioms TwinPrimes.theta_of_ratio_gt_four
 #print axioms TwinPrimes.boundedGaps_246_of_sieveInequality_50
+#print axioms TwinPrimes.lt_of_two_sided
+#print axioms TwinPrimes.good_m
+#print axioms TwinPrimes.eventually_lt_of_asymptotics
+#print axioms TwinPrimes.sieveInequality_of_asymptotics
+#print axioms TwinPrimes.boundedGaps_246_of_asymptotics_50
