@@ -17,8 +17,9 @@ exact: alpha = lambda(a), beta = lambda(b) gives A*B).  A parity-detecting Type 
 ||M|| comparable to A*B; random-matrix size is about sqrt(A*B*(A+B)).
 
 Part 2 (context, not a parity test): T_y(X) = #{m <= X : m-1, m+1 prime, P+(m) <= y} against all
-twins, and the y-smooth proportion among all multiples of 6 (twin middles are smoother: for p >= 5,
-p | k has density 1/(p-2) among twin centres, 1/p among all k).
+twins, and the y-smooth proportion among all multiples of 6 (twin middles are smoother: Heuristic (Hardy-Littlewood),
+for p >= 5 p | k has density 1/(p-2) among twin centres, 1/p among all k).
+Part 1 uses ALL products ab with a, b in (A, 2A]; it is not restricted to smooth middles or to 6 | ab.
 
 usage: /usr/bin/python3 -I code/parity/middle_bilinear.py [X] [A] [seed] > code/parity/middle_bilinear.out
        defaults X = 10**7, A = 1000 (B = A, products a*b with a, b in (A, 2A], so ab <= 4A^2 <= X).
@@ -101,7 +102,8 @@ def main():
     for r in (0, 1, 2):
         mask = (P % 3 == r)
         print(f"  restricted to ab = {r} mod 3: sum of Mmid = {Mmid[mask].sum():+.0f} over {int(mask.sum())} cells,"
-              f" cut >= {cut_lower(np.where(mask, Mmid, 0.0), 10, rng):.0f}")
+              f" cut >= {cut_lower(np.where(mask, Mmid, 0.0), 10, rng):.0f}"
+              f"   (random +-1, same mask: cut >= {cut_lower(np.where(mask, Mrand, 0.0), 10, rng):.0f}; 10 starts)")
 
     # ---- Part 2: twins with smooth middle (context)
     print("\nPart 2: twin middles m <= X (m-1, m+1 prime) with P+(m) <= y")

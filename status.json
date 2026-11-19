@@ -18,7 +18,7 @@
     },
     {
       "label": "Proved here",
-      "text": "Route card 2026-11-19 smooth-middle (not in a paper; elementary, folklore in substance): Type II structure in the middle m = p+1 of a twin pair cannot separate twins from the fake weight 1 - lambda(m-1)lambda(m+1) unless bilinear two-point Chowla fails (fixed-a log-averaged slices known small by Tao16 Thm 1.2); cut-norm numerics at X = 1e8 (Computed, heuristic evidence) match a random sign matrix.",
+      "text": "Route card 2026-11-19 smooth-middle (not in a paper; elementary, folklore in substance): Type II structure in the middle m = p+1 of a twin pair cannot separate twins from the fake weight 1 - lambda(m-1)lambda(m+1) unless (bilinear) two-point Chowla fails at precision o(|M|/log^2 X) (Tao16 Thm 1.2 covers one fixed-a log-weighted coefficient choice only); cut-norm numerics at X = 1e8 (Computed, heuristic evidence) match a random sign matrix.",
       "where": "notes/parity-attempts/2026-11-19-smooth-middle-bilinear.md; code/parity/middle_bilinear.py"
     },
     {
@@ -447,7 +447,7 @@
       "idea": "Own idea: does Type II structure in the MIDDLE of a twin pair (smooth m = p+1 = ab) separate twins from the parity-fake weight?",
       "origin": "own",
       "status": "ruled out",
-      "note": "Session 35 route card: the fake weight 1 - lambda(m-1)lambda(m+1) matches all middle-bilinear data up to bilinear two-point Chowla errors (fixed-a log-averaged slices known small by Tao16; X = 1e8 numerics look like a random sign matrix); parity-breaking Type II must be in a sifted variable with multiplicative structure."
+      "note": "Session 35 route card: the fake weight 1 - lambda(m-1)lambda(m+1) matches all middle-bilinear data up to bilinear two-point Chowla errors (at precision o(|M|/log^2 X); Tao16 handles one fixed-a log-weighted coefficient choice only; X = 1e8 numerics look like a random sign matrix); parity-breaking Type II must be in a sifted variable with multiplicative structure."
     },
     {
       "idea": "Exploration: mean of the Liouville function at twin-prime centres k (6k +- 1 prime).",
