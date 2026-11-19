@@ -1,7 +1,7 @@
 {
-  "version": "0.33",
-  "updated": "2026-11-18",
-  "session_count": 33,
+  "version": "0.34",
+  "updated": "2026-11-19",
+  "session_count": 34,
   "bounds": {
     "target": 2,
     "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
     "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
   },
   "results": [
+    {
+      "label": "Proved here",
+      "text": "Route card 2026-11-19 (not in a paper; elementary, folklore in substance): Green-Sawhney's mechanism (arXiv:2410.04189v3: Type II for one norm form, Type I/II proved from Gowers-norm smallness of one coordinate weight) cannot carry a fixed-shift twin condition: inside a coordinate the needed U^k-smallness already contains the twin asymptotic with a power-of-log error; in the outer detector no bilinear structure is known (FI98 (B)); on a conic or line there is no 2D averaging; as the non-small factor it violates Prop. 3.4's majorant and the error term is (log log X)^2 too weak, and the main term still counts twins. Classification: located. Audited (3 errors in the draft, fixed).",
+      "where": "notes/parity-attempts/2026-11-19-green-sawhney-gowers-type-ii.md"
+    },
+    {
+      "label": "Lean-checked",
+      "text": "Reduction.lean (Session 34): eventually_lt_of_asymptotics / sieveInequality_of_asymptotics / boundedGaps_246_of_asymptotics_50 -- if a/a' < c/c' and for every m >= 1 eventually S1 <= (1+1/m)(a/a')B and S2 >= (m/(m+1))(c/c')B with B > 0, then eventually S1 < S2 (explicit m = 2ac'+2); applied to the sieve sums this gives the sieve inequality and DHL[k,2]. Axioms propext, Quot.sound, Classical.choice only. The analytic asymptotics are a hypothesis.",
+      "where": "lean/TwinPrimes/Reduction.lean; main paper Thm thm:lean item 7"
+    },
     {
       "label": "Proved here",
       "text": "Parity paper v0.15, Remark rem:lt22 (elementary, folklore in substance): if mu' = 1 on U = {p+h: p <= X-H prime, 1 <= h <= H} and mu' = mu elsewhere, then mu' 1_S satisfies the Lichtman-Teravainen hypothesis H_2(X,H,eta') with eta' <= 2 eta + (216+o(1)) H/log X (eta that of mu 1_S, << H^{-delta} by their Prop. 2.1), while sum_{h<=H} sum_{n<=X} mu'(n+h) Lambda(n) >= (1+o(1)) H X. So their input on mu cannot give cancellation along primes once H^{1+delta} <= c log X; their Lambda-side moment bounds fail for H = o(log X). Both stop at the mean prime gap. Audited by a fresh-context helper (8 items fixed). Script code/parity/hybrid_shifted_primes.py (Heuristic).",
@@ -423,6 +433,18 @@
     }
   ],
   "ideas": [
+    {
+      "idea": "Own idea: does Green-Sawhney's Gowers-norm route to Type II sums transfer to a fixed-shift twin condition?",
+      "origin": "own",
+      "status": "ruled out",
+      "note": "Session 34 route card: four placements, each circular or not of GS form; first unresolved implication is a bilinear structure for lambda(n)lambda(n+2) or Gowers-uniformity of Lam(x)Lam(x+2) minus a model (which contains the twin asymptotic)."
+    },
+    {
+      "idea": "Exploration: carry a twin weight through the Green-Sawhney sum (Lam(y) -> Cramer model) and compare with Bateman-Horn for {x, x+2, y, x^2+4y^2}.",
+      "origin": "exploration",
+      "status": "ruled out",
+      "note": "Session 34: T/BH = 0.971 at X = 1e9; carried form matches at small Q (T/R_Q = 0.991, 1.002 at Q = 30, 100), coarse at Q = 1000; no unexpected structure, and GS's error term cannot carry a twin-density weight anyway. code/explore/gs_twin_carry.py."
+    },
     {
       "idea": "Own idea: conditional ranges for averaged Hardy-Littlewood via the window identity and Goldston-Montgomery's variance equivalence.",
       "origin": "own",

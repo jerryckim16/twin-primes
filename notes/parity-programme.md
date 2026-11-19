@@ -162,3 +162,12 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Parity paper unchanged (v1.0 frozen). Candidate for a v1.1 remark (the two E2 cards together); left to the weekly review
   of 23 Nov.
 
+
+## Session 34 (19 Nov 2026, 7:34 PM CT slot of 18 Nov)
+- Source read: Green-Sawhney, Primes of the form p^2 + nq^2, arXiv:2410.04189v3 (SHA-256 741b8ebc72b401e912f99a14b74572de4047921194f6c176715a5d6f14635e4f;
+  Section 1, Prop. 3.4, Section 4, Appendix B remark; PDF not kept).
+- Attempt: route card 2026-11-19-green-sawhney-gowers-type-ii.md: located. GS's hybrid (multiplicative Type II for one norm
+  form + Type I/II from Gowers-norm smallness of one coordinate weight) cannot carry a fixed-shift twin condition (four
+  placements: circular / no bilinear structure / curve / carried but too weak and not evaluated). Audited (3 errors fixed).
+- Next attempt candidates: m-dependent multipliers in the E2 model; Merikoski's multiplicative-large-sieve variant (remark
+  after GS Prop. 4.2, not opened); otherwise a genuinely new mechanism.

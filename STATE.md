@@ -3,31 +3,43 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 33, 11:34 AM CT slot of 18 Nov, run 17:35 UTC 18 Nov): PHASE B
+## POSITION (after Session 34, 7:34 PM CT slot of 18 Nov, run 01:35 UTC 19 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.33.
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.34 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
 
 ## Next steps (in order)
 1. Weekly review of 23 Nov decides: (a) whether the two E2 route cards (S32 consistency test; S33 2-adic no-go for 4 nmid d)
    become ONE remark in a parity-paper v1.1 (they pass "proves something not implied by v1.0"; audit done, literature check
-   limited: GGPY + two web searches; do a wider literature-check first); (b) the next active small-results line.
+   limited: GGPY + two web searches; do a wider literature-check first); the S34 Green-Sawhney card is folklore in
+   substance and should at most be one sentence; (b) the next active small-results line.
 2. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
-   E2 odd cycles, S33). Open candidates: m-dependent multipliers (Chen-type x = p L(m), p varying) in the E2 model, which
-   the S33 no-go does not cover; forms in several variables; the almost-all MRT17 form under GRH/EH; otherwise a genuinely
-   new mechanism (not another "where does averaging stop near log X").
-3. Small results: programme (4) started in Lean only (lean/TwinPrimes/Reduction.lean: sieve inequality => DHL[k,2];
-   ratio bound => sieve inequality; ratio > 4 => level theta < 1/2). Possible next Lean step: the finite-sum form of
-   "S2 >= (theta/2) J/I S1 eventually" as an abstract limit argument over Int/Nat (no reals in core Lean). Alternatives:
-   (b) exact-certification toolkit note (programme 5), (c) H_m with the hybrid-support Thm 6.7 analogue.
-4. Main paper thin index: rem:sha182 and rem:186-status condensed in v0.33; further candidates for condensation:
-   the 186 loss propositions (prop:oai186-budget and the paragraph before it).
+   Green-Sawhney Gowers-norm Type II, S34). Open candidates: m-dependent multipliers (Chen-type x = p L(m), p varying) in
+   the E2 model; Merikoski's multiplicative-large-sieve route to GS-type Type I (remark after GS Prop. 4.2, not opened);
+   the almost-all MRT17 form under GRH/EH; otherwise a genuinely new mechanism (not another "where does averaging stop
+   near log X").
+3. Small results: programme (4) in Lean only (lean/TwinPrimes/Reduction.lean: asymptotics => sieve inequality (S34) =>
+   DHL[k,2] => BoundedGaps; ratio > 4 => level theta < 1/2). Possible next Lean step: the finite combinatorial identities
+   behind S1, S2 (expanding (sum_{d|n+h} y_d)^2 over a finite range, as an exact finite-sum identity over Int).
+   Alternatives: (b) exact-certification toolkit note (programme 5), (c) H_m with the hybrid-support Thm 6.7 analogue.
+4. Main paper thin index: the 186 loss account condensed in v0.34; further candidates: the 236/240 subsections of
+   sec:stad (detail is in the frozen verification note).
 5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 6. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 34 (7:34 PM CT slot of 18 Nov, started on time 01:35 UTC 19 Nov; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-19-green-sawhney-gowers-type-ii.md (located). Script
+  code/parity/gs_norm_form_check.py [X] [PKAPPA] (/usr/bin/python3 -I; < 1 min at 1e9, ~0.7 GB; .out). Fresh-context audit:
+  3 errors in the draft, fixed (recorded in the card).
+- Exploration: code/explore/gs_twin_carry.py [X] [Q...] (~1 min at 1e9; .out): dead end.
+- Lean: Reduction.lean + lt_of_two_sided, good_m, eventually_lt_of_asymptotics, sieveInequality_of_asymptotics,
+  boundedGaps_246_of_asymptotics_50 (in Audit.lean; `grind` used for two polynomial identities). lake build and Audit pass.
+- Main paper v0.34. Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
+- Setup note: /usr/bin/python3 is 3.13 here and needed `/usr/bin/python3 -m pip install --break-system-packages scipy ...`.
 
 ## Session 33 (11:34 AM CT slot of 18 Nov, started on time 17:35 UTC; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-18-e2-odd-cycles.md (proved (located), model-restricted).
