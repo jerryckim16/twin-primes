@@ -1,0 +1,21 @@
+kappa_4 partial product up to 1e+06: 2.213453
+kappa_4 partial product up to 1e+07: 2.213419
+kappa_4 partial product up to 1e+08: 2.213443
+kappa_4 ~ 2.213443;  FI constant c = pi*kappa_4/8 = 0.869217
+X = 1e+07: sum = 2.182309e+06
+  ratio to pi*kappa_4/2 * X/log X     : 1.01168
+  ratio to pi*kappa_4/2 * int dt/log t: 0.94397
+kappa_4 partial product up to 1e+06: 2.213453
+kappa_4 partial product up to 1e+07: 2.213419
+kappa_4 partial product up to 1e+08: 2.213443
+kappa_4 ~ 2.213443;  FI constant c = pi*kappa_4/8 = 0.869217
+X = 1e+08: sum = 1.941335e+07
+  ratio to pi*kappa_4/2 * X/log X     : 1.02853
+  ratio to pi*kappa_4/2 * int dt/log t: 0.96900
+kappa_4 partial product up to 1e+06: 2.213453
+kappa_4 partial product up to 1e+07: 2.213419
+kappa_4 partial product up to 1e+08: 2.213443
+kappa_4 ~ 2.213443;  FI constant c = pi*kappa_4/8 = 0.869217
+X = 1e+09: sum = 1.736452e+08
+  ratio to pi*kappa_4/2 * X/log X     : 1.03498
+  ratio to pi*kappa_4/2 * int dt/log t: 0.98218

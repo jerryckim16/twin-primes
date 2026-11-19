@@ -138,3 +138,11 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   divide d (2-adic colouring); for 4 | d the unblocked systems all contain a prime-pair event at distance d/2.
 - Honest distance: this is about a heuristic class of weights, not about what can be proved. For n, n+2 both E2 it says that
   GGPY-type changes of coordinates cannot evade the parity obstruction; it says nothing about twin primes beyond that.
+
+### Session 34 addition: Type II from Gowers norms (Green-Sawhney; route card only)
+- Depends on: Green-Sawhney arXiv:2410.04189v3 (Props. 3.4, 4.1-4.5, as stated there); Gowers-norm nesting; FI98 (B).
+- Result: the GS hybrid breaks parity for ONE multiplicative (norm-form) prime detector, using additive (Gowers) control of
+  the coordinates; a fixed-shift twin condition is either circular (inside a coordinate), without known bilinear structure
+  (outer), on a one-dimensional set (conic/line), or carried but not produced (and too weak at GS's precision).
+- Honest distance: confirms that twin primes offer neither a second multiplicative structure nor a finite-complexity additive
+  one. Nothing here moves toward the conjecture.

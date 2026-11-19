@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.33, 18 November 2026}
+\date{Version 0.34, 19 November 2026}
 
 \begin{document}
 
@@ -178,6 +178,18 @@ $q\sum w\#\{\dots\}\ge p\sum w$ with $p>q$ and $\sum w>0$ gives that inequality
 (\texttt{sieveInequality\_\allowbreak of\_ratio}); and a variational ratio $p/q>4$ leaves
 room for a level $\theta=a/b<1/2$ with $\theta(p/q)/2>1$
 (\texttt{theta\_of\_\allowbreak ratio\_gt\_four}).
+\item (\texttt{Reduction.lean}, the limit step in abstract form) If
+$a/a'<c/c'$ and, for every $m\ge1$, eventually
+$S_1(N)\le(1+1/m)(a/a')B(N)$ and $S_2(N)\ge\frac{m}{m+1}(c/c')B(N)$ with
+$B(N)>0$, then eventually $S_1(N)<S_2(N)$, with the explicit choice
+$m=2ac'+2$ (\texttt{eventually\_lt\_\allowbreak of\_asymptotics}); applied to
+$S_1=\sum w$ and $S_2=\sum w\,\#\{\dots\}$ for every admissible tuple, this
+gives the sieve inequality of item~6 and hence $\DHL[k,2]$
+(\texttt{sieveInequality\_\allowbreak of\_asymptotics}; for $k=50$,
+\texttt{boundedGaps\_246\_\allowbreak of\_asymptotics\_50}). In Maynard's
+notation $a/a'\ge I_k(F)$ and $c/c'\le(\theta/2)J_k(F)$, so item~7 with
+item~6 is the numerical criterion $\theta J_k(F)/(2I_k(F))>1$; the
+asymptotics themselves are a hypothesis.
 \end{enumerate}
 \end{theorem}
 
@@ -207,9 +219,9 @@ Theorem~\ref{thm:lean} is elementary. Its value is that implication
 \eqref{eq:reduction} is now a checked interface: any future proof of
 $\DHL[k,2]$, by anyone, yields the corresponding gap bound with nothing left
 to trust on the combinatorial side. Item~6 extends the interface one step
-back, to the sieve inequality itself; the analytic asymptotics that turn the
-variational ratio into that inequality are not formalised and appear only as a
-hypothesis.
+back, to the sieve inequality itself, and item~7 checks the limit argument
+that turns two-sided asymptotics into that inequality; the analytic
+asymptotics themselves are not formalised and appear only as a hypothesis.
 
 \subsection{The sieve constant, with exact certificates}
 
@@ -1901,155 +1913,47 @@ the reading.
 What this does and does not show. The main-term quotient of
 \cite[Lemma~2.5]{OAI26} is reproduced independently, and so is the reading of
 its layered cap convolution that we had marked as underspecified. Not
-reproduced: the loss bound $L^+/I_H\le696075110\cdot10^{-12}$ (the $97$
-support-failure components of their \S2.4), which the criterion also needs;
-and, as always,
+reproduced by this step: the loss bound $L^+/I_H\le696075110\cdot10^{-12}$ (the $97$
+support-failure components of their \S2.4), which the criterion also needs and
+which is treated next; and, as always,
 the analytic inputs (\lbl{Claimed}). The project's bound does not move.
 
-\begin{sloppypar}\noindent\emph{Source data and the bookkeeping of the loss bound} (\lbl{Computed}, exact
-rational arithmetic; the full companion was supplied to us later). (i) From the rational definitions in \cite[(1.13)--(1.19),
-(1.23)--(1.24)]{OAI26} we recomputed the two source ladders ($29$ and $43$ rows,
-with order counts $(12,12,5)$ and $(12,12,19)$), the retained rows ($0$--$27$
-and $0$--$38$) and the four boundary values $\lfloor B/h\rfloor$, the continuous
-caps and, through the grid rule, the integer cap masks (1.5) on which our
-$I_H$ and $J_{\lambda,H}$ rest (we had taken them as given), and the six
-group parameters with every guard of their Lemma~1.1. Every printed value is
-reproduced (\texttt{code/oai186\_support\_data.py}). The analytic comparisons
-in that lemma, with the distribution inequalities of \cite{OAI26}, are not
-checked. (ii) For the $97$ component bounds of their Tables~2.1--2.6
-(\texttt{code/}\allowbreak\texttt{oai186\_tables\_2\_1\_to\_2\_6.json}) every
-Young inequality $cA+B/c\le E$ and inner weighting, the six group totals, the
-total $696075110<697\cdot10^6$, the component counts against their witness
-schedule, and the final margins (2.34)--(2.35) hold exactly
-(\texttt{code/oai186\_tables\_check.py}). This checks how the raw bounds are
-combined, not the raw bounds themselves; those come from the forms
-(2.16)--(2.21) of the companion, which we have transcribed
-(\texttt{notes/}\allowbreak\texttt{sources-186-loss.md}). (iii) Version~0.15
-evaluates them for one inner group, I2old ($7$ components), in arb ball
-arithmetic (\lbl{Computed}, one program, high precision, not an outward-rounded
-certificate; \texttt{code/oai186\_loss\_I2old.py}, output
-\texttt{code/}\allowbreak\texttt{cap6/oai186\_loss\_I2old.json}). Every computed
-raw bound is at most its Table~2.3 entry and within $2.7\cdot10^{-6}$ of it in
-relative terms (within $2.5\cdot10^{-10}$ for five of the seven); for
-example $25776.59$ against $25777$ and $1511406796.9$ against $1511410893$, in
-units of $10^{-18}I_H^-$. Two readings were needed that the transcription does
-not fix: the radial interval of the group, read as the span of old-ladder rows
-$12$--$23$ (the alternative mask, base row~2 only, is $2$--$5\%$ low on every
-component and is ruled out), and the choice between the delay recurrence and the
-renewal majorant (2.3) for the low kernels: the delay recurrence gives values
-slightly \emph{below} the table for $L_2$, $L_3$, the renewal majorant matches
-them to $2\cdot10^{-10}$, so the companion apparently used renewal there; we
-inferred this from the numbers, and both choices give bounds no larger than the
-table. This does not check that the forms majorise the true failure integrals
-(their Lemmas~1.4--1.7, 2.3, 2.4), the completeness of the cover, or the other
-$90$ components.
-\end{sloppypar}
-
-\begin{sloppypar}\noindent\emph{The raw loss bounds} (\lbl{Computed}, one program per form
-family, arb ball arithmetic at $256$ bits (inner) and $128$ bits (outer); a
-high-precision re-evaluation of the published forms, not an outward-rounded
-certificate). The companion itself is now in the repository
-(\texttt{code/third\_party/openai186/}, Apache-2.0), and with it the two pieces of
-group data that an earlier version had to infer: the radial intervals
-\cite[(1.23)--(1.24)]{OAI26} (old-ladder rows $12$--$23$ for I2old, as we had read)
-and the rule for the low kernels: the delay recurrence (2.1) only when $M\ge64$
-and its acceptance tests pass (ordered intervals in $[0,1]$, both endpoint
-sequences nonincreasing), the renewal majorant (2.3) otherwise. We implemented
-that test as stated. It selects renewal exactly for the two I2old bins where
-an earlier version had inferred it from the numbers, so that inference is now
-derived. For the clipping (1.26) we read the core and threshold of an inner row
-as $b_t$, $C_t$ and of an outer row as $a_t$, $A_t$ (its predicate in (1.21)).
-With this reading our schedule reproduces the counts stated in their Lemma~1.6:
-the first $11$, $2$, $5$ order-$5/2$ low bins lie below every absorbed
-activation, and on the remaining $11$, $5$, $6$ the order-three minimum is the
-group's lower radial boundary. Programs \texttt{code/oai186\_loss\_inner.py}
-(the $45$ inner forms (2.19)) and \texttt{code/oai186\_loss\_outer.py} (the outer
-forms (2.17) and (2.20)--(2.21)); outputs
-\texttt{code/}\allowbreak\texttt{cap6/oai186\_loss\_inner.json},
-\texttt{code/}\allowbreak\texttt{cap6/oai186\_loss\_outer.json}. For the smallest low
-bins (fragment caps of a few cells) the Eulerian kernels use the closed form
-$T_e=(\exp Q-X^{e+1}\exp(XQ))/(1-X)$ of \cite[\S2.1]{OAI26}, which agrees with
-the direct sum to $3\cdot10^{-70}$ on a test case. Results:
-(a) all $45$ inner components (groups I2old, I5/2old, I2new, I5/2new). Every
-value is at most its entry in Tables~2.3--2.6, and wherever the entry exceeds
-$10^6$ (in units of $10^{-18}I_H^-$) it lies within $1.6\cdot10^{-7}$ of the entry in
-relative terms (within $5\cdot10^{-10}$ for $33$ of these $38$). Rounding our
-values up and weighting them as in (2.31) reproduces the four inner group
-totals of their Table~2.7 exactly ($55254$, $435544$, $1405159$, $32422390$ in
-units of $10^{-12}$). (b) $33$ of the $52$ outer components. They are
-all twelve rank-two components and the third-factorial component of $O_{5/2}$,
-its low bins $L_{16}$--$L_{22}$, and the six rank-two components and the low bins $L_4$--$L_{10}$ of $O_2$. Together with (a) they carry all but
-a fraction $1.2\cdot10^{-6}$ of the published $L^+$. Each $R_G$ and $V_G$ is at most its entry in Tables~2.1--2.2 and
-for the rank-two and factorial components it lies within $5\cdot10^{-9}$ of it in
-relative terms (for those of $O_{5/2}$ uniformly $1.2\cdot10^{-9}$ below for $A$ and
-$1.3$--$1.8\cdot10^{-9}$ for $B$). The largest gaps are in $V_G$ for the low bins that use the
-renewal majorant: $3.4\cdot10^{-5}$, $3.0\cdot10^{-6}$, $3.6\cdot10^{-7}$ below the table for
-$L_{16}$, $L_{17}$, $L_{18}$ of $O_{5/2}$, while their $R_G$ agree to $6\cdot10^{-10}$. A
-likely cause, which we have not checked, is the interval widening of the
-sliding sum in the companion's renewal recurrence (2.3): it grows with the
-index, and $V_G$ weights large indices of the erased coordinate. In every case
-our value is the smaller. With the published Young parameters
-$c=q/10^6$, our values give component bounds $E$ whose sums over the finished
-components equal the table's sums for $O_2$ and fall $3\cdot10^{-12}$ below them for
-$O_{5/2}$. The remaining $19$ components (low bins of $O_{5/2}$ and $O_2$) carry
-a fraction $1.2\cdot10^{-6}$ of $L^+$ in the tables; by Proposition~\ref{prop:oai186-budget} they could
-not affect the margin even if they were off by a factor of $10^4$. Version~0.17
-runs them (\lbl{Computed}, same program): at $128$ bits the $15$ smallest bins
-were rejected by the companion's own test (``reject a nonpositive lower
-endpoint'' in the renewal recurrence (2.3)), because the ball width of the
-sliding sum outgrows the majorant before it reaches $10^{-40}$; at $256$ bits all
-pass. All $19$ values are at most their table entries; the largest relative
-gaps are again in $V_G$ of renewal-branch bins ($2.7\%$, $1.0\%$, $0.5\%$ below the
-table for $L_{13}$ of $O_{5/2}$, $L_3$ of $O_2$, $L_{14}$ of $O_{5/2}$, components
-whose bounds $E$ are at most $14\cdot10^{-12}$). With all $97$ components, the
-component bounds $E$ computed from our values with the published Young
-parameters sum to $38927521$ and $622829238$ for $O_2$ and $O_{5/2}$ (table:
-$38927522$, $622829241$) and reproduce the four inner totals exactly; every raw
-value is at most its table entry (\texttt{code/cap6/oai186\_loss\_summary.json}).
-A fresh-context audit of both programs against the companion (items: clipping,
-slopes, bin lists, branch rule, closed form, masks and weights, $P$-sets and
-prefactors, rank-two and factorial arrays, the erased-coordinate correlation;
-\texttt{notes/}\allowbreak\texttt{audit-186-loss/report.md}) found no
-discrepancy. It flagged one reading as open: we take ``the appropriate rows of
-(1.5)'' to mean all face rows of the domain, so that for O2, I2old and I2new
-about $39$ top indices of the next, smaller-cap row are kept. That reading is
-the one that matches the tables.
-\end{sloppypar}
-
-\begin{sloppypar}\noindent\emph{A second program for the decisive group}
-(\lbl{Computed}, two independent programs). A fresh-context helper wrote
-\texttt{code/oai186\_loss\_outer2.py} from the companion alone, without
-opening the first program or its results until its numbers were final
-(\texttt{notes/}\allowbreak\texttt{loss-outer2-report.md}). It differs from
-the first program in arithmetic (exact integer polynomial products by
-Kronecker substitution in GMP, rounded at $2^{-192}$ with a running error bound,
-and \texttt{mpmath} at $320$ bits for logarithms and exponentials, instead of
-Arb balls through \texttt{python-flint}), in the moment algorithm (a
-generating series in auxiliary variables for the power sums, expanded into
-exact integer coefficients and checked by brute force on tiny grids, instead
-of the set-partition sum (2.10); it reproduces the marking-ring identity
-(1.43), $[xy]Q^{40}=40P^{39}C+1560P^{38}AB$, and gives the analogue
-$[y^3]=40F_0^{39}F_3+1560F_0^{38}F_1F_2+9880F_0^{37}F_1^3$ for the
-factorial component), and in the cap rows (2.13) (prefix sums after a binomial
-expansion). It evaluated the $12$ rank-two components, the third-factorial
-component and the low bins $L_{19}$--$L_{22}$ of $O_{5/2}$: $99.95\%$ of that
-group's published bound and $89.4\%$ of $L^+$. Every raw value lies below its
-Table~2.2 entry (by $1.2\cdot10^{-9}$ for $A$ in the rank-two bins, as for the
-first program; the common offset is therefore in the companion's production
-run, which can only make its bounds larger), and the two programs agree to
-$2.5\cdot10^{-14}$ ($A$) and $1.4\cdot10^{-12}$ ($B$) on the rank-two and
-factorial components and to $2.2\cdot10^{-9}$ on the low bins, inside the
-second program's own error bound for the cell enclosures (2.2). The second
-program has no renewal branch, so the smallest low bins (with the inner groups
-and $O_2$, $10.6\%$ of $L^+$) rest on the first program alone; by
-Proposition~\ref{prop:oai186-budget}, $O_2$ could be $33\%$ and the inner groups
-$10$--$230$ times too small, and the unchecked low bins of $O_{5/2}$ ($0.05\%$ of
-the group) $2\%$, without changing the sign of the margin above $1/50000$. The
-ambiguous readings of the companion that both programs had to fix (barred
-$d$ in (2.9) as point enclosures with the stated cap roundings, the radial
-mask of (1.25), the clipping (1.26) with $c_t=a_t$, $V_t=A_t$, the strict
-inequality in (2.18), the erased coordinate in (2.20)) were made
-independently and coincide.
+\begin{sloppypar}\noindent\emph{The loss bound} (\lbl{Computed}; full account, with
+the program status of every number, in the verification note). The companion
+is in the repository (\texttt{code/third\_party/openai186/}, Apache-2.0).
+\begin{itemize}
+\item \emph{Source data and bookkeeping} (exact rational arithmetic). The two
+  source ladders, the retained rows, the cap masks (1.5) on which our $I_H$ and
+  $J_{\lambda,H}$ rest, and the six group parameters with every guard of
+  \cite[Lemma~1.1]{OAI26} are reproduced from the rational definitions
+  (\texttt{code/oai186\_support\_data.py}); every Young inequality, inner
+  weighting and group total of Tables~2.1--2.7, the total
+  $696075110<697\cdot10^6$ and the final margins (2.34)--(2.35) hold exactly
+  (\texttt{code/oai186\_tables\_check.py}).
+\item \emph{All $97$ raw loss bounds} (one program per form family, arb ball
+  arithmetic at $128$--$256$ bits; \texttt{code/oai186\_loss\_inner.py},
+  \texttt{code/oai186\_loss\_outer.py}). Every value is at most its table
+  entry; the component bounds sum to $38927521$ and $622829238$ for $O_2$ and
+  $O_{5/2}$ (table: $38927522$, $622829241$) and reproduce the four inner
+  totals exactly (\texttt{code/cap6/oai186\_loss\_summary.json}). The largest
+  relative gaps ($\le2.7\%$, always below the table) are in renewal-branch low
+  bins of negligible weight. A fresh-context audit of both programs against
+  the companion (\texttt{notes/}\allowbreak\texttt{audit-186-loss/report.md})
+  found no discrepancy; one reading (``the appropriate rows of (1.5)'' as all
+  face rows) is the one that matches the tables.
+\item \emph{A second program for the decisive group} (two independent
+  programs; \texttt{code/oai186\_loss\_outer2.py}, written from the companion
+  alone, \texttt{notes/}\allowbreak\texttt{loss-outer2-report.md}). With
+  different arithmetic (exact Kronecker products in GMP), a different moment
+  algorithm and a different treatment of the cap rows, it evaluated the $12$
+  rank-two components, the third-factorial component and the low bins
+  $L_{19}$--$L_{22}$ of $O_{5/2}$: $89.4\%$ of $L^+$. The two programs agree to
+  $2.5\cdot10^{-14}$ ($A$) and $1.4\cdot10^{-12}$ ($B$) on the rank-two and
+  factorial components and to $2.2\cdot10^{-9}$ on the low bins. The remaining
+  $10.6\%$ of $L^+$ rests on the first program alone, which by
+  Proposition~\ref{prop:oai186-budget} cannot change the sign of the margin
+  above $1/50000$.
+\end{itemize}
 \end{sloppypar}
 
 \begin{remark}[what this does and does not establish]\label{rem:186-status}
@@ -2364,6 +2268,7 @@ the shift).
 \item[0.30] (17 Nov 2026) Related results: parity paper version~0.15 (hybrid averages and the mean prime gap). Bounds unchanged.
 \item[0.31] (18 Nov 2026) Remark~\ref{rem:oai186} condensed to a list (detail in the verification note and the repository); Related results: parity paper version~0.16 (Fejér averages and pair correlation). Bounds unchanged.
 \item[0.32] (18 Nov 2026) Related results: the parity paper is frozen as version~1.0 (cut from 33 to 24 pages after a five-lane internal referee pass); its entry shortened to one paragraph. Bounds unchanged.
+\item[0.34] (19 Nov 2026) Theorem~\ref{thm:lean}, item 7: the limit step from two-sided asymptotics to the sieve inequality in Lean. The $186$ loss-bound account condensed to one list (detail stays in the verification note). Bounds unchanged.
 \item[0.33] (18 Nov 2026) Theorem~\ref{thm:lean}, item 6: the pigeonhole step from the sieve inequality to $\DHL[k,2]$ in Lean (\texttt{Reduction.lean}). Remarks~\ref{rem:186-status} and \ref{rem:sha182} condensed (detail stays in the verification note). Bounds unchanged.
 \end{itemize}
 

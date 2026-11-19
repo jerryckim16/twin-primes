@@ -1,5 +1,257 @@
 # Research log
 
+## 2026-11-19 - Session 34 (7:34 PM CT, 18 Nov; started on time 01:35 UTC 19 Nov; no wait, no other run active): Green-Sawhney's Gowers-norm Type II sums and twin primes (located); Lean limit step from asymptotics to the sieve inequality; main paper v0.34
+
+- Parity attempt (route card only; the parity paper stays frozen at v1.0). Green and Sawhney (arXiv:2410.04189v3) break parity for primes x^2 + n y^2 with x, y prime: Type II structure from the multiplicativity of one norm form, with the Type I/II estimates proved from Gowers-norm smallness of one coordinate weight. We read Section 1, Prop. 3.4 and Section 4 and checked whether a fixed-shift twin condition can be placed in this framework. Every placement fails: inside a coordinate the needed U^k-smallness already contains the twin asymptotic with a power-of-log error; in the outer detector no bilinear structure is known (the FI98 (B) input); on a conic or a line the two-dimensional averaging is lost; carried as the non-small factor, the weight violates the majorant of Prop. 3.4, GS's error term is (log log X)^2 too weak, and the main term still counts twins.
+- Checks: the main term of GS Prop. 4.1 (n = 4) numerically to X = 1e9 (ratio to pi kappa_4/2 times int dt/log t: 0.944, 0.969, 0.982 at 1e7, 1e8, 1e9; kappa_4 = 2.21344; code/parity/gs_norm_form_check.py). A fresh-context adversarial audit against the paper's text found 3 errors in the first draft (an item stated at a trivially true strength, the U^1 step, and a misread majorant), all fixed.
+- Small results (programme 4, Lean only): Reduction.lean gains the limit step in abstract form. If a/a' < c/c' and, for every m, eventually S1 <= (1+1/m)(a/a')B and S2 >= (m/(m+1))(c/c')B with B > 0, then eventually S1 < S2 (explicit m = 2ac'+2). Applied to the sieve sums for every admissible tuple this gives the sieve inequality and DHL[k,2], and for k = 50 the bound 246. lake build and Audit.lean pass (axioms propext, Quot.sound, Classical.choice). The asymptotics stay a hypothesis.
+- Bound share: main paper v0.34 (33 pages, from 34): Theorem thm:lean gains item 7; the 186 loss-bound account (about 150 lines) is condensed into one three-item list, with the detail left in the frozen verification note. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Type II sums from Gowers norms (Green-Sawhney) and a fixed-shift twin condition. Classification: located (literature + elementary observations; folklore in substance); first unresolved implication: a bilinear structure for lambda(n)lambda(n+2), or Gowers-uniformity of Lam(x)Lam(x+2) minus a model. Route card 2026-11-19-green-sawhney-gowers-type-ii.md. Parity paper: v1.0 frozen, unchanged.
+
+Explored: Carrying a twin weight through the Green-Sawhney sum: T = sum Lam(x)Lam(x+2)Lam(y)1[x^2+4y^2 prime] is 0.971 of the Bateman-Horn prediction at X = 1e9, and the 'carried' form with Lam(y) replaced by a Cramer model agrees at small Q (0.991, 1.002 at Q = 30, 100). Dead end: no unexpected structure; code/explore/gs_twin_carry.py.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- n
+- o
+- t
+-  
+- t
+- h
+- e
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+-  
+- G
+- S
+-  
+- S
+- e
+- c
+- t
+- i
+- o
+- n
+- s
+-  
+- 3
+-  
+- a
+- n
+- d
+-  
+- 5
+- -
+- 8
+-  
+- n
+- o
+- t
+-  
+- r
+- e
+- a
+- d
+-  
+- i
+- n
+-  
+- d
+- e
+- t
+- a
+- i
+- l
+- ;
+-  
+- P
+- r
+- o
+- p
+- .
+-  
+- 3
+- .
+- 4
+-  
+- u
+- s
+- e
+- d
+-  
+- o
+- n
+- l
+- y
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+- .
+
+Next: Weekly review (first run on Monday 23 Nov, Central time): decide on a parity-paper v1.1 remark (E2 cards) and the next active small-results line. Parity: one new mechanism per run as a route card. Lean programme (4): possibly the GPY/Maynard sum identities in finite form. Rung 182 stays paused.
+
 ## 2026-11-18 - Session 33 (11:34 AM CT, 18 Nov; started on time 17:35 UTC; no wait, no other run active): E2 pairs at a fixed difference: a 2-adic no-go for 4 ∤ d; Lean step from the sieve inequality to DHL; main paper v0.33
 
 - Parity attempt (route card only; the parity paper stays frozen at v1.0). In the linear-forms-with-multipliers model of the Session 32 E2 card, 'x, x+d both E2' is blocked by fair Liouville-pattern weights in every admissible parametrisation if and only if 4 does not divide d. The proof uses admissibility mod 2 to fix the multipliers' parities, then a 2-adic colouring (bit v2(d) of b times the inverse of the odd part of a) to make the graph bipartite. For 4 | d an explicit admissible 5-cycle m, m+d/2, 3m+d, 3m+2d, 3m+5d/2 is unblocked (exact Farkas certificate). But every odd cycle contains a prime-pair edge at distance d/2 (for d = 4 the twin-prime event itself), so those parametrisations are empty.
