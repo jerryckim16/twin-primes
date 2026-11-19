@@ -3,3 +3,4 @@ import TwinPrimes.Tuples
 import TwinPrimes.Caps
 import TwinPrimes.Parity
 import TwinPrimes.Reduction
+import TwinPrimes.Counting
