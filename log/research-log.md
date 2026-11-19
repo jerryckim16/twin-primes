@@ -1,5 +1,408 @@
 # Research log
 
+## 2026-11-19 - Session 36 (11:34 AM CT, 19 Nov; started on time 17:34 UTC; no wait, no other run active): E2 pairs through polynomial parametrisations and Chen-type multipliers (located); Lean: Selberg expansion in a residue class; main paper v0.36
+
+- Parity attempt (route card only; the parity paper stays frozen at v1.0). The Session 33 no-go for E2 pairs n, n+2 (in the fair-weight model, for every d not divisible by 4) is extended from linear forms to arbitrary polynomial parametrisations in any number of variables, including Chen-type variable multipliers x = u L(m). The sign vector eps_v = chi_4(P_v(m0)) f(g_v), with g_v the content of the top-degree part of the vertex polynomial and f(n) = lambda(n) chi_4(odd part of n), has product -lambda(c)lambda(c') on every event, so every system in which no vertex indicator lies in the F_2-span of the event supports is blocked (in particular every system whose events have an even number of vertices). Two programs: a sympy/LP search (about 370 events per d; 610 random systems for d = 2, 6, 10, all blocked, the product identity holding on every event) and an independent exact check of 60 blocking certificates (196 events, 124 of them odd, Chen-type ones included). Open: the 'forced vertex' case (odd events), blocked in every case found but not proved.
+- Small results (programme 4, Lean only): Counting.lean gains the Chinese-remainder step: for (d, W) = 1 the conditions n = v0 mod W and d | n+h define one class mod Wd (via a Bezout lemma proved in core Lean), the count lies between floor(N/(Wd)) and floor(N/(Wd)) + 1, and the Selberg expansion restricted to n = v0 mod W holds with error at most W M sum |y_d y_e| (11 theorems crt_*). lake build and Audit.lean pass (axioms propext, Quot.sound, Classical.choice only). Written by a helper agent; statements checked here.
+- Bound share: main paper v0.36 (33 pages): Theorem thm:lean gains item 9; the account of Kintali's support condensed to a short list (detail stays in the frozen verification note); history appendix put in order. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: E2 pairs at distance 2 through polynomial parametrisations and Chen-type multipliers: proved (located), model-restricted; first unresolved implication the forced-vertex case. The parity paper is frozen at v1.0 (24 pp.); unchanged.
+
+Explored: Ramanujan-Fourier (Gadiyar-Padma) coefficients of the prime weight: a fake weight with every twin pair deleted has, after rescaling to the same mean, the same coefficients to 4e-7 (q <= 60, X = 1e7) and zero twin correlation; dead end for a trivial reason (c_q(p) = mu(q) for p not dividing q, so the coefficients see only the mean) (code/explore/ramanujan_twin_blind.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- a
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- e
+- d
+-  
+- t
+- h
+- e
+-  
+- c
+- a
+- r
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- :
+-  
+- p
+- r
+- o
+- o
+- f
+-  
+- c
+- o
+- r
+- r
+- e
+- c
+- t
+- ;
+-  
+- t
+- w
+- o
+-  
+- e
+- r
+- r
+- o
+- r
+- s
+-  
+- i
+- n
+-  
+- s
+- i
+- d
+- e
+-  
+- r
+- e
+- m
+- a
+- r
+- k
+- s
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- r
+- e
+- e
+-  
+- g
+- a
+- p
+- s
+- ,
+-  
+- a
+- l
+- l
+-  
+- f
+- i
+- x
+- e
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- o
+- d
+- d
+- -
+- d
+-  
+- h
+- a
+- l
+- f
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- p
+- r
+- o
+- p
+- o
+- s
+- i
+- t
+- i
+- o
+- n
+-  
+- i
+- s
+-  
+- p
+- r
+- o
+- v
+- e
+- d
+-  
+- b
+- u
+- t
+-  
+- o
+- n
+- l
+- y
+-  
+- l
+- i
+- g
+- h
+- t
+- l
+- y
+-  
+- t
+- e
+- s
+- t
+- e
+- d
+-  
+- (
+- o
+- n
+- e
+-  
+- a
+- d
+- m
+- i
+- s
+- s
+- i
+- b
+- l
+- e
+-  
+- o
+- d
+- d
+- -
+- d
+-  
+- s
+- y
+- s
+- t
+- e
+- m
+- )
+- ;
+-  
+- t
+- h
+- e
+-  
+- r
+- a
+- n
+- d
+- o
+- m
+-  
+- s
+- m
+- a
+- l
+- l
+-  
+- s
+- y
+- s
+- t
+- e
+- m
+- s
+-  
+- f
+- o
+- r
+-  
+- 4
+-  
+- |
+-  
+- d
+-  
+- d
+- i
+- d
+-  
+- n
+- o
+- t
+-  
+- f
+- i
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- k
+- n
+- o
+- w
+- n
+-  
+- u
+- n
+- b
+- l
+- o
+- c
+- k
+- e
+- d
+-  
+- 5
+- -
+- c
+- y
+- c
+- l
+- e
+-  
+- (
+- w
+- e
+- a
+- k
+-  
+- s
+- a
+- m
+- p
+- l
+- i
+- n
+- g
+- )
+- .
+
+Next: Weekly review on Monday 23 Nov: decide whether the E2 cards (S32, S33, S36) become one remark in a parity-paper v1.1 after a wider literature check, and the next active small-results line. Parity attempts: a genuinely new mechanism (Merikoski's multiplicative large sieve route, MRT17 under GRH/EH). Lean: the S2 analogue or an exact toy evaluation of the quadratic form.
+
 ## 2026-11-19 - Session 35 (3:34 AM CT, 19 Nov; started on time 09:34 UTC; no wait, no other run active): Bilinear structure in the middle of a twin pair (located); Lean: Selberg expansion and its error term; main paper v0.35
 
 - Parity attempt (route card only; the parity paper stays frozen at v1.0). For twin primes p, p+2 the middle m = p+1 = 6k can be y-smooth and then factors as m = ab in any ranges, a Type II structure in the index variable. The parity-fake weight 1 - lambda(m-1)lambda(m+1), which vanishes on every twin middle, has the same middle-bilinear data up to sums of alpha_a beta_b lambda(ab-1)lambda(ab+1), so such data cannot break parity unless (bilinear) two-point Chowla fails at precision o(|M|/log^2 X). Tao's 2016 theorem handles single fixed-a, log-weighted slices (one coefficient choice, consistent with this but not a case of it), and at X = 1e8 (a, b in (3000, 6000]) the cut-norm lower bound of the middle twist is that of a random sign matrix (0.026 AB), against exactly AB for the sifted twist lambda(ab). Kontorovich's pseudo-twin theorem (arXiv:math/0507569v3, read pp. 1-6) breaks parity with bilinear structure in the sifted variable, consistent with this. A fresh-context adversarial audit found 3 errors in the first draft (a false reduction to Chowla in progressions, an overstated use of Tao's theorem, the wrong error scale), all fixed.

@@ -443,11 +443,13 @@
     },
     {
       "label": "Lean-checked",
-      "text": "Counting.lean (Session 36): CRT step. For (d, W) = 1 the conditions n = v0 mod W and d | n + h define one class mod Wd (crt_residue, via a Bezout lemma in core Lean); the count lies between floor(N/(Wd)) and floor(N/(Wd)) + 1 (crt_count_div); the Selberg expansion restricted to n = v0 mod W with error bound W M sum |y_d y_e| (crt_selberg_expand, crt_selberg_error). Axioms propext, Quot.sound, Classical.choice."
+      "text": "Counting.lean (Session 36): CRT step. For (d, W) = 1 the conditions n = v0 mod W and d | n + h define one class mod Wd (crt_residue, via a Bezout lemma in core Lean); the count lies between floor(N/(Wd)) and floor(N/(Wd)) + 1 (crt_count_div); the Selberg expansion restricted to n = v0 mod W with error bound W M sum |y_d y_e| (crt_selberg_expand, crt_selberg_error). Axioms propext, Quot.sound, Classical.choice.",
+      "where": "lean/TwinPrimes/Counting.lean (crt_*)"
     },
     {
       "label": "Proved here",
-      "text": "(route card, not in a paper; model-restricted, possibly folklore) E2 pairs at distance d, 4 not dividing d, through polynomial parametrisations in any number of variables (including Chen-type multipliers): in the fair-weight model every system in which no vertex indicator lies in the F_2-span of the event supports is blocked (notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md; two programs)."
+      "text": "(route card, not in a paper; model-restricted, possibly folklore) E2 pairs at distance d, 4 not dividing d, through polynomial parametrisations in any number of variables (including Chen-type multipliers): in the fair-weight model every system in which no vertex indicator lies in the F_2-span of the event supports is blocked (notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md; two programs).",
+      "where": "notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md"
     }
   ],
   "ideas": [

@@ -18,6 +18,11 @@ parametrisations (first unresolved implication: x = L1 L2 with both factors prim
 ## Model
 - Vertices: primitive irreducible polynomials P_v in Z[m_1, ..., m_r] (any number of variables, any degree), normalised
   with positive leading coefficient. A Chen-type multiplier x = u L(m) is the product of the two vertices u and L(m).
+  This is a modelling choice: in Chen's set-up the multiplier p runs over primes; here u is a free variable whose
+  Liouville sign is one more fair coordinate (lambda(u) = -1 is part of the event).
+- Signs: a vertex may be negative where an event lives (e.g. m - u); lambda is read on absolute values,
+  lambda(-n) := lambda(n). The multipliers c, c' have the same sign (compare the leading terms of c prod_A P and
+  c' prod_B P in any monomial order: the constant s d is the lowest term), so we may take c, c' > 0.
 - An event is a polynomial identity c * prod_{v in A} P_v + s d = c' * prod_{v in B} P_v (A, B multisets of vertices,
   s = +-1, c, c' in {1} u primes) in which each side has an E2 shape:
   - c = 1, |A| = 1: the vertex must be E2 (required lambda = +1);
@@ -66,20 +71,27 @@ L1 L2 + s d = L3 L4) is blocked.
    balanced under the uniform measure on S iff it is not constant on K, iff the indicator of v is not in K-perp, the
    span of the event supports. QED.
 
-For linear forms this recovers the Session 33 colouring (eps_i = tau_i (-1)^{col_i} up to a global sign): with
-g_i = |a_i| odd, chi_4(o_i) chi_4(o_i m0 + b_i) = chi_4(m0 + o_i b_i) and o_i b_i = b_i o_i^{-1} mod 4.
+For linear forms this recovers the Session 33 colouring: eps_i = tau_i (-1)^{col_i} times a sign that is constant on
+each class of equal v2(a_i) (for odd a_i: chi_4(o_i) chi_4(o_i m0 + b_i) = chi_4(m0 + o_i b_i) and o_i b_i = b_i o_i^{-1}
+mod 4). Since edges with odd multipliers keep v2(a), this is constant on each connected component. (Corrected after
+the audit: the first draft said "up to a global sign" and assumed odd slopes; with m0 = -3 the ratio is +1, -1, +1 for
+a odd, a = 2 mod 4, 4 | a.)
 
 ## What remains (honest scope)
 - **Odd events with a forced vertex.** Events with |A| + |B| odd (one side a single vertex, the other two primes, e.g.
   x = u L(m), x + 2 = Q(u, m) irreducible: every Chen-type event is of this kind) can put a vertex indicator into the
   span. Then the uniform measure on S is not fair and the Proposition is silent. Example (by hand, and found by the
   search): m, m + 2 both E2, and x = m^2 + 2m - 2 E2 with x + 2 = m (m + 2), m and m + 2 prime. Here eta_x is forced, but
-  the system is still blocked (uniform on (lambda(m), lambda(m+2)) in {(+,-), (-,+)}, lambda(x) uniform). In the search
-  (below) every such system was blocked by the LP; no proof that this always happens.
-- 4 | d: the identity fails (338 of 378 events at d = 4 violate it); unblocked linear systems exist (Session 33). The
+  the system is still blocked (uniform on (lambda(m), lambda(m+2)) in {(+,-), (-,+)}, lambda(x) uniform). The audit
+  confirmed this example (its event occurs in the 'quad' family; the .out does not print individual forced-vertex
+  systems). In the search (below) every forced-vertex system (3 / 5 / 1 for d = 2 / 6 / 10) was blocked by the LP; no
+  proof that this always happens. A single Chen-type event never forces a vertex; only combinations can.
+- 4 | d: the identity fails (at d = 4 every one of the 338 tested events violates it; 40 more are skipped as never all odd); unblocked linear systems exist (Session 33). The
   random small systems of the search did not find them (the sampling is weak; the 5-cycle template needs specific edges).
-- d odd: proved above, but untested by the search (the generated families had no admissible odd-d system: they lack the
-  multiplier-2 shapes; the per-event skips are inadmissibility mod 2).
+- d odd: proved above, but tested only lightly: the product identity holds on all 30-42 testable events for each of
+  d = 1, 3, 5, 7 (multiplier 2 occurs on the y-side, e.g. (2m+1) + 1 = 2(m+1)), and the search built a single admissible
+  odd-d system (d = 3; blocked and balanced). Most odd-d events are skipped as never all odd. (Corrected after the
+  audit: the first draft said the families had no admissible odd-d system.)
 - Outside the model: anything not expressible as fair weights of lambda-values of the vertices (genuine bilinear
   sieve information in the Chen variable p, switching, Type II input) is not covered. The model is a heuristic class.
 
@@ -95,10 +107,14 @@ g_i = |a_i| odd, chi_4(o_i) chi_4(o_i m0 + b_i) = chi_4(m0 + o_i b_i) and o_i b_
   certificates (d = 2; 196 events, 124 of them odd, Chen-type and bilinear included): each identity holds identically
   (5x5x5 integer grid; exact since every polynomial has degree <= 2 in each variable), multipliers and shapes are valid,
   every vertex is odd at m0, and the listed set S of sign vectors meets no event and is balanced in every coordinate.
+  The checker does NOT re-verify that vertices are irreducible and primitive (the required signs depend on it); for
+  that it relies on the sympy factorisation of the first program. Every polynomial has degree <= 2 in each variable,
+  so 3 grid points per variable would already suffice.
 
 ## Classification
 **Proved (located), model-restricted.** No-go for E2 pairs at distance 2 (and every d not divisible by 4) through any
-polynomial parametrisation, in any number of variables and with Chen-type variable multipliers, whenever no vertex is
+polynomial parametrisation, in any number of variables and with Chen-type variable multipliers (modelled as a free
+variable with a fair Liouville sign), whenever no vertex is
 forced (all-even systems unconditionally). First unresolved implication: systems with odd events in which a vertex
 indicator lies in the F_2-span of the event supports (blocked in every case found, not proved). The obstruction is again
 2-adic (chi_4 of values and the 2-part and Liouville sign of top-degree contents).
@@ -107,8 +123,15 @@ indicator lies in the F_2-span of the event supports (blocked in every case foun
 - The GGPY papers and the question in GGPY-b (as for the Session 32/33 cards). No new search engine run beyond what the
   Session 33 card records; possibly folklore. We claim nothing about the actual E2 problem.
 
-## Audit
-See below (fresh-context adversarial helper; mathbox not available).
+## Audit (fresh-context adversarial helper, Session 36; mathbox not available)
+- Verdict: the Proposition and proof steps 1-6 are correct (checked step by step, including repeated vertices, a vertex
+  on both sides (impossible: it would divide d), nonemptiness of S, and the fairness criterion; no counterexample to
+  the all-even claim, which the proof rules out). All numbers in the card match the .out files.
+- Errors fixed: (1) the linear-forms remark ("up to a global sign", odd slopes); (2) the claim that no odd-d system was
+  tested.
+- Gaps fixed: sign convention for negative values and the sign of c, c'; the Chen modelling choice made explicit; the
+  checker's reliance on sympy for irreducibility stated.
+- Minor fixed: the d = 4 count, the source of the forced-vertex example, the single-Chen-event remark.
 
 ## Not to repeat
 - Polynomial reparametrisations with constant multipliers and all-even events, for 4 not dividing d: covered by the proof.
