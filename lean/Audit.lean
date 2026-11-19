@@ -40,3 +40,12 @@ import TwinPrimes
 #print axioms TwinPrimes.eventually_lt_of_asymptotics
 #print axioms TwinPrimes.sieveInequality_of_asymptotics
 #print axioms TwinPrimes.boundedGaps_246_of_asymptotics_50
+#print axioms TwinPrimes.countRes_bounds
+#print axioms TwinPrimes.countDvd_bounds
+#print axioms TwinPrimes.countDvd_eq
+#print axioms TwinPrimes.isum_comm
+#print axioms TwinPrimes.isum_sq
+#print axioms TwinPrimes.isum_ite_count
+#print axioms TwinPrimes.lcm_dvd_iff
+#print axioms TwinPrimes.selberg_expand
+#print axioms TwinPrimes.selberg_error

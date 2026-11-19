@@ -1,0 +1,10 @@
+liouville_twin_centres.py  K = 100000000  (twin pairs 6k-1, 6k+1 with k <= K: 2166300)
+         K   #twins  mean lam(k) twins  z-score  mean lam(k) all k  sieve proxy z=100
+     10000      810           -0.04938    -1.41          -0.009400           -0.03404
+    100000     5330           -0.04053    -2.96          -0.002880           -0.02106
+   1000000    37915           -0.01422    -2.77          -0.000530           -0.00346
+  10000000   280557           -0.00041    -0.22          -0.000084           -0.00021
+ 100000000  2166300           +0.00015    +0.21          -0.000039           +0.00006
+
+naive local model, product over 5 <= p < 1e5: twin centres 0.01166, all k (p >= 5) 0.02346
+(the naive model's products are NOT predictions of the actual means: lambda is non-pretentious)

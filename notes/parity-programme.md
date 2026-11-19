@@ -171,3 +171,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   placements: circular / no bilinear structure / curve / carried but too weak and not evaluated). Audited (3 errors fixed).
 - Next attempt candidates: m-dependent multipliers in the E2 model; Merikoski's multiplicative-large-sieve variant (remark
   after GS Prop. 4.2, not opened); otherwise a genuinely new mechanism.
+
+## Session 35 (19 Nov 2026, 3:34 AM CT slot)
+- Source read: Kontorovich, A pseudo-twin primes theorem, arXiv:math/0507569v3 (SHA-256 df63e6eba015f953e0dc258e02d4d6f3d4c0f09442c40f76946cfa45f744dd03;
+  pp. 1-6; PDF not kept). Tao16 Thm 1.2 used as quoted in the parity paper (subsec:typeI).
+- Attempt: route card 2026-11-19-smooth-middle-bilinear.md: located. Type II structure in the middle (index) variable of a
+  twin pair (smooth m = p+1 = ab) cannot separate twins from the fake weight 1 - lambda(m-1)lambda(m+1) unless bilinear
+  two-point Chowla fails; numerics at X = 1e8 (code/parity/middle_bilinear.py). Fresh-context audit: 3 errors in the draft, fixed (see the card).
+- News search (3:34 AM run): nothing new on the 2026 claims or on parity.
+- Next attempt candidates: m-dependent multipliers in the E2 model; otherwise a genuinely new mechanism (not index-set
+  structure, not "where averaging stops near log X").

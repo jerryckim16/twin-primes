@@ -1,0 +1,21 @@
+middle_bilinear.py  X = 100000000  A = B = 3000  seed = 1  (sieve to N = 100000002)
+
+Part 1: infinity->1 norm lower bounds (alternating maximisation, 20 starts)
+  A*B = 9000000,  sqrt(A*B*(A+B)) = 232379
+  lambda(ab-1)lambda(ab+1)  [middle twist]             sum =        -3984   cut >=       233972   cut/AB = 0.0260   cut/sqrt(AB(A+B)) = 1.007
+  lambda(ab)                [sifted, multiplicative]   sum =         +144   cut >=      9000000   cut/AB = 1.0000   cut/sqrt(AB(A+B)) = 38.730
+  random +-1                [control]                  sum =        -2510   cut >=       233890   cut/AB = 0.0260   cut/sqrt(AB(A+B)) = 1.007
+  witness alpha=beta=lambda: alpha^T Msift beta = 9000000 (= A*B exactly)
+  witness alpha=beta=lambda on Mmid: +1888
+  restricted to ab = 0 mod 3: sum of Mmid = -1632 over 5000000 cells, cut >= 164072   (random +-1, same mask: cut >= 163498; 10 starts)
+  restricted to ab = 1 mod 3: sum of Mmid = -2512 over 2000000 cells, cut >= 89168   (random +-1, same mask: cut >= 88636; 10 starts)
+  restricted to ab = 2 mod 3: sum of Mmid = +160 over 2000000 cells, cut >= 88876   (random +-1, same mask: cut >= 88496; 10 starts)
+
+Part 2: twin middles m <= X (m-1, m+1 prime) with P+(m) <= y
+  twin pairs with middle <= X: 440311 (plus (3,5))
+  y = X^0.500 =     10000:  twin middles smooth 0.4898   all multiples of 6 smooth 0.4378   ratio 1.119
+  y = X^0.333 =       464:  twin middles smooth 0.1462   all multiples of 6 smooth 0.1105   ratio 1.323
+  y = X^0.250 =       100:  twin middles smooth 0.0351   all multiples of 6 smooth 0.0214   ratio 1.640
+  y = X^0.200 =        40:  twin middles smooth 0.0090   all multiples of 6 smooth 0.0045   ratio 2.023
+  sum over smooth middles (y = X^0.333) of lambda(m-1)lambda(m+1) = +775 over 1841921 middles (mean +0.0004)
+  sum over smooth middles (y = X^0.250) of lambda(m-1)lambda(m+1) = -425 over 357187 middles (mean -0.0012)
