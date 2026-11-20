@@ -69,3 +69,8 @@ import TwinPrimes
 #print axioms TwinPrimes.fano_not_two_colourable
 #print axioms TwinPrimes.fano_fair_weight
 #print axioms TwinPrimes.fano_line_certificate
+#print axioms TwinPrimes.orbit_sign
+#print axioms TwinPrimes.orbit_two_step
+#print axioms TwinPrimes.orbit_example_hmul
+#print axioms TwinPrimes.orbit_example_check
+#print axioms TwinPrimes.orbit_example_nontrivial
