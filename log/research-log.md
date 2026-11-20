@@ -1,5 +1,252 @@
 # Research log
 
+## 2026-11-20 - Session 38 (3:34 AM CT slot of 20 Nov; started on time 09:34 UTC; no wait, no other run active): News: a 2026 preprint claims mu(p+2) cancels over primes (flag; parity paper v1.0.1 status note); odd-order Chowla and the parity class (located); Lean: Fano facts; main paper v0.38
+
+- News search (3:34 AM run): nothing new on the bounds, but a new preprint, Lü-Wang-Wu, arXiv:2610.20242 (v1 14 Oct, v2 19 Nov 2026, 75 pp.), claims sum_{p<=x} mu(p+2) = o(pi(x)), the Möbius function on shifted primes, a standard model case of the parity problem that was known only on average over the shift. We read its outline (Sections 1, 2.2-2.3, 4.1): Vaughan's identity for Lambda(n), auxiliary small primes of n+2 via the multiplicativity of mu, then Cauchy-Schwarz and a counting problem for b m n - a r s = 2(a - b). Claimed, not verified; notes in notes/sources-lww26.md. Numerical sanity check (not a verification): at x = 10^9, sum mu(p+2)/pi(x) = -0.000060, sum lambda(p+2)/pi(x) = -0.000126, and both counts of their Theorem 2 within 0.01% of (1/2)(0.74791...) pi(x) (code/parity/lww_numerics.py). It would not give twin primes: Lambda(n+2) has no such multiplicativity, and in our reformulation (parity paper, Prop. ss-split) the twin asymptotic still needs shift -2, a full log x saving and uniformity over e <= x/D. Flag for Jerry; parity paper v1.0.1 adds only a status note (the places that called the problem open now say Claimed).
+- Parity attempt (route card only; the paper stays frozen): odd-order Chowla. Tao-Teräväinen proved the odd-order cases of logarithmically averaged Chowla; if a sieve could use them along its weights, a fake pattern weight would need all odd Fourier coefficients zero, i.e. Psi(s) = Psi(-s). Then a hypergraph target is blocked iff it is 2-colourable (chi <= 2), against fractional chromatic number chi_f <= 2 for the fair class. Every twin, bounded-gap, DHL, window, almost-prime, Chen and E2 target is 2-colourable, so odd-order information changes nothing for them; the twin obstruction 1 - lambda(n)lambda(n+2) is even. The smallest separating targets have 6 positions (exhaustive over the 2646 maximal intersecting families on 6 points, exact certificates for k <= 5); the Fano plane separates already with its 7 line triples.
+- Small results (programme 4, Lean only): lean/TwinPrimes/Fano.lean, four theorems by decide (Fano not 2-colourable; the fair line-free weight; the certificate sum s_i + sum_L prod s_i >= 2 on line-free patterns; lines pairwise meet). lake build and Audit.lean pass (propext, Quot.sound, Classical.choice only).
+- Bound share: main paper v0.38 (33 pages; Theorem thm:lean item 11; Related results mention the parity paper's status note). Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. Papers changed: main paper v0.38, parity paper v1.0.1. The twin prime conjecture remains open.
+
+Flag for Jerry: A 2026 preprint (Lü-Wang-Wu, arXiv:2610.20242) claims sum_{p<=x} mu(p+2) = o(pi(x)), a standard parity-problem model case; Claimed, not verified here; it would not give twin primes; needs outside expert review.
+
+Parity attempt: Odd-order Chowla inputs: located (they turn chi_f <= 2 into chi <= 2; all twin and gap targets are 2-colourable, so no gain; smallest separating targets have 6 positions; Fano Lean-checked). The parity paper is frozen; v1.0.1 adds only a status note on the Lü-Wang-Wu claim (24 pp.).
+
+Explored: Three primes in arithmetic progression among n + 210 i (i < n0) as a target: the fair class blocks it for n0 <= 9, the odd-order class only for n0 <= 8 (van der Waerden), so n0 = 9 is the one size where odd-order information would matter; a curiosity, inconclusive (code/explore/ap3_targets_classes.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- M
+- u
+- r
+- t
+- y
+- -
+- V
+- a
+- t
+- w
+- a
+- n
+- i
+-  
+- (
+- J
+- .
+-  
+- N
+- u
+- m
+- b
+- e
+- r
+-  
+- T
+- h
+- e
+- o
+- r
+- y
+-  
+- 2
+- 0
+- 1
+- 7
+- )
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- n
+- o
+- t
+-  
+- o
+- b
+- t
+- a
+- i
+- n
+- a
+- b
+- l
+- e
+- .
+-  
+- T
+- h
+- e
+-  
+- L
+- ü
+- -
+- W
+- a
+- n
+- g
+- -
+- W
+- u
+-  
+- p
+- r
+- o
+- o
+- f
+-  
+- (
+- a
+- b
+- o
+- u
+- t
+-  
+- 7
+- 0
+-  
+- p
+- a
+- g
+- e
+- s
+- )
+-  
+- w
+- a
+- s
+-  
+- n
+- o
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+- .
+
+Next: Weekly review on Monday 23 Nov: how a v1.1 of the parity paper should treat the Lü-Wang-Wu claim (what a mu-on-shifted-primes theorem gives for twins); whether the chi vs chi_f remark is worth one sentence; the next small-results line. Parity attempt: a genuinely new mechanism (e.g. whether the LWW Type II mechanism has any analogue for a two-sided prime problem, only after reading their Section 4).
+
 ## 2026-11-20 - Session 37 (7:34 PM CT slot of 19 Nov; started on time 01:34 UTC 20 Nov; no wait, no other run active): Almost-prime k-tuples and the parity class (located: limit floor(3k/2), sharp only at k = 2); Lean: S2 expansion with a prime-type condition; main paper v0.37
 
 - Parity attempt (route card only; the parity paper stays frozen at v1.0). New target family: almost-prime k-tuples, Omega(L_1(n)...L_k(n)) <= r infinitely often (DHL_Omega[k; r]). In the Liouville-pattern class the compatible sign patterns are exactly those with at least 2k - r minus signs, so the target is indistinguishable from DHL[k, 2k - r] and is blocked iff r <= floor(3k/2) - 1 (LP for both fairness variants and an exact check for k <= 10; the k = 3 cases Lean-checked). At k = 2 this is exactly Chen's r = 3; for k >= 3 every published value, even under GEH (6, 8, 11, 14, 17, 21, 24, 27 for k = 3, ..., 10; Lewulis 2022, Table A), lies well above the class limit (4, 6, 7, 9, 10, 12, 13, 15), so this class does not explain them. Sources read: Lewulis arXiv:2203.09432v1 and 1806.09034v3, Maynard 1205.4610 and 1205.5021, Franze 1111.2003. A corollary of the bipartite criterion; possibly folklore. Fresh-context audit: 3 errors and 7 gaps in the draft (page reference, an attribution, Lean coverage, wording), all fixed.

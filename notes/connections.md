@@ -146,3 +146,12 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   (outer), on a one-dimensional set (conic/line), or carried but not produced (and too weak at GS's precision).
 - Honest distance: confirms that twin primes offer neither a second multiplicative structure nor a finite-complexity additive
   one. Nothing here moves toward the conjecture.
+
+### Session 38 addition: odd-order Chowla and a claimed mu-on-shifted-primes theorem (route card + news; paper v1.0.1 status note)
+- Odd-order Chowla (Tao–Teräväinen, proved unweighted and log-averaged): even if usable along sieve weights, it removes the
+  class obstruction only for non-2-colourable targets; all twin and bounded-gap targets are 2-colourable. Distance to
+  twins: none gained; it confirms that the twin obstruction lives in the two-point (even) correlation.
+- Lü–Wang–Wu (arXiv:2610.20242, Claimed): sum_p mu(p+2) = o(pi(x)). If correct, a parity-breaking binary result with a prime
+  variable, via multiplicativity of mu at n+2 plus the Type II structure of Lambda(n). Distance to twins: Lambda(n+2)
+  has no such multiplicativity; in prop:ss-split the twin asymptotic would still need shift -2, a full log x saving and
+  uniformity over e <= x/D. Not verified here.

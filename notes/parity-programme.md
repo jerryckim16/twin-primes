@@ -202,3 +202,17 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   at most one sentence in a v1.1. The open steps it names (DHL_Omega[3; 5] under GEH) are sieve-technology questions,
   not parity questions.
 
+
+## Session 38 (20 Nov 2026, 3:34 AM CT slot)
+- Attempt: odd-order Chowla inputs (route card 2026-11-20-odd-order-chowla.md): located. Requiring all odd-order
+  coefficients of a pattern weight to vanish (the analogue of Tao–Teräväinen's odd-order log-Chowla, transported to sieve
+  weights, which is open) turns the blocking criterion "chi_f(H) <= 2" into "chi(H) <= 2". Every twin / gap / almost-prime
+  target of the paper is 2-colourable, so nothing changes for them; the smallest separating hypergraphs have 6 vertices
+  (exhaustive over the 2646 maximal intersecting families on 6 points); Fano (Lean-checked finite facts).
+  Sources read: TT arXiv:1708.02610v2 (Thm 1.1(i), Cor 1.8, Remark 1.9), arXiv:1710.02112v1 (abstract, Sec. 1).
+- News (3:34 AM run): Lü–Wang–Wu arXiv:2610.20242v2 CLAIM sum_p mu(p+2) = o(pi(x)) (notes/sources-lww26.md; flag of
+  20 Nov). Parity paper v1.0.1: status note only (Remarks rem:ford-twin, rem:ss-transfer, one open question, history).
+- For the weekly review of 23 Nov: decide how a v1.1 should treat LWW26 if it holds up (a short subsection on what a
+  mu-on-shifted-primes theorem gives and does not give for twins: prop:ss-split needs h = -2, a log x saving and
+  uniformity over e <= x/D); and whether the chi vs chi_f remark is worth one sentence (it explains why the
+  graph criterion is "even").

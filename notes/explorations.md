@@ -3,6 +3,20 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-20, Session 38 -- Three primes in arithmetic progression as a target: where odd-order information would matter (combinatorics: van der Waerden, Roth-type densities)
+- Idea: the odd-order route card of this session shows that odd-order Chowla inputs matter in the Liouville-pattern class
+  only for targets that are not 2-colourable but have fractional chromatic number <= 2. Is there a NATURAL arithmetic
+  target of that kind? Candidate: "three of the numbers n + 210 i (0 <= i < n0) whose indices form a 3-term
+  progression are all prime" (an admissible tuple for n0 <= 10), whose hypergraph is that of 3-APs in [n0].
+- Tried: code/explore/ap3_targets_classes.py [NMAX] (/usr/bin/python3 -I; 8 s for n0 <= 18), output .out. LP for the
+  fair class, exhaustive 2-colouring check, exact fair measure at n0 = 9.
+- Outcome: inconclusive (a curiosity). The fair class blocks for n0 <= 9 (at n0 = 9 exactly: marginal 1/2, exact measure
+  1/4 on each of the 3-AP-free sets {1,2,4,5}, {3,4,6,7}, {0,1,5,6,8}, {0,2,3,7,8}) and not for n0 >= 10 (max min-marginal
+  0.4762 at 10, then decreasing, as Roth-type density bounds predict); the odd-order class blocks only for n0 <= 8
+  (van der Waerden W(3;2) = 9). So n0 = 9 is the unique size at which odd-order information would remove the class
+  obstruction for this target. It is far from anything provable (Maynard's method needs k ~ 50 positions for two primes)
+  and says nothing about twins, which are graph targets. Heuristic / exploratory only.
+
 ## 2026-11-20, Session 37 -- Weighted almost-prime targets sum a_i Omega(L_i(n)) <= r in the parity class (LP experiment / Richert-type weights)
 - Idea: weighted sieves (Richert, Maynard, Lewulis) work with weighted counts of prime factors. Does the Liouville-pattern
   class say anything about weighted targets sum_i a_i Omega_i <= r that is not a plain prime count, and do fair and
