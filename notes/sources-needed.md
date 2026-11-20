@@ -1,5 +1,13 @@
 # Sources needed (one entry per source; status 'needed' or 'received')
 
+## Baker, Harman: "Shifted primes without large prime factors", Acta Arith. 83 (1998), 331-361
+- Why: the record exponent 0.677 for the largest prime factor of p + a, used as the comparison point in the Session 39
+  route card on Lü-Wang-Wu (notes/parity-attempts/2026-11-20-lww-orbit-test.md) and in the main paper (bib BH98).
+  Currently cited through R. Li, arXiv:2508.18285v3, p. 2, and Ding, arXiv:2510.04026v2, p. 1 (both opened).
+- Tried: the ICM Acta Arithmetica archive (matwbn.icm.edu.pl, volume 83 issue 4): guessed file names returned other
+  articles (e.g. aa8343.pdf is Zaïmi's paper); no index page fetched. 20 Nov 2026, Session 39. Low priority.
+- Status: needed
+
 ## Song, Yue: "Bounded Gaps Between Primes: An Upper Bound of 236", IACR ePrint 2026/1893
 - Why: rung 236 (witness, reference integers, Remark 4.23).
 - Tried: ePrint server returned HTTP 403 to us (session 8).

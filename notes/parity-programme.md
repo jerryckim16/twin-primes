@@ -217,3 +217,11 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   mu-on-shifted-primes theorem gives and does not give for twins: prop:ss-split needs h = -2, a log x saving and
   uniformity over e <= x/D); and whether the chi vs chi_f remark is worth one sentence (it explains why the
   graph criterion is "even").
+
+## Session 39 (20 Nov 2026, 11:34 AM CT run)
+- Attempt: what the LWW26 Type II step uses (route card 2026-11-20-lww-orbit-test.md): located. Cauchy-Schwarz over h
+  in (4.6) discards mu(h); the target enters only through boundedness and multiplicativity at the auxiliary primes
+  (orbit structure, outside the bounded-window Liouville-pattern class). Transfer to Lambda(h) would give an
+  EH-strength consequence (P^+(p+2) > p^{1-o(1)}), conditional on LWW Prop. 4.2, with one main-term gap. Twins = K = 0.
+- Parity paper: unchanged (frozen v1.0.1). For the 23 Nov review: whether the observation belongs in v1.1 (only once the
+  gap is closed and audited).

@@ -1,6 +1,23 @@
 [
  {
   "date": "2026-11-20",
+  "slot": "Session 39 (11:34 AM CT slot of 20 Nov; started on time 17:34 UTC; no wait, no other run active)",
+  "title": "Lü-Wang-Wu's Type II step would also prove an Elliott-Halberstam-strength result (flag update); Lean: orbit lemma; main paper v0.39",
+  "did": [
+   "Parity share: read further into Lü-Wang-Wu (arXiv:2610.20242v2, pp. 4-11 and 14-19; the audit helper also read Section 5). In their Type II step, after writing n+2 = a h with a a product of K auxiliary primes, Cauchy-Schwarz over h discards mu(h) (eq. (4.6)); the target is used only through boundedness and mu(ah) = (-1)^K mu(h), and all the saving comes from their Prop. 4.2 and a major-arc bound for the Vaughan coefficient mu(m) of the prime variable.",
+   "Consequence (Proved here in outline, conditional on their Prop. 4.2 and Section 5, one gap: the Type I main term): the same argument with Lambda(h) in place of mu(h) loses only a factor (log x)^{1/2}, so it would give infinitely many primes p with p+2 = a l, l prime, a = x^{o(1)}, i.e. P^+(p+2) > p^{1-o(1)}. The best unconditional exponent in print is 0.677 (Baker-Harman 1998; 0.679 claimed by R. Li, arXiv:2508.18285v3); near 1 it is known only under Elliott-Halberstam. A consistency red flag pointing at their Prop. 4.2, not an error found. Twin primes correspond to K = 0, where nothing is gained.",
+   "A fresh-context adversarial audit confirmed the reading and the conditional implication, found one wrong justification (Siegel-Walfisz for moduli about exp(L^{0.2}); fixed) and the main-term gap; a disagreement on a side remark about parity is recorded in the route card (notes/parity-attempts/2026-11-20-lww-orbit-test.md).",
+   "Lean (programme 4): lean/TwinPrimes/Orbit.lean (orbit_sign, orbit_two_step and a concrete instance with A = {3,5,7}, s = -1), the finite core of the route card; written by a helper agent, statements checked here; lake build and Audit.lean pass.",
+   "Main paper v0.39 (33 pp.): Lean item 12, a Related-results paragraph on the observation, and the superseded penalised capped bound 3.9597 of the 240 section reduced to one paragraph. Parity paper unchanged (frozen v1.0.1). Bounds unchanged: established 246, claimed 182, reproduced 236 (conditional) / 240 (conditional) / 246."
+  ],
+  "explored": "Do primes along dilation sets {a h - 2 : a a K-product} show extra structure? code/explore/dilation_variance.py: variance matches the independent-Bernoulli model (ratio 0.91-1.06) and K-products are indistinguishable from random controls: dead end.",
+  "parity": "Route card on what the Lü-Wang-Wu Type II argument uses: located (conditional implication with one gap); the parity paper stays frozen at v1.0.1 (24 pp.), nothing added to it.",
+  "failed": "Wolfram connector not available in this session; mathbox skills not available (audits by fresh-context helper agents). Baker-Harman 1998 could not be opened (cited through R. Li; listed in notes/sources-needed.md). The main-term step of the transfer argument is not written out. No news search (not the 3:34 AM run).",
+  "next": "Weekly review on Monday 23 Nov: how a parity-paper v1.1 treats LWW (now including this consistency observation); close the main-term gap of the transfer argument (Bombieri-Vinogradov for mu averaged over the auxiliary moduli) or record that it needs an expert; continue the Lean programme.",
+  "flag": "Update to the Lü-Wang-Wu flag: their Type II estimate, if correct, would also give the largest prime factor of p+2 above p^{1-o(1)} infinitely often (only 0.677 is known unconditionally), so their Prop. 4.2 is the place an expert should check first."
+ },
+ {
+  "date": "2026-11-20",
   "slot": "Session 38 (3:34 AM CT slot of 20 Nov; started on time 09:34 UTC; no wait, no other run active)",
   "title": "News: a 2026 preprint claims mu(p+2) cancels over primes (flag; parity paper v1.0.1 status note); odd-order Chowla and the parity class (located); Lean: Fano facts; main paper v0.38",
   "did": [

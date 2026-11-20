@@ -1,7 +1,7 @@
 {
- "version": "0.38",
+ "version": "0.39",
  "updated": "2026-11-20",
- "session_count": 38,
+ "session_count": 39,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,11 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Proved here",
+   "text": "(Outline, conditional on Lu-Wang-Wu Prop. 4.2 and Section 5; one gap, the Type I main term.) Route card (Session 39, not in a paper): in the Type II step of Lu-Wang-Wu (arXiv:2610.20242v2, (4.6)) Cauchy-Schwarz over h discards mu(h); the target enters only through boundedness and mu(ah) = (-1)^K mu(h). The same argument with Lambda(h) loses only L^{1/2}, so if their Prop. 4.2 and Section 5 hold (and once the Type I main term is written out, the open gap), there are infinitely many primes p with p+2 = a*l, l prime, a = x^{o(1)}: P^+(p+2) > p^{1-o(1)}, an Elliott-Halberstam-strength statement (record 0.677, Baker-Harman 1998). A consistency red flag for their Prop. 4.2, not an error found. Audited by a fresh-context helper.",
+   "where": "notes/parity-attempts/2026-11-20-lww-orbit-test.md (route card; not in a paper)"
+  },
   {
    "label": "Proved here",
    "text": "Route card (Session 38, not in a paper): in the Liouville-pattern class, requiring all odd-order coefficients of the weight to vanish (odd-order Chowla along the weights) changes the blocking criterion for hypergraph targets from chi_f(H) <= 2 to chi(H) <= 2; every blocked twin or bounded-gap target is 2-colourable, so nothing changes for them. Smallest separating target: 6 positions (Computed, exact certificates over all maximal intersecting families on <= 6 points); Fano plane separating (finite facts Lean-checked, lean/TwinPrimes/Fano.lean). Possibly folklore; a statement about a heuristic weight class.",
@@ -473,6 +478,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Own idea: fake-function / transfer test of the Lu-Wang-Wu mechanism (what does the Type II step use of mu(n+2), and what else would it prove?)",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 39 route card: only boundedness and multiplicativity at auxiliary primes are used; transfer to Lambda(h) would give an EH-strength consequence (P^+(p+2) > p^{1-o(1)}), so the place to check is Prop. 4.2. Main-term step of the transfer not yet written out. Twins (K = 0) out of reach."
+  },
+  {
+   "idea": "Exploration: variance of prime counts along dilation sets {ah-2 : a in K-products}",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 39: variance matches the independent-Bernoulli model (ratios 0.91-1.06); K-products indistinguishable from random controls; no structure (code/explore/dilation_variance.py)."
+  },
   {
    "idea": "Own idea: would odd-order Chowla (Tao-Teraevaeinen), if usable along sieve weights, remove the parity-class obstruction for any target?",
    "origin": "own",
