@@ -1,0 +1,22 @@
+n =  3: r3 = 2, max min-marginal t* = 0.666667 (C1 blocks: True), 2-colourable (Codd blocks): True, tuple 210*i admissible: True
+n =  4: r3 = 3, max min-marginal t* = 0.666667 (C1 blocks: True), 2-colourable (Codd blocks): True, tuple 210*i admissible: True
+n =  5: r3 = 4, max min-marginal t* = 0.666667 (C1 blocks: True), 2-colourable (Codd blocks): True, tuple 210*i admissible: True
+n =  6: r3 = 4, max min-marginal t* = 0.666667 (C1 blocks: True), 2-colourable (Codd blocks): True, tuple 210*i admissible: True
+n =  7: r3 = 4, max min-marginal t* = 0.571429 (C1 blocks: True), 2-colourable (Codd blocks): True, tuple 210*i admissible: True
+n =  8: r3 = 4, max min-marginal t* = 0.500000 (C1 blocks: True), 2-colourable (Codd blocks): True, tuple 210*i admissible: True
+n =  9: r3 = 5, max min-marginal t* = 0.500000 (C1 blocks: True), 2-colourable (Codd blocks): False, tuple 210*i admissible: True
+n = 10: r3 = 5, max min-marginal t* = 0.476190 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: True
+n = 11: r3 = 6, max min-marginal t* = 0.461538 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 12: r3 = 6, max min-marginal t* = 0.461538 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 13: r3 = 7, max min-marginal t* = 0.451613 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 14: r3 = 8, max min-marginal t* = 0.444444 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 15: r3 = 8, max min-marginal t* = 0.444444 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 16: r3 = 8, max min-marginal t* = 0.444444 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 17: r3 = 8, max min-marginal t* = 0.444444 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 18: r3 = 8, max min-marginal t* = 0.444444 (C1 blocks: False), 2-colourable (Codd blocks): False, tuple 210*i admissible: False
+n = 9 exact fair measure on 3-AP-free sets verified: True
+    [1, 2, 4, 5] 1/4
+    [3, 4, 6, 7] 1/4
+    [0, 1, 5, 6, 8] 1/4
+    [0, 2, 3, 7, 8] 1/4
+n = 9: 2-colourings without monochromatic 3-AP: 0

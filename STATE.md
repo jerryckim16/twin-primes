@@ -3,37 +3,48 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 37, 7:34 PM CT slot of 19 Nov, run 01:34 UTC 20 Nov): PHASE B
+## POSITION (after Session 38, 3:34 AM CT slot of 20 Nov, run 09:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.37 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (v1.0 of 18 Nov + a status note of 20 Nov on the
+  Lü-Wang-Wu claim, 24 pp.); main paper v0.38 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
+- NEWS (Session 38): Lü-Wang-Wu, arXiv:2610.20242v2, CLAIM sum_p mu(p+2) = o(pi(x)) (Hildebrand's conjecture, a parity
+  model case). Not verified; notes/sources-lww26.md; flag of 20 Nov in notes/flags-for-jerry.md. Watch for v3 / comments.
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
 
 ## Next steps (in order)
-1. Weekly review of 23 Nov decides: (a) whether the E2 route cards (S32 consistency test; S33 2-adic no-go for 4 nmid d
-   in the linear model; S36 extension to polynomial parametrisations and Chen-type multipliers, which contains the S33
-   d = 2 case) become ONE remark in a parity-paper v1.1 (do a wider literature-check first: GGPY citations, MathSciNet if
-   reachable); the S34 Green-Sawhney card is folklore in substance and should at most be one sentence; the S37
-   almost-prime tuples card (DHL_Omega[k; r] blocked iff r <= floor(3k/2)-1) is a corollary of prop:bipartite and should
-   at most be one sentence; (b) the next
-   active small-results line (candidates: the Lean programme (4) as a short note; the exact-certification toolkit (5)).
+1. Weekly review of 23 Nov decides: (a) how a parity-paper v1.1 treats the Lü-Wang-Wu claim (one short subsection at most:
+   what a mu-on-shifted-primes theorem gives and does not give for twins; prop:ss-split needs shift -2, a full log x
+   saving and uniformity over e <= x/D; its mechanism, multiplicativity of mu at n+2, has no analogue for Lambda(n+2));
+   (b) whether the E2 route cards (S32, S33, S36) become ONE remark in v1.1 (wider literature-check first); the S34
+   Green-Sawhney card and the S37 almost-prime card at most one sentence each; the S38 odd-order card (chi vs chi_f) at
+   most one sentence (it explains why the criterion is "even"); (c) the next active small-results line (candidates: the
+   Lean programme (4) as a short note; the exact-certification toolkit (5)).
 2. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
-   almost-prime tuples, S37; before that E2 polynomial gauge, S36). The E2 line is now mapped except the "forced vertex" case (odd events whose vertex indicator
-   lies in the F_2-span of the event supports); do it only if the review asks. Prefer a genuinely new mechanism:
-   Merikoski's multiplicative-large-sieve route to GS-type Type I (remark after GS Prop. 4.2, not opened); the
-   almost-all MRT17 form under GRH/EH; not another "where does averaging stop near log X", not index-set structure.
-3. Small results: programme (4) in Lean only. Done: Reduction.lean (asymptotics => sieve inequality => DHL[k,2] =>
-   BoundedGaps; ratio > 4 => level theta < 1/2); Counting.lean (counting multiples, Selberg expansion and error term,
-   S35; CRT step and the expansion in the class n = v0 mod W, crt_* theorems, S36). Possible next Lean step: the S2
-   analogue with one prime position (needs a prime-counting hypothesis as an explicit assumption), or the evaluation of
-   the diagonalised quadratic form for a toy y_d (e.g. Selberg's y_d for k = 1, small D) as an exact identity.
-4. Main paper thin index: Kintali account condensed (v0.36); further candidate: the 240 subsections of sec:stad (detail
-   is in the frozen verification note).
+   odd-order Chowla, S38; almost-prime tuples, S37). Candidates for a genuinely new mechanism: read LWW26 Section 4 and
+   locate exactly which step uses mu's multiplicativity at n+2 and whether anything survives for Lambda(n+2) or for
+   E2/P2 targets at n+2 (expect: no; that is the falsifiable point); Merikoski's multiplicative-large-sieve route to
+   GS-type Type I; the almost-all MRT17 form under GRH/EH. Not another "where does averaging stop near log X".
+3. Small results: programme (4) in Lean only. Done: Reduction.lean, Counting.lean (S35-S37), Fano.lean (S38: finite
+   facts of the odd-order card). Possible next Lean step: the evaluation of the diagonalised quadratic form for a toy y_d
+   (e.g. Selberg's y_d for k = 1, small D) as an exact identity; or the linear-algebra step of the Fano card (a weight with
+   vanishing singleton and line coefficients supported on line-free patterns is zero) in general form.
+4. Main paper thin index: further candidate cut: the 240 subsections of sec:stad (detail is in the frozen verification note).
 5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 6. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 38 (3:34 AM CT slot of 20 Nov, started on time 09:34 UTC; no wait) -- additions
+- News: LWW26 (above). Script code/parity/lww_numerics.py [X] (/usr/bin/python3 -I; ~3 min at 1e9, < 1 GB; .out).
+  Source read: arXiv:2610.20242v2 (SHA-256 7ac34131...2d423000), Sections 1, 2.2-2.3, 4.1, Prop. 4.2 statement.
+- Parity attempt: route card notes/parity-attempts/2026-11-20-odd-order-chowla.md (located). Script
+  code/parity/odd_chowla_class.py (/usr/bin/python3 -I; 7 s; .out). Sources: TT arXiv:1708.02610v2, 1710.02112v1.
+  Fresh-context adversarial audit (recorded in the card).
+- Exploration: code/explore/ap3_targets_classes.py [NMAX] (8 s; .out): inconclusive (curiosity).
+- Lean: TwinPrimes/Fano.lean (4 theorems, decide, maxRecDepth 20000), in Audit.lean; lake build and Audit.lean pass.
+- Parity paper v1.0.1 (status note only); main paper v0.38. Wolfram and mathbox NOT available.
 
 ## Session 37 (7:34 PM CT slot of 19 Nov, started on time 01:34 UTC 20 Nov; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-20-almost-prime-tuples.md (located; consistency test).

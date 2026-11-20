@@ -1,7 +1,7 @@
 {
- "version": "0.37",
+ "version": "0.38",
  "updated": "2026-11-20",
- "session_count": 37,
+ "session_count": 38,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Proved here",
+   "text": "Route card (Session 38, not in a paper): in the Liouville-pattern class, requiring all odd-order coefficients of the weight to vanish (odd-order Chowla along the weights) changes the blocking criterion for hypergraph targets from chi_f(H) <= 2 to chi(H) <= 2; every blocked twin or bounded-gap target is 2-colourable, so nothing changes for them. Smallest separating target: 6 positions (Computed, exact certificates over all maximal intersecting families on <= 6 points); Fano plane separating (finite facts Lean-checked, lean/TwinPrimes/Fano.lean). Possibly folklore; a statement about a heuristic weight class.",
+   "where": "notes/parity-attempts/2026-11-20-odd-order-chowla.md; code/parity/odd_chowla_class.py; lean/TwinPrimes/Fano.lean"
+  },
+  {
+   "label": "Claimed",
+   "text": "Lu-Wang-Wu, arXiv:2610.20242v2 (Oct/Nov 2026): sum_{p<=x} mu(p+2) = o(pi(x)), a model case of the parity problem. Not verified here (outline read; numerics consistent up to 1e9: code/parity/lww_numerics.py). Would not give twin primes.",
+   "where": "notes/sources-lww26.md; notes/flags-for-jerry.md (20 Nov 2026)"
+  },
   {
    "label": "Proved here",
    "text": "Route card (Session 37, not in a paper): in the Liouville-pattern class, DHL_Omega[k; r] (Omega of a product of k admissible linear forms <= r infinitely often) is blocked iff r <= floor(3k/2) - 1; sharp at k = 2 (Chen), far below every published value for k >= 3 (Lewulis 2022 Table A). Corollary of the bipartite criterion; possibly folklore; a statement about a heuristic weight class.",
@@ -463,6 +473,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Own idea: would odd-order Chowla (Tao-Teraevaeinen), if usable along sieve weights, remove the parity-class obstruction for any target?",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Session 38 route card: odd coefficients zero <=> Psi even; blocking becomes chi(H) <= 2 instead of chi_f(H) <= 2. Every blocked twin / gap / DHL / window / almost-prime target has an antipodal pair, so no (only the two-point input along the weights matters for twins); smallest separating targets have 6 positions (exhaustive, exact), Fano Lean-checked. Possibly folklore."
+  },
+  {
+   "idea": "Exploration: a natural arithmetic target separating the fair and odd-order classes (three primes in AP among n + 210 i)",
+   "origin": "exploration",
+   "status": "partial",
+   "note": "Session 38: separates exactly at 9 positions (fair class blocks for n0 <= 9, odd-order class only for n0 <= 8 by van der Waerden); a curiosity, far from provable statements and unrelated to twins."
+  },
   {
    "idea": "Own idea: what does the parity class forbid for almost-prime k-tuples DHL_Omega[k; r], and is it the bottleneck of the known results?",
    "origin": "own",
@@ -949,10 +971,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "1.0",
+   "version": "1.0.1",
    "status": "frozen",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Frozen v1.0 (18 Nov 2026, 24 pp.). Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion (Liouville-pattern weights block a proof of H_m <= g exactly when g < H(2m+1); a statement about the weight class, not a bound); GEH ceilings, k = 2 exactly at the parity value 2, the k = 3 criterion above 2 at eps = 2/9, 1/4, 7/24 and provably below 2 for eps >= 0.439; Pintz's dichotomy with Maynard weights (|d| <= 12; Pintz 16; possibly folklore); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. Five-lane internal referee pass applied. No claim of progress on the twin prime conjecture."
+   "summary": "Frozen v1.0 (18 Nov 2026, 24 pp.); v1.0.1 (20 Nov 2026) adds only a status note: the preprint arXiv:2610.20242 (Lu-Wang-Wu) claims sum_p mu(p+2) = o(pi(x)), called open in the paper; Claimed, not verified. Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion (Liouville-pattern weights block a proof of H_m <= g exactly when g < H(2m+1); a statement about the weight class, not a bound); GEH ceilings, k = 2 exactly at the parity value 2, the k = 3 criterion above 2 at eps = 2/9, 1/4, 7/24 and provably below 2 for eps >= 0.439; Pintz's dichotomy with Maynard weights (|d| <= 12; Pintz 16; possibly folklore); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. Five-lane internal referee pass applied. No claim of progress on the twin prime conjecture."
   },
   {
    "slug": "verification-note",
