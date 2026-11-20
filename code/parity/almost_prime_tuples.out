@@ -1,0 +1,12 @@
+(1) sign-space identity Omega(P)<=r  <=>  >= 2k-r minus signs: OK for k<=7, r in [k,2k]
+(2),(3) LP (fair and weakly fair) = exact check = formula 'blocked iff r <= floor(3k/2)-1': OK, k<=10
+(4)  k | smallest r not blocked by the class | best known (GEH) | best known (uncond.)
+     2 |   3 (forces >= 1 prime values) |   3 |   3
+     3 |   4 (forces >= 2 prime values) |   6 |   7
+     4 |   6 (forces >= 2 prime values) |   8 |  11
+     5 |   7 (forces >= 3 prime values) |  11 |  14
+     6 |   9 (forces >= 3 prime values) |  14 |  18
+     7 |  10 (forces >= 4 prime values) |  17 |  21
+     8 |  12 (forces >= 4 prime values) |  21 |  25
+     9 |  13 (forces >= 5 prime values) |  24 |  29
+    10 |  15 (forces >= 5 prime values) |  27 |  33

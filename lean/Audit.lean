@@ -29,6 +29,8 @@ import TwinPrimes
 #print axioms TwinPrimes.chen_no_weakly_fair_weight
 #print axioms TwinPrimes.chen_twin_half_weight
 #print axioms TwinPrimes.chen_semiprime_half_weight
+#print axioms TwinPrimes.omega4_no_weakly_fair_weight
+#print axioms TwinPrimes.omega3_weight
 #print axioms TwinPrimes.exists_of_wsum_lt
 #print axioms TwinPrimes.two_of_countP
 #print axioms TwinPrimes.dhl_of_sieveInequality
@@ -60,3 +62,6 @@ import TwinPrimes
 #print axioms TwinPrimes.crt_sieveSum_sq
 #print axioms TwinPrimes.crt_selberg_expand
 #print axioms TwinPrimes.crt_selberg_error
+#print axioms TwinPrimes.s2_expand
+#print axioms TwinPrimes.s2_error
+#print axioms TwinPrimes.s2_expand_example
