@@ -65,3 +65,7 @@ import TwinPrimes
 #print axioms TwinPrimes.s2_expand
 #print axioms TwinPrimes.s2_error
 #print axioms TwinPrimes.s2_expand_example
+#print axioms TwinPrimes.fanoLines_pairwise_meet
+#print axioms TwinPrimes.fano_not_two_colourable
+#print axioms TwinPrimes.fano_fair_weight
+#print axioms TwinPrimes.fano_line_certificate
