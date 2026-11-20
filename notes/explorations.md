@@ -3,6 +3,21 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-20, Session 39 -- Primes along dilation sets {a h - 2 : a in A}: do K-products behave differently? (probabilistic model test)
+- Idea: the Type II estimate of Lü-Wang-Wu (arXiv:2610.20242v2, Prop. 4.2) needs, after Cauchy-Schwarz over h, that the
+  numbers a h - 2 with a running over K-products of primes from disjoint ranges behave pseudorandomly as h varies. Is
+  there visible extra structure for K-products, compared with other sets of the same size and range?
+- Tried: code/explore/dilation_variance.py [HMAX seed] (/usr/bin/python3 -I; 2 s; output .out). A = 244 products
+  p1 p2 with p1 in (20, 40], p2 in (400, 800]; h in [HMAX/2, HMAX], numbers up to 8.8e7; prime counts C(h) against a
+  local-density model E(h) (sieve factors for q < 200, including q = 2: a first run without q = 2 gave a spurious
+  variance ratio of 17, a bug, fixed). Controls: random integers coprime to 2..19 in the same range, and primes (K = 1).
+- Outcome: dead end (no structure). Variance of C - E divided by the independent-Bernoulli prediction sum p(1-p):
+  0.94 / 0.94 / 0.91 for K-products, 0.93 / 0.90 / 1.06 for random controls, 0.93 / 1.01 / 1.02 for primes (three
+  runs); mean(C - E) within +-0.14 of 0 for every set (mean E about 14.5). The ratio to Poisson (about 0.42) is just the
+  sieve conditioning. K-products are indistinguishable from controls at this size.
+- Why: the heuristic behind LWW's estimate is the ordinary random model, and a small experiment cannot test an L^{-A}
+  saving. Not to be repeated at larger size without a sharper question.
+
 ## 2026-11-20, Session 38 -- Three primes in arithmetic progression as a target: where odd-order information would matter (combinatorics: van der Waerden, Roth-type densities)
 - Idea: the odd-order route card of this session shows that odd-order Chowla inputs matter in the Liouville-pattern class
   only for targets that are not 2-colourable but have fractional chromatic number <= 2. Is there a NATURAL arithmetic

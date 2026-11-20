@@ -55,3 +55,13 @@ the two counts against Theorem 2's constant, x = 10^4, ..., 10^9. Results in cod
   average (sections on Bombieri's sieve, `rem:ss-transfer`, `subsec:lt22`, open questions). Erratum-level
   status note v1.0.1 added: "claimed in [LWW26], not verified here". No new section.
 - Flag for Jerry (notes/flags-for-jerry.md, 20 Nov 2026).
+
+## Session 39 (20 Nov 2026, 11:34 AM CT run): Type II structure and a consequence
+Read further: pp. 4-11 and 14-19 (Prop. 2.1-2.3, Section 3 start/end, Section 4.1, Lemma 4.1, Prop. 4.2, start of
+4.2); the audit helper also read Section 5 (pp. 61-71, proof of Theorem 1 in (5.31)-(5.33)).
+- In (4.6) Cauchy–Schwarz over h uses only |mu(h) rho^{omega(h)}| <= 1; Q_Y does not contain the target. The target
+  is used only through boundedness and mu(ah) = (-1)^K mu(h); the Type I part uses BV for mu (3.1).
+- Prop. 4.2 holds for arbitrary coefficients; K must be large in terms of A (operator bound << L^{1-0.005K} + L^{-A}).
+- Consequence (conditional, with one gap): the same argument with Lambda(h) would give P^+(p+2) > p^{1-o(1)}
+  infinitely often, an EH-strength statement (record unconditional exponent 0.677, Baker–Harman 1998; 0.679 claimed
+  in arXiv:2508.18285v3). Route card: notes/parity-attempts/2026-11-20-lww-orbit-test.md. Flag updated.

@@ -156,3 +156,4 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   variable, via multiplicativity of mu at n+2 plus the Type II structure of Lambda(n). Distance to twins: Lambda(n+2)
   has no such multiplicativity; in prop:ss-split the twin asymptotic would still need shift -2, a full log x saving and
   uniformity over e <= x/D. Not verified here.
+  Session 39: their Type II step uses the target only through boundedness and multiplicativity at auxiliary primes; if correct, the same estimate would give P^+(p+2) > p^{1-o(1)} infinitely often (EH-strength; route card 2026-11-20-lww-orbit-test.md, one gap). Twins correspond to K = 0, where the mechanism gains nothing: distance to twin primes unchanged.

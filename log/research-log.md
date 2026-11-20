@@ -1,5 +1,339 @@
 # Research log
 
+## 2026-11-20 - Session 39 (11:34 AM CT slot of 20 Nov; started on time 17:34 UTC; no wait, no other run active): Lü-Wang-Wu's Type II step would also prove an Elliott-Halberstam-strength result (flag update); Lean: orbit lemma; main paper v0.39
+
+- Parity share: read further into Lü-Wang-Wu (arXiv:2610.20242v2, pp. 4-11 and 14-19; the audit helper also read Section 5). In their Type II step, after writing n+2 = a h with a a product of K auxiliary primes, Cauchy-Schwarz over h discards mu(h) (eq. (4.6)); the target is used only through boundedness and mu(ah) = (-1)^K mu(h), and all the saving comes from their Prop. 4.2 and a major-arc bound for the Vaughan coefficient mu(m) of the prime variable.
+- Consequence (Proved here in outline, conditional on their Prop. 4.2 and Section 5, one gap: the Type I main term): the same argument with Lambda(h) in place of mu(h) loses only a factor (log x)^{1/2}, so it would give infinitely many primes p with p+2 = a l, l prime, a = x^{o(1)}, i.e. P^+(p+2) > p^{1-o(1)}. The best unconditional exponent in print is 0.677 (Baker-Harman 1998; 0.679 claimed by R. Li, arXiv:2508.18285v3); near 1 it is known only under Elliott-Halberstam. A consistency red flag pointing at their Prop. 4.2, not an error found. Twin primes correspond to K = 0, where nothing is gained.
+- A fresh-context adversarial audit confirmed the reading and the conditional implication, found one wrong justification (Siegel-Walfisz for moduli about exp(L^{0.2}); fixed) and the main-term gap; a disagreement on a side remark about parity is recorded in the route card (notes/parity-attempts/2026-11-20-lww-orbit-test.md).
+- Lean (programme 4): lean/TwinPrimes/Orbit.lean (orbit_sign, orbit_two_step and a concrete instance with A = {3,5,7}, s = -1), the finite core of the route card; written by a helper agent, statements checked here; lake build and Audit.lean pass.
+- Main paper v0.39 (33 pp.): Lean item 12, a Related-results paragraph on the observation, and the superseded penalised capped bound 3.9597 of the 240 section reduced to one paragraph. Parity paper unchanged (frozen v1.0.1). Bounds unchanged: established 246, claimed 182, reproduced 236 (conditional) / 240 (conditional) / 246.
+
+Flag for Jerry: Update to the Lü-Wang-Wu flag: their Type II estimate, if correct, would also give the largest prime factor of p+2 above p^{1-o(1)} infinitely often (only 0.677 is known unconditionally), so their Prop. 4.2 is the place an expert should check first.
+
+Parity attempt: Route card on what the Lü-Wang-Wu Type II argument uses: located (conditional implication with one gap); the parity paper stays frozen at v1.0.1 (24 pp.), nothing added to it.
+
+Explored: Do primes along dilation sets {a h - 2 : a a K-product} show extra structure? code/explore/dilation_variance.py: variance matches the independent-Bernoulli model (ratio 0.91-1.06) and K-products are indistinguishable from random controls: dead end.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- b
+- y
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+- )
+- .
+-  
+- B
+- a
+- k
+- e
+- r
+- -
+- H
+- a
+- r
+- m
+- a
+- n
+-  
+- 1
+- 9
+- 9
+- 8
+-  
+- c
+- o
+- u
+- l
+- d
+-  
+- n
+- o
+- t
+-  
+- b
+- e
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+-  
+- (
+- c
+- i
+- t
+- e
+- d
+-  
+- t
+- h
+- r
+- o
+- u
+- g
+- h
+-  
+- R
+- .
+-  
+- L
+- i
+- ;
+-  
+- l
+- i
+- s
+- t
+- e
+- d
+-  
+- i
+- n
+-  
+- n
+- o
+- t
+- e
+- s
+- /
+- s
+- o
+- u
+- r
+- c
+- e
+- s
+- -
+- n
+- e
+- e
+- d
+- e
+- d
+- .
+- m
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- m
+- a
+- i
+- n
+- -
+- t
+- e
+- r
+- m
+-  
+- s
+- t
+- e
+- p
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- t
+- r
+- a
+- n
+- s
+- f
+- e
+- r
+-  
+- a
+- r
+- g
+- u
+- m
+- e
+- n
+- t
+-  
+- i
+- s
+-  
+- n
+- o
+- t
+-  
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+-  
+- o
+- u
+- t
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- n
+- o
+- t
+-  
+- t
+- h
+- e
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+
+Next: Weekly review on Monday 23 Nov: how a parity-paper v1.1 treats LWW (now including this consistency observation); close the main-term gap of the transfer argument (Bombieri-Vinogradov for mu averaged over the auxiliary moduli) or record that it needs an expert; continue the Lean programme.
+
 ## 2026-11-20 - Session 38 (3:34 AM CT slot of 20 Nov; started on time 09:34 UTC; no wait, no other run active): News: a 2026 preprint claims mu(p+2) cancels over primes (flag; parity paper v1.0.1 status note); odd-order Chowla and the parity class (located); Lean: Fano facts; main paper v0.38
 
 - News search (3:34 AM run): nothing new on the bounds, but a new preprint, Lü-Wang-Wu, arXiv:2610.20242 (v1 14 Oct, v2 19 Nov 2026, 75 pp.), claims sum_{p<=x} mu(p+2) = o(pi(x)), the Möbius function on shifted primes, a standard model case of the parity problem that was known only on average over the shift. We read its outline (Sections 1, 2.2-2.3, 4.1): Vaughan's identity for Lambda(n), auxiliary small primes of n+2 via the multiplicativity of mu, then Cauchy-Schwarz and a counting problem for b m n - a r s = 2(a - b). Claimed, not verified; notes in notes/sources-lww26.md. Numerical sanity check (not a verification): at x = 10^9, sum mu(p+2)/pi(x) = -0.000060, sum lambda(p+2)/pi(x) = -0.000126, and both counts of their Theorem 2 within 0.01% of (1/2)(0.74791...) pi(x) (code/parity/lww_numerics.py). It would not give twin primes: Lambda(n+2) has no such multiplicativity, and in our reformulation (parity paper, Prop. ss-split) the twin asymptotic still needs shift -2, a full log x saving and uniformity over e <= x/D. Flag for Jerry; parity paper v1.0.1 adds only a status note (the places that called the problem open now say Claimed).

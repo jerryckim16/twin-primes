@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.38, 20 November 2026}
+\date{Version 0.39, 20 November 2026}
 
 \begin{document}
 
@@ -231,6 +231,13 @@ non-negative, line-free and fair (\texttt{fano\_fair\_weight}); and every
 line-free pattern satisfies $\sum_is_i+\sum_L\prod_{i\in L}s_i\ge2$
 (\texttt{fano\_line\_certificate}). These are statements about sign patterns,
 not about primes.
+\item (\texttt{Orbit.lean}, the finite core of a parity route card) If
+$f(ah)=s\,f(h)$ with $s=\pm1$ for every $a$ in a set $\mathcal A$ and every $h$
+coprime to $a$, then $f(ah)=f(bh)$ for $a,b\in\mathcal A$
+(\texttt{orbit\_sign}), and $ah=bh'$ forces $f(h)=f(h')$
+(\texttt{orbit\_two\_step}); a concrete instance with $\mathcal A=\{3,5,7\}$
+and $s=-1$ satisfies the hypothesis for all $a,h$
+(\texttt{orbit\_example\_hmul}).
 \end{enumerate}
 \end{theorem}
 
@@ -1131,41 +1138,15 @@ remaining integral in $r$ over $[\max(c-mg,0),L-mg]$ is elementary. The code
 reproduces Lemma~\ref{lem:egf} exactly when $g=c=0$, and agrees with direct
 symbolic integration (sympy) for $k=3$, $m=1,2$, $g=1/10$.
 
-Since all three quantities are exact quadratic forms in the coefficients of
-$P$, we choose $P$ as the top eigenvector of
-$(1-\eta)J-(\eta^{-1}-1)L\,G_E$ against $I$, where $G_E$ is the Gram matrix of
-$E$, and evaluate both bounds exactly. The penalty works: at degree $16$ it
-lowers $E/I$ from $3.2\cdot10^{-4}$ (for the cap-free optimiser) to
-$3.4\cdot10^{-7}$.
-
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic]\label{prop:capped}
-For Stadlmann's parameters ($k=49$) there is a polynomial $P$ of degree $20$
-in even power sums ($707$ coefficients) with
-\[
-\frac{kJ_T(P\,1_T)}{I_T(P\,1_T)}\ \ge\ 3.95972 .
-\]
-At degree $16$ ($307$ coefficients) the same method gives $3.93625$.
-\end{proposition}
-
-\begin{sloppypar}
-This is below $4$, and at first the rung $240$ was therefore not
-reproduced; Theorem~\ref{thm:capped-exact} below supersedes it. The certificate is
-\texttt{code/cert\_stad49\_caps\_D20e.json}, written by
-\texttt{code/stadlmann\_caps\_opt.py}; the best bound came from
-$\eta=1/800$, with $E/I=1.6\cdot10^{-7}$ and the bound of
-Proposition~\ref{prop:caps} in its square-root form. Where the loss comes from
-(\lbl{Computed}, same runs): the cap-free optimiser of degree $20$ has
-$s\,kJ/I=4.01618$ but $E/I=1.2\cdot10^{-3}$ (of which $1.2\cdot10^{-4}$ from points with one
-coordinate above $0.6$); forcing $E$ down costs about $0.045$ of the cap-free
-ratio ($4.0161\to3.9710$), and the Cauchy--Schwarz step costs another
-$0.011$. Both losses come from the way we bound $J_T$, not from the caps as
-such: $F=P\,1_T$ is cut off on $V$ anyway, and Proposition~\ref{prop:caps}
-charges for $P$ on $V$ only because it does not compute the capped marginals.
-The next step is therefore an exact formula for $J_T(P\,1_T)$, which needs the
-fibers of $T$ and not only integrals over $V$. A first attempt that dropped the
-condition $u_i>g$ in the union bound failed badly ($E/I\approx146$ for the
-cap-free optimiser; \texttt{runs/stad49\_caps\_D20.log}).
-\end{sloppypar}
+A first attempt (versions 0.5--0.6) chose $P$ as the top eigenvector of a
+penalised form $(1-\eta)J-(\eta^{-1}-1)L\,G_E$ against $I$ ($G_E$ the Gram
+matrix of $E$) and bounded $J_T$ through Proposition~\ref{prop:caps}. It gave
+only $kJ_T/I_T\ge3.95972$ at degree $20$ (\lbl{Computed}, exact;
+certificate \texttt{code/}\allowbreak\texttt{cert\_stad49\_caps\_D20e.json}, script
+\texttt{code/}\allowbreak\texttt{stadlmann\_caps\_opt.py}), below $4$. The loss came from the
+Cauchy--Schwarz step of Proposition~\ref{prop:caps}, not from the caps, which
+is why the next subsection computes the capped functionals exactly. The run
+is described in version~0.38 of this paper and in \texttt{runs/}.
 
 \subsection*{The capped functionals exactly}
 Version~0.5 bounded $J_T(P\,1_T)$ through Proposition~\ref{prop:caps}, and the
@@ -1271,7 +1252,7 @@ $\int_VP^2=1.209\cdot10^{-3}\,I(P)$, and $\mathrm{Corr}_1$,
 $\mathrm{Corr}_2$ on the pieces $U=g$ and $U=C_{m+1}-s$ are
 $1.72\cdot10^{-4}$, $8.1\cdot10^{-5}$ and $1.98\cdot10^{-3}$ of $J(P)$. The
 largest loss is the cut of the fiber at $C_{m+1}-s$ (for $m=0$: no coordinate
-above $0.6$). So Proposition~\ref{prop:capped} ($3.9597$) measured the
+above $0.6$). So the penalised bound ($3.9597$) measured the
 weakness of Proposition~\ref{prop:caps}, not the caps; it is superseded. The loss grows with the degree of the cap-free optimiser
 (\lbl{Computed}, exact: \texttt{capped\_check.py} for every degree; the
 degree-$20$ value also with \texttt{capped\_exact.py}, and the degree-$8$ value
@@ -2139,7 +2120,16 @@ It makes no claim of progress on the twin prime conjecture, which is open.
 Version~1.0.1 (20 Nov 2026) adds only a status note: the preprint of L\"u, Wang
 and Wu (arXiv:2610.20242) claims (\lbl{Claimed}) $\sum_{p\le x}\mu(p+2)=o(\pi(x))$, a model
 case of the parity problem that the paper had called open; we have not
-verified it, and it would not give twin primes.
+verified it, and it would not give twin primes. A route card of 20 November
+(\texttt{notes/parity-attempts/2026-11-20-lww-orbit-test.md}; not in the frozen
+paper) observes that in their Type II step the target enters only through
+boundedness and multiplicativity at the auxiliary primes, so the same estimate,
+if correct, would also give infinitely many primes $p$ with $p+2=a\ell$, $\ell$
+prime, $a=x^{o(1)}$ (\lbl{Proved here} in outline, conditional on their
+Proposition~4.2, with one gap in the main term). That is an
+Elliott--Halberstam-strength statement, against the record exponent $0.677$
+for the largest prime factor of $p+2$ \cite{BH98}; we read it as a reason to
+check their Proposition~4.2 first, not as an error found.
 \end{itemize}
 \end{sloppypar}
 
@@ -2287,6 +2277,7 @@ the shift).
 \item[0.34] (19 Nov 2026) Theorem~\ref{thm:lean}, item 7: the limit step from two-sided asymptotics to the sieve inequality in Lean. The $186$ loss-bound account condensed to one list (detail stays in the verification note). Bounds unchanged.
 \item[0.35] (19 Nov 2026) Theorem~\ref{thm:lean}, item 8: counting multiples, the Selberg expansion identity and its error term in Lean (\texttt{Counting.lean}). The account of the Song--Yue recomputation shortened (detail stays in the verification note). Bounds unchanged.
 \item[0.36] (19 Nov 2026) Theorem~\ref{thm:lean}, item 9: the Selberg expansion and its error term in the residue class $n\equiv v_0\pmod W$ (Chinese remainder step, in Lean). The account of Kintali's support condensed. Bounds unchanged.
+\item[0.39] (20 Nov 2026) Theorem~\ref{thm:lean}, item 12 (\texttt{Orbit.lean}); Related results: a consistency observation on the claimed Type~II estimate of L\"u--Wang--Wu; the superseded penalised capped bound ($3.9597$) of Section~\ref{sec:stad} reduced to one paragraph. Bounds unchanged.
 \item[0.38] (20 Nov 2026) Theorem~\ref{thm:lean}, item 11 (\texttt{Fano.lean}); Related results: the parity paper's status note 1.0.1 on a claimed result of L\"u--Wang--Wu. Bounds unchanged.
 \item[0.37] (20 Nov 2026) Theorem~\ref{thm:lean}, item 10: the expansion of $S_2$ with an arbitrary prime-type condition and its abstract error term (the arithmetic input as an explicit hypothesis), in Lean. Bounds unchanged.
 \end{itemize}
@@ -2295,6 +2286,9 @@ the shift).
 \bibitem{Axiom26} E.~Chen, S.~Hariharan, K.~Lau, B.~Mehta, A.~A.~Swaminathan,
 J.~Thorner, E.~Xie, \emph{Lean formalization of bounded gaps between primes}
 (blueprint, PrimeGapsLib), 2026. \url{https://primegaps.axiommath.ai/}
+\bibitem{BH98} R.~C.~Baker and G.~Harman, \emph{Shifted primes without large
+prime factors}, Acta Arith.\ \textbf{83} (1998), 331--361 (the exponent $0.677$
+as cited in R.~Li, arXiv:2508.18285v3, p.~2; not opened by us).
 \bibitem{Bom76} E.~Bombieri, \emph{The asymptotic sieve}, 1976.
 \bibitem{Cha26} F.~Charton, L.~Hong, K.~Lau, K.~Ono, G.~Remy, H.~C.~Siu,
 A.~A.~Swaminathan, J.~Thorner, Y.~Xie, \emph{A new bound for small gaps

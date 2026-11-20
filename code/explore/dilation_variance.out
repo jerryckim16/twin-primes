@@ -1,0 +1,12 @@
+HMAX=3000 seed=1 |A|=244 range=[9223,29489] N=88467010
+K=2 products           var/Poisson = 0.420  var/Bernoulli = 0.936  mean(C-E) = +0.057  mean E = 14.50
+random coprime ints    var/Poisson = 0.417  var/Bernoulli = 0.925  mean(C-E) = +0.073  mean E = 14.00
+primes (K=1)           var/Poisson = 0.419  var/Bernoulli = 0.931  mean(C-E) = -0.022  mean E = 13.95
+HMAX=3000 seed=2 |A|=244 range=[9223,29489] N=88467010
+K=2 products           var/Poisson = 0.420  var/Bernoulli = 0.936  mean(C-E) = +0.057  mean E = 14.50
+random coprime ints    var/Poisson = 0.406  var/Bernoulli = 0.903  mean(C-E) = -0.041  mean E = 14.10
+primes (K=1)           var/Poisson = 0.452  var/Bernoulli = 1.009  mean(C-E) = -0.084  mean E = 13.99
+HMAX=1500 seed=3 |A|=244 range=[9223,29489] N=44233510
+K=2 products           var/Poisson = 0.386  var/Bernoulli = 0.908  mean(C-E) = -0.134  mean E = 15.08
+random coprime ints    var/Poisson = 0.453  var/Bernoulli = 1.059  mean(C-E) = +0.060  mean E = 14.69
+primes (K=1)           var/Poisson = 0.437  var/Bernoulli = 1.024  mean(C-E) = -0.065  mean E = 14.52

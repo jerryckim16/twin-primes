@@ -3,38 +3,48 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 38, 3:34 AM CT slot of 20 Nov, run 09:34 UTC): PHASE B
+## POSITION (after Session 39, 11:34 AM CT slot of 20 Nov, run 17:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (v1.0 of 18 Nov + a status note of 20 Nov on the
-  Lü-Wang-Wu claim, 24 pp.); main paper v0.38 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.39 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
-- NEWS (Session 38): Lü-Wang-Wu, arXiv:2610.20242v2, CLAIM sum_p mu(p+2) = o(pi(x)) (Hildebrand's conjecture, a parity
-  model case). Not verified; notes/sources-lww26.md; flag of 20 Nov in notes/flags-for-jerry.md. Watch for v3 / comments.
+- NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2, CLAIM sum_p mu(p+2) = o(pi(x)). Not verified; notes/sources-lww26.md.
+  Session 39 route card (notes/parity-attempts/2026-11-20-lww-orbit-test.md): their Type II step discards mu(h) by
+  Cauchy-Schwarz ((4.6)); the same argument with Lambda(h) would give P^+(p+2) > p^{1-o(1)} i.o. (EH-strength; record
+  0.677). Conditional on their Prop. 4.2 + Section 5; ONE GAP: the Type I main term of the modified sum is not written out
+  (needs BV for mu averaged over the auxiliary moduli a ~ exp(L^{0.2}), weight 1/a). Flag updated (notes/flags-for-jerry.md).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
 
 ## Next steps (in order)
-1. Weekly review of 23 Nov decides: (a) how a parity-paper v1.1 treats the Lü-Wang-Wu claim (one short subsection at most:
-   what a mu-on-shifted-primes theorem gives and does not give for twins; prop:ss-split needs shift -2, a full log x
-   saving and uniformity over e <= x/D; its mechanism, multiplicativity of mu at n+2, has no analogue for Lambda(n+2));
-   (b) whether the E2 route cards (S32, S33, S36) become ONE remark in v1.1 (wider literature-check first); the S34
-   Green-Sawhney card and the S37 almost-prime card at most one sentence each; the S38 odd-order card (chi vs chi_f) at
-   most one sentence (it explains why the criterion is "even"); (c) the next active small-results line (candidates: the
+1. Weekly review of 23 Nov decides: (a) how a parity-paper v1.1 treats the Lü-Wang-Wu claim and the Session 39
+   consistency observation (one short subsection at most; prop:ss-split context; the observation only if the main-term
+   gap is closed and it passes proof-audit and literature-check); (b) whether the E2 route cards (S32, S33, S36) become ONE
+   remark in v1.1; S34, S37, S38 cards at most one sentence each; (c) the next active small-results line (candidates: the
    Lean programme (4) as a short note; the exact-certification toolkit (5)).
-2. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
-   odd-order Chowla, S38; almost-prime tuples, S37). Candidates for a genuinely new mechanism: read LWW26 Section 4 and
-   locate exactly which step uses mu's multiplicativity at n+2 and whether anything survives for Lambda(n+2) or for
-   E2/P2 targets at n+2 (expect: no; that is the falsifiable point); Merikoski's multiplicative-large-sieve route to
-   GS-type Type I; the almost-all MRT17 form under GRH/EH. Not another "where does averaging stop near log X".
-3. Small results: programme (4) in Lean only. Done: Reduction.lean, Counting.lean (S35-S37), Fano.lean (S38: finite
-   facts of the odd-order card). Possible next Lean step: the evaluation of the diagonalised quadratic form for a toy y_d
-   (e.g. Selberg's y_d for k = 1, small D) as an exact identity; or the linear-algebra step of the Fano card (a weight with
-   vanishing singleton and line coefficients supported on line-free patterns is zero) in general form.
-4. Main paper thin index: further candidate cut: the 240 subsections of sec:stad (detail is in the frozen verification note).
-5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
+2. Close (or honestly abandon) the main-term gap of the Session 39 transfer argument: compute T_1(G) - T_2(G) for
+   G(N) = prod V_i^{-1} sum_{a | N} Lambda(N/a) via BV, and show the Type II part of the local-density model is small.
+   Also a literature-check: is "LWW-type Type II => large prime factors of p+2" noted anywhere (watch v3 / comments)?
+3. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
+   LWW orbit / transfer test, S39). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the
+   almost-all MRT17 form under GRH/EH. Not another "where does averaging stop near log X".
+4. Small results: programme (4) in Lean. Done: Reduction.lean, Counting.lean, Fano.lean, Orbit.lean (S39). Possible next:
+   the evaluation of the diagonalised quadratic form for a toy y_d (Selberg's y_d for k = 1, small D) as an exact identity.
+5. Main paper thin index: S39 reduced the superseded penalised capped bound; further candidates: the long one-sided
+   certificate subsection of sec:stad (detail is in the frozen verification note).
+6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
-6. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
+7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 39 (11:34 AM CT slot of 20 Nov, started on time 17:34 UTC; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-20-lww-orbit-test.md (located; conditional implication, one gap).
+  Sources read: LWW arXiv:2610.20242v2 pp. 4-11, 14-19 (audit helper: also pp. 61-71); R. Li arXiv:2508.18285v3
+  (SHA-256 8e892c00...7003), Ding arXiv:2510.04026v2 (SHA-256 192e0b23...0af9), introductions only. Fresh-context audit
+  (recorded in the card). Baker-Harman 1998 not opened (notes/sources-needed.md).
+- Exploration: code/explore/dilation_variance.py [HMAX seed] (/usr/bin/python3 -I; 2 s; .out): dead end.
+- Lean: TwinPrimes/Orbit.lean (orbit_sign, orbit_two_step, orbit_example_*; helper agent, statements checked here; in
+  Audit.lean); lake build and Audit.lean pass.
+- Main paper v0.39. Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 38 (3:34 AM CT slot of 20 Nov, started on time 09:34 UTC; no wait) -- additions
 - News: LWW26 (above). Script code/parity/lww_numerics.py [X] (/usr/bin/python3 -I; ~3 min at 1e9, < 1 GB; .out).

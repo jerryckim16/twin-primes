@@ -1,5 +1,25 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-20 (Session 39) — Update to the Lü–Wang–Wu flag: their Type II estimate, if correct, would also give an Elliott–Halberstam-strength theorem they do not state (a red flag for their Prop. 4.2, not an error found)
+- **What.** Reading Section 4.1 of arXiv:2610.20242v2: after writing n + 2 = a h with a a product of K auxiliary primes,
+  the authors apply Cauchy–Schwarz over h and discard mu(h) ((4.6)); the remaining quantity Q_Y does not involve the
+  target, and the saving comes from Prop. 4.2 plus a major-arc bound (Section 5). Replacing mu(h) by Lambda(h) costs only a
+  factor (log x)^{1/2}, so the same estimate would give infinitely many primes p with p + 2 = a·l, l prime, a = x^{o(1)},
+  i.e. the largest prime factor of p + 2 exceeds p^{1-o(1)} infinitely often. The best unconditional exponent in print
+  is 0.677 (Baker–Harman 1998; 0.679 claimed by R. Li, arXiv:2508.18285v3, who writes that even 0.678 "seems impossible
+  without any new things"); exponents near 1 are known only under Elliott–Halberstam.
+- **Why it might matter.** Either LWW's Type II estimate (Prop. 4.2, about 40 pages) is an even larger breakthrough than
+  they claim, or it fails. This is where an expert should look first. It does not bring twin primes closer: the twin case
+  is K = 0, where the argument gains nothing.
+- **Evidence label.** Proved here in outline, conditional on LWW's Prop. 4.2 and Section 5; one gap left open (the Type I
+  main term of the modified sum must be computed; it needs Bombieri–Vinogradov for mu averaged over the auxiliary
+  moduli). Literature values opened in arXiv:2508.18285v3 and arXiv:2510.04026v2.
+- **Checked.** A fresh-context adversarial audit (helper agent, read LWW pp. 1-20 and 61-71) confirmed the structural
+  reading and the conditional implication, found one wrong justification (fixed) and the main-term gap; one point of
+  disagreement (on parity) is recorded in the route card. **Not checked:** LWW's Prop. 4.2 itself.
+- **Files.** notes/parity-attempts/2026-11-20-lww-orbit-test.md, notes/sources-lww26.md, lean/TwinPrimes/Orbit.lean.
+- **Needs outside expert review:** yes (both the preprint and this consistency observation).
+
 ## 2026-11-20 (Session 38) — A 2026 preprint claims a proof of a standard parity-problem model case: sum_{p<=x} mu(p+2) = o(pi(x)) (Lü–Wang–Wu, arXiv:2610.20242)
 - **What.** G. Lü, Z. Wang, J. Wu, "On the Hardy–Littlewood–Chowla conjecture", arXiv:2610.20242 (v1 14 Oct 2026, v2 19 Nov
   2026, 75 pp.). Theorem 1 claims that the Möbius function cancels on the shifted primes p + 2 (Hildebrand's 1989
