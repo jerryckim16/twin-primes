@@ -1131,41 +1131,15 @@ remaining integral in $r$ over $[\max(c-mg,0),L-mg]$ is elementary. The code
 reproduces Lemma~\ref{lem:egf} exactly when $g=c=0$, and agrees with direct
 symbolic integration (sympy) for $k=3$, $m=1,2$, $g=1/10$.
 
-Since all three quantities are exact quadratic forms in the coefficients of
-$P$, we choose $P$ as the top eigenvector of
-$(1-\eta)J-(\eta^{-1}-1)L\,G_E$ against $I$, where $G_E$ is the Gram matrix of
-$E$, and evaluate both bounds exactly. The penalty works: at degree $16$ it
-lowers $E/I$ from $3.2\cdot10^{-4}$ (for the cap-free optimiser) to
-$3.4\cdot10^{-7}$.
-
-\begin{proposition}[\lbl{Computed}, exact rational arithmetic]\label{prop:capped}
-For Stadlmann's parameters ($k=49$) there is a polynomial $P$ of degree $20$
-in even power sums ($707$ coefficients) with
-\[
-\frac{kJ_T(P\,1_T)}{I_T(P\,1_T)}\ \ge\ 3.95972 .
-\]
-At degree $16$ ($307$ coefficients) the same method gives $3.93625$.
-\end{proposition}
-
-\begin{sloppypar}
-This is below $4$, and at first the rung $240$ was therefore not
-reproduced; Theorem~\ref{thm:capped-exact} below supersedes it. The certificate is
-\texttt{code/cert\_stad49\_caps\_D20e.json}, written by
-\texttt{code/stadlmann\_caps\_opt.py}; the best bound came from
-$\eta=1/800$, with $E/I=1.6\cdot10^{-7}$ and the bound of
-Proposition~\ref{prop:caps} in its square-root form. Where the loss comes from
-(\lbl{Computed}, same runs): the cap-free optimiser of degree $20$ has
-$s\,kJ/I=4.01618$ but $E/I=1.2\cdot10^{-3}$ (of which $1.2\cdot10^{-4}$ from points with one
-coordinate above $0.6$); forcing $E$ down costs about $0.045$ of the cap-free
-ratio ($4.0161\to3.9710$), and the Cauchy--Schwarz step costs another
-$0.011$. Both losses come from the way we bound $J_T$, not from the caps as
-such: $F=P\,1_T$ is cut off on $V$ anyway, and Proposition~\ref{prop:caps}
-charges for $P$ on $V$ only because it does not compute the capped marginals.
-The next step is therefore an exact formula for $J_T(P\,1_T)$, which needs the
-fibers of $T$ and not only integrals over $V$. A first attempt that dropped the
-condition $u_i>g$ in the union bound failed badly ($E/I\approx146$ for the
-cap-free optimiser; \texttt{runs/stad49\_caps\_D20.log}).
-\end{sloppypar}
+A first attempt (versions 0.5--0.6) chose $P$ as the top eigenvector of a
+penalised form $(1-\eta)J-(\eta^{-1}-1)L\,G_E$ against $I$ ($G_E$ the Gram
+matrix of $E$) and bounded $J_T$ through Proposition~\ref{prop:caps}. It gave
+only $kJ_T/I_T\ge3.95972$ at degree $20$ (\lbl{Computed}, exact;
+certificate \texttt{code/}\allowbreak\texttt{cert\_stad49\_caps\_D20e.json}, script
+\texttt{code/}\allowbreak\texttt{stadlmann\_caps\_opt.py}), below $4$. The loss came from the
+Cauchy--Schwarz step of Proposition~\ref{prop:caps}, not from the caps, which
+is why the next subsection computes the capped functionals exactly. The run
+is described in version~0.38 of this paper and in \texttt{runs/}.
 
 \subsection*{The capped functionals exactly}
 Version~0.5 bounded $J_T(P\,1_T)$ through Proposition~\ref{prop:caps}, and the
@@ -1271,7 +1245,7 @@ $\int_VP^2=1.209\cdot10^{-3}\,I(P)$, and $\mathrm{Corr}_1$,
 $\mathrm{Corr}_2$ on the pieces $U=g$ and $U=C_{m+1}-s$ are
 $1.72\cdot10^{-4}$, $8.1\cdot10^{-5}$ and $1.98\cdot10^{-3}$ of $J(P)$. The
 largest loss is the cut of the fiber at $C_{m+1}-s$ (for $m=0$: no coordinate
-above $0.6$). So Proposition~\ref{prop:capped} ($3.9597$) measured the
+above $0.6$). So the penalised bound ($3.9597$) measured the
 weakness of Proposition~\ref{prop:caps}, not the caps; it is superseded. The loss grows with the degree of the cap-free optimiser
 (\lbl{Computed}, exact: \texttt{capped\_check.py} for every degree; the
 degree-$20$ value also with \texttt{capped\_exact.py}, and the degree-$8$ value
