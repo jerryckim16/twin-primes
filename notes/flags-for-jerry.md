@@ -1,5 +1,27 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-20 (Session 38) — A 2026 preprint claims a proof of a standard parity-problem model case: sum_{p<=x} mu(p+2) = o(pi(x)) (Lü–Wang–Wu, arXiv:2610.20242)
+- **What.** G. Lü, Z. Wang, J. Wu, "On the Hardy–Littlewood–Chowla conjecture", arXiv:2610.20242 (v1 14 Oct 2026, v2 19 Nov
+  2026, 75 pp.). Theorem 1 claims that the Möbius function cancels on the shifted primes p + 2 (Hildebrand's 1989
+  conjecture, which they call "a well-known model case for the parity problem in sieve theory"); Theorem 2 claims that
+  mu(p+2) = +1 and = -1 each occur for half of the primes with p + 2 squarefree. Their Remark 1 says the method should also
+  give the Liouville version (not done there). Their Remark 4 cites an OpenAI release of 6 Oct 2026 claiming infinitely
+  many primes with mu(p-1) = 1 (not opened by us).
+- **Why it might matter.** Until now this was known only on average over the shift (Lichtman 2022, Lichtman–Teräväinen
+  2022). If correct, it is parity-breaking for a binary problem with a prime variable. It does NOT give twin primes:
+  the twin problem needs Lambda at both places, and the mechanism (as far as we read it: auxiliary small prime factors
+  of n + 2 via the multiplicativity of mu, then Cauchy–Schwarz and a counting problem for b m n - a r s = 2(a - b)) has no
+  analogue for Lambda(n+2). In our reformulation (parity paper, Prop. ss-split) the twin asymptotic would still need a
+  saving of a full log x and uniformity over many progressions.
+- **Evidence label:** Claimed (preprint). We read Sections 1, 2.2-2.3, 4.1 and the statement of Prop. 4.2 (notes in
+  notes/sources-lww26.md); the 70 pages of proof are not checked. Computed sanity check only (not a verification):
+  code/parity/lww_numerics.py gives sum_{p<=x} mu(p+2)/pi(x) = -0.000060 and sum lambda(p+2)/pi(x) = -0.000126 at
+  x = 10^9, and the two counts of Theorem 2 within 0.01% of the predicted (1/2)(0.74791...) pi(x).
+- **What changed here.** Parity paper v1.0.1 (status note only): the places that called this problem open now say
+  "Claimed in [LWW26], not verified here".
+- **Needs outside expert review:** yes, for the preprint itself. This is not our result. An expert's opinion on whether the
+  Type II argument (Section 4) is sound would decide how the parity paper should describe it.
+
 ## 2026-11-16 (Session 26) — (minor) Pintz's 2010 parity-sensitive theorem improved from 16 to 12 with Maynard weights (probably folklore)
 - **What.** J. Pintz (arXiv:1004.1065v1, 2010) proved that some even d with 0 < |d| <= 16 has lambda(p+d) = -1 for infinitely
   many primes p (lambda = Liouville), a statement that sidesteps the parity barrier. Redone with Maynard's weights, the same

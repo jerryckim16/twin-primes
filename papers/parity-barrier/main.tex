@@ -18,7 +18,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 1.0 (frozen), 18 November 2026}
+\date{Version 1.0.1 (frozen; status note), 20 November 2026}
 
 \begin{document}
 
@@ -1059,7 +1059,8 @@ For $a_n=\Lambda(n+2)$, Ford's no-bias condition reads
 $\sum_{3\le p\le x+2}\mu(p-2)\log p\ll_Bx(\log x)^{-B}$ (prime powers contribute
 $O(\sqrt x\log x)$): a quantitative form of the folklore conjecture
 $\sum_{p\le X}\mu(p+h)=o(\pi(X))$ for fixed $h$, which is proved only on average
-over $0<h\le H$, for $\log H/\log\log X\to\infty$ \cite[Theorem~1.1]{Li21} and for
+over $0<h\le H$ (for $h=2$ a proof is \lbl{Claimed} in the 2026 preprint
+\cite{LWW26}, not verified here; see Appendix~\ref{app:history}, 1.0.1), for $\log H/\log\log X\to\infty$ \cite[Theorem~1.1]{Li21} and for
 $H\ge(\log X)^{1+\varepsilon}$ \cite[Cor.~1.4]{LT22} (\lbl{Literature}).
 Hooley's condition becomes
 $\sum_{d\le x^\alpha}\left|\sum_{p\le x+2,\,p\equiv2\,(d)}\mu(p-2)\log p\right|\ll_Bx(\log x)^{-B}$.
@@ -1191,7 +1192,8 @@ prime number theorem with classical error term.
 Under EH only $e<x^{c}$ remains in $T_D$; the term $e=1$ is essentially
 $\sum_p\mu(p-2)\log p\log(p-2)$, and a bound $o(x)$ for that term alone would be
 stronger by a factor $\log x$ than the folklore conjecture $\sum_{p\le X}\mu(p+h)=o(\pi(X))$
-\cite[p.~1]{Li21}. A related conditional equivalence is due to Murty and
+\cite[p.~1]{Li21} (\lbl{Claimed} in \cite{LWW26} for $h=2$, a restriction the authors make
+``for simplicity''; the term here has $h=-2$). A related conditional equivalence is due to Murty and
 Vatwani, as quoted in the preprint \cite[Theorem~3, p.~3]{Cit26} (\cite{MV17} not opened):
 under EH at level $N^{\theta}$ and an EH-type hypothesis for
 $\Lambda(n)\mu(n+h)$ at level $N^{1-\theta}$, the asymptotic for
@@ -1558,7 +1560,8 @@ $\frac12$, not $1$.
 \item (\lbl{Open}; \cite[p.~4]{Fo04} in the abstract setting) Do EH and Hooley's
   averaged parity condition (Remark~\ref{rem:ford-twin}) together imply the
   twin-prime asymptotic? Even the single-modulus case of the hypothesis is the
-  open problem of the M\"obius function on shifted primes.
+  problem of the M\"obius function on shifted primes, with a power-of-log
+  saving (a qualitative $o(\pi(X))$ for $h=2$ is \lbl{Claimed} in \cite{LWW26}).
 \item\label{oq:siegel} (\lbl{Open}) Does a Siegel zero of quality $\eta$ and prime
   conductor force $\sum_{w<p<T,\,\chi(p)=1}1/p<\frac14-c$, with $T$ as in
   Corollary~\ref{cor:siegel-typeI}? If so, the per-modulus, unweighted twisted input at the
@@ -1619,6 +1622,9 @@ $\frac12$, not $1$.
 \bibitem{Ma20} J.~Maynard, \emph{Primes in arithmetic progressions to large
   moduli I, II}, arXiv:2006.06572v2, arXiv:2006.07088v1.
 \bibitem{LT22} J.~D.~Lichtman and J.~Ter\"av\"ainen, \emph{On the Hardy--Littlewood--Chowla conjecture on average}, Forum Math.\ Sigma (2022), doi:10.1017/fms.2022.54 (journal version not consulted); arXiv:2111.08912v3 (21 Jun 2022; read in full, SHA-256 87410676\ldots68464014).
+\bibitem{LWW26} G.~L\"u, Z.~Wang and J.~Wu, \emph{On the Hardy--Littlewood--Chowla conjecture},
+  arXiv:2610.20242v2 (19 Nov 2026; preprint; read: Sections 1, 2.2--2.3, 4.1 and the
+  statement of Proposition~4.2; not verified).
 \bibitem{Li23} J.~D.~Lichtman, \emph{Primes in arithmetic progressions to large
   moduli, and shifted primes without large prime factors}, arXiv:2211.09641v1;
   \emph{Primes in arithmetic progressions to large moduli and Goldbach beyond the
@@ -1689,6 +1695,16 @@ repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attempts/},
   session history removed from the body; notation renamed (sieve coefficients
   $y_d$, pattern functions $\Psi$ with signs $s_i$, the region $\mathcal T$);
   referee items of 16 Nov applied; a final referee pass.
+\item[1.0.1] (20 Nov 2026) Status note only, no new results: the preprint
+  \cite{LWW26} (v1 14 Oct, v2 19 Nov 2026) claims
+  $\sum_{p\le x}\mu(p+2)=o(\pi(x))$, the model case of the parity problem
+  called open in Remarks~\ref{rem:ford-twin} and~\ref{rem:ss-transfer} and in
+  the open questions; marked \lbl{Claimed} there. Its parity-sensitive input
+  (as far as we read it) is the multiplicativity of $\mu$ at $n+2$ together
+  with the bilinear structure of $\Lambda(n)$, which is outside the class of
+  Section~\ref{sec:bip}; it has no analogue for $\Lambda(n+2)$, and for
+  twin primes Proposition~\ref{prop:ss-split} would still need the shift $-2$,
+  a saving of a full $\log x$ and uniformity over $e\le x/D$.
 \end{itemize}
 
 \end{document}
