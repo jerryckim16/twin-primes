@@ -12,8 +12,9 @@ Checks:
      Omega-vectors with entries <= 4, k <= 7);
  (2) LP (scipy HiGHS) on {+-1}^k, k <= 10, every r in [k, 2k]: blocked iff r <= floor(3k/2) - 1,
      for both fairness variants;
- (3) independent exact check (fractions, no LP): explicit layer weights for the blocked cases,
-     and the averaging obstruction E[#plus] >= 2k-r... for the unblocked cases;
+ (3) exact check (fractions, no LP) of the explicit layer weights in the blocked cases; for the
+     unblocked cases it only re-asserts s0 = r-k+1 > k/2 (the averaging proof E[#plus] >= s0 > k/2 is
+     on paper, not computed; the LP of (2) is the computed check there);
  (4) table: parity-class limit vs. best known values (Lewulis arXiv:2203.09432v1 Table A/B).
 """
 import itertools, sys
@@ -85,12 +86,12 @@ def main():
             assert b1 == b2 == b3 == pred, (k, r, b1, b2, b3, pred)
         lim[k] = (3 * k) // 2
     print("(2),(3) LP (fair and weakly fair) = exact check = formula 'blocked iff r <= floor(3k/2)-1': OK, k<=10")
-    # (4) literature (Lewulis arXiv:2203.09432v1, Table A and Theorem 4 / Table B; k=2 Chen)
+    # (4) literature (Lewulis arXiv:2203.09432v1, Table A; k=2 from Chen, as stated there on p. 2)
     uncond = {2: 3, 3: 7, 4: 11, 5: 14, 6: 18, 7: 21, 8: 25, 9: 29, 10: 33}
     geh = {2: 3, 3: 6, 4: 8, 5: 11, 6: 14, 7: 17, 8: 21, 9: 24, 10: 27}
     print("(4)  k | smallest r not blocked by the class | best known (GEH) | best known (uncond.)")
     for k in range(2, 11):
-        print(f"    {k:2d} | {lim[k]:3d} (>= {2*k-lim[k]} primes, rest P_2) | {geh[k]:3d} | {uncond[k]:3d}")
+        print(f"    {k:2d} | {lim[k]:3d} (forces >= {2*k-lim[k]} prime values) | {geh[k]:3d} | {uncond[k]:3d}")
 
 if __name__ == "__main__":
     main()

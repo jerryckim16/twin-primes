@@ -3,6 +3,17 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-20, Session 37 -- Weighted almost-prime targets sum a_i Omega(L_i(n)) <= r in the parity class (LP experiment / Richert-type weights)
+- Idea: weighted sieves (Richert, Maynard, Lewulis) work with weighted counts of prime factors. Does the Liouville-pattern
+  class say anything about weighted targets sum_i a_i Omega_i <= r that is not a plain prime count, and do fair and
+  weakly fair weights ever differ there?
+- Tried: code/explore/weighted_omega_targets.py [KMAX AMAX] (/usr/bin/python3 -I; 3.5 s for k <= 5, a_i <= 4), output .out.
+  1371 targets: fair and weakly fair always agree; the naive mean test (A/2 > r - A, necessary for blocking) fails to be
+  sufficient in 86 cases (e.g. a = (1,2), r = 4: the free patterns force a plus sign at the heavy position).
+- Outcome: dead end. The free patterns form an up-set U = {x : a.x > r - A}; blocking is (1/2,...,1/2) in conv(U), i.e.
+  LP duality, nothing more; and weak = fair is immediate for up-sets (raise coordinates inside U until each marginal
+  is 1/2). No new target family beyond the hull criterion. Heuristic / exploratory only.
+
 ## 2026-11-19, Session 36 -- Ramanujan-Fourier expansions of the prime weight and the twin correlation (harmonic analysis / Wiener-Khintchine heuristic)
 - Idea: Gadiyar-Padma-type heuristics expand Lambda (or Lambda(n) phi(n)/n) in Ramanujan sums c_q(n) and read the twin
   constant off a Wiener-Khintchine identity, sum_q a_q^2 c_q(2) = 2 C2. Is there any parity-sensitive information in the

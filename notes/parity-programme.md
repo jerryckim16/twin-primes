@@ -192,3 +192,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   after a wider literature check.
 - Next attempt candidates: the forced-vertex case (cheap, but more E2 -- only if the review wants it); otherwise a
   genuinely new mechanism.
+
+## Session 37 (20 Nov 2026)
+- Attempt: almost-prime k-tuples (route card 2026-11-20-almost-prime-tuples.md): located. In the Liouville-pattern class
+  DHL_Omega[k; r] = DHL[k, 2k-r] in sign space, blocked iff r <= floor(3k/2) - 1; sharp at k = 2 (Chen); for k >= 3 the
+  published values (Lewulis 2022 Table A) are far above the class limit, so they are not explained by this class.
+  Sources read: Lewulis arXiv:2203.09432v1 and 1806.09034v3, Maynard 1205.4610 and 1205.5021, Franze 1111.2003.
+- For the weekly review of 23 Nov: this is a new target family, but mathematically a corollary of prop:bipartite;
+  at most one sentence in a v1.1. The open steps it names (DHL_Omega[3; 5] under GEH) are sieve-technology questions,
+  not parity questions.
+

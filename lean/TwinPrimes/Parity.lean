@@ -97,4 +97,34 @@ theorem chen_semiprime_half_weight :
     patSum2 (fun a b => 1 + a * b) = 4 ∧
     (1 + (-1) * 1 : Int) = 0 ∧ (1 + (-1) * (-1) : Int) ≠ 0 := by decide
 
+/-!
+## Almost-prime 3-tuples (route card `notes/parity-attempts/2026-11-20-almost-prime-tuples.md`)
+
+For three positions, the sign patterns compatible with `Ω(L₁(n) L₂(n) L₃(n)) ≤ 4` are exactly those with at
+least two `-1` signs (a `+1` sign means an even `Ωᵢ ≥ 2`).  So the target `DHL_Ω[3; 4]` is not blocked even by
+weakly fair weights (singleton coefficients `≤ 0`, i.e. sign `-1` of density `≥ 1/2` at each position).
+-/
+
+/-- A non-negative, weakly fair weight that vanishes on every pattern with at least two `-1` signs is 0. -/
+theorem omega4_no_weakly_fair_weight (w : Int → Int → Int → Int)
+    (hnn : ∀ a b c, 0 ≤ w a b c)
+    (k1 : w (-1) (-1) 1 = 0) (k2 : w (-1) 1 (-1) = 0) (k3 : w 1 (-1) (-1) = 0)
+    (k4 : w (-1) (-1) (-1) = 0)
+    (f1 : patSum (fun a b c => w a b c * a) ≤ 0)
+    (f2 : patSum (fun a b c => w a b c * b) ≤ 0)
+    (f3 : patSum (fun a b c => w a b c * c) ≤ 0) :
+    patSum w = 0 := by
+  simp only [patSum] at *
+  have := hnn 1 1 1; have := hnn (-1) 1 1; have := hnn 1 (-1) 1; have := hnn 1 1 (-1)
+  omega
+
+/-- `Ω ≤ 3` (three primes) is blocked: `3 - (ab + bc + ca)` is non-negative, fair, and vanishes at `(-1,-1,-1)`. -/
+theorem omega3_weight :
+    (∀ a ∈ signs, ∀ b ∈ signs, ∀ c ∈ signs, 0 ≤ 3 - (a * b + b * c + c * a)) ∧
+    patSum (fun a b c => (3 - (a * b + b * c + c * a)) * a) = 0 ∧
+    patSum (fun a b c => (3 - (a * b + b * c + c * a)) * b) = 0 ∧
+    patSum (fun a b c => (3 - (a * b + b * c + c * a)) * c) = 0 ∧
+    patSum (fun a b c => 3 - (a * b + b * c + c * a)) = 24 ∧
+    (3 - ((-1) * (-1) + (-1) * (-1) + (-1) * (-1)) : Int) = 0 := by decide
+
 end TwinPrimes

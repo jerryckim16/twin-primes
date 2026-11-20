@@ -3,10 +3,10 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 36, 11:34 AM CT slot of 19 Nov, run 17:34 UTC): PHASE B
+## POSITION (after Session 37, 7:34 PM CT slot of 19 Nov, run 01:34 UTC 20 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.36 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0 FROZEN (18 Nov, 24 pp.); main paper v0.37 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
 
@@ -14,10 +14,12 @@ Each session works on the claude/... branch its system instructions name (create
 1. Weekly review of 23 Nov decides: (a) whether the E2 route cards (S32 consistency test; S33 2-adic no-go for 4 nmid d
    in the linear model; S36 extension to polynomial parametrisations and Chen-type multipliers, which contains the S33
    d = 2 case) become ONE remark in a parity-paper v1.1 (do a wider literature-check first: GGPY citations, MathSciNet if
-   reachable); the S34 Green-Sawhney card is folklore in substance and should at most be one sentence; (b) the next
+   reachable); the S34 Green-Sawhney card is folklore in substance and should at most be one sentence; the S37
+   almost-prime tuples card (DHL_Omega[k; r] blocked iff r <= floor(3k/2)-1) is a corollary of prop:bipartite and should
+   at most be one sentence; (b) the next
    active small-results line (candidates: the Lean programme (4) as a short note; the exact-certification toolkit (5)).
 2. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
-   E2 polynomial gauge, S36). The E2 line is now mapped except the "forced vertex" case (odd events whose vertex indicator
+   almost-prime tuples, S37; before that E2 polynomial gauge, S36). The E2 line is now mapped except the "forced vertex" case (odd events whose vertex indicator
    lies in the F_2-span of the event supports); do it only if the review asks. Prefer a genuinely new mechanism:
    Merikoski's multiplicative-large-sieve route to GS-type Type I (remark after GS Prop. 4.2, not opened); the
    almost-all MRT17 form under GRH/EH; not another "where does averaging stop near log X", not index-set structure.
@@ -32,6 +34,16 @@ Each session works on the claude/... branch its system instructions name (create
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 6. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 37 (7:34 PM CT slot of 19 Nov, started on time 01:34 UTC 20 Nov; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-20-almost-prime-tuples.md (located; consistency test).
+  Script code/parity/almost_prime_tuples.py (/usr/bin/python3 -I; 2 s; .out). Sources (arXiv PDFs, not committed):
+  Lewulis 2203.09432v1, 1806.09034v3; Maynard 1205.4610, 1205.5021; Franze 1111.2003. Fresh-context audit (in the card).
+- Exploration: code/explore/weighted_omega_targets.py [KMAX AMAX] (3.5 s; .out): dead end.
+- Lean: Counting.lean s2Count, s2_expand, s2_error, s2_expand_example (helper agent; statements checked here);
+  Parity.lean omega4_no_weakly_fair_weight, omega3_weight. All in Audit.lean; lake build and Audit.lean pass.
+- Main paper v0.37 (thm:lean item 10). Log: 12 Nov entries merged into one daily summary (log/archive-2026-11-12.json).
+  Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 36 (11:34 AM CT slot of 19 Nov, started on time 17:34 UTC; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md (proved (located), model-restricted).
