@@ -60,3 +60,6 @@ import TwinPrimes
 #print axioms TwinPrimes.crt_sieveSum_sq
 #print axioms TwinPrimes.crt_selberg_expand
 #print axioms TwinPrimes.crt_selberg_error
+#print axioms TwinPrimes.s2_expand
+#print axioms TwinPrimes.s2_error
+#print axioms TwinPrimes.s2_expand_example

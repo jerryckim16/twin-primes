@@ -450,4 +450,82 @@ theorem crt_selberg_error (D : List Nat) (y : Nat → Int) (W v0 h N M : Nat) (h
   rw [Nat.mul_add, Nat.mul_one] at b1
   omega
 
+/-! ## `S₂`-type sums: one extra (prime-type) condition `g n`
+
+Bookkeeping only.  `g` is an arbitrary Boolean condition (think: `n + h'` is prime); no
+property of primes is used.  In the error theorem the hypothesis on the counts carries all of
+the analysis (it is where a Bombieri–Vinogradov-type input would enter). -/
+
+/-- `#{n < N : n ≡ v₀ (W), L ∣ n + h, g n}`. -/
+def s2Count (g : Nat → Bool) (W v0 h L N : Nat) : Nat :=
+  (List.range N).countP fun n => n % W == v0 && (n + h) % L == 0 && g n
+
+/-- Expansion of `S₂`: for any condition `g`,
+`∑_{n<N, n%W=v₀, g n} λ(n+h)² = ∑_{d,e ∈ D} y_d y_e · #{n < N : n%W = v₀, lcm(d,e) ∣ n+h, g n}`. -/
+theorem s2_expand (D : List Nat) (y : Nat → Int) (g : Nat → Bool) (W v0 h N : Nat) :
+    ((List.range N).map fun n =>
+        if (n % W == v0 && g n) = true then sieveSum D y (n + h) * sieveSum D y (n + h)
+        else 0).sum
+      = (D.map fun d => (D.map fun e =>
+          y d * y e * (s2Count g W v0 h (Nat.lcm d e) N : Int)).sum).sum := by
+  have h1 : ∀ n, (if (n % W == v0 && g n) = true then
+        sieveSum D y (n + h) * sieveSum D y (n + h) else 0)
+      = (D.map fun d => (D.map fun e =>
+          if (n % W == v0 && (n + h) % Nat.lcm d e == 0 && g n) = true then y d * y e
+          else 0).sum).sum := by
+    intro n
+    cases hb : (n % W == v0 && g n)
+    · have hz : ∀ L, (n % W == v0 && (n + h) % L == 0 && g n) = false := by
+        intro L
+        cases h1 : (n % W == v0) <;> cases h2 : g n <;> simp_all
+      simp only [hz, Bool.false_eq_true, ite_false]
+      rw [isum_congr (fun d _ => isum_zero D)]
+      exact (isum_zero D).symm
+    · have hz : ∀ L, (n % W == v0 && (n + h) % L == 0 && g n) = ((n + h) % L == 0) := by
+        intro L
+        cases h1 : (n % W == v0) <;> cases h2 : g n <;> simp_all
+      simp only [hz, ite_true]
+      exact crt_sieveSum_sq D y (n + h)
+  rw [isum_congr (fun n _ => h1 n), isum_comm]
+  apply isum_congr; intro d _
+  rw [isum_comm]
+  apply isum_congr; intro e _
+  exact isum_ite_count (fun n => n % W == v0 && (n + h) % Nat.lcm d e == 0 && g n) _ _
+
+/-- Abstract error term of `S₂`: if for all `d, e ∈ D` the count
+`#{n < N : n%W = v₀, lcm(d,e) ∣ n+h, g n}` is within `E(lcm d e)` of `X(lcm d e)`, then
+`|S₂ − ∑_{d,e} y_d y_e X(lcm d e)| ≤ ∑_{d,e} |y_d y_e| E(lcm d e)`.
+`X` and `E` are arbitrary; the hypothesis `hX` is the whole arithmetic content. -/
+theorem s2_error (D : List Nat) (y : Nat → Int) (g : Nat → Bool) (W v0 h N : Nat)
+    (X : Nat → Int) (E : Nat → Nat)
+    (hX : ∀ d ∈ D, ∀ e ∈ D,
+      ((s2Count g W v0 h (Nat.lcm d e) N : Int) - X (Nat.lcm d e)).natAbs ≤ E (Nat.lcm d e)) :
+    (((List.range N).map fun n =>
+          if (n % W == v0 && g n) = true then sieveSum D y (n + h) * sieveSum D y (n + h)
+          else 0).sum
+      - (D.map fun d => (D.map fun e => y d * y e * X (Nat.lcm d e)).sum).sum).natAbs
+      ≤ (D.map fun d => (D.map fun e =>
+          (y d * y e).natAbs * E (Nat.lcm d e)).sum).sum := by
+  rw [s2_expand, ← isum_sub]
+  refine Nat.le_trans (natAbs_isum_le _ _) (nsum_le ?_)
+  intro d hd
+  rw [← isum_sub]
+  refine Nat.le_trans (natAbs_isum_le _ _) (nsum_le ?_)
+  intro e he
+  rw [← Int.mul_sub, Int.natAbs_mul]
+  exact Nat.mul_le_mul_left _ (hX d hd e he)
+
+/-- Non-vacuity check: `D = [1, 2]`, `y = (1, -1)`, `W = 1`, `h = 0`, `N = 30`,
+`g n = (n + 2 prime)` (trial division); both sides equal `10` (odd `n < 30` with `n + 2` prime). -/
+theorem s2_expand_example :
+    let D := [1, 2]
+    let y : Nat → Int := fun d => if d = 1 then 1 else -1
+    let g : Nat → Bool := fun n => decide (2 ≤ n + 2) &&
+      (List.range (n + 2)).all fun k => decide (k < 2) || (n + 2) % k != 0
+    ((List.range 30).map fun n =>
+        if (n % 1 == 0 && g n) = true then sieveSum D y n * sieveSum D y n else 0).sum = 10 ∧
+    (D.map fun d => (D.map fun e =>
+        y d * y e * (s2Count g 1 0 0 (Nat.lcm d e) 30 : Int)).sum).sum = 10 := by
+  decide
+
 end TwinPrimes
