@@ -13,7 +13,7 @@
  "results": [
   {
    "label": "Proved here",
-   "text": "Route card (Session 38, not in a paper): in the Liouville-pattern class, requiring all odd-order coefficients of the weight to vanish (odd-order Chowla along the weights) changes the blocking criterion for hypergraph targets from chi_f(H) <= 2 to chi(H) <= 2; all twin and bounded-gap targets are 2-colourable, so nothing changes for them. Smallest separating target: 6 positions (Computed, exact certificates over all maximal intersecting families on <= 6 points); Fano plane separating (finite facts Lean-checked, lean/TwinPrimes/Fano.lean). Possibly folklore; a statement about a heuristic weight class.",
+   "text": "Route card (Session 38, not in a paper): in the Liouville-pattern class, requiring all odd-order coefficients of the weight to vanish (odd-order Chowla along the weights) changes the blocking criterion for hypergraph targets from chi_f(H) <= 2 to chi(H) <= 2; every blocked twin or bounded-gap target is 2-colourable, so nothing changes for them. Smallest separating target: 6 positions (Computed, exact certificates over all maximal intersecting families on <= 6 points); Fano plane separating (finite facts Lean-checked, lean/TwinPrimes/Fano.lean). Possibly folklore; a statement about a heuristic weight class.",
    "where": "notes/parity-attempts/2026-11-20-odd-order-chowla.md; code/parity/odd_chowla_class.py; lean/TwinPrimes/Fano.lean"
   },
   {
@@ -477,7 +477,7 @@
    "idea": "Own idea: would odd-order Chowla (Tao-Teraevaeinen), if usable along sieve weights, remove the parity-class obstruction for any target?",
    "origin": "own",
    "status": "ruled out",
-   "note": "Session 38 route card: odd coefficients zero <=> Psi even; blocking becomes chi(H) <= 2 instead of chi_f(H) <= 2. Every twin / gap / DHL / window / almost-prime target is 2-colourable, so no; smallest separating targets have 6 positions (exhaustive, exact), Fano Lean-checked. Possibly folklore."
+   "note": "Session 38 route card: odd coefficients zero <=> Psi even; blocking becomes chi(H) <= 2 instead of chi_f(H) <= 2. Every blocked twin / gap / DHL / window / almost-prime target has an antipodal pair, so no (only the two-point input along the weights matters for twins); smallest separating targets have 6 positions (exhaustive, exact), Fano Lean-checked. Possibly folklore."
   },
   {
    "idea": "Exploration: a natural arithmetic target separating the fair and odd-order classes (three primes in AP among n + 210 i)",

@@ -206,8 +206,9 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 ## Session 38 (20 Nov 2026, 3:34 AM CT slot)
 - Attempt: odd-order Chowla inputs (route card 2026-11-20-odd-order-chowla.md): located. Requiring all odd-order
   coefficients of a pattern weight to vanish (the analogue of Tao–Teräväinen's odd-order log-Chowla, transported to sieve
-  weights, which is open) turns the blocking criterion "chi_f(H) <= 2" into "chi(H) <= 2". Every twin / gap / almost-prime
-  target of the paper is 2-colourable, so nothing changes for them; the smallest separating hypergraphs have 6 vertices
+  weights, which is open) turns the blocking criterion "chi_f(H) <= 2" into "chi(H) <= 2". Every blocked twin / gap / almost-prime
+  target of the paper is 2-colourable, so nothing changes for them (twins need the two-point input along the weights;
+  unweighted it is Tao's 2016 theorem); audit: 2 framing errors fixed, computations confirmed; the smallest separating hypergraphs have 6 vertices
   (exhaustive over the 2646 maximal intersecting families on 6 points); Fano (Lean-checked finite facts).
   Sources read: TT arXiv:1708.02610v2 (Thm 1.1(i), Cor 1.8, Remark 1.9), arXiv:1710.02112v1 (abstract, Sec. 1).
 - News (3:34 AM run): Lü–Wang–Wu arXiv:2610.20242v2 CLAIM sum_p mu(p+2) = o(pi(x)) (notes/sources-lww26.md; flag of
