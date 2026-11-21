@@ -1,7 +1,7 @@
 {
- "version": "0.40",
+ "version": "0.41",
  "updated": "2026-11-21",
- "session_count": 40,
+ "session_count": 41,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "Selberg's optimum at D = 6: for every lambda : N -> Z, sum_{d,e<=6} lambda_d lambda_e/[d,e] >= lambda_1^2/G with G = 13/4, by an explicit sum of eleven squares, with equality exactly at the multiples of (13,-12,-12,0,-5,12) (lean/TwinPrimes/Selberg.lean: selberg_sos_D6, selberg_opt_D6, selberg_opt_D6_eq, selberg_opt_D6_eq_iff).",
+   "where": "lean/TwinPrimes/Selberg.lean; main paper thm:lean item 13"
+  },
+  {
+   "label": "Literature",
+   "text": "(Route card 2026-11-21-large-q-pellet.md, audited; not in a paper.) Over F_q[x] with degree n fixed and q -> infinity, two-point Chowla (Carmon-Rudnick, arXiv:1205.1599v3 Thm 1.1) and twin primes (Bary-Soroker, arXiv:1206.3930v3 Thm 1.1) are theorems; the parity-breaking step is Pellet's formula mu(F) = (-1)^n chi_2(disc F) plus Weil's bound on slices {f + t} (intervals of length X^{1/n}, non-trivial for q > (2n-3)^2), in a ring whose primes all have norm >= X^{1/n}. Proved here (elementary): over Z the slice statement implies Cesaro two-point Chowla (open at every x), and on x^{1/3}-rough pairs the joint parity law determines the twin count. Pellet checked on every monic F for small q, n (Computed, code/parity/large_q_pellet.py).",
+   "where": "notes/parity-attempts/2026-11-21-large-q-pellet.md; code/parity/large_q_pellet.py"
+  },
   {
    "label": "Proved here",
    "text": "(Outline, conditional on Lu-Wang-Wu Prop. 4.2 and Prop. 5.3 (Claimed); audited; route card 2026-11-21-lww-main-term.md, not in a paper.) LWW's Type I sums use the target only through reduced-class sums to moduli x^{2/5+o(1)}, and their Type II bound is target-free; comparing G(N) = prod V_i^{-1} sum_{a in A, a|N} Lambda(N/a) with the sieve model f = kappa_D 1_{(h,P(D))=1} gives sum_{x<n<=2x} Lambda(n) G(n+2) = 2 C_2 x (1+o(1)), hence >> x/L^2 primes p with p+2 = a l, l prime, a <= exp(2K L^{1/5}). This closes the Session 39 gap; a pointer at LWW Prop. 4.2, not an error found; nothing for twins (K = 0).",
@@ -488,6 +498,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Parity attempt: transfer the large-q function-field mechanism (Pellet + Weil + Galois) to Z",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Session 41: located; the integer counterpart contains Cesaro two-point Chowla and, on rough pairs, determines the twin count; needs an integer substitute for Pellet (none known)."
+  },
+  {
+   "idea": "Exploration: a 'Pellet formula over Z' through base-p digit polynomials (lambda(n) vs mu_{F_p[x]} of the digit polynomial of n)",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 41: no correlation for p = 3, 5, 7 up to ~8e5 (all means within 1.5 standard errors of 0); carries scramble the map (code/explore/digit_pellet.py)."
+  },
   {
    "idea": "Exploration: the fake target 1_S (S = h with all a h - 2 composite) as a refutation test of the LWW Type II claim",
    "origin": "exploration",

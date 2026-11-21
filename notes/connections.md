@@ -157,3 +157,8 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   has no such multiplicativity; in prop:ss-split the twin asymptotic would still need shift -2, a full log x saving and
   uniformity over e <= x/D. Not verified here.
   Session 39: their Type II step uses the target only through boundedness and multiplicativity at auxiliary primes; if correct, the same estimate would give P^+(p+2) > p^{1-o(1)} infinitely often (EH-strength; route card 2026-11-20-lww-orbit-test.md, one gap). Twins correspond to K = 0, where the mechanism gains nothing: distance to twin primes unchanged. Session 40: the main-term gap of that implication is closed in outline (route card 2026-11-21-lww-main-term.md), so it rests only on their Prop. 4.2 and Prop. 5.3; still nothing for twins (K = 0).
+- Large-q function fields (Carmon–Rudnick; Bender–Pollack, Bary-Soroker; Literature): with the degree n fixed and q -> infinity,
+  two-point Chowla and twin primes over F_q[x] are theorems, through Pellet's formula (mu as a quadratic character of the
+  discriminant) and Weil / Lang–Weil, in a ring whose primes all have norm >= X^{1/n}. Distance to twins over Z: the integer
+  counterpart contains the Cesàro two-point Chowla conjecture and, on rough pairs, determines the twin count itself; no
+  integer substitute for Pellet is known (route card 2026-11-21-large-q-pellet.md). Nothing for twins over Z.

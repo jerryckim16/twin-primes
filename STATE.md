@@ -3,10 +3,10 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 40, 7:34 PM CT slot of 20 Nov, run 01:35 UTC 21 Nov): PHASE B
+## POSITION (after Session 41, 3:34 AM CT slot of 21 Nov, run 09:34 UTC 21 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.40 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.41 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2 (still v2 on 21 Nov), CLAIM sum_p mu(p+2) = o(pi(x)). Not verified;
   notes/sources-lww26.md. Session 39 + Session 40 route cards: if their Prop. 4.2 + Prop. 5.3 hold, then >> x/L^2 primes
@@ -20,14 +20,15 @@ Each session works on the claude/... branch its system instructions name (create
    the (now complete, conditional, audited) implication of the S39 + S40 route cards (prop:ss-split context;
    literature-check first); (b) whether the E2 route cards (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38
    cards at most one sentence each; (c) the next active small-results line (candidates: the Lean programme (4) as a
-   short note; the exact-certification toolkit (5)).
+   short note; the exact-certification toolkit (5)); (d) whether the S41 large-q card (Pellet + Weil) becomes ONE
+   sentence next to sec:ss in v1.1 (open Tao-Teraeväinen 2019 first: the card cites it on the auditor's word).
 2. LWW thread: nothing more to do without checking their Prop. 4.2 (about 45 pages, operator method); do NOT start
    that unless the review says so. Watch for a v3 or public comments (3:34 AM news search).
 3. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md
-   (latest: LWW main term, S40). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the
+   (latest: large-q function fields / Pellet, S41). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the
    almost-all MRT17 form under GRH/EH. Not another "where does averaging stop near log X".
 4. Small results: programme (4) in Lean. Done: Reduction.lean, Counting.lean, Fano.lean, Orbit.lean, Selberg.lean (S40,
-   D = 6). Possible next: the Selberg optimum for k = 1 at small D (minimise the form subject to lambda_1 = 1) as an
+   D = 6; S41: Selberg optimum at D = 6, sum of eleven squares). Possible next: the Selberg optimum for k = 1 at small D (minimise the form subject to lambda_1 = 1) as an
    exact certificate; or a general-D statement of Gauss's identity by induction (harder without Mathlib).
 5. Main paper thin index: S39-S40 condensed sec:stad; further candidates: the 186 subsection (detail is in the frozen
    verification note).
@@ -35,6 +36,17 @@ Each session works on the claude/... branch its system instructions name (create
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 41 (3:34 AM CT slot of 21 Nov, started on time 09:34 UTC; no wait) -- additions
+- News search: nothing new; LWW arXiv:2610.20242 still v2, no public comment found.
+- Parity attempt: route card notes/parity-attempts/2026-11-21-large-q-pellet.md (located). Sources read (PDFs not
+  committed): Carmon-Rudnick arXiv:1205.1599v3 (SHA-256 8148dcfa...4b86), Bary-Soroker arXiv:1206.3930v3 (aed115a8...b1c0),
+  Rudnick arXiv:1501.01769v1 (cc59f8c9...c994). Script code/parity/large_q_pellet.py [X] (/usr/bin/python3 -I; 3 s; .out).
+  Fresh-context adversarial audit (3 errors, gaps; fixed; recorded in the card).
+- Exploration: code/explore/digit_pellet.py [p k] (/usr/bin/python3 -I; 5-10 s; .out): dead end.
+- Lean: Selberg.lean + selberg_sos_D6, selberg_opt_D6, selberg_opt_D6_eq, selberg_opt_D6_eq_iff (helper agent; numbers
+  checked here in Python; in Audit.lean); lake build and Audit.lean pass.
+- Main paper v0.41 (thm:lean item 13 extended; Related results sentence; 186 account condensed). Wolfram and mathbox NOT available.
 
 ## Session 40 (7:34 PM CT slot of 20 Nov, started on time 01:35 UTC 21 Nov; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-21-lww-main-term.md (located; conditional implication
