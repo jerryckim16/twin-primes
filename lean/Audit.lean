@@ -74,3 +74,6 @@ import TwinPrimes
 #print axioms TwinPrimes.orbit_example_hmul
 #print axioms TwinPrimes.orbit_example_check
 #print axioms TwinPrimes.orbit_example_nontrivial
+#print axioms TwinPrimes.gauss_totient_upto
+#print axioms TwinPrimes.selberg_diag_D6
+#print axioms TwinPrimes.selberg_diag_example
