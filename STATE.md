@@ -3,38 +3,47 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 39, 11:34 AM CT slot of 20 Nov, run 17:34 UTC): PHASE B
+## POSITION (after Session 40, 7:34 PM CT slot of 20 Nov, run 01:35 UTC 21 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.39 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.40 (33 pp.).
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
-- NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2, CLAIM sum_p mu(p+2) = o(pi(x)). Not verified; notes/sources-lww26.md.
-  Session 39 route card (notes/parity-attempts/2026-11-20-lww-orbit-test.md): their Type II step discards mu(h) by
-  Cauchy-Schwarz ((4.6)); the same argument with Lambda(h) would give P^+(p+2) > p^{1-o(1)} i.o. (EH-strength; record
-  0.677). Conditional on their Prop. 4.2 + Section 5; ONE GAP: the Type I main term of the modified sum is not written out
-  (needs BV for mu averaged over the auxiliary moduli a ~ exp(L^{0.2}), weight 1/a). Flag updated (notes/flags-for-jerry.md).
+- NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2 (still v2 on 21 Nov), CLAIM sum_p mu(p+2) = o(pi(x)). Not verified;
+  notes/sources-lww26.md. Session 39 + Session 40 route cards: if their Prop. 4.2 + Prop. 5.3 hold, then >> x/L^2 primes
+  p have p + 2 = a l, l prime, a <= exp(2K L^{1/5}) (P^+(p+2) > p^{1-o(1)}). The Session 39 main-term gap is CLOSED in
+  outline (model target f = kappa_D 1_{(h,P(D))=1}; notes/parity-attempts/2026-11-21-lww-main-term.md; audited).
+  Flag updated (notes/flags-for-jerry.md, README).
 - Weekly review: notes/reviews/2026-11-16.md (next review: the first run starting on Monday 23 Nov, Central time).
 
 ## Next steps (in order)
-1. Weekly review of 23 Nov decides: (a) how a parity-paper v1.1 treats the Lü-Wang-Wu claim and the Session 39
-   consistency observation (one short subsection at most; prop:ss-split context; the observation only if the main-term
-   gap is closed and it passes proof-audit and literature-check); (b) whether the E2 route cards (S32, S33, S36) become ONE
-   remark in v1.1; S34, S37, S38 cards at most one sentence each; (c) the next active small-results line (candidates: the
-   Lean programme (4) as a short note; the exact-certification toolkit (5)).
-2. Close (or honestly abandon) the main-term gap of the Session 39 transfer argument: compute T_1(G) - T_2(G) for
-   G(N) = prod V_i^{-1} sum_{a | N} Lambda(N/a) via BV, and show the Type II part of the local-density model is small.
-   Also a literature-check: is "LWW-type Type II => large prime factors of p+2" noted anywhere (watch v3 / comments)?
-3. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md (latest:
-   LWW orbit / transfer test, S39). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the
+1. Weekly review of 23 Nov decides: (a) whether a parity-paper v1.1 gets ONE short subsection on the LWW claim, with
+   the (now complete, conditional, audited) implication of the S39 + S40 route cards (prop:ss-split context;
+   literature-check first); (b) whether the E2 route cards (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38
+   cards at most one sentence each; (c) the next active small-results line (candidates: the Lean programme (4) as a
+   short note; the exact-certification toolkit (5)).
+2. LWW thread: nothing more to do without checking their Prop. 4.2 (about 45 pages, operator method); do NOT start
+   that unless the review says so. Watch for a v3 or public comments (3:34 AM news search).
+3. Parity programme: one bounded attempt per run as a route card. Done mechanisms: notes/parity-attempts/README.md
+   (latest: LWW main term, S40). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the
    almost-all MRT17 form under GRH/EH. Not another "where does averaging stop near log X".
-4. Small results: programme (4) in Lean. Done: Reduction.lean, Counting.lean, Fano.lean, Orbit.lean (S39). Possible next:
-   the evaluation of the diagonalised quadratic form for a toy y_d (Selberg's y_d for k = 1, small D) as an exact identity.
-5. Main paper thin index: S39 reduced the superseded penalised capped bound; further candidates: the long one-sided
-   certificate subsection of sec:stad (detail is in the frozen verification note).
+4. Small results: programme (4) in Lean. Done: Reduction.lean, Counting.lean, Fano.lean, Orbit.lean, Selberg.lean (S40,
+   D = 6). Possible next: the Selberg optimum for k = 1 at small D (minimise the form subject to lambda_1 = 1) as an
+   exact certificate; or a general-D statement of Gauss's identity by induction (harder without Mathlib).
+5. Main paper thin index: S39-S40 condensed sec:stad; further candidates: the 186 subsection (detail is in the frozen
+   verification note).
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 40 (7:34 PM CT slot of 20 Nov, started on time 01:35 UTC 21 Nov; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-21-lww-main-term.md (located; conditional implication
+  complete in outline). Source read: LWW arXiv:2610.20242v2 pp. 4-5, 7-18, 61, 63, 69-70 (same SHA-256). Fresh-context
+  adversarial audit (recorded in the card; Findings 1-3 hold, count and wording corrected, side remark rewritten).
+- Exploration: code/explore/fake_target_density.py [H AMAX] (/usr/bin/python3 -I; 4 s; .out): dead end.
+- Lean: TwinPrimes/Selberg.lean (gauss_totient_upto, selberg_diag_D6, selberg_diag_example; helper agent, statements
+  checked here; in Audit.lean); lake build and Audit.lean pass.
+- Main paper v0.40. Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 39 (11:34 AM CT slot of 20 Nov, started on time 17:34 UTC; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-20-lww-orbit-test.md (located; conditional implication, one gap).

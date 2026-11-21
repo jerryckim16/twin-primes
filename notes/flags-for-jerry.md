@@ -1,5 +1,27 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-21 (Session 40) — Update to the Lü–Wang–Wu flag: the Session 39 gap is closed in outline; the strong consequence now rests only on their Prop. 4.2 and Prop. 5.3 (a red flag for those, not an error found)
+- **What.** Session 39 left one gap: the main term of the modified count. This run closes it in outline without computing
+  main terms by hand. LWW's Type I sums (Section 3) use the target only through its sums in reduced residue classes to
+  moduli up to x^{2/5+o(1)}, and their Type II bound does not see the target at all. So one can compare the target
+  with a sieve model f = kappa_D 1_{(h,P(D))=1}: it has the same distribution in progressions as the primes, and its count
+  is computed directly as 2 C_2 x (C_2 the twin-prime constant). If LWW's Prop. 4.2 and Prop. 5.3 hold, then
+  >> x/(log x)^2 primes p in (x, 2x] have p + 2 = a·l, l prime, a a product of K primes each at most exp(2(log x)^{1/5}).
+  Hence P^+(p+2) >= p·exp(-2K(log p)^{1/5}) infinitely often. Unconditionally only P^+(p+2) > p^{0.677} is known; exponents
+  near 1 are known only under Elliott–Halberstam, and the cofactor here is smaller than even that argument gives.
+- **Why it might matter.** It makes the Session 39 observation a complete conditional implication: either LWW's Type II
+  estimate proves much more than they claim, or it fails. An expert should check Prop. 4.2 (about 45 pages) and
+  Prop. 5.3 first. Nothing here brings twin primes closer (twins are the case K = 0, where nothing is gained).
+- **Evidence label.** Proved here in outline, conditional on LWW Prop. 4.2 and Prop. 5.3 (Claimed). The classical inputs
+  are Bombieri–Vinogradov and the fundamental lemma.
+- **Checked.** A fresh-context adversarial audit read LWW Sections 2-5 line by line. Findings 1-3 hold. It corrected
+  the prime count (x/L^2, not x/L) and the wording of the comparison with EH, and found two errors and one gap in a side
+  remark (the fake target 1_S), which has been rewritten. Exploration: real primes behave like the random model for that
+  side test, so it gives no contradiction. **Not checked:** LWW Prop. 4.2 and Prop. 5.3 themselves.
+- **Files.** notes/parity-attempts/2026-11-21-lww-main-term.md, notes/parity-attempts/2026-11-20-lww-orbit-test.md,
+  notes/sources-lww26.md, code/explore/fake_target_density.py.
+- **Needs outside expert review:** yes.
+
 ## 2026-11-20 (Session 39) — Update to the Lü–Wang–Wu flag: their Type II estimate, if correct, would also give an Elliott–Halberstam-strength theorem they do not state (a red flag for their Prop. 4.2, not an error found)
 - **What.** Reading Section 4.1 of arXiv:2610.20242v2: after writing n + 2 = a h with a a product of K auxiliary primes,
   the authors apply Cauchy–Schwarz over h and discard mu(h) ((4.6)); the remaining quantity Q_Y does not involve the

@@ -1,5 +1,22 @@
 [
  {
+  "date": "2026-11-21",
+  "slot": "Session 40 (7:34 PM CT slot of 20 Nov; started on time 01:35 UTC 21 Nov; no wait, no other run active)",
+  "title": "The main-term gap of the Lü-Wang-Wu consistency observation closed in outline (flag update); Lean: Selberg's diagonalisation at D = 6; main paper v0.40",
+  "did": [
+   "Parity share: read Section 3 of Lü-Wang-Wu (arXiv:2610.20242v2, still v2; no public comment found) line by line. Their Type I sums use the target only through its sums in reduced residue classes to moduli up to x^{2/5+o(1)}, and their Type II bound does not involve the target at all.",
+   "So the Session 39 count sum Lambda(n) G(n+2) can be compared with a sieve model target f = kappa_D 1_{(h,P(D))=1}. The model has the same distribution in progressions (Bombieri-Vinogradov plus the fundamental lemma), and its count 2 C_2 x is computed directly. Proved here in outline, conditional on their Prop. 4.2 and Prop. 5.3: >> x/(log x)^2 primes p in (x, 2x] have p+2 = a l, l prime, a <= exp(2K (log x)^{1/5}). The implication now rests only on their own Type II estimate; it is a pointer at that estimate, not an error found, and twins (K = 0) are untouched.",
+   "A fresh-context adversarial audit (LWW Sections 2-5 read line by line) found that Findings 1-3 hold. It corrected the prime count (x/L^2, not x/L) and the comparison with Elliott-Halberstam, and found two errors and a gap in a side remark on the fake target 1_S; all fixed in the route card notes/parity-attempts/2026-11-21-lww-main-term.md.",
+   "Small results (Lean programme): TwinPrimes/Selberg.lean (written by a helper agent; statements and the value 2/5 checked here in Python): Selberg's diagonalisation sum lambda_d lambda_e/[d,e] = sum_r phi(r) y_r^2 at D = 6 for all integer lambda, Gauss's identity sum_{r|n} phi(r) = n for n <= 60, and the value 2/5 for lambda = mu. lake build and Audit.lean pass.",
+   "Bound share: the one-sided certificate passage of the main paper's Section on Stadlmann-type supports condensed (detail stays in the frozen verification note). Main paper v0.40 (33 pp.; thm:lean item 13, Related results, history item). Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open."
+  ],
+  "explored": "The fake target 1_S (S = odd h with every a h - 2 composite) as a refutation test of the LWW Type II claim: its density follows the Cramér-Granville model and vanishes once #A >> log x, far below LWW's set sizes, so no contradiction; dead end (code/explore/fake_target_density.py).",
+  "parity": "LWW main-term gap: located (conditional implication now complete in outline, audited; the first unresolved implication is LWW's own Prop. 4.2). The parity paper is frozen at v1.0.1 (24 pp.), unchanged; its treatment of LWW in a v1.1 is for the 23 Nov weekly review.",
+  "failed": "Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead). No news search (not the 3:34 AM run). The fake-target exploration cannot test LWW-size families numerically.",
+  "next": "Weekly review on 23 Nov (Monday): decide the parity paper v1.1 treatment of LWW and this implication, and the next small-results line. Parity attempts: a genuinely new mechanism (Merikoski's multiplicative large sieve route, or the almost-all MRT17 form under GRH/EH).",
+  "flag": "Update to the Lü-Wang-Wu flag: if their Prop. 4.2 and Prop. 5.3 hold, then >> x/(log x)^2 primes p have p+2 = a l with l prime and a <= exp(O((log x)^{1/5})); conditional, audited, a pointer for experts, not an error found."
+ },
+ {
   "date": "2026-11-20",
   "slot": "Session 39 (11:34 AM CT slot of 20 Nov; started on time 17:34 UTC; no wait, no other run active)",
   "title": "Lü-Wang-Wu's Type II step would also prove an Elliott-Halberstam-strength result (flag update); Lean: orbit lemma; main paper v0.39",

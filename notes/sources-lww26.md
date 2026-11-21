@@ -65,3 +65,6 @@ Read further: pp. 4-11 and 14-19 (Prop. 2.1-2.3, Section 3 start/end, Section 4.
 - Consequence (conditional, with one gap): the same argument with Lambda(h) would give P^+(p+2) > p^{1-o(1)}
   infinitely often, an EH-strength statement (record unconditional exponent 0.677, Baker–Harman 1998; 0.679 claimed
   in arXiv:2508.18285v3). Route card: notes/parity-attempts/2026-11-20-lww-orbit-test.md. Flag updated.
+
+## Session 40 (21 Nov 2026, 7:34 PM CT run): Section 3 read line by line
+Read pp. 4-5, 7-14 (Prop. 2.1, Prop. 2.3 with proof, Section 3 in full), 15-18, 61, 63, 69-70 of the same v2 file (SHA-256 7ac34131...2d423000; still v2 on 21 Nov, no public comment found). Result: the Type I sums use the target only through residue-class sums (route card notes/parity-attempts/2026-11-21-lww-main-term.md), which closes the Session 39 main-term gap in outline.
