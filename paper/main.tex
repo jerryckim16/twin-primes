@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.39, 20 November 2026}
+\date{Version 0.40, 21 November 2026}
 
 \begin{document}
 
@@ -238,6 +238,14 @@ coprime to $a$, then $f(ah)=f(bh)$ for $a,b\in\mathcal A$
 (\texttt{orbit\_two\_step}); a concrete instance with $\mathcal A=\{3,5,7\}$
 and $s=-1$ satisfies the hypothesis for all $a,h$
 (\texttt{orbit\_example\_hmul}).
+\item (\texttt{Selberg.lean}, Selberg's diagonalisation at $D=6$) With
+$L=\operatorname{lcm}(1,\dots,6)=60$, for every $\lambda:\mathbb N\to\mathbb Z$,
+$\sum_{d,e\le6}\lambda_d\lambda_e\,L^2/[d,e]=\sum_{r\le6}\varphi(r)\left(\sum_{d\le6,\,r\mid d}\lambda_dL/d\right)^2$
+(\texttt{selberg\_diag\_D6}), i.e.\ $\sum\lambda_d\lambda_e/[d,e]=\sum_r\varphi(r)y_r^2$
+with $y_r=\sum_{r\mid d}\lambda_d/d$; Gauss's identity $\sum_{r\mid n}\varphi(r)=n$
+for $n\le60$ (\texttt{gauss\_totient\_upto}); and for $\lambda=\mu$ on $d\le6$
+both sides equal $1440$, so the form is $2/5$ (\texttt{selberg\_diag\_example}).
+A finite instance of the identity behind Selberg's sieve, not its general form.
 \end{enumerate}
 \end{theorem}
 
@@ -1747,55 +1755,22 @@ $\mathrm{Corr}_2^R$ and the lower bound at level $1$ for $\mathrm{Corr}_2^U$
 in $J_T=J-\mathrm{Corr}_1-\mathrm{Corr}_2^R+\mathrm{Corr}_2^U$.
 \end{proof}
 
-\begin{sloppypar}\noindent\emph{Size of what is saved} (\lbl{Computed}, from the exact pieces
-of Proposition~\ref{prop:sy-exact}, \texttt{code/cap6/pieces\_sy236\_jonly.jsonl}).
-On the witness of \cite{SY26} the four levels of $\mathrm{Corr}_1$ are
-$2.3\cdot10^{-6}J$, $-1.7\cdot10^{-10}J$, $7.0\cdot10^{-20}J$ and
-$-2.5\cdot10^{-69}J$ for $j=0,1,2,3$, and the $j=3$ level took $7.1$ of the
-$32.2$ core-hours; all $46$ exact pieces of $\mathrm{Corr}_1$ there, and the
-$96$ pieces of $\mathrm{Corr}_1$ and $\int_VP^2$ of the second program
-for our own $k=48$ vector (\texttt{code/cap6/pieces\_kin48\_D22r.jsonl}), have
-the sign $(-1)^j$, as the proposition requires. For that vector the one-sided
-certificate of the proposition gives $48J_{\mathrm{low}}/I_{\mathrm{up}}=4.006081420807>4$,
-$3.5\cdot10^{-12}$ below the exact ratio, and the omitted pieces took $4.3$ of
-its $15.5$ core-hours ($28\%$). The loss can also be bounded a
-priori (\texttt{code/thin\_bound.py}): on $\{|u|\le L\}$ one has
-$0\le R\le L$ and $0\le P_\ell(u)\le|u|^\ell$, so $|P|\le M:=\sum_i|c_i|L^{a_i+w(b_i)}$
-and $|Q|\le LM$; and the region of a $j=3$ piece of $\mathrm{Corr}_1$ has
-$C_m-mg\le r_A\le r_A+\rho\le\tau-(m+3)g$, an interval of length
-$\tau-C-3g=\frac{1}{250}$ for the caps of \cite{Kin26,SY26}, whatever $m$ is.
-The resulting bound is $1.4\cdot10^{-14}J$, and it is above all ten exact
-$j=3$ values. The same crude bound is useless for $\mathrm{Corr}_2$ (it gives
-$6\cdot10^{32}J$): there the corresponding length is
-$L-C-3g=\frac{8}{125}$, sixteen times larger in about $44$ dimensions, and the
-coefficient bound $M$ is far above the actual size of $|P|$ (cancellation in
-the power-sum basis). Both bounds above are for the witness of \cite{SY26}
-(\texttt{code/cap6/thin\_bound\_sy236.json}); for a different polynomial, our
-own $k=48$ vector, we sampled $|P|$ and found $M$ larger by a factor of about
-$10^{28}$ (that sampling is not stored in the repository). Since the integrand of
-$\mathrm{Corr}_2$ has no sign, the proposition does not apply to it directly;
-splitting it into its $Q(u',R)^2$ and $Q(u',U)^2$ parts and applying the
-proposition to each gives part (2) of the proposition.
-\end{sloppypar}
-
-\begin{sloppypar}\noindent\emph{The one-sided certificate on the $240$ vector} (\lbl{Computed}, exact;
-\texttt{capped\_exact.py --bonf}; files \texttt{code/}\allowbreak\texttt{cap6/}\allowbreak\texttt{res\_capfree\_D20\_bonf.json},
-\texttt{pieces\_capfree\_D20\_bonf.jsonl} and
-\texttt{compare\_capfree\_D20\_bonf.json} there). For the cap-free
-optimiser of Theorem~\ref{thm:capped-exact} on the support of \cite{Sta26}
-($k=49$), the $98$ pieces that the proposition keeps give
-\[
-49\,J_{\mathrm{low}}/I_{\mathrm{up}}=4.012038868083\ldots>4,
-\]
-$3.5\cdot10^{-8}$ below the exact ratio $4.0120389035705$ of
-Theorem~\ref{thm:capped-exact}; $J_{\mathrm{low}}\le J_T$ and $I_{\mathrm{up}}\ge
-I_T$ hold as exact rationals, and every kept level has the sign $(-1)^j$. The
-two parts of $\mathrm{Corr}_2$ are each about $35$ times larger than their
-difference (case $U=C_{m+1}-s$: $7.03\cdot10^{-2}J$ and $6.83\cdot10^{-2}J$ at
-$j=0$), but their levels still fall fast enough: the largest omitted level is of
-order $10^{-8}J$, far below the margin $3\cdot10^{-3}$. With the split, no
-piece with three forced coordinates is needed at all. This is a cheaper route
-to the same conclusion, not a new one.
+\begin{sloppypar}\noindent\emph{What it saves, and the $240$ vector} (\lbl{Computed}; files in
+\texttt{code/cap6/}, full account in the verification note). On the witness of
+\cite{SY26} the levels $j=0,\dots,3$ of $\mathrm{Corr}_1$ are $2.3\cdot10^{-6}J$,
+$-1.7\cdot10^{-10}J$, $7.0\cdot10^{-20}J$ and $-2.5\cdot10^{-69}J$; every exact
+piece computed there and for our own $k=48$ vector has the sign $(-1)^j$, as the
+proposition requires. For that vector the one-sided certificate gives
+$48J_{\mathrm{low}}/I_{\mathrm{up}}=4.006081420807>4$, $3.5\cdot10^{-12}$ below the
+exact ratio, and saves $28\%$ of the computing time. For the cap-free optimiser
+of Theorem~\ref{thm:capped-exact} on the support of \cite{Sta26} ($k=49$), part
+(2) with the $98$ kept pieces gives $49\,J_{\mathrm{low}}/I_{\mathrm{up}}=4.012038868083\ldots>4$,
+$3.5\cdot10^{-8}$ below the exact ratio $4.0120389035705$, with $J_{\mathrm{low}}\le
+J_T$ and $I_{\mathrm{up}}\ge I_T$ as exact rationals and no piece with three forced
+coordinates. A crude a priori bound for the omitted levels
+(\texttt{code/thin\_bound.py}) works for $\mathrm{Corr}_1$ ($1.4\cdot10^{-14}J$ at
+$j=3$, above all ten exact values) but is useless for $\mathrm{Corr}_2$, which is
+why part (2) splits it. This is a cheaper route to the same conclusion, not a new one.
 \end{sloppypar}
 
 
