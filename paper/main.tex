@@ -1848,82 +1848,42 @@ $[23685317816,23685317890]\cdot10^{-24}$ of \cite[Lemma~2.5]{OAI26}, and our
 $J_{\lambda,H}$ is $5.9\cdot10^{-9}$ (relative) above its lower bound
 $90248755123\cdot10^{-24}$.
 \end{proposition}
-\noindent\emph{How it was computed} (\texttt{code/oai186\_IH.py},
-\texttt{code/oai186\_J.py}, outputs \texttt{code/oai186\_IH.json},
-\texttt{code/oai186\_J.json}; $7$ and $23$ minutes on one core). Nothing from
-the authors' repository was used or run. By symmetry each form is a sum over
-the radial index $r<n=98264$ of exact rational weights against coefficients of
-products of one-dimensional arrays. $M_{d,\eta}=\sum_{\pi}(d)_{|\pi|}P_0^{d-|\pi|}\prod_{B\in\pi}P_{e(B)}$
-is summed over the set partitions $\pi$ of the labels of the signature $\eta$;
-we checked this formula against brute force on small cases. The Dickman
-function was evaluated through its closed forms (logarithm and
-$\mathrm{Li}_2$), and the profile and $Z$ in $110$-digit floating point. The
-coordinate arrays were rounded down and up at scale $2^{-256}$. All products
-are exact integer products by Kronecker substitution in GMP, not FLINT, which
-is the library of \cite{OAI26}. The erased-coordinate correlations are exact,
-and the final signed sums are exact integer sums. The result is therefore accurate
-far beyond the $10^{-9}$ of the comparison, but it is not a rigorous interval
-enclosure (the special functions are not interval-evaluated). A fresh-context
-audit of the derivation and both scripts found no defect.
-A second program (\texttt{code/oai186\_check2.py}, combined by
-\texttt{code/oai186\_check2\_combine.py}; output \texttt{code/oai186\_check2.json})
-works in ball arithmetic throughout (python-flint \texttt{arb}, with the
-Dickman closed forms evaluated in balls) and obtains the coordinate sums
-differently, as $m!\,[y^m]A(y)^d$ for the exponential generating series
-$A(y)=\sum_jK_jX^j\exp\left(\sum_ey_et_j^e\right)$, instead of by set
-partitions. It gives $I_H\in[2.36853178533302\cdot10^{-14}\pm3\cdot10^{-30}]$,
-$J_{\lambda,H}\in[9.02487556547131\cdot10^{-14}\pm4\cdot10^{-29}]$ and
-$\rho^*J_{\lambda,H}/I_H\in[1.00020608684\pm4\cdot10^{-12}]$, agreeing with the
-first program to $7\cdot10^{-17}$ (relative). Both programs use the same
-transcription and the same reading of (2.15), so they check the arithmetic and
-the code, not the reading; the agreement with the published values checks
-the reading.
+\noindent\emph{How it was computed.} First program
+(\texttt{code/oai186\_IH.py}, \texttt{code/oai186\_J.py}; outputs \texttt{.json}):
+exact rational weights over the radial index, coordinate sums over set
+partitions, the Dickman function through its closed forms in $110$-digit
+floating point, coordinate arrays rounded at scale $2^{-256}$, exact integer
+products in GMP (not FLINT, the library of \cite{OAI26}); accurate far beyond
+$10^{-9}$ but not a rigorous enclosure. Second program
+(\texttt{code/oai186\_check2.py}, \texttt{code/oai186\_check2\_combine.py}):
+arb ball arithmetic throughout and exponential generating series instead of set
+partitions; it gives $\rho^*J_{\lambda,H}/I_H\in[1.00020608684\pm4\cdot10^{-12}]$
+and agrees with the first to $7\cdot10^{-17}$ (relative). Nothing from the
+authors' repository was used or run. Both programs share the transcription and
+the reading of (2.15), so they check arithmetic and code; the agreement with
+the published values checks the reading.
 
-What this does and does not show. The main-term quotient of
-\cite[Lemma~2.5]{OAI26} is reproduced independently, and so is the reading of
-its layered cap convolution that we had marked as underspecified. Not
-reproduced by this step: the loss bound $L^+/I_H\le696075110\cdot10^{-12}$ (the $97$
-support-failure components of their \S2.4), which the criterion also needs and
-which is treated next; and, as always,
-the analytic inputs (\lbl{Claimed}). The project's bound does not move.
-
-\begin{sloppypar}\noindent\emph{The loss bound} (\lbl{Computed}; full account, with
-the program status of every number, in the verification note). The companion
-is in the repository (\texttt{code/third\_party/openai186/}, Apache-2.0).
+\emph{The loss bound} (\lbl{Computed}; full account, with the program status of
+every number, in the frozen verification note). The companion is in the
+repository (\texttt{code/third\_party/openai186/}, Apache-2.0).
 \begin{itemize}
-\item \emph{Source data and bookkeeping} (exact rational arithmetic). The two
-  source ladders, the retained rows, the cap masks (1.5) on which our $I_H$ and
-  $J_{\lambda,H}$ rest, and the six group parameters with every guard of
-  \cite[Lemma~1.1]{OAI26} are reproduced from the rational definitions
-  (\texttt{code/oai186\_support\_data.py}); every Young inequality, inner
-  weighting and group total of Tables~2.1--2.7, the total
-  $696075110<697\cdot10^6$ and the final margins (2.34)--(2.35) hold exactly
-  (\texttt{code/oai186\_tables\_check.py}).
-\item \emph{All $97$ raw loss bounds} (one program per form family, arb ball
-  arithmetic at $128$--$256$ bits; \texttt{code/oai186\_loss\_inner.py},
-  \texttt{code/oai186\_loss\_outer.py}). Every value is at most its table
-  entry; the component bounds sum to $38927521$ and $622829238$ for $O_2$ and
-  $O_{5/2}$ (table: $38927522$, $622829241$) and reproduce the four inner
-  totals exactly (\texttt{code/cap6/oai186\_loss\_summary.json}). The largest
-  relative gaps ($\le2.7\%$, always below the table) are in renewal-branch low
-  bins of negligible weight. A fresh-context audit of both programs against
-  the companion (\texttt{notes/}\allowbreak\texttt{audit-186-loss/report.md})
-  found no discrepancy; one reading (``the appropriate rows of (1.5)'' as all
-  face rows) is the one that matches the tables.
-\item \emph{A second program for the decisive group} (two independent
-  programs; \texttt{code/oai186\_loss\_outer2.py}, written from the companion
-  alone, \texttt{notes/}\allowbreak\texttt{loss-outer2-report.md}). With
-  different arithmetic (exact Kronecker products in GMP), a different moment
-  algorithm and a different treatment of the cap rows, it evaluated the $12$
-  rank-two components, the third-factorial component and the low bins
-  $L_{19}$--$L_{22}$ of $O_{5/2}$: $89.4\%$ of $L^+$. The two programs agree to
-  $2.5\cdot10^{-14}$ ($A$) and $1.4\cdot10^{-12}$ ($B$) on the rank-two and
-  factorial components and to $2.2\cdot10^{-9}$ on the low bins. The remaining
-  $10.6\%$ of $L^+$ rests on the first program alone, which by
-  Proposition~\ref{prop:oai186-budget} cannot change the sign of the margin
-  above $1/50000$.
+\item Source data, cap masks, group parameters, every Young inequality and
+  group total of Tables~2.1--2.7, the total $696075110<697\cdot10^6$ and the
+  final margins (2.34)--(2.35) hold exactly
+  (\texttt{code/oai186\_support\_data.py}, \texttt{code/oai186\_tables\_check.py}).
+\item All $97$ raw loss bounds (arb, $128$--$256$ bits;
+  \texttt{code/oai186\_loss\_inner.py}, \texttt{code/oai186\_loss\_outer.py}) are
+  at most their table entries (largest relative gap $2.7\%$, in low bins of
+  negligible weight) and reproduce the four inner totals exactly; a
+  fresh-context audit found no discrepancy.
+\item A second program written from the companion alone
+  (\texttt{code/oai186\_loss\_outer2.py}) re-evaluated $89.4\%$ of $L^+$ (the
+  $12$ rank-two components, the third-factorial component and the low bins
+  $L_{19}$--$L_{22}$ of $O_{5/2}$), agreeing to $10^{-12}$ on the components and
+  $2.2\cdot10^{-9}$ on the low bins. The remaining $10.6\%$ rests on one program,
+  which by Proposition~\ref{prop:oai186-budget} cannot change the sign of the
+  margin above $1/50000$.
 \end{itemize}
-\end{sloppypar}
 
 \begin{remark}[what this does and does not establish]\label{rem:186-status}
 Both numerical halves of the $186$ criterion (the main terms $I_H$,

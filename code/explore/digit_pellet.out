@@ -1,0 +1,30 @@
+p = 3, n < p^12 = 531441; n with F_n squarefree mod p: 354294
+mean lambda(n) mu_p(F_n)                       = +0.00229   (1/sqrt(count) = 0.00168)
+mean lambda(n)lambda(n+2) mu_p(F_n)mu_p(F_n+2) = -0.00147   over 225218 n
+mean mu_p(F_n) over all n: -0.00002;  over primes n: +0.00382  (35114 primes)
+F_n irreducible over Q: primes n 17983/17983 (Cohn: all, for p <= 10 digits >= 0), composite n (n = 0 mod 7 sample, n < 2e5) 12809/28570
+
+real	0m10.151s
+user	0m10.358s
+sys	0m0.046s
+
+p = 5, n < p^8 = 390625; n with F_n squarefree mod p: 312500
+mean lambda(n) mu_p(F_n)                       = +0.00161   (1/sqrt(count) = 0.00179)
+mean lambda(n)lambda(n+2) mu_p(F_n)mu_p(F_n+2) = -0.00069   over 247958 n
+mean mu_p(F_n) over all n: -0.00006;  over primes n: +0.00041  (26861 primes)
+F_n irreducible over Q: primes n 17982/17982 (Cohn: all, for p <= 10 digits >= 0), composite n (n = 0 mod 7 sample, n < 2e5) 18187/28570
+
+real	0m5.480s
+user	0m5.690s
+sys	0m0.123s
+
+p = 7, n < p^7 = 823543; n with F_n squarefree mod p: 705894
+mean lambda(n) mu_p(F_n)                       = +0.00035   (1/sqrt(count) = 0.00119)
+mean lambda(n)lambda(n+2) mu_p(F_n)mu_p(F_n+2) = -0.00176   over 603474 n
+mean mu_p(F_n) over all n: -0.00006;  over primes n: +0.00420  (58552 primes)
+F_n irreducible over Q: primes n 17981/17981 (Cohn: all, for p <= 10 digits >= 0), composite n (n = 0 mod 7 sample, n < 2e5) 5/28570
+
+real	0m7.122s
+user	0m7.184s
+sys	0m0.146s
+

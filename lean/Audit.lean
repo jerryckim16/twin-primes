@@ -77,3 +77,7 @@ import TwinPrimes
 #print axioms TwinPrimes.gauss_totient_upto
 #print axioms TwinPrimes.selberg_diag_D6
 #print axioms TwinPrimes.selberg_diag_example
+#print axioms TwinPrimes.selberg_sos_D6
+#print axioms TwinPrimes.selberg_opt_D6
+#print axioms TwinPrimes.selberg_opt_D6_eq
+#print axioms TwinPrimes.selberg_opt_D6_eq_iff
