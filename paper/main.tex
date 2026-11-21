@@ -240,7 +240,9 @@ and $s=-1$ satisfies the hypothesis for all $a,h$
 (\texttt{orbit\_example\_hmul}).
 \item (\texttt{Selberg.lean}, Selberg's diagonalisation at $D=6$) With
 $L=\operatorname{lcm}(1,\dots,6)=60$, for every $\lambda:\mathbb N\to\mathbb Z$,
-$\sum_{d,e\le6}\lambda_d\lambda_e\,L^2/[d,e]=\sum_{r\le6}\varphi(r)\left(\sum_{d\le6,\,r\mid d}\lambda_dL/d\right)^2$
+\[
+\sum_{d,e\le6}\lambda_d\lambda_e\,\frac{L^2}{[d,e]}=\sum_{r\le6}\varphi(r)\left(\sum_{d\le6,\ r\mid d}\lambda_d\frac Ld\right)^2
+\]
 (\texttt{selberg\_diag\_D6}), i.e.\ $\sum\lambda_d\lambda_e/[d,e]=\sum_r\varphi(r)y_r^2$
 with $y_r=\sum_{r\mid d}\lambda_d/d$; Gauss's identity $\sum_{r\mid n}\varphi(r)=n$
 for $n\le60$ (\texttt{gauss\_totient\_upto}); and for $\lambda=\mu$ on $d\le6$
@@ -2100,11 +2102,18 @@ verified it, and it would not give twin primes. A route card of 20 November
 paper) observes that in their Type II step the target enters only through
 boundedness and multiplicativity at the auxiliary primes, so the same estimate,
 if correct, would also give infinitely many primes $p$ with $p+2=a\ell$, $\ell$
-prime, $a=x^{o(1)}$ (\lbl{Proved here} in outline, conditional on their
-Proposition~4.2, with one gap in the main term). That is an
-Elliott--Halberstam-strength statement, against the record exponent $0.677$
-for the largest prime factor of $p+2$ \cite{BH98}; we read it as a reason to
-check their Proposition~4.2 first, not as an error found.
+prime, $a=x^{o(1)}$. A second route card (21 November,
+\texttt{notes/parity-attempts/2026-11-21-lww-main-term.md}) closes the
+main-term gap left there: their Type~I sums see the target only through its
+sums in reduced residue classes to moduli $x^{2/5+o(1)}$, so the count can be
+compared with a sieve model target whose count, $2C_2x$, is computed directly.
+The implication is therefore complete in outline (\lbl{Proved here},
+conditional on their Propositions~4.2 and~5.3, audited): $\gg x/(\log x)^2$
+primes $p\in(x,2x]$ with $p+2=a\ell$, $\ell$ prime, $a\le\exp(O((\log x)^{1/5}))$.
+This goes beyond the record exponent $0.677$ for the largest prime factor of
+$p+2$ \cite{BH98}; its cofactor is smaller than the standard argument under Elliott--Halberstam gives. We read
+it as a reason to check their Proposition~4.2 first, not as an error found; it
+does not bring twin primes closer.
 \end{itemize}
 \end{sloppypar}
 
@@ -2252,6 +2261,7 @@ the shift).
 \item[0.34] (19 Nov 2026) Theorem~\ref{thm:lean}, item 7: the limit step from two-sided asymptotics to the sieve inequality in Lean. The $186$ loss-bound account condensed to one list (detail stays in the verification note). Bounds unchanged.
 \item[0.35] (19 Nov 2026) Theorem~\ref{thm:lean}, item 8: counting multiples, the Selberg expansion identity and its error term in Lean (\texttt{Counting.lean}). The account of the Song--Yue recomputation shortened (detail stays in the verification note). Bounds unchanged.
 \item[0.36] (19 Nov 2026) Theorem~\ref{thm:lean}, item 9: the Selberg expansion and its error term in the residue class $n\equiv v_0\pmod W$ (Chinese remainder step, in Lean). The account of Kintali's support condensed. Bounds unchanged.
+\item[0.40] (21 Nov 2026) Theorem~\ref{thm:lean}, item 13 (\texttt{Selberg.lean}); Related results: the main-term gap of the Session 39 consistency observation on L\"u--Wang--Wu closed in outline; the one-sided certificate passage of Section~\ref{sec:stad} condensed. Bounds unchanged.
 \item[0.39] (20 Nov 2026) Theorem~\ref{thm:lean}, item 12 (\texttt{Orbit.lean}); Related results: a consistency observation on the claimed Type~II estimate of L\"u--Wang--Wu; the superseded penalised capped bound ($3.9597$) of Section~\ref{sec:stad} reduced to one paragraph. Bounds unchanged.
 \item[0.38] (20 Nov 2026) Theorem~\ref{thm:lean}, item 11 (\texttt{Fano.lean}); Related results: the parity paper's status note 1.0.1 on a claimed result of L\"u--Wang--Wu. Bounds unchanged.
 \item[0.37] (20 Nov 2026) Theorem~\ref{thm:lean}, item 10: the expansion of $S_2$ with an arbitrary prime-type condition and its abstract error term (the arithmetic input as an explicit hypothesis), in Lean. Bounds unchanged.

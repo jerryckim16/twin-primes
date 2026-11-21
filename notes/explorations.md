@@ -5,8 +5,9 @@ Each entry: date, session, idea, what was tried, outcome (dead end / inconclusiv
 
 ## 2026-11-21, Session 40 -- The "fake target" 1_S as a test of the Lü-Wang-Wu Type II claim (duality / probabilistic models)
 - Idea: by the transference principle of the Session 40 route card (Finding 5), the LWW Type II estimate, if true for a
-  family A, holds for every bounded target g; for g = 1_S, S = {h : a h - 2 composite for all a in A}, the count is 0
-  identically, so the estimate forces density(S) = O(L^{-A}). If real primes left a non-negligible S for families
+  family A, holds for every bounded target g; for g = 1_S, S = {h : a h - 2 composite for all a in A}, the count is
+  O(x^{1/2+o(1)}), so the estimate forces the Type I value of 1_S, which is about density(S) IF 1_S is equidistributed
+  in progressions (a hypothesis), to be O(x L^{-A}). If real primes left a non-negligible S for families
   of LWW's shape, the claim would be refuted. Risky (a refutation would matter), cheap.
 - Tried: `code/explore/fake_target_density.py [H] [AMAX]` (/usr/bin/python3 -I; 4 s; output `.out`): toy families
   A = {p q : 11 < p < q <= P, p q <= AMAX}, odd h in [H, 2H) (even h are a local obstruction that Type I sums also see),
@@ -14,7 +15,7 @@ Each entry: date, session, idea, what was tried, outcome (dead end / inconclusiv
 - Outcome: **dead end** (as a refutation route). The empirical density follows the model closely (|A| = 10: 0.18 vs
   0.23 and 0.15 vs 0.17; |A| = 45: 0.002 vs 0.004 and 0 vs 0.0015; |A| >= 136: 0 in both) and falls like
   exp(-mean number of primes a h - 2), so S is negligible as soon as #A >> log x, and LWW's sets have size exp(L^{1/10})
-  or more. The test can only bite for small A, where the estimate is not claimed. Heuristic / exploratory.
+  or more. The test can only bite for small A, far from LWW's sets (which are huge already for K = 1). Heuristic / exploratory.
 
 ## 2026-11-20, Session 39 -- Primes along dilation sets {a h - 2 : a in A}: do K-products behave differently? (probabilistic model test)
 - Idea: the Type II estimate of Lü-Wang-Wu (arXiv:2610.20242v2, Prop. 4.2) needs, after Cauchy-Schwarz over h, that the

@@ -1,7 +1,7 @@
 {
- "version": "0.39",
- "updated": "2026-11-20",
- "session_count": 39,
+ "version": "0.40",
+ "updated": "2026-11-21",
+ "session_count": 40,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Proved here",
+   "text": "(Outline, conditional on Lu-Wang-Wu Prop. 4.2 and Prop. 5.3 (Claimed); audited; route card 2026-11-21-lww-main-term.md, not in a paper.) LWW's Type I sums use the target only through reduced-class sums to moduli x^{2/5+o(1)}, and their Type II bound is target-free; comparing G(N) = prod V_i^{-1} sum_{a in A, a|N} Lambda(N/a) with the sieve model f = kappa_D 1_{(h,P(D))=1} gives sum_{x<n<=2x} Lambda(n) G(n+2) = 2 C_2 x (1+o(1)), hence >> x/L^2 primes p with p+2 = a l, l prime, a <= exp(2K L^{1/5}). This closes the Session 39 gap; a pointer at LWW Prop. 4.2, not an error found; nothing for twins (K = 0).",
+   "where": "notes/parity-attempts/2026-11-21-lww-main-term.md"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "Selberg.lean: Selberg's diagonalisation sum lambda_d lambda_e/[d,e] = sum_r phi(r) y_r^2 at D = 6 for all integer lambda (scaled by lcm(1..6)^2 = 3600), Gauss's identity sum_{r|n} phi(r) = n for n <= 60, and the value 2/5 for lambda = mu (decide / grind; no sorry, no native_decide).",
+   "where": "lean/TwinPrimes/Selberg.lean; paper Thm thm:lean item 13"
+  },
   {
    "label": "Proved here",
    "text": "(Outline, conditional on Lu-Wang-Wu Prop. 4.2 and Section 5; one gap, the Type I main term.) Route card (Session 39, not in a paper): in the Type II step of Lu-Wang-Wu (arXiv:2610.20242v2, (4.6)) Cauchy-Schwarz over h discards mu(h); the target enters only through boundedness and mu(ah) = (-1)^K mu(h). The same argument with Lambda(h) loses only L^{1/2}, so if their Prop. 4.2 and Section 5 hold (and once the Type I main term is written out, the open gap), there are infinitely many primes p with p+2 = a*l, l prime, a = x^{o(1)}: P^+(p+2) > p^{1-o(1)}, an Elliott-Halberstam-strength statement (record 0.677, Baker-Harman 1998). A consistency red flag for their Prop. 4.2, not an error found. Audited by a fresh-context helper.",
@@ -479,10 +489,16 @@
  ],
  "ideas": [
   {
+   "idea": "Exploration: the fake target 1_S (S = h with all a h - 2 composite) as a refutation test of the LWW Type II claim",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 40: density of S follows the Cramer-Granville model and is negligible once #A >> log x; LWW's sets are far larger, so no contradiction (code/explore/fake_target_density.py)."
+  },
+  {
    "idea": "Own idea: fake-function / transfer test of the Lu-Wang-Wu mechanism (what does the Type II step use of mu(n+2), and what else would it prove?)",
    "origin": "own",
    "status": "partial",
-   "note": "Session 39 route card: only boundedness and multiplicativity at auxiliary primes are used; transfer to Lambda(h) would give an EH-strength consequence (P^+(p+2) > p^{1-o(1)}), so the place to check is Prop. 4.2. Main-term step of the transfer not yet written out. Twins (K = 0) out of reach."
+   "note": "Session 39 route card: only boundedness and multiplicativity at auxiliary primes are used; transfer to Lambda(h) would give an EH-strength consequence (P^+(p+2) > p^{1-o(1)}). Session 40: main-term gap closed in outline by a model target f = kappa_D 1_{(h,P(D))=1} (Type I sums are linear and see only residue classes; T(f) = 2 C_2 x computed directly), so the implication now rests only on LWW Prop. 4.2 + Prop. 5.3. Twins (K = 0) out of reach."
   },
   {
    "idea": "Exploration: variance of prime counts along dilation sets {ah-2 : a in K-products}",

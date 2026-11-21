@@ -225,3 +225,12 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   EH-strength consequence (P^+(p+2) > p^{1-o(1)}), conditional on LWW Prop. 4.2, with one main-term gap. Twins = K = 0.
 - Parity paper: unchanged (frozen v1.0.1). For the 23 Nov review: whether the observation belongs in v1.1 (only once the
   gap is closed and audited).
+
+## Session 40 (21 Nov 2026, 7:34 PM CT run)
+- Attempt: route card notes/parity-attempts/2026-11-21-lww-main-term.md — located (conditional implication, complete in
+  outline; audited). The Session 39 main-term gap is closed by comparing the target with a sieve model target (Type I
+  sums are linear and see only residue classes). The implication now rests only on LWW Prop. 4.2 and Prop. 5.3.
+- Parity paper: frozen v1.0.1, unchanged. A v1.1 treatment of the LWW claim (with this implication, at most one short
+  subsection) is for the weekly review of 23 Nov to decide.
+- Next mechanisms (not another "where does averaging stop near log X"): Merikoski's multiplicative large sieve route to
+  GS-type Type I; the almost-all MRT17 form under GRH/EH.
