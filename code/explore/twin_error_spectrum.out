@@ -1,0 +1,15 @@
+X = 2e+08; pi(X) = 11078937; twin pairs = 813371
+rms E1/sqrt x = 1.135; rms E2/sqrt x = 9.191
+top peaks theta: [(np.float64(14.15), np.float64(0.35)), (np.float64(21.05), np.float64(0.236)), (np.float64(25.0), np.float64(0.198)), (np.float64(30.4), np.float64(0.161)), (np.float64(32.95), np.float64(0.149)), (np.float64(37.6), np.float64(0.132)), (np.float64(40.9), np.float64(0.119)), (np.float64(43.35), np.float64(0.112)), (np.float64(47.95), np.float64(0.102)), (np.float64(49.8), np.float64(0.098))]
+top peaks twin : [(np.float64(7.15), np.float64(5.043)), (np.float64(10.65), np.float64(3.603)), (np.float64(9.65), np.float64(3.466)), (np.float64(13.35), np.float64(1.989)), (np.float64(17.2), np.float64(1.776)), (np.float64(19.55), np.float64(1.546)), (np.float64(14.4), np.float64(1.334)), (np.float64(25.9), np.float64(1.219)), (np.float64(30.6), np.float64(1.208)), (np.float64(43.9), np.float64(1.129))]
+gamma =  14.1347: F_theta = 0.350  F_twin = 1.230  (median F_twin = 0.761)
+gamma =  21.0220: F_theta = 0.236  F_twin = 0.565  (median F_twin = 0.761)
+gamma =  25.0109: F_theta = 0.198  F_twin = 0.813  (median F_twin = 0.761)
+gamma =  30.4249: F_theta = 0.161  F_twin = 1.098  (median F_twin = 0.761)
+gamma =  32.9351: F_theta = 0.149  F_twin = 0.935  (median F_twin = 0.761)
+gamma =  37.5862: F_theta = 0.132  F_twin = 0.935  (median F_twin = 0.761)
+gamma =  40.9187: F_theta = 0.119  F_twin = 0.212  (median F_twin = 0.761)
+gamma =  43.3271: F_theta = 0.112  F_twin = 0.716  (median F_twin = 0.761)
+gamma =  48.0052: F_theta = 0.102  F_twin = 0.190  (median F_twin = 0.761)
+gamma =  49.7738: F_theta = 0.098  F_twin = 0.249  (median F_twin = 0.761)
+corr(F_theta, F_twin) over t in [5,50]: -0.191

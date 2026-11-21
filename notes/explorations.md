@@ -3,6 +3,20 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-21, Session 42 -- Do the zeros of zeta show up in the error term of the twin-prime sum? (spectral / explicit formulas)
+- Idea: theta(x) - x has an explicit formula, so its normalised error E1(e^u) e^{-u/2} has Fourier peaks at the
+  ordinates gamma of the zeros. The twin sum has no known explicit formula; if its error E2(x) = sum_{p <= x, p+2 prime}
+  log p log(p+2) - 2 C2 x still showed peaks at the gamma (inherited from the marginal prime error), that would be an
+  unexpected structural link between twin fluctuations and zeta. Risky, cheap; expected to fail.
+- Tried: `code/explore/twin_error_spectrum.py [X]` (/usr/bin/python3 -I; 6 s and ~0.6 GB at X = 2e8; output `.out`):
+  Hann-windowed Fourier transform in u = log x over [log 1e4, log X], t in [5, 50].
+- Outcome: **dead end**. The control works: the ten largest peaks of the theta spectrum are at 14.15, 21.05, 25.0,
+  30.4, 32.95, 37.6, 40.9, 43.35, 47.95, 49.8 (the first ten gamma to within the grid 0.05). The twin spectrum is about
+  8 times larger in rms (rms E2/sqrt x = 9.2 against 1.1), has its peaks at low frequency (7.15, 10.65, 9.65: slow drift)
+  and its values at the ten gamma (mean 0.69) are at or below its median (0.76); the correlation of the two spectra is
+  -0.19. Nothing at the zeros, as the Hardy-Littlewood heuristic predicts (the twin error is dominated by its own
+  fluctuations of size about sqrt(x) log x). Heuristic / exploratory.
+
 ## 2026-11-21, Session 41 -- A "Pellet formula over Z" through base-p digit polynomials? (function fields / carries)
 - Idea: over F_p[x], Pellet's formula makes mu(F) = (-1)^{deg F} chi_p(disc F) an algebraic quantity, which is the
   parity-breaking step of the large-q theorems (Carmon-Rudnick; this run's route card). The carry-free map

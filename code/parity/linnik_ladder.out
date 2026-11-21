@@ -1,0 +1,99 @@
+== (i) exact checks ==
+Stirling identity sum_j (-1)^(j-1)(j-1)! S(r,j) = [r=1], r = 1..40: failures = []
+coefficient mass A(r) = sum_j (j-1)! S(r,j) (sum of |coefficients| for Omega = r, squarefree):
+  r= 1  A(r)=1.0000e+00  A(r)/((r-1)!/(2 (log 2)^r))=1.386294
+  r= 2  A(r)=2.0000e+00  A(r)/((r-1)!/(2 (log 2)^r))=1.921812
+  r= 3  A(r)=6.0000e+00  A(r)/((r-1)!/(2 (log 2)^r))=1.998148
+  r= 4  A(r)=2.6000e+01  A(r)/((r-1)!/(2 (log 2)^r))=2.000571
+  r= 5  A(r)=1.5000e+02  A(r)/((r-1)!/(2 (log 2)^r))=2.000034
+  r= 6  A(r)=1.0820e+03  A(r)/((r-1)!/(2 (log 2)^r))=1.999994
+  r= 8  A(r)=9.4586e+04  A(r)/((r-1)!/(2 (log 2)^r))=2.000000
+  r=10  A(r)=1.4175e+07  A(r)/((r-1)!/(2 (log 2)^r))=2.000000
+  r=15  A(r)=2.1283e+13  A(r)/((r-1)!/(2 (log 2)^r))=2.000000
+  r=20  A(r)=1.8560e+20  A(r)/((r-1)!/(2 (log 2)^r))=2.000000
+  r=30  A(r)=5.2696e+35  A(r)/((r-1)!/(2 (log 2)^r))=2.000000
+  r=40  A(r)=4.7486e+52  A(r)/((r-1)!/(2 (log 2)^r))=2.000000
+Linnik identity, all 2 <= n <= 100000 (prime powers included): failures = 0
+d'_j(n) = j! S(Omega(n), j), all 60793 squarefree n <= 100000, j <= 17: failures = 0
+[time 1.5s]
+
+== X = 1e+07, J = 3, z = X^(1/J) = 215.44: 142907 rough pairs ==
+N(type(n), type(n+2)):
+                 p        pq       p^2
+      p      58965     32320        93
+     pq      32455     19026        48
+    p^2          0         0         0
+S_{j,j'} = sum d'_j(n) d'_j'(n+2);  rho = (sum lambda lambda d'_j d'_j')/S_{j,j'}:
+  S11=    142907 (rho=+0.0922)  S12=    102833 (rho=-0.2590)
+  S21=    103058 (rho=-0.2597)  S22=     76200 (rho=+1.0000)
+T = sum_jj' c_j c_j' S_jj' = 59011.50;  direct sum (Lambda/log)(Lambda/log) = 59011.50;  exact equality: True
+twin-prime pairs among rough pairs = 58965;  T - twins = 46.50 (prime-power pairs)
+cancellation ratio sum|c c S| / T = 4.4890  ->  relative accuracy needed in every S_jj' for a non-trivial T: < 0.2228
+under the fair weight 1 - lambda(n)lambda(n+2): S^w_jj'/S_jj' = 11:0.9078, 12:1.2590, 21:1.2597, 22:0.0000;  T^w = 93.00;  twin pairs^w = 0
+mean lambda(n)lambda(n+2) on rough pairs = +0.0922
+
+== X = 1e+07, J = 4, z = X^(1/J) = 56.23: 245372 rough pairs ==
+N(type(n), type(n+2)):
+                 p        pq       p^2       pqr      p^2q       p^3
+      p      58974     55790       104      4607       378         4
+     pq      55960     53940        92      4638       382         5
+    p^2          0         0         0         0         0         0
+    pqr       4675      4533         2       435        31         0
+   p^2q        382       396         0        34         3         0
+    p^3          4         3         0         0         0         0
+S_{j,j'} = sum d'_j(n) d'_j'(n+2);  rho = (sum lambda lambda d'_j d'_j')/S_{j,j'}:
+  S11=    245372 (rho=+0.0071)  S12=    291000 (rho=-0.0372)  S13=     60675 (rho=+0.0448)
+  S21=    291364 (rho=-0.0349)  S22=    349532 (rho=+0.3344)  S23=     75028 (rho=-0.5450)
+  S31=     60508 (rho=+0.0612)  S32=     73842 (rho=-0.5381)  S33=     16857 (rho=+1.0000)
+T = sum_jj' c_j c_j' S_jj' = 59028.67;  direct sum (Lambda/log)(Lambda/log) = 59028.67;  exact equality: True
+twin-prime pairs among rough pairs = 58974;  T - twins = 54.67 (prime-power pairs)
+cancellation ratio sum|c c S| / T = 11.7064  ->  relative accuracy needed in every S_jj' for a non-trivial T: < 0.0854
+under the fair weight 1 - lambda(n)lambda(n+2): S^w_jj'/S_jj' = 11:0.9929, 12:1.0372, 13:0.9552, 21:1.0349, 22:0.6656, 23:1.5450, 31:0.9388, 32:1.5381, 33:0.0000;  T^w = 104.00;  twin pairs^w = 0
+mean lambda(n)lambda(n+2) on rough pairs = +0.0071
+[X = 1e+07 done in 3.8s]
+
+== X = 1e+08, J = 3, z = X^(1/J) = 464.16: 1096263 rough pairs ==
+N(type(n), type(n+2)):
+                 p        pq       p^2
+      p     440288    252684       227
+     pq     252749    150201       114
+    p^2          0         0         0
+S_{j,j'} = sum d'_j(n) d'_j'(n+2);  rho = (sum lambda lambda d'_j d'_j')/S_{j,j'}:
+  S11=   1096263 (rho=+0.0775)  S12=    806111 (rho=-0.2544)
+  S21=    806128 (rho=-0.2541)  S22=    601032 (rho=+1.0000)
+T = sum_jj' c_j c_j' S_jj' = 440401.50;  direct sum (Lambda/log)(Lambda/log) = 440401.50;  exact equality: True
+twin-prime pairs among rough pairs = 440288;  T - twins = 113.50 (prime-power pairs)
+cancellation ratio sum|c c S| / T = 4.6608  ->  relative accuracy needed in every S_jj' for a non-trivial T: < 0.2146
+under the fair weight 1 - lambda(n)lambda(n+2): S^w_jj'/S_jj' = 11:0.9225, 12:1.2544, 21:1.2541, 22:0.0000;  T^w = 227.00;  twin pairs^w = 0
+mean lambda(n)lambda(n+2) on rough pairs = +0.0775
+
+== X = 1e+08, J = 4, z = X^(1/J) = 100.00: 1913995 rough pairs ==
+N(type(n), type(n+2)):
+                 p        pq       p^2       pqr      p^2q       p^3
+      p     440304    434090       246     40324      1604         8
+     pq     434499    431836       217     40657      1608         6
+    p^2          0         0         0         0         0         0
+    pqr      40276     40726        10      3895       151         0
+   p^2q       1692      1652         0       173         7         0
+    p^3          6         7         0         1         0         0
+S_{j,j'} = sum d'_j(n) d'_j'(n+2);  rho = (sum lambda lambda d'_j d'_j')/S_{j,j'}:
+  S11=   1913995 (rho=+0.0037)  S12=   2340903 (rho=-0.0283)  S13=    520424 (rho=+0.0440)
+  S21=   2342118 (rho=-0.0286)  S22=   2878686 (rho=+0.3033)  S23=    644730 (rho=-0.5434)
+  S31=    520934 (rho=+0.0426)  S32=    645746 (rho=-0.5446)  S33=    146121 (rho=+1.0000)
+T = sum_jj' c_j c_j' S_jj' = 440431.67;  direct sum (Lambda/log)(Lambda/log) = 440431.67;  exact equality: True
+twin-prime pairs among rough pairs = 440304;  T - twins = 127.67 (prime-power pairs)
+cancellation ratio sum|c c S| / T = 12.6095  ->  relative accuracy needed in every S_jj' for a non-trivial T: < 0.0793
+under the fair weight 1 - lambda(n)lambda(n+2): S^w_jj'/S_jj' = 11:0.9963, 12:1.0283, 13:0.9560, 21:1.0286, 22:0.6967, 23:1.5434, 31:0.9574, 32:1.5446, 33:0.0000;  T^w = 246.00;  twin pairs^w = 0
+mean lambda(n)lambda(n+2) on rough pairs = +0.0037
+[X = 1e+08 done in 35.3s]
+
+== (iii) X = 1e+07: unrestricted Titchmarsh data, sum_p log p * f(p+2) ==
+  k=2: sum log p d_k(p+2) = 1.0948e+08;  twist ratio sum lambda d_k / sum d_k = +0.00009
+  k=3: sum log p d_k(p+2) = 6.2974e+08;  twist ratio sum lambda d_k / sum d_k = +0.00082
+  k=4: sum log p d_k(p+2) = 2.5887e+09;  twist ratio sum lambda d_k / sum d_k = +0.00140
+  k=6: sum log p d_k(p+2) = 2.4515e+10;  twist ratio sum lambda d_k / sum d_k = +0.00220
+  k=8: sum log p d_k(p+2) = 1.4570e+11;  twist ratio sum lambda d_k / sum d_k = +0.00191
+  (for comparison, sum over p of log p * lambda(p+2) / sum log p = -0.00072)
+[done in 5.7s]
+
+total runtime 46.3s

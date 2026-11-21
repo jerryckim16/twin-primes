@@ -7,3 +7,4 @@ import TwinPrimes.Counting
 import TwinPrimes.Fano
 import TwinPrimes.Orbit
 import TwinPrimes.Selberg
+import TwinPrimes.Linnik

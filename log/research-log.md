@@ -1,5 +1,287 @@
 # Research log
 
+## 2026-11-21 - Session 42 (11:34 AM CT slot of 21 Nov; started on time 17:34 UTC; no wait, no other run active): Linnik's identity on rough pairs located inside the parity class; Lean: the alternating Stirling identity for all r; 240 certificate re-run from scratch; main paper v0.42
+
+- Parity share: a route card on Linnik's identity Lambda(n)/log n = sum_j (-1)^{j-1} d'_j(n)/j (sources read: Matomaki-Radziwill-Tao arXiv:1707.01315v3 pp. 2-7, Ford-Maynard arXiv:2407.14368v1 pp. 1-4, 19-22). On pairs (n, n+2) free of prime factors <= X^{1/J} the identity stops at j <= J-1, and the correlations of d'_j(n) and d'_{j'}(n+2) are, up to non-squarefree pairs, a triangular change of basis of the joint Omega-table. So the ladder stays inside the parity paper's class.
+- At X = 1e8 every rough rung is parity-sensitive (twist ratios such as +0.078, -0.254 and +1 at J = 3), the weight 1 - lambda(n)lambda(n+2) kills the top rung exactly as it kills the twin count, and the error amplification at fixed J is only a constant (4.66 at J = 3, 12.6 at J = 4; code/parity/linnik_ladder.py). A fresh-context adversarial audit found 1 error (non-squarefree types) and 7 gaps (4 minor); all fixed or recorded in the card.
+- Small results (Lean programme): Linnik.lean proves sum_{j=1}^r (-1)^{j-1}(j-1)! S(r,j) = [r = 1] for EVERY r by telescoping, plus a finite check that ordered factorisations of 30, 210, 2310 number j! S(Omega(n), j). It was written by a helper agent; the statements were checked here. lake build and Audit.lean pass (only propext, Quot.sound, Classical.choice).
+- Bound share: a from-scratch regression of the 240 certificate. capped_check.py, re-run in a fresh environment on Stadlmann's support (250 s on 3 cores), gives exactly the committed I_T and J_T; k J_T/I_T = 4.0120389036 > 4 (variational step only; Stadlmann's equidistribution estimates not verified).
+- Main paper v0.42 (34 pp.): Theorem thm:lean item 14, a Related-results paragraph, and a history item. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Linnik's identity / convolution-depth ladder on rough pairs: located (a no-go inside the paper's class, partly heuristic). The first unresolved implication is a parity-sensitive asymptotic for one rough rung. The parity paper stays frozen at v1.0.1 (24 pp.), unchanged.
+
+Explored: Do the zeros of zeta show up in the Fourier spectrum (in log x) of the twin-prime error term? The theta(x) - x control shows the first ten gamma, but the twin spectrum shows nothing there at X = 2e8: dead end (code/explore/twin_error_spectrum.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- w
+- e
+- r
+- e
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- s
+- u
+- p
+- e
+- r
+- s
+- e
+- d
+- e
+- d
+-  
+- u
+- n
+- i
+- o
+- n
+- -
+- b
+- o
+- u
+- n
+- d
+-  
+- s
+- c
+- r
+- i
+- p
+- t
+-  
+- c
+- o
+- d
+- e
+- /
+- s
+- t
+- a
+- d
+- l
+- m
+- a
+- n
+- n
+- _
+- c
+- a
+- p
+- s
+- .
+- p
+- y
+-  
+- g
+- i
+- v
+- e
+- s
+-  
+- a
+-  
+- n
+- e
+- g
+- a
+- t
+- i
+- v
+- e
+-  
+- l
+- o
+- w
+- e
+- r
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- b
+- y
+-  
+- d
+- e
+- s
+- i
+- g
+- n
+- ,
+-  
+- s
+- o
+-  
+- i
+- t
+-  
+- w
+- a
+- s
+-  
+- n
+- o
+- t
+-  
+- u
+- s
+- e
+- d
+-  
+- a
+- s
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- g
+- r
+- e
+- s
+- s
+- i
+- o
+- n
+-  
+- t
+- e
+- s
+- t
+- .
+
+Next: The weekly review on Monday 23 Nov decides on a parity-paper v1.1 (the LWW implication, E2 remark, at most one sentence each for S41/S42 cards) and the next small-results line; one bounded parity attempt per run; Lean programme continues.
+
 ## 2026-11-21 - Session 41 (3:34 AM CT slot of 21 Nov; started on time 09:34 UTC; no wait, no other run active): The large-q function-field mechanism located (Pellet + Weil); Lean: Selberg's optimum at D = 6; main paper v0.41
 
 - News search (3:34 AM run): nothing new on the bounds; the Lü-Wang-Wu preprint arXiv:2610.20242 is still at v2 (19 Nov) and no public comment was found.

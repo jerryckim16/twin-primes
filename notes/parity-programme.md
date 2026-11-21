@@ -235,3 +235,8 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   subsection) is for the weekly review of 23 Nov to decide.
 - Next mechanisms (not another "where does averaging stop near log X"): Merikoski's multiplicative large sieve route to
   GS-type Type I; the almost-all MRT17 form under GRH/EH.
+
+## Session 42 (21 Nov 2026)
+- Route card notes/parity-attempts/2026-11-21-linnik-ladder.md: Linnik's identity on X^{1/J}-rough pairs is a change of
+  basis of the joint Omega-table (up to non-squarefree pairs), so the convolution-depth ladder stays inside the paper's
+  pattern class; located (partly heuristic). Audited (1 error, 7 gaps). Lean core: lean/TwinPrimes/Linnik.lean.
