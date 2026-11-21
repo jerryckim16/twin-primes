@@ -1,7 +1,7 @@
 {
- "version": "0.41",
+ "version": "0.42",
  "updated": "2026-11-21",
- "session_count": 41,
+ "session_count": 42,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -495,9 +495,31 @@
    "label": "Proved here",
    "text": "(route card, not in a paper; model-restricted, possibly folklore) E2 pairs at distance d, 4 not dividing d, through polynomial parametrisations in any number of variables (including Chen-type multipliers): in the fair-weight model every system in which no vertex indicator lies in the F_2-span of the event supports is blocked (notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md; two programs).",
    "where": "notes/parity-attempts/2026-11-19-e2-polynomial-gauge.md"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "Alternating Stirling identity sum_{j=1}^r (-1)^{j-1} (j-1)! S(r,j) = [r = 1] for every r (the combinatorial core of Linnik's identity on squarefree n), plus a finite check that ordered factorisations of 30, 210, 2310 into j factors number j! S(Omega(n), j).",
+   "where": "lean/TwinPrimes/Linnik.lean; main paper Thm thm:lean item 14"
+  },
+  {
+   "label": "Computed",
+   "text": "Regression (Session 42): capped_check.py re-run from scratch on the 240 vector (code/cap6/P_capfree_D20_u.json, 250 s on 3 cores) reproduces I_T and J_T exactly; ratio 4.0120389036 > 4 (code/cap6/compare_capfree_D20_regen_s42.json). Variational step only; Stadlmann's equidistribution estimates not verified.",
+   "where": "code/cap6/check_capfree_D20_regen_s42.json"
   }
  ],
  "ideas": [
+  {
+   "idea": "Parity attempt: Linnik's identity and the convolution-depth ladder (correlations of d'_j(n) d'_{j'}(n+2) on rough pairs)",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Session 42: located; on X^{1/J}-rough pairs the ladder is a triangular change of basis of the joint Omega-table, so it stays inside the paper's pattern class; every rough rung is parity-sensitive and the fair weight 1 - lambda(n)lambda(n+2) kills the top rung as it kills the twin count."
+  },
+  {
+   "idea": "Exploration: do the zeros of zeta show up in the Fourier spectrum (in log x) of the twin-prime error term?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 42: the theta(x) - x control shows the first ten gamma; the twin error spectrum shows nothing at the gamma (values at or below its median), X = 2e8."
+  },
   {
    "idea": "Parity attempt: transfer the large-q function-field mechanism (Pellet + Weil + Galois) to Z",
    "origin": "own",
