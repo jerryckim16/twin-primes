@@ -1,5 +1,263 @@
 # Research log
 
+## 2026-11-21 - Session 41 (3:34 AM CT slot of 21 Nov; started on time 09:34 UTC; no wait, no other run active): The large-q function-field mechanism located (Pellet + Weil); Lean: Selberg's optimum at D = 6; main paper v0.41
+
+- News search (3:34 AM run): nothing new on the bounds; the Lü-Wang-Wu preprint arXiv:2610.20242 is still at v2 (19 Nov) and no public comment was found.
+- Parity share: read Carmon-Rudnick (arXiv:1205.1599v3), Bary-Soroker (arXiv:1206.3930v3) and Rudnick's survey (arXiv:1501.01769v1). Over F_q[x] with the degree n fixed and q -> infinity, two-point Chowla and twin primes are theorems. The parity-breaking step is Pellet's formula mu(F) = (-1)^n chi_2(disc F) combined with Weil's bound on intervals of length X^{1/n}, in a ring where every prime has norm at least X^{1/n}.
+- Over Z the same slice statement would imply the Cesàro form of two-point Chowla, which is open at every x. On x^{1/3}-rough pairs the joint parity law determines the number of twin primes. Pellet's formula was checked on every monic polynomial for small q and n (code/parity/large_q_pellet.py). A fresh-context audit found 3 errors and several gaps in the route card, all fixed.
+- Small results (Lean programme): Selberg's optimum at D = 6, Q(lambda) >= lambda_1^2/G with G = 13/4, by an explicit sum of eleven squares, with equality exactly at the multiples of (13, -12, -12, 0, -5, 12). It was written by a helper agent; the numbers were checked here in Python. lake build and Audit.lean pass.
+- Bound share: the account of the 186 computations in the main paper was condensed (the detail stays in the frozen verification note). Main paper v0.41 (33 pp.). Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Large-q function-field mechanism: located. The first unresolved implication is an integer substitute for Pellet's formula, i.e. lambda on short intervals as a function of bounded conductor. The parity paper stays frozen at v1.0.1 (24 pp.), unchanged.
+
+Explored: A 'Pellet formula over Z' through base-p digit polynomials: lambda(n) does not correlate with the Möbius function of the digit polynomial of n in F_p[x] (p = 3, 5, 7, n up to about 8e5); dead end (code/explore/digit_pellet.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- a
+- o
+- -
+- T
+- e
+- r
+- ä
+- v
+- ä
+- i
+- n
+- e
+- n
+-  
+- 2
+- 0
+- 1
+- 9
+-  
+- (
+- a
+- l
+- m
+- o
+- s
+- t
+- -
+- a
+- l
+- l
+- -
+- s
+- c
+- a
+- l
+- e
+- s
+-  
+- t
+- w
+- o
+- -
+- p
+- o
+- i
+- n
+- t
+-  
+- C
+- h
+- o
+- w
+- l
+- a
+- )
+- ,
+-  
+- c
+- i
+- t
+- e
+- d
+-  
+- i
+- n
+-  
+- t
+- h
+- e
+-  
+- r
+- o
+- u
+- t
+- e
+-  
+- c
+- a
+- r
+- d
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- o
+- r
+- '
+- s
+-  
+- w
+- o
+- r
+- d
+- ,
+-  
+- w
+- a
+- s
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+- .
+
+Next: Weekly review on the first run of Monday 23 Nov: LWW subsection in a parity v1.1, the E2 remark, the large-q sentence, and the next small-results line. Until then: one parity route card per run, and the Lean programme (Selberg optimum for general D, or the identity by induction).
+
 ## 2026-11-21 - Session 40 (7:34 PM CT slot of 20 Nov; started on time 01:35 UTC 21 Nov; no wait, no other run active): The main-term gap of the Lü-Wang-Wu consistency observation closed in outline (flag update); Lean: Selberg's diagonalisation at D = 6; main paper v0.40
 
 - Parity share: read Section 3 of Lü-Wang-Wu (arXiv:2610.20242v2, still v2; no public comment found) line by line. Their Type I sums use the target only through its sums in reduced residue classes to moduli up to x^{2/5+o(1)}, and their Type II bound does not involve the target at all.

@@ -3,6 +3,21 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-21, Session 41 -- A "Pellet formula over Z" through base-p digit polynomials? (function fields / carries)
+- Idea: over F_p[x], Pellet's formula makes mu(F) = (-1)^{deg F} chi_p(disc F) an algebraic quantity, which is the
+  parity-breaking step of the large-q theorems (Carmon-Rudnick; this run's route card). The carry-free map
+  n = sum d_i p^i -> F_n = sum d_i x^i in F_p[x] is the most direct bridge from Z to F_p[x]. If lambda(n) correlated
+  with mu_{F_p[x]}(F_n) (or the parity pattern of (n, n+2) with that of (F_n, F_{n+2})), there would be an algebraic
+  proxy for lambda. Risky, cheap; expected to fail because carries scramble the map.
+- Tried: `code/explore/digit_pellet.py [p] [k]` (/usr/bin/python3 -I; 5-10 s each; output `.out`) for p = 3, 5, 7 and
+  n < 3^12, 5^8, 7^7; also irreducibility over Q of the integer digit polynomial (Cohn's criterion: prime n gives an
+  irreducible polynomial).
+- Outcome: **dead end**. Mean lambda(n) mu_p(F_n): +0.0023, +0.0016, +0.0004 (standard errors 0.0017, 0.0018, 0.0012);
+  two-point version: -0.0015, -0.0007, -0.0018; mean mu_p(F_n) over primes n: +0.004, +0.0004, +0.004 (within one
+  standard error). Cohn's criterion holds on all primes tested (as it must); the composite sample n = 0 mod 7 is biased
+  for p = 7 (last digit 0, so x divides F_n: 5/28570 irreducible), a sampling artefact, not a finding. No correlation.
+  Heuristic / exploratory.
+
 ## 2026-11-21, Session 40 -- The "fake target" 1_S as a test of the Lü-Wang-Wu Type II claim (duality / probabilistic models)
 - Idea: by the transference principle of the Session 40 route card (Finding 5), the LWW Type II estimate, if true for a
   family A, holds for every bounded target g; for g = 1_S, S = {h : a h - 2 composite for all a in A}, the count is
