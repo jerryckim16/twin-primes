@@ -81,3 +81,9 @@ import TwinPrimes
 #print axioms TwinPrimes.selberg_opt_D6
 #print axioms TwinPrimes.selberg_opt_D6_eq
 #print axioms TwinPrimes.selberg_opt_D6_eq_iff
+#print axioms TwinPrimes.stirling2_eq_zero_of_lt
+#print axioms TwinPrimes.stirling2_succ_zero
+#print axioms TwinPrimes.stirling2_five_two
+#print axioms TwinPrimes.stirling2_six_three
+#print axioms TwinPrimes.linnik_stirling
+#print axioms TwinPrimes.orderedFact_squarefree_check
