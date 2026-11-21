@@ -256,6 +256,18 @@ the multiples of $(13,-12,-12,0,-5,12)$, i.e.\ of the Selberg weights
 (\texttt{selberg\_opt\_D6\_eq}, \texttt{selberg\_opt\_D6\_eq\_iff}).
 Finite instances of the identity and the optimisation behind Selberg's sieve,
 not their general form.
+\item (\texttt{Linnik.lean}, the combinatorial core of Linnik's identity) For
+the Stirling numbers of the second kind $S(r,j)$ and \emph{every} $r\ge0$,
+\[
+\sum_{j=1}^{r}(-1)^{j-1}(j-1)!\,S(r,j)=\begin{cases}1,&r=1,\\0,&r\ne1\end{cases}
+\]
+(\texttt{linnik\_stirling}, by telescoping through the recursion of $S$); and for
+$n\in\{30,210,2310\}$ and $j\le\Omega(n)+1$ the number of ordered factorisations of
+$n$ into $j$ factors $\ge2$ is $j!\,S(\Omega(n),j)$
+(\texttt{orderedFact\_squarefree\_check}, a finite check). Together these say
+that on squarefree $n$ Linnik's identity $\sum_j(-1)^{j-1}d'_j(n)/j=\mathbf 1_{n\text{ prime}}$
+is a statement about $\Omega(n)$ only; the bijection for general squarefree $n$
+and the analytic identity are not formalised.
 \end{enumerate}
 \end{theorem}
 
