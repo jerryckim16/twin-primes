@@ -23,7 +23,8 @@ where every division is exact (`L² gcd(d,e)/(d e) = L²/[d,e]`, `L/d ∈ ℕ`).
   at multiples of the Selberg weights `(13, -12, -12, 0, -5, 12) / 13`.
 
 The identity for general `D` is `selberg_diag` in `TwinPrimes/Gauss.lean` (with Gauss's identity
-`gauss_totient` for all `n ≥ 1`). NOT formalised: the optimum for general `D`.
+`gauss_totient` for all `n ≥ 1`). The lower bound `Q(λ) ≥ λ₁²/G(D)` for general `D` is `selberg_lower` in
+`TwinPrimes/SelbergOpt.lean` (Session 44); equality cases for general `D` are not formalised.
 -/
 
 namespace TwinPrimes

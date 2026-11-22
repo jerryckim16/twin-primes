@@ -89,3 +89,9 @@ import TwinPrimes
 #print axioms TwinPrimes.stirling2_six_three
 #print axioms TwinPrimes.linnik_stirling
 #print axioms TwinPrimes.orderedFact_squarefree_check
+#print axioms TwinPrimes.mu_divisor_sum
+#print axioms TwinPrimes.mu_upto_12
+#print axioms TwinPrimes.weighted_cauchy_schwarz
+#print axioms TwinPrimes.mu_y_sum
+#print axioms TwinPrimes.selberg_lower
+#print axioms TwinPrimes.selberg_lower_D6_consts
