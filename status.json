@@ -1,7 +1,7 @@
 {
- "version": "0.42",
- "updated": "2026-11-21",
- "session_count": 42,
+ "version": "0.43",
+ "updated": "2026-11-22",
+ "session_count": 43,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -505,6 +505,16 @@
    "label": "Computed",
    "text": "Regression (Session 42): capped_check.py re-run from scratch on the 240 vector (code/cap6/P_capfree_D20_u.json, 250 s on 3 cores) reproduces I_T and J_T exactly; ratio 4.0120389036 > 4 (code/cap6/compare_capfree_D20_regen_s42.json). Variational step only; Stadlmann's equidistribution estimates not verified.",
    "where": "code/cap6/check_capfree_D20_regen_s42.json"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "Gauss's identity sum_{r | n} phi(r) = n for every n >= 1 (gauss_totient) and Selberg's diagonalisation sum_{d,e<=D} lambda_d lambda_e L^2/[d,e] = sum_{r<=D} phi(r) (sum_{r|d<=D} lambda_d L/d)^2 for every D, L = lcm(1..D) (selberg_diag); core Lean, axioms propext/Quot.sound/Classical.choice only.",
+   "where": "lean/TwinPrimes/Gauss.lean"
+  },
+  {
+   "label": "Proved here (conditional on EH and the beta-sieve theorem as quoted; possibly folklore)",
+   "text": "For each fixed prime q >= 5, under EH: >> x/(log x)^{1+kappa_q} primes p <= x with p = -1 mod q and every prime factor of p+2 = 1 mod q, kappa_q = (q-2)/(q-1); the beta-sieve constant f_kappa(2) (Computed, numerical) lies between 2.8(1-kappa) and 4.6(1-kappa). Nothing for twin primes (kappa = 1, f_1(2) = 0).",
+   "where": "notes/parity-attempts/2026-11-22-dimension-ladder.md"
   }
  ],
  "ideas": [
@@ -1041,6 +1051,18 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Session 36: c_q(p) = mu(q) for p not dividing q, so the coefficients of any weight supported on primes are mu(q)/phi(q) times its mean; a twin-free fake has the same coefficients (4e-7 at 1e7) and zero twin correlation. Folklore."
+  },
+  {
+   "idea": "Sifting-dimension ladder: primes p with every prime factor of p+2 = 1 mod q (dimension (q-2)/(q-1)) as a family approaching twin primes",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 43 route card 2026-11-22-dimension-ladder.md: a congruence removes the last large prime, so under EH the beta-sieve gives >> x/(log x)^{1+kappa_q} for each fixed q >= 5 (beta_kappa < 2, Blight's table, recomputed); f_kappa(2) -> 0 linearly as kappa -> 1 (twins: 0, parity). Located; conditional; possibly folklore. Open: a BFI well-factorable level unconditionally."
+  },
+  {
+   "idea": "Block entropy of the signs lambda(p+2) along consecutive primes",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 43: conditional block entropies h_L (L <= 16) at 1e8 equal those of the shuffled sequence to the finite-sample bias (<= 3.4e-5); lag autocorrelations within 1.2 standard errors. Dead end."
   }
  ],
  "phase": "B",
