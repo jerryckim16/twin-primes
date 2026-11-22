@@ -81,6 +81,8 @@ import TwinPrimes
 #print axioms TwinPrimes.selberg_opt_D6
 #print axioms TwinPrimes.selberg_opt_D6_eq
 #print axioms TwinPrimes.selberg_opt_D6_eq_iff
+#print axioms TwinPrimes.gauss_totient
+#print axioms TwinPrimes.selberg_diag
 #print axioms TwinPrimes.stirling2_eq_zero_of_lt
 #print axioms TwinPrimes.stirling2_succ_zero
 #print axioms TwinPrimes.stirling2_five_two

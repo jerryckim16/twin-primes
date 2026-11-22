@@ -3,6 +3,23 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-22, Session 43 -- Block entropy of the signs lambda(p+2) along consecutive primes (ergodic theory / entropy)
+- Idea: Tao's entropy-decrement argument and the Frantzikinakis-Host theory of Furstenberg systems describe
+  lambda through the entropy of its sign blocks. Along the primes, Chowla-type heuristics predict that
+  e_j = lambda(p_j + 2) behaves like fair coin flips. Any deficit in the conditional block entropy h_L at
+  some block length L would be unexpected local structure tying consecutive shifted primes together.
+  Gaps of 2 are one source of correlation: when p_{j+1} = p_j + 2, e_j = -1. Risky and cheap; expected to fail.
+- Tried: `code/explore/shifted_prime_sign_entropy.py [X]` (/usr/bin/python3 -I; 7 s and ~1.5 GB at X = 1e8; output
+  `.out`). It computes Miller-Madow corrected h_L for L <= 16 on the 5,761,454 odd primes up to 1e8, with
+  three controls: the same sequence shuffled, i.i.d. coin flips with the same mean, and lambda(n) on consecutive integers.
+- Outcome: **dead end**. The mean of lambda(p+2) is -0.00005.
+  - For L <= 8, h_L - h_L(shuffled) lies within 1e-6.
+  - For 9 <= L <= 16 the difference lies between -3.4e-5 and +1e-6. That is the finite-sample bias scale (2^L
+    cells out of 5.8e6 samples), and the lambda(n) control drifts by similar amounts (h_14 = 0.999960 for lambda(n) against 1.000019 for i.i.d.).
+  - The lag autocorrelations at lags 1-10 are at most 5e-4 in absolute value, against a standard error of 4.2e-4.
+  - The forced -1 at gaps of 2 (7.6% of j) leaves no visible trace.
+  - Nothing beyond i.i.d. at this resolution, as expected. Heuristic / exploratory.
+
 ## 2026-11-21, Session 42 -- Do the zeros of zeta show up in the error term of the twin-prime sum? (spectral / explicit formulas)
 - Idea: theta(x) - x has an explicit formula, so its normalised error E1(e^u) e^{-u/2} has Fourier peaks at the
   ordinates gamma of the zeros. The twin sum has no known explicit formula; if its error E2(x) = sum_{p <= x, p+2 prime}

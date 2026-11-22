@@ -1,5 +1,362 @@
 # Research log
 
+## 2026-11-22 - Session 43 (7:34 PM CT slot of 21 Nov; started on time 01:35 UTC 22 Nov; no wait, no other run active): The sifting-dimension ladder located inside the parity barrier; Lean: Gauss's identity and Selberg's diagonalisation for every D; 236 evaluation re-run from scratch; main paper v0.43
+
+- Parity share: a route card on the family 'p = -1 mod q and every prime factor of p+2 is = 1 mod q'. A congruence removes the one large prime that survives sifting to sqrt(x), so this is a pure sieve problem of dimension kappa_q = (q-2)/(q-1). Under EH the beta-sieve gives >> x/(log x)^{1+kappa_q} such primes for every fixed q >= 5, because beta_kappa < 2 for kappa < 1 (Blight's 2010 table, recomputed here: beta_{0.75} = 1.3983 against her 1.39811). This is conditional, and possibly folklore.
+- The family runs continuously into the parity barrier. The lower constant f_kappa(2) lies between 2.8(1-kappa) and 4.6(1-kappa), and it is 0 at kappa = 1 (twins). At 1e8 the share of lambda(p+2) = +1 on the target falls from 0.44 (q = 3) to 0.11 (q = 13), against 0 for twins. A fresh-context adversarial audit found 3 errors and 5 gaps; all were fixed (code/parity/dim_ladder.py).
+- Small results (Lean programme): Gauss.lean proves Gauss's identity sum_{r|n} phi(r) = n for EVERY n >= 1 and Selberg's diagonalisation sum_{d,e<=D} lambda_d lambda_e L^2/[d,e] = sum_r phi(r) y_r^2 for EVERY D. Both were written by a helper agent, and the statements were checked here. lake build and Audit.lean pass (only propext, Quot.sound, Classical.choice).
+- Bound share: a from-scratch regression of the Song-Yue 236 evaluation. capped_check.py, re-run on their witness (58 min on 3 cores), gives exactly the committed I_T and J_T; 48 J_T/I_T = 4.0030988048. This covers the variational step only; Song-Yue's analytic input is not verified.
+- Main paper v0.43 (34 pp.): Theorem thm:lean item 13 extended, a Related-results paragraph, and a history item. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Sifting-dimension ladder (p+2 with all prime factors = 1 mod q, dimension (q-2)/(q-1)): located. It is conditional on EH and the beta-sieve theorem as quoted, with audited numerical sieve constants. The first unresolved implication is a lower bound uniform in q (open for intermediate q; impossible for q > sqrt x). The parity paper stays frozen at v1.0.1 (24 pp.), unchanged.
+
+Explored: Do the signs lambda(p+2) along consecutive primes have less block entropy than coin flips (entropy-decrement / Furstenberg-system viewpoint)? At 1e8 the conditional entropies for L <= 16 match the shuffled control to within sampling bias, and the lag correlations are at noise level: dead end (code/explore/shifted_prime_sign_entropy.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- w
+- e
+- r
+- e
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- O
+- p
+- e
+- r
+- a
+-  
+- d
+- e
+-  
+- C
+- r
+- i
+- b
+- r
+- o
+-  
+- (
+- t
+- h
+- e
+-  
+- p
+- r
+- i
+- m
+- a
+- r
+- y
+-  
+- s
+- o
+- u
+- r
+- c
+- e
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- b
+- e
+- t
+- a
+- -
+- s
+- i
+- e
+- v
+- e
+-  
+- t
+- h
+- e
+- o
+- r
+- e
+- m
+- )
+-  
+- w
+- a
+- s
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+- ;
+-  
+- i
+- t
+-  
+- i
+- s
+-  
+- q
+- u
+- o
+- t
+- e
+- d
+-  
+- t
+- h
+- r
+- o
+- u
+- g
+- h
+-  
+- G
+- a
+- u
+- d
+- e
+- t
+-  
+- a
+- r
+- X
+- i
+- v
+- :
+- 2
+- 4
+- 0
+- 8
+- .
+- 0
+- 1
+- 6
+- 1
+- 0
+- v
+- 1
+- ,
+-  
+- a
+- n
+- d
+-  
+- b
+- e
+- t
+- a
+- _
+- k
+- a
+- p
+- p
+- a
+-  
+- <
+-  
+- 2
+-  
+- f
+- o
+- r
+-  
+- k
+- a
+- p
+- p
+- a
+-  
+- <
+-  
+- 1
+-  
+- r
+- e
+- s
+- t
+- s
+-  
+- o
+- n
+-  
+- a
+-  
+- t
+- a
+- b
+- l
+- e
+-  
+- a
+- n
+- d
+-  
+- o
+- u
+- r
+-  
+- o
+- w
+- n
+-  
+- c
+- o
+- m
+- p
+- u
+- t
+- a
+- t
+- i
+- o
+- n
+- ,
+-  
+- n
+- o
+- t
+-  
+- a
+-  
+- p
+- r
+- o
+- o
+- f
+- .
+
+Next: The weekly review on Monday 23 Nov decides on a parity-paper v1.1 (the LWW implication, an E2 remark, at most one sentence for each later card) and on the next small-results line (Lean note or toolkit). One bounded parity attempt per run; in Lean, Selberg's optimum for general D.
+
 ## 2026-11-21 - Session 42 (11:34 AM CT slot of 21 Nov; started on time 17:34 UTC; no wait, no other run active): Linnik's identity on rough pairs located inside the parity class; Lean: the alternating Stirling identity for all r; 240 certificate re-run from scratch; main paper v0.42
 
 - Parity share: a route card on Linnik's identity Lambda(n)/log n = sum_j (-1)^{j-1} d'_j(n)/j (sources read: Matomaki-Radziwill-Tao arXiv:1707.01315v3 pp. 2-7, Ford-Maynard arXiv:2407.14368v1 pp. 1-4, 19-22). On pairs (n, n+2) free of prime factors <= X^{1/J} the identity stops at j <= J-1, and the correlations of d'_j(n) and d'_{j'}(n+2) are, up to non-squarefree pairs, a triangular change of basis of the joint Omega-table. So the ladder stays inside the parity paper's class.
