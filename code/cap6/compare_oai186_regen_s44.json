@@ -1,0 +1,11 @@
+{
+ "session": 44,
+ "date": "2026-11-22",
+ "what": "From-scratch regression of the 186 main terms (program 1): code/oai186_IH.py --out and code/oai186_J.py --out re-run on a fresh machine (256 bits; 355 s and 1141 s, one core each) and compared field by field with the committed code/oai186_IH.json and code/oai186_J.json.",
+ "result": "identical in every field except run time (I_H in [2.3685317853330202e-14, same], J_lambda = 9.024875565471314e-14, rho* J/I_H = 1.0002060868437992 > 500103/500000)",
+ "scope": "Program 1 only (the second program code/oai186_check2.py was not re-run). Covers the main terms I_H and J_lambda of the 186 companion, not the loss bound L+ and not the analytic inputs of the 186 preprint, which are not verified.",
+ "files": [
+  "code/cap6/oai186_IH_regen_s44.json",
+  "code/cap6/oai186_J_regen_s44.json"
+ ]
+}

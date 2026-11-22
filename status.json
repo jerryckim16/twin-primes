@@ -1,7 +1,7 @@
 {
- "version": "0.43",
+ "version": "0.44",
  "updated": "2026-11-22",
- "session_count": 43,
+ "session_count": 44,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "Selberg's lower bound for every D >= 1: for every lambda : N -> Z, sum_{d,e<=D} lambda_d lambda_e/[d,e] >= lambda_1^2/G(D), G(D) = sum_{r<=D} mu^2(r)/phi(r), from selberg_diag, sum_r mu(r) y_r = lambda_1 and a weighted Cauchy-Schwarz inequality; mu defined without factorisation by its divisor-sum recursion (lean/TwinPrimes/SelbergOpt.lean: mu_divisor_sum, weighted_cauchy_schwarz, mu_y_sum, selberg_lower, selberg_lower_D6_consts).",
+   "where": "lean/TwinPrimes/SelbergOpt.lean; main paper thm:lean item 13"
+  },
+  {
+   "label": "Computed",
+   "text": "Dimension-ladder thresholds: with z = x^{1/2} the beta-sieve rung kappa = 1 - 1/m needs level theta > beta_kappa/2: 0.6121 (m = 3), 0.6991 (m = 4), 0.7553 (m = 5). Rung 3 (p+2 composed of primes = +-1 mod 7) lies in the window (3/5, 66/107), reachable only by levels known for triply well-factorable weights; the lower-bound beta_{2/3}-sieve support contains d = p1 p2 p3 with p_i ~ D^{0.3}, not well-factorable (hence not triply well-factorable) at level D (exact, given beta_{2/3} <= 1.225). Numerical beta values (three step sizes, Blight's table cross-check); route card, not in a paper.",
+   "where": "notes/parity-attempts/2026-11-22-level-ladder.md; code/parity/level_ladder.py"
+  },
   {
    "label": "Lean-checked",
    "text": "Selberg's optimum at D = 6: for every lambda : N -> Z, sum_{d,e<=6} lambda_d lambda_e/[d,e] >= lambda_1^2/G with G = 13/4, by an explicit sum of eleven squares, with equality exactly at the multiples of (13,-12,-12,0,-5,12) (lean/TwinPrimes/Selberg.lean: selberg_sos_D6, selberg_opt_D6, selberg_opt_D6_eq, selberg_opt_D6_eq_iff).",
@@ -523,6 +533,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Parity attempt: levels of distribution beyond 1/2 (BFI 4/7, Maynard 7/12 and 3/5, Lichtman 66/107 and 5/8) on the sifting-dimension ladder",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Session 44: located for the pure beta-sieve at z = x^{1/2} with known level theorems as black boxes. Rung 3 needs level 0.6121, inside (3/5, 66/107), known only for triply well-factorable weights, while the beta_{2/3}-sieve weights are not well-factorable, hence not triply (beta_{2/3} = 1.224 < 2). First unresolved: sifting to x^{1/3} with a Chen-Iwaniec switching step (not examined)."
+  },
+  {
+   "idea": "Exploration: is the Liouville bias on the dimension-ladder targets a function of kappa alone?",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 44: no, it depends on (q, H); after exact local factors 1 - 2l/(l^2-1) all 12 cases give about -1.1 times the Kubilius product (curiosity, no bearing on twins)."
+  },
   {
    "idea": "Parity attempt: Linnik's identity and the convolution-depth ladder (correlations of d'_j(n) d'_{j'}(n+2) on rough pairs)",
    "origin": "own",

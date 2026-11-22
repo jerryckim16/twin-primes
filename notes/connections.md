@@ -166,3 +166,6 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   beta-sieve theorem as quoted, Computed constants): primes p with every prime factor of p+2 = 1 mod q form a sieve problem
   of dimension (q-2)/(q-1) < 1, solved under EH for each fixed q; the lower constant -> 0 as the dimension -> 1, which is the
   twin case (f_1(2) = 0, parity). Distance to twins: unchanged; the family approaches twins only where its constant vanishes.
+- Level ladder (Session 44; route card 2026-11-22-level-ladder.md; Computed thresholds, Literature levels): unconditionally,
+  known levels beyond 1/2 do not give any rung kappa > 1/2 through the pure beta-sieve (rung 3 needs 0.6121, known only for
+  triply well-factorable weights, which the beta_{2/3}-sieve weights are not). Distance to twins: unchanged.

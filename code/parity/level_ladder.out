@@ -1,0 +1,30 @@
+(i) beta_kappa for kappa_m = 1 - 1/m (sifting-limit convention), three step sizes
+    cross-check against Blight's table: kappa = 0.6 -> 1.1042161305, 0.75 -> 1.3981115251
+    kappa=0.6: 1.10450 1.10425 1.10412
+    kappa=0.75: 1.39850 1.39825 1.39812
+  m=3 kappa=0.66667 beta = 1.22450 1.22425 1.22413  -> threshold level theta_m = beta/2 = 0.61206
+      BV                       theta = 1/2     = 0.50000: s = 2 theta = 1.00000, s - beta = -0.22413, f_(2/3)(s) = 0.00000
+      BFI86 well-fact.         theta = 4/7     = 0.57143: s = 2 theta = 1.14286, s - beta = -0.08127, f_(2/3)(s) = 0.00000
+      Maynard II lin. sieve    theta = 7/12    = 0.58333: s = 2 theta = 1.16667, s - beta = -0.05746, f_(2/3)(s) = 0.00000
+      Maynard II triply w.f.   theta = 3/5     = 0.60000: s = 2 theta = 1.20000, s - beta = -0.02413, f_(2/3)(s) = 0.00000
+      Lichtman triply w.f.     theta = 66/107  = 0.61682: s = 2 theta = 1.23364, s - beta = +0.00952, f_(2/3)(s) = 0.02628
+      Lichtman + Selberg EC    theta = 5/8     = 0.62500: s = 2 theta = 1.25000, s - beta = +0.02587, f_(2/3)(s) = 0.06887
+      f_(2/3)(beta + t): t=0.002: 0.00562, t=0.005: 0.01396, t=0.0095: 0.02628, t=0.02: 0.05413, t=0.05: 0.12749
+  m=4 kappa=0.75000 beta = 1.39850 1.39825 1.39812  -> threshold level theta_m = beta/2 = 0.69906
+  m=5 kappa=0.80000 beta = 1.51050 1.51075 1.51062  -> threshold level theta_m = beta/2 = 0.75531
+  m=6 kappa=0.83333 beta = 1.58850 1.58825 1.58837  -> threshold level theta_m = beta/2 = 0.79419
+  m=7 kappa=0.85714 beta = 1.64550 1.64525 1.64512  -> threshold level theta_m = beta/2 = 0.82256
+  m=8 kappa=0.87500 beta = 1.68850 1.68825 1.68813  -> threshold level theta_m = beta/2 = 0.84406
+  [81.3s]
+(ii) a non-well-factorable element of the lower-bound beta_(2/3)-sieve support (exact, given beta_(2/3) <= 1.225)
+  m = 2 (even): p1 p2^(beta+1) = D^387/400 < D: True (any beta <= 49/40)
+  no even m >= 4 for r = 3; d = D^9/10 ; p1^beta = D^147/400 < D: True
+  divisor sizes (units log D): [0, Fraction(3, 10), Fraction(3, 5), Fraction(9, 10)]; split Q1 = Q2 = D^(1/2) possible: False
+  with the linear sieve (beta = 2): p1 p2^3 = D^6/5 < D: False (not in its support)
+  with z = x^(1/2), D = x^theta, theta in (0.61, 0.63): p_i = x^(0.3 theta) < z and d = x^(0.9 theta) > x^(1/2),
+  so d is above the Bombieri-Vinogradov range and needs the beyond-1/2 estimate.
+(iii) rung 3 data at X = 1e+08: q = 7, H = {1, 6} (index 3 in (Z/7)^*), kappa = 2/3
+  tables built [92.0s]
+  |A_H| = 1920725, #T_H = 297565, + share of lambda(p+2) = 0.3451, #T_H/(|A_H| V_H(z)) = 1.0443
+  (finite-X data only; the normalised ratio converges slowly and proves nothing)
+  [92.3s]
