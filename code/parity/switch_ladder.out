@@ -26,7 +26,7 @@
     u = 3.50: s = 1.750, f = 0.52836 0.52914 0.52992 | Z = 0.66472, R2 = 0.49652, R3 = 0.00790, 4 Z (R2+R3) = 1.34121, margin = -0.81129 | switching constant needed < 1.580
     u = 4.00: s = 2.000, f = 0.71131 0.71192 0.71253 | Z = 0.60137, R2 = 0.63334, R3 = 0.02948, 4 Z (R2+R3) = 1.59439, margin = -0.88186 | switching constant needed < 1.788
     R2(3) cross-check (midpoint rule, singularity integrated per cell): 0.34301 vs quad 0.34297
-  [30.8s]
+  [28.4s]
 (v) C_need(m) = max over u in [2.05, 4] (step 0.05) of f_kappa(u/2) / (Z(u) (R2 + R3)(u)), h = 2.5e-4
     (an upper-bound sieve for primes cannot beat 2 times the expected count: Selberg's parity example;
      at level theta for the switched set the linear sieve gives 2/theta: 4 at BV, 3.5 at 4/7, 3.43 at 7/12)
@@ -34,8 +34,20 @@
   m = 3 (kappa = 0.6667): C_need = 2.455 at u = 3.40; theta needed for the switched set (2/theta < C_need): theta > 0.815
   m = 4 (kappa = 0.7500): C_need = 1.788 at u = 4.00; theta needed for the switched set (2/theta < C_need): theta > 1.119
   m = 5 (kappa = 0.8000): C_need = 1.452 at u = 4.00; theta needed for the switched set (2/theta < C_need): theta > 1.378
-  [78.9s]
-(iv) data at X = 1e+08: q = 7, H = {1, 6} (m = 3) [tables 82.5s]
+  [72.6s]
+(vi) common level theta for A_H and B: margin(theta, u) = f_kappa(theta u) - (2/theta) Z(u) (R2 + R3)(u);
+     theta*(m) = least theta with max_u margin > 0 (u in [2.02, 4], step 0.02; bisection in theta), three step sizes
+    m = 3: theta = 0.5714: best margin +0.0093 at u = 2.50
+    m = 3: theta = 0.5833: best margin +0.0575 at u = 2.46
+  m = 3 (kappa = 0.6667): theta* = 0.5691 0.5693 0.5692  (direct route at z = x^(1/2): beta_kappa/2)
+    m = 4: theta = 0.5714: best margin -0.0132 at u = 2.02
+    m = 4: theta = 0.5833: best margin -0.0129 at u = 2.02
+  m = 4 (kappa = 0.7500): theta* = 0.6653 0.6651 0.6648  (direct route at z = x^(1/2): beta_kappa/2)
+    m = 5: theta = 0.5714: best margin -0.0181 at u = 2.02
+    m = 5: theta = 0.5833: best margin -0.0177 at u = 2.02
+  m = 5 (kappa = 0.8000): theta* = 0.7260 0.7264 0.7262  (direct route at z = x^(1/2): beta_kappa/2)
+  [154.2s]
+(iv) data at X = 1e+08: q = 7, H = {1, 6} (m = 3) [tables 157.7s]
   u = 3.0: |A_H| = 1920725, V(z) = 0.193858; S = 373476, T_H = 297565, W = 75911, W3 = 0, other = 0
     units of |A_H| V(z): S = 1.0030, T_H = 0.7992 (pred. Z = 0.7910), W = 0.2039 (pred. Z R = 0.2111); W/T = 0.2551 (pred. R = 0.2669)
   u = 2.5: |A_H| = 1920725, V(z) = 0.171843; S = 332152, T_H = 297565, W = 34587, W3 = 0, other = 0
@@ -43,4 +55,4 @@
   u = 3.5: |A_H| = 1920725, V(z) = 0.212779; S = 409090, T_H = 297565, W = 110734, W3 = 649, other = 142
     three bad primes: W3/T = 0.0022 (pred. R3 = 0.0036)
     units of |A_H| V(z): S = 1.0010, T_H = 0.7281 (pred. Z = 0.7138), W = 0.2709 (pred. Z R = 0.2838); W/T = 0.3721 (pred. R = 0.3977)
-  [90.8s]
+  [165.5s]

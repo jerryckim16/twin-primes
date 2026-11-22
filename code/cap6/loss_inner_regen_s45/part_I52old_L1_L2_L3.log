@@ -1,0 +1,10 @@
+[     0 s] group I5/2old: m=5/2 z=35265 p=17912 chi = 87195..89524; components ['L1', 'L2', 'L3']
+[    35 s] marginals shell 0 done
+[    48 s] marginals shell 1 done
+[    59 s] marginals shell 2 done
+[    64 s] 53 eta, 77 block-sum multisets on 2330 radial indices ready
+[   109 s] L1: L=93 H=188 K=35265 theta=3520 J=32 rmax=962 branch=renewal (first failed test index 554) lower index 89431
+[   502 s] L1: A = [8.6085369025762e-9 +/- 3.93e-23], table 1, ratio 0.000000008609
+[   537 s] L2: L=187 H=941 K=35265 theta=700 J=32 rmax=478 branch=renewal (first failed test index 1199) lower index 88961
+[   923 s] L2: A = [3229103.4919851 +/- 3.52e-8], table 3229104, ratio 0.999999842676
+[   955 s] L3: L=940 H=3176 K=35265 theta=208 J=32 rmax=95 branch=renewal (first failed test index 6976) lower index 87195

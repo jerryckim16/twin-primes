@@ -1,7 +1,7 @@
 {
- "version": "0.44",
+ "version": "0.45",
  "updated": "2026-11-22",
- "session_count": 44,
+ "session_count": 45,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -533,6 +533,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Parity attempt: one-step Chen switching on rung 3 of the sifting-dimension ladder (sift to x^{1/u}, 2 < u <= 4, subtract survivors with two or three bad primes)",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 45: refuted at level 1/2 on both sides (margin -0.35 at u = 3; heuristic main terms checked against data). With a common level theta for A_H and the switched set it works iff theta > 0.5692 (m = 3), below the direct route's 0.6121 and below 4/7; no level beyond 1/2 is known for the non-well-factorable beta_{2/3} weights or for the convolution set. Audited (one-sided level comparison corrected). Coset counting identity Lean-checked (Cosets.lean)."
+  },
+  {
+   "idea": "Exploration: dispersion of twin primes in residue classes to large moduli (Barban-Davenport-Halberstam / Montgomery-Hooley type) against primes",
+   "origin": "exploration",
+   "status": "open",
+   "note": "Session 45: inconclusive curiosity. At 1e8 primes have D1 ~ log q/log X - 0.1, twins are much closer to Poisson (D2 = 0.54-0.86), near the underived guess 1 - (1 - l)^2; no jump at X^{1/2}."
+  },
   {
    "idea": "Parity attempt: levels of distribution beyond 1/2 (BFI 4/7, Maynard 7/12 and 3/5, Lichtman 66/107 and 5/8) on the sifting-dimension ladder",
    "origin": "own",

@@ -27,6 +27,7 @@ factors (counted with multiplicity), never exactly one (the congruence), so
       (Bombieri-Vinogradov for the convolution b1 * (b2 g), b1 a prime in [x^{1/u}, x^{1/2}]) gives
       W <= (4 + o(1)) * (expected W). Success test: margin(u) = f_kappa(u/2) - 4 Z(u) (R2 + R3)(u) > 0. Consistency test: m = 2 (kappa = 1/2, Iwaniec).
 (v)   C_need(m) = max over u of the switching constant that would suffice, m = 2..5 (computed before (iv)).
+(vi)  After the audit: a COMMON level theta for A_H and B; theta*(m) = least theta with a positive margin.
 (iv)  Finite-X data for q = 7, H = {1, 6} (m = 3) at z = X^{1/u}, u = 3, 2.5, 3.5: S, T_H, W in units of |A_H| V(z),
       against Z(u) and Z(u) R(u). Finite-X data only; proves nothing.
 """
@@ -200,6 +201,37 @@ for m in (2, 3, 4, 5):
             best = (c, u)
     print(f"  m = {m} (kappa = {k:.4f}): C_need = {best[0]:.3f} at u = {best[1]:.2f}; theta needed for the switched set "
           f"(2/theta < C_need): theta > {2/best[0] if best[0] > 0 else float('inf'):.3f}")
+print(f"  [{time.time()-t0:.1f}s]")
+
+ZRc = {}
+# ---------- (vi) a common level theta for A_H and for the switched set B (added after the audit) ----------
+print("(vi) common level theta for A_H and B: margin(theta, u) = f_kappa(theta u) - (2/theta) Z(u) (R2 + R3)(u);")
+print("     theta*(m) = least theta with max_u margin > 0 (u in [2.02, 4], step 0.02; bisection in theta), three step sizes")
+for m in (3, 4, 5):
+    k = 1 - 1 / m
+    ths = []
+    for h in (1e-3, 5e-4, 2.5e-4):
+        _, sg, _, fg = beta_kappa(k, h)
+        grid = [i * 0.02 for i in range(101, 201)]
+        ZR = {u: Z(u, m) * (R(u, m) + R3(u, m)) for u in grid} if h == 1e-3 or m not in ZRc else ZRc[m]
+        ZRc[m] = ZR
+        def best(th):
+            return max((float(np.interp(th * u, sg, fg)) - 2 / th * ZR[u], u) for u in grid)
+        lo, hi = 0.5, 0.8
+        assert best(lo)[0] < 0 < best(hi)[0]
+        for _ in range(30):
+            mid = (lo + hi) / 2
+            if best(mid)[0] > 0:
+                hi = mid
+            else:
+                lo = mid
+        ths.append(hi)
+        if h == 2.5e-4:
+            for th in (4 / 7, 7 / 12):
+                b_, u_ = best(th)
+                print(f"    m = {m}: theta = {th:.4f}: best margin {b_:+.4f} at u = {u_:.2f}")
+    print(f"  m = {m} (kappa = {k:.4f}): theta* = " + " ".join(f"{t:.4f}" for t in ths)
+          + f"  (direct route at z = x^(1/2): beta_kappa/2)")
 print(f"  [{time.time()-t0:.1f}s]")
 
 # ---------- (iv) data ----------
