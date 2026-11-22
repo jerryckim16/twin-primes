@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.42, 21 November 2026}
+\date{Version 0.43, 22 November 2026}
 
 \begin{document}
 
@@ -254,8 +254,11 @@ $G=\sum_{r\le6}\mu^2(r)/\varphi(r)=13/4$, by an explicit sum of eleven squares
 the multiples of $(13,-12,-12,0,-5,12)$, i.e.\ of the Selberg weights
 \[\lambda_d=\frac{\lambda_1}{G}\,\mu(d)\frac{d}{\varphi(d)}\sum_{r\le 6/d,\ (r,d)=1}\frac{\mu^2(r)}{\varphi(r)}\]
 (\texttt{selberg\_opt\_D6\_eq}, \texttt{selberg\_opt\_D6\_eq\_iff}).
-Finite instances of the identity and the optimisation behind Selberg's sieve,
-not their general form.
+The identity holds for \emph{every} $D$ (\texttt{Gauss.lean}, \texttt{selberg\_diag}),
+with $L=\operatorname{lcm}(1,\dots,D)$, proved from Gauss's identity
+$\sum_{r\mid n}\varphi(r)=n$ for every $n\ge1$ (\texttt{gauss\_totient},
+by grouping $k\le n$ according to $n/\gcd(k,n)$). The optimum is formalised
+only at $D=6$.
 \item (\texttt{Linnik.lean}, the combinatorial core of Linnik's identity) For
 the Stirling numbers of the second kind $S(r,j)$ and \emph{every} $r\ge0$,
 \[
@@ -2266,6 +2269,7 @@ the shift).
 \item[0.34] (19 Nov 2026) Theorem~\ref{thm:lean}, item 7: the limit step from two-sided asymptotics to the sieve inequality in Lean. The $186$ loss-bound account condensed to one list (detail stays in the verification note). Bounds unchanged.
 \item[0.35] (19 Nov 2026) Theorem~\ref{thm:lean}, item 8: counting multiples, the Selberg expansion identity and its error term in Lean (\texttt{Counting.lean}). The account of the Song--Yue recomputation shortened (detail stays in the verification note). Bounds unchanged.
 \item[0.36] (19 Nov 2026) Theorem~\ref{thm:lean}, item 9: the Selberg expansion and its error term in the residue class $n\equiv v_0\pmod W$ (Chinese remainder step, in Lean). The account of Kintali's support condensed. Bounds unchanged.
+\item[0.43] (22 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's diagonalisation for every $D$ and Gauss's identity for every $n$ (\texttt{Gauss.lean}); Related results: the sifting-dimension route card; a from-scratch regression check of the Song--Yue $236$ evaluation (one program, exact agreement). Bounds unchanged.
 \item[0.42] (21 Nov 2026) Theorem~\ref{thm:lean}, item 14 (\texttt{Linnik.lean}); Related results: the Linnik-identity route card; a from-scratch regression check of the $240$ certificate (one program, exact agreement). Bounds unchanged.
 \item[0.41] (21 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's optimum at $D=6$; Related results: the large-$q$ function-field route card; the $186$ computation account in Section~\ref{sec:stad} condensed. Bounds unchanged.
 \item[0.40] (21 Nov 2026) Theorem~\ref{thm:lean}, item 13 (\texttt{Selberg.lean}); Related results: the main-term gap of the Session 39 consistency observation on L\"u--Wang--Wu closed in outline; the one-sided certificate passage of Section~\ref{sec:stad} condensed. Bounds unchanged.
