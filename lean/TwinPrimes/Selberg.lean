@@ -22,7 +22,8 @@ where every division is exact (`L² gcd(d,e)/(d e) = L²/[d,e]`, `L/d ∈ ℕ`).
   optimum for `D = 6`: `Q(λ) ≥ λ₁² / G` with `G = ∑_{r ≤ 6 sqfree} 1/φ(r) = 13/4`, attained exactly
   at multiples of the Selberg weights `(13, -12, -12, 0, -5, 12) / 13`.
 
-NOT formalised here: the identity or the optimum for general `D`.
+The identity for general `D` is `selberg_diag` in `TwinPrimes/Gauss.lean` (with Gauss's identity
+`gauss_totient` for all `n ≥ 1`). NOT formalised: the optimum for general `D`.
 -/
 
 namespace TwinPrimes
