@@ -258,7 +258,12 @@ The identity holds for \emph{every} $D$, with $L=\operatorname{lcm}(1,\dots,D)$
 (\texttt{selberg\_diag} in \texttt{Gauss.lean}). It is proved from Gauss's
 identity $\sum_{r\mid n}\varphi(r)=n$ for every $n\ge1$
 (\texttt{gauss\_totient}), by grouping $k\le n$ according to $n/\gcd(k,n)$.
-The optimum is formalised only at $D=6$.
+Selberg's lower bound also holds for every $D\ge1$ (\texttt{selberg\_lower} in
+\texttt{SelbergOpt.lean}): $\sum_{d,e\le D}\lambda_d\lambda_e/[d,e]\ge\lambda_1^2/G(D)$ with
+$G(D)=\sum_{r\le D}\mu^2(r)/\varphi(r)$, from \texttt{selberg\_diag}, the identity
+$\sum_{r\le D}\mu(r)y_r=\lambda_1$ and a weighted Cauchy--Schwarz inequality. Here $\mu$ is
+defined without factorisation, by $\mu(1)=1$ and $\sum_{r\mid n}\mu(r)=0$ for $n\ge2$
+(\texttt{mu\_divisor\_sum}). The equality cases are formalised only at $D=6$.
 \item (\texttt{Linnik.lean}, the combinatorial core of Linnik's identity) For
 the Stirling numbers of the second kind $S(r,j)$ and \emph{every} $r\ge0$,
 \[
