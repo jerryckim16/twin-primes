@@ -13,6 +13,16 @@
  "results": [
   {
    "label": "Lean-checked",
+   "text": "Coset counting identity: for every m >= 2 and j >= 0, the number c_m(j, s) of j-tuples of nonzero residues mod m with sum = s mod m satisfies m c_m(j, 0) = (m-1)^j + (-1)^j (m-1) and m c_m(j, s) = (m-1)^j - (-1)^j for m not dividing s; c_m(2, 0) = m - 1 (lean/TwinPrimes/Cosets.lean: coset_count_zero, coset_count_nonzero, coset_prob_two, coset_count_three). Used for the coset probabilities in the Session 45 switching route card.",
+   "where": "lean/TwinPrimes/Cosets.lean; main paper thm:lean item 15"
+  },
+  {
+   "label": "Computed",
+   "text": "One-step Chen switching on rung 3 (kappa = 2/3) of the sifting-dimension ladder: at level 1/2 on both sides the margin f_{2/3}(u/2) - 4 Z(u)(R2+R3)(u) is negative for all u in (2, 4] (-0.35 at u = 3); at a common level theta it is positive iff theta > 0.5692 (0.665 for kappa = 3/4, 0.726 for kappa = 4/5). Numerical, with the switched main term identified heuristically (checked against data at 1e7 and 1e8). No level beyond 1/2 is known for the weights involved.",
+   "where": "notes/parity-attempts/2026-11-22-switching-rung3.md; code/parity/switch_ladder.py"
+  },
+  {
+   "label": "Lean-checked",
    "text": "Selberg's lower bound for every D >= 1: for every lambda : N -> Z, sum_{d,e<=D} lambda_d lambda_e/[d,e] >= lambda_1^2/G(D), G(D) = sum_{r<=D} mu^2(r)/phi(r), from selberg_diag, sum_r mu(r) y_r = lambda_1 and a weighted Cauchy-Schwarz inequality; mu defined without factorisation by its divisor-sum recursion (lean/TwinPrimes/SelbergOpt.lean: mu_divisor_sum, weighted_cauchy_schwarz, mu_y_sum, selberg_lower, selberg_lower_D6_consts).",
    "where": "lean/TwinPrimes/SelbergOpt.lean; main paper thm:lean item 13"
   },

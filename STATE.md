@@ -3,32 +3,35 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 44, 3:34 AM CT slot of 22 Nov, run 09:34 UTC): PHASE B
+## POSITION (after Session 45, 11:34 AM CT slot of 22 Nov, run 17:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.44.
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.45.
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2 (19 Nov; still v2 on 22 Nov, no comments field), CLAIM sum_p mu(p+2) = o(pi(x)).
   Not verified; notes/sources-lww26.md; Session 39 + 40 route cards (conditional implication P^+(p+2) > p^{1-o(1)}). Flag open.
 - Weekly review: notes/reviews/2026-11-16.md. Next review: the first run starting on Monday 23 Nov, Central time (the
-  3:34 AM CT run of 23 Nov). THAT RUN DOES THE REVIEW FIRST.
+  3:34 AM CT run of 23 Nov). THAT RUN DOES THE REVIEW FIRST (and the 3:34 AM news search).
 
 ## Next steps (in order)
 1. Weekly review of 23 Nov (first run starting on Monday CT) decides: (a) whether a parity-paper v1.1 gets ONE short
    subsection on the LWW claim with the S39 + S40 implication (literature-check first); (b) whether the E2 route cards
-   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43, S44 cards at most one sentence each (S43 + S44:
-   the sifting-dimension ladder and its level thresholds, a natural pair); (c) the next active small-results line
-   (candidates: the Lean programme (4) as a short note, now with Gauss, general-D Selberg diagonalisation AND the general-D
-   Selberg lower bound selberg_lower; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open
+   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43, S44, S45 cards at most one sentence each (S43 +
+   S44 + S45: the sifting-dimension ladder, its level thresholds and the switching variant, a natural group; S45: at
+   level 1/2 switching fails for kappa = 2/3, common-level threshold 0.5692); (c) the next active small-results line
+   (candidates: the Lean programme (4) as a short note, now with Gauss, general-D Selberg diagonalisation, the general-D
+   Selberg lower bound selberg_lower and Cosets.lean; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open
    Tao-Teraeväinen 2019 first); (e) whether the bound share should keep doing from-scratch regressions (240 S42, 236 S43,
    186 S44 done) or stop: all three conditional rungs have now been regenerated once from scratch.
 2. LWW thread: nothing more without checking their Prop. 4.2 (~45 pp.); only if the review says so. Watch for v3 / comments
    (3:34 AM news search).
-3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S44 level
-   ladder). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form under
-   GRH/EH; for the dimension ladder, only if genuinely new: an anatomy-dependent level (Lichtman Sect. 6 style) for the
-   beta_{2/3}-sieve support (that is a research problem, not a bounded attempt). Not another "averaging near log X".
-4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss, SelbergOpt (S44: mu without factorisation,
+3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S45 switching
+   on rung 3). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form under
+   GRH/EH. The dimension-ladder line (S43-S45) is CLOSED for bounded attempts (what remains: a level 0.5692 for the
+   beta_{2/3} lower-bound weights and the convolution set, or a well-factorable lower-bound sieve of dimension 2/3; research
+   problems). Not another "averaging near log X".
+4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss, SelbergOpt, Cosets (S45: coset counting
+   identity for all m, j; S44: mu without factorisation,
    weighted Cauchy-Schwarz, selberg_lower for all D). Possible next: the equality case for general D (the Selberg weights
    attain lambda_1^2/G(D)), or the sieve upper bound S(A, z) <= X/G(D) + error from Counting.lean's selberg_expand.
 5. Main paper thin index: candidates: the 186 subsection (detail is in the frozen verification note); the Related-results
@@ -37,6 +40,22 @@ Each session works on the claude/... branch its system instructions name (create
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 45 (11:34 AM CT slot of 22 Nov, started on time 17:34 UTC; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-22-switching-rung3.md (refuted at level 1/2; located for a common
+  level, theta* = 0.5692 for kappa = 2/3). Script code/parity/switch_ladder.py [X] (/usr/bin/python3 -I; ~3 min at 1e8,
+  ~1.5 GB, scipy; .out). No new source opened. Fresh-context adversarial audit: 2 errors (one-sided level comparison;
+  "parity-blocked whatever the level"), 1 slip (V(z) excludes l = 2), 4 gaps; fixed / recorded in the card.
+- Exploration: code/explore/twin_dispersion.py [X] (/usr/bin/python3 -I; 10 s at 1e8, ~1 GB; .out): inconclusive (curiosity).
+- Lean: TwinPrimes/Cosets.lean (cnt, A/B recursion, cnt_eq_AB, AB_closed, coset_count_zero, coset_count_nonzero,
+  coset_prob_two, coset_count_three, small decide checks; helper agent, statements checked here; in Audit.lean);
+  lake build and Audit.lean pass.
+- Bound share: from-scratch regression of 3 of the 17 inner-loss parts of 186 (I2old L2,L3; I5/2old L1,L2,L3;
+  I5/2new L7,L8,L9): python3 code/oai186_loss_inner.py --group G --comp C --part code/cap6/loss_inner_regen_s45/<part>.json
+  (one core each, ~16 min, ~1.5 GB, python-flint); identical to the committed code/cap6/loss_inner/ parts
+  (code/cap6/compare_loss_inner_regen_s45.py -> .json). One program only. The other 14 inner parts and the outer ones
+  were not re-run.
+- Main paper v0.45. Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 44 (3:34 AM CT slot of 22 Nov, started on time 09:34 UTC; no wait) -- additions
 - News search (3:34 AM run): nothing new; LWW still v2 (19 Nov); no report on 240/236/186/182 verification found.
