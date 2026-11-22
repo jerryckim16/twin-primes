@@ -3,37 +3,57 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 43, 7:34 PM CT slot of 21 Nov, run 01:35 UTC 22 Nov): PHASE B
+## POSITION (after Session 44, 3:34 AM CT slot of 22 Nov, run 09:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.43 (34 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.44.
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
-- NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2, CLAIM sum_p mu(p+2) = o(pi(x)). Not verified; notes/sources-lww26.md;
-  Session 39 + 40 route cards (conditional implication P^+(p+2) > p^{1-o(1)}, complete in outline). Flag open.
+- NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2 (19 Nov; still v2 on 22 Nov, no comments field), CLAIM sum_p mu(p+2) = o(pi(x)).
+  Not verified; notes/sources-lww26.md; Session 39 + 40 route cards (conditional implication P^+(p+2) > p^{1-o(1)}). Flag open.
 - Weekly review: notes/reviews/2026-11-16.md. Next review: the first run starting on Monday 23 Nov, Central time (the
-  3:34 AM CT run of 23 Nov; the three runs of Sunday 22 Nov do not do it).
+  3:34 AM CT run of 23 Nov). THAT RUN DOES THE REVIEW FIRST.
 
 ## Next steps (in order)
 1. Weekly review of 23 Nov (first run starting on Monday CT) decides: (a) whether a parity-paper v1.1 gets ONE short
    subsection on the LWW claim with the S39 + S40 implication (literature-check first); (b) whether the E2 route cards
-   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43 cards at most one sentence each (S43: the
-   sifting-dimension ladder, a natural one-sentence companion of the beta = 2 / f(2) = 0 discussion); (c) the next active
-   small-results line (candidates: the Lean programme (4) as a short note, now with Gauss + general-D Selberg
-   diagonalisation; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open Tao-Teraeväinen 2019 first).
+   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43, S44 cards at most one sentence each (S43 + S44:
+   the sifting-dimension ladder and its level thresholds, a natural pair); (c) the next active small-results line
+   (candidates: the Lean programme (4) as a short note, now with Gauss, general-D Selberg diagonalisation AND the general-D
+   Selberg lower bound selberg_lower; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open
+   Tao-Teraeväinen 2019 first); (e) whether the bound share should keep doing from-scratch regressions (240 S42, 236 S43,
+   186 S44 done) or stop: all three conditional rungs have now been regenerated once from scratch.
 2. LWW thread: nothing more without checking their Prop. 4.2 (~45 pp.); only if the review says so. Watch for v3 / comments
    (3:34 AM news search).
-3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S43
-   dimension ladder). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form
-   under GRH/EH; for the dimension ladder, whether a BFI well-factorable level (4/7) gives any q >= 5 unconditionally
-   (needs the beta-sieve with well-factorable remainder, OdC Ch. 12, not opened). Not another "averaging near log X".
-4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss (S43: gauss_totient for all n;
-   selberg_diag for all D). Possible next: Selberg's optimum for general D (Q(lambda) >= lambda_1^2/G(D) from selberg_diag
-   by Cauchy-Schwarz in the y_r, with G(D) = sum_{r<=D} mu^2(r)/phi(r)); needs the Moebius inversion lambda <-> y in core Lean.
-5. Main paper thin index: candidates: the 186 subsection (detail is in the frozen verification note).
+3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S44 level
+   ladder). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form under
+   GRH/EH; for the dimension ladder, only if genuinely new: an anatomy-dependent level (Lichtman Sect. 6 style) for the
+   beta_{2/3}-sieve support (that is a research problem, not a bounded attempt). Not another "averaging near log X".
+4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss, SelbergOpt (S44: mu without factorisation,
+   weighted Cauchy-Schwarz, selberg_lower for all D). Possible next: the equality case for general D (the Selberg weights
+   attain lambda_1^2/G(D)), or the sieve upper bound S(A, z) <= X/G(D) + error from Counting.lean's selberg_expand.
+5. Main paper thin index: candidates: the 186 subsection (detail is in the frozen verification note); the Related-results
+   route-card paragraphs could be condensed to one list after the review.
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
    certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 44 (3:34 AM CT slot of 22 Nov, started on time 09:34 UTC; no wait) -- additions
+- News search (3:34 AM run): nothing new; LWW still v2 (19 Nov); no report on 240/236/186/182 verification found.
+- Parity attempt: route card notes/parity-attempts/2026-11-22-level-ladder.md (located). Script code/parity/level_ladder.py [X]
+  (/usr/bin/python3 -I; ~85 s at 1e8, ~1.2 GB; .out). Sources read with pdftotext (PDFs not committed): Lichtman
+  arXiv:2309.08522v1 (SHA-256 665693af...98c55b5), Maynard arXiv:2006.07088v1 (04516b14...4bb4), Gaudet arXiv:2408.01610v1
+  (d5bfce37...0d04e1). Fresh-context adversarial audit: 5 errors, 4 gaps, all fixed (recorded in the card); the
+  conclusion is narrowed to the pure beta-sieve at z = x^{1/2}; switching at z = x^{1/3} is the first unresolved step.
+- Exploration: code/explore/kappa_universality.py [X] (/usr/bin/python3 -I; ~40 s at 1e8, ~2 GB; .out): inconclusive (curiosity).
+- Lean: TwinPrimes/SelbergOpt.lean (mu, mu_divisor_sum, mu_upto_12, weighted_cauchy_schwarz, mu_y_sum, selberg_lower,
+  selberg_lower_D6_consts; helper agent, statements checked here; in Audit.lean); lake build and Audit.lean pass.
+- Bound share: from-scratch regression of the 186 main terms: code/oai186_IH.py and code/oai186_J.py re-run (one core each,
+  355 s and 1141 s; need gmpy2: python3 -m pip install --break-system-packages gmpy2): identical to the committed
+  code/oai186_IH.json and code/oai186_J.json in every field (code/cap6/compare_oai186_regen_s44.json; outputs
+  code/cap6/oai186_*_regen_s44.json). One program only (program 1 of the two); the loss bound L+ was not re-run.
+- Log: the four 13 Nov entries merged into one daily summary (log/archive-2026-11-13.json).
+- Main paper v0.44. Wolfram and mathbox NOT available.
 
 ## Session 43 (7:34 PM CT slot of 21 Nov, started on time 01:35 UTC 22 Nov; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-22-dimension-ladder.md (located; conditional on EH and the

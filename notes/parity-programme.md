@@ -250,3 +250,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   Audited (3 errors, 5 gaps; fixed). Genuinely new mechanism for this programme (sieve dimension, not averaging scale).
 - Next mechanisms: Merikoski's multiplicative large sieve route to GS-type Type I; the almost-all MRT17 form under GRH/EH;
   a BFI well-factorable level for the dimension ladder (does level 4/7 give any q >= 5 unconditionally?).
+
+## Session 44 (22 Nov 2026)
+- Route card notes/parity-attempts/2026-11-22-level-ladder.md: located for the pure beta-sieve at z = x^{1/2} with the
+  known level theorems as black boxes. Answers the Session 43 question: BFI 4/7 gives no rung; the index-3 rung
+  (kappa = 2/3) needs level 0.6121, inside (3/5, 66/107), which only triply well-factorable weights reach (Maynard
+  arXiv:2006.07088v1; Lichtman arXiv:2309.08522v1), and the beta_{2/3}-sieve weights are not well-factorable at their
+  level (beta < 2). Rungs m >= 4 need >= 0.699. Audited (5 errors, 4 gaps; fixed).
+- Next mechanisms: the switching variant of the ladder (sift to x^{1/3}, Chen-Iwaniec switching for two bad primes) is the
+  one concrete open step on this line, but it is a sieve problem of dimension < 1, not a parity question; give it at most
+  one more attempt. Otherwise Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.

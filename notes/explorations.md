@@ -3,6 +3,25 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-22, Session 44 -- Is the Liouville bias on the dimension-ladder targets a function of kappa alone? (probabilistic models / Kubilius model)
+- Idea: the Session 43 card measured the share of lambda(p+2) = +1 on targets "every prime factor of p+2 in Q_H"
+  (H < (Z/q)^* of index m, dimension kappa = 1 - 1/m) for one H per kappa, and read the trend as a function of kappa.
+  Test whether the bias depends on kappa only, by realising the same kappa with several (q, H). Cheap, expected to fail.
+- Tried: `code/explore/kappa_universality.py [X]` (/usr/bin/python3 -I; ~40 s and ~2 GB at X = 1e8; output `.out`):
+  12 cases (m = 2: q = 3, 5, 7, 13; m = 3: q = 7, 13, 19, 31; m = 4: q = 5, 13, 17, 29; H = the m-th powers).
+- Outcome: **inconclusive (curiosity; no bearing on twins)**.
+  - kappa alone does NOT determine the bias: at kappa = 3/4 the + share runs from 0.284 (q = 17) to 0.445 (q = 13);
+    at kappa = 1/2 from 0.418 to 0.478. The spread within one kappa exceeds the gap between kappa's.
+  - The dependence on (q, H) is almost entirely local. With the exact local factors e_l = E[(-1)^{v_l(p+2)}] =
+    1 - 2l/(l^2 - 1) over the odd allowed primes l <= 1e6, the ratio mean(lambda) (log X)^{2/m} / (prod e_l (log 1e6)^{2/m})
+    is -1.03 to -1.19 in all 12 cases (mean about -1.12), across the three values of kappa. A first try with
+    exp(-2 sum 1/l), including l = 2 (which never divides p + 2), left 4 cases off by factors 2-3; recorded in the script.
+  - So, empirically, mean lambda(p+2) on T_H is about -1.1 times the Kubilius (independent local factors) product up to X,
+    with no visible kappa-dependence of the constant at X = 1e8. A Selberg-Delange computation would predict a
+    kappa-dependent Gamma-ratio factor (-0.50, -0.66, -0.74 for delta = 1/2, 1/3, 1/4) together with other
+    kappa-dependent factors; whether they cancel was not worked out. Not promising for anything twin-related: the twin endpoint has
+    no allowed primes and mean exactly -1 by definition. Heuristic / exploratory.
+
 ## 2026-11-22, Session 43 -- Block entropy of the signs lambda(p+2) along consecutive primes (ergodic theory / entropy)
 - Idea: Tao's entropy-decrement argument and the Frantzikinakis-Host theory of Furstenberg systems describe
   lambda through the entropy of its sign blocks. Along the primes, Chowla-type heuristics predict that

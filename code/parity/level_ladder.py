@@ -10,8 +10,9 @@ T_H(x) = #{p <= x : p + 2 mod q in H and every prime factor of p + 2 lies in Q_H
 Sifting {p + 2} by the odd primes l != q with l mod q not in H up to z = sqrt(x + 2) is a sieve of dimension
 kappa_m = 1 - 1/m, and the congruence p + 2 in H removes the at most one surviving large prime (Session 43
 card, Finding 1, with "= 1 mod q" replaced by "in H": if m = r m' with m, m' in H then r is in H).
-With level y = x^theta and z = x^(1/2), the beta-sieve parameter is s = 2 theta, and the lower bound is
-non-trivial iff 2 theta > beta_{kappa_m}.
+With level y = x^theta and z = x^(1/2), the beta-sieve parameter is s = 2 theta; the beta-sieve lower bound is
+available for s >= beta_{kappa_m} and positive exactly for s > beta_{kappa_m} (whether another sieve has a smaller
+sifting limit for 1/2 < kappa < 1 is not known).
 
 (i)   beta_kappa (sifting-limit convention: linear sieve beta = 2) for kappa_m, m = 3..8, by the same
       method of steps as dim_ladder.py, at three step sizes; threshold level theta_m = beta_{kappa_m} / 2;
@@ -19,8 +20,8 @@ non-trivial iff 2 theta > beta_{kappa_m}.
       Lichtman 5/8 under Selberg's eigenvalue conjecture). NUMERICAL (floating point), cross-checked against
       Blight's table at kappa = 0.6 and 0.75.
 (ii)  An element of the lower-bound beta_{2/3}-sieve support (conditions p1...p_{m-1} p_m^{beta+1} < D for
-      even m only) that is not well-factorable at level D: d = p1 p2 p3 with p_i ~ D^{0.3}. EXACT check of
-      the exponent inequalities (rational arithmetic in units of log D).
+      even m only) that is not well-factorable at level D: d = p1 p2 p3 with p_i ~ D^{0.3}. Exact rational check of
+      the exponent inequalities in units of log D, GIVEN the numerical bound beta_(2/3) <= 1.225 from part (i).
 (iii) Finite-X data for rung 3 with q = 7, H = {1, 6}: #T_H, the Liouville split of lambda(p + 2) on T_H,
       and the sieve-normalised ratio #T_H / (|A_H| V_H(z)). Finite-X data only; proves nothing.
 """
@@ -106,7 +107,7 @@ for m in range(3, 9):
             f"t={t}: {fA[int(round((bb + t) / h))]:.5f}" for t in (0.002, 0.005, 0.0095, 0.02, 0.05)))
 print(f"  [{time.time()-t0:.1f}s]")
 
-print("(ii) a non-well-factorable element of the lower-bound beta_(2/3)-sieve support (exact)")
+print("(ii) a non-well-factorable element of the lower-bound beta_(2/3)-sieve support (exact, given beta_(2/3) <= 1.225)")
 beta_hi = Fr(12250, 10000)        # an upper bound for beta_(2/3) (computed 1.2241); conditions use beta + 1 <= 2.225
 e = [Fr(3, 10)] * 3                # p_i = D^{3/10}, in units of log D
 cond_m2 = e[0] + e[1] * (beta_hi + 1)      # even m = 2 condition p1 p2^{beta+1} < D
@@ -161,6 +162,5 @@ for l in range(3, int(z) + 1):
     if isp[l] and l != 7 and (l % 7) not in (1, 6):
         V *= 1 - 1 / (l - 1)
 print(f"  |A_H| = {A}, #T_H = {nT}, + share of lambda(p+2) = {plus/nT:.4f}, #T_H/(|A_H| V_H(z)) = {nT/(A*V):.4f}")
-print(f"  (f_(2/3)(2) and F_(2/3)(2) are printed by dim_ladder.py-type output above only for s near beta; the")
-print(f"   normalised ratio converges slowly and proves nothing)")
+print("  (finite-X data only; the normalised ratio converges slowly and proves nothing)")
 print(f"  [{time.time()-t0:.1f}s]")

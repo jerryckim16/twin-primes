@@ -83,3 +83,43 @@ for c in CASES:
     print(f"{q:2d} {m:2d}  {1-1/m:.4f} {len(H):4d} {A:9d} {nT:9d}   {plus/nT:.4f}   {mean:+.4f}   {mean*LX**(2/m):+8.4f}"
           f"          {nT/(A*V):.4f}")
 print(f"[{time.time()-t0:.1f}s]")
+
+# Part 2 (explanation test): within each kappa, does the rescaled mean track exp(-2 c_Q), where
+# c_Q = sum_{l in Q_H, l odd, l <= Y} 1/(l - 1) - delta log log Y (delta = 1/m, Y = 1e6; a Mertens-type constant of
+# the allowed primes, with the shifted-prime density 1/(l - 1) and without l = 2, which never divides p + 2)?
+# (A first version used sum 1/l including l = 2; it left 4 of 12 cases off by factors 2-3.) Heuristic Selberg-Delange shape: mean ~ -K_kappa exp(-2 c_Q) (log X)^(-2 delta).
+Y = 10 ** 6
+print("explanation test: q m  c_Q(Y=1e6)  exp(-2 c_Q)   rescaled mean / exp(-2 c_Q)")
+rows = {}
+for c in CASES:
+    q, m = c
+    H = Hs[c]
+    sQ = sum(1.0 / (l - 1) for l in np.nonzero(isp[:Y + 1])[0] if l % q in H and l != q and l != 2)
+    cQ = sQ - math.log(math.log(Y)) / m
+    rows[c] = cQ
+    inH = np.isin(m2 % q, list(H))
+    T = inH & good[c][m2]
+    nT = int(T.sum())
+    mean = float(lam[m2[T]].astype(np.int64).sum()) / nT
+    print(f"  {q:2d} {m}  {cQ:+.4f}   {math.exp(-2*cQ):.4f}   {mean*LX**(2/m)/math.exp(-2*cQ):+.4f}")
+print(f"[{time.time()-t0:.1f}s]")
+
+# Part 3: exact local factors. For p + 2 and an allowed odd prime l, E[(-1)^{v_l(p+2)}] = 1 - 2 l/(l^2 - 1)
+# (P(v_l >= k) = l^{1-k}/(l - 1) for shifted primes). Predictor P_Q = prod_{l in Q_H odd, l <= Y} (1 - 2l/(l^2 - 1))
+# times (log Y)^{2/m} (the same normalisation as exp(-2 c_Q)).
+print("exact local factors: q m   P_Q        rescaled mean / P_Q")
+for c in CASES:
+    q, m = c
+    H = Hs[c]
+    lg = 0.0
+    for l in np.nonzero(isp[:Y + 1])[0]:
+        l = int(l)
+        if l % q in H and l != q and l != 2:
+            lg += math.log(1 - 2 * l / (l * l - 1))
+    PQ = math.exp(lg) * math.log(Y) ** (2 / m)
+    inH = np.isin(m2 % q, list(H))
+    T = inH & good[c][m2]
+    nT = int(T.sum())
+    mean = float(lam[m2[T]].astype(np.int64).sum()) / nT
+    print(f"  {q:2d} {m}  {PQ:.4f}   {mean*LX**(2/m)/PQ:+.4f}")
+print(f"[{time.time()-t0:.1f}s]")

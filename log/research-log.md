@@ -1,5 +1,341 @@
 # Research log
 
+## 2026-11-22 - Session 44 (3:34 AM CT slot of 22 Nov; started on time 09:34 UTC; no wait, no other run active): Levels of distribution beyond 1/2 on the sifting-dimension ladder located; Lean: Selberg's lower bound for every D; 186 main terms re-run from scratch; main paper v0.44
+
+- Parity share: a route card that answers the Session 43 question. With sifting to sqrt x at level x^theta, the rung kappa = 1 - 1/m needs theta > beta_kappa/2: 0.6121 for m = 3 (p+2 with all prime factors = +-1 mod 7) and 0.6991 for m = 4. BFI's 4/7 and Maynard's 7/12 and 3/5 fall short; Lichtman's 66/107 (and 5/8 under Selberg's eigenvalue conjecture) would clear rung 3, but only for triply well-factorable weights.
+- The lower-bound beta-sieve weights of dimension 2/3 are not well-factorable at their level, hence not triply (an exact example d = p1 p2 p3 with p_i ~ D^0.3; the cause is beta_{2/3} = 1.224 < 2). So the pure beta-sieve reaches no rung beyond Iwaniec's kappa = 1/2. A fresh-context audit found 5 errors and 4 gaps, all fixed; the main one narrowed the conclusion, since sifting only to x^{1/3} with a switching step was not examined.
+- Small results (Lean programme): SelbergOpt.lean proves Selberg's lower bound sum lambda_d lambda_e/[d,e] >= lambda_1^2/G(D), G(D) = sum_{r<=D} mu^2(r)/phi(r), for EVERY D. Moebius is defined there without factorisation, through its divisor-sum recursion. A helper agent wrote it; the statements were checked here, and lake build and Audit.lean pass (only propext, Quot.sound, Classical.choice).
+- Bound share: a from-scratch regression of the 186 main terms. code/oai186_IH.py and oai186_J.py, re-run (6 + 19 min), agree with the committed outputs in every field (rho* J/I_H = 1.000206 > 500103/500000). This is program 1 only and does not cover the analytic inputs.
+- Main paper v0.44 (34 pp.): thm:lean item 13, a Related-results paragraph and a history item. The log's four 13 Nov entries were merged into a daily summary. Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional on Stadlmann's estimates), 246 unconditional. The twin prime conjecture remains open.
+
+Parity attempt: Level ladder: located for the pure beta-sieve at sqrt x with the known level theorems as black boxes (audited). The first unresolved step is a switching argument at z = x^{1/3}. The parity paper stays frozen at v1.0.1 (24 pp.), unchanged.
+
+Explored: Is the Liouville bias on the dimension-ladder targets a function of kappa alone? No: at the same kappa it varies widely with (q, H). After exact local factors 1 - 2l/(l^2-1) over the allowed primes, all 12 cases give about -1.1 times the Kubilius product, across kappa = 1/2, 2/3, 3/4. This is an inconclusive curiosity with no bearing on twins (code/explore/kappa_universality.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- f
+- i
+- r
+- s
+- t
+-  
+- d
+- r
+- a
+- f
+- t
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- r
+- o
+- u
+- t
+- e
+-  
+- c
+- a
+- r
+- d
+-  
+- w
+- r
+- o
+- n
+- g
+- l
+- y
+-  
+- l
+- e
+- f
+- t
+-  
+- t
+- r
+- i
+- p
+- l
+- e
+-  
+- w
+- e
+- l
+- l
+- -
+- f
+- a
+- c
+- t
+- o
+- r
+- a
+- b
+- i
+- l
+- i
+- t
+- y
+-  
+- o
+- p
+- e
+- n
+-  
+- a
+- n
+- d
+-  
+- o
+- v
+- e
+- r
+- s
+- t
+- a
+- t
+- e
+- d
+-  
+- i
+- t
+- s
+-  
+- c
+- o
+- n
+- c
+- l
+- u
+- s
+- i
+- o
+- n
+-  
+- (
+- b
+- o
+- t
+- h
+-  
+- c
+- a
+- u
+- g
+- h
+- t
+-  
+- b
+- y
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- a
+- n
+- d
+-  
+- f
+- i
+- x
+- e
+- d
+- )
+- .
+-  
+- N
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- :
+-  
+- n
+- o
+- t
+- h
+- i
+- n
+- g
+-  
+- n
+- e
+- w
+- ;
+-  
+- L
+- W
+- W
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- v
+- 2
+- .
+
+Next: Monday 23 Nov, 3:34 AM CT run: the weekly review first (parity v1.1 decisions, the next small-results line, whether the bound share keeps doing regressions now that 240, 236 and 186 have each been re-run once from scratch).
+
 ## 2026-11-22 - Session 43 (7:34 PM CT slot of 21 Nov; started on time 01:35 UTC 22 Nov; no wait, no other run active): The sifting-dimension ladder located inside the parity barrier; Lean: Gauss's identity and Selberg's diagonalisation for every D; 236 evaluation re-run from scratch; main paper v0.43
 
 - Parity share: a route card on the family 'p = -1 mod q and every prime factor of p+2 is = 1 mod q'. A congruence removes the one large prime that survives sifting to sqrt(x), so this is a pure sieve problem of dimension kappa_q = (q-2)/(q-1). Under EH the beta-sieve gives >> x/(log x)^{1+kappa_q} such primes for every fixed q >= 5, because beta_kappa < 2 for kappa < 1 (Blight's 2010 table, recomputed here: beta_{0.75} = 1.3983 against her 1.39811). This is conditional, and possibly folklore.
@@ -6147,70 +6483,155 @@ Did not work or is blocked:
 
 Next: Split Corr2 into its Q(R)^2 and Q(U)^2 parts so that one-sided certificates need no j = 3 pieces; k = 45 random point (Schwartz-Zippel check, capped_exact --ckpt); rung 186: one 1-D contraction for a single signature on one cap domain; rung 182: read the source.
 
-## 2026-11-13 - Session 12 (7:34 AM CT slot; started by hand at 7:44 AM CT; no wait, Sessions 10 and 11 had died unmerged): Rung 236: the second exact program confirms Song-Yue's capped numerator (exact equality with Jref); project bound 236, CONDITIONAL on their unverified equidistribution theorem; rescued Sessions 10-11; paper v0.11
+## 2026-11-13 - Daily summary of Sessions 9-12 (13 Nov; full entries in log/archive-2026-11-13.json): Second day: Song-Yue's 236 witness recomputed exactly and confirmed by a second program (236 conditional); rung 186 source notes; two runs died unmerged and were rescued
 
-- Rescued and merged the unmerged work of Sessions 10 and 11 (branches claude/zen-curie-b426c3 and claude/zen-curie-gstgp2; Session 10's last two commits were not in Session 11's branch and were merged separately).
-- Resumed capped_exact.py --jonly from Session 10's checkpoint (5 of 126 pieces) and finished all 126 correction pieces (7.4 h wall on 4 cores, about 32 core-hours in all). Its J_T equals capped_check.py's J_T as an exact rational, so (99!)^2 (26!)^2 10^196 5^150 521^50 J_T = Jref by two independent programs; its cap-free I and J equal the monomial-basis I0 and J0. Criterion 48 J_T/I0 = 1.000664921591 > 2001/2000.
-- So the variational step of 236 is reproduced, and the project's bound moves from 240 to 236 CONDITIONALLY: H1 <= 236 then follows from Song-Yue's Theorem 4.33 with their equidistribution Theorem 4.18, which we have NOT verified (caveat in the paper, status.json, README, bound history). Not a new bound.
-- Observation: the j = 3 correction pieces are at most 1e-24 J but take most of the running time; recorded as an own idea (a rigorous a priori bound would make later second programs much cheaper).
-- Rung 186: a helper transcribed the forms I_H, J_{lambda,H} and the 77-coefficient table of OpenAI's numerical companion (notes/sources-186-forms.md; checked against the source description in notes/sources-186.md); independent reproduction needs interval arithmetic (Dickman cell masses are transcendental), one formula (2.15) is underspecified.
-- Paper v0.11: Proposition sy-exact now by two programs, new Corollary cor:236 (conditional), Remark oai186 extended; Lean audit now prints boundedGaps_236_of_DHL_48 (propext, Quot.sound only).
-- Small-results paper verification-note (added to main by a coordination session) updated to v0.3: the 236 witness numerator is now by two programs; one-program qualifiers removed (its own update instructions in papers/README.md).
-
-Explored: Toy capped problem at k = 3 with per-m caps (single-coordinate and pair-sum caps): pair caps give a smaller regain (4-8.5%) than single caps (up to 13%), so the cap pattern does not explain the 31% regain at k = 45 -- dead end.
+- Session 9: Charton et al.'s Lemma 9.1 caps: ceiling 3.99 certified twice and the weights checked at a random point; optimum 3.98555, so a registered prediction failed; Kintali's 236 support gives 4.0061 > 4 with our own degree-22 vector (one program); bound unchanged (240 conditional); paper v0.9.
+- Session 10: Song-Yue's 236 witness recomputed exactly: our capped numerator and cap-free denominator equal their reference integers digit for digit (criterion 48 J/I0 = 1.000664921591 > 2001/2000); second program running; bound unchanged (240 conditional); paper v0.10.
+- Session 11: Rung 186 source notes; OpenAI's 40-tuple Lean-checked; second program on the Song-Yue witness restarted from its checkpoint; toy capped-problem exploration (did not merge; rescued by Session 12).
+- Session 12: Rung 236: the second exact program confirms Song-Yue's capped numerator (exact equality with Jref); project bound 236, CONDITIONAL on their unverified equidistribution theorem; rescued Sessions 10-11; paper v0.11.
 
 Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (no new proofs this run; the two exact programs and the reference integers are the checks).
-- No news search (only the 3:34 AM run does it; that run, Session 11, left no record of one).
-- No own proposition this run: the a priori bound for thin pieces is only an idea so far.
+- S
+- e
+- e
+-  
+- t
+- h
+- e
+-  
+- a
+- r
+- c
+- h
+- i
+- v
+- e
+- d
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+-  
+- f
+- o
+- r
+-  
+- e
+- a
+- c
+- h
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- '
+- s
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+-  
+- (
+- S
+- e
+- s
+- s
+- i
+- o
+- n
+- s
+-  
+- 1
+- 0
+-  
+- a
+- n
+- d
+-  
+- 1
+- 1
+-  
+- d
+- i
+- e
+- d
+-  
+- u
+- n
+- m
+- e
+- r
+- g
+- e
+- d
+-  
+- a
+- t
+-  
+- a
+- b
+- o
+- u
+- t
+-  
+- 4
+- :
+- 1
+- 5
+-  
+- A
+- M
+-  
+- C
+- T
+-  
+- a
+- n
+- d
+-  
+- w
+- e
+- r
+- e
+-  
+- r
+- e
+- s
+- c
+- u
+- e
+- d
+-  
+- b
+- y
+-  
+- S
+- e
+- s
+- s
+- i
+- o
+- n
+-  
+- 1
+- 2
+- )
+- .
 
-Next: Second program for our own k = 48 degree-22 vector (capped_exact --ckpt on P_kin48_D22r_u.json), with a rigorous bound for the j = 3 pieces if it can be proved; rung 186: decide whether an interval evaluator of I_H, J_{lambda,H} is feasible; rung 182: read the source.
-
-## 2026-11-13 - Session 11 (3:34 AM CT slot; started while Session 10 was still running; died unmerged at about 4:15 AM CT): Rung 186 source notes; OpenAI's 40-tuple Lean-checked; second program on the Song-Yue witness restarted from its checkpoint; toy capped-problem exploration (did not merge; rescued by Session 12)
-
-- Took over Session 10's branch as if it had died (its heartbeat was stale) although Session 10 was in fact still pushing; both runs stopped at about 4:15 AM CT, so neither merged.
-- Read OpenAI's 186 preprint and its numerical companion (notes/sources-186.md): the criterion is a signed-minorant inequality over fragment-measure forms at k = 40, not a capped simplex ratio; checked only the final rational arithmetic of their (2.34)-(2.35) exactly.
-- Lean: the 40-tuple of their display (1.3) is admissible of diameter 186 (boundedGaps_186_of_DHL_40'). Paper: Remark oai186 drafted.
-
-Explored: Toy capped problem with one uniform cap at k = 2, 3: the regain of re-optimising on the capped region stays at most 13% (inconclusive; notes/explorations.md).
-
-Did not work or is blocked:
-- The run stopped before merging (container reclaimed); its work was merged by Session 12.
-
-Next: Finish the second program on the Song-Yue witness.
-
-## 2026-11-13 - Session 10 (scheduled 11:34 PM CT, 12 Nov; started work about 1:25 AM CT after waiting 1 h 50 min for Session 9 to merge); the run did not finish: its container stopped at about 4:15 AM CT before it merged, and Session 12 merged its work: Song-Yue's 236 witness recomputed exactly: our capped numerator and cap-free denominator equal their reference integers digit for digit (criterion 48 J/I0 = 1.000664921591 > 2001/2000); second program running; bound unchanged (240 conditional); paper v0.10
-
-- Converted Song-Yue's 1295-row witness (degree 25, k = 48, all parts even) exactly into our power-sum format (code/songyue_convert.py; exact pointwise checks at random rational points).
-- Cap-free denominator by a new monomial-basis program (partial-matching DP, 25 s): (98!)^2 10^192 5^150 521^50 I0 equals their 655-digit Iref exactly. Cap-free numerator the same way: 48 J0/I0 = 4.0036348167, Kintali's claimed uncapped value.
-- Capped numerator by capped_check.py (56 min on 4 cores): (99!)^2 (26!)^2 10^196 5^150 521^50 J_T equals their 715-digit Jref exactly, a regeneration the authors list as pending. So 48 J_T/I0 = 1.000664921591 > 2001/2000 (4.0026597 in our scaling); with the capped denominator 4.0030988047, Kintali's claimed capped value. A fresh-context helper audited the four new scripts adversarially (sympy toy checks at k = 2-4) and found no errors.
-- Second program: capped_exact.py got --jonly (skip I corrections) and --ckpt (exact per-piece checkpoint, resumable); its cap-free part agrees (4.0036348167); the 126 correction pieces take 25-45 min each at this degree, so it is unfinished (5 pieces done, checkpoint committed). The project bound stays 240 (conditional) until it matches.
-- Paper v0.10: Proposition sy-exact and Remark rem:sta-lemma5; the status-table footnote now says the Lemma 5 step reads as Song-Yue describe.
-
-Explored: Read the step of Stadlmann's Lemma 5 that Song-Yue (Remark 4.23) object to, in arXiv v1: in the range gamma in (1/2, 1/2+2 omega+eps] it applies the Type IIa lemma with the factors swapped, which needs a Siegel-Walfisz hypothesis on alpha that neither Lemma 5 nor Definition 9 (I) provides; a repair (checking the alphas that occur) was not attempted. Outcome: inconclusive, gap confirmed textually (notes/explorations.md).
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (a fresh-context helper did the computation audit).
-- capped_exact.py on the Song-Yue witness needs roughly 5-10 hours on 4 cores; a first launch without checkpoints was restarted (4 pieces lost) to make it resumable. Not finished in this run.
-- First fetch of Stadlmann's PDF came back as raw PDF bytes to the fetch helper; read locally with pdftotext instead.
-- No news search (only the 3:34 AM run does it).
-
-Next: Resume capped_exact --jonly --ckpt on the Song-Yue witness (STATE.md); if J_T matches, lower the project bound to 236 conditionally, with the caveat everywhere. Then the second program for our own k = 48 vector and rung 186.
-
-## 2026-11-13 - Session 9 (11:34 PM CT, 12 Nov): Charton et al.'s Lemma 9.1 caps: ceiling 3.99 certified twice and the weights checked at a random point; optimum 3.98555, so a registered prediction failed; Kintali's 236 support gives 4.0061 > 4 with our own degree-22 vector (one program); bound unchanged (240 conditional); paper v0.9
-
-- Lemma 9.1 caps (k = 45, 846-dim space): with the saved exact weights, 4 G_I - 45 G_J re-certified positive definite at 6500 bits with a different block split, and 3.99 G_I - 45 G_J as well, so no P in the space reaches 3.99.
-- Schwartz-Zippel check of the reverse pass: at a random integer vector (entries in [-2^31, 2^31], seed recorded) the Gram weights reproduce I_T and J_T of capped_check.py exactly, so the quadratic forms agree with failure probability below 2^-31; the ball Gram forms contain the exact values.
-- Optimum in the space: 3.98555 (Gram, floating point). The registered prediction 3.977-3.981 failed: re-optimising regains 31% of the truncation loss here against 9% at k = 49 (paper Remark 34).
-- Rung 236: our cap-free optimiser at k = 48, degree 22 (1041 coefficients) certifies M_{48,15/506} ≥ 3.9589046, i.e. 4.0064115 without caps; on Kintali's support it gives 48 J_T/I_T = 4.0060814 > 4 (capped_check.py, exact; caps cost 0.00033). His claimed value with a transported k = 50 witness is 4.0031.
-- Paper v0.9: Proposition 33 sharpened to < 3.99 with the random-point check, Remark 34 (failed prediction), Proposition 35 (Kintali 4.0061). The status table now notes Song-Yue's remark on a possible missing hypothesis in Stadlmann's Lemma 5 (unverified), and that both 236 preprints use the same D182 support.
-
-Did not work or is blocked:
-- capped_exact.py at the random point (k = 45) needs about 4 hours; stopped after 138 pieces. On Kintali's support capped_exact.py also needs hours (one correction piece took 9 minutes); stopped, so 4.0061 rests on one program.
-- The degree-22 build at k = 48 was killed for memory once more before it ran alone.
-- No news search (only the 3:34 AM run does it).
-
-Next: Rung 236 via Song-Yue's published witness (notes/sources-236-song-yue.md): recompute their capped numerator J exactly and compare with Jref; second program for Kintali's support (capped_exact on P_kin48_D22r_u.json); capped_exact at the k = 45 random point.
+Next: (superseded by later entries)
 
 ## 2026-11-12 - Daily summary of Sessions 1-8 (12 Nov; full entries in log/archive-2026-11-12.json): First day: survey, certificates down to 246, and the variational steps of 240 and 212 reproduced
 

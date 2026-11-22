@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.43, 22 November 2026}
+\date{Version 0.44, 22 November 2026}
 
 \begin{document}
 
@@ -2137,6 +2137,15 @@ since $\beta_\kappa<2$ for $\kappa<1$ (a published table, recomputed here). The 
 continuously into the parity barrier: the lower constant $f_\kappa(2)$ is between $2.8(1-\kappa)$
 and $4.6(1-\kappa)$, and $f_1(2)=0$ for twins. Heuristically the mean of $\lambda(p+2)$ on the
 target also tends to the twin value $-1$ in a joint limit as $\kappa\to1$. Nothing here gets closer to twin primes.
+A route card of 22 November (\texttt{notes/parity-attempts/2026-11-22-level-ladder.md},
+\lbl{Computed} numerical thresholds and exact exponent checks, with \lbl{Literature} inputs read in the sources;
+possibly folklore; audited) asks which rungs the levels of distribution beyond $1/2$ reach. Sifting to $\sqrt x$ at
+level $x^\theta$ gives $s=2\theta$, so the rung $\kappa=1-1/m$ needs $\theta>\beta_\kappa/2$: $0.6121$ for $m=3$
+(prime factors of $p+2$ all $\equiv\pm1\pmod 7$) and $0.6991$ for $m=4$. The value for $m=3$ lies between Maynard's
+$3/5$ and Lichtman's $66/107$, which hold only for triply well-factorable weights, and the lower-bound
+$\beta_{2/3}$-sieve weights are not even well-factorable at their level, because $\beta_{2/3}\approx1.224<2$. So the
+pure $\beta$-sieve at $\sqrt x$ reaches no rung beyond Iwaniec's $\kappa=1/2$; sifting less far with a switching step
+was not examined. This says nothing about $\kappa=1$.
 \end{itemize}
 \end{sloppypar}
 
@@ -2284,6 +2293,7 @@ the shift).
 \item[0.34] (19 Nov 2026) Theorem~\ref{thm:lean}, item 7: the limit step from two-sided asymptotics to the sieve inequality in Lean. The $186$ loss-bound account condensed to one list (detail stays in the verification note). Bounds unchanged.
 \item[0.35] (19 Nov 2026) Theorem~\ref{thm:lean}, item 8: counting multiples, the Selberg expansion identity and its error term in Lean (\texttt{Counting.lean}). The account of the Song--Yue recomputation shortened (detail stays in the verification note). Bounds unchanged.
 \item[0.36] (19 Nov 2026) Theorem~\ref{thm:lean}, item 9: the Selberg expansion and its error term in the residue class $n\equiv v_0\pmod W$ (Chinese remainder step, in Lean). The account of Kintali's support condensed. Bounds unchanged.
+\item[0.44] (22 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's lower bound $Q(\lambda)\ge\lambda_1^2/G(D)$ for every $D$ (\texttt{SelbergOpt.lean}); Related results: the level-ladder route card; a from-scratch regression check of the $186$ main terms (one program, exact agreement). Bounds unchanged.
 \item[0.43] (22 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's diagonalisation for every $D$ and Gauss's identity for every $n$ (\texttt{Gauss.lean}); Related results: the sifting-dimension route card; a from-scratch regression check of the Song--Yue $236$ evaluation (one program, exact agreement). Bounds unchanged.
 \item[0.42] (21 Nov 2026) Theorem~\ref{thm:lean}, item 14 (\texttt{Linnik.lean}); Related results: the Linnik-identity route card; a from-scratch regression check of the $240$ certificate (one program, exact agreement). Bounds unchanged.
 \item[0.41] (21 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's optimum at $D=6$; Related results: the large-$q$ function-field route card; the $186$ computation account in Section~\ref{sec:stad} condensed. Bounds unchanged.

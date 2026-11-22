@@ -15,8 +15,8 @@
   m=6 kappa=0.83333 beta = 1.58850 1.58825 1.58837  -> threshold level theta_m = beta/2 = 0.79419
   m=7 kappa=0.85714 beta = 1.64550 1.64525 1.64512  -> threshold level theta_m = beta/2 = 0.82256
   m=8 kappa=0.87500 beta = 1.68850 1.68825 1.68813  -> threshold level theta_m = beta/2 = 0.84406
-  [76.4s]
-(ii) a non-well-factorable element of the lower-bound beta_(2/3)-sieve support (exact)
+  [81.3s]
+(ii) a non-well-factorable element of the lower-bound beta_(2/3)-sieve support (exact, given beta_(2/3) <= 1.225)
   m = 2 (even): p1 p2^(beta+1) = D^387/400 < D: True (any beta <= 49/40)
   no even m >= 4 for r = 3; d = D^9/10 ; p1^beta = D^147/400 < D: True
   divisor sizes (units log D): [0, Fraction(3, 10), Fraction(3, 5), Fraction(9, 10)]; split Q1 = Q2 = D^(1/2) possible: False
@@ -24,8 +24,7 @@
   with z = x^(1/2), D = x^theta, theta in (0.61, 0.63): p_i = x^(0.3 theta) < z and d = x^(0.9 theta) > x^(1/2),
   so d is above the Bombieri-Vinogradov range and needs the beyond-1/2 estimate.
 (iii) rung 3 data at X = 1e+08: q = 7, H = {1, 6} (index 3 in (Z/7)^*), kappa = 2/3
-  tables built [84.0s]
+  tables built [92.0s]
   |A_H| = 1920725, #T_H = 297565, + share of lambda(p+2) = 0.3451, #T_H/(|A_H| V_H(z)) = 1.0443
-  (f_(2/3)(2) and F_(2/3)(2) are printed by dim_ladder.py-type output above only for s near beta; the
-   normalised ratio converges slowly and proves nothing)
-  [84.3s]
+  (finite-X data only; the normalised ratio converges slowly and proves nothing)
+  [92.3s]
