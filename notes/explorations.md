@@ -3,6 +3,24 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-22, Session 45 -- Dispersion of twin primes in residue classes to large moduli (Barban-Davenport-Halberstam / Montgomery-Hooley type)
+- Idea: Montgomery-Hooley says that primes are under-dispersed in residue classes mod q (Lambda-weighted variance
+  X log q against X log X for independent placement). Do twin primes show the same under-dispersion, a different law, or
+  structure (a jump near q ~ X^{1/2})? A level-of-distribution question for the twin set, seen through its variance.
+  Cheap, expected to be uninformative.
+- Tried: `code/explore/twin_dispersion.py [X]` (/usr/bin/python3 -I; 10 s and ~1 GB at X = 1e8; output `.out`):
+  chi-square dispersion ratios D1(q) (primes, q - 1 classes) and D2(q) (twin pairs, the q - 2 admissible classes)
+  averaged over up to 40 primes q in [Q, 1.1 Q], Q = 100 ... 1e5, at X = 1e7 and 1e8.
+- Outcome: **inconclusive (curiosity)**.
+  - Both are under-dispersed and both ratios increase with q. Primes: D1 = 0.13 ... 0.52 at X = 1e8, roughly
+    l - 0.1 with l = log q / log X. (A first docstring said 1 - l; the data showed that was backwards; corrected.)
+  - Twins are much closer to Poisson: D2 = 0.54 ... 0.86. This is close to the crude guess 1 - (1 - l)^2
+    (0.44 ... 0.86 at 1e8; 0.49 ... 0.92 at 1e7), with D2 above the guess at small q.
+  - No jump near q ~ X^{1/2} (X^{1/2} = 1e4 at 1e8). Nothing derived: the guess has no derivation, and a
+    Hardy-Littlewood computation of the twin variance (four-point correlations at shifts that are multiples of q) was not
+    done. Literature on Barban-Davenport-Halberstam for prime k-tuples not searched. No bearing on parity. Heuristic /
+    exploratory.
+
 ## 2026-11-22, Session 44 -- Is the Liouville bias on the dimension-ladder targets a function of kappa alone? (probabilistic models / Kubilius model)
 - Idea: the Session 43 card measured the share of lambda(p+2) = +1 on targets "every prime factor of p+2 in Q_H"
   (H < (Z/q)^* of index m, dimension kappa = 1 - 1/m) for one H per kappa, and read the trend as a function of kappa.

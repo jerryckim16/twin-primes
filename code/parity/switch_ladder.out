@@ -1,0 +1,46 @@
+(i)-(iii) margin(u) = f_kappa(u/2) - 4 Z(u) (R2(u) + R3(u)) at level 1/2 (BV), z = x^(1/u)
+  (R2 = R of the docstring = kappa^2/2 * c_2 * integral, c_2 = 1/(m-1); R3 = three bad primes, only for u > 3)
+  m = 2, kappa = 0.50000: beta_kappa = 1.00000 1.00000 1.00000
+    u = 2.20: s = 1.100, f = 0.41877 0.42705 0.43287 | Z = 1.01528, R2 = 0.01902, R3 = 0.00000, 4 Z (R2+R3) = 0.07722, margin = +0.35565 | switching constant needed < 22.421
+    u = 2.50: s = 1.250, f = 0.62470 0.63163 0.63650 | Z = 0.95241, R2 = 0.06573, R3 = 0.00000, 4 Z (R2+R3) = 0.25042, margin = +0.38608 | switching constant needed < 10.167
+    u = 2.80: s = 1.400, f = 0.73878 0.74479 0.74901 | Z = 0.89995, R2 = 0.11847, R3 = 0.00000, 4 Z (R2+R3) = 0.42646, margin = +0.32255 | switching constant needed < 7.025
+    u = 3.00: s = 1.500, f = 0.79093 0.79646 0.80034 | Z = 0.86943, R2 = 0.15443, R3 = 0.00000, 4 Z (R2+R3) = 0.53706, margin = +0.26329 | switching constant needed < 5.961
+    u = 3.25: s = 1.625, f = 0.83980 0.84483 0.84835 | Z = 0.83532, R2 = 0.19921, R3 = 0.00000, 4 Z (R2+R3) = 0.66561, margin = +0.18275 | switching constant needed < 5.098
+    u = 3.50: s = 1.750, f = 0.87623 0.88082 0.88405 | Z = 0.80494, R2 = 0.24327, R3 = 0.00000, 4 Z (R2+R3) = 0.78327, margin = +0.10078 | switching constant needed < 4.515
+    u = 3.75: s = 1.875, f = 0.90392 0.90816 0.91113 | Z = 0.77764, R2 = 0.28634, R3 = 0.00000, 4 Z (R2+R3) = 0.89068, margin = +0.02045 | switching constant needed < 4.092
+    u = 4.00: s = 2.000, f = 0.92525 0.92917 0.93193 | Z = 0.75295, R2 = 0.32828, R3 = 0.00000, 4 Z (R2+R3) = 0.98872, margin = -0.05680 | switching constant needed < 3.770
+    R2(3) cross-check (midpoint rule, singularity integrated per cell): 0.15443 vs quad 0.15443
+  m = 3, kappa = 0.66667: beta_kappa = 1.22450 1.22425 1.22413
+    u = 2.20: s = 1.100, f = 0.00000 0.00000 0.00000 | Z = 0.97274, R2 = 0.04209, R3 = 0.00000, 4 Z (R2+R3) = 0.16377, margin = -0.16377 | switching constant needed < 0.000
+    u = 2.50: s = 1.250, f = 0.06955 0.06819 0.06887 | Z = 0.89328, R2 = 0.12590, R3 = 0.00000, 4 Z (R2+R3) = 0.44985, margin = -0.38097 | switching constant needed < 0.612
+    u = 2.80: s = 1.400, f = 0.36227 0.36116 0.36171 | Z = 0.82827, R2 = 0.21145, R3 = 0.00000, 4 Z (R2+R3) = 0.70055, margin = -0.33883 | switching constant needed < 2.065
+    u = 3.00: s = 1.500, f = 0.49281 0.49182 0.49232 | Z = 0.79104, R2 = 0.26690, R3 = 0.00000, 4 Z (R2+R3) = 0.84452, margin = -0.35221 | switching constant needed < 2.332
+    u = 3.25: s = 1.625, f = 0.61348 0.61261 0.61304 | Z = 0.74994, R2 = 0.33374, R3 = 0.00083, 4 Z (R2+R3) = 1.00363, margin = -0.39059 | switching constant needed < 2.443
+    u = 3.50: s = 1.750, f = 0.70250 0.70173 0.70212 | Z = 0.71379, R2 = 0.39767, R3 = 0.00364, 4 Z (R2+R3) = 1.14577, margin = -0.44366 | switching constant needed < 2.451
+    u = 3.75: s = 1.875, f = 0.76982 0.76913 0.76948 | Z = 0.68170, R2 = 0.45874, R3 = 0.00823, 4 Z (R2+R3) = 1.27334, margin = -0.50386 | switching constant needed < 2.417
+    u = 4.00: s = 2.000, f = 0.82159 0.82097 0.82128 | Z = 0.65299, R2 = 0.51711, R3 = 0.01432, 4 Z (R2+R3) = 1.38808, margin = -0.56679 | switching constant needed < 2.367
+    R2(3) cross-check (midpoint rule, singularity integrated per cell): 0.26692 vs quad 0.26690
+  m = 4, kappa = 0.75000: beta_kappa = 1.39850 1.39825 1.39812
+    u = 2.80: s = 1.400, f = 0.00235 0.00352 0.00470 | Z = 0.78582, R2 = 0.27622, R3 = 0.00000, 4 Z (R2+R3) = 0.86824, margin = -0.86354 | switching constant needed < 0.022
+    u = 3.00: s = 1.500, f = 0.20509 0.20612 0.20715 | Z = 0.74619, R2 = 0.34297, R3 = 0.00000, 4 Z (R2+R3) = 1.02367, margin = -0.81652 | switching constant needed < 0.809
+    u = 3.50: s = 1.750, f = 0.52836 0.52914 0.52992 | Z = 0.66472, R2 = 0.49652, R3 = 0.00790, 4 Z (R2+R3) = 1.34121, margin = -0.81129 | switching constant needed < 1.580
+    u = 4.00: s = 2.000, f = 0.71131 0.71192 0.71253 | Z = 0.60137, R2 = 0.63334, R3 = 0.02948, 4 Z (R2+R3) = 1.59439, margin = -0.88186 | switching constant needed < 1.788
+    R2(3) cross-check (midpoint rule, singularity integrated per cell): 0.34301 vs quad 0.34297
+  [30.8s]
+(v) C_need(m) = max over u in [2.05, 4] (step 0.05) of f_kappa(u/2) / (Z(u) (R2 + R3)(u)), h = 2.5e-4
+    (an upper-bound sieve for primes cannot beat 2 times the expected count: Selberg's parity example;
+     at level theta for the switched set the linear sieve gives 2/theta: 4 at BV, 3.5 at 4/7, 3.43 at 7/12)
+  m = 2 (kappa = 0.5000): C_need = 80.949 at u = 2.05; theta needed for the switched set (2/theta < C_need): theta > 0.025
+  m = 3 (kappa = 0.6667): C_need = 2.455 at u = 3.40; theta needed for the switched set (2/theta < C_need): theta > 0.815
+  m = 4 (kappa = 0.7500): C_need = 1.788 at u = 4.00; theta needed for the switched set (2/theta < C_need): theta > 1.119
+  m = 5 (kappa = 0.8000): C_need = 1.452 at u = 4.00; theta needed for the switched set (2/theta < C_need): theta > 1.378
+  [78.9s]
+(iv) data at X = 1e+08: q = 7, H = {1, 6} (m = 3) [tables 82.5s]
+  u = 3.0: |A_H| = 1920725, V(z) = 0.193858; S = 373476, T_H = 297565, W = 75911, W3 = 0, other = 0
+    units of |A_H| V(z): S = 1.0030, T_H = 0.7992 (pred. Z = 0.7910), W = 0.2039 (pred. Z R = 0.2111); W/T = 0.2551 (pred. R = 0.2669)
+  u = 2.5: |A_H| = 1920725, V(z) = 0.171843; S = 332152, T_H = 297565, W = 34587, W3 = 0, other = 0
+    units of |A_H| V(z): S = 1.0063, T_H = 0.9015 (pred. Z = 0.8933), W = 0.1048 (pred. Z R = 0.1125); W/T = 0.1162 (pred. R = 0.1259)
+  u = 3.5: |A_H| = 1920725, V(z) = 0.212779; S = 409090, T_H = 297565, W = 110734, W3 = 649, other = 142
+    three bad primes: W3/T = 0.0022 (pred. R3 = 0.0036)
+    units of |A_H| V(z): S = 1.0010, T_H = 0.7281 (pred. Z = 0.7138), W = 0.2709 (pred. Z R = 0.2838); W/T = 0.3721 (pred. R = 0.3977)
+  [90.8s]

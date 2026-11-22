@@ -26,6 +26,7 @@ factors (counted with multiplicity), never exactly one (the congruence), so
 (iii) Switching (also with three bad primes for u > 3, c_3 = probability their product lies in H): an upper-bound linear sieve for the primes p = n - 2, n in B = {g b1 b2}, at level x^{1/2}
       (Bombieri-Vinogradov for the convolution b1 * (b2 g), b1 a prime in [x^{1/u}, x^{1/2}]) gives
       W <= (4 + o(1)) * (expected W). Success test: margin(u) = f_kappa(u/2) - 4 Z(u) (R2 + R3)(u) > 0. Consistency test: m = 2 (kappa = 1/2, Iwaniec).
+(v)   C_need(m) = max over u of the switching constant that would suffice, m = 2..5 (computed before (iv)).
 (iv)  Finite-X data for q = 7, H = {1, 6} (m = 3) at z = X^{1/u}, u = 3, 2.5, 3.5: S, T_H, W in units of |A_H| V(z),
       against Z(u) and Z(u) R(u). Finite-X data only; proves nothing.
 """
@@ -176,6 +177,29 @@ for m in (2, 3, 4):
               + f" | switching constant needed < {need:.3f}")
     rc = R_check(3.0, m, N=2000)
     print(f"    R2(3) cross-check (midpoint rule, singularity integrated per cell): {rc:.5f} vs quad {R(3.0, m):.5f}")
+print(f"  [{time.time()-t0:.1f}s]")
+
+# ---------- (v) the best u for each rung: max over u of the switching constant that would be needed ----------
+print("(v) C_need(m) = max over u in [2.05, 4] (step 0.05) of f_kappa(u/2) / (Z(u) (R2 + R3)(u)), h = 2.5e-4")
+print("    (an upper-bound sieve for primes cannot beat 2 times the expected count: Selberg's parity example;")
+print("     at level theta for the switched set the linear sieve gives 2/theta: 4 at BV, 3.5 at 4/7, 3.43 at 7/12)")
+for m in (2, 3, 4, 5):
+    k = 1 - 1 / m
+    if m == 2:
+        _, s_, F_, f_ = cest(k, 1.0, 2.5e-4)
+        sg, fg = s_, f_ / F_[-1]
+    else:
+        _, sg, _, fg = beta_kappa(k, 2.5e-4)
+    best = (0.0, None)
+    for i in range(41, 81):
+        u = i * 0.05
+        fv = float(np.interp(u / 2, sg, fg))
+        zr = Z(u, m) * (R(u, m) + R3(u, m))
+        c = fv / zr
+        if c > best[0]:
+            best = (c, u)
+    print(f"  m = {m} (kappa = {k:.4f}): C_need = {best[0]:.3f} at u = {best[1]:.2f}; theta needed for the switched set "
+          f"(2/theta < C_need): theta > {2/best[0] if best[0] > 0 else float('inf'):.3f}")
 print(f"  [{time.time()-t0:.1f}s]")
 
 # ---------- (iv) data ----------

@@ -95,3 +95,11 @@ import TwinPrimes
 #print axioms TwinPrimes.mu_y_sum
 #print axioms TwinPrimes.selberg_lower
 #print axioms TwinPrimes.selberg_lower_D6_consts
+#print axioms TwinPrimes.Cosets.cnt_eq_AB
+#print axioms TwinPrimes.Cosets.AB_closed
+#print axioms TwinPrimes.Cosets.coset_count_zero
+#print axioms TwinPrimes.Cosets.coset_count_nonzero
+#print axioms TwinPrimes.Cosets.coset_prob_two
+#print axioms TwinPrimes.Cosets.coset_count_three
+#print axioms TwinPrimes.Cosets.cnt_four_three_zero
+#print axioms TwinPrimes.Cosets.cnt_five_four_zero
