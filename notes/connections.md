@@ -169,3 +169,6 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Level ladder (Session 44; route card 2026-11-22-level-ladder.md; Computed thresholds, Literature levels): unconditionally,
   known levels beyond 1/2 do not give any rung kappa > 1/2 through the pure beta-sieve (rung 3 needs 0.6121, known only for
   triply well-factorable weights, which the beta_{2/3}-sieve weights are not). Distance to twins: unchanged.
+- Switching on rung 3 (Session 45; route card 2026-11-22-switching-rung3.md; Computed, heuristic main terms checked
+  against data): one-step Chen switching at level 1/2 does not reach kappa = 2/3; at a common level theta > 0.5692 for both
+  sieves it would (no such level is known for these weights). Distance to twins: unchanged.

@@ -260,3 +260,14 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Next mechanisms: the switching variant of the ladder (sift to x^{1/3}, Chen-Iwaniec switching for two bad primes) is the
   one concrete open step on this line, but it is a sieve problem of dimension < 1, not a parity question; give it at most
   one more attempt. Otherwise Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.
+
+## Session 45 (22 Nov 2026)
+- Route card notes/parity-attempts/2026-11-22-switching-rung3.md: the one more attempt on the switching variant
+  allowed in Session 44. Refuted for the stated method: one-step Chen switching (linear-sieve upper bound, level 1/2)
+  fails for rung 3 at every u in (2, 4] at level 1/2. With a common level theta for A_H and the switched set it works
+  iff theta > 0.5692 (m = 3), below the direct 0.6121 and below 4/7, but no level beyond 1/2 is known for the
+  non-well-factorable beta_{2/3} weights or for the convolution set (the audit caught a one-sided level comparison in
+  the draft). Consistency: kappa = 1/2 succeeds. Lean: Cosets.lean (the coset counting identity). Audited by a fresh-context helper.
+- This line (dimension ladder, Sessions 43-45) is now closed for bounded attempts: what remains (a double or vector
+  sieve on the switched set; levels > 0.612 for beta_{2/3}-sieve weights) are research problems. Next mechanisms:
+  Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.

@@ -1,5 +1,282 @@
 # Research log
 
+## 2026-11-22 - Session 45 (11:34 AM CT slot of 22 Nov; started on time 17:34 UTC; no wait, no other run active): One-step Chen switching on rung 3 of the dimension ladder: fails at level 1/2, common-level threshold 0.5692; Lean: coset counting identity; 186 inner loss components re-run; main paper v0.45
+
+- Parity share: a route card on the step Session 44 left open. Sift A_H (p+2 with all prime factors = +-1 mod 7, dimension 2/3) only to x^{1/u}, 2 < u <= 4, and remove the survivors with two or three bad primes by Chen-type switching. The main terms (Selberg-Delange constant m e^{gamma kappa}/Gamma(1-kappa) u^{-kappa} and the coset integrals R2, R3) agree with the data at 1e8 to about 5%.
+- At level 1/2 for both sieves (switching constant 4) the margin is negative for every u: -0.35 at u = 3. With a common level theta it becomes positive exactly for theta > 0.5692 (0.665 and 0.726 for dimensions 3/4 and 4/5), below the direct route's 0.6121 and below 4/7. But no level beyond 1/2 is known for the non-well-factorable beta_{2/3} lower-bound weights or for the convolution set. So this is refuted at level 1/2 and located otherwise.
+- A fresh-context adversarial audit found that the draft had raised the level of the switched set only and drawn a wrong 'level vs parity' conclusion. It also found a slip in the definition of V(z). Both were fixed, and the threshold 0.5692 was recomputed here (part (vi) of the script), agreeing with the auditor's independent bisection. As a consistency check, dimension 1/2 (Iwaniec) succeeds.
+- Lean (small results): TwinPrimes/Cosets.lean proves for all m >= 2 and j that m c_m(j,0) = (m-1)^j + (-1)^j (m-1) and m c_m(j,s) = (m-1)^j - (-1)^j for s not = 0 mod m, the coset probabilities used above. A helper agent wrote it and the statements were checked here; lake build and Audit.lean pass (propext, Classical.choice, Quot.sound only).
+- Bound share: three groups of the 186 inner loss components (I2old L2-L3, I5/2old L1-L3, I5/2new L7-L9) were re-run from scratch with code/oai186_loss_inner.py and agree exactly with the committed parts (code/cap6/compare_loss_inner_regen_s45.json). This is one program only. Main paper v0.45 (Theorem thm:lean item 15; Related results). Bounds unchanged.
+
+Parity attempt: Switching on rung 3: refuted at level 1/2; located for a common level (threshold 0.5692, numerical, audited). The parity paper stays frozen at v1.0.1 (24 pp.), unchanged.
+
+Explored: Dispersion of twin primes in residue classes mod q (a Barban-Davenport-Halberstam-type statistic): twins are much closer to Poisson than primes (0.54-0.86 against 0.13-0.52 at 1e8), close to an underived guess 1 - (1 - log q/log X)^2, with no jump at X^{1/2}. This is an inconclusive curiosity (code/explore/twin_dispersion.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- a
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- w
+- a
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- f
+- i
+- r
+- s
+- t
+-  
+- d
+- r
+- a
+- f
+- t
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- r
+- o
+- u
+- t
+- e
+-  
+- c
+- a
+- r
+- d
+-  
+- c
+- o
+- m
+- p
+- a
+- r
+- e
+- d
+-  
+- l
+- e
+- v
+- e
+- l
+- s
+-  
+- o
+- n
+-  
+- o
+- n
+- e
+-  
+- s
+- i
+- d
+- e
+-  
+- o
+- n
+- l
+- y
+-  
+- (
+- c
+- a
+- u
+- g
+- h
+- t
+-  
+- b
+- y
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- ,
+-  
+- f
+- i
+- x
+- e
+- d
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- n
+- o
+- t
+-  
+- t
+- h
+- e
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+
+Next: Monday 23 Nov, 3:34 AM CT run: the weekly review first. The dimension-ladder line (Sessions 43-45) is closed for bounded attempts; what remains there (a level 0.5692 for beta_{2/3} weights, a well-factorable lower-bound sieve of dimension 2/3) are research problems.
+
 ## 2026-11-22 - Session 44 (3:34 AM CT slot of 22 Nov; started on time 09:34 UTC; no wait, no other run active): Levels of distribution beyond 1/2 on the sifting-dimension ladder located; Lean: Selberg's lower bound for every D; 186 main terms re-run from scratch; main paper v0.44
 
 - Parity share: a route card that answers the Session 43 question. With sifting to sqrt x at level x^theta, the rung kappa = 1 - 1/m needs theta > beta_kappa/2: 0.6121 for m = 3 (p+2 with all prime factors = +-1 mod 7) and 0.6991 for m = 4. BFI's 4/7 and Maynard's 7/12 and 3/5 fall short; Lichtman's 66/107 (and 5/8 under Selberg's eigenvalue conjecture) would clear rung 3, but only for triply well-factorable weights.

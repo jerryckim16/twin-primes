@@ -1,7 +1,7 @@
 {
- "version": "0.44",
+ "version": "0.45",
  "updated": "2026-11-22",
- "session_count": 44,
+ "session_count": 45,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "Coset counting identity: for every m >= 2 and j >= 0, the number c_m(j, s) of j-tuples of nonzero residues mod m with sum = s mod m satisfies m c_m(j, 0) = (m-1)^j + (-1)^j (m-1) and m c_m(j, s) = (m-1)^j - (-1)^j for m not dividing s; c_m(2, 0) = m - 1 (lean/TwinPrimes/Cosets.lean: coset_count_zero, coset_count_nonzero, coset_prob_two, coset_count_three). Used for the coset probabilities in the Session 45 switching route card.",
+   "where": "lean/TwinPrimes/Cosets.lean; main paper thm:lean item 15"
+  },
+  {
+   "label": "Computed",
+   "text": "One-step Chen switching on rung 3 (kappa = 2/3) of the sifting-dimension ladder: at level 1/2 on both sides the margin f_{2/3}(u/2) - 4 Z(u)(R2+R3)(u) is negative for all u in (2, 4] (-0.35 at u = 3); at a common level theta it is positive iff theta > 0.5692 (0.665 for kappa = 3/4, 0.726 for kappa = 4/5). Numerical, with the switched main term identified heuristically (checked against data at 1e7 and 1e8). No level beyond 1/2 is known for the weights involved.",
+   "where": "notes/parity-attempts/2026-11-22-switching-rung3.md; code/parity/switch_ladder.py"
+  },
   {
    "label": "Lean-checked",
    "text": "Selberg's lower bound for every D >= 1: for every lambda : N -> Z, sum_{d,e<=D} lambda_d lambda_e/[d,e] >= lambda_1^2/G(D), G(D) = sum_{r<=D} mu^2(r)/phi(r), from selberg_diag, sum_r mu(r) y_r = lambda_1 and a weighted Cauchy-Schwarz inequality; mu defined without factorisation by its divisor-sum recursion (lean/TwinPrimes/SelbergOpt.lean: mu_divisor_sum, weighted_cauchy_schwarz, mu_y_sum, selberg_lower, selberg_lower_D6_consts).",
@@ -533,6 +543,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Parity attempt: one-step Chen switching on rung 3 of the sifting-dimension ladder (sift to x^{1/u}, 2 < u <= 4, subtract survivors with two or three bad primes)",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 45: refuted at level 1/2 on both sides (margin -0.35 at u = 3; heuristic main terms checked against data). With a common level theta for A_H and the switched set it works iff theta > 0.5692 (m = 3), below the direct route's 0.6121 and below 4/7; no level beyond 1/2 is known for the non-well-factorable beta_{2/3} weights or for the convolution set. Audited (one-sided level comparison corrected). Coset counting identity Lean-checked (Cosets.lean)."
+  },
+  {
+   "idea": "Exploration: dispersion of twin primes in residue classes to large moduli (Barban-Davenport-Halberstam / Montgomery-Hooley type) against primes",
+   "origin": "exploration",
+   "status": "open",
+   "note": "Session 45: inconclusive curiosity. At 1e8 primes have D1 ~ log q/log X - 0.1, twins are much closer to Poisson (D2 = 0.54-0.86), near the underived guess 1 - (1 - l)^2; no jump at X^{1/2}."
+  },
   {
    "idea": "Parity attempt: levels of distribution beyond 1/2 (BFI 4/7, Maynard 7/12 and 3/5, Lichtman 66/107 and 5/8) on the sifting-dimension ladder",
    "origin": "own",
