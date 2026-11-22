@@ -162,3 +162,7 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   discriminant) and Weil / Lang–Weil, in a ring whose primes all have norm >= X^{1/n}. Distance to twins over Z: the integer
   counterpart contains the Cesàro two-point Chowla conjecture and, on rough pairs, determines the twin count itself; no
   integer substitute for Pellet is known (route card 2026-11-21-large-q-pellet.md). Nothing for twins over Z.
+- Sifting-dimension ladder (Session 43; route card 2026-11-22-dimension-ladder.md; Proved here conditional on EH and the
+  beta-sieve theorem as quoted, Computed constants): primes p with every prime factor of p+2 = 1 mod q form a sieve problem
+  of dimension (q-2)/(q-1) < 1, solved under EH for each fixed q; the lower constant -> 0 as the dimension -> 1, which is the
+  twin case (f_1(2) = 0, parity). Distance to twins: unchanged; the family approaches twins only where its constant vanishes.

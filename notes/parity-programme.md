@@ -240,3 +240,13 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - Route card notes/parity-attempts/2026-11-21-linnik-ladder.md: Linnik's identity on X^{1/J}-rough pairs is a change of
   basis of the joint Omega-table (up to non-squarefree pairs), so the convolution-depth ladder stays inside the paper's
   pattern class; located (partly heuristic). Audited (1 error, 7 gaps). Lean core: lean/TwinPrimes/Linnik.lean.
+
+## Session 43 (22 Nov 2026)
+- Route card notes/parity-attempts/2026-11-22-dimension-ladder.md: located (conditional on EH and the beta-sieve theorem
+  as quoted by Gaudet arXiv:2408.01610v1 Prop. 5.1 from Opera de Cribro Thm 11.13; beta_kappa from Blight's 2010 thesis,
+  recomputed). The family "p = -1 mod q, every prime factor of p+2 = 1 mod q" is a pure sieve of dimension
+  kappa_q = (q-2)/(q-1) (a congruence removes the last large prime); under EH it is infinite for every fixed q >= 5;
+  f_kappa(2) -> 0 linearly as kappa -> 1 (twins: f_1(2) = 0), and the lambda-mean of the target tends heuristically to -1.
+  Audited (3 errors, 5 gaps; fixed). Genuinely new mechanism for this programme (sieve dimension, not averaging scale).
+- Next mechanisms: Merikoski's multiplicative large sieve route to GS-type Type I; the almost-all MRT17 form under GRH/EH;
+  a BFI well-factorable level for the dimension ladder (does level 4/7 give any q >= 5 unconditionally?).

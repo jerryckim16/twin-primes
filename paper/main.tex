@@ -254,11 +254,11 @@ $G=\sum_{r\le6}\mu^2(r)/\varphi(r)=13/4$, by an explicit sum of eleven squares
 the multiples of $(13,-12,-12,0,-5,12)$, i.e.\ of the Selberg weights
 \[\lambda_d=\frac{\lambda_1}{G}\,\mu(d)\frac{d}{\varphi(d)}\sum_{r\le 6/d,\ (r,d)=1}\frac{\mu^2(r)}{\varphi(r)}\]
 (\texttt{selberg\_opt\_D6\_eq}, \texttt{selberg\_opt\_D6\_eq\_iff}).
-The identity holds for \emph{every} $D$ (\texttt{Gauss.lean}, \texttt{selberg\_diag}),
-with $L=\operatorname{lcm}(1,\dots,D)$, proved from Gauss's identity
-$\sum_{r\mid n}\varphi(r)=n$ for every $n\ge1$ (\texttt{gauss\_totient},
-by grouping $k\le n$ according to $n/\gcd(k,n)$). The optimum is formalised
-only at $D=6$.
+The identity holds for \emph{every} $D$, with $L=\operatorname{lcm}(1,\dots,D)$
+(\texttt{selberg\_diag} in \texttt{Gauss.lean}). It is proved from Gauss's
+identity $\sum_{r\mid n}\varphi(r)=n$ for every $n\ge1$
+(\texttt{gauss\_totient}), by grouping $k\le n$ according to $n/\gcd(k,n)$.
+The optimum is formalised only at $D=6$.
 \item (\texttt{Linnik.lean}, the combinatorial core of Linnik's identity) For
 the Stirling numbers of the second kind $S(r,j)$ and \emph{every} $r\ge0$,
 \[
@@ -2122,6 +2122,16 @@ $1-\lambda(n)\lambda(n+2)$ kills the top rung exactly, as it kills the twin coun
 For $\Lambda d_k$, $k\ge3$, the sources name the level of distribution as the
 obstacle (removed by EH for each fixed $k$); a parity-sensitive asymptotic for one rough rung is the
 first missing step. Theorem~\ref{thm:lean}, item 14 formalises its combinatorial core.
+A route card of 22 November (\texttt{notes/parity-attempts/2026-11-22-dimension-ladder.md},
+\lbl{Proved here} conditionally on EH and on the $\beta$-sieve theorem as quoted, possibly folklore,
+with \lbl{Computed} numerical sieve constants; audited) follows the family ``$p\equiv-1\pmod q$
+and every prime factor of $p+2$ is $\equiv1\pmod q$''. A congruence removes the one large prime
+left after sifting to $\sqrt x$, so this is a sieve problem of dimension $\kappa_q=(q-2)/(q-1)$.
+Under EH the $\beta$-sieve gives $\gg x/(\log x)^{1+\kappa_q}$ such primes for every fixed $q\ge5$,
+since $\beta_\kappa<2$ for $\kappa<1$ (a published table, recomputed here). The family runs
+continuously into the parity barrier: the lower constant $f_\kappa(2)$ is between $2.8(1-\kappa)$
+and $4.6(1-\kappa)$, and $f_1(2)=0$ for twins. Heuristically the mean of $\lambda(p+2)$ on the
+target also tends to the twin value $-1$ in a joint limit as $\kappa\to1$. Nothing here gets closer to twin primes.
 \end{itemize}
 \end{sloppypar}
 

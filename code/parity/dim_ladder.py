@@ -12,9 +12,12 @@ removes the at most one surviving large prime factor (see the card).
 (i)  beta-sieve functions in dimension kappa (1/2 < kappa <= 1), from the system
         s^k F(s) = A (0 < s <= beta+1),  f(s) = 0 (s <= beta),
         (s^k f)'(s) = k s^(k-1) F(s-1) (s > beta),  (s^k F)'(s) = k s^(k-1) f(s-1) (s > beta+1),
-     with beta = beta_kappa fixed by F - f = o(s^(-2k)) (exponential decay of F - f) and A by
-     F, f -> 1. Method of steps with the trapezoid rule on a grid h, at two step sizes (h, h/2)
-     as a convergence check, and the closed forms at kappa = 1 (beta = 2, A = 2 e^gamma,
+     with beta = beta_kappa fixed by removing the s^(-2k) mode of F - f (the generic non-decaying
+     mode of s D' + k D = -k D(s-1), D = F - f) and A by F, f -> 1. Method of steps with the
+     trapezoid rule on a grid h, at three step sizes (2e-3, 1e-3, 5e-4) as a convergence check (beta
+     is quantised to the grid, so f(2) is accurate only to about 1% for kappa <= 0.9 and about 5%
+     near kappa = 0.99). The source fixes s^k F = A only on [beta-1, beta+1]; setting it on
+     (0, beta+1] changes nothing, since F(s-1) is only used for s > beta. and the closed forms at kappa = 1 (beta = 2, A = 2 e^gamma,
      f(s) = 2 e^gamma log(s-1)/s on [2, 4]) as a validation. NUMERICAL, not an exact certificate.
      Output: beta_kappa, f_kappa(2), F_kappa(2) for kappa_q, q = 5, 7, 11, 13, 17, 23, 31, 61, 101,
      and the rate of f_kappa(2) -> 0 as kappa -> 1.
@@ -62,6 +65,7 @@ def cest(kappa, beta, h, smax=40.0):
 
 def beta_kappa(kappa, h, lo=1.0 + 1e-9, hi=2.6):
     clo = cest(kappa, lo, h)[0]
+    assert (cest(kappa, hi, h)[0] > 0) != (clo > 0), "no sign change in the bracket"
     for _ in range(36):
         mid = (lo + hi) / 2
         c = cest(kappa, mid, h)[0]
@@ -76,7 +80,7 @@ def beta_kappa(kappa, h, lo=1.0 + 1e-9, hi=2.6):
     return b, A, A * f[i2], A * F[i2], A * (F[-1] - f[-1])
 
 
-print("(i) beta-sieve functions (numerical; two step sizes)")
+print("(i) beta-sieve functions (numerical; three step sizes)")
 # validation at kappa = 1
 for h in (2e-3, 1e-3):
     b, A, f2, F2, _ = beta_kappa(1.0, h)
@@ -85,13 +89,14 @@ for h in (2e-3, 1e-3):
     print(f"  kappa=1, h={h}: beta={b:.5f} (exact 2), A={A:.6f} (2e^gamma={2*math.exp(GAMMA):.6f}),"
           f" f(3)*A_exact={2*math.exp(GAMMA)*f[i3]:.6f} (exact {2*math.exp(GAMMA)*math.log(2)/3:.6f})")
 rows = []
-print("  q   kappa_q    beta(h=2e-3) beta(h=1e-3)  f_k(2)     F_k(2)     f_k(2)/(1-kappa)")
+print("  q   kappa_q   beta at h = 2e-3, 1e-3, 5e-4 | f_k(2) at the three h      | F_k(2)   f_k(2)/(1-kappa)")
 for q in (5, 7, 11, 13, 17, 23, 31, 61, 101):
     k = (q - 2) / (q - 1)
-    b1, A1, f1, F1, _ = beta_kappa(k, 2e-3)
-    b2, A2, f2, F2, _ = beta_kappa(k, 1e-3)
-    rows.append((q, k, b2, f2, F2))
-    print(f"  {q:3d} {k:.6f}   {b1:.5f}      {b2:.5f}      {f2:.5f}    {F2:.5f}    {f2/(1-k):.4f}")
+    R = [beta_kappa(k, h) for h in (2e-3, 1e-3, 5e-4)]
+    b3, A3, f3, F3, _ = R[2]
+    rows.append((q, k, b3, f3, F3))
+    print(f"  {q:3d} {k:.6f}  " + " ".join(f"{r[0]:.5f}" for r in R) + " | "
+          + " ".join(f"{r[2]:.5f}" for r in R) + f" | {F3:.5f}  {f3/(1-k):.4f}")
 print(f"  [{time.time()-t0:.1f}s]")
 
 X = int(float(sys.argv[1])) if len(sys.argv) > 1 else 10 ** 8
@@ -108,7 +113,7 @@ spf[spf_is0] = np.arange(N, dtype=np.int32)[spf_is0]   # primes (and 0, 1)
 isprime = spf_is0.copy(); isprime[:2] = False
 primes = np.nonzero(isprime)[0]
 P = primes[(primes >= 3) & (primes <= X)]
-z = math.sqrt(X + 2)
+z = math.sqrt(X + 2) + 0.5   # sift by l < z, i.e. l <= sqrt(X+2): excludes m = r^2 = X + 2
 for q in (3, 5, 7, 11, 13):
     Aq = P[(P + 1) % q == 0]
     m = Aq + 2
