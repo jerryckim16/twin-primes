@@ -44,7 +44,9 @@ Each session works on the claude/... branch its system instructions name (create
 - Exploration: code/explore/shifted_prime_sign_entropy.py [X] (/usr/bin/python3 -I; 7 s at 1e8, ~1.5 GB; .out): dead end.
 - Lean: TwinPrimes/Gauss.lean (gauss_totient for all n >= 1; selberg_diag for all D; helper agent, statements checked
   here; in Audit.lean); lake build and Audit.lean pass. Selberg.lean docstring updated.
-- Bound share: REGRESSION_PLACEHOLDER
+- Bound share: regression of the 236 evaluation: capped_check.py re-run from scratch on code/cap6/P_sy236_u.json (3464 s,
+  3 procs, ~2 GB/worker, /usr/bin/python3 with python-flint) equals the committed check_sy236.json exactly (I_T, J_T;
+  48 J_T/I_T = 4.0030988048); code/cap6/compare_sy236_regen_s43.json, check_sy236_regen_s43.json. One program only.
 - Main paper v0.43. Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 42 (11:34 AM CT slot of 21 Nov, started on time 17:34 UTC; no wait) -- additions

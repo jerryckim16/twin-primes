@@ -1,0 +1,8 @@
+{
+ "I_T_equal": true,
+ "J_T_equal": true,
+ "ratio_check": "4.003098804750",
+ "ratio_committed": "4.003098804750",
+ "seconds_regen": 3463.8,
+ "note": "Session 43 regression: code/capped_check.py re-run from scratch on code/cap6/P_sy236_u.json (3 procs, python 3.13) vs committed check_sy236.json; exact string equality of I_T and J_T."
+}

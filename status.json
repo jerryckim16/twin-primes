@@ -515,6 +515,11 @@
    "label": "Proved here (conditional on EH and the beta-sieve theorem as quoted; possibly folklore)",
    "text": "For each fixed prime q >= 5, under EH: >> x/(log x)^{1+kappa_q} primes p <= x with p = -1 mod q and every prime factor of p+2 = 1 mod q, kappa_q = (q-2)/(q-1); the beta-sieve constant f_kappa(2) (Computed, numerical) lies between 2.8(1-kappa) and 4.6(1-kappa). Nothing for twin primes (kappa = 1, f_1(2) = 0).",
    "where": "notes/parity-attempts/2026-11-22-dimension-ladder.md"
+  },
+  {
+   "label": "Computed",
+   "text": "Regression (Session 43): capped_check.py re-run from scratch on the Song-Yue 236 witness (code/cap6/P_sy236_u.json, 3464 s on 3 cores) reproduces I_T and J_T exactly; 48 J_T/I_T = 4.0030988048 (code/cap6/compare_sy236_regen_s43.json). Variational step only; Song-Yue Thm 4.18 / the analytic inputs not verified.",
+   "where": "code/cap6/check_sy236_regen_s43.json"
   }
  ],
  "ideas": [
