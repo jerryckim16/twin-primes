@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.45, 22 November 2026}
+\date{Version 0.46, 23 November 2026}
 
 \begin{document}
 
@@ -263,7 +263,11 @@ Selberg's lower bound also holds for every $D\ge1$ (\texttt{selberg\_lower} in
 $G(D)=\sum_{r\le D}\mu^2(r)/\varphi(r)$, from \texttt{selberg\_diag}, the identity
 $\sum_{r\le D}\mu(r)y_r=\lambda_1$ and a weighted Cauchy--Schwarz inequality. Here $\mu$ is
 defined without factorisation, by $\mu(1)=1$ and $\sum_{r\mid n}\mu(r)=0$ for $n\ge2$
-(\texttt{mu\_divisor\_sum}). The equality cases are formalised only at $D=6$.
+(\texttt{mu\_divisor\_sum}). The bound is attained for every $D\ge1$
+(\texttt{selberg\_lower\_attained} in \texttt{SelbergEq.lean}): with $W=\operatorname{lcm}(\varphi(1),\dots,\varphi(D))$,
+$y_r=\mu(r)W/\varphi(r)$, $t_d=y_d-\sum_{d<e\le D,\ d\mid e}t_e$ and $\lambda_d=d\,t_d$ one has $\lambda_1=G(D)W>0$ and
+equality; at $D=6$ these are the weights $(13,-12,-12,0,-5,12)$ above. Uniqueness of the extremal weights is formalised
+only at $D=6$.
 \item (\texttt{Linnik.lean}, the combinatorial core of Linnik's identity) For
 the Stirling numbers of the second kind $S(r,j)$ and \emph{every} $r\ge0$,
 \[
@@ -2158,6 +2162,14 @@ example $-0.35$ at $u=3$. With a common level $\theta$ for both sets the step wo
 $\theta>0.5692$ (numerically). That is below the direct route's $0.6121$ and below $4/7$. But no level beyond $1/2$ is
 known for these weights: the lower-bound $\beta_{2/3}$-sieve weights are not well-factorable, and the switched set
 is a convolution, not the primes. As a consistency test, the same step succeeds at $\kappa=1/2$. The counting identity for the coset probabilities is item~15 of Theorem~\ref{thm:lean}.
+\item \emph{Orthogonality criteria of K\'atai type.} A route card of 23 November
+(\texttt{notes/parity-attempts/2026-11-23-katai-bsz-dilation.md}; elementary, possibly folklore; audited) applies the
+K\'atai--Bourgain--Sarnak--Ziegler criterion (\cite{BSZ11}, Theorem~2) to $\sum_{p\le x}\lambda(p+2)$. The classical
+statement is trivial for this sparse weight. Any argument of that type needs, for most pairs of primes $p_1\ne p_2$ in
+its ranges, the right-order Hardy--Littlewood asymptotic for the pair $p_1m-2$, $p_2m-2$ (\lbl{Proved here}, up to
+$O(\tau)$, with a mean-zero $W$-model). Each such statement is open and of twin-prime type, so the reduction runs the
+wrong way. The sparse diagonal also forces prime ranges beyond $\log x$; the averaged second moment over this dilation
+family is the first unresolved step (\lbl{Open}).
 \end{itemize}
 \end{sloppypar}
 
@@ -2305,6 +2317,7 @@ the shift).
 \item[0.34] (19 Nov 2026) Theorem~\ref{thm:lean}, item 7: the limit step from two-sided asymptotics to the sieve inequality in Lean. The $186$ loss-bound account condensed to one list (detail stays in the verification note). Bounds unchanged.
 \item[0.35] (19 Nov 2026) Theorem~\ref{thm:lean}, item 8: counting multiples, the Selberg expansion identity and its error term in Lean (\texttt{Counting.lean}). The account of the Song--Yue recomputation shortened (detail stays in the verification note). Bounds unchanged.
 \item[0.36] (19 Nov 2026) Theorem~\ref{thm:lean}, item 9: the Selberg expansion and its error term in the residue class $n\equiv v_0\pmod W$ (Chinese remainder step, in Lean). The account of Kintali's support condensed. Bounds unchanged.
+\item[0.46] (23 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's lower bound is attained for every $D$ (\texttt{SelbergEq.lean}); Related results: the K\'atai--Bourgain--Sarnak--Ziegler route card; a from-scratch regression of three more groups of the $186$ inner loss components (one program). Bounds unchanged.
 \item[0.45] (22 Nov 2026) Theorem~\ref{thm:lean}, item 15 (\texttt{Cosets.lean}); Related results: the switching route card (one-step switching fails for $\kappa=2/3$ at level $1/2$; common-level threshold $0.5692$); a from-scratch regression of three groups of the $186$ inner loss components (one program). Bounds unchanged.
 \item[0.44] (22 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's lower bound $Q(\lambda)\ge\lambda_1^2/G(D)$ for every $D$ (\texttt{SelbergOpt.lean}); Related results: the level-ladder route card; a from-scratch regression check of the $186$ main terms (one program, exact agreement). Bounds unchanged.
 \item[0.43] (22 Nov 2026) Theorem~\ref{thm:lean}, item 13: Selberg's diagonalisation for every $D$ and Gauss's identity for every $n$ (\texttt{Gauss.lean}); Related results: the sifting-dimension route card; a from-scratch regression check of the Song--Yue $236$ evaluation (one program, exact agreement). Bounds unchanged.
@@ -2324,6 +2337,8 @@ J.~Thorner, E.~Xie, \emph{Lean formalization of bounded gaps between primes}
 prime factors}, Acta Arith.\ \textbf{83} (1998), 331--361 (the exponent $0.677$
 as cited in R.~Li, arXiv:2508.18285v3, p.~2; not opened by us).
 \bibitem{Bom76} E.~Bombieri, \emph{The asymptotic sieve}, 1976.
+\bibitem{BSZ11} J.~Bourgain, P.~Sarnak, T.~Ziegler, \emph{Disjointness of Moebius from horocycle flows},
+arXiv:1110.0992v1, 2011 (Theorem~2 and Section~2 read).
 \bibitem{Cha26} F.~Charton, L.~Hong, K.~Lau, K.~Ono, G.~Remy, H.~C.~Siu,
 A.~A.~Swaminathan, J.~Thorner, Y.~Xie, \emph{A new bound for small gaps
 between primes}, preliminary draft, 3 September 2026.

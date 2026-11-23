@@ -3,43 +3,65 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 45, 11:34 AM CT slot of 22 Nov, run 17:34 UTC): PHASE B
+## POSITION (after Session 46, 7:34 PM CT slot of 22 Nov, run 01:35 UTC 23 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.45.
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.46.
   No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
 - NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2 (19 Nov; still v2 on 22 Nov, no comments field), CLAIM sum_p mu(p+2) = o(pi(x)).
   Not verified; notes/sources-lww26.md; Session 39 + 40 route cards (conditional implication P^+(p+2) > p^{1-o(1)}). Flag open.
-- Weekly review: notes/reviews/2026-11-16.md. Next review: the first run starting on Monday 23 Nov, Central time (the
-  3:34 AM CT run of 23 Nov). THAT RUN DOES THE REVIEW FIRST (and the 3:34 AM news search).
+- Weekly review: notes/reviews/2026-11-16.md. Next review: the NEXT run, 3:34 AM CT on Monday 23 Nov (09:34 UTC), the
+  first run starting on a Monday, Central time. Session 46 started on Sunday 22 Nov at 7:35 PM CT, so it did NOT do it.
+  THE NEXT RUN DOES THE REVIEW FIRST (and the 3:34 AM news search).
 
 ## Next steps (in order)
-1. Weekly review of 23 Nov (first run starting on Monday CT) decides: (a) whether a parity-paper v1.1 gets ONE short
+1. Weekly review of 23 Nov (the next run) decides: (a) whether a parity-paper v1.1 gets ONE short
    subsection on the LWW claim with the S39 + S40 implication (literature-check first); (b) whether the E2 route cards
-   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43, S44, S45 cards at most one sentence each (S43 +
-   S44 + S45: the sifting-dimension ladder, its level thresholds and the switching variant, a natural group; S45: at
-   level 1/2 switching fails for kappa = 2/3, common-level threshold 0.5692); (c) the next active small-results line
-   (candidates: the Lean programme (4) as a short note, now with Gauss, general-D Selberg diagonalisation, the general-D
-   Selberg lower bound selberg_lower and Cosets.lean; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open
+   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43, S44, S45, S46 cards at most one sentence each
+   (S43 + S44 + S45: the sifting-dimension ladder, its level thresholds and the switching variant, a natural group;
+   S46: the Katai-BSZ criterion needs right-order HL for dilation pairs, the wrong direction); (c) the next active
+   small-results line (candidates: the Lean programme (4) as a short note, now with Gauss, general-D Selberg
+   diagonalisation, the general-D Selberg lower bound selberg_lower AND its attainment selberg_lower_attained
+   (SelbergEq.lean, S46), and Cosets.lean; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open
    Tao-Teraeväinen 2019 first); (e) whether the bound share should keep doing from-scratch regressions (240 S42, 236 S43,
-   186 S44 done) or stop: all three conditional rungs have now been regenerated once from scratch.
+   186 main terms S44, 6 of 17 inner-loss parts of 186 S45 + S46) or stop.
 2. LWW thread: nothing more without checking their Prop. 4.2 (~45 pp.); only if the review says so. Watch for v3 / comments
    (3:34 AM news search).
-3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S45 switching
-   on rung 3). Candidates: Merikoski's multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form under
-   GRH/EH. The dimension-ladder line (S43-S45) is CLOSED for bounded attempts (what remains: a level 0.5692 for the
-   beta_{2/3} lower-bound weights and the convolution set, or a well-factorable lower-bound sieve of dimension 2/3; research
-   problems). Not another "averaging near log X".
-4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss, SelbergOpt, Cosets (S45: coset counting
-   identity for all m, j; S44: mu without factorisation,
-   weighted Cauchy-Schwarz, selberg_lower for all D). Possible next: the equality case for general D (the Selberg weights
-   attain lambda_1^2/G(D)), or the sieve upper bound S(A, z) <= X/G(D) + error from Counting.lean's selberg_expand.
+3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S46 Katai-BSZ
+   criterion, refuted as a route, located at an averaged dilation second moment). Candidates: Merikoski's
+   multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form under GRH/EH. The dimension-ladder line
+   (S43-S45) is CLOSED for bounded attempts. Not another "averaging near log X"; not another orthogonality criterion of
+   Katai type for lambda(p+2) without a new input on the dilation second moment.
+4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss, SelbergOpt, SelbergEq, Cosets (S46:
+   selberg_lower attained for every D by explicit integer weights, lambda_1 = sum mu^2 W/phi > 0; Moebius inversion on
+   [1, D] by downward recursion). Possible next: uniqueness of the extremal weights for general D (analogue of
+   selberg_opt_D6_eq_iff: equality iff lam is a multiple of selbergEqLam), the closed form t_d = sum mu(e/d) y_e, or the
+   sieve upper bound S(A, z) <= X/G(D) + error from Counting.lean's selberg_expand.
 5. Main paper thin index: candidates: the 186 subsection (detail is in the frozen verification note); the Related-results
    route-card paragraphs could be condensed to one list after the review.
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
-   certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt).
+   certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt). Remaining from-scratch inner-loss parts of
+   186 not yet re-run: 11 of 17 (see code/cap6/loss_inner/ minus loss_inner_regen_s45/ and _s46/); one core each,
+   ~10-25 min: /usr/bin/python3 code/oai186_loss_inner.py --group G --comp C --part <file> (needs python-flint for
+   /usr/bin/python3).
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12.
+
+## Session 46 (7:34 PM CT slot of 22 Nov, started on time 01:35 UTC 23 Nov; no wait) -- additions
+- Parity attempt: route card notes/parity-attempts/2026-11-23-katai-bsz-dilation.md (refuted as a route in the classical
+  form; located in the growing-range form). Source read: Bourgain-Sarnak-Ziegler arXiv:1110.0992v1, Thm 2, Sect. 2 and
+  p. 13 (SHA-256 dee51b51...c44a; PDF not committed). Script code/parity/katai_dilation.py [X] (/usr/bin/python3 -I;
+  ~40 s at 1e8, ~4 GB; .out). One web search (literature scope recorded in the card). Fresh-context adversarial audit:
+  2 errors (no-go argued from a fixed pair; cross-term equivalence wrong for p > w), 2 gaps, 4 slips; all fixed.
+- Exploration: code/explore/dilation_second_moment.py [X] (/usr/bin/python3 -I; ~2 min at 1e8, ~3 GB; .out): inconclusive.
+- Lean: TwinPrimes/SelbergEq.lean (selbergEqY/T/Lam, selbergEqT_sum, selbergEq_Y, selbergG_pos, selbergEq_lam_one,
+  selbergEq_LHS, selberg_lower_eq, selberg_lower_attained, selbergEq_D6; helper agent, statements checked here; in
+  Audit.lean); lake build and Audit.lean pass. Selberg.lean docstring updated.
+- Bound share: from-scratch regression of 3 more of the 17 inner-loss parts of 186 (I2new L1,L2,L3; I2new L4,L5,L6;
+  I5/2old L4,L5,L6): /usr/bin/python3 code/oai186_loss_inner.py --group G --comp C --part code/cap6/loss_inner_regen_s46/<part>.json
+  (one core each, ~20 min, ~1.4-1.6 GB, python-flint); identical to the committed code/cap6/loss_inner/ parts
+  (code/cap6/compare_loss_inner_regen_s46.py -> .json). One program only. 6 of the 17 inner parts now re-run (S45 + S46).
+- Main paper v0.46. Wolfram and mathbox NOT available. No news search (not the 3:34 AM run).
 
 ## Session 45 (11:34 AM CT slot of 22 Nov, started on time 17:34 UTC; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-22-switching-rung3.md (refuted at level 1/2; located for a common

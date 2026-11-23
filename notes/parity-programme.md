@@ -271,3 +271,12 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
 - This line (dimension ladder, Sessions 43-45) is now closed for bounded attempts: what remains (a double or vector
   sieve on the switched set; levels > 0.612 for beta_{2/3}-sieve weights) are research problems. Next mechanisms:
   Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.
+
+## Session 46 (23 Nov 2026)
+- Route card notes/parity-attempts/2026-11-23-katai-bsz-dilation.md: a genuinely new mechanism for this programme, an
+  orthogonality criterion of Katai / Bourgain-Sarnak-Ziegler type (no Type I / II input on lambda at all). For
+  sum_p lambda(p+2) the classical statement is trivial (sparse weight), and the necessary input of any BSZ-type argument
+  is right-order Hardy-Littlewood for most dilation pairs (p1 m - 2, p2 m - 2): each open and of twin-prime type, so the
+  reduction runs the wrong way (refuted as a route). The sparse diagonal forces prime ranges beyond log x; the averaged
+  dilation second moment is the first unresolved step (located). Audited (2 errors, 2 gaps, 4 slips; fixed).
+- Next mechanisms: Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.

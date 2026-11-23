@@ -103,3 +103,11 @@ import TwinPrimes
 #print axioms TwinPrimes.Cosets.coset_count_three
 #print axioms TwinPrimes.Cosets.cnt_four_three_zero
 #print axioms TwinPrimes.Cosets.cnt_five_four_zero
+#print axioms TwinPrimes.SelbergEq.selbergEqT_sum
+#print axioms TwinPrimes.selbergEq_Y
+#print axioms TwinPrimes.selbergG_pos
+#print axioms TwinPrimes.selbergEq_lam_one
+#print axioms TwinPrimes.selbergEq_LHS
+#print axioms TwinPrimes.selberg_lower_eq
+#print axioms TwinPrimes.selberg_lower_attained
+#print axioms TwinPrimes.selbergEq_D6
