@@ -1,7 +1,7 @@
 {
- "version": "0.46",
+ "version": "0.47",
  "updated": "2026-11-23",
- "session_count": 46,
+ "session_count": 47,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -550,6 +550,21 @@
    "label": "Computed",
    "text": "Regression (Session 43): capped_check.py re-run from scratch on the Song-Yue 236 witness (code/cap6/P_sy236_u.json, 3464 s on 3 cores) reproduces I_T and J_T exactly; 48 J_T/I_T = 4.0030988048 (code/cap6/compare_sy236_regen_s43.json). Variational step only; Song-Yue Thm 4.18 / the analytic inputs not verified.",
    "where": "code/cap6/check_sy236_regen_s43.json"
+  },
+  {
+   "label": "Computed",
+   "text": "186 companion, Lemma 1.4 (Session 47): every retained order-three failure is a nonlargest H_{5/2} failure; checked line by line including the implicit largest-witness exclusion (caps sharp to 1e-12), max(A,C) <= 7L/3 of Lemma 1.1 on all 19 retained rows, and the mapping of rows to the six groups used by the code; 81 exact rational checks, one program. Lemmas 1.5-1.7, 2.3, 2.4, the restoration step and the analytic inputs not checked; 186 not adopted.",
+   "where": "code/oai186_lemma14_check.py; notes/oai186-lemma14-check.md"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "Finite part of Maynard's k-dimensional S_1 (Session 47): exact expansion of sum_{n<N, n = v0 (W)} (sum_{d_i | n+h_i} lambda_d)^2 into lcm counts, and the error bound |S_1 - (N/W) sum lambda_d lambda_e / prod [d_i,e_i]| <= sum |lambda_d lambda_e| when the moduli are pairwise coprime and coprime to W (CRT for k moduli). Not formalised: the y_r change of variables, the diagonalisation, the asymptotic main term.",
+   "where": "lean/TwinPrimes/MaynardS1.lean; main paper thm:lean item 16"
+  },
+  {
+   "label": "Computed",
+   "text": "Regression (Session 47, the last per-run batch): 3 more of the 17 inner-loss parts of 186 re-run from scratch (I2old L1,L4,L5; I5/2new L1-L3; I5/2new L4-L6). All fields identical except one Arb ball radius (I2old L1: 4.3e-63 vs 3.9e-64 committed in Session 16; reproduced twice now, midpoint identical, no bound changes). One program only. From now on: code/cap6/regress_all.py, at most monthly.",
+   "where": "code/cap6/compare_loss_inner_regen_s47.json"
   }
  ],
  "ideas": [
@@ -1134,6 +1149,18 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Session 46: pair-averaged C0 over 136 pairs shrinks roughly like 1/w (w = 13, 31, 61) at 1e8; consistent with HL plus truncation; no unexpected structure. Inconclusive curiosity."
+  },
+  {
+   "idea": "Level-1/2 barrier for bounded multiplicative functions (Green; Granville-Shao) vs the twisted Type I input (parity attempt, Session 47)",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Located: no level-1/2 barrier exists in those sources (both reach 20/39 for fixed a); their beyond-1/2 step needs multiplicativity, which lambda(n)lambda(n+2) lacks; a class-wide statement cannot give the weighted f = 1 input at any fixed level (conditional on GPY asymptotics). Route card 2026-11-23-granville-shao-level-half.md."
+  },
+  {
+   "idea": "Fourier uniformity of lambda(p+2) along the primes (exploration, Session 47)",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Dead end as a search for structure: at X = 1e8 the max of |sum lambda(p+2) e(alpha p)|/sqrt(pi) is 4.39, same as random-sign controls (4.12, 4.36); no spikes at a/q."
   }
  ],
  "phase": "B",
@@ -1155,6 +1182,6 @@
    "summary": "Frozen v1.0 (16 Nov 2026). Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236) and Charton et al. (212, Table 3 caps), each by two independent programs; ceiling < 3.99 for the 212 draft's Lemma 9.1 caps (one-program Gram certificate, weights checked at a random point); main terms and loss components of the 186 companion and the cap-quotient ingredients of 182 (numerical agreement of two implementations). A section states, number by number, what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified; no claimed bound is verified."
   }
  ],
- "last_review": "2026-11-16",
+ "last_review": "2026-11-23",
  "phase_note": "Phase B since Session 17 (15 Nov 2026): rung 186 finished in the sense of the plan (main terms and loss bound L+ re-evaluated by two programs, L+ by two programs for the 17 components carrying 99.95% of the decisive group O_{5/2}; the rest by one program, with large margin slack). 186 is NOT adopted (majorisation lemmas, restoration step and analytic inputs unchecked). Rung 182 continues inside Phase B's bound share. Session 32: parity paper frozen as v1.0 (24 pp.) after a five-lane internal referee pass."
 }

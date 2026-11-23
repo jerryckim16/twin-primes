@@ -3,49 +3,57 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 46, 7:34 PM CT slot of 22 Nov, run 01:35 UTC 23 Nov): PHASE B
+## POSITION (after Session 47, 3:34 AM CT slot of 23 Nov, run 09:35 UTC 23 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
-- PHASE B since Session 17. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (24 pp.); main paper v0.46.
-  No small-results paper is active now. H_m programme scoped, paused (notes/hm-programme.md section 6).
-- NEWS / FLAG: Lü-Wang-Wu, arXiv:2610.20242v2 (19 Nov; still v2 on 22 Nov, no comments field), CLAIM sum_p mu(p+2) = o(pi(x)).
-  Not verified; notes/sources-lww26.md; Session 39 + 40 route cards (conditional implication P^+(p+2) > p^{1-o(1)}). Flag open.
-- Weekly review: notes/reviews/2026-11-16.md. Next review: the NEXT run, 3:34 AM CT on Monday 23 Nov (09:34 UTC), the
-  first run starting on a Monday, Central time. Session 46 started on Sunday 22 Nov at 7:35 PM CT, so it did NOT do it.
-  THE NEXT RUN DOES THE REVIEW FIRST (and the 3:34 AM news search).
+- PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (one v1.1 revision planned, see below); main paper v0.47 (33 pp.).
+  Active lines (review of 23 Nov): main paper as an index; a short Lean note for programme (4) (after the k-dimensional
+  identity, or after 6 runs); the single parity v1.1 revision. Paused: toolkit note (5), H_m, rung 182.
+- Weekly review: notes/reviews/2026-11-23.md (read section 8, the coordinator's decisions). Next review: the first run
+  starting on Monday 30 Nov, Central time (normally the 3:34 AM CT run).
+- LWW flag (arXiv:2610.20242, still v2 on 23 Nov) open; see notes/flags-for-jerry.md.
 
-## Next steps (in order)
-1. Weekly review of 23 Nov (the next run) decides: (a) whether a parity-paper v1.1 gets ONE short
-   subsection on the LWW claim with the S39 + S40 implication (literature-check first); (b) whether the E2 route cards
-   (S32, S33, S36) become ONE remark in v1.1; S34, S37, S38, S41, S42, S43, S44, S45, S46 cards at most one sentence each
-   (S43 + S44 + S45: the sifting-dimension ladder, its level thresholds and the switching variant, a natural group;
-   S46: the Katai-BSZ criterion needs right-order HL for dilation pairs, the wrong direction); (c) the next active
-   small-results line (candidates: the Lean programme (4) as a short note, now with Gauss, general-D Selberg
-   diagonalisation, the general-D Selberg lower bound selberg_lower AND its attainment selberg_lower_attained
-   (SelbergEq.lean, S46), and Cosets.lean; the exact-certification toolkit (5)); (d) the S41 large-q sentence (open
-   Tao-Teraeväinen 2019 first); (e) whether the bound share should keep doing from-scratch regressions (240 S42, 236 S43,
-   186 main terms S44, 6 of 17 inner-loss parts of 186 S45 + S46) or stop.
-2. LWW thread: nothing more without checking their Prop. 4.2 (~45 pp.); only if the review says so. Watch for v3 / comments
-   (3:34 AM news search).
-3. Parity programme: one bounded attempt per run as a route card (notes/parity-attempts/README.md; latest: S46 Katai-BSZ
-   criterion, refuted as a route, located at an averaged dilation second moment). Candidates: Merikoski's
-   multiplicative-large-sieve route to GS-type Type I; the almost-all MRT17 form under GRH/EH. The dimension-ladder line
-   (S43-S45) is CLOSED for bounded attempts. Not another "averaging near log X"; not another orthogonality criterion of
-   Katai type for lambda(p+2) without a new input on the dilation second moment.
-4. Lean programme (4): Reduction, Counting, Fano, Orbit, Linnik, Selberg, Gauss, SelbergOpt, SelbergEq, Cosets (S46:
-   selberg_lower attained for every D by explicit integer weights, lambda_1 = sum mu^2 W/phi > 0; Moebius inversion on
-   [1, D] by downward recursion). Possible next: uniqueness of the extremal weights for general D (analogue of
-   selberg_opt_D6_eq_iff: equality iff lam is a multiple of selbergEqLam), the closed form t_d = sum mu(e/d) y_e, or the
-   sieve upper bound S(A, z) <= X/G(D) + error from Counting.lean's selberg_expand.
-5. Main paper thin index: candidates: the 186 subsection (detail is in the frozen verification note); the Related-results
-   route-card paragraphs could be condensed to one list after the review.
-6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped). Optional, low value: one-sided --bonf
-   certificate on the Song-Yue witness (~25 core-hours; resumable via --ckpt). Remaining from-scratch inner-loss parts of
-   186 not yet re-run: 11 of 17 (see code/cap6/loss_inner/ minus loss_inner_regen_s45/ and _s46/); one core each,
-   ~10-25 min: /usr/bin/python3 code/oai186_loss_inner.py --group G --comp C --part <file> (needs python-flint for
-   /usr/bin/python3).
+## Next steps (in order; from the review of 23 Nov)
+1. Bound share: the 186 majorisation lemmas, ONE per run, in order 1.5, 1.6, 1.7, 2.3, 2.4 (Lemma 1.4 done in Session 47:
+   notes/oai186-lemma14-check.md, code/oai186_lemma14_check.py; the PDF is code/third_party/openai186/short_gaps_numerics.pdf,
+   transcription notes/sources-186-loss.md). Then settle which threshold the restoration step (Prop. 4.6 of the main 186
+   paper) needs (prop:oai186-budget). NO more per-run regressions: code/cap6/regress_all.py (--list / --run JOB / --run all),
+   at most monthly; the 186 main terms and outer parts are not yet in it (add them when it is next run). 9 of 17 inner parts
+   have been re-run (S45-S47).
+2. Parity v1.1 (2-3 runs): (a) finish the literature check of the LWW transfer (notes/sources-lww26.md, last section: a second
+   search, and re-read LWW Section 1 and Remarks 1-4 for the point); (b) ONE short subsection (<= 1 p.) with the S39+S40
+   conditional implication, neutral wording; (c) ONE remark merging the E2 cards (S32, S33, S36); (d) one "Further tests"
+   paragraph, one sentence each for S37, S38, S42, S46, S47, one for S43-S45 together, one for S34+S35 (or drop); S41 only
+   after Tao-Teraeväinen 2019 is opened; (e) one referee lane, then refreeze as v1.1. Folklore checks (review section 7)
+   before calling anything "ours".
+3. Parity attempts: one per run (Jerry's rule), each with a pre-stated success outcome NOT implied by the paper's class.
+   Mechanisms left from the review: what LWW Sections 2-3 need from mu versus lambda (their Remark 1); Merikoski's
+   multiplicative-large-sieve route. Done: Green / Granville-Shao (S47, located). MRT17 under GRH/EH: literature check only.
+   A run may spend its attempt on the source reading for v1.1 or an expert item, if the card says so.
+4. Lean: k-dimensional Maynard identity, one lemma per run: next the change of variables lambda -> y_r (Maynard Lemma 5.1,
+   Moebius inversion over tuples), then the diagonalisation. MaynardS1.lean (S47) has the S1 expansion and error.
+   No more 1-dimensional Selberg results.
+5. Main paper: bump the version only when content changes; keep sec:related as an index.
+6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
-   MR16, GT10, GT12.
+   MR16, GT10, GT12 (do them inside v1.1).
+
+## Session 47 (3:34 AM CT slot of 23 Nov, started on time 09:35 UTC; no wait) -- additions
+- Weekly review notes/reviews/2026-11-23.md (fresh-context helper; facts checked; coordinator decisions in section 8).
+- News search: nothing changes the numbers. LWW still v2. Secondhand mention (163.com, 4 Sep 2026, Machine Heart) of a
+  "188" formal proof by an Anthropic team: no primary source, not recorded as a claim. Sharifi's page unchanged (182 bundle).
+  Yang arXiv:2609.24347, 2608.13299 (densities of P^+(p-1) >= p^c) do not affect the 0.677 comparison.
+- Parity attempt: notes/parity-attempts/2026-11-23-granville-shao-level-half.md (located; audited: 3 errors incl. a
+  sieve-size miscount, fixed). Sources: Green arXiv:1604.04481v4, Granville-Shao arXiv:1703.06865v2 (SHA-256 in the card;
+  PDFs not committed). Script code/parity/green_example_check.py (.out). Minor flag: Green p. 2 example misprinted.
+- Exploration: code/explore/shifted_prime_fourier.py [X] [log2M] (/usr/bin/python3 -I; 50 s at 1e8, 2^27; ~5 GB; .out): dead end.
+- Bound share: 186 Lemma 1.4 verified as stated (code/oai186_lemma14_check.py, 18 s, exact; notes/oai186-lemma14-check.md;
+  re-run by the coordinator, identical output). Last regression batch: code/cap6/compare_loss_inner_regen_s47.json
+  (one Arb radius differs, explained there). code/cap6/regress_all.py written (240 / 236 / 17 inner jobs; untested end to end).
+- Lean: TwinPrimes/MaynardS1.lean (tupleDvd, mSieveSum, maynard_S1_expand(_W), tupleDvd_lcm, crt_tuple_residue,
+  crt_tuple_count_bounds, maynard_S1_error, example; helper agent, checked here); in Audit.lean; build and audit pass.
+- Main paper v0.47. Log: the 14 Nov entries merged into one daily summary (log/archive-2026-11-14.json).
+- Wolfram and mathbox NOT available.
 
 ## Session 46 (7:34 PM CT slot of 22 Nov, started on time 01:35 UTC 23 Nov; no wait) -- additions
 - Parity attempt: route card notes/parity-attempts/2026-11-23-katai-bsz-dilation.md (refuted as a route in the classical

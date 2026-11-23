@@ -1,0 +1,27 @@
+{
+ "note": "fields other than timing (seconds, peak_rss_MB) must agree exactly",
+ "parts": {
+  "part_I2old_L1_L4_L5.json": {
+   "identical": false,
+   "differing_fields": [
+    "components"
+   ],
+   "seconds_old": 2155,
+   "seconds_new": 1586
+  },
+  "part_I52new_L1_L2_L3.json": {
+   "identical": true,
+   "differing_fields": [],
+   "seconds_old": 1944,
+   "seconds_new": 2086
+  },
+  "part_I52new_L4_L5_L6.json": {
+   "identical": true,
+   "differing_fields": [],
+   "seconds_old": 1663,
+   "seconds_new": 1764
+  }
+ },
+ "all_identical": false,
+ "explanation": "Only one field differs: I2old L1 A_rad (Arb ball radius) = 4.3446952580261114e-63 now vs 3.85602674720155e-64 in the committed Session 16 part. A second re-run of L1 alone in this session gives 4.3446952580261114e-63 again, so the program is deterministic in this environment (python-flint 0.9.0); the change most likely comes from a different python-flint/Arb version in Session 16 (not recorded). The midpoint A = 25776.802058413206 and every other field are identical; A + A_rad < 25777 = table_A either way, so no bound changes."
+}

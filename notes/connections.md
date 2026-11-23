@@ -176,3 +176,7 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   sum_p lambda(p+2) its necessary input is right-order Hardy-Littlewood for most dilation pairs (p1 m - 2, p2 m - 2), a
   family of twin-prime-type problems. Distance to twins: unchanged (the criterion moves the difficulty, it does not
   reduce it).
+- Green / Granville-Shao level beyond 1/2 for multiplicative functions (Session 47; route card
+  2026-11-23-granville-shao-level-half.md; literature + elementary, audited): no level-1/2 barrier exists there for a fixed
+  residue class; the beyond-1/2 step needs multiplicativity, which lambda(n)lambda(n+2) lacks; a statement valid for all
+  bounded completely multiplicative f cannot give the weighted twisted input at any fixed level. Distance to twins: unchanged.

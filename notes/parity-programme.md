@@ -280,3 +280,10 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   reduction runs the wrong way (refuted as a route). The sparse diagonal forces prime ranges beyond log x; the averaged
   dilation second moment is the first unresolved step (located). Audited (2 errors, 2 gaps, 4 slips; fixed).
 - Next mechanisms: Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.
+
+## Session 47 (23 Nov 2026)
+- Weekly review (notes/reviews/2026-11-23.md): one attempt per run stays (Jerry's rule), each with a pre-stated success
+  outcome not implied by the paper's class; new mechanisms: Green / Granville-Shao (done), LWW mu versus lambda, Merikoski.
+  Parity v1.1 planned (LWW subsection, E2 remark, one summary paragraph), then refreeze.
+- Attempt: route card 2026-11-23-granville-shao-level-half.md: located. Sources read: Green arXiv:1604.04481v4,
+  Granville-Shao arXiv:1703.06865v2. Audited (3 errors fixed, one of which reversed a conclusion).
