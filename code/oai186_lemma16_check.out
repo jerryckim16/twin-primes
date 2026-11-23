@@ -1,0 +1,119 @@
+[0] source rows (1.13)-(1.21), pp. 4-5; groups (1.22)-(1.24), pp. 5-6; masks (1.5), p. 2
+  PASS (1.1)/(1.3): S = 2742997/2624989, T0, T1 as printed, h = S/98304
+  PASS ladders: 29 / 43 rows, order counts (12,12,5) / (12,12,19)
+  PASS (1.20): retained rows are (o,0..27) and (n,0..38); none is terminal
+  PASS (1.17) on retained rows: (A,C) = (S+e, T+e) in orders 1-2 and (S+e/2, T+e/2) in order 3
+  PASS activations xi_t decrease strictly along each ladder (xi_t = delta_t / rho)
+  PASS (1.23) vs (1.22): xi_G = min own xi_t, U_G = min own V_t, b_G = min own core c_t; orders match m_G; inner groups have no order-1 row (I_t = whole space)
+  PASS (1.23)-(1.24): radial intervals chain: t_G(order 2) = b_G(order 5/2) in each role; t_G(5/2) = largest total
+  PASS (1.24): p_G = h floor(U_G/(2 m_G h)) for all six groups
+  PASS (1.24) z_G = floor(cap/h) for the (1.18) cap of the group's shell, and = the cap of mask row zrow of (1.5)
+  PASS absorbed rows of each 5/2 group = own rows of the preceding order-two group (1.22); mu_t = 2 for them; min absorbed activation = xi of that group >= xi_G; their thresholds >= U_G (p. 6 last lines)
+  PASS code/oai186_support_data.py: all its printed-value checks pass (masks (1.5), groups, ladders)
+
+[1] the 61 low bins (Sec. 1.5.1, p. 9)
+  PASS interval counts 10, 22, 5, 7, 6, 11 (total 61)
+  PASS each list increases strictly from xi_G to p_G, so the bins (l,u] partition (xi_G, p_G]
+  PASS 40 order-5/2 low intervals (22 + 7 + 11)
+
+[2] c_G(u) of (1.26) on every bin, from every eligible row (own + absorbed, each with its own mu_t)
+  group  bin   l              u              theta  #own  #abs  argmin-row  c_G(u)        floor(c/h)-d+1
+  O2      L1   0.024786729    0.037180094    189    20    0     (n,14)      1.00939281604 94919
+  O2      L2   0.037180094    0.05           140    28    0     (o,7)       0.995450693754 93607
+  O2      L3   0.05           0.10368        120    48    0     b_G         0.948574677925 89197
+  O2      L4   0.10368        0.124416       57     48    0     b_G         0.948574677925 89197
+  O2      L5   0.124416       0.1492992      47     48    0     b_G         0.948574677925 89197
+  O2      L6   0.1492992      0.17915904     40     48    0     b_G         0.948574677925 89197
+  O2      L7   0.17915904     0.21499085     33     48    0     b_G         0.948574677925 89197
+  O2      L8   0.21499085     0.23648993     30     48    0     b_G         0.948574677925 89197
+  O2      L9   0.23648993     0.25798902     28     48    0     b_G         0.948574677925 89197
+  O2      L10  0.25798902     0.2612389      27     48    0     b_G         0.948574677925 89197
+  O5/2    L1   3.3613846e-05  6.7227692e-05  104124 2     0     (n,37)      1.04489878791 98259
+  O5/2    L2   6.7227692e-05  0.00013445538  52062  3     0     (n,36)      1.04486103407 98256
+  O5/2    L3   0.00013445538  0.00026891077  26031  5     0     (n,34)      1.04470397807 98241
+  O5/2    L4   0.00026891077  0.00053782154  13016  6     0     (n,33)      1.04454933832 98226
+  O5/2    L5   0.00053782154  0.0010756431   6508   9     0     (n,31)      1.04390603697 98166
+  O5/2    L6   0.0010756431   0.0021512861   3254   10    0     (n,30)      1.04327263256 98106
+  O5/2    L7   0.0021512861   0.0043025723   1627   11    0     (n,29)      1.04225918551 98011
+  O5/2    L8   0.0043025723   0.0086051446   814    14    0     (n,27)      1.03804324576 97614
+  O5/2    L9   0.0086051446   0.01           700    14    0     (n,27)      1.03804324576 97614
+  O5/2    L10  0.01           0.015          467    16    0     (o,25)      1.03145081488 96994
+  O5/2    L11  0.015          0.0225         312    17    0     (n,25)      1.02725044    96599
+  O5/2    L12  0.0225         0.03375        208    19    19    b_G         1.01662367741 95599
+  O5/2    L13  0.03375        0.05           140    19    28    b_G         1.01662367741 95599
+  O5/2    L14  0.05           0.06           117    19    42    b_G         1.01662367741 95599
+  O5/2    L15  0.06           0.072          98     19    44    b_G         1.01662367741 95599
+  O5/2    L16  0.072          0.0864         82     19    46    b_G         1.01662367741 95599
+  O5/2    L17  0.0864         0.10368        68     19    48    b_G         1.01662367741 95599
+  O5/2    L18  0.10368        0.124416       57     19    48    b_G         1.01662367741 95599
+  O5/2    L19  0.124416       0.1492992      47     19    48    b_G         1.01662367741 95599
+  O5/2    L20  0.1492992      0.17915904     40     19    48    b_G         1.01662367741 95599
+  O5/2    L21  0.17915904     0.19407083     37     19    48    b_G         1.01662367741 95599
+  O5/2    L22  0.19407083     0.20898262     34     19    48    b_G         1.01662367741 95599
+  I2old   L1   0.024786729    0.05           140    12    0     b_G         0.903211386483 84931
+  I2old   L2   0.05           0.10368        68     12    0     b_G         0.903211386483 84931
+  I2old   L3   0.10368        0.1492992      47     12    0     b_G         0.903211386483 84931
+  I2old   L4   0.1492992      0.21499085     33     12    0     b_G         0.903211386483 84931
+  I2old   L5   0.21499085     0.23800208     30     12    0     b_G         0.903211386483 84931
+  I5/2old L1   0.00099447285  0.0019889457   3520   1     0     (o,27)      0.951050291144 89431
+  I5/2old L2   0.0019889457   0.01           700    2     0     (o,26)      0.946046007072 88961
+  I5/2old L3   0.01           0.03375        208    4     10    b_G         0.927279941802 87195
+  I5/2old L4   0.03375        0.0864         82     4     12    b_G         0.927279941802 87195
+  I5/2old L5   0.0864         0.124416       57     4     12    b_G         0.927279941802 87195
+  I5/2old L6   0.124416       0.1492992      47     4     12    b_G         0.927279941802 87195
+  I5/2old L7   0.1492992      0.19040166     37     4     12    b_G         0.927279941802 87195
+  I2new   L1   0.028352527    0.06           117    12    0     b_G         0.905662463393 85162
+  I2new   L2   0.06           0.10368        68     12    0     b_G         0.905662463393 85162
+  I2new   L3   0.10368        0.124416       57     12    0     b_G         0.905662463393 85162
+  I2new   L4   0.124416       0.17915904     40     12    0     b_G         0.905662463393 85162
+  I2new   L5   0.17915904     0.21499085     33     12    0     b_G         0.905662463393 85162
+  I2new   L6   0.21499085     0.2390438      30     12    0     b_G         0.905662463393 85162
+  I5/2new L1   3.3613846e-05  6.7227692e-05  133874 2     0     (n,37)      0.956137654055 89910
+  I5/2new L2   6.7227692e-05  0.00053782154  16735  6     0     (n,33)      0.955788204468 89877
+  I5/2new L3   0.00053782154  0.0021512861   4184   9     0     (n,30)      0.954511498705 89757
+  I5/2new L4   0.0021512861   0.0086051446   1046   12    0     (n,27)      0.949282111901 89265
+  I5/2new L5   0.0086051446   0.0225         400    14    0     (n,25)      0.938489306144 88250
+  I5/2new L6   0.0225         0.06           150    15    12    b_G         0.927862543553 87250
+  I5/2new L7   0.06           0.0864         105    15    12    b_G         0.927862543553 87250
+  I5/2new L8   0.0864         0.124416       73     15    12    b_G         0.927862543553 87250
+  I5/2new L9   0.124416       0.1492992      61     15    12    b_G         0.927862543553 87250
+  I5/2new L10  0.1492992      0.17915904     51     15    12    b_G         0.927862543553 87250
+  I5/2new L11  0.17915904     0.19123079     48     15    12    b_G         0.927862543553 87250
+  PASS every one of the 61 bins has a nonempty eligible set (so its event is not declared empty)
+  PASS c_G(u) >= b_G and c_G is nonincreasing in u along each group's bins
+  PASS structure: on all 61 bins c_G(u) = max(b_G, min of the cores c_t of the eligible rows): the threshold term V_t - (mu_t-1)u never decides the minimum; hence also mu_t := 2 for order-3 rows, or mu_t := m_G for all rows, gives the same c_G(u) on every bin
+  PASS no tie xi_t = u between any row activation (own or absorbed) and any bin end u
+
+[3] the direct check printed in the proof of Lemma 1.6 (p. 10)
+  PASS O5/2: exactly the first 11 of 22 intervals end below every absorbed order-two activation (min = xi of O2 = 0.024786729); with '<=' instead of '<' the count is the same   [u_11 = 0.0225 < 0.024786729 < u_12 = 0.03375]
+  PASS O5/2: on the remaining 11 intervals the order-three minimum equals b_G exactly (attained by the row with core b_G), hence c_G(u) = b_G
+  PASS O5/2: the split is sharp: on each of the first 11 intervals the order-three minimum is > b_G, and some absorbed row is eligible on every remaining interval   [first intervals with m3 > b_G: L1,L2,L3,L4,L5,L6,L7,L8,L9,L10,L11]
+  PASS I5/2old: exactly the first 2 of 7 intervals end below every absorbed order-two activation (min = xi of I2old = 0.024786729); with '<=' instead of '<' the count is the same   [u_2 = 0.01 < 0.024786729 < u_3 = 0.03375]
+  PASS I5/2old: on the remaining 5 intervals the order-three minimum equals b_G exactly (attained by the row with core b_G), hence c_G(u) = b_G
+  PASS I5/2old: the split is sharp: on each of the first 2 intervals the order-three minimum is > b_G, and some absorbed row is eligible on every remaining interval   [first intervals with m3 > b_G: L1,L2]
+  PASS I5/2new: exactly the first 5 of 11 intervals end below every absorbed order-two activation (min = xi of I2new = 0.028352527); with '<=' instead of '<' the count is the same   [u_5 = 0.0225 < 0.028352527 < u_6 = 0.06]
+  PASS I5/2new: on the remaining 6 intervals the order-three minimum equals b_G exactly (attained by the row with core b_G), hence c_G(u) = b_G
+  PASS I5/2new: the split is sharp: on each of the first 5 intervals the order-three minimum is > b_G, and some absorbed row is eligible on every remaining interval   [first intervals with m3 > b_G: L1,L2,L3,L4,L5]
+  PASS consequence: on all 40 order-5/2 intervals c_G(u) with absorbed rows = c_G(u) without them
+  PASS note: the order-two groups have no absorbed rows, so (1.26) uses own rows only there
+  PASS absorbed rows with own order are never looser than with mu = m_G = 5/2 (V - u >= V - 3u/2): own order is the sharper, still valid choice
+  PASS authors' script: the same 61 low tasks (l, u, theta) in the same order
+  PASS authors' source_clipped_group: radial_lower = our c_G(u) and first retained index = max(R0, floor(c_G/h)-d+1) on all 61 bins
+  PASS authors' groups list only own rows (19, 4, 15 order-3 rows in the 5/2 groups): absorbed rows omitted, harmless by the direct check above
+
+[4] 'Each of the 61 intervals is nonempty on this grid' (p. 10)
+  PASS reading A: retained index range (1.25) n (1.5 domain) n (1.26) nonempty on all 61 bins   [smallest count 5 (O5/2 L1)]
+  PASS reading B: same with only the mask row of cap z_G, nonempty on all 61 bins   [smallest count 5 (O5/2 L1)]
+  PASS reading C: c_G(u) < t_G on all 61 bins (nonempty physical radial interval)
+  PASS the witness intervals themselves meet the grid: floor(l/h) < ceil(u/h), and each contains a grid point
+
+[5] the containment argument
+  PASS (a) the outward full-cell test is exact on all 61 bins: index floor(c_G/h)-d+1 contains a point with s > c_G (explicit totals), index one lower contains none
+  random/boundary roots: 7050 failing roots (2229 from absorbed rows, 654 boundary: p = u, delta = 1e-30), 16510 low witnesses checked, 1490 skipped (outside the group's radial interval or degenerate)
+  PASS (b) every failing root (row x fails: s > c_x and H_{mu_x, xi_x} > V_x) has, for each of its low witnesses w in bin (l,u], s > c_G(u) and cell index r >= floor(c_G(u)/h) - d + 1   [lost 0 / 16510]
+  PASS (c) negative controls: replacing u by l in V_t - (mu_t-1)u loses witnesses; eligibility xi_t < l instead of xi_t < u loses witnesses (mu_t = 2 for order-3 rows loses none, as [2] predicts)   [losses: u->l 1458, mu->2 0, elig l 2449]
+  PASS (c') dropping the absorbed rows loses nothing on these roots (consistent with [3])
+  PASS (d) explicit O_2 root (s = 1.0087, fragments 0.0371, 0.1, 0.45, 0.4216; all <= z_G): row (o,0) fails with witness 0.1 in L3; 0.0371 in L1 is a group-level H_2 witness at U_G but no failing row's witness; s <= c_G(L1) (clipped there), s > c_G(L3) = b_G (retained there)   [28 failing rows; c_G(L1) = 1.009392816]
+
+runtime 6.5 s, peak RSS 42 MB
+42 checks, 0 failures

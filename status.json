@@ -1,7 +1,7 @@
 {
- "version": "0.48",
+ "version": "0.49",
  "updated": "2026-11-23",
- "session_count": 48,
+ "session_count": 49,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,21 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "Multiplicativity of the project's recursive Moebius function: mu(pn) = -mu(n) for prime p not dividing n, mu(n) = 0 if p^2 | n, mu(mn) = mu(m)mu(n) for coprime m, n; hence mu(a)mu(x) = mu(x/a) for a | x | c, c squarefree (muSign_of_sqfree), and Maynard's change of variables lambda <-> y in both directions for every R and k with no hypothesis (maynard_lam_of_y_sqfree_all, maynard_y_of_lam_sqfree_all).",
+   "where": "lean/TwinPrimes/MuMult.lean"
+  },
+  {
+   "label": "Computed",
+   "text": "Lemma 1.6 of the OpenAI 186 numerical companion (containment of the 61 low-witness intervals) verified as stated: bin counts, c_G(u) of (1.26) on every bin, the printed direct check (11, 2, 5 / 11, 5, 6), nonemptiness, exactness of the full-cell test, 7050 constructed failing roots with no witness lost; 42 exact checks, 0 failures, one program. Needs 'assigned' = bin of a witness of the failing source row (the reading its proof uses).",
+   "where": "code/oai186_lemma16_check.py; notes/oai186-lemma16-check.md"
+  },
+  {
+   "label": "Proved here (outline, conditional on LWW Props. 4.2 and 5.3, Claimed)",
+   "text": "Parity paper v1.1, Section 6.4: if Props. 4.2 and 5.3 of Lu-Wang-Wu (arXiv:2610.20242v2) hold, then >>_K x/(log x)^2 primes p in (x,2x] have p+2 = a l, l prime, a a product of K primes in prescribed ranges below exp(2 (log x)^{1/5}); a consistency observation, not an error found, not about twins. Audited (Sessions 39, 40, 49).",
+   "where": "papers/parity-barrier/main.tex (subsec:lww-transfer); notes/audit-parity-v11.md"
+  },
   {
    "label": "Lean-checked",
    "text": "Moebius inversion over k-tuples on {1..R}^k, both directions, all R, k (mobInv_upSum, upSum_mobInv); Maynard's change of variables lambda <-> y (Lemma 5.1) both directions for squarefree-supported weights, assuming mu(a)mu(x) = mu(x/a) for a | x | c squarefree, which is decided for c <= 30 (maynard_inversion_R30).",
@@ -581,8 +596,8 @@
   {
    "idea": "Exploration: short-interval variance of twin-prime counts against a Montgomery-Soundararajan-type law",
    "origin": "exploration",
-   "status": "open",
-   "note": "Session 48: primes reproduce M-S (c = 1.001, B = -1.400 at 1e9); twins fit Var/Mean = 1 - c(log H - B)/log x with c = 0.51 at both 1e8 and 1e9, against a rough singular-series guess decaying like 1/log x. Heuristic; prediction not derived; literature not searched."
+   "status": "ruled out",
+   "note": "Session 48: primes reproduce M-S (c = 1.001, B = -1.400 at 1e9); twins fit Var/Mean = 1 - c(log H - B)/log x with c = 0.51 at both 1e8 and 1e9, against a rough singular-series guess decaying like 1/log x. Heuristic; prediction not derived; literature not searched. Session 49: explained. The Hardy-Littlewood prediction with the 4-point singular series S({0,2,h,h+2}) matches the measured ratio within 3% of the deficit for 64 <= H <= 2^13 (slope 0.486 vs measured 0.513); S48's rough guess was wrong, the code is consistent (code/explore/twin_variance_prediction.py). Dead end (puzzle explained)."
   },
   {
    "idea": "Parity attempt: Merikoski's large-sieve route to Type I information for lambda in a family carried by n(n+2) (split algebra Z x Z, norm uv)",
@@ -1190,10 +1205,10 @@
   {
    "slug": "parity-barrier",
    "title": "The parity barrier and twin primes: what is known and what is missing",
-   "version": "1.0.1",
+   "version": "1.1",
    "status": "frozen",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Frozen v1.0 (18 Nov 2026, 24 pp.); v1.0.1 (20 Nov 2026) adds only a status note: the preprint arXiv:2610.20242 (Lu-Wang-Wu) claims sum_p mu(p+2) = o(pi(x)), called open in the paper; Claimed, not verified. Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion (Liouville-pattern weights block a proof of H_m <= g exactly when g < H(2m+1); a statement about the weight class, not a bound); GEH ceilings, k = 2 exactly at the parity value 2, the k = 3 criterion above 2 at eps = 2/9, 1/4, 7/24 and provably below 2 for eps >= 0.439; Pintz's dichotomy with Maynard weights (|d| <= 12; Pintz 16; possibly folklore); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. Five-lane internal referee pass applied. No claim of progress on the twin prime conjecture. v1.1 in preparation (Session 48): the Lu-Wang-Wu transfer subsection is staged in papers/parity-barrier/v11/, not yet in the paper."
+   "summary": "Frozen v1.1 (23 Nov 2026, 26 pp.): v1.0 (18 Nov) plus one subsection approved by Jerry (Section 6.4): a consistency observation on the Type II estimate of Lu-Wang-Wu (arXiv:2610.20242, Claimed) -- if their Props. 4.2 and 5.3 hold, >> x/(log x)^2 primes p have p+2 = a l, l prime, a = x^{o(1)} (Proved here in outline, conditional; not an error found; not about twins); literature-checked and adversarially audited. Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion; GEH ceilings, k = 2 at the parity value 2, the k = 3 eps-window; Pintz's dichotomy with Maynard weights (|d| <= 12); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. No claim of progress on the twin prime conjecture."
   },
   {
    "slug": "verification-note",
