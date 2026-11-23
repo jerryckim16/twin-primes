@@ -3,6 +3,30 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-23, Session 48 -- Short-interval variance of twin-prime counts (Montgomery-Soundararajan-type statistics)
+- Idea: for primes, Montgomery-Soundararajan (heuristic, from Hardy-Littlewood with uniformity) predict that the variance
+  of prime counts in intervals of length H near x falls below the Poisson value: Var/Mean ~ 1 - (log H - B)/log x with
+  B = 1 - gamma - log(2 pi) = -1.415. Does the twin count show the same deficit, and with which slope? A naive guess is
+  "one deficit per linear form" (slope 2). A different slope would say something about how the 4-point singular series
+  S({0,2,h,h+2}) average, the input any short-interval twin statement needs.
+- Tried: code/explore/twin_short_variance.py [X] (/usr/bin/python3 -I; ~30 s and ~1.5 GB at X = 1e9; .out). Blocks of
+  length H = 2^4..2^18 in (X/2, X]; ratio = mean((count - HL expectation)^2)/mean(expectation), with the expectation
+  sum 1/log n (primes) and sum 2 C_2/log^2 n (twins); fit (1 - ratio) log x = c log H - c B over 64 <= H <= 2^14.
+  (A first version without detrending was wrong for large H: the 1/log n drift dominated. Fixed.)
+- Result: primes (control): c = 1.001, B = -1.400 at X = 1e9 (c = 0.958, B = -1.72 at 1e8): M-S reproduced to three
+  digits. Twins: c = 0.513, B = 2.45 at 1e9; c = 0.514, B = 2.02 at 1e8. The slope is stable and close to 1/2, not 2;
+  the constant B is not stable yet.
+- Outcome: inconclusive (curiosity), with a scaling puzzle. A first heuristic: Var = H S_2/log^2 x
+  + 2 sum_{h<H} (H-h)(S({0,2,h,h+2}) - S_2^2)/log^4 x with S_2 = 2C_2, so any singular-series deficit of size a H log H
+  gives ratio 1 - (2a/S_2) log H/log^2 x, a SECOND-order effect (one more 1/log x than for primes); if, as a rough guess,
+  each of the three forms h, h-2, h+2 contributes like the prime case, then 2a/S_2 ~ 3 S_2, i.e. fitted c ~ 3 S_2/log x
+  = 0.22 at 1e8 and 0.19 at 1e9. The data give c = 0.51 at both, with no visible 1/log x decay. So either lower-order
+  terms of the 2-point densities dominate at this size, or the rough guess is wrong. I have not done the singular-series
+  computation properly and have not searched the literature. Unweighted counts, one range, two
+  values of X. Nothing here bears on the parity barrier. Possible later test (cheap): derive the predicted slope from
+  the singular-series average and compare; if it is not 1/2 that is a red flag for the code, not a discovery.
+  Heuristic / exploratory only; not for a paper.
+
 ## 2026-11-23, Session 47 -- Fourier uniformity of lambda(p+2) along the primes (harmonic analysis / large sieve)
 - Idea: the claimed theorem of Lu-Wang-Wu (arXiv:2610.20242, Claimed) is the zero-frequency statement
   sum_p mu(p+2) = o(pi(x)). Its natural strengthening is uniformity in a twist e(alpha p): is

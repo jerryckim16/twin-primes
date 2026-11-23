@@ -1,0 +1,73 @@
+[0] source data (1.13)-(1.16), p. 4; groups (1.22)-(1.24), p. 5-6; masks (1.5), p. 2
+  PASS (1.1)/(1.3): S = 2742997/2624989, h = S/98304, n = 98264
+  PASS ladders have 29 / 43 rows
+  PASS (1.24): p_G = h floor(U_G / (2 m_G h)) for all six groups
+  PASS (1.5): largest retained totals (N-1)h outer, 89563h base, 89953h enlarged
+  PASS Lemma 1.1 guard xi_G > 2h > 0 and xi_G < p_G <= z_G for all groups
+
+[1] the 61 low bins (Sec. 1.5.1, p. 9) and u^+ = h ceil(u/h)
+  PASS lists increase strictly; 10+22+5+7+6+11 = 61 low bins
+  PASS u^+ = h ceil(u/h) satisfies u <= u^+ < u + h on all 61 bins   [u^+ = u exactly on 6 bins (the bins ending at p_G)]
+  PASS (2.4) data 2 <= L < H <= K <= N on all 61 bins
+  PASS theta is a positive integer and m - 1 > 0 on all bins (needed: both multiply upper bounds)
+  PASS rank-one guard used upstream: u^+ <= min(z_G, U_G/m_G) (a single fragment in the bin never fails alone)
+  PASS every bin has a nonempty eligible set and a nonempty retained index range lo..R1 (Lemma 1.6: 'nonempty')
+
+[2] the proof as exact inequalities
+  PASS (a) sum_i (j_i h - U/d) = r h - U exactly (2000 random index vectors, d in {39, 40})
+  PASS (b)+(c) slack theta[(m-1)(u^+ - u)] in [0, theta (m-1) h) on every bin (the r-independent part)
+
+[3] the exponent of W on every retained index of every low bin; the '< 700' claim (p. 16)
+  PASS exponent increases by exactly theta h per index (so its max is at r = R1) on all 143512 retained (bin, r) pairs
+  PASS exponent < 700 on every retained index of every low bin (max 13.7682 at I5/2new L11 r=89914)
+  info O2       d=40: retained r in [lo(u), 95638]; max exponent 9.0923 (L3), min exponent 0.0699 (L2)
+  info O5/2     d=40: retained r in [lo(u), 98263]; max exponent 10.7710 (L21), min exponent 3.8036 (L5)
+  info I2old    d=39: retained r in [lo(u), 87233]; max exponent 6.4093 (L5), min exponent 0.1645 (L1)
+  info I5/2old  d=39: retained r in [lo(u), 89524]; max exponent 10.6379 (L5), min exponent 5.3829 (L3)
+  info I2new    d=39: retained r in [lo(u), 87288]; max exponent 6.3336 (L6), min exponent 1.1096 (L1)
+  info I5/2new  d=39: retained r in [lo(u), 89914]; max exponent 13.7682 (L11), min exponent 6.2840 (L4)
+  PASS erased coordinate: W_{r+v} (d = 40) = exp(theta{sum over all 40 coordinates of (j_i+1)h - U + (m-1)u^+}) = W_r e^{theta v h}
+
+[4] randomized exact end-to-end test on the actual groups and bins, and negative controls
+  info 7320 random roots (120 per bin), 3443 with a failing witness in the bin
+  PASS L_{<=Lh} <= L_{<=l} on every root (the kernel's rounded-down cutoff l = Lh tilts less)
+  PASS (1.36) L_{<=l} < s + (m-1)u - U on every failing root (3443)
+  PASS Lemma 1.5: W_r e^{-theta L_{<=Lh}} > exp(theta{s+(m-1)u-U-L_{<=l}}) strictly on all 7320 roots
+  PASS kernel's lower-endpoint tilt e^{-theta h floor(L_i/h)} >= e^{-theta L_i}: composite bound also holds
+  PASS count: #fragments in [Lh, Hh) >= #fragments in (l, u] (random p avoids the null endpoint u = Hh)
+  PASS cover: on every failing root the majorant (count >= 1, exponent > 0) is > 1 >= indicator
+  info negative controls on the same failing roots: d -> d-1 breaks the cover on 0, u^+ -> l on 2231, u^+ -> u - h on 0
+  PASS negative control: u^+ replaced by the lower endpoint l gives uncovered failing roots
+  PASS sharpness construction is a legal failing root of O5/2 L22 in the retained range (r = 96008)
+  PASS   with d h: majorant exponent - Palm exponent = 40 theta eps > 0 (cover holds)
+  PASS   with (d-1) h: majorant exponent < 0 on this failing root (cover fails; so d = 40, not the face's 39, is needed for the outer erased-coordinate form)
+
+[5] consistency with the code
+  PASS oai186_support_data: h and ladders (xi, a, b, A, C) agree with section [0]
+  PASS oai186_loss_outer.py: exactly one low-bin weight expression (expo0, f_full) found by ast
+    expo0 = Aq(theta * (-UG + (m - 1) * Hb * hF + 40 * hF))
+    f_full = [(expo0 + Aq(theta * r * hF)).exp() if lo_index <= r <= R1 else arb(0) for r in range(nn)]
+  PASS oai186_loss_outer.py: low-bin schedule (l, u, theta, c_G(u)) equals Sec. 1.5.1 / (1.26) on all 32 outer bins
+  PASS oai186_loss_outer.py: weight exponent = theta(rh - U + (m-1)u^+ + d h), d = 40, on every retained index (88421 (bin, r) pairs), lower index = max(R0, floor(c_G/h) - d + 1)
+  PASS oai186_loss_outer.py: R form (2.17) uses f_full[R0 + i] (full index) and V form uses C = correl(f_full, K^(0))
+  PASS oai186_loss_outer.py: erased-coordinate arrays carry no profile factor: arrays0 = {(0,): bc, (1,): mc}
+  PASS oai186_loss_outer.py: correl(f, K)(r) = sum_{a=0}^{nn-1-r} f(r+a) K(a) (W at the full index r+a, (2.20), via (2.24))
+  PASS oai186_loss_inner.py: exactly one low-bin weight expression (expo0, Wr) found by ast
+    expo0 = Aq(theta * (-UG + (m - 1) * Hb * hF + KD * hF))
+    Wr = [(expo0 + Aq(theta * r * hF)).exp() for r in range(R0, R1 + 1)]
+  PASS oai186_loss_inner.py: low-bin schedule (l, u, theta, c_G(u)) equals Sec. 1.5.1 / (1.26) on all 29 inner bins
+  PASS oai186_loss_inner.py: weight exponent = theta(rh - U + (m-1)u^+ + d h), d = 39, on every retained index (55091 (bin, r) pairs), lower index = max(R0, floor(c_G/h) - d + 1)
+  PASS oai186_loss_inner.py: pair() multiplies the moment at r = R0 + i by Wr[i] and skips i < lo_index - R0
+  PASS oai186_loss_I2old.py: same weight (theta = ceil(7/u), KD = 39) on all 5 I2old bins and every index R0..R1
+  PASS oai186_loss_outer2.py: W0 + th r hm = theta(rh - U + (m-1)u^+ + 40h) on every retained index of L19..L22; Wcoef = sum_a chi(r+a) W(r+a) K0(a)
+  PASS upstream _schedule: the 61 low tasks have exactly our (l, u, theta)
+  PASS upstream: found last = ceil(high/step), high = last*step, offset and the radial expression by ast
+    first, last, cap = (int(lo // step), int(-(-hi // step)), int(-(-z // step)))
+    high = last * step
+    offset = (F(group['order']) - 1) * measures.high + count * engine.hq
+    radial = tuple(((rate * rational(j * engine.hq - ceiling + offset)).exp() if j in active else arb(0) for j in range(engine.n)))
+  PASS upstream: active index set of the clipped group = our lo(u)..R1 on all 61 bins
+  PASS upstream: radial factor = exp(theta(jh - U + (m-1)u^+ + d h)), d = dimension (40 / 39), on every active index (143512 (bin, j) pairs), zero elsewhere
+  PASS upstream _source_fiber multiplies the window by the radial factor at the full index before the erased correlation ('W is a function of the full radius BEFORE erasing')
+
+SUMMARY: 44 checks, 0 failed; runtime 23.4 s
