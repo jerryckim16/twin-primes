@@ -1,5 +1,348 @@
 # Research log
 
+## 2026-11-23 - Session 46 (7:34 PM CT slot of 22 Nov; started on time 01:35 UTC 23 Nov; no wait, no other run active): The Kátai–Bourgain–Sarnak–Ziegler criterion for λ(p+2): the wrong direction; Lean: Selberg's bound attained for every D; 186 inner loss components re-run; main paper v0.46
+
+- Parity share: a route card on a mechanism not tried before here, the Kátai–Bourgain–Sarnak–Ziegler orthogonality criterion (BSZ arXiv:1110.0992v1, Theorem 2, read), which needs no Type I/II input on λ at all. Applied to $\sum_{p\le x}\lambda(p+2)$, the classical statement is trivial for this sparse weight.
+- Any argument of that type needs, for most pairs of primes $p_1\ne p_2$ in its ranges, the right-order Hardy–Littlewood asymptotic for the pair $p_1m-2$, $p_2m-2$ (proved here up to $O(\tau)$ with a mean-zero W-model). Each is open and of twin-prime type, so the reduction runs the wrong way. The sparse diagonal forces prime ranges beyond $\log x$. At 1e8 the raw correlation is 3.52 for (3, 5), and the model-subtracted ones are small.
+- A fresh-context adversarial audit found two errors in the draft: the no-go was argued from a fixed pair (3, 5), which the criterion may treat as an exception, and the cross terms differ from the model term when $p_i>w$. Both were fixed; the exact relation $C_0=C_{raw}-C_{mod}(p_1/(p_1-1)+p_2/(p_2-1)-1)$ matches the data (−0.0097 against −0.0098 for (17, 19)).
+- Lean (other small results): SelbergEq.lean proves that Selberg's lower bound $Q(\lambda)\ge\lambda_1^2/G(D)$ is attained for every $D\ge1$ by explicit integer weights with $\lambda_1>0$ (Möbius inversion on [1, D] by downward recursion); at D = 6 they are (13, −12, −12, 0, −5, 12). Helper agent; statements and the build/audit checked here.
+- Bound share: three more groups of the 186 inner loss components (I2new L1-L3 and L4-L6, I5/2old L4-L6) were re-run from scratch, one core each for about 20 minutes, and agree with the committed parts in every field (code/cap6/compare_loss_inner_regen_s46.json). One program only; 6 of the 17 inner parts have now been regenerated.
+- Main paper v0.46 (the Lean theorem, item 13, extended, one Related-results paragraph, one bibliography entry). Bounds unchanged: established 246, claimed 182, project 236 conditional.
+
+Parity attempt: Kátai–BSZ criterion for λ(p+2): refuted as a route in its classical form (its necessary input is right-order Hardy–Littlewood for most dilation pairs), located in its growing-range form (an averaged dilation second moment, open); audited. The parity paper stays frozen at v1.0.1 (24 pp.), unchanged.
+
+Explored: The dilation second moment behind the route card: the pair-averaged mean-zero correlation over 136 prime pairs in [3, 61] shrinks roughly like 1/w (−0.031, −0.0145, −0.0075 for w = 13, 31, 61 at 1e8), consistent with Hardy–Littlewood plus truncation; inconclusive, no unexpected structure (code/explore/dilation_second_moment.py).
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- a
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- w
+- a
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- f
+- i
+- r
+- s
+- t
+-  
+- d
+- r
+- a
+- f
+- t
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- r
+- o
+- u
+- t
+- e
+-  
+- c
+- a
+- r
+- d
+-  
+- h
+- a
+- d
+-  
+- t
+- w
+- o
+-  
+- e
+- r
+- r
+- o
+- r
+- s
+-  
+- (
+- c
+- a
+- u
+- g
+- h
+- t
+-  
+- b
+- y
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- ,
+-  
+- f
+- i
+- x
+- e
+- d
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- a
+- n
+- d
+-  
+- n
+- o
+-  
+- w
+- e
+- e
+- k
+- l
+- y
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+-  
+- (
+- t
+- h
+- i
+- s
+-  
+- r
+- u
+- n
+-  
+- s
+- t
+- a
+- r
+- t
+- e
+- d
+-  
+- o
+- n
+-  
+- S
+- u
+- n
+- d
+- a
+- y
+-  
+- 7
+- :
+- 3
+- 5
+-  
+- P
+- M
+-  
+- C
+- T
+- ;
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+-  
+- f
+- a
+- l
+- l
+- s
+-  
+- t
+- o
+-  
+- t
+- h
+- e
+-  
+- M
+- o
+- n
+- d
+- a
+- y
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+
+Next: Monday 23 Nov, 3:34 AM CT run: the weekly review first, then the news search. Parity candidates after that: Merikoski's multiplicative large sieve route; the almost-all MRT17 form under GRH/EH.
+
 ## 2026-11-22 - Session 45 (11:34 AM CT slot of 22 Nov; started on time 17:34 UTC; no wait, no other run active): One-step Chen switching on rung 3 of the dimension ladder: fails at level 1/2, common-level threshold 0.5692; Lean: coset counting identity; 186 inner loss components re-run; main paper v0.45
 
 - Parity share: a route card on the step Session 44 left open. Sift A_H (p+2 with all prime factors = +-1 mod 7, dimension 2/3) only to x^{1/u}, 2 < u <= 4, and remove the survivors with two or three bad primes by Chen-type switching. The main terms (Selberg-Delange constant m e^{gamma kappa}/Gamma(1-kappa) u^{-kappa} and the coset integrals R2, R3) agree with the data at 1e8 to about 5%.

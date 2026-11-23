@@ -1,0 +1,24 @@
+{
+ "note": "fields other than timing (seconds, peak_rss_MB) must agree exactly",
+ "parts": {
+  "part_I2new_L1_L2_L3.json": {
+   "identical": true,
+   "differing_fields": [],
+   "seconds_old": 2896,
+   "seconds_new": 1228
+  },
+  "part_I2new_L4_L5_L6.json": {
+   "identical": true,
+   "differing_fields": [],
+   "seconds_old": 2417,
+   "seconds_new": 1190
+  },
+  "part_I52old_L4_L5_L6.json": {
+   "identical": true,
+   "differing_fields": [],
+   "seconds_old": 2991,
+   "seconds_new": 1240
+  }
+ },
+ "all_identical": true
+}
