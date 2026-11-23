@@ -1,0 +1,97 @@
+[0] source data (1.13)-(1.16), p. 4; retained rows (1.20), p. 5
+  PASS ladders have 29 / 43 rows, retained 0..27 / 0..38
+  PASS retained order-three rows: old 24..27, new 24..38 (19 rows)
+  PASS no retained row is terminal (so (1.17) applies to every retained row)
+
+[1] Lemma 1.1 ingredients (p. 6) for every retained order-three row
+  PASS nonterminal identity delta - E + 2 omega_{t-1} = g0 (p. 4)
+  PASS (1.17): (A_t, C_t) = (S + e/2, T_nu + e/2) exactly
+  PASS eta_t = xi_t - e/2 > 0
+  PASS A_t + C_t = B_t + xi_t
+  PASS A_t >= C_t > L_t > 0
+  PASS A_t <= 11 C_t / 10  (max A/C over rows = 1.097591265, attained on old rows)
+  PASS 11/10 < 161/120 and 7L/3 = 161C/120 identically
+  PASS max(A_t, C_t) <= 7 L_t / 3 on every row (min slack 0.232371)
+  data: S+e/2 = 1.044955807434, T0+e/2 = 0.952044573520, T1+e/2 = 0.956194673578, A/C old = 1.097591265, new = 1.092827472
+
+[2] the proof's inequalities, as exact linear forms alpha*p + beta*L (L > 0)
+  PASS phi_D-term lower bound 2p + L      minus 7L/3: slope 2 > 0, value at p = 2L/3 is 0*L (>= 0; = 0 means sharp)
+  PASS phi_E-term lower bound 5p - L      minus 7L/3: slope 5 > 0, value at p = 2L/3 is 0*L (>= 0; = 0 means sharp)
+  PASS balanced term lower bound 7p/2     minus 7L/3: slope 7/2 > 0, value at p = 2L/3 is 0*L (>= 0; = 0 means sharp)
+  PASS phi_D(p) = 3p/2 exactly when p <= 2L/3 (incl. endpoint p = 2L/3, where phi_D = L = 3p/2)
+  PASS for p <= 2L/3 also phi_E(p) = 3p/2; for p > 2L/3 phi_D = L < 3p/2 < phi_E = 3p - L
+
+[3] largest-witness exclusion: sharp caps, and the caps (1.18) / masks (1.5) actually imposed
+  PASS 2L/3 = 23C/60 < 2C/5 and (C+L)/4 = 63C/160 and (C+L)/3 = 21C/40
+  PASS 5/2 * 2/3 * 23/40 = 115/120 < 1 (outer, M <= 2L/3 automatic)
+  PASS grid caps are h*floor(z/h) of (1.18): 46580, 35265, 35419
+  PASS outer: zO3 = A_{n,t} - L_{n,t} for every new order-3 row (the cap is attained, sharp)
+  PASS outer: zO3 <= min(A_t - L_t, 21C_t/40) for all 19 rows, old rows included (min slack 0.000e+00)
+  PASS   in particular for old rows: zO3 <= 21 C_o/40 i.e. 40A <= 23C_n + 21C_o (slack 4.680e-03)
+  PASS outer: every order-3 row fails only where the cap holds: a_t >= a_{n,24} for all 19 rows   [a_{o,24} - a_{n,24} = 3.567e-03]
+  PASS inner old: base cap zB3 = 63 C_t/160 for old order-3 rows and b_{o,t} >= b_{o,24}
+  PASS inner new: enlarged cap zE3 = 63 C_t/160 for new order-3 rows and b_{n,t} >= b_{n,24}
+  PASS inner largest term at the cap is exactly C (equality, non-strict predicate => no failure): 4*63/160 - 23/40 == 1
+  PASS mask outer: capped row starts at j0 = floor(l/h) - d + 1 = 95599 and (j0 - 1 + d) h <= l
+  PASS mask base: capped row starts at j0 = floor(l/h) - d + 1 = 87195 and (j0 - 1 + d) h <= l
+  PASS mask enlarged: capped row starts at j0 = floor(l/h) - d + 1 = 87250 and (j0 - 1 + d) h <= l
+  PASS H0 <= H1 index-wise: base mask range within enlarged range and base cap <= enlarged cap at every j   [b_{o,24} - b_{n,24} = -5.826e-04]
+  PASS running minimum: zO3 < (S+e)/2 < zeta, zB3 < (T0+e)/2 < zeta, zE3 < (T1+e)/2 < zeta
+  PASS order-two shells: 2*(S+e)/2 <= A_t = S+e, 2*(T+e)/2 <= C_t = T+e (largest H_2 term never fails)
+  PASS caps on the 5/2 shells also exclude a largest H_2 witness: 2 zO3 <= S+e, 2 zB3 <= T0+e, 2 zE3 <= T1+e
+
+[4] containment in the groups (1.22)-(1.24), p. 5-6
+  PASS O2       xi_G <= xi_t, U_G <= threshold_t, b_G <= core_t for its 48 own rows
+  PASS O2       xi_G = min own xi, U_G = min own threshold, b_G = min own core
+  PASS O5/2     xi_G <= xi_t, U_G <= threshold_t, b_G <= core_t for its 19 own rows
+  PASS O5/2     xi_G = min own xi, U_G = min own threshold, b_G = min own core
+  PASS O5/2     absorbed: xi_G <= xi_t and U_G <= threshold_t for its 48 absorbed order-<=2 rows
+  PASS O5/2     face max total (mask (1.5)) <= t_G
+  PASS I2old    xi_G <= xi_t, U_G <= threshold_t, b_G <= core_t for its 12 own rows
+  PASS I2old    xi_G = min own xi, U_G = min own threshold, b_G = min own core
+  PASS I5/2old  xi_G <= xi_t, U_G <= threshold_t, b_G <= core_t for its 4 own rows
+  PASS I5/2old  xi_G = min own xi, U_G = min own threshold, b_G = min own core
+  PASS I5/2old  absorbed: xi_G <= xi_t and U_G <= threshold_t for its 12 absorbed order-<=2 rows
+  PASS I5/2old  face max total (mask (1.5)) <= t_G
+  PASS I2new    xi_G <= xi_t, U_G <= threshold_t, b_G <= core_t for its 12 own rows
+  PASS I2new    xi_G = min own xi, U_G = min own threshold, b_G = min own core
+  PASS I5/2new  xi_G <= xi_t, U_G <= threshold_t, b_G <= core_t for its 15 own rows
+  PASS I5/2new  xi_G = min own xi, U_G = min own threshold, b_G = min own core
+  PASS I5/2new  absorbed: xi_G <= xi_t and U_G <= threshold_t for its 12 absorbed order-<=2 rows
+  PASS I5/2new  face max total (mask (1.5)) <= t_G
+  PASS O2 / I2: t_G of the H_2 group = b_G of the 5/2 group (abutting radial intervals)
+  PASS order-one inner rows: I_t is the whole space (no failure); order-one outer rows in O2
+  PASS below the first core no row can fail: outer a_{n,0} <= a_t, inner b_{nu,12} <= b_t (orders 2,3)
+
+[5] randomized and adversarial exact test of the implication on the actual rows
+  PASS outer rows -> O5/2: 76000 configurations, 13241 row failures, 0 not covered by a nonlargest H_5/2 failure
+  PASS outer rows: phi-term and H_5/2-term fail together at every nonlargest witness (0 mismatches)
+  PASS inner rows -> I5/2old: 16000 configurations, 2998 row failures, 0 not covered by a nonlargest H_5/2 failure
+  PASS inner rows: phi-term and H_5/2-term fail together at every nonlargest witness (0 mismatches)
+  PASS inner rows -> I5/2new: 60000 configurations, 11266 row failures, 0 not covered by a nonlargest H_5/2 failure
+  PASS inner rows: phi-term and H_5/2-term fail together at every nonlargest witness (0 mismatches)
+  PASS negative control (outer): X = {A-L+1e-12}: H_phiD = M + L > A although no nonlargest witness exists
+  PASS negative control (inner): X = {63C/160+1e-12}: M + phi_E(M) > C although no nonlargest witness exists
+  PASS negative control (outer, opposite root): M = 21C_o/40+1e-12 gives phi_E(M) > C_o (so A-L <= 21C/40 is needed)
+  PASS tie convention: two equal largest fragments count as nonlargest (prefix 2p); ties are nu-null anyway
+
+[6] consistency with the code
+  PASS upstream builds exactly six groups in the order of (1.35)
+  PASS upstream outer_h2       = O2      : m, xi, U, b_G, t_G, z_G, p_G, source rows (1.22), nonlargest=True   [radial_upper=core]
+  PASS upstream outer_h25      = O5/2    : m, xi, U, b_G, t_G, z_G, p_G, source rows (1.22), nonlargest=True   [radial_upper=maximum of face]
+  PASS upstream old_inner_h2   = I2old   : m, xi, U, b_G, t_G, z_G, p_G, source rows (1.22), nonlargest=True   [radial_upper=core]
+  PASS upstream old_inner_h25  = I5/2old : m, xi, U, b_G, t_G, z_G, p_G, source rows (1.22), nonlargest=True   [radial_upper=maximum of face]
+  PASS upstream new_inner_h2   = I2new   : m, xi, U, b_G, t_G, z_G, p_G, source rows (1.22), nonlargest=True   [radial_upper=core]
+  PASS upstream new_inner_h25  = I5/2new : m, xi, U, b_G, t_G, z_G, p_G, source rows (1.22), nonlargest=True   [radial_upper=maximum of face]
+  PASS upstream order-3 rows carry owner_plateau = 23C/40 = L_t
+  PASS oai186_support_data ladders agree with section [0] (xi, a, b, A, C of every row)
+  PASS oai186_loss_outer.py group_data[O2] = (1.22)-(1.24) incl. own and absorbed rows
+  PASS oai186_loss_outer.py group_data[O5/2] = (1.22)-(1.24) incl. own and absorbed rows
+  PASS oai186_loss_outer.py: clipped lower boundary (1.26) equals upstream's at all 32 low-bin ends
+  PASS oai186_loss_inner.py group_data[I2old] = (1.22)-(1.24) incl. own and absorbed rows
+  PASS oai186_loss_inner.py group_data[I5/2old] = (1.22)-(1.24) incl. own and absorbed rows
+  PASS oai186_loss_inner.py group_data[I2new] = (1.22)-(1.24) incl. own and absorbed rows
+  PASS oai186_loss_inner.py group_data[I5/2new] = (1.22)-(1.24) incl. own and absorbed rows
+  PASS oai186_loss_inner.py: clipped lower boundary (1.26) equals upstream's at all 29 low-bin ends
+
+SUMMARY: 0 check(s) failed

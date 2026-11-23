@@ -12,3 +12,4 @@ import TwinPrimes.Linnik
 import TwinPrimes.SelbergOpt
 import TwinPrimes.Cosets
 import TwinPrimes.SelbergEq
+import TwinPrimes.MaynardS1

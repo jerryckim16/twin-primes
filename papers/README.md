@@ -43,3 +43,7 @@ Each line of work that grows into its own result gets its own paper here: `paper
 ## Status note (Session 38)
 
 - Parity paper v1.0.1: status note only (no new results). Lü–Wang–Wu (arXiv:2610.20242) claim sum_p mu(p+2) = o(pi(x)), which the paper called open; marked Claimed in Remarks rem:ford-twin, rem:ss-transfer, one open question and the history appendix. Parity attempt (odd-order Chowla, located) recorded as a route card only. Programme (4) continues in Lean only (`Fano.lean`). Main paper v0.38.
+
+## Weekly review decisions (23 Nov 2026)
+
+- Both papers stay frozen, except ONE planned parity-paper v1.1 (the Lü–Wang–Wu conditional observation as one short subsection, the E2 consistency tests as one remark, one summary paragraph of the other post-freeze route cards; then refreeze). Next active line: a short Lean note for programme (4) once the k-dimensional Maynard identity is formalised (started in Session 47, `lean/TwinPrimes/MaynardS1.lean`). Paused: the exact-certification toolkit note (5), H_m. See `notes/reviews/2026-11-23.md`.

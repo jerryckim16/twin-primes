@@ -3,6 +3,23 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-23, Session 47 -- Fourier uniformity of lambda(p+2) along the primes (harmonic analysis / large sieve)
+- Idea: the claimed theorem of Lu-Wang-Wu (arXiv:2610.20242, Claimed) is the zero-frequency statement
+  sum_p mu(p+2) = o(pi(x)). Its natural strengthening is uniformity in a twist e(alpha p): is
+  S(alpha) = sum_{p<=X} lambda(p+2) e(alpha p) small for every alpha, or does lambda(p+2) have spikes, at rationals a/q
+  (biases of lambda(p+2) in classes p mod q) or elsewhere? A spike would be structure a parity-sensitive argument could
+  use; its absence is what a Chowla-along-primes heuristic predicts.
+- Tried: code/explore/shifted_prime_fourier.py [X] [log2M] (/usr/bin/python3 -I; 50 s at X = 1e8, M = 2^27, ~5 GB; .out).
+  One real FFT over the grid alpha = j/M; |S|/sqrt(pi(X)) compared with two controls on the same prime support (i.i.d.
+  signs; lambda(p+2) permuted). X = 1e8, 5761454 odd primes: sum lambda(p+2)/pi = -0.000052 (-0.12 sqrt(pi)).
+  Max |S|/sqrt(pi) over the grid: target 4.39, i.i.d. 4.12, permuted 4.36 (random-model scale sqrt(log(M/2)) = 4.25);
+  medians 0.833 / 0.832 / 0.833; the largest values at a/q, q <= 30, are below 2 for the target (7/15: 1.99) and up to
+  2.45 for the controls. The unsigned 1_P has |S(1/2)| = pi(X) and |S(1/3)| = 0.45 pi(X), as it should.
+- Outcome: dead end (as a search for structure). At this size lambda(p+2) is Fourier-indistinguishable from random signs
+  on the primes, at every frequency of the grid, including the major arcs. This says nothing about o(pi(x)) bounds
+  (any sup-norm statement at X = 1e8 is a sqrt-scale observation), and it is no evidence for or against LWW.
+  Heuristic / exploratory only; not for a paper.
+
 ## 2026-11-23, Session 46 -- The dilation second moment behind the Katai-BSZ route card (probabilistic models / Hardy-Littlewood)
 - Idea: the growing-range Katai-Bourgain-Sarnak-Ziegler argument for sum lambda(p+2) (route card
   notes/parity-attempts/2026-11-23-katai-bsz-dilation.md) needs the pair-averaged mean-zero correlations

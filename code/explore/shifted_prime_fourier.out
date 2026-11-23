@@ -1,0 +1,34 @@
+X = 1e+08, M = 2^27: 5761454 odd primes; sum lambda(p+2)/pi = -0.000052 (= -0.12 sqrt(pi))  [5.5s]
+random-model scale sqrt(log(M/2)) = 4.25
+[target lambda(p+2)] max |S|/sqrt(pi) = 4.39 at j = 24860767; median 0.833; 0.999999-quantile 3.71  [19.1s]
+    j =   42248097  alpha = 0.31477285  |S|/sqrt(pi) =     4.39  nearest a/q (q<=60): 17/54 at 5632.2 grid steps
+    j =   24860767  alpha = 0.18522715  |S|/sqrt(pi) =     4.39  nearest a/q (q<=60): 5/27 at 5632.2 grid steps
+    j =   24646514  alpha = 0.18363084  |S|/sqrt(pi) =     4.19  nearest a/q (q<=60): 9/49 at 5721.8 grid steps
+    j =   42462350  alpha = 0.31636916  |S|/sqrt(pi) =     4.19  nearest a/q (q<=60): 19/60 at 39930.5 grid steps
+    j =   42628164  alpha = 0.31760457  |S|/sqrt(pi) =     4.15  nearest a/q (q<=60): 13/41 at 71323.4 grid steps
+    j =   24480700  alpha = 0.18239543  |S|/sqrt(pi) =     4.15  nearest a/q (q<=60): 2/11 at 77476.7 grid steps
+    j =   43643124  alpha = 0.32516661  |S|/sqrt(pi) =     4.07  nearest a/q (q<=60): 13/40 at 22362.4 grid steps
+    j =   23465740  alpha = 0.17483339  |S|/sqrt(pi) =     4.07  nearest a/q (q<=60): 7/40 at 22362.4 grid steps
+    largest at a/q, q <= 30: 7/15: 1.99, 1/30: 1.99, 1/27: 1.82, 4/9: 1.79, 1/18: 1.79
+[control R: iid signs at primes] max |S|/sqrt(pi) = 4.12 at j = 1497616; median 0.832; 0.999999-quantile 3.77  [30.1s]
+    j =   65611248  alpha = 0.48884189  |S|/sqrt(pi) =     4.12  nearest a/q (q<=60): 22/45 at 6307.9 grid steps
+    j =    1497616  alpha = 0.01115811  |S|/sqrt(pi) =     4.12  nearest a/q (q<=60): 1/60 at 739346.1 grid steps
+    j =   62907472  alpha = 0.46869719  |S|/sqrt(pi) =     4.07  nearest a/q (q<=60): 15/32 at 7088.0 grid steps
+    j =    4201392  alpha = 0.03130281  |S|/sqrt(pi) =     4.07  nearest a/q (q<=60): 1/32 at 7088.0 grid steps
+    j =   38940459  alpha = 0.29012903  |S|/sqrt(pi) =     4.07  nearest a/q (q<=60): 9/31 at 25978.2 grid steps
+    j =   28168405  alpha = 0.20987097  |S|/sqrt(pi) =     4.07  nearest a/q (q<=60): 9/43 at 76322.4 grid steps
+    j =   26719818  alpha = 0.19907816  |S|/sqrt(pi) =     4.03  nearest a/q (q<=60): 1/5 at 123727.6 grid steps
+    j =   40389046  alpha = 0.30092184  |S|/sqrt(pi) =     4.03  nearest a/q (q<=60): 3/10 at 123727.6 grid steps
+    largest at a/q, q <= 30: 9/19: 2.45, 5/13: 2.00, 3/26: 2.00, 10/23: 1.94, 4/9: 1.88
+[control L: lambda(p+2) permuted] max |S|/sqrt(pi) = 4.36 at j = 20708590; median 0.833; 0.999999-quantile 3.69  [42.3s]
+    j =   46400274  alpha = 0.34570898  |S|/sqrt(pi) =     4.36  nearest a/q (q<=60): 19/55 at 34149.8 grid steps
+    j =   20708590  alpha = 0.15429102  |S|/sqrt(pi) =     4.36  nearest a/q (q<=60): 2/13 at 59708.8 grid steps
+    j =   45494333  alpha = 0.33895919  |S|/sqrt(pi) =     4.21  nearest a/q (q<=60): 20/59 at 3201.9 grid steps
+    j =   21614531  alpha = 0.16104081  |S|/sqrt(pi) =     4.21  nearest a/q (q<=60): 5/31 at 33489.6 grid steps
+    j =   33730128  alpha = 0.25130904  |S|/sqrt(pi) =     4.13  nearest a/q (q<=60): 1/4 at 175696.0 grid steps
+    j =   33378736  alpha = 0.24869096  |S|/sqrt(pi) =     4.13  nearest a/q (q<=60): 1/4 at 175696.0 grid steps
+    j =   47490353  alpha = 0.35383070  |S|/sqrt(pi) =     3.95  nearest a/q (q<=60): 17/48 at 45092.3 grid steps
+    j =   19618511  alpha = 0.14616930  |S|/sqrt(pi) =     3.95  nearest a/q (q<=60): 6/41 at 23107.7 grid steps
+    largest at a/q, q <= 30: 9/19: 2.27, 1/7: 1.95, 5/14: 1.95, 1/16: 1.93, 7/16: 1.93
+[unsigned 1_P] |S(1/2)|/sqrt(pi) = 2400.3, |S(1/3)|/sqrt(pi) = 1079.7 (major arcs; sqrt(pi) = 2400)
+SUMMARY: max normalised |S|: target 4.39, iid 4.12, permuted 4.36  [50.4s]

@@ -1,5 +1,1878 @@
 # Research log
 
+## 2026-11-23 - Session 47 (3:34 AM CT slot of 23 Nov; started on time 09:35 UTC; no wait, no other run active): Weekly review of 23 November; the 186 companion's Lemma 1.4 checked; Lean: Maynard's k-dimensional S1 expansion; Green / Granville-Shao route card; main paper v0.47
+
+- W
+- e
+- e
+- k
+- l
+- y
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+-  
+- (
+- n
+- o
+- t
+- e
+- s
+- /
+- r
+- e
+- v
+- i
+- e
+- w
+- s
+- /
+- 2
+- 0
+- 2
+- 6
+- -
+- 1
+- 1
+- -
+- 2
+- 3
+- .
+- m
+- d
+- ,
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+- e
+- r
+- ,
+-  
+- f
+- a
+- c
+- t
+- s
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- b
+- y
+-  
+- t
+- h
+- e
+-  
+- c
+- o
+- o
+- r
+- d
+- i
+- n
+- a
+- t
+- o
+- r
+- )
+- :
+-  
+- s
+- t
+- o
+- p
+-  
+- p
+- e
+- r
+- -
+- r
+- u
+- n
+-  
+- r
+- e
+- g
+- r
+- e
+- s
+- s
+- i
+- o
+- n
+- s
+-  
+- (
+- o
+- n
+- e
+-  
+- d
+- r
+- i
+- v
+- e
+- r
+- ,
+-  
+- c
+- o
+- d
+- e
+- /
+- c
+- a
+- p
+- 6
+- /
+- r
+- e
+- g
+- r
+- e
+- s
+- s
+- _
+- a
+- l
+- l
+- .
+- p
+- y
+- ,
+-  
+- a
+- t
+-  
+- m
+- o
+- s
+- t
+-  
+- m
+- o
+- n
+- t
+- h
+- l
+- y
+- )
+- ,
+-  
+- m
+- o
+- v
+- e
+-  
+- t
+- h
+- e
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+-  
+- t
+- o
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- m
+- a
+- j
+- o
+- r
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- l
+- e
+- m
+- m
+- a
+- s
+- ,
+-  
+- s
+- t
+- o
+- p
+-  
+- 1
+- -
+- d
+- i
+- m
+- e
+- n
+- s
+- i
+- o
+- n
+- a
+- l
+-  
+- S
+- e
+- l
+- b
+- e
+- r
+- g
+-  
+- r
+- e
+- s
+- u
+- l
+- t
+- s
+-  
+- i
+- n
+-  
+- L
+- e
+- a
+- n
+-  
+- i
+- n
+-  
+- f
+- a
+- v
+- o
+- u
+- r
+-  
+- o
+- f
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- k
+- -
+- d
+- i
+- m
+- e
+- n
+- s
+- i
+- o
+- n
+- a
+- l
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- t
+- y
+- ,
+-  
+- a
+- n
+- d
+-  
+- p
+- r
+- e
+- p
+- a
+- r
+- e
+-  
+- o
+- n
+- e
+-  
+- p
+- a
+- r
+- i
+- t
+- y
+- -
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 1
+- .
+- 1
+-  
+- (
+- t
+- h
+- e
+-  
+- L
+- ü
+- -
+- W
+- a
+- n
+- g
+- -
+- W
+- u
+-  
+- o
+- b
+- s
+- e
+- r
+- v
+- a
+- t
+- i
+- o
+- n
+- ,
+-  
+- o
+- n
+- e
+-  
+- E
+- 2
+-  
+- r
+- e
+- m
+- a
+- r
+- k
+- ,
+-  
+- o
+- n
+- e
+-  
+- s
+- u
+- m
+- m
+- a
+- r
+- y
+-  
+- p
+- a
+- r
+- a
+- g
+- r
+- a
+- p
+- h
+- )
+- ,
+-  
+- t
+- h
+- e
+- n
+-  
+- r
+- e
+- f
+- r
+- e
+- e
+- z
+- e
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 1
+- .
+- 4
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- l
+- i
+- n
+- e
+-  
+- b
+- y
+-  
+- l
+- i
+- n
+- e
+- ,
+-  
+- i
+- n
+- c
+- l
+- u
+- d
+- i
+- n
+- g
+-  
+- t
+- h
+- e
+-  
+- s
+- t
+- e
+- p
+-  
+- i
+- t
+- s
+-  
+- p
+- r
+- o
+- o
+- f
+-  
+- l
+- e
+- a
+- v
+- e
+- s
+-  
+- i
+- m
+- p
+- l
+- i
+- c
+- i
+- t
+- ;
+-  
+- 8
+- 1
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- r
+- a
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- ,
+-  
+- o
+- n
+- e
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+-  
+- (
+- c
+- o
+- d
+- e
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- _
+- l
+- e
+- m
+- m
+- a
+- 1
+- 4
+- _
+- c
+- h
+- e
+- c
+- k
+- .
+- p
+- y
+- )
+- ,
+-  
+- v
+- e
+- r
+- d
+- i
+- c
+- t
+- :
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+- .
+-  
+- T
+- h
+- e
+-  
+- l
+- a
+- s
+- t
+-  
+- p
+- e
+- r
+- -
+- r
+- u
+- n
+-  
+- r
+- e
+- g
+- r
+- e
+- s
+- s
+- i
+- o
+- n
+-  
+- b
+- a
+- t
+- c
+- h
+-  
+- (
+- 3
+-  
+- m
+- o
+- r
+- e
+-  
+- o
+- f
+-  
+- 1
+- 7
+-  
+- i
+- n
+- n
+- e
+- r
+- -
+- l
+- o
+- s
+- s
+-  
+- p
+- a
+- r
+- t
+- s
+-  
+- o
+- f
+-  
+- 1
+- 8
+- 6
+- )
+- :
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+-  
+- e
+- x
+- c
+- e
+- p
+- t
+-  
+- o
+- n
+- e
+-  
+- A
+- r
+- b
+-  
+- b
+- a
+- l
+- l
+-  
+- r
+- a
+- d
+- i
+- u
+- s
+-  
+- o
+- f
+-  
+- a
+- b
+- o
+- u
+- t
+-  
+- 1
+- e
+- -
+- 6
+- 3
+-  
+- (
+- e
+- n
+- v
+- i
+- r
+- o
+- n
+- m
+- e
+- n
+- t
+-  
+- d
+- i
+- f
+- f
+- e
+- r
+- e
+- n
+- c
+- e
+- ,
+-  
+- m
+- i
+- d
+- p
+- o
+- i
+- n
+- t
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+- ,
+-  
+- n
+- o
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- c
+- h
+- a
+- n
+- g
+- e
+- s
+- )
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 1
+- .
+- l
+- e
+- a
+- n
+- ,
+-  
+- t
+- h
+- e
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- e
+- x
+- p
+- a
+- n
+- s
+- i
+- o
+- n
+-  
+- o
+- f
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- k
+- -
+- d
+- i
+- m
+- e
+- n
+- s
+- i
+- o
+- n
+- a
+- l
+-  
+- S
+- 1
+-  
+- a
+- n
+- d
+-  
+- i
+- t
+- s
+-  
+- e
+- r
+- r
+- o
+- r
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- t
+- h
+- r
+- o
+- u
+- g
+- h
+-  
+- a
+-  
+- C
+- h
+- i
+- n
+- e
+- s
+- e
+-  
+- r
+- e
+- m
+- a
+- i
+- n
+- d
+- e
+- r
+-  
+- s
+- t
+- e
+- p
+-  
+- f
+- o
+- r
+-  
+- k
+-  
+- m
+- o
+- d
+- u
+- l
+- i
+-  
+- (
+- m
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- T
+- h
+- e
+- o
+- r
+- e
+- m
+-  
+- 1
+- ,
+-  
+- i
+- t
+- e
+- m
+-  
+- 1
+- 6
+- )
+- .
+-  
+- N
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- :
+-  
+- n
+- o
+- t
+- h
+- i
+- n
+- g
+-  
+- c
+- h
+- a
+- n
+- g
+- e
+- s
+-  
+- t
+- h
+- e
+-  
+- t
+- h
+- r
+- e
+- e
+-  
+- n
+- u
+- m
+- b
+- e
+- r
+- s
+- ;
+-  
+- a
+- r
+- X
+- i
+- v
+- :
+- 2
+- 6
+- 1
+- 0
+- .
+- 2
+- 0
+- 2
+- 4
+- 2
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- v
+- 2
+- ;
+-  
+- a
+-  
+- s
+- e
+- c
+- o
+- n
+- d
+- h
+- a
+- n
+- d
+-  
+- C
+- h
+- i
+- n
+- e
+- s
+- e
+-  
+- n
+- e
+- w
+- s
+-  
+- m
+- e
+- n
+- t
+- i
+- o
+- n
+-  
+- o
+- f
+-  
+- a
+-  
+- '
+- 1
+- 8
+- 8
+- '
+-  
+- f
+- o
+- r
+- m
+- a
+- l
+-  
+- p
+- r
+- o
+- o
+- f
+-  
+- b
+- y
+-  
+- a
+- n
+-  
+- A
+- n
+- t
+- h
+- r
+- o
+- p
+- i
+- c
+-  
+- t
+- e
+- a
+- m
+-  
+- (
+- S
+- e
+- p
+- t
+- .
+-  
+- 2
+- 0
+- 2
+- 6
+- )
+-  
+- h
+- a
+- s
+-  
+- n
+- o
+-  
+- p
+- r
+- i
+- m
+- a
+- r
+- y
+-  
+- s
+- o
+- u
+- r
+- c
+- e
+-  
+- a
+- n
+- d
+-  
+- i
+- s
+-  
+- n
+- o
+- t
+-  
+- r
+- e
+- c
+- o
+- r
+- d
+- e
+- d
+-  
+- a
+- s
+-  
+- a
+-  
+- c
+- l
+- a
+- i
+- m
+- .
+-  
+- M
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 4
+- 7
+-  
+- (
+- 3
+- 3
+-  
+- p
+- p
+- .
+- ,
+-  
+- w
+- a
+- s
+-  
+- 3
+- 5
+- )
+- :
+-  
+- R
+- e
+- l
+- a
+- t
+- e
+- d
+-  
+- r
+- e
+- s
+- u
+- l
+- t
+- s
+-  
+- r
+- e
+- d
+- u
+- c
+- e
+- d
+-  
+- t
+- o
+-  
+- t
+- h
+- e
+-  
+- p
+- a
+- p
+- e
+- r
+- s
+- ,
+-  
+- t
+- h
+- e
+-  
+- L
+- ü
+- -
+- W
+- a
+- n
+- g
+- -
+- W
+- u
+-  
+- o
+- b
+- s
+- e
+- r
+- v
+- a
+- t
+- i
+- o
+- n
+-  
+- a
+- n
+- d
+-  
+- a
+-  
+- p
+- o
+- i
+- n
+- t
+- e
+- r
+-  
+- t
+- o
+-  
+- t
+- h
+- e
+-  
+- r
+- o
+- u
+- t
+- e
+- -
+- c
+- a
+- r
+- d
+-  
+- i
+- n
+- d
+- e
+- x
+- ;
+-  
+- B
+- o
+- n
+- f
+- e
+- r
+- r
+- o
+- n
+- i
+-  
+- s
+- t
+- a
+- t
+- e
+- m
+- e
+- n
+- t
+-  
+- d
+- e
+- m
+- o
+- t
+- e
+- d
+-  
+- t
+- o
+-  
+- a
+-  
+- r
+- e
+- m
+- a
+- r
+- k
+- ;
+-  
+- h
+- i
+- s
+- t
+- o
+- r
+- y
+-  
+- a
+- p
+- p
+- e
+- n
+- d
+- i
+- x
+-  
+- c
+- o
+- l
+- l
+- a
+- p
+- s
+- e
+- d
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- 2
+- 4
+- 0
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- ,
+-  
+- 2
+- 4
+- 6
+-  
+- u
+- n
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- )
+- .
+
+Flag for Jerry: (minor) Green arXiv:1604.04481v4 p. 2: the example (−1)^n μ²(n) is misprinted (not multiplicative; the multiplicative variant has mean 2/π²); no result changes.
+
+Parity attempt: Route card on the level-1/2 theorems for bounded multiplicative functions (Green; Granville-Shao) versus the twisted Type I input: located (no level-1/2 barrier exists there, the step beyond 1/2 needs multiplicativity which λ(n)λ(n+2) lacks, and no class-wide theorem gives the weighted input at any fixed level); the audit found 3 errors, including a sieve-size miscount that reversed one conclusion, all fixed. Parity paper stays frozen at v1.0.1; v1.1 planned per the review.
+
+Explored: Fourier uniformity of λ(p+2) along the primes (FFT of Σ_{p≤10^8} λ(p+2)e(αp)): max 4.39·√π(X), the same as random-sign controls (4.12, 4.36), no spikes at a/q; dead end.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- v
+- i
+- e
+- w
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- f
+- i
+- r
+- s
+- t
+-  
+- d
+- r
+- a
+- f
+- t
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- r
+- o
+- u
+- t
+- e
+-  
+- c
+- a
+- r
+- d
+-  
+- h
+- a
+- d
+-  
+- a
+-  
+- w
+- r
+- o
+- n
+- g
+-  
+- s
+- i
+- e
+- v
+- e
+- -
+- s
+- i
+- z
+- e
+-  
+- e
+- s
+- t
+- i
+- m
+- a
+- t
+- e
+-  
+- (
+- c
+- a
+- u
+- g
+- h
+- t
+-  
+- b
+- y
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- m
+- a
+- i
+- n
+-  
+- t
+- e
+- r
+- m
+- s
+-  
+- a
+- n
+- d
+-  
+- o
+- u
+- t
+- e
+- r
+-  
+- l
+- o
+- s
+- s
+-  
+- p
+- a
+- r
+- t
+- s
+-  
+- a
+- r
+- e
+-  
+- n
+- o
+- t
+-  
+- y
+- e
+- t
+-  
+- i
+- n
+-  
+- r
+- e
+- g
+- r
+- e
+- s
+- s
+- _
+- a
+- l
+- l
+- .
+- p
+- y
+- .
+
+Next: Parity v1.1: literature check of the Lü-Wang-Wu transfer, then the subsection, the E2 remark and the summary paragraph; 186 Lemma 1.5 (one lemma per run); Lean: the y_r change of variables for k dimensions.
+
 ## 2026-11-23 - Session 46 (7:34 PM CT slot of 22 Nov; started on time 01:35 UTC 23 Nov; no wait, no other run active): The Kátai–Bourgain–Sarnak–Ziegler criterion for λ(p+2): the wrong direction; Lean: Selberg's bound attained for every D; 186 inner loss components re-run; main paper v0.46
 
 - Parity share: a route card on a mechanism not tried before here, the Kátai–Bourgain–Sarnak–Ziegler orthogonality criterion (BSZ arXiv:1110.0992v1, Theorem 2, read), which needs no Type I/II input on λ at all. Applied to $\sum_{p\le x}\lambda(p+2)$, the classical statement is trivial for this sparse weight.
@@ -6994,114 +8867,44 @@ Did not work or is blocked:
 
 Next: Phase B: parity paper thread 2 (Friedlander-Iwaniec x^2+y^4 and Sawin-Shusterman, read in the sources) with one bounded parity attempt; start the H_m or capped-variational small-results paper; rung 182 second program for J0, J+ in the bound share. First weekly review on Monday 16 Nov.
 
-## 2026-11-14 - Session 16 (started early at Jerry's request, 9:23 AM CT; no wait, no other run active): 186: the raw loss bounds of its numerical companion re-evaluated for 78 of 97 components (all but 1.2e-6 of the loss), all at or just below the published values; the final margin turns out to hinge on one loss group
+## 2026-11-14 - Daily summary of Sessions 13-16 (13-14 Nov; full entries in log/archive-2026-11-14.json): Third day: our own k = 48 vector confirmed by a second program; rungs 186 and 182 recomputed (main terms, source data, cap numerators, loss bounds)
 
-- With the 186 companion PDF now in the repository, two new evaluators were written from its formulas (not from the authors' script, which was not read): code/oai186_loss_inner.py for the 45 inner forms (2.19) and code/oai186_loss_outer.py for the outer forms (2.17), (2.20)-(2.21). The group data that Session 15 had to infer are now read in the PDF, and the delay/renewal rule is implemented as its acceptance test; the test picks renewal exactly where Session 15 had inferred it, and our bin schedule reproduces the counts stated in its Lemma 1.6.
-- All 45 inner components: each at most its Table 2.3-2.6 entry and within 5e-10 for most; rounding up as in (2.31) reproduces the four inner group totals of Table 2.7 exactly (55254, 435544, 1405159, 32422390).
-- 33 of 52 outer components, chosen in decreasing order of their share of the loss (all 13 rank-two and factorial components of O_{5/2}, its largest low bins, and the rank-two components and low bins L4-L10 of O_2): every R and V at most its Table 2.1-2.2 entry and within 5e-9 for rank-two and factorial components and within 3.4e-5 in every case (largest gaps in V for renewal-branch low bins of O_{5/2}, likely the interval widening of the paper's renewal recurrence, not checked); together with the inner ones they carry all but 1.2e-6 of L^+.
-- Own idea, margin budget (exact rationals on the printed integers, paper Prop. oai186-budget): the group O_{5/2} is 89.5% of L^+ and could be at most 2.06% too small before the final margin drops to 1/50000 (14.3% before it drops to 0); the inner groups could be 10-230 times too small. A fresh-context audit of both evaluators against the PDF found no discrepancy (notes/audit-186-loss/report.md).
-- Bounds unchanged: established 246, claimed 182, project 236 conditional. Paper v0.16; verification note v0.6. This is a re-evaluation of the published forms in ball arithmetic, not an outward-rounded certificate; it does not check that the forms majorise the true losses or the analytic inputs.
-
-Explored: A 'pretentious twin' statistic sum lambda(n)lambda(n+2)chi_D(n)chi_D(n+2) for the nine class-number-one discriminants up to 2e7 (Siegel-zero world test): square-root size for every D, a dead end; the only large signal, sum lambda chi_{-163} ~ 27 sqrt(X), is a known kind of secondary term (pole of zeta(2s) plus a low zero of L(s, chi_{-163})).
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audit used instead).
-- Not finished for lack of time: 19 small outer components (low bins of O_{5/2} and O_2, 1.2e-6 of L^+ in the tables); resume command in STATE.md.
-- The first queue mistakenly started the outer jobs while the inner ones ran (a wait condition misfired); paused by hand, no work lost. One inner job ran an old slow kernel loop for 85 min and was restarted on the closed form.
-
-Next: 186: finish the remaining small outer components; then a second, independent program for the decisive group O_{5/2} (y-series moments, as for the main terms) and an outward-rounded version, since O_{5/2} must be right to 2%. First weekly review on Monday 16 Nov.
-
-## 2026-11-14 - Session 15 (3:34 AM CT, started work 4:37 AM CT after waiting 62 minutes for Session 14's follow-up branch to go quiet): 182: I(F) confirmed by a second, ball-arithmetic program; 186: raw loss bounds of one group reproduced; a dual weight that sees the active set gives M_{50,1/25} < 4.1463, but the project's two-zone weight does better (4.1459, now certified); paper v0.15
-
-- Rung 182: a second, independent program for the denominator (code/sharifi182_check2.py: arb balls, own Lean parser, own Dickman closed form, pointwise Cox-de Boor splines, moments from A(y)^39) gives I(F) in [1.48963410081137215290e-11 +/- 5.2e-40], inside the published enclosure, agreeing with the first program to 1.7e-22 (the residual is the first program's 2^-224 fixed-point rounding, traced on a coarse grid). 67 min on 2 cores.
-- Rung 186: the raw bounds of the seven I2old loss components, evaluated from the transcribed forms in arb (code/oai186_loss_I2old.py), are each at or just below their Table 2.3 values (e.g. 25776.59 vs 25777); two readings were needed, one (renewal vs delay recurrence for L2, L3) inferred from the numbers. 90 components remain.
-- Own idea (referee FC3): an equalisation lemma (concavity plus Chebyshev) reduces the supremum over all 49-dimensional fibers of the weight psi_m = (beta/n)(a - S_A + n t_m) to two parameters; two independent certificates (arb, mpmath.iv) give M_{50,1/25} < 4.1463 at a = 1.0373, below scaling 4.1515. But the two-zone weight already in the paper certifies 4.1459 (code/twozone_50_cert.py), so this does not improve the best upper bound; an older sentence saying the two-zone weight did not beat scaling was wrong and is corrected. A fresh-context audit found the proof correct and five small fixes, all applied.
-- News search (3:34 AM run): no new bounds, errata or verifications found for 240, 236, 212, 186 or 182. Bounds unchanged: established 246, claimed 182, project 236 conditional. Paper v0.15.
-
-Explored: Moebius autocorrelations and twin irreducibles in F_2[T] up to degree 22 (code/explore/ff_chowla.py): square-root cancellation and a Hardy-Littlewood fit to within 2% at degrees 20-22, no usable structure; inconclusive.
+- Session 13: Our own k = 48 test function confirmed by a second exact program (4.0060814208 > 4); Bonferroni one-sided certificates; first independent check on rung 186 (Dickman cell masses); paper v0.12, verification note v0.4
+- Session 14: Rung 186: the two main terms of OpenAI's numerical companion recomputed independently by two programs (inside the published enclosures); split Bonferroni certificate needs no three-coordinate pieces; 182 source read; audit of Song-Yue's Thm 4.18 integrated; paper v0.13, verification note v0.5
+- Session 14 follow-up: Rung 186: source data and cap masks recomputed exactly from the companion's rational definitions; the arithmetic of all 97 loss components checks out; loss-cover forms transcribed; paper v0.14
+- Session 14 follow-up 2: Rung 182: trial data received and checked; the denominator I(F) recomputed independently lands inside the published enclosure; paper v0.14
+- Session 14 follow-up 3: Rung 182: the cap numerators J0 and J+ recomputed independently, each just above its published lower bound; cap surplus consistent with the certified value
+- Session 15: 182: I(F) confirmed by a second, ball-arithmetic program; 186: raw loss bounds of one group reproduced; a dual weight that sees the active set gives M_{50,1/25} < 4.1463, but the project's two-zone weight does better (4.1459, now certified); paper v0.15
+- Session 16: 186: the raw loss bounds of its numerical companion re-evaluated for 78 of 97 components (all but 1.2e-6 of the loss), all at or just below the published values; the final margin turns out to hinge on one loss group
 
 Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).
-- The exact claim that the psi-weight supremum sits on the fibers ((2 eps)^r, 0, ...) is false at a = 1.036 (a fiber with coordinates 0.0811 > 2 eps beats it); not needed for the bound.
-- Not done: 182 tail term (kernel K not transcribed) and second programs for J0, J+; the 186 groups other than I2old; FC12 reorganisation of the main paper.
+- S
+- e
+- e
+-  
+- t
+- h
+- e
+-  
+- a
+- r
+- c
+- h
+- i
+- v
+- e
+- d
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+- .
 
-Next: 186: the remaining loss groups (start with O2 and the 5/2 groups; needs the radial intervals and c_t, V_t, not transcribed); 182: second program for J0, J+; first weekly review on Monday 16 Nov.
-
-## 2026-11-14 - Session 14 follow-up 3 (14 Nov, continued at Jerry's request): Rung 182: the cap numerators J0 and J+ recomputed independently, each just above its published lower bound; cap surplus consistent with the certified value
-
-- code/sharifi182_J.py evaluates the 182 cap numerators: J0 = 5.6364590899e-11 and J+ = 4.0824074297e-13, each just above the published lower bound (relative excess 4e-11 and 5e-12). Own derivation: the erased coordinate is capped by min(component cap, outer-shell cap), and the retained configuration is split over the nine cap values that occur; by linearity each cap is a separate worker (9 workers, about 2.5 h on 2 cores; one OOM kill at 3 workers of ~6 GB each).
-- Structural checks: at the caps where only a base-face row changes sides (140306, 177542) the J0 and J+ parts are exact negatives, and where nothing changes for the base face (141724, 179967) the J0 part is exactly 0.
-- With the published tail bound (not recomputed), our I, J0, J+ give q_H - 1 = 2.76706e-4, consistent with the certified mu- = 2.76692e-4 (their own endpoints give mu- exactly). Paper v0.14 Remark sha182 and abstract updated.
-
-Explored: No separate exploration in this follow-up.
-
-Did not work or is blocked:
-- Not done: the tail term (kernel K over the complement of H_C), the 197 restoration-loss components, second programs for I and J.
-
-Next: 182: the tail term and a second program; 186: the raw loss bounds; first weekly review on Monday.
-
-## 2026-11-14 - Session 14 follow-up 2 (about 1:40 AM CT, 14 Nov; started when Jerry pasted the 182 trial data): Rung 182: trial data received and checked; the denominator I(F) recomputed independently lands inside the published enclosure; paper v0.14
-
-- Jerry pasted formal/TrialData182.lean (the 726 coefficients, knots, shells, 98 source rows, published enclosures). It is copied verbatim into code/data182/ and checked by code/sharifi182_data.py: the caps are cell-aligned (141720, 177528, 246256 and the shell caps as in the bundle), the knots and signatures match the bundle, and all 98 source rows satisfy their defining relations exactly.
-- code/sharifi182_I.py evaluates the denominator I(F) = ||F||^2 of the 182 criterion (39 coordinates, 393216-cell grid, 22 cubic B-splines x 11 signatures x 3 nested cap components): I(F) = 1.489634100811e-11, inside the published enclosure [1.48963408009e-11, 1.48963412154e-11] at relative position 0.49993. Own reading of the cap components as a layered sum over the largest fragment; 19 minutes on two cores. One program, high precision, not a rigorous enclosure.
-- The top-level Lean file of the 182 development (pasted earlier) is recorded in notes/sources-182.md: H1 <= 182 under four hypotheses, one of them (a Type III local Fourier proposition) an unproved input.
-
-Explored: No separate exploration in this follow-up.
-
-Did not work or is blocked:
-- J0, J+ and the tail of the 182 criterion, the restoration losses and a second program for I(F) are not done yet.
-
-Next: 182: a second program for I(F) (ball arithmetic, as for 186), then J0 / J+ / tail with the 186 face machinery; 186: the raw loss bounds.
-
-## 2026-11-14 - Session 14 follow-up (about 12:00 AM CT, 14 Nov; started when Jerry uploaded the 186 companion PDF, after Session 14 had merged): Rung 186: source data and cap masks recomputed exactly from the companion's rational definitions; the arithmetic of all 97 loss components checks out; loss-cover forms transcribed; paper v0.14
-
-- Jerry supplied the PDF of OpenAI's numerical companion (short_gaps_numerics.pdf); it is not committed, and notes/sources-needed.md marks it received.
-- code/oai186_support_data.py recomputes in exact rationals, from (1.13)-(1.19) and (1.23)-(1.24), the two source ladders (29 and 43 rows; order counts (12,12,5) and (12,12,19)), the omega enclosures, identity (1.17), the retained rows 0-27 and 0-38 with the boundary values 187773, 188087, 188254, 188256, the cap masks (1.5) that our I_H and J evaluations had taken as given, and the six group parameters with every guard of Lemma 1.1. Every printed value is reproduced.
-- code/oai186_tables_check.py checks exactly all 97 rows of Tables 2.1-2.6 (52 Young inequalities, 45 inner weightings), the six group totals, L^+/I_H <= 696075110e-12 < 697e-6, the component counts against the witness schedule, and the margins (2.34)-(2.35). All pass. This is bookkeeping only: the raw bounds come from the forms (2.16)-(2.21), now transcribed in notes/sources-186-loss.md for later runs (the PDF will not be available to them).
-- Main paper v0.14 (a paragraph after Proposition oai186-main; abstract).
-
-Explored: No separate exploration in this short follow-up (Session 14's exploration is in the entry below).
-
-Did not work or is blocked:
-- The raw component bounds (R_G, V_G, beta_G) are not recomputed yet; the analytic comparisons of Lemma 1.1 are not checked. Wolfram and mathbox not available.
-
-Next: Implement the loss forms (2.16)-(2.21) from notes/sources-186-loss.md, starting with one small inner group (I2old, 7 components), and compare its raw A values with Table 2.3.
-
-## 2026-11-14 - Session 14 (7:34 PM CT slot, 13 Nov; no wait: Session 13 had merged at 7:18 PM CT): Rung 186: the two main terms of OpenAI's numerical companion recomputed independently by two programs (inside the published enclosures); split Bonferroni certificate needs no three-coordinate pieces; 182 source read; audit of Song-Yue's Thm 4.18 integrated; paper v0.13, verification note v0.5
-
-- Rung 186: own evaluators of I_H and J_{lambda,H} of the companion (code/oai186_IH.py, code/oai186_J.py: GMP integer products with directed rounding; code/oai186_check2.py: arb ball arithmetic with a different combinatorial route). Both give I_H = 2.36853178533e-14, inside the published enclosure [23685317816, 23685317890]e-24, and J_{lambda,H} = 9.0248755655e-14, 5.9e-9 above the published lower bound; rho* J/I_H = 1.000206087 > 500103/500000; the two programs agree to 7e-17. Our own derivation of the underspecified layered cap form (2.15) is thereby confirmed. The loss bound L^+ and the analytic inputs are not checked, so 186 is not adopted.
-- Own idea settled: splitting Corr2 into its Q(R)^2 and Q(U)^2 parts lets the Bonferroni truncation drop every piece with three forced coordinates (paper Prop. bonf2, Proved here). New capped_exact.py --split/--bonf; on the 240 vector (k = 49) 98 pieces give 49 J_low/I_up = 4.012038868 > 4, 3.5e-8 below the exact value, as exact rationals.
-- Rung 182 read (helper transcription, notes/sources-182.md): k = 39, the 186 framework on a 4x finer grid, 726 trial coefficients not printed in the bundle. The 39-tuple printed there is Lean-checked admissible of diameter 182 (boundedGaps_182_of_DHL_39').
-- The coordinator's audit of Song-Yue's Theorem 4.18 (PR #19) is now in the paper (Remark sy-audit, labelled 'Literature, audited', not peer review), the status table, status.json and the verification note; 236 stays conditional. A fresh-context audit of Prop. bonf2, the new code and both 186 evaluators found no mathematical defect (four minor fixes applied).
-- Applied the localized fixes FC1-FC11 of the internal referee report on paper v0.12 (PR #21) with a helper, checked line by line: the weight remark is corrected (about 4.1463 at a = 1.037, below scaling; whether the weight beats scaling is now Open), certified lower bounds are truncated rather than rounded up, the reduction theorems are named as unverified next to 240/236, the label system is applied as defined, and the hypothesis g >= L - tau is stated. The FC12 reorganisation is left for later runs.
-- Papers changed: main paper v0.13, verification note v0.5. The k = 45 Schwartz-Zippel job was stopped at 74/273 checkpointed pieces to free cores (resume command in STATE.md).
-
-Explored: Exponential sums / Type III: could the slack in Song-Yue's printed exponent margins raise the level enough to move the criterion from k = 48 to k = 47? It would need d omega >= 5.8e-4, against 1.4e-4 (Type III margin) and 2.2e-5 (IIa margin) -- dead end (heuristic).
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (audits done by a fresh-context helper agent).
-- One worker of the second 186 program was killed for lack of memory (four 3 GB processes); rerun with at most three at a time.
-- Not done: the 186 loss bound L^+ (its Section 2.4 is not in our notes, and the PDF sits in a GitHub repository outside this session's scope); any computation on 182 (coefficients missing). Both requested from Jerry in notes/sources-needed.md.
-- No news search (not the 3:34 AM run); no weekly review (not a Monday).
-
-Next: 186: the loss bound once Section 2.4 of the companion arrives; 182: blocked on its 726 coefficients; a one-sided --jonly --bonf run on the Song-Yue witness; first weekly review on Monday 16 Nov.
-
-## 2026-11-14 - Session 13 (11:34 AM CT slot, 13 Nov; waited 3 h 30 min for Session 12 and stood down, then resumed at Jerry's request at 3:10 PM CT after Session 12 merged; finished 14 Nov): Our own k = 48 test function confirmed by a second exact program (4.0060814208 > 4); Bonferroni one-sided certificates; first independent check on rung 186 (Dickman cell masses); paper v0.12, verification note v0.4
-
-- The scheduled run waited 3 h 30 min for Session 12 (still running its exact job), stood down without work as the rules require, and was resumed at Jerry's request once Session 12 merged (PR #18).
-- Second program for our own k = 48 degree-22 vector on the Kintali / Song-Yue support: capped_exact.py with checkpoints, 176 pieces, 15.5 core-hours (resumed once after a worker restart at 77/176). Its I_T and J_T equal capped_check.py's as exact rationals: 48 J_T/I_T = 4.0060814208 > 4 by two independent programs (variational step only; the analytic input of 236 is not verified).
-- Own idea, partly settled: by the Bonferroni inequalities (paper Prop. bonf, Proved here, folklore in substance) the Corr1 pieces with j = 3 and the I-correction pieces with j >= 2 can be dropped from a one-sided certificate. On our k = 48 vector the one-sided ratio is 4.006081420807 (3.5e-12 below exact) and 28% of the run time is saved; all 142 exact Corr1 / I-correction pieces (both runs) have the predicted sign. The crude a priori sup bound (code/thin_bound.py) gives 1.4e-14 J for Corr1 j = 3 but is useless for Corr2 (6e32 J); its region volumes were cross-checked against the evaluator's own (30 pieces, 0 failures).
-- Rung 186, first sub-step: closed-form Dickman cell masses (log, Li2) for all seven grid caps of OpenAI's numerical companion (372,450 cells) lie inside its recurrence and cell enclosures as transcribed (widths <= 8.3e-10); the transcription doubt about upper/lower bars turns out not to matter.
-- Main paper v0.12 (Prop. kin-capped now two programs, new Prop. bonf, Remark oai186 extended); verification note v0.4 (Prop. kin-own two programs). README now says three runs a day.
-
-Explored: Probabilistic models of primes: prime pairs in translates of the Lean-checked 236-tuple match Hardy-Littlewood to 3e-4 at X = 1e8, but the mean number of primes per translate stays above 1 until X ~ 7e20, so no computable data bears on DHL[48,2] -- dead end.
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (the Bonferroni proof was checked by hand line by line; the computations are checked by exact equality of two programs and by the sign and volume cross-checks).
-- The a priori bound does not handle the Corr2 j = 3 pieces (unsigned integrand, wide region).
-- No news search (not the 3:34 AM run); no weekly review (not a Monday).
-
-Next: Split Corr2 into its Q(R)^2 and Q(U)^2 parts so that one-sided certificates need no j = 3 pieces; k = 45 random point (Schwartz-Zippel check, capped_exact --ckpt); rung 186: one 1-D contraction for a single signature on one cap domain; rung 182: read the source.
+Next: Phase B started after rung 186 (Session 17).
 
 ## 2026-11-13 - Daily summary of Sessions 9-12 (13 Nov; full entries in log/archive-2026-11-13.json): Second day: Song-Yue's 236 witness recomputed exactly and confirmed by a second program (236 conditional); rung 186 source notes; two runs died unmerged and were rescued
 

@@ -1,5 +1,17 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-23 (Session 47) — (minor) Green, arXiv:1604.04481v4, p. 2: the example showing that his Theorem 1.1 needs prime moduli is misprinted
+- **What.** Green writes that Theorem 1.1 fails without the restriction to prime moduli, "as may be seen by taking
+  f(n) = (−1)^n μ²(n)", whose mean is "very small". As printed the function is not multiplicative (its value at 1 is −1);
+  the multiplicative variant (−1)^{n+1} μ²(n) has mean 2/π², not a small number. The point itself survives: for
+  (−1)^{n+1} μ²(n) the theorem does fail for even moduli (class means 0.81 for a = 1 and −0.40 for a = 2 mod 2018 and
+  20014, against the global mean 0.2026).
+- **Why it might matter.** It doesn't, beyond a misprint. No result in the paper depends on it.
+- **Evidence label.** Literature (read in v4) plus Computed (code/parity/green_example_check.py, N = 4·10⁶).
+- **Checked.** Found by the fresh-context audit of the Session 47 route card and confirmed by the card's author. The
+  journal version was not checked.
+- **Files.** notes/parity-attempts/2026-11-23-granville-shao-level-half.md. **Needs outside expert review:** no (typo-level).
+
 ## 2026-11-21 (Session 40) — Update to the Lü–Wang–Wu flag: the Session 39 gap is closed in outline; the strong consequence now rests only on their Prop. 4.2 and Prop. 5.3 (a red flag for those, not an error found)
 - **What.** Session 39 left one gap: the main term of the modified count. This run closes it in outline without computing
   main terms by hand. LWW's Type I sums (Section 3) use the target only through its sums in reduced residue classes to

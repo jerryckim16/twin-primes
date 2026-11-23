@@ -1,8 +1,9 @@
 # Rung 186: the positive loss bound L^+ of [14] (transcription for an independent evaluator)
 
 Source [14]: OpenAI, "Numerical certificate for prime gaps at most 186" (short_gaps_numerics.pdf, 23 pp., dated
-30 August 2026). The PDF was supplied by Jerry Kim on 14 Nov 2026; it is NOT committed (copyright) and will not be
-available to later sessions. Every displayed formula below was transcribed from the rendered page images (Read
+30 August 2026). The PDF was supplied by Jerry Kim on 14 Nov 2026; it was later vendored
+under its Apache-2.0 licence as code/third_party/openai186/short_gaps_numerics.pdf (PR #30; correction noted in
+Session 47, which read Lemma 1.4 there: notes/oai186-lemma14-check.md). Every displayed formula below was transcribed from the rendered page images (Read
 tool, and 200-220 dpi crops for pp. 6 and 14), cross-checked against `pdftotext -layout`. "p." = printed page
 number (= PDF page); equation numbers are those of [14].
 
