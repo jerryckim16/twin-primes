@@ -1,3 +1,8 @@
+# RELEASED (Session 49, 23 Nov 2026): v1.1 = item (b) only, integrated as Section 6.4 (subsec:lww-transfer) of
+# main.tex after an adversarial audit (notes/audit-parity-v11.md); cosmetic items of (e) done. Items (c) and (d) were not
+# added; they remain candidates for a v1.2, to be decided by the weekly review of 30 Nov. lww-transfer.tex below is the
+# pre-audit draft, kept for history; the released text is in main.tex.
+
 # Staged material for parity-barrier v1.1 (not yet in main.tex)
 
 v1.0.1 stays frozen and on the website until the whole v1.1 revision is ready (review of 23 Nov, section 3):

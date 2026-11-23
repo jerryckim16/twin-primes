@@ -3,6 +3,21 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-23, Session 49 -- Hardy-Littlewood prediction for the twin short-interval variance (follow-up to S48)
+- Idea: S48 measured Var/Mean of twin counts in blocks of length H near 1e9 and fitted a slope 0.51 in log H, against a
+  rough guess of about 0.19; is the measurement explained by the 4-point singular series S({0,2,h,h+2}), or is the code
+  (or something else) off?
+- Tried: code/explore/twin_variance_prediction.py (/usr/bin/python3 -I; < 1 s; .out). Model: Var = E + 2 sum_{h<H}
+  (H-h)(S4(h) - S2^2)/L^4, E = H S2/L^2, S2 = 2 C_2, S4 = S({0,2,h,h+2}) as an Euler product to 10^6 (S4 = 0 for odd h
+  and for h = 2), L = log(0.75e9). Sanity: the mean of S4 over even h <= 2^18 is 1.9997 S2^2 (average S2^2 over all h).
+- Result: the predicted ratio matches the S48 measurement to within 3% of the deficit for 64 <= H <= 2^13 (e.g.
+  H = 1024: predicted 0.8946, measured 0.8923) and within 15% up to H = 2^18; the same fit as S48 gives slope 0.486
+  (measured 0.513). The quantity (1/H) sum_{h<H}(H-h)(S4 - S2^2) behaves like -a(H) log H with a(H) increasing from 3.8
+  (H = 2^8) to 6.0 (H = 2^18), so the effective slope is not a constant times 1/L; S48's rough "3 S2" guess was wrong.
+- Outcome: dead end (puzzle explained): the measurement is what the Hardy-Littlewood singular series predicts; the code
+  of S48 is consistent. Not pursued: the asymptotic of the singular-series average (possibly in the literature; no
+  search done). Heuristic / exploratory only; not for a paper.
+
 ## 2026-11-23, Session 48 -- Short-interval variance of twin-prime counts (Montgomery-Soundararajan-type statistics)
 - Idea: for primes, Montgomery-Soundararajan (heuristic, from Hardy-Littlewood with uniformity) predict that the variance
   of prime counts in intervals of length H near x falls below the Poisson value: Var/Mean ~ 1 - (log H - B)/log x with

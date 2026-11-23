@@ -116,3 +116,21 @@ Helper-run; results checked here against the downloaded files (PDFs not committe
   (OpenAlex worked); recorded for scope only.
 - Conclusion for v1.1: the observation is not stated in LWW or the three citing works (Wang's Remark 6.17 comes
   closest and must be cited for the target elimination). Literature check (a) of the v1.1 plan is done to this scope.
+
+## Literature check before releasing parity v1.1 (Session 49, 23 Nov 2026, run started 19:44 UTC)
+- arXiv:2610.20242 abs page (fetched ~19:50 UTC): still v1 (14 Oct) and v2 (19 Nov); no v3; no comments field. So there is
+  no new version whose remarks could already contain the transfer.
+- Two web searches (author/title + identifier + "comment"; "largest prime factor" "p+2" with the authors' names and
+  "Type II"): no commentary on the preprint and no source connecting it with P^+(p+2). Hits were the preprint itself,
+  Lichtman-Teräväinen, and the P^+(p+a) literature (Ding, Ding-Wang, Li).
+- Liang Wang, Zenodo doi:10.5281/zenodo.23687596: the DOI now resolves to record 23736249, still version 1.3 (publication
+  date 29 Oct 2026); file Wang_twin_primes_dilation_methods.pdf, SHA-256 790e7318...0300f143 (not committed). Remark 6.17
+  re-read: Cauchy-Schwarz in h "removes mu altogether"; extension to the rough target 1[P^-(p+2) > z] with
+  z <= exp((log x)^c), c < 1/5 as written; nothing on Lambda at the shifted point or on P^+(p+2). Cited for exactly that.
+- Comparison values re-read: R. Li, arXiv:2508.18285v3 (SHA-256 8e892c00...59657003), pp. 1-2: states the problem for
+  P^+(p + a), a a fixed nonzero integer; Baker-Harman 1998 obtained 0.677; his Theorem 1 claims 0.679. Ding-Wang,
+  arXiv:2510.04026v2 (authors Yuchen Ding and Zhiwei Wang; SHA-256 192e0b23...442d0af9), pp. 1-2: 0.677 (Baker-Harman [3],
+  Acta Arith. 83 (1998), 331-361) quoted for P^+(p - 1); "under the assumption of the Elliott-Halberstam conjecture" the
+  asymptotic for T_c(x) holds for 0 < c < 1 (p - 1). The v1.1 subsection cites 0.677 only as quoted in these two
+  sources, says that [BH98] was not opened, and gives the EH statement for p - 1 as quoted.
+- Conclusion: release condition 1 (not already remarked) holds to this scope.

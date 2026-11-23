@@ -1,5 +1,1735 @@
 # Research log
 
+## 2026-11-23 - Session 49 (manual run requested by Jerry, started 19:44 UTC 23 Nov; no wait, no other run active): Parity paper v1.1 released: the Lu-Wang-Wu consistency observation as one audited subsection; 186 Lemma 1.6 checked; Lean: multiplicativity of mu, Maynard's change of variables for every R; main paper v0.49
+
+- P
+- a
+- r
+- i
+- t
+- y
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 1
+- .
+- 1
+-  
+- (
+- J
+- e
+- r
+- r
+- y
+- '
+- s
+-  
+- p
+- r
+- i
+- o
+- r
+- i
+- t
+- y
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- i
+- s
+-  
+- r
+- u
+- n
+- )
+- :
+-  
+- o
+- n
+- e
+-  
+- s
+- u
+- b
+- s
+- e
+- c
+- t
+- i
+- o
+- n
+- ,
+-  
+- S
+- e
+- c
+- t
+- i
+- o
+- n
+-  
+- 6
+- .
+- 4
+- ,
+-  
+- s
+- t
+- a
+- t
+- e
+- s
+-  
+- w
+- h
+- a
+- t
+-  
+- L
+- u
+- -
+- W
+- a
+- n
+- g
+- -
+- W
+- u
+-  
+- c
+- l
+- a
+- i
+- m
+-  
+- (
+- C
+- l
+- a
+- i
+- m
+- e
+- d
+- )
+- ,
+-  
+- t
+- h
+- e
+-  
+- s
+- t
+- r
+- u
+- c
+- t
+- u
+- r
+- a
+- l
+-  
+- r
+- e
+- a
+- d
+- i
+- n
+- g
+-  
+- (
+- f
+- o
+- r
+-  
+- t
+- a
+- r
+- g
+- e
+- t
+- s
+-  
+- p
+- r
+- o
+- d
+-  
+- V
+- _
+- i
+- ^
+- {
+- -
+- 1
+- }
+-  
+- s
+- u
+- m
+- _
+- {
+- a
+- |
+- N
+- }
+-  
+- g
+- (
+- N
+- /
+- a
+- )
+-  
+- t
+- h
+- e
+- i
+- r
+-  
+- T
+- y
+- p
+- e
+-  
+- I
+- I
+-  
+- s
+- t
+- e
+- p
+-  
+- s
+- e
+- e
+- s
+-  
+- g
+-  
+- o
+- n
+- l
+- y
+-  
+- t
+- h
+- r
+- o
+- u
+- g
+- h
+-  
+- b
+- o
+- u
+- n
+- d
+- e
+- d
+- n
+- e
+- s
+- s
+-  
+- a
+- n
+- d
+-  
+- m
+- u
+- l
+- t
+- i
+- p
+- l
+- i
+- c
+- a
+- t
+- i
+- v
+- i
+- t
+- y
+-  
+- a
+- t
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- x
+- i
+- l
+- i
+- a
+- r
+- y
+-  
+- p
+- r
+- i
+- m
+- e
+- s
+- ,
+-  
+- t
+- h
+- e
+- i
+- r
+-  
+- T
+- y
+- p
+- e
+-  
+- I
+-  
+- s
+- u
+- m
+- s
+-  
+- o
+- n
+- l
+- y
+-  
+- t
+- h
+- r
+- o
+- u
+- g
+- h
+-  
+- r
+- e
+- s
+- i
+- d
+- u
+- e
+-  
+- c
+- l
+- a
+- s
+- s
+- e
+- s
+-  
+- t
+- o
+-  
+- m
+- o
+- d
+- u
+- l
+- i
+-  
+- x
+- ^
+- {
+- 2
+- /
+- 5
+- +
+- o
+- (
+- 1
+- )
+- }
+- )
+- ,
+-  
+- t
+- h
+- e
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- i
+- m
+- p
+- l
+- i
+- c
+- a
+- t
+- i
+- o
+- n
+-  
+- (
+- >
+- >
+-  
+- x
+- /
+- (
+- l
+- o
+- g
+-  
+- x
+- )
+- ^
+- 2
+-  
+- p
+- r
+- i
+- m
+- e
+- s
+-  
+- p
+-  
+- w
+- i
+- t
+- h
+-  
+- p
+- +
+- 2
+-  
+- =
+-  
+- a
+-  
+- l
+- ,
+-  
+- l
+-  
+- p
+- r
+- i
+- m
+- e
+- ,
+-  
+- a
+-  
+- =
+-  
+- x
+- ^
+- {
+- o
+- (
+- 1
+- )
+- }
+- ;
+-  
+- P
+- r
+- o
+- v
+- e
+- d
+-  
+- h
+- e
+- r
+- e
+-  
+- i
+- n
+-  
+- o
+- u
+- t
+- l
+- i
+- n
+- e
+- ,
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+- i
+- r
+-  
+- P
+- r
+- o
+- p
+- s
+- .
+-  
+- 4
+- .
+- 2
+-  
+- a
+- n
+- d
+-  
+- 5
+- .
+- 3
+- )
+- ,
+-  
+- t
+- h
+- e
+-  
+- c
+- o
+- m
+- p
+- a
+- r
+- i
+- s
+- o
+- n
+-  
+- w
+- i
+- t
+- h
+-  
+- t
+- h
+- e
+-  
+- e
+- x
+- p
+- o
+- n
+- e
+- n
+- t
+-  
+- 0
+- .
+- 6
+- 7
+- 7
+-  
+- (
+- o
+- n
+- l
+- y
+-  
+- a
+- s
+-  
+- q
+- u
+- o
+- t
+- e
+- d
+-  
+- b
+- y
+-  
+- L
+- i
+-  
+- a
+- n
+- d
+-  
+- D
+- i
+- n
+- g
+- -
+- W
+- a
+- n
+- g
+- ;
+-  
+- B
+- a
+- k
+- e
+- r
+- -
+- H
+- a
+- r
+- m
+- a
+- n
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+- )
+-  
+- a
+- n
+- d
+-  
+- '
+- d
+- o
+- e
+- s
+-  
+- n
+- o
+- t
+-  
+- g
+- i
+- v
+- e
+-  
+- t
+- w
+- i
+- n
+- s
+-  
+- (
+- K
+-  
+- =
+-  
+- 0
+- )
+- '
+- .
+-  
+- B
+- e
+- f
+- o
+- r
+- e
+-  
+- r
+- e
+- l
+- e
+- a
+- s
+- e
+- :
+-  
+- L
+- W
+- W
+-  
+- i
+- s
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- v
+- 2
+-  
+- (
+- n
+- o
+-  
+- v
+- 3
+- ,
+-  
+- n
+- o
+-  
+- p
+- u
+- b
+- l
+- i
+- c
+-  
+- c
+- o
+- m
+- m
+- e
+- n
+- t
+-  
+- f
+- o
+- u
+- n
+- d
+- )
+- ,
+-  
+- W
+- a
+- n
+- g
+- '
+- s
+-  
+- R
+- e
+- m
+- a
+- r
+- k
+-  
+- 6
+- .
+- 1
+- 7
+-  
+- r
+- e
+- -
+- r
+- e
+- a
+- d
+-  
+- (
+- t
+- a
+- r
+- g
+- e
+- t
+-  
+- e
+- l
+- i
+- m
+- i
+- n
+- a
+- t
+- i
+- o
+- n
+-  
+- n
+- o
+- t
+- e
+- d
+-  
+- t
+- h
+- e
+- r
+- e
+- ,
+-  
+- n
+- o
+-  
+- L
+- a
+- m
+- b
+- d
+- a
+-  
+- c
+- o
+- n
+- s
+- e
+- q
+- u
+- e
+- n
+- c
+- e
+- )
+- ,
+-  
+- a
+- n
+- d
+-  
+- a
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- d
+- v
+- e
+- r
+- s
+- a
+- r
+- i
+- a
+- l
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- f
+- o
+- u
+- n
+- d
+-  
+- 1
+- 2
+-  
+- i
+- t
+- e
+- m
+- s
+-  
+- (
+- o
+- n
+- e
+-  
+- r
+- e
+- a
+- l
+-  
+- e
+- r
+- r
+- o
+- r
+-  
+- i
+- n
+-  
+- t
+- h
+- e
+-  
+- d
+- r
+- a
+- f
+- t
+- '
+- s
+-  
+- w
+- o
+- r
+- d
+- i
+- n
+- g
+- :
+-  
+- t
+- h
+- e
+-  
+- T
+- y
+- p
+- e
+-  
+- I
+- I
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- h
+- o
+- l
+- d
+- s
+-  
+- f
+- o
+- r
+-  
+- t
+- a
+- r
+- g
+- e
+- t
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- a
+- t
+-  
+- f
+- o
+- r
+- m
+- ,
+-  
+- n
+- o
+- t
+-  
+- f
+- o
+- r
+-  
+- e
+- v
+- e
+- r
+- y
+-  
+- b
+- o
+- u
+- n
+- d
+- e
+- d
+-  
+- t
+- a
+- r
+- g
+- e
+- t
+- )
+- ,
+-  
+- a
+- l
+- l
+-  
+- f
+- i
+- x
+- e
+- d
+- ;
+-  
+- t
+- h
+- e
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- i
+- s
+-  
+- r
+- e
+- f
+- r
+- o
+- z
+- e
+- n
+-  
+- a
+- t
+-  
+- 2
+- 6
+-  
+- p
+- p
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 1
+- .
+- 6
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+-  
+- w
+- i
+- t
+- h
+-  
+- 4
+- 2
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+-  
+- a
+- n
+- d
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+-  
+- (
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+- ,
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+-  
+- o
+- u
+- t
+- p
+- u
+- t
+- ;
+-  
+- o
+- n
+- e
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- )
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- M
+- u
+- M
+- u
+- l
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- r
+- o
+- v
+- e
+- s
+-  
+- m
+- u
+- (
+- m
+- n
+- )
+-  
+- =
+-  
+- m
+- u
+- (
+- m
+- )
+- m
+- u
+- (
+- n
+- )
+-  
+- f
+- o
+- r
+-  
+- c
+- o
+- p
+- r
+- i
+- m
+- e
+-  
+- m
+- ,
+-  
+- n
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- s
+- i
+- g
+- n
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- t
+- y
+-  
+- f
+- o
+- r
+-  
+- e
+- v
+- e
+- r
+- y
+-  
+- s
+- q
+- u
+- a
+- r
+- e
+- f
+- r
+- e
+- e
+-  
+- c
+- ,
+-  
+- s
+- o
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- c
+- h
+- a
+- n
+- g
+- e
+-  
+- o
+- f
+-  
+- v
+- a
+- r
+- i
+- a
+- b
+- l
+- e
+- s
+-  
+- h
+- o
+- l
+- d
+- s
+-  
+- f
+- o
+- r
+-  
+- e
+- v
+- e
+- r
+- y
+-  
+- R
+-  
+- a
+- n
+- d
+-  
+- k
+-  
+- w
+- i
+- t
+- h
+-  
+- n
+- o
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- i
+- s
+-  
+- (
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- a
+- s
+- s
+- )
+- .
+-  
+- M
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 4
+- 9
+-  
+- (
+- 3
+- 4
+-  
+- p
+- p
+- .
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- 2
+- 4
+- 0
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- ,
+-  
+- 2
+- 4
+- 6
+-  
+- u
+- n
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- )
+- .
+
+Flag for Jerry: Update to the Lu-Wang-Wu flag: the consistency observation is now Section 6.4 of the parity paper v1.1 (approved by Jerry); still conditional on their Props. 4.2 and 5.3, not an error found; needs outside expert review.
+
+Parity attempt: No new route card: the run's attempt went into the source reading and audit for the LWW subsection (allowed by the coordinator rule of 23 Nov); classification of the observation unchanged (located, conditional implication in outline). The parity paper is now v1.1, frozen; the E2 remark and the 'Further tests' paragraph were not added and are left to the review of 30 Nov.
+
+Explored: Hardy-Littlewood prediction for Session 48's twin short-interval variance: with the 4-point singular series S({0,2,h,h+2}) it matches the measured ratios within 3% of the deficit for 64 <= H <= 2^13 (fitted slope 0.486 against 0.513 measured); dead end, puzzle explained.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- i
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- )
+- .
+-  
+- B
+- a
+- k
+- e
+- r
+- -
+- H
+- a
+- r
+- m
+- a
+- n
+-  
+- 1
+- 9
+- 9
+- 8
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+-  
+- (
+- c
+- i
+- t
+- e
+- d
+-  
+- o
+- n
+- l
+- y
+-  
+- a
+- s
+-  
+- q
+- u
+- o
+- t
+- e
+- d
+- )
+- .
+
+Next: Bound share: 186 Lemma 1.7, then 2.3, 2.4. Lean: mu of coprime tuple products, then the diagonalisation of S1 in y. Parity: one new-mechanism attempt per run. Weekly review on Monday 30 Nov (decide on a v1.2 with the E2 remark, or drop).
+
 ## 2026-11-23 - Session 48 (11:34 AM CT slot of 23 Nov; started on time 17:35 UTC; no wait, no other run active): The 186 companion's Lemma 1.5 checked; Lean: Maynard's change of variables as tuple Moebius inversion; Merikoski route card; parity v1.1 literature check done and subsection staged; main paper v0.48
 
 - B

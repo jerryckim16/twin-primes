@@ -40,10 +40,9 @@ Maynard's normalisation (`maynardY`, `maynardLam`; `μ(r)` is taken as `∏ᵢ �
 * `tuple_mobius_example`, `maynard_inversion_example`, `maynard_inversion_needs_sqfree`:
   concrete `k = 2` checks by kernel `decide` (the last shows the squarefree hypothesis is needed).
 
-NOT proved here: the general 1-d sign identity `MuSign c` for every squarefree `c` (i.e. the
-multiplicativity of `μ` and `μ(n) = 0` for non-squarefree `n`; classical, but it needs a theory
-of `μ` beyond `mu_divisor_sum` that this project does not have), so the general-`R` Maynard form
-is conditional on it; the identity `∏ μ(rᵢ) = μ(∏ rᵢ)`; the restriction of the support to
+NOT proved here: the general 1-d sign identity `MuSign c` for every squarefree `c` (proved in
+`TwinPrimes/MuMult.lean`: `muSign_of_sqfree`, giving `maynard_lam_of_y_sqfree_all` /
+`maynard_y_of_lam_sqfree_all` for every `R`); the identity `∏ μ(rᵢ) = μ(∏ rᵢ)`; the restriction of the support to
 `∏ dᵢ < R`, `(dᵢ, W) = 1` (any such support sits inside a box, so the box statements apply to it,
 but the size/coprimality bookkeeping of Maynard's Lemma 5.1 is not formalised); the remaining
 parts of Lemma 5.1 (the diagonalisation of the `S₁` quadratic form in terms of `y`, the bound

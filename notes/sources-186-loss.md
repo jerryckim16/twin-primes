@@ -428,8 +428,8 @@ In order:
    L^+/I_H^- <= 696075110/10^12.
 
 Underspecified / ambiguous points:
-- L_{<=\ell} in (1.36)-(1.37) is not defined in Sec. 1.5 (read as total of fragments <= \ell); likewise the meaning
-  of H_2 / H_{5/2} (read as phi(p) = (m-1)p) must be taken from Sec. 1.1/the main paper [8].
+- L_{<=\ell} in (1.36)-(1.37) is not defined in Sec. 1.5 (read as total of fragments <= \ell). The meaning of H_2 /
+  H_{5/2} is SETTLED by (1.12), p. 4: H_{m,xi}(X) = max (sum_{q >= p} q + (m-1)p), m in {2, 5/2} (Session 49).
 - Notation clash: d_c(j) := A_j(c)/h (cell average, Sec. 2.2) vs \overline{d}_j(c) (point enclosure, (2.1), (2.9)).
   Which one the low-bin and rank-two arrays mean is decided only by the bars; the cap-rounding rule
   ("upward caps in upper grids, downward in lower") is stated in one sentence.

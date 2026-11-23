@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.48, 23 November 2026}
+\date{Version 0.49, 23 November 2026}
 
 \begin{document}
 
@@ -312,8 +312,13 @@ and its inverse are mutually inverse for weights supported on squarefree entries
 identity
 \[\mu(a)\mu(x)=\mu(x/a)\qquad(a\mid x\mid c,\ c\text{ squarefree})\] (the theorems \texttt{maynard\_lam\_of\_y\_sqfree} and \texttt{maynard\_y\_of\_lam\_sqfree}).
 That identity is checked by \texttt{decide} for $c\le30$, so the inversion is unconditional for $R\le30$
-and every $k$ (the theorem \texttt{maynard\_inversion\_R30}). Not formalised: that
-identity for all $c$, $\mu(\prod r_i)=\prod\mu(r_i)$ for coprime entries, and the diagonalisation.
+and every $k$ (the theorem \texttt{maynard\_inversion\_R30}).
+\item (\texttt{MuMult.lean}) For the project's recursively defined $\mu$: $\mu(pn)=-\mu(n)$ for a
+prime $p\nmid n$, $\mu(n)=0$ if $p^2\mid n$, and $\mu(mn)=\mu(m)\mu(n)$ for coprime $m,n$
+(\texttt{mu\_mul\_coprime}); hence the identity of item~17 for every squarefree $c$
+(\texttt{muSign\_of\_sqfree}), and the inversion of item~17 for every $R$ and $k$, with no hypothesis
+(\texttt{maynard\_lam\_of\_y\_sqfree\_all}, \texttt{maynard\_y\_of\_lam\_sqfree\_all}). Not formalised:
+$\mu(\prod r_i)=\prod\mu(r_i)$ for coprime tuples as a separate lemma, and the diagonalisation.
 \end{enumerate}
 \end{theorem}
 
@@ -1968,7 +1973,13 @@ rational checks, one program, \texttt{code/oai186\_lemma14\_check.py};
 \texttt{notes/oai186-lemma14-check.md}). Its Lemma~1.5 (the full-radius factor $W_r$) has been checked the same way: the bound
 holds on every retained index of the $61$ low bins, the term $dh$ cannot be reduced, and all four of our loss
 programs and the authors' script use the same factor (\lbl{Computed}, $44$ exact checks, one program,
-\texttt{code/oai186\_lemma15\_check.py}; \texttt{notes/oai186-lemma15-check.md}). Not checked: its Lemmas 1.6, 1.7, 2.3
+\texttt{code/oai186\_lemma15\_check.py}; \texttt{notes/oai186-lemma15-check.md}). Its Lemma~1.6 (containment of
+the $61$ low-witness intervals) is verified as stated: the bin counts, the clipped boundary $c_G(u)$ of its (1.26) on
+every bin, the printed direct check ($11,2,5$ intervals below every absorbed activation; on the remaining $11,5,6$ the
+minimum is the original boundary), nonemptiness, exactness of the full-cell test, and $7050$ constructed failing roots
+with no witness lost (\lbl{Computed}, $42$ exact checks, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma16\_check.py};
+\texttt{notes/}\allowbreak\texttt{oai186-lemma16-check.md}); the lemma needs ``assigned'' to mean the bin of a witness of the failing source
+row, the reading its proof uses. Not checked: its Lemmas 1.7, 2.3
 and 2.4 (that the remaining forms majorise the true support-failure integrals and that
 the cover is complete), the analytic part of Lemma~1.1, its restoration step (Proposition~1.3, resting on the
 main paper's Proposition~4.6), and the analytic inputs, which stay
@@ -2113,7 +2124,7 @@ by two programs; the Table~3 / Lemma~9.1 cap inconsistency of the $212$ draft;
 and the re-evaluation of the main terms and loss bounds of the $186$ companion.
 None of it verifies the analytic inputs.
 \item \emph{The parity barrier and twin primes: what is known and what is
-missing} (\texttt{papers/parity-barrier/}, version~1.0.1, frozen, 24 pages). A
+missing} (\texttt{papers/parity-barrier/}, version~1.1, frozen, 26 pages). A
 survey of the obstacle between bounded gaps and twin primes, read in the
 sources, with own results, each labelled in the paper: a window form of Tao's
 convex-hull criterion (Liouville-pattern weights block a proof of $H_m\le g$
@@ -2133,31 +2144,23 @@ twisted Type~I input at small level; the Siegel-zero world; and small
 corrections to the literature (Polymath8b Remark~8.1 and Proposition~6.5, a
 constant in a 2019 preprint). Nothing in it breaks the parity barrier.
 It makes no claim of progress on the twin prime conjecture, which is open.
-Version~1.0.1 (20 Nov 2026) adds only a status note: the preprint of L\"u, Wang
-and Wu (arXiv:2610.20242) claims (\lbl{Claimed}) $\sum_{p\le x}\mu(p+2)=o(\pi(x))$, a model
-case of the parity problem that the paper had called open; we have not
-verified it, and it would not give twin primes. A route card of 20 November
-(\texttt{notes/parity-attempts/2026-11-20-lww-orbit-test.md}; not in the frozen
-paper) observes that in their Type II step the target enters only through
-boundedness and multiplicativity at the auxiliary primes, so the same estimate,
-if correct, would also give infinitely many primes $p$ with $p+2=a\ell$, $\ell$
-prime, $a=x^{o(1)}$. A second route card (21 November,
-\texttt{notes/parity-attempts/2026-11-21-lww-main-term.md}) closes the
-main-term gap left there: their Type~I sums see the target only through its
-sums in reduced residue classes to moduli $x^{2/5+o(1)}$, so the count can be
-compared with a sieve model target whose count, $2C_2x$, is computed directly.
-The implication is therefore complete in outline (\lbl{Proved here},
-conditional on their Propositions~4.2 and~5.3, audited): $\gg x/(\log x)^2$
-primes $p\in(x,2x]$ with $p+2=a\ell$, $\ell$ prime, $a\le\exp(O((\log x)^{1/5}))$.
-This goes beyond the record exponent $0.677$ for the largest prime factor of
-$p+2$ \cite{BH98}; its cofactor is smaller than the standard argument under Elliott--Halberstam gives. We read
-it as a reason to check their Proposition~4.2 first, not as an error found; it
-does not bring twin primes closer.
+Version~1.1 (23 Nov 2026) adds one subsection (and nothing else): the preprint of L\"u,
+Wang and Wu (arXiv:2610.20242) claims (\lbl{Claimed}) $\sum_{p\le x}\mu(p+2)=o(\pi(x))$, a
+model case of the parity problem; we have not verified it. For targets of the form
+$\prod_iV_i^{-1}\sum_{a\mid N}g(N/a)$ their Type~II step sees $g$ only through its
+boundedness, and their Type~I sums only through its distribution in reduced classes to moduli
+$x^{2/5+o(1)}$. Hence, in outline and conditional on their Propositions~4.2 and~5.3
+(\lbl{Proved here}; audited twice), there are $\gg x/(\log x)^2$ primes $p\in(x,2x]$ with
+$p+2=a\ell$, $\ell$ prime, $a\le\exp(O((\log x)^{1/5}))$. The best unconditional exponent we
+know of is $0.677$ (Baker--Harman, as quoted in the sources we read; \cite{BH98} not opened).
+This is a consistency observation on their Propositions~4.2 and~5.3, not an error found, and it
+does not bring twin primes closer (twins are the case $K=0$).
 \item \emph{Parity attempts after the freeze.} Every run since the parity paper was frozen
 records one bounded attempt as a route card (index: \texttt{notes/parity-attempts/README.md}),
 not in a paper. Up to 23 November all of them locate or confirm the obstruction; none breaks
-it. A planned version~1.1 of the parity paper will take over the LWW observation above, the E2
-consistency tests and a one-paragraph summary of the rest, and nothing else.
+it. Version~1.1 of the parity paper takes over only the LWW observation above (Jerry
+approved one subsection); the E2 consistency tests and a summary of the other cards are left to
+the weekly review of 30 November.
 \end{itemize}
 \end{sloppypar}
 
@@ -2270,6 +2273,10 @@ Bonferroni statement demoted to a remark; this appendix collapsed to one item pe
 \item[0.48] (23 Nov 2026) Theorem~\ref{thm:lean}, item 17 (Maynard's change of variables
 $\lambda\leftrightarrow y$ as M\"obius inversion over tuples); Remark~\ref{rem:186-status}: Lemma~1.5 of the
 $186$ companion checked.
+\item[0.49] (23 Nov 2026) Theorem~\ref{thm:lean}, item 18 (multiplicativity of $\mu$; the
+inversion for every $R$); Section~\ref{sec:related}: the parity paper is now version~1.1 (the
+L\"u--Wang--Wu consistency observation as one subsection); Remark~\ref{rem:186-status}: Lemma~1.6
+of the $186$ companion (see there).
 \end{itemize}
 
 \begin{thebibliography}{99}

@@ -295,3 +295,9 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   the re-reading of Remark 1).
 - Parity v1.1: (a) literature check done (notes/sources-lww26.md); (b) subsection drafted in papers/parity-barrier/v11/;
   (c)-(e) remain. v1.0.1 stays frozen until v1.1 is complete.
+
+## Session 49 (23 Nov) update
+- Parity paper v1.1 released and refrozen: Section 6.4 (subsec:lww-transfer), the conditional LWW consistency
+  observation (Sessions 39-40), after a literature check and a fresh-context adversarial audit
+  (notes/audit-parity-v11.md). Nothing else added; the E2 remark and the "Further tests" paragraph are left to the
+  review of 30 Nov. Distance to twin primes unchanged: the observation concerns K >= 1 auxiliary primes; twins are K = 0.
