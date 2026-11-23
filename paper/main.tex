@@ -286,6 +286,16 @@ $j$-tuples of nonzero residues mod $m$ with sum $\equiv s\pmod m$. For every $m\
 $m\,c_m(j,0)=(m-1)^j+(-1)^j(m-1)$, and $m\,c_m(j,s)=(m-1)^j-(-1)^j$ when $m\nmid s$
 (\texttt{coset\_count\_zero}, \texttt{coset\_count\_nonzero}); in particular $c_m(2,0)=m-1$
 (\texttt{coset\_prob\_two}).
+\item (\texttt{MaynardS1.lean}, the finite part of Maynard's $k$-dimensional sum $S_1$) For a finite
+support $D_k$ of divisor tuples, shifts $h_1,\dots,h_k$, integer weights $\lambda_{\mathbf d}$ and
+$N\ge0$: the exact expansion $\sum_{n<N,\,n\equiv v_0\,(W)}\left(\sum_{\mathbf d\in D_k,\ d_i\mid n+h_i}\lambda_{\mathbf d}\right)^2
+=\sum_{\mathbf d,\mathbf e}\lambda_{\mathbf d}\lambda_{\mathbf e}\,\#\{n<N:n\equiv v_0\,(W),\ [d_i,e_i]\mid n+h_i\ \forall i\}$
+(\texttt{maynard\_S1\_expand\_W}); and, if all entries are coprime to $W$ and for every pair the
+moduli $[d_i,e_i]$ are pairwise coprime, the error bound
+$\left|S_1-\frac NW\sum_{\mathbf d,\mathbf e}\lambda_{\mathbf d}\lambda_{\mathbf e}/\prod_i[d_i,e_i]\right|\le\sum_{\mathbf d,\mathbf e}|\lambda_{\mathbf d}\lambda_{\mathbf e}|$
+in division-free form (\texttt{maynard\_S1\_error}, through a Chinese remainder step for $k$ moduli).
+Not formalised: the change of variables to $y_{\mathbf r}$, the diagonalisation, the asymptotic main
+term, and the pairs with non-coprime moduli (assumed away, where Maynard shows they do not occur).
 \end{enumerate}
 \end{theorem}
 
@@ -2229,7 +2239,7 @@ certificates (one program, identical output). Section~\ref{sec:related} followed
 post-freeze parity route cards, including the conditional observation on L\"u--Wang--Wu.
 \item[0.47] (23 Nov 2026) Weekly review of 23 November: Section~\ref{sec:related} reduced to the
 papers, the L\"u--Wang--Wu observation and one pointer to the route-card index; the
-Bonferroni statement demoted to a remark; this appendix collapsed to one item per week.
+Bonferroni statement demoted to a remark; this appendix collapsed to one item per week; Theorem~\ref{thm:lean}, item 16 (the finite part of Maynard's $k$-dimensional $S_1$).
 \end{itemize}
 
 \begin{thebibliography}{99}

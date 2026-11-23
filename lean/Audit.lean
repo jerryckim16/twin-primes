@@ -111,3 +111,10 @@ import TwinPrimes
 #print axioms TwinPrimes.selberg_lower_eq
 #print axioms TwinPrimes.selberg_lower_attained
 #print axioms TwinPrimes.selbergEq_D6
+#print axioms TwinPrimes.maynard_S1_expand
+#print axioms TwinPrimes.maynard_S1_expand_W
+#print axioms TwinPrimes.tupleDvd_lcm
+#print axioms TwinPrimes.crt_tuple_residue
+#print axioms TwinPrimes.crt_tuple_count_bounds
+#print axioms TwinPrimes.maynard_S1_error
+#print axioms TwinPrimes.maynard_S1_expand_example
