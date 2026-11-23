@@ -34,6 +34,8 @@
   notes/sources-lww26.md, code/explore/fake_target_density.py.
 - **Needs outside expert review:** yes.
 
+- **Jerry's decision (23 Nov 2026, 19:45 UTC, via the coordinator session):** Jerry has seen this flag and approved ONE short LWW subsection in the parity paper (v1.1), as specified in the weekly review of 23 Nov, section 4(a): at most about one page; what LWW claim (Claimed); the structural reading; the Sessions 39-40 conditional implication labelled "Proved here in outline, conditional on [LWW] Prop. 4.2 and Prop. 5.3"; the comparison with 0.677; "does not give twins (K = 0)". The other two conditions still apply before release: a literature check that the transfer is not already remarked (LWW v3 if it exists, or elsewhere), and neutral wording (a consistency observation, not an error found).
+
 ## 2026-11-20 (Session 39) — Update to the Lü–Wang–Wu flag: their Type II estimate, if correct, would also give an Elliott–Halberstam-strength theorem they do not state (a red flag for their Prop. 4.2, not an error found)
 - **What.** Reading Section 4.1 of arXiv:2610.20242v2: after writing n + 2 = a h with a a product of K auxiliary primes,
   the authors apply Cauchy–Schwarz over h and discard mu(h) ((4.6)); the remaining quantity Q_Y does not involve the
