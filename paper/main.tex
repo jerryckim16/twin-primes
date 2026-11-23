@@ -312,8 +312,13 @@ and its inverse are mutually inverse for weights supported on squarefree entries
 identity
 \[\mu(a)\mu(x)=\mu(x/a)\qquad(a\mid x\mid c,\ c\text{ squarefree})\] (the theorems \texttt{maynard\_lam\_of\_y\_sqfree} and \texttt{maynard\_y\_of\_lam\_sqfree}).
 That identity is checked by \texttt{decide} for $c\le30$, so the inversion is unconditional for $R\le30$
-and every $k$ (the theorem \texttt{maynard\_inversion\_R30}). Not formalised: that
-identity for all $c$, $\mu(\prod r_i)=\prod\mu(r_i)$ for coprime entries, and the diagonalisation.
+and every $k$ (the theorem \texttt{maynard\_inversion\_R30}).
+\item (\texttt{MuMult.lean}) For the project's recursively defined $\mu$: $\mu(pn)=-\mu(n)$ for a
+prime $p\nmid n$, $\mu(n)=0$ if $p^2\mid n$, and $\mu(mn)=\mu(m)\mu(n)$ for coprime $m,n$
+(\texttt{mu\_mul\_coprime}); hence the identity of item~17 for every squarefree $c$
+(\texttt{muSign\_of\_sqfree}), and the inversion of item~17 for every $R$ and $k$, with no hypothesis
+(\texttt{maynard\_lam\_of\_y\_sqfree\_all}, \texttt{maynard\_y\_of\_lam\_sqfree\_all}). Not formalised:
+$\mu(\prod r_i)=\prod\mu(r_i)$ for coprime tuples as a separate lemma, and the diagonalisation.
 \end{enumerate}
 \end{theorem}
 
@@ -2262,7 +2267,8 @@ Bonferroni statement demoted to a remark; this appendix collapsed to one item pe
 \item[0.48] (23 Nov 2026) Theorem~\ref{thm:lean}, item 17 (Maynard's change of variables
 $\lambda\leftrightarrow y$ as M\"obius inversion over tuples); Remark~\ref{rem:186-status}: Lemma~1.5 of the
 $186$ companion checked.
-\item[0.49] (23 Nov 2026) Section~\ref{sec:related}: the parity paper is now version~1.1 (the
+\item[0.49] (23 Nov 2026) Theorem~\ref{thm:lean}, item 18 (multiplicativity of $\mu$; the
+inversion for every $R$); Section~\ref{sec:related}: the parity paper is now version~1.1 (the
 L\"u--Wang--Wu consistency observation as one subsection); Remark~\ref{rem:186-status}: Lemma~1.6
 of the $186$ companion (see there).
 \end{itemize}
