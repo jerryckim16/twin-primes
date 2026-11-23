@@ -287,3 +287,11 @@ Tao–Teräväinen; Sawin–Shusterman (arXiv:1808.04001).
   Parity v1.1 planned (LWW subsection, E2 remark, one summary paragraph), then refreeze.
 - Attempt: route card 2026-11-23-granville-shao-level-half.md: located. Sources read: Green arXiv:1604.04481v4,
   Granville-Shao arXiv:1703.06865v2. Audited (3 errors fixed, one of which reversed a conclusion).
+
+## Session 48 (23 Nov 2026)
+- Attempt: route card 2026-11-23-merikoski-large-sieve.md: located (this route does not help; the multiplicative-large-
+  sieve argument is unpublished). Sources: Merikoski arXiv:2112.03617v3, Green-Sawhney arXiv:2410.04189v3. Audited
+  (5 errors fixed). All three mechanisms of the review of 23 Nov have now been touched (LWW mu vs lambda only through
+  the re-reading of Remark 1).
+- Parity v1.1: (a) literature check done (notes/sources-lww26.md); (b) subsection drafted in papers/parity-barrier/v11/;
+  (c)-(e) remain. v1.0.1 stays frozen until v1.1 is complete.

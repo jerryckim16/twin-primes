@@ -1,0 +1,63 @@
+% STAGED for v1.1 (Session 48, 23 Nov 2026). Not \input in main.tex yet.
+% Sources: notes/parity-attempts/2026-11-20-lww-orbit-test.md, 2026-11-21-lww-main-term.md (both audited);
+% literature check notes/sources-lww26.md (Sessions 47, 48).
+\subsection{What the L\"u--Wang--Wu Type~II estimate would also give}\label{subsec:lww-transfer}
+The preprint \cite{LWW26} claims $\sum_{p\le x}\mu(p+2)=o(\pi(x))$ (\lbl{Claimed}; we
+have not verified it). Write $L=\log x$, fix $K\ge1$ and ranges
+$P_i=(\exp(L^{a_i}),\exp(2L^{a_i})]$ with $1/10<a_1<\dots<a_K<1/5$, and let
+$\mathcal A$ be the set of products $p_1\cdots p_K$ with $p_i\in P_i$. The
+argument of \cite{LWW26} uses the target at $n+2$ in two places only (our
+reading of its Sections~2--5):
+\begin{itemize}
+\item its Type~I sums depend on the target only through its sums over reduced
+  residue classes to moduli $x^{2/5+o(1)}$;
+\item its Type~II bound (\cite[Prop.~4.2 with Prop.~5.3]{LWW26}) applies
+  Cauchy--Schwarz over the cofactor $h$ of $n+2=ah$, $a\in\mathcal A$, and then uses
+  only an $L^2$ bound for the coefficient of $h$: the multiplicativity of $\mu$
+  enters through $\mu(ah)=(-1)^K\mu(h)$, and the cancellation comes from the
+  M\"obius coefficient of the prime variable.
+\end{itemize}
+The same elimination of the target is noted in \cite[Remark~6.17]{Wan26}.
+
+\begin{proposition}[\lbl{Proved here} in outline, conditional on \cite[Props.~4.2 and 5.3]{LWW26}, which are \lbl{Claimed}]\label{prop:lww-transfer}
+Suppose that \cite[Props.~4.2 and 5.3]{LWW26} hold as stated, and let $K$ be
+large enough for them. Then there are $\gg_K x/(\log x)^2$ primes $p\in(x,2x]$
+with $p+2=al$, $a\in\mathcal A$, $l$ prime. In particular
+$P^+(p+2)\ge p\exp(-2K(\log p)^{1/5})$ for infinitely many $p$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Apply the decomposition of \cite[Prop.~2.1]{LWW26} to
+$\sum_{x<n\le2x}\Lambda(n)G(n+2)$ with
+$G(N)=\prod_iV_i^{-1}\sum_{a\in\mathcal A,\,a\mid N}\Lambda(N/a)$,
+$V_i=\sum_{p\in P_i}1/p$. By the two points above, the Type~II part is
+$O(xL^{-A})$ for every target bounded by a power of $L$, and the Type~I part is
+unchanged, up to $O(xL^{-A})$, if $\Lambda(h)$ is replaced by the sieve model
+$\kappa_D\mathbf 1_{(h,P(D))=1}$ with $D=L^{B}$ and $\kappa_D=\prod_{p\le D}(1-1/p)^{-1}$:
+the two have the same distribution in reduced classes to moduli
+$x^{2/5+o(1)}$ on average, by Bombieri--Vinogradov and the fundamental lemma.
+For the model the sum is computed directly and equals $2C_2x(1+o(1))$, which is
+also the Hardy--Littlewood prediction. Since $G(p+2)\ne0$ forces $p+2=al^j$, prime
+powers $j\ge2$ contribute $O(x^{1/2+o(1)})$, and each $p$ carries weight
+$\ll_KL^2$, the count follows.
+\end{proof}
+
+Unconditionally the record is $P^+(p+2)>p^{0.677}$ \cite{BH98}, and every exponent
+$c<1$ is known under the Elliott--Halberstam conjecture (as cited in \cite{Din25});
+a cofactor $a=x^{o(1)}$ with exactly $K$ prime factors in prescribed ranges goes
+beyond that argument. The proposition is therefore a consistency test of
+\cite[Prop.~4.2]{LWW26}, not an error found in it and not a result about twin
+primes: twins are the case $K=0$, where the Type~II bound gives nothing. We found no
+source that states it (search scope in the project's \texttt{notes/sources-lww26.md};
+the citing works \cite{HLWW26} and \cite{Wan26} treat other multiplicative or
+rough targets). Full details, with the audits, are in the route cards
+\texttt{notes/parity-attempts/2026-11-20-lww-orbit-test.md} and
+\texttt{2026-11-21-lww-main-term.md}.
+
+% bib items to add with this subsection:
+% \bibitem{Wan26} L.~Wang, \emph{Why expansion methods for Chowla do not reach twin primes: a method-limitation
+%   theorem and an explicit parity compiler}, preprint (Zenodo, 10.5281/zenodo.23687596, v1.3), 2026.
+% \bibitem{HLWW26} Hu, L\"u, Wang, Wu, \emph{On the higher-order Titchmarsh divisor problem}, arXiv:2611.12756v1, 2026.
+%   (first names to be taken from the arXiv page before integration)
+% \bibitem{BH98} copy from paper/main.tex.
+% \bibitem{Din25} Ding, arXiv:2510.04026v2 (exact entry to be taken from the arXiv page).

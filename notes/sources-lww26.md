@@ -79,3 +79,40 @@ Read pp. 4-5, 7-14 (Prop. 2.1, Prop. 2.3 with proof, Section 3 in full), 15-18, 
 - Still to do before v1.1: a second search (Google Scholar-style terms, "Hildebrand conjecture mu(p+2)", citations of
   2610.20242), and a check that LWW's own v2 text does not already remark the transfer (Section 1 and Remarks 1-4 were read
   in Session 38; re-read them for this point).
+
+## Literature check for the v1.1 subsection, second pass (Session 48, 23 Nov 2026, 11:34 AM CT run)
+Helper-run; results checked here against the downloaded files (PDFs not committed).
+- **Hash correction.** The arXiv v2 PDF (https://arxiv.org/pdf/2610.20242v2, 895,874 bytes, 75 pp., downloaded 23 Nov
+  ~17:38 UTC) has SHA-256 `7ac341311b4a648c32c2b23b3029e1f4a3202258b55614a33ba7e8282423d000`. Earlier entries in this
+  file, the route cards and STATE.md abbreviate it as `7ac34131...2d423000`; the last eight characters are in fact
+  `2423d000`. The abs page still lists one v2 only (19 Nov), so this is almost certainly a transcription slip in our
+  records, not a different file. The earlier abbreviations are left as written (history); this entry corrects them.
+- arXiv abs page (23 Nov, ~17:38 UTC): still v1 (14 Oct) and v2 (19 Nov); no v3, no comments field.
+- Earlier version on HAL: hal-05793028v1, same authors and title, PDF dated 12 Oct 2026, 43 pp. (SHA-256
+  49e4c4bc81e6e6f86cd415e6c1dbc00cf0def3c0bb927d21c0fb2b09e084a86e). Its HAL abstract states o(pi(x)) "for any fixed
+  shift h > 0"; its Theorem 1.1 is for p + 2 only; it has no Remarks 1-4 and nothing on Lambda, P^+ or almost primes.
+- LWW v2, Section 1 and Remarks 1-4 re-read (pp. 1-4) for the transfer point. Remark 1 (p. 3): the approach is "very
+  likely applicable to general bounded multiplicative function f, with f satisfying the Bombieri-Vinogradov type, such
+  as the Liouville function" (not pursued). Remark 2: a bound O(pi(x)/(log log x)^A) should be possible. Remark 3: other
+  shifts h_1 ≍ x under quasi-RH. Remark 4: OpenAI's mu(p-1) = 1 statement. Nothing on Lambda at the shifted point, on
+  P^+(p+2), on Chen-type products or on almost primes (full-text search for largest, P^+, Chen, almost prime, Elliott,
+  Halberstam, level, von Mangoldt, Lambda, parity). p. 62 has a Remark 5 (comparison with arXiv:2610.09567, Lemma 2.4)
+  not recorded before; unrelated.
+- Citing works (OpenAlex lists three; all opened in full text):
+  - Hu-Lü-Wang-Wu, arXiv:2611.12756v1 (9 Nov 2026), higher-order Titchmarsh divisor problem sum Lambda(n) tau_k(n+h):
+    uses the LWW auxiliary weights (its p. 3, "as in [14, Section 2.3]"); target tau_k (multiplicative). No remark on
+    Lambda at n + h or P^+.
+  - Jiang-Lau-Lü, arXiv:2611.12467v2 (Nov 2026), primes u^2 + v^2 + 1 with Iwaniec's constant (Claimed): cites LWW
+    Prop. 2.3 and Sect. 5.3; target multiplicative. No remark on Lambda or P^+.
+  - L. Wang, Zenodo 10.5281/zenodo.23687596 (v1.3, unrefereed): Remark 6.17 notes that Cauchy-Schwarz in h "removes mu
+    altogether" and that inserting 1[P^-(p+2) > z] leaves the Type II step unchanged for z <= exp((log x)^c), c < 1/5.
+    This is the closest item: it notes the target elimination (our Session 39 Finding 1) and extends it to roughness of
+    p + 2, but states no Lambda-target or largest-prime-factor consequence.
+- Web searches (12 queries: the identifier, author/title terms, "mu(p+2) Hildebrand", "sum mu(p+h) = o(pi(x))",
+  "largest prime factor of p+2 p^{1-epsilon}", Chen/almost-prime terms, blog/MathOverflow discussion, "lambda(p+2) = -1")
+  and arXiv API searches ("Hardy-Littlewood-Chowla"; "shifted primes" AND "largest prime factor"; "shifted primes" AND
+  Mobius; "parity problem"): no source states the transfer; nothing reaches exponent 1 - epsilon for P^+(p+2).
+- Could not be opened: Semantic Scholar API (HTTP 429, rate limit) and Google Scholar (HTTP 403). Not needed from Jerry
+  (OpenAlex worked); recorded for scope only.
+- Conclusion for v1.1: the observation is not stated in LWW or the three citing works (Wang's Remark 6.17 comes
+  closest and must be cited for the target elimination). Literature check (a) of the v1.1 plan is done to this scope.

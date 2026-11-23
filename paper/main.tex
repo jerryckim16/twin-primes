@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.47, 23 November 2026}
+\date{Version 0.48, 23 November 2026}
 
 \begin{document}
 
@@ -302,6 +302,18 @@ moduli $[d_i,e_i]$ are pairwise coprime, the error bound
 in division-free form (\texttt{maynard\_S1\_error}, through a Chinese remainder step for $k$ moduli).
 Not formalised: the change of variables to $y_{\mathbf r}$, the diagonalisation, the asymptotic main
 term, and the pairs with non-coprime moduli (assumed away, where Maynard shows they do not occur).
+\item (\texttt{MaynardInv.lean}, the change of variables $\lambda\leftrightarrow y$ of
+\cite[Lemma~5.1]{May15}) On the box $\{1,\dots,R\}^k$, for every $R$ and $k$, M\"obius inversion over
+componentwise divisibility holds in both directions: with $(Uf)(\mathbf r)=\sum_{\mathbf r\mid\mathbf d}f(\mathbf d)$
+and $(MF)(\mathbf r)=\sum_{\mathbf r\mid\mathbf d}\prod_i\mu(d_i/r_i)F(\mathbf d)$, $MUf=f$ and $UMF=F$
+(\texttt{mobInv\_upSum}, \texttt{upSum\_mobInv}, over $\mathbb Q$). Maynard's normalisation
+$y_{\mathbf r}=\prod\mu(r_i)\prod\varphi(r_i)\sum_{\mathbf r\mid\mathbf d}\lambda_{\mathbf d}/\prod d_i$
+and its inverse are mutually inverse for weights supported on squarefree entries, assuming the one-variable
+identity
+\[\mu(a)\mu(x)=\mu(x/a)\qquad(a\mid x\mid c,\ c\text{ squarefree})\] (the theorems \texttt{maynard\_lam\_of\_y\_sqfree} and \texttt{maynard\_y\_of\_lam\_sqfree}).
+That identity is checked by \texttt{decide} for $c\le30$, so the inversion is unconditional for $R\le30$
+and every $k$ (the theorem \texttt{maynard\_inversion\_R30}). Not formalised: that
+identity for all $c$, $\mu(\prod r_i)=\prod\mu(r_i)$ for coprime entries, and the diagonalisation.
 \end{enumerate}
 \end{theorem}
 
@@ -1953,7 +1965,10 @@ the step its proof leaves implicit (the caps exclude a largest witness), togethe
 with the bound $\max(A,C)\le7L/3$ of its Lemma~1.1 on all $19$ retained rows and the
 mapping of the rows to the six groups of the code (\lbl{Computed}, $81$ exact
 rational checks, one program, \texttt{code/oai186\_lemma14\_check.py};
-\texttt{notes/oai186-lemma14-check.md}). Not checked: its Lemmas 1.5--1.7, 2.3
+\texttt{notes/oai186-lemma14-check.md}). Its Lemma~1.5 (the full-radius factor $W_r$) has been checked the same way: the bound
+holds on every retained index of the $61$ low bins, the term $dh$ cannot be reduced, and all four of our loss
+programs and the authors' script use the same factor (\lbl{Computed}, $44$ exact checks, one program,
+\texttt{code/oai186\_lemma15\_check.py}; \texttt{notes/oai186-lemma15-check.md}). Not checked: its Lemmas 1.6, 1.7, 2.3
 and 2.4 (that the remaining forms majorise the true support-failure integrals and that
 the cover is complete), the analytic part of Lemma~1.1, its restoration step (Proposition~1.3, resting on the
 main paper's Proposition~4.6), and the analytic inputs, which stay
@@ -2252,6 +2267,9 @@ post-freeze parity route cards, including the conditional observation on L\"u--W
 \item[0.47] (23 Nov 2026) Weekly review of 23 November: Section~\ref{sec:related} reduced to the
 papers, the L\"u--Wang--Wu observation and one pointer to the route-card index; the
 Bonferroni statement demoted to a remark; this appendix collapsed to one item per week; Theorem~\ref{thm:lean}, item 16 (the finite part of Maynard's $k$-dimensional $S_1$); Remark~\ref{rem:186-status}: Lemma~1.4 of the $186$ companion checked.
+\item[0.48] (23 Nov 2026) Theorem~\ref{thm:lean}, item 17 (Maynard's change of variables
+$\lambda\leftrightarrow y$ as M\"obius inversion over tuples); Remark~\ref{rem:186-status}: Lemma~1.5 of the
+$186$ companion checked.
 \end{itemize}
 
 \begin{thebibliography}{99}

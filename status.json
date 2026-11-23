@@ -1,7 +1,7 @@
 {
- "version": "0.47",
+ "version": "0.48",
  "updated": "2026-11-23",
- "session_count": 47,
+ "session_count": 48,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "Moebius inversion over k-tuples on {1..R}^k, both directions, all R, k (mobInv_upSum, upSum_mobInv); Maynard's change of variables lambda <-> y (Lemma 5.1) both directions for squarefree-supported weights, assuming mu(a)mu(x) = mu(x/a) for a | x | c squarefree, which is decided for c <= 30 (maynard_inversion_R30).",
+   "where": "lean/TwinPrimes/MaynardInv.lean"
+  },
+  {
+   "label": "Computed",
+   "text": "Lemma 1.5 (full-radius factorization) of the 186 numerical companion verified as stated: the bound W_r holds on every retained index of the 61 low bins (143,512 pairs), the dh term cannot be reduced (explicit root), and our four loss programs and the authors' script use the same factor; 44 exact checks, 0 failures, one program.",
+   "where": "notes/oai186-lemma15-check.md; code/oai186_lemma15_check.py"
+  },
   {
    "label": "Lean-checked",
    "text": "Selberg's lower bound is attained for every D >= 1: with W = lcm(phi(1..D)), y_r = mu(r) W/phi(r), t_d = y_d - sum_{d<e<=D, d|e} t_e and lambda_d = d t_d, one has lambda_1 = sum_{r<=D} mu^2(r) W/phi(r) > 0 and equality in selberg_lower (lean/TwinPrimes/SelbergEq.lean: selbergEqT_sum (Moebius inversion on [1, D]), selbergEq_Y, selbergG_pos, selbergEq_lam_one, selbergEq_LHS, selberg_lower_eq, selberg_lower_attained, selbergEq_D6). Uniqueness formalised only for D = 6.",
@@ -568,6 +578,18 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Exploration: short-interval variance of twin-prime counts against a Montgomery-Soundararajan-type law",
+   "origin": "exploration",
+   "status": "open",
+   "note": "Session 48: primes reproduce M-S (c = 1.001, B = -1.400 at 1e9); twins fit Var/Mean = 1 - c(log H - B)/log x with c = 0.51 at both 1e8 and 1e9, against a rough singular-series guess decaying like 1/log x. Heuristic; prediction not derived; literature not searched."
+  },
+  {
+   "idea": "Parity attempt: Merikoski's large-sieve route to Type I information for lambda in a family carried by n(n+2) (split algebra Z x Z, norm uv)",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Session 48: located; this route does not help. Merikoski's published Type I (arXiv:2112.03617v3) is an additive large sieve over roots of nu^2+1 = 0 mod d after Poisson in a free coordinate; for the split form x^2-1 the roots cluster near small-denominator rationals (defect >= (4/17)N for N <= D/16), and in any case Type I for d | n(n+2) is elementary; the twin target is parity-even (E2) in Z x Z. The multiplicative-large-sieve argument GS attribute to Merikoski is unpublished (unread). First unresolved: (B-twin) in FI's mu-twisted form. Audited (5 errors, fixed)."
+  },
   {
    "idea": "Parity attempt: one-step Chen switching on rung 3 of the sifting-dimension ladder (sift to x^{1/u}, 2 < u <= 4, subtract survivors with two or three bad primes)",
    "origin": "own",
@@ -1171,7 +1193,7 @@
    "version": "1.0.1",
    "status": "frozen",
    "pdf": "docs/papers/parity-barrier.pdf",
-   "summary": "Frozen v1.0 (18 Nov 2026, 24 pp.); v1.0.1 (20 Nov 2026) adds only a status note: the preprint arXiv:2610.20242 (Lu-Wang-Wu) claims sum_p mu(p+2) = o(pi(x)), called open in the paper; Claimed, not verified. Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion (Liouville-pattern weights block a proof of H_m <= g exactly when g < H(2m+1); a statement about the weight class, not a bound); GEH ceilings, k = 2 exactly at the parity value 2, the k = 3 criterion above 2 at eps = 2/9, 1/4, 7/24 and provably below 2 for eps >= 0.439; Pintz's dichotomy with Maynard weights (|d| <= 12; Pintz 16; possibly folklore); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. Five-lane internal referee pass applied. No claim of progress on the twin prime conjecture."
+   "summary": "Frozen v1.0 (18 Nov 2026, 24 pp.); v1.0.1 (20 Nov 2026) adds only a status note: the preprint arXiv:2610.20242 (Lu-Wang-Wu) claims sum_p mu(p+2) = o(pi(x)), called open in the paper; Claimed, not verified. Survey of the obstacle between bounded gaps and twin primes, read in the sources, with own results, each labelled: window form of Tao's convex-hull criterion (Liouville-pattern weights block a proof of H_m <= g exactly when g < H(2m+1); a statement about the weight class, not a bound); GEH ceilings, k = 2 exactly at the parity value 2, the k = 3 criterion above 2 at eps = 2/9, 1/4, 7/24 and provably below 2 for eps >= 0.439; Pintz's dichotomy with Maynard weights (|d| <= 12; Pintz 16; possibly folklore); consistency tests; why Gowers norms and averages over the shift stop at the mean gap; asymptotic sieves for Lambda(n+2); F_q[T], a^2+b^4, x^3+2y^3; the Siegel-zero world. Five-lane internal referee pass applied. No claim of progress on the twin prime conjecture. v1.1 in preparation (Session 48): the Lu-Wang-Wu transfer subsection is staged in papers/parity-barrier/v11/, not yet in the paper."
   },
   {
    "slug": "verification-note",

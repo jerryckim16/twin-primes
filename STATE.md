@@ -3,40 +3,66 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 47, 3:34 AM CT slot of 23 Nov, run 09:35 UTC 23 Nov): PHASE B
+## POSITION (after Session 48, 11:34 AM CT slot of 23 Nov, run 17:35 UTC 23 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (one v1.1 revision planned, see below); main paper v0.47 (33 pp.).
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.0.1 FROZEN (v1.1 revision in preparation: material staged in
+  papers/parity-barrier/v11/, NOT yet in main.tex; see v11/README.md); main paper v0.48 (33 pp.).
   Active lines (review of 23 Nov): main paper as an index; a short Lean note for programme (4) (after the k-dimensional
   identity, or after 6 runs); the single parity v1.1 revision. Paused: toolkit note (5), H_m, rung 182.
 - Weekly review: notes/reviews/2026-11-23.md (read section 8, the coordinator's decisions). Next review: the first run
   starting on Monday 30 Nov, Central time (normally the 3:34 AM CT run).
 - LWW flag (arXiv:2610.20242, still v2 on 23 Nov) open; see notes/flags-for-jerry.md.
 
-## Next steps (in order; from the review of 23 Nov)
-1. Bound share: the 186 majorisation lemmas, ONE per run, in order 1.5, 1.6, 1.7, 2.3, 2.4 (Lemma 1.4 done in Session 47:
-   notes/oai186-lemma14-check.md, code/oai186_lemma14_check.py; the PDF is code/third_party/openai186/short_gaps_numerics.pdf,
-   transcription notes/sources-186-loss.md). Then settle which threshold the restoration step (Prop. 4.6 of the main 186
-   paper) needs (prop:oai186-budget). NO more per-run regressions: code/cap6/regress_all.py (--list / --run JOB / --run all),
-   at most monthly; the 186 main terms and outer parts are not yet in it (add them when it is next run). 9 of 17 inner parts
-   have been re-run (S45-S47).
-2. Parity v1.1 (2-3 runs): (a) finish the literature check of the LWW transfer (notes/sources-lww26.md, last section: a second
-   search, and re-read LWW Section 1 and Remarks 1-4 for the point); (b) ONE short subsection (<= 1 p.) with the S39+S40
-   conditional implication, neutral wording; (c) ONE remark merging the E2 cards (S32, S33, S36); (d) one "Further tests"
-   paragraph, one sentence each for S37, S38, S42, S46, S47, one for S43-S45 together, one for S34+S35 (or drop); S41 only
-   after Tao-Teraeväinen 2019 is opened; (e) one referee lane, then refreeze as v1.1. Folklore checks (review section 7)
-   before calling anything "ours".
+## Next steps (in order; from the review of 23 Nov, updated in Session 48)
+1. Bound share: the 186 majorisation lemmas, ONE per run, in order 1.6, 1.7, 2.3, 2.4 (1.4 done S47, 1.5 done S48:
+   notes/oai186-lemma15-check.md, code/oai186_lemma15_check.py, 44 exact checks, verified as stated; the PDF is
+   code/third_party/openai186/short_gaps_numerics.pdf, transcription notes/sources-186-loss.md). Then settle which threshold
+   the restoration step (Prop. 4.6 of the main 186 paper) needs (prop:oai186-budget). NO per-run regressions:
+   code/cap6/regress_all.py at most monthly; add the 186 main terms and outer parts when it is next run.
+2. Parity v1.1 (see papers/parity-barrier/v11/README.md): (a) literature check DONE (S47 + S48, notes/sources-lww26.md);
+   (b) subsection DRAFTED (v11/lww-transfer.tex; needs bib entries Wan26, HLWW26, BH98, Din25 taken from their pages);
+   (c) ONE remark merging the E2 cards (S32, S33, S36); (d) one "Further tests" paragraph (S37, S38, S42, S46, S47,
+   S43-S45 together, S34+S35, S48 Merikoski; S41 only after Tao-Teraeväinen 2019 is opened); (e) integrate into main.tex
+   (placement in v11/README.md), one referee lane, cosmetic items (item 7 below), refreeze as v1.1. Folklore checks first.
 3. Parity attempts: one per run (Jerry's rule), each with a pre-stated success outcome NOT implied by the paper's class.
-   Mechanisms left from the review: what LWW Sections 2-3 need from mu versus lambda (their Remark 1); Merikoski's
-   multiplicative-large-sieve route. Done: Green / Granville-Shao (S47, located). MRT17 under GRH/EH: literature check only.
-   A run may spend its attempt on the source reading for v1.1 or an expert item, if the card says so.
-4. Lean: k-dimensional Maynard identity, one lemma per run: next the change of variables lambda -> y_r (Maynard Lemma 5.1,
-   Moebius inversion over tuples), then the diagonalisation. MaynardS1.lean (S47) has the S1 expansion and error.
-   No more 1-dimensional Selberg results.
+   Mechanisms of the review of 23 Nov now all touched: Green / Granville-Shao (S47, located), Merikoski (S48, located:
+   the root large sieve does not help; Merikoski's multiplicative-large-sieve argument is unpublished, GS ref [16]
+   forthcoming), LWW mu-versus-lambda (Remark 1 re-read S48: "very likely applicable to ... the Liouville function", not
+   pursued by them; a card on what their Sections 2-3 need from mu would still be new). Next: that LWW card, or new
+   mechanisms for the review of 30 Nov to choose.
+4. Lean: k-dimensional Maynard identity, one lemma per run: MaynardInv.lean (S48) has tuple Moebius inversion (all R, k)
+   and the lambda <-> y round trips, conditional on MuSign c (mu(a)mu(x) = mu(x/a), a | x | c squarefree), checked by
+   decide for c <= 30. Next: prove MuSign for all squarefree c (multiplicativity of the recursive mu), then
+   mu(prod r_i) = prod mu(r_i) for coprime entries, then the diagonalisation of S1 in y.
 5. Main paper: bump the version only when content changes; keep sec:related as an index.
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
 7. Deferred minor items of the parity referee (cosmetic): label keys prop:/cor: on remarks, bib key Cit26, journal pages for
    MR16, GT10, GT12 (do them inside v1.1).
+8. Exploration follow-up (optional, cheap): derive the Montgomery-Soundararajan-type prediction for the twin short-interval
+   variance (S48 measured slope 0.51 at 1e8 and 1e9, against a rough 1/log x-decaying guess); see notes/explorations.md.
+
+## Session 48 (11:34 AM CT slot of 23 Nov, started on time 17:35 UTC; no wait) -- additions
+- Bound share: 186 Lemma 1.5 (full-radius factor W_r) verified as stated: code/oai186_lemma15_check.py (/usr/bin/python3;
+  ~20 s, ~35 MB; .out), 44 exact checks, 0 failures; our four loss programs and the authors' script use the same factor;
+  notes/oai186-lemma15-check.md. Helper-written; re-run here, identical output. One program.
+- Lean: TwinPrimes/MaynardInv.lean (box, tdvd, tmuq, upSum, mobInv, tuple_mobius_lower/upper, mobInv_upSum, upSum_mobInv,
+  maynardY, maynardLam, maynard_lam_of_y(_sqfree), maynard_y_of_lam(_sqfree), signOK_of_entries, muSignCheck_31,
+  maynard_inversion_R30('), examples incl. a failing non-squarefree case; helper agent, statements checked here; in
+  Audit.lean, 18 lines); lake build and Audit.lean pass (propext / Quot.sound / Classical.choice only).
+- Parity attempt: route card notes/parity-attempts/2026-11-23-merikoski-large-sieve.md (located: this route does not help).
+  Sources (PDFs not committed): Merikoski arXiv:2112.03617v3 (SHA-256 d7555c65...ae819), Green-Sawhney arXiv:2410.04189v3
+  (741b8ebc...4e5a4e), Grimmelt-Merikoski-Pandey-Pascadi arXiv:2610.41356v1 (Sect. 1 only). Script
+  code/parity/merikoski_root_large_sieve.py (/usr/bin/python3 -I; ~3 s; .out). Fresh-context adversarial audit: 5 errors
+  (incl. a wrong quantification of the root-sieve defect and a misidentification of FI98's (B)) and several overstatements,
+  all fixed in the card.
+- Parity v1.1: literature check (a) done (notes/sources-lww26.md, Session 48 section: SHA-256 of LWW v2 corrected to
+  ...2423d000 (our earlier records had a transcription slip); HAL v1 hal-05793028; three citing works opened; 12 web
+  searches + arXiv API + OpenAlex; Semantic Scholar 429 and Google Scholar 403, not needed). Subsection (b) staged in
+  papers/parity-barrier/v11/lww-transfer.tex.
+- Exploration: code/explore/twin_short_variance.py [X] (/usr/bin/python3 -I; ~30 s, ~1.5 GB at 1e9; .out): inconclusive.
+- Main paper v0.48 (Theorem 1 item 17; rem:186-status Lemma 1.5). Wolfram and mathbox NOT available. No news search
+  (not the 3:34 AM run).
 
 ## Session 47 (3:34 AM CT slot of 23 Nov, started on time 09:35 UTC; no wait) -- additions
 - Weekly review notes/reviews/2026-11-23.md (fresh-context helper; facts checked; coordinator decisions in section 8).
