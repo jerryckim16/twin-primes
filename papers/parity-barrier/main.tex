@@ -18,7 +18,7 @@
 \title[The parity barrier and twin primes]{The parity barrier and twin primes: what is known and what is missing}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). Scripts and notes are in the repository \url{https://github.com/jerryckim16/twin-primes}; the companion papers are listed at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 1.0.1 (frozen; status note), 20 November 2026}
+\date{Version 1.1 (frozen), 23 November 2026}
 
 \begin{document}
 
@@ -42,7 +42,10 @@ results (``Proved here'', several possibly folklore):
   $d$ with $0<|d|\le12$ has $\lambda(p+d)=-1$ for infinitely many primes $p$
   (Pintz: $16$);
 \item the twisted Type~I input for log-averaged weights of small level, and a
-  Siegel-zero world in which a per-modulus form of it fails.
+  Siegel-zero world in which a per-modulus form of it fails;
+\item a consistency observation: if the Type~II estimate of a 2026 preprint
+  claiming $\sum_{p\le x}\mu(p+2)=o(\pi(x))$ holds, the same argument gives
+  $P^+(p+2)\ge p^{1-o(1)}$ infinitely often (outline; not about twin primes).
 \end{itemize}
 \end{abstract}
 
@@ -162,7 +165,7 @@ estimate using $\lambda(pn)=-\lambda(n)$ at small primes, and that the method
 does ``not appear to have any bearing as yet on twin prime-type sums''
 \cite[pp.~3--5]{Tao16}.
 
-\begin{remark}[\lbl{Proved here}; a direct corollary of {\cite[Theorem~1.2]{Tao16}}]\label{prop:tao-weight}
+\begin{remark}[\lbl{Proved here}; a direct corollary of {\cite[Theorem~1.2]{Tao16}}]\label{rem:tao-weight}
 If $w$ is periodic and $h\ne h'$, then
 $\sum_{n\le x}w(n)\lambda(n+h)\lambda(n+h')/n=o(\log x)$: split into classes
 $n=qm+c$ modulo the period $q$ and apply the theorem with $a_1=a_2=q$,
@@ -258,7 +261,7 @@ The second statement follows from
 $1_{\lambda(n)\lambda(n+2)=\pm1}=\frac12(1\pm\lambda(n)\lambda(n+2))$.
 \end{proof}
 
-\begin{remark}[Two-variable weights; \lbl{Proved here, conditional on a preprint}]\label{cor:maynard-logc}
+\begin{remark}[Two-variable weights; \lbl{Proved here, conditional on a preprint}]\label{rem:maynard-logc}
 Conditionally on \cite[Theorem~3.1]{TT25}, the same proof covers Maynard-type weights
 \[w(n)=\left(\sum_{d_1\mid n,\ d_2\mid n+2,\ d_1,d_2\le R}y_{d_1,d_2}\right)^2\]
 with $y_{1,1}=1\ge|y_{d_1,d_2}|$ and $R\le(\log x)^{c/32}$, with saving
@@ -1194,7 +1197,7 @@ $\sum_p\mu(p-2)\log p\log(p-2)$, and a bound $o(x)$ for that term alone would be
 stronger by a factor $\log x$ than the folklore conjecture $\sum_{p\le X}\mu(p+h)=o(\pi(X))$
 \cite[p.~1]{Li21} (\lbl{Claimed} in \cite{LWW26} for $h=2$, a restriction the authors make
 ``for simplicity''; the term here has $h=-2$). A related conditional equivalence is due to Murty and
-Vatwani, as quoted in the preprint \cite[Theorem~3, p.~3]{Cit26} (\cite{MV17} not opened):
+Vatwani, as quoted in the preprint \cite[Theorem~3, p.~3]{Can26} (\cite{MV17} not opened):
 under EH at level $N^{\theta}$ and an EH-type hypothesis for
 $\Lambda(n)\mu(n+h)$ at level $N^{1-\theta}$, the asymptotic for
 $\sum\Lambda(n)\Lambda(n+h)$ is equivalent to $\sum_{n\le N}\Lambda(n)\mu(n+h)=o(N)$, a
@@ -1208,6 +1211,70 @@ Proposition~\ref{prop:B-parity} shows carries the parity information: the
 split is a reformulation, not progress, and the first unresolved implication is
 $T_D(x)=o(x)$ for one admissible $D$.
 \end{remark}
+
+\subsection{The L\"u--Wang--Wu Type~II estimate: a consistency observation}\label{subsec:lww-transfer}
+\emph{What is claimed.} The preprint \cite{LWW26} claims
+$\sum_{p\le x}\mu(p+2)=o(\pi(x))$ (\lbl{Claimed}; we have not verified it).
+Write $L=\log x$, fix $K\ge1$ and the ranges
+$P_i=(\exp(L^{a_i}),\exp(2L^{a_i})]$ with $1/10<a_1<\dots<a_K<1/5$, and let $\mathcal A$ be the set of products
+$p_1\cdots p_K$ with $p_i\in P_i$.
+
+\emph{Structural reading} (\lbl{Literature}, our reading of \cite[Sections~2--5]{LWW26}).
+The argument uses the target at $n+2$ in two places only.
+\begin{itemize}
+\item The Type~I sums (\cite[Section~3]{LWW26}) depend on the target only through
+  its sums over reduced residue classes to moduli $x^{2/5+o(1)}$.
+\item In the Type~II step (\cite[Section~4.1, Props.~4.2 and 5.3]{LWW26}) the
+  target enters only through its multiplicativity at the auxiliary primes,
+  $\mu(ah)=(-1)^K\mu(h)$ for $n+2=ah$, $a\in\mathcal A$, and its boundedness:
+  after Cauchy--Schwarz over the cofactor $h$ only an $L^2$ bound for the
+  coefficient of $h$ is used. The cancellation comes from the M\"obius
+  coefficient of the prime variable.
+\end{itemize}
+That Cauchy--Schwarz in $h$ ``removes $\mu$ altogether'' is also noted in
+\cite[Remark~6.17]{Wan26}, which extends the Type~II step to the rough target
+$\mathbf 1[P^-(p+2)>z]$, $z\le\exp((\log x)^{c})$, $c<1/5$, and states no
+consequence for $\Lambda$ at the shifted point.
+
+\begin{proposition}[\lbl{Proved here} in outline, conditional on {\cite[Props.~4.2 and 5.3]{LWW26}}, which are \lbl{Claimed}]\label{prop:lww-transfer}
+Suppose that \cite[Props.~4.2 and 5.3]{LWW26} hold as stated, and let $K$ be
+large enough for them. Then there are $\gg_K x/(\log x)^2$ primes $p\in(x,2x]$
+with $p+2=al$, $a\in\mathcal A$, $l$ prime. In particular
+$P^+(p+2)\ge p\exp(-2K(\log p)^{1/5})$ for infinitely many $p$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Apply the decomposition of \cite[Prop.~2.1]{LWW26} to
+$\sum_{x<n\le2x}\Lambda(n)G(n+2)$ with
+$G(N)=\prod_iV_i^{-1}\sum_{a\in\mathcal A,\,a\mid N}\Lambda(N/a)$,
+$V_i=\sum_{p\in P_i}1/p$. By the two points above, the Type~II part is
+$O(xL^{-A})$ for every target bounded by a power of $L$. The Type~I part
+changes by $O(xL^{-A})$ if $\Lambda(h)$ is replaced by the sieve model
+$\kappa_D\mathbf 1_{(h,P(D))=1}$, $D=L^{B}$, $\kappa_D=\prod_{p\le D}(1-1/p)^{-1}$:
+on average over moduli up to $x^{2/5+o(1)}$ the two have the same distribution in
+reduced classes, by Bombieri--Vinogradov and the fundamental lemma. For the
+model the sum is computed directly and equals $2C_2x(1+o(1))$, which is also the
+Hardy--Littlewood prediction. Finally $G(p+2)\ne0$ forces $p+2=al^j$; prime powers
+$j\ge2$ contribute $O(x^{1/2+o(1)})$, and each $p$ carries weight $\ll_KL^2$.
+\end{proof}
+
+\emph{Comparison.} The best unconditional exponent we know of is
+$P^+(p+a)>p^{0.677}$ for infinitely many $p$ (fixed $a\ne0$), due to Baker and
+Harman \cite{BH98} as quoted in \cite[pp.~1--2]{Li25} and, for $a=-1$, in
+\cite[p.~2]{Din25}; we have not opened \cite{BH98}, and \cite{Li25} claims
+$0.679$. Under the Elliott--Halberstam conjecture every exponent $c<1$ is known
+(for $p-1$, as quoted in \cite[p.~2]{Din25}). A cofactor $a=x^{o(1)}$ with exactly
+$K$ prime factors in prescribed ranges goes beyond what that argument gives.
+
+\emph{What this is and is not.} The proposition is a consistency observation on
+\cite[Prop.~4.2]{LWW26}: either the Type~II estimate also yields this much
+stronger statement, or it needs a correction. It is not an error found in
+\cite{LWW26}, and it is not a result about twin primes: twins are the case $K=0$,
+where the Type~II step gains nothing. We found no source that states it (search
+scope in the project's \texttt{notes/sources-lww26.md}; the citing works
+\cite{HLWW26} and \cite{Wan26} treat other targets). Details and audits are in
+the route cards \texttt{notes/parity-attempts/2026-11-20-lww-orbit-test.md} and
+\texttt{2026-11-21-lww-main-term.md}.
 
 \subsection{The Siegel-zero world}\label{sec:siegel}
 \begin{sloppypar}
@@ -1608,14 +1675,14 @@ $\frac12$, not $1$.
 \bibitem{SS19} W.~Sawin and M.~Shusterman, \emph{On the Chowla and twin primes
   conjectures over $\mathbb F_q[T]$}, arXiv:1808.04001v2 (7 Sep 2019); Ann.\ of
   Math.\ (2022), journal version not consulted.
-\bibitem{MR16} K.~Matom\"aki and M.~Radziwi\l\l, \emph{Multiplicative functions in short intervals}, Ann. of Math. (2) \textbf{183} (2016) (journal version not consulted; reference as supplied, not printed in the PDF); arXiv:1501.04585v4 (15 Oct 2017; read: pp.~1--19, 21--24, 29--31, 36--38).
+\bibitem{MR16} K.~Matom\"aki and M.~Radziwi\l\l, \emph{Multiplicative functions in short intervals}, Ann. of Math. (2) \textbf{183} (2016), 1015--1056, doi:10.4007/annals.2016.183.3.6 (bibliographic data from Crossref; journal version not consulted); arXiv:1501.04585v4 (15 Oct 2017; read: pp.~1--19, 21--24, 29--31, 36--38).
 \bibitem{Li21} J.~D.~Lichtman, \emph{Averages of the M\"obius function on
   shifted primes}, arXiv:2009.08969v2 (20 Oct 2021) (read: abstract,
   pp.~1--2, Theorem~1.1).
 \bibitem{MV17} M.~R.~Murty and A.~Vatwani, \emph{Twin primes and the parity
   problem}, J.\ Number Theory \textbf{180} (2017), 643--659 (not opened; known to
-  us only through \cite{Cit26}).
-\bibitem{Cit26} M.~Cantarini, \emph{Averages of diagonal Elliott--Halberstam problem twisted by
+  us only through \cite{Can26}).
+\bibitem{Can26} M.~Cantarini, \emph{Averages of diagonal Elliott--Halberstam problem twisted by
   M\"obius function with Sobolev and H\"older--Zygmund weights},
   arXiv:2607.09110v1 (10 Jul 2026) (read: pp.~1--3, the statement of
   \cite[Theorem~1.1]{MV17} as quoted there).
@@ -1625,6 +1692,11 @@ $\frac12$, not $1$.
 \bibitem{LWW26} G.~L\"u, Z.~Wang and J.~Wu, \emph{On the Hardy--Littlewood--Chowla conjecture},
   arXiv:2610.20242v2 (19 Nov 2026; preprint; read: Sections 1, 2.2--2.3, 4.1 and the
   statement of Proposition~4.2; not verified).
+\bibitem{Wan26} Liang~Wang, \emph{Why expansion methods for Chowla do not reach twin primes: a method-limitation theorem and an explicit parity compiler}, preprint, Zenodo, doi:10.5281/zenodo.23687596 (v1.3, 2026; unrefereed; read: Remark~6.17).
+\bibitem{HLWW26} G.~Hu, G.~L\"u, Z.~Wang and J.~Wu, \emph{On the higher-order Titchmarsh divisor problem}, arXiv:2611.12756v1 (9 Nov 2026), preprint (read in full for citations of \cite{LWW26}).
+\bibitem{BH98} R.~C.~Baker and G.~Harman, \emph{Shifted primes without large prime factors}, Acta Arith.\ \textbf{83} (1998), 331--361 (not opened; known to us only as quoted in \cite{Li25} and \cite{Din25}).
+\bibitem{Li25} R.~Li, \emph{An average Brun--Titchmarsh theorem and shifted primes with a large prime factor}, arXiv:2508.18285v3 (7 Oct 2025), preprint (read: pp.~1--2).
+\bibitem{Din25} Y.~Ding and Z.~Wang, \emph{Note on shifted primes with large prime factors}, arXiv:2510.04026v2 (5 Feb 2026), preprint (read: pp.~1--2).
 \bibitem{Li23} J.~D.~Lichtman, \emph{Primes in arithmetic progressions to large
   moduli, and shifted primes without large prime factors}, arXiv:2211.09641v1;
   \emph{Primes in arithmetic progressions to large moduli and Goldbach beyond the
@@ -1648,8 +1720,8 @@ $\frac12$, not $1$.
 \bibitem{HB83} D.~R.~Heath-Brown, \emph{Prime twins and Siegel zeros}, Proc.\
   London Math.\ Soc.\ (3) \textbf{47} (1983), 193--224 (not opened; quoted
   from \cite[Theorem~1.5(i)]{TT22}).
-\bibitem{GT10} B.~Green and T.~Tao, \emph{Linear equations in primes}, Ann. of Math. (2) \textbf{171} (2010) (journal version not consulted); arXiv:math/0606088v2 (22 Apr 2008; read pp.~1--10, 26--27, 67--68).
-\bibitem{GT12} B.~Green and T.~Tao, \emph{The M\"obius function is strongly orthogonal to nilsequences}, Ann. of Math. (2) \textbf{175} (2012) (journal version not consulted); arXiv:0807.1736v4 (29 May 2011; read: abstract, \S1, start of \S3, \S6).
+\bibitem{GT10} B.~Green and T.~Tao, \emph{Linear equations in primes}, Ann. of Math. (2) \textbf{171} (2010), 1753--1850, doi:10.4007/annals.2010.171.1753 (bibliographic data from Crossref; journal version not consulted); arXiv:math/0606088v2 (22 Apr 2008; read pp.~1--10, 26--27, 67--68).
+\bibitem{GT12} B.~Green and T.~Tao, \emph{The M\"obius function is strongly orthogonal to nilsequences}, Ann. of Math. (2) \textbf{175} (2012), 541--566, doi:10.4007/annals.2012.175.2.3 (bibliographic data from Crossref; journal version not consulted); arXiv:0807.1736v4 (29 May 2011; read: abstract, \S1, start of \S3, \S6).
 \bibitem{Tao16b} T.~Tao, \emph{Equivalence of the logarithmically averaged Chowla and Sarnak conjectures}, arXiv:1605.04628v1 (16 May 2016; read pp.~1--7, 11, 18; journal version not consulted).
 \bibitem{Tao07} T.~Tao, \emph{Open question: the parity problem in sieve theory}, blog post, 5 June 2007, \url{https://terrytao.wordpress.com/2007/06/05/open-question-the-parity-problem-in-sieve-theory/} (read 16 Nov 2026).
 \bibitem{Tao15c} T.~Tao, \emph{254A, Supplement 5: The linear sieve and Chen's theorem (optional)}, blog post, 29 Jan 2015, \url{https://terrytao.wordpress.com/2015/01/29/254a-supplement-5-the-linear-sieve-and-chens-theorem-optional/} (read 16 Nov 2026).
@@ -1667,10 +1739,10 @@ $\frac12$, not $1$.
 
 \appendix
 \section{History of this document}\label{app:history}
-\emph{Frozen version.} Version 1.0 is frozen: later results go into a
-version~1.1 or a separate short note, and only if they prove something not
+\emph{Frozen version.} Version 1.1 is frozen: later results go into a
+version~1.2 or a separate short note, and only if they prove something not
 already implied here; errors found later are corrected as dated errata
-(1.0.x). Audit reports, route cards and referee reports are in the project
+(1.1.x). Audit reports, route cards and referee reports are in the project
 repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attempts/},
 \texttt{referee/}).
 \begin{itemize}
@@ -1705,6 +1777,11 @@ repository (\texttt{notes/audit-parity-*.md}, \texttt{notes/parity-attempts/},
   Section~\ref{sec:bip}; it has no analogue for $\Lambda(n+2)$, and for
   twin primes Proposition~\ref{prop:ss-split} would still need the shift $-2$,
   a saving of a full $\log x$ and uniformity over $e\le x/D$.
+\item[1.1] (23 Nov 2026) One subsection, Section~\ref{subsec:lww-transfer}: a
+  conditional consistency observation on the Type~II estimate of \cite{LWW26}
+  (after a literature check: \cite{LWW26} still v2, no public comment found, and
+  a fresh-context adversarial audit). Bibliographic data added for
+  \cite{MR16,GT10,GT12}; two remark labels renamed. Nothing else changed.
 \end{itemize}
 
 \end{document}
