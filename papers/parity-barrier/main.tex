@@ -1216,24 +1216,31 @@ $T_D(x)=o(x)$ for one admissible $D$.
 \emph{What is claimed.} The preprint \cite{LWW26} claims
 $\sum_{p\le x}\mu(p+2)=o(\pi(x))$ (\lbl{Claimed}; we have not verified it).
 Write $L=\log x$, fix $K\ge1$ and the ranges
-$P_i=(\exp(L^{a_i}),\exp(2L^{a_i})]$ with $1/10<a_1<\dots<a_K<1/5$, and let $\mathcal A$ be the set of products
-$p_1\cdots p_K$ with $p_i\in P_i$.
+$P_i=(\exp(L^{a_i}),\exp(2L^{a_i})]$ with $1/10<a_1<\dots<a_K<1/5$, let
+$\mathcal A$ be the set of products $p_1\cdots p_K$ with $p_i\in P_i$, and put
+$V_i=\sum_{p\in P_i}1/p$. For $g$ on the positive integers consider targets
+\[G_g(N)=\prod_iV_i^{-1}\sum_{a\in\mathcal A,\ a\mid N}g(N/a),\qquad |g|\le L^{C}.\]
+The target of \cite{LWW26} is essentially of this form, with
+$\mu(ah)=(-1)^K\mu(h)$ for $(a,h)=1$ \cite[p.~15]{LWW26}.
 
-\emph{Structural reading} (\lbl{Literature}, our reading of \cite[Sections~2--5]{LWW26}).
-The argument uses the target at $n+2$ in two places only.
+\emph{Structural reading} (\lbl{Literature}, our reading of \cite[Prop.~2.1,
+Sections~3 and~4.1, (5.1), Prop.~5.3 and Section~5.3]{LWW26}; the proof of
+Prop.~4.2, pp.~18--60, was not read). For targets $G_g$ the argument uses $g$
+essentially in two places.
 \begin{itemize}
-\item The Type~I sums (\cite[Section~3]{LWW26}) depend on the target only through
-  its sums over reduced residue classes to moduli $x^{2/5+o(1)}$.
-\item In the Type~II step (\cite[Section~4.1, Props.~4.2 and 5.3]{LWW26}) the
-  target enters only through its multiplicativity at the auxiliary primes,
-  $\mu(ah)=(-1)^K\mu(h)$ for $n+2=ah$, $a\in\mathcal A$, and its boundedness:
-  after Cauchy--Schwarz over the cofactor $h$ only an $L^2$ bound for the
-  coefficient of $h$ is used. The cancellation comes from the M\"obius
-  coefficient of the prime variable.
+\item For such targets the Type~I sums (\cite[Section~3]{LWW26}) depend on $g$
+  only through its sums over reduced residue classes to moduli $x^{2/5+o(1)}$.
+\item In the Type~II step (\cite[Section~4.1]{LWW26}) the target enters through
+  the multiplicativity at the auxiliary primes, which splits off $a$, and
+  through boundedness: after Cauchy--Schwarz over the cofactor $h$ (their
+  (4.6)) only an $L^2$ bound for $g$ is used. The quantities bounded by
+  \cite[Props.~4.2 and 5.3]{LWW26} do not involve $g$; the cancellation comes
+  from the coefficient $\alpha_m=\mu(m)R_Z(m)$ of Vaughan's identity.
 \end{itemize}
 That Cauchy--Schwarz in $h$ ``removes $\mu$ altogether'' is also noted in
-\cite[Remark~6.17]{Wan26}, which extends the Type~II step to the rough target
-$\mathbf 1[P^-(p+2)>z]$, $z\le\exp((\log x)^{c})$, $c<1/5$, and states no
+\cite[Remark~6.17]{Wan26}, which observes that inserting
+$\mathbf 1[P^-(p+2)>z]$ into the target leaves the Type~II step unchanged
+(reach $z\le\exp((\log x)^c)$, $c<1/5$, as written); that remark states no
 consequence for $\Lambda$ at the shifted point.
 
 \begin{proposition}[\lbl{Proved here} in outline, conditional on {\cite[Props.~4.2 and 5.3]{LWW26}}, which are \lbl{Claimed}]\label{prop:lww-transfer}
@@ -1245,36 +1252,43 @@ $P^+(p+2)\ge p\exp(-2K(\log p)^{1/5})$ for infinitely many $p$.
 
 \begin{proof}[Sketch]
 Apply the decomposition of \cite[Prop.~2.1]{LWW26} to
-$\sum_{x<n\le2x}\Lambda(n)G(n+2)$ with
-$G(N)=\prod_iV_i^{-1}\sum_{a\in\mathcal A,\,a\mid N}\Lambda(N/a)$,
-$V_i=\sum_{p\in P_i}1/p$. By the two points above, the Type~II part is
-$O(xL^{-A})$ for every target bounded by a power of $L$. The Type~I part
-changes by $O(xL^{-A})$ if $\Lambda(h)$ is replaced by the sieve model
-$\kappa_D\mathbf 1_{(h,P(D))=1}$, $D=L^{B}$, $\kappa_D=\prod_{p\le D}(1-1/p)^{-1}$:
+$\sum_{x<n\le2x}\Lambda(n)G_\Lambda(n+2)$. By the two points above, the Type~II
+part is $O(xL^{-A})$ for every target $G_g$ with $|g|\le L^C$ (the smoothing
+parameter of \cite[p.~15]{LWW26} chosen after $K$, since
+$\|G_\Lambda\|_\infty\le L^{1+0.9K}$). The Type~I part changes by $O(xL^{-A})$
+if $\Lambda(h)$ is replaced by the sieve model $\kappa_D\mathbf 1_{(h,P(D))=1}$,
+where $P(D)=\prod_{p\le D}p$, $D=L^{B_1}$ and $\kappa_D=\prod_{p\le D}(1-1/p)^{-1}$:
 on average over moduli up to $x^{2/5+o(1)}$ the two have the same distribution in
 reduced classes, by Bombieri--Vinogradov and the fundamental lemma. For the
 model the sum is computed directly and equals $2C_2x(1+o(1))$, which is also the
-Hardy--Littlewood prediction. Finally $G(p+2)\ne0$ forces $p+2=al^j$; prime powers
-$j\ge2$ contribute $O(x^{1/2+o(1)})$, and each $p$ carries weight $\ll_KL^2$.
+Hardy--Littlewood prediction. Finally $G_\Lambda(p+2)\ne0$ forces $p+2=al^j$;
+prime powers $j\ge2$ contribute $O(x^{1/2+o(1)})$, and the representation
+$p+2=al$ is unique since $l>x^{1-o(1)}$, so each $p$ carries weight $\ll_KL^2$.
 \end{proof}
 
-\emph{Comparison.} The best unconditional exponent we know of is
-$P^+(p+a)>p^{0.677}$ for infinitely many $p$ (fixed $a\ne0$), due to Baker and
-Harman \cite{BH98} as quoted in \cite[pp.~1--2]{Li25} and, for $a=-1$, in
-\cite[p.~2]{Din25}; we have not opened \cite{BH98}, and \cite{Li25} claims
-$0.679$. Under the Elliott--Halberstam conjecture every exponent $c<1$ is known
-(for $p-1$, as quoted in \cite[p.~2]{Din25}). A cofactor $a=x^{o(1)}$ with exactly
-$K$ prime factors in prescribed ranges goes beyond what that argument gives.
+\emph{Comparison.} The best unconditional result we know of is
+$P^+(p+a)>p^{0.677-\varepsilon}$ for infinitely many $p$ (fixed $a\ne0$), due to
+Baker and Harman \cite{BH98}, as quoted (with this convention) in
+\cite[pp.~1--2]{Li25} and, for $a=-1$, in \cite[p.~2]{Din25}; we have not opened
+\cite{BH98}, and \cite{Li25} claims $p^{0.679-\varepsilon}$. Under the
+Elliott--Halberstam conjecture every exponent $c<1$ is known (for $p-1$, as
+quoted in \cite[p.~2]{Din25}). With $a\le x^{\varepsilon}$ for fixed
+$\varepsilon$, the proposition would be of the strength of that conditional
+result; a cofactor $a=x^{o(1)}$ with exactly $K$ prime factors in prescribed
+ranges is not given by any of the cited sources.
 
-\emph{What this is and is not.} The proposition is a consistency observation on
-\cite[Prop.~4.2]{LWW26}: either the Type~II estimate also yields this much
-stronger statement, or it needs a correction. It is not an error found in
-\cite{LWW26}, and it is not a result about twin primes: twins are the case $K=0$,
-where the Type~II step gains nothing. We found no source that states it (search
-scope in the project's \texttt{notes/sources-lww26.md}; the citing works
+\emph{What this is and is not.} The proposition is a consistency observation
+on \cite[Props.~4.2 and 5.3]{LWW26}: unless our outline has a gap, either these
+propositions yield this statement, which is far beyond the unconditional
+results quoted above, or they need a correction. The statement agrees with the
+Hardy--Littlewood heuristic; it is not implausible, only out of reach of known
+methods. It is not an error found in \cite{LWW26}, and it is not a result about
+twin primes: twins are the case $K=0$, where the Type~II step gains nothing. We
+found no source that states it (in the sources listed, with the search scope,
+in the project's \texttt{notes/sources-lww26.md}; the citing works
 \cite{HLWW26} and \cite{Wan26} treat other targets). Details and audits are in
-the route cards \texttt{notes/parity-attempts/2026-11-20-lww-orbit-test.md} and
-\texttt{2026-11-21-lww-main-term.md}.
+the route cards \texttt{notes/}\allowbreak\texttt{parity-attempts/}\allowbreak\texttt{2026-11-20-lww-orbit-test.md}
+and \texttt{2026-11-21-lww-main-term.md}.
 
 \subsection{The Siegel-zero world}\label{sec:siegel}
 \begin{sloppypar}
@@ -1690,8 +1704,9 @@ $\frac12$, not $1$.
   moduli I, II}, arXiv:2006.06572v2, arXiv:2006.07088v1.
 \bibitem{LT22} J.~D.~Lichtman and J.~Ter\"av\"ainen, \emph{On the Hardy--Littlewood--Chowla conjecture on average}, Forum Math.\ Sigma (2022), doi:10.1017/fms.2022.54 (journal version not consulted); arXiv:2111.08912v3 (21 Jun 2022; read in full, SHA-256 87410676\ldots68464014).
 \bibitem{LWW26} G.~L\"u, Z.~Wang and J.~Wu, \emph{On the Hardy--Littlewood--Chowla conjecture},
-  arXiv:2610.20242v2 (19 Nov 2026; preprint; read: Sections 1, 2.2--2.3, 4.1 and the
-  statement of Proposition~4.2; not verified).
+  arXiv:2610.20242v2 (19 Nov 2026; preprint; read: Sections 1, 2 (Props.~2.1 and 2.3),
+  3, 4.1, the statement of Proposition~4.2, (5.1), Proposition~5.3 and Section~5.3; the
+  proof of Proposition~4.2, pp.~18--60, not read; not verified).
 \bibitem{Wan26} Liang~Wang, \emph{Why expansion methods for Chowla do not reach twin primes: a method-limitation theorem and an explicit parity compiler}, preprint, Zenodo, doi:10.5281/zenodo.23687596 (v1.3, 2026; unrefereed; read: Remark~6.17).
 \bibitem{HLWW26} G.~Hu, G.~L\"u, Z.~Wang and J.~Wu, \emph{On the higher-order Titchmarsh divisor problem}, arXiv:2611.12756v1 (9 Nov 2026), preprint (read in full for citations of \cite{LWW26}).
 \bibitem{BH98} R.~C.~Baker and G.~Harman, \emph{Shifted primes without large prime factors}, Acta Arith.\ \textbf{83} (1998), 331--361 (not opened; known to us only as quoted in \cite{Li25} and \cite{Din25}).
