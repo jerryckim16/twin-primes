@@ -3,6 +3,20 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-23, Session 46 -- The dilation second moment behind the Katai-BSZ route card (probabilistic models / Hardy-Littlewood)
+- Idea: the growing-range Katai-Bourgain-Sarnak-Ziegler argument for sum lambda(p+2) (route card
+  notes/parity-attempts/2026-11-23-katai-bsz-dilation.md) needs the pair-averaged mean-zero correlations
+  C0(p1, p2) = (1/M) sum_m F0(p1 m) F0(p2 m), F0 = Lambda(n-2) minus a W-model, to be small on average over a family of
+  dilations. Is there an unexpected bias (structure beyond Hardy-Littlewood) in this average?
+- Tried: `code/explore/dilation_second_moment.py [X]` (/usr/bin/python3 -I; ~2 min and ~3 GB at 1e8; output `.out`):
+  all 136 pairs of primes in [3, 61], models G_w for w = 13, 31, 61, at X = 1e7 and 1e8.
+- Outcome: **inconclusive (consistent with Hardy-Littlewood plus w-truncation)**. At 1e8 the mean C0 is -0.031, -0.0145,
+  -0.0075 for w = 13, 31, 61 (sd 0.037, 0.010, 0.009): roughly halving as w doubles, as a truncation bias of order 1/w
+  would. It is about 2.5 times the crude prediction -sum_{l > w} 1/(l-1)^2 (-0.018, -0.006, -0.003); the extra part is
+  not explained here (finite-X effects of the log weights and, for w = 13, 31, the cross-term factor p/(p-1) for pairs
+  with p > w found by the audit of the route card, which this mean mixes in). No unexpected structure. Heuristic /
+  exploratory; proves nothing.
+
 ## 2026-11-22, Session 45 -- Dispersion of twin primes in residue classes to large moduli (Barban-Davenport-Halberstam / Montgomery-Hooley type)
 - Idea: Montgomery-Hooley says that primes are under-dispersed in residue classes mod q (Lambda-weighted variance
   X log q against X log X for independent placement). Do twin primes show the same under-dispersion, a different law, or

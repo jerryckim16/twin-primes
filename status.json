@@ -1,7 +1,7 @@
 {
- "version": "0.45",
- "updated": "2026-11-22",
- "session_count": 45,
+ "version": "0.46",
+ "updated": "2026-11-23",
+ "session_count": 46,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "Selberg's lower bound is attained for every D >= 1: with W = lcm(phi(1..D)), y_r = mu(r) W/phi(r), t_d = y_d - sum_{d<e<=D, d|e} t_e and lambda_d = d t_d, one has lambda_1 = sum_{r<=D} mu^2(r) W/phi(r) > 0 and equality in selberg_lower (lean/TwinPrimes/SelbergEq.lean: selbergEqT_sum (Moebius inversion on [1, D]), selbergEq_Y, selbergG_pos, selbergEq_lam_one, selbergEq_LHS, selberg_lower_eq, selberg_lower_attained, selbergEq_D6). Uniqueness formalised only for D = 6.",
+   "where": "lean/TwinPrimes/SelbergEq.lean; main paper thm:lean item 13"
+  },
+  {
+   "label": "Proved here",
+   "text": "Katai-BSZ criterion for lambda along shifted primes (Session 46, elementary, possibly folklore, audited): for the normalised weight F(n) = Lambda(n-2) the classical criterion is trivial, and the hypothesis of any BSZ-type argument for a mean-zero F0 = F - G_w (w = w(tau) -> infinity) is equivalent up to O(tau) to right-order Hardy-Littlewood for most dilation pairs (p1 m - 2, p2 m - 2) in the criterion's prime ranges; the sparse diagonal forces ranges beyond log x. Refuted as a route; the averaged dilation second moment is open.",
+   "where": "notes/parity-attempts/2026-11-23-katai-bsz-dilation.md; code/parity/katai_dilation.py"
+  },
   {
    "label": "Lean-checked",
    "text": "Coset counting identity: for every m >= 2 and j >= 0, the number c_m(j, s) of j-tuples of nonzero residues mod m with sum = s mod m satisfies m c_m(j, 0) = (m-1)^j + (-1)^j (m-1) and m c_m(j, s) = (m-1)^j - (-1)^j for m not dividing s; c_m(2, 0) = m - 1 (lean/TwinPrimes/Cosets.lean: coset_count_zero, coset_count_nonzero, coset_prob_two, coset_count_three). Used for the coset probabilities in the Session 45 switching route card.",
@@ -1112,6 +1122,18 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Session 43: conditional block entropies h_L (L <= 16) at 1e8 equal those of the shuffled sequence to the finite-sample bias (<= 3.4e-5); lag autocorrelations within 1.2 standard errors. Dead end."
+  },
+  {
+   "idea": "Katai-Bourgain-Sarnak-Ziegler orthogonality criterion for lambda(p+2) (parity attempt, Session 46)",
+   "origin": "own",
+   "status": "ruled out",
+   "note": "Session 46 route card: the necessary input is right-order Hardy-Littlewood for most dilation pairs (p1 m - 2, p2 m - 2), each open and of twin-prime type (wrong direction); growing-range form located at an averaged dilation second moment (open). Audited."
+  },
+  {
+   "idea": "Dilation second moment of mean-zero shifted-prime weights (exploration, Session 46)",
+   "origin": "exploration",
+   "status": "ruled out",
+   "note": "Session 46: pair-averaged C0 over 136 pairs shrinks roughly like 1/w (w = 13, 31, 61) at 1e8; consistent with HL plus truncation; no unexpected structure. Inconclusive curiosity."
   }
  ],
  "phase": "B",

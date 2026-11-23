@@ -1,0 +1,4 @@
+[  4.2 s] X = 1e+08; |Q| = 17 primes 3..61; 136 pairs
+w = 13: mean C0 = -0.0310  (sd 0.0368, min -0.0858, max +0.1430);  mean C_raw/C_mod - 1 = +0.0336 (sd 0.0304); predicted truncation bias ~ -0.0178  [ 43.5 s]
+w = 31: mean C0 = -0.0145  (sd 0.0103, min -0.0396, max +0.0071);  mean C_raw/C_mod - 1 = +0.0121 (sd 0.0157); predicted truncation bias ~ -0.0064  [ 84.0 s]
+w = 61: mean C0 = -0.0075  (sd 0.0087, min -0.0299, max +0.0126);  mean C_raw/C_mod - 1 = -0.0026 (sd 0.0046); predicted truncation bias ~ -0.0030  [126.7 s]

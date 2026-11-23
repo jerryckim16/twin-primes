@@ -172,3 +172,7 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Switching on rung 3 (Session 45; route card 2026-11-22-switching-rung3.md; Computed, heuristic main terms checked
   against data): one-step Chen switching at level 1/2 does not reach kappa = 2/3; at a common level theta > 0.5692 for both
   sieves it would (no such level is known for these weights). Distance to twins: unchanged.
+- Katai-BSZ orthogonality criterion (Session 46; route card 2026-11-23-katai-bsz-dilation.md; elementary, audited): for
+  sum_p lambda(p+2) its necessary input is right-order Hardy-Littlewood for most dilation pairs (p1 m - 2, p2 m - 2), a
+  family of twin-prime-type problems. Distance to twins: unchanged (the criterion moves the difficulty, it does not
+  reduce it).
