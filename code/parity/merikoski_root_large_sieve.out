@@ -12,10 +12,10 @@ x^2-1                                                  4776    30     54475.3   
 x^2-1                                                  4776   100    142033.9      129.122        0.2974
 x^2-1                                                  4776   300    206758.6      159.045        0.1443
 x^2-1                                                  4776  1000    434878.0      217.439        0.0911
-x^2-1 trivial (odd part of d divides one factor)       2968    30     54376.5       52.793        0.6107
-x^2-1 trivial (odd part of d divides one factor)       2968   100    142008.5      129.099        0.4785
-x^2-1 trivial (odd part of d divides one factor)       2968   300    206758.6      159.045        0.2322
-x^2-1 trivial (odd part of d divides one factor)       2968  1000    434877.1      217.439        0.1465
+x^2-1 trivial (odd part of d divides nu-1 or nu+1)     2968    30     54376.5       52.793        0.6107
+x^2-1 trivial (odd part of d divides nu-1 or nu+1)     2968   100    142008.5      129.099        0.4785
+x^2-1 trivial (odd part of d divides nu-1 or nu+1)     2968   300    206758.6      159.045        0.2322
+x^2-1 trivial (odd part of d divides nu-1 or nu+1)     2968  1000    434877.1      217.439        0.1465
 x^2-1 mixed                                            1808    30      6292.0        6.109        0.1160
 x^2-1 mixed                                            1808   100     15691.9       14.265        0.0868
 x^2-1 mixed                                            1808   300     22631.6       17.409        0.0417
@@ -30,6 +30,6 @@ minimal gap between distinct points of P mod 1; share of points within 5/D of a 
 x^2+1                                                min gap = 7.036e-06 (= 7.036/D^2); near-rational share = 0.008
 x^2-2                                                min gap = 3.372e-05 (= 33.719/D^2); near-rational share = 0.011
 x^2-1                                                min gap = 1.001e-06 (= 1.001/D^2); near-rational share = 0.591
-x^2-1 trivial (odd part of d divides one factor)     min gap = 1.001e-06 (= 1.001/D^2); near-rational share = 0.747
+x^2-1 trivial (odd part of d divides nu-1 or nu+1)   min gap = 1.001e-06 (= 1.001/D^2); near-rational share = 0.747
 x^2-1 mixed                                          min gap = 2.687e-06 (= 2.687/D^2); near-rational share = 0.334
 x^2-1 mixed, min odd factor >= D^(1/4)               min gap = 2.687e-06 (= 2.687/D^2); near-rational share = 0.000

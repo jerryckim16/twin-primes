@@ -310,9 +310,9 @@ and $(MF)(\mathbf r)=\sum_{\mathbf r\mid\mathbf d}\prod_i\mu(d_i/r_i)F(\mathbf d
 $y_{\mathbf r}=\prod\mu(r_i)\prod\varphi(r_i)\sum_{\mathbf r\mid\mathbf d}\lambda_{\mathbf d}/\prod d_i$
 and its inverse are mutually inverse for weights supported on squarefree entries, assuming the one-variable
 identity
-\[\mu(a)\mu(x)=\mu(x/a)\qquad(a\mid x\mid c,\ c\text{ squarefree})\] (\texttt{maynard\_lam\_of\_y\_sqfree},
-\texttt{maynard\_y\_of\_lam\_sqfree}); that identity is checked by \texttt{decide} for $c\le30$, so the
-inversion is unconditional for $R\le30$ and every $k$ (\texttt{maynard\_inversion\_R30}). Not formalised: that
+\[\mu(a)\mu(x)=\mu(x/a)\qquad(a\mid x\mid c,\ c\text{ squarefree})\] (the theorems \texttt{maynard\_lam\_of\_y\_sqfree} and \texttt{maynard\_y\_of\_lam\_sqfree}).
+That identity is checked by \texttt{decide} for $c\le30$, so the inversion is unconditional for $R\le30$
+and every $k$ (the theorem \texttt{maynard\_inversion\_R30}). Not formalised: that
 identity for all $c$, $\mu(\prod r_i)=\prod\mu(r_i)$ for coprime entries, and the diagonalisation.
 \end{enumerate}
 \end{theorem}

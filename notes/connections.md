@@ -180,3 +180,8 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
   2026-11-23-granville-shao-level-half.md; literature + elementary, audited): no level-1/2 barrier exists there for a fixed
   residue class; the beyond-1/2 step needs multiplicativity, which lambda(n)lambda(n+2) lacks; a statement valid for all
   bounded completely multiplicative f cannot give the weighted twisted input at any fixed level. Distance to twins: unchanged.
+- Merikoski's large-sieve route (Session 48; route card 2026-11-23-merikoski-large-sieve.md; literature + elementary,
+  audited): the root large sieve of his Type I argument needs an anisotropic norm form and a free coordinate; n(n+2) is
+  a one-point slice of the split form x^2 - y^2, Type I for d | n(n+2) is elementary anyway, and in Z x Z the twin target
+  is parity-even. This route does not help; the multiplicative-large-sieve argument GS cite is unpublished. Distance to
+  twins: unchanged.

@@ -1,15 +1,17 @@
 """Large-sieve constants for roots of quadratic congruences (Session 48 route card,
 notes/parity-attempts/2026-11-23-merikoski-large-sieve.md).
 
-Merikoski (arXiv:2112.03617v3, Lemma 6, quoting FI98 Lemma 3.2) uses
+Merikoski (arXiv:2112.03617v3, Lemma 6, quoting FI98b = Friedlander-Iwaniec, 'The polynomial X^2+Y^4
+captures its primes', Lemma 3.2) uses
     sum_{d<=D} sum_{nu^2+1=0 (d)} |sum_{n<=N} g_n e(nu n/d)|^2 << (D+N) sum |g_n|^2.
 We compute the best constant Delta(P,N) = ||M||_op^2, M[p,n] = e(n x_p), 1<=n<=N, for point sets
     P(F, D) = { nu/d : d <= D, F(nu) = 0 mod d }
 and compare with D + N (the Lemma 6 shape) and with the trivial bound #P * N.
 F = x^2+1 (anisotropic, definite: Gaussian), x^2-2 (anisotropic, indefinite), x^2-1 (isotropic,
-split: the twin polynomial n(n+2) = (n+1)^2 - 1).  For x^2-1 the roots are split into
-'trivial' (nu = +-1 mod d, i.e. d | n or d | n+2) and 'mixed' (d = d1 d2, nu = 1 mod d1, -1 mod d2,
-both d1, d2 > 2), and the mixed ones further by min(d1', d2') >= D^{1/4} (odd parts).
+split: the twin polynomial n(n+2) = (n+1)^2 - 1).  For x^2-1, with d1 = gcd(nu-1, d), d2 = gcd(nu+1, d),
+the roots are split into 'trivial' (odd part of d divides nu-1 or nu+1, i.e. odd part of d1 or of d2 is 1)
+and 'mixed' (both odd parts > 1), and the mixed ones further by min(odd(d1), odd(d2)) >= D^{1/4}.
+Top eigenvalues are computed numerically in double precision (numpy eigvalsh).
 Deterministic; run with /usr/bin/python3 -I code/parity/merikoski_root_large_sieve.py
 """
 import math
@@ -58,12 +60,12 @@ def main():
         d1, d2 = classify_split_root(v, d)
         o1, o2 = odd_part(d1), odd_part(d2)
         if o1 == 1 or o2 == 1:
-            triv.append((x, d, v))  # d | 2^a n or d | 2^b (n+2): one linear factor carries all odd part
+            triv.append((x, d, v))  # odd part of d divides nu+1 (o1 == 1) or nu-1 (o2 == 1)
         else:
             mixed.append((x, d, v))
             if min(o1, o2) >= q:
                 mixed_bal.append((x, d, v))
-    sets["x^2-1 trivial (odd part of d divides one factor)"] = triv
+    sets["x^2-1 trivial (odd part of d divides nu-1 or nu+1)"] = triv
     sets["x^2-1 mixed"] = mixed
     sets["x^2-1 mixed, min odd factor >= D^(1/4)"] = mixed_bal
 
