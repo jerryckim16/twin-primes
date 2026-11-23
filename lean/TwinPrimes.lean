@@ -11,3 +11,4 @@ import TwinPrimes.Gauss
 import TwinPrimes.Linnik
 import TwinPrimes.SelbergOpt
 import TwinPrimes.Cosets
+import TwinPrimes.SelbergEq

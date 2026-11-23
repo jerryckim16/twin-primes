@@ -24,7 +24,8 @@ where every division is exact (`L² gcd(d,e)/(d e) = L²/[d,e]`, `L/d ∈ ℕ`).
 
 The identity for general `D` is `selberg_diag` in `TwinPrimes/Gauss.lean` (with Gauss's identity
 `gauss_totient` for all `n ≥ 1`). The lower bound `Q(λ) ≥ λ₁²/G(D)` for general `D` is `selberg_lower` in
-`TwinPrimes/SelbergOpt.lean` (Session 44); equality cases for general `D` are not formalised.
+`TwinPrimes/SelbergOpt.lean` (Session 44); attainment for every `D` (explicit weights, `selberg_lower_attained`) is in
+`TwinPrimes/SelbergEq.lean` (Session 46); uniqueness of the extremal weights is formalised only for `D = 6`.
 -/
 
 namespace TwinPrimes
