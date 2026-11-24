@@ -1,5 +1,29 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-24 (Session 51) — News: an independent expert sharpens Lü–Wang–Wu's theorem (strong outside evidence that it holds; not a check by us), and binary Chowla is reported resolved
+- **What.** (1) Lichtman, arXiv:2611.28392v1 (20 Nov 2026), Thm 1.2 (p. 2): sum_{p<=X} mu(p+2) << pi(X)/(log X)^{1/2-eps},
+  "a quantitative refinement of Lü, Wang, and Wu" (he cites their v1). The method replaces LWW's averaged weights by an
+  exact partition into prime intervals and uses that only one Type II variable needs to be rough (p. 3, his Prop. 7.1).
+  (2) The same paper states (p. 1) that the two-point (Cesàro) Chowla conjecture "was recently resolved ... by OpenAI"
+  (OpenAI Math Release preprint, Sept 2026, 87 pp.; we have not found or read it) and proves sum mu(n)mu(n+1) <<
+  X/(log X)^{1-eps} (Thm 1.1). (3) Gou–Wang–Xu, arXiv:2611.18825v1 (13 Nov): the Hardy–Littlewood prime-pair asymptotic
+  under RH plus a Ratios Conjecture (after S. Lee, arXiv:2610.32672v2), and, unconditionally, prime-pair asymptotics in
+  F_q[T] for every fixed odd q > 10^200, including prime fields q = p (Thm 1.6, p. 4; new for q = p, p^2 by their account).
+- **Why it might matter.** (1) is the first outside expert work that re-proves and improves LWW's claimed parity-breaking
+  theorem; it shifts the LWW flag towards "probably correct" (still unrefereed and AI-assisted). Our location of the key
+  step (P2 => T3 small) should be compared with his Prop. 7.1. (2) If correct, statements in our notes and papers that
+  call two-point Chowla open are out of date. (3) Conditional twin-prime asymptotics from L-function ratio statistics are
+  consistent with the parity paper's position (parity limits sieves, not conjectural L-function inputs); none of this
+  proves anything about twin primes over Z unconditionally.
+- **Evidence label.** Claimed (unrefereed preprints; we read only the introductions, pages cited in notes/news-2026-11-24.md).
+- **Checked.** Abstracts and pp. 1-3 (Lichtman), pp. 1-6 (Gou–Wang–Xu), SHA-256 recorded. **Not checked:** any proof; the
+  OpenAI preprint (not located); Lee's paper beyond its abstract.
+- **Same run, our own check.** Route card notes/parity-attempts/2026-11-24-lww-prop53-twist.md: LWW Prop. 5.3's proof
+  accepts a twist by a fixed character (so mu*chi is covered, in outline, if their Props. 4.2 and 5.3 hold); thinning
+  the auxiliary primes survives every use found, but Prop. 4.2 was only searched, not read line by line. Fresh-context
+  audit: no errors. No error in LWW found.
+- **Files.** notes/news-2026-11-24.md. **Needs outside expert review:** yes (as for the whole LWW flag).
+
 ## 2026-11-24 (Session 50) — Update to the Lü–Wang–Wu flag: which properties of μ their argument uses as the target, and a fake target that fails only one of them (locates the step further; not an error found)
 - **What.** Reading arXiv:2610.20242v2 for every use of the target μ(n+2): Sections 2-3, p. 15, (4.6) and the removal
   of W on p. 70 use only (P1) |f| ≤ 1, (P2) a fixed sign f(pv) = σ f(v) at the auxiliary primes in

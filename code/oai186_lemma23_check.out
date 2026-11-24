@@ -1,0 +1,59 @@
+[0] data: groups (1.23)-(1.24) via code/oai186_support_data.py; low bins (Sec. 1.5.1, p. 9); (2.4) data
+  PASS oai186_support_data.py: all its printed-value checks pass (ladders, (1.17), masks (1.5), group table)
+  PASS (1.3): h = S/98304 with S = 2742997/2624989
+  PASS 61 low bins (10+22+5+7+6+11), lists strictly increasing
+  PASS (2.4) 'the data satisfy 2 <= L < H <= K <= N' on all 61 bins   [min L = 3, max K = 49152]
+  PASS l = Lh <= l0 and u0 <= u = Hh: the kernel bin (Lh, Hh] contains (l0, u0] on all bins
+  PASS theta is a positive integer on all bins (Lemma 2.3 needs theta > 0)
+  PASS z0 := z_G (as the authors' hard_cap) equals the largest mask cap (1.5) met by the group's retained cells (1.25), so the true per-fragment cap is <= z0 = Kh on every retained cell   [O2:[49152, 46580]; O5/2:[46580]; I2old:[44781, 35265]; I5/2old:[35265]; I2new:[44976, 35419]; I5/2new:[35419]]
+    J = min(32, floor((N-1)/L)): 24 bins carry a nonzero replicated remainder (L <= 3071), 37 are exact
+    renewal-branch caps M = L < 64: [3, 6, 12, 25, 50] (8 bins); delay-branch caps (L >= 64): 25 distinct, 93..24270
+  PASS every renewal cap satisfies M >= 2 (hypothesis of (2.3))
+
+[1] Eulerian carries (2.5) and the carry formula in the proof (p. 13)
+  PASS proof's unit-cube inclusion-exclusion (1/r!) sum_b (-1)^b C(r+1,b)(a+1-b)^r = [X^a]E_r, r = 1..60
+  PASS [X^a]E_r = 0 for a >= r and a < 0 under (2.5) with out-of-range zero (degree r-1)
+  PASS row sums: sum_a Eu(r,a) = r!, so E_r(1) = 1 (a probability law), r = 1..60
+  PASS 0 <= E_r <= R_r coefficientwise (all coefficients in [0,1], support 0..r-1), r = 1..60
+  PASS independent: the cell masses P(a <= U_1+...+U_r < a+1) of r iid uniforms, by exact piecewise-polynomial convolution, equal [X^a]E_r for r = 1..14
+  PASS a uniform point of C_{i_1} x ... x C_{i_r} (cells of width h) has total in C_{sum i + a} with probability [X^a]E_r: (sum (i_k + U_k)) h, so the carry polynomial multiplies X^{sum i}   [by the scaling t = (sum i_k + sum U_k) h; nothing to compute]
+
+[2] generating functions and the truncation (2.4)-(2.7), exact small instances
+  PASS T_e = sum_r q_r R_{r+e+1} = (exp Q - X^{e+1} exp(XQ))/(1-X) mod X^N exactly, e = 0, 1   [N=100 L=2 J=32/49; N=100 L=3 J=32/33; N=100 L=4 J=24/24; N=70 L=2 J=32/34; N=75 L=5 J=14/14; N=40 L=13 J=3/3]
+  PASS q_r = Q^r/r! == 0 mod X^N for r = floor((N-1)/L) + 1 (terms with rL >= N vanish)
+  PASS the omitted sum T_e - sum_{r<=J} q_r R_{r+e+1} is coefficientwise >= 0 (never rejected)
+  PASS That_e >= sum_{all r} q_r E_{r+e+1} coefficientwise (replicated remainder bounds every omitted term)
+  PASS That_e = the complete Eulerian sum when J = floor((N-1)/L) (omitted sum vanishes)
+  PASS independent exact piecewise convolution (N=14, L=2, H=4, K=9): the cell masses of (uniform small cells) * exp_*(uniform 1/a cells) equal D * sum_r q_r E_{r+1}, and with a designated cell D*M*sum q_r E_{r+2}; both <= B_theta, M_theta of (2.6)-(2.7)
+  PASS cell majorant for 1_(l,z] dv/v: on C_a (a >= L >= 2) the density 1/v <= 1/(a h); mass 1/a >= log(1+1/a) (exact: log(1+x) <= x); the cells C_L..C_{K-1} = [Lh, Kh) cover (l, z] up to the null set {Kh}
+
+[3] Poisson split nu_z = nu_l * exp_*(1_(l,z] dv/v) (proof, first sentence)
+  PASS total masses: e^gamma l * exp(log(z/l)) = e^gamma z (void factor l/z cancels the normalization), exact in the ratio: (e^gamma z)/(e^gamma l) = z/l   [algebraic identity, no computation]
+  PASS rho on [2,3] (closed form with Li2) agrees with the delay equation integrated by acb.integral at u = 9/4, 5/2, 11/4, 3 (balls overlap, radii < 1e-50)
+  PASS rigorous pointwise check D_2(t) = [D_1 * exp_*(1_(1,2] dv/v)](t) at 8 points t in (0, 3) (balls contain 0)
+  PASS Mecke (designated fragment): E sum_{p in Pi cap (l,u]} f(p, Pi) = int_(l,u] E f(v, Pi + v) dv/v, so the marked measure is 1_(l,u] dv/v * (the unmarked one); the designated v > l carries no tilt   [standard [7, Thm 4.5]; checked by reading]
+
+[4] the small-fragment majorants d*_j(Mh) >= D_{Mh}(jh) = rho(j/M) (p. 12, (2.1), (2.3))
+  PASS (2.3) renewal R_j > 0 exactly for every M in 2..63 and every j up to its 10^-40 switch
+  PASS sliding window [M,M] start, +new -departing equals the definition R_j = (1/j) sum_{a=j-M}^{j-1} R_a
+  PASS the 10^-40 switch happens before j = N for every M in 2..63 (so the tail rule is reached)   [M=3: <=1e-40 first at j=88; M=6: <=1e-40 first at j=166; M=12: <=1e-40 first at j=319; M=25: <=1e-40 first at j=652; M=50: <=1e-40 first at j=1292]
+  PASS R_j >= rho(j/M) rigorously for all 0 <= j <= 3M and every M in 2..63 (equality for j <= M)   [min relative slack on (M, 3M] = 0.0001253]
+  PASS left-Riemann direction: rho nonincreasing, so (j/M)rho(j/M) = int_{(j-M)/M}^{j/M} rho <= (1/M) sum_{a=j-M}^{j-1} rho(a/M); with induction R_j >= rho(j/M); the 10^-40 tail uses rho nonincreasing   [checked by reading]
+  PASS Lemma 2.2 delay recurrence (as printed, 160-bit arb) for every delay cap M in the schedule: ordered, nonincreasing endpoint sequences for j <= 3M (the acceptance tests, on this range)   [25 caps]
+  PASS delay upper sequence >= rho(j/M) rigorously at 1376 sampled j in [M, 3M] (incl. M..M+11, 2M-1..2M+1, 3M) over all delay caps
+
+[5] end-to-end on the 61 actual bins: true cell masses <= [X^j]B_theta, [X^j]M_theta for j < 2L
+  PASS [X^j]B_theta >= true mass of (e^{-theta t} D_l dt) * exp_*(1_(l,z] dv/v) on C_j, rigorously, 1842 cells over all 61 bins (all j < 2L when L < 64; 29 incl. boundary cells otherwise)   [smallest relative slack for j >= L: 0.0001547 at O2 L10, j=48539]
+  PASS [X^j]M_theta >= true mass of 1_(l,u] dv/v * (same) on C_j, rigorously, same cells   [24.2 s]
+
+[6] authors' script code/third_party/openai186/prime_gap_186_certificate.py (comparison only)
+  PASS authors' TASKS: the same 61 low bins (low, high, slope) in the same order
+  PASS authors' hard_cap per group equals z_G (so K agrees)
+  PASS authors' eulerian_carry_polynomial(r) contains the exact E_r, r = 1..35
+  PASS authors' _low_positive_dickman (cutoff < 64) contains the exact renewal R_j for j < j*, and the constant 10^-40 from j* on, j* = first index with R_j <= 10^-40 (they replace R_j* itself, which is allowed: 10^-40 >= R_j* >= rho) (M = 2, 3, 6, 12, 25, 50, 63)
+  PASS authors' delay branch (cutoff 93 >= 64, as in the schedule) returns the upper sequence of (2.1): equal to ours for j <= 3M
+  PASS authors' _low_eulerian_envelopes on the 6 exact instances of [2]: upper endpoints >= our exact B, M and ordinary within 1e-30 of exact B (same construction)
+  PASS authors' source_low_measures (source text): first = floor(lo/h), last = ceil(hi/h), cap = ceil(z/h); high cells 1/a for a in [first, cap), marks for a < last; low cells h d_j e^{-theta j h}
+
+runtime 29.9 s, peak RSS 136 MB
+41 checks, 0 failures

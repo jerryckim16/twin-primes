@@ -30,8 +30,10 @@ Formalised:
   i.e. `|S₁ − (N/W) ∑ λ_ds λ_es / ∏ᵢ lcm(dsᵢ,esᵢ)| ≤ ∑ |λ_ds λ_es|`.
   (`W = 1`, `v₀ = 0` gives the unrestricted version.)
 
-NOT formalised here: the change of variables `λ ↦ y_r` (Maynard's Lemma 5.1 /
-Möbius inversion over tuples), the diagonalisation of the main-term quadratic form, the
+Formalised elsewhere: the change of variables `λ ↦ y_r` (Maynard's Lemma 5.1 / Möbius
+inversion over tuples) in `MaynardInv.lean`, and the diagonalisation of the main-term quadratic
+form `∑ λ_d λ_e / ∏ lcm(dᵢ,eᵢ) = ∑_u y_u² / φ(u)` in `MaynardDiag.lean`.
+NOT formalised here: the
 asymptotic evaluation of `(N/W) ∑ λ_ds λ_es / ∏ lcm(dsᵢ,esᵢ)` in terms of the smooth function
 `F`, the size bound on the error sum `∑ |λ_ds λ_es|`, and the treatment of pairs whose
 `lcm`s are not pairwise coprime (Maynard shows their count vanishes, since a common prime
