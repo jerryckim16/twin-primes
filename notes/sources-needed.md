@@ -66,3 +66,10 @@
 - Why: parity paper v0.10, Section sec:siegel quotes Heath-Brown's theorem only as stated in Tao-Teraeväinen, arXiv:2109.06291v2, Thm 1.5(i). The original would let us state its exact hypotheses and see how its proof uses the exceptional character at small primes (the first unresolved implication of the 16 Nov route card).
 - Tried (Session 25, 16 Nov 2026): curl https://doi.org/10.1112/plms/s3-47.2.193 -> redirected to doi.wiley.com, HTTP 403, a Cloudflare "Just a moment..." challenge page; https://londmathsoc.onlinelibrary.wiley.com/doi/pdf/10.1112/plms/s3-47.2.193 -> HTTP 403, same challenge. Not worked around. No arXiv copy (1983). One standard web search found only secondary statements.
 - Status: needed (low priority; the secondary statement is enough for the current section).
+
+## OpenAI, "Ordinary two-point correlations of multiplicative functions", OpenAI Math Release preprint, 2026 (Sept 24 version, 87 pp.)
+- Cited as [18] by Lichtman, arXiv:2611.28392v1 (p. 1: two-point Chowla "recently resolved ... by OpenAI").
+- Why needed: to check the claim that the binary Chowla conjecture is resolved before our notes/papers state it, and to
+  compare its Type II mechanism with Lü–Wang–Wu's.
+- Tried (24 Nov 2026, Session 51): one web search for the exact title; no result (no URL known). Not tried: OpenAI website.
+- Date: 2026-11-24. Status: needed (low priority; secondary quotes suffice for the news note).

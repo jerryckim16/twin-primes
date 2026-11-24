@@ -172,3 +172,16 @@ import TwinPrimes
 #print axioms TwinPrimes.MuTuple.tmu_lcm_left
 #print axioms TwinPrimes.MuTuple.tmu_lcm_right
 #print axioms TwinPrimes.MuTuple.mu_prod_coprime_example
+#print axioms TwinPrimes.MaynardDiag.tgcd
+#print axioms TwinPrimes.MaynardDiag.tlcm
+#print axioms TwinPrimes.MaynardDiag.rsum_natCast
+#print axioms TwinPrimes.MaynardDiag.gcd_sum_rat
+#print axioms TwinPrimes.MaynardDiag.tgcd_eq_sum
+#print axioms TwinPrimes.MaynardDiag.maynard_diag
+#print axioms TwinPrimes.MaynardDiag.natprod_gcd_mul_lcm
+#print axioms TwinPrimes.MaynardDiag.tgcd_mul_tlcm
+#print axioms TwinPrimes.MaynardDiag.maynard_diag_lcm
+#print axioms TwinPrimes.MaynardDiag.maynard_diag_y
+#print axioms TwinPrimes.MaynardDiag.rat_mu_sq
+#print axioms TwinPrimes.MaynardDiag.tmu_sq_of_tdvd
+#print axioms TwinPrimes.MaynardDiag.maynard_diag_y_sqfree
