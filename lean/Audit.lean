@@ -185,3 +185,14 @@ import TwinPrimes
 #print axioms TwinPrimes.MaynardDiag.rat_mu_sq
 #print axioms TwinPrimes.MaynardDiag.tmu_sq_of_tdvd
 #print axioms TwinPrimes.MaynardDiag.maynard_diag_y_sqfree
+#print axioms TwinPrimes.MaynardS1Diag.dvd_prod_of_mem
+#print axioms TwinPrimes.MaynardS1Diag.prod_pos
+#print axioms TwinPrimes.MaynardS1Diag.rsum_filter_of_zero
+#print axioms TwinPrimes.MaynardS1Diag.rat_abs_le
+#print axioms TwinPrimes.MaynardS1Diag.maynard_S1_diag
+#print axioms TwinPrimes.MaynardS1Diag.box_hpw_fails
+#print axioms TwinPrimes.MaynardS1Diag.ex_hoff
+#print axioms TwinPrimes.MaynardS1Diag.ex_hsq
+#print axioms TwinPrimes.MaynardS1Diag.ex_hDW
+#print axioms TwinPrimes.MaynardS1Diag.ex_hpw
+#print axioms TwinPrimes.MaynardS1Diag.maynard_S1_diag_example

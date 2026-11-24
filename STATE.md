@@ -3,35 +3,59 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 50, 7:34 PM CT paper run of 23 Nov, started 01:35 UTC 24 Nov): PHASE B
+## POSITION (after Session 51, 3:34 AM CT research run of 24 Nov, started 09:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
   main paper v0.50 (34 pp.). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a weekly review.
   Active lines: main paper as an index; a short Lean note for programme (4). Paused: toolkit note (5), H_m, rung 182.
 - Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, v2) open; updated in Session 50 (target-side property list, fake target; see
-  notes/flags-for-jerry.md and notes/parity-attempts/2026-11-24-lww-mu-vs-lambda.md).
+- LWW flag (arXiv:2610.20242, still v2) open. NEW (S51 news, notes/news-2026-11-24.md, flag entry of 24 Nov S51):
+  Lichtman arXiv:2611.28392 claims a quantitative refinement of LWW (saving (log X)^{1/2-eps}) and reports binary
+  Chowla resolved by OpenAI (Sept 2026, preprint not located); Gou-Wang-Xu arXiv:2611.18825: prime pairs under a Ratios
+  Conjecture (after Lee arXiv:2610.32672) and unconditionally over F_q[T], fixed odd q > 10^200 incl. q = p. All Claimed.
 
 ## Next steps (in order)
-1. Bound share: the 186 majorisation lemmas, ONE per run: 2.3, then 2.4 (1.4 S47, 1.5 S48, 1.6 S49, 1.7 S50 done:
-   notes/oai186-lemma17-check.md, code/oai186_lemma17_check.py, 36 exact checks; its reading of "physical cell").
+0. PAPER RUN of 24 Nov (7:34 PM CT): write up S51 where it changes the mathematics: main paper Theorem 1 items for
+   186 Lemma 2.3 and Lean MaynardDiag / MaynardS1Diag; the news in sec:related (short, Claimed labels); check every
+   place in the papers/notes that calls two-point (Cesàro) Chowla "open" (notes/connections.md large-q Pellet entry;
+   route card 2026-11-21-large-q-pellet.md item 2; parity paper wording) and mark it "reported resolved (OpenAI 2026,
+   Claimed; per Lichtman 2611.28392 p. 1)"; the parity paper is frozen, so at most a 1.1.x erratum, else leave to the
+   review of 30 Nov. Add the S51 ideas (twist card; Lichtman exceptional-set observation) to status.json's ledger.
+1. Bound share: 186 Lemma 2.4 (1.4-1.7 and 2.3 done; 2.3: notes/oai186-lemma23-check.md, code/oai186_lemma23_check.py,
+   41 checks; open there: delay-recurrence branch only for j <= 3M on the 25 delay caps; Lemma 2.2 spot-checked).
    Then settle which threshold the restoration step (Prop. 4.6 of the main 186 paper) needs (prop:oai186-budget).
-   NO per-run regressions: code/cap6/regress_all.py at most monthly. Lemma 1.6/1.7 scripts need python-flint
-   (/usr/bin/python3 -m pip install --break-system-packages python-flint) to import the authors' script.
+   NO per-run regressions: code/cap6/regress_all.py at most monthly. Lemma scripts need python-flint
+   (/usr/bin/python3 -m pip install --break-system-packages python-flint).
 2. Parity: v1.1 is released and frozen. Left for the review of 30 Nov to decide (v1.2 or drop): (c) one remark merging
    the E2 cards (S32, S33, S36); (d) one "Further tests" paragraph (S37, S38, S42, S46, S47, S43-S45, S34+S35, S48);
-   (e) possibly the S50 property list (P1-P3) as a sentence in Section 6.4 (only if the review judges it not implied).
-3. Parity attempts: one per run, each with a pre-stated success outcome not implied by the paper's class. Candidates
-   from S50: (i) does LWW Prop. 5.3's proof (via Prop. 2.2, characters mod (log x)^B) accept a twist by a fixed
-   character / thinned auxiliary prime sets (decides mu*chi and Remark 1 for general f); (ii) new mechanisms chosen
-   by the review of 30 Nov.
-4. Lean: MuTuple.lean (S50) gives mu(prod r_i) = prod mu(r_i) for pairwise-coprime lists and for [d_i,e_i], d_i, e_i
-   under the hypothesis of maynard_S1_error. Next: the diagonalisation of S1 in y (finite identity), then decide on
-   the short Lean note.
+   (e) possibly the S50 property list (P1-P3) and the S51 twist result as a sentence in Section 6.4; (f) the S51 news.
+3. Parity attempts: one per run. Candidates: (i) compare Lichtman's Prop. 7.1 (Type II needing only ONE rough variable,
+   arXiv:2611.28392v1, PDF SHA-256 4337830d...b838) with our P1-P3 location of LWW's parity step (S50 card) — does his
+   argument use the target through the same fixed-sign property? (ii) read LWW Prop. 4.2 (pp. 26-61) line by line for
+   thinned prime sets (first unresolved implication of the S51 card; also [12, Lemma 3.9(ii)] behind Prop. 2.2).
+   (iii) new mechanisms chosen by the review of 30 Nov.
+4. Lean: MaynardDiag.lean (diagonalisation, y-form) and MaynardS1Diag.lean (|S1 - (N/W) sum y_u^2/phi(u)| <= sum
+   |lam lam| on supports with the coprimality hypotheses; hpw stays a hypothesis; a whole-box version is vacuous,
+   box_hpw_fails). Next: either the hpw lemma (a common prime of lcm(d_i,e_i), lcm(d_j,e_j) divides h_i - h_j | W) or
+   the short Lean note (about 6 pp.). The asymptotic of sum y^2/phi in terms of F is analytic, not for core Lean.
 5. Main paper: bump the version only when content changes; keep sec:related as an index.
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
-7. Baker-Harman 1998 still in notes/sources-needed.md (cited only as quoted by Li and Ding-Wang).
+7. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (new, low priority).
+
+## Session 51 (3:34 AM CT research run of 24 Nov, started on time 09:34 UTC; no wait) -- additions
+- News search: notes/news-2026-11-24.md (Lichtman 2611.28392v1; Gou-Wang-Xu 2611.18825v1; Lee 2610.32672v2 abstract);
+  new flag entry; README flag line. No new bound; LWW still v2.
+- Bound share: 186 Lemma 2.3 verified as stated (code/oai186_lemma23_check.py, /usr/bin/python3 + python-flint; ~30 s,
+  136 MB; .out; 41 checks, 0 failures; helper-written, re-run here, identical apart from timings).
+- Lean: TwinPrimes/MaynardDiag.lean (244 lines: tgcd_eq_sum, maynard_diag, maynard_diag_lcm, maynard_diag_y(_sqfree)),
+  TwinPrimes/MaynardS1Diag.lean (208 lines: maynard_S1_diag, box_hpw_fails, satisfiable example); MaynardS1 docstring
+  updated; helper agents, statements checked here; lake build and Audit.lean pass (propext / Quot.sound /
+  Classical.choice only).
+- Parity attempt: notes/parity-attempts/2026-11-24-lww-prop53-twist.md (conditional for mu*chi in outline; located for
+  general f); fresh-context audit appended (0 errors, 1 gap, 1 overstatement, 2 slips; fixed).
+- Exploration: Lichtman's typical/exceptional split vs twins (dead end, explained; notes/explorations.md).
+- Wolfram and mathbox NOT available.
 
 ## Session 50 (7:34 PM CT paper run of 23 Nov, started on time 01:35 UTC 24 Nov; no wait) -- additions
 - Bound share: 186 Lemma 1.7 (feasible logarithmic mass, 30 rank-two bins) verified as stated:

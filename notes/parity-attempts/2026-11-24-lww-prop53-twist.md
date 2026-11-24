@@ -9,8 +9,8 @@
   sets only through things that survive thinning (checked line by line). Prop. 4.2's proof (pp. 18-61) was scanned
   for every use of P_i, V_i and |P_i|, NOT read line by line.
 - Remark 1 (general bounded multiplicative f with BV): it reduces to (b) for arbitrary subsets P'_i ⊂ P_i, plus Type I
-  for a G_g-type target, provided the pigeonhole approximation is made BEFORE Vaughan's identity. Made after it, as in
-  the Session 50 sketch, the approximation error costs a power of L (Finding 4).
+  for a G_g-type target, provided the pigeonhole approximation is made BEFORE Vaughan's identity. Made after it
+  (inside T_3; the Session 50 sketch did not say where), the trivially bounded error costs a power of L (Finding 4).
 - **First unresolved implication:** Prop. 4.2 for subsets P'_i ⊂ P_i with V'_i >> 1 (pp. 26-47 and 53-61 not read
   line by line).
 - Not in the parity paper. No parity-breaking content of our own. Twins (K = 0) untouched.
@@ -136,7 +136,7 @@ Uses of the auxiliary sets, and what each needs:
 | (4.121) p. 47 | p V_i nu_i(p) = 1 + O(R/p), s_i = 1 + O(R/p_min), Delta << e^{-L^{0.1}} | yes (normalised; p_min >= exp(L^{0.1})) |
 | p. 49 | V_i < 1, choice of v_0; R(G_j), C(G_j) << 1 | yes (only V'_i < 1 used) |
 | p. 50 | m(a) <<_K Y^{-1} | yes, constant c_0^{-K} |
-| p. 52 (4.132) | eps_K = C (L^2)(J+1)^{-K} + ...: (J+1)^{-K} from J+1 distinct primes in each tuple, \|P'_i\| >= J+1 | yes |
+| p. 52 (4.132) | eps_K = C (L^2)(J+1)^{-K} + ...: (J+1)^{-K} is the symmetrisation weight of (4.32) (at most one omitted entry per tuple); needs \|P'_i\| >= J+2 (tuple plus p'_i, (4.19), (4.22)) | yes |
 | (4.135) p. 53 | "choices do not depend on the exponents a_i; those affect only the threshold for x and the implied constants" | constants now also depend on c_0 |
 | Section 3, p. 12 | sum \|c'_d\|/d << 1, V_i < 1, V_i = log 2 + o(1) used only as V_i ≍ 1 | yes |
 | Prop. 2.3, pp. 7-9; p. 70 | V_i ≍ 1, V_i < 1, m_j >> 1, C_{K,rho} independent of b; bK pairwise disjoint families | yes, constants depend on c_0; thinned subsets of disjoint sets stay disjoint |
@@ -150,12 +150,14 @@ Uses of the auxiliary sets, and what each needs:
 - **Status:** (b) holds for Prop. 5.3 and everything read line by line. For Prop. 4.2 it rests on the scan.
 
 ### 4. Remark 1 (general bounded multiplicative f): where the pigeonhole step must be placed (Proved here, elementary, outline; partly Heuristic)
-- **The trap (Proved here, elementary).** Suppose one pigeonholes into sets where |f(p) - c_i| <= eps, and approximates
-  f(a) by c_A = prod c_i at p. 15, i.e. inside T_3. The error is then K eps times the trivial bound for T_3, which is
+- **The trap (Proved here, elementary; the size of the trivial bound is Heuristic).** Suppose one pigeonholes into
+  sets where |f(p) - c_i| <= eps, and approximates f(a) by c_A = prod c_i at p. 15, i.e. inside T_3. The error is then
+  bounded only by K eps times the trivial bound for T_3. Per dyadic block T(M, N) that is
   sum |alpha_m beta_n| W ~ x L^{0.52} heuristically: |beta_n| << L (p. 15), and Z-sifting gives density about
-  1/log Z per variable. That is not o(x) unless eps << L^{-0.52}/K, which forces V'_i → 0. So the Session 50
-  phrase "plus the K·epsilon approximation errors" understates the problem if the approximation is made inside the
-  Vaughan decomposition.
+  1/log Z per variable. Summed over the ≍ L dyadic blocks, the trivial bound for T_3 is ~ x L^{1.52}. That is not
+  o(x) unless eps << L^{-1.52}/K, which forces V'_i → 0. So the Session 50 phrase "plus the K·epsilon approximation
+  errors" (which did not say where the approximation is made) understates the problem if the approximation is made
+  inside the Vaughan decomposition.
 - **The repair (Proved here, elementary, outline).** Approximate before Vaughan's identity. Write
   W'(N) = prod V'_i^{-1} sum_{a in A', a | N} rho^{omega'(N) - K}. For (a, N/a) = 1, f(N) = f(a) f(N/a), so
   f W' = c_A G + E + E', where:
@@ -207,7 +209,87 @@ Prop. 4.2 (Q_Y - Q_Y^maj << XYL^{-A}) for auxiliary sets P'_i ⊂ P_i with V'_i 
 - Type I for G_g with general f (Session 40 outline only).
 - No numerical toy check was run: nothing in the question is visible at toy scale (Prop. 2.2-type savings need
   characters mod L^{A_0} and lengths x^delta).
-- No fresh-context audit.
+- Fresh-context audit: see the Audit section below.
 
 ## Scripts
 None. No Lean.
+
+## Audit (fresh context, Session 51)
+Auditor: a fresh-context helper. Same v2 PDF. Its SHA-256 `7ac34131...2d423000` matches notes/sources-lww26.md. The
+saved abs page lists only v1 and v2. I made a new pdftotext -layout conversion, split at form feeds; PDF page n
+carries printed page number n. I re-read pp. 3-26, 46-47, 49-56 and 61-70 line by line. I searched pp. 26-61 for
+lower bounds ("≫", "at least", |P_i|, V_i, PNT/Siegel/exceptional). I did not open [11], [12], [13] or [6].
+
+Count: 0 errors, 1 gap (already stated in the card), 1 overstatement, 2 slips, 8 ok.
+
+1. **ok: source.** The hash, the version and the page numbering all check. Every page and equation reference in the
+   Findings 1 and 3 table checks against v2: (5.1)/(5.2) p. 61, Lemma 5.2 pp. 61-62, (5.8) p. 64, B_lambda p. 66,
+   (5.27) and V_1^{-1} p. 68, Prop. 2.2 use p. 69, (4.29) p. 21, (4.45) p. 25, w(a,b) p. 26, p. 45, (4.121) p. 47,
+   p. 49, m(a) p. 50, (4.132) p. 52, (4.135) p. 53.
+2. **ok: alpha in Prop. 5.3 (pp. 61-69).** The four uses listed in Finding 1 are complete for Prop. 5.3:
+   - (5.3) and (5.29) use only |alpha| <= 1.
+   - p. 64 uses only P^-(m) > Z, to get (m, k) = 1.
+   - p. 69 applies Prop. 2.2 to M_alpha.
+   - p. 66 handles the r-slot Q-tilde the same way.
+   Inside Prop. 4.2, alpha also enters at p. 23 (m, r odd) and p. 24 (P^-(m) > Z gives primitive P, Q). Both use only
+   the support, so the twisted coefficient keeps them.
+3. **ok: the character modulus (pp. 5-6, 64-65, 69).** I looked for places where the extra factor q_0 could break
+   something:
+   - **The character expansion.** It is (5.8), and it stays mod k. The bound sum |c_chi| <= k^6 is untouched, and so
+     is the only divisibility condition, (abmnrs, k) = 1, which needs k < Z. The twist psi enters only inside
+     M_alpha, as chi_1 psi mod lcm(k, q_0) <= 2 q_0 L^{A_0} <= L^{A_0+1}.
+   - **Siegel zeros.** There is no exclusion of exceptional characters. Prop. 2.2 is uniform over all chi mod
+     q <= (log x)^B, with constants depending on B. They are ineffective via (2.6) = [12], which is harmless for
+     fixed q_0.
+   - **Interval length.** Prop. 2.2 needs D >= x^delta. This holds because M >= x^{1/5}.
+4. **ok: the split of T_3 by (m, n) mod q_0 (pp. 15-17).**
+   - The split is valid because chi(mn+2) depends only on (m mod q_0, n mod q_0).
+   - On the support, (m, q_0) = (n, q_0) = 1, so the classes u with (u, q_0) > 1 are empty. The character expansion of
+     1_{m≡u} is therefore legitimate.
+   - The rest of the T_3 argument runs separately for each (u, w): the steps (4.3)-(4.8), the Cauchy–Schwarz step
+     (4.6) with |mu(h) rho^{omega(h)}| <= 1, and Lemma 4.1. They use P2 for mu only, so chi plays no role there. The
+     total loss is q_0^2.
+   - The twist of Prop. 5.3 is genuinely needed. Restricting only n cannot capture chi(mn+2). The alternative
+     (chi(a) chi-bar(b) inside Q_Y) would need Prop. 4.2 with a-dependent weights.
+5. **slip, fixed: Finding 4, size of the trivial bound.** The card gave x L^{0.52} as the trivial bound for T_3. That
+   is the heuristic size of one dyadic block T(M, N). Summed over the ≍ L blocks of (4.4), T_3 is ~ x L^{1.52}. The
+   conclusion only gets stronger (eps << L^{-1.52}/K). The label was "Proved here, elementary", but the size estimate
+   is heuristic. **Changed:** I corrected the text and relabelled it "Proved here, elementary; the size of the trivial
+   bound is Heuristic".
+6. **overstatement, fixed: attribution to Session 50 (header and Finding 4).** The card said "Made after it, as in the
+   Session 50 sketch". The Session 50 card (2026-11-24-lww-mu-vs-lambda.md, lines 114-118) only says "the K·epsilon
+   approximation errors in f(a) ≈ sigma^K". It never says where the approximation is made. **Changed:** both places
+   now say that the Session 50 sketch did not say where. The correction itself (approximate before Vaughan, or bound
+   the error through Prop. 2.3) stands. Note that the trap concerns the trivial bound for the error. It does not show
+   that an approximation inside T_3 is impossible.
+7. **slip, fixed: the p. 52 row of the table.** The factor (J+1)^{-K} in (4.132) comes from the symmetrisation weight
+   in (4.32): at most one choice of omitted entry per tuple. It does not come from "J+1 distinct primes". The size
+   condition is |P'_i| >= J+2 (the tuple plus p'_i, by (4.19) and (4.22)). This is trivially met. **Changed:** the
+   row is reworded.
+8. **ok: thinning in Prop. 2.3 (pp. 7-10) and Section 3 (pp. 10-14).**
+   - Prop. 2.3 survives thinning with constants that depend on c_0. The uses are:
+     - V_i < 1 and Mertens with 1/(p-1) on pp. 8-9, used only as V'_i + o(1) ≫ 1.
+     - BV for divisors d = x^{o(1)} (2.23).
+     - m_j ≫ 1 (p. 10). For thinned sets m'_j ≈ prod exp(-(1-ρ)V'_i) >= e^{-K}.
+   - Section 3 uses sum |c'_d|/d ≪ 1 (p. 12). This needs V'_i ≫ 1, through the 1/V_i factors in c'_d, besides
+     V'_i < 1. Thinning keeps both.
+9. **ok: Type I for mu*chi (pp. 13-14).** I re-read this, since the card had not. The identity (3.7) extends:
+   - (mu chi)(dat) = mu(d) chi(d) chi(a) (mu chi)(t), and the bounds (3.8)-(3.9) use only absolute values.
+   - The t-sum becomes BV for mu in classes mod lcm(2qr, q_0) <= 2qr q_0. That is inside the range of (3.1).
+   - (d, q_0) = 1, since the primes of d exceed exp(L^{0.1}).
+   So Finding 2's Type I bullet holds in outline.
+10. **gap (already stated in the card): Prop. 4.2 for thinned sets.** My own search of pp. 26-61 found only these
+    kinds of use:
+    - upper bounds on |P_i| (pp. 21, 45, 46);
+    - sums normalised by V_i or nu_i, and sum 1/(p+1) <= sum V_i (pp. 44, 47, 50, 52);
+    - ||b||^2 = prod s_i^{J+1} = 1 + o(1) (p. 54);
+    - the memory truncation (4.138) on p. 55, which uses only sum_{∪P_i} 1/p <= K;
+    - Schur factors on p. 49 and in (4.143), which contain V_i only in the numerator, so a smaller V'_i only helps.
+
+    I found no lower bound on prime counts, no orthogonality over residue classes, and no use of the exact value
+    log 2. A search is still not a reading, so the card's "First unresolved implication" stands.
+11. **ok: overstatements about the target.** I found no claim of progress on twins or on parity for twins. The
+    statements "Not in the parity paper", "Twins (K = 0) untouched" and "What this does NOT show" are accurate.
+    Everything is correctly marked as conditional on [LWW] (Claimed).
+12. **ok: the classification.** "Conditional for mu*chi in outline; located for general f" stands. One residual caveat
+    is not new: Prop. 2.2 rests on [12, Lemma 3.9(ii)], which was not opened by the card or by this audit.

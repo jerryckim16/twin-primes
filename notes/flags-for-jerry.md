@@ -18,6 +18,10 @@
 - **Evidence label.** Claimed (unrefereed preprints; we read only the introductions, pages cited in notes/news-2026-11-24.md).
 - **Checked.** Abstracts and pp. 1-3 (Lichtman), pp. 1-6 (Gou–Wang–Xu), SHA-256 recorded. **Not checked:** any proof; the
   OpenAI preprint (not located); Lee's paper beyond its abstract.
+- **Same run, our own check.** Route card notes/parity-attempts/2026-11-24-lww-prop53-twist.md: LWW Prop. 5.3's proof
+  accepts a twist by a fixed character (so mu*chi is covered, in outline, if their Props. 4.2 and 5.3 hold); thinning
+  the auxiliary primes survives every use found, but Prop. 4.2 was only searched, not read line by line. Fresh-context
+  audit: no errors. No error in LWW found.
 - **Files.** notes/news-2026-11-24.md. **Needs outside expert review:** yes (as for the whole LWW flag).
 
 ## 2026-11-24 (Session 50) — Update to the Lü–Wang–Wu flag: which properties of μ their argument uses as the target, and a fake target that fails only one of them (locates the step further; not an error found)
