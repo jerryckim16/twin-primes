@@ -2,10 +2,11 @@
 
 **Classification: located (literature reading + exact toy check; audited, see the end).**
 - Lichtman's Type II estimate (arXiv:2611.28392v1, Prop. 7.1, pp. 19-20, proved in §§6-11) uses the target
-  mu(mn+1)phi(mn+1) only through the same three properties that the Session 50 card found in LWW:
-  P1 (boundedness: |c(q)| <= 1, then discarded by Cauchy-Schwarz, (6.10) p. 17), P2 (sign-multiplicativity at the
-  active primes: mu(v/a) = (-1)^k mu(v), phi_-(pv) = phi_-(v), inside the Ramare identity (6.5), p. 16), and P3
-  (Bombieri-Vinogradov with zero main term, used only for the Type I sums, Prop. 5.5 via Lemma 5.4).
+  mu(mn+1)phi(mn+1) only through P1 (boundedness: |c(q)| <= 1, then discarded by Cauchy-Schwarz, (6.10) p. 17) and
+  P2 (sign-multiplicativity at the active primes: mu(v/a) = (-1)^k mu(v), phi_-(pv) = phi_-(v), inside the Ramare
+  identity (6.5), p. 16), plus vanishing on P0-squares (which P1 and (6.7) can replace). The typical-integer estimate
+  (Prop. 7.3, p. 20) adds P3 (Bombieri-Vinogradov with zero main term, for the Type I sums, Prop. 5.5 p. 14 via Lemma
+  5.4 p. 13). These are the properties the Session 50 card found in LWW.
 - All Type II cancellation comes from the SOURCE coefficient alpha_m = mu(m)R_z(m)m^{iv}w(m): on the major arcs
   through Prop. 8.1 (Mobius-character cancellation, = LWW Prop. 2.2 with zeta in place of 0.24, p. 22); the minor arcs
   "do not exploit any Mobius cancellation" (p. 15, line 963 of the extract; also p. 6). "Only one rough variable" is a
@@ -15,18 +16,23 @@
 - **New, and a correction to our S51 news note:** Lichtman v1 writes out the proof of Theorem 1.1 only (binary Chowla,
   mu(n)mu(n+1)). Theorem 1.2 (sum_{p<=X} mu(p+2) << pi(X)/(log X)^{1/2-eps}, the refinement of LWW) and Theorem 1.3 are
   supported in v1 only by the sentence "the same proof method also establishes a companion result for Mobius on shifted
-  primes" (p. 2); there is no further occurrence of "p + 2" or of Theorem 1.2 in the 36 pages. Prop. 7.1 requires the
+  primes" (p. 2). The only other mentions are the abstract (p. 1), p. 2 and p. 3 items (i)-(ii), where the author says
+  the shifted-prime typical-integer estimate came first and was then transferred to Theorem 1.1; no section or remark
+  treats a prime source. Prop. 7.1 requires the
   rough coefficient to be alpha_m = mu(m)R_z(m)m^{iv}w(m), and its major-arc step (Prop. 8.2) needs that Mobius factor.
   For a prime source the decomposition, and which coefficient carries mu, are not written. So v1 is independent
-  evidence for the Type II machinery (Props. 8.2, 9.1 adapt LWW's Prop. 5.3 and Sect. 4 "for completeness", p. 6) and
+  evidence for the Type II machinery (Prop. 8.2 adapts LWW's Prop. 5.3, p. 22; the minor arcs adapt LWW "for
+  completeness", p. 6) and
   for Theorem 1.1, but it is NOT a written re-proof of LWW's shifted-prime theorem. Our S51 wording ("an independent
   expert re-derives and sharpens LWW's theorem; the first strong outside evidence that LWW's main claim holds") was too
-  strong and is downgraded (flag update of 24 Nov, S52).
+  strong and is downgraded (flag update of 24 Nov, S52). "Unwritten in v1" is not "doubtful": the author states that
+  the shifted-prime estimate was obtained first (p. 3).
 - **First unresolved implication:** unchanged, LWW Prop. 4.2 (now also: the prime-source Type II in Lichtman's
   framework, unwritten in v1). The Sessions 39-40 consistency implication (P^+(p+2) > p^{1-o(1)}) needs a prime source,
   so Lichtman v1 gives no second written route to it.
 - Twins: untouched. For a prime N = p+2 > z the typical part Lambda(N)phi_+(N) is 0 (a prime has no divisor in the
-  active intervals), so the method sees twin pairs only through the exceptional set (cf. the S51 exploration).
+  active intervals), so the typical-integer Type II route of Prop. 7.1 does not see twin pairs (cf. the S51
+  exploration).
 - Not in the parity paper. No parity-breaking content of our own. No error in Lichtman or LWW found.
 
 ## Question
@@ -54,7 +60,9 @@ All page numbers are printed page numbers (approximate where the extract loses h
 1. **Target in the Type II sum (6.6), p. 16:** T = sum_{m~M, n~N} alpha_m beta_n mu(mn+1)phi(mn+1), alpha supported
    on z-rough m.
    - (6.7): the pairs with p^2 | mn+1 for some p in P0 cost O_A(XL^{-A}) (roughness of m fixes n mod p^2). Uses only
-     |target| <= 1.
+     |target| <= 1 on the extracted side. Lichtman drops the terms with p^2 | mn+1 because "mu vanishes on squares"
+     (p. 17) and pays (6.7) via (6.4) and |c| <= 1: vanishing on P0-squares is a fourth property, replaceable by P1 +
+     (6.7).
    - (6.5) (Lemma 6.1): for P0-squarefree v, mu(v)phi(v) = (-1)^k sum_{a in A, a|v} mu(v/a)phi_-(v/a)/prod_i(omega_i(v/a)+1).
      Its proof uses exactly mu(v/a) = mu(v)/mu(a) = (-1)^k mu(v) (multiplicativity with (a, v/a) = 1) and
      phi_-(pv) = phi_-(v) (6.3). This is P2 with sigma = -1 per active prime.
@@ -62,7 +70,8 @@ All page numbers are printed page numbers (approximate where the extract loses h
      |T_Y|^2 << (X/Y) S_Y, and S_Y (6.11) involves only alpha, beta and a, b in A. The target is gone (P1).
    - Consequence (Proved here, elementary): steps (6.8)-(6.10) hold verbatim for any target of the form
      G_c(v) = sum_{a in A, a|v} c(v/a) with |c| <= 1 (for such a target (6.5) is the definition, and (6.7) is not
-     needed). This is the "G_g" class of the S49 audit (Type II bound for targets of that form, not for every bounded
+     needed). This is an analogue (up to the constant prod V_i^{-1} and |g| <= L^C versus |c| <= 1) of the "G_g" class
+     of the S49 audit (Type II bound for targets of that form, not for every bounded
      target). The target Lambda(N) itself is not of this form on N > z: Lambda(N)phi_+(N) = 0 while
      sum_a Lambda(N/a)/prod(...) > 0 whenever N = a*prime (computed below).
 2. **Where the saving comes from (pp. 6, 15, 22):** "On the minor arcs, we do not exploit any Mobius cancellation, and
@@ -79,7 +88,7 @@ All page numbers are printed page numbers (approximate where the extract loses h
    This lets the smooth-part weight U(s_n) and mu(s_n) ride in beta (Cor. 7.2, Prop. 7.3), which is what the exact
    prime-interval split (typical/exceptional, §2) needs. It is a source-side relaxation; the target is used as in 1.
    So (ii): no change to the S50 location.
-4. **Type I (P3):** Prop. 5.5 ("Type I cancellation", p. 13) with G(n) = mu(n+1)phi(n+1), via a weighted BV estimate
+4. **Type I (P3):** Prop. 5.5 ("Type I cancellation", p. 14), entering in Prop. 7.3 (p. 20), not in Prop. 7.1, with G(n) = mu(n+1)phi(n+1), via a weighted BV estimate
    (Lemma 5.4; statement only read). A Lambda-type target would bring a main term here, as in S40. Not re-done.
 5. **(iii) Prime source.** Theorem 1.1's source is mu(n) (Vaughan, Prop. 5.2), giving alpha_m = mu(m)R_z(m) directly.
    For Theorem 1.2 the source is a prime; v1 contains no proof (search of the whole extract for "1.2", "p + 2", "shifted
@@ -103,4 +112,10 @@ Only Lichtman v1 and our own cards (S39, S40, S49 audit, S50, S51). No search fo
 the S51 news search (24 Nov, 09:34 UTC).
 
 ## Audit
-(appended below after the fresh-context audit)
+Fresh-context adversarial audit (helper agent, 24 Nov, S52): PDF SHA-256 re-checked; script re-run (identical output;
+the passive factor is valid since 2 is not in P0); no target use found in Lemma 6.2, §8 or §§9-11 (only mu^2(d) and
+Remark 11.1 for mu(mn-1)). Findings: 1 error ("no further occurrence of p + 2 / Thm 1.2" was false: abstract, p. 2,
+p. 3 (i)-(ii)); 2 overstatements (P3 is used by Prop. 7.3, not by Prop. 7.1; "only through the exceptional set" too
+broad); 1 gap (say that the author reports the shifted-prime estimate came first); 4 slips (vanishing on P0-squares
+used at (6.7); Prop. 5.5 is on p. 14; "for completeness" concerns the minor arcs only; G_c is an analogue of G_g).
+All applied above. The "Proved here" G_c claim and the classification stand.
