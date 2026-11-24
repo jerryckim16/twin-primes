@@ -10,9 +10,9 @@ the three target properties identified in notes/parity-attempts/2026-11-24-lww-m
 
 and of the correlation  sum_{p <= x} f(p + 2) / pi(x).
 
-Toy scale only (x = 1e7, R = {5,...,29}); this is an illustration of the reading, NOT a verification
+Toy scale only (Y = 1e7, window (5e6, 1e7], R = {5,...,31}); this is an illustration of the reading, NOT a verification
 of anything asymptotic.  Usage: /usr/bin/python3 -I lww_mu_vs_lambda.py [Y] [M]
-(Y = 1e7, M = 100: about 3 minutes, < 1.5 GB).
+(Y = 1e7, M = 100: about 2 minutes, < 1.5 GB).
 """
 import sys, math
 import numpy as np
@@ -77,9 +77,6 @@ for p in R:
 nRp = n // nR                      # R'-part (R-free part); index 0 -> 0
 nRp[0] = 0
 
-# ---- sieve model Lambda* = kappa_D 1[(m, P(D)) = 1], D = 30 ----
-D = 30
-small = [int(p) for p in primes if p < D]
 # ---- dyadic window (X0, 2 X0], X0 = Y // 2: all statistics are taken for N in this window ----
 X0 = Y // 2
 win = np.arange(X0 + 1, 2 * X0 + 1)
@@ -190,7 +187,10 @@ for name, f in funcs.items():
 
 # ---- (3) P3 statistics on the window, relative to the mass sum |f| over the window ----
 #  S_red: sum_{3<=m<=M} max_{(c,m)=1} max_y |sum_{X0<N<=y, N=c (m)} f(N)|   (reduced classes, as in (3.1))
-#  S_2  : sum_{3<=q<=M, q odd} max_y |sum_{X0<N<=y, N=2 (q)} f(N)|      (the classes N = qk + 2 of T_1, T_2)
+#  S_2  : sum_{3<=q<=M, q odd} max_y |sum_{X0<N<=y, N=2 (q)} f(N)|      (the classes N = qk + 2 of T_1, T_2, q > 1)
+#  NOTE: S_2 starts at q = 3; the q = 1 (d = 1) term of T_1, sum_k R_Z(k) log k f(k+2) W(k+2), is not tested here
+#  directly; it needs f to have zero mean in reduced classes mod d | P, which S_red covers only for d <= M.
+#  P2 column (2) tests sigma = -1 only (mu^2 and 1 satisfy P2 with sigma = +1).
 print(f"\n(3) BV-type statistics on the window, divided by sum_window |f|; moduli 3..{M}")
 print("    zero-main-term BV predicts both small (random +-1 = square-root baseline; f = 1 has S_red ~ sum 1/phi(m))")
 for name, f in funcs.items():

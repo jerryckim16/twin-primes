@@ -55,7 +55,3 @@ model 1: D = 30, kappa_D = 6.33123;  model 2: semiprimes p1 p2 with p1 > z = X0^
     |g3'|*random             S_red/mass = 0.07399   S_2/mass = 0.00000
     |g5|*random              S_red/mass = 0.06278   S_2/mass = 0.00859
     |g5'|*random             S_red/mass = 0.11572   S_2/mass = 0.01137
-
-real	2m4.975s
-user	1m45.430s
-sys	0m18.743s

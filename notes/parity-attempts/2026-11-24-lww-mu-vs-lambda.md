@@ -2,8 +2,8 @@
 
 **Classification: located.** On the target side I found no gap, in outline. The first unresolved implication is
 "P2 ⟹ T_3 small", meaning the step at p. 15 plus (4.6) combined with [LWW] Props. 4.2 and 5.3. That is the same
-place the Session 39-40 cards found, but it is now pinned down by an explicit fake target that satisfies every
-other property. Not in the parity paper (v1.1). No parity-breaking content of our own. Twins (K = 0) untouched.
+place the Session 39-40 cards found, but it is now pinned down, heuristically, by an explicit fake target that
+satisfies every other property (it satisfies P3 only heuristically). Not in the parity paper (v1.1). No parity-breaking content of our own. Twins (K = 0) untouched.
 
 ## Question
 Lü–Wang–Wu, arXiv:2610.20242v2 (CLAIMED, not verified), Remark 1 (p. 3): their approach is "very likely applicable to
@@ -95,13 +95,29 @@ The target enters in exactly the following places.
   - (3.7) works with mu(d) chi(d).
   - P2 FAILS as the argument uses it: (mu chi)(a) = (-1)^K chi(a) varies over A. Then Q_Y would carry
     chi(a) chi(b), and Prop. 4.2 is not stated for weighted a, b. So the argument does not apply verbatim.
-  - Heuristic repair: take every P_{j,i} inside {p in R : chi(p) = +1}. By PNT in progressions (standard, not
-    re-read), that set still has 1/p-mass (0.05 + o(1)) log L, which tends to infinity, so the b → ∞ step of p. 70
-    survives with V_i = (log 2)/2 + o(1). Not checked: whether Sections 4.2-5 work for prime sets thinned by a
+  - **Main heuristic repair (audit finding 6; checked against the PDF this session).** chi is periodic mod q_0,
+    so chi(mn+2) depends only on (m mod q_0, n mod q_0). Split T_3 into at most q_0^2 sums. Each has coefficients
+    alpha_m 1_{m≡u}, beta_n 1_{n≡w}, the constant factor chi(uw+2), and the target mu W, for which P2 holds with
+    sigma = -1.
+    - Prop. 4.2 (p. 18) allows arbitrary coefficients |alpha_m| <= L^C R_Z(m), |beta_n| <= L^C R_Z(n), so it covers
+      these.
+    - Prop. 5.3 (p. 63) assumes alpha_m = mu(m) R_Z(m) exactly. Since m is Z-sifted, (m, q_0) = 1 for large x, and
+      1_{m≡u} = phi(q_0)^{-1} sum_psi psi-bar(u) psi(m). So one needs Prop. 5.3 with alpha twisted by a character
+      psi mod q_0. Its proof rests on Prop. 2.2 (pp. 5-6), which is stated for characters of modulus
+      q <= (log x)^B, so this is plausibly routine.
+    - Status: **needs Prop. 5.3 with a twist by characters mod q_0; not checked.**
+    - The Type I part is unchanged: P3 holds for mu chi, and (3.7) works with mu(d) chi(d).
+  - Second heuristic repair: take every P_{j,i} inside {p in R : chi(p) = +1}. By PNT in progressions (standard,
+    not re-read), that set still has 1/p-mass (0.05 + o(1)) log L, which tends to infinity, so the b → ∞ step of
+    p. 70 survives with V_i = (log 2)/2 + o(1). Not checked: whether Sections 4.2-5 work for prime sets thinned by a
     congruence. They use the prime lists of (4.17) and counts of primes in P_i.
-  - For a general bounded multiplicative f with BV (the wording of Remark 1), P2 is not a consequence of BV. One
-    needs f(p) to be (nearly) constant on a subset of R of divergent 1/p-mass. Remark 1 as worded is therefore not
-    covered by the argument as written. Open whether this matters.
+  - For a general bounded multiplicative f with BV (the wording of Remark 1), P2 is not a consequence of BV.
+    - Pigeonhole the values f(p), p in R, into k arcs. This gives a subset of R of 1/p-mass at least about
+      (0.1 log L)/k on which f(p) is nearly constant.
+    - So the argument does not cover Remark 1 verbatim, but pigeonhole thinning reduces the question to two things:
+      whether Sections 4.2-5 accept thinned prime sets, and the K·epsilon approximation errors in f(a) ≈ sigma^K.
+    - Remark 1 is itself hedged ("very likely applicable", "We do not pursue"), so none of this implies an error by
+      LWW.
 - **Fake targets: which property catches which model** (Proved here elementary or Heuristic, as marked; the toy
   numbers are in Section 3 below).
   - (a) g = 1 and g = mu^2 (P2 holds with sigma = +1) satisfy P1 and P2 and fail P3 (nonzero mean). Their
@@ -110,19 +126,31 @@ The target enters in exactly the following places.
     prod_R (1 - 2/l), roughly L^{-0.2}, which is far above the precision L^{-A}. Its correlation is
     prod_R (1 - 2/(l-1)), of order L^{-0.2}, so o(1). It is consistent with the claim and is no counterexample.
   - (c) **The parity model g3' (P1 and P3 hold, P2 fails, full correlation).**
-    - Definition: g3'(N) = (Lambda(N-2) - Lambda^flat(N-2))/L. Here Lambda^flat is a mass-matched weight on
-      semiprimes p_1 p_2 with p_1 > x^{2/5+eps}: the fake primes, invisible to Type I information at level 2/5.
-    - The classes N ≡ 2 (mod q) of T_1 and T_2 give N - 2 = qk with 1 < q <= x^{2/5+o(1)}. Both Lambda and
-      Lambda^flat vanish there identically.
-    - In reduced classes, both are equidistributed. This rests on BV for primes and for products of two primes in
-      ranges (standard, not re-read this session), so P3 holds at the level used (Heuristic).
-    - Nevertheless sum_{x<n<=2x} Lambda(n) g3'(n+2) = sum Lambda(n)^2/L ≈ x. With W inserted the Type I sums still
-      vanish, so T_3(g3' W) ≈ x m_W. The Type II sum DOES see this target.
+    - Definition: g3'(N) = (Lambda(N-2) - Lambda^flat(N-2))/L, with the fake primes
+      Lambda^flat(n) = 1_{n = p_1 p_2, x^{2/5+eps} < p_1 <= p_2} · (log n)/c(n).
+      - c(n) is the smooth local density factor: the density of such semiprimes near n, relative to the primes,
+        is about log(log n/((2/5+eps) log x) - 1), which equals log(3/2) for n ≍ x and eps → 0. So
+        Lambda^flat(n) ≈ 1_{n = p_1 p_2, p_1 > x^{2/5+eps}} (log n)/log(3/2), up to a smooth correction.
+      - The script instead uses p_1 > X_0^{0.4}, with a constant on each block of length 10^5 equal to
+        (sum of Lambda over the block)/(number of such semiprimes in the block). The toy maximum weight/L on the
+        window, 2.45, agrees with 1/log(3/2) ≈ 2.47.
+      - These fake primes are invisible to Type I information at level 2/5.
+    - Type I sums for g3' W (corrected after audit finding 1):
+      - The terms q > 1 in T_1 and T_2 have N - 2 = qk with 1 < q <= x^{2/5+o(1)}. There Lambda and Lambda^flat
+        both vanish, up to prime powers qk = p^j, which contribute O(x^{1/2+o(1)}).
+      - The d = 1 term of T_1 (mu(1) R_Z(1) = 1, i.e. q = 1) equals sum_k R_Z(k) (log k) g3'(k+2) W(k+2). It is NOT
+        identically zero. It is o(x) only if Lambda^flat matches Lambda in the reduced classes -2 mod d, d | P (the
+        classes that the W-expansion sees). That is P3, which holds here only heuristically.
+    - P3 in reduced classes, equidistribution of both weights: this rests on BV for primes and for products of two
+      primes in ranges (standard, not re-read this session), so it is Heuristic at the level used.
+    - Nevertheless sum_{x<n<=2x} Lambda(n) g3'(n+2) = sum Lambda(n)^2/L ≈ x. With W inserted the Type I sums are
+      o(x), heuristically as just explained, so T_3(g3' W) ≈ x m_W. The Type II sum DOES see this target.
     - The reason (Proved here, elementary): on n = p_1 p_2 with p_1, p_2 > x^{1/5}, the Type II piece of Vaughan's
       identity equals -log n. The parity information sits in Lambda's Type II piece at the fake semiprimes.
-    - g3' satisfies every target property except P2, and P2 is used only to reach the G_u form on p. 15. So for mu
-      the parity-sensitive implication is exactly: **"P2 at all primes of R ⟹ T_3 = o(x)", that is, p. 15 + (4.6) +
-      Props. 4.2 and 5.3.** Nothing else on the target side can carry it.
+    - g3' satisfies every target property except P2 (P3 heuristically). For g3' the Type I sums are handled
+      directly, so the only place P2 is needed is p. 15. So for mu the parity-sensitive implication is exactly:
+      **"P2 at all primes of R ⟹ T_3 = o(x)", that is, p. 15 + (4.6) + Props. 4.2 and 5.3.** Nothing else on the
+      target side appears to carry it.
   - (d) **A non-multiplicative member of the class (P1, P2 and P3 all hold, in outline).**
     - Definition: g5'(n) = mu(n_R) v(n/n_R), where n_R is the R-part of n, v(h) = g3'(h) for h - 2 > x^{0.9}, and
       v(h) = 0 otherwise. Below x^{0.9} no fake semiprime can compensate the primes.
@@ -132,9 +160,11 @@ The target enters in exactly the following places.
       correlations (eh - 2, h - 2). By an upper-bound sieve (standard, not re-read) they are
       << x L^{0.1-1+o(1)}. This is Heuristic, and the toy numbers agree.
     - Consequences:
-      - (i) The class defined by P1-P3 contains functions with correlation of order (log x)^{-0.1} pi(x). So no
-        proof that uses only P1-P3 of the target can beat (log x)^{-0.1}. This is consistent with Theorem 1 (o(1))
-        and with Remark 2 ((log log x)^{-A}). The no-go criterion is NOT triggered.
+      - (i) Heuristic: the class defined by P1, P3 and P2 restricted to R = (exp(L^{1/10}), exp(2L^{1/5})]
+        contains functions with correlation of order (log x)^{-0.1} pi(x). So no proof that uses only these
+        properties of the target can beat (log x)^{-0.1}. The exponent 0.1 comes from LWW's window for the
+        auxiliary primes: 1/10 < a_i < 1/5 in (2.12). This is consistent with Theorem 1 (o(1)) and with Remark 2
+        ((log log x)^{-A}). The no-go criterion is NOT triggered.
       - (ii) If P2 holds only on a set S of 1/p-mass s (for example, b fixed families, s = bK log 2), the same
         construction gives correlation about e^{-s}. So the b → ∞ step of p. 70 genuinely needs P2 on sets of
         divergent mass. It is also quantitatively consistent with LWW's bound x sqrt(C_{K,rho}/b): from (2.14) and
@@ -142,7 +172,8 @@ The target enters in exactly the following places.
         (Proved here, elementary, outline), and 2^{-bK} <= sqrt((2^K - 1)/b).
   - No model with P1-P3 and correlation >> pi(x) was found. The heuristic reason: for p + 2 with a large R-part, a
     class function sees primes only through sign sums over the orbit {e h : e R-composed}, and those orbits are huge.
-    Whether such a model exists is equivalent to the claim itself, so it is Open.
+    If the LWW argument is correct, non-existence follows, since the argument uses only P1-P3 of the target. The
+    converse does not hold. Open.
 
 ### 3. Numerical check (Computed; toy scale, an illustration, NOT a verification)
 Command: `/usr/bin/python3 -I code/parity/lww_mu_vs_lambda.py 1e7 100`. Output in `code/parity/lww_mu_vs_lambda.out`;
@@ -156,9 +187,13 @@ Setup:
   - "corr" is sum_p f(p+2)/#p over the 316,067 primes in the window.
   - "P2" is the fraction of 2·10^5 random pairs (d, v) with f(dv) = (-1)^{omega(d)} f(v), counting only pairs
     where one side is nonzero.
+    - The column tests sigma = -1 only. mu^2 (0.331) satisfies P2 with sigma = +1, which the column does not
+      test, and g = 1 satisfies P2 with sigma = +1 without vanishing at p^2, like lambda.
   - S_red and S_2 are sum_{m<=100} of max over classes and z of the partial class sums, divided by the mass
     sum |f|. S_red uses the reduced classes of (3.1). S_2 uses the class N ≡ 2 (mod q) of T_1 and T_2. The noise
     baseline is |f| times random signs.
+    - S_2 starts at q = 3, so it does not test the q = 1 (d = 1) term of T_1. That term needs zero mean in the
+      reduced classes mod d | P, which S_red covers only for d <= 100.
 
 | target | corr | P2 | S_red | S_2 | noise S_red / S_2 |
 |---|---|---|---|---|---|
@@ -181,8 +216,8 @@ Reading:
 
 ## First unresolved implication
 "P2 for mu at every prime of R ⟹ T_3(mu W) = o(x)": the step at p. 15 with (4.6), then Prop. 4.2 for arbitrary
-coefficients, then Prop. 5.3. Model (c) shows that P1 and P3 alone are compatible with T_3 of order x. Model (d)
-shows that P1-P3 alone are compatible with correlation of order (log x)^{-0.1}. So the step must use P2, and in fact
+coefficients, then Prop. 5.3. Model (c) shows, heuristically, that P1 and P3 alone are compatible with T_3 of order
+x. Model (d) shows, heuristically, that P1-P3 (with P2 on R) are compatible with correlation of order (log x)^{-0.1}. So the step must use P2, and in fact
 on sets of divergent 1/p-mass.
 
 ## Not checked
@@ -198,3 +233,30 @@ on sets of divergent 1/p-mass.
 
 ## Scripts
 `code/parity/lww_mu_vs_lambda.py` with `.out` (numpy; toy scale). No Lean.
+
+## Audit (fresh-context, Session 50)
+The coordinator relayed a fresh-context adversarial audit with ten findings. All were accepted, and the
+classification is unchanged (located).
+1. **ERROR (g3' Type I).** It is not true that the Type I sums vanish identically. The q > 1 terms vanish up to
+   prime powers (O(x^{1/2+o(1)})). The d = 1 term of T_1 is o(x) only by P3 (Heuristic). Fixed in Finding 2(c),
+   and the S_2 limitation is now noted in Section 3.
+2. **SLIP.** "P2 is used only ... on p. 15" contradicted the use in (3.7). It now reads: for g3' the Type I sums are
+   handled directly, so the only place P2 is needed is p. 15.
+3. **OVERSTATEMENT.** "Equivalent to the claim" is replaced by: non-existence follows if the LWW argument is
+   correct; the converse does not hold; Open.
+4. **OVERSTATEMENT.** The (log x)^{-0.1} ceiling is now labelled Heuristic and restricted to P1, P3 and P2 on R. The
+   exponent 0.1 is attributed to LWW's window.
+5. **OVERSTATEMENT.** "Pinned down" now says heuristically, because g3' has P3 only heuristically. "Nothing else
+   ... can carry it" now says "appears to".
+6. **GAP (mu*chi).** Added the splitting of T_3 by (m, n) mod q_0 as the main heuristic repair. I checked it against
+   the PDF: Prop. 4.2 (p. 18) allows arbitrary coefficients; Prop. 5.3 (p. 63) assumes alpha = mu R_Z; Prop. 2.2
+   (pp. 5-6) covers characters of modulus up to (log x)^B. Marked "needs Prop. 5.3 with a twist by characters mod
+   q_0; not checked".
+7. **OVERSTATEMENT (Remark 1).** Replaced by "not covered verbatim; pigeonhole thinning reduces it to the thinned-set
+   question (plus K·epsilon errors)". The card notes that Remark 1 is hedged and that no error by LWW is implied.
+8. **GAP.** Lambda^flat is now defined explicitly, both asymptotically and as the script implements it. The toy
+   maximum 2.45 is compared with 1/log 1.5 ≈ 2.47.
+9. **SLIP.** Added a note that the P2 column tests sigma = -1 only, covering mu^2 and g = 1.
+10. **SLIP (script).** In the docstring, R is now {5,...,31} and the runtime is about 2 minutes. The duplicate D and
+    `small` definitions are removed. A comment on the S_2 and P2 limitations was added. The script was re-run with
+    /usr/bin/python3 -I; the new .out is identical to the old one apart from the removed `time` lines.

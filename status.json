@@ -600,6 +600,11 @@
    "label": "Lean-checked",
    "text": "mu(prod r_i) = prod mu(r_i) for pairwise coprime lists, and for the lists [d_i,e_i], d_i, e_i under the pairwise-coprimality hypothesis of maynard_S1_error (Session 50): the Mobius identities the diagonalisation of S_1 uses; the diagonalisation itself is not formalised.",
    "where": "lean/TwinPrimes/MuTuple.lean; main paper thm:lean item 19"
+  },
+  {
+   "label": "Literature",
+   "text": "What Lu-Wang-Wu (arXiv:2610.20242v2, Claimed) use from the target mu(n+2) (Session 50): only P1 boundedness, P2 a fixed sign at the auxiliary primes in R, P3 Bombieri-Vinogradov with zero main term to x^{2/5+o(1)}; lambda passes after routine changes; mu*chi and Remark 1 not covered verbatim. Heuristic: a Lambda-based fake target satisfies P1, P3 and fails only P2 with correlation ~1, locating the parity-breaking step at 'P2 => T_3 small'. Audited (fresh context); not an error found.",
+   "where": "notes/parity-attempts/2026-11-24-lww-mu-vs-lambda.md"
   }
  ],
  "ideas": [
@@ -1208,6 +1213,12 @@
    "origin": "exploration",
    "status": "ruled out",
    "note": "Dead end as a search for structure: at X = 1e8 the max of |sum lambda(p+2) e(alpha p)|/sqrt(pi) is 4.39, same as random-sign controls (4.12, 4.36); no spikes at a/q."
+  },
+  {
+   "idea": "Target-side property list for Lu-Wang-Wu and a fake target failing only the fixed-sign property (Session 50)",
+   "origin": "own",
+   "status": "partial",
+   "note": "Located, audited: mu(n+2) enters only via boundedness, fixed sign at the auxiliary primes, BV to x^{2/5}; a Lambda-based fake target (correlation ~1) fails only the sign property, so heuristically the parity step is p. 15 + Props. 4.2/5.3. Open: does Prop. 5.3 accept a character twist / thinned prime sets."
   }
  ],
  "phase": "B",

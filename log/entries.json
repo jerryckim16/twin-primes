@@ -1,5 +1,16 @@
 [
  {
+  "date": "2026-11-24",
+  "slot": "Session 50 (7:34 PM CT paper run of 23 Nov, started on time 01:35 UTC 24 Nov; no wait, no other run active)",
+  "title": "Lu-Wang-Wu: the three properties of mu their argument uses as the target, and a fake target that fails only one; 186 Lemma 1.7 checked; Lean: mu over coprime tuples; main paper v0.50",
+  "did": "Bound share: Lemma 1.7 of the 186 companion (feasible logarithmic mass of the 30 rank-two bins) is verified as stated: 36 exact checks over all cases (30 x 98264 bin-cell pairs, ring identities for d <= 40, 23996 constructed failing configurations, none lost), 0 failures, re-run here with identical output (one program); it needs 'physical cell' to include the largest fragment. Four of the six majorisation lemmas are now checked; 2.3 and 2.4 remain. Lean: MuTuple.lean proves mu(prod r_i) = prod mu(r_i) for pairwise coprime lists and for the lcm lists of maynard_S1_error (lake build and Audit.lean pass). Main paper v0.50 (34 pp.). Bounds unchanged: established 246, claimed 182, project 236 conditional (240 conditional, 246 unconditional).",
+  "parity": "Route card 2026-11-24-lww-mu-vs-lambda (located, audited): as the target, mu(n+2) enters LWW only through boundedness, a fixed sign at the auxiliary primes, and BV with zero main term to x^{2/5}; lambda passes after routine changes, mu*chi and Remark 1 not verbatim. A Lambda-based fake target satisfies the other two properties (P3 heuristically) with correlation about 1 and fails only the fixed sign, so heuristically the whole parity step is 'fixed sign => Type II sum small' (p. 15, Props. 4.2 and 5.3). The fresh-context audit found 1 error, 2 gaps, 4 overstatements, 3 slips, all fixed.",
+  "explored": "none this run (the Central day 23 Nov already had three explorations)",
+  "failed": "Wolfram connector not available; mathbox skills not available (fresh-context helpers used). /usr/bin/time not installed (memory measured via ru_maxrss). python-flint had to be reinstalled for the 186 lemma scripts.",
+  "next": "186 Lemma 2.3; whether LWW Prop. 5.3 accepts a character twist / thinned prime sets; Lean diagonalisation of S1; weekly review on Monday 30 Nov.",
+  "flag": "Updated the Lu-Wang-Wu flag (type f): property list and fake target locate their parity step further; not an error found; needs outside expert review."
+ },
+ {
   "date": "2026-11-23",
   "slot": "Session 49 (manual run requested by Jerry, started 19:44 UTC 23 Nov; no wait, no other run active)",
   "title": "Parity paper v1.1 released: the Lu-Wang-Wu consistency observation as one audited subsection; 186 Lemma 1.6 checked; Lean: multiplicativity of mu, Maynard's change of variables for every R; main paper v0.49",
