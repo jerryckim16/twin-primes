@@ -161,3 +161,14 @@ import TwinPrimes
 #print axioms TwinPrimes.MuMult.mu_mul_coprime
 #print axioms TwinPrimes.maynard_lam_of_y_sqfree_all
 #print axioms TwinPrimes.maynard_y_of_lam_sqfree_all
+#print axioms TwinPrimes.MuTuple.mu_prod_coprime
+#print axioms TwinPrimes.MuTuple.iprod_cast
+#print axioms TwinPrimes.MuTuple.tmu_eq_mu_prod
+#print axioms TwinPrimes.MuTuple.exists_mem_zipWith
+#print axioms TwinPrimes.MuTuple.pairwise_coprime_of_zipWith
+#print axioms TwinPrimes.MuTuple.pairwise_coprime_of_lcm_left
+#print axioms TwinPrimes.MuTuple.pairwise_coprime_of_lcm_right
+#print axioms TwinPrimes.MuTuple.mu_prod_lcm
+#print axioms TwinPrimes.MuTuple.tmu_lcm_left
+#print axioms TwinPrimes.MuTuple.tmu_lcm_right
+#print axioms TwinPrimes.MuTuple.mu_prod_coprime_example

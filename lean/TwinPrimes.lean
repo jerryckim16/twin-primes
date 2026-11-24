@@ -15,3 +15,4 @@ import TwinPrimes.SelbergEq
 import TwinPrimes.MaynardS1
 import TwinPrimes.MaynardInv
 import TwinPrimes.MuMult
+import TwinPrimes.MuTuple
