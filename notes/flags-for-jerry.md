@@ -1,5 +1,26 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-24 (Session 50) — Update to the Lü–Wang–Wu flag: which properties of μ their argument uses as the target, and a fake target that fails only one of them (locates the step further; not an error found)
+- **What.** Reading arXiv:2610.20242v2 for every use of the target μ(n+2): Sections 2-3, p. 15, (4.6) and the removal
+  of W on p. 70 use only (P1) |f| ≤ 1, (P2) a fixed sign f(pv) = σ f(v) at the auxiliary primes in
+  R = (exp(L^{1/10}), exp(2L^{1/5})], and (P3) Bombieri–Vinogradov with zero main term to moduli x^{2/5+o(1)}
+  ((3.1), p. 13). Props. 2.2 and 5.3 concern the prime variable, not the target. λ passes after routine changes.
+  μχ and Remark 1's "general bounded multiplicative f" are not covered verbatim; a split by residue classes mod q₀,
+  or pigeonhole thinning of the auxiliary primes, would reduce them to a twist of their Prop. 5.3, which we have
+  not checked. A fake target g3' built from Λ(N−2) satisfies P1 and (heuristically) P3, and its correlation with
+  the primes is about 1, but it fails P2. So, heuristically, all of the parity-breaking weight sits on
+  "P2 ⟹ the Type II sum T₃ is small" (p. 15 + (4.6) + Props. 4.2 and 5.3), the same place found in Sessions 39-40.
+- **Why it might matter.** It tells an expert exactly where to look: the fixed-sign step and their Prop. 4.2. It is
+  consistent with LWW's own heuristics and implies no error by them. Nothing here concerns twins.
+- **Evidence label.** Literature (read in v2, pages cited in the card) plus Heuristic (P3 for the fake targets;
+  numerical toy checks in code/parity/lww_mu_vs_lambda.py).
+- **Checked.** A fresh-context adversarial audit re-read the PDF (SHA-256 matched) and re-ran the script with
+  identical output. It found 1 error (the q = 1 Type I term of the fake target does not vanish; it is small only by P3,
+  heuristically), 2 gaps and 4 overstatements; all were applied. **Not checked:** LWW Props. 4.2 and 5.3, and whether
+  Prop. 5.3 accepts a character twist or thinned prime sets.
+- **Files.** notes/parity-attempts/2026-11-24-lww-mu-vs-lambda.md, code/parity/lww_mu_vs_lambda.py (.out).
+- **Needs outside expert review:** yes (as for the whole LWW flag).
+
 ## 2026-11-23 (Session 47) — (minor) Green, arXiv:1604.04481v4, p. 2: the example showing that his Theorem 1.1 needs prime moduli is misprinted
 - **What.** Green writes that Theorem 1.1 fails without the restriction to prime moduli, "as may be seen by taking
   f(n) = (−1)^n μ²(n)", whose mean is "very small". As printed the function is not multiplicative (its value at 1 is −1);

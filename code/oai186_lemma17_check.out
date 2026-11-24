@@ -1,0 +1,94 @@
+[0] group data (1.23)-(1.24), pp. 5-6, from code/oai186_support_data.py (re-derived there from (1.13)-(1.20))
+  PASS oai186_support_data.py: all its printed-value checks pass (ladders, (1.17), masks (1.5), group table)
+  PASS (1.3): h = S/98304 with S = 2742997/2624989, n = 98264
+  PASS m_G in {2, 5/2}; 0 < xi_G < p_G <= z_G < U_G (so U - q > 0 for every q <= z_G)
+  PASS 1.5.3 (p. 10): max(p_G, xi_G) <= U_G/(m_G+1) for all six groups
+  PASS Lemma 1.1 guard z_G + m_G p_G <= U_G (used in [2])
+  PASS q0 = U/(m+1) < z_G (the rank-two range (q0, z_G] is nonempty)
+    O2       d=40 m=2    U=1.044955998 z=0.5224778085 p_G=0.2612389042 q0=0.348318666
+    O5/2     d=40 m=5/2  U=1.044955807 z=0.4951378646 p_G=0.2089826195 q0=0.2985588021
+    I2old    d=39 m=2    U=0.952044764 z=0.4760147856 p_G=0.2380020779 q0=0.3173482547
+    I5/2old  d=39 m=5/2  U=0.9520445735 z=0.374861245 p_G=0.1904016623 q0=0.2720127353
+    I2new    d=39 m=2    U=0.9561948641 z=0.478087604 p_G=0.239043802 q0=0.3187316214
+    I5/2new  d=39 m=5/2  U=0.9561946736 z=0.3764982401 p_G=0.1912307897 q0=0.2731984782
+
+[1] the 30 rank-two bins (Sec. 1.5.1, p. 9): (q0 + t_{j-1}(z - q0), q0 + t_j(z - q0)]
+  PASS bin counts 6, 12, 1, 2, 4, 5 (total 30)
+  PASS each T list increases strictly from 0 to 1, so the bins partition (q0, z_G]
+  PASS every bin has 0 < U/(m+1) <= q- < q+ <= z_G < U (the hypotheses of Lemma 2.4, p. 14)
+  PASS q+/q- in (1, 2] on every bin (so log(q+/q-) needs no binary scaling in Lemma 2.1)   [max q+/q- = 1.4999761]
+
+[2] (1.39), p. 10: on (q0, z_G] the second-fragment cutoff d(q) = max{p_G, xi, (U-q)/m} equals (U-q)/m
+  PASS r(z_G) = (U - z_G)/m >= p_G > xi_G, hence d(q) = r(q) for all q <= z_G (dropping p_G, xi in Lemma 2.4 and in the proof of Lemma 1.7 loses nothing on this schedule)   [min slack r(z)-p_G = 1.9047692e-07]
+  PASS r(q) < q exactly for q > q0 (r(q0) = q0, r decreasing): a secondary p in (r(q), q] exists on every bin
+  PASS q + r(q) = ((m-1)q + U)/m is strictly increasing (slope 1 - 1/m > 0) and equals t+ exactly at q = (m t+ - U)/(m-1) (symbolic in t+, checked at t+ = 0, 1, S)
+
+[3] (1.45): L = log(q+/q-) > 0, with the rational series bounds of Lemma 2.1 (p. 11)
+  PASS Lemma 2.1 lower bound for L is > 0 on all 30 bins (positive denominator for the outward fraction)   [min lower bound 0.031448782 (O5/2 P8)]
+  PASS the enclosures are tight: width < 10^-40 on all 30 bins
+  PASS (1.45) is continuous: log(q-/q-) = 0 exactly (y = 1 gives v = 0) and the middle branch tends to L at q+
+
+[4] all (bin, physical cell) pairs: 30 bins x 98264 cells C_j = [jh, (j+1)h), t+ = (j+1)h
+  group    bin   q-            q+            L>=          owner 0/part/1        same 0/part/1
+  O2       P1    0.348318666   0.37734519    0.0800426     32768/ 2730/ 62766      65536/ 1365/ 31363
+  O2       P2    0.37734519    0.406371713   0.0741079     35498/ 2731/ 60035      66901/ 1365/ 29998
+  O2       P3    0.406371713   0.435398237   0.0689928     38229/ 2731/ 57304      68266/ 1366/ 28632
+  O2       P4    0.435398237   0.464424761   0.0645385     40960/ 2730/ 54574      69632/ 1365/ 27267
+  O2       P5    0.464424761   0.493451285   0.0606246     43690/ 2731/ 51843      70997/ 1365/ 25902
+  O2       P6    0.493451285   0.522477808   0.0571584     46421/ 2730/ 49113      72362/ 1366/ 24536
+  O5/2     P1    0.298558802   0.310844994   0.0403275     28086/ 1156/ 69022      56173/  694/ 41397
+  O5/2     P2    0.310844994   0.323131185   0.038764      29242/ 1156/ 67866      56867/  693/ 40704
+  O5/2     P3    0.323131185   0.335417376   0.0373173     30398/ 1156/ 66710      57560/  694/ 40010
+  O5/2     P4    0.335417376   0.347703568   0.0359746     31554/ 1156/ 65554      58254/  693/ 39317
+  O5/2     P5    0.347703568   0.359989759   0.0347253     32710/ 1155/ 64399      58947/  694/ 38623
+  O5/2     P6    0.359989759   0.372275951   0.0335598     33865/ 1156/ 63243      59641/  693/ 37930
+  O5/2     P7    0.372275951   0.384562142   0.03247       35021/ 1156/ 62087      60334/  694/ 37236
+  O5/2     P8    0.384562142   0.396848333   0.0314488     36177/ 1156/ 60931      61028/  693/ 36543
+  O5/2     P9    0.396848333   0.421420716   0.0600775     37333/ 2312/ 58619      61721/ 1387/ 35156
+  O5/2     P10   0.421420716   0.445993099   0.0566718     39645/ 2311/ 56308      63108/ 1387/ 33769
+  O5/2     P11   0.445993099   0.470565482   0.0536316     41956/ 2312/ 53996      64495/ 1387/ 32382
+  O5/2     P12   0.470565482   0.495137865   0.0509011     44268/ 2311/ 51685      65882/ 1387/ 30995
+  I2old    P1    0.317348255   0.476014786   0.405449      29854/14926/ 53484      59708/ 7464/ 31092
+  I5/2old  P1    0.272012735   0.32343699    0.173155      25589/ 4838/ 67837      51179/ 2902/ 44183
+  I5/2old  P2    0.32343699    0.374861245   0.147552      30427/ 4837/ 63000      54081/ 2903/ 41280
+  I2new    P1    0.318731621   0.345290952   0.080038      29984/ 2499/ 65781      59969/ 1249/ 37046
+  I2new    P2    0.345290952   0.398409613   0.143093      32483/ 4997/ 60784      61218/ 2499/ 34547
+  I2new    P3    0.398409613   0.424968943   0.0645354     37480/ 2498/ 58286      63717/ 1249/ 33298
+  I2new    P4    0.424968943   0.478087604   0.117778      39978/ 4997/ 53289      64966/ 2498/ 30800
+  I5/2new  P1    0.273198478   0.286110948   0.0461811     25701/ 1214/ 71349      51402/  729/ 46133
+  I5/2new  P2    0.286110948   0.311935889   0.086418      26915/ 2430/ 68919      52131/ 1457/ 44676
+  I5/2new  P3    0.311935889   0.324848359   0.0405608     29345/ 1215/ 67704      53588/  729/ 43947
+  I5/2new  P4    0.324848359   0.3506733     0.0764965     30560/ 2429/ 65275      54317/ 1458/ 42489
+  I5/2new  P5    0.3506733     0.37649824    0.0710584     32989/ 2429/ 62846      55775/ 1457/ 41032
+  PASS every (bin, cell) pair classified; totals owner 0/part/1 = 1029126/84185/1834609, same 0/part/1 = 1819755/45882/1082283
+  PASS zero sets agree with Lemma 2.4 (p. 14): A_j = 0 iff t+ <= a, C_j = 0 iff t+ <= a + r+ (r+ = (U-a)/m), on all 30 x 98264 pairs
+  PASS soundness boundary: on every partial same-coordinate cell, q* = (m t+ - U)/(m-1) lies in (q-, q+) and q* + (U - q*)/m = t+ exactly; with [2] (monotone), q + (U-q)/m < t+ <=> q < q*
+  PASS sharpness (owner): on every partial owner cell an explicit q in (q-, t+) and total t in [jh, t+), t >= q, exist
+  PASS sharpness (same): on every partial same cell an explicit q in (q-, q*), p in ((U-q)/m, q] with p > p_G, xi, and total t in [jh, t+) with t >= q + p exist (so the fraction is the exact projection; it is not lossy)
+  PASS 'the second fraction may also be capped by the first' is redundant on this schedule: Lf(v2) <= Lf(t+) on every pair (v2 <= t+ iff t+ <= U, and t+ > U forces both cutoffs >= q+)
+  PASS each bin has cells in all three classes for both fractions (the fractions are not trivially 0/1)
+  info: n h = 1.044530423; U_G max = 1.044955998; groups with cells t+ > U_G: I2old,I5/2old,I2new,I5/2new
+  partial (bin, cell) pairs examined with exact Fractions: 130067
+
+[5] (1.42)-(1.44), p. 10: [xy]Q^d in Z[P,A,B,C][x,y]/(x^2, y^2), Q = P + xA + yB + xyC
+  PASS (1.43) [xy]Q^d = d P^(d-1) C + d(d-1) P^(d-2) A B exactly, for every d = 2..40
+  PASS Lemma 1.7 proof: every monomial of [xy]Q^d (d = 2..40) contains exactly one of A, C (the factors carrying the largest fragment) and exactly one of B, C; so a fraction on A and one on C are never multiplied
+  PASS (1.44) [xy](Q_e R) = C_e P_r + P_e (xy)_r + A_e y_r + B_e x_r for a generic retained R
+  PASS (1.44): each of the four placements has exactly one largest-fragment carrier (C_e, (xy)_r, A_e or x_r)
+  PASS (1.44) with R = Q^39 and (P_e, A_e, B_e, C_e) = (P, A, B, C) gives exactly [xy]Q^40 of (1.43)
+
+[6] end-to-end, from the definition (1.12) of H_{m,xi} (p. 4): rank-two failing configurations
+  info: m_G z_G <= U_G holds for O2,I2old,I5/2old,I2new,I5/2new; for the others the largest fragment may also be a witness, which is irrelevant here: the rank-two component covers the witness p = second-largest fragment (reading R2)
+  PASS every generated rank-two failure (exact rationals, all 6 groups, 23996 configurations: 15597 same-coordinate, 6000 boundary with p = (U-q)/m + 10^-30) has a unique bin and lies in the feasible part (q < t+, and q < (m t+ - U)/(m-1) if same-coordinate)   [lost 0]
+  PASS negative controls bite: using the cell's lower endpoint jh for t+ loses configurations; replacing the divisor m-1 by m in v2 loses same-coordinate configurations   [losses 9976, 15437]
+  PASS reading R1 is forced: O_2 configuration q = 0.36 (bin P1) alone in its coordinate, p = 0.35 in another coordinate is a rank-two failure (p > (U-q)/m, p > p_G, H_2 > U); physical t+ > q- gives a positive fraction, the residual reading (t+ = h) would give Lf(h)/L = 0 and drop it
+
+[7] authors' script code/third_party/openai186/prime_gap_186_certificate.py (comparison only)
+  PASS authors' TASKS: the same 30 rank-two bins (q_low, q_high) in the same order
+  PASS authors' rank-two tasks use the same (U_G, m_G)
+  PASS authors' owner_feasible_mass_fractions implements (1.46) with the cap: owner_cap = min(hi, (j+1)h), same_cap = min(owner_cap, (m right - U)/(m-1)); 0 below lo, 1 above hi (source text)
+  PASS authors' zero tests in LargestFragmentPalmFactory.kernels are t+ <= lower and t+ <= lower + r_max, i.e. the zero sets checked in [4] (source text)
+  PASS authors' common factor: LargestFragmentBin.mass = upper bound of log(upper/lower), applied once as 'multiplier' per rank-two component (source text; once-ness by reading lines ~2043, 2061, 2121)
+
+runtime 6.9 s, peak RSS 41 MB
+36 checks, 0 failures

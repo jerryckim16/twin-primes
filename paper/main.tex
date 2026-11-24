@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.49, 23 November 2026}
+\date{Version 0.50, 24 November 2026}
 
 \begin{document}
 
@@ -318,7 +318,13 @@ prime $p\nmid n$, $\mu(n)=0$ if $p^2\mid n$, and $\mu(mn)=\mu(m)\mu(n)$ for copr
 (\texttt{mu\_mul\_coprime}); hence the identity of item~17 for every squarefree $c$
 (\texttt{muSign\_of\_sqfree}), and the inversion of item~17 for every $R$ and $k$, with no hypothesis
 (\texttt{maynard\_lam\_of\_y\_sqfree\_all}, \texttt{maynard\_y\_of\_lam\_sqfree\_all}). Not formalised:
-$\mu(\prod r_i)=\prod\mu(r_i)$ for coprime tuples as a separate lemma, and the diagonalisation.
+the diagonalisation.
+\item (\texttt{MuTuple.lean}) $\mu(\prod_i r_i)=\prod_i\mu(r_i)$ for every pairwise coprime list
+$(r_1,\dots,r_k)$ (\texttt{mu\_}\allowbreak\texttt{prod\_coprime}), and, under the hypothesis of
+\texttt{maynard\_}\allowbreak\texttt{S1\_error} that the entries $[d_i,e_i]$ are pairwise coprime, the same for the lists
+$([d_i,e_i])$, $(d_i)$ and $(e_i)$ (\texttt{mu\_}\allowbreak\texttt{prod\_lcm}, \texttt{tmu\_}\allowbreak\texttt{lcm\_left},
+\texttt{tmu\_}\allowbreak\texttt{lcm\_right}). These are the M\"obius identities the diagonalisation of $S_1$ uses; the
+diagonalisation itself is not formalised.
 \end{enumerate}
 \end{theorem}
 
@@ -1979,7 +1985,13 @@ every bin, the printed direct check ($11,2,5$ intervals below every absorbed act
 minimum is the original boundary), nonemptiness, exactness of the full-cell test, and $7050$ constructed failing roots
 with no witness lost (\lbl{Computed}, $42$ exact checks, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma16\_check.py};
 \texttt{notes/}\allowbreak\texttt{oai186-lemma16-check.md}); the lemma needs ``assigned'' to mean the bin of a witness of the failing source
-row, the reading its proof uses. Not checked: its Lemmas 1.7, 2.3
+row, the reading its proof uses. Its Lemma~1.7 (the feasible logarithmic mass of the $30$ rank-two bins) is verified as
+stated: each inequality of its proof was checked by hand, and every finite claim it rests on by exact computation over all
+cases ($30\times98264$ bin--cell pairs, the ring identities (1.43)--(1.44) for $d\le40$, a positive lower bound for the
+logarithmic mass, and $23996$ constructed failing configurations with none lost; \lbl{Computed}, $36$ exact checks, one
+program, \texttt{code/}\allowbreak\texttt{oai186\_lemma17\_check.py}; \texttt{notes/}\allowbreak\texttt{oai186-lemma17-check.md}); it needs
+``physical cell'' to mean the cell of the owner coordinate's total including the largest fragment (under the other
+reading an explicit rank-two failure would be missed). Not checked: its Lemmas 2.3
 and 2.4 (that the remaining forms majorise the true support-failure integrals and that
 the cover is complete), the analytic part of Lemma~1.1, its restoration step (Proposition~1.3, resting on the
 main paper's Proposition~4.6), and the analytic inputs, which stay
@@ -2277,6 +2289,8 @@ $186$ companion checked.
 inversion for every $R$); Section~\ref{sec:related}: the parity paper is now version~1.1 (the
 L\"u--Wang--Wu consistency observation as one subsection); Remark~\ref{rem:186-status}: Lemma~1.6
 of the $186$ companion (see there).
+\item[0.50] (24 Nov 2026) Theorem~\ref{thm:lean}, item 19 ($\mu$ of a product of pairwise coprime
+entries); Remark~\ref{rem:186-status}: Lemma~1.7 of the $186$ companion checked.
 \end{itemize}
 
 \begin{thebibliography}{99}

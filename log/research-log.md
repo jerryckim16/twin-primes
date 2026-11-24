@@ -1,5 +1,978 @@
 # Research log
 
+## 2026-11-24 - Session 50 (7:34 PM CT paper run of 23 Nov, started on time 01:35 UTC 24 Nov; no wait, no other run active): Lu-Wang-Wu: the three properties of mu their argument uses as the target, and a fake target that fails only one; 186 Lemma 1.7 checked; Lean: mu over coprime tuples; main paper v0.50
+
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 1
+- .
+- 7
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- (
+- f
+- e
+- a
+- s
+- i
+- b
+- l
+- e
+-  
+- l
+- o
+- g
+- a
+- r
+- i
+- t
+- h
+- m
+- i
+- c
+-  
+- m
+- a
+- s
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 3
+- 0
+-  
+- r
+- a
+- n
+- k
+- -
+- t
+- w
+- o
+-  
+- b
+- i
+- n
+- s
+- )
+-  
+- i
+- s
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+- :
+-  
+- 3
+- 6
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+-  
+- o
+- v
+- e
+- r
+-  
+- a
+- l
+- l
+-  
+- c
+- a
+- s
+- e
+- s
+-  
+- (
+- 3
+- 0
+-  
+- x
+-  
+- 9
+- 8
+- 2
+- 6
+- 4
+-  
+- b
+- i
+- n
+- -
+- c
+- e
+- l
+- l
+-  
+- p
+- a
+- i
+- r
+- s
+- ,
+-  
+- r
+- i
+- n
+- g
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- t
+- i
+- e
+- s
+-  
+- f
+- o
+- r
+-  
+- d
+-  
+- <
+- =
+-  
+- 4
+- 0
+- ,
+-  
+- 2
+- 3
+- 9
+- 9
+- 6
+-  
+- c
+- o
+- n
+- s
+- t
+- r
+- u
+- c
+- t
+- e
+- d
+-  
+- f
+- a
+- i
+- l
+- i
+- n
+- g
+-  
+- c
+- o
+- n
+- f
+- i
+- g
+- u
+- r
+- a
+- t
+- i
+- o
+- n
+- s
+- ,
+-  
+- n
+- o
+- n
+- e
+-  
+- l
+- o
+- s
+- t
+- )
+- ,
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+- ,
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+-  
+- w
+- i
+- t
+- h
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+-  
+- o
+- u
+- t
+- p
+- u
+- t
+-  
+- (
+- o
+- n
+- e
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- )
+- ;
+-  
+- i
+- t
+-  
+- n
+- e
+- e
+- d
+- s
+-  
+- '
+- p
+- h
+- y
+- s
+- i
+- c
+- a
+- l
+-  
+- c
+- e
+- l
+- l
+- '
+-  
+- t
+- o
+-  
+- i
+- n
+- c
+- l
+- u
+- d
+- e
+-  
+- t
+- h
+- e
+-  
+- l
+- a
+- r
+- g
+- e
+- s
+- t
+-  
+- f
+- r
+- a
+- g
+- m
+- e
+- n
+- t
+- .
+-  
+- F
+- o
+- u
+- r
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- s
+- i
+- x
+-  
+- m
+- a
+- j
+- o
+- r
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- l
+- e
+- m
+- m
+- a
+- s
+-  
+- a
+- r
+- e
+-  
+- n
+- o
+- w
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+- ;
+-  
+- 2
+- .
+- 3
+-  
+- a
+- n
+- d
+-  
+- 2
+- .
+- 4
+-  
+- r
+- e
+- m
+- a
+- i
+- n
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- M
+- u
+- T
+- u
+- p
+- l
+- e
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- r
+- o
+- v
+- e
+- s
+-  
+- m
+- u
+- (
+- p
+- r
+- o
+- d
+-  
+- r
+- _
+- i
+- )
+-  
+- =
+-  
+- p
+- r
+- o
+- d
+-  
+- m
+- u
+- (
+- r
+- _
+- i
+- )
+-  
+- f
+- o
+- r
+-  
+- p
+- a
+- i
+- r
+- w
+- i
+- s
+- e
+-  
+- c
+- o
+- p
+- r
+- i
+- m
+- e
+-  
+- l
+- i
+- s
+- t
+- s
+-  
+- a
+- n
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- l
+- c
+- m
+-  
+- l
+- i
+- s
+- t
+- s
+-  
+- o
+- f
+-  
+- m
+- a
+- y
+- n
+- a
+- r
+- d
+- _
+- S
+- 1
+- _
+- e
+- r
+- r
+- o
+- r
+-  
+- (
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- a
+- s
+- s
+- )
+- .
+-  
+- M
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 5
+- 0
+-  
+- (
+- 3
+- 4
+-  
+- p
+- p
+- .
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- 2
+- 4
+- 0
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- ,
+-  
+- 2
+- 4
+- 6
+-  
+- u
+- n
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- )
+- .
+
+Flag for Jerry: Updated the Lu-Wang-Wu flag (type f): property list and fake target locate their parity step further; not an error found; needs outside expert review.
+
+Parity attempt: Route card 2026-11-24-lww-mu-vs-lambda (located, audited): as the target, mu(n+2) enters LWW only through boundedness, a fixed sign at the auxiliary primes, and BV with zero main term to x^{2/5}; lambda passes after routine changes, mu*chi and Remark 1 not verbatim. A Lambda-based fake target satisfies the other two properties (P3 heuristically) with correlation about 1 and fails only the fixed sign, so heuristically the whole parity step is 'fixed sign => Type II sum small' (p. 15, Props. 4.2 and 5.3). The fresh-context audit found 1 error, 2 gaps, 4 overstatements, 3 slips, all fixed.
+
+Explored: none this run (the Central day 23 Nov already had three explorations)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- s
+-  
+- u
+- s
+- e
+- d
+- )
+- .
+-  
+- /
+- u
+- s
+- r
+- /
+- b
+- i
+- n
+- /
+- t
+- i
+- m
+- e
+-  
+- n
+- o
+- t
+-  
+- i
+- n
+- s
+- t
+- a
+- l
+- l
+- e
+- d
+-  
+- (
+- m
+- e
+- m
+- o
+- r
+- y
+-  
+- m
+- e
+- a
+- s
+- u
+- r
+- e
+- d
+-  
+- v
+- i
+- a
+-  
+- r
+- u
+- _
+- m
+- a
+- x
+- r
+- s
+- s
+- )
+- .
+-  
+- p
+- y
+- t
+- h
+- o
+- n
+- -
+- f
+- l
+- i
+- n
+- t
+-  
+- h
+- a
+- d
+-  
+- t
+- o
+-  
+- b
+- e
+-  
+- r
+- e
+- i
+- n
+- s
+- t
+- a
+- l
+- l
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- l
+- e
+- m
+- m
+- a
+-  
+- s
+- c
+- r
+- i
+- p
+- t
+- s
+- .
+
+Next: 186 Lemma 2.3; whether LWW Prop. 5.3 accepts a character twist / thinned prime sets; Lean diagonalisation of S1; weekly review on Monday 30 Nov.
+
 ## 2026-11-23 - Session 49 (manual run requested by Jerry, started 19:44 UTC 23 Nov; no wait, no other run active): Parity paper v1.1 released: the Lu-Wang-Wu consistency observation as one audited subsection; 186 Lemma 1.6 checked; Lean: multiplicativity of mu, Maynard's change of variables for every R; main paper v0.49
 
 - P
