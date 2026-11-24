@@ -1,7 +1,7 @@
 {
- "version": "0.49",
- "updated": "2026-11-23",
- "session_count": 49,
+ "version": "0.50",
+ "updated": "2026-11-24",
+ "session_count": 50,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -590,6 +590,16 @@
    "label": "Computed",
    "text": "Regression (Session 47, the last per-run batch): 3 more of the 17 inner-loss parts of 186 re-run from scratch (I2old L1,L4,L5; I5/2new L1-L3; I5/2new L4-L6). All fields identical except one Arb ball radius (I2old L1: 4.3e-63 vs 3.9e-64 committed in Session 16; reproduced twice now, midpoint identical, no bound changes). One program only. From now on: code/cap6/regress_all.py, at most monthly.",
    "where": "code/cap6/compare_loss_inner_regen_s47.json"
+  },
+  {
+   "label": "Computed",
+   "text": "Lemma 1.7 of the OpenAI 186 numerical companion (feasible logarithmic mass of the 30 rank-two bins) verified as stated (Session 50): each inequality of the proof checked by hand; all 30 x 98264 bin-cell pairs, the ring identities (1.43)-(1.44) for d <= 40, a positive lower bound for L, and 23996 constructed failing configurations (none lost) checked exactly; 36 checks, 0 failures; needs 'physical cell' = cell of the owner coordinate's total including the largest fragment (the other reading misses an explicit failure). Helper-written; re-run by the coordinator with python-flint, identical. One program.",
+   "where": "code/oai186_lemma17_check.py; notes/oai186-lemma17-check.md; main paper rem:186-status"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "mu(prod r_i) = prod mu(r_i) for pairwise coprime lists, and for the lists [d_i,e_i], d_i, e_i under the pairwise-coprimality hypothesis of maynard_S1_error (Session 50): the Mobius identities the diagonalisation of S_1 uses; the diagonalisation itself is not formalised.",
+   "where": "lean/TwinPrimes/MuTuple.lean; main paper thm:lean item 19"
   }
  ],
  "ideas": [
