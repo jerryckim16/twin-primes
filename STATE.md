@@ -3,35 +3,49 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 49, manual run requested by Jerry, 19:44 UTC 23 Nov): PHASE B
+## POSITION (after Session 50, 7:34 PM CT paper run of 23 Nov, started 01:35 UTC 24 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
-- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (23 Nov: one subsection, Section 6.4 =
-  subsec:lww-transfer, the LWW consistency observation approved by Jerry; audited, notes/audit-parity-v11.md);
-  main paper v0.49 (34 pp.). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a weekly review.
-  Active lines: main paper as an index; a short Lean note for programme (4) (the k-dimensional identity is getting
-  close: MuMult.lean removes the last hypothesis of the inversion). Paused: toolkit note (5), H_m, rung 182.
+- Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
+  main paper v0.50 (34 pp.). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a weekly review.
+  Active lines: main paper as an index; a short Lean note for programme (4). Paused: toolkit note (5), H_m, rung 182.
 - Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, still v2 on 23 Nov ~19:50 UTC) open; see notes/flags-for-jerry.md.
+- LWW flag (arXiv:2610.20242, v2) open; updated in Session 50 (target-side property list, fake target; see
+  notes/flags-for-jerry.md and notes/parity-attempts/2026-11-24-lww-mu-vs-lambda.md).
 
 ## Next steps (in order)
-1. Bound share: the 186 majorisation lemmas, ONE per run: 1.7, then 2.3, 2.4 (1.4 S47, 1.5 S48, 1.6 S49 done:
-   notes/oai186-lemma16-check.md, code/oai186_lemma16_check.py, 42 exact checks; note its reading of "assigned").
+1. Bound share: the 186 majorisation lemmas, ONE per run: 2.3, then 2.4 (1.4 S47, 1.5 S48, 1.6 S49, 1.7 S50 done:
+   notes/oai186-lemma17-check.md, code/oai186_lemma17_check.py, 36 exact checks; its reading of "physical cell").
    Then settle which threshold the restoration step (Prop. 4.6 of the main 186 paper) needs (prop:oai186-budget).
-   NO per-run regressions: code/cap6/regress_all.py at most monthly.
+   NO per-run regressions: code/cap6/regress_all.py at most monthly. Lemma 1.6/1.7 scripts need python-flint
+   (/usr/bin/python3 -m pip install --break-system-packages python-flint) to import the authors' script.
 2. Parity: v1.1 is released and frozen. Left for the review of 30 Nov to decide (v1.2 or drop): (c) one remark merging
-   the E2 cards (S32, S33, S36); (d) one "Further tests" paragraph (S37, S38, S42, S46, S47, S43-S45, S34+S35, S48).
-   Staged history in papers/parity-barrier/v11/ (README marked RELEASED).
-3. Parity attempts: one per run, each with a pre-stated success outcome not implied by the paper's class. Candidate
-   (new mechanism): what LWW Sections 2-3 need from mu specifically versus lambda (their Remark 1); or new
-   mechanisms chosen by the review of 30 Nov.
-4. Lean: MuMult.lean (S49) proves mu multiplicative for coprime arguments and MuSign for all squarefree c, and the
-   inversion for every R, k (maynard_lam_of_y_sqfree_all, maynard_y_of_lam_sqfree_all). Next: mu(prod r_i) =
-   prod mu(r_i) for pairwise-coprime tuples (induction on mu_mul_coprime), then the diagonalisation of S1 in y;
-   then decide on the short Lean note.
+   the E2 cards (S32, S33, S36); (d) one "Further tests" paragraph (S37, S38, S42, S46, S47, S43-S45, S34+S35, S48);
+   (e) possibly the S50 property list (P1-P3) as a sentence in Section 6.4 (only if the review judges it not implied).
+3. Parity attempts: one per run, each with a pre-stated success outcome not implied by the paper's class. Candidates
+   from S50: (i) does LWW Prop. 5.3's proof (via Prop. 2.2, characters mod (log x)^B) accept a twist by a fixed
+   character / thinned auxiliary prime sets (decides mu*chi and Remark 1 for general f); (ii) new mechanisms chosen
+   by the review of 30 Nov.
+4. Lean: MuTuple.lean (S50) gives mu(prod r_i) = prod mu(r_i) for pairwise-coprime lists and for [d_i,e_i], d_i, e_i
+   under the hypothesis of maynard_S1_error. Next: the diagonalisation of S1 in y (finite identity), then decide on
+   the short Lean note.
 5. Main paper: bump the version only when content changes; keep sec:related as an index.
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
 7. Baker-Harman 1998 still in notes/sources-needed.md (cited only as quoted by Li and Ding-Wang).
+
+## Session 50 (7:34 PM CT paper run of 23 Nov, started on time 01:35 UTC 24 Nov; no wait) -- additions
+- Bound share: 186 Lemma 1.7 (feasible logarithmic mass, 30 rank-two bins) verified as stated:
+  code/oai186_lemma17_check.py (/usr/bin/python3, python-flint; ~7 s, ~40 MB; .out), 36 checks, 0 failures; helper-written,
+  re-run here with flint, identical apart from the placeholder note; notes/oai186-lemma17-check.md. One program.
+- Lean: TwinPrimes/MuTuple.lean (107 lines; mu_prod_coprime, tmu_eq_mu_prod, mu_prod_lcm, tmu_lcm_left/right and helpers;
+  helper agent, statements checked here; 11 Audit.lean entries); lake build and Audit.lean pass (propext / Quot.sound /
+  Classical.choice only).
+- Parity attempt: route card notes/parity-attempts/2026-11-24-lww-mu-vs-lambda.md (located). Source: LWW arXiv:2610.20242v2
+  (SHA-256 matches notes/sources-lww26.md; PDF not committed). Script code/parity/lww_mu_vs_lambda.py (/usr/bin/python3 -I;
+  ~2 min; .out). Fresh-context adversarial audit: 1 error (q = 1 Type I term of the fake target), 2 gaps (mu*chi repair,
+  definition of Lambda^flat), 4 overstatements, 3 slips; all applied (recorded in the card).
+- No exploration (the Central day 23 Nov already had three). Main paper v0.50. Wolfram and mathbox NOT available.
+  No news search (not the 3:34 AM run).
 
 ## Session 49 (manual run requested by Jerry, started 19:44 UTC 23 Nov; no wait) -- additions
 - Parity v1.1 released (Jerry's priority): Section 6.4 (subsec:lww-transfer) in papers/parity-barrier/main.tex; literature
