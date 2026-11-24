@@ -3,6 +3,25 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-24, Session 51 -- Where do twins sit in Lichtman's typical/exceptional split? (reading-based, cheap)
+- Idea: Lichtman (arXiv:2611.28392v1, news of this run) gets savings L^{-(1/2-eps)} for sum mu(p+2) and L^{-(1-eps)} for
+  sum mu(n)mu(n+1). Is there a structural reason for these exponents, and does the split say anything new about the parity
+  obstruction for twins (e.g. a route to savings that would be in tension with twin counts)?
+- Tried: read his Section 2 (pp. 3-4). He splits [exp(L^alpha), exp(L^beta)], 0 < alpha < beta < 1/2, into B ~ (beta-alpha)
+  log L/log 2 intervals (y, y^2]; n is typical if >= 3k intervals contain a prime factor of n. The typical parts get
+  O(X L^{-A}) by a Vaughan decomposition of mu (his (2.4), (2.6)); the exceptional parts are bounded trivially by a sieve:
+  sum E(n) <= X L^{-(beta-alpha)+o(1)}, sum E(n)E(n+1) <= X L^{-2(beta-alpha)+o(1)} ((2.3), p. 4). With beta -> 1/2 these are
+  exactly the two exponents. Observation (elementary): if p and p+2 are both prime with p > exp(L^beta)^2, then p+2 has no
+  prime factor in the window, so every twin pair lies in the exceptional set, and there mu(p+2) = -1 identically: the twins
+  contribute -pi_2(X) ~ -2C_2 pi(X)/L to sum mu(p+2), a signed piece of size L^{-1} relative to pi(X).
+- Outcome: dead end (explained). The exponents are the trivial bounds on the exceptional sets, capped by his choice beta < 1/2 (p. 3; we did not
+  check where the proof needs it). The twin contribution (relative size L^{-1}) is below the cap
+  L^{-1/2}, so the method's structure is not in tension with parity at its current strength. Any saving beyond the
+  exceptional density needs cancellation inside the exceptional set with sign, which is where the twin pairs live:
+  the parity problem itself. Nothing new; the observation is probably implicit in the paper. Heuristic / exploratory.
+- Follow-up for research runs (not an exploration): compare his Prop. 7.1 (Type II with one rough variable) with our
+  P1-P3 location of LWW's parity-breaking step.
+
 ## 2026-11-23, Session 49 -- Hardy-Littlewood prediction for the twin short-interval variance (follow-up to S48)
 - Idea: S48 measured Var/Mean of twin counts in blocks of length H near 1e9 and fitted a slope 0.51 in log H, against a
   rough guess of about 0.19; is the measurement explained by the 4-point singular series S({0,2,h,h+2}), or is the code
