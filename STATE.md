@@ -3,7 +3,7 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 51, 3:34 AM CT research run of 24 Nov, started 09:34 UTC): PHASE B
+## POSITION (after Session 52, 11:34 AM CT research run of 24 Nov, started 17:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
@@ -16,32 +16,47 @@ Each session works on the claude/... branch its system instructions name (create
   Conjecture (after Lee arXiv:2610.32672) and unconditionally over F_q[T], fixed odd q > 10^200 incl. q = p. All Claimed.
 
 ## Next steps (in order)
-0. PAPER RUN of 24 Nov (7:34 PM CT): write up S51 where it changes the mathematics: main paper Theorem 1 items for
-   186 Lemma 2.3 and Lean MaynardDiag / MaynardS1Diag; the news in sec:related (short, Claimed labels); check every
-   place in the papers/notes that calls two-point (Cesàro) Chowla "open" (notes/connections.md large-q Pellet entry;
-   route card 2026-11-21-large-q-pellet.md item 2; parity paper wording) and mark it "reported resolved (OpenAI 2026,
-   Claimed; per Lichtman 2611.28392 p. 1)"; the parity paper is frozen, so at most a 1.1.x erratum, else leave to the
-   review of 30 Nov. Add the S51 ideas (twist card; Lichtman exceptional-set observation) to status.json's ledger.
-1. Bound share: 186 Lemma 2.4 (1.4-1.7 and 2.3 done; 2.3: notes/oai186-lemma23-check.md, code/oai186_lemma23_check.py,
-   41 checks; open there: delay-recurrence branch only for j <= 3M on the 25 delay caps; Lemma 2.2 spot-checked).
-   Then settle which threshold the restoration step (Prop. 4.6 of the main 186 paper) needs (prop:oai186-budget).
-   NO per-run regressions: code/cap6/regress_all.py at most monthly. Lemma scripts need python-flint
-   (/usr/bin/python3 -m pip install --break-system-packages python-flint).
-2. Parity: v1.1 is released and frozen. Left for the review of 30 Nov to decide (v1.2 or drop): (c) one remark merging
-   the E2 cards (S32, S33, S36); (d) one "Further tests" paragraph (S37, S38, S42, S46, S47, S43-S45, S34+S35, S48);
-   (e) possibly the S50 property list (P1-P3) and the S51 twist result as a sentence in Section 6.4; (f) the S51 news.
-3. Parity attempts: one per run. Candidates: (i) compare Lichtman's Prop. 7.1 (Type II needing only ONE rough variable,
-   arXiv:2611.28392v1, PDF SHA-256 4337830d...b838) with our P1-P3 location of LWW's parity step (S50 card) — does his
-   argument use the target through the same fixed-sign property? (ii) read LWW Prop. 4.2 (pp. 26-61) line by line for
-   thinned prime sets (first unresolved implication of the S51 card; also [12, Lemma 3.9(ii)] behind Prop. 2.2).
-   (iii) new mechanisms chosen by the review of 30 Nov.
-4. Lean: MaynardDiag.lean (diagonalisation, y-form) and MaynardS1Diag.lean (|S1 - (N/W) sum y_u^2/phi(u)| <= sum
-   |lam lam| on supports with the coprimality hypotheses; hpw stays a hypothesis; a whole-box version is vacuous,
-   box_hpw_fails). Next: either the hpw lemma (a common prime of lcm(d_i,e_i), lcm(d_j,e_j) divides h_i - h_j | W) or
-   the short Lean note (about 6 pp.). The asymptotic of sum y^2/phi in terms of F is analytic, not for core Lean.
+0. PAPER RUN of 24 Nov (7:34 PM CT): write up S51 AND S52 where they change the mathematics:
+   - main paper Theorem 1 items / rem:186-status for 186 Lemmas 2.3 and 2.4 (all six companion lemmas 1.4-1.7, 2.3, 2.4
+     now verified as stated, one program each); prop:oai186-budget: replace "We have not checked which of the two
+     thresholds..." by the S52 answer (strictly positive margin suffices, [8, Prop. 4.6 (4.41)], so the 12.8% slack is
+     the relevant one; notes/oai186-restoration-threshold.md). 186 still NOT adopted (analytic inputs Claimed).
+   - Lean MaynardDiag / MaynardS1Diag / MaynardHpw (S1 diagonalisation without hpw, correction B for bad pairs).
+   - sec:related news (short, Claimed labels) WITH the S52 correction: Lichtman v1 proves Thm 1.1 only; Thm 1.2 asserted.
+   - Chowla "open" wording: notes/connections.md (large-q Pellet entry), card 2026-11-21-large-q-pellet.md item 2, parity
+     paper (frozen: at most a 1.1.x erratum, else leave to the 30 Nov review): "reported resolved (OpenAI 2026, Claimed;
+     per Lichtman 2611.28392 p. 1)".
+   - status.json ideas ledger: S51 twist card, Lichtman exceptional-set observation, S52 Lichtman target card (own).
+   - log/entries.json has 40 entries: merge the oldest day into a daily summary.
+1. Bound share: the companion's lemma list is done. Remaining unchecked pieces of 186: Lemma 2.2's proof (spot checks
+   only), the 40-dimensional contractions (2.16)-(2.21), profile-power-2 rounding; main-paper Prop. 4.6 itself.
+   A SECOND independent program for Lemmas 1.4-2.4 would be the next step if the review wants 186 firmer.
+   NO per-run regressions (regress_all.py at most monthly). Lemma scripts need python-flint.
+2. Parity paper: frozen v1.1. For the 30 Nov review: (c) E2 remark, (d) "Further tests" paragraph, (e) S50 P1-P3 list,
+   S51 twist and S52 Lichtman comparison as one sentence in Sect. 6.4, (f) news.
+3. Parity attempts: one per run. Candidates: (ii) LWW Prop. 4.2 (pp. 26-61) line by line for thinned prime sets (first
+   unresolved implication of S51 and S52); (iii) new mechanisms chosen by the review of 30 Nov. (i) Lichtman vs P1-P3
+   is DONE (S52, located).
+4. Lean: MaynardHpw.lean done (hpw false in general, ex_not_hpw; bad pairs count 0; maynard_S1_diag_W with correction
+   B). Next: bound B (the pairs whose lcm(d_i,e_i), lcm(d_j,e_j) share a prime p; these contribute 0 to S1 but appear
+   in the full y-form; in Maynard's analysis they cost a sum over p > w of O(1/p^2)-type terms, an analytic step), or
+   write the short Lean note.
 5. Main paper: bump the version only when content changes; keep sec:related as an index.
 6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
-7. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (new, low priority).
+7. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority). (Murty-Vatwani, BFI86,
+   HB83 and the 182 restoration data are also still listed as needed in notes/sources-needed.md.)
+
+## Session 52 (11:34 AM CT research run of 24 Nov, started on time 17:34 UTC; no wait) -- additions
+- Bound share: 186 Lemma 2.4 verified as stated (code/oai186_lemma24_check.py, /usr/bin/python3 + python-flint; ~32 s,
+  777 MB; .out; 36 checks, 0 failures; helper-written, re-run here, identical apart from timings;
+  notes/oai186-lemma24-check.md). Restoration threshold settled by reading [8, Prop. 4.6]: > 0 suffices
+  (notes/oai186-restoration-threshold.md; main 186 PDF re-fetched, SHA-256 456f05e0...0b30, not committed).
+- Parity attempt: notes/parity-attempts/2026-11-24-lichtman-prop71-target.md (located; audited; fixes applied).
+  Script code/parity/lichtman_ramare_check.py (/usr/bin/python3 -I; ~1 s at 1e5; .out). Flag update (downgrade of the
+  S51 news flag) in notes/flags-for-jerry.md and README; correction line in notes/news-2026-11-24.md.
+- Lean: TwinPrimes/MaynardHpw.lean (369 lines; helper agent, statements checked here; 11 Audit.lean entries);
+  lake build and Audit.lean pass (propext / Quot.sound / Classical.choice only). Lean 4.35.0 in /root/tools.
+- No exploration (the Central day 24 Nov already had one). Wolfram and mathbox NOT available. No news search.
 
 ## Session 51 (3:34 AM CT research run of 24 Nov, started on time 09:34 UTC; no wait) -- additions
 - News search: notes/news-2026-11-24.md (Lichtman 2611.28392v1; Gou-Wang-Xu 2611.18825v1; Lee 2610.32672v2 abstract);

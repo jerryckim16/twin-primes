@@ -1,0 +1,5 @@
+N = 100000; intervals [5, 7] | 21 primes in [11,100]; |A| = 42
+(6.4) sum <= 1: failures 0 of 100000
+(6.5) for mu*phi: checked 91327 v (P0-squarefree), failures 0
+twin target: #v with Lambda(v)phi_+(v) != 0: 0 (k >= 2 forces two distinct primes)
+twin target: #v where the extracted form sum_a Lambda(v/a)/prod(...) != 0: 3868 -> the (6.5)-analogue for Lambda fails on all of these (LHS = 0)

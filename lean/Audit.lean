@@ -196,3 +196,14 @@ import TwinPrimes
 #print axioms TwinPrimes.MaynardS1Diag.ex_hDW
 #print axioms TwinPrimes.MaynardS1Diag.ex_hpw
 #print axioms TwinPrimes.MaynardS1Diag.maynard_S1_diag_example
+#print axioms TwinPrimes.MaynardHpw.coprime_of_dvd_shift
+#print axioms TwinPrimes.MaynardHpw.pairwise_coprime_of_solvable
+#print axioms TwinPrimes.MaynardHpw.lcm_entries_coprime
+#print axioms TwinPrimes.MaynardHpw.hpw_of_solvable
+#print axioms TwinPrimes.MaynardHpw.count_zero_of_not_pairwise
+#print axioms TwinPrimes.MaynardHpw.maynard_S1_error_W
+#print axioms TwinPrimes.MaynardHpw.maynard_S1_diag_W
+#print axioms TwinPrimes.MaynardHpw.ex_hH
+#print axioms TwinPrimes.MaynardHpw.ex_not_hpw
+#print axioms TwinPrimes.MaynardHpw.ex_B_eq
+#print axioms TwinPrimes.MaynardHpw.maynard_S1_diag_W_example

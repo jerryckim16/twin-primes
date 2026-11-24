@@ -1,5 +1,24 @@
 # Flags for Jerry (newest first; entries are updated, never deleted)
 
+## 2026-11-24 (update, Session 52) — Downgrade of the Session 51 news flag: Lichtman's v1 proves binary Chowla (Thm 1.1) in full, but writes no proof of his μ(p+2) theorem (Thm 1.2), so it is not yet a written re-proof of Lü–Wang–Wu
+- **What.** Read Lichtman, arXiv:2611.28392v1 (same SHA-256), §§3, 6-8 and the proof of Prop. 7.1. (1) His Type II estimate
+  uses the target μ(mn+1)φ(mn+1) only through boundedness, sign-multiplicativity at the active primes (the Ramaré identity
+  (6.5)) and, for Type I, Bombieri–Vinogradov: the same three properties P1-P3 we found in LWW (Session 50). All Type II
+  cancellation comes from the Möbius factor of the rough source variable (major arcs, Prop. 8.1 = LWW Prop. 2.2); the minor
+  arcs use none. "Only one rough variable" is a source-side relaxation, so our location of the parity-sensitive step is
+  unchanged. (2) The 36-page v1 proves Theorem 1.1 (μ(n)μ(n+1)) only. Theorem 1.2 (Σ μ(p+2), the LWW refinement) and
+  Theorem 1.3 rest on one sentence, "the same proof method also establishes a companion result" (p. 2); the prime-source
+  decomposition that Prop. 7.1 would need (a rough coefficient of the form μ(m)R_z(m)…) is not written.
+- **Why it matters.** Session 51 called Lichtman "the first strong outside evidence that LWW's main claim holds". That was
+  too strong: v1 is independent evidence for the shared Type II machinery and for binary Chowla, not a written re-proof of
+  LWW's shifted-prime theorem. The LWW flag stays open, with the same first unresolved step (LWW Prop. 4.2).
+- **Evidence label.** Literature (read in v1; pages in the card) plus a toy exact check of the Ramaré identity
+  (code/parity/lichtman_ramare_check.py). Not an error found in either paper.
+- **Checked.** §§6-8 and Prop. 7.1's proof read; whole extract searched for any proof of Thms 1.2-1.3; fresh-context audit
+  (see the card). **Not checked:** §§9-11 (minor arcs), Lemma 5.4, Prop. 8.1's "follows from their proof".
+- **Files.** notes/parity-attempts/2026-11-24-lichtman-prop71-target.md. **Needs outside expert review:** yes (as for the
+  whole LWW flag).
+
 ## 2026-11-24 (Session 51) — News: an independent expert sharpens Lü–Wang–Wu's theorem (strong outside evidence that it holds; not a check by us), and binary Chowla is reported resolved
 - **What.** (1) Lichtman, arXiv:2611.28392v1 (20 Nov 2026), Thm 1.2 (p. 2): sum_{p<=X} mu(p+2) << pi(X)/(log X)^{1/2-eps},
   "a quantitative refinement of Lü, Wang, and Wu" (he cites their v1). The method replaces LWW's averaged weights by an
