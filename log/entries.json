@@ -1,6 +1,16 @@
 [
  {
   "date": "2026-11-24",
+  "slot": "Session 53 (7:34 PM CT paper run, started on time 01:34 UTC 25 Nov; no wait, no other run active)",
+  "title": "Paper run: main paper v0.51 writes up Sessions 51-52 (all six 186 majorisation lemmas checked; restoration needs only a positive margin; Lean S1 diagonalisation); LWW Prop. 4.2 survives thinning of the auxiliary primes (conditional, audited)",
+  "did": "Main paper v0.51 (35 pp., no overfull boxes): rem:186-status now records Lemmas 2.3 (41 checks) and 2.4 (36 checks), so all six majorisation lemmas of the 186 companion are verified as stated, one program each; prop:oai186-budget records that the restoration step needs only margin > 0, so the loss may be up to 12.8% too small; Theorem 1 item 20 (MaynardDiag/S1Diag/Hpw); sec:related gets a short Claimed news item (Lichtman, Gou-Wang-Xu). Chowla wording corrected in notes/connections.md and the large-q card (two-point Chowla reported resolved, Claimed); the parity paper needed no erratum. status.json 0.51, README, site rebuilt; the 15 Nov log entries merged into a daily summary. Lean unchanged; lake build and Audit.lean re-run and pass. Bounds unchanged: established 246, claimed 182, project 236 conditional.",
+  "parity": "Route card 2026-11-25-lww-prop42-thinning (conditional; robustness only): LWW Prop. 4.2 (pp. 17-61, read line by line by a helper; fresh-context audit 0 errors, 2 slips, 3 gaps, fixes applied) holds uniformly for subsets P'_i of the auxiliary prime sets with sum 1/p >= c_0, if it holds as stated. Closes the first unresolved implication of the S51 card; the Remark 1 route now waits on Type I (BV with zero main term) for general f. LWW still v2. Nothing for twins.",
+  "explored": "none this run (the Central day 24 Nov already had one)",
+  "failed": "Wolfram connector not available; mathbox skills not available (fresh-context helper used for the audit). No news search (not the 3:34 AM run).",
+  "next": "3:34 AM run: news search (LWW v3, Lichtman v2, OpenAI Chowla preprint); parity attempt on Type I / BV for general f or the LWW p. 54 identity; Lean bound B or the Lean note."
+ },
+ {
+  "date": "2026-11-24",
   "slot": "Session 52 (11:34 AM CT research run, started on time 17:34 UTC 24 Nov; no wait, no other run active)",
   "title": "Lichtman's Type II uses the target exactly as Lu-Wang-Wu do; his v1 proves binary Chowla but not the mu(p+2) theorem (flag downgraded); 186: Lemma 2.4 checked, restoration needs only margin > 0; Lean: hpw removed",
   "did": "Bound share: Lemma 2.4 of the 186 companion (whole-bin Palm envelopes of the 30 rank-two bins) verified as stated, 36 checks, 0 failures (code/oai186_lemma24_check.py, ~32 s, 777 MB; helper-written, re-run here with identical output). Every companion majorisation lemma on the list (1.4-1.7, 2.3, 2.4) is now checked, each by one program. Reading the main 186 paper's Prop. 4.6 (4.41) settles the open threshold question: the restoration step needs only a strictly positive margin (the 1/50000 in (4.45) is a stated cushion), so the loss may be up to 12.8% too small before the claimed DHL[40,2] fails (notes/oai186-restoration-threshold.md). Lean: MaynardHpw.lean (369 lines) shows hpw is false on Maynard's support in general (ex_not_hpw) but bad pairs have no solution n, and proves the S1 diagonalisation without hpw, with an explicit correction B for bad pairs (B = 2/9 in a worked example); lake build and Audit.lean pass (propext / Quot.sound / Classical.choice only). Bounds unchanged: established 246, claimed 182, project 236 conditional.",
@@ -423,164 +433,13 @@
  },
  {
   "date": "2026-11-15",
-  "slot": "Session 24 (11:34 AM CT, started on time 17:35 UTC; no wait)",
-  "title": "What the level of distribution alone gives for twin primes: Bombieri's asymptotic sieve read through Ford (parity paper v0.9); k = 45 Lemma 9.1 weights checked by the second exact program",
-  "did": [
-   "Parity paper v0.9 (thread 3, hypotheses that do not suffice): new Section on Bombieri's asymptotic sieve, read in Ford's 2004 paper (arXiv:math/0401215v1). Bombieri's theorem as Ford quotes it says that level of distribution x^nu for all nu < 1 (EH) gives the asymptotic for sum a_n Lambda_k(n), k >= 2, and Ford proves that no fixed nu < 1 suffices.",
-   "Prop. prop:bomb-twin (Proved here, folklore, conditional on Bombieri's theorem applying to a_n = Lambda(n+2)): under EH the twin-prime sum and the (Lambda*Lambda)-weighted count of p-2 = p1 p2 add up to 4 C_2 x log x, so twin primes are equivalent to that semiprime asymptotic, and EH gives the familiar factor-2 upper bound. New open question 7: Hooley's averaged parity condition for twins (a Moebius-on-shifted-primes statement) is open, and so is whether it would suffice.",
-   "Probable factor-2 slip found in Debouzy's 2019 preprint (twins almost prime under EH): the printed constant 2 S_2 should be 4 S_2. The p = 2 local factor is dropped in her eq. (65). Numerics (Heuristic): (P+Q)/(2M) = 0.968, 0.974, 0.975 at x = 1e6, 1e7, 3e7, tending to 1 for 4 S_2, against 1/2 for the printed constant. An adversarial audit confirmed it and also found a bug in our script, fixed before anything entered the paper.",
-   "Bound share: the k = 45 Schwartz-Zippel check finished (capped_exact.py, 273 pieces, resumed from 74). Its exact I_T and J_T at the random test point equal capped_check.py's exactly (347- and 352-digit numerators), so the Lemma 9.1 ceiling < 3.99 now rests on two exact programs. Verification note v0.11, main paper v0.24.",
-   "Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
-  ],
-  "parity": "Attempt: what Type I / level information alone gives for Lambda(n+2) (Bombieri, Ford). Classification: located (literature plus a folklore reduction). Under EH the barrier is exactly the prime / P2 split of the Lambda_2 sum. First unresolved implication: whether EH plus Hooley's averaged absence of parity bias suffices (open per Ford), and whether that condition holds for mu(p-2) at all. No parity-breaking content.",
-  "explored": "Does mu(p-2) show a parity bias in progressions that Hooley's averaged condition would see? Inconclusive (no structure): against a random-sign model the ratio is 0.73-1.54 at x = 1e6, 1e7, i.e. square-root cancellation only.",
-  "flag": "(minor) Debouzy arXiv:1907.06393v1: the main constant 2 S_2 appears to be off by a factor 2 (4 S_2 meant); qualitative result unaffected; confirmed by an independent audit and numerics (notes/flags-for-jerry.md).",
-  "failed": "Wolfram connector not available in this session; mathbox skills not available (fresh-context agents used: 2 audits, 5 errors fixed, including p+2 written for p-2). The x = 1e8 numerical run was OOM-killed at 13 GB (3e7 used instead). Bombieri's original papers were not opened (only Ford's quotation). The 3g share was thin: no new small-results line before the weekly review.",
-  "next": "Monday 16 Nov 3:34 AM CT run: the first weekly review before other work (is the k = 3 GEH line worth more runs; second small-results paper). Parity: open question 7, or a candidate the review picks. 182: restoration data if supplied."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 23 (back-to-back run 2 of 3 at Jerry's request, continued in the same conversation as Session 22 right after its merge, ~16:45 UTC; no wait)",
-  "title": "For which eps does Polymath8b's k = 3 GEH criterion beat the parity value 2? Above 2 at eps = 2/9, 1/4, 7/24; provably below 2 for every eps >= 0.439 (parity paper v0.8)",
-  "did": [
-   "Parity paper v0.8 (this run's parity attempt): for eps >= 1/4 the k = 3 problem of Polymath8b's Theorem 3.14 without the marginal condition reduces, by a Schur test, to a one-dimensional inequality (Prop. prop:unc-ceiling, proved here). Any positive phi satisfying it gives a ceiling for that eps and every larger one.",
-   "Certificates, each checked by two independent programs (arb and mpmath interval arithmetic): the supremum sigma_3(eps) is at most 1.9999 for every eps in [0.439, 1/2), at most 1.995 for eps >= 0.45, and at most 2.17 at eps = 1/4. By scaling, the single certificate at 0.439 gives sigma_3(eps) <= 3/2 + (4999/5610)(1-eps) on [1/4, 1/2), so sigma_3 < 2 for all eps > 0.43889.",
-   "Lower side: exact step functions give sigma_3 > 2 at eps = 2/9 and 7/24 as well as 1/4 (helper program plus our independent verifier). Exact lower bounds at 1/6, 1/5, 3/10, 1/3 stay below 2 and are undecided. So under GEH the criterion gives DHL[3,2] (H1 <= 6) for 2/9, 1/4, 7/24 and cannot give it for eps >= 0.439; heuristically it works only on about (0.19, 0.31), with maximum about 2.003.",
-   "Literature: Polymath8b v4 re-read (their partition works for eps in [1/4, 1/3]; 1/4 chosen for simplicity, p. 63); three web searches found no range-of-eps result. Fresh-context audit: no errors, 2 gaps and 6 wording items, all fixed (notes/audit-parity-v08.md). Main paper v0.23.",
-   "Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
-  ],
-  "explored": "Is the constant kappa of the 1D Schur problem (sup without marginal condition = 3/2 + kappa(1-eps)) a closed form? Dead end: kappa = 0.8901675 (threshold eps* = 0.43831) and mpmath.identify gives only overfitted noise; the scaling observation itself became Cor. cor:k3-linear.",
-  "parity": "Attempt: rigorous brackets for the k = 3 GEH criterion as a function of eps. Classification: proved/computed (partial answer to open question 6): above 2 at 2/9, 1/4, 7/24, below 2 on [0.439, 1/2); first unresolved implication: a rigorous ceiling below 2 for small eps or on [0.31, 0.4383), which must use the marginal condition. No parity-breaking content.",
-  "failed": "Wolfram connector not available; mathbox skills not available (fresh-context agents used). Weighted Cauchy-Schwarz with fibre-length weights gives only c(3) = 2.472 again. No rigorous ceiling below 2 in the middle or small-eps range. No bound work this run (182 data still requested).",
-  "next": "Monday 16 Nov run: the first weekly review before other work. Parity: use the marginal condition for a rigorous ceiling at small eps; or move on to thread 3 (hypotheses known not to suffice). 182: restoration data if supplied."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 22 (back-to-back bonus run 1 of 3 at Jerry's request, started 9:51 AM CT / 15:51 UTC; no wait, no other run active)",
-  "title": "Why the sharp k = 2 argument does not extend to k = 3: a dual formula, overlapping marginal conditions, and an exact step-function check of Polymath8b's DHL[3,2] under GEH (parity paper v0.7); our bipartite criterion credited to Tao's 2014 blog post",
-  "did": [
-   "Parity paper v0.7 (this run's parity attempt): the supremum of Polymath8b's Theorem 3.14 ratio is the norm of a projected operator (Lemma lem:dual, standard duality). Our k = 2 theorem is exactly this projection, because at k = 2 the two marginal conditions act on disjoint sets. For k >= 3 they overlap (Prop. prop:overlap), so the argument does not transfer.",
-   "Dropping the overlapping conditions at k = 3 lets the ratio exceed 2.1408 at eps = 1/8 and 2.0657 at eps = 1/4 (exact certificates, two scripts), while the true supremum at eps = 1/8 is about 1.976 (Heuristic, two grid methods). So whether the criterion beats the parity value 2 is decided by the overlapping conditions.",
-   "An exact step function on the arrangement {t_i, t_i+t_j, sum t = m/8} gives the k = 3, eps = 1/4 ratio 2 + 711155/3866758832 (about 2.00018), confirmed by two independent programs (one written by a helper agent, one here). This independently checks the variational step of Polymath8b's Theorem 3.15 (DHL[3,2], so H1 <= 6, under GEH); nothing new is proved. Heuristic eps scan: only eps = 1/4 of the sampled values exceeds 2 (about 2.003); 1/8, 3/8 give about 1.976 and 1.989.",
-   "Literature check correction: the core of our bipartite criterion (convex hull of forbidden sign patterns, bipartite target graphs, DHL[k,m+1] blocked iff k <= 2m) is already in Tao's blog post 'A general parity problem obstruction' (21 Nov 2014), found through a footnote of Akeno (arXiv:2508.02769v3). The paper now credits it (Remark rem:tao14b); our window form and H_m < H(2m+1) remain. Fresh-context audit of the new subsection: no mathematical errors, one numerical-description error and gaps, all fixed (notes/audit-parity-v07.md). Main paper v0.22.",
-   "Bound share: the 182 restoration step's per-component data (197 components) are not in the trial data we have; requested from Jerry (notes/sources-needed.md). Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
-  ],
-  "explored": "Does the k = 3 extremal keep the k = 2 structure (constant marginal on the J-region)? Dead end: the grid extremal's marginal varies by a factor of about 5, and forcing a constant marginal drops the ratio to 1.736 (vs 1.959 on the same grid).",
-  "parity": "Attempt: extend the sharp k = 2 variance argument to k = 3 via a dual formula. Classification: no-go for the direct extension (Computed + Heuristic): the constraint cylinders overlap, and the clean-column relaxation is certified above 2.14 at eps = 1/8 where the true value is about 1.976; first unresolved implication: a rigorous ceiling using the overlapping constraints. No parity-breaking content.",
-  "failed": "Wolfram connector not available in this session; mathbox skills not available (fresh-context agents used for the audit). No rigorous ceiling below 2.472 at k = 3 was proved (the attempt's success criterion). The 182 restoration integrals remain blocked on data.",
-  "next": "Monday 16 Nov run: the first weekly review (notes/reviews/2026-11-16.md) before other work. Parity: a rigorous k = 3 ceiling using the overlapping constraints, or exact arrangement certificates over a range of eps. 182: the restoration data if Jerry supplies them."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 21 (bonus run at Jerry's request, started 8:54 AM CT / 14:54 UTC; no wait, no other run active)",
-  "title": "Where Polymath8b's GEH criteria stop: a ceiling k^2 log k/(k-1)^2 (no DHL[k,3] for k <= 45) and, at k = 2, exactly the parity value 2 (parity paper v0.6); the 182 restoration arithmetic and source rows checked",
-  "did": [
-   "Parity paper v0.6 (this run's parity attempt): Polymath8b's three GEH criteria (Thms 3.8, 3.12(ii), 3.14) have ratio at most c(k) = k^2 log k/(k-1)^2 (Prop. prop:ceil, proved here by scaling their Cor 6.4). So they cannot give DHL[k,3] for any k <= 45, DHL[5,3] in particular (c(5) = 2.515 < 4), although Liouville-pattern weights block only k <= 4. Thresholds 46, 392, 2965, 22007 for m = 2..5 are certified with ball arithmetic.",
-   "New Theorem thm:k2 (proved here, possibly folklore): at k = 2 the Theorem 3.14 ratio is at most 2 for every eps in (0,1), with equality for an explicit step function. So the strongest GEH criterion reaches exactly the parity value 2 and never exceeds it; with Cor. cor:consistent the criteria agree with the parity class on every blocked case. This confirms the obstruction; it does not break it.",
-   "Also in v0.6: the printed proof of Polymath8b's Prop 6.5 has an unjustified step (a weight can be -eps off the fibres used); corrected constant (k/(k-1)+eps) log(2k-1); nothing in Polymath8b depends on it. Matomaki-Radziwill (arXiv:1501.04585v4) read in the source (thread 2). A fresh-context adversarial audit found no errors and 3 gaps (attribution to PM8b Remark 6.6, the m = 1 case of Cor. cor:consistent, a numerics reference), all fixed.",
-   "Bound share, rung 182: the printed arithmetic of the restoration step ((8.3), Sec. 10 totals, (10.2)-(10.3), Secs. 3.7, 13.3) was re-done exactly (86 checks pass), and the 43 + 55 source rows of the trial data satisfy every printed row definition (30 checks). The rows give T0 = 2491228441011/2624989000000 exactly. The 197 restoration integrals are not printed and remain unchecked. Verification note v0.10, main paper v0.21.",
-   "Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
-  ],
-  "explored": "How far above the parity value 2 is the Theorem 3.14 ratio at k = 3 (eps = 1/4)? Symmetric cube grids give 1.959 at n = 24 and extrapolate to about 2.003 (Heuristic), consistent with Polymath8b's certificate 2 + 5.8e-8; inconclusive (no certificate), recorded as open question 6.",
-  "parity": "Attempt: ceilings for Polymath8b's GEH criteria and the exact k = 2 value. Classification: proved (confirms and locates the obstruction): for 5 <= k <= 45 the failure to give DHL[k,3] is a variational ceiling, not a parity block, and at k = 2 the criterion sits exactly at 2. No parity-breaking content.",
-  "flag": "Minor: one step of the printed proof of Polymath8b's Proposition 6.5 is not justified (corrected constant (k/(k-1)+eps) log(2k-1)); no Polymath8b result depends on it.",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox not available (audits by fresh-context helper agents). Murty-Vatwani (JNT 2017) and BFI (Acta 1986) are still needed (notes/sources-needed.md). The k = 3 grid exploration converges too slowly to certify anything."
-  ],
-  "next": "Weekly review first (Monday 16 Nov run). Parity: a certified answer to open question 6 (k = 3 supremum: piecewise-polynomial elements plus a dual bound), or weights that change the twisted main terms. Rung 182: the restoration integrals need the per-component data (not printed)."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 20 (bonus run at Jerry's request, started 5:37 AM CT / 11:37 UTC; no wait, no other run active)",
-  "title": "What the integers lack compared with F_q[T]: Sawin-Shusterman's twin-prime proof read in the source and its split written over Z (parity paper v0.5); the 182 minorant's mass deficit by two methods",
-  "did": [
-   "Parity paper v0.5 (thread 2 and this run's parity attempt): Sawin-Shusterman's proof of twin primes in F_q[T] (arXiv:1808.04001v2) read in the source. It has no sieve. It splits Lambda = -mu log * 1 at a level D, and handles the large-Mobius range through a characteristic-p identity (their Lemma 3.2: (r+s^p)' = r', so mu on a line is a quadratic character) together with character sums below the Burgess range.",
-   "Written over Z, the same split gives (Prop. prop:ss-split, proved here, elementary, possibly folklore; compare a related theorem of Murty-Vatwani, known to us only as quoted): unconditionally, by Bombieri-Vinogradov, sum Lambda(n)Lambda(n+2) ~ 2C_2 x holds if and only if T_D(x) = o(x), where T_D is a Mobius-prime correlation; under EH the same holds for any D = x^theta. This is a reformulation, not progress. Even the folklore conjecture on Mobius at shifted primes is weaker, by a factor log x, than what the e = 1 term of T_D needs.",
-   "Also in v0.5: Corollary cor:maynard-logc extends the twisted Type I input at level (log x)^{c/32} to Maynard's two-variable weights (conditional on the Tao-Teravainen preprint). Open question 3 is answered from the literature: no fixed-residue, absolute-value level beyond x^{1/2} for all moduli is known; the weighted records are 17/32 and 66/107; none reaches the 2/3 that the asymptotic sieve needs. A fresh-context adversarial audit found 2 errors, 3 gaps and 10 wording points, all fixed before release (notes/audit-parity-v05.md).",
-   "Bound share, rung 182: the mass deficit kappa_true of the five-prime minorant was recomputed by two independent methods: our own 3-variable reduction with Gauss-Legendre quadrature, and the paper's exact simplex moment series after checking that the simplices tile the region. They agree to 58 digits, kappa_true = 9.3307088324061199e-5. It lies inside the printed bracket and below kappa-bar and kappa_cvx. Verification note v0.9, main paper v0.20.",
-   "Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
-  ],
-  "explored": "Can L^2 (Barban-Davenport-Halberstam) information on lambda(n)lambda(n+2) replace the pointwise twisted Type I input? Dead end: Cauchy-Schwarz caps any such route at level 1/2 even with random-sign variance, and the numerics at 10^7 look random (V(200)/(200N) = 0.983).",
-  "parity": "Attempt: locate the step of Sawin-Shusterman's twin-prime proof that has no integer analogue. Classification: located (reformulation). Over Z their split leaves T_D, a Mobius-prime correlation; the missing step is their characteristic-p Lemma 3.2. First unresolved implication: T_D(x) = o(x) for one admissible D.",
-  "flag": "Minor: Sawin-Shusterman's Theorem 4.5 states its saving exponent as beta/p, but its proof (p. 22) says beta/(2p). Most likely a harmless slip; the Annals version was not checked.",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox not available (audits done by fresh-context helper agents). Murty-Vatwani (JNT 2017): the Queen's URL returned an HTML page, not the PDF; BFI (Acta 1986): bot challenge. Both are recorded in notes/sources-needed.md."
-  ],
-  "next": "Weekly review first (Monday 16 Nov run). Then parity: Matomaki-Radziwill, or the Murty-Vatwani original if it arrives; attempt candidate: weights that change the twisted main terms (open question 2). Rung 182: the restoration losses (row tables partly underspecified)."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 19 follow-up (after Jerry uploaded Heath-Brown's paper, same day; no wait)",
-  "title": "Heath-Brown's x^3+2y^3 read in the source: what its bilinear estimate uses (parity paper v0.4)",
-  "did": [
-   "Jerry supplied the journal scan of Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 186 (2001)), requested in Session 19. Read in the source (theorem, outline, Lemmas 2.1, 3.8, 3.10, Sections 11-13) and added to the parity paper as Section subsec:hb-x3 (Literature) with Remark rem:hb-transfer (Heuristic).",
-   "The structure: Heath-Brown uses his own sieve close to Friedlander-Iwaniec's (their condition (R1) is not met); the Type I level X^{2-eps} comes from the factorisation of the form over Q(cbrt 2); in the Type II estimate the condition that alpha*beta_i has no cbrt4-coefficient makes the outer variable the cross product of the two inner ones, and the rest is a 3-dimensional large sieve plus Hecke Groessencharacters. Nothing like this exists for Lambda(n+2), where the same step leads back to a binary prime correlation.",
-   "The primary source corrects one point of the secondary notes (X. Li calls the sieve Harman's; Heath-Brown calls it his own version). Source request marked received. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Twin prime conjecture open."
-  ],
-  "failed": [
-   "Wolfram and mathbox not available. Quotes checked against the page images by the run itself, not by a second reader."
-  ],
-  "next": "Weekly review first (Monday 16 Nov). Parity thread 2 next: Sawin-Shusterman (function fields) or Matomaki-Radziwill."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 19 (3:34 AM CT slot, started on time; no wait, no other run active)",
-  "title": "The 182 tail term by a second program (all four ingredients of its cap quotient now by two programs); the parity obstruction's twisted Type I input at level (log x)^{c0}, conditional on a preprint",
-  "did": [
-   "Rung 182 (bound share): a second, independent program for the tail term (own exact kernel, GMP fixed-point contraction with directed error bounds, brute-force self-test with four deliberate mutations) gives T = 5.28634880592807710064e-13 with radius 1.4e-45, inside the first program's ball and below the published bound (relative gap 8.4e-12). So I, J0, J+ and T, the four ingredients of the 182 cap quotient, are each reproduced by two programs, and q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4. The restoration losses and the analytic inputs are unchecked, so 182 stays claimed.",
-   "The same program settles a reading of the 182 source: with the nominal last kernel block the paper's own kernel bound K <= 2.194 fails (K_511 = 2.19637) and the tail would exceed the published bound by 5e-7 relative, so only the reading r_max = n0 - 1 used by both programs fits.",
-   "Parity paper v0.3: expanding the sieve weight in the moduli [d1,d2] <= R^2 (not in its period) and applying Tao-Teravainen's quantitative correlation theorem (arXiv:2512.01739v2 Thm 3.1, an unrefereed preprint) class by class shows that Selberg-type weights of level R <= (log x)^{c0} cannot tell lambda(n)lambda(n+2) = +1 from -1, uniformly in |lambda_d| <= 1 (Prop. prop:tao-weight-logc; proved here, conditional on the preprint). A fresh-context auditor re-read both sources and found it sound; its wording fixes are in. This only confirms the input of the obstruction at a larger level. Shorter abstract, contents list, open questions updated.",
-   "Small results (3g): verification note v0.8 adds Remark rem:182 (the 182 cap quotient, each ingredient by two programs) and a shorter abstract; main paper v0.19. Heath-Brown's x^3+2y^3 paper (parity thread 2) could not be opened (403, bot challenge, paywall); a helper read two secondary descriptions (Maynard, X. Li), kept in notes only and requested from Jerry.",
-   "Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). News search: nothing new since the last entry."
-  ],
-  "explored": "Can Liouville signs at extra linear forms enlarge the class of parity weights (open question 2)? No: fairness and the kill condition only see the law of the tuple coordinates, so the tuple marginal is an ordinary pattern weight; LPs for DHL[4,3], DHL[5,3], DHL[3,2] and the PM8b target agree (dead end, code/explore/aux_forms_lp.py).",
-  "parity": "Tao-Teravainen's Theorem 3.1 gives the twisted Type I input of the parity obstruction at level (log x)^{c0}: proved, conditional on that preprint (audited); the first unresolved implication is cancellation for moduli far beyond powers of log x, and even that would only confirm the obstruction.",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits and a proofreader used instead).",
-   "Heath-Brown, Acta Math. 186 (2001): intlpress 403, Project Euclid bot challenge, Springer paywall, author page 404; recorded in notes/sources-needed.md.",
-   "The two 182 tail programs share the reading of the source and the layered derivation of the contraction; they check arithmetic and code, not that reading."
-  ],
-  "next": "Weekly review first (Monday 16 Nov run). Then: parity attempt (Sawin-Shusterman's function-field step, or Maynard two-variable weights at level (log x)^{c0}); parity thread 2 when Heath-Brown arrives; rung 182 restoration losses (scope the 197 source integrals); decide on a second small-results paper."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 18 (3:34 AM CT slot, started early at Jerry's request, 10:23 PM CT 14 Nov; no wait, Session 17 had merged as PR #36)",
-  "title": "An exact criterion for what the parity obstruction blocks (it explains the 6, and gives H_m < H(2m+1) for this class of weights); rung 182's numerators by a second program and its tail term recomputed",
-  "did": [
-   "Parity paper v0.2 (papers/parity-barrier): for Polymath8b-type weights built from Liouville signs on the tuple, a weight that blocks a target exists exactly when (1/2,...,1/2) is a convex combination of target-free sets (Prop. prop:bipartite, proved here, possibly folklore). Consequences: a pair target is blocked iff its graph is bipartite; DHL[k,m+1] iff k <= 2m; and the class blocks every tuple exactly when g < H(2m+1), i.e. H_1 < 6, H_2 < 12, H_3 < 20, while the known sieve bounds for H_2 are 270 (EH) and 252 (GEH). Finite cases Lean-checked (lean/TwinPrimes/Parity.lean); H(3..9) = 6, 8, 12, 16, 20, 26, 30 by exhaustive search.",
-   "The weight printed in Polymath8b's Remark 8.1 vanishes identically (the product includes i = i', and even with i < i' the positions prime to 3 contain triangles); the intended weight (odd positions) is fair and works. Typo-level; flagged as a minor item.",
-   "Thread 2: Friedlander-Iwaniec's a^2+b^4 paper read in the source (Theorem 1, Props. 3.5, 4.1, 17.2; norm-form factorisation, lattice count, spin symbol) and a remark on why that structure has no counterpart for Lambda(n+2). Quantitative two-point Chowla literature read for open question 1 (Tao-Teravainen preprint would give level (log x)^c0; deduction not written). A fresh-context adversarial audit found 2 errors (an overclaimed scope in Cor. cor:six, one page number) and several gaps; all fixed before release.",
-   "Rung 182 (bound share): a second program for the cap numerators gives J0 = 5.63645908992367e-11 and J+ = 4.08240742966434e-13 as rigorous balls, both above the published lower bounds and agreeing with program 1 to 2e-23 / 2e-32. The tail term, transcribed from the bundle (kernel K of (5.6) computed exactly), is T = 5.286348805928e-13, just below its published upper bound, so q_H - 1 = 2.767059e-4 >= the certified mu- (one program for the tail). 182 stays claimed: restoration losses and analytic inputs are unchecked.",
-   "Small results (3g): the H_m programme was scoped (notes/hm-programme.md): Polymath8b's Theorem 6.7 lower bound reproduced in ball arithmetic (k = 35410 with MPZ, 41588 with BV only, both as published); any gain from the 2026 inputs depends on a (varpi, delta) region no source states, so no paper yet. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Main paper v0.18; parity paper v0.2."
-  ],
-  "explored": "Residue-class-dependent parity weights (exact LPs, code/explore/residue_parity_lp.py): requiring fairness class by class gives nothing beyond k <= 2m, and the naive global notion would 'block' DHL[3,2] at modulus 5*7*11, contradicting Polymath8b's GEH theorem; a dead end that pins down the right notion of fairness.",
-  "parity": "Which close-prime targets the Polymath8b obstruction blocks: proved (for the class of Liouville-pattern weights) that it is exactly the bipartite / fractional-stable-set condition, which explains the parity limit 6 and gives H_m < H(2m+1) for this class; the first open step is whether weights outside the class block DHL[5,3].",
-  "flag": "Minor: Polymath8b's Remark 8.1 prints a parity weight that is identically zero (typo-level; the intended weight works); the journal version could not be checked.",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).",
-   "The journal version of Polymath8b (Res. Math. Sci.) returned a bot-challenge page; recorded in notes/sources-needed.md.",
-   "The 182 tail rests on one program; the J0 gap to program 1 (2e-23) is rounding in program 1, not resolved to the last digit."
-  ],
-  "next": "Weekly review first (Monday 16 Nov). Then: parity attempt (the Tao-Teravainen deduction to level (log x)^c0, or the function-field step); parity paper thread 2 (Heath-Brown x^3+2y^3); a second, different program for the 182 tail; decide on a second small-results paper."
- },
- {
-  "date": "2026-11-15",
-  "slot": "Session 17 (7:34 PM CT, 14 Nov; no wait, no other run active)",
-  "title": "Rung 186 finished: its loss bound re-evaluated in full and its decisive part by a second, independent program; the project moves to Phase B with a first paper on the parity barrier",
-  "did": [
-   "186 loss bound L+: the first program (Arb balls) finished the last 19 of 97 components. At 128 bits the 15 smallest low bins were rejected by the companion's own test (nonpositive lower endpoint in the renewal recurrence), at 256 bits all pass. Every raw value is at most its table entry; the summed component bounds equal the table's group totals (O_2 and O_{5/2} 1 and 3 units of 1e-12 below, inner groups exactly).",
-   "A fresh-context helper wrote a second, independent program from the PDF alone (code/oai186_loss_outer2.py: GMP integer products and mpmath instead of Arb, a generating-series moment algorithm instead of set partitions, own cap rows). On the 17 components carrying 99.95% of the decisive group O_{5/2} (89.4% of L+) it agrees with the first program to 1.4e-12 (rank-two and factorial) and 2.2e-9 (low bins); both sit about 1.2e-9 below the table. The rest of L+ rests on one program, with large slack by the margin budget (Prop. oai186-budget).",
-   "So rung 186 is finished in the sense of the plan (main terms and L+ by two programs), and the project switches to Phase B. 186 is NOT adopted: the lemmas that its forms majorise the true losses, its restoration step and its analytic inputs are unchecked. Bounds unchanged: established 246, claimed 182, project 236 (conditional).",
-   "New paper papers/parity-barrier v0.1 (The parity barrier and twin primes: what is known and what is missing): the Polymath8b parity obstruction and Selberg's example re-read in the sources; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) (Props. fi-twin, B-parity, proved here); the twisted Type I input proved in a weak log-averaged form (Prop. tao-weight). An adversarial fresh-context audit found all three propositions correct with fixable gaps and one misquotation (Tao's Remark 1.4 says 'in principle effective'); all fixed. Main paper v0.17 (new Section 'Related results', Remark rem:186-status); verification note v0.7."
-  ],
-  "explored": "What a GPY/Selberg weight sees of the parity of n(n+2) (code/explore/parity_weighted_liouville.py, up to 1e8): weighted lambda(n)lambda(n+2) ~ 4e-5, the two parity-twisted measures have equal mass and class distributions, and all twin pairs sit in the + measure; Selberg's phenomenon made visible, as expected (now the parity paper's Heuristic illustration).",
-  "parity": "Tao's log-averaged two-point Chowla theorem along sieve weights: proved (possibly folklore) for periodic weights of fixed or slowly growing level, so such weights cannot tell lambda(n)lambda(n+2) = +1 from -1; this confirms the obstruction's input in a weak regime, and the first unresolved step (uniformity in the modulus up to x^theta) is open and would only confirm it further.",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).",
-   "The second loss program has no renewal branch, so the smallest low bins of O_{5/2} (0.05% of the group), O_2 and the inner groups remain one-program results.",
-   "No progress on rung 182 this run (its tail term and a second program for J0, J+ are still open)."
-  ],
-  "next": "Phase B: parity paper thread 2 (Friedlander-Iwaniec x^2+y^4 and Sawin-Shusterman, read in the sources) with one bounded parity attempt; start the H_m or capped-variational small-results paper; rung 182 second program for J0, J+ in the bound share. First weekly review on Monday 16 Nov."
+  "slot": "Daily summary of Sessions 17-24 (14-15 Nov; full entries in log/archive-2026-11-15.json)",
+  "title": "Fourth day: rung 186 finished, Phase B starts, and the parity-barrier paper is built from the sources",
+  "did": "Session 17 finished rung 186 (loss bound re-evaluated in full, the decisive part by a second program; 186 not adopted, analytic inputs Claimed) and started Phase B with a parity-barrier paper. Sessions 18-24 (several bonus runs at Jerry's request) gave the exact criterion for what the parity obstruction blocks (explains the 6; H_m < H(2m+1) for that class of weights), the ceiling k^2 log k/(k-1)^2 for Polymath8b's GEH criteria (no DHL[k,3] for k <= 45; k = 2 exactly at the parity value), the k = 3 eps-window, and source readings of Heath-Brown x^3+2y^3, Sawin-Shusterman and Bombieri's asymptotic sieve (parity paper v0.4-v0.9). Rung 182: numerators, tail term and mass deficit by second programs; restoration arithmetic re-done. Bounds unchanged (246 / 182 / 236 conditional).",
+  "parity": "Route cards of 14-15 Nov (see notes/parity-attempts/README.md): all located or confirmed the obstruction; none breaks it.",
+  "explored": "See the archived entries.",
+  "failed": "182 restoration data unavailable; Wolfram not available.",
+  "next": "Parity paper toward a frozen v1.0; 186 lemmas; Lean reduction."
  },
  {
   "date": "2026-11-14",

@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.50, 24 November 2026}
+\date{Version 0.51, 24 November 2026}
 
 \begin{document}
 
@@ -89,7 +89,7 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 \noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
 $^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its reduction \cite[Prop.~1]{Sta26} and its equidistribution input are not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. We read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}).
 $^{\ddagger}$ Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}. Its variational step is reproduced here (Corollary~\ref{cor:236}); its reduction \cite[Thm.~4.33, \S\S4.12--4.14]{SY26} and its equidistribution input \cite[Thm.~4.18]{SY26} are not verified by us. An AI audit inside this project of the proof of \cite[Theorem~4.18]{SY26} found one repairable mis-statement (eq.~(49), inherited from \cite[Lemma~6.25]{PM8a}) and no gap (Remark~\ref{rem:sy-audit}); this is not expert review.
-$^{\S}$ Its two main terms $I_H$, $J_{\lambda,H}$ are recomputed here and lie inside its published enclosures (Proposition~\ref{prop:oai186-main}); the raw bounds of its loss components, re-evaluated for all but $1.2\cdot10^{-6}$ of the loss, are at most the published ones (after Proposition~\ref{prop:oai186-main}); that the forms majorise the true losses, and the analytic inputs, are not checked.}
+$^{\S}$ Its two main terms $I_H$, $J_{\lambda,H}$ are recomputed here and lie inside its published enclosures (Proposition~\ref{prop:oai186-main}); the raw bounds of its loss components, re-evaluated for all but $1.2\cdot10^{-6}$ of the loss, are at most the published ones (after Proposition~\ref{prop:oai186-main}); the six lemmas of its companion saying that the forms majorise the true losses are each verified as stated by one program (Remark~\ref{rem:186-status}); its Lemma~2.2's proof, its restoration step and the analytic inputs are not checked.}
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
@@ -325,6 +325,23 @@ $(r_1,\dots,r_k)$ (\texttt{mu\_}\allowbreak\texttt{prod\_coprime}), and, under t
 $([d_i,e_i])$, $(d_i)$ and $(e_i)$ (\texttt{mu\_}\allowbreak\texttt{prod\_lcm}, \texttt{tmu\_}\allowbreak\texttt{lcm\_left},
 \texttt{tmu\_}\allowbreak\texttt{lcm\_right}). These are the M\"obius identities the diagonalisation of $S_1$ uses; the
 diagonalisation itself is not formalised.
+\item (\texttt{MaynardDiag.lean}, \texttt{MaynardS1Diag.lean}, \texttt{MaynardHpw.lean}, the diagonalisation of
+\cite[Lemma~5.1]{May15}) For any rational weights on the box $\{1,\dots,R\}^k$, Gauss's identity in each coordinate
+gives
+\[
+\sum_{\mathbf d,\mathbf e}\frac{\lambda_{\mathbf d}\lambda_{\mathbf e}}{\prod_i[d_i,e_i]}
+=\sum_{\mathbf u}\prod_i\varphi(u_i)\left(\sum_{\mathbf u\mid\mathbf d}\frac{\lambda_{\mathbf d}}{\prod_id_i}\right)^2
+=\sum_{\mathbf u}\frac{y_{\mathbf u}^2}{\prod_i\varphi(u_i)}
+\]
+(\texttt{maynard\_}\allowbreak\texttt{diag\_lcm}; the second form for $\lambda$ supported on squarefree entries,
+\texttt{maynard\_}\allowbreak\texttt{diag\_y\_sqfree}); no coprimality between coordinates is needed. Combined with item~16:
+\[
+\left|S_1-\frac NW\left(\sum_{\mathbf u}\frac{y_{\mathbf u}^2}{\prod_i\varphi(u_i)}-B\right)\right|\le\sum_{\mathbf d,\mathbf e}|\lambda_{\mathbf d}\lambda_{\mathbf e}|,
+\]
+where $B$ is the main-term contribution of the pairs whose moduli $[d_i,e_i]$ are not pairwise coprime
+(\texttt{maynard\_}\allowbreak\texttt{S1\_diag\_W}). Such pairs exist on Maynard's support (\texttt{ex\_not\_hpw}, with $B=2/9$ in a small
+example), but their counts in $S_1$ are $0$ when $|h_i-h_j|\mid W$ (\texttt{count\_zero\_}\allowbreak\texttt{of\_not\_pairwise}).
+Not formalised: the size of $B$ (an analytic step in \cite{May15}), and the asymptotics of $S_1$ and $S_2$.
 \end{enumerate}
 \end{theorem}
 
@@ -1991,11 +2008,19 @@ cases ($30\times98264$ bin--cell pairs, the ring identities (1.43)--(1.44) for $
 logarithmic mass, and $23996$ constructed failing configurations with none lost; \lbl{Computed}, $36$ exact checks, one
 program, \texttt{code/}\allowbreak\texttt{oai186\_lemma17\_check.py}; \texttt{notes/}\allowbreak\texttt{oai186-lemma17-check.md}); it needs
 ``physical cell'' to mean the cell of the owner coordinate's total including the largest fragment (under the other
-reading an explicit rank-two failure would be missed). Not checked: its Lemmas 2.3
-and 2.4 (that the remaining forms majorise the true support-failure integrals and that
-the cover is complete), the analytic part of Lemma~1.1, its restoration step (Proposition~1.3, resting on the
-main paper's Proposition~4.6), and the analytic inputs, which stay
-\lbl{Claimed}. So the project does not adopt $186$, even conditionally.
+reading an explicit rank-two failure would be missed). Its Lemma~2.3 (the Eulerian cell kernels of the
+low bins majorise the tilted coordinate measures) is verified as stated: each proof step read, the finite claims
+computed, and the true cell masses below the kernel coefficients on the $1842$ cells with at most one large fragment
+(\lbl{Computed}, $41$ checks, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma23\_check.py};
+\texttt{notes/}\allowbreak\texttt{oai186-lemma23-check.md}). Its Lemma~2.4 (the whole-bin Palm envelopes of the $30$
+rank-two bins) is verified as stated: every index and cap claim over all $30\times98264$ bin--cell pairs, the
+arrays of its (2.9) against an independently computed Dickman $\rho$, and $155$ end-to-end instances (the tightest at
+$0.949$ of the bound; \lbl{Computed}, $36$ checks, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma24\_check.py};
+\texttt{notes/}\allowbreak\texttt{oai186-lemma24-check.md}). So all six majorisation lemmas of the companion
+(1.4--1.7, 2.3, 2.4) are verified as stated, each by one program. Not checked: the proof of its Lemma~2.2 (spot
+checks only), the $40$-dimensional contractions (2.16)--(2.21), the analytic part of Lemma~1.1, its restoration
+step (Proposition~1.3, resting on the main paper's Proposition~4.6, of which we have read only the statement and
+its use below), and the analytic inputs, which stay \lbl{Claimed}. So the project does not adopt $186$, even conditionally.
 \end{remark}
 
 \begin{proposition}[\lbl{Computed}, exact rational arithmetic on the published integers]\label{prop:oai186-budget}
@@ -2010,8 +2035,11 @@ small, and the other three inner groups by factors $10$ to $230$.
 \noindent So whether the loss bound of \cite{OAI26} is right is decided by the
 group $O_{5/2}$, and within it by its $12$ rank-two components and its
 third-factorial component ($81\%$ of $L^+$). This is how we ordered the
-computation. We have not checked which of the two thresholds the restoration step of the
-main $186$ paper (\cite{OAI26}, its reference [8, Prop.~4.6]) requires (\texttt{code/oai186\_margin\_budget.py}).
+computation (\texttt{code/oai186\_margin\_budget.py}). The restoration step of the main $186$ paper
+(\cite{OAI26}, its reference [8, Prop.~4.6, (4.41), p.~30]) needs only the strict inequality $\mu>0$; the value
+$1/50000$ in its proof of Theorem~1.1 is a reported cushion, not a hypothesis (\lbl{Literature (preprint)}, our
+reading; \texttt{notes/}\allowbreak\texttt{oai186-restoration-threshold.md}). So the relevant slack is the larger
+one, $12.8\%$, conditional on the rest of that argument, which we have not checked.
 
 \begin{remark}[the last rung, $182$; \lbl{Literature (preprint)}, with \lbl{Computed} checks where stated]\label{rem:sha182}
 The bundle \cite{Sha26}, a main paper and two analytic companions (our
@@ -2173,6 +2201,15 @@ not in a paper. Up to 23 November all of them locate or confirm the obstruction;
 it. Version~1.1 of the parity paper takes over only the LWW observation above (Jerry
 approved one subsection); the E2 consistency tests and a summary of the other cards are left to
 the weekly review of 30 November.
+\item \emph{News of 24 November} (\lbl{Claimed}; unrefereed preprints, only the pages named read; notes:
+\texttt{notes/}\allowbreak\texttt{news-2026-11-24.md}). Lichtman (arXiv:2611.28392v1) proves
+$\sum_{n\le X}\mu(n)\mu(n+1)\ll X/(\log X)^{1-\varepsilon}$ and states, without a written proof (``the same proof
+method also establishes'', p.~2), the refinement $\sum_{p\le X}\mu(p+2)\ll\pi(X)/(\log X)^{1/2-\varepsilon}$ of
+L\"u--Wang--Wu; he reports (p.~1) that the two-point Chowla conjecture was resolved by OpenAI (preprint, September
+2026; we have not located it). His Type~II step uses the target through the same three properties we found in
+L\"u--Wang--Wu (route card \texttt{2026-11-24-lichtman-prop71-target.md}). Gou--Wang--Xu (arXiv:2611.18825v1) derive the
+prime-pair asymptotic from RH and a Ratios Conjecture, and unconditionally over $\mathbb F_q[T]$ for fixed odd
+$q>10^{200}$. None of this is a statement about $\Lambda(n)\Lambda(n+2)$ over $\mathbb Z$ without unproved hypotheses.
 \end{itemize}
 \end{sloppypar}
 
@@ -2291,6 +2328,10 @@ L\"u--Wang--Wu consistency observation as one subsection); Remark~\ref{rem:186-s
 of the $186$ companion (see there).
 \item[0.50] (24 Nov 2026) Theorem~\ref{thm:lean}, item 19 ($\mu$ of a product of pairwise coprime
 entries); Remark~\ref{rem:186-status}: Lemma~1.7 of the $186$ companion checked.
+\item[0.51] (24 Nov 2026) Theorem~\ref{thm:lean}, item 20 (the diagonalisation of $S_1$, with the bad pairs
+explicit); Remark~\ref{rem:186-status}: Lemmas~2.3 and~2.4, so all six majorisation lemmas of the $186$ companion
+checked; Proposition~\ref{prop:oai186-budget}: the restoration step needs only a positive margin;
+Section~\ref{sec:related}: news of 24 November.
 \end{itemize}
 
 \begin{thebibliography}{99}

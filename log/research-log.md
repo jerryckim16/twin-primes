@@ -1,5 +1,3854 @@
 # Research log
 
+## 2026-11-24 - Session 53 (7:34 PM CT paper run, started on time 01:34 UTC 25 Nov; no wait, no other run active): Paper run: main paper v0.51 writes up Sessions 51-52 (all six 186 majorisation lemmas checked; restoration needs only a positive margin; Lean S1 diagonalisation); LWW Prop. 4.2 survives thinning of the auxiliary primes (conditional, audited)
+
+- M
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 5
+- 1
+-  
+- (
+- 3
+- 5
+-  
+- p
+- p
+- .
+- ,
+-  
+- n
+- o
+-  
+- o
+- v
+- e
+- r
+- f
+- u
+- l
+- l
+-  
+- b
+- o
+- x
+- e
+- s
+- )
+- :
+-  
+- r
+- e
+- m
+- :
+- 1
+- 8
+- 6
+- -
+- s
+- t
+- a
+- t
+- u
+- s
+-  
+- n
+- o
+- w
+-  
+- r
+- e
+- c
+- o
+- r
+- d
+- s
+-  
+- L
+- e
+- m
+- m
+- a
+- s
+-  
+- 2
+- .
+- 3
+-  
+- (
+- 4
+- 1
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- )
+-  
+- a
+- n
+- d
+-  
+- 2
+- .
+- 4
+-  
+- (
+- 3
+- 6
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- )
+- ,
+-  
+- s
+- o
+-  
+- a
+- l
+- l
+-  
+- s
+- i
+- x
+-  
+- m
+- a
+- j
+- o
+- r
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- l
+- e
+- m
+- m
+- a
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- a
+- r
+- e
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+- ,
+-  
+- o
+- n
+- e
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+-  
+- e
+- a
+- c
+- h
+- ;
+-  
+- p
+- r
+- o
+- p
+- :
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- -
+- b
+- u
+- d
+- g
+- e
+- t
+-  
+- r
+- e
+- c
+- o
+- r
+- d
+- s
+-  
+- t
+- h
+- a
+- t
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- s
+- t
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+-  
+- s
+- t
+- e
+- p
+-  
+- n
+- e
+- e
+- d
+- s
+-  
+- o
+- n
+- l
+- y
+-  
+- m
+- a
+- r
+- g
+- i
+- n
+-  
+- >
+-  
+- 0
+- ,
+-  
+- s
+- o
+-  
+- t
+- h
+- e
+-  
+- l
+- o
+- s
+- s
+-  
+- m
+- a
+- y
+-  
+- b
+- e
+-  
+- u
+- p
+-  
+- t
+- o
+-  
+- 1
+- 2
+- .
+- 8
+- %
+-  
+- t
+- o
+- o
+-  
+- s
+- m
+- a
+- l
+- l
+- ;
+-  
+- T
+- h
+- e
+- o
+- r
+- e
+- m
+-  
+- 1
+-  
+- i
+- t
+- e
+- m
+-  
+- 2
+- 0
+-  
+- (
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- D
+- i
+- a
+- g
+- /
+- S
+- 1
+- D
+- i
+- a
+- g
+- /
+- H
+- p
+- w
+- )
+- ;
+-  
+- s
+- e
+- c
+- :
+- r
+- e
+- l
+- a
+- t
+- e
+- d
+-  
+- g
+- e
+- t
+- s
+-  
+- a
+-  
+- s
+- h
+- o
+- r
+- t
+-  
+- C
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- n
+- e
+- w
+- s
+-  
+- i
+- t
+- e
+- m
+-  
+- (
+- L
+- i
+- c
+- h
+- t
+- m
+- a
+- n
+- ,
+-  
+- G
+- o
+- u
+- -
+- W
+- a
+- n
+- g
+- -
+- X
+- u
+- )
+- .
+-  
+- C
+- h
+- o
+- w
+- l
+- a
+-  
+- w
+- o
+- r
+- d
+- i
+- n
+- g
+-  
+- c
+- o
+- r
+- r
+- e
+- c
+- t
+- e
+- d
+-  
+- i
+- n
+-  
+- n
+- o
+- t
+- e
+- s
+- /
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- i
+- o
+- n
+- s
+- .
+- m
+- d
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- l
+- a
+- r
+- g
+- e
+- -
+- q
+-  
+- c
+- a
+- r
+- d
+-  
+- (
+- t
+- w
+- o
+- -
+- p
+- o
+- i
+- n
+- t
+-  
+- C
+- h
+- o
+- w
+- l
+- a
+-  
+- r
+- e
+- p
+- o
+- r
+- t
+- e
+- d
+-  
+- r
+- e
+- s
+- o
+- l
+- v
+- e
+- d
+- ,
+-  
+- C
+- l
+- a
+- i
+- m
+- e
+- d
+- )
+- ;
+-  
+- t
+- h
+- e
+-  
+- p
+- a
+- r
+- i
+- t
+- y
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- n
+- e
+- e
+- d
+- e
+- d
+-  
+- n
+- o
+-  
+- e
+- r
+- r
+- a
+- t
+- u
+- m
+- .
+-  
+- s
+- t
+- a
+- t
+- u
+- s
+- .
+- j
+- s
+- o
+- n
+-  
+- 0
+- .
+- 5
+- 1
+- ,
+-  
+- R
+- E
+- A
+- D
+- M
+- E
+- ,
+-  
+- s
+- i
+- t
+- e
+-  
+- r
+- e
+- b
+- u
+- i
+- l
+- t
+- ;
+-  
+- t
+- h
+- e
+-  
+- 1
+- 5
+-  
+- N
+- o
+- v
+-  
+- l
+- o
+- g
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+-  
+- m
+- e
+- r
+- g
+- e
+- d
+-  
+- i
+- n
+- t
+- o
+-  
+- a
+-  
+- d
+- a
+- i
+- l
+- y
+-  
+- s
+- u
+- m
+- m
+- a
+- r
+- y
+- .
+-  
+- L
+- e
+- a
+- n
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- ;
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- a
+- n
+- d
+-  
+- p
+- a
+- s
+- s
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- .
+
+Parity attempt: Route card 2026-11-25-lww-prop42-thinning (conditional; robustness only): LWW Prop. 4.2 (pp. 17-61, read line by line by a helper; fresh-context audit 0 errors, 2 slips, 3 gaps, fixes applied) holds uniformly for subsets P'_i of the auxiliary prime sets with sum 1/p >= c_0, if it holds as stated. Closes the first unresolved implication of the S51 card; the Remark 1 route now waits on Type I (BV with zero main term) for general f. LWW still v2. Nothing for twins.
+
+Explored: none this run (the Central day 24 Nov already had one)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- n
+- o
+- t
+-  
+- t
+- h
+- e
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+
+Next: 3:34 AM run: news search (LWW v3, Lichtman v2, OpenAI Chowla preprint); parity attempt on Type I / BV for general f or the LWW p. 54 identity; Lean bound B or the Lean note.
+
+## 2026-11-24 - Session 52 (11:34 AM CT research run, started on time 17:34 UTC 24 Nov; no wait, no other run active): Lichtman's Type II uses the target exactly as Lu-Wang-Wu do; his v1 proves binary Chowla but not the mu(p+2) theorem (flag downgraded); 186: Lemma 2.4 checked, restoration needs only margin > 0; Lean: hpw removed
+
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 2
+- .
+- 4
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- (
+- w
+- h
+- o
+- l
+- e
+- -
+- b
+- i
+- n
+-  
+- P
+- a
+- l
+- m
+-  
+- e
+- n
+- v
+- e
+- l
+- o
+- p
+- e
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 3
+- 0
+-  
+- r
+- a
+- n
+- k
+- -
+- t
+- w
+- o
+-  
+- b
+- i
+- n
+- s
+- )
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+- ,
+-  
+- 3
+- 6
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- ,
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+-  
+- (
+- c
+- o
+- d
+- e
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- _
+- l
+- e
+- m
+- m
+- a
+- 2
+- 4
+- _
+- c
+- h
+- e
+- c
+- k
+- .
+- p
+- y
+- ,
+-  
+- ~
+- 3
+- 2
+-  
+- s
+- ,
+-  
+- 7
+- 7
+- 7
+-  
+- M
+- B
+- ;
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- -
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+- ,
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+-  
+- w
+- i
+- t
+- h
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+-  
+- o
+- u
+- t
+- p
+- u
+- t
+- )
+- .
+-  
+- E
+- v
+- e
+- r
+- y
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- m
+- a
+- j
+- o
+- r
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- l
+- e
+- m
+- m
+- a
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+-  
+- l
+- i
+- s
+- t
+-  
+- (
+- 1
+- .
+- 4
+- -
+- 1
+- .
+- 7
+- ,
+-  
+- 2
+- .
+- 3
+- ,
+-  
+- 2
+- .
+- 4
+- )
+-  
+- i
+- s
+-  
+- n
+- o
+- w
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+- ,
+-  
+- e
+- a
+- c
+- h
+-  
+- b
+- y
+-  
+- o
+- n
+- e
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- .
+-  
+- R
+- e
+- a
+- d
+- i
+- n
+- g
+-  
+- t
+- h
+- e
+-  
+- m
+- a
+- i
+- n
+-  
+- 1
+- 8
+- 6
+-  
+- p
+- a
+- p
+- e
+- r
+- '
+- s
+-  
+- P
+- r
+- o
+- p
+- .
+-  
+- 4
+- .
+- 6
+-  
+- (
+- 4
+- .
+- 4
+- 1
+- )
+-  
+- s
+- e
+- t
+- t
+- l
+- e
+- s
+-  
+- t
+- h
+- e
+-  
+- o
+- p
+- e
+- n
+-  
+- t
+- h
+- r
+- e
+- s
+- h
+- o
+- l
+- d
+-  
+- q
+- u
+- e
+- s
+- t
+- i
+- o
+- n
+- :
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- s
+- t
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+-  
+- s
+- t
+- e
+- p
+-  
+- n
+- e
+- e
+- d
+- s
+-  
+- o
+- n
+- l
+- y
+-  
+- a
+-  
+- s
+- t
+- r
+- i
+- c
+- t
+- l
+- y
+-  
+- p
+- o
+- s
+- i
+- t
+- i
+- v
+- e
+-  
+- m
+- a
+- r
+- g
+- i
+- n
+-  
+- (
+- t
+- h
+- e
+-  
+- 1
+- /
+- 5
+- 0
+- 0
+- 0
+- 0
+-  
+- i
+- n
+-  
+- (
+- 4
+- .
+- 4
+- 5
+- )
+-  
+- i
+- s
+-  
+- a
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+-  
+- c
+- u
+- s
+- h
+- i
+- o
+- n
+- )
+- ,
+-  
+- s
+- o
+-  
+- t
+- h
+- e
+-  
+- l
+- o
+- s
+- s
+-  
+- m
+- a
+- y
+-  
+- b
+- e
+-  
+- u
+- p
+-  
+- t
+- o
+-  
+- 1
+- 2
+- .
+- 8
+- %
+-  
+- t
+- o
+- o
+-  
+- s
+- m
+- a
+- l
+- l
+-  
+- b
+- e
+- f
+- o
+- r
+- e
+-  
+- t
+- h
+- e
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- D
+- H
+- L
+- [
+- 4
+- 0
+- ,
+- 2
+- ]
+-  
+- f
+- a
+- i
+- l
+- s
+-  
+- (
+- n
+- o
+- t
+- e
+- s
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- -
+- r
+- e
+- s
+- t
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+- -
+- t
+- h
+- r
+- e
+- s
+- h
+- o
+- l
+- d
+- .
+- m
+- d
+- )
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- H
+- p
+- w
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 3
+- 6
+- 9
+-  
+- l
+- i
+- n
+- e
+- s
+- )
+-  
+- s
+- h
+- o
+- w
+- s
+-  
+- h
+- p
+- w
+-  
+- i
+- s
+-  
+- f
+- a
+- l
+- s
+- e
+-  
+- o
+- n
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- s
+- u
+- p
+- p
+- o
+- r
+- t
+-  
+- i
+- n
+-  
+- g
+- e
+- n
+- e
+- r
+- a
+- l
+-  
+- (
+- e
+- x
+- _
+- n
+- o
+- t
+- _
+- h
+- p
+- w
+- )
+-  
+- b
+- u
+- t
+-  
+- b
+- a
+- d
+-  
+- p
+- a
+- i
+- r
+- s
+-  
+- h
+- a
+- v
+- e
+-  
+- n
+- o
+-  
+- s
+- o
+- l
+- u
+- t
+- i
+- o
+- n
+-  
+- n
+- ,
+-  
+- a
+- n
+- d
+-  
+- p
+- r
+- o
+- v
+- e
+- s
+-  
+- t
+- h
+- e
+-  
+- S
+- 1
+-  
+- d
+- i
+- a
+- g
+- o
+- n
+- a
+- l
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- w
+- i
+- t
+- h
+- o
+- u
+- t
+-  
+- h
+- p
+- w
+- ,
+-  
+- w
+- i
+- t
+- h
+-  
+- a
+- n
+-  
+- e
+- x
+- p
+- l
+- i
+- c
+- i
+- t
+-  
+- c
+- o
+- r
+- r
+- e
+- c
+- t
+- i
+- o
+- n
+-  
+- B
+-  
+- f
+- o
+- r
+-  
+- b
+- a
+- d
+-  
+- p
+- a
+- i
+- r
+- s
+-  
+- (
+- B
+-  
+- =
+-  
+- 2
+- /
+- 9
+-  
+- i
+- n
+-  
+- a
+-  
+- w
+- o
+- r
+- k
+- e
+- d
+-  
+- e
+- x
+- a
+- m
+- p
+- l
+- e
+- )
+- ;
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- a
+- s
+- s
+-  
+- (
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+-  
+- o
+- n
+- l
+- y
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- .
+
+Flag for Jerry: Update (downgrade) of the 24 Nov Session 51 news flag: Lichtman's v1 does not contain a written proof of his mu(p+2) theorem, so it is evidence for the shared Type II machinery and for binary Chowla, not yet a written re-proof of Lu-Wang-Wu. Not an error found; needs outside expert review.
+
+Parity attempt: Route card 2026-11-24-lichtman-prop71-target (located): Lichtman's Type II (arXiv:2611.28392v1, Prop. 7.1) uses the target mu(mn+1)phi(mn+1) only through boundedness and sign-multiplicativity at the active primes (Ramare identity (6.5)), plus vanishing on squares; Type I adds Bombieri-Vinogradov. All cancellation comes from the Mobius factor of the rough source variable (major arcs); 'one rough variable' is a source-side relaxation, so our location of the parity step (P2 => T3 small) is unchanged. v1 writes the proof of Theorem 1.1 (binary Chowla) only; Theorem 1.2 (the mu(p+2) refinement of LWW) rests on 'the same proof method'. Exact toy check of (6.4)-(6.5) (code/parity/lichtman_ramare_check.py). Fresh-context audit: 1 error, 2 overstatements, 1 gap, 4 slips, all fixed; classification unchanged.
+
+Explored: none this run (the Central day 24 Nov already had one, Session 51)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 2
+- .
+- 2
+- '
+- s
+-  
+- p
+- r
+- o
+- o
+- f
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- 4
+- 0
+- -
+- d
+- i
+- m
+- e
+- n
+- s
+- i
+- o
+- n
+- a
+- l
+-  
+- c
+- o
+- n
+- t
+- r
+- a
+- c
+- t
+- i
+- o
+- n
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- n
+- o
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+- .
+-  
+- T
+- h
+- e
+-  
+- L
+- e
+- a
+- n
+-  
+- c
+- o
+- r
+- r
+- e
+- c
+- t
+- i
+- o
+- n
+-  
+- t
+- e
+- r
+- m
+-  
+- B
+-  
+- f
+- o
+- r
+-  
+- b
+- a
+- d
+-  
+- p
+- a
+- i
+- r
+- s
+-  
+- i
+- s
+-  
+- n
+- o
+- t
+-  
+- b
+- o
+- u
+- n
+- d
+- e
+- d
+-  
+- a
+- n
+- a
+- l
+- y
+- t
+- i
+- c
+- a
+- l
+- l
+- y
+- .
+
+Next: Paper run (7:34 PM CT): write up S51+S52 (Theorem 1 items for 186 Lemmas 2.3, 2.4; prop:oai186-budget: the threshold is > 0; Lean MaynardDiag/S1Diag/Hpw; sec:related news with the Lichtman correction; Chowla-'open' wording). Then: parity attempt on LWW Prop. 4.2 for thinned sets (line by line); Lean: bound B or write the short Lean note.
+
+## 2026-11-24 - Session 51 (3:34 AM CT research run, started on time 09:34 UTC 24 Nov; no wait, no other run active): News: Lichtman sharpens Lu-Wang-Wu and reports binary Chowla resolved; LWW Prop. 5.3 accepts a character twist (in outline); 186 Lemma 2.3 checked; Lean: S1 diagonalised
+
+- N
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- :
+-  
+- L
+- i
+- c
+- h
+- t
+- m
+- a
+- n
+- ,
+-  
+- a
+- r
+- X
+- i
+- v
+- :
+- 2
+- 6
+- 1
+- 1
+- .
+- 2
+- 8
+- 3
+- 9
+- 2
+-  
+- (
+- 2
+- 0
+-  
+- N
+- o
+- v
+- )
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- s
+-  
+- s
+- u
+- m
+- _
+- {
+- p
+- <
+- =
+- X
+- }
+-  
+- m
+- u
+- (
+- p
+- +
+- 2
+- )
+-  
+- <
+- <
+-  
+- p
+- i
+- (
+- X
+- )
+- /
+- (
+- l
+- o
+- g
+-  
+- X
+- )
+- ^
+- {
+- 1
+- /
+- 2
+- -
+- e
+- p
+- s
+- }
+- ,
+-  
+- a
+-  
+- q
+- u
+- a
+- n
+- t
+- i
+- t
+- a
+- t
+- i
+- v
+- e
+-  
+- r
+- e
+- f
+- i
+- n
+- e
+- m
+- e
+- n
+- t
+-  
+- o
+- f
+-  
+- L
+- u
+- -
+- W
+- a
+- n
+- g
+- -
+- W
+- u
+- ,
+-  
+- a
+- n
+- d
+-  
+- r
+- e
+- p
+- o
+- r
+- t
+- s
+-  
+- t
+- w
+- o
+- -
+- p
+- o
+- i
+- n
+- t
+-  
+- C
+- h
+- o
+- w
+- l
+- a
+-  
+- r
+- e
+- s
+- o
+- l
+- v
+- e
+- d
+-  
+- b
+- y
+-  
+- O
+- p
+- e
+- n
+- A
+- I
+-  
+- (
+- S
+- e
+- p
+- t
+-  
+- 2
+- 0
+- 2
+- 6
+- ;
+-  
+- p
+- r
+- e
+- p
+- r
+- i
+- n
+- t
+-  
+- n
+- o
+- t
+-  
+- l
+- o
+- c
+- a
+- t
+- e
+- d
+- )
+- .
+-  
+- G
+- o
+- u
+- -
+- W
+- a
+- n
+- g
+- -
+- X
+- u
+- ,
+-  
+- a
+- r
+- X
+- i
+- v
+- :
+- 2
+- 6
+- 1
+- 1
+- .
+- 1
+- 8
+- 8
+- 2
+- 5
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+-  
+- p
+- r
+- i
+- m
+- e
+-  
+- p
+- a
+- i
+- r
+- s
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- l
+- y
+-  
+- o
+- n
+-  
+- a
+-  
+- R
+- a
+- t
+- i
+- o
+- s
+-  
+- C
+- o
+- n
+- j
+- e
+- c
+- t
+- u
+- r
+- e
+-  
+- (
+- a
+- f
+- t
+- e
+- r
+-  
+- S
+- .
+-  
+- L
+- e
+- e
+- ,
+-  
+- a
+- r
+- X
+- i
+- v
+- :
+- 2
+- 6
+- 1
+- 0
+- .
+- 3
+- 2
+- 6
+- 7
+- 2
+- )
+-  
+- a
+- n
+- d
+- ,
+-  
+- u
+- n
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- l
+- y
+- ,
+-  
+- o
+- v
+- e
+- r
+-  
+- F
+- _
+- q
+- [
+- T
+- ]
+-  
+- f
+- o
+- r
+-  
+- f
+- i
+- x
+- e
+- d
+-  
+- o
+- d
+- d
+-  
+- q
+-  
+- >
+-  
+- 1
+- 0
+- ^
+- 2
+- 0
+- 0
+- .
+-  
+- A
+- l
+- l
+-  
+- C
+- l
+- a
+- i
+- m
+- e
+- d
+- ;
+-  
+- o
+- n
+- l
+- y
+-  
+- t
+- h
+- e
+-  
+- i
+- n
+- t
+- r
+- o
+- d
+- u
+- c
+- t
+- i
+- o
+- n
+- s
+-  
+- w
+- e
+- r
+- e
+-  
+- r
+- e
+- a
+- d
+-  
+- (
+- n
+- o
+- t
+- e
+- s
+- /
+- n
+- e
+- w
+- s
+- -
+- 2
+- 0
+- 2
+- 6
+- -
+- 1
+- 1
+- -
+- 2
+- 4
+- .
+- m
+- d
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- f
+- o
+- u
+- n
+- d
+- ;
+-  
+- L
+- W
+- W
+-  
+- s
+- t
+- i
+- l
+- l
+-  
+- v
+- 2
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 2
+- .
+- 3
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+-  
+- (
+- E
+- u
+- l
+- e
+- r
+- i
+- a
+- n
+-  
+- c
+- e
+- l
+- l
+-  
+- k
+- e
+- r
+- n
+- e
+- l
+- s
+- ,
+-  
+- p
+- .
+-  
+- 1
+- 3
+- )
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+- ,
+-  
+- 4
+- 1
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- ,
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+-  
+- (
+- c
+- o
+- d
+- e
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- _
+- l
+- e
+- m
+- m
+- a
+- 2
+- 3
+- _
+- c
+- h
+- e
+- c
+- k
+- .
+- p
+- y
+- ,
+-  
+- ~
+- 3
+- 0
+-  
+- s
+- ;
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- -
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+- ,
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+-  
+- w
+- i
+- t
+- h
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+-  
+- o
+- u
+- t
+- p
+- u
+- t
+- )
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- D
+- i
+- a
+- g
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- r
+- o
+- v
+- e
+- s
+-  
+- t
+- h
+- e
+-  
+- k
+- -
+- d
+- i
+- m
+- e
+- n
+- s
+- i
+- o
+- n
+- a
+- l
+-  
+- d
+- i
+- a
+- g
+- o
+- n
+- a
+- l
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- s
+- u
+- m
+-  
+- l
+- a
+- m
+- _
+- d
+-  
+- l
+- a
+- m
+- _
+- e
+-  
+- /
+-  
+- p
+- r
+- o
+- d
+-  
+- l
+- c
+- m
+- (
+- d
+- _
+- i
+- ,
+- e
+- _
+- i
+- )
+-  
+- =
+-  
+- s
+- u
+- m
+- _
+- u
+-  
+- y
+- _
+- u
+- ^
+- 2
+- /
+- p
+- h
+- i
+- (
+- u
+- )
+-  
+- (
+- s
+- q
+- u
+- a
+- r
+- e
+- f
+- r
+- e
+- e
+-  
+- s
+- u
+- p
+- p
+- o
+- r
+- t
+- )
+- .
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 1
+- D
+- i
+- a
+- g
+- .
+- l
+- e
+- a
+- n
+-  
+- c
+- o
+- m
+- b
+- i
+- n
+- e
+- s
+-  
+- i
+- t
+-  
+- w
+- i
+- t
+- h
+-  
+- t
+- h
+- e
+-  
+- S
+- 1
+-  
+- e
+- x
+- p
+- a
+- n
+- s
+- i
+- o
+- n
+- :
+-  
+- |
+- S
+- 1
+-  
+- -
+-  
+- (
+- N
+- /
+- W
+- )
+-  
+- s
+- u
+- m
+- _
+- u
+-  
+- y
+- _
+- u
+- ^
+- 2
+- /
+- p
+- h
+- i
+- (
+- u
+- )
+- |
+-  
+- <
+- =
+-  
+- s
+- u
+- m
+-  
+- |
+- l
+- a
+- m
+- _
+- d
+-  
+- l
+- a
+- m
+- _
+- e
+- |
+-  
+- o
+- n
+-  
+- s
+- u
+- p
+- p
+- o
+- r
+- t
+- s
+-  
+- w
+- h
+- e
+- r
+- e
+-  
+- t
+- h
+- e
+-  
+- c
+- o
+- p
+- r
+- i
+- m
+- a
+- l
+- i
+- t
+- y
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- e
+- s
+-  
+- h
+- o
+- l
+- d
+- ,
+-  
+- w
+- i
+- t
+- h
+-  
+- a
+-  
+- s
+- a
+- t
+- i
+- s
+- f
+- i
+- a
+- b
+- l
+- e
+-  
+- e
+- x
+- a
+- m
+- p
+- l
+- e
+- .
+-  
+- B
+- o
+- t
+- h
+-  
+- f
+- i
+- l
+- e
+- s
+-  
+- p
+- a
+- s
+- s
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+- ,
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- s
+- h
+- o
+- w
+- s
+-  
+- o
+- n
+- l
+- y
+-  
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+- .
+
+Flag for Jerry: New flag (type f, news): Lichtman's quantitative refinement is strong outside evidence that LWW's theorem holds (unrefereed, not checked by us); binary Chowla reported resolved; Gou-Wang-Xu conditional and function-field prime pairs. Needs outside expert review.
+
+Parity attempt: Route card 2026-11-24-lww-prop53-twist (conditional for mu*chi in outline; located for Remark 1's general f): in Prop. 5.3's proof (pp. 61-69) the coefficient enters only through its support, |alpha| <= 1 and Prop. 2.2. A twist by psi mod q0 moves chi_1 mod k to chi_1 psi mod kq0, which Prop. 2.2 covers, so T_3 is small for mu*chi if LWW's Props. 4.2 and 5.3 hold. Thinning the auxiliary primes survives every use found, but Prop. 4.2 (pp. 26-61) was only searched, not read line by line; that is the first unresolved implication. A fresh-context audit found 0 errors, 1 gap (already stated), 1 overstatement and 2 slips, all fixed.
+
+Explored: Where twins sit in Lichtman's typical/exceptional split (dead end, explained): his savings 1/2 and 1 are the trivial bounds L^{-(beta-alpha)}, L^{-2(beta-alpha)} on the exceptional sets (beta < 1/2). Every twin pair is exceptional, where mu(p+2) = -1, contributing a relative L^{-1}, below the cap. Nothing new.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- s
+-  
+- u
+- s
+- e
+- d
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- O
+- p
+- e
+- n
+- A
+- I
+-  
+- b
+- i
+- n
+- a
+- r
+- y
+-  
+- C
+- h
+- o
+- w
+- l
+- a
+-  
+- p
+- r
+- e
+- p
+- r
+- i
+- n
+- t
+-  
+- c
+- o
+- u
+- l
+- d
+-  
+- n
+- o
+- t
+-  
+- b
+- e
+-  
+- l
+- o
+- c
+- a
+- t
+- e
+- d
+-  
+- (
+- n
+- o
+- t
+- e
+- s
+- /
+- s
+- o
+- u
+- r
+- c
+- e
+- s
+- -
+- n
+- e
+- e
+- d
+- e
+- d
+- .
+- m
+- d
+- )
+- .
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 2
+- .
+- 3
+- :
+-  
+- t
+- h
+- e
+-  
+- d
+- e
+- l
+- a
+- y
+- -
+- r
+- e
+- c
+- u
+- r
+- r
+- e
+- n
+- c
+- e
+-  
+- b
+- r
+- a
+- n
+- c
+- h
+-  
+- w
+- a
+- s
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- o
+- n
+- l
+- y
+-  
+- f
+- o
+- r
+-  
+- j
+-  
+- <
+- =
+-  
+- 3
+- M
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+-  
+- 2
+- 5
+-  
+- d
+- e
+- l
+- a
+- y
+-  
+- c
+- a
+- p
+- s
+- ;
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 2
+- .
+- 2
+-  
+- w
+- a
+- s
+-  
+- o
+- n
+- l
+- y
+-  
+- s
+- p
+- o
+- t
+- -
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+- .
+
+Next: 186 Lemma 2.4, then the restoration threshold (Prop. 4.6). Parity: compare Lichtman's Prop. 7.1 (Type II with one rough variable) with our P1-P3 location of LWW's step; read LWW Prop. 4.2 for thinned sets. Lean: the asymptotic of sum y_u^2/phi(u), or write the short Lean note. Paper run: the news (binary Chowla reported resolved; GWX function-field prime pairs) may need a 1.1.x erratum note in the parity paper, which the review decides.
+
 ## 2026-11-24 - Session 50 (7:34 PM CT paper run of 23 Nov, started on time 01:35 UTC 24 Nov; no wait, no other run active): Lu-Wang-Wu: the three properties of mu their argument uses as the target, and a fake target that fails only one; 186 Lemma 1.7 checked; Lean: mu over coprime tuples; main paper v0.50
 
 - B
@@ -12353,685 +16202,246 @@ Did not work or is blocked:
 
 Next: Monday 16 Nov 3:34 AM CT run: the first weekly review before other work. It should decide the referee's proposed cuts (Prop. k3-step, sec. 4.4, the literature digests, notation) and whether the k = 3 variational thread continues. Parity: open question 8, or a log-averaged version of Prop. prop:siegel-bias. 182: restoration data if supplied.
 
-## 2026-11-15 - Session 24 (11:34 AM CT, started on time 17:35 UTC; no wait): What the level of distribution alone gives for twin primes: Bombieri's asymptotic sieve read through Ford (parity paper v0.9); k = 45 Lemma 9.1 weights checked by the second exact program
+## 2026-11-15 - Daily summary of Sessions 17-24 (14-15 Nov; full entries in log/archive-2026-11-15.json): Fourth day: rung 186 finished, Phase B starts, and the parity-barrier paper is built from the sources
 
-- Parity paper v0.9 (thread 3, hypotheses that do not suffice): new Section on Bombieri's asymptotic sieve, read in Ford's 2004 paper (arXiv:math/0401215v1). Bombieri's theorem as Ford quotes it says that level of distribution x^nu for all nu < 1 (EH) gives the asymptotic for sum a_n Lambda_k(n), k >= 2, and Ford proves that no fixed nu < 1 suffices.
-- Prop. prop:bomb-twin (Proved here, folklore, conditional on Bombieri's theorem applying to a_n = Lambda(n+2)): under EH the twin-prime sum and the (Lambda*Lambda)-weighted count of p-2 = p1 p2 add up to 4 C_2 x log x, so twin primes are equivalent to that semiprime asymptotic, and EH gives the familiar factor-2 upper bound. New open question 7: Hooley's averaged parity condition for twins (a Moebius-on-shifted-primes statement) is open, and so is whether it would suffice.
-- Probable factor-2 slip found in Debouzy's 2019 preprint (twins almost prime under EH): the printed constant 2 S_2 should be 4 S_2. The p = 2 local factor is dropped in her eq. (65). Numerics (Heuristic): (P+Q)/(2M) = 0.968, 0.974, 0.975 at x = 1e6, 1e7, 3e7, tending to 1 for 4 S_2, against 1/2 for the printed constant. An adversarial audit confirmed it and also found a bug in our script, fixed before anything entered the paper.
-- Bound share: the k = 45 Schwartz-Zippel check finished (capped_exact.py, 273 pieces, resumed from 74). Its exact I_T and J_T at the random test point equal capped_check.py's exactly (347- and 352-digit numerators), so the Lemma 9.1 ceiling < 3.99 now rests on two exact programs. Verification note v0.11, main paper v0.24.
-- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
-
-Flag for Jerry: (minor) Debouzy arXiv:1907.06393v1: the main constant 2 S_2 appears to be off by a factor 2 (4 S_2 meant); qualitative result unaffected; confirmed by an independent audit and numerics (notes/flags-for-jerry.md).
-
-Parity attempt: Attempt: what Type I / level information alone gives for Lambda(n+2) (Bombieri, Ford). Classification: located (literature plus a folklore reduction). Under EH the barrier is exactly the prime / P2 split of the Lambda_2 sum. First unresolved implication: whether EH plus Hooley's averaged absence of parity bias suffices (open per Ford), and whether that condition holds for mu(p-2) at all. No parity-breaking content.
-
-Explored: Does mu(p-2) show a parity bias in progressions that Hooley's averaged condition would see? Inconclusive (no structure): against a random-sign model the ratio is 0.73-1.54 at x = 1e6, 1e7, i.e. square-root cancellation only.
-
-Did not work or is blocked:
-- W
-- o
-- l
-- f
-- r
-- a
-- m
--  
-- c
-- o
-- n
-- n
-- e
-- c
-- t
-- o
-- r
--  
-- n
-- o
-- t
--  
-- a
-- v
-- a
-- i
-- l
-- a
-- b
-- l
-- e
--  
-- i
-- n
--  
-- t
-- h
-- i
-- s
--  
-- s
+- S
 - e
 - s
 - s
 - i
 - o
 - n
-- ;
--  
-- m
-- a
-- t
-- h
-- b
-- o
-- x
--  
-- s
-- k
-- i
-- l
-- l
-- s
--  
-- n
-- o
-- t
--  
-- a
-- v
-- a
-- i
-- l
-- a
-- b
-- l
-- e
--  
-- (
-- f
-- r
-- e
-- s
-- h
-- -
-- c
-- o
-- n
-- t
-- e
-- x
-- t
--  
-- a
-- g
-- e
-- n
-- t
-- s
--  
-- u
-- s
-- e
-- d
-- :
--  
-- 2
--  
-- a
-- u
-- d
-- i
-- t
-- s
-- ,
--  
-- 5
--  
-- e
-- r
-- r
-- o
-- r
-- s
--  
-- f
-- i
-- x
-- e
-- d
-- ,
--  
-- i
-- n
-- c
-- l
-- u
-- d
-- i
-- n
-- g
--  
-- p
-- +
-- 2
--  
-- w
-- r
-- i
-- t
-- t
-- e
-- n
--  
-- f
-- o
-- r
--  
-- p
-- -
-- 2
-- )
-- .
--  
-- T
-- h
-- e
--  
-- x
--  
-- =
 -  
 - 1
-- e
-- 8
--  
-- n
-- u
-- m
-- e
-- r
-- i
-- c
-- a
-- l
--  
-- r
-- u
-- n
--  
-- w
-- a
-- s
--  
-- O
-- O
-- M
-- -
-- k
-- i
-- l
-- l
-- e
-- d
--  
-- a
-- t
--  
-- 1
-- 3
--  
-- G
-- B
--  
-- (
-- 3
-- e
 - 7
 -  
+- f
+- i
+- n
+- i
+- s
+- h
+- e
+- d
+-  
+- r
 - u
-- s
-- e
-- d
--  
-- i
 - n
-- s
-- t
-- e
-- a
-- d
-- )
-- .
--  
-- B
-- o
-- m
-- b
-- i
-- e
-- r
-- i
-- '
-- s
--  
-- o
-- r
-- i
 - g
-- i
-- n
-- a
-- l
 -  
-- p
-- a
-- p
-- e
-- r
-- s
--  
-- w
-- e
-- r
-- e
--  
-- n
-- o
-- t
--  
-- o
-- p
-- e
-- n
-- e
-- d
+- 1
+- 8
+- 6
 -  
 - (
-- o
-- n
 - l
-- y
--  
-- F
 - o
-- r
+- s
+- s
+-  
+- b
+- o
+- u
+- n
 - d
-- '
-- s
 -  
-- q
-- u
-- o
-- t
-- a
-- t
-- i
-- o
-- n
-- )
-- .
--  
-- T
-- h
-- e
--  
-- 3
-- g
--  
-- s
-- h
-- a
 - r
 - e
--  
-- w
-- a
-- s
--  
-- t
-- h
-- i
-- n
-- :
--  
-- n
-- o
--  
-- n
-- e
-- w
--  
-- s
-- m
-- a
-- l
-- l
 - -
-- r
 - e
-- s
+- v
+- a
+- l
 - u
-- l
+- a
 - t
-- s
+- e
+- d
 -  
-- l
 - i
 - n
+-  
+- f
+- u
+- l
+- l
+- ,
+-  
+- t
+- h
 - e
+-  
+- d
+- e
+- c
+- i
+- s
+- i
+- v
+- e
+-  
+- p
+- a
+- r
+- t
 -  
 - b
-- e
-- f
-- o
-- r
-- e
--  
-- t
-- h
-- e
--  
-- w
-- e
-- e
-- k
-- l
 - y
 -  
-- r
+- a
+-  
+- s
 - e
-- v
-- i
-- e
-- w
-- .
-
-Next: Monday 16 Nov 3:34 AM CT run: the first weekly review before other work (is the k = 3 GEH line worth more runs; second small-results paper). Parity: open question 7, or a candidate the review picks. 182: restoration data if supplied.
-
-## 2026-11-15 - Session 23 (back-to-back run 2 of 3 at Jerry's request, continued in the same conversation as Session 22 right after its merge, ~16:45 UTC; no wait): For which eps does Polymath8b's k = 3 GEH criterion beat the parity value 2? Above 2 at eps = 2/9, 1/4, 7/24; provably below 2 for every eps >= 0.439 (parity paper v0.8)
-
-- Parity paper v0.8 (this run's parity attempt): for eps >= 1/4 the k = 3 problem of Polymath8b's Theorem 3.14 without the marginal condition reduces, by a Schur test, to a one-dimensional inequality (Prop. prop:unc-ceiling, proved here). Any positive phi satisfying it gives a ceiling for that eps and every larger one.
-- Certificates, each checked by two independent programs (arb and mpmath interval arithmetic): the supremum sigma_3(eps) is at most 1.9999 for every eps in [0.439, 1/2), at most 1.995 for eps >= 0.45, and at most 2.17 at eps = 1/4. By scaling, the single certificate at 0.439 gives sigma_3(eps) <= 3/2 + (4999/5610)(1-eps) on [1/4, 1/2), so sigma_3 < 2 for all eps > 0.43889.
-- Lower side: exact step functions give sigma_3 > 2 at eps = 2/9 and 7/24 as well as 1/4 (helper program plus our independent verifier). Exact lower bounds at 1/6, 1/5, 3/10, 1/3 stay below 2 and are undecided. So under GEH the criterion gives DHL[3,2] (H1 <= 6) for 2/9, 1/4, 7/24 and cannot give it for eps >= 0.439; heuristically it works only on about (0.19, 0.31), with maximum about 2.003.
-- Literature: Polymath8b v4 re-read (their partition works for eps in [1/4, 1/3]; 1/4 chosen for simplicity, p. 63); three web searches found no range-of-eps result. Fresh-context audit: no errors, 2 gaps and 6 wording items, all fixed (notes/audit-parity-v08.md). Main paper v0.23.
-- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
-
-Parity attempt: Attempt: rigorous brackets for the k = 3 GEH criterion as a function of eps. Classification: proved/computed (partial answer to open question 6): above 2 at 2/9, 1/4, 7/24, below 2 on [0.439, 1/2); first unresolved implication: a rigorous ceiling below 2 for small eps or on [0.31, 0.4383), which must use the marginal condition. No parity-breaking content.
-
-Explored: Is the constant kappa of the 1D Schur problem (sup without marginal condition = 3/2 + kappa(1-eps)) a closed form? Dead end: kappa = 0.8901675 (threshold eps* = 0.43831) and mpmath.identify gives only overfitted noise; the scaling observation itself became Cor. cor:k3-linear.
-
-Did not work or is blocked:
-- W
+- c
 - o
-- l
-- f
+- n
+- d
+-  
+- p
+- r
+- o
+- g
 - r
 - a
 - m
--  
-- c
-- o
-- n
-- n
-- e
-- c
-- t
-- o
-- r
--  
-- n
-- o
-- t
--  
-- a
-- v
-- a
-- i
-- l
-- a
-- b
-- l
-- e
 - ;
 -  
-- m
-- a
-- t
-- h
-- b
-- o
-- x
--  
-- s
-- k
-- i
-- l
-- l
-- s
+- 1
+- 8
+- 6
 -  
 - n
 - o
 - t
 -  
 - a
-- v
-- a
-- i
-- l
-- a
-- b
-- l
+- d
+- o
+- p
+- t
 - e
+- d
+- ,
 -  
-- (
-- f
-- r
-- e
-- s
-- h
-- -
+- a
+- n
+- a
+- l
+- y
+- t
+- i
 - c
-- o
-- n
-- t
-- e
-- x
-- t
 -  
-- a
-- g
-- e
-- n
-- t
-- s
--  
-- u
-- s
-- e
-- d
-- )
-- .
--  
-- W
-- e
 - i
-- g
-- h
+- n
+- p
+- u
 - t
-- e
-- d
+- s
 -  
 - C
-- a
-- u
-- c
-- h
-- y
-- -
-- S
-- c
-- h
-- w
-- a
-- r
-- z
--  
-- w
-- i
-- t
-- h
--  
-- f
-- i
-- b
-- r
-- e
-- -
 - l
-- e
-- n
-- g
-- t
-- h
--  
-- w
-- e
+- a
 - i
-- g
-- h
-- t
-- s
--  
-- g
-- i
-- v
+- m
 - e
-- s
--  
-- o
-- n
-- l
-- y
--  
-- c
-- (
-- 3
+- d
 - )
 -  
-- =
--  
-- 2
-- .
-- 4
-- 7
-- 2
--  
 - a
-- g
-- a
-- i
 - n
-- .
+- d
 -  
-- N
-- o
--  
-- r
-- i
-- g
-- o
-- r
-- o
-- u
 - s
--  
-- c
+- t
+- a
+- r
+- t
 - e
-- i
-- l
-- i
-- n
-- g
+- d
 -  
-- b
+- P
+- h
+- a
+- s
 - e
-- l
-- o
+-  
+- B
+-  
 - w
--  
-- 2
--  
 - i
-- n
--  
 - t
 - h
-- e
 -  
-- m
-- i
-- d
-- d
-- l
-- e
--  
-- o
-- r
--  
-- s
-- m
 - a
-- l
-- l
-- -
-- e
+-  
 - p
-- s
--  
-- r
 - a
-- n
-- g
+- r
+- i
+- t
+- y
+- -
+- b
+- a
+- r
+- r
+- i
 - e
+- r
+-  
+- p
+- a
+- p
+- e
+- r
 - .
 -  
-- N
-- o
--  
-- b
-- o
-- u
-- n
-- d
--  
-- w
-- o
-- r
-- k
--  
-- t
-- h
+- S
+- e
+- s
+- s
 - i
+- o
+- n
 - s
 -  
-- r
-- u
-- n
--  
-- (
 - 1
 - 8
+- -
 - 2
+- 4
 -  
-- d
-- a
-- t
-- a
--  
+- (
 - s
+- e
+- v
+- e
+- r
+- a
+- l
+-  
+- b
+- o
+- n
+- u
+- s
+-  
+- r
+- u
+- n
+- s
+-  
+- a
 - t
-- i
-- l
-- l
+-  
+- J
+- e
+- r
+- r
+- y
+- '
+- s
 -  
 - r
 - e
@@ -13040,130 +16450,102 @@ Did not work or is blocked:
 - e
 - s
 - t
-- e
-- d
 - )
-- .
-
-Next: Monday 16 Nov run: the first weekly review before other work. Parity: use the marginal condition for a rigorous ceiling at small eps; or move on to thread 3 (hypotheses known not to suffice). 182: restoration data if supplied.
-
-## 2026-11-15 - Session 22 (back-to-back bonus run 1 of 3 at Jerry's request, started 9:51 AM CT / 15:51 UTC; no wait, no other run active): Why the sharp k = 2 argument does not extend to k = 3: a dual formula, overlapping marginal conditions, and an exact step-function check of Polymath8b's DHL[3,2] under GEH (parity paper v0.7); our bipartite criterion credited to Tao's 2014 blog post
-
-- Parity paper v0.7 (this run's parity attempt): the supremum of Polymath8b's Theorem 3.14 ratio is the norm of a projected operator (Lemma lem:dual, standard duality). Our k = 2 theorem is exactly this projection, because at k = 2 the two marginal conditions act on disjoint sets. For k >= 3 they overlap (Prop. prop:overlap), so the argument does not transfer.
-- Dropping the overlapping conditions at k = 3 lets the ratio exceed 2.1408 at eps = 1/8 and 2.0657 at eps = 1/4 (exact certificates, two scripts), while the true supremum at eps = 1/8 is about 1.976 (Heuristic, two grid methods). So whether the criterion beats the parity value 2 is decided by the overlapping conditions.
-- An exact step function on the arrangement {t_i, t_i+t_j, sum t = m/8} gives the k = 3, eps = 1/4 ratio 2 + 711155/3866758832 (about 2.00018), confirmed by two independent programs (one written by a helper agent, one here). This independently checks the variational step of Polymath8b's Theorem 3.15 (DHL[3,2], so H1 <= 6, under GEH); nothing new is proved. Heuristic eps scan: only eps = 1/4 of the sampled values exceeds 2 (about 2.003); 1/8, 3/8 give about 1.976 and 1.989.
-- Literature check correction: the core of our bipartite criterion (convex hull of forbidden sign patterns, bipartite target graphs, DHL[k,m+1] blocked iff k <= 2m) is already in Tao's blog post 'A general parity problem obstruction' (21 Nov 2014), found through a footnote of Akeno (arXiv:2508.02769v3). The paper now credits it (Remark rem:tao14b); our window form and H_m < H(2m+1) remain. Fresh-context audit of the new subsection: no mathematical errors, one numerical-description error and gaps, all fixed (notes/audit-parity-v07.md). Main paper v0.22.
-- Bound share: the 182 restoration step's per-component data (197 components) are not in the trial data we have; requested from Jerry (notes/sources-needed.md). Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
-
-Parity attempt: Attempt: extend the sharp k = 2 variance argument to k = 3 via a dual formula. Classification: no-go for the direct extension (Computed + Heuristic): the constraint cylinders overlap, and the clean-column relaxation is certified above 2.14 at eps = 1/8 where the true value is about 1.976; first unresolved implication: a rigorous ceiling using the overlapping constraints. No parity-breaking content.
-
-Explored: Does the k = 3 extremal keep the k = 2 structure (constant marginal on the J-region)? Dead end: the grid extremal's marginal varies by a factor of about 5, and forcing a constant marginal drops the ratio to 1.736 (vs 1.959 on the same grid).
-
-Did not work or is blocked:
-- W
-- o
-- l
-- f
-- r
-- a
-- m
 -  
-- c
-- o
-- n
-- n
-- e
-- c
-- t
-- o
-- r
--  
-- n
-- o
-- t
--  
+- g
 - a
 - v
-- a
-- i
-- l
-- a
-- b
-- l
 - e
--  
-- i
-- n
 -  
 - t
 - h
-- i
-- s
--  
-- s
 - e
-- s
-- s
-- i
-- o
-- n
-- ;
 -  
-- m
-- a
-- t
-- h
-- b
-- o
+- e
 - x
--  
-- s
-- k
-- i
-- l
-- l
-- s
--  
-- n
-- o
+- a
+- c
 - t
 -  
-- a
-- v
-- a
+- c
+- r
 - i
-- l
+- t
+- e
+- r
+- i
+- o
+- n
+-  
+- f
+- o
+- r
+-  
+- w
+- h
 - a
+- t
+-  
+- t
+- h
+- e
+-  
+- p
+- a
+- r
+- i
+- t
+- y
+-  
+- o
+- b
+- s
+- t
+- r
+- u
+- c
+- t
+- i
+- o
+- n
+-  
 - b
 - l
-- e
+- o
+- c
+- k
+- s
 -  
 - (
-- f
-- r
-- e
-- s
-- h
-- -
-- c
-- o
-- n
-- t
 - e
 - x
-- t
--  
+- p
+- l
 - a
-- g
-- e
+- i
 - n
-- t
 - s
 -  
-- u
-- s
+- t
+- h
 - e
-- d
+-  
+- 6
+- ;
+-  
+- H
+- _
+- m
+-  
+- <
+-  
+- H
+- (
+- 2
+- m
+- +
+- 1
+- )
 -  
 - f
 - o
@@ -13171,27 +16553,31 @@ Did not work or is blocked:
 -  
 - t
 - h
-- e
--  
 - a
-- u
-- d
-- i
 - t
-- )
-- .
 -  
-- N
+- c
+- l
+- a
+- s
+- s
+-  
 - o
+- f
 -  
-- r
+- w
+- e
 - i
 - g
-- o
-- r
-- o
-- u
+- h
+- t
 - s
+- )
+- ,
+-  
+- t
+- h
+- e
 -  
 - c
 - e
@@ -13201,20 +16587,119 @@ Did not work or is blocked:
 - n
 - g
 -  
-- b
-- e
+- k
+- ^
+- 2
+-  
 - l
 - o
-- w
+- g
+-  
+- k
+- /
+- (
+- k
+- -
+- 1
+- )
+- ^
+- 2
+-  
+- f
+- o
+- r
+-  
+- P
+- o
+- l
+- y
+- m
+- a
+- t
+- h
+- 8
+- b
+- '
+- s
+-  
+- G
+- E
+- H
+-  
+- c
+- r
+- i
+- t
+- e
+- r
+- i
+- a
+-  
+- (
+- n
+- o
+-  
+- D
+- H
+- L
+- [
+- k
+- ,
+- 3
+- ]
+-  
+- f
+- o
+- r
+-  
+- k
+-  
+- <
+- =
+-  
+- 4
+- 5
+- ;
+-  
+- k
+-  
+- =
 -  
 - 2
-- .
-- 4
-- 7
-- 2
+-  
+- e
+- x
+- a
+- c
+- t
+- l
+- y
 -  
 - a
 - t
+-  
+- t
+- h
+- e
+-  
+- p
+- a
+- r
+- i
+- t
+- y
+-  
+- v
+- a
+- l
+- u
+- e
+- )
+- ,
+-  
+- t
+- h
+- e
 -  
 - k
 -  
@@ -13222,56 +16707,292 @@ Did not work or is blocked:
 -  
 - 3
 -  
+- e
+- p
+- s
+- -
 - w
+- i
+- n
+- d
+- o
+- w
+- ,
+-  
+- a
+- n
+- d
+-  
+- s
+- o
+- u
+- r
+- c
+- e
+-  
+- r
+- e
+- a
+- d
+- i
+- n
+- g
+- s
+-  
+- o
+- f
+-  
+- H
+- e
+- a
+- t
+- h
+- -
+- B
+- r
+- o
+- w
+- n
+-  
+- x
+- ^
+- 3
+- +
+- 2
+- y
+- ^
+- 3
+- ,
+-  
+- S
+- a
+- w
+- i
+- n
+- -
+- S
+- h
+- u
+- s
+- t
+- e
+- r
+- m
+- a
+- n
+-  
+- a
+- n
+- d
+-  
+- B
+- o
+- m
+- b
+- i
+- e
+- r
+- i
+- '
+- s
+-  
 - a
 - s
+- y
+- m
+- p
+- t
+- o
+- t
+- i
+- c
+-  
+- s
+- i
+- e
+- v
+- e
+-  
+- (
+- p
+- a
+- r
+- i
+- t
+- y
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 4
+- -
+- v
+- 0
+- .
+- 9
+- )
+- .
+-  
+- R
+- u
+- n
+- g
+-  
+- 1
+- 8
+- 2
+- :
+-  
+- n
+- u
+- m
+- e
+- r
+- a
+- t
+- o
+- r
+- s
+- ,
+-  
+- t
+- a
+- i
+- l
+-  
+- t
+- e
+- r
+- m
+-  
+- a
+- n
+- d
+-  
+- m
+- a
+- s
+- s
+-  
+- d
+- e
+- f
+- i
+- c
+- i
+- t
+-  
+- b
+- y
+-  
+- s
+- e
+- c
+- o
+- n
+- d
 -  
 - p
 - r
 - o
-- v
+- g
+- r
+- a
+- m
+- s
+- ;
+-  
+- r
+- e
+- s
+- t
+- o
+- r
+- a
+- t
+- i
+- o
+- n
+-  
+- a
+- r
+- i
+- t
+- h
+- m
+- e
+- t
+- i
+- c
+-  
+- r
+- e
+- -
+- d
+- o
+- n
+- e
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
 - e
 - d
 -  
 - (
-- t
-- h
-- e
+- 2
+- 4
+- 6
 -  
-- a
-- t
-- t
-- e
-- m
-- p
-- t
-- '
-- s
+- /
 -  
-- s
-- u
-- c
-- c
-- e
-- s
-- s
+- 1
+- 8
+- 2
+-  
+- /
+-  
+- 2
+- 3
+- 6
 -  
 - c
-- r
+- o
+- n
+- d
 - i
 - t
-- e
-- r
 - i
 - o
 - n
+- a
+- l
 - )
 - .
--  
-- T
-- h
-- e
--  
+
+Parity attempt: Route cards of 14-15 Nov (see notes/parity-attempts/README.md): all located or confirmed the obstruction; none breaks it.
+
+Explored: See the archived entries.
+
+Did not work or is blocked:
 - 1
 - 8
 - 2
@@ -13288,148 +17009,48 @@ Did not work or is blocked:
 - o
 - n
 -  
-- i
-- n
+- d
+- a
 - t
-- e
-- g
-- r
 - a
-- l
-- s
 -  
-- r
-- e
-- m
+- u
+- n
+- a
+- v
 - a
 - i
-- n
--  
+- l
+- a
 - b
 - l
-- o
-- c
-- k
 - e
-- d
+- ;
 -  
+- W
 - o
-- n
+- l
+- f
+- r
+- a
+- m
 -  
-- d
-- a
+- n
+- o
 - t
+-  
 - a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
 - .
 
-Next: Monday 16 Nov run: the first weekly review (notes/reviews/2026-11-16.md) before other work. Parity: a rigorous k = 3 ceiling using the overlapping constraints, or exact arrangement certificates over a range of eps. 182: the restoration data if Jerry supplies them.
-
-## 2026-11-15 - Session 21 (bonus run at Jerry's request, started 8:54 AM CT / 14:54 UTC; no wait, no other run active): Where Polymath8b's GEH criteria stop: a ceiling k^2 log k/(k-1)^2 (no DHL[k,3] for k <= 45) and, at k = 2, exactly the parity value 2 (parity paper v0.6); the 182 restoration arithmetic and source rows checked
-
-- Parity paper v0.6 (this run's parity attempt): Polymath8b's three GEH criteria (Thms 3.8, 3.12(ii), 3.14) have ratio at most c(k) = k^2 log k/(k-1)^2 (Prop. prop:ceil, proved here by scaling their Cor 6.4). So they cannot give DHL[k,3] for any k <= 45, DHL[5,3] in particular (c(5) = 2.515 < 4), although Liouville-pattern weights block only k <= 4. Thresholds 46, 392, 2965, 22007 for m = 2..5 are certified with ball arithmetic.
-- New Theorem thm:k2 (proved here, possibly folklore): at k = 2 the Theorem 3.14 ratio is at most 2 for every eps in (0,1), with equality for an explicit step function. So the strongest GEH criterion reaches exactly the parity value 2 and never exceeds it; with Cor. cor:consistent the criteria agree with the parity class on every blocked case. This confirms the obstruction; it does not break it.
-- Also in v0.6: the printed proof of Polymath8b's Prop 6.5 has an unjustified step (a weight can be -eps off the fibres used); corrected constant (k/(k-1)+eps) log(2k-1); nothing in Polymath8b depends on it. Matomaki-Radziwill (arXiv:1501.04585v4) read in the source (thread 2). A fresh-context adversarial audit found no errors and 3 gaps (attribution to PM8b Remark 6.6, the m = 1 case of Cor. cor:consistent, a numerics reference), all fixed.
-- Bound share, rung 182: the printed arithmetic of the restoration step ((8.3), Sec. 10 totals, (10.2)-(10.3), Secs. 3.7, 13.3) was re-done exactly (86 checks pass), and the 43 + 55 source rows of the trial data satisfy every printed row definition (30 checks). The rows give T0 = 2491228441011/2624989000000 exactly. The 197 restoration integrals are not printed and remain unchecked. Verification note v0.10, main paper v0.21.
-- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
-
-Flag for Jerry: Minor: one step of the printed proof of Polymath8b's Proposition 6.5 is not justified (corrected constant (k/(k-1)+eps) log(2k-1)); no Polymath8b result depends on it.
-
-Parity attempt: Attempt: ceilings for Polymath8b's GEH criteria and the exact k = 2 value. Classification: proved (confirms and locates the obstruction): for 5 <= k <= 45 the failure to give DHL[k,3] is a variational ceiling, not a parity block, and at k = 2 the criterion sits exactly at 2. No parity-breaking content.
-
-Explored: How far above the parity value 2 is the Theorem 3.14 ratio at k = 3 (eps = 1/4)? Symmetric cube grids give 1.959 at n = 24 and extrapolate to about 2.003 (Heuristic), consistent with Polymath8b's certificate 2 + 5.8e-8; inconclusive (no certificate), recorded as open question 6.
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox not available (audits by fresh-context helper agents). Murty-Vatwani (JNT 2017) and BFI (Acta 1986) are still needed (notes/sources-needed.md). The k = 3 grid exploration converges too slowly to certify anything.
-
-Next: Weekly review first (Monday 16 Nov run). Parity: a certified answer to open question 6 (k = 3 supremum: piecewise-polynomial elements plus a dual bound), or weights that change the twisted main terms. Rung 182: the restoration integrals need the per-component data (not printed).
-
-## 2026-11-15 - Session 20 (bonus run at Jerry's request, started 5:37 AM CT / 11:37 UTC; no wait, no other run active): What the integers lack compared with F_q[T]: Sawin-Shusterman's twin-prime proof read in the source and its split written over Z (parity paper v0.5); the 182 minorant's mass deficit by two methods
-
-- Parity paper v0.5 (thread 2 and this run's parity attempt): Sawin-Shusterman's proof of twin primes in F_q[T] (arXiv:1808.04001v2) read in the source. It has no sieve. It splits Lambda = -mu log * 1 at a level D, and handles the large-Mobius range through a characteristic-p identity (their Lemma 3.2: (r+s^p)' = r', so mu on a line is a quadratic character) together with character sums below the Burgess range.
-- Written over Z, the same split gives (Prop. prop:ss-split, proved here, elementary, possibly folklore; compare a related theorem of Murty-Vatwani, known to us only as quoted): unconditionally, by Bombieri-Vinogradov, sum Lambda(n)Lambda(n+2) ~ 2C_2 x holds if and only if T_D(x) = o(x), where T_D is a Mobius-prime correlation; under EH the same holds for any D = x^theta. This is a reformulation, not progress. Even the folklore conjecture on Mobius at shifted primes is weaker, by a factor log x, than what the e = 1 term of T_D needs.
-- Also in v0.5: Corollary cor:maynard-logc extends the twisted Type I input at level (log x)^{c/32} to Maynard's two-variable weights (conditional on the Tao-Teravainen preprint). Open question 3 is answered from the literature: no fixed-residue, absolute-value level beyond x^{1/2} for all moduli is known; the weighted records are 17/32 and 66/107; none reaches the 2/3 that the asymptotic sieve needs. A fresh-context adversarial audit found 2 errors, 3 gaps and 10 wording points, all fixed before release (notes/audit-parity-v05.md).
-- Bound share, rung 182: the mass deficit kappa_true of the five-prime minorant was recomputed by two independent methods: our own 3-variable reduction with Gauss-Legendre quadrature, and the paper's exact simplex moment series after checking that the simplices tile the region. They agree to 58 digits, kappa_true = 9.3307088324061199e-5. It lies inside the printed bracket and below kappa-bar and kappa_cvx. Verification note v0.9, main paper v0.20.
-- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
-
-Flag for Jerry: Minor: Sawin-Shusterman's Theorem 4.5 states its saving exponent as beta/p, but its proof (p. 22) says beta/(2p). Most likely a harmless slip; the Annals version was not checked.
-
-Parity attempt: Attempt: locate the step of Sawin-Shusterman's twin-prime proof that has no integer analogue. Classification: located (reformulation). Over Z their split leaves T_D, a Mobius-prime correlation; the missing step is their characteristic-p Lemma 3.2. First unresolved implication: T_D(x) = o(x) for one admissible D.
-
-Explored: Can L^2 (Barban-Davenport-Halberstam) information on lambda(n)lambda(n+2) replace the pointwise twisted Type I input? Dead end: Cauchy-Schwarz caps any such route at level 1/2 even with random-sign variance, and the numerics at 10^7 look random (V(200)/(200N) = 0.983).
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox not available (audits done by fresh-context helper agents). Murty-Vatwani (JNT 2017): the Queen's URL returned an HTML page, not the PDF; BFI (Acta 1986): bot challenge. Both are recorded in notes/sources-needed.md.
-
-Next: Weekly review first (Monday 16 Nov run). Then parity: Matomaki-Radziwill, or the Murty-Vatwani original if it arrives; attempt candidate: weights that change the twisted main terms (open question 2). Rung 182: the restoration losses (row tables partly underspecified).
-
-## 2026-11-15 - Session 19 follow-up (after Jerry uploaded Heath-Brown's paper, same day; no wait): Heath-Brown's x^3+2y^3 read in the source: what its bilinear estimate uses (parity paper v0.4)
-
-- Jerry supplied the journal scan of Heath-Brown, Primes represented by x^3+2y^3 (Acta Math. 186 (2001)), requested in Session 19. Read in the source (theorem, outline, Lemmas 2.1, 3.8, 3.10, Sections 11-13) and added to the parity paper as Section subsec:hb-x3 (Literature) with Remark rem:hb-transfer (Heuristic).
-- The structure: Heath-Brown uses his own sieve close to Friedlander-Iwaniec's (their condition (R1) is not met); the Type I level X^{2-eps} comes from the factorisation of the form over Q(cbrt 2); in the Type II estimate the condition that alpha*beta_i has no cbrt4-coefficient makes the outer variable the cross product of the two inner ones, and the rest is a 3-dimensional large sieve plus Hecke Groessencharacters. Nothing like this exists for Lambda(n+2), where the same step leads back to a binary prime correlation.
-- The primary source corrects one point of the secondary notes (X. Li calls the sieve Harman's; Heath-Brown calls it his own version). Source request marked received. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Twin prime conjecture open.
-
-Did not work or is blocked:
-- Wolfram and mathbox not available. Quotes checked against the page images by the run itself, not by a second reader.
-
-Next: Weekly review first (Monday 16 Nov). Parity thread 2 next: Sawin-Shusterman (function fields) or Matomaki-Radziwill.
-
-## 2026-11-15 - Session 19 (3:34 AM CT slot, started on time; no wait, no other run active): The 182 tail term by a second program (all four ingredients of its cap quotient now by two programs); the parity obstruction's twisted Type I input at level (log x)^{c0}, conditional on a preprint
-
-- Rung 182 (bound share): a second, independent program for the tail term (own exact kernel, GMP fixed-point contraction with directed error bounds, brute-force self-test with four deliberate mutations) gives T = 5.28634880592807710064e-13 with radius 1.4e-45, inside the first program's ball and below the published bound (relative gap 8.4e-12). So I, J0, J+ and T, the four ingredients of the 182 cap quotient, are each reproduced by two programs, and q_H - 1 = 2.767059e-4 >= mu- = 2.766919e-4. The restoration losses and the analytic inputs are unchecked, so 182 stays claimed.
-- The same program settles a reading of the 182 source: with the nominal last kernel block the paper's own kernel bound K <= 2.194 fails (K_511 = 2.19637) and the tail would exceed the published bound by 5e-7 relative, so only the reading r_max = n0 - 1 used by both programs fits.
-- Parity paper v0.3: expanding the sieve weight in the moduli [d1,d2] <= R^2 (not in its period) and applying Tao-Teravainen's quantitative correlation theorem (arXiv:2512.01739v2 Thm 3.1, an unrefereed preprint) class by class shows that Selberg-type weights of level R <= (log x)^{c0} cannot tell lambda(n)lambda(n+2) = +1 from -1, uniformly in |lambda_d| <= 1 (Prop. prop:tao-weight-logc; proved here, conditional on the preprint). A fresh-context auditor re-read both sources and found it sound; its wording fixes are in. This only confirms the input of the obstruction at a larger level. Shorter abstract, contents list, open questions updated.
-- Small results (3g): verification note v0.8 adds Remark rem:182 (the 182 cap quotient, each ingredient by two programs) and a shorter abstract; main paper v0.19. Heath-Brown's x^3+2y^3 paper (parity thread 2) could not be opened (403, bot challenge, paywall); a helper read two secondary descriptions (Maynard, X. Li), kept in notes only and requested from Jerry.
-- Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). News search: nothing new since the last entry.
-
-Parity attempt: Tao-Teravainen's Theorem 3.1 gives the twisted Type I input of the parity obstruction at level (log x)^{c0}: proved, conditional on that preprint (audited); the first unresolved implication is cancellation for moduli far beyond powers of log x, and even that would only confirm the obstruction.
-
-Explored: Can Liouville signs at extra linear forms enlarge the class of parity weights (open question 2)? No: fairness and the kill condition only see the law of the tuple coordinates, so the tuple marginal is an ordinary pattern weight; LPs for DHL[4,3], DHL[5,3], DHL[3,2] and the PM8b target agree (dead end, code/explore/aux_forms_lp.py).
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits and a proofreader used instead).
-- Heath-Brown, Acta Math. 186 (2001): intlpress 403, Project Euclid bot challenge, Springer paywall, author page 404; recorded in notes/sources-needed.md.
-- The two 182 tail programs share the reading of the source and the layered derivation of the contraction; they check arithmetic and code, not that reading.
-
-Next: Weekly review first (Monday 16 Nov run). Then: parity attempt (Sawin-Shusterman's function-field step, or Maynard two-variable weights at level (log x)^{c0}); parity thread 2 when Heath-Brown arrives; rung 182 restoration losses (scope the 197 source integrals); decide on a second small-results paper.
-
-## 2026-11-15 - Session 18 (3:34 AM CT slot, started early at Jerry's request, 10:23 PM CT 14 Nov; no wait, Session 17 had merged as PR #36): An exact criterion for what the parity obstruction blocks (it explains the 6, and gives H_m < H(2m+1) for this class of weights); rung 182's numerators by a second program and its tail term recomputed
-
-- Parity paper v0.2 (papers/parity-barrier): for Polymath8b-type weights built from Liouville signs on the tuple, a weight that blocks a target exists exactly when (1/2,...,1/2) is a convex combination of target-free sets (Prop. prop:bipartite, proved here, possibly folklore). Consequences: a pair target is blocked iff its graph is bipartite; DHL[k,m+1] iff k <= 2m; and the class blocks every tuple exactly when g < H(2m+1), i.e. H_1 < 6, H_2 < 12, H_3 < 20, while the known sieve bounds for H_2 are 270 (EH) and 252 (GEH). Finite cases Lean-checked (lean/TwinPrimes/Parity.lean); H(3..9) = 6, 8, 12, 16, 20, 26, 30 by exhaustive search.
-- The weight printed in Polymath8b's Remark 8.1 vanishes identically (the product includes i = i', and even with i < i' the positions prime to 3 contain triangles); the intended weight (odd positions) is fair and works. Typo-level; flagged as a minor item.
-- Thread 2: Friedlander-Iwaniec's a^2+b^4 paper read in the source (Theorem 1, Props. 3.5, 4.1, 17.2; norm-form factorisation, lattice count, spin symbol) and a remark on why that structure has no counterpart for Lambda(n+2). Quantitative two-point Chowla literature read for open question 1 (Tao-Teravainen preprint would give level (log x)^c0; deduction not written). A fresh-context adversarial audit found 2 errors (an overclaimed scope in Cor. cor:six, one page number) and several gaps; all fixed before release.
-- Rung 182 (bound share): a second program for the cap numerators gives J0 = 5.63645908992367e-11 and J+ = 4.08240742966434e-13 as rigorous balls, both above the published lower bounds and agreeing with program 1 to 2e-23 / 2e-32. The tail term, transcribed from the bundle (kernel K of (5.6) computed exactly), is T = 5.286348805928e-13, just below its published upper bound, so q_H - 1 = 2.767059e-4 >= the certified mu- (one program for the tail). 182 stays claimed: restoration losses and analytic inputs are unchecked.
-- Small results (3g): the H_m programme was scoped (notes/hm-programme.md): Polymath8b's Theorem 6.7 lower bound reproduced in ball arithmetic (k = 35410 with MPZ, 41588 with BV only, both as published); any gain from the 2026 inputs depends on a (varpi, delta) region no source states, so no paper yet. Bounds unchanged: established 246, claimed 182, project 236 (conditional). Main paper v0.18; parity paper v0.2.
-
-Flag for Jerry: Minor: Polymath8b's Remark 8.1 prints a parity weight that is identically zero (typo-level; the intended weight works); the journal version could not be checked.
-
-Parity attempt: Which close-prime targets the Polymath8b obstruction blocks: proved (for the class of Liouville-pattern weights) that it is exactly the bipartite / fractional-stable-set condition, which explains the parity limit 6 and gives H_m < H(2m+1) for this class; the first open step is whether weights outside the class block DHL[5,3].
-
-Explored: Residue-class-dependent parity weights (exact LPs, code/explore/residue_parity_lp.py): requiring fairness class by class gives nothing beyond k <= 2m, and the naive global notion would 'block' DHL[3,2] at modulus 5*7*11, contradicting Polymath8b's GEH theorem; a dead end that pins down the right notion of fairness.
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).
-- The journal version of Polymath8b (Res. Math. Sci.) returned a bot-challenge page; recorded in notes/sources-needed.md.
-- The 182 tail rests on one program; the J0 gap to program 1 (2e-23) is rounding in program 1, not resolved to the last digit.
-
-Next: Weekly review first (Monday 16 Nov). Then: parity attempt (the Tao-Teravainen deduction to level (log x)^c0, or the function-field step); parity paper thread 2 (Heath-Brown x^3+2y^3); a second, different program for the 182 tail; decide on a second small-results paper.
-
-## 2026-11-15 - Session 17 (7:34 PM CT, 14 Nov; no wait, no other run active): Rung 186 finished: its loss bound re-evaluated in full and its decisive part by a second, independent program; the project moves to Phase B with a first paper on the parity barrier
-
-- 186 loss bound L+: the first program (Arb balls) finished the last 19 of 97 components. At 128 bits the 15 smallest low bins were rejected by the companion's own test (nonpositive lower endpoint in the renewal recurrence), at 256 bits all pass. Every raw value is at most its table entry; the summed component bounds equal the table's group totals (O_2 and O_{5/2} 1 and 3 units of 1e-12 below, inner groups exactly).
-- A fresh-context helper wrote a second, independent program from the PDF alone (code/oai186_loss_outer2.py: GMP integer products and mpmath instead of Arb, a generating-series moment algorithm instead of set partitions, own cap rows). On the 17 components carrying 99.95% of the decisive group O_{5/2} (89.4% of L+) it agrees with the first program to 1.4e-12 (rank-two and factorial) and 2.2e-9 (low bins); both sit about 1.2e-9 below the table. The rest of L+ rests on one program, with large slack by the margin budget (Prop. oai186-budget).
-- So rung 186 is finished in the sense of the plan (main terms and L+ by two programs), and the project switches to Phase B. 186 is NOT adopted: the lemmas that its forms majorise the true losses, its restoration step and its analytic inputs are unchecked. Bounds unchanged: established 246, claimed 182, project 236 (conditional).
-- New paper papers/parity-barrier v0.1 (The parity barrier and twin primes: what is known and what is missing): the Polymath8b parity obstruction and Selberg's example re-read in the sources; Friedlander-Iwaniec's asymptotic sieve specialised to Lambda(n+2) (Props. fi-twin, B-parity, proved here); the twisted Type I input proved in a weak log-averaged form (Prop. tao-weight). An adversarial fresh-context audit found all three propositions correct with fixable gaps and one misquotation (Tao's Remark 1.4 says 'in principle effective'); all fixed. Main paper v0.17 (new Section 'Related results', Remark rem:186-status); verification note v0.7.
-
-Parity attempt: Tao's log-averaged two-point Chowla theorem along sieve weights: proved (possibly folklore) for periodic weights of fixed or slowly growing level, so such weights cannot tell lambda(n)lambda(n+2) = +1 from -1; this confirms the obstruction's input in a weak regime, and the first unresolved step (uniformity in the modulus up to x^theta) is open and would only confirm it further.
-
-Explored: What a GPY/Selberg weight sees of the parity of n(n+2) (code/explore/parity_weighted_liouville.py, up to 1e8): weighted lambda(n)lambda(n+2) ~ 4e-5, the two parity-twisted measures have equal mass and class distributions, and all twin pairs sit in the + measure; Selberg's phenomenon made visible, as expected (now the parity paper's Heuristic illustration).
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helper audits used instead).
-- The second loss program has no renewal branch, so the smallest low bins of O_{5/2} (0.05% of the group), O_2 and the inner groups remain one-program results.
-- No progress on rung 182 this run (its tail term and a second program for J0, J+ are still open).
-
-Next: Phase B: parity paper thread 2 (Friedlander-Iwaniec x^2+y^4 and Sawin-Shusterman, read in the sources) with one bounded parity attempt; start the H_m or capped-variational small-results paper; rung 182 second program for J0, J+ in the bound share. First weekly review on Monday 16 Nov.
+Next: Parity paper toward a frozen v1.0; 186 lemmas; Lean reduction.
 
 ## 2026-11-14 - Daily summary of Sessions 13-16 (13-14 Nov; full entries in log/archive-2026-11-14.json): Third day: our own k = 48 vector confirmed by a second program; rungs 186 and 182 recomputed (main terms, source data, cap numerators, loss bounds)
 

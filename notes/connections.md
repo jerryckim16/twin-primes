@@ -160,7 +160,7 @@ The twin prime conjecture is open. Nothing below is a step that is known to lead
 - Large-q function fields (Carmon–Rudnick; Bender–Pollack, Bary-Soroker; Literature): with the degree n fixed and q -> infinity,
   two-point Chowla and twin primes over F_q[x] are theorems, through Pellet's formula (mu as a quadratic character of the
   discriminant) and Weil / Lang–Weil, in a ring whose primes all have norm >= X^{1/n}. Distance to twins over Z: the integer
-  counterpart contains the Cesàro two-point Chowla conjecture and, on rough pairs, determines the twin count itself; no
+  counterpart contains the Cesàro two-point Chowla conjecture (reported resolved: OpenAI 2026, Claimed, per Lichtman arXiv:2611.28392 p. 1; not located or read by us) and, on rough pairs, determines the twin count itself; no
   integer substitute for Pellet is known (route card 2026-11-21-large-q-pellet.md). Nothing for twins over Z.
 - Sifting-dimension ladder (Session 43; route card 2026-11-22-dimension-ladder.md; Proved here conditional on EH and the
   beta-sieve theorem as quoted, Computed constants): primes p with every prime factor of p+2 = 1 mod q form a sieve problem
