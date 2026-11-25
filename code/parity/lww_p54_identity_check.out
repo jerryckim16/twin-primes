@@ -1,0 +1,19 @@
+LWW p.53-54 identity check (exact rational arithmetic)
+
+(a) A_p empty expansion, 300 random cases: failures = 0
+(b) prefix/suffix identities, 300 random cases (x2): failures = 0
+(c) single-prime operator model vs V^-kappa (4.137)/b'_p, ~400 cases: failures = 0
+(d) global toy model, K=1, J+1=2: M_R(toy) vs prod b'_p * <b, G0 O0 ... G2R b>_distinct
+  P=(2, 3, 5) R=1 seed=1: M_R=3125000/47258883  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=False; same-op supply equal=False]
+  P=(2, 3, 5) R=1 seed=2: M_R=15625/248832  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=False; same-op supply equal=False]
+  P=(2, 3, 5) R=1 seed=3: M_R=625/124416  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=False; same-op supply equal=False]
+  P=(2, 3, 5) R=1 seed=4: M_R=1280000/129140163  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=False; same-op supply equal=False]
+  P=(2, 3, 5) R=1 seed=5: M_R=625/243  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=False; same-op supply equal=False]
+  P=(2, 3, 5) R=1 seed=6: M_R=3125000/129140163  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=False; same-op supply equal=False]
+  P=(2, 3, 5) R=2 seed=7: M_R=98000000/129140163  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
+  P=(2, 3, 5) R=2 seed=8: M_R=32000000/2315685267  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
+  P=(2, 3, 5) R=2 seed=9: M_R=128000000/3486784401  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
+  P=(2, 3, 5) R=2 seed=10: M_R=15625/39366  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
+  P=(2, 3, 5, 7) R=1 seed=11: M_R=44436875/136048896  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
+  P=(2, 3, 5, 7) R=1 seed=12: M_R=155/729  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
+  P=(2, 3, 5, 7) R=2 seed=13: M_R=174622742187500/5559060566555523  equal(theta=9/10,2/3)=True  [neg. control no-distinctness equal=skipped; same-op supply equal=False]
