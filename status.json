@@ -13,11 +13,13 @@
  "results": [
   {
    "label": "Computed",
-   "text": "Rung 186: Lemmas 2.3 (Eulerian cell kernels, 41 checks) and 2.4 (whole-bin Palm envelopes, 36 checks) of the OpenAI companion verified as stated, one program each; all six majorisation lemmas 1.4-1.7, 2.3, 2.4 now checked. Our reading of the main paper's Prop. 4.6 (4.41): the restoration step needs only a positive margin, so the loss may be up to 12.8% too small. 186 not adopted (analytic inputs Claimed). (Sessions 51-52)"
+   "text": "Rung 186: Lemmas 2.3 (Eulerian cell kernels, 41 checks) and 2.4 (whole-bin Palm envelopes, 36 checks) of the OpenAI companion verified as stated, one program each; all six majorisation lemmas 1.4-1.7, 2.3, 2.4 now checked. Our reading of the main paper's Prop. 4.6 (4.41): the restoration step needs only a positive margin, so the loss may be up to 12.8% too small. 186 not adopted (analytic inputs Claimed). (Sessions 51-52)",
+   "where": "code/oai186_lemma23_check.py, code/oai186_lemma24_check.py; notes/oai186-lemma23-check.md, notes/oai186-lemma24-check.md, notes/oai186-restoration-threshold.md"
   },
   {
    "label": "Lean-checked",
-   "text": "Diagonalisation of Maynard's main-term quadratic form for any rational weights on {1..R}^k (Gauss's identity coordinatewise; maynard_diag_lcm, maynard_diag_y_sqfree), and S1 in diagonal form with the finite error and an explicit correction B for pairs whose moduli lcm(d_i,e_i) are not pairwise coprime (maynard_S1_diag_W; such pairs exist, ex_not_hpw, but have count 0 when |h_i-h_j| | W). Not formalised: the size of B and the asymptotics (MaynardDiag.lean, MaynardS1Diag.lean, MaynardHpw.lean; Sessions 51-52)."
+   "text": "Diagonalisation of Maynard's main-term quadratic form for any rational weights on {1..R}^k (Gauss's identity coordinatewise; maynard_diag_lcm, maynard_diag_y_sqfree), and S1 in diagonal form with the finite error and an explicit correction B for pairs whose moduli lcm(d_i,e_i) are not pairwise coprime (maynard_S1_diag_W; such pairs exist, ex_not_hpw, but have count 0 when |h_i-h_j| | W). Not formalised: the size of B and the asymptotics (MaynardDiag.lean, MaynardS1Diag.lean, MaynardHpw.lean; Sessions 51-52).",
+   "where": "lean/TwinPrimes/MaynardDiag.lean, MaynardS1Diag.lean, MaynardHpw.lean"
   },
   {
    "label": "Lean-checked",

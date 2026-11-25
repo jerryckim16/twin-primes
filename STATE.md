@@ -3,48 +3,44 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 52, 11:34 AM CT research run of 24 Nov, started 17:34 UTC): PHASE B
+## POSITION (after Session 53, 7:34 PM CT paper run of 24 Nov, started 01:34 UTC 25 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
-  main paper v0.50 (34 pp.). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a weekly review.
-  Active lines: main paper as an index; a short Lean note for programme (4). Paused: toolkit note (5), H_m, rung 182.
+  main paper v0.51 (35 pp.; S51+S52 written up). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a
+  weekly review. Active lines: main paper as an index; a short Lean note for programme (4). Paused: toolkit note (5), H_m, 182.
 - Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, still v2) open. NEW (S51 news, notes/news-2026-11-24.md, flag entry of 24 Nov S51):
-  Lichtman arXiv:2611.28392 claims a quantitative refinement of LWW (saving (log X)^{1/2-eps}) and reports binary
-  Chowla resolved by OpenAI (Sept 2026, preprint not located); Gou-Wang-Xu arXiv:2611.18825: prime pairs under a Ratios
-  Conjecture (after Lee arXiv:2610.32672) and unconditionally over F_q[T], fixed odd q > 10^200 incl. q = p. All Claimed.
+- LWW flag (arXiv:2610.20242, still v2, checked 25 Nov 01:35 UTC) open. Lichtman 2611.28392 / Gou-Wang-Xu 2611.18825 news
+  recorded (flag entries of 24 Nov S51, S52). S53: Prop. 4.2 survives thinning of the auxiliary primes (conditional).
 
 ## Next steps (in order)
-0. PAPER RUN of 24 Nov (7:34 PM CT): write up S51 AND S52 where they change the mathematics:
-   - main paper Theorem 1 items / rem:186-status for 186 Lemmas 2.3 and 2.4 (all six companion lemmas 1.4-1.7, 2.3, 2.4
-     now verified as stated, one program each); prop:oai186-budget: replace "We have not checked which of the two
-     thresholds..." by the S52 answer (strictly positive margin suffices, [8, Prop. 4.6 (4.41)], so the 12.8% slack is
-     the relevant one; notes/oai186-restoration-threshold.md). 186 still NOT adopted (analytic inputs Claimed).
-   - Lean MaynardDiag / MaynardS1Diag / MaynardHpw (S1 diagonalisation without hpw, correction B for bad pairs).
-   - sec:related news (short, Claimed labels) WITH the S52 correction: Lichtman v1 proves Thm 1.1 only; Thm 1.2 asserted.
-   - Chowla "open" wording: notes/connections.md (large-q Pellet entry), card 2026-11-21-large-q-pellet.md item 2, parity
-     paper (frozen: at most a 1.1.x erratum, else leave to the 30 Nov review): "reported resolved (OpenAI 2026, Claimed;
-     per Lichtman 2611.28392 p. 1)".
-   - status.json ideas ledger: S51 twist card, Lichtman exceptional-set observation, S52 Lichtman target card (own).
-   - log/entries.json has 40 entries: merge the oldest day into a daily summary.
+0. Next research run (3:34 AM CT 25 Nov): news search (3a: LWW v3? Lichtman v2 with a written proof of Thm 1.2? the OpenAI
+   two-point Chowla preprint). Parity attempt: the S53 card's first unresolved implication (Type I / P3 = BV with zero main
+   term for a general bounded multiplicative f, i.e. for the G_g target of the S51 Remark 1 route), or the p. 54 identity
+   of LWW Sect. 4.7 (M_R through G_j, O_j; not re-derived). One card per run; success outcome stated first.
 1. Bound share: the companion's lemma list is done. Remaining unchecked pieces of 186: Lemma 2.2's proof (spot checks
    only), the 40-dimensional contractions (2.16)-(2.21), profile-power-2 rounding; main-paper Prop. 4.6 itself.
    A SECOND independent program for Lemmas 1.4-2.4 would be the next step if the review wants 186 firmer.
    NO per-run regressions (regress_all.py at most monthly). Lemma scripts need python-flint.
 2. Parity paper: frozen v1.1. For the 30 Nov review: (c) E2 remark, (d) "Further tests" paragraph, (e) S50 P1-P3 list,
-   S51 twist and S52 Lichtman comparison as one sentence in Sect. 6.4, (f) news.
-3. Parity attempts: one per run. Candidates: (ii) LWW Prop. 4.2 (pp. 26-61) line by line for thinned prime sets (first
-   unresolved implication of S51 and S52); (iii) new mechanisms chosen by the review of 30 Nov. (i) Lichtman vs P1-P3
-   is DONE (S52, located).
-4. Lean: MaynardHpw.lean done (hpw false in general, ex_not_hpw; bad pairs count 0; maynard_S1_diag_W with correction
-   B). Next: bound B (the pairs whose lcm(d_i,e_i), lcm(d_j,e_j) share a prime p; these contribute 0 to S1 but appear
-   in the full y-form; in Maynard's analysis they cost a sum over p > w of O(1/p^2)-type terms, an analytic step), or
-   write the short Lean note.
-5. Main paper: bump the version only when content changes; keep sec:related as an index.
-6. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
-7. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority). (Murty-Vatwani, BFI86,
-   HB83 and the 182 restoration data are also still listed as needed in notes/sources-needed.md.)
+   S51 twist, S52 Lichtman comparison and S53 thinning as one sentence in Sect. 6.4, (f) news (Chowla reported resolved:
+   the paper's only Chowla wording, l. ~1369, quotes a source on general Chowla, so no erratum was needed; checked S53).
+3. Lean: bound B (bad pairs; analytic in Maynard) or write the short Lean note (due by ~S56 per the review's 6-run rule).
+4. Main paper: bump the version only when content changes; keep sec:related as an index.
+5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
+6. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani, BFI86, HB83 and
+   the 182 restoration data (see notes/sources-needed.md).
+
+## Session 53 (7:34 PM CT paper run of 24 Nov, started on time 01:34 UTC 25 Nov; no wait) -- additions
+- Parity attempt (helper agent; fresh-context audit appended): notes/parity-attempts/2026-11-25-lww-prop42-thinning.md
+  (conditional): Prop. 4.2 (pp. 18-61) read line by line for every use of P_i, V_i; all survive P'_i subset of P_i with
+  V'_i >= c_0. Source LWW v2 re-fetched (SHA-256 matches; no v3). No script.
+- Paper run: main paper v0.51 (rem:186-status Lemmas 2.3, 2.4; prop:oai186-budget restoration threshold; thm:lean item 20
+  = MaynardDiag/S1Diag/Hpw; sec:related news of 24 Nov; table footnote); 35 pp., no overfull boxes, no undefined refs.
+  Chowla wording updated in notes/connections.md and the large-q Pellet card. status.json 0.51 (results, ideas);
+  README (186 lemmas); log: the 15 Nov entries merged into a daily summary (log/archive-2026-11-15.json). Site rebuilt.
+- Lean not changed; lake build and Audit.lean re-run and pass (propext / Quot.sound / Classical.choice only).
+- No exploration (Central day 24 Nov already had one, S51). Wolfram and mathbox NOT available. No news search.
 
 ## Session 52 (11:34 AM CT research run of 24 Nov, started on time 17:34 UTC; no wait) -- additions
 - Bound share: 186 Lemma 2.4 verified as stated (code/oai186_lemma24_check.py, /usr/bin/python3 + python-flint; ~32 s,
