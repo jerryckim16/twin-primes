@@ -3,6 +3,28 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-25, Session 54 -- Fixed small q, growing n: is the F_q[T] twin count uniform in n? (function fields)
+- Idea: the large-q theorems (Bary-Soroker, Bender-Pollack, Carmon-Rudnick; route card 2026-11-21-large-q-pellet.md) give
+  relative errors O_n(q^{-1/2}), non-trivial only for q > (2n-3)^2. Risky question: at fixed q = 3, 5, 7 and growing n, does
+  E(q,n) = N_2/HL - 1 behave like q^{-1/2} times something growing in n (a measurable failure of "large q" at fixed q), or
+  is it n-uniform; is a threshold near q ~ (2n-3)^2 visible? Same for C(q,n) = q^{-n} sum_{deg f = n} mu(f) mu(f+1).
+- Prediction (derived here from local densities, no source opened): HL = S(q) q^n / n^2, S(q) = prod_P (1 - 1/(|P|-1)^2)
+  (= 0.396104, 0.709544, 0.812706 for q = 3, 5, 7); also Psi_2 = sum Lambda(f) Lambda(f+1) against S q^n.
+- Tried: code/explore/ffq_twin_uniformity.py q nmax nbrute (/usr/bin/python3 -I; numpy sieve by irreducibles of degree
+  <= n/2; helper-written). Built-in checks: irreducible counts = (1/n) sum mu(d) q^{n/d}, #squarefree = q^n - q^{n-1},
+  sum mu = 0, brute-force factorisation for small n. Ranges q = 3, n <= 16; q = 5, n <= 11; q = 7, n <= 9 (q^n <= 4.9e7),
+  plus q = 11, n <= 7 and q = 13, n <= 6; about 50 s, max RSS 1.3 GB; output code/explore/ffq_twin_uniformity.out.
+  Coordinator re-check with a separate brute-force script (python-flint factor over all monic f): N_2 and sum mu(f)mu(f+1)
+  agree at (q,n) = (3,8), (3,9), (5,8), (7,5) (36/51, 105/-33, 4325/-4265, 560/392).
+- Outcome: DEAD END for the question as posed. E shrinks with n at each q: |E| <= 0.016 for q = 3, n >= 13; +0.0087 at
+  (5,11); -0.011 at (7,9), far below q^{-1/2} (0.58, 0.45, 0.38); |N_2 - HL| <= 0.73 q^{n/2} for n >= 4, consistent
+  with HL plus a square-root error, though not Poisson (z = (N_2-HL)/sqrt(HL) reaches +4.7 at (5,11), -7.2 at (7,9));
+  |C| q^{n/2} <= 11 throughout. Nothing changes near q ~ (2n-3)^2.
+- Why: at fixed q the twin count follows HL numerically as well as over Z; the difficulty is in the proof (the
+  Weil-per-slice step gives no saving at fixed q), not in anything the data can see. Side remark (elementary, not
+  pursued): C(q,2) = -1/q and C(q,4) = -1/q^2 for all q tested; C(q,3) = 0 for q = 3, 5, 11 but not for q = 7, 13.
+  Heuristic / exploratory only.
+
 ## 2026-11-24, Session 51 -- Where do twins sit in Lichtman's typical/exceptional split? (reading-based, cheap)
 - Idea: Lichtman (arXiv:2611.28392v1, news of this run) gets savings L^{-(1/2-eps)} for sum mu(p+2) and L^{-(1-eps)} for
   sum mu(n)mu(n+1). Is there a structural reason for these exponents, and does the split say anything new about the parity

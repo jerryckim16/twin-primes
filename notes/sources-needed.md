@@ -48,6 +48,7 @@
 - Tried (bonus run, 15 Nov 2026): https://mast.queensu.ca/~murty/TwinPrimes-Parity.pdf returned HTTP 200, but the content was an HTML page
   (the Queen's website), not the PDF. No arXiv version found (one standard web search). Not worked around.
   Re-tried 16 Nov 2026 (Session 26): same URL, HTTP 200, 24767 bytes of HTML (homepage redirect), no PDF.
+  Re-tried 25 Nov 2026 (Session 54, news search): same URL, HTTP 200, 24767 bytes of HTML (Queen's homepage), no PDF.
 - Status: needed.
 
 ## Bombieri, Friedlander, Iwaniec: "Primes in arithmetic progressions to large moduli", Acta Math. 156 (1986), 203-251, doi:10.1007/BF02399204

@@ -1,0 +1,12 @@
+Part B: 304 polyhedral regions decided by exact Fourier-Motzkin
+  continuous outer   : min cap slack 0.000000e+00 (row n24)
+  continuous base    : min cap slack 0.000000e+00 (row o24)
+  continuous enlarged: min cap slack 0.000000e+00 (row n24)
+  grid       outer   : min cap slack 6.005565e-06 (row n24)
+  grid       base    : min cap slack 6.305788e-06 (row o24)
+  grid       enlarged: min cap slack 3.412599e-06 (row n24)
+  a_o24 - a_n24 = 0.003567498306352505 ; (95598+40)h - a_o24 = -0.003574707468651295
+  b_o24 - b_n24 = -0.000582601751209641
+Part C: 1457119 multisets evaluated literally; converse violations: 0
+TOTAL checks: 1457740, failures: 0, run time 69.2 s
+VERDICT: Lemma 1.4 verified as stated (under the formalization in the note)
