@@ -15,13 +15,13 @@ Each session works on the claude/... branch its system instructions name (create
   S54: the Sect. 4.7 identity (pp. 53-54) checked: proved under reading R1, no error (LWW still v2, checked 09:40 UTC).
 
 ## Next steps (in order)
-0. Paper run (7:34 PM CT 25 Nov): main paper: rem:186-status gets "Lemma 1.4: two independent programs" (S54,
-   code/oai186_lemma14_check2.py, notes/oai186-lemma14-check2.md); sec:related index gets the S54 card in one clause.
-   Only if the mathematics changed enough to bump a version (it did: Lemma 1.4 status). Parity paper frozen (v1.1).
+0. Paper run (7:34 PM CT 25 Nov): main paper: rem:186-status gets "Lemmas 1.4, 1.5: two independent programs" (S54,
+   code/oai186_lemma14_check2.py, code/oai186_lemma15_check2.py and their notes); sec:related index gets the S54 card in one clause.
+   Only if the mathematics changed enough to bump a version (it did: Lemma 1.4/1.5 status). Parity paper frozen (v1.1).
 1. Parity (next research run): LWW pp. 55-58 (E_mem and (4.138)-(4.147), the bounds that use the S54 identity), or the
    Type I side (BV with zero main term) for general f (S53 card's first unresolved implication). One card per run.
    Optional cheap follow-up to S54: add a reading-L negative control to code/parity/lww_p54_identity_check.py.
-2. Bound share: second independent programs for Lemmas 1.5, 1.6, 1.7, 2.3, 2.4 (Lemma 1.4 done S54); then Lemma 2.2's
+2. Bound share: second independent programs for Lemmas 1.6, 1.7, 2.3, 2.4 (Lemmas 1.4, 1.5 done S54); then Lemma 2.2's
    proof, the 40-dimensional contractions (2.16)-(2.21), profile-power-2 rounding. NO per-run regressions.
 3. Lean: bound B (bad pairs) or the short Lean note (due by ~S56 per the review's 6-run rule; write it in a paper run).
 4. Main paper: bump the version only when content changes; keep sec:related as an index.
@@ -37,6 +37,9 @@ Each session works on the claude/... branch its system instructions name (create
   code/parity/lww_p54_identity_check.py (/usr/bin/python3 -I; ~30 s; .out; re-run here, identical).
 - Bound share: 186 Lemma 1.4 second independent program code/oai186_lemma14_check2.py (/usr/bin/python3; ~70 s; .out;
   1,457,740 checks, 0 failures; re-run here, identical apart from timing); notes/oai186-lemma14-check2.md. Agrees with S47.
+  Lemma 1.5 second program code/oai186_lemma15_check2.py (/usr/bin/python3 + sympy + python-flint; ~60 s, ~64 MB; .out;
+  510,802 checks, 0 failures; re-run here, identical); notes/oai186-lemma15-check2.md. Agrees with S48. Side note: its
+  exponent maximum 69.26 (superset of cells, no c_G cut-off) vs the first program's 13.77; both < 700, not a disagreement.
 - Exploration: code/explore/ffq_twin_uniformity.py q nmax [nbrute] (/usr/bin/python3 -I; ~50 s total, 1.3 GB; .out):
   dead end. Counts cross-checked by an ad hoc brute-force script (not committed; flint factor over all monic f).
 - Lean not touched. Wolfram and mathbox NOT available.

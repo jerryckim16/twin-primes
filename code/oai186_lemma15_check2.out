@@ -1,0 +1,13 @@
+== Part A: data from the PDF formulas ==
+  rebuilt 6 groups, 61 low bins; ladders 29/43 rows
+== Part B: exact symbolic proof (sympy) ==
+  identities proved for d=39,40
+== Part C: exact cell-level check on all 61 bins ==
+  257481 exact interior-point cell evaluations
+== Part D: end-to-end witness events vs W_r exp(-theta L) ==
+  24400 witness events tested
+== Part E: rigorous arb enclosures; exponent < 700 side claim ==
+  largest exponent on superset: 69.2586 at ('I5/2new', 1, 89953)
+
+checks: 510802   failures: 0   run time: 58.6 s
+VERDICT: Lemma 1.5 VERIFIED as stated (under the reading in the note)
