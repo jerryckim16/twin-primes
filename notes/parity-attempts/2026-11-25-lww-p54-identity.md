@@ -1,13 +1,20 @@
 # Route card: the M_R operator identity of LWW Section 4.7, pp. 53-54 (2026-11-25, Session 54)
 
-**Classification: proved (with one stated reading of the measure bookkeeping).** The identity
-M_R(u,v,r) = prod_p b'_p * <b, G_0 O_0 G_1 ... O_{2R-1} G_{2R} b>_distinct holds as printed. I derived each step
+**Classification: proved under reading R1 (R1 is supported by the text but not stated in it; audited, fixes applied).**
+The per-prime algebra D2-D5 is proved unconditionally; the full identity
+M_R(u,v,r) = prod_p b'_p * <b, G_0 O_0 G_1 ... O_{2R-1} G_{2R} b>_distinct holds under R1. I derived each step
 (Proved here) and checked (a), (b), the per-prime operator factor (c), and a global toy operator model (d) exactly
 in rational arithmetic (Computed). No sign, missing term, b'_p, V_i or distinctness error was found.
-- The reading (R1 below) is that each prime-tuple entry and each auxiliary pair carries its measure nu_i exactly
-  once, when it is introduced. p. 48 states the operator weights descriptively and does not spell out how the
-  kernels of G_j, O_j are normalised against the measure m(t). R1 is the reading under which (4.122) and the
-  sentence after it ("a pair appended by G_j contributes -eta'_j V_i") make sense.
+- The reading (R1 below, stated precisely after the audit): the weights listed on p. 48 are a(s,t)m(t), and the
+  measure m (including nu_i and the 1/k_i! of the auxiliary tuples) is taken at the leftmost state of <.,.> only;
+  so each prime-tuple entry and each auxiliary pair carries nu_i exactly once, when it is introduced, and the
+  factorials never enter the identity. p. 48 states the operator weights descriptively and does not spell out how the
+  kernels of G_j, O_j are normalised against the measure m(t). Audit F1: (4.122) does NOT force R1 (it tracks only
+  theta and V_i); the literal reading L (p. 48 weights = kernels, p. 49 multiplies by m(t) at every step) fits
+  (4.122) equally well and breaks the identity (path-dependent extra factors, e.g. 12/17 and 144/289 for p = 3,
+  A_p = {0,1}, {0,1,2}). The evidence for R1 is p. 49: the row/column factors contain s_i once per appended pair,
+  and ||b||^2 = prod s_i^{J+1} puts the measure on the left state. A mixed reading (nu once, factorials at every
+  step) also breaks it.
 - This checks one internal identity of the proof of Prop. 4.6 (feeding Prop. 4.2, p. 18). It is a correctness check
   of a step, not of Prop. 4.2. The estimates after p. 54 ((4.138)-(4.147)) are not checked here.
 
@@ -29,10 +36,12 @@ Previous card (2026-11-25-lww-prop42-thinning.md, "Possible issues"): "Multiplic
 below" (p. 54) is the least explicit step of Section 4.7 and was not re-derived. Is it correct?
 
 ## What was read (this session, line by line)
-- p. 36: (4.90) S_ell, T_{1,ell}, K_{1,ell} (with rho^{(omega_ell(z)+omega_ell(z'))/2 - K(J+1)}), (4.91), (4.92),
+- pp. 35-36: (4.90) S_ell (starts p. 35; tuples have distinct entries), T_{1,ell}, K_{1,ell} (with rho^{(omega_ell(z)+omega_ell(z'))/2 - K(J+1)}), (4.91), (4.92),
   **(4.93)** M_R = prod_{p in ∪P_i} (p+1)^{-1} sum_ell <u_{z0}, (A A*)^R u_{z0}>_ell, with
   <f1,f2>_ell = prod_i V_i^{-(J+1)} sum_{S_ell}.
-- p. 38: (4.99), **(4.100)** a_ell (factor prod_i 1/V_i per step; p'_{i,sigma(J+1)} not in the current tuple),
+- p. 7: (2.12), the sets P_i are disjoint (needed in D1; audit F3).
+- p. 38: (4.99), **(4.100)** a_ell (prefactor 1/((J+1)!)^{2K}, quoted after the audit and taken as common to both
+  sides, not checked; factor prod_i 1/V_i per step; p'_{i,sigma(J+1)} not in the current tuple),
   **(4.101)** the path sum over (z_j, p^(j)), z_0 = z_{2R} = (1,0)^T; p. 39: (4.102); p. 42: **(4.111)** F(ell).
 - p. 45: the main term reproduces the summands of (4.101) (context only).
 - p. 47: (4.118) Z_0, (4.119) O, **q_0 = q_{2R} = sqrt(rho), q_j = rho, eta'_j = 1 - q_j**, **(4.120)**
@@ -110,9 +119,12 @@ overcount and no missing term.
 - (T2) Reading R1: p. 48 lists weights "of" G_j, O_j (including nu_i(p_a) for appended pairs and nu_i for fresh
   entries). With the kernel convention of p. 49 (T f(s) = sum_t a(s,t) f(t) m(t)), the measure m(t) on p', m' must
   be divided out of the kernels for retained entries and retained pairs. Otherwise retained entries would pick up
-  nu_i at every step. This is not stated. R1 is forced by (4.122) and by the p. 54 sentence "selecting p first in a
-  prime tuple ... nu_i(p) V_i^{-(kappa_p-1)}". Under R1 the identity holds. Under the literal double-measure
-  reading it would fail, but that reading also contradicts (4.122). So I classify this as terse, not wrong.
+  nu_i at every step. This is not stated. Under R1 the identity holds; under the literal reading L it fails, and L is
+  also consistent with (4.122) (audit F1, correcting the draft, which said R1 was forced by (4.122) and the p. 54
+  kappa_p sentence; that sentence is the claim under test). R1 is the reading supported by p. 49 (see above), so
+  "terse, not wrong" is kept, but R1 is an interpretive choice.
+- (T6, slip in LWW, audit F5) p. 48: "a pair appended by G_j contributes -eta'_j V_i" omits the factor nu_i(p_a)
+  contained in the G_j weight. Harmless.
 - (T3) The S-option bookkeeping in the gaps (append is forced, discard is excluded) is stated on p. 54 only as "the
   pair for p must remain in m_i".
 - (T4) "For A_p = empty we recover (4.137) divided by b'_p" means the A_p = empty display of p. 54 equals
@@ -139,13 +151,26 @@ overcount and no missing term.
   - Negative controls (both make the comparison fail, so the toy is sensitive to the rules):
     - dropping distinctness (6 cases, R = 1, at most 2 appends per G_j): unequal in all 6;
     - letting a pair appended in O_j supply p'_i in the same O_j: unequal in all 13.
-  - Runtime about 15 minutes, dominated by the R = 2 cases.
+  - Runtime: about 30 s when re-run by the coordinator (output identical; the helper reported ~15 min, probably
+    including development runs).
+  - Limits (audit F6): not circular (the LHS uses no nu or b'_p), but the RHS builds R1 in, so (d) checks the
+    bookkeeping under R1, not R1 itself; K = 1, so independence across groups is untested; tuples are sets, so the
+    permutation factors are untested; the no-distinctness control changes two things at once and has 6 cases. A
+    reading-L control (which should fail) was not added; the auditor's hand computation for p = 3 shows it fails.
 - Degenerate parameters with b'_p = 0 (e.g. p = 3, R = 2, sqrt(rho) = 1/3) are skipped. LWW has b'_p > 0 for large x
   ((4.121)).
 
 ## Classification
-**Proved** (the identity holds as printed), under reading R1 of the operator weights. R1 is the only reading
-consistent with (4.122) and the p. 54 kappa_p sentence.
+**Proved under R1** (R1 is supported by the p. 49 kernel factors and ||b||^2, but not stated in LWW; the literal
+reading L breaks the identity). The per-prime algebra D2-D5 is proved unconditionally. No error in LWW found
+beyond the harmless slip T6.
+
+## Audit (fresh-context adversarial, 2026-11-25)
+notes/parity-attempts/2026-11-25-lww-p54-identity-audit.md: verdict "holds with fixes"; D1-D5 re-derived, no
+sign, b'_p, kappa_p, gap/append, distinctness or l! error. Findings: F1 overstatement (R1 not forced by (4.122)),
+F2 gap (R1 imprecise about 1/k_i!), F3 gap (D1 needs distinct tuple entries and disjoint P_i; permutation
+prefactor unchecked), F4 slip (pages), F5 slip in LWW, F6 overstatement (what toy (d) shows), F7 overstatement
+("holds as printed"). All applied above.
 
 ## First unresolved implication
 None inside pp. 53-54. Next in line: the bounds that use the identity, i.e. E_mem and (4.138)-(4.147), pp. 55-58.
