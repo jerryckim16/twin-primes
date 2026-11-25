@@ -1,0 +1,28 @@
+LWW pp. 55-58 checks (exact rational arithmetic unless stated)
+
+(A) (4.140) Moebius identity, |B|<=6, values in 1..4, all B_act: 19531 cases, failures = 0
+    NEG sign (-1)^|C|: failures = 17676 (should be > 0);  NEG weight |C|!: failures = 17676 (should be > 0)
+(B) (4.141) rank-kappa sum == c(n,n-kappa) (n<=7): mismatches = 0; collections using > 2kappa indices = 0
+    c(n,n-kappa) <= n^(2kappa), n<=150, all kappa: failures = 0
+    NEG n^kappa: failures = 7691 (should be > 0), first: n=4, kappa=1, c=6 > 4
+(C) E_mem non-tuple prime: literal G/O DP (abs weights, factor 2) == printed sum: 311 random cases, failures = 0
+    printed bound 2(2R+1)/((p+1)b'_p): failures = 0; telescoping in [0,1]: failures = 0
+    NEG drop h_t damping: mismatches = 225 (should be > 0); NEG eta'=3/2: telescoped sum = 9/8, exceeds 1: True
+    tuple prime: #histories == (a+1)(2R-c+1), all A_p, R<=4: 676 cases, failures = 0; > (2R+2)^2: 0
+(D) (4.143) series <= (x Delta)^s e^(x s_i): failures = 0; restricting l >= h decreases: failures = 0
+    retention/removal factor <= 1 for q_j in {sqrt rho, rho}: failures = 0
+    NEG theta^2 > rho only (rho=1/4, theta^2=3/10): q_0/theta^2 = 5/3 > 1: True
+(E) Phi^sym identity, 40 exact cases: failures = 0; NEG non-symmetric F: mismatches = 23 (should be > 0)
+(G) exponent bookkeeping (sympy):
+    (4.138) log(E_mem bound / L^{-2AR}) / L^2 -> -log(2)
+    (4.138) (L^0.71 + (J+R)log(2R+2) + R)/L^0.74 -> 0
+    (4.145) margin [C0 R - C*(2R+1) - 2R(E0+4)] with C0 = 2(C*+E0+7)+delta = -C_star + R*delta + 6*R
+    NEG (4.145) margin with C0 = 2(C*+E0+3) = -C_star - 2*R
+    (4.144) kappa_0/(2R) -> 0
+    (4.145) log(C|B|^2 Delta) + L^0.1/2 -> -oo
+    (4.147) o(R) term / (R log L) -> 0
+    (4.147) -2AR + 2R(E0+4) with A=E0+5 = -2*R
+    p.58 c L^{3/4} - 2R E0 log L -> oo
+    NEG p.58 with R = L/2: c L^{3/4} - 2R E0 log L -> -oo
+
+runtime 6.4 s
