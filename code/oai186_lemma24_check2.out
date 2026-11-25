@@ -1,0 +1,42 @@
+== Part A: data from the PDF formulas ==
+  6 groups, 30 rank-two bins; hypotheses of Lemma 2.4 hold on all
+== Part B: exact symbolic identities ==
+  (1.41) certificate d<=6, roles d<=6, (1.43) d<=40, fractions and feasibility
+== Part C: Dickman enclosures (2.1) for every cap ==
+== Parts D/E: per-cell role checks and end-to-end Palm integrals ==
+  O2       bin 1  a/h=  32768.0 b/h=  35498.7 caps M(b+)=35499 M(r+)=32769 M(r-)=31402; 1897 cells; 1.9 s
+  O2       bin 2  a/h=  35498.7 b/h=  38229.3 caps M(b+)=38230 M(r+)=31403 M(r-)=30037; 1902 cells; 1.9 s
+  O2       bin 3  a/h=  38229.3 b/h=  40960.0 caps M(b+)=40961 M(r+)=30038 M(r-)=28672; 1901 cells; 1.7 s
+  O2       bin 4  a/h=  40960.0 b/h=  43690.7 caps M(b+)=43691 M(r+)=28673 M(r-)=27306; 1902 cells; 1.8 s
+  O2       bin 5  a/h=  43690.7 b/h=  46421.3 caps M(b+)=46422 M(r+)=27307 M(r-)=25941; 1903 cells; 1.7 s
+  O2       bin 6  a/h=  46421.3 b/h=  49152.0 caps M(b+)=49152 M(r+)=25942 M(r-)=24576; 1903 cells; 1.7 s
+  O5/2     bin 1  a/h=  28086.9 b/h=  29242.7 caps M(b+)=29243 M(r+)=28087 M(r-)=27624; 1895 cells; 2.2 s
+  O5/2     bin 2  a/h=  29242.7 b/h=  30398.5 caps M(b+)=30399 M(r+)=27625 M(r-)=27162; 1901 cells; 2.1 s
+  O5/2     bin 3  a/h=  30398.5 b/h=  31554.3 caps M(b+)=31555 M(r+)=27163 M(r-)=26699; 1902 cells; 2.1 s
+  O5/2     bin 4  a/h=  31554.3 b/h=  32710.1 caps M(b+)=32711 M(r+)=26700 M(r-)=26237; 1902 cells; 2.0 s
+  O5/2     bin 5  a/h=  32710.1 b/h=  33866.0 caps M(b+)=33866 M(r+)=26238 M(r-)=25775; 1901 cells; 2.0 s
+  O5/2     bin 6  a/h=  33866.0 b/h=  35021.8 caps M(b+)=35022 M(r+)=25776 M(r-)=25312; 1902 cells; 2.0 s
+  O5/2     bin 7  a/h=  35021.8 b/h=  36177.6 caps M(b+)=36178 M(r+)=25313 M(r-)=24850; 1903 cells; 1.9 s
+  O5/2     bin 8  a/h=  36177.6 b/h=  37333.4 caps M(b+)=37334 M(r+)=24851 M(r-)=24388; 1903 cells; 2.0 s
+  O5/2     bin 9  a/h=  37333.4 b/h=  39645.1 caps M(b+)=39646 M(r+)=24389 M(r-)=23463; 1902 cells; 1.9 s
+  O5/2     bin 10 a/h=  39645.1 b/h=  41956.7 caps M(b+)=41957 M(r+)=23464 M(r-)=22538; 1902 cells; 1.9 s
+  O5/2     bin 11 a/h=  41956.7 b/h=  44268.4 caps M(b+)=44269 M(r+)=22539 M(r-)=21614; 1903 cells; 1.9 s
+  O5/2     bin 12 a/h=  44268.4 b/h=  46580.0 caps M(b+)=46580 M(r+)=21615 M(r-)=20689; 1902 cells; 1.8 s
+  I2old    bin 1  a/h=  29854.5 b/h=  44781.0 caps M(b+)=44781 M(r+)=29855 M(r-)=22391; 1904 cells; 1.8 s
+  I5/2old  bin 1  a/h=  25589.5 b/h=  30427.3 caps M(b+)=30428 M(r+)=25590 M(r-)=23654; 1904 cells; 2.1 s
+  I5/2old  bin 2  a/h=  30427.3 b/h=  35265.0 caps M(b+)=35265 M(r+)=23655 M(r-)=21719; 1910 cells; 2.0 s
+  I2new    bin 1  a/h=  29984.6 b/h=  32483.2 caps M(b+)=32484 M(r+)=29985 M(r-)=28735; 1904 cells; 1.8 s
+  I2new    bin 2  a/h=  32483.2 b/h=  37480.3 caps M(b+)=37481 M(r+)=28736 M(r-)=26236; 1908 cells; 1.9 s
+  I2new    bin 3  a/h=  37480.3 b/h=  39978.9 caps M(b+)=39979 M(r+)=26237 M(r-)=24987; 1909 cells; 1.8 s
+  I2new    bin 4  a/h=  39978.9 b/h=  44976.0 caps M(b+)=44976 M(r+)=24988 M(r-)=22488; 1910 cells; 1.7 s
+  I5/2new  bin 1  a/h=  25701.1 b/h=  26915.8 caps M(b+)=26916 M(r+)=25702 M(r-)=25215; 1903 cells; 2.2 s
+  I5/2new  bin 2  a/h=  26915.8 b/h=  29345.3 caps M(b+)=29346 M(r+)=25216 M(r-)=24243; 1910 cells; 2.2 s
+  I5/2new  bin 3  a/h=  29345.3 b/h=  30560.0 caps M(b+)=30561 M(r+)=24244 M(r-)=23757; 1910 cells; 2.0 s
+  I5/2new  bin 4  a/h=  30560.0 b/h=  32989.5 caps M(b+)=32990 M(r+)=23758 M(r-)=22785; 1910 cells; 2.0 s
+  I5/2new  bin 5  a/h=  32989.5 b/h=  35419.0 caps M(b+)=35419 M(r+)=22786 M(r-)=21813; 1910 cells; 2.0 s
+  negative controls (wrong variants, must be violated): {'A_r-': 28786, 'B_j': 5821}
+  per-cell: 57118 cells, 399826 exact (t,q) points; end-to-end: 1022 configurations with positive upper bound, 1021 with provably positive true Palm mass; max true-upper/bound = 0.9705 (O5/2 bin 8 d=4 cells=[52788, 10706, 9169, 33549])
+  Lemma 2.2 enclosures: 90 caps computed to j = N, all accepted, rho enclosed at 18269 grid points
+
+checks: 1940407   failures: 0   run time: 62.8 s   peak RSS: 135 MB
+VERDICT: Lemma 2.4 VERIFIED as stated (on all tested cells and configurations)

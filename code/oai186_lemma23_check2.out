@@ -1,0 +1,110 @@
+== Part A: data from the PDF formulas ==
+  61 low bins; L range 3..24270; theta range 27..133874; J=32 with truncation active in 24 bins
+  M = L >= 64 (delay branch eligible) in 53 bins, renewal forced (L < 64) in 8
+== Part B: exact combinatorics ==
+  Eulerian E_r = carry law for r <= 70 (incl.-excl.), r <= 12 (exact convolution)
+  T_e = (exp Q - X^{e+1} exp(XQ))/(1-X) mod X^N on 12 random toy Q (24 identities)
+== Part C: low-kernel majorants d*_j vs rigorous rho ==
+  rho series validated: closed form on [2,3], continuity at 3..59, integral equation, rho(3), rho(10)
+  delay M=64 on j <= 2560: acceptance fails (upper endpoint first increases at j=364, u=5.69)
+  delay M=100 on j <= 4000: acceptance fails (upper endpoint first increases at j=599, u=5.99)
+  delay M=1000 on j <= 40000: acceptance fails (upper endpoint first increases at j=7458, u=7.46)
+  renewal and delay majorants enclose rho at 21570 grid points (rho to 1e-40 accuracy)
+== Part D: toy end-to-end (true masses on a finer grid) ==
+  toy 0: h=1 L=5 H=7 K=12 N=15 theta=3/10 k=8 J=2 (renewal); r_max=2, remainder cells 0/0; max true/coef = 0.8802
+  toy 1: h=1 L=5 H=7 K=12 N=15 theta=3/10 k=8 J=0 (renewal); r_max=2, remainder cells 10/10; max true/coef = 0.8802
+  toy 2: h=1 L=5 H=7 K=12 N=15 theta=3/10 k=8 J=1 (renewal); r_max=2, remainder cells 5/5; max true/coef = 0.8802
+  toy 3: h=1/7 L=4 H=6 K=11 N=12 theta=7 k=8 J=2 (renewal); r_max=2, remainder cells 0/0; max true/coef = 0.7290
+  toy 4: h=1/7 L=4 H=9 K=11 N=12 theta=7 k=8 J=0 (renewal); r_max=2, remainder cells 8/8; max true/coef = 0.7290
+  toy 5: h=3/10 L=2 H=3 K=6 N=6 theta=1/100 k=16 J=2 (renewal); r_max=2, remainder cells 0/0; max true/coef = 0.9986
+  toy 6: h=1/3 L=3 H=5 K=8 N=9 theta=9 k=8 J=2 (renewal); r_max=2, remainder cells 0/0; max true/coef = 0.4913
+  toy 7: h=1/3 L=3 H=5 K=8 N=9 theta=9 k=8 J=0 (renewal); r_max=2, remainder cells 6/6; max true/coef = 0.4913
+  toy 8: h=1/1000 L=6 H=10 K=17 N=18 theta=2000 k=6 J=2 (renewal); r_max=2, remainder cells 0/0; max true/coef = 0.6323
+  toy 9: h=2 L=2 H=4 K=9 N=30 theta=1/5 k=4 J=14 (renewal); r_max=14, remainder cells 0/0; max true/coef = 0.8661
+  toy 10: h=2 L=2 H=4 K=9 N=30 theta=1/5 k=4 J=3 (renewal); r_max=14, remainder cells 22/22; max true/coef = 0.8661
+  toy 11: h=1/10 L=2 H=3 K=70 N=70 theta=5 k=4 J=32 (renewal); r_max=34, remainder cells 4/4; max true/coef = 0.8371
+  toy 12: h=1/10 L=2 H=9 K=40 N=70 theta=1/2 k=4 J=32 (renewal); r_max=34, remainder cells 4/4; max true/coef = 0.9815
+  toy 13: h=1/64 L=64 H=80 K=130 N=160 theta=3 k=2 J=2 (delay); r_max=2, remainder cells 0/0; max true/coef = 0.9923
+  negative control 'norem' on toy 1: true mass provably exceeds the wrong kernel in 14 cells
+  negative control 'carry' on toy 1: true mass provably exceeds the wrong kernel in 0 cells (informational)
+  negative control 'norem' on toy 4: true mass provably exceeds the wrong kernel in 10 cells
+  negative control 'carry' on toy 4: true mass provably exceeds the wrong kernel in 0 cells (informational)
+  negative control 'norem' on toy 10: true mass provably exceeds the wrong kernel in 14 cells
+  negative control 'carry' on toy 10: true mass provably exceeds the wrong kernel in 0 cells (informational)
+  negative control 'dropr1' on toy 0: true mass provably exceeds the wrong kernel in 14 cells
+  negative control 'tiltinf' on toy 0: true mass provably exceeds the wrong kernel in 20 cells
+  negative control 'dropr1' on toy 3: true mass provably exceeds the wrong kernel in 11 cells
+  negative control 'tiltinf' on toy 3: true mass provably exceeds the wrong kernel in 20 cells
+  negative control 'dropr1' on toy 6: true mass provably exceeds the wrong kernel in 7 cells
+  negative control 'tiltinf' on toy 6: true mass provably exceeds the wrong kernel in 15 cells
+  negative control 'dropr1' on toy 9: true mass provably exceeds the wrong kernel in 11 cells
+  negative control 'tiltinf' on toy 9: true mass provably exceeds the wrong kernel in 3 cells
+  Poisson identity nu_l * exp(1_(l,z] dv/v) = nu_z: sandwich holds on 12 cells (L=4, K=9, k=16; max rel. width 0.0232)
+  Poisson identity nu_l * exp(1_(l,z] dv/v) = nu_z: sandwich holds on 10 cells (L=3, K=8, k=32; max rel. width 0.0149)
+  Poisson identity nu_l * exp(1_(l,z] dv/v) = nu_z: sandwich holds on 6 cells (L=2, K=6, k=32; max rel. width 0.0188)
+== Part E: real parameters, all 61 low bins, prefix j < jmax ==
+  O2       L1  L=2331   H=3498   K=49152 theta=189     J=32 renewal (delay rejected: upper rises at j=18571) jmax=4762   k=2 r_max=2 ; max true/coef=0.9997
+  O2       L2  L=3497   H=4704   K=49152 theta=140     J=28 renewal (delay rejected: upper rises at j=28699) jmax=7094   k=2 r_max=2 ; max true/coef=0.9998
+  O2       L3  L=4703   H=9754   K=49152 theta=120     J=20 renewal (delay rejected: upper rises at j=39410) jmax=9506   k=2 r_max=2 ; max true/coef=0.9998
+  O2       L4  L=9753   H=11705  K=49152 theta=57      J=10 renewal (delay rejected: upper rises at j=85833) jmax=19606  k=2 r_max=2 ; max true/coef=0.9999
+  O2       L5  L=11704  H=14046  K=49152 theta=47      J= 8 delay   jmax=23508  k=2 r_max=2 ; max true/coef=0.9999
+  O2       L6  L=14045  H=16855  K=49152 theta=40      J= 6 delay   jmax=28190  k=2 r_max=2 ; max true/coef=0.9999
+  O2       L7  L=16854  H=20226  K=49152 theta=33      J= 5 delay   jmax=33808  k=2 r_max=2 ; max true/coef=0.9999
+  O2       L8  L=20225  H=22248  K=49152 theta=30      J= 4 delay   jmax=40550  k=2 r_max=2 ; max true/coef=1.0000
+  O2       L9  L=22247  H=24271  K=49152 theta=28      J= 4 delay   jmax=44594  k=2 r_max=2 ; max true/coef=1.0000
+  O2       L10 L=24270  H=24576  K=49152 theta=27      J= 4 delay   jmax=48640  k=2 r_max=2 ; max true/coef=1.0000
+  O5/2     L1  L=3      H=7      K=46580 theta=104124  J=32 renewal jmax=120    k=4 r_max=39, remainder cells 21/21; max true/coef=0.7527
+  O5/2     L2  L=6      H=13     K=46580 theta=52062   J=32 renewal jmax=240    k=4 r_max=39, remainder cells 42/42; max true/coef=0.8611
+  O5/2     L3  L=12     H=26     K=46580 theta=26031   J=32 renewal jmax=480    k=4 r_max=39, remainder cells 84/84; max true/coef=0.9261
+  O5/2     L4  L=25     H=51     K=46580 theta=13016   J=32 renewal jmax=1000   k=4 r_max=39, remainder cells 175/175; max true/coef=0.9622
+  O5/2     L5  L=50     H=102    K=46580 theta=6508    J=32 renewal jmax=200    k=4 r_max=3 ; max true/coef=0.9808
+  O5/2     L6  L=101    H=203    K=46580 theta=3254    J=32 renewal (delay rejected: upper rises at j=606) jmax=302    k=4 r_max=2 ; max true/coef=0.9903
+  O5/2     L7  L=202    H=405    K=46580 theta=1627    J=32 renewal (delay rejected: upper rises at j=1304) jmax=504    k=4 r_max=2 ; max true/coef=0.9952
+  O5/2     L8  L=404    H=810    K=46580 theta=814     J=32 renewal (delay rejected: upper rises at j=2786) jmax=908    k=4 r_max=2 ; max true/coef=0.9976
+  O5/2     L9  L=809    H=941    K=46580 theta=700     J=32 renewal (delay rejected: upper rises at j=5929) jmax=1718   k=4 r_max=2 ; max true/coef=0.9981
+  O5/2     L10 L=940    H=1412   K=46580 theta=467     J=32 renewal (delay rejected: upper rises at j=6975) jmax=1980   k=4 r_max=2 ; max true/coef=0.9987
+  O5/2     L11 L=1411   H=2117   K=46580 theta=312     J=32 renewal (delay rejected: upper rises at j=10818) jmax=2922   k=2 r_max=2 ; max true/coef=0.9995
+  O5/2     L12 L=2116   H=3176   K=46580 theta=208     J=32 renewal (delay rejected: upper rises at j=16737) jmax=4332   k=2 r_max=2 ; max true/coef=0.9997
+  O5/2     L13 L=3175   H=4704   K=46580 theta=140     J=30 renewal (delay rejected: upper rises at j=25876) jmax=6450   k=2 r_max=2 ; max true/coef=0.9998
+  O5/2     L14 L=4703   H=5645   K=46580 theta=117     J=20 renewal (delay rejected: upper rises at j=39410) jmax=9506   k=2 r_max=2 ; max true/coef=0.9998
+  O5/2     L15 L=5644   H=6774   K=46580 theta=98      J=17 renewal (delay rejected: upper rises at j=47894) jmax=11388  k=2 r_max=2 ; max true/coef=0.9998
+  O5/2     L16 L=6773   H=8129   K=46580 theta=82      J=14 renewal (delay rejected: upper rises at j=58189) jmax=13646  k=2 r_max=2 ; max true/coef=0.9999
+  O5/2     L17 L=8128   H=9754   K=46580 theta=68      J=12 renewal (delay rejected: upper rises at j=70683) jmax=16356  k=2 r_max=2 ; max true/coef=0.9999
+  O5/2     L18 L=9753   H=11705  K=46580 theta=57      J=10 renewal (delay rejected: upper rises at j=85833) jmax=19606  k=2 r_max=2 ; max true/coef=0.9999
+  O5/2     L19 L=11704  H=14046  K=46580 theta=47      J= 8 delay   jmax=23508  k=2 r_max=2 ; max true/coef=0.9999
+  O5/2     L20 L=14045  H=16855  K=46580 theta=40      J= 6 delay   jmax=28190  k=2 r_max=2 ; max true/coef=0.9999
+  O5/2     L21 L=16854  H=18258  K=46580 theta=37      J= 5 delay   jmax=33808  k=2 r_max=2 ; max true/coef=0.9999
+  O5/2     L22 L=18257  H=19660  K=46580 theta=34      J= 5 delay   jmax=36614  k=2 r_max=2 ; max true/coef=0.9999
+  I2old    L1  L=2331   H=4704   K=44781 theta=140     J=32 renewal (delay rejected: upper rises at j=18571) jmax=4762   k=2 r_max=2 ; max true/coef=0.9998
+  I2old    L2  L=4703   H=9754   K=44781 theta=68      J=20 renewal (delay rejected: upper rises at j=39410) jmax=9506   k=2 r_max=2 ; max true/coef=0.9999
+  I2old    L3  L=9753   H=14046  K=44781 theta=47      J=10 renewal (delay rejected: upper rises at j=85833) jmax=19606  k=2 r_max=2 ; max true/coef=0.9999
+  I2old    L4  L=14045  H=20226  K=44781 theta=33      J= 6 delay   jmax=28190  k=2 r_max=2 ; max true/coef=0.9999
+  I2old    L5  L=20225  H=22390  K=44781 theta=30      J= 4 delay   jmax=40550  k=2 r_max=2 ; max true/coef=1.0000
+  I5/2old  L1  L=93     H=188    K=35265 theta=3520    J=32 renewal (delay rejected: upper rises at j=553) jmax=286    k=4 r_max=3 ; max true/coef=0.9896
+  I5/2old  L2  L=187    H=941    K=35265 theta=700     J=32 renewal (delay rejected: upper rises at j=1198) jmax=474    k=4 r_max=2 ; max true/coef=0.9972
+  I5/2old  L3  L=940    H=3176   K=35265 theta=208     J=32 renewal (delay rejected: upper rises at j=6975) jmax=1980   k=4 r_max=2 ; max true/coef=0.9993
+  I5/2old  L4  L=3175   H=8129   K=35265 theta=82      J=30 renewal (delay rejected: upper rises at j=25876) jmax=6450   k=2 r_max=2 ; max true/coef=0.9999
+  I5/2old  L5  L=8128   H=11705  K=35265 theta=57      J=12 renewal (delay rejected: upper rises at j=70683) jmax=16356  k=2 r_max=2 ; max true/coef=0.9999
+  I5/2old  L6  L=11704  H=14046  K=35265 theta=47      J= 8 delay   jmax=23508  k=2 r_max=2 ; max true/coef=0.9999
+  I5/2old  L7  L=14045  H=17912  K=35265 theta=37      J= 6 delay   jmax=28190  k=2 r_max=2 ; max true/coef=0.9999
+  I2new    L1  L=2667   H=5645   K=44976 theta=117     J=32 renewal (delay rejected: upper rises at j=21461) jmax=5434   k=2 r_max=2 ; max true/coef=0.9998
+  I2new    L2  L=5644   H=9754   K=44976 theta=68      J=17 renewal (delay rejected: upper rises at j=47894) jmax=11388  k=2 r_max=2 ; max true/coef=0.9999
+  I2new    L3  L=9753   H=11705  K=44976 theta=57      J=10 renewal (delay rejected: upper rises at j=85833) jmax=19606  k=2 r_max=2 ; max true/coef=0.9999
+  I2new    L4  L=11704  H=16855  K=44976 theta=40      J= 8 delay   jmax=23508  k=2 r_max=2 ; max true/coef=0.9999
+  I2new    L5  L=16854  H=20226  K=44976 theta=33      J= 5 delay   jmax=33808  k=2 r_max=2 ; max true/coef=0.9999
+  I2new    L6  L=20225  H=22488  K=44976 theta=30      J= 4 delay   jmax=40550  k=2 r_max=2 ; max true/coef=1.0000
+  I5/2new  L1  L=3      H=7      K=35419 theta=133874  J=32 renewal jmax=120    k=4 r_max=39, remainder cells 21/21; max true/coef=0.7147
+  I5/2new  L2  L=6      H=51     K=35419 theta=16735   J=32 renewal jmax=240    k=4 r_max=39, remainder cells 42/42; max true/coef=0.9366
+  I5/2new  L3  L=50     H=203    K=35419 theta=4184    J=32 renewal jmax=200    k=4 r_max=3 ; max true/coef=0.9861
+  I5/2new  L4  L=202    H=810    K=35419 theta=1046    J=32 renewal (delay rejected: upper rises at j=1304) jmax=504    k=4 r_max=2 ; max true/coef=0.9965
+  I5/2new  L5  L=809    H=2117   K=35419 theta=400     J=32 renewal (delay rejected: upper rises at j=5929) jmax=1718   k=4 r_max=2 ; max true/coef=0.9988
+  I5/2new  L6  L=2116   H=5645   K=35419 theta=150     J=32 renewal (delay rejected: upper rises at j=16737) jmax=4332   k=2 r_max=2 ; max true/coef=0.9997
+  I5/2new  L7  L=5644   H=8129   K=35419 theta=105     J=17 renewal (delay rejected: upper rises at j=47894) jmax=11388  k=2 r_max=2 ; max true/coef=0.9998
+  I5/2new  L8  L=8128   H=11705  K=35419 theta=73      J=12 renewal (delay rejected: upper rises at j=70683) jmax=16356  k=2 r_max=2 ; max true/coef=0.9999
+  I5/2new  L9  L=11704  H=14046  K=35419 theta=61      J= 8 delay   jmax=23508  k=2 r_max=2 ; max true/coef=0.9999
+  I5/2new  L10 L=14045  H=16855  K=35419 theta=51      J= 6 delay   jmax=28190  k=2 r_max=2 ; max true/coef=0.9999
+  I5/2new  L11 L=16854  H=17990  K=35419 theta=48      J= 5 delay   jmax=33808  k=2 r_max=2 ; max true/coef=0.9999
+  kernel branches used: {'renewal': 41, 'delay': 20}
+
+checks: 3798432   failures: 0   run time: 170.3 s   peak RSS: 508 MB
+VERDICT: Lemma 2.3 VERIFIED as stated (on all tested cells)
