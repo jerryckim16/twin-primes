@@ -57,7 +57,7 @@ does the large-q mechanism use, and what would its integer analogue have to be?
    statement ("for all but o(x) of the y <= x, S(y) := sum_{y < m <= y+H} lambda(m) lambda(m+2) = o(H)",
    with H = o(x)) implies sum_{m <= x} lambda(m) lambda(m+2) = o(x): average over y,
    sum_{y <= x} S(y) = H sum_{m <= x} lambda(m) lambda(m+2) + O(H^2), and the exceptional y contribute
-   o(x) H (bounded summands). Over Z, Cesàro two-point Chowla at every x is open; known are the
+   o(x) H (bounded summands). Over Z, Cesàro two-point Chowla at every x was open when this card was written (25 Nov note: reported resolved, OpenAI 2026, Claimed, per Lichtman arXiv:2611.28392 p. 1; not located or read by us); known are the
    logarithmically averaged form (Tao 2016, opened, parity paper), and, as the audit points out (not opened
    in this run), the Cesàro form at almost all scales (Tao–Teräväinen 2019) and averages over the shift
    (Matomäki–Radziwiłł–Tao 2015, opened in Session 19). The large-q slice statement is far stronger
