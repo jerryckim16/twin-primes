@@ -3,32 +3,47 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 54, 3:34 AM CT research run of 25 Nov, started 09:35 UTC): PHASE B
+## POSITION (after Session 55, 11:34 AM CT research run of 25 Nov, started 17:34 UTC): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
   main paper v0.51 (35 pp.; S51+S52 written up). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a
   weekly review. Active lines: main paper as an index; a short Lean note for programme (4). Paused: toolkit note (5), H_m, 182.
 - Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, still v2, checked 25 Nov 01:35 UTC) open. Lichtman 2611.28392 / Gou-Wang-Xu 2611.18825 news
-  recorded (flag entries of 24 Nov S51, S52). S53: Prop. 4.2 survives thinning of the auxiliary primes (conditional).
-  S54: the Sect. 4.7 identity (pp. 53-54) checked: proved under reading R1, no error (LWW still v2, checked 09:40 UTC).
+- LWW flag (arXiv:2610.20242, still v2, checked 25 Nov 17:36 UTC) open. S53: Prop. 4.2 survives thinning (conditional).
+  S54: the p. 54 identity proved under reading R1. S55: pp. 54-58 (E_mem, (4.138)-(4.147), to (4.136)) conditional on
+  eleven listed inputs, no error. Next in line inside Prop. 4.6: the norm bounds (4.125)/(4.135) for O_j (p. 52).
+- 186: all six majorisation lemmas (1.4-1.7, 2.3, 2.4) now verified as stated by TWO independent programs each (S47-S55).
 
 ## Next steps (in order)
-0. Paper run (7:34 PM CT 25 Nov): main paper: rem:186-status gets "Lemmas 1.4, 1.5: two independent programs" (S54,
-   code/oai186_lemma14_check2.py, code/oai186_lemma15_check2.py and their notes); sec:related index gets the S54 card in one clause.
-   Only if the mathematics changed enough to bump a version (it did: Lemma 1.4/1.5 status). Parity paper frozen (v1.1).
-1. Parity (next research run): LWW pp. 55-58 (E_mem and (4.138)-(4.147), the bounds that use the S54 identity), or the
-   Type I side (BV with zero main term) for general f (S53 card's first unresolved implication). One card per run.
-   Optional cheap follow-up to S54: add a reading-L negative control to code/parity/lww_p54_identity_check.py.
-2. Bound share: second independent programs for Lemmas 1.6, 1.7, 2.3, 2.4 (Lemmas 1.4, 1.5 done S54); then Lemma 2.2's
-   proof, the 40-dimensional contractions (2.16)-(2.21), profile-power-2 rounding. NO per-run regressions.
+0. Paper run (7:34 PM CT 25 Nov): main paper rem:186-status: "Lemmas 1.4-1.7, 2.3, 2.4: two independent programs each"
+   (S54: code/oai186_lemma14_check2.py, lemma15_check2; S55: lemma16_check2, lemma17_check2, lemma23_check2,
+   lemma24_check2, notes/oai186-lemma1{6,7}-check2.md, notes/oai186-lemma2{3,4}-check2.md), plus the Lemma 2.3 kernel
+   split (20 delay / 41 renewal; first program had left it open; the lemma holds either way). sec:related index gets the
+   S54 and S55 cards in one clause. Bump the version (content changed). Parity paper frozen (v1.1).
+1. Parity (next research run): LWW (4.125)/(4.135), the operator-norm bounds for O_j, esp. O_j^(ind) (p. 52), the first
+   unresolved input of the S55 card; or the Type I side (BV with zero main term) for general f (S53 card). One card per run.
+2. Bound share: Lemma 2.2's proof, the 40-dimensional contractions (2.16)-(2.21), profile-power-2 rounding; the overall
+   cover by rank (Sec. 1.5.4). NO per-run regressions.
 3. Lean: bound B (bad pairs) or the short Lean note (due by ~S56 per the review's 6-run rule; write it in a paper run).
 4. Main paper: bump the version only when content changes; keep sec:related as an index.
 5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
-6. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani (re-tried
-   S54), BFI86, HB83 and the 182 restoration data (see notes/sources-needed.md).
+6. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani, BFI86, HB83 and
+   the 182 restoration data (see notes/sources-needed.md).
 7. Weekly review: first run starting on Monday 30 Nov, Central time. Items (c)-(f) of the 23 Nov review list stand.
+
+## Session 55 (11:34 AM CT research run of 25 Nov, started on time 17:34 UTC; no wait) -- additions
+- Parity attempt (helper agent; fresh-context adversarial audit notes/parity-attempts/2026-11-25-lww-p55-58-emem-audit.md,
+  fixes applied): notes/parity-attempts/2026-11-25-lww-p55-58-emem.md (conditional). Script code/parity/lww_p55_58_check.py
+  (/usr/bin/python3 -I; ~6 s; .out; re-run here, identical). LWW v2 SHA matches; no v3 (17:36 UTC).
+- Bound share (helper agents, independence rule: first programs opened only after finishing; all re-run here, identical
+  apart from timings): code/oai186_lemma16_check2.py (/usr/bin/python3; 3.4 s, 20 MB; 180,016 checks),
+  code/oai186_lemma17_check2.py (/usr/bin/python3 + python-flint; 88 s, 93 MB; 22,295,188 checks),
+  code/oai186_lemma23_check2.py (/usr/bin/python3 + python-flint; 170 s, 508 MB; 3,798,432 checks),
+  code/oai186_lemma24_check2.py (/usr/bin/python3 + sympy + python-flint; 63 s, 135 MB; 1,940,407 checks); 0 failures
+  each; notes/oai186-lemma{16,17,23,24}-check2.md. Not covered: Lemma 2.3 real-parameter checks on prefixes only; 2.4 cells
+  sampled; the weights w.
+- No exploration (Central day 25 Nov already had one, S54). Lean not touched. Wolfram and mathbox NOT available. No news search.
 
 ## Session 54 (3:34 AM CT research run of 25 Nov, started on time 09:35 UTC; no wait) -- additions
 - News search: notes/news-2026-11-25.md (nothing new since 24 Nov; LWW v2, Lichtman v1).

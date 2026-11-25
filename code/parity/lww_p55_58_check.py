@@ -11,15 +11,21 @@ Run: /usr/bin/python3 -I lww_p55_58_check.py      (pure Python + fractions; symp
     for all n <= 150 (exact integers).  NEG: n^{kappa} in place of n^{2kappa}.
 (C) E_mem, p. 55: single non-tuple prime, absolute weights with the inserted factor 2, literal DP over the
     G_j / O_j rules (theta-damping h_s, h_t, removal before append, empty m at both ends) == the printed
-    sum, and the printed bound 2(2R+1)/((p+1)b'_p); telescoping <= 1.  Tuple prime: number of admissible
-    histories for a given A_p == (a+1)(2R-c+1) <= (2R+2)^2.  NEG: drop the h_t damping factor; eta' > 1.
-(D) (4.143) series bound (exact partial sums vs (x Delta)^s e^{x s_i}) and the removal/retention factor
+    sum, and the printed bound 2(2R+1)/((p+1)b'_p); telescoping <= 1.  R1 and V_i nu_i = 1/((p+1)b'_p) ((4.120))
+    are BUILT IN (nu is computed from b'_p), so this tests the theta bookkeeping and summation structure only.
+    Tuple prime: number of admissible histories for a given A_p == (a+1)(2R-c+1) <= (2R+2)^2, and (weighted)
+    every history weight <= 2 nu V^{-(kappa_p-1)}.
+    DETECTION controls: drop the h_t damping (non-tuple and weighted tuple); allow re-selection (tuple count).
+    ILLUSTRATION: eta' > 1.
+(D) SANITY CHECKS (cannot fail by construction): (4.143) series bound (exact partial sums vs (x Delta)^s e^{x s_i}) and the removal/retention factor
     q_j/theta^2 + eta'_j/(theta v0) <= 1 for all j incl. q_0 = q_2R = sqrt(rho).
-    NEG: theta^2 > rho only (instead of theta^2 > sqrt rho) breaks it at j = 0, 2R.
-(E) p. 57 Phi^sym identity, exact.  NEG: non-symmetric F.
+    ILLUSTRATION: theta^2 > rho only (instead of theta^2 > sqrt rho) breaks it at j = 0, 2R.
+(E) SANITY CHECK: p. 57 Phi^sym substitution identity, exact.  DETECTION control: non-symmetric F.
 (G) exponent bookkeeping (sympy limits + exact linear algebra in the constants):
     (4.138), (4.144)-(4.145) with C_0 > 2(C_*+E_0+7), (4.147) with A = E_0+5, p. 58 (exp(-cL^{3/4}) << L^{-2RE_0}).
-    NEG: C_0 = 2(C_*+E_0+3); R ~ L instead of L^{1/2} at p. 58.
+    ILLUSTRATIONS: C_0 = 2(C_*+E_0+3); R ~ L instead of L^{1/2} at p. 58.
+Detection controls (5 kinds): (A) sign, (A) weight, (B) n^kappa, (C) h_t (x2), (C) re-selection, (E) non-symmetric F.
+Hypothesis-necessity illustrations (4): eta' > 1, theta^2 > rho only, C_0 too small, R ~ L.
 """
 from fractions import Fraction as F
 from itertools import combinations, product as iproduct, permutations
@@ -202,66 +208,121 @@ def check_C(trials=400):
     return bad_eq, bad_bound, bad_tel, neg_ht, done, tel_neg
 
 
-def tuple_histories(R, A, z):
-    """Count admissible histories of one tuple prime with occupancy set A (indices where it sits in a tuple),
-    under distinctness (selected once): states 'N', ('M', line), 'T', 'X'."""
+def tuple_histories(R, A, z, weights=None, reselect=False, use_ht=True):
+    """Histories of one tuple prime with occupancy set A (indices j where it sits in the tuple at z_j), under
+    distinctness (selected once). States 'N' (unselected), ('M', line) (pair in m_i), 'T' (in tuple), 'X' (gone).
+    Returns the list of history weights (all 1 if weights is None, i.e. a pure count).
+    weights = (q, eta, V, nu, theta): absolute weights of p. 47-48 under R1, inserted factor 2 per G-append:
+      entry at z_0 or fresh nu-summed entry in O_j: nu; G-append: 2 eta'_j V nu / theta; G matched retain q_j/theta^2,
+      G remove eta'_j/theta, unmatched 1; O_j: theta^{h_s + h_t} for this prime's pair (h_s before, h_t after the
+      operation); move m -> tuple: 1/V; S-append of the departing entry: 1.
+    reselect=True (DETECTION CONTROL): a discarded/removed prime may be selected again (violates distinctness)."""
     n = 2 * R + 1
-    st = {('T' if 0 in A else 'N'): 1}
+    if weights is None:
+        q = eta = None
+        V = nu = theta = F(1)
+    else:
+        q, eta, V, nu, theta = weights
+
+    def W(x):  # weight factor, or 1 in counting mode
+        return F(1) if weights is None else x
+    st = {('T' if 0 in A else 'N'): [W(nu) if 0 in A else F(1)]}
+
+    def add(d, k, ws):
+        d.setdefault(k, []).extend(ws)
     for j in range(n):
         new = {}
-
-        def add(k, w):
-            new[k] = new.get(k, 0) + w
-        for s, w in st.items():  # G_j
+        for s, ws in st.items():  # G_j at z_j: remove/retain pre-existing, then optional append
             if isinstance(s, tuple):
                 if s[1] == z[j]:
-                    add('X', w)
-                add(s, w)
+                    add(new, 'X', [w * W(eta[j] / theta) if weights else w for w in ws])
+                    add(new, s, [w * W(q[j] / theta ** 2) if weights else w for w in ws])
+                else:
+                    add(new, s, ws)
             elif s == 'N':
-                add('N', w)
-                add(('M', z[j]), w)
+                add(new, 'N', ws)
+                add(new, ('M', z[j]), [w * W(2 * eta[j] * V * nu / theta) if weights else w for w in ws])
             else:
-                add(s, w)
+                add(new, s, ws)
         st = new
         if j == n - 1:
             break
         new = {}
-        for s, w in st.items():  # O_j : z_j -> z_{j+1}
-            inA = (j + 1) in A
+        inA = (j + 1) in A
+        for s, ws in st.items():  # O_j : z_j -> z_{j+1}
+            if isinstance(s, tuple):
+                hs = theta if (weights and s[1] == z[j]) else F(1)
+            else:
+                hs = F(1)
             if s == 'T':
                 if inA:
-                    add('T', w)
+                    add(new, 'T', ws)
                 else:
-                    add(('M', z[j]), w)   # S option: append departing entry
-                    add('X', w)           # discard
+                    ht = theta if (weights and use_ht and z[j] == z[j + 1]) else F(1)
+                    add(new, ('M', z[j]), [w * ht for w in ws])   # S option: append departing pair
+                    add(new, 'X', ws)                             # discard
             elif s == 'N':
-                add('T' if inA else 'N', w)   # fresh (nu-summed) entry, or stays unselected
+                add(new, 'T' if inA else 'N', [w * W(nu) if (inA and weights) else w for w in ws])
             elif s == 'X':
                 if not inA:
-                    add('X', w)
+                    add(new, 'X', ws)
+                elif reselect:
+                    add(new, 'T', [w * W(nu) if weights else w for w in ws])
             else:
                 if inA:
                     if s[1] == z[j + 1]:
-                        add('T', w)       # moved from m into the tuple
+                        add(new, 'T', [w * hs * W(1 / V) if weights else w for w in ws])  # moved m -> tuple
                 else:
-                    add(s, w)
+                    ht = theta if (weights and use_ht and s[1] == z[j + 1]) else F(1)
+                    add(new, s, [w * hs * ht for w in ws])
         st = new
-    return sum(w for s, w in st.items() if not isinstance(s, tuple))
+    return [w for s, ws in st.items() if not isinstance(s, tuple) for w in ws]
+
+
+def kappa_of(A):
+    A = sorted(A)
+    return 1 + sum(1 for x, y in zip(A, A[1:]) if y != x + 1)
 
 
 def check_C_tuple():
-    bad = bad_max = cases = 0
+    bad = bad_max = cases = neg = 0
     for R in range(1, 5):
         n = 2 * R + 1
         for k in range(1, n + 1):
             for A in combinations(range(n), k):
                 A = set(A)
                 a, c = min(A), max(A)
-                cnt = tuple_histories(R, A, [0] * n)
+                cnt = len(tuple_histories(R, A, [0] * n))
                 cases += 1
                 bad += cnt != (a + 1) * (2 * R - c + 1)
                 bad_max += cnt > (2 * R + 2) ** 2
-    return cases, bad, bad_max
+                neg += len(tuple_histories(R, A, [0] * n, reselect=True)) != (a + 1) * (2 * R - c + 1)
+    return cases, bad, bad_max, neg
+
+
+def check_C_tuple_weighted(trials=300):
+    """Each absolute history weight <= 2 nu V^{-(kappa_p - 1)} (D3: at most one factor 2, no leftover theta)."""
+    bad = neg = done = 0
+    for _ in range(trials):
+        p = rng.choice([2, 3, 5, 7])
+        R = rng.randint(1, 3)
+        n = 2 * R + 1
+        r = F(rng.randint(1, 9), 10)
+        theta = F(1, rng.randint(2, 20))
+        V = F(rng.randint(1, 19), 20)
+        q, eta, bp, nu = params(R, r, V, theta, p)
+        if bp <= 0:
+            continue
+        A = set(x for x in range(n) if rng.random() < 0.4) or {rng.randrange(n)}
+        ell = rng.randint(0, p)
+        z = [ell if (j in A or rng.random() < 0.5) else rng.randint(0, p) for j in range(n)]
+        bound = 2 * nu * V ** (-(kappa_of(A) - 1))
+        ws = tuple_histories(R, A, z, weights=(q, eta, V, nu, theta))
+        done += 1
+        bad += any(w > bound for w in ws)
+        wsn = tuple_histories(R, A, z, weights=(q, eta, V, nu, theta), use_ht=False)
+        neg += any(w > bound for w in wsn)
+    return done, bad, neg
 
 
 # ------------------------------------------------------------------ (D) (4.143) and the G_j retention factor
@@ -385,25 +446,32 @@ def main():
     print(f"(A) (4.140) Moebius identity, |B|<=6, values in 1..4, all B_act: {tot} cases, failures = {bad}")
     _, badn1 = check_A(lambda m: (-1) ** m * factorial(m - 1))
     _, badn2 = check_A(lambda m: (-1) ** (m - 1) * factorial(m))
-    print(f"    NEG sign (-1)^|C|: failures = {badn1} (should be > 0);  NEG weight |C|!: failures = {badn2} (should be > 0)")
+    print(f"    DETECTION controls: sign (-1)^|C|: failures = {badn1} (should be > 0); weight |C|!: failures = {badn2} (should be > 0)")
     be, bi, bb, bn, ex = check_B()
     print(f"(B) (4.141) rank-kappa sum == c(n,n-kappa) (n<=7): mismatches = {be}; collections using > 2kappa indices = {bi}")
     print(f"    c(n,n-kappa) <= n^(2kappa), n<=150, all kappa: failures = {bb}")
-    print(f"    NEG n^kappa: failures = {bn} (should be > 0), first: n={ex[0]}, kappa={ex[1]}, c={ex[2]} > {ex[3]}")
+    print(f"    DETECTION control n^kappa: failures = {bn} (should be > 0), first: n={ex[0]}, kappa={ex[1]}, c={ex[2]} > {ex[3]}")
     beq, bbd, btel, nht, tr, teln = check_C()
     print(f"(C) E_mem non-tuple prime: literal G/O DP (abs weights, factor 2) == printed sum: {tr} random cases, "
           f"failures = {beq}")
     print(f"    printed bound 2(2R+1)/((p+1)b'_p): failures = {bbd}; telescoping in [0,1]: failures = {btel}")
-    print(f"    NEG drop h_t damping: mismatches = {nht} (should be > 0); NEG eta'=3/2: telescoped sum = {teln}, exceeds 1: {teln > 1}")
-    cs, bc, bm = check_C_tuple()
+    print(f"    DETECTION control: drop h_t damping: mismatches = {nht} (should be > 0)")
+    print(f"    ILLUSTRATION (hypothesis needed, not a test of the checker): eta'=3/2 gives telescoped sum {teln}, exceeds 1: {teln > 1}")
+    cs, bc, bm, cn = check_C_tuple()
     print(f"    tuple prime: #histories == (a+1)(2R-c+1), all A_p, R<=4: {cs} cases, failures = {bc}; > (2R+2)^2: {bm}")
+    print(f"    DETECTION control: allow re-selection after discard/removal: mismatches = {cn} (should be > 0)")
+    wd, wb, wn = check_C_tuple_weighted()
+    print(f"    tuple prime, weighted: every history <= 2 nu V^-(kappa_p-1): {wd} random exact cases, failures = {wb}")
+    print(f"    DETECTION control: drop h_t damping (leftover 1/theta): cases exceeding the bound = {wn} (should be > 0)")
     bs, bt, br, nr, nv = check_D()
-    print(f"(D) (4.143) series <= (x Delta)^s e^(x s_i): failures = {bs}; restricting l >= h decreases: failures = {bt}")
+    print("(D) SANITY CHECKS of elementary lemmas (cannot fail by construction: termwise 1/l! <= 1/(l-s)!; v0 chosen to satisfy p. 49)")
+    print(f"    (4.143) series <= (x Delta)^s e^(x s_i): failures = {bs}; restricting l >= h decreases: failures = {bt}")
     print(f"    retention/removal factor <= 1 for q_j in {{sqrt rho, rho}}: failures = {br}")
-    print(f"    NEG theta^2 > rho only (rho=1/4, theta^2=3/10): q_0/theta^2 = {nv} > 1: {nr}")
+    print(f"    ILLUSTRATION: theta^2 > rho only (rho=1/4, theta^2=3/10): q_0/theta^2 = {nv} > 1: {nr}")
     be2, ne2 = check_E()
-    print(f"(E) Phi^sym identity, 40 exact cases: failures = {be2}; NEG non-symmetric F: mismatches = {ne2} (should be > 0)")
-    print("(G) exponent bookkeeping (sympy):")
+    print(f"(E) SANITY CHECK of the abstract substitution identity (symmetry of the rest of the expansion is argued in the card, not tested): 40 exact cases, failures = {be2}")
+    print(f"    DETECTION control: non-symmetric F: mismatches = {ne2} (should be > 0)")
+    print("(G) exponent bookkeeping (sympy; checks the card's transcription of the exponents, constants symbolic; NEG lines are ILLUSTRATIONS):")
     for name, val in check_G():
         print(f"    {name}{val}")
     print(f"\nruntime {time.time() - T0:.1f} s")
