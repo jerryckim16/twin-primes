@@ -13,16 +13,19 @@ Run: /usr/bin/python3 -I lww_p37_47_check.py     (fractions, sympy; no numpy)
     v tau - 2k/u), det(P_j,P_{j+1}) = -2 det(z_j,z_{j+1}), v_j/u_j - v/u = -2k/(u u_j), first coord of g'w = u tau(w),
     r_{g~z} independent of w, d/dr tau(w)/tau(z) = -2/tau(z)^2, the (4.106) derivatives.
     NEG: det(z,w) = -1 (derivative sign flips); wrong T^{-1} = [[1,0],[1,2]].
-(C) pp. 33-34, 38: (4.81), (4.83) and the bijection S_l -> S: for odd coprime (u,v), z primitive with 2 !| z1
-    <=> Q = gEz in C; p | q1 <=> [z]_p = l_p(g').                NEG: line u xi1 - c xi2 = 0 (factor 2 dropped).
+(C) pp. 33-34, 38: (4.80) T^{-1} g' z = g E z (g' entered independently), (4.81), (4.83) and the bijection
+    S_l -> S: for odd coprime (u,v), z primitive with 2 !| z1 <=> Q = gEz in C; p | q1 <=> [z]_p = [(2c,u)]_p
+    (projective equality, i.e. [z]_p = l_p(g')).                NEG: line u xi1 - c xi2 = 0 (factor 2 dropped).
 (D) (4.112) Bonferroni for prod(1 - x_i), x_i in [0,1], exact; p. 44 H_p bounds 0 <= H_p <= 1[l in {[z_j]_p}],
     average <= (2R+1)/(p+1), exact (rho = 1/4).                 NEG: bound by e_{B+1} instead of e_B.
-(E) p. 35 counts behind (4.88), exact enumeration: #{g0 in SL2(Z/2S): first column = (1,1) mod 2, line condition}
+(E) p. 35 counts behind (4.88), exact enumeration: #{g0 in SL2(Z/2S): first column = (1,1) mod 2, line condition
+    for one fixed line (1,2) per p | S}
     = 2 prod p(p-1), |SL2(Z/2S)| = 6 prod p(p^2-1).  Plus a brute-force count of P = (u,v) in a toy box with line
     conditions at p = 3, 5 and c/u in I3 vs the main term |I1||I2||I3|/(3 zeta(2) prod (p+1)) (numeric, tol 6%).
     NEG: main term with 1/zeta(2); with 1/p in place of 1/(p+1).
-(F) p. 41, #R: for fixed (j, a, theta, n, sign) the equation a tau(w)/tau(z) = n +- theta has <= 1 root r in [0,1)
-    with tau(z) >= 1/16 (exact, linear in r); no root with |n| > X+1, X = 16|a|(|w1|+2|w2|) (the p. 41 bound).
+(F) p. 41, #R: the equation a tau(w)/tau(z) = n +- theta is linear in r; check that it is never degenerate
+    (coef = rhs = 0) and that, within the window |n| <= X+60, no root r in [0,1) with tau(z) >= 1/16 has |n| > X+1,
+    X = 16|a|(|w1|+2|w2|) (the p. 41 bound).  '<= 1 root' itself holds by construction.
 (G) bookkeeping: log S << L^0.96 (p. 43), configuration count exp(O(L^0.71)) < exp(c L^0.75) (p. 45), box exponents
     (p. 40-42), (C R)^B / B! <= exp(-c L^{3/4}) (4.115) for large L.
     NEG: B = ceil(L^{1/2}) (no decay); box side x^{-c/2} (error #Q x^{-c} does not decay).
@@ -218,13 +221,15 @@ for _ in range(60):
             n += 1
             if lhs != rhs:
                 nf += 1
+            # (4.80): g' z = T Q, with g' = [[u, -2c], [(u-v)/2, d-c]] computed independently; T^{-1} g' z == g E z
+            gz1 = uu * z1 - 2 * cc * z2
+            gz2 = ((uu - vv) // 2) * z1 + (dd - cc) * z2
+            n += 1
+            if (gz1, gz1 - 2 * gz2) != (q1, q2):
+                nf += 1
             if gcd(z1, z2) != 1:
                 continue
             for p in (3, 5, 7, 11, 13):
-                # [z]_p = l_p(g'): z satisfies u xi1 - 2c xi2 = 0 mod p
-                n += 1
-                if ((q1 % p == 0) != ((uu * z1 - 2 * cc * z2) % p == 0)):
-                    nf += 1
                 # also via projective equality: [z]_p == [(2c, u)]_p
                 a1, a2 = z1 % p, z2 % p
                 b1, b2 = (2 * cc) % p, uu % p
@@ -235,7 +240,7 @@ for _ in range(60):
                 nnegC += 1
                 if (q1 % p == 0) != ((uu * z1 - cc * z2) % p == 0):
                     negC += 1
-report("(C) (4.81), (4.83), primitive & 2!|z1 <=> Q in C", n, nf)
+report("(C) (4.80) T^{-1}g'z = gEz; (4.81); primitive & 2!|z1 <=> Q in C; (4.83) projective", n, nf)
 report("(C) NEG line u xi1 - c xi2 = 0 (factor 2 dropped)", nnegC, negC, True)
 
 # ---------------------------------------------------------------- (D) Bonferroni + H_p
@@ -384,7 +389,7 @@ for _ in range(120):
     n += 1
     if outside > 0 or total > 2 * (2 * X + 3):
         nf += 1
-report("(F) #R per (a,theta): <= 1 root per (n, sign), none with |n| > 16|a|(|w1|+2|w2|)+1", n, nf)
+report("(F) #R per (a,theta): never degenerate; no root with |n| > 16|a|(|w1|+2|w2|)+1 (window |n| <= X+60)", n, nf)
 
 # ---------------------------------------------------------------- (G) bookkeeping
 n = nf = 0

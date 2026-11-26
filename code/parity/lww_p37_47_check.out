@@ -4,7 +4,7 @@
 [NEG] (A) NEG |s-1| <= 1/p_min without the factor R: cases=40 failures=27 -> as expected
 [POS] (B) g~, P_j, det, telescoping, r_{g~z}, (4.106), (4.108) [symbolic+integer]: cases=742 failures=0 -> as expected
 [NEG] (B) NEG det(z,w) = -1 / wrong T^{-1}: cases=486 failures=486 -> as expected
-[POS] (C) (4.81), (4.83), primitive & 2!|z1 <=> Q in C: cases=258240 failures=0 -> as expected
+[POS] (C) (4.80) T^{-1}g'z = gEz; (4.81); primitive & 2!|z1 <=> Q in C; (4.83) projective: cases=185280 failures=0 -> as expected
 [NEG] (C) NEG line u xi1 - c xi2 = 0 (factor 2 dropped): cases=110400 failures=20342 -> as expected
 [POS] (D) Bonferroni |prod(1-x)-sum_{k<B}| <= e_B ; H_p bounds (p. 44): cases=5702 failures=0 -> as expected
 [NEG] (D) NEG bound by e_{B+1}: cases=2374 failures=1438 -> as expected
@@ -12,9 +12,9 @@
 [POS] (E) toy count vs |I1||I2||I3|/(3 zeta(2) prod(p+1)) within 6%: cases=1 failures=0 [count=2682, main=2659.7, rel.err=0.0084] -> as expected
 [NEG] (E) NEG main term with 1/zeta(2): cases=1 failures=1 [rel.err=0.664] -> as expected
 [NEG] (E) NEG main term with 1/p for 1/(p+1): cases=1 failures=1 [rel.err=0.370] -> as expected
-[POS] (F) #R per (a,theta): <= 1 root per (n, sign), none with |n| > 16|a|(|w1|+2|w2|)+1: cases=120 failures=0 -> as expected
+[POS] (F) #R per (a,theta): never degenerate; no root with |n| > 16|a|(|w1|+2|w2|)+1 (window |n| <= X+60): cases=120 failures=0 -> as expected
 [POS] (G) bookkeeping: log S, config count, (4.115), box exponents: cases=23 failures=0 -> as expected
 [NEG] (G) NEG B = L^{1/2} (no exp(-cL^{3/4})); box side x^{-c/2}: cases=7 failures=7 -> as expected
 
 SUMMARY: 8 positive checks, 9 negative controls, unexpected outcomes: 0
-runtime 16.8 s
+runtime 17.1 s
