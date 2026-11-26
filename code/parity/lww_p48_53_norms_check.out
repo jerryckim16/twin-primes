@@ -1,0 +1,33 @@
+[POS] (A) factorial identities p.49: cases=961 failures=0 -> as expected
+[NEG] (A) NEG drop a!: cases=961 failures=899 -> as expected
+[POS] (B) weighted Schur ||T|| <= sqrt(RC): cases=400 failures=0 -> as expected
+[POS] (B) C(T) == R(T*): cases=400 failures=0 -> as expected
+[NEG] (B) NEG ||T|| <= R alone: cases=400 failures=39 -> as expected
+[NEG] (B) NEG C with m(t) instead of m(s): cases=400 failures=5 -> as expected
+[POS] (C) G_j row AND column factors (exact, multiset model): cases=228 failures=0 -> as expected
+    ILLUSTRATION ordered 'append at end' kernel, k'=6: column exceeds printed factor in 12/12 parameter sets (so the symmetric picture is needed)
+[POS] (D) (4.124) form/count, tau identity, (4.128): cases=300 failures=0 -> as expected
+[POS] (D) line condition fixes h mod p (j1 != 0 mod p): cases=68760 failures=0 -> as expected
+[NEG] (D) NEG j1 = 0 mod p: uniqueness: cases=68760 failures=1000 -> as expected
+[POS] (E) window: admissible h ==> ||X|| <= 16/p*: cases=2340 failures=0 -> as expected
+[NEG] (E) NEG literal |X| <= 16/p* (as printed): cases=2340 failures=345 -> as expected
+[POS] (F) (4.133) count <= 9(A'B'/p + max(A',B')): cases=12992 failures=0 -> as expected
+[NEG] (F) NEG without max(A',B'): cases=12992 failures=1001 -> as expected
+[POS] (G) ||[e(xi det)]|| == ||T(xi)||^2: cases=60 failures=0 -> as expected
+[POS] (G) Gram sum <= 20 (A'/d+1)(B'+d log 2d) [max ratio 6.03]: cases=2442 failures=0 -> as expected
+[NEG] (G) NEG drop d log(2d) [max ratio 1267.6]: cases=2442 failures=333 -> as expected
+[POS] (H) theta not in M_1 ==> Dirichlet d > L^A0 ; |M_1| <= 4L^{3A0}/Y: cases=5534 failures=0 -> as expected
+[NEG] (H) NEG M_1 radius L^A0/(4Y): cases=5534 failures=39 -> as expected
+[POS] (I) lattice: Minkowski, reduced |v1||v2|, (4.26)=>lambda>=Y^-0.8 [box: max|k1|*lam=17.4, max|k2|/(Y lam)=17.0]: cases=25 failures=0 -> as expected
+[POS] (J) bookkeeping: eps_K, (4.130), (4.134), (4.135) close: cases=42 failures=0 -> as expected
+[NEG] (J) NEG K = 200 A (sqrt eps_K not o(L^{-A})): cases=5 failures=5 -> as expected
+[NEG] (J) NEG A0 = A in (4.130): cases=5 failures=5 -> as expected
+    minimal: sqrt(eps_K) = o(L^{-A}) iff 1 - 0.005K < -A iff K > 200(A+1); L^{0.2-A0} = o(L^{-A}) iff A0 > A+0.2
+    illustration: E0=1, A=6, K=1801: L^(2K) e^(-L^0.1/4) < 1 needs L > 1.65e+63, i.e. log x > 1.65e+63
+
+SUMMARY: 13 positive checks, 10 negative controls, unexpected outcomes: 0
+runtime 50.2 s
+
+real	0m50.570s
+user	2m4.217s
+sys	0m0.055s
