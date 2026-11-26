@@ -197,6 +197,7 @@ import TwinPrimes
 #print axioms TwinPrimes.MaynardS1Diag.ex_hpw
 #print axioms TwinPrimes.MaynardS1Diag.maynard_S1_diag_example
 #print axioms TwinPrimes.MaynardHpw.coprime_of_dvd_shift
+#print axioms TwinPrimes.MaynardHpw.shiftsCop_of_shiftsDvd
 #print axioms TwinPrimes.MaynardHpw.pairwise_coprime_of_solvable
 #print axioms TwinPrimes.MaynardHpw.lcm_entries_coprime
 #print axioms TwinPrimes.MaynardHpw.hpw_of_solvable

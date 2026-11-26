@@ -5,7 +5,7 @@ import TwinPrimes.SelbergOpt
 
 Motivation: Maynard, *Small gaps between primes* (Ann. of Math. 2015, arXiv:1311.4600),
 Lemma 5.1 / eq. (5.8): for weights `λ_{d₁,…,d_k}` supported on squarefree tuples, put
-`y_r = μ(∏ rᵢ) ∏ φ(rᵢ) ∑_{rᵢ ∣ dᵢ ∀i} λ_d / ∏ dᵢ`; then
+`y_r = ∏ μ(rᵢ) φ(rᵢ) ∑_{rᵢ ∣ dᵢ ∀i} λ_d / ∏ dᵢ` (as printed in Lemma 5.1); then
 `λ_d = μ(∏ dᵢ) ∏ dᵢ ∑_{dᵢ ∣ rᵢ ∀i} y_r / ∏ φ(rᵢ)`.
 This file proves the finite, combinatorial core of that statement in core Lean (no Mathlib),
 over `Rat` (core `Init.Data.Rat`), with list-based sums.
@@ -26,7 +26,7 @@ Proved (all `R`, all `k`, no hypotheses beyond membership in the box):
   `M (U f) = f` and `U (M F) = F` on the box.
 
 Maynard's normalisation (`maynardY`, `maynardLam`; `μ(r)` is taken as `∏ᵢ μ(rᵢ)`, which equals
-`μ(∏ rᵢ)` for pairwise coprime entries as on Maynard's support — that equality is not proved):
+`μ(∏ rᵢ)` for pairwise coprime entries as on Maynard's support — proved in `MuTuple.lean`, `tmu_eq_mu_prod`):
 * `maynard_lam_of_y`, `maynard_y_of_lam`: both round trips `λ ↦ y ↦ λ`, `y ↦ λ ↦ y` hold on the
   box whenever every tuple `e` in the support satisfies the sign identity `SignOK e`:
   `∏ μ(dᵢ) ∏ μ(rᵢ) = ∏ μ(rᵢ/dᵢ)` for all `d ∣ r ∣ e`;
@@ -544,7 +544,7 @@ def tN (d : List Nat) : Rat := ((d.prod : Nat) : Rat)
 def tphi (r : List Nat) : Rat := (((r.map totient).prod : Nat) : Rat)
 
 /-- `∏_i μ(r_i)` as a rational (`= μ(∏_i r_i)` when the `r_i` are pairwise coprime, as on
-Maynard's support; that identity is not used or proved here). -/
+Maynard's support; that identity is proved in `MuTuple.lean`). -/
 def tmu (r : List Nat) : Rat := (r.map fun x => (mu x : Rat)).prod
 
 /-- Maynard's `y_r = μ(r) φ(r) ∑_{r ∣ d} λ_d / d` (all products over coordinates). -/

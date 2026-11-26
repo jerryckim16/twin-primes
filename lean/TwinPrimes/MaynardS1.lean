@@ -38,7 +38,7 @@ asymptotic evaluation of `(N/W) ∑ λ_ds λ_es / ∏ lcm(dsᵢ,esᵢ)` in terms
 `F`, the size bound on the error sum `∑ |λ_ds λ_es|`, and the treatment of pairs whose
 `lcm`s are not pairwise coprime (Maynard shows their count vanishes, since a common prime
 `p ∣ dsᵢ, esⱼ` with `i ≠ j` would divide `hᵢ − hⱼ`, hence `W`; here pairwise coprimality is
-simply assumed for all pairs in `Dk × Dk`).
+simply assumed for all pairs in `Dk × Dk`; the bad pairs are treated in `MaynardHpw.lean`).
 -/
 
 namespace TwinPrimes

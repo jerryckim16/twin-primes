@@ -1,0 +1,330 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\lbl}[1]{\textup{\textsc{#1}}}
+\newcommand{\DHL}{\mathrm{DHL}}
+\usepackage[htt]{hyphenat}
+\newcommand{\tl}[1]{\texttt{#1}}
+\emergencystretch=4em
+\raggedbottom
+
+\title[The finite part of Maynard's reduction in core Lean]{The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean}
+\author{Jerry Kim}
+\thanks{Prepared with the assistance of Claude (Anthropic). The Lean sources are in \url{https://github.com/jerryckim16/twin-primes} (directory \tl{lean/}); the project's main paper is at \url{https://jerryckim16.github.io/twin-primes/}.}
+\date{Version 1.0, 26 November 2026}
+
+\begin{document}
+
+\begin{abstract}
+Maynard's method proves bounded gaps between primes in two kinds of steps:
+analytic asymptotics for two weighted sums $S_1$, $S_2$, and finite,
+combinatorial steps around them. This note records which finite steps we
+have checked in Lean~4 without Mathlib, and lists the analytic statements, and the finite glue, that stay hypotheses. Checked (\lbl{Lean-checked}): the pigeonhole
+step from a sieve inequality to $\DHL[k,2]$; the passage from a ratio above
+$4$ to a level below $1/2$; an abstract limit step from two-sided asymptotics to
+the sieve inequality; for $k$-dimensional weights, the exact expansion of
+$S_1$, the Chinese-remainder count with its error, Maynard's change of
+variables $\lambda\leftrightarrow y$ for every $R$ and $k$, the
+diagonalisation of the main term, and the exact contribution of pairs whose
+moduli are not pairwise coprime, under the shift condition Maynard actually has. Not formalised: the asymptotics of $S_1$ and
+$S_2$ (which rest on the Bombieri--Vinogradov theorem), the size of the error
+terms, the finite expansion of $S_2$, the passage from real to integer
+weights, and the variational inequality $M_k>4$. A Mathlib formalisation of
+$H_1\le246$ by another group has been announced; this
+note is a small independent check of the combinatorial skeleton, not a
+formalisation of bounded gaps. Nothing here bears on the twin prime
+conjecture, which remains open.
+\end{abstract}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\section{Introduction}
+
+\subsection*{The reduction}
+Let $\mathcal H=\{h_1<\dots<h_k\}$ be admissible. Maynard \cite{May15} takes
+weights $w_n=\big(\sum_{d_i\mid n+h_i\,\forall i}\lambda_{d_1,\dots,d_k}\big)^2$ on
+$n\equiv v_0\pmod W$ and compares
+\[
+S_1=\sum_{\substack{N\le n<2N\\ n\equiv v_0\ (W)}} w_n,\qquad
+S_2=\sum_{\substack{N\le n<2N\\ n\equiv v_0\ (W)}} w_n\,\#\{i:\ n+h_i\ \text{prime}\}
+\]
+(\lbl{Literature}, \cite[(4.2)--(4.3)]{May15}). If $S_2>S_1$ for all large $N$, some
+$n$ has two primes among $n+\mathcal H$. His Proposition~4.1 evaluates $S_1$ and
+$S_2$ asymptotically in terms of a test function $F$, and Proposition~4.2
+turns $\theta M_k/2>1$ into $\DHL[k,2]$ \cite[pp.~5--6 of arXiv v3]{May15}.
+
+\subsection*{What this note does}
+We separate the finite steps from the analytic ones and check the finite
+steps in Lean~4.35.0, core library only (no Mathlib). Every theorem named
+below compiles with no \tl{sorry}, no \tl{native\_decide} and no new axioms;
+\tl{lake env lean Audit.lean} reports only \tl{propext}, \tl{Quot.sound} and
+\tl{Classical.choice} (Section~\ref{sec:audit}). Section~\ref{sec:hyp} lists
+the statements that are \emph{not} formalised. They are not stated in Lean at
+all: only their abstract consequence, the two-sided bound of
+Theorem~\ref{thm:skeleton}(4), appears, as a hypothesis. None is assumed as an
+axiom.
+
+\subsection*{Relation to other work}
+A large Lean~4 formalisation of $H_1\le246$, built on Mathlib and
+PrimeNumberTheoremAnd, has been announced \cite{Axiom26}. Its site says it
+formalises ``the majority of Maynard's paper'' and the part of Polymath8b
+\cite{Pol14b} used for $246$ (\lbl{Literature}, read 26 November 2026; we have
+not inspected its code or its remaining hypotheses). Our development is
+independent of it and much smaller. Its value is only as a second,
+self-contained check of the combinatorial skeleton; the statements below are
+standard and possibly folklore in this form.
+
+\section{The skeleton: from a sieve inequality to bounded gaps}\label{sec:skeleton}
+
+In this section all objects are natural numbers or finite lists. $\tl{IsPrime}\ n$ means
+$n\ge2$ with only the trivial divisors; $\tl{Admissible}\ H$ means $H$ misses a
+residue class modulo every prime; $\tl{DHL}\ k$ says that for every admissible
+increasing $k$-tuple $H$ and every $N$ there are $n\ge N$ and $a<b$ in $H$ with
+$n+a$, $n+b$ prime (file \tl{Basic.lean}).
+
+\begin{definition}[\tl{SieveInequality k}, file \tl{Reduction.lean}]
+For every admissible increasing $k$-tuple $H$ and every $N$ there are a finite
+list $ns\subset[N,\infty)$ and weights $w:\mathbb N\to\mathbb N$ with
+$\sum_{n\in ns}w(n)<\sum_{n\in ns}w(n)\,\#\{h\in H:\ n+h\ \text{prime}\}$.
+\end{definition}
+
+\begin{theorem}[\lbl{Lean-checked}]\label{thm:skeleton}
+\begin{enumerate}
+\item \tl{dhl\_of\_sieveInequality}: $\tl{SieveInequality}\ k\Rightarrow\tl{DHL}\ k$.
+\item \tl{sieveInequality\_of\_ratio}: if for all $H$, $N$ there are weights with
+$S_1>0$ and $pS_1\le qS_2$ for fixed $q<p$, then $\tl{SieveInequality}\ k$.
+\item \tl{theta\_of\_ratio\_gt\_four}: if $p>4q$ there are $a,b$ with
+$2a<b$ and $2bq<ap$, i.e.\ a level $\theta=a/b<1/2$ with $\theta(p/q)/2>1$
+(take $a=p+4q$, $b=4p$).
+\item \tl{eventually\_lt\_of\_asymptotics}, \tl{sieveInequality\_of\_asymptotics}:
+if $a c'<c a'$, $B(N)>0$, and for every $m>0$ eventually
+$m a' S_1(N)\le(m+1)aB(N)$ and $m cB(N)\le(m+1)c'S_2(N)$, then eventually
+$S_1(N)<S_2(N)$ (one may take $m=2ac'+2$); applied to every tuple this gives
+$\tl{SieveInequality}\ k$.
+\item \tl{boundedGaps\_246\_of\_asymptotics\_50}: the hypothesis of (4) for
+$k=50$ implies $\tl{BoundedGaps}\ 246$, through an admissible $50$-tuple of
+diameter $246$ checked by kernel reduction (\tl{Tuples.lean}).
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+In (4), with $B(N)=\varphi(W)^kN(\log R)^k/W^{k+1}$ as in \cite[Prop.~4.1]{May15},
+$a/a'$ and $c/c'$ are rational upper and lower bounds for $I_k(F)$ and
+$(\theta/2-\delta)\sum_mJ^{(m)}_k(F)$. Only the upper bound for $S_1$
+and the lower bound for $S_2$ are used. Everything is in $\mathbb N$, so the
+real constants of \cite{May15} must first be replaced by rational bounds on
+the correct side; this costs nothing in the argument but is not formalised.
+\end{remark}
+
+\section{The finite part of the evaluation of \texorpdfstring{$S_1$}{S1}}\label{sec:s1}
+
+Tuples are lists; $d\mid n+h$ means $d_i\mid n+h_i$ for all $i$; the support is a
+finite list $D_k$ of tuples. Lean's $S_1$ runs over $n<N$ with $n\bmod W=v_0$
+(we assume $v_0<W$ throughout); Maynard's range $N\le n<2N$ is the difference of
+two such sums. Theorem~\ref{thm:s1} and item (4) of Theorem~\ref{thm:diag} take
+integer weights $\lambda$; items (1)--(3) of Theorem~\ref{thm:diag} take rational ones.
+The shift condition is
+\[
+(\mathrm{SC})\qquad \gcd(x,W)=1\ \Rightarrow\ \gcd(x,h_i-h_j)=1\quad\text{for all }x\text{ and }i<j,
+\]
+i.e.\ every prime dividing a difference divides $W$ (\tl{ShiftsCop}). For
+Maynard's $W=\prod_{p\le D_0}p$ it holds once $D_0$ exceeds the diameter of the
+tuple.
+
+\begin{theorem}[\lbl{Lean-checked}; files \tl{MaynardS1.lean}, \tl{MaynardHpw.lean}]\label{thm:s1}
+\begin{enumerate}
+\item \tl{maynard\_S1\_expand\_W} (no hypotheses; here $n\equiv v_0\,(W)$ means $n\bmod W=v_0$):
+\[
+\sum_{\substack{n<N\\ n\equiv v_0\,(W)}}\Big(\sum_{\substack{d\in D_k\\ d\mid n+h}}\lambda_d\Big)^2
+=\sum_{d,e\in D_k}\lambda_d\lambda_e\,\#\{n<N:\ n\equiv v_0\ (W),\ d\mid n+h,\ e\mid n+h\}.
+\]
+\item \tl{tupleDvd\_lcm}, \tl{crt\_tuple\_count\_bounds}: the two divisibility
+conditions are $[d_i,e_i]\mid n+h_i$ (tuples of length $k$); if the moduli
+$L_i\ge1$ (one per shift) are pairwise coprime and coprime to $W$, the count $c$
+satisfies $|c-N/(W\prod_iL_i)|<1$ (stated division-free in Lean).
+\item \tl{count\_zero\_of\_not\_pairwise}, \tl{hpw\_of\_solvable}: under (SC),
+if the entries are coprime to $W$, a pair $(d,e)$
+whose moduli $[d_i,e_i]$ are not pairwise coprime contributes count $0$.
+\item \tl{maynard\_S1\_error\_W}: under the hypotheses of (3), entries $\ge1$ and
+tuples of length $k$, with the main term over the remaining (``good'') pairs
+(stated in Lean after multiplication by $WM$, $M$ a common multiple of the
+$\prod_i[d_i,e_i]$):
+\[
+\Big|S_1-\frac NW\sum_{(d,e)\ \mathrm{good}}\frac{\lambda_d\lambda_e}{\prod_i[d_i,e_i]}\Big|
+\le\sum_{d,e\in D_k}|\lambda_d\lambda_e|.
+\]
+\end{enumerate}
+\end{theorem}
+
+\noindent Item (4) is the finite content of \cite[(5.2)]{May15}. Maynard's
+restricted sum $\sum'$ is our sum over good pairs (they agree because the
+entries are coprime to $W$). An earlier Lean version assumed $|h_i-h_j|\mid W$
+instead of (SC); that fails for squarefree $W$ as soon as a difference is not
+squarefree (the $50$-tuple has the difference $12$), and was weakened to (SC)
+after an internal audit.
+
+\begin{theorem}[\lbl{Lean-checked}; files \tl{MaynardInv.lean}, \tl{MuMult.lean}, \tl{MaynardDiag.lean}, \tl{MaynardHpw.lean}]\label{thm:diag}
+Let $\lambda$ be supported on tuples in the box $\{1,\dots,R\}^k$ with
+squarefree entries, and put
+$y_u=\prod_i\mu(u_i)\varphi(u_i)\sum_{u\mid d}\lambda_d/\prod_id_i$, as in
+\cite[Lemma~5.1]{May15}.
+\begin{enumerate}
+\item \tl{mobInv\_upSum}, \tl{upSum\_mobInv}: M\"obius inversion over
+$k$-tuples in the box, both directions, for every $R$ and $k$.
+\item \tl{maynard\_lam\_of\_y\_sqfree\_all} and
+\tl{maynard\_y\_of\_lam\_sqfree\_all}: the formula
+\[\lambda_d=\prod_i\mu(d_i)d_i\sum_{d\mid r}\frac{y_r}{\prod_i\varphi(r_i)}\]
+holds for every $R$, $k$ and every $d$ in the box; conversely, every $y$
+supported on tuples with squarefree entries is recovered from the $\lambda$ so
+defined. The proof needs $\mu(a)\mu(x)=\mu(x/a)$ for
+$a\mid x\mid c$, $c$ squarefree (\tl{muSign\_of\_sqfree}), which we derive from
+the recursive definition of $\mu$.
+\item \tl{maynard\_diag\_lcm}, \tl{maynard\_diag\_y\_sqfree}:
+$\sum_{d,e}\lambda_d\lambda_e/\prod_i[d_i,e_i]=\sum_u y_u^2/\prod_i\varphi(u_i)$,
+via Gauss's identity $\gcd(a,b)=\sum_{u\mid a,\,u\mid b}\varphi(u)$ in each
+coordinate. No coprimality between coordinates is needed.
+\item \tl{maynard\_S1\_diag\_W}: for integer $\lambda$ supported on a subset $D_k$ of
+the box (and $0$ elsewhere in it), $|h|=k$, $v_0<W$, entries of $D_k$ coprime to $W$, and (SC),
+\[
+\Big|S_1-\frac NW\Big(\sum_{u}\frac{y_u^2}{\prod_i\varphi(u_i)}-B_{\rm bad}\Big)\Big|
+\le\sum_{d,e}|\lambda_d\lambda_e|,\qquad
+B_{\rm bad}=\sum_{(d,e)\ \mathrm{bad}}\frac{\lambda_d\lambda_e}{\prod_i[d_i,e_i]}.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}[two points the formalisation made explicit]
+\begin{itemize}
+\item The hypothesis ``the $[d_i,e_i]$ are pairwise coprime'' cannot be assumed
+for the whole support: for $h=(0,2)$, $W=2$, the pair $d=(3,1)$, $e=(1,3)$ has
+moduli $(3,3)$ (\tl{ex\_not\_hpw}), and on the full box $\{1,2\}^2$ the pair
+$d=e=(2,2)$ fails it (\tl{box\_hpw\_fails}). What holds is Theorem~\ref{thm:s1}(3): such
+pairs have count $0$. Their main-term contribution $B_{\rm bad}$ need not vanish
+($B_{\rm bad}=2/9$ in the example \tl{ex\_B\_eq}); Maynard controls it analytically, and
+that bound is not formalised.
+\item The change of variables needs squarefree support
+(\tl{maynard\_inversion\_needs\_sqfree} gives a failing non-squarefree case).
+\end{itemize}
+\end{remark}
+
+\section{What stays a hypothesis}\label{sec:hyp}
+
+The following are \emph{not} formalised. To use Theorem~\ref{thm:skeleton}(4) or
+(5) one must supply them. Labels refer to their status in the literature.
+
+\begin{hypothesis}[the size of the finite errors]\label{hyp:err}
+For Maynard's weights, $\sum_{d,e}|\lambda_d\lambda_e|$ and $\frac NWB_{\rm bad}$ are
+$o\big(\varphi(W)^kN(\log R)^k/W^{k+1}\big)$
+(\lbl{Literature}, \cite[proof of Lemma~5.1]{May15}; $B_{\rm bad}$ is the part
+of his main term that he bounds with an extra factor $1/D_0$).
+\end{hypothesis}
+
+\begin{hypothesis}[the main term of $S_1$]\label{hyp:s1}
+With $\lambda$ defined from a smooth $F$ supported on
+$\{x\in[0,1]^k:\sum x_i\le1\}$ and $R=N^{\theta/2-\delta}$,
+$\frac NW\sum_u y_u^2/\prod\varphi(u_i)=(1+o(1))\varphi(W)^kN(\log R)^kI_k(F)/W^{k+1}$
+(\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.1 and~6.2]{May15}).
+\end{hypothesis}
+
+\begin{hypothesis}[the finite expansion and main term of $S_2$]\label{hyp:s2}
+The analogue of Theorems~\ref{thm:s1} and~\ref{thm:diag} for
+$S_2^{(m)}=\sum_n w_n\mathbf 1[n+h_m\ \text{prime}]$, and the asymptotic
+$S_2=(1+o(1))\varphi(W)^kN(\log R)^{k+1}\sum_mJ^{(m)}_k(F)/(W^{k+1}\log N)$,
+which uses a level of distribution $\theta$ for the primes (for $\theta<1/2$,
+the Bombieri--Vinogradov theorem) (\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.2 and~6.3]{May15}; the level enters through the error term $O(y_{\max}^2N/(\log N)^A)$ of Lemma~5.2).
+The finite expansion is elementary but not yet written in Lean; it is the
+next step of this programme.
+\end{hypothesis}
+
+\begin{hypothesis}[the variational inequality]\label{hyp:var}
+For $k=50$ there is $F$ on the enlarged region of \cite{Pol14b} with ratio above
+$4$, together with the modified asymptotics that region needs
+(\lbl{Literature}, \cite{Pol14b}). The project re-certifies this inequality
+exactly (\lbl{Computed}; \tl{code/cert\_M50e25\_D27e.json}, checked by
+\tl{code/verify\_cert.py}); the certificate is not in Lean.
+\end{hypothesis}
+
+\begin{hypothesis}[finite glue]\label{hyp:glue}
+The translation of Theorems~\ref{thm:s1} and~\ref{thm:diag} into the form of
+Theorem~\ref{thm:skeleton}(4): the range $N\le n<2N$ (a difference of two Lean
+sums, doubling the error), real weights replaced by rational and, after
+scaling, integer ones at a cost absorbed in the error terms, the natural-number
+weights $w$ and normalisation $B(N)$, and the choice of $W$ and $v_0$. Elementary,
+not formalised.
+\end{hypothesis}
+
+\noindent Granting Hypotheses~\ref{hyp:err}--\ref{hyp:glue}, with real constants
+replaced by rationals on the correct side, the hypothesis of
+Theorem~\ref{thm:skeleton}(5) holds and gives $\tl{BoundedGaps}\ 246$. That
+implication is the content of \cite{May15,Pol14b}; we have formalised only the
+finite part.
+
+\section{Distance to twin primes}
+
+The file \tl{Tuples.lean} also checks \tl{twinPrimeConjecture\_of\_DHL\_2}:
+$\tl{DHL}\ 2$ implies the twin prime conjecture. This is a triviality, and it
+is the only link between this note and twin primes. For $k=2$,
+\tl{SieveInequality 2} is equivalent to \tl{DHL 2} (put all the weight on a
+twin), so Theorem~\ref{thm:skeleton} adds nothing there; the obstruction lies in
+the sieve weights. Polymath8b show, by a modification of Selberg's parity
+argument, that their result $\DHL[3,2]$ under GEH is the best possible from
+purely sieve-theoretic considerations (\lbl{Literature}, \cite[abstract]{Pol14b});
+see also the project's parity-barrier paper \cite{Kim26p}. Nothing in this note goes beyond what is
+already known.
+
+\section{Reproducing the checks}\label{sec:audit}
+
+\begin{itemize}
+\item Toolchain: Lean~4.35.0 (official release), no Mathlib, no other dependencies.
+\item \tl{cd lean \&\& lake build} builds all $21$ files of \tl{TwinPrimes/}
+($5720$ lines; \tl{Reduction.lean}, the five \tl{Maynard*} files and the two \tl{Mu*} files total $2543$).
+\item \tl{lake env lean Audit.lean} prints the axioms of $209$ declarations: $116$
+use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $54$ use
+\tl{propext}, \tl{Quot.sound}; $11$ use \tl{propext}; $28$ use none. No
+\tl{sorryAx}, no other axiom (run of 26 November 2026).
+\item \tl{grep} finds no \tl{sorry}, \tl{native\_decide} or \tl{axiom}
+declaration in \tl{TwinPrimes/}. Finite facts (admissibility of the $50$-tuple,
+sign tables for small $c$) use \tl{decide}, checked by the kernel.
+\end{itemize}
+
+\appendix
+\section{History of this document}\label{app:history}
+\begin{description}
+\item[1.0] (26 Nov 2026) First version. The one-dimensional Selberg files
+(\tl{Selberg.lean}, \tl{SelbergEq.lean}, \tl{SelbergOpt.lean}; exact
+diagonalisation and optimum for small and general $D$) are out of scope and
+listed here only. Before release, an internal fresh-context audit (23 items:
+2 errors, 2 gaps, 3 overstatements, slips and style) was applied; it led to
+the weaker shift condition (SC) in \tl{MaynardHpw.lean}
+(\tl{notes/audit-lean-note-v10.md}).
+\end{description}
+
+\begin{thebibliography}{9}
+\bibitem{Axiom26} R.~Aanegola, A.~Alfarano, F.~Charton, E.~Chen, \dots, Y.~Zhu (Axiom Math; 40 authors),
+\emph{Lean formalization of bounded gaps between primes} (PrimeGapsLib), 2026.
+\url{https://primegaps.axiommath.ai/} (read 26 November 2026).
+\bibitem{May15} J.~Maynard, \emph{Small gaps between primes}, Ann. of Math.\
+\textbf{181} (2015), 383--413; arXiv:1311.4600v3 (read; SHA-256 of the PDF
+\texttt{dce1a7a0\dots d63cda9}).
+\bibitem{Pol14b} D.~H.~J.~Polymath, \emph{Variants of the Selberg sieve, and
+bounded intervals containing many primes}, Res.\ Math.\ Sci.\ \textbf{1}
+(2014), Art.~12; doi:10.1186/s40687-014-0012-7.
+\bibitem{Kim26p} J.~Kim, \emph{The parity barrier and twin primes: what is known
+and what is missing}, version~1.1, 2026; \url{https://jerryckim16.github.io/twin-primes/}.
+\end{thebibliography}
+
+\end{document}

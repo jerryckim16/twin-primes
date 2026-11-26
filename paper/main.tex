@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.51, 24 November 2026}
+\date{Version 0.52, 26 November 2026}
 
 \begin{document}
 
@@ -89,7 +89,7 @@ $7\times10^7$ & $3.5\times10^6$ & Zhang \cite{Zha14} & \lbl{Literature}\\
 \noindent{\small $^{\ast}$ Value of $k$ inferred by us from $H(49)=240$ and $H(48)=236$, not read from the source.
 $^{\dagger}$ Its variational step is reproduced here (Corollary~\ref{cor:240}); its reduction \cite[Prop.~1]{Sta26} and its equidistribution input are not verified by us. Song and Yue \cite[Remark~4.23]{SY26} point out a possible missing hypothesis in the proof of \cite[Lemma~5]{Sta26} (a Type~IIa lemma applied after swapping the factors); they say it is not a counterexample to the conclusion. We read the cited step in the arXiv text (v1): in the range $\gamma\in(\frac12,\frac12+2\omega+\varepsilon]$ the proof of \cite[Lemma~5]{Sta26} applies \cite[Lemma~3]{Sta26} with the factors swapped, Lemma~3 needs its shorter factor to be Siegel--Walfisz, and neither Lemma~5 nor case~(I) of \cite[Definition~9]{Sta26} assumes this of $\alpha$. So the step reads as they say. Whether the coefficient sequences that actually occur satisfy the missing hypothesis, which would repair the step, we have not checked (Remark~\ref{rem:sta-lemma5}).
 $^{\ddagger}$ Both $236$ preprints use the same support (``D182''): $k=48$ is read from \cite{Kin26,SY26}. Its variational step is reproduced here (Corollary~\ref{cor:236}); its reduction \cite[Thm.~4.33, \S\S4.12--4.14]{SY26} and its equidistribution input \cite[Thm.~4.18]{SY26} are not verified by us. An AI audit inside this project of the proof of \cite[Theorem~4.18]{SY26} found one repairable mis-statement (eq.~(49), inherited from \cite[Lemma~6.25]{PM8a}) and no gap (Remark~\ref{rem:sy-audit}); this is not expert review.
-$^{\S}$ Its two main terms $I_H$, $J_{\lambda,H}$ are recomputed here and lie inside its published enclosures (Proposition~\ref{prop:oai186-main}); the raw bounds of its loss components, re-evaluated for all but $1.2\cdot10^{-6}$ of the loss, are at most the published ones (after Proposition~\ref{prop:oai186-main}); the six lemmas of its companion saying that the forms majorise the true losses are each verified as stated by one program (Remark~\ref{rem:186-status}); its Lemma~2.2's proof, its restoration step and the analytic inputs are not checked.}
+$^{\S}$ Its two main terms $I_H$, $J_{\lambda,H}$ are recomputed here and lie inside its published enclosures (Proposition~\ref{prop:oai186-main}); the raw bounds of its loss components, re-evaluated for all but $1.2\cdot10^{-6}$ of the loss, are at most the published ones (after Proposition~\ref{prop:oai186-main}); the six lemmas of its companion saying that the forms majorise the true losses are each verified as stated by two independent programs (Remark~\ref{rem:186-status}); its Lemma~2.2 (the Dickman enclosures) is proved here and checked by one program; its restoration step and the analytic inputs are not checked.}
 
 The bound $246$ stood from 2014 until the last days of August 2026. It has been
 formalised in Lean~4, assuming only the Bombieri--Vinogradov theorem
@@ -340,7 +340,9 @@ gives
 \]
 where $B$ is the main-term contribution of the pairs whose moduli $[d_i,e_i]$ are not pairwise coprime
 (\texttt{maynard\_}\allowbreak\texttt{S1\_diag\_W}). Such pairs exist on Maynard's support (\texttt{ex\_not\_hpw}, with $B=2/9$ in a small
-example), but their counts in $S_1$ are $0$ when $|h_i-h_j|\mid W$ (\texttt{count\_zero\_}\allowbreak\texttt{of\_not\_pairwise}).
+example), but their counts in $S_1$ are $0$ when every prime dividing some $h_i-h_j$ divides $W$ (\texttt{count\_zero\_}\allowbreak\texttt{of\_not\_pairwise};
+the hypothesis \texttt{ShiftsCop}; Session~56 weakened it from $|h_i-h_j|\mid W$, which fails for Maynard's squarefree $W$
+when a difference is not squarefree). A short note on these files is \texttt{papers/}\allowbreak\texttt{lean-reduction/}.
 Not formalised: the size of $B$ (an analytic step in \cite{May15}), and the asymptotics of $S_1$ and $S_2$.
 \end{enumerate}
 \end{theorem}
@@ -2017,8 +2019,16 @@ rank-two bins) is verified as stated: every index and cap claim over all $30\tim
 arrays of its (2.9) against an independently computed Dickman $\rho$, and $155$ end-to-end instances (the tightest at
 $0.949$ of the bound; \lbl{Computed}, $36$ checks, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma24\_check.py};
 \texttt{notes/}\allowbreak\texttt{oai186-lemma24-check.md}). So all six majorisation lemmas of the companion
-(1.4--1.7, 2.3, 2.4) are verified as stated, each by one program. Not checked: the proof of its Lemma~2.2 (spot
-checks only), the $40$-dimensional contractions (2.16)--(2.21), the analytic part of Lemma~1.1, its restoration
+(1.4--1.7, 2.3, 2.4) are verified as stated. Each was then checked again by a second program, written from the PDF
+alone before the first was opened ($1.46\cdot10^6$, $5.1\cdot10^5$, $1.8\cdot10^5$, $2.2\cdot10^7$, $3.8\cdot10^6$ and
+$1.9\cdot10^6$ exact or rigorous-ball checks, no failures; \texttt{code/}\allowbreak\texttt{oai186\_lemma*\_check2.py},
+\texttt{notes/}\allowbreak\texttt{oai186-lemma*-check2.md}); the two programs agree on every lemma. The second Lemma~2.3
+program also settles the kernel branch the first left open ($20$ bins use the delay kernel, $41$ the renewal kernel; the
+lemma holds either way). Its Lemma~2.2 (the delay recurrence (2.1) enclosing $\rho(j/M)$, and the cell masses (2.2)) is
+proved here from the delay equation alone (\lbl{Proved here}; the printed constant $6c^{-3}$ holds, $5c^{-3}$ would do), and
+checked for $134$ caps on $1.3\cdot10^7$ grid points against an independent rigorous $\rho$ (\lbl{Computed}, $2736$ checks, no
+failures, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma22\_check.py}; \texttt{notes/}\allowbreak\texttt{oai186-lemma22-check.md}).
+Not checked: the renewal majorant (2.3) beyond its use in Lemma~2.3, the $40$-dimensional contractions (2.16)--(2.21), the analytic part of Lemma~1.1, its restoration
 step (Proposition~1.3, resting on the main paper's Proposition~4.6, of which we have read only the statement and
 its use below), and the analytic inputs, which stay \lbl{Claimed}. So the project does not adopt $186$, even conditionally.
 \end{remark}
@@ -2200,7 +2210,13 @@ records one bounded attempt as a route card (index: \texttt{notes/parity-attempt
 not in a paper. Up to 23 November all of them locate or confirm the obstruction; none breaks
 it. Version~1.1 of the parity paper takes over only the LWW observation above (Jerry
 approved one subsection); the E2 consistency tests and a summary of the other cards are left to
-the weekly review of 30 November.
+the weekly review of 30 November. Since 24 November the cards are mostly a line-by-line check of the L\"u--Wang--Wu proof
+(cards of 25--26 November: Proposition~4.2 survives thinning; the operator identity of p.~54, under a reading R1;
+pp.~48--58, the norm bounds and the end of the proof of Proposition~4.6, each conditional on listed earlier inputs; all
+audited). No error found so far; the inputs on pp.~33--47 are next.
+\item \emph{The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean}
+(\texttt{papers/}\allowbreak\texttt{lean-reduction/}, version~1.0, 5 pages). Theorem~\ref{thm:lean}'s Maynard items written up, with
+the analytic statements and the finite glue that stay hypotheses listed one by one. Not a formalisation of bounded gaps.
 \item \emph{News of 24 November} (\lbl{Claimed}; unrefereed preprints, only the pages named read; notes:
 \texttt{notes/}\allowbreak\texttt{news-2026-11-24.md}). Lichtman (arXiv:2611.28392v1) proves
 $\sum_{n\le X}\mu(n)\mu(n+1)\ll X/(\log X)^{1-\varepsilon}$ and states, without a written proof (``the same proof
@@ -2332,6 +2348,9 @@ entries); Remark~\ref{rem:186-status}: Lemma~1.7 of the $186$ companion checked.
 explicit); Remark~\ref{rem:186-status}: Lemmas~2.3 and~2.4, so all six majorisation lemmas of the $186$ companion
 checked; Proposition~\ref{prop:oai186-budget}: the restoration step needs only a positive margin;
 Section~\ref{sec:related}: news of 24 November.
+\item[0.52] (26 Nov 2026) Remark~\ref{rem:186-status}: second programs for the six majorisation
+lemmas; Lemma~2.2 proved and checked; Theorem~\ref{thm:lean}: weaker shift hypothesis; Section~\ref{sec:related}: the LWW checks and the
+Lean note.
 \end{itemize}
 
 \begin{thebibliography}{99}

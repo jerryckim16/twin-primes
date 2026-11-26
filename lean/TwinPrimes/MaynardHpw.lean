@@ -10,7 +10,9 @@ simply be proved for the support. What is true (Maynard 2015, Sect. 5) is that s
 contribute nothing to `S₁`: if `p ∣ lcm(dᵢ,eᵢ)` and `p ∣ lcm(dⱼ,eⱼ)` with `i ≠ j`, then
 `p ∣ (n + hᵢ) − (n + hⱼ) = hᵢ − hⱼ`, hence `p ∣ W`, contradicting `gcd(dᵢ eᵢ, W) = 1`.
 
-Formalised (the shift condition is `ShiftsDvd hs W`: `|hᵢ − hⱼ| ∣ W` for all `i < j`):
+Formalised (the shift condition is `ShiftsCop hs W`: every `x` coprime to `W` is coprime to every
+`hᵢ − hⱼ`, i.e. the primes dividing the differences divide `W`; Session 56 weakened it from
+`ShiftsDvd hs W`, `|hᵢ − hⱼ| ∣ W`, which fails for squarefree `W` when a difference is not squarefree):
 * `pairwise_coprime_of_solvable`: if `L` (entries coprime to `W`) admits an `n` with
   `Lᵢ ∣ n + hᵢ` for all `i`, then the `Lᵢ` are pairwise coprime (no primes needed: the gcd
   divides `hᵢ − hⱼ`, hence `W`);
@@ -38,12 +40,26 @@ open SelbergOpt MaynardInv MaynardDiag MaynardS1Diag
 abbrev ShiftsDvd (hs : List Nat) (W : Nat) : Prop :=
   hs.Pairwise fun (a b : Nat) => ((a : Int) - (b : Int)).natAbs ∣ W
 
+/-- The weaker shift condition actually available in Maynard's setting: every `x` coprime to `W`
+is coprime to every difference `hᵢ − hⱼ` (`i < j`), i.e. every prime dividing a difference divides
+`W`. For Maynard's `W = ∏_{p ≤ D₀} p` this holds as soon as `D₀` exceeds the diameter of the
+tuple, whereas `ShiftsDvd` fails for squarefree `W` once a difference has a square factor
+(e.g. `12` in the 50-tuple). All theorems below assume only `ShiftsCop`. -/
+abbrev ShiftsCop (hs : List Nat) (W : Nat) : Prop :=
+  hs.Pairwise fun (a b : Nat) => ∀ x : Nat, Nat.gcd x W = 1 → Nat.Coprime x ((a : Int) - (b : Int)).natAbs
+
+/-- `ShiftsDvd` implies `ShiftsCop`. -/
+theorem shiftsCop_of_shiftsDvd {hs : List Nat} {W : Nat} (h : ShiftsDvd hs W) : ShiftsCop hs W :=
+  List.Pairwise.imp (fun {_ _} hab x hx =>
+    Nat.Coprime.coprime_dvd_right hab (show Nat.Coprime x W from hx)) h
+
 /-- A pair `(d, e)` is good when the `lcm(dᵢ, eᵢ)` are pairwise coprime. -/
 def goodPair (ds es : List Nat) : Bool :=
   decide ((List.zipWith Nat.lcm ds es).Pairwise Nat.Coprime)
 
 theorem coprime_of_dvd_shift {x y a b n W : Nat} (hx : x ∣ n + a) (hy : y ∣ n + b)
-    (hab : ((a : Int) - (b : Int)).natAbs ∣ W) (hxW : Nat.gcd x W = 1) : Nat.Coprime x y := by
+    (hab : ∀ z : Nat, Nat.gcd z W = 1 → Nat.Coprime z ((a : Int) - (b : Int)).natAbs)
+    (hxW : Nat.gcd x W = 1) : Nat.Coprime x y := by
   have g1 : ((Nat.gcd x y : Nat) : Int) ∣ ((n + a : Nat) : Int) :=
     Int.natCast_dvd_natCast.mpr (Nat.dvd_trans (Nat.gcd_dvd_left x y) hx)
   have g2 : ((Nat.gcd x y : Nat) : Int) ∣ ((n + b : Nat) : Int) :=
@@ -51,10 +67,10 @@ theorem coprime_of_dvd_shift {x y a b n W : Nat} (hx : x ∣ n + a) (hy : y ∣ 
   have g3 := Int.dvd_sub g1 g2
   have he : ((n + a : Nat) : Int) - ((n + b : Nat) : Int) = (a : Int) - (b : Int) := by omega
   rw [he] at g3
-  have g4 : Nat.gcd x y ∣ W := Nat.dvd_trans (Int.ofNat_dvd_left.mp g3) hab
-  have g5 : Nat.gcd x y ∣ Nat.gcd x W := Nat.dvd_gcd (Nat.gcd_dvd_left x y) g4
-  rw [hxW] at g5
-  exact Nat.dvd_one.mp g5
+  have g4 : Nat.gcd x y ∣ ((a : Int) - (b : Int)).natAbs := Int.ofNat_dvd_left.mp g3
+  have g5 : Nat.Coprime (Nat.gcd x y) ((a : Int) - (b : Int)).natAbs :=
+    Nat.Coprime.coprime_dvd_left (Nat.gcd_dvd_left x y) (hab x hxW)
+  exact Nat.Coprime.eq_one_of_dvd g5 g4
 
 theorem tupleDvd_cons (h x n : Nat) (hs L : List Nat) :
     tupleDvd (h :: hs) n (x :: L) = ((n + h) % x == 0 && tupleDvd hs n L) := rfl
@@ -70,10 +86,10 @@ theorem exists_shift_of_tupleDvd {n : Nat} : ∀ (L hs : List Nat), tupleDvd hs 
     · obtain ⟨b, hb, hd⟩ := exists_shift_of_tupleDvd L hs ht.2 y hy (by simpa using hl)
       exact ⟨b, List.mem_cons_of_mem _ hb, hd⟩
 
-/-- **Core lemma.** If the shifts satisfy `|hᵢ − hⱼ| ∣ W`, the entries of `L` are coprime to `W`
+/-- **Core lemma.** If every `x` coprime to `W` is coprime to the differences `hᵢ − hⱼ`, the entries of `L` are coprime to `W`
 and some `n` satisfies `Lᵢ ∣ n + hᵢ` for all `i`, then the `Lᵢ` are pairwise coprime. -/
 theorem pairwise_coprime_of_solvable {W n : Nat} : ∀ (L hs : List Nat), L.length = hs.length →
-    ShiftsDvd hs W → (∀ x ∈ L, Nat.gcd x W = 1) → tupleDvd hs n L = true →
+    ShiftsCop hs W → (∀ x ∈ L, Nat.gcd x W = 1) → tupleDvd hs n L = true →
     L.Pairwise Nat.Coprime
   | [], _, _, _, _, _ => List.Pairwise.nil
   | _ :: _, [], hl, _, _, _ => by simp at hl
@@ -96,11 +112,11 @@ theorem lcm_entries_coprime {W : Nat} {ds es : List Nat} (hd : ∀ d ∈ ds, Nat
   exact Nat.Coprime.coprime_dvd_left
     (Nat.lcm_dvd (Nat.dvd_mul_right a b) (Nat.dvd_mul_left b a)) hab
 
-/-- **`hpw` for solvable pairs**: under `ShiftsDvd hs W` and `hDW`, every pair `(d, e)` of the
+/-- **`hpw` for solvable pairs**: under `ShiftsCop hs W` and `hDW`, every pair `(d, e)` of the
 support whose systems `dᵢ ∣ n + hᵢ`, `eᵢ ∣ n + hᵢ` have a common solution `n` satisfies the
 `hpw` condition of `maynard_S1_diag`. -/
 theorem hpw_of_solvable (Dk : List (List Nat)) (hs : List Nat) (W : Nat)
-    (hlen : ∀ ds ∈ Dk, ds.length = hs.length) (hH : ShiftsDvd hs W)
+    (hlen : ∀ ds ∈ Dk, ds.length = hs.length) (hH : ShiftsCop hs W)
     (hDW : ∀ ds ∈ Dk, ∀ d ∈ ds, Nat.gcd d W = 1)
     (hsol : ∀ ds ∈ Dk, ∀ es ∈ Dk, ∃ n, tupleDvd hs n ds = true ∧ tupleDvd hs n es = true) :
     ∀ ds ∈ Dk, ∀ es ∈ Dk, (List.zipWith Nat.lcm ds es).Pairwise Nat.Coprime := by
@@ -115,7 +131,7 @@ theorem hpw_of_solvable (Dk : List (List Nat)) (hs : List Nat) (W : Nat)
 /-- **Bad pairs do not count**: if the `lcm(dᵢ, eᵢ)` are not pairwise coprime, no `n` satisfies
 `dᵢ ∣ n + hᵢ` and `eᵢ ∣ n + hᵢ` for all `i`, so the pair's count in the expansion of `S₁` is `0`. -/
 theorem count_zero_of_not_pairwise (hs ds es : List Nat) (W v0 N : Nat)
-    (hd : ds.length = hs.length) (he : es.length = hs.length) (hH : ShiftsDvd hs W)
+    (hd : ds.length = hs.length) (he : es.length = hs.length) (hH : ShiftsCop hs W)
     (hdW : ∀ d ∈ ds, Nat.gcd d W = 1) (heW : ∀ e ∈ es, Nat.gcd e W = 1)
     (hbad : ¬ (List.zipWith Nat.lcm ds es).Pairwise Nat.Coprime) :
     (List.range N).countP (fun n => n % W == v0 && tupleDvd hs n ds && tupleDvd hs n es) = 0 := by
@@ -126,7 +142,7 @@ theorem count_zero_of_not_pairwise (hs ds es : List Nat) (W v0 N : Nat)
   exact pairwise_coprime_of_solvable (n := n) _ hs
     (by rw [List.length_zipWith, hd, he, Nat.min_self]) hH (lcm_entries_coprime hdW heW) hn.2
 
-/-- **`maynard_S1_error` without `hpw`.** Replacing `hpw` by `ShiftsDvd hs W`, the same bound holds
+/-- **`maynard_S1_error` without `hpw`.** Replacing `hpw` by `ShiftsCop hs W`, the same bound holds
 with the main term restricted to good pairs:
 `|W M · S₁ − N ∑_{d,e good} λ_d λ_e (M / ∏ᵢ lcm(dᵢ,eᵢ))| ≤ W M ∑_{d,e} |λ_d λ_e|`. -/
 theorem maynard_S1_error_W (Dk : List (List Nat)) (hs : List Nat) (lam : List Nat → Int)
@@ -134,7 +150,7 @@ theorem maynard_S1_error_W (Dk : List (List Nat)) (hs : List Nat) (lam : List Na
     (hlen : ∀ ds ∈ Dk, ds.length = hs.length)
     (hpos : ∀ ds ∈ Dk, ∀ d ∈ ds, 0 < d)
     (hDW : ∀ ds ∈ Dk, ∀ d ∈ ds, Nat.gcd d W = 1)
-    (hH : ShiftsDvd hs W)
+    (hH : ShiftsCop hs W)
     (hM : ∀ ds ∈ Dk, ∀ es ∈ Dk, (List.zipWith Nat.lcm ds es).prod ∣ M) :
     (((W * M : Nat) : Int) * ((List.range N).map fun n =>
           if n % W = v0 then mSieveSum Dk hs lam n * mSieveSum Dk hs lam n else 0).sum
@@ -208,7 +224,7 @@ theorem maynard_S1_diag_W (R k : Nat) (P : List Nat → Bool) (hs : List Nat)
     (hoff : ∀ d ∈ box R k, P d = false → lam d = 0)
     (hsq : ∀ d ∈ box R k, lam d ≠ 0 → ∀ x ∈ d, mu x ≠ 0)
     (hDW : ∀ ds ∈ (box R k).filter P, ∀ d ∈ ds, Nat.gcd d W = 1)
-    (hH : ShiftsDvd hs W) :
+    (hH : ShiftsCop hs W) :
     Rat.abs (((((List.range N).map fun n =>
           if n % W = v0 then mSieveSum ((box R k).filter P) hs lam n
             * mSieveSum ((box R k).filter P) hs lam n else 0).sum : Int) : Rat)
@@ -363,7 +379,7 @@ theorem maynard_S1_diag_W_example (N : Nat) :
               else (exLam ds : Rat) * (exLam es : Rat) / tlcm ds es).sum).sum))
       ≤ ((((box 3 2).filter exP).map fun ds => (((box 3 2).filter exP).map fun es =>
           (exLam ds * exLam es).natAbs).sum).sum : Nat) :=
-  maynard_S1_diag_W 3 2 exP [0, 2] exLam 2 1 N (by decide) rfl ex_hoff ex_hsq ex_hDW ex_hH
+  maynard_S1_diag_W 3 2 exP [0, 2] exLam 2 1 N (by decide) rfl ex_hoff ex_hsq ex_hDW (shiftsCop_of_shiftsDvd ex_hH)
 
 end MaynardHpw
 end TwinPrimes
