@@ -3,34 +3,49 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 55, 11:34 AM CT research run of 25 Nov, started 17:34 UTC): PHASE B
+## POSITION (after Session 56, 7:34 PM CT paper run of 25 Nov, started 01:34 UTC 26 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
-  main paper v0.51 (35 pp.; S51+S52 written up). Errata to the parity paper only as 1.1.x; a v1.2 only by decision of a
-  weekly review. Active lines: main paper as an index; a short Lean note for programme (4). Paused: toolkit note (5), H_m, 182.
+  lean-reduction v1.0 NEW (26 Nov, 5 pp., programme (4), active; audited, notes/audit-lean-note-v10.md);
+  main paper v0.52 (35 pp.). Active lines: main paper as an index; the Lean note (next: finite S2 expansion in Lean,
+  then v1.1). Paused: toolkit note (5), H_m, 182.
 - Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, still v2, checked 25 Nov 17:36 UTC) open. S53: Prop. 4.2 survives thinning (conditional).
-  S54: the p. 54 identity proved under reading R1. S55: pp. 54-58 (E_mem, (4.138)-(4.147), to (4.136)) conditional on
-  eleven listed inputs, no error. Next in line inside Prop. 4.6: the norm bounds (4.125)/(4.135) for O_j (p. 52).
-- 186: all six majorisation lemmas (1.4-1.7, 2.3, 2.4) now verified as stated by TWO independent programs each (S47-S55).
+- LWW flag (arXiv:2610.20242, still v2, checked 26 Nov 01:36 UTC) open. S53: Prop. 4.2 survives thinning. S54: p. 54
+  identity under R1. S55: pp. 54-58 conditional. S56: pp. 48-53 ((4.124)-(4.125), p. 49 remark, (4.135) incl.
+  O_j^(ind)) conditional on U1-U11, audited, no error in LWW. Next in line: (4.121) (p. 47), Prop. 4.5(i)/(4.95)
+  (pp. 37-45), the Section 4.4-4.5 transfer (pp. 33-47).
+- 186: six majorisation lemmas two programs each; Lemma 2.2 proved here + one program (S56). Unchecked: (2.16)-(2.21)
+  contractions, renewal majorant (2.3) beyond Lemma 2.3, Lemma 1.1 analytic part, restoration step, analytic inputs.
 
 ## Next steps (in order)
-0. Paper run (7:34 PM CT 25 Nov): main paper rem:186-status: "Lemmas 1.4-1.7, 2.3, 2.4: two independent programs each"
-   (S54: code/oai186_lemma14_check2.py, lemma15_check2; S55: lemma16_check2, lemma17_check2, lemma23_check2,
-   lemma24_check2, notes/oai186-lemma1{6,7}-check2.md, notes/oai186-lemma2{3,4}-check2.md), plus the Lemma 2.3 kernel
-   split (20 delay / 41 renewal; first program had left it open; the lemma holds either way). sec:related index gets the
-   S54 and S55 cards in one clause. Bump the version (content changed). Parity paper frozen (v1.1).
-1. Parity (next research run): LWW (4.125)/(4.135), the operator-norm bounds for O_j, esp. O_j^(ind) (p. 52), the first
-   unresolved input of the S55 card; or the Type I side (BV with zero main term) for general f (S53 card). One card per run.
-2. Bound share: Lemma 2.2's proof, the 40-dimensional contractions (2.16)-(2.21), profile-power-2 rounding; the overall
+1. Parity (next research run; at most one card per Central day): LWW (4.121) (p. 47) and Prop. 4.5(i)/(4.95)
+   (pp. 37-45), or the Section 4.4-4.5 transfer that puts (4.26)-(4.27) on every O_j state (U2, U8 of the S56 card).
+2. Lean (programme 4): the k-dimensional finite S2 expansion (S2^(m) with 1[n+h_m prime]; Maynard Lemma 5.2's finite
+   part), then a Lean note v1.1 (paper run). Optional: a lemma "primes of h_i-h_j <= D_0 => ShiftsCop for W = prod_{p<=D_0} p".
+3. Bound share: 186 (2.16)-(2.21) 40-dimensional contractions; renewal majorant (2.3) proof; profile-power-2 rounding;
    cover by rank (Sec. 1.5.4). NO per-run regressions.
-3. Lean: bound B (bad pairs) or the short Lean note (due by ~S56 per the review's 6-run rule; write it in a paper run).
 4. Main paper: bump the version only when content changes; keep sec:related as an index.
 5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
 6. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani, BFI86, HB83 and
    the 182 restoration data (see notes/sources-needed.md).
-7. Weekly review: first run starting on Monday 30 Nov, Central time. Items (c)-(f) of the 23 Nov review list stand.
+7. Weekly review: first run starting on Monday 30 Nov, Central time (also decide: Lean note v1.1 scope; parity paper v1.2
+   or drop for the E2 remark and the LWW-check summary).
+
+## Session 56 (7:34 PM CT paper run of 25 Nov, started on time 01:34 UTC 26 Nov; no wait) -- additions
+- Paper run: papers/lean-reduction/main.tex v1.0 (5 pp., no overfull boxes; Maynard arXiv:1311.4600v3 read, SHA-256
+  dce1a7a0...d63cda9; Axiom PrimeGapsLib site read; Polymath8b abstract read); fresh-context audit applied.
+  Main paper v0.52 (rem:186-status, footnote, thm:lean item 20, sec:related, history). status.json 0.52, README,
+  papers/README.md, site rebuilt.
+- Lean: MaynardHpw.lean: ShiftsCop (weaker shift hypothesis) + shiftsCop_of_shiftsDvd; all bad-pair theorems use it;
+  stale docstrings fixed (MaynardS1, MaynardS1Diag, MaynardInv). lake build + Audit.lean pass (209 decls; 116/54/11/28;
+  propext / Quot.sound / Classical.choice only). Lean 4.35.0 in /root/tools.
+- Bound share: code/oai186_lemma22_check.py (/usr/bin/python3 + python-flint; 200 s, 2.48 GB; .out; 2,736 checks,
+  0 failures; helper-written, re-run here identical apart from timing); notes/oai186-lemma22-check.md. Caps for the low
+  bins / Lemma 2.4 read from the authors' build_inputs (not re-derived). Key proof steps re-checked by hand here.
+- Parity: notes/parity-attempts/2026-11-26-lww-p48-53-norms.md (conditional) + audit file; script
+  code/parity/lww_p48_53_norms_check.py (/usr/bin/python3 -I; ~50 s; .out; re-run here).
+- No exploration (Central day 25 Nov had one). Wolfram and mathbox NOT available. No news search.
 
 ## Session 55 (11:34 AM CT research run of 25 Nov, started on time 17:34 UTC; no wait) -- additions
 - Parity attempt (helper agent; fresh-context adversarial audit notes/parity-attempts/2026-11-25-lww-p55-58-emem-audit.md,

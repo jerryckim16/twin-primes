@@ -1,0 +1,182 @@
+Lemma 2.2 check; N = 98304 n = 98264 B = 256 prec = 320
+distinct M: 134  roles: {'surv': 7, 'fact': 6, 'low': 30, 'r2': 89, 'gen': 12}
+Taylor model built: cells 384 max E [9.9327153288513580054006134870931579996931087173689403355216975228153290497665342960614422445042e-77 +/- 3.72e-172] max EF [1.2350045680527276212433445012602054571012195056224305366904220791951731316021928963338239530502e-75 +/- 1.60e-170]
+  rho(2) = [0.30685281944005469058 +/- 2.77e-21]
+  rho(3) = [0.048608388291131566907 +/- 1.84e-22]
+  rho(4) = [0.0049109256477608323527 +/- 3.92e-23]
+  rho(5) = [0.00035472470045603972983 +/- 3.90e-24]
+  rho(6) = [1.9649696353955289652e-5 +/- 2.46e-25]
+  rho(10) = [2.7701718377259589888e-11 +/- 4.19e-31]
+  rho sanity done; max radius on [1,2] [1.1509573213031073095467557348357252333396425414184418026577095768067373383324691918426902306036e-77 +/- 4.63e-173]; rho tail bound for u>=UMAX: [2.7010287482084464159944997610623221376859697288988868626591898574859275536138626562952645494281e-37 +/- 1.72e-132]
+
+== Recurrence (2.1) for every M, j <= N, three roundings; rho comparison at every grid point ==
+columns: M roles | exact-acceptance first fail (j/M) | r160 / outward first fail | undecided | enclosure fails | (2.2) fails | sampled min (dbar-rho) | min ((dbar_j+dbar_j+1)/2 - A_j/h) | min rel. (rho-d)/rho sampled
+M=     1 gen       | exact fail 3 (3.000) | r160 fail 3 | out fail 3 | und 0 | enc 0 | 22 0 | [0.443 +/- 1.48e-4] | [0.261 +/- 2.95e-4] | [0.185 +/- 2.78e-4] | 0.4s
+M=     2 gen       | exact fail 7 (3.500) | r160 fail 7 | out fail 7 | und 0 | enc 0 | 22 0 | [0.0513 +/- 1.57e-6] | [0.0393 +/- 1.20e-5] | [0.0188 +/- 4.09e-5] | 0.4s
+M=     3 low,gen   | exact fail 11 (3.667) | r160 fail 11 | out fail 11 | und 0 | enc 0 | 22 0 | [0.0145 +/- 3.40e-5] | [0.0142 +/- 4.58e-5] | [0.00559 +/- 3.85e-6] | 0.4s
+M=     4 gen       | exact fail 15 (3.750) | r160 fail 15 | out fail 15 | und 0 | enc 0 | 22 0 | [0.00596 +/- 3.95e-6] | [0.00712 +/- 4.01e-6] | [0.00239 +/- 3.07e-7] | 0.4s
+M=     5 gen       | exact fail 20 (4.000) | r160 fail 20 | out fail 20 | und 0 | enc 0 | 22 0 | [0.00299 +/- 1.78e-6] | [0.00426 +/- 2.68e-6] | [0.00124 +/- 2.63e-6] | 0.4s
+M=     6 low,gen   | exact fail 24 (4.000) | r160 fail 24 | out fail 24 | und 0 | enc 0 | 22 0 | [0.00170 +/- 3.59e-6] | [0.00283 +/- 1.22e-6] | [0.000723 +/- 3.84e-7] | 0.4s
+M=     7 gen       | exact fail 29 (4.143) | r160 fail 29 | out fail 29 | und 0 | enc 0 | 22 0 | [0.00106 +/- 5.48e-7] | [0.00202 +/- 4.29e-6] | [0.000458 +/- 3.89e-7] | 0.4s
+M=     8 gen       | exact fail 34 (4.250) | r160 fail 34 | out fail 34 | und 0 | enc 0 | 22 0 | [0.000704 +/- 4.27e-8] | [0.00151 +/- 2.18e-6] | [0.000309 +/- 9.66e-8] | 0.4s
+M=     9 gen       | exact fail 39 (4.333) | r160 fail 39 | out fail 39 | und 0 | enc 0 | 22 0 | [0.000491 +/- 1.69e-7] | [0.00117 +/- 3.15e-7] | [0.000218 +/- 9.51e-9] | 0.4s
+M=    10 gen       | exact fail 44 (4.400) | r160 fail 44 | out fail 44 | und 0 | enc 0 | 22 0 | [0.000356 +/- 3.66e-7] | [0.000935 +/- 2.95e-7] | [0.000160 +/- 4.26e-7] | 0.4s
+M=    12 low       | exact fail 55 (4.583) | r160 fail 55 | out fail 55 | und 0 | enc 0 | 22 0 | [0.000204 +/- 1.46e-7] | [0.000636 +/- 2.27e-7] | [9.29e-5 +/- 3.64e-8] | 0.4s
+M=    25 low       | exact fail 127 (5.080) | r160 fail 127 | out fail 127 | und 0 | enc 0 | 22 0 | [2.19e-5 +/- 4.40e-8] | [0.000139 +/- 1.58e-7] | [1.05e-5 +/- 3.35e-8] | 0.4s
+M=    50 low       | exact fail 277 (5.540) | r160 fail 277 | out fail 277 | und 0 | enc 0 | 22 0 | [2.71e-6 +/- 4.28e-9] | [3.40e-5 +/- 3.14e-8] | [1.32e-6 +/- 4.21e-10] | 0.4s
+M=    63 gen       | exact fail 359 (5.698) | r160 fail 359 | out fail 359 | und 0 | enc 0 | 22 0 | [1.35e-6 +/- 1.35e-9] | [2.13e-5 +/- 4.19e-8] | [6.61e-7 +/- 3.85e-10] | 0.4s
+M=    64 gen       | exact fail 365 (5.703) | r160 fail 365 | out fail 365 | und 0 | enc 0 | 22 0 | [1.29e-6 +/- 3.81e-9] | [2.07e-5 +/- 2.54e-8] | [6.31e-7 +/- 6.15e-11] | 0.4s
+M=    93 low       | exact fail 554 (5.957) | r160 fail 554 | out fail 554 | und 0 | enc 0 | 22 0 | [4.18e-7 +/- 2.91e-10] | [9.74e-6 +/- 1.28e-9] | [2.06e-7 +/- 1.10e-10] | 0.4s
+M=   101 low       | exact fail 607 (6.010) | r160 fail 607 | out fail 607 | und 0 | enc 0 | 22 0 | [3.26e-7 +/- 9.58e-11] | [8.25e-6 +/- 1.92e-9] | [1.61e-7 +/- 2.33e-11] | 0.4s
+M=   187 low       | exact fail 1199 (6.412) | r160 fail 1199 | out fail 1199 | und 0 | enc 0 | 22 0 | [5.12e-8 +/- 2.23e-11] | [2.40e-6 +/- 4.04e-9] | [2.54e-8 +/- 1.98e-11] | 0.4s
+M=   202 low       | exact fail 1305 (6.460) | r160 fail 1305 | out fail 1305 | und 0 | enc 0 | 22 0 | [4.06e-8 +/- 9.48e-12] | [2.05e-6 +/- 2.52e-9] | [2.02e-8 +/- 2.91e-11] | 0.4s
+M=   404 low       | exact fail 2787 (6.899) | r160 fail 2787 | out fail 2787 | und 0 | enc 0 | 22 0 | [5.06e-9 +/- 4.52e-12] | [5.12e-7 +/- 1.58e-10] | [2.52e-9 +/- 4.47e-12] | 0.5s
+M=   809 low       | exact fail 5930 (7.330) | r160 fail 5930 | out fail 5930 | und 0 | enc 0 | 22 0 | [6.30e-10 +/- 1.38e-13] | [1.27e-7 +/- 4.86e-10] | [3.15e-10 +/- 4.18e-13] | 0.6s
+M=   940 low       | exact fail 6976 (7.421) | r160 fail 6976 | out fail 6976 | und 0 | enc 0 | 22 0 | [4.02e-10 +/- 3.57e-13] | [9.44e-8 +/- 1.18e-11] | [2.01e-10 +/- 4.45e-13] | 0.6s
+M=  1411 low       | exact fail 10819 (7.668) | r160 fail 10819 | out fail 10819 | und 0 | enc 0 | 22 0 | [1.19e-10 +/- 2.79e-13] | [4.19e-8 +/- 1.37e-11] | [5.93e-11 +/- 8.11e-15] | 0.8s
+M=  2116 low       | exact fail 16738 (7.910) | r160 fail 16738 | out fail 16738 | und 0 | enc 0 | 22 0 | [3.52e-11 +/- 4.63e-15] | [1.86e-8 +/- 2.06e-11] | [1.76e-11 +/- 1.28e-14] | 0.9s
+M=  2331 low       | exact fail 18572 (7.967) | r160 fail 18572 | out fail 18572 | und 0 | enc 0 | 22 0 | [2.63e-11 +/- 2.65e-14] | [1.53e-8 +/- 4.34e-11] | [1.32e-11 +/- 4.39e-14] | 1.1s
+M=  2667 low       | exact fail 21462 (8.047) | r160 fail 21462 | out fail 21462 | und 0 | enc 0 | 22 0 | [1.76e-11 +/- 2.36e-14] | [1.17e-8 +/- 2.03e-11] | [8.78e-12 +/- 4.13e-15] | 1.1s
+M=  3175 low       | exact fail 25877 (8.150) | r160 fail 25877 | out fail 25877 | und 0 | enc 0 | 22 0 | [1.04e-11 +/- 1.72e-14] | [8.27e-9 +/- 7.14e-13] | [5.21e-12 +/- 3.47e-15] | 1.2s
+M=  3497 low       | exact fail 28700 (8.207) | r160 fail 28700 | out fail 28700 | und 0 | enc 0 | 22 0 | [7.80e-12 +/- 3.77e-15] | [6.82e-9 +/- 3.66e-12] | [3.90e-12 +/- 3.28e-15] | 1.3s
+M=  4703 low       | exact fail 39411 (8.380) | r160 fail 39411 | out fail 39411 | und 0 | enc 0 | 22 0 | [3.20e-12 +/- 4.97e-15] | [3.77e-9 +/- 1.57e-12] | [1.60e-12 +/- 2.06e-15] | 1.4s
+M=  5644 low       | exact fail 47895 (8.486) | r160 fail 47895 | out fail 47895 | und 0 | enc 0 | 22 0 | [1.85e-12 +/- 4.29e-15] | [2.62e-9 +/- 3.50e-12] | [9.27e-13 +/- 6.53e-17] | 1.5s
+M=  6773 low       | exact fail 58190 (8.591) | r160 fail 58190 | out fail 58190 | und 0 | enc 0 | 22 0 | [1.07e-12 +/- 2.97e-15] | [1.82e-9 +/- 3.15e-12] | [5.36e-13 +/- 3.82e-16] | 1.5s
+M=  8128 low       | exact fail 70684 (8.696) | r160 fail 70684 | out fail 70684 | und 0 | enc 0 | 22 0 | [6.21e-13 +/- 1.78e-16] | [1.26e-9 +/- 1.56e-12] | [3.10e-13 +/- 3.64e-16] | 1.5s
+M=  9753 low       | exact fail 85834 (8.801) | r160 fail 85834 | out fail 85834 | und 0 | enc 0 | 22 0 | [3.59e-13 +/- 3.34e-16] | [8.76e-10 +/- 1.67e-13] | [1.80e-13 +/- 3.57e-16] | 1.5s
+M= 11704 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.08e-13 +/- 7.65e-17] | [6.08e-10 +/- 3.98e-13] | [1.04e-13 +/- 4.94e-17] | 1.5s
+M= 14045 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.20e-13 +/- 3.20e-16] | [4.22e-10 +/- 4.81e-13] | [6.02e-14 +/- 4.56e-17] | 1.5s
+M= 16854 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [6.96e-14 +/- 2.89e-17] | [2.93e-10 +/- 3.86e-13] | [3.48e-14 +/- 1.19e-17] | 1.5s
+M= 17912 fact      | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [5.80e-14 +/- 4.92e-18] | [2.60e-10 +/- 2.51e-13] | [2.90e-14 +/- 4.28e-19] | 1.4s
+M= 17990 fact      | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [5.73e-14 +/- 4.64e-17] | [2.58e-10 +/- 4.99e-13] | [2.86e-14 +/- 2.49e-17] | 1.5s
+M= 18257 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [5.48e-14 +/- 2.18e-17] | [2.50e-10 +/- 2.52e-14] | [2.74e-14 +/- 1.28e-17] | 1.4s
+M= 19660 fact      | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [4.39e-14 +/- 3.24e-17] | [2.16e-10 +/- 3.88e-13] | [2.19e-14 +/- 3.25e-17] | 1.4s
+M= 20225 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [4.03e-14 +/- 7.04e-18] | [2.04e-10 +/- 2.67e-13] | [2.01e-14 +/- 4.53e-17] | 1.4s
+M= 20689 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.76e-14 +/- 4.23e-17] | [1.95e-10 +/- 3.03e-13] | [1.88e-14 +/- 2.01e-17] | 1.4s
+M= 21614 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.30e-14 +/- 1.33e-17] | [1.78e-10 +/- 3.90e-13] | [1.65e-14 +/- 5.68e-18] | 1.4s
+M= 21615 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.30e-14 +/- 8.68e-18] | [1.78e-10 +/- 3.73e-13] | [1.65e-14 +/- 3.39e-18] | 1.4s
+M= 21719 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.25e-14 +/- 3.68e-17] | [1.77e-10 +/- 3.32e-13] | [1.63e-14 +/- 3.26e-17] | 1.4s
+M= 21813 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.21e-14 +/- 1.80e-17] | [1.75e-10 +/- 1.50e-13] | [1.61e-14 +/- 4.20e-17] | 1.4s
+M= 22247 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.03e-14 +/- 2.54e-17] | [1.68e-10 +/- 3.82e-13] | [1.51e-14 +/- 3.65e-17] | 1.4s
+M= 22390 fact      | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.97e-14 +/- 1.75e-18] | [1.66e-10 +/- 2.38e-13] | [1.48e-14 +/- 4.84e-17] | 1.4s
+M= 22391 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.97e-14 +/- 5.73e-18] | [1.66e-10 +/- 2.24e-13] | [1.48e-14 +/- 4.64e-17] | 1.4s
+M= 22488 fact,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.93e-14 +/- 1.17e-17] | [1.65e-10 +/- 2.08e-13] | [1.47e-14 +/- 4.50e-17] | 1.4s
+M= 22538 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.91e-14 +/- 1.71e-17] | [1.64e-10 +/- 6.18e-14] | [1.46e-14 +/- 4.23e-17] | 1.4s
+M= 22539 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.91e-14 +/- 1.32e-17] | [1.64e-10 +/- 4.72e-14] | [1.46e-14 +/- 4.43e-17] | 1.3s
+M= 22785 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.82e-14 +/- 1.97e-17] | [1.61e-10 +/- 4.77e-13] | [1.41e-14 +/- 1.07e-17] | 1.3s
+M= 22786 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.82e-14 +/- 2.34e-17] | [1.61e-10 +/- 4.91e-13] | [1.41e-14 +/- 1.25e-17] | 1.3s
+M= 23463 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.58e-14 +/- 7.27e-18] | [1.51e-10 +/- 3.81e-13] | [1.29e-14 +/- 2.95e-18] | 1.4s
+M= 23464 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.58e-14 +/- 3.97e-18] | [1.51e-10 +/- 3.68e-13] | [1.29e-14 +/- 1.30e-18] | 1.4s
+M= 23654 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.52e-14 +/- 1.29e-17] | [1.49e-10 +/- 5.44e-14] | [1.26e-14 +/- 7.11e-18] | 1.4s
+M= 23655 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.52e-14 +/- 1.61e-17] | [1.49e-10 +/- 6.70e-14] | [1.26e-14 +/- 8.70e-18] | 1.4s
+M= 23757 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.49e-14 +/- 3.91e-17] | [1.48e-10 +/- 3.44e-13] | [1.24e-14 +/- 2.99e-17] | 1.4s
+M= 23758 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.49e-14 +/- 4.22e-17] | [1.48e-10 +/- 3.56e-13] | [1.24e-14 +/- 2.83e-17] | 1.4s
+M= 24243 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.34e-14 +/- 4.47e-18] | [1.42e-10 +/- 2.05e-13] | [1.17e-14 +/- 2.84e-18] | 1.4s
+M= 24244 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.34e-14 +/- 7.36e-18] | [1.42e-10 +/- 2.16e-13] | [1.17e-14 +/- 4.29e-18] | 1.5s
+M= 24270 low       | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.33e-14 +/- 1.76e-17] | [1.41e-10 +/- 4.81e-13] | [1.17e-14 +/- 4.19e-17] | 1.4s
+M= 24388 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.30e-14 +/- 1.93e-17] | [1.40e-10 +/- 1.15e-13] | [1.15e-14 +/- 1.03e-17] | 1.5s
+M= 24389 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.30e-14 +/- 2.22e-17] | [1.40e-10 +/- 1.04e-13] | [1.15e-14 +/- 1.17e-17] | 1.5s
+M= 24576 fact,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.25e-14 +/- 4.27e-17] | [1.38e-10 +/- 2.07e-14] | [1.12e-14 +/- 2.82e-17] | 1.4s
+M= 24850 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.17e-14 +/- 2.27e-17] | [1.35e-10 +/- 4.68e-14] | [1.09e-14 +/- 3.93e-17] | 1.4s
+M= 24851 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.17e-14 +/- 2.01e-17] | [1.35e-10 +/- 5.77e-14] | [1.09e-14 +/- 4.06e-17] | 1.5s
+M= 24987 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.14e-14 +/- 3.28e-17] | [1.33e-10 +/- 4.78e-13] | [1.07e-14 +/- 1.69e-17] | 1.4s
+M= 24988 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.14e-14 +/- 3.53e-17] | [1.33e-10 +/- 4.67e-13] | [1.07e-14 +/- 1.82e-17] | 1.4s
+M= 25215 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.08e-14 +/- 7.12e-18] | [1.31e-10 +/- 7.45e-14] | [1.04e-14 +/- 4.08e-18] | 1.4s
+M= 25216 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.08e-14 +/- 9.60e-18] | [1.31e-10 +/- 6.41e-14] | [1.04e-14 +/- 5.32e-18] | 1.4s
+M= 25312 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.06e-14 +/- 4.53e-17] | [1.30e-10 +/- 7.18e-14] | [1.03e-14 +/- 2.32e-17] | 1.4s
+M= 25313 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.06e-14 +/- 4.77e-17] | [1.30e-10 +/- 6.15e-14] | [1.03e-14 +/- 2.44e-17] | 1.4s
+M= 25590 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.99e-14 +/- 7.91e-18] | [1.27e-10 +/- 2.61e-13] | [9.95e-15 +/- 4.44e-18] | 1.4s
+M= 25702 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.96e-14 +/- 3.32e-17] | [1.26e-10 +/- 1.55e-13] | [9.82e-15 +/- 3.89e-18] | 1.4s
+M= 25775 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.95e-14 +/- 3.32e-17] | [1.25e-10 +/- 4.41e-13] | [9.73e-15 +/- 2.95e-18] | 1.4s
+M= 25776 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.95e-14 +/- 3.55e-17] | [1.25e-10 +/- 4.31e-13] | [9.73e-15 +/- 1.82e-18] | 1.4s
+M= 25941 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.91e-14 +/- 4.50e-18] | [1.24e-10 +/- 1.60e-13] | [9.55e-15 +/- 2.71e-18] | 1.3s
+M= 25942 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.91e-14 +/- 6.71e-18] | [1.24e-10 +/- 1.70e-13] | [9.55e-15 +/- 3.82e-18] | 1.3s
+M= 26236 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.85e-14 +/- 4.15e-17] | [1.21e-10 +/- 7.10e-14] | [9.23e-15 +/- 1.16e-18] | 1.3s
+M= 26237 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.85e-14 +/- 4.36e-17] | [1.21e-10 +/- 6.18e-14] | [9.23e-15 +/- 2.21e-18] | 1.4s
+M= 26238 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.85e-14 +/- 4.57e-17] | [1.21e-10 +/- 5.26e-14] | [9.23e-15 +/- 3.27e-18] | 1.4s
+M= 26699 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.75e-14 +/- 1.49e-17] | [1.17e-10 +/- 9.19e-14] | [8.76e-15 +/- 3.00e-18] | 1.3s
+M= 26700 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.75e-14 +/- 1.29e-17] | [1.17e-10 +/- 1.01e-13] | [8.76e-15 +/- 3.99e-18] | 1.3s
+M= 26916 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.71e-14 +/- 5.39e-18] | [1.15e-10 +/- 3.08e-14] | [8.55e-15 +/- 3.10e-18] | 1.3s
+M= 27162 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.66e-14 +/- 3.44e-17] | [1.13e-10 +/- 4.36e-14] | [8.32e-15 +/- 3.22e-18] | 1.3s
+M= 27163 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.66e-14 +/- 3.26e-17] | [1.13e-10 +/- 5.19e-14] | [8.32e-15 +/- 4.14e-18] | 1.4s
+M= 27306 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.64e-14 +/- 2.75e-17] | [1.12e-10 +/- 2.32e-13] | [8.19e-15 +/- 4.11e-18] | 1.3s
+M= 27307 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.64e-14 +/- 2.93e-17] | [1.12e-10 +/- 2.40e-13] | [8.19e-15 +/- 5.00e-18] | 1.3s
+M= 27624 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.58e-14 +/- 1.37e-17] | [1.09e-10 +/- 2.10e-13] | [7.91e-15 +/- 3.56e-18] | 1.3s
+M= 27625 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.58e-14 +/- 1.19e-17] | [1.09e-10 +/- 2.02e-13] | [7.91e-15 +/- 4.42e-18] | 1.3s
+M= 28087 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.50e-14 +/- 4.44e-17] | [1.06e-10 +/- 3.62e-13] | [7.52e-15 +/- 1.86e-18] | 1.4s
+M= 28672 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.41e-14 +/- 4.22e-17] | [1.01e-10 +/- 3.72e-13] | [7.07e-15 +/- 7.79e-19] | 1.4s
+M= 28673 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.41e-14 +/- 4.07e-17] | [1.01e-10 +/- 3.65e-13] | [7.07e-15 +/- 3.86e-20] | 1.4s
+M= 28735 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.40e-14 +/- 4.94e-17] | [1.01e-10 +/- 7.21e-14] | [7.02e-15 +/- 4.38e-18] | 1.4s
+M= 28736 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.40e-14 +/- 4.79e-17] | [1.01e-10 +/- 7.91e-14] | [7.02e-15 +/- 3.65e-18] | 1.4s
+M= 29243 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.33e-14 +/- 2.99e-17] | [9.75e-11 +/- 4.83e-14] | [6.66e-15 +/- 4.63e-18] | 1.3s
+M= 29346 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.32e-14 +/- 1.01e-17] | [9.68e-11 +/- 3.12e-14] | [6.59e-15 +/- 4.70e-18] | 1.3s
+M= 29855 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.25e-14 +/- 2.68e-17] | [9.35e-11 +/- 2.71e-15] | [6.26e-15 +/- 3.12e-18] | 1.3s
+M= 29985 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.24e-14 +/- 3.55e-17] | [9.27e-11 +/- 1.17e-14] | [6.18e-15 +/- 2.01e-18] | 1.3s
+M= 30037 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.23e-14 +/- 4.21e-19] | [9.24e-11 +/- 3.24e-14] | [6.15e-15 +/- 4.64e-20] | 1.3s
+M= 30038 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.23e-14 +/- 8.11e-19] | [9.24e-11 +/- 3.85e-14] | [6.15e-15 +/- 6.61e-19] | 1.3s
+M= 30399 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.19e-14 +/- 3.39e-17] | [9.02e-11 +/- 1.92e-14] | [5.93e-15 +/- 2.86e-18] | 1.3s
+M= 30428 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.18e-14 +/- 3.24e-17] | [9.00e-11 +/- 9.07e-15] | [5.92e-15 +/- 4.10e-18] | 1.3s
+M= 30561 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.17e-14 +/- 2.16e-17] | [8.92e-11 +/- 2.74e-14] | [5.84e-15 +/- 9.94e-19] | 1.3s
+M= 31402 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.08e-14 +/- 3.50e-17] | [8.45e-11 +/- 1.20e-14] | [5.38e-15 +/- 2.33e-18] | 1.4s
+M= 31403 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.08e-14 +/- 3.60e-17] | [8.45e-11 +/- 6.55e-15] | [5.38e-15 +/- 1.82e-18] | 1.3s
+M= 31555 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.06e-14 +/- 9.25e-18] | [8.37e-11 +/- 5.67e-15] | [5.30e-15 +/- 4.42e-18] | 1.3s
+M= 32484 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [9.72e-15 +/- 4.80e-18] | [7.90e-11 +/- 2.44e-14] | [4.86e-15 +/- 2.21e-18] | 1.3s
+M= 32711 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [9.52e-15 +/- 3.74e-18] | [7.79e-11 +/- 1.68e-14] | [4.76e-15 +/- 1.69e-18] | 1.3s
+M= 32769 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [9.47e-15 +/- 3.26e-18] | [7.76e-11 +/- 7.86e-15] | [4.74e-15 +/- 3.56e-18] | 1.3s
+M= 32990 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [9.28e-15 +/- 4.15e-18] | [7.66e-11 +/- 2.85e-14] | [4.64e-15 +/- 1.90e-18] | 1.3s
+M= 33866 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [8.58e-15 +/- 2.17e-18] | [7.27e-11 +/- 3.87e-14] | [4.29e-15 +/- 9.23e-19] | 1.3s
+M= 35022 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [7.76e-15 +/- 6.4e-20] | [6.79e-11 +/- 4.38e-14] | [3.88e-15 +/- 1.08e-19] | 1.3s
+M= 35265 surv,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [7.60e-15 +/- 7.49e-19] | [6.70e-11 +/- 1.06e-14] | [3.80e-15 +/- 2.40e-19] | 1.3s
+M= 35419 surv,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [7.50e-15 +/- 2.04e-18] | [6.64e-11 +/- 2.92e-14] | [3.75e-15 +/- 8.85e-19] | 1.3s
+M= 35499 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [7.45e-15 +/- 1.43e-18] | [6.61e-11 +/- 3.01e-14] | [3.73e-15 +/- 4.42e-18] | 1.3s
+M= 36178 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [7.04e-15 +/- 3.02e-19] | [6.37e-11 +/- 2.91e-14] | [3.52e-15 +/- 2.73e-19] | 1.3s
+M= 37334 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [6.41e-15 +/- 4.20e-18] | [5.98e-11 +/- 1.11e-14] | [3.20e-15 +/- 2.80e-18] | 1.3s
+M= 37481 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [6.33e-15 +/- 7.33e-19] | [5.93e-11 +/- 2.10e-14] | [3.17e-15 +/- 4.74e-18] | 1.3s
+M= 38230 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [5.97e-15 +/- 4.13e-18] | [5.70e-11 +/- 1.93e-14] | [2.98e-15 +/- 2.85e-18] | 1.3s
+M= 39646 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [5.35e-15 +/- 8.01e-19] | [5.30e-11 +/- 1.90e-14] | [2.67e-15 +/- 4.52e-18] | 1.3s
+M= 39979 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [5.22e-15 +/- 3.36e-18] | [5.21e-11 +/- 3.94e-14] | [2.61e-15 +/- 1.77e-18] | 1.2s
+M= 40961 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [4.85e-15 +/- 3.73e-19] | [4.97e-11 +/- 3.07e-14] | [2.43e-15 +/- 4.89e-18] | 1.2s
+M= 41957 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [4.51e-15 +/- 3.09e-18] | [4.73e-11 +/- 3.92e-14] | [2.26e-15 +/- 3.53e-18] | 1.2s
+M= 43691 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [4.00e-15 +/- 3.23e-18] | [4.37e-11 +/- 4.40e-14] | [2.00e-15 +/- 1.67e-18] | 1.2s
+M= 44269 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.84e-15 +/- 2.27e-18] | [4.25e-11 +/- 2.36e-14] | [1.92e-15 +/- 1.08e-18] | 1.2s
+M= 44781 surv,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.71e-15 +/- 1.98e-18] | [4.16e-11 +/- 4.34e-14] | [1.86e-15 +/- 4.07e-18] | 1.3s
+M= 44976 surv,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.66e-15 +/- 3.90e-18] | [4.12e-11 +/- 2.90e-15] | [1.83e-15 +/- 1.90e-18] | 1.2s
+M= 46422 r2        | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.33e-15 +/- 2.08e-18] | [3.87e-11 +/- 2.95e-14] | [1.67e-15 +/- 4.01e-18] | 1.1s
+M= 46580 surv,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [3.30e-15 +/- 1.73e-18] | [3.84e-11 +/- 8.66e-15] | [1.65e-15 +/- 9.06e-19] | 1.1s
+M= 49152 surv,r2   | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [2.81e-15 +/- 2.88e-18] | [3.45e-11 +/- 5.88e-15] | [1.40e-15 +/- 3.53e-18] | 1.1s
+M= 68225 surv      | exact fail None | r160 fail None | out fail None | und 0 | enc 0 | 22 0 | [1.05e-15 +/- 3.30e-19] | [1.79e-11 +/- 3.51e-15] | [5.25e-16 +/- 1.75e-19] | 0.8s
+
+M >= 64 accepted on all j <= N: 101 min 11704
+M >= 64 rejected: [64, 93, 101, 187, 202, 404, 809, 940, 1411, 2116, 2331, 2667, 3175, 3497, 4703, 5644, 6773, 8128, 9753]
+low kernels (61 bins, 30 distinct L): delay branch for L = [11704, 14045, 16854, 18257, 20225, 22247, 24270] (7 distinct)
+
+== Exact rationals (fmpq) against the integer sandwich ==
+  prefix comparisons done for 134 values of M
+  full exact M=68225, j<=N: sandwich ok=True, accept fail direct=None sandwich=None; denominator bits of d_N 112189; 6.8s
+  full exact M=49152, j<=N: sandwich ok=True, accept fail direct=None sandwich=None; denominator bits of d_N 141798; 13.7s
+
+== Negative controls (each must FAIL somewhere) ==
+  NC1 M=64: no 1/(2M^3): upper violations 1407
+  NC2 M=64: +1/(2M^3) in lower: lower violations 1407
+  NC3 M=64: compare at shifted point: lower 207, upper 178
+  NC4 M=64: (2.2) lower w/o trapezoid term: violations 27
+  NC5 M=64 (informational): upper with dbar delayed instead of d: upper violations 0
+  NC1 M=11704: no 1/(2M^3): upper violations 20000
+  NC2 M=11704: +1/(2M^3) in lower: lower violations 20000
+  NC3 M=11704: compare at shifted point: lower 20001, upper 20000
+  NC4 M=11704: (2.2) lower w/o trapezoid term: violations 4848
+  NC5 M=11704 (informational): upper with dbar delayed instead of d: upper violations 0
+  NC1 M=24576: no 1/(2M^3): upper violations 20000
+  NC2 M=24576: +1/(2M^3) in lower: lower violations 20000
+  NC3 M=24576: compare at shifted point: lower 20001, upper 20000
+  NC4 M=24576: (2.2) lower w/o trapezoid term: violations 10180
+  NC5 M=24576 (informational): upper with dbar delayed instead of d: upper violations 0
+  NC1 M=68225: no 1/(2M^3): upper violations 20000
+  NC2 M=68225: +1/(2M^3) in lower: lower violations 20000
+  NC3 M=68225: compare at shifted point: lower 20001, upper 20000
+  NC4 M=68225: (2.2) lower w/o trapezoid term: violations 20000
+  NC5 M=68225 (informational): upper with dbar delayed instead of d: upper violations 0
+
+== Summary ==
+checks: 2736  failures: 0
+runtime 200.0 s; peak RSS 2477 MB

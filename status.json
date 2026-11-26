@@ -1,7 +1,7 @@
 {
- "version": "0.51",
- "updated": "2026-11-24",
- "session_count": 53,
+ "version": "0.52",
+ "updated": "2026-11-26",
+ "session_count": 56,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,16 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "The bad-pair step of Maynard's S1 under the shift condition he actually has (every prime dividing some h_i - h_j divides W; ShiftsCop), replacing |h_i - h_j| | W, which fails for squarefree W when a difference is not squarefree (found by the Lean-note audit). Written up with the other finite steps of the reduction in papers/lean-reduction v1.0. (Session 56)",
+   "where": "lean/TwinPrimes/MaynardHpw.lean; papers/lean-reduction/main.tex"
+  },
+  {
+   "label": "Computed",
+   "text": "Rung 186: Lemma 2.2 of the OpenAI companion (the delay recurrence (2.1) enclosing rho(j/M) and the cell masses (2.2)) proved here from the delay equation (Proved here; 6/c^3 valid, 5/c^3 suffices) and checked for 134 caps on 13,172,870 grid points against an independent rigorous rho (2,736 checks, 0 failures; one program). Second independent programs for all six majorisation lemmas (1.4-1.7, 2.3, 2.4) agree with the first (Sessions 54-55). 186 not adopted (restoration step and analytic inputs unchecked; Claimed). (Session 56)",
+   "where": "code/oai186_lemma22_check.py, notes/oai186-lemma22-check.md; code/oai186_lemma*_check2.py"
+  },
   {
    "label": "Computed",
    "text": "Rung 186: Lemmas 2.3 (Eulerian cell kernels, 41 checks) and 2.4 (whole-bin Palm envelopes, 36 checks) of the OpenAI companion verified as stated, one program each; all six majorisation lemmas 1.4-1.7, 2.3, 2.4 now checked. Our reading of the main paper's Prop. 4.6 (4.41): the restoration step needs only a positive margin, so the loss may be up to 12.8% too small. 186 not adopted (analytic inputs Claimed). (Sessions 51-52)",
@@ -618,6 +628,12 @@
   }
  ],
  "ideas": [
+  {
+   "idea": "Short Lean note separating the finite steps of Maynard's reduction from the analytic hypotheses",
+   "origin": "own",
+   "status": "partial",
+   "note": "Session 56: v1.0 written and audited; the finite S2 expansion is the next Lean step."
+  },
   {
    "idea": "Exploration: short-interval variance of twin-prime counts against a Montgomery-Soundararajan-type law",
    "origin": "exploration",
@@ -1266,6 +1282,14 @@
    "status": "frozen",
    "pdf": "docs/papers/verification-note.pdf",
    "summary": "Frozen v1.0 (16 Nov 2026). Exact recomputation of the variational criteria of Stadlmann (240), Kintali / Song-Yue (236) and Charton et al. (212, Table 3 caps), each by two independent programs; ceiling < 3.99 for the 212 draft's Lemma 9.1 caps (one-program Gram certificate, weights checked at a random point); main terms and loss components of the 186 companion and the cap-quotient ingredients of 182 (numerical agreement of two implementations). A section states, number by number, what rests on one program, two programs or a probabilistic check. The analytic inputs are not verified; no claimed bound is verified."
+  },
+  {
+   "slug": "lean-reduction",
+   "title": "The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean",
+   "version": "1.0",
+   "status": "active",
+   "pdf": "docs/papers/lean-reduction.pdf",
+   "summary": "v1.0 (26 Nov 2026, 5 pp.): the Lean-checked finite steps of Maynard's reduction and a precise list of the hypotheses (S1/S2 asymptotics via BV, error sizes, finite S2 expansion, M_50 > 4, finite glue). Audited. Not a formalisation of bounded gaps; nothing about twin primes."
   }
  ],
  "last_review": "2026-11-23",
