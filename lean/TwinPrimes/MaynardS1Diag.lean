@@ -18,7 +18,8 @@ pairwise coprime across `i`) are only required on `Dk`. They can NOT be imposed 
 for `R ≥ 2`, `k ≥ 2` the pair `d = e = (2,2,…)` violates `hpw` (`box_hpw_fails`), so a version with
 `Dk = box R k` would be vacuous. On Maynard's support `hpw` holds for the pairs that matter
 because a common prime of `lcm(dᵢ,eᵢ)` and `lcm(dⱼ,eⱼ)` would divide `hᵢ − hⱼ ∣ W`; that
-argument is NOT formalised here, `hpw` stays a hypothesis (see `maynard_S1_diag_example` for a
+argument is NOT formalised in this file, `hpw` stays a hypothesis here (it is removed in
+`MaynardHpw.lean`, `maynard_S1_diag_W`) (see `maynard_S1_diag_example` for a
 concrete support where all hypotheses hold).
 
 The auxiliary common multiple `M` of `maynard_S1_error` is constructed internally.
