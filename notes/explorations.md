@@ -3,6 +3,19 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-26, Session 57 -- Twin primes inside the Friedlander-Iwaniec thin set n = a^2 + b^4 (thin parity-breaking sets)
+- Idea. Friedlander-Iwaniec break parity for primes in the thin set {a^2 + b^4} because n = N(a + i b^2) gives
+  bilinear structure in Z[i]. Is the pair (n, n+2) special inside this set (a thin set where twins are over- or
+  under-represented would suggest a model problem with extra structure)?
+- Tried. code/explore/fi_thin_twins.py 1e9 3000 (/usr/bin/python3 -I; 62 s, numpy sieve to 1e9; .out): counted
+  (a, b) with a^2 + b^4 <= X and n, n+2 both prime, against a Bateman-Horn-type prediction with the local densities
+  of (a, b) mod p (twin singular series 2.2652 over p <= 3000; single-prime 1.2703).
+- Outcome: dead end. Ratios actual/predicted: primes 1.0045, 1.0018, 1.0035 and twins 1.018, 0.988, 0.997 at
+  X = 1e7, 1e8, 1e9 (29,965 twin values at 1e9). Twins sit in the thin set at exactly the heuristic rate.
+- Why. n + 2 = a^2 + b^4 + 2 is not a norm form, so the Z[i] factorisation that gives FI their Type II sums says
+  nothing about n + 2. The pair problem in the thin set is no easier than twins in general (it is a twin problem
+  on a sparser set). Heuristic / exploratory only; no negative control beyond the single-prime ratio.
+
 ## 2026-11-25, Session 54 -- Fixed small q, growing n: is the F_q[T] twin count uniform in n? (function fields)
 - Idea: the large-q theorems (Bary-Soroker, Bender-Pollack, Carmon-Rudnick; route card 2026-11-21-large-q-pellet.md) give
   relative errors O_n(q^{-1/2}), non-trivial only for q > (2n-3)^2. Risky question: at fixed q = 3, 5, 7 and growing n, does
