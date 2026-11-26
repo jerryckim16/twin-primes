@@ -19,3 +19,4 @@ import TwinPrimes.MuTuple
 import TwinPrimes.MaynardDiag
 import TwinPrimes.MaynardS1Diag
 import TwinPrimes.MaynardHpw
+import TwinPrimes.MaynardS2

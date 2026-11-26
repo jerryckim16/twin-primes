@@ -1,0 +1,165 @@
+oai186_contractions_check.py -- exact checks of (2.16)-(2.21) of [14]; python 3.13.18
+== Part E: full-scale data ==
+ok   E.(1.13) vs (1.1): rho* = 2624989/10^7, S, T0, T1 agree
+ok   E.(1.28) a_h, b_h, d_0, 1-b_h
+ok   E.(1.31) face multipliers 0 < |b_h| <= max{|a_h+b_h|,|b_h|} <= 1, so sum_i h_i <= 40 (factor in 2.17)
+ok   E.(1.18) caps h*floor(z/h) for outer = [68225, 49152, 46580]
+ok   E.(1.18) caps h*floor(z/h) for base = [68225, 44781, 35265]
+ok   E.(1.18) caps h*floor(z/h) for enlarged = [68225, 44976, 35419]
+  caps (1.18)/h floors: {'outer': [68225, 49152, 46580], 'base': [68225, 44781, 35265], 'enlarged': [68225, 44976, 35419]}
+ok   E.(1.19) mask ends: floor(T0/h)-39 = 89524, floor(T1/h)-39 = 89914, outer end min(98263, S/h-40) = 98263
+  floor(T0/h) = 89563, floor(T1/h) = 89953, floor(S/h) = 98304
+ok   E. w(r) >= h_i(Y) for all 98264 radial indices of a 39-face (masks (1.5))
+  w(r) < 1 first at r = 89525 (H0 ends at 89524); w = |b_h| first at r = 89915 (H1 ends at 89914)
+ok   E. w(r) is exactly the radial envelope of h_i (no slack): switch points 89525, 89915
+negative control w(r) with T0 - 50h in place of T0 still dominates h_i          fails as required
+ok   E.(2.18) P(0,z_G) for O2 = [2, 3]
+ok   E.(2.18) bin (0,1/6] of O2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/6,1/3] of O2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/3,1/2] of O2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/2,2/3] of O2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (2/3,5/6] of O2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (5/6,1] of O2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) P(0,z_G) for O5/2 = [3]
+ok   E.(2.18) bin (0,1/16] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/16,1/8] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/8,3/16] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (3/16,1/4] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/4,5/16] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (5/16,3/8] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (3/8,7/16] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (7/16,1/2] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (1/2,5/8] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (5/8,3/4] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (3/4,7/8] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) bin (7/8,1] of O5/2: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+ok   E.(2.18) P(0,z_G) for I2old = [3]
+ok   E.(2.18) bin (0,1] of I2old: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I2old rank-two bin T=(0,1]: q-/h = 29854.476, q+/h = 44781.000, P(q-,q+) = [3]
+ok   E.(2.18) P(0,z_G) for I5/2old = [3]
+ok   E.(2.18) bin (0,1/2] of I5/2old: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2old rank-two bin T=(0,1/2]: q-/h = 25589.546, q+/h = 30427.273, P(q-,q+) = [3]
+ok   E.(2.18) bin (1/2,1] of I5/2old: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2old rank-two bin T=(1/2,1]: q-/h = 30427.273, q+/h = 35265.000, P(q-,q+) = [3]
+ok   E.(2.18) P(0,z_G) for I2new = [3]
+ok   E.(2.18) bin (0,1/6] of I2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I2new rank-two bin T=(0,1/6]: q-/h = 29984.616, q+/h = 32483.180, P(q-,q+) = [3]
+ok   E.(2.18) bin (1/6,1/2] of I2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I2new rank-two bin T=(1/6,1/2]: q-/h = 32483.180, q+/h = 37480.308, P(q-,q+) = [3]
+ok   E.(2.18) bin (1/2,2/3] of I2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I2new rank-two bin T=(1/2,2/3]: q-/h = 37480.308, q+/h = 39978.872, P(q-,q+) = [3]
+ok   E.(2.18) bin (2/3,1] of I2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I2new rank-two bin T=(2/3,1]: q-/h = 39978.872, q+/h = 44976.000, P(q-,q+) = [3]
+ok   E.(2.18) P(0,z_G) for I5/2new = [3]
+ok   E.(2.18) bin (0,1/8] of I5/2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2new rank-two bin T=(0,1/8]: q-/h = 25701.095, q+/h = 26915.833, P(q-,q+) = [3]
+ok   E.(2.18) bin (1/8,3/8] of I5/2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2new rank-two bin T=(1/8,3/8]: q-/h = 26915.833, q+/h = 29345.309, P(q-,q+) = [3]
+ok   E.(2.18) bin (3/8,1/2] of I5/2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2new rank-two bin T=(3/8,1/2]: q-/h = 29345.309, q+/h = 30560.047, P(q-,q+) = [3]
+ok   E.(2.18) bin (1/2,3/4] of I5/2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2new rank-two bin T=(1/2,3/4]: q-/h = 30560.047, q+/h = 32989.524, P(q-,q+) = [3]
+ok   E.(2.18) bin (3/4,1] of I5/2new: 0<q-<q+<=z_G<=c_1, nonempty P(q-,q+) subset of P(0,z_G)
+  I5/2new rank-two bin T=(3/4,1]: q-/h = 32989.524, q+/h = 35419.000, P(q-,q+) = [3]
+  rank-two bins examined: 30 (expected 6+12+1+2+4+5 = 30)
+ok   E. 30 rank-two bins
+== Part D: ring closed forms at d = 40 ==
+ok   D.(1.43) [xy]Q^40 = 40 P^39 C + 1560 P^38 A B
+ok   D.[y](P+yD)^40 = 40 P^39 D (one designated coordinate)
+ok   D.[y^3] H ring at d=40 = 40F0^39F3 + 1560F0^38F1F2 + 9880F0^37F1^3
+ok   D. [y^3] of factorial marks = C(sum N,3) >= 1[N>=3], 300 random 40-vectors
+== Part C: prefix marginals and P(u,v) ==
+ok   C.(2.18) prefix and P(u,v) membership, 38448 (caps,interval,M) cases
+negative control (2.18) with <= instead of < gives the same P on all cases      fails as required
+ok   C. actual prefix square <= sum of prefix squares over P (2000 random cases)
+== Part A: reduced models, full enumeration ==
+ok   A.R(2.17) d=3 ring=plain seed=1
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=3 seed=1
+ok   A.beta(2.19) d=3 ring=plain P=(3,) seed=1
+ok   A.V(2.21) d=3 ring=plain P=(3,) seed=1
+  case d=3 n=6 ring=plain P=(3,) seed=1 done (0.3 s)
+ok   A.R(2.17) d=3 ring=L seed=2
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=3 seed=2
+ok   A.beta(2.19) d=3 ring=L P=(2, 3) seed=2
+ok   A.V(2.21) d=3 ring=L P=(2, 3) seed=2
+  case d=3 n=6 ring=L P=(2, 3) seed=2 done (0.8 s)
+ok   A.R(2.17) d=3 ring=P seed=3
+negative control (2.10) with d^|pi| instead of (d)_|pi| [d=3,P]                 fails as required
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=3 seed=3
+ok   A.beta(2.19) d=3 ring=P P=(1, 2, 3) seed=3
+negative control (2.19) with single-shell rows v_l instead of prefix v^(l) [d=3] fails as required
+negative control (2.19) normalised by 40/Z instead of 40h/Z [d=3]               fails as required
+ok   A.V(2.21) d=3 ring=P P=(1, 2, 3) seed=3
+negative control (2.20) with profile power 2 on the erased coordinate [d=3,P]   fails as required
+negative control (2.20) with chi W(r) instead of chi W(r+a) [d=3,P]             fails as required
+negative control (2.16) P-ring without coincident marks C [d=3]                 fails as required
+  case d=3 n=6 ring=P P=(1, 2, 3) seed=3 done (6.1 s)
+ok   A.R(2.17) d=3 ring=H seed=4
+negative control (2.10) with d^|pi| instead of (d)_|pi| [d=3,H]                 fails as required
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=3 seed=4
+ok   A.beta(2.19) d=3 ring=H P=(3,) seed=4
+negative control (2.19) with single-shell rows v_l instead of prefix v^(l) [d=3] fails as required
+negative control (2.19) normalised by 40/Z instead of 40h/Z [d=3]               fails as required
+ok   A.V(2.21) d=3 ring=H P=(3,) seed=4
+negative control (2.20) with profile power 2 on the erased coordinate [d=3,H]   fails as required
+negative control (2.20) with chi W(r) instead of chi W(r+a) [d=3,H]             fails as required
+  case d=3 n=6 ring=H P=(3,) seed=4 done (4.3 s)
+ok   A.R(2.17) d=4 ring=plain seed=5
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=4 seed=5
+ok   A.beta(2.19) d=4 ring=plain P=(1, 3) seed=5
+ok   A.V(2.21) d=4 ring=plain P=(1, 3) seed=5
+  case d=4 n=5 ring=plain P=(1, 3) seed=5 done (0.4 s)
+ok   A.R(2.17) d=4 ring=L seed=6
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=4 seed=6
+ok   A.beta(2.19) d=4 ring=L P=(3,) seed=6
+ok   A.V(2.21) d=4 ring=L P=(3,) seed=6
+  case d=4 n=5 ring=L P=(3,) seed=6 done (1.1 s)
+ok   A.R(2.17) d=4 ring=P seed=7
+negative control (2.10) with d^|pi| instead of (d)_|pi| [d=4,P]                 fails as required
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=4 seed=7
+ok   A.beta(2.19) d=4 ring=P P=(2, 3) seed=7
+negative control (2.19) with single-shell rows v_l instead of prefix v^(l) [d=4] fails as required
+negative control (2.19) normalised by 40/Z instead of 40h/Z [d=4]               fails as required
+ok   A.V(2.21) d=4 ring=P P=(2, 3) seed=7
+negative control (2.20) with profile power 2 on the erased coordinate [d=4,P]   fails as required
+negative control (2.20) with chi W(r) instead of chi W(r+a) [d=4,P]             fails as required
+negative control (2.16) P-ring without coincident marks C [d=4]                 fails as required
+  case d=4 n=5 ring=P P=(2, 3) seed=7 done (7.4 s)
+ok   A.R(2.17) d=4 ring=H seed=8
+ok   A.(2.13) erased marginal rows, all faces/positions/prefixes d=4 seed=8
+ok   A.beta(2.19) d=4 ring=H P=(1, 2, 3) seed=8
+ok   A.V(2.21) d=4 ring=H P=(1, 2, 3) seed=8
+  case d=4 n=5 ring=H P=(1, 2, 3) seed=8 done (3.3 s)
+== Part B: true dimension 40/39 on short grids, orbit enumeration ==
+ok   B.R(2.17) d=40 ring=plain seed=21
+ok   B.(2.13) erased marginal rows d=40 seed=21
+ok   B.beta(2.19) d=40 ring=plain P=(2, 3) seed=21
+negative control (2.19) with 40/Z instead of 40h/Z at d=40 [plain]              fails as required
+ok   B.V(2.21) d=40 ring=plain P=(2, 3) seed=21
+negative control (2.21) with 40h/Z instead of 40h^2/Z at d=40 [plain]           fails as required
+  case d=40 n=5 ring=plain P=(2, 3) seed=21 done (6.3 s)
+ok   B.R(2.17) d=40 ring=L seed=22
+ok   B.(2.13) erased marginal rows d=40 seed=22
+ok   B.beta(2.19) d=40 ring=L P=(3,) seed=22
+negative control (2.19) with 40/Z instead of 40h/Z at d=40 [L]                  fails as required
+ok   B.V(2.21) d=40 ring=L P=(3,) seed=22
+negative control (2.21) with 40h/Z instead of 40h^2/Z at d=40 [L]               fails as required
+  case d=40 n=5 ring=L P=(3,) seed=22 done (17.6 s)
+ok   B.R(2.17) d=40 ring=P seed=23
+ok   B.(2.13) erased marginal rows d=40 seed=23
+ok   B.beta(2.19) d=40 ring=P P=(1, 2, 3) seed=23
+negative control (2.19) with 40/Z instead of 40h/Z at d=40 [P]                  fails as required
+ok   B.V(2.21) d=40 ring=P P=(1, 2, 3) seed=23
+negative control (2.21) with 40h/Z instead of 40h^2/Z at d=40 [P]               fails as required
+  case d=40 n=5 ring=P P=(1, 2, 3) seed=23 done (53.8 s)
+ok   B.R(2.17) d=40 ring=H seed=24
+ok   B.(2.13) erased marginal rows d=40 seed=24
+ok   B.beta(2.19) d=40 ring=H P=(2, 3) seed=24
+negative control (2.19) with 40/Z instead of 40h/Z at d=40 [H]                  fails as required
+ok   B.V(2.21) d=40 ring=H P=(2, 3) seed=24
+negative control (2.21) with 40h/Z instead of 40h^2/Z at d=40 [H]               fails as required
+  case d=40 n=5 ring=H P=(2, 3) seed=24 done (63.9 s)
+
+checks: 127   failures: 0   negative controls: 27 (all fail as required: True)
+wall 172.3 s, peak RSS 80 MB
+VERDICT: PASS

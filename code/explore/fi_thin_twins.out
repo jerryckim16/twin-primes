@@ -1,0 +1,4 @@
+X = 1.000e+09, singular series over p <= 3000: twin S = 2.265193, single-prime S1 = 1.270331
+X=1.00e+07: pairs=153890, prime n: 13415 (pred 13355, ratio 1.0045); twin n,n+2: 1683 (pred 1653, ratio 1.0179)
+X=1.00e+08: pairs=868545, prime n: 65162 (pred 65045, ratio 1.0018); twin n,n+2: 6828 (pred 6908, ratio 0.9884)
+X=1.00e+09: pairs=4898636, prime n: 323858 (pred 322719, ratio 1.0035); twin n,n+2: 29965 (pred 30057, ratio 0.9969)
