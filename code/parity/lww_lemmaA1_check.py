@@ -16,7 +16,7 @@ Sections
  (G) the swap g -> g~ (case N < d0YM)                              exact
  (H) Lemma A.1 toy count vs main term, both cases                  exact count, numeric comparison
  (I) (4.85) <=> u0 xi - 2 c0 eta = 0, and the g0 count 2 prod p(p-1) for every line choice  exact
- (J) exponent bookkeeping (A.3), (A.4), (4.87)-(4.88)              exact Fractions
+ (J) exponent arithmetic only for (A.3), (A.4), (4.87)-(4.88)     exact Fractions
 Negative controls are marked NEG and must FAIL.
 """
 import math, random, time, itertools
@@ -244,9 +244,11 @@ def Ru_fast(u, S, g0):
 worst_ratio = 0.0
 worst_sqrt = 0.0
 cnt = 0
+cnt_S1 = 0
+worst_S1 = 0.0
 for S in [1, 3, 15]:
     G = sl2_mod(S)
-    for u in [1009, 2003, 3001, 4096 + 1, 4199]:
+    for u in [1009, 2003, 3001, 4096 + 1, 4199, 3003, 4095]:
         for g0 in random.sample([g for g in G if g[0] % S == u % S], min(4, len([g for g in G if g[0] % S == u % S]))):
             R = Ru_fast(u, S, g0)
             assert F(len(R)) == Ru_formula(u, S)
@@ -258,10 +260,14 @@ for S in [1, 3, 15]:
                 main = F(len(R)) * F(b1 - a1, m) * F(b2 - a2, m)
                 disc = abs(n - main)
                 worst_ratio = max(worst_ratio, float(disc) / (u ** 0.99 * S * S))
+                if math.gcd(u, S) > 1:
+                    cnt_S1 += 1
+                    worst_S1 = max(worst_S1, float(disc) / (u ** 0.99 * S * S))
                 worst_sqrt = max(worst_sqrt, float(disc) / (u ** 0.5 * math.log(u) ** 2 * S * S))
                 cnt += 1
 print(f"  {cnt} rectangles; max |count - #R_u|J1||J2|| / (u^0.99 S^2) = {worst_ratio:.4f}; "
       f"/ (u^0.5 log^2 u S^2) = {worst_sqrt:.4f}  (numeric only; (A.4) claims << u^0.99 S^2)")
+print(f"  of these, {cnt_S1} rectangles with S1 = gcd(u,S) > 1 (u = 3003, 4095); max ratio there {worst_S1:.4f}")
 
 # ---------------------------------------------------------------- (F)
 print("== (F) divisor expansion, |SL2(Z/SZ)|, Euler product (p. 74)")
@@ -413,7 +419,7 @@ for S in [3, 5, 7, 15]:
 report("I #g0 = 2 prod p(p-1) for every line choice; |SL2(Z/2S)| = 6 prod p(p^2-1); constant 1/(3 prod(p+1))", 'POS', fails, tot)
 
 # ---------------------------------------------------------------- (J)
-print("== (J) exponent bookkeeping (exact)")
+print("== (J) exponent arithmetic only (exact Fractions); does not check any bound, smoothing or summation")
 eps = F(1, 200)
 checks = []
 # (A.3): |K| << (uS1)^(1/2+eps) (S1 u^0.02)^(1/2) = u^(1/2+eps+0.01) S1^(1+eps)
@@ -426,24 +432,21 @@ checks.append(("zero freq u*Delta ~ u^0.99", 1 - F(1, 100) == F(99, 100)))
 checks.append(("max(0.99, 0.555, 0.93) = 0.99", max(F(99, 100), F(555, 1000), F(93, 100)) == F(99, 100)))
 # sum over u in [U,16U] of (N/u+1) u^0.99: exponents of N U^0.99 and U^1.99; for U <= N the second is <= the first
 checks.append(("errors summed: 1 + 0.99 = 1.99 and 1 - 0.01 = 0.99", F(199, 100) == 1 + F(99, 100) and 1 - F(1, 100) == F(99, 100)))
-# swap case: main term shift |I3| changes by 1/(UN): UN * (1/(UN)) / |SL2| <= 1
-checks.append(("swap: UN * 1/(UN) = 1 (O(1) change of the main term)", F(7, 3) * F(5, 2) * F(1, F(7, 3) * F(5, 2)) == 1))
-# (4.88): log S <= C L^0.98 and min >= x^delta give S^4 min^{-1/100} <= x^{4C L^-0.02 - delta/100};
-# this is <= x^{-delta/200} iff L^0.02 >= 800 C/delta, i.e. log L >= 50 log(800 C/delta) (finite threshold)
+# (4.88) threshold, exact in the variable t = L^{0.02}: with log S <= C L^0.98 and min >= x^delta,
+# S^4 min^{-1/100} <= x^{4C/t - delta/100}; this is <= x^{-delta/200} iff t >= 800C/delta.
 ok = True
 for C in [1, 10, 1000]:
     for delta in [F(1, 100), F(1, 10), F(1, 5)]:
-        logLmin = 50 * math.log(800 * C / float(delta))
-        logL = logLmin + 1.0                   # any L beyond the threshold (kept in log form)
-        ok &= 4 * C * math.exp(-0.02 * logL) - float(delta) / 100 <= -float(delta) / 200
-        # NEG-type sanity: just below the threshold it fails
-        ok &= not (4 * C * math.exp(-0.02 * (logLmin - 1.0)) - float(delta) / 100 <= -float(delta) / 200)
-checks.append(("(4.88): S^4 min^{-1/100} <= x^{-delta/200} once log L >= 50 log(800C/delta)", ok))
+        t0 = 800 * C / delta
+        expo = lambda t: 4 * C / t - delta / 100
+        ok &= expo(t0) <= -delta / 200 and expo(t0 + 1) <= -delta / 200
+        ok &= not (expo(t0 - 1) <= -delta / 200)
+checks.append(("(4.88) threshold: 4C/t - delta/100 <= -delta/200 iff t = L^0.02 >= 800C/delta (exact, t0-1 fails)", ok))
 fails = sum(1 for _, b in checks if not b)
 for nme, b in checks:
     print(f"  {nme}: {b}")
-report("J exponent bookkeeping", 'POS', fails, len(checks))
-print(f"  (J) note: the threshold log L >= 50 log(800C/delta) is astronomically large but finite; (4.88) is asymptotic in x.")
+report("J exponent arithmetic only", 'POS', fails, len(checks))
+print(f"  (J) note: the threshold L >= (800C/delta)^50 is astronomically large but finite; (4.88) is asymptotic in x.")
 
 # ---------------------------------------------------------------- summary
 npos = sum(1 for r in RESULTS if r[1] == 'POS')
