@@ -5,12 +5,12 @@
 [NEG] (B) NEG ||T|| <= R alone: cases=400 failures=39 -> as expected
 [NEG] (B) NEG C with m(t) instead of m(s): cases=400 failures=5 -> as expected
 [POS] (C) G_j row AND column factors (exact, multiset model): cases=228 failures=0 -> as expected
-    ILLUSTRATION ordered 'append at end' kernel, k'=6: column exceeds printed factor in 12/12 parameter sets (so the symmetric picture is needed)
+    ILLUSTRATION (hand formula, not enumerated) ordered 'append at end' kernel, k'=6: column exceeds printed factor in 12/12 parameter sets (so the symmetric picture is needed)
 [POS] (D) (4.124) form/count, tau identity, (4.128): cases=300 failures=0 -> as expected
 [POS] (D) line condition fixes h mod p (j1 != 0 mod p): cases=68760 failures=0 -> as expected
 [NEG] (D) NEG j1 = 0 mod p: uniqueness: cases=68760 failures=1000 -> as expected
 [POS] (E) window: admissible h ==> ||X|| <= 16/p*: cases=2340 failures=0 -> as expected
-[NEG] (E) NEG literal |X| <= 16/p* (as printed): cases=2340 failures=345 -> as expected
+[NEG] (E) NEG |X| <= 16/p* (absolute value, not LWW's ||.||): cases=2340 failures=345 -> as expected
 [POS] (F) (4.133) count <= 9(A'B'/p + max(A',B')): cases=12992 failures=0 -> as expected
 [NEG] (F) NEG without max(A',B'): cases=12992 failures=1001 -> as expected
 [POS] (G) ||[e(xi det)]|| == ||T(xi)||^2: cases=60 failures=0 -> as expected
@@ -26,8 +26,4 @@
     illustration: E0=1, A=6, K=1801: L^(2K) e^(-L^0.1/4) < 1 needs L > 1.65e+63, i.e. log x > 1.65e+63
 
 SUMMARY: 13 positive checks, 10 negative controls, unexpected outcomes: 0
-runtime 50.2 s
-
-real	0m50.570s
-user	2m4.217s
-sys	0m0.055s
+runtime 14.1 s

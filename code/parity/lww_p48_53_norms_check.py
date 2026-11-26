@@ -10,13 +10,14 @@ Run: /usr/bin/python3 -I lww_p48_53_norms_check.py     (fractions, numpy, sympy)
                                                                NEG: ||T|| <= R alone; C with m(t) for m(s).
 (C) G_j row / column factors (p. 49), brute force on multisets (symmetric functions), single group, exact.
     Row == exp-partial * (q/th^2 + eta'/(th v0))^h ; column == exp-partial * (q/th^2 + eta' V/(th v0))^h.
-    ILLUSTRATION: the un-symmetrised 'append at end' kernel on ordered tuples has column sums with a factor k'
+    ILLUSTRATION (hand formula, not enumerated): the un-symmetrised 'append at end' kernel on ordered tuples has
+    column sums with a factor k'
     (exceeds the printed column factor), so the bound needs the symmetric picture (cf. the p. 49 proviso).
 (D) (4.124): every z' with det(z,z') = j1 is j1 w_z + h z; at most 16 h; tau identity of p. 50; det(Bk,Bk') =
     det B det(k,k') (4.128).  Line condition p. 52: for j1 != 0 mod p, [j1 w + h z]_p = l fixes h mod p (or is
     impossible).  NEG: j1 = 0 mod p (uniqueness fails).
 (E) p. 52 window: an admissible h exists  ==>  || D Z T tau(w)/tau(z) - (D b tau(w)/tau(z) + h*)/p* || <= 16/p*
-    (distance to nearest integer).  NEG: the literal absolute value |.| (as printed) fails.
+    (distance to nearest integer).  NEG: the absolute-value reading |.| (LWW prints ||.||) fails.
 (F) (4.133) congruence count, exhaustive.                      NEG: drop the max(A',B') term.
 (G) p. 51 Gram bound and tensor structure: ||[e(xi det(k,k'))]|| = ||T(xi)||^2 (numpy), sum_{|h|<=2A'} min(B',
     1/||h xi||) <= C (A'/d+1)(B'+d log 2d).                     NEG: drop d log(2d) (ratio unbounded).
@@ -208,7 +209,7 @@ for trial in range(12):
     if col_ord > (q / th ** 2 + eta * V / (th * v0)):
         illus_viol += 1
 report("(C) G_j row AND column factors (exact, multiset model)", "exact", n, nf)
-print(f"    ILLUSTRATION ordered 'append at end' kernel, k'=6: column exceeds printed factor in {illus_viol}/12 "
+print(f"    ILLUSTRATION (hand formula, not enumerated) ordered 'append at end' kernel, k'=6: column exceeds printed factor in {illus_viol}/12 "
       f"parameter sets (so the symmetric picture is needed)")
 
 # ---------------------------------------------------------------- (D)
@@ -354,7 +355,7 @@ for trial in range(3000):
     if exists and abs(X) > F(16, ps):
         nneg += 1
 report("(E) window: admissible h ==> ||X|| <= 16/p*", "exact", n, nf)
-report("(E) NEG literal |X| <= 16/p* (as printed)", "exact", n, nneg, True)
+report("(E) NEG |X| <= 16/p* (absolute value, not LWW's ||.||)", "exact", n, nneg, True)
 
 # ---------------------------------------------------------------- (F)
 n = nf = nneg = 0
