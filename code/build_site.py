@@ -116,9 +116,14 @@ tiles = f"""
 rows = "\n".join(f'<tr><td>{chip(r["label"], LABEL_CLASS.get(r["label"], "lit"))}</td><td>{tx(r["text"])}</td><td class="where">{esc(r["where"])}</td></tr>' for r in st["results"])
 ideas = "\n".join(f'<tr><td>{chip(i["status"], STATUS_CLASS.get(i["status"], "lit"))}</td><td>{tx(i["idea"])}<div class="note">{tx(i["note"])}</div></td><td class="where">{esc(i["origin"])}</td></tr>' for i in st["ideas"])
 
+def as_list(v):
+    """Log fields may be a list of sentences or a single string."""
+    if not v: return []
+    return [v] if isinstance(v, str) else list(v)
+
 def entry(e):
     out = [f'<article class="entry"><header><span class="when">{esc(e["date"])} &middot; {esc(e["slot"])}</span><h3>{tx(e["title"])}</h3></header>']
-    out.append("<ul>" + "".join(f"<li>{tx(x)}</li>" for x in e.get("did", [])) + "</ul>")
+    out.append("<ul>" + "".join(f"<li>{tx(x)}</li>" for x in as_list(e.get("did"))) + "</ul>")
     if e.get("flag"):
         out.append(f'<p class="next"><span class="sub">Flag for Jerry</span> {tx(e["flag"])}</p>')
     if e.get("parity"):
@@ -126,12 +131,16 @@ def entry(e):
     if e.get("explored"):
         out.append(f'<p class="next"><span class="sub">Explored</span> {tx(e["explored"])}</p>')
     if e.get("failed"):
-        out.append('<p class="sub">Did not work or is blocked</p><ul class="failed">' + "".join(f"<li>{tx(x)}</li>" for x in e["failed"]) + "</ul>")
+        out.append('<p class="sub">Did not work or is blocked</p><ul class="failed">' + "".join(f"<li>{tx(x)}</li>" for x in as_list(e["failed"])) + "</ul>")
     if e.get("next"):
         out.append(f'<p class="next"><span class="sub">Next</span> {tx(e["next"])}</p>')
     out.append("</article>")
     return "\n".join(out)
-entries = "\n".join(entry(e) for e in log)
+LOG_SHOWN = 8
+entries = "\n".join(entry(e) for e in log[:LOG_SHOWN])
+if len(log) > LOG_SHOWN:
+    entries += (f'\n<details class="older"><summary>Older entries ({len(log) - LOG_SHOWN})</summary>\n'
+                + "\n".join(entry(e) for e in log[LOG_SHOWN:]) + "\n</details>")
 
 files = []
 for base, _, fs in os.walk("."):
@@ -227,10 +236,30 @@ td.where{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:7r
 @media (max-width:640px){ body{font-size:17px} .tiles{grid-template-columns:repeat(2,1fr)} .files{columns:1}
   .mark .cap{font-size:.6rem;left:-38px;width:76px} h1{font-size:1.6rem}
   .mark.al .num,.mark.al .cap,.mark.ar .num,.mark.ar .cap{width:72px}
-  .ledger tr{display:block;padding:10px 0;border-bottom:1px solid var(--rule)} .ledger td{display:block;border:0;padding:0 0 4px} .ledger td.where{min-width:0} }
+  .ledger,.ledger tbody{display:block;width:100%} .ledger tr{display:block;padding:10px 0;border-bottom:1px solid var(--rule)}
+  .ledger td{display:block;border:0;padding:0 0 4px;overflow-wrap:anywhere} .ledger td.where{min-width:0}
+  .entry ul{padding-left:1.1em} .entry h3{font-size:1.02rem} }
+.older{margin-top:10px} .older > summary,.pmore > summary{cursor:pointer;color:var(--accent);font-family:var(--mono);font-size:.78rem;margin:2px 0 8px}
+.pmore .pdesc{margin-top:0}
+@media (max-width:640px){ .chip{white-space:normal;max-width:100%;display:inline-block;line-height:1.35}
+  .paper .math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle} }
 """
 
 # ---------- papers: the main paper and every small-results paper (index: papers/README.md) ----------
+def fold(text, limit=220):
+    """Show the first sentence or so; put the rest behind a 'more' toggle (long index lines are unreadable on phones)."""
+    text = text.strip()
+    if len(text) <= limit:
+        return f'<p class="pdesc">{tx(text)}</p>'
+    cut = text.rfind(". ", 0, limit)
+    if cut > 80:
+        cut += 1
+    else:
+        semi = max(text.rfind("; ", 0, limit), text.rfind(", ", 0, limit))
+        cut = semi + 1 if semi > 80 else (text.rfind(" ", 0, limit) if text.rfind(" ", 0, limit) > 0 else limit)
+    return (f'<p class="pdesc">{tx(text[:cut].strip())}</p>'
+            f'<details class="pmore"><summary>More</summary><p class="pdesc">{tx(text[cut:].strip())}</p></details>')
+
 def papers_list():
     gh = "https://github.com/jerryckim16/twin-primes/blob/main/"
     items = [f'<li><p class="ptl">{esc(title)}</p><p class="pmeta">Main paper &middot; {esc(date)} &middot; living paper, updated with every run</p>'
@@ -248,8 +277,12 @@ def papers_list():
                 os.makedirs("docs/papers", exist_ok=True)
                 import shutil; shutil.copy(src, f"docs/papers/{slug}.pdf")
             pdf = f'<a href="papers/{esc(slug)}.pdf">PDF</a> ' if os.path.exists(f"docs/papers/{slug}.pdf") else ""
-            items.append(f'<li><p class="ptl">{esc(ptitle)}</p><p class="pmeta">Small-results paper &middot; version {esc(ver)} &middot; {esc(status)}</p>'
-                         f'<p class="pdesc">{esc(desc)}</p><p class="plinks">{pdf}<a href="{gh}papers/{esc(slug)}/main.tex">LaTeX source</a></p></li>')
+            vnum = ver.split("(")[0].strip()
+            dm = re.search(r"\d{1,2} [A-Z][a-z]{2} \d{4}", ver)
+            vshort = vnum + (f" ({dm.group(0)})" if dm else "")
+            stat = status.split("(")[0].strip()
+            items.append(f'<li><p class="ptl">{esc(ptitle)}</p><p class="pmeta">Small-results paper &middot; version {esc(vshort)} &middot; {esc(stat)}</p>'
+                         f'{fold(desc)}<p class="plinks">{pdf}<a href="{gh}papers/{esc(slug)}/main.tex">LaTeX source</a></p></li>')
     return '<ul class="papers">' + "".join(items) + "</ul>"
 papers_html = papers_list()
 
