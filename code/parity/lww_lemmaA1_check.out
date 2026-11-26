@@ -1,0 +1,61 @@
+== (A) #R_u formula (p. 72)
+[POS] A #R_u = u prod_{p|u,p!|S}(1-1/p): 0/6604 failures -> ok 
+[NEG] A NEG #R_u = u prod_{p|u}(1-1/p) (drop p!|S): 2400/6604 failures -> ok 
+== (B) R_u <-> matrix congruence with canonical c (p. 72)
+[POS] B (c,v) in R_u  <=>  gcd(u,v)=1, ud-vc=1, g=g0 mod S (0<=c<u): 0/3357742 failures -> ok 
+== (C) CRT/orthogonality identity and gcd claim (p. 73)
+[POS] C sum_{R_u} e((hc+kv)/uS) = phase*(1/S1) sum_j e(-j c0/S1) K_{uS1}(gh+ju, gk(ud0'-1)): 0/5844 failures -> ok 
+[POS] C gcd(gh+ju, gk(ud0'-1), uS1) divides S1*gcd(h,k,u): 0/166875 failures -> ok 
+[NEG] C NEG gcd <= gcd(h,k,u) (drop the S1 factor): 2362/166875 failures -> ok 
+== (D) Weil/Estermann bound (A.2), all m <= MMAX, all h,k mod m
+[POS] D |K_m(h,k)| <= tau(m) m^1/2 (h,k,m)^1/2, 2<=m<=160: 0/1378159 failures -> ok (max ratio 0.9972)
+[NEG] D NEG drop gcd factor: |K| <= tau(m) m^1/2: 452/1378159 failures -> ok 
+[NEG] D NEG prime-modulus form for all m: |K| <= 2 m^1/2 (h,k,m)^1/2: 13648/1378159 failures -> ok 
+[NEG] D NEG drop tau: |K| <= (m (h,k,m))^1/2: 225668/1378159 failures -> ok 
+== (E) rectangle discrepancy of R_u (numeric illustration of (A.4))
+  1575 rectangles; max |count - #R_u|J1||J2|| / (u^0.99 S^2) = 0.0123; / (u^0.5 log^2 u S^2) = 0.0076  (numeric only; (A.4) claims << u^0.99 S^2)
+  of these, 400 rectangles with S1 = gcd(u,S) > 1 (u = 3003, 4095); max ratio there 0.0013
+== (F) divisor expansion, |SL2(Z/SZ)|, Euler product (p. 74)
+[POS] F prod_{p|u,p!|S}(1-1/p) = sum_{l|u,(l,S)=1} mu(l)/l: 0/3990 failures -> ok 
+[POS] F |SL2(Z/SZ)| = prod p(p^2-1) = S^3 prod(1-p^-2) (enumeration): 0/9 failures -> ok 
+  U=5000 S=3 u0=1: sum = 3419.330, main = 3419.590, diff = -0.260, log(2U) = 9.21
+  U=5000 S=15 u0=7: sum = 1661.857, main = 1662.301, diff = -0.444, log(2U) = 9.21
+  U=20000 S=6 u0=0: sum = 45594.484, main = 45594.533, diff = -0.049, log(2U) = 10.60
+== (G) swap g -> g~ (p. 74)
+[POS] G g~ canonical, det 1, involutive, (v-d)/v = 1 - c/u - 1/(uv): 0/12255 failures -> ok 
+[NEG] G NEG 0<d<v without v>1 (v=1): 199/199 failures -> ok 
+== (H) Lemma A.1 toy counts vs main term (numeric; the O-term is not small at this size)
+  U=150 N=400 S=1 g0=(0, 0, 0, 0): count 54867, main 54713.4, rel.err 0.003
+  U=150 N=400 S=3 g0=(0, 2, 1, 2): count 2323, main 2279.7, rel.err 0.019
+  U=150 N=400 S=3 g0=(1, 0, 0, 1): count 2272, main 2279.7, rel.err 0.003
+  U=150 N=400 S=3 g0=(1, 2, 2, 2): count 2263, main 2279.7, rel.err 0.007
+  U=400 N=150 S=3 g0=(1, 1, 1, 2): count 2280, main 2279.7, rel.err 0.000
+  U=400 N=150 S=3 g0=(1, 0, 1, 1): count 2297, main 2279.7, rel.err 0.008
+  U=400 N=150 S=3 g0=(2, 1, 1, 1): count 2342, main 2279.7, rel.err 0.027
+  U=150 N=300 S=5 g0=(3, 4, 3, 1): count 348, main 342.0, rel.err 0.018
+  U=150 N=300 S=5 g0=(4, 3, 2, 3): count 340, main 342.0, rel.err 0.006
+  U=150 N=300 S=5 g0=(0, 1, 4, 3): count 356, main 342.0, rel.err 0.041
+  U=300 N=150 S=6 g0=(1, 4, 4, 5): count 271, main 285.0, rel.err 0.049
+  U=300 N=150 S=6 g0=(4, 3, 1, 1): count 299, main 285.0, rel.err 0.049
+  U=300 N=150 S=6 g0=(5, 4, 4, 1): count 296, main 285.0, rel.err 0.039
+  max rel. err 0.049
+[NEG] H NEG main term with S^3 in place of |SL2(Z/SZ)| within 10%: 1/1 failures -> ok (rel.err 0.584)
+== (I) (4.85) and the g0 count (p. 35), all line choices
+[POS] I l_p(g') = l_p  <=>  u0 xi_p - 2 c0 eta_p = 0 (mod p): 0/4352 failures -> ok 
+[POS] I #g0 = 2 prod p(p-1) for every line choice; |SL2(Z/2S)| = 6 prod p(p^2-1); constant 1/(3 prod(p+1)): 0/42 failures -> ok 
+== (J) exponent arithmetic only (exact Fractions); does not check any bound, smoothing or summation
+  (A.3) u-exponent 1/2+1/200+1/100 = 0.515: True
+  (A.3) S1-exponent 1/2+1/200+1/2 = 1.005: True
+  pairs: 0.04 + 0.515 = 0.555: True
+  tail exponent 11*0.01 - 9*0.02 = -0.07: True
+  zero freq u*Delta ~ u^0.99: True
+  max(0.99, 0.555, 0.93) = 0.99: True
+  errors summed: 1 + 0.99 = 1.99 and 1 - 0.01 = 0.99: True
+  (4.88) threshold: 4C/t - delta/100 <= -delta/200 iff t = L^0.02 >= 800C/delta (exact, t0-1 fails): True
+[POS] J exponent arithmetic only: 0/8 failures -> ok 
+  (J) note: the threshold L >= (800C/delta)^50 is astronomically large but finite; (4.88) is asymptotic in x.
+== SUMMARY
+positive checks: 11, failing: 0
+negative controls: 7, failing as they must: 7
+unexpected outcomes: 0 []
+wall time 8.9 s

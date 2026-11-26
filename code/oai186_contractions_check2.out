@@ -1,0 +1,79 @@
+oai186_contractions_check2.py: independent toy-model check of (2.17), (2.19), (2.21)
+-- instance s101: D=2 n=6 ring=L levels=['1', '2', '3', '4', '5', '6'] shells=(1, 4) (u,v]=(0,3] z=5
+   done in 3.0s; running checks=120 fails=0
+-- instance s102: D=2 n=6 ring=P levels=['1', '2', '3', '4', '5', '6'] shells=(3, 4) (u,v]=(4,5] z=5
+   done in 6.4s; running checks=239 fails=0
+-- instance s103: D=2 n=6 ring=H levels=['1', '2', '3', '4', '5', '6'] shells=(2, 3) (u,v]=(1,2] z=2
+   done in 4.1s; running checks=356 fails=0
+-- instance s201: D=3 n=5 ring=L levels=['1', '2', '3', '4', '5', '6'] shells=(2, 3) (u,v]=(3,5] z=3
+   done in 4.2s; running checks=528 fails=0
+-- instance s202: D=3 n=5 ring=P levels=['1', '2', '3', '4', '5', '6'] shells=(0, 2) (u,v]=(0,1] z=4
+   done in 10.7s; running checks=699 fails=0
+-- instance s203: D=3 n=5 ring=H levels=['1', '2', '3', '4', '5', '6'] shells=(1, 2) (u,v]=(0,3] z=3
+   done in 10.4s; running checks=871 fails=0
+-- instance s204: D=3 n=5 ring=P levels=['1', '3', '5', '6'] shells=(1, 3) (u,v]=(3,5] z=3
+   (beta tight l=2: no toy level in branch, skipped)
+   done in 10.2s; running checks=1042 fails=0
+-- instance s301: D=4 n=4 ring=P levels=['1', '2', '4', '6'] shells=(1, 2) (u,v]=(1,2] z=4
+   done in 17.5s; running checks=1266 fails=0
+-- instance s302: D=4 n=4 ring=L levels=['2', '3', '5', '6'] shells=(0, 2) (u,v]=(2,3] z=4
+   done in 5.5s; running checks=1489 fails=0
+-- instance s303: D=4 n=4 ring=H levels=['1', '3', '5'] shells=(1, 2) (u,v]=(0,1] z=4
+   done in 15.2s; running checks=1713 fails=0
+== sympy identities
+== P(u,v) grids
+   P grid toy caps: 28 (u,v) pairs agree with the point test
+   negative control c4=1: differs on 1 pairs
+== real-data checks
+   P(0,z) for O2 (z=49152h): [2, 3]
+   P(0,z) for O5/2 (z=46580h): [3]
+   P(0,z) for I2old (z=44781h): [3]
+   P(0,z) for I5/2old (z=35265h): [3]
+   P(0,z) for I2new (z=44976h): [3]
+   P(0,z) for I5/2new (z=35419h): [3]
+   inner rank-two P(q-,q+) for I2old: [[3]]
+   inner rank-two P(q-,q+) for I5/2old: [[3], [3]]
+   inner rank-two P(q-,q+) for I2new: [[3], [3], [3], [3]]
+   inner rank-two P(q-,q+) for I5/2new: [[3], [3], [3], [3], [3]]
+   P grid real caps: 28 (u,v) pairs agree with the point test
+== negative controls (name: caught/run, vacuous instances not counted)
+   P grid with c4!=0: 1/1
+   P:c4!=0 (inequality): 9/9
+   R:Qonce: 10/10
+   R:Rfactor1: 10/10
+   R:Rfactor1 (inequality): 10/10
+   R:nofall: 10/10
+   R:prof1: 10/10
+   R:selx: 4/4
+   V:Sonce: 21/21
+   V:Wret: 21/21
+   V:erased2: 21/21
+   V:h1: 21/21
+   V:nofall: 21/21
+   V:prof1: 21/21
+   V:selx: 9/9
+   V:xret: 21/21
+   beta:Sonce: 13/13
+   beta:nofall: 13/13
+   beta:noshellsum: 9/9  (vacuous on 1)
+   beta:prof1: 13/13
+   beta:selx: 4/4
+   beta:xret: 12/12  (vacuous on 1)
+== summary
+   checks [M]: 1590
+   checks [V_i(Y)]: 10
+   checks [R tight]: 10
+   checks [R inequality]: 20
+   checks [beta tight]: 13
+   checks [beta inequality]: 20
+   checks [V tight]: 21
+   checks [V inequality]: 20
+   checks [beta identity on]: 9
+   checks [sympy]: 204
+   checks [P grid]: 56
+   checks [other]: 8
+   checks [real]: 18
+checks: 1999  failures: 0
+negative controls: 284 run, 284 caught
+runtime: 88.2s  peak RSS: 64 MB
+VERDICT: PASS

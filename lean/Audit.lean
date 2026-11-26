@@ -224,3 +224,17 @@ import TwinPrimes
 #print axioms TwinPrimes.MaynardS2.maynard_S2_example
 #print axioms TwinPrimes.MaynardS2.ex_filter
 #print axioms TwinPrimes.MaynardS2.maynard_S2_example_eval
+#print axioms TwinPrimes.MaynardS2Hpw.count_zero_of_not_good_S2
+#print axioms TwinPrimes.MaynardS2Hpw.shiftsCop_eraseIdx
+#print axioms TwinPrimes.MaynardS2Hpw.count_zero_reduced_of_not_good
+#print axioms TwinPrimes.MaynardS2Hpw.maynard_S2_good_W
+#print axioms TwinPrimes.MaynardS2Hpw.maynard_S2_good_support
+#print axioms TwinPrimes.MaynardS2Hpw.maynard_S2_good_reduced
+#print axioms TwinPrimes.MaynardS2Hpw.ex_hH
+#print axioms TwinPrimes.MaynardS2Hpw.ex_not_shiftsDvd
+#print axioms TwinPrimes.MaynardS2Hpw.ex_bad_pair
+#print axioms TwinPrimes.MaynardS2Hpw.ex_bad_count
+#print axioms TwinPrimes.MaynardS2Hpw.ex_good_count_pos
+#print axioms TwinPrimes.MaynardS2Hpw.maynard_S2_good_example
+#print axioms TwinPrimes.MaynardS2Hpw.ex_filter_sizes
+#print axioms TwinPrimes.MaynardS2Hpw.maynard_S2_good_example_eval
