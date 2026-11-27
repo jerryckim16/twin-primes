@@ -1,7 +1,7 @@
 {
- "version": "0.52",
- "updated": "2026-11-26",
- "session_count": 56,
+ "version": "0.53",
+ "updated": "2026-11-27",
+ "session_count": 59,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -11,6 +11,21 @@
   "project_note": "236 is conditional: rests on the equidistribution theorem of Song-Yue (IACR ePrint 2026/1893, Theorem 4.18, used through their Theorem 4.33; Kintali's route: Stadlmann's estimates as amended in Kintali's preprint), which this project has NOT verified; 240 is conditional on Stadlmann's equidistribution estimates (arXiv:2608.31126), also NOT verified; 246 is reproduced unconditionally (given Bombieri-Vinogradov). Song-Yue (Remark 4.23) point out a possible missing hypothesis in the proof of Stadlmann's Lemma 5 (the step reads as they say in arXiv v1; repair not checked). An AI audit inside this project (notes/audit-sy236-thm418/, one auditor per section, not expert review) found Song-Yue's Theorem 4.18 to follow from the cited literature after one local repair (eq. (49), inherited from Polymath8a Lemma 6.25); this does not change the conditional status of 236."
  },
  "results": [
+  {
+   "label": "Lean-checked",
+   "text": "The finite part of Maynard's S2 (Lemma 5.2) up to primes in progressions (Sessions 57-58): exact expansion of the square; only pairs with d_m = e_m = 1 contribute when d_m < N0 + h_m on the support; under ShiftsCop and entries coprime to W, pairs with non-coprime remaining moduli contribute 0; each remaining count is a prime count in one class mod W prod_{i!=m}[d_i,e_i] (maynard_S2_good_reduced, maynard_S2_count_residue). Not formalised: the prime counts, Bombieri-Vinogradov, the y^(m) change of variables.",
+   "where": "lean/TwinPrimes/MaynardS2.lean, MaynardS2Hpw.lean; main paper thm:lean item 21; lean-reduction note v1.1 Section 4"
+  },
+  {
+   "label": "Computed",
+   "text": "Rung 186: the finite contractions (2.16)-(2.21) of the OpenAI companion (given its majorisation lemmas) checked by two independent programs (127 and 1,999 exact checks, 0 failures, negative controls caught; the second written from the PDF and the authors' data before the first was opened); full agreement. Restoration step and analytic inputs still unchecked; 186 not adopted.",
+   "where": "code/oai186_contractions_check.py, code/oai186_contractions_check2.py; notes/oai186-contractions-check*.md; main paper rem:186-status"
+  },
+  {
+   "label": "Proved here",
+   "text": "LWW (arXiv:2610.20242v2, Claimed) Lemma A.1 and (4.86)-(4.88) re-derived step by step, relative to the Weil/Estermann Kloosterman bound and textbook facts (Session 58); (4.121) and Prop. 4.5(i) follow from listed inputs U1-U7 (Session 57, conditional), U1 now discharged. Audited (fresh context). No error in LWW found; not a check of Prop. 4.2 as a whole; twins (K = 0) untouched.",
+   "where": "notes/parity-attempts/2026-11-26-lww-lemmaA1.md, 2026-11-26-lww-p37-47-prop45.md"
+  },
   {
    "label": "Lean-checked",
    "text": "The bad-pair step of Maynard's S1 under the shift condition he actually has (every prime dividing some h_i - h_j divides W; ShiftsCop), replacing |h_i - h_j| | W, which fails for squarefree W when a difference is not squarefree (found by the Lean-note audit). Written up with the other finite steps of the reduction in papers/lean-reduction v1.0. (Session 56)",
@@ -1286,10 +1301,10 @@
   {
    "slug": "lean-reduction",
    "title": "The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean",
-   "version": "1.0",
+   "version": "1.1",
    "status": "active",
    "pdf": "docs/papers/lean-reduction.pdf",
-   "summary": "v1.0 (26 Nov 2026, 5 pp.): the Lean-checked finite steps of Maynard's reduction and a precise list of the hypotheses (S1/S2 asymptotics via BV, error sizes, finite S2 expansion, M_50 > 4, finite glue). Audited. Not a formalisation of bounded gaps; nothing about twin primes."
+   "summary": "v1.1 (27 Nov 2026, 6 pp.): the Lean-checked finite steps of Maynard's reduction (skeleton, S1 expansion/CRT/bad pairs/diagonalisation, and now the finite expansion of S2 down to one prime count per pair) and a precise list of what stays a hypothesis (S1/S2 asymptotics via BV, error sizes, the S2 change of variables, M_50 > 4, finite glue). Audited. Not a formalisation of bounded gaps; nothing about twin primes."
   }
  ],
  "last_review": "2026-11-23",
