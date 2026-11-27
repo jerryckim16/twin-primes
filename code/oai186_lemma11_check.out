@@ -9,7 +9,7 @@
   PASS [8] (4.2): rho*S < 11/40 and rho*T1 < 11/40
   PASS sigma_{m,tau} = 1/2 - a* + tau = 9519/100000 + 10^-10 ([8] (4.11), (2.19) a*=0.40481)
   PASS [8] (2.19): b* = 1 - a*
-  PASS [8] Prop 2.22 proof: tau = 10^-10 is allowed (0 < tau <= 10^-10)
+  PASS input range: 0 < tau <= 10^-10, the range allowed by [8] Prop 2.22 proof (all tau-conditions weaken as tau decreases, so tau = 10^-10 covers every smaller tau)
   PASS Omega_o < 1/12 and Omega_n < 1/12
   PASS [8] Prop 2.22 example: 1/2 + 2*253/20000 = 0.5253
 [1] ladders (1.15)-(1.17)
@@ -36,6 +36,7 @@
   PASS retained rows: To = 0..27, Tn = 0..38
 [2] distribution hypotheses ([8] Prop 2.16, 2.17, Cor 2.19, Prop 2.18 (2.14), Prop 2.22 (2.24)), retained rows; per condition least margin
      n r=1 1/18+28w/9+2d/9<19/200-tau (2.24)      least margin     0.01777331 (row 11)
+     n r=1 1/2+2w<=53/100 [L A.8/A.9 level]       least margin    0.017964705 (row 11)
      n r=1 1/2+2w<b*-tau (2.24)                   least margin    0.083154704 (row 11)
      n r=1 1/4+7w+2d<c*-tau (2.24)                least margin    0.019222231 (row 0)
      n r=1 54w+15d+5s<1 (2.11)                    least margin        1.5e-06 (row 0)
@@ -47,6 +48,7 @@
      n r=1 sigma_mt<1/2                           least margin        0.40481 (row 0)
      n r=1 sigma_mt>0                             least margin        0.09519 (row 0)
      n r=2 1/18+28w/9+2d/9<19/200-tau (2.24)      least margin    0.010003984 (row 23)
+     n r=2 1/2+2w<=53/100 [L A.8/A.9 level]       least margin    0.012137206 (row 23)
      n r=2 1/2+2w<b*-tau (2.24)                   least margin    0.077327206 (row 23)
      n r=2 1/4+7w+2d<c*-tau (2.24)                least margin      0.0111552 (row 12)
      n r=2 56w+16d+4s<1 (2.11)                    least margin        1.6e-06 (row 12)
@@ -58,6 +60,7 @@
      n r=2 sigma_mt<1/2                           least margin        0.40481 (row 12)
      n r=2 sigma_mt>0                             least margin        0.09519 (row 12)
      n r=3 1/18+28w/9+2d/9<19/200-tau (2.24)      least margin  9.4631499e-05 (row 38)
+     n r=3 1/2+2w<=53/100 [L A.8/A.9 level]       least margin   0.0047049523 (row 38)
      n r=3 1/2+2w<b*-tau (2.24)                   least margin    0.069894952 (row 38)
      n r=3 1/4+7w+2d<c*-tau (2.24)                least margin  9.6855971e-06 (row 38)
      n r=3 48w+16d+4s<1 (2.14)                    least margin    0.004589294 (row 24)
@@ -106,6 +109,82 @@
      o r=3 sigma>0                                least margin       0.100002 (row 24)
      o r=3 sigma>1/10 [C2.19 HB]                  least margin          2e-06 (row 24)
      o r=3 sigma>2w [C2.19]                       least margin    0.075176699 (row 27)
+  PASS hyp n r=1: 1/18+28w/9+2d/9<19/200-tau (2.24)
+  PASS hyp n r=1: 1/2+2w<=53/100 [L A.8/A.9 level]
+  PASS hyp n r=1: 1/2+2w<b*-tau (2.24)
+  PASS hyp n r=1: 1/4+7w+2d<c*-tau (2.24)
+  PASS hyp n r=1: 54w+15d+5s<1 (2.11)
+  PASS hyp n r=1: 68w+14d<1 [P2.22]
+  PASS hyp n r=1: delta<1/4+omega
+  PASS hyp n r=1: delta>0
+  PASS hyp n r=1: omega<1/12
+  PASS hyp n r=1: omega>0
+  PASS hyp n r=1: sigma_mt<1/2
+  PASS hyp n r=1: sigma_mt>0
+  PASS hyp n r=2: 1/18+28w/9+2d/9<19/200-tau (2.24)
+  PASS hyp n r=2: 1/2+2w<=53/100 [L A.8/A.9 level]
+  PASS hyp n r=2: 1/2+2w<b*-tau (2.24)
+  PASS hyp n r=2: 1/4+7w+2d<c*-tau (2.24)
+  PASS hyp n r=2: 56w+16d+4s<1 (2.11)
+  PASS hyp n r=2: 68w+14d<1 [P2.22]
+  PASS hyp n r=2: delta<1/4+omega
+  PASS hyp n r=2: delta>0
+  PASS hyp n r=2: omega<1/12
+  PASS hyp n r=2: omega>0
+  PASS hyp n r=2: sigma_mt<1/2
+  PASS hyp n r=2: sigma_mt>0
+  PASS hyp n r=3: 1/18+28w/9+2d/9<19/200-tau (2.24)
+  PASS hyp n r=3: 1/2+2w<=53/100 [L A.8/A.9 level]
+  PASS hyp n r=3: 1/2+2w<b*-tau (2.24)
+  PASS hyp n r=3: 1/4+7w+2d<c*-tau (2.24)
+  PASS hyp n r=3: 48w+16d+4s<1 (2.14)
+  PASS hyp n r=3: 64w+20d+2s<1 (2.14)
+  PASS hyp n r=3: 72w+24d<1 (2.14)
+  PASS hyp n r=3: delta<1/4+omega
+  PASS hyp n r=3: delta>0
+  PASS hyp n r=3: omega<1/12
+  PASS hyp n r=3: omega>0
+  PASS hyp n r=3: sigma_mt<1/2
+  PASS hyp n r=3: sigma_mt>0
+  PASS hyp o r=1: 1/18+28w/9+2d/9<sigma (2.12)
+  PASS hyp o r=1: 108w+30d<1 (2.15)
+  PASS hyp o r=1: 54w+15d+5s<1 (2.11)
+  PASS hyp o r=1: 68w+14d<1 [P2.16]
+  PASS hyp o r=1: delta<1/4+omega
+  PASS hyp o r=1: delta>0
+  PASS hyp o r=1: omega<1/12
+  PASS hyp o r=1: omega>0
+  PASS hyp o r=1: sigma<1/2
+  PASS hyp o r=1: sigma>0
+  PASS hyp o r=1: sigma>1/10 [C2.19 HB]
+  PASS hyp o r=1: sigma>2w [C2.19]
+  PASS hyp o r=2: 1/18+28w/9+2d/9<sigma (2.12)
+  PASS hyp o r=2: 280w+80d<3 (2.15)
+  PASS hyp o r=2: 56w+16d+4s<1 (2.11)
+  PASS hyp o r=2: 68w+14d<1 [P2.16]
+  PASS hyp o r=2: delta<1/4+omega
+  PASS hyp o r=2: delta>0
+  PASS hyp o r=2: omega<1/12
+  PASS hyp o r=2: omega>0
+  PASS hyp o r=2: sigma<1/2
+  PASS hyp o r=2: sigma>0
+  PASS hyp o r=2: sigma>1/10 [C2.19 HB]
+  PASS hyp o r=2: sigma>2w [C2.19]
+  PASS hyp o r=3: 1/18+28w/9+2d/9<sigma (2.12)
+  PASS hyp o r=3: 240w+80d<3 (2.15)
+  PASS hyp o r=3: 48w+16d+4s<1 (2.14)
+  PASS hyp o r=3: 64w+20d+2s<1 (2.14)
+  PASS hyp o r=3: 72w+24d<1 (2.14)
+  PASS hyp o r=3: delta<1/4+omega
+  PASS hyp o r=3: delta>0
+  PASS hyp o r=3: omega<1/12
+  PASS hyp o r=3: omega>0
+  PASS hyp o r=3: sigma<1/2
+  PASS hyp o r=3: sigma>0
+  PASS hyp o r=3: sigma>1/10 [C2.19 HB]
+  PASS hyp o r=3: sigma>2w [C2.19]
+  PASS endpoint step: all hypotheses hold at the 12 printed omega-enclosure endpoints, least margin > 10^-8   [least margin 8.9999e-07]
+  PASS endpoint step: delta at the (n, r=3) upper endpoint 12650/10^6 is 89999/10^11 (the printed least density)
   PASS all strict hypotheses hold on all 67 retained rows   [least margin 1e-06 at (o,0) sigma>1/10 [C2.19 HB]]
   PASS every required strict margin exceeds 10^-8 (retained rows)
   PASS (extra) the hypotheses also hold on the terminal rows (o,28), (n,42)   [least margin over all 72 ladder rows 8.9999e-07 at (n,42) delta>0]
@@ -178,18 +257,26 @@
   PASS (4.17) c_s - b_{n,12} > 4/100 and xi_s - xi_{n,12} > 5/100   [0.04291221453, 0.0509870337]
   PASS C_{n,12} = b_{n,12} + xi_{n,12} < c_s + xi_s
   PASS source level: rho* * 2 T1 < 1/2 + 2 omega_s; density rho* xi_s < delta_s; rho* B_BV < 1/2
-[8] negative controls (each perturbation must make the named check fail)
-  PASS NEG eps_o = 0 -> some strict distribution hypothesis fails   [54w+15d+5s<1 (2.11)]
-  PASS NEG Omega_n + 1e-5 (> W_n3) -> new ladder does not terminate (row count 43 check fails)   [402 rows (cut at 400)]
-  PASS NEG c* - 1e-5 -> (2.24) first bound fails on a retained new order-3 row   [1/4+7w+2d<c*-tau (2.24) at (n,38)]
-  PASS NEG sigma0 = 1/10 -> 'sigma>1/10' fails   [sigma>1/10 [C2.19 HB]]
-  PASS NEG tau = 1e-4 -> a reduced (2.24) bound fails   [1/4+7w+2d<c*-tau (2.24)]
-  PASS NEG rho* = rho -> strict level retreat fails
-  PASS NEG (o,28) is excluded by the rule (its B >= 187866h)
-  PASS NEG O2 with z_G/h = 49153 (one cell more) violates z+mp<=U
-  PASS NEG I2new with p_G/h = 22489 violates z+mp<=U
-  PASS NEG delta_s + 1e-4 -> 280w+80d<3 fails
-  PASS NEG guard is not vacuous: B+xi-2T0 at (o,0) is < 0.1   [0.09291161487]
+  PASS tightness: (o,28) is excluded by the rule (B_{o,28} >= 187866h)
+  PASS tightness: r=1 guard slack S - T0 + e is < 0.1 (not vacuous)   [0.09291161487]
+[8] negative controls: perturbed inputs run through the full check code; the target check must fail
+  PASS NEG [eps_o = 0] -> 'hyp o r=1: 54w+15d+5s<1 (2.11)' fails   [14 checks fail]
+  PASS NEG [c* - 1e-5] -> 'hyp n r=3: 1/4+7w+2d<c*-tau (2.24)' fails   [5 checks fail]
+  PASS NEG [sigma0 = 1/10] -> 'hyp o r=1: sigma>1/10 [C2.19 HB]' fails   [8 checks fail]
+  PASS NEG [tau = 1e-4] -> 'hyp n r=3: 1/4+7w+2d<c*-tau (2.24)' fails   [20 checks fail]
+  PASS NEG [sigma for Prop 2.16/2.17 at r<=2 := 0.07, ladder unchanged (Type III)] -> 'hyp o r=1: 1/18+28w/9+2d/9<sigma (2.12)' fails   [8 checks fail]
+  PASS NEG [old r=3 c + 1e-5 (bilinear r=3)] -> 'hyp o r=3: 48w+16d+4s<1 (2.14)' fails   [10 checks fail]
+  PASS NEG [new r=1 c + 1e-5 (bilinear r<=2)] -> 'hyp n r=1: 54w+15d+5s<1 (2.11)' fails   [8 checks fail]
+  PASS NEG [level bound 0.53 -> 0.52] -> 'hyp n r=3: 1/2+2w<=53/100' fails   [5 checks fail]
+  PASS NEG [T0 + 0.1 (transfer guard r=1)] -> 'Lemma 4.1 guards' fails   [37 checks fail]
+  PASS NEG [base box one cell larger (radius)] -> 'radius hypotheses' fails   [2 checks fail]
+  PASS NEG [drop last retained old row (coverage)] -> 'coverage: B+ of the last retained' fails   [2 checks fail]
+  PASS NEG [printed outer r=3 cap + 1e-9 (cap running min)] -> '(1.18) outer: running minimum' fails   [1 checks fail]
+  PASS NEG [zeta + h (mask)] -> '(1.5) outer mask' fails   [3 checks fail]
+  PASS NEG [rho* = rho with S, T fixed (retreat)] -> 'level retreat' fails   [7 checks fail]
+  PASS NEG [z_G(O2)/h = 49153 (group guard)] -> 'O2: xi_G > 2h' fails   [1 checks fail]
+  PASS NEG [delta_s + 1e-4 (inner-square prime)] -> '(4.16) prime' fails   [1 checks fail]
+  PASS NEG [Omega_n + 1e-5 > W_n3] -> new ladder no longer terminates (43-row count fails)   [402 rows (cut at 400)]
 
-112 checks, 0 failures
-runtime 0.10 s
+196 checks, 0 failures
+runtime 1.71 s

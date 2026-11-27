@@ -19,10 +19,15 @@ inputs. The only non-elementary one is the divisor bound (4.9).
     is actually needed, not L³.
   - **(I2)** V_i = log 2 + o(1) (Mertens). LWW state this on p. 7; it was not re-derived here. Only ∏V_i^{-2} ≪_K 1
     is used.
-- **No error in LWW found.** There are thirteen terse places (T1-T13) and two harmless typos (S1). None changes the
-  conclusion. Remarks S2-S3 record suppressed dependencies of constants.
+- **No error in LWW found.** There are twelve terse places (T1-T7, T9-T12, T14) and two harmless typos (S1), plus one
+  reading note (N8). None changes the conclusion. Remarks S2-S3 record suppressed dependencies of constants.
+- **Uniformity.** (4.47), and hence (4.52), hold uniformly in v (|v| ≤ L^{2B}), in the dyadic M, N (M, N ≥ x^δ,
+  MN ≍ x), in Y and in d_0. Every implied constant in R1-R7 depends only on K, C, A (through A_0) and the absolute
+  constant of (I1). The "x large" thresholds (16Y < Z, exp(2L^{a_i}) < Z) depend only on K. This is what (4.8)
+  needs, since it sums over v, (M, N) and Y.
 - An exact toy computation (script section (D)) checks the whole chain (4.38) → (4.44) → (4.46) → (4.48) as an
-  identity to 1e-15. Q_Y, Q_Y^maj and Σ B_{d_0}/d_0 are each computed literally from their definitions. Four
+  identity to 1e-15. Only toy T2 exercises the indicator half (the 1_{t=2(a−b)} terms, with 16 coprime solutions of
+  (4.12)). Toy T1 has no coprime solutions, so it tests the major-arc half and the gcd > 1 part only. Q_Y, Q_Y^maj and Σ B_{d_0}/d_0 are each computed literally from their definitions. Four
   plausible misreadings break it (NEG). The toy has K = 1, so the K = 2 structure is only covered by the combinatorial
   checks (A) and (E).
 - Role in the chain: (4.52) is now reached from Prop. 4.2's left side, conditional on (I1) and (I2). The first sum of
@@ -74,7 +79,9 @@ Outcome: success criterion met, conditional on (I1) and (I2). No-go not triggere
   - (2.1) R_Z, Z = exp(L^{0.24});
   - (2.12)-(2.13) P_i (pairwise disjoint, 1/10 < a_i < 1/5), V_i, ω_i;
   - (4.3) α, β;
-  - η (p. 16, supported on [1, 4]), Y = 2^ℓ;
+  - η (p. 16, supported on [1, 4]), Y = 2^ℓ. η is also taken to be real with 0 ≤ η ≤ 1. This is implicit in "partition
+    of unity" and asserted in passing on p. 17. Realness is needed for the second line of (4.7) as printed, and
+    0 ≤ η ≤ 1 is used in R1;
   - (4.7) Q_Y, (4.13) ψ_1, M_1, M_{-2}, ψ_{-2}, H_{-2}, (4.14) Q_Y^maj;
   - Prop. 4.2's hypotheses |α_m| ≤ L^C R_Z(m)1_{(M,2M]}, |β_n| ≤ L^C R_Z(n)1_{(N,2N]};
   - (4.17)-(4.22) d_0, Ω, S, σ, ⟨·,·⟩, D, a, b;
@@ -99,8 +106,8 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   is ≤ ⌊4Y/p⌋². Summing over p > exp(L^{1/10}) gives ≤ 16Y² Σ_{p>e^{L^{0.1}}} p^{-2} ≪ Y² exp(−L^{1/10}). ✓
 - Total, using 0 ≤ η ≤ 1 and ∏V_i^{-2} ≪_K 1 (I2): ≪ (X/Y)L^{4C+3}·Y²e^{−L^{0.1}} ≪ XY e^{−L^{1/20}}. This is stronger
   than the stated O(XYL^{-A}) (S2). ✓
-- (A): over 5 toy families (K = 1, 2, 3), #pairs with gcd > 1 ≤ Σ⌊4Y/p⌋². NEG: a linear bound Σ#{a : p | a} fails
-  4/5.
+- (A), arithmetic sanity check only: over 5 toy families (K = 1, 2, 3), #pairs with gcd > 1 ≤ Σ⌊4Y/p⌋². There is
+  10²-10⁴ slack, and the NEG (a linear bound Σ#{a : p | a}, failing 4/5) is not a plausible misreading of LWW.
 
 **R2. (4.12) equivalence and the ψ_{-2} insertion (pp. 17-18).** Proved here; Computed (B).
 - If (mn+2)/a = (rs+2)/b = h ∈ N*, then b(mn+2) = abh = a(rs+2), that is, bmn − ars = 2(a − b). This direction holds
@@ -113,10 +120,12 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 - 1_{t=2(a−b)} = ∫_T e(θ(t − 2(a − b)))dθ. So H_{-2}(t; a, b) = ψ_{-2}(t/Y)∫_{M_{-2}} e(θ(t + 2b − 2a))dθ is the
   major-arc piece of the same integral. The signs in (4.13) and (4.38) agree. ✓
 - (B):
-  - 39,127 random coprime cases, including 660 solutions of the equation: 0 failures. NEG: the equivalence for
-    gcd > 1 fails in 459 cases.
-  - ψ-insertion on all (a, b) ∈ [Y, 4Y]² for six values of Y: 0 failures out of 9.4M. NEG: ψ_1 = 1 only on
-    |u| ≤ 2 fails.
+  - 39,127 random coprime cases, including 142 coprime solutions of the equation: 0 failures. (The targeted loop
+    found 660 solutions in all; the 520 with gcd(a, b) > 1 went to the NEG pool.) NEG: the equivalence for gcd > 1
+    fails in 459 cases.
+  - ψ-insertion, arithmetic sanity check only: on all (a, b) ∈ [Y, 4Y]² for six values of Y, 0 failures out of 9.4M.
+    This holds by construction (|b − a| ≤ 3Y), so it cannot fail. Its NEG (ψ_1 = 1 only on |u| ≤ 2) only shows
+    that 3 > 2.
 
 **R3. The p. 24 step.** Proved here; Computed (C), (C′).
 - Take a term with α_m\overline{α_r}β_n\overline{β_s} ≠ 0. Then R_Z(m) = R_Z(n) = R_Z(r) = R_Z(s) = 1, so
@@ -162,13 +171,18 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   bijection onto coprime pairs of products. D(a, b) depends only on (a, b, m, n, r, s), and D(a, b) includes ηη (T8).
   Summing the first J entries gives w(a, b). This is (4.46). ✓ (T9)
 - (D): T1 and T2 are computed literally:
-  - B_{d_0} = ⟨f, T_{-2}^C f⟩, over all states of S(d_0), all p′ and all Q, with a generic complex kernel c_2(t, a, b)
-    in place of the M_{-2} integral;
+  - B_{d_0} = ⟨f, T_{-2}^C f⟩, over all states of S(d_0) whose position lies in supp f, all p′ and all Q in supp f,
+    with a generic complex kernel c_2(t, a, b) in place of the M_{-2} integral. Positions outside supp f contribute 0,
+    since f(P) = 0 there. supp f is the set {g·m} by construction; this was brute-forced against (4.42) for T1 only
+    (C′), and for T2 it is the proved reduction of R4;
   - Q_Y from the first line of (4.7), and again from the a, b expansion (they agree);
   - Q_Y^maj from (4.14);
   - w(a, b) by brute force over ordered tuples.
   - Result: Σ_{d_0}B_{d_0}/d_0 = ∏V^{-2}Σ_{coprime} wD agrees to 1 ulp (6.9e-18). Q_Y − Q_Y^maj − ΣB/d_0 =
     ∏V^{-2}[Σ_{coprime}(1 − w)D + Σ_{gcd>1}D_full] agrees to 1.8e-15. 12/20 coprime pairs have D ≠ 0 in T2.
+  - Coverage (counts from the audit): T1 has **0** coprime solutions of (4.12) with nonzero η-weight, so its (D)
+    identity tests only the H_{-2}/c_2 half and the gcd > 1 part. T2 has 16, 8 of them with |b − a| > Y. Those 8
+    are what the NEG "ψ_1 = 1 only on |u| ≤ 1" detects, at a margin of about 2e-3 in an identity of size about 8.
   - NEG (each breaks the identity): no bar on α in (4.42); support |t| < 960Y (primitivity lost); d_0/D dropped;
     ψ_1 = 1 only on |u| ≤ 1.
 
@@ -183,11 +197,13 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 
 **R6. (4.48)-(4.51) (pp. 26-27).** Proved here, given (I1) and (I2); Computed (E).
 - w(a, b) ≤ ∏_i(Σ_{p∈P_i}1/(pV_i))^J = 1 (dropping the restrictions only adds nonnegative terms).
-- 1 − ∏_i w_i ≤ Σ_i(1 − w_i), since 0 ≤ w_i ≤ 1 (T13). The excluded tuples have a coincidence p_{i,j} = p_{i,k}
+- 1 − ∏_i w_i ≤ Σ_i(1 − w_i), since 0 ≤ w_i ≤ 1. (LWW instead take a union bound directly on the product space,
+  which is equally complete.) The excluded tuples have a coincidence p_{i,j} = p_{i,k}
   (\binom{J}{2} pairs, each of weight Σ_p(pV_i)^{-2}) or an entry in {p′_i, p_{i,J+1}} (J positions each). So
-  1 − w_i ≤ \binom{J}{2}Σ(pV_i)^{-2} + J/(p′_iV_i) + J/(p_{i,J+1}V_i) ≪ J²e^{−L^{0.1}}/V_i², using p > e^{L^{a_i}}
-  ≥ e^{L^{0.1}}. ✓ (c = 1 works.)
-- (a) (4.50). For coprime (a, b), the solutions of (4.12) correspond to h (R2). R1's per-pair bound then gives
+  1 − w_i ≤ \binom{J}{2}Σ(pV_i)^{-2} + J/(p′_iV_i) + J/(p_{i,J+1}V_i) ≪_K J²e^{−L^{0.1}}, using p > e^{L^{a_i}}
+  ≥ e^{L^{0.1}} and V_i ≫ 1 (I2). The first term is ≪ J²e^{−L^{0.1}}/V_i², the other two are ≪ Je^{−L^{0.1}}/V_i.
+  ✓ (c = 1 works.)
+- (a) (4.50). For coprime (a, b), the solutions of (4.12) correspond to h, by the converse of (4.12) (R2; T14). R1's per-pair bound then gives
   ≪ XL^{4C+3}/Y per pair, and O(Y²) pairs give XYL^{4C+3}. ✓
 - (b) (4.51). Σ_{mn=k}|α_mβ_n| ≤ L^{2C}τ(k) with k, l ≤ 4X, and τ(k)τ(l) ≤ (τ(k)² + τ(l)²)/2. For fixed k, the l
   with |bk − al| < 16Y lie in an interval of length 32Y/a ≤ 32, so there are ≤ 33. For fixed l the same holds with
@@ -195,7 +211,7 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   ≪ XL^{4C+3+3A_0}/Y per pair and XYL^{O(1)} in total. ✓
 - (4.49) follows. The total L-power is 4C + 3 + 3A_0, with A_0 fixed from A before this point. Since
   J²e^{−L^{0.1}}·L^{O(1)} ≪ L^{-A}, (4.48) holds (S3). ✓
-- (E1): exact Fractions, K = 2, J = 1, 2, 3, small sets, 1,800 cases: w ≤ 1 and the 1 − w bound hold.
+- (E1), positive check only (the toy bound is loose here): exact Fractions, K = 2, J = 1, 2, 3, small sets, 1,800 cases: w ≤ 1 and the 1 − w bound hold.
 - (E2): primes in (1000, 12000], J = 2, 4 cases. The bound is nearly tight here: for example 1 − w = 0.01269 against
   a bound of 0.01274. NEG: replacing J by 1 on the p′ and p_{J+1} terms fails 4/4. The E2 pair sum uses
   S_1² − S_2, cross-checked by brute force on a 400-prime slice.
@@ -209,8 +225,8 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   not reconstruct it as printed. Σ_{d|n}τ(d²) = τ(n)² and τ(d²) ≤ τ_3(d) give τ(n)² ≤ Σ_{d|n}τ_3(d). The restriction
   to d ≪ X^{3/4} and the exact "≤" are unexplained. The final bound is standard (Shiu), and it needs ℓ odd. This is
   input (I1).
-- **T2 (p. 17, (4.10)).** It applies (4.9) with ℓ = a and ℓ = b. This needs a, b odd and in [Y, 4Y] (from the
-  η-support); both are implicit.
+- **T2 (p. 17, (4.10)).** It applies (4.9) with ℓ = a and ℓ = b. This needs a, b odd, which is implicit. (The range
+  Y ≤ a, b ≤ 4Y is stated on p. 16.)
 - **T3 (p. 17, (4.11)).** It counts integer pairs (a, b), while Q_Y sums over prime tuples. These match because the
   P_i are disjoint (tuple ↦ a is injective). Not stated.
 - **T4 (p. 24).** "0 < |t| ≪ Y = o(Z)" uses the support of each summand (indicator: |t| ≤ 6Y; H_{-2}: |t| < 16Y) and
@@ -220,8 +236,9 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   It needs ω_i(P_1) = J + 1 to force G(P_1) = Db and Ω-membership of P and Q. Filled in at R4.
 - **T7 (p. 25, (4.44)).** The factor ψ_{-2}(t/Y) of (4.38) disappears without comment. It is 1 on the indicator
   (p. 17) and is part of H_{-2}.
-- **T8 (p. 25).** D(a, b) "the sum over m, n, r, s in (4.44)" has to include ηη and the brace for (4.46)-(4.47) to read
-  correctly. (4.50)-(4.51) then show |ηη| separately; this is consistent.
+- **N8 (p. 25, reading note, not a terse place).** In the printed (4.44), η(a/Y)η(b/Y) stands inside the Σ_{m,n,r,s}
+  display, after the brace. So "the sum over m, n, r, s in (4.44)", D(a, b), includes ηη as printed, and
+  (4.50)-(4.51) show |ηη| separately. This is consistent.
 - **T9 (p. 25, (4.46)).** gcd(a, b) = 1 is automatic, and (p′, p_{·,J+1}) ↔ (a, b) is a bijection. Not stated.
 - **T10 (p. 26).** The removal of the gcd > 1 terms from Q_Y^maj ("a factor 1/p²") is a paraphrase of (4.11) times the
   per-pair bound of (4.51). Filled in at R5.
@@ -229,7 +246,10 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   only the "per k" half.
 - **T12 (pp. 26-27).** "|H_{-2}| ≪ L^{O(1)}Y^{-1}": the O(1) is 3A_0, from meas M_{-2} = meas M_1 ≤ 4L^{3A_0}/Y.
   This is harmless.
-- **T13 (p. 26).** The step 1 − ∏w_i ≤ Σ(1 − w_i) is implicit.
+- **T14 (p. 26, (4.50)).** (4.50) is stated in the form bmn − ars = 2(a − b) and proved "by applying the
+  Cauchy–Schwarz inequality and (4.9)". To apply (4.9), one first has to return through the converse of (4.12)
+  (valid since gcd(a, b) = 1) to the h-form mn + 2 = ah, rs + 2 = bh. Only then does (4.10) apply per pair. Filled in
+  at R6(a).
 - **S1 (p. 17, typos).** "adimissible" and "may replaced". Harmless.
 - **S2 (remark).** Lemma 4.1 proves O(XYe^{−L^{1/20}}), which is stronger than the stated O(XYL^{-A}).
 - **S3 (remark).** In (4.49)-(4.51), "≪_{K,ρ} XYL^{O(1)}" suppresses the dependence of O(1) on C and A_0 (hence on
@@ -237,13 +257,18 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 
 ## Computation (Computed)
 - `code/parity/lww_p23_27_check.py`; output in `code/parity/lww_p23_27_check.out`.
-- Run: `/usr/bin/python3 -I code/parity/lww_p23_27_check.py`. Pure Python (no numpy). Wall time 36.1 s.
+- Run: `/usr/bin/python3 -I code/parity/lww_p23_27_check.py`. Pure Python (no numpy). Wall time 36.5 s (post-audit
+  run).
+- Weight of the evidence:
+  - (A) and the ψ-insertion part of (B) are arithmetic sanity checks.
+  - The substantive computations are (B)'s equivalence test, (C), (C′), (D) and E2.
 - Results: 23 positive checks, 0 failing. 10 negative controls, all failing as they must. 0 unexpected outcomes.
 - A first draft's NEG for the 1 − w bound (the coincidence term dropped, small primes) passed, because the toy bound
   is very loose for tiny primes. It was replaced by E2 (large primes, nearly tight bound) with a "J → 1" NEG. No
   positive check was changed. Recorded for honesty.
 - Limits:
   - The chain toy (D) has K = 1. K ≥ 2 is covered only by (A) and (E).
+  - In (D), only T2 exercises the indicator half (16 coprime solutions). T1 has none.
   - c_2 is a generic stand-in for the M_{-2} integral. The identity is linear in the kernel, so this tests the
     bookkeeping, not anything about M_{-2}.
   - In T1 and T2 the gcd > 1 part (a = b) dominates the left side. The coprime part is the small B-side and the
@@ -260,10 +285,33 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 
 ## Role in the chain
 - Discharged, conditional on (I1) and (I2): Q_Y − Q_Y^maj = Σ_{d_0}B_{d_0}/d_0 + O(XYL^{-A}) ((4.47)), and hence
-  (4.52).
+  (4.52). This holds uniformly in v, M, N, Y and d_0, with constants depending only on K, C, A (through A_0) and the
+  constant of (I1); see the header.
 - **First unresolved implication:** the second sum of (4.52), Section 4.8, (4.148)-(4.157), pp. 58-61. It uses
   Prop. 4.5(ii)/(4.96) (stated p. 37, proof pp. 45-46) and the good-state measure bound (4.31) (pp. 21-22).
 - Also open:
   - (I1), which could be closed by reading Shiu 1980 or by giving an elementary proof of the weaker
     (X/Y)e^{o(L^{0.1})} bound;
   - pp. 15-16, (4.1)-(4.8).
+
+## Audit
+Audit: notes/parity-attempts/2026-11-27-lww-p23-27-reduction-audit.md (0 errors, 2 gaps, 3 overstatements, 4 slips; all
+in the card or the script, none in LWW). Classification unchanged. All fixes were applied:
+- #1 (gap): η real and 0 ≤ η ≤ 1 added to the definitional inputs.
+- #2 (gap): uniformity in v, M, N, Y and d_0, and the dependence of the constants (K, C, A via A_0, (I1)), stated in
+  the header and in Role in the chain.
+- #3 (overstatement): the card now says the indicator half of (D) is exercised only in T2 (16 coprime solutions, 8 with
+  |b − a| > Y), and that T1 (0 coprime solutions) tests only the major-arc half and the gcd > 1 part. This is stated in
+  the header, R4 and Limits.
+- #4 (overstatement): (A) and the ψ-insertion check are relabelled as arithmetic sanity checks in the card (R1, R2,
+  Computation) and in the script's report labels.
+- #5 (overstatement): R4 now says "all states of S(d_0) whose position lies in supp f". supp f was brute-forced for
+  T1 only (C′).
+- #6 (slip): 660 → 142 coprime equation solutions. The script now counts coprime solutions separately and prints
+  "142 coprime equation solutions included; 660 targeted hits in all".
+- #7 (slip): R6 now reads ≪_K J²e^{−L^{0.1}}, with the per-term orders stated.
+- #8 (slip): T2 now says only oddness is implicit. T8 became the reading note N8. T13 was dropped, and R6 notes LWW's
+  product-space union bound.
+- #9 (slip): T14 added for (4.50).
+- Script re-run with /usr/bin/python3 -I: 23 positive checks, 0 failing; 10 negative controls, all failing; 0
+  unexpected; 36.5 s. Output regenerated.

@@ -77,35 +77,37 @@ for (sets, Y) in [([[3, 5, 7], [11, 13, 17]], 32), ([[3, 5, 7, 11], [13, 17, 19,
     negb = sum(len([a for a in A if a % p == 0]) for p in allp)
     negf += (cnt > negb)
     print(f"   K={len(sets)} Y={Y}: #A={len(A)}, #pairs gcd>1 = {cnt} <= sum floor(4Y/p)^2 = {bnd}; linear {negb}")
-report("A (4.11) #{(a,b) in [Y,4Y]^2: gcd>1} <= sum_p floor(4Y/p)^2", 'POS', fails, tot)
+report("A [arithmetic sanity check] (4.11) #{(a,b) in [Y,4Y]^2: gcd>1} <= sum_p floor(4Y/p)^2", 'POS', fails, tot)
 report("NEG A pair count <= sum_p #{a: p|a} (linear, not squared)", 'NEG', negf, tot)
 
 # ---------------------------------------------------------------------------------------------
 print("== (B) (4.12) equivalence and psi_{-2} insertion (p. 17)")
-fails = tot = 0; neg_conv = 0; negtot = 0
+fails = tot = 0; neg_conv = 0; negtot = 0; rand_sol_count = [0]
 for _ in range(60000):
     a = random.choice([3, 5, 7, 9, 15, 21, 35, 11, 33, 13]); b = random.choice([3, 5, 7, 11, 13, 25, 39, 55])
     m, n, r, s = (random.randint(1, 60) for _ in range(4))
     lhs = ((m * n + 2) % a == 0 and (r * s + 2) % b == 0 and (m * n + 2) // a == (r * s + 2) // b)
     rhs = (b * m * n - a * r * s == 2 * (a - b))
     if math.gcd(a, b) == 1:
-        tot += 1; fails += (lhs != rhs)
+        tot += 1; fails += (lhs != rhs); rand_sol_count[0] += rhs
     else:
         negtot += 1; neg_conv += (lhs != rhs)
 # make sure the equation side is hit often: solve for s given (a,b,m,n,r)
-hits = 0
+hits = 0; cop_hits = 0
 for _ in range(20000):
     a = random.choice([3, 5, 7, 11, 13]); b = random.choice([3, 5, 7, 11, 13])
     m, n, r = (random.randint(1, 80) for _ in range(3))
     num = b * m * n - 2 * (a - b)
     if num % (a * r) == 0 and num // (a * r) >= 1:
         s = num // (a * r); hits += 1
+        cop_hits += (math.gcd(a, b) == 1)
         lhs = ((m * n + 2) % a == 0 and (r * s + 2) % b == 0 and (m * n + 2) // a == (r * s + 2) // b)
         if math.gcd(a, b) == 1:
             tot += 1; fails += (not lhs)
         else:
             negtot += 1; neg_conv += (not lhs)
-report(f"B (4.12) <=> for gcd(a,b)=1 ({hits} equation solutions included)", 'POS', fails, tot)
+report(f"B (4.12) <=> for gcd(a,b)=1 ({cop_hits + rand_sol_count[0]} coprime equation solutions included;"
+       f" {hits} targeted hits in all)", 'POS', fails, tot)
 report("NEG B (4.12) <=> also for gcd(a,b)>1", 'NEG', neg_conv, negtot)
 fails = tot = 0; negf = 0
 for Y in [1, 2, 4, 8, 16, 1024]:
@@ -114,7 +116,7 @@ for Y in [1, 2, 4, 8, 16, 1024]:
             tot += 1
             fails += not (abs(Fr(b - a, Y)) <= 4)          # psi_1 = 1 on |u| <= 4
             negf += not (abs(Fr(b - a, Y)) <= 2)           # NEG: psi_1 = 1 only on |u| <= 2
-report("B psi_{-2}((bmn-ars)/Y) = psi_1((b-a)/Y) = 1 on Y<=a,b<=4Y", 'POS', fails, tot)
+report("B [arithmetic sanity check] psi_{-2}((bmn-ars)/Y) = psi_1((b-a)/Y) = 1 on Y<=a,b<=4Y", 'POS', fails, tot)
 report("NEG B same with psi_1 = 1 only on |u| <= 2", 'NEG', negf, tot)
 # and the algebra -(bmn-ars)/(2Y) = (b-a)/Y on the relation
 fails = 0

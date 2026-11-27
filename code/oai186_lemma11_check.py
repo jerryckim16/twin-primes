@@ -23,7 +23,10 @@ All decisions are exact (fractions.Fraction).  Sections:
   [6] six groups (1.23)-(1.24): xi_G = min, U_G = min, b_G = min core, z_G, p_G; xi_G > 2h, xi_G < p_G <= z_G,
       z_G + m_G p_G <= U_G; later 5/2 activation/threshold <= earlier order-two ones
   [7] common inner-square source ([8] (4.13)-(4.17), Lemma 4.3)
-  [8] negative controls (perturbed inputs must make specific checks fail)
+  [8] negative controls: 16 input perturbations, each run through build(over) and the full main() (stdout captured);
+      caught iff its named target check fails without a crash; plus 1 ladder-termination control.
+      Also: Lemma A.8/A.9 level 1/2+2w <= 53/100 on new rows; [14]'s endpoint argument at the 12 enclosure ends.
+  Revised after notes/oai186-lemma11-analytic-audit.md (G1-G3, O1-O2, S1-S5).
 usage: /usr/bin/python3 -I code/oai186_lemma11_check.py > code/oai186_lemma11_check.out"""
 import sys, time
 from fractions import Fraction as F
@@ -59,23 +62,27 @@ def build(over=None):
         g0=F(1, 10**7), eps_o=F(1, 10**6), eps_n=F(1, 10**7), tau=F(1, 10**10),
         sigma0=F(100001, 10**6), a_star=F(40481, 100000), b_star=F(59519, 100000), c_star=F(33856, 100000),
         Omega_o=F(12499, 10**6), Omega_n=F(253, 20000), N=98304, rho_star_shift=F(0),
+        T0_shift=F(0), c_o3_shift=F(0), c_n1_shift=F(0), zeta_shift=F(0), level_A8=F(53, 100),
+        delta_s_shift=F(0), sigma_old_check=None, Tbox_o_cells=89563, cap_O3_shift=F(0), zG_O2=49152, drop_last_retained=False,
     )
     if over:
         P.update(over)
     P['sigma_mt'] = F(1, 2) - P['a_star'] + P['tau']
     P['rho'] = F(1, 4) + F(12499, 10**6)                   # rho := 1/4 + Omega_o (fixed, as printed)
-    P['rho_star'] = P['rho'] - P['g0'] + P['rho_star_shift']
+    P['rho_star'] = P['rho'] - P['g0']
     rs = P['rho_star']
     P['S'] = F(2742997, 10**7) / rs
     P['T1'] = F(251, 1000) / rs
-    P['T0'] = 2 - F(3, 1000) - P['S']
+    P['T0'] = 2 - F(3, 1000) - P['S'] + P['T0_shift']
+    # S4 fix: rho* perturbation is applied AFTER S, T0, T1 are fixed, so it changes rho* alone
+    P['rho_star'] = rs = rs + P['rho_star_shift']
     P['e'] = P['g0'] / P['rho']
-    P['zeta'] = F(19037, 100000) / P['rho']
+    P['zeta'] = F(19037, 100000) / P['rho'] + P['zeta_shift']
     P['h'] = P['S'] / P['N']
     s0, sm = P['sigma0'], P['sigma_mt']
     P['blk'] = {
-        'o': {1: ((1 - 5 * s0) / 15, F(18, 5)), 2: ((1 - 4 * s0) / 16, F(7, 2)), 3: (F(3, 80), F(3))},
-        'n': {1: ((1 - 5 * sm) / 15, F(18, 5)), 2: ((1 - 4 * sm) / 16, F(7, 2)), 3: ((1 - 2 * sm) / 20, F(16, 5))},
+        'o': {1: ((1 - 5 * s0) / 15, F(18, 5)), 2: ((1 - 4 * s0) / 16, F(7, 2)), 3: (F(3, 80) + P['c_o3_shift'], F(3))},
+        'n': {1: ((1 - 5 * sm) / 15 + P['c_n1_shift'], F(18, 5)), 2: ((1 - 4 * sm) / 16, F(7, 2)), 3: ((1 - 2 * sm) / 20, F(16, 5))},
     }
     P['eps'] = {'o': P['eps_o'], 'n': P['eps_n']}
     P['Om'] = {'o': P['Omega_o'], 'n': P['Omega_n']}
@@ -109,8 +116,10 @@ def build(over=None):
     # grid totals (1.5)/(1.19)
     h = P['h']
     P['Sbox'] = 98303 * h
-    P['Tbox'] = {'o': 89563 * h, 'n': 89953 * h}
+    P['Tbox'] = {'o': P['Tbox_o_cells'] * h, 'n': 89953 * h}
     P['retained'] = {nu: [R for R in rows[nu] if R['B'] < P['Sbox'] + P['Tbox'][nu]] for nu in 'on'}
+    if P['drop_last_retained']:
+        P['retained']['o'] = P['retained']['o'][:-1]
     return P
 
 
@@ -121,7 +130,9 @@ def dist_conditions(P, R):
     out = [("omega>0", F(0), w), ("omega<1/12", w, F(1, 12)), ("delta>0", F(0), d), ("delta<1/4+omega", d, F(1, 4) + w)]
     if R['nu'] == 'o':
         if r <= 2:
-            sg = P['sigma0']
+            # sigma chosen for Prop 2.16/2.17 at orders 1-2; [14] takes sigma0 (the ladder's sigma).  The control
+            # 'sigma_old_check' changes only this choice, not the ladder.
+            sg = P['sigma0'] if P['sigma_old_check'] is None else P['sigma_old_check']
             out += [("68w+14d<1 [P2.16]", 68 * w + 14 * d, F(1))]
             if r == 1:
                 out += [("54w+15d+5s<1 (2.11)", 54 * w + 15 * d + 5 * sg, F(1)),
@@ -143,6 +154,7 @@ def dist_conditions(P, R):
         out += [("1/4+7w+2d<c*-tau (2.24)", F(1, 4) + 7 * w + 2 * d, P['c_star'] - tau),
                 ("1/18+28w/9+2d/9<19/200-tau (2.24)", F(1, 18) + F(28, 9) * w + F(2, 9) * d, F(19, 200) - tau),
                 ("1/2+2w<b*-tau (2.24)", F(1, 2) + 2 * w, P['b_star'] - tau),
+                ("1/2+2w<=53/100 [L A.8/A.9 level]", F(1, 2) + 2 * w, P['level_A8'] + F(0)),
                 ("sigma_mt>0", F(0), sg), ("sigma_mt<1/2", sg, F(1, 2))]
         if r <= 2:
             out += [("68w+14d<1 [P2.22]", 68 * w + 14 * d, F(1))]
@@ -178,8 +190,7 @@ def sec_dist(P, rowsets, verbose=True):
 
 
 # ================================================================================================================
-def main():
-    P = build()
+def main(P):
     S, T0, T1, rho, rs, e, h, zeta = P['S'], P['T0'], P['T1'], P['rho'], P['rho_star'], P['e'], P['h'], P['zeta']
     rows, ret = P['rows'], P['retained']
 
@@ -196,7 +207,8 @@ def main():
     check("sigma_{m,tau} = 1/2 - a* + tau = 9519/100000 + 10^-10 ([8] (4.11), (2.19) a*=0.40481)",
           P['sigma_mt'] == F(9519, 100000) + F(1, 10**10))
     check("[8] (2.19): b* = 1 - a*", P['b_star'] == 1 - P['a_star'])
-    check("[8] Prop 2.22 proof: tau = 10^-10 is allowed (0 < tau <= 10^-10)", 0 < P['tau'] <= F(1, 10**10))
+    check("input range: 0 < tau <= 10^-10, the range allowed by [8] Prop 2.22 proof (all tau-conditions weaken as "
+          "tau decreases, so tau = 10^-10 covers every smaller tau)", 0 < P['tau'] <= F(1, 10**10))
     check("Omega_o < 1/12 and Omega_n < 1/12", P['Omega_o'] < F(1, 12) and P['Omega_n'] < F(1, 12))
     check("[8] Prop 2.22 example: 1/2 + 2*253/20000 = 0.5253", F(1, 2) + 2 * F(253, 20000) == F(5253, 10000))
 
@@ -243,7 +255,34 @@ def main():
 
     print("[2] distribution hypotheses ([8] Prop 2.16, 2.17, Cor 2.19, Prop 2.18 (2.14), Prop 2.22 (2.24)), "
           "retained rows; per condition least margin")
-    ok, worst = sec_dist(P, ret)
+    ok, worst = sec_dist(P, ret, verbose=not QUIET[0])
+    fam = {}
+    for nu in 'on':
+        for R in ret[nu]:
+            for name, lhs, rhs in dist_conditions(P, R):
+                k = f"hyp {nu} r={R['r']}: {name}"
+                fam[k] = fam.get(k, True) and lhs < rhs
+    for k in sorted(fam):
+        check(k, fam[k])
+    # [14]'s own endpoint argument (O2 of the audit): delta = c - s*omega - eps is affine in omega inside a block,
+    # so evaluate every hypothesis at the 12 printed enclosure endpoints (omega = printed value / 10^6)
+    tabs = {'o': {1: (2533, 5696), 2: (7051, 8855), 3: (10332, 12499)},
+            'n': {1: (2676, 6018), 2: (7267, 8932), 3: (10326, 12650)}}
+    ep_ok, ep_min = True, None
+    for nu in 'on':
+        for r in (1, 2, 3):
+            c, s_ = P['blk'][nu][r]
+            for wv in tabs[nu][r]:
+                w = F(wv, 10**6)
+                Rf = dict(nu=nu, r=r, w=w, d=c - s_ * w - P['eps'][nu])
+                for name, lhs, rhs in dist_conditions(P, Rf):
+                    m = rhs - lhs
+                    ep_ok &= m > 0
+                    ep_min = m if ep_min is None else min(ep_min, m)
+    check("endpoint step: all hypotheses hold at the 12 printed omega-enclosure endpoints, least margin > 10^-8",
+          ep_ok and ep_min > F(1, 10**8), f"least margin {dec(ep_min)}")
+    check("endpoint step: delta at the (n, r=3) upper endpoint 12650/10^6 is 89999/10^11 (the printed least density)",
+          P['blk']['n'][3][0] - P['blk']['n'][3][1] * F(12650, 10**6) - P['eps_n'] == F(89999, 10**11))
     check("all strict hypotheses hold on all 67 retained rows", ok,
           f"least margin {dec(worst[0])} at ({worst[1]},{worst[2]}) {worst[3]}")
     check("every required strict margin exceeds 10^-8 (retained rows)", worst[0] > F(1, 10**8))
@@ -354,7 +393,7 @@ def main():
     cases = {'outer': ([R for nu in 'on' for R in ret[nu]], 'a'),
              'base': ([R for R in ret['o'] if R['r'] >= 2], 'b'),
              'enlarged': ([R for R in ret['n'] if R['r'] >= 2], 'b')}
-    printed = {'outer': [(rows['n'][0]['a'], (S + e) / 2), (rows['n'][24]['a'], S + e / 2 - F(23, 40) * (T1 + e / 2))],
+    printed = {'outer': [(rows['n'][0]['a'], (S + e) / 2), (rows['n'][24]['a'], S + e / 2 - F(23, 40) * (T1 + e / 2) + P['cap_O3_shift'])],
                'base': [(rows['o'][12]['b'], (T0 + e) / 2), (rows['o'][24]['b'], F(63, 160) * (T0 + e / 2))],
                'enlarged': [(rows['n'][12]['b'], (T1 + e) / 2), (rows['n'][24]['b'], F(63, 160) * (T1 + e / 2))]}
     for dom, (rs_, core) in cases.items():
@@ -375,7 +414,8 @@ def main():
           (T1 + e) / 2 < zeta and printed['outer'][1][1] < printed['outer'][0][1]
           and printed['base'][1][1] < printed['base'][0][1] and printed['enlarged'][1][1] < printed['enlarged'][0][1])
     check("a_{n,0} < a_{o,0}, a_{n,24} < a_{o,24}, and b_{o,t}, b_{n,t} increasing",
-          rows['n'][0]['a'] < rows['o'][0]['a'] and rows['n'][24]['a'] < rows['o'][24]['a'])
+          rows['n'][0]['a'] < rows['o'][0]['a'] and rows['n'][24]['a'] < rows['o'][24]['a']
+          and all(rows[nu][i]['b'] < rows[nu][i + 1]['b'] for nu in 'on' for i in range(len(rows[nu]) - 1)))
 
     def mask(shells, d, top):
         res = []
@@ -396,7 +436,7 @@ def main():
     print("[6] six groups (1.22)-(1.24)")
     R_ = lambda nu, ts: [rows[nu][t] for t in ts]
     G = [
-        ('O2', 2, R_('o', range(24)) + R_('n', range(24)), 'a', 'A', ('o', 23), S + e, an0, an24, 49152, 24576),
+        ('O2', 2, R_('o', range(24)) + R_('n', range(24)), 'a', 'A', ('o', 23), S + e, an0, an24, P['zG_O2'], 24576),
         ('O5/2', F(5, 2), R_('o', range(24, 28)) + R_('n', range(24, 39)), 'a', 'A', ('n', 38), S + e / 2, an24,
          98303 * h, 46580, 19660),
         ('I2old', 2, R_('o', range(12, 24)), 'b', 'C', ('o', 23), T0 + e, bo12, bo24, 44781, 22390),
@@ -421,7 +461,7 @@ def main():
           and S + e / 2 <= S + e and T0 + e / 2 <= T0 + e and T1 + e / 2 <= T1 + e)
 
     print("[7] common inner-square source ([8] (4.13)-(4.17), Lemma 4.3)")
-    ws, ds = F(31, 10000), F(21319, 800000)
+    ws, ds = F(31, 10000), F(21319, 800000) + P['delta_s_shift']
     xis, cs = ds / rho, 1 / (2 * rho) - T1
     s0, sm = P['sigma0'], P['sigma_mt']
     prime = [("68w+14d<1", 68 * ws + 14 * ds, F(1)), ("56w+16d+4s0<1 (2.11)", 56 * ws + 16 * ds + 4 * s0, F(1)),
@@ -430,7 +470,8 @@ def main():
     mino = [("68w+14d<1", 68 * ws + 14 * ds, F(1)), ("56w+16d+4s_mt<1 (2.11)", 56 * ws + 16 * ds + 4 * sm, F(1)),
             ("1/4+7w+2d<c*-tau", F(1, 4) + 7 * ws + 2 * ds, P['c_star'] - P['tau']),
             ("1/18+..<19/200-tau", F(1, 18) + F(28, 9) * ws + F(2, 9) * ds, F(19, 200) - P['tau']),
-            ("1/2+2w<b*-tau", F(1, 2) + 2 * ws, P['b_star'] - P['tau'])]
+            ("1/2+2w<b*-tau", F(1, 2) + 2 * ws, P['b_star'] - P['tau']),
+            ("1/2+2w<=53/100 [L A.8/A.9]", F(1, 2) + 2 * ws, P['level_A8'] + F(0))]
     for lab, lst in (("prime (Prop 2.16/2.17, sigma0)", prime), ("minorant (Prop 2.22, sigma_mt)", mino)):
         mm = min(r - l for _, l, r in lst)
         check(f"(4.16) {lab}: strict margins at (omega_s, delta_s)", all(l < r for _, l, r in lst),
@@ -446,66 +487,63 @@ def main():
     check("source level: rho* * 2 T1 < 1/2 + 2 omega_s; density rho* xi_s < delta_s; rho* B_BV < 1/2",
           rs * 2 * T1 < F(1, 2) + 2 * ws and rs * xis < ds and rs / (2 * rho) < F(1, 2))
 
+    check("tightness: (o,28) is excluded by the rule (B_{o,28} >= 187866h)", not (rows['o'][28]['B'] < 187866 * h))
+    check("tightness: r=1 guard slack S - T0 + e is < 0.1 (not vacuous)", 0 <= S - T0 + e < F(1, 10), dec(S - T0 + e))
     return P
 
 
-def negative_controls():
-    print("[8] negative controls (each perturbation must make the named check fail)")
+def run_quiet(over):
+    """Run the full main() on perturbed inputs; return the names of the checks that fail (or a crash marker)."""
     global FAILS
+    saved, saved_n = FAILS, NCHECK[0]
+    FAILS = []
     QUIET[0] = True
-    results = []
-
-    def run_dist(over, rows_key='retained'):
-        P = build(over)
-        ok, worst = sec_dist(P, P[rows_key], verbose=False)
-        return ok, worst
-    # 1. eps_o = 0 kills the strict bilinear margins of the old ladder
-    ok, w = run_dist({'eps_o': F(0)})
-    results.append(("eps_o = 0 -> some strict distribution hypothesis fails", not ok, w[3] if w else ""))
-    # 2. Omega_n raised by 1/10^5: (2.24) first inequality should fail on new order-three rows
-    # Omega_n above the order-three fixed point W_n3 = 0.0126507...: the new ladder no longer terminates
-    # (so the row count 43 of (1.15) depends on Omega_n < W_n3); (2.24) itself cannot be broken this way because
-    # untruncated omegas stay below W_n3 < 0.0126636 (the omega at which 1/4+7w+2d = c*-tau).
-    Pn = build({'Omega_n': F(253, 20000) + F(1, 10**5)})
-    results.append(("Omega_n + 1e-5 (> W_n3) -> new ladder does not terminate (row count 43 check fails)",
-                    len(Pn['rows']['n']) != 43, f"{len(Pn['rows']['n'])} rows (cut at 400)"))
-    ok, w = run_dist({'c_star': F(33856, 100000) - F(1, 10**5)})
-    results.append(("c* - 1e-5 -> (2.24) first bound fails on a retained new order-3 row", (not ok) and 'c*' in w[3],
-                    f"{w[3]} at ({w[1]},{w[2]})"))
-    # 3. sigma0 = 1/10 exactly -> Heath-Brown requirement sigma > 1/10 fails
-    ok, w = run_dist({'sigma0': F(1, 10)})
-    results.append(("sigma0 = 1/10 -> 'sigma>1/10' fails", (not ok) and 'sigma>1/10' in w[3], w[3]))
-    # 4. tau = 10^-4 (outside the allowed range) -> margins should break
-    ok, w = run_dist({'tau': F(1, 10**4)})
-    results.append(("tau = 1e-4 -> a reduced (2.24) bound fails", not ok, w[3] if w else ""))
-    # 5. rho* = rho -> level retreat must fail (equality)
-    P = build({'rho_star_shift': F(1, 10**7)})
-    ret_ok = all(P['rho_star'] * R['Bp'] < F(1, 2) + 2 * R['w'] for nu in 'on' for R in P['retained'][nu])
-    results.append(("rho* = rho -> strict level retreat fails", not ret_ok, ""))
-    # 6. an extra retained row: B_{o,28} must NOT be < pair max
-    P = build()
-    h = P['h']
-    results.append(("(o,28) is excluded by the rule (its B >= 187866h)", not (P['rows']['o'][28]['B'] < 187866 * h), ""))
-    # 7. group guard with z_G one cell larger for O5/2 must fail z+mp <= U
-    S, e = P['S'], P['e']
-    results.append(("O2 with z_G/h = 49153 (one cell more) violates z+mp<=U",
-                    not ((49153 + 2 * 24576) * h <= S + e), ""))
-    results.append(("I2new with p_G/h = 22489 violates z+mp<=U",
-                    not ((44976 + 2 * 22489) * h <= P['T1'] + e), ""))
-    # 8. inner square: delta_s raised by 1e-4 must break the prime (2.11)/(2.15) margin
-    ws, ds = F(31, 10000), F(21319, 800000) + F(1, 10**4)
-    results.append(("delta_s + 1e-4 -> 280w+80d<3 fails", not (280 * ws + 80 * ds < 3), ""))
-    # 9. guard: a row with xi decreased by e+1e-3 would break B+xi >= 2T? (direct test of the guard formula)
-    R = P['retained']['o'][0]
-    results.append(("guard is not vacuous: B+xi-2T0 at (o,0) is < 0.1",
-                    0 <= R['B'] + R['xi'] - 2 * P['T0'] < F(1, 10), dec(R['B'] + R['xi'] - 2 * P['T0'])))
+    try:
+        import io, contextlib
+        with contextlib.redirect_stdout(io.StringIO()):
+            main(build(over))
+        failed = list(FAILS)
+    except Exception as ex:  # a crash is reported, never counted as "caught"
+        failed = ["CRASH " + repr(ex)]
     QUIET[0] = False
-    for name, caught, det in results:
-        check("NEG " + name, caught, det)
+    FAILS, NCHECK[0] = saved, saved_n
+    return failed
+
+
+def negative_controls():
+    """Input perturbations, each pushed through build() and the full main() check code; the control is caught iff
+    the named target check (substring match) is among the failing checks."""
+    print("[8] negative controls: perturbed inputs run through the full check code; the target check must fail")
+    T = [
+        ("eps_o = 0", {'eps_o': F(0)}, "hyp o r=1: 54w+15d+5s<1 (2.11)"),
+        ("c* - 1e-5", {'c_star': F(33856, 100000) - F(1, 10**5)}, "hyp n r=3: 1/4+7w+2d<c*-tau (2.24)"),
+        ("sigma0 = 1/10", {'sigma0': F(1, 10)}, "hyp o r=1: sigma>1/10 [C2.19 HB]"),
+        ("tau = 1e-4", {'tau': F(1, 10**4)}, "hyp n r=3: 1/4+7w+2d<c*-tau (2.24)"),
+        ("sigma for Prop 2.16/2.17 at r<=2 := 0.07, ladder unchanged (Type III)", {'sigma_old_check': F(7, 100)},
+         "hyp o r=1: 1/18+28w/9+2d/9<sigma (2.12)"),
+        ("old r=3 c + 1e-5 (bilinear r=3)", {'c_o3_shift': F(1, 10**5)}, "hyp o r=3: 48w+16d+4s<1 (2.14)"),
+        ("new r=1 c + 1e-5 (bilinear r<=2)", {'c_n1_shift': F(1, 10**5)}, "hyp n r=1: 54w+15d+5s<1 (2.11)"),
+        ("level bound 0.53 -> 0.52", {'level_A8': F(52, 100)}, "hyp n r=3: 1/2+2w<=53/100"),
+        ("T0 + 0.1 (transfer guard r=1)", {'T0_shift': F(1, 10)}, "Lemma 4.1 guards"),
+        ("base box one cell larger (radius)", {'Tbox_o_cells': 89564}, "radius hypotheses"),
+        ("drop last retained old row (coverage)", {'drop_last_retained': True}, "coverage: B+ of the last retained"),
+        ("printed outer r=3 cap + 1e-9 (cap running min)", {'cap_O3_shift': F(1, 10**9)}, "(1.18) outer: running minimum"),
+        ("zeta + h (mask)", {'zeta_shift': F(2742997, 2624989) / 98304}, "(1.5) outer mask"),
+        ("rho* = rho with S, T fixed (retreat)", {'rho_star_shift': F(1, 10**7)}, "level retreat"),
+        ("z_G(O2)/h = 49153 (group guard)", {'zG_O2': 49153}, "O2: xi_G > 2h"),
+        ("delta_s + 1e-4 (inner-square prime)", {'delta_s_shift': F(1, 10**4)}, "(4.16) prime"),
+    ]
+    for label, over, target in T:
+        failed = run_quiet(over)
+        caught = any(target in f for f in failed) and not any(f.startswith("CRASH") for f in failed)
+        check(f"NEG [{label}] -> '{target}' fails", caught, f"{len(failed)} checks fail")
+    Pn = build({'Omega_n': F(253, 20000) + F(1, 10**5)})
+    check("NEG [Omega_n + 1e-5 > W_n3] -> new ladder no longer terminates (43-row count fails)",
+          len(Pn['rows']['n']) != 43, f"{len(Pn['rows']['n'])} rows (cut at 400)")
 
 
 if __name__ == '__main__':
-    main()
+    main(build())
     negative_controls()
     print(f"\n{NCHECK[0]} checks, {len(FAILS)} failures" + (": " + ", ".join(FAILS) if FAILS else ""))
     print(f"runtime {time.time() - T_START:.2f} s")

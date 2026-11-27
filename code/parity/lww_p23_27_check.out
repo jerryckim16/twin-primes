@@ -4,12 +4,12 @@
    K=3 Y=256: #A=11, #pairs gcd>1 = 101 <= sum floor(4Y/p)^2 = 200355; linear 33
    K=1 Y=4: #A=4, #pairs gcd>1 = 4 <= sum floor(4Y/p)^2 = 15; linear 4
    K=3 Y=1024: #A=16, #pairs gcd>1 = 204 <= sum floor(4Y/p)^2 = 3269210; linear 48
-[POS] A (4.11) #{(a,b) in [Y,4Y]^2: gcd>1} <= sum_p floor(4Y/p)^2: 0/5 failures -> ok 
+[POS] A [arithmetic sanity check] (4.11) #{(a,b) in [Y,4Y]^2: gcd>1} <= sum_p floor(4Y/p)^2: 0/5 failures -> ok 
 [NEG] NEG A pair count <= sum_p #{a: p|a} (linear, not squared): 4/5 failures -> ok 
 == (B) (4.12) equivalence and psi_{-2} insertion (p. 17)
-[POS] B (4.12) <=> for gcd(a,b)=1 (660 equation solutions included): 0/39127 failures -> ok 
+[POS] B (4.12) <=> for gcd(a,b)=1 (142 coprime equation solutions included; 660 targeted hits in all): 0/39127 failures -> ok 
 [NEG] NEG B (4.12) <=> also for gcd(a,b)>1: 459/21533 failures -> ok 
-[POS] B psi_{-2}((bmn-ars)/Y) = psi_1((b-a)/Y) = 1 on Y<=a,b<=4Y: 0/9446589 failures -> ok 
+[POS] B [arithmetic sanity check] psi_{-2}((bmn-ars)/Y) = psi_1((b-a)/Y) = 1 on Y<=a,b<=4Y: 0/9446589 failures -> ok 
 [NEG] NEG B same with psi_1 = 1 only on |u| <= 2: 1049972/9446589 failures -> ok 
 [POS] B psi_{-2}(t/Y) = psi_1(-t/(2Y)) = psi_1((b-a)/Y) when t = 2(a-b): 0/2000 failures -> ok 
 == (C) p. 24: t != 0, primitivity, G(P1)=Db, conj f(P) f(Q) identity, rho exponent
@@ -34,7 +34,7 @@
 [POS] D T1 K=1 J=1 (4.46) sum_d0 B_d0/d0 = prod V^-2 sum_coprime w D: 0/1 failures -> ok diff 6.9e-18
 [POS] D T1 K=1 J=1 Q_Y - Q^maj - sum B/d0 = prod V^-2[sum (1-w)D + sum_gcd>1 D]: 0/1 failures -> ok diff 1.8e-15
    T2 K=1 J=2: Q_Y=5.04902 (alt 5.04902+0.0e+00i), Q^maj=-3.126-3.614j, sum B/d0=-0.02983-0.0122j
-      lhs=8.20498+3.62632j  rhs=8.20498+3.62632j  nonzero D(a,b): 12/20 coprime pairs; gcd>1 part 8.28+3.65j; w in [0.0869, 0.4011]  (3.1s)
+      lhs=8.20498+3.62632j  rhs=8.20498+3.62632j  nonzero D(a,b): 12/20 coprime pairs; gcd>1 part 8.28+3.65j; w in [0.0869, 0.4011]  (3.0s)
 [POS] D T2 K=1 J=2 (4.7) two forms of Q_Y agree: 0/1 failures -> ok 
 [POS] D T2 K=1 J=2 (4.46) sum_d0 B_d0/d0 = prod V^-2 sum_coprime w D: 0/1 failures -> ok diff 6.9e-18
 [POS] D T2 K=1 J=2 Q_Y - Q^maj - sum B/d0 = prod V^-2[sum (1-w)D + sum_gcd>1 D]: 0/1 failures -> ok diff 1.8e-15
@@ -61,4 +61,4 @@
 positive checks: 23, failing: 0
 negative controls: 10, failing as they must: 10
 unexpected outcomes: 0 []
-wall time 36.1 s
+wall time 36.5 s
