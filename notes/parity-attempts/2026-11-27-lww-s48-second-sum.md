@@ -36,17 +36,18 @@ Outcome: success criterion met, conditional on the inputs listed below. No-go no
   - The steps marked "as in (i)" were not re-derived independently; they are inherited from the Prop. 4.5(i) card
     (2026-11-26-lww-p37-47-prop45.md, N4-N6). These are: the B_0/B_1 box count (4.110), the grouping, and the
     P-side truncation.
-  - Hence (4.96) inherits that card's input U1: Lemma A.1, via (4.87)-(4.88). U1 was discharged by
-    2026-11-26-lww-lemmaA1.md, relative to the Weil/Estermann Kloosterman bound (A.2) (Literature) and textbook
-    facts. This was not re-checked here.
-- **No error in LWW found.** There are eight terse places (T1-T8), one reading note (N1) and three harmless slips
-  (S1-S3). None changes the conclusion.
+  - Hence (4.96) inherits U1-U7 of that card. U1 (Lemma A.1, via (4.87)-(4.88)) is the substantive one; U7 (c_δ of
+    (4.88) a fixed positive constant depending on δ) is a real dependence; U2-U6 are definitional or elementary (U2
+    carries that card's Session-59 correction note). U1 was discharged by 2026-11-26-lww-lemmaA1.md, relative to the
+    Weil/Estermann Kloosterman bound (A.2) (Literature) and textbook facts. This was not re-checked here.
+- **No error in LWW found.** There are seven terse places (T1-T7), one reading note (N1), two harmless slips (S1,
+  S3) and two remarks (R1, R2). None changes the conclusion.
 - **One pdftotext artefact settled from the page image.** (4.94) prints W(w) = |∫_{M_1} e(θw)dθ| with absolute value
   bars, and Φ has |η η ψ_1|. pdftotext drops both. Without the bars, p. 46's "0 ≤ W ≤ 1" would be false:
   ∫_{M_1} e(θw)dθ is real but negative for about half of all w ((F)). With the bars it is correct, and (4.150) is a
   valid inequality.
 - **Uniformity.** The bound (4.156) is uniform in d_0, Y, M, N (M, N ≥ x^δ) and v. The constants depend on K, ρ, C,
-  A (through A_0) and the constant c of (4.31). The O_A(L^{-A}) of (4.151) is in fact O(exp(−cL^{3/4})), which is
+  A (through A_0), δ (through c_δ of (4.88) and the threshold "x large") and the constant c of (4.31). The O_A(L^{-A}) of (4.151) is in fact O(exp(−cL^{3/4})), which is
   uniform in the same parameters.
 - This is not a check of Prop. 4.2 or of the paper as a whole. Twins (K = 0) are untouched. There is no
   parity-breaking content, and nothing here bears on the twin prime conjecture.
@@ -59,7 +60,8 @@ Outcome: success criterion met, conditional on the inputs listed below. No-go no
 - pp. 37, 46 and 58-61 were rendered (pdftoppm, 120 dpi) and read visually. This settled:
   - the |·| in (4.94) and the |η η ψ_1| in Φ, p. 37; the same |·| appears on p. 46 and in (4.152) and (4.154);
   - the bar in "|\overline{f(P)}f(Q)| ≤ L^{4C}", p. 58;
-  - that (4.152)'s second line multiplies inside Σ^†;
+  - (4.152)'s second line begins with "×" on a new line and no bracket is printed, so the image does not settle its
+    scope. It is read as inside Σ^†; this is forced, since the factor depends on z′, p, p′;
   - "sup_p" outside the triple integral in (4.154);
   - |ψ_{-2}| in the two z′-bounds, p. 60.
 - Text read for context: pp. 17-23 ((4.9)-(4.41)), pp. 31-46 ((4.67)-(4.117), and the statement and proof of
@@ -71,19 +73,31 @@ Outcome: success criterion met, conditional on the inputs listed below. No-go no
   - (4.17)-(4.22) d_0, Ω, S, σ, ⟨·,·⟩, D, a, b;
   - (4.25)-(4.27) r_P and the good-state conditions;
   - (4.32) S, (4.36) C, (4.38) T_{-2}^C, (4.39) G_{-2}, (4.41) A_{-2}^C, (4.42) f;
-  - (4.68), (4.80) g′, (4.83) ℓ_p(g′), (4.89) g̃, (4.90) S_ℓ, (4.94) W, Φ (p. 37).
+  - (4.68), (4.80) g′, (4.83) ℓ_p(g′), (4.89) g̃, (4.90) S_ℓ, (4.94) W, Φ (p. 37);
+  - η: 0 ≤ η ≤ 1, supp η ⊂ [1, 4] (pp. 16-17). Used to drop (d_0/D)|η(a/Y)η(b/Y)| ≤ 1 in (4.154), and Y ≥ a/4 in
+    step 13;
+  - (2.12) (p. 7): the P_i are pairwise disjoint (step 7), |P_i| ≤ exp(2L^{a_i}), 1/10 < a_1 < ... < a_K < 1/5
+    (steps 11, 13); J = ⌊L^{0.01}⌋ (p. 18);
+  - log d_0 ≤ 2KJL^{0.2}, log Y ≤ 2KL^{0.2} (p. 40, from (4.17) and supp η). Used in step 11's error count and in
+    the d_0 count of step 10.
+- **(4.76)** (p. 32), used in steps 4 and 9. Literature, read in source; it was checked numerically in (F) but not
+  re-derived here.
+- **The bijection Q ↦ TQ** from Ω ∩ C onto the primitive integer vectors of Ω′ with odd first coordinate (proof of
+  Prop. 4.4, p. 32), together with (4.81) (p. 33-34). Step 4's Q ↔ z′ bijection needs both. Literature, read in
+  source; (D) checks the integrality, primitivity and parity numerically.
 - **(J1) Prop. 4.5(ii)/(4.96), restricted form** ("Σ^* restricted to terms for which at least one of (4.26), (4.27)
   fails at (g̃z_0, p)"). This is checked here relative to (J2).
 - **(J2) the Prop. 4.5(i) machinery, as checked in 2026-11-26-lww-p37-47-prop45.md.**
   - N4-N6 of that card: the box count, (4.110) and the truncated inclusion-exclusion.
-  - Its input U1: Lemma A.1 ⇒ (4.88). This is discharged in 2026-11-26-lww-lemmaA1.md, relative to (A.2)
-    (Weil/Estermann). That card was not re-checked here.
+  - Its inputs U1-U7. U1 (Lemma A.1 ⇒ (4.88)) is the substantive one; it is discharged in
+    2026-11-26-lww-lemmaA1.md, relative to (A.2) (Weil/Estermann). U7 makes the constants depend on δ. Those cards
+    were not re-checked here.
 - **(J3) V_i = log 2 + o(1)** (p. 7, Mertens). Only V_i ≍ 1 is used, so that ∏V_i^{-(J+2)} = exp(O(L^{0.01})) in
   the error count of (ii).
 - **(J4) |α_m|, |β_n| ≤ L^C** (hypotheses of Prop. 4.2), so |f(P)| ≤ L^{2C} by (4.42).
 - **(J5) meas M_{-2} = meas M_1 ≪ L^{3A_0}/Y.** This was proved in the p23-27 card (R5, script (F)). It is
   re-computed in (F) here.
-- **(J6) (4.124)** (p. 49), used only in the special case z = z_0, where it is elementary (step 8).
+- **(J6) (4.124)** (p. 49), used only in the special case z = z_0, where it is elementary (step 9).
 
 ## Step-by-step re-derivation
 Labels: Proved here / Literature (read in source) / Computed ((X) = script section).
@@ -130,7 +144,7 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 - NEG: r_{TP} ≡ +2r_P fails 4000/4000.
 
 **5. (4.151): applying the restricted (4.96).** Literature (J1), checked as in step 11.
-- The O_A(L^{-A}) is the O(exp(−cL^{3/4})) of (4.96), weakened (S2).
+- The O_A(L^{-A}) is the O(exp(−cL^{3/4})) of (4.96), weakened (R2).
 
 **6. (4.152) (p. 59).** Proved here; Computed (B).
 - The ℓ-dependent restrictions in Σ^* are exactly ℓ_p = [z_0]_p (p | Db) and ℓ_p = [z′]_p (p | Da).
@@ -215,7 +229,8 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   covered by (J2).
 - The variant "fails at (g̃z_1, p′)" is not used by Section 4.8 (step 12) and was not checked.
 
-**12. The second term ⟨Gf, K(1−G)f⟩ (p. 61).** Proved here; Computed (F), (G).
+**12. The second term ⟨Gf, K(1−G)f⟩ (p. 61).** Proved here (argument only). The script tests only the ingredient
+|W(−w)| = |W(w)| ((F)); nothing tests the re-centring identity itself.
 - LWW "take (Q, p′) as the initial pair in (4.96)". This is the edge reversal of p. 20: (P, p) → (Q, p′) is an edge
   iff (Q, p′) → (P, p) is one, with (D, a, b) ↦ (D, b, a). The conditions d_0 ≤ D < 2d_0 and the weights σ, ∏V^{-1}
   are symmetric.
@@ -225,11 +240,20 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   - ψ_1(t′/Y) becomes ψ_1(−t′/Y). See T5.
 - The "bad" restriction is now at the initial pair (Q, p′), where r_{g̃z_0} ≡ −2r_Q. So E(p′) is a set of r
   depending only on p′, (4.31) applies, and steps 6-10 go through verbatim. ✓
-- Why the re-centring is needed. Keeping P as the base point would put the restriction at (g̃z_1, p′).
-  r_{g̃z_1} = τ(w)/τ(z_1) is a Möbius function of r. The bad set {r : r_{g̃z_1} ∈ F} depends on z_1 and is not of
-  measure ≍ meas F.
-- (G) NEG, z_1 = (16, 1): for an interval F of measure 0.0089, meas{r : r_{g̃z_1}(r) ∈ F} = 1.0. So the (4.154)-type
-  "sup_p ∫_{E}" bound would fail. LWW's choice avoids this.
+- Why the re-centring is used. Keeping P as the base point would put the restriction at (g̃z_1, p′), with
+  r_{g̃z_1} = τ(w)/τ(z_1), a Möbius function of r.
+  - The size of the pulled-back set is not the problem. On the relevant range τ(z_1) ∈ [1/16, 16] (forced by
+    g̃z_1 ∈ Ω′), |d r_{g̃z_1}/dr| = 2/τ(z_1)² ∈ [1/128, 512], so meas{r : τ(z_1) ∈ [1/16,16], r_{g̃z_1} ∈ F + Z}
+    ≤ 128·514·meas F. (An earlier version of this card said the opposite; that was wrong. See Audit.)
+  - The problem is that the bad set depends on z_1 (for fixed (p, p′, t), on h). The admissible h move with r: each h
+    is admissible only on an r-interval of length ≤ 16/(D|t|), and there are ≍ D|t| + 16 of them. Bounding each h
+    separately loses a factor up to ≍ d_0Y = exp(O(L^{0.2})), which exp(−cL^{0.1}) cannot pay for. Re-centring at
+    (Q, p′) makes the restriction depend on r and p′ alone, so sup_{p′} meas E(p′) can be pulled out as in (4.154).
+  - This shows only that the (4.154) argument does not carry over verbatim with P as base point. It does not show
+    that the other route is impossible: LWW also state a (g̃z_1, p′) variant of (4.96), which is unchecked here.
+- (G) illustration (not evidence), z_1 = (16, 1): for an interval F of measure 0.0089, meas{r ∈ [0,1) :
+  r_{g̃z_1}(r) ∈ F} = 1.0. This shows only that the pull-back is not the same set as F; its size (ratio ≈ 112) is
+  within the bound 128·514 above.
 
 **13. (4.31) (pp. 21-22).** Proved here; Computed (G) for (4.28)'s step.
 - (4.28): there are ≤ (J+1)^K values of D̃ and ≤ Y^{0.2} values of ℓ, each with measure 2Y^{-0.7}. Total
@@ -263,24 +287,29 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
   (NEG (F)).
 - **T7 (p. 46).** Prop. 4.5(ii)'s proof leaves the B_0/B_1 box count, the grouping and the P-side truncation to
   "as in (i)". The analogy holds for the pieces checked in step 11.
-- **T8 (p. 61).** "O_K(L) values of d_0": in fact ≪_K L^{0.21}.
 - **N1 (pp. 37, 46, reading note).** (4.94) has W(w) = |∫_{M_1} e(θw)dθ| and Φ has |η η ψ_1|. pdftotext drops the
   bars. Read without them, p. 46's "0 ≤ W ≤ 1" would be false ((F): negative for 248/484 values of w), and (4.150)
   would not be an inequality.
 - **S1 (p. 58).** "to the these two terms". **(p. 60)** "r_P placed by −2r". Both are typos.
-- **S2 (p. 58, (4.151)).** It states O_A(L^{-A}) where (4.96) gives O(exp(−cL^{3/4})). The L^{4C} of (4.150) and the
-  L^{-A} of (4.154) are absorbed by renaming A. Harmless.
 - **S3 (p. 59).** p′ denotes both a prime and the tuple (p′_1, ..., p′_K). Harmless.
+- **R1 (remark, p. 61; was T8).** "O_K(L) values of d_0" is true; in fact ≪_K L^{0.21}.
+- **R2 (remark, p. 58, (4.151); was S2).** O_A(L^{-A}) is true where (4.96) gives O(exp(−cL^{3/4})). The L^{4C} of
+  (4.150) and the L^{-A} of (4.154) are absorbed by renaming A.
 
 ## Computation (Computed)
 - `code/parity/lww_s48_check.py`; output in `code/parity/lww_s48_check.out`.
 - Run: `/usr/bin/python3 -I code/parity/lww_s48_check.py`. Pure Python. Wall time 3.5 s.
-- Results: 23 positive checks, 0 failing. 10 negative controls, all failing as they must. 0 unexpected outcomes.
+- Results (post-audit run): 23 positive checks, 0 failing. 9 negative controls, all failing as they must (the former
+  10th, (G)'s Möbius control, is now an uncounted illustration). 0 unexpected outcomes.
 - Weight of the evidence:
-  - The substantive computations are (B) (a brute-force line average against (4.153), with an exact equality at
-    ρ = 1), (D), (F)'s (4.76) and (G)'s Möbius NEG.
-  - (A), (C) and (H) are algebraic sanity checks.
-  - (E)'s "≤ 15" is a tightness control, not a misreading.
+  - Steps 4, 6-7 and 9 rest on (B) (a brute-force line average against (4.153), with an exact equality at ρ = 1),
+    (D), (E) and (F) (including (4.76)). These are the substantive computations.
+  - Step 12 is argument only.
+  - (A), (C) and (H) are algebraic sanity checks. (C) cannot distinguish the exponent J+1 from J+2 (the weaker
+    bound also passes); it only excludes larger exponents and the unordered-tuple misreading.
+  - Of the nine NEGs, (E)'s "≤ 15" is a tightness control and (H)'s "avg H ≤ 1/(p+1)" is a ρ-sensitivity check (it
+    fails only for ρ < 1/4, here ρ = 0.05), not misreading controls. (G)'s Möbius control is an illustration only
+    (step 12), not evidence.
 - Limits:
   - The toys are tiny (K = 1 in (B), and primes ≤ 200).
   - Nothing analytic is tested: not (4.88), not (4.96) as an asymptotic, not the sizes in (4.31).
@@ -296,7 +325,9 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 ## Role in the chain
 - Discharged, conditional on (J1) ⇐ (J2) and on (J3)-(J5): the second sum of (4.52), Σ_{d_0}|⟨f, T_{-2}^C f⟩ −
   ⟨f, A_{-2}^C f⟩|/d_0 ≪ XYL^{-A} ((4.148)).
-- Combined with the earlier cards, each part of Section 4 from (4.7) to (4.157) appears to have been the subject of a card (judged from the card list, not re-audited). These are: the
+- Section 4.8 and (4.26)-(4.31) were partially examined earlier (set-dependence only) in
+  2026-11-25-lww-prop42-thinning.md, items 9 and 12.
+- Combined with the earlier cards, each part of Section 4 from (4.9) to (4.157), with Q_Y as defined in (4.7), appears to have been the subject of a card (judged from the card list, not re-audited). These are: the
   p23-27 card ((4.52), given (I1) and (I2)); the Prop. 4.3, 4.4 and 4.5(i) cards; the Lemma A.1 card; and the
   pp. 47-53, p. 54 and pp. 55-58 cards (the first sum, Prop. 4.6). Their conditions are as stated in each card and were not re-audited
   here. Remaining inputs named in those cards: (I1) = (4.9) via Shiu (not read in source); (A.2) Weil/Estermann
@@ -304,3 +335,23 @@ Labels: Proved here / Literature (read in source) / Computed ((X) = script secti
 - **First unresolved implication:** pp. 15-16, (4.1)-(4.8). This is the passage from the sum in Prop. 4.2 to Q_Y,
   including the removal of (a, h) = 1 and the Cauchy-Schwarz step (4.6). It has had no line-by-line correctness card (the
   prop53-twist and mu-vs-lambda cards read it for other questions); the p23-27 card lists it as open. After it come (I1) via Shiu 1980, then Section 5 (Q_Y^maj, Prop. 3.1, Theorem 1).
+
+## Audit
+Audit: notes/parity-attempts/2026-11-27-lww-s48-second-sum-audit.md (0 errors in LWW; in the card and script: 1 error
+(non-load-bearing), 2 gaps, 1 overstatement, 4 slips). Classification unchanged. All fixes were applied:
+- #1 (error, card): step 12's "why re-centre" paragraph rewritten. The pulled-back set has measure ≤ 128·514·meas F;
+  the real reason is the z_1-dependence of the bad set (a loss up to ≍ d_0Y). The (G) Möbius control is relabelled as
+  an illustration (card and script) and dropped from the substantive evidence.
+- #2 (gap): inputs added: (4.76); the bijection Q ↦ TQ with (4.81); 0 ≤ η ≤ 1 and supp η ⊂ [1, 4]; log d_0, log Y
+  ≪ L^{0.2}; (2.12) disjointness, sizes and ordering a_1 < ... < a_K; J = ⌊L^{0.01}⌋.
+- #3 (gap): Prop. 4.5(ii) now inherits U1-U7 (U1 the substantive one, U7 the δ-dependence); δ added to the
+  uniformity list.
+- #4 (overstatement): step 12 marked argument only; evidence for steps 4, 6-7 and 9 stated as (B), (D), (E), (F);
+  (H) NEG described as ρ-sensitivity; (C) noted as unable to separate J+1 from J+2.
+- #5 (slip): (J6) now points to step 9.
+- #6 (slip): the (4.152) scope is read as inside Σ^† because it is forced, not settled by the image.
+- #7 (slip): T8 and S2 became remarks R1 and R2.
+- #8 (slip): chain note now reads "from (4.9) to (4.157), with Q_Y as defined in (4.7)"; items 9 and 12 of
+  2026-11-25-lww-prop42-thinning.md cited.
+- Script re-run with /usr/bin/python3 -I after relabelling: 23 POS / 0 failing; 9 NEG / 9 failing; 1 uncounted
+  illustration; 0 unexpected; 3.5 s. Output regenerated.

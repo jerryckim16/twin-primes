@@ -43,18 +43,18 @@
 [POS] F (4.76) int_{M_-2} e(theta(t-2c)) = int_{M_1} e(phi(-t/2+c)) for even t: 0/240 failures -> ok 
    int_{M_1} e(phi w) < 0 for 248/484 values of w (min -0.1159): the |.| printed in (4.94) (p. 37, visible only in the page image) is what makes W >= 0 on p. 46
 [NEG] NEG F (4.76) with t odd (t in 2Z is used): 240/240 failures -> ok 
-== (G) measures on T: (4.28), r -> -2r (p. 60), and the Moebius map r -> r_{g~ z1}
+== (G) measures on T: (4.28), r -> -2r (p. 60); illustration: the Moebius map r -> r_{g~ z1}
 [POS] G (4.28) meas{r in T : ||m r|| <= eps} = 2 eps (exact): 0/300 failures -> ok 
 [POS] G meas{r : -2r mod 1 in F} = meas F for finite unions F (exact): 0/300 failures -> ok 
    z1=(16,1): meas F = 0.00893, meas{r : r_(g~z1)(r) in F} = 1.00000
-[NEG] NEG G meas{r : r_{g~z1}(r) in F} <= 2 meas F (would allow keeping the restriction at z1): 1/1 failures -> ok 
+   [ILLUSTRATION, not counted] pull-back differs from F (ratio 112.0); within the valid bound 128*514 = 65792: True
 == (H) Prop. 4.5(ii), p. 46: F_1 factorisation, H_{1,p} average, Bonferroni truncation
 [POS] H rho^{(w_l(z0)+w_l(z1))/2} = prod_p (1 - H_{1,p}(l_p)): 0/400 failures -> ok 
 [POS] H (p+1)^{-1} sum_l H_{1,p}(l) <= 2/(p+1): 0/2400 failures -> ok 
 [POS] H Bonferroni: |prod(1-x) - sum_{k<B} (-1)^k e_k| <= e_B on [0,1]^n: 0/400 failures -> ok 
-[NEG] NEG H (p+1)^{-1} sum_l H_{1,p}(l) <= 1/(p+1): 514/2400 failures -> ok 
+[NEG] NEG H (rho-sensitivity, fails only for rho < 1/4) (p+1)^{-1} sum_l H_{1,p}(l) <= 1/(p+1): 514/2400 failures -> ok 
 == SUMMARY
 positive checks: 23, failing: 0
-negative controls: 10, failing as they must: 10
+negative controls: 9, failing as they must: 9
 unexpected outcomes: 0 []
 wall time 3.5 s

@@ -21,10 +21,13 @@ What is checked (toy parameters; finite identities and inequalities only, nothin
  (F) M_1, (4.94), (4.76): int_{M_1} e(phi w) is real, |.| <= meas M_1, and can be negative (so the |.| in the
      printed (4.94) matters); (4.76) int_{M_-2} e(theta(t-2c)) = int_{M_1} e(phi(-t/2+c)) for even t.   floats
  (G) measures on T: (4.28) meas{r : ||m r|| <= eps} = 2 eps; r -> -2r preserves Lebesgue measure (p. 60);
-     the Moebius map r -> r_{g~ z1} does NOT (why the second term of (4.149) is re-centred at (Q,p')).
+     ILLUSTRATION only (not evidence, not counted): the pull-back of F under the Moebius map r -> r_{g~ z1} is
+     not the same set as F. Its measure is still <= 128*514*meas F on tau(z1) in [1/16,16]; the real reason for
+     re-centring the second term at (Q,p') is the z1-dependence of the bad set (see the card, step 12).
  (H) Prop. 4.5(ii) p. 46: rho^{(w_l(z0)+w_l(z1))/2} = prod_p (1 - H_{1,p}(l_p)); avg_l H_{1,p} <= 2/(p+1);
      Bonferroni |prod(1-x) - sum_{k<B}(-1)^k e_k(x)| <= e_B(x) for x in [0,1]^n.        exact Fractions / floats
-Negative controls are marked NEG and must FAIL.
+Negative controls are marked NEG and must FAIL. (E)'s '<= 15' NEG is a tightness control and (H)'s NEG is a
+rho-sensitivity check (fails only for rho < 1/4), not misreading controls.
 """
 import math, random, time, itertools, cmath
 from fractions import Fraction as Fr
@@ -393,7 +396,7 @@ print(f"   int_{{M_1}} e(phi w) < 0 for {negs}/{nF} values of w (min {minW:.4f})
 report("NEG F (4.76) with t odd (t in 2Z is used)", 'NEG', fFn, nFn)
 
 # ---------------------------------------------------------------------------------------------------------------
-print("== (G) measures on T: (4.28), r -> -2r (p. 60), and the Moebius map r -> r_{g~ z1}")
+print("== (G) measures on T: (4.28), r -> -2r (p. 60); illustration: the Moebius map r -> r_{g~ z1}")
 
 
 def meas_union(ivs):
@@ -451,8 +454,8 @@ Ngrid = 200000
 pre = sum(1 for i in range(Ngrid) if Fset[0] <= phi((i + 0.5) / Ngrid) <= Fset[1]) / Ngrid
 measF = Fset[1] - Fset[0]
 print(f"   z1=(16,1): meas F = {measF:.5f}, meas{{r : r_(g~z1)(r) in F}} = {pre:.5f}")
-report("NEG G meas{r : r_{g~z1}(r) in F} <= 2 meas F (would allow keeping the restriction at z1)", 'NEG',
-       1 if pre > 2 * measF else 0, 1)
+print(f"   [ILLUSTRATION, not counted] pull-back differs from F (ratio {pre / measF:.1f}); within the valid bound"
+      f" 128*514 = {128 * 514}: {pre <= 128 * 514 * measF}")
 
 # ---------------------------------------------------------------------------------------------------------------
 print("== (H) Prop. 4.5(ii), p. 46: F_1 factorisation, H_{1,p} average, Bonferroni truncation")
@@ -494,7 +497,8 @@ for _ in range(400):
 report("H rho^{(w_l(z0)+w_l(z1))/2} = prod_p (1 - H_{1,p}(l_p))", 'POS', fH[0], nH)
 report("H (p+1)^{-1} sum_l H_{1,p}(l) <= 2/(p+1)", 'POS', fH[1], nH * len(PH))
 report("H Bonferroni: |prod(1-x) - sum_{k<B} (-1)^k e_k| <= e_B on [0,1]^n", 'POS', fH[2], nH)
-report("NEG H (p+1)^{-1} sum_l H_{1,p}(l) <= 1/(p+1)", 'NEG', fHn, nH * len(PH))
+report("NEG H (rho-sensitivity, fails only for rho < 1/4) (p+1)^{-1} sum_l H_{1,p}(l) <= 1/(p+1)", 'NEG', fHn,
+       nH * len(PH))
 
 # ---------------------------------------------------------------------------------------------------------------
 print("== SUMMARY")
