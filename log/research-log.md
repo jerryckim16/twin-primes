@@ -1,5 +1,2315 @@
 # Research log
 
+## 2026-11-27 - Session 59 (7:34 PM CT paper run of 26 Nov, started on time 01:35 UTC 27 Nov; no wait, no other run active): Paper run: Lean note v1.1 (finite part of S2), main paper v0.53; LWW Prop. 4.4/(4.73) proved from their definitions (audited)
+
+- P
+- a
+- p
+- e
+- r
+-  
+- r
+- u
+- n
+- .
+-  
+- L
+- e
+- a
+- n
+-  
+- n
+- o
+- t
+- e
+-  
+- p
+- a
+- p
+- e
+- r
+- s
+- /
+- l
+- e
+- a
+- n
+- -
+- r
+- e
+- d
+- u
+- c
+- t
+- i
+- o
+- n
+-  
+- v
+- 1
+- .
+- 1
+-  
+- (
+- 6
+-  
+- p
+- p
+- .
+- )
+- :
+-  
+- n
+- e
+- w
+-  
+- s
+- e
+- c
+- t
+- i
+- o
+- n
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+-  
+- f
+- i
+- n
+- i
+- t
+- e
+-  
+- p
+- a
+- r
+- t
+-  
+- o
+- f
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- S
+- 2
+-  
+- (
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 2
+- .
+- l
+- e
+- a
+- n
+- ,
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 2
+- H
+- p
+- w
+- .
+- l
+- e
+- a
+- n
+- )
+- ,
+-  
+- H
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- i
+- s
+-  
+- o
+- n
+-  
+- S
+- 2
+-  
+- n
+- a
+- r
+- r
+- o
+- w
+- e
+- d
+- ,
+-  
+- b
+- u
+- i
+- l
+- d
+- /
+- a
+- u
+- d
+- i
+- t
+-  
+- c
+- o
+- u
+- n
+- t
+- s
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- (
+- 2
+- 6
+-  
+- j
+- o
+- b
+- s
+- ;
+-  
+- 2
+- 3
+- 9
+-  
+- d
+- e
+- c
+- l
+- a
+- r
+- a
+- t
+- i
+- o
+- n
+- s
+- ;
+-  
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+-  
+- o
+- n
+- l
+- y
+- )
+- ;
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- (
+- 2
+-  
+- g
+- a
+- p
+- s
+- ,
+-  
+- 2
+-  
+- o
+- v
+- e
+- r
+- s
+- t
+- a
+- t
+- e
+- m
+- e
+- n
+- t
+- s
+- ,
+-  
+- a
+-  
+- w
+- r
+- o
+- n
+- g
+-  
+- t
+- h
+- e
+- o
+- r
+- e
+- m
+-  
+- n
+- a
+- m
+- e
+- ,
+-  
+- a
+-  
+- c
+- i
+- t
+- a
+- t
+- i
+- o
+- n
+- ;
+-  
+- n
+- o
+- t
+- e
+- s
+- /
+- a
+- u
+- d
+- i
+- t
+- -
+- l
+- e
+- a
+- n
+- -
+- n
+- o
+- t
+- e
+- -
+- v
+- 1
+- 1
+- .
+- m
+- d
+- )
+-  
+- a
+- p
+- p
+- l
+- i
+- e
+- d
+- .
+-  
+- M
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 5
+- 3
+- :
+-  
+- T
+- h
+- e
+- o
+- r
+- e
+- m
+-  
+- t
+- h
+- m
+- :
+- l
+- e
+- a
+- n
+-  
+- i
+- t
+- e
+- m
+-  
+- 2
+- 1
+-  
+- (
+- S
+- 2
+- )
+- ,
+-  
+- r
+- e
+- m
+- :
+- 1
+- 8
+- 6
+- -
+- s
+- t
+- a
+- t
+- u
+- s
+-  
+- (
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- n
+- t
+- r
+- a
+- c
+- t
+- i
+- o
+- n
+- s
+-  
+- n
+- o
+- w
+-  
+- b
+- y
+-  
+- t
+- w
+- o
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- s
+- )
+- ,
+-  
+- s
+- e
+- c
+- :
+- r
+- e
+- l
+- a
+- t
+- e
+- d
+-  
+- (
+- L
+- W
+- W
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+-  
+- o
+- f
+-  
+- 2
+- 6
+- -
+- 2
+- 7
+-  
+- N
+- o
+- v
+- ,
+-  
+- L
+- e
+- a
+- n
+-  
+- n
+- o
+- t
+- e
+-  
+- 1
+- .
+- 1
+- )
+- ,
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- A
+- x
+- i
+- o
+- m
+-  
+- M
+- a
+- t
+- h
+-  
+- a
+- u
+- t
+- h
+- o
+- r
+-  
+- l
+- i
+- s
+- t
+-  
+- c
+- o
+- r
+- r
+- e
+- c
+- t
+- e
+- d
+-  
+- a
+- f
+- t
+- e
+- r
+-  
+- r
+- e
+- -
+- r
+- e
+- a
+- d
+- i
+- n
+- g
+-  
+- t
+- h
+- e
+- i
+- r
+-  
+- s
+- i
+- t
+- e
+-  
+- (
+- 4
+- 2
+-  
+- a
+- u
+- t
+- h
+- o
+- r
+- s
+- ;
+-  
+- t
+- h
+- e
+-  
+- L
+- e
+- a
+- n
+-  
+- n
+- o
+- t
+- e
+-  
+- h
+- a
+- d
+-  
+- s
+- a
+- i
+- d
+-  
+- 4
+- 0
+- )
+- .
+-  
+- s
+- t
+- a
+- t
+- u
+- s
+- .
+- j
+- s
+- o
+- n
+-  
+- 0
+- .
+- 5
+- 3
+- ,
+-  
+- R
+- E
+- A
+- D
+- M
+- E
+- ,
+-  
+- s
+- i
+- t
+- e
+-  
+- r
+- e
+- b
+- u
+- i
+- l
+- t
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- c
+- a
+- v
+- e
+- a
+- t
+-  
+- a
+- s
+-  
+- e
+- v
+- e
+- r
+- y
+- w
+- h
+- e
+- r
+- e
+- )
+- .
+
+Parity attempt: Route card 2026-11-27-lww-prop44 (proved here from LWW's own definitions, no outside input; helper-written, script re-run here identically; fresh-context adversarial audit: 1 error, 2 gaps, 4 overstatements, 4 slips, all applied): every step of LWW Prop. 4.4 and (4.73) (pp. 31-33; U_T unitary, (4.74)-(4.77), (4.72), the adjoint step, (4.54) <=> (4.78)) re-derived; it discharges input I7 ((4.73)) of the pp. 55-58 card. Four terse places in LWW and one remark, no slip that matters; the earlier card's U2 misattributed an equality to Prop. 4.4 (corrected). Script code/parity/lww_prop44_check.py (toy model K = J = 1; after the audit a non-symmetric major-arc test was added, since symmetric toy arcs hid phase-sign errors: 7 positive checks, 11 negative controls, 0 unexpected; re-run here, identical). No error in LWW; LWW still v2. First unresolved: Prop. 4.3 (pp. 27-30). Twins (K = 0) untouched.
+
+Explored: none this run (Central day 26 Nov already had one, Session 57)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- N
+- o
+-  
+- n
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+-  
+- (
+- n
+- o
+- t
+-  
+- t
+- h
+- e
+-  
+- 3
+- :
+- 3
+- 4
+-  
+- A
+- M
+-  
+- r
+- u
+- n
+- )
+- .
+-  
+- N
+- o
+-  
+- b
+- o
+- u
+- n
+- d
+- -
+- s
+- h
+- a
+- r
+- e
+-  
+- c
+- o
+- m
+- p
+- u
+- t
+- a
+- t
+- i
+- o
+- n
+-  
+- t
+- h
+- i
+- s
+-  
+- r
+- u
+- n
+-  
+- (
+- p
+- a
+- p
+- e
+- r
+-  
+- r
+- u
+- n
+- )
+- .
+
+Next: LWW Prop. 4.3 (pp. 27-30), then Prop. 4.5(ii)/(4.96) and Section 4.8; 186: renewal majorant (2.3) and the directed arithmetic of Sec. 2.3/(2.26); Lean: the y^(m) change of variables for S2; weekly review on Monday 30 Nov.
+
+## 2026-11-26 - Session 58 (11:34 AM CT research run, started on time 17:34 UTC; no wait, no other run active): Research run: LWW Lemma A.1 and (4.86)-(4.88) proved relative to standard inputs (audited); 186 finite contractions now two independent programs; Lean S2 bad-pair step
+
+- R
+- u
+- n
+- g
+-  
+- 1
+- 8
+- 6
+- :
+-  
+- a
+-  
+- s
+- e
+- c
+- o
+- n
+- d
+- ,
+-  
+- i
+- n
+- d
+- e
+- p
+- e
+- n
+- d
+- e
+- n
+- t
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+-  
+- f
+- o
+- r
+-  
+- t
+- h
+- e
+-  
+- f
+- i
+- n
+- i
+- t
+- e
+-  
+- c
+- o
+- n
+- t
+- r
+- a
+- c
+- t
+- i
+- o
+- n
+- s
+-  
+- (
+- 2
+- .
+- 1
+- 6
+- )
+- -
+- (
+- 2
+- .
+- 2
+- 1
+- )
+-  
+- (
+- c
+- o
+- d
+- e
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- _
+- c
+- o
+- n
+- t
+- r
+- a
+- c
+- t
+- i
+- o
+- n
+- s
+- _
+- c
+- h
+- e
+- c
+- k
+- 2
+- .
+- p
+- y
+- ,
+-  
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+-  
+- f
+- r
+- o
+- m
+-  
+- t
+- h
+- e
+-  
+- P
+- D
+- F
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- t
+- h
+- o
+- r
+- s
+- '
+-  
+- d
+- a
+- t
+- a
+-  
+- o
+- n
+- l
+- y
+- ,
+-  
+- t
+- h
+- e
+-  
+- f
+- i
+- r
+- s
+- t
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+-  
+- o
+- n
+- l
+- y
+-  
+- a
+- f
+- t
+- e
+- r
+- w
+- a
+- r
+- d
+- s
+- )
+- :
+-  
+- t
+- o
+- y
+-  
+- i
+- n
+- s
+- t
+- a
+- n
+- c
+- e
+- s
+-  
+- w
+- i
+- t
+- h
+-  
+- 2
+- -
+- 4
+-  
+- c
+- o
+- o
+- r
+- d
+- i
+- n
+- a
+- t
+- e
+- s
+-  
+- a
+- g
+- a
+- i
+- n
+- s
+- t
+-  
+- b
+- r
+- u
+- t
+- e
+- -
+- f
+- o
+- r
+- c
+- e
+-  
+- c
+- e
+- l
+- l
+-  
+- s
+- u
+- m
+- s
+- ,
+-  
+- r
+- i
+- n
+- g
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- t
+- i
+- e
+- s
+-  
+- i
+- n
+-  
+- s
+- y
+- m
+- p
+- y
+- ,
+-  
+- t
+- h
+- e
+-  
+- P
+- (
+- u
+- ,
+- v
+- )
+-  
+- g
+- r
+- i
+- d
+-  
+- a
+- n
+- d
+-  
+- r
+- e
+- a
+- l
+- -
+- d
+- a
+- t
+- a
+-  
+- P
+-  
+- s
+- e
+- t
+- s
+-  
+- a
+- n
+- d
+-  
+- w
+- (
+- r
+- )
+-  
+- s
+- w
+- i
+- t
+- c
+- h
+-  
+- p
+- o
+- i
+- n
+- t
+- s
+- ;
+-  
+- 1
+- ,
+- 9
+- 9
+- 9
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- ,
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+- ,
+-  
+- 2
+- 8
+- 4
+-  
+- n
+- e
+- g
+- a
+- t
+- i
+- v
+- e
+- -
+- c
+- o
+- n
+- t
+- r
+- o
+- l
+-  
+- r
+- u
+- n
+- s
+-  
+- a
+- l
+- l
+-  
+- c
+- a
+- u
+- g
+- h
+- t
+- ;
+-  
+- 8
+- 8
+-  
+- s
+- ,
+-  
+- 6
+- 4
+-  
+- M
+- B
+- ;
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+- ,
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+- .
+-  
+- I
+- t
+-  
+- a
+- g
+- r
+- e
+- e
+- s
+-  
+- f
+- u
+- l
+- l
+- y
+-  
+- w
+- i
+- t
+- h
+-  
+- S
+- e
+- s
+- s
+- i
+- o
+- n
+-  
+- 5
+- 7
+- '
+- s
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- ,
+-  
+- s
+- o
+-  
+- (
+- 2
+- .
+- 1
+- 7
+- )
+- ,
+-  
+- (
+- 2
+- .
+- 1
+- 9
+- )
+- ,
+-  
+- (
+- 2
+- .
+- 2
+- 1
+- )
+-  
+- a
+- r
+- e
+-  
+- n
+- o
+- w
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- b
+- y
+-  
+- t
+- w
+- o
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- s
+-  
+- (
+- g
+- i
+- v
+- e
+- n
+-  
+- t
+- h
+- e
+-  
+- m
+- a
+- j
+- o
+- r
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- l
+- e
+- m
+- m
+- a
+- s
+- )
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- n
+- e
+- w
+-  
+- T
+- w
+- i
+- n
+- P
+- r
+- i
+- m
+- e
+- s
+- /
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 2
+- H
+- p
+- w
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 2
+- 3
+- 3
+-  
+- l
+- i
+- n
+- e
+- s
+- ,
+-  
+- 1
+- 4
+-  
+- d
+- e
+- c
+- l
+- a
+- r
+- a
+- t
+- i
+- o
+- n
+- s
+- ;
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+- -
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+- ,
+-  
+- s
+- t
+- a
+- t
+- e
+- m
+- e
+- n
+- t
+- s
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- h
+- e
+- r
+- e
+- )
+- :
+-  
+- S
+- 2
+-  
+- c
+- o
+- u
+- n
+- t
+- s
+-  
+- o
+- f
+-  
+- b
+- a
+- d
+-  
+- p
+- a
+- i
+- r
+- s
+-  
+- v
+- a
+- n
+- i
+- s
+- h
+-  
+- u
+- n
+- d
+- e
+- r
+-  
+- S
+- h
+- i
+- f
+- t
+- s
+- C
+- o
+- p
+- ,
+-  
+- s
+- o
+-  
+- t
+- h
+- e
+-  
+- S
+- 2
+-  
+- s
+- u
+- m
+-  
+- r
+- u
+- n
+- s
+-  
+- o
+- v
+- e
+- r
+-  
+- g
+- o
+- o
+- d
+-  
+- p
+- a
+- i
+- r
+- s
+-  
+- w
+- i
+- t
+- h
+-  
+- d
+- _
+- m
+-  
+- =
+-  
+- e
+- _
+- m
+-  
+- =
+-  
+- 1
+- ,
+-  
+- d
+- i
+- s
+- c
+- h
+- a
+- r
+- g
+- i
+- n
+- g
+-  
+- t
+- h
+- e
+-  
+- p
+- e
+- r
+- -
+- p
+- a
+- i
+- r
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- i
+- s
+-  
+- o
+- f
+-  
+- m
+- a
+- y
+- n
+- a
+- r
+- d
+- _
+- S
+- 2
+- _
+- c
+- o
+- u
+- n
+- t
+- _
+- r
+- e
+- s
+- i
+- d
+- u
+- e
+- ;
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- (
+- 2
+- 6
+-  
+- j
+- o
+- b
+- s
+- )
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- p
+- a
+- s
+- s
+-  
+- (
+- 2
+- 3
+- 9
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+- ;
+-  
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+-  
+- o
+- n
+- l
+- y
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- c
+- a
+- v
+- e
+- a
+- t
+-  
+- a
+- s
+-  
+- e
+- v
+- e
+- r
+- y
+- w
+- h
+- e
+- r
+- e
+- )
+- .
+
+Parity attempt: Route card 2026-11-26-lww-lemmaA1 (proved here relative to standard inputs: Weil/Estermann Kloosterman bound (A.2), divisor bound, a smooth bump, sum mu(l)/l^2 = 1/zeta(2); fresh-context audit: 0 errors, 3 gaps, 2 overstatements, 9 slips, all in the card, all applied): every step of LWW Lemma A.1 (pp. 72-74) and of (4.86)-(4.88) (pp. 33-35) re-derived; constants absolute and uniform in the parameters later summed; U1 of the previous card discharged in that relative sense. LWW slips only (p. 34 modulus 2S printed as S; three terse places). Script code/parity/lww_lemmaA1_check.py (9 s; 11 positive checks, 7 negative controls, 0 unexpected; re-run here). No error in LWW found; LWW still v2. First unresolved: Prop. 4.4/(4.73) (pp. 31-33), then Prop. 4.3. Not a check of Prop. 4.2 as a whole; twins (K = 0) untouched.
+
+Explored: none this run (Central day 26 Nov already had one, Session 57)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- S
+- o
+- u
+- r
+- c
+- e
+- s
+-  
+- c
+- i
+- t
+- e
+- d
+-  
+- b
+- y
+-  
+- L
+- W
+- W
+-  
+- f
+- o
+- r
+-  
+- (
+- A
+- .
+- 2
+- )
+-  
+- (
+- I
+- w
+- a
+- n
+- i
+- e
+- c
+- -
+- K
+- o
+- w
+- a
+- l
+- s
+- k
+- i
+-  
+- C
+- o
+- r
+- .
+-  
+- 1
+- 1
+- .
+- 1
+- 2
+- )
+-  
+- a
+- n
+- d
+-  
+- [
+- 1
+- 7
+- ,
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 3
+- .
+- 3
+- ]
+-  
+- n
+- o
+- t
+-  
+- o
+- p
+- e
+- n
+- e
+- d
+-  
+- t
+- h
+- i
+- s
+-  
+- r
+- u
+- n
+-  
+- (
+- s
+- t
+- a
+- n
+- d
+- a
+- r
+- d
+- ;
+-  
+- n
+- o
+- t
+-  
+- b
+- l
+- o
+- c
+- k
+- e
+- d
+- )
+- .
+
+Next: Paper run tonight: Lean note v1.1 (MaynardS2 + MaynardS2Hpw), main paper lines for the 186 contractions (two programs) and the S57/S58 LWW cards, status.json, README, site. Parity: LWW Prop. 4.4/(4.73), then Prop. 4.3. Bound: the renewal majorant (2.3) proof; directed arithmetic of Sec. 2.3.
+
 ## 2026-11-26 - Session 57 (3:34 AM CT research run, started on time 09:35 UTC; no wait, no other run active): Research run: LWW (4.121) proved and Prop. 4.5(i)/(4.95) checked conditional on listed inputs (audited); 186 finite contractions (2.16)-(2.21) verified as stated (one program); Lean finite S2 expansion; FI thin-set exploration
 
 - R
