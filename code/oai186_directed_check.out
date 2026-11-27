@@ -1,0 +1,69 @@
+====================================================================================================
+Directed arithmetic of [14] Sec. 2.3 (pp. 16-17), (2.22)-(2.26); secondary (2.3) (p. 12)
+====================================================================================================
+
+--- A. The rounding slack (2.26) ---
+[PASS] A1 numerator identity of (2.26) (polynomial identity: 9x9 grid of bidegree<=6 + 300 random points)
+[NEG-CAUGHT] A1n perturbed numerator (4r^2-2r in place of 4r^2-3r) fails the identity
+[PASS] A2 (2.26) numerator > 0 and removed factor > 0 for all 1 <= r <= 98264 (exact integers)  (min at r=98264: numerator = 0.999998927978422)
+[PASS] A3 (2.26) evaluated directly as printed (exact Fractions) at 207 r incl. 1, 2, 98264  (value at r=98264: 1.110222e-16)
+[PASS] A4 1-(M^2+M)u-3Mu^2-2M^2u^3 > 0 for M = 98264 (exact)  (= 0.999998927978422)
+[PASS] A5 numerator(r) >= that bound for every 1 <= r <= 98264 (exact integers)
+[PASS] A6 numerator strictly decreasing in r>=0 (c1,c2<0); (2.26) holds exactly iff r <= r*  (r* = 94906265 ~ 9.4906e+07)
+[NEG-CAUGHT] A6n (2.26) at r = 10^8 > r* fails (the inequality is not vacuous)
+[NEG-CAUGHT] A7n gamma_{r-1} used in place of gamma_r fails (2.26) at r = 2, 1000, 98264
+[PASS] A8 ru and 1-ru exactly representable in binary64 for all r <= 98264
+[PASS] A9 computed gamma_r = RN(ru/(1-ru)) (oracle) and relative error <= u for all r  (max rel err = 1.0000 u)
+[PASS] A10 with the computed gamma_r: (1-u) gamma_hat (1-gamma_{r-1}) > gamma_{r-1} for all r <= 98264
+[PASS] A11 (1-u)^(r-1) >= 1-(r-1)u >= 1-gamma_{r-1} at r = 98264 (exact; Bernoulli for all r)
+
+--- B. Fixed-point products (2.22), upper division (2.23), zero prefixes, correlation (2.24), (2.25) ---
+[PASS] B1 (2.23) floor((p+Q-1)/Q) = ceil(p/Q) for all tested integers p (incl. negative), b in {1,5,53,64,192,224}  (18000 integers)
+[NEG-CAUGHT] B1n plain floor(p/Q) used as an upper division is not an upper bound
+[PASS] B2 (2.22) single truncated products enclose the exact product, lower endpoints stay >= 0  (240 products)
+[PASS] B3 chained (2.22): P^40 and 40P^39R+1560P^38S^2 enclosed exactly at b = 8 and b = 224  (b=8 max relative width of P^40 enclosure 21519804500150502830945624033067008.000)
+[NEG-CAUGHT] B4n ceil in the lower product (2.22) is caught
+[NEG-CAUGHT] B5n floor in the upper product (2.22) is caught
+[NEG-CAUGHT] B6n negative lower endpoints (violating 0 <= A-/Q) are caught
+[NEG-CAUGHT] B7n upper endpoints used in the lower product are caught
+[PASS] B8 160-bit arb coordinates -> 224-bit floor/ceil -> K^5 (2.22) encloses the 400-bit arb product (certain)
+[PASS] B9 zero-prefix removal gives exactly the same (2.22) result (incl. vA+vB >= n -> 0)  (300 cases)
+[NEG-CAUGHT] B9n prefix removed but X^(vA+vB) not restored is caught
+[PASS] B10 (2.24) reversed correlation identity, 200 random signed integer cases, all j
+[NEG-CAUGHT] B10n without the reversal of I the identity fails
+[PASS] B11 (2.25) floor/ceil prefix + outward conversion encloses v/2^b (b=192,224; |v| up to 2^1200, prefix rule used above 2^1000)  (8000 cases)
+[PASS] B12 outward step after scaling encloses v*2^e incl. gradual underflow (double rounding <= one subnormal ulp)  (20000 cases, 9614 in the subnormal range)
+[PASS] B13 machine hypothesis: int->binary64 and ldexp are RN (exact oracle) on all B11/B12 cases
+[NEG-CAUGHT] B11n conversion without the outward predecessor step exceeds v/2^b for some v
+[NEG-CAUGHT] B12n outward step taken before (not after) a subnormal scaling can exceed the exact value
+[NEG-CAUGHT] B11n' floor in place of ceil for v_+ in (2.25) is not an upper bound
+[PASS] B14 hull of the four outward-rounded endpoint products encloses the exact interval product (incl. underflow)
+[PASS] B15 machine hypothesis: binary64 products are RN incl. gradual underflow (exact oracle), 80000 products
+[NEG-CAUGHT] B14n endpoint products without the outward step are caught
+
+--- C. Final reductions: s = fl(sum x), t = fl(sum |x|), endpoints pred(fl(s - fl(gamma_r t))) etc. ---
+[PASS] C1 endpoints enclose the exact signed sum on every instance  (1294 reductions, r up to 98264, 4 tree shapes, 7 families)
+[PASS] C2 each link of the proof holds exactly on every instance: |s-S|<=g_{r-1}T, t>=(1-g_{r-1})T, fl(g t)>=(1-u)^2 g_r t-2^-1075, outward step absorbs >=2^-1075  (max |s-S|/(gamma_(r-1) T) = 1.0000; 272 cases with subnormal gamma*t)
+[PASS] C3 machine hypothesis: every binary64 + and * in Section C equals the exact RN oracle  (1745854 operations)
+[NEG-CAUGHT] C4n correction fl(gamma_r t)/4 fails on the adversarial sum [1, u x 999] (seq)
+[NEG-CAUGHT] C5n gamma for r/2 terms instead of r fails on the adversarial sum [1, u x 2999]
+[NEG-CAUGHT] C6n no correction and no outward step (plain fl sum) fails on [1, u x 999]
+      note: on [1, u x 2999] the true error is 1.0000 of gamma_(r-1) T
+
+--- D. Lemma 2.1 tail bounds (referenced by Sec. 2.3) ---
+[PASS] D1 Lemma 2.1 log and exp tail bounds hold (certain arb comparisons at 300 bits)  (135 (v, M) pairs)
+[NEG-CAUGHT] D1n halved log tail bound is violated somewhere
+
+--- E. Secondary: renewal majorant (2.3), interval-carried as on p. 12 ---
+[PASS] E1 interval scheme of p. 12 contains the exact rational R_j, M = 2..63, j < min(6M,400)  (12090 values)
+[PASS] E2 R_j > rho(j/M) certain on M <= j <= 2M for every M = 2..63 (rho = 1 - log u)  (2077 values)
+[PASS] E3 interval scheme reaches the 1e-40 switch with positive lower endpoints for every M = 2..63  (j* = 2:62, 3:88, 6:166, 12:319, 25:652, 50:1292, 63:1624)
+[PASS] E4 large-M renewal (M in {64,93,300,1000,4096,24270}): positive lower endpoints for all j < 98304 (or until switch); R_j > rho(j/M) on sampled (M,2M]  (M=64: j*=1650, last R=[9.63e-41 +/- 3.95e-45]; M=93: j*=2392, last R=[9.70e-41 +/- 1.86e-44]; M=300: j*=7687, last R=[1.00e-40 +/- 7.70e-45]; M=1000: j*=25595, last R=[9.98e-41 +/- 4.57e-44]; M=4096: j*=None, last R=[2.03e-37 +/- 4.87e-40]; M=24270: j*=None, last R=[0.00433 +/- 4.23e-6])
+[PASS] E5 R_j > rho(j/M) certain on 2M < j <= 3M for M in {3,6,12,25,50} (acb.integral)  (96 values)
+[PASS] E6 [2,3] closed form of rho agrees with the integrated delay equation at u = 5/2 (balls overlap, width < 1e-30)  (rho(5/2) = 0.130319561832251, rad < 1e-30)
+[NEG-CAUGHT] E7n window of M-1 terms (M=12) gives R_13 < rho(13/12): caught
+
+====================================================================================================
+checks: 31, failures: 0; negative controls: 19, caught: 19
+wall 54.5 s, peak RSS 49 MB
+VERDICT: all positive checks pass and all negative controls are caught

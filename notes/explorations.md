@@ -3,6 +3,25 @@
 Each entry: date, session, idea, what was tried, outcome (dead end / inconclusive / promising), why.
 "Promising" is not a result: it goes to the ideas ledger (origin "exploration") and needs the usual checks.
 
+## 2026-11-27, Session 60 -- Twin primes and the decidability of Presburger arithmetic with primes (mathematical logic)
+- Idea: a field not tried before. The twin prime conjecture is a single sentence of FO(N; <, P) (successor is definable
+  from <). Bateman-Jockusch-Woods (1993) showed that Dickson's conjecture makes FO(N; <, P) decidable, and Nieuwveld
+  (arXiv:2611.32977v1, 24 Nov 2026) has just proved FO(N; +, P) undecidable unconditionally, via Hildebrand-Maier's
+  positive-measure set of limit points of normalised consecutive gaps and "arbitrary permutations" of the differences
+  p_i - q_i between two blocks of consecutive primes. Question: does the two-block device, or the logic side, give any
+  handle on small gaps or on parity?
+- Tried: read the abstract, Section 1 and the closing remarks of the PDF (SHA-256 41ad9a8a...ee6bba; pp. 1-2 and the last
+  page; Literature at that depth only). Checked where gaps enter: only at scale lambda log p (Hildebrand-Maier), never at
+  fixed size; the paper itself says (p. 1) that an unconditional proof of the decidability of FO(N; <, P) "would
+  effectively settle the twin prime conjecture", and it expects the existential fragment of FO(N; +, P) to be decidable
+  under Dickson.
+- Outcome: dead end. Why: (1) the logic gives equivalences, not proofs: a decision procedure would decide the TPC
+  sentence but nobody has one, and undecidability of the full theory says nothing about a single Pi_2 sentence;
+  (2) the two-block permutation lemma works with normalised gaps, where small gaps (normalised limit point 0) are
+  already known from GPY, and it gives no control at a fixed difference 2, which is exactly where parity bites;
+  (3) the bounded-gaps theorem is itself a true Pi_2 sentence "for all N there is x > N and d <= 246 with P(x), P(x+d)",
+  so the logical form adds no new information. One sentence for connections.md at most. Heuristic / exploratory only.
+
 ## 2026-11-26, Session 57 -- Twin primes inside the Friedlander-Iwaniec thin set n = a^2 + b^4 (thin parity-breaking sets)
 - Idea. Friedlander-Iwaniec break parity for primes in the thin set {a^2 + b^4} because n = N(a + i b^2) gives
   bilinear structure in Z[i]. Is the pair (n, n+2) special inside this set (a thin set where twins are over- or
