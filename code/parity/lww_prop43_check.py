@@ -10,7 +10,8 @@ Sections
      I_j = [j/(d0YM^2), (j+1)/(d0YM^2)).                                     exact integers
  (B) block count (pp. 28-29): in each block, |det(P0, P)| < 256 d0Y; for each h at most 16
      P with det(P0,P) = h; so #block <= 16(2*256 d0Y - 1) << d0Y.               exact integers
- (C) toy operator model on positions Omega cap C with several states per position, constant
+ (C) toy operator model (checks the linear algebra; its (4.57) test is weak because the 65-block
+     window covers most of the toy j-range -- the localisation is carried by (A)) on positions Omega cap C with several states per position, constant
      weight sigma, conjugate-linear-first inner product (4.21), S = fibrewise averaging, G
      = fibrewise 0/1 mask, T = random kernel times psi_{-2}(det(P,Q)/(D Y)) 1_{d0<=D<2d0},
      A = G S T S G.  Checks (4.57), (4.63) identities, sum ||g_j||^2 = 65||g||^2,
@@ -61,6 +62,8 @@ PARAMS = [(2, 3, 4, 10), (4, 2, 3, 7), (1, 5, 2, 6), (8, 1, 3, 5), (1, 1, 6, 9)]
 print("== (A) localisation: |det(P,Q)| < 32 d0 Y  =>  |j-k| <= 32")
 fails = tot = 0
 neg16 = 0
+neg48 = 0
+tot48 = 0
 maxjk = 0
 for (d0, Y, M, N) in PARAMS:
     W = d0 * Y * M * M
@@ -74,11 +77,16 @@ for (d0, Y, M, N) in PARAMS:
     tot += int(near.sum())
     fails += int((JK[near] > 32).sum())
     neg16 += int((JK[near] > 16).sum())
+    # NEG (audit finding 1): support widened by 50% (psi_1(-u/3): |det| < 24 D Y < 48 d0 Y), window kept at 32
+    near48 = DET < 48 * d0 * Y
+    tot48 += int(near48.sum())
+    neg48 += int((JK[near48] > 32).sum())
     mx = int(JK[near].max())
     maxjk = max(maxjk, mx)
     print(f"   (d0,Y,M,N)={d0, Y, M, N}: {len(pos)} primitive positions, {int(near.sum())} near pairs, max |j-k| = {mx}")
 report("A |det| < 32 d0Y => |j-k| <= 32", 'POS', fails, tot)
 report("NEG A window 16 in place of 32", 'NEG', neg16, tot)
+report("NEG A kernel support widened to |det| < 48 d0Y (psi_1(-u/3)), window 32", 'NEG', neg48, tot48)
 
 # ---------------------------------------------------------------- (B)
 print("== (B) block count #{P primitive in Omega : P2/P1 in I_j} << d0 Y")
@@ -226,7 +234,7 @@ for trial in range(5):
         g16 = np.where(np.abs(Jst - j) <= 16, g, 0)
         negw += int(np.abs((A @ g16 - Ag)[inj]).max() > 1e-9)
         negnl += int(np.abs((Anl @ gj - Anl @ g)[inj]).max() > 1e-9)
-report("C (4.57) (A g)(P,p) = (A g_j)(P,p) for P2/P1 in I_j", 'POS', fails, 5 * len(blocks))
+report("C (4.57) (A g)(P,p) = (A g_j)(P,p) for P2/P1 in I_j [weak: window covers most of the toy j-range; (A) carries (4.57)]", 'POS', fails, 5 * len(blocks))
 report("NEG C (4.57) with window 16", 'NEG', negw, 5 * len(blocks))
 report("NEG C (4.57) for a non-local operator (psi cutoff removed)", 'NEG', negnl, 5 * len(blocks))
 
@@ -260,7 +268,7 @@ for j in blocks:
     exp_ = sum(fpos[i] * uP(i) for i in range(len(posC)) if Jpos[i] == j)
     e3 += int(np.abs(exp_ - f_bl[j]).max() > 1e-12)
 report("C (4.63) <f,Ag> = sum_j <f_j,A g_j> = sum_j <A* f_j, g_j>", 'POS', int(e1 > 1e-8), 1, f"(err {e1:.1e})")
-report("C sum ||f_j||^2 = ||f||^2, sum ||g_j||^2 <= 65 ||g||^2", 'POS', e2, 2,
+report("C sum ||f_j||^2 = ||f||^2, sum over occupied j of ||g_j||^2 <= 65 ||g||^2", 'POS', e2, 2,
        f"(ratio {sg / ip(g, g).real:.3f})")
 report("C f_j = sum_{P in block} f(P) u_P", 'POS', e3, len(blocks))
 
@@ -329,7 +337,7 @@ for R in (1, 2, 3, 4, 6):
 report("C (4.61) M_j PSD and lambda_max(M_j) <= d_j = tr M_j", 'POS', f461, tot461)
 report("C (4.62) <f_j,B^R f_j> = xi* M_j xi <= lambda_max |xi|^2 <= d_j #block sup|f|^2", 'POS', f462, tot461)
 report("C (4.64) Hoelder step", 'POS', f464, 5)
-report("C (4.65)-(4.66) assembled bound with explicit constants (65, max block count)", 'POS', f466, 5)
+report("C (4.65)-(4.66) assembled bound with explicit constants (65, max block count) [sanity only: 6-8 orders of slack, no NEG]", 'POS', f466, 5)
 report("NEG C lambda_max <= trace for the indefinite M_j built from A + A*", 'NEG', negB, tot461)
 report("NEG C (4.62) without the block count (xi = top eigenvector, sup 1)", 'NEG', negcnt, tot461)
 report("NEG C Hoelder with swapped exponents", 'NEG', negh, 4)

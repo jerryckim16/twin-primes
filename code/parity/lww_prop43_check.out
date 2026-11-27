@@ -6,6 +6,7 @@
    (d0,Y,M,N)=(1, 1, 6, 9): 540 primitive positions, 13736 near pairs, max |j-k| = 27
 [POS] A |det| < 32 d0Y => |j-k| <= 32: 0/1125768 failures -> ok 
 [NEG] NEG A window 16 in place of 32: 1258/1125768 failures -> ok 
+[NEG] NEG A kernel support widened to |det| < 48 d0Y (psi_1(-u/3)), window 32: 92/1671690 failures -> ok 
 == (B) block count #{P primitive in Omega : P2/P1 in I_j} << d0 Y
 [POS] B |det(P0,P)| < 256 d0Y inside a block: 0/6636 failures -> ok 
 [POS] B at most 16 primitive P with det(P0,P) = h (blocks; and all of Omega for 100 random P0): 0/312 failures -> ok (max observed 2)
@@ -17,11 +18,11 @@
 == (C) toy operator model
    767 positions in Omega cap C, 1516 states, blocks j in [2, 72]
    S^2 = S: 0.0e+00; nonzero kernel entries 60222
-[POS] C (4.57) (A g)(P,p) = (A g_j)(P,p) for P2/P1 in I_j: 0/260 failures -> ok 
+[POS] C (4.57) (A g)(P,p) = (A g_j)(P,p) for P2/P1 in I_j [weak: window covers most of the toy j-range; (A) carries (4.57)]: 0/260 failures -> ok 
 [NEG] NEG C (4.57) with window 16: 12/260 failures -> ok 
 [NEG] NEG C (4.57) for a non-local operator (psi cutoff removed): 260/260 failures -> ok 
 [POS] C (4.63) <f,Ag> = sum_j <f_j,A g_j> = sum_j <A* f_j, g_j>: 0/1 failures -> ok (err 3.6e-15)
-[POS] C sum ||f_j||^2 = ||f||^2, sum ||g_j||^2 <= 65 ||g||^2: 0/2 failures -> ok (ratio 36.684)
+[POS] C sum ||f_j||^2 = ||f||^2, sum over occupied j of ||g_j||^2 <= 65 ||g||^2: 0/2 failures -> ok (ratio 36.684)
 [POS] C f_j = sum_{P in block} f(P) u_P: 0/52 failures -> ok 
    B = A A*: min eig -1.9e-15, max eig 1.514e+00
    R=1: |<f,Af>|^2 = 9.261e-01 <= 7.266e+07;  sum d_j = 1.248e+02
@@ -32,7 +33,7 @@
 [POS] C (4.61) M_j PSD and lambda_max(M_j) <= d_j = tr M_j: 0/260 failures -> ok 
 [POS] C (4.62) <f_j,B^R f_j> = xi* M_j xi <= lambda_max |xi|^2 <= d_j #block sup|f|^2: 0/260 failures -> ok 
 [POS] C (4.64) Hoelder step: 0/5 failures -> ok 
-[POS] C (4.65)-(4.66) assembled bound with explicit constants (65, max block count): 0/5 failures -> ok 
+[POS] C (4.65)-(4.66) assembled bound with explicit constants (65, max block count) [sanity only: 6-8 orders of slack, no NEG]: 0/5 failures -> ok 
 [NEG] NEG C lambda_max <= trace for the indefinite M_j built from A + A*: 195/260 failures -> ok 
 [NEG] NEG C (4.62) without the block count (xi = top eigenvector, sup 1): 75/260 failures -> ok 
 [NEG] NEG C Hoelder with swapped exponents: 2/4 failures -> ok 
@@ -49,6 +50,6 @@
 [NEG] NEG D (d0YMN)^{1/(2R)} (no localisation) bounded by e^{4K}: 952/1200 failures -> ok 
 == SUMMARY
 positive checks: 16, failing: 0
-negative controls: 12, failing as they must: 12
+negative controls: 13, failing as they must: 13
 unexpected outcomes: 0 []
-wall time 8.2 s
+wall time 43.6 s
