@@ -22,3 +22,4 @@ import TwinPrimes.MaynardHpw
 import TwinPrimes.MaynardS2
 import TwinPrimes.MaynardS2Hpw
 import TwinPrimes.MaynardS2Y
+import TwinPrimes.MaynardS2Mult
