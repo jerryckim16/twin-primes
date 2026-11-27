@@ -345,7 +345,7 @@ the hypothesis \texttt{ShiftsCop}; Session~56 weakened it from $|h_i-h_j|\mid W$
 when a difference is not squarefree). A short note on these files is \texttt{papers/}\allowbreak\texttt{lean-reduction/}.
 Not formalised: the size of $B$ (an analytic step in \cite{May15}), and the asymptotics of $S_1$ and $S_2$.
 \item (\texttt{MaynardS2.lean}, \texttt{MaynardS2Hpw.lean}, the finite part of \cite[Lemma~5.2]{May15}) For
-$S_2^{(m)}$, the sum of the squared weights over $n$ with $n+h_m$ prime (an abstract sound primality test), the
+$S_2^{(m)}$, the sum of the squared weights over $n$ with $n+h_m$ prime (an abstract primality test assumed sound; the sum is $S_2^{(m)}$ when the test is exact), the
 square expands exactly over pairs $(\mathbf d,\mathbf e)$; if $d_m<N_0+h_m$ on the support, only pairs with
 $d_m=e_m=1$ contribute; under \texttt{ShiftsCop} and entries coprime to $W$, pairs whose remaining moduli are not
 pairwise coprime contribute $0$; and each remaining count is a count of $n$ with $n+h_m$ prime in one residue class
