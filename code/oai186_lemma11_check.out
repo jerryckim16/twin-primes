@@ -1,0 +1,195 @@
+[0] parameters
+  PASS rho = 262499/10^6
+  PASS rho* = 2624989/10^7 ([14] (1.1), [8] (4.1))
+  PASS S = 2742997/2624989
+  PASS T1 = 2510000/2624989
+  PASS T0 = 2 - 3/1000 - S = 2499106033/2624989000
+  PASS 0 < T0 < T1 < S
+  PASS rho*S = 2742997/10^7, rho*T0 = 2499106033/10^10, rho*T1 = 251/1000 (1.2)
+  PASS [8] (4.2): rho*S < 11/40 and rho*T1 < 11/40
+  PASS sigma_{m,tau} = 1/2 - a* + tau = 9519/100000 + 10^-10 ([8] (4.11), (2.19) a*=0.40481)
+  PASS [8] (2.19): b* = 1 - a*
+  PASS [8] Prop 2.22 proof: tau = 10^-10 is allowed (0 < tau <= 10^-10)
+  PASS Omega_o < 1/12 and Omega_n < 1/12
+  PASS [8] Prop 2.22 example: 1/2 + 2*253/20000 = 0.5253
+[1] ladders (1.15)-(1.17)
+  PASS ladder o: 29 rows, order counts (12, 12, 5)
+  PASS ladder o: only the last row is terminal (omega = Omega)
+  PASS ladder o: omega strictly increasing
+  PASS ladder o: block formula W + (2/s)^j (v - W) reproduces every untruncated value
+  PASS ladder o: delta - E + 2 omega_(t-1) = g0 on every nonterminal row
+  PASS enclosure 10^6 omega_o r=1 in [2533, 5696]   [actual [2533.72139, 5695.94512] (floor/ceil match)]
+  PASS enclosure 10^6 omega_o r=2 in [7051, 8855]   [actual [7051.43921, 8854.93097] (floor/ceil match)]
+  PASS enclosure 10^6 omega_o r=3 in [10332, 12499]   [actual [10332.753, 12499] (floor/ceil match)]
+  PASS retained o: rows 0..27, none terminal
+  PASS (1.17) thresholds (A,C) on every retained o row
+  PASS ladder n: 43 rows, order counts (12, 12, 19)
+  PASS ladder n: only the last row is terminal (omega = Omega)
+  PASS ladder n: omega strictly increasing
+  PASS ladder n: block formula W + (2/s)^j (v - W) reproduces every untruncated value
+  PASS ladder n: delta - E + 2 omega_(t-1) = g0 on every nonterminal row
+  PASS enclosure 10^6 omega_n r=1 in [2676, 6018]   [actual [2676.82403, 6017.64774] (floor/ceil match)]
+  PASS enclosure 10^6 omega_n r=2 in [7267, 8932]   [actual [7267.91295, 8931.39716] (floor/ceil match)]
+  PASS enclosure 10^6 omega_n r=3 in [10326, 12650]   [actual [10326.1544, 12650] (floor/ceil match)]
+  PASS retained n: rows 0..38, none terminal
+  PASS (1.17) thresholds (A,C) on every retained n row
+  PASS retained rows: To = 0..27, Tn = 0..38
+[2] distribution hypotheses ([8] Prop 2.16, 2.17, Cor 2.19, Prop 2.18 (2.14), Prop 2.22 (2.24)), retained rows; per condition least margin
+     n r=1 1/18+28w/9+2d/9<19/200-tau (2.24)      least margin     0.01777331 (row 11)
+     n r=1 1/2+2w<b*-tau (2.24)                   least margin    0.083154704 (row 11)
+     n r=1 1/4+7w+2d<c*-tau (2.24)                least margin    0.019222231 (row 0)
+     n r=1 54w+15d+5s<1 (2.11)                    least margin        1.5e-06 (row 0)
+     n r=1 68w+14d<1 [P2.22]                      least margin     0.40497747 (row 11)
+     n r=1 delta<1/4+omega                        least margin     0.22737682 (row 0)
+     n r=1 delta>0                                least margin    0.013273035 (row 11)
+     n r=1 omega<1/12                             least margin    0.077315686 (row 11)
+     n r=1 omega>0                                least margin    0.002676824 (row 0)
+     n r=1 sigma_mt<1/2                           least margin        0.40481 (row 0)
+     n r=1 sigma_mt>0                             least margin        0.09519 (row 0)
+     n r=2 1/18+28w/9+2d/9<19/200-tau (2.24)      least margin    0.010003984 (row 23)
+     n r=2 1/2+2w<b*-tau (2.24)                   least margin    0.077327206 (row 23)
+     n r=2 1/4+7w+2d<c*-tau (2.24)                least margin      0.0111552 (row 12)
+     n r=2 56w+16d+4s<1 (2.11)                    least margin        1.6e-06 (row 12)
+     n r=2 68w+14d<1 [P2.22]                      least margin     0.28846985 (row 23)
+     n r=2 delta<1/4+omega                        least margin     0.24400321 (row 12)
+     n r=2 delta>0                                least margin   0.0074425099 (row 23)
+     n r=2 omega<1/12                             least margin    0.074401936 (row 23)
+     n r=2 omega>0                                least margin    0.007267913 (row 12)
+     n r=2 sigma_mt<1/2                           least margin        0.40481 (row 12)
+     n r=2 sigma_mt>0                             least margin        0.09519 (row 12)
+     n r=3 1/18+28w/9+2d/9<19/200-tau (2.24)      least margin  9.4631499e-05 (row 38)
+     n r=3 1/2+2w<b*-tau (2.24)                   least margin    0.069894952 (row 38)
+     n r=3 1/4+7w+2d<c*-tau (2.24)                least margin  9.6855971e-06 (row 38)
+     n r=3 48w+16d+4s<1 (2.14)                    least margin    0.004589294 (row 24)
+     n r=3 64w+20d+2s<1 (2.14)                    least margin          2e-06 (row 24)
+     n r=3 72w+24d<1 (2.14)                       least margin    0.078023942 (row 24)
+     n r=3 delta<1/4+omega                        least margin     0.25288895 (row 24)
+     n r=3 delta>0                                least margin   8.823601e-06 (row 38)
+     n r=3 omega<1/12                             least margin    0.070685809 (row 38)
+     n r=3 omega>0                                least margin    0.010326154 (row 24)
+     n r=3 sigma_mt<1/2                           least margin        0.40481 (row 24)
+     n r=3 sigma_mt>0                             least margin        0.09519 (row 24)
+     o r=1 1/18+28w/9+2d/9<sigma (2.12)           least margin    0.023874371 (row 11)
+     o r=1 108w+30d<1 (2.15)                      least margin          4e-05 (row 0)
+     o r=1 54w+15d+5s<1 (2.11)                    least margin        1.5e-05 (row 0)
+     o r=1 68w+14d<1 [P2.16]                      least margin     0.43310337 (row 11)
+     o r=1 delta<1/4+omega                        least margin     0.22832312 (row 0)
+     o r=1 delta>0                                least margin    0.012826598 (row 11)
+     o r=1 omega<1/12                             least margin    0.077637388 (row 11)
+     o r=1 omega>0                                least margin   0.0025337214 (row 0)
+     o r=1 sigma<1/2                              least margin       0.399999 (row 0)
+     o r=1 sigma>0                                least margin       0.100001 (row 0)
+     o r=1 sigma>1/10 [C2.19 HB]                  least margin          1e-06 (row 0)
+     o r=1 sigma>2w [C2.19]                       least margin     0.08860911 (row 11)
+     o r=2 1/18+28w/9+2d/9<sigma (2.12)           least margin    0.015450883 (row 23)
+     o r=2 280w+80d<3 (2.15)                      least margin         0.0001 (row 12)
+     o r=2 56w+16d+4s<1 (2.11)                    least margin        1.6e-05 (row 12)
+     o r=2 68w+14d<1 [P2.16]                      least margin     0.30677381 (row 23)
+     o r=2 delta<1/4+omega                        least margin     0.24423273 (row 12)
+     o r=2 delta>0                                least margin   0.0065064916 (row 23)
+     o r=2 omega<1/12                             least margin    0.074478402 (row 23)
+     o r=2 omega>0                                least margin   0.0070514392 (row 12)
+     o r=2 sigma<1/2                              least margin       0.399999 (row 12)
+     o r=2 sigma>0                                least margin       0.100001 (row 12)
+     o r=2 sigma>1/10 [C2.19 HB]                  least margin          1e-06 (row 12)
+     o r=2 sigma>2w [C2.19]                       least margin    0.082291138 (row 23)
+     o r=3 1/18+28w/9+2d/9<sigma (2.12)           least margin   0.0057712985 (row 27)
+     o r=3 240w+80d<3 (2.15)                      least margin          8e-05 (row 24)
+     o r=3 48w+16d+4s<1 (2.14)                    least margin          8e-06 (row 24)
+     o r=3 64w+20d+2s<1 (2.14)                    least margin  0.00036539751 (row 27)
+     o r=3 72w+24d<1 (2.14)                       least margin       0.100024 (row 24)
+     o r=3 delta<1/4+omega                        least margin     0.25383201 (row 24)
+     o r=3 delta>0                                least margin  0.00026104813 (row 27)
+     o r=3 omega<1/12                             least margin    0.070920683 (row 27)
+     o r=3 omega>0                                least margin    0.010332753 (row 24)
+     o r=3 sigma<1/2                              least margin       0.399998 (row 24)
+     o r=3 sigma>0                                least margin       0.100002 (row 24)
+     o r=3 sigma>1/10 [C2.19 HB]                  least margin          2e-06 (row 24)
+     o r=3 sigma>2w [C2.19]                       least margin    0.075176699 (row 27)
+  PASS all strict hypotheses hold on all 67 retained rows   [least margin 1e-06 at (o,0) sigma>1/10 [C2.19 HB]]
+  PASS every required strict margin exceeds 10^-8 (retained rows)
+  PASS (extra) the hypotheses also hold on the terminal rows (o,28), (n,42)   [least margin over all 72 ladder rows 8.9999e-07 at (n,42) delta>0]
+  PASS least positive density over all ladder rows is 89999/10^11   [at [('n', 42)]; least over retained rows = 8.823600976e-06]
+  PASS old r=3: sigma = 1/10 + (3-240w-80d)/40 = 1/10 + 2 eps_o on every row
+  PASS old r=1: 54w+15d+5 sigma0 = 1 - 15 eps_o; r=2: 56w+16d+4 sigma0 = 1 - 16 eps_o
+  PASS new r=3: 64w+20d+2 sigma_mt = 1 - 20 eps_n
+  PASS Type III parameter: 1/18+28w/9+2d/9 < 19/200 - tau on every retained new row
+[3] transfer hypotheses ([8] Lemma 4.1, Prop 4.2)
+  PASS Lemma 4.1 guards: B+xi >= 2T (r=1), B+xi >= max(2S-T, 2T-S) (r=2) on all retained rows   [least slack 0.08876151481]
+  PASS [14] reduction: guards == S-T_nu+e >= 0 and min(2T_nu-S, 2S-T_nu)+e >= 0
+  PASS identity B + xi = S + T_nu + e on every nonterminal row
+  PASS r<=2 predicate threshold a+xi equals A, b+xi equals C ([8] Lemma 4.1 vs [14] (1.21))
+  PASS r=3 budget A + C = B + xi (so A + C <= B + xi, [8] (4.6))
+  PASS r=3: eta = xi - e/2 > 0
+  PASS r=3: A >= C > L = 23C/40 > 0
+  PASS r=3: A <= 11C/10 < 161C/120 = 7L/3
+  PASS (4.10): phi_D, phi_E nonnegative, nondecreasing, phi(0)=0, phi_D+phi_E = 3u (piecewise linear: slopes 3/2,0 and 3/2,3)
+  PASS radius hypotheses of Lemma 4.1/Prop 4.2: largest outer total 98303h < S, base 89563h <= T0, enlarged 89953h <= T1   [S/h=98304, T0/h=89563.3934226, T1/h=89953.8132925]
+  PASS floor(S/h)=98304, floor(T0/h)=89563, floor(T1/h)=89953
+[4] retreat and band coverage
+  PASS rho* < rho ([8] (4.19))
+  PASS level retreat: rho* B+ < 1/2 + 2 omega_t on all retained rows
+  PASS density retreat: rho* xi < delta on all retained rows
+  PASS initial BV band: B_{nu,0} = 1/(2 rho) and rho* B_0 < 1/2
+  PASS B+_{nu,t} = B_{nu,t+1} for all ladder rows
+  PASS floor(B/h): (o,27) 187773, (o,28) 188087, (n,38) 188254, (n,39) 188256   [{('o', 27): 187773, ('o', 28): 188087, ('n', 38): 188254, ('n', 39): 188256}]
+  PASS pair maxima S_box + T0_box = 187866h, S_box + T1_box = 188256h
+  PASS retained-row rule (1.20): B_{o,27} < 187866h <= B_{o,28}; B_{n,38} < 188256h <= B_{n,39}
+  PASS coverage: B+ of the last retained row >= pair maximum (o and n)
+  PASS B strictly increasing (bands are consecutive, nonoverlapping)
+  PASS min xi over retained rows > 33e-6 > 22e-6 > 2h   [min xi = 3.361384606e-05, 2h = 2.125967645e-05]
+[5] caps (1.18) and masks (1.5)
+  PASS (1.18) outer: running minimum of the row caps after each core equals the printed piecewise cap
+  PASS (1.18) outer: every row cap exceeds that row's activation
+  PASS (1.18) base: running minimum of the row caps after each core equals the printed piecewise cap
+  PASS (1.18) base: every row cap exceeds that row's activation
+  PASS (1.18) enlarged: running minimum of the row caps after each core equals the printed piecewise cap
+  PASS (1.18) enlarged: every row cap exceeds that row's activation
+  PASS (1.18) the printed caps are <= zeta and decrease
+  PASS a_{n,0} < a_{o,0}, a_{n,24} < a_{o,24}, and b_{o,t}, b_{n,t} increasing
+  PASS (1.5) outer mask   [[(0, 89196, 68225), (89197, 95598, 49152), (95599, 98263, 46580)]]
+  PASS (1.5) base mask   [[(0, 84930, 68225), (84931, 87194, 44781), (87195, 89524, 35265)]]
+  PASS (1.5) enlarged mask   [[(0, 85161, 68225), (85162, 87249, 44976), (87250, 89914, 35419)]]
+[6] six groups (1.22)-(1.24)
+  PASS O2: xi_G = xi_('o', 23) = min activation; U_G = min threshold; b_G = min core
+  PASS O2: p_G/h = floor(U_G/(2 m_G h)) = 24576
+  PASS O2: xi_G > 2h, xi_G < p_G <= z_G, z_G + m_G p_G <= U_G   [slack U-z-mp = 0.03583815897 h]
+  PASS O5/2: xi_G = xi_('n', 38) = min activation; U_G = min threshold; b_G = min core
+  PASS O5/2: p_G/h = floor(U_G/(2 m_G h)) = 19660
+  PASS O5/2: xi_G > 2h, xi_G < p_G <= z_G, z_G + m_G p_G <= U_G   [slack U-z-mp = 2574.017919 h]
+  PASS I2old: xi_G = xi_('o', 23) = min activation; U_G = min threshold; b_G = min core
+  PASS I2old: p_G/h = floor(U_G/(2 m_G h)) = 22390
+  PASS I2old: xi_G > 2h, xi_G < p_G <= z_G, z_G + m_G p_G <= U_G   [slack U-z-mp = 2.429260766 h]
+  PASS I5/2old: xi_G = xi_('o', 27) = min activation; U_G = min threshold; b_G = min core
+  PASS I5/2old: p_G/h = floor(U_G/(2 m_G h)) = 17912
+  PASS I5/2old: xi_G > 2h, xi_G < p_G <= z_G, z_G + m_G p_G <= U_G   [slack U-z-mp = 9518.411342 h]
+  PASS I2new: xi_G = xi_('n', 23) = min activation; U_G = min threshold; b_G = min core
+  PASS I2new: p_G/h = floor(U_G/(2 m_G h)) = 22488
+  PASS I2new: xi_G > 2h, xi_G < p_G <= z_G, z_G + m_G p_G <= U_G   [slack U-z-mp = 1.8491307 h]
+  PASS I5/2new: xi_G = xi_('n', 38) = min activation; U_G = min threshold; b_G = min core
+  PASS I5/2new: p_G/h = floor(U_G/(2 m_G h)) = 17990
+  PASS I5/2new: xi_G > 2h, xi_G < p_G <= z_G, z_G + m_G p_G <= U_G   [slack U-z-mp = 9559.831212 h]
+  PASS later 5/2 activation/threshold <= earlier order-two: O, I old, I new
+[7] common inner-square source ([8] (4.13)-(4.17), Lemma 4.3)
+  PASS (4.16) prime (Prop 2.16/2.17, sigma0): strict margins at (omega_s, delta_s)   [least margin 1.6e-05]
+  PASS (4.16) minorant (Prop 2.22, sigma_mt): strict margins at (omega_s, delta_s)   [least margin 0.0135624999]
+  PASS (4.16) 1/2 + 2 omega_s - 2 rho T1 = 55122259/13124945000 > 0
+  PASS (4.16) c_s + xi_s > 0 (Lemma 4.3 guard)   [1.050094112]
+  PASS (4.17) c_s - b_{n,12} > 4/100 and xi_s - xi_{n,12} > 5/100   [0.04291221453, 0.0509870337]
+  PASS C_{n,12} = b_{n,12} + xi_{n,12} < c_s + xi_s
+  PASS source level: rho* * 2 T1 < 1/2 + 2 omega_s; density rho* xi_s < delta_s; rho* B_BV < 1/2
+[8] negative controls (each perturbation must make the named check fail)
+  PASS NEG eps_o = 0 -> some strict distribution hypothesis fails   [54w+15d+5s<1 (2.11)]
+  PASS NEG Omega_n + 1e-5 (> W_n3) -> new ladder does not terminate (row count 43 check fails)   [402 rows (cut at 400)]
+  PASS NEG c* - 1e-5 -> (2.24) first bound fails on a retained new order-3 row   [1/4+7w+2d<c*-tau (2.24) at (n,38)]
+  PASS NEG sigma0 = 1/10 -> 'sigma>1/10' fails   [sigma>1/10 [C2.19 HB]]
+  PASS NEG tau = 1e-4 -> a reduced (2.24) bound fails   [1/4+7w+2d<c*-tau (2.24)]
+  PASS NEG rho* = rho -> strict level retreat fails
+  PASS NEG (o,28) is excluded by the rule (its B >= 187866h)
+  PASS NEG O2 with z_G/h = 49153 (one cell more) violates z+mp<=U
+  PASS NEG I2new with p_G/h = 22489 violates z+mp<=U
+  PASS NEG delta_s + 1e-4 -> 280w+80d<3 fails
+  PASS NEG guard is not vacuous: B+xi-2T0 at (o,0) is < 0.1   [0.09291161487]
+
+112 checks, 0 failures
+runtime 0.10 s
