@@ -23,7 +23,7 @@
 \title[The finite part of Maynard's reduction in core Lean]{The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The Lean sources are in \url{https://github.com/jerryckim16/twin-primes} (directory \tl{lean/}); the project's main paper is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 1.0, 26 November 2026}
+\date{Version 1.1, 27 November 2026}
 
 \begin{document}
 
@@ -38,9 +38,10 @@ the sieve inequality; for $k$-dimensional weights, the exact expansion of
 $S_1$, the Chinese-remainder count with its error, Maynard's change of
 variables $\lambda\leftrightarrow y$ for every $R$ and $k$, the
 diagonalisation of the main term, and the exact contribution of pairs whose
-moduli are not pairwise coprime, under the shift condition Maynard actually has. Not formalised: the asymptotics of $S_1$ and
+moduli are not pairwise coprime, under the shift condition Maynard actually has; and the
+same finite expansion of $S_2$ down to one prime-counting problem per pair of tuples. Not formalised: the asymptotics of $S_1$ and
 $S_2$ (which rest on the Bombieri--Vinogradov theorem), the size of the error
-terms, the finite expansion of $S_2$, the passage from real to integer
+terms, the change of variables in the main term of $S_2$, the passage from real to integer
 weights, and the variational inequality $M_k>4$. A Mathlib formalisation of
 $H_1\le246$ by another group has been announced; this
 note is a small independent check of the combinatorial skeleton, not a
@@ -221,6 +222,47 @@ that bound is not formalised.
 \end{itemize}
 \end{remark}
 
+\section{The finite part of the evaluation of \texorpdfstring{$S_2$}{S2}}\label{sec:s2}
+
+Fix a coordinate $m$ and put
+$S_2^{(m)}=\sum_{n}\mathbf 1[n+h_m\ \text{prime}]\big(\sum_{d\mid n+h}\lambda_d\big)^2$,
+with $n$ in $[N_0,N)$ and $n\bmod W=v_0$. Primality is an abstract Boolean test
+$\mathrm{pr}$ whose only hypothesis is soundness ($\mathrm{pr}(p)$ implies
+\tl{IsPrime}\ $p$); a trial-division test satisfying it is included. The Lean sum uses
+$\mathbf 1[\mathrm{pr}(n+h_m)]$; it is $S_2^{(m)}$ when $\mathrm{pr}$ is exact, which is
+not proved for the trial-division test. Write
+$d'$ for $d$ with the $m$-th entry removed, and $h'$ likewise.
+
+\begin{theorem}[\lbl{Lean-checked}; files \tl{MaynardS2.lean}, \tl{MaynardS2Hpw.lean}]\label{thm:s2}
+\begin{enumerate}
+\item \tl{maynard\_S2\_expand\_W} (no hypotheses): $S_2^{(m)}=\sum_{d,e\in D_k}\lambda_d\lambda_e\,c_m(d,e)$,
+where $c_m(d,e)$ counts the $n$ above with $n+h_m$ prime, $d\mid n+h$ and $e\mid n+h$.
+\item \tl{maynard\_S2\_support}, \tl{maynard\_S2\_reduced}: if $m<k$, every tuple has
+length $k$ and $d_m<N_0+h_m$ for every $d\in D_k$, only pairs with $d_m=e_m=1$
+contribute, and for them the conditions become $[d'_i,e'_i]\mid n+h'_i$.
+\item \tl{count\_zero\_reduced\_of\_not\_good}, \tl{maynard\_S2\_good\_reduced}: under
+the hypotheses of (2), (SC) and entries coprime to $W$, pairs whose moduli $[d'_i,e'_i]$ are not
+pairwise coprime also contribute $0$. So $S_2^{(m)}$ is an exact sum over pairs
+with $d_m=e_m=1$ and pairwise coprime moduli.
+\item \tl{maynard\_S2\_count\_residue}: for such a pair (entries $\ge1$,
+$v_0<W$), the count is that of $n\in[N_0,N)$ with $n+h_m$ prime in a single
+residue class modulo $q=W\prod_{i\ne m}[d_i,e_i]$.
+\end{enumerate}
+\end{theorem}
+
+\noindent This is the finite content of \cite[Lemma~5.2]{May15} up to the
+point where primes in arithmetic progressions enter. The hypothesis
+$d_m<N_0+h_m$ replaces Maynard's reason ($\lambda$ is supported on
+$\prod_id_i<R<N$). The bad-pair step uses neither the residue condition nor
+primality: an $S_2$ count is a sub-count of the corresponding $S_1$ count.
+Non-vacuity examples with every hypothesis discharged, for items (1)--(3), are in both
+files; item (4) has none.
+Not covered: that the class in (4) is coprime to $q$ (it follows from (SC) and
+$\gcd(v_0+h_m,W)=1$), the prime counts in the classes, the Bombieri--Vinogradov input,
+and the change of variables $\lambda\to y^{(m)}$ in the main term
+$\sum\lambda_d\lambda_e/\varphi(\prod_i[d_i,e_i])$ over good pairs
+\cite[(5.21)--(5.24) and Lemma~5.3, which uses (5.8)]{May15}.
+
 \section{What stays a hypothesis}\label{sec:hyp}
 
 The following are \emph{not} formalised. To use Theorem~\ref{thm:skeleton}(4) or
@@ -240,14 +282,15 @@ $\frac NW\sum_u y_u^2/\prod\varphi(u_i)=(1+o(1))\varphi(W)^kN(\log R)^kI_k(F)/W^
 (\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.1 and~6.2]{May15}).
 \end{hypothesis}
 
-\begin{hypothesis}[the finite expansion and main term of $S_2$]\label{hyp:s2}
-The analogue of Theorems~\ref{thm:s1} and~\ref{thm:diag} for
-$S_2^{(m)}=\sum_n w_n\mathbf 1[n+h_m\ \text{prime}]$, and the asymptotic
+\begin{hypothesis}[the main term of $S_2$]\label{hyp:s2}
+The prime counts in the classes of Theorem~\ref{thm:s2}(4), the analogue of
+Theorem~\ref{thm:diag} for $S_2^{(m)}$ (the change of variables to $y^{(m)}$),
+and the asymptotic
 $S_2=(1+o(1))\varphi(W)^kN(\log R)^{k+1}\sum_mJ^{(m)}_k(F)/(W^{k+1}\log N)$,
 which uses a level of distribution $\theta$ for the primes (for $\theta<1/2$,
 the Bombieri--Vinogradov theorem) (\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.2 and~6.3]{May15}; the level enters through the error term $O(y_{\max}^2N/(\log N)^A)$ of Lemma~5.2).
-The finite expansion is elementary but not yet written in Lean; it is the
-next step of this programme.
+The change of variables to $y^{(m)}$ is
+elementary and is the next step of this programme.
 \end{hypothesis}
 
 \begin{hypothesis}[the variational inequality]\label{hyp:var}
@@ -290,12 +333,12 @@ already known.
 
 \begin{itemize}
 \item Toolchain: Lean~4.35.0 (official release), no Mathlib, no other dependencies.
-\item \tl{cd lean \&\& lake build} builds all $21$ files of \tl{TwinPrimes/}
-($5720$ lines; \tl{Reduction.lean}, the five \tl{Maynard*} files and the two \tl{Mu*} files total $2543$).
-\item \tl{lake env lean Audit.lean} prints the axioms of $209$ declarations: $116$
-use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $54$ use
-\tl{propext}, \tl{Quot.sound}; $11$ use \tl{propext}; $28$ use none. No
-\tl{sorryAx}, no other axiom (run of 26 November 2026).
+\item \tl{cd lean \&\& lake build} builds all $23$ files of \tl{TwinPrimes/}
+($6309$ lines; \tl{Reduction.lean}, the seven \tl{Maynard*} files and the two \tl{Mu*} files total $3132$).
+\item \tl{lake env lean Audit.lean} prints the axioms of $239$ declarations: $129$
+use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $61$ use
+\tl{propext}, \tl{Quot.sound}; $21$ use \tl{propext}; $28$ use none. No
+\tl{sorryAx}, no other axiom (run of 27 November 2026).
 \item \tl{grep} finds no \tl{sorry}, \tl{native\_decide} or \tl{axiom}
 declaration in \tl{TwinPrimes/}. Finite facts (admissibility of the $50$-tuple,
 sign tables for small $c$) use \tl{decide}, checked by the kernel.
@@ -311,12 +354,16 @@ listed here only. Before release, an internal fresh-context audit (23 items:
 2 errors, 2 gaps, 3 overstatements, slips and style) was applied; it led to
 the weaker shift condition (SC) in \tl{MaynardHpw.lean}
 (\tl{notes/audit-lean-note-v10.md}).
+\item[1.1] (27 Nov 2026) Section~\ref{sec:s2}: the finite expansion of $S_2$
+(\tl{MaynardS2.lean}, \tl{MaynardS2Hpw.lean}); Hypothesis~\ref{hyp:s2} narrowed
+accordingly; build and audit counts updated; an internal fresh-context audit (2 gaps, 2
+overstatements, a wrong theorem name, a citation) applied; author count of \cite{Axiom26} corrected ($42$, not $40$).
 \end{description}
 
 \begin{thebibliography}{9}
-\bibitem{Axiom26} R.~Aanegola, A.~Alfarano, F.~Charton, E.~Chen, \dots, Y.~Zhu (Axiom Math; 40 authors),
+\bibitem{Axiom26} R.~Aanegola, A.~Alfarano, F.~Charton, E.~Chen, \dots, Y.~Zhu (Axiom Math; 42 authors),
 \emph{Lean formalization of bounded gaps between primes} (PrimeGapsLib), 2026.
-\url{https://primegaps.axiommath.ai/} (read 26 November 2026).
+\url{https://primegaps.axiommath.ai/} (read 26 November 2026; author list recounted 27 November).
 \bibitem{May15} J.~Maynard, \emph{Small gaps between primes}, Ann. of Math.\
 \textbf{181} (2015), 383--413; arXiv:1311.4600v3 (read; SHA-256 of the PDF
 \texttt{dce1a7a0\dots d63cda9}).

@@ -3,33 +3,41 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 58, 11:34 AM CT research run of 26 Nov, started 17:34 UTC): PHASE B
+## POSITION (after Session 59, 7:34 PM CT paper run of 26 Nov, started 01:35 UTC 27 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
-  lean-reduction v1.0 (26 Nov, programme (4), active; next v1.1 adds MaynardS2 + MaynardS2Hpw, paper run); main paper v0.52.
-  Paused: toolkit note (5), H_m, 182.
+  lean-reduction v1.1 (27 Nov; adds the finite part of S2; audited); main paper v0.53. Paused: toolkit note (5), H_m, 182.
 - Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, still v2, checked 26 Nov ~17:36 UTC) open. Checked so far: Prop. 4.2 thinning (S53), p. 54
-  identity under R1 (S54), pp. 54-58 (S55), pp. 48-53 (S56), (4.121) + Prop. 4.5(i)/(4.95) pp. 37-47 (S57, conditional
-  on U1-U7), Lemma A.1 + (4.86)-(4.88) (S58, proved relative to Weil/Estermann etc.; discharges U1). No error in LWW.
-  Next in line: Prop. 4.4/(4.73) (pp. 31-33); Prop. 4.3 (pp. 27-30); Prop. 4.5(ii)/(4.96) (pp. 45-46, read not checked);
+- LWW flag (arXiv:2610.20242, still v2, checked 27 Nov ~01:35 UTC) open. Checked so far: Prop. 4.2 thinning (S53), p. 54
+  identity under R1 (S54), pp. 54-58 (S55), pp. 48-53 (S56), (4.121) + Prop. 4.5(i) pp. 37-47 (S57, conditional on
+  U1-U7), Lemma A.1 + (4.86)-(4.88) (S58, discharges U1), Prop. 4.4/(4.73) pp. 31-33 (S59, from their definitions;
+  discharges I7 of the S55 card). No error in LWW. Next: Prop. 4.3 (pp. 27-30); Prop. 4.5(ii)/(4.96); Section 4.8;
   the remaining inputs U2-U7 of the S57 card.
-- 186: six majorisation lemmas two programs each; Lemma 2.2 proved + one program (S56); finite contractions
-  (2.16)-(2.21) TWO programs (S57, S58; full agreement). Unchecked: renewal majorant (2.3) beyond Lemma 2.3, Lemma 1.1
-  analytic part, the directed arithmetic of Sec. 2.3/(2.26), cap forms (2.12)/(2.15), restoration step, analytic inputs.
+- 186: six majorisation lemmas two programs each; Lemma 2.2 proved + one program; finite contractions (2.16)-(2.21) two
+  programs. Unchecked: renewal majorant (2.3) beyond Lemma 2.3, Lemma 1.1 analytic part, the directed arithmetic of
+  Sec. 2.3/(2.26), cap forms (2.12)/(2.15), restoration step, analytic inputs.
 
 ## Next steps (in order)
-1. Paper run (tonight, 01:34 UTC 27 Nov): Lean note v1.1 with MaynardS2 + MaynardS2Hpw (notes/lean-s2-expansion.md,
-   notes/lean-s2-hpw.md; audit first); main paper sec:related / rem:186-status lines for the contractions (two programs)
-   and the S57/S58 LWW cards; status.json, README, site.
-2. Parity (next research run): LWW Prop. 4.4/(4.73) (pp. 31-33), then Prop. 4.3.
-3. Bound share: the renewal majorant (2.3) proof; the directed arithmetic of Sec. 2.3/(2.26). NO per-run regressions.
-4. Lean: next k-dimensional step toward "ratio > 4 implies bounded gaps" (e.g. the y_r change of variables for S2).
-5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
-6. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani, BFI86, HB83 and
+1. Parity (next research run, 3:34 AM CT 27 Nov = 09:34 UTC): LWW Prop. 4.3 (pp. 27-30), then Prop. 4.5(ii)/(4.96).
+   The 3:34 AM run also does the news search.
+2. Bound share: the renewal majorant (2.3) proof; the directed arithmetic of Sec. 2.3/(2.26). NO per-run regressions.
+3. Lean: the y^(m) change of variables for S2 (Maynard (5.21)-(5.24), Lemma 5.3), toward "ratio > 4 implies bounded gaps".
+4. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
+5. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani, BFI86, HB83 and
    the 182 restoration data (see notes/sources-needed.md).
-7. Weekly review: first run starting on Monday 30 Nov, Central time.
+6. Weekly review: first run starting on Monday 30 Nov, Central time.
+
+## Session 59 (7:34 PM CT paper run of 26 Nov, started on time 01:35 UTC 27 Nov; no wait) -- additions
+- Paper run: papers/lean-reduction v1.1 (Section 4 = finite S2; audit notes/audit-lean-note-v11.md applied; 6 pp., no
+  overfull boxes); main paper v0.53 (thm:lean item 21, rem:186-status contractions, sec:related, Axiom author list
+  corrected to 42 authors from https://primegaps.axiommath.ai/); status.json 0.53; README; site rebuilt.
+- Lean not changed; lake build (26 jobs) and Audit.lean (239 entries; propext / Quot.sound / Classical.choice only) re-run.
+  Lean 4.35.0 in /root/tools.
+- Parity: notes/parity-attempts/2026-11-27-lww-prop44.md (proved from LWW's definitions) + -audit.md (fresh-context;
+  1 error, 2 gaps, 4 overstatements, 4 slips; applied). Script code/parity/lww_prop44_check.py (/usr/bin/python3 -I;
+  ~18 s; .out; re-run here, identical apart from timing).
+- No exploration (Central day 26 Nov already had one). Wolfram and mathbox NOT available. No news search.
 
 ## Session 58 (11:34 AM CT research run of 26 Nov, started on time 17:34 UTC; no wait) -- additions
 - Parity: notes/parity-attempts/2026-11-26-lww-lemmaA1.md (proved relative to standard inputs) + -audit.md (fresh-context;

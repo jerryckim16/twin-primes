@@ -21,7 +21,7 @@
 \title[Toward the twin prime conjecture]{Toward the twin prime conjecture: certificates, limits of the sieve, and a working programme}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The computations, certificates and Lean sources accompany this paper.}
-\date{Version 0.52, 26 November 2026}
+\date{Version 0.53, 27 November 2026}
 
 \begin{document}
 
@@ -344,6 +344,14 @@ example), but their counts in $S_1$ are $0$ when every prime dividing some $h_i-
 the hypothesis \texttt{ShiftsCop}; Session~56 weakened it from $|h_i-h_j|\mid W$, which fails for Maynard's squarefree $W$
 when a difference is not squarefree). A short note on these files is \texttt{papers/}\allowbreak\texttt{lean-reduction/}.
 Not formalised: the size of $B$ (an analytic step in \cite{May15}), and the asymptotics of $S_1$ and $S_2$.
+\item (\texttt{MaynardS2.lean}, \texttt{MaynardS2Hpw.lean}, the finite part of \cite[Lemma~5.2]{May15}) For
+$S_2^{(m)}$, the sum of the squared weights over $n$ with $n+h_m$ prime (an abstract primality test assumed sound; the sum is $S_2^{(m)}$ when the test is exact), the
+square expands exactly over pairs $(\mathbf d,\mathbf e)$; if $d_m<N_0+h_m$ on the support, only pairs with
+$d_m=e_m=1$ contribute; under \texttt{ShiftsCop} and entries coprime to $W$, pairs whose remaining moduli are not
+pairwise coprime contribute $0$; and each remaining count is a count of $n$ with $n+h_m$ prime in one residue class
+modulo $W\prod_{i\ne m}[d_i,e_i]$ (\texttt{maynard\_}\allowbreak\texttt{S2\_good\_reduced},
+\texttt{maynard\_}\allowbreak\texttt{S2\_count\_residue}). Not formalised: the primes in these classes, the
+Bombieri--Vinogradov input, and the change of variables in the main term of $S_2$.
 \end{enumerate}
 \end{theorem}
 
@@ -2028,7 +2036,11 @@ lemma holds either way). Its Lemma~2.2 (the delay recurrence (2.1) enclosing $\r
 proved here from the delay equation alone (\lbl{Proved here}; the printed constant $6c^{-3}$ holds, $5c^{-3}$ would do), and
 checked for $134$ caps on $1.3\cdot10^7$ grid points against an independent rigorous $\rho$ (\lbl{Computed}, $2736$ checks, no
 failures, one program, \texttt{code/}\allowbreak\texttt{oai186\_lemma22\_check.py}; \texttt{notes/}\allowbreak\texttt{oai186-lemma22-check.md}).
-Not checked: the renewal majorant (2.3) beyond its use in Lemma~2.3, the $40$-dimensional contractions (2.16)--(2.21), the analytic part of Lemma~1.1, its restoration
+The finite contractions (2.16)--(2.21) (given the majorisation lemmas) are checked by two independent programs, the second
+written from the PDF and the authors' data before the first was opened (\lbl{Computed}; $127$ and $1999$ exact checks, no
+failures, full agreement; \texttt{code/}\allowbreak\texttt{oai186\_contractions\_check.py},
+\texttt{code/}\allowbreak\texttt{oai186\_contractions\_check2.py}).
+Not checked: the renewal majorant (2.3) beyond its use in Lemma~2.3, the directed arithmetic of its Section~2.3 and (2.26), the cap forms (2.12) and (2.15), the analytic part of Lemma~1.1, its restoration
 step (Proposition~1.3, resting on the main paper's Proposition~4.6, of which we have read only the statement and
 its use below), and the analytic inputs, which stay \lbl{Claimed}. So the project does not adopt $186$, even conditionally.
 \end{remark}
@@ -2212,10 +2224,12 @@ it. Version~1.1 of the parity paper takes over only the LWW observation above (J
 approved one subsection); the E2 consistency tests and a summary of the other cards are left to
 the weekly review of 30 November. Since 24 November the cards are mostly a line-by-line check of the L\"u--Wang--Wu proof
 (cards of 25--26 November: Proposition~4.2 survives thinning; the operator identity of p.~54, under a reading R1;
-pp.~48--58, the norm bounds and the end of the proof of Proposition~4.6, each conditional on listed earlier inputs; all
-audited). No error found so far; the inputs on pp.~33--47 are next.
+pp.~48--58, the norm bounds and the end of the proof of Proposition~4.6, each conditional on listed earlier inputs;
+pp.~37--47, (4.121) and Proposition~4.5(i), conditional; Lemma~A.1 and (4.86)--(4.88), proved relative to the
+Weil--Estermann bound and textbook facts; Proposition~4.4 and (4.73), the change of variables of pp.~31--33, proved
+from their definitions alone; all audited). No error found so far; Proposition~4.3 (pp.~27--30) is next.
 \item \emph{The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean}
-(\texttt{papers/}\allowbreak\texttt{lean-reduction/}, version~1.0, 5 pages). Theorem~\ref{thm:lean}'s Maynard items written up, with
+(\texttt{papers/}\allowbreak\texttt{lean-reduction/}, version~1.1, 6 pages). Theorem~\ref{thm:lean}'s Maynard items written up, with
 the analytic statements and the finite glue that stay hypotheses listed one by one. Not a formalisation of bounded gaps.
 \item \emph{News of 24 November} (\lbl{Claimed}; unrefereed preprints, only the pages named read; notes:
 \texttt{notes/}\allowbreak\texttt{news-2026-11-24.md}). Lichtman (arXiv:2611.28392v1) proves
@@ -2351,12 +2365,14 @@ Section~\ref{sec:related}: news of 24 November.
 \item[0.52] (26 Nov 2026) Remark~\ref{rem:186-status}: second programs for the six majorisation
 lemmas; Lemma~2.2 proved and checked; Theorem~\ref{thm:lean}: weaker shift hypothesis; Section~\ref{sec:related}: the LWW checks and the
 Lean note.
+\item[0.53] (27 Nov 2026) Theorem~\ref{thm:lean}, item 21 (the finite part of $S_2$); Remark~\ref{rem:186-status}: the
+contractions by two programs; Section~\ref{sec:related}: LWW checks of 26--27 November, Lean note 1.1; the author list of \cite{Axiom26} corrected.
 \end{itemize}
 
 \begin{thebibliography}{99}
-\bibitem{Axiom26} E.~Chen, S.~Hariharan, K.~Lau, B.~Mehta, A.~A.~Swaminathan,
-J.~Thorner, E.~Xie, \emph{Lean formalization of bounded gaps between primes}
-(blueprint, PrimeGapsLib), 2026. \url{https://primegaps.axiommath.ai/}
+\bibitem{Axiom26} R.~Aanegola, A.~Alfarano, F.~Charton, E.~Chen, \dots, Y.~Zhu (Axiom Math; 42 authors),
+\emph{Lean formalization of bounded gaps between primes} (blueprint, PrimeGapsLib), 2026.
+\url{https://primegaps.axiommath.ai/} (author list read 27 November 2026)
 \bibitem{BH98} R.~C.~Baker and G.~Harman, \emph{Shifted primes without large
 prime factors}, Acta Arith.\ \textbf{83} (1998), 331--361 (the exponent $0.677$
 as cited in R.~Li, arXiv:2508.18285v3, p.~2; not opened by us).

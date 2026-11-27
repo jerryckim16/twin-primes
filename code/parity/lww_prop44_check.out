@@ -1,0 +1,39 @@
+== (A) T bijection and g' = TgE
+[POS] A bijection Omega cap C <-> primitive odd-first points of Omega'; g' in SL2(Z): 0/3174 failures -> ok (|Omega cap C| = 720, |image enumerated independently| = 720)
+[NEG] NEG A gcd(u,(u-v)/2) = gcd(u,v) for even u, v: 6482/9801 failures -> ok 
+== (B) det(TP,TQ) = -det(P,Q)/2 and parity of t
+[POS] B det(TP,TQ)/D = -t/2, t even, 1_{t=2(a-b)} = 1_{t'=b-a}: 0/340000 failures -> ok (indicator hits 989)
+[NEG] NEG B det(T~P,T~Q)/D = -t/2 with T~ = [[1,0],[1,-1]] (no factor 1/2): 20000/20000 failures -> ok 
+== (C) complement of TP and r_TP = -2 r_P
+[POS] C (-2c, d-c) complements TP; r_TP = -2 r_P mod 1: 0/16175 failures -> ok 
+[NEG] NEG C r_TP = +2 r_P mod 1: 16173/16175 failures -> ok 
+== (D) (4.76) major-arc integral identity
+[POS] D int_{M-2} e(theta(t-2(a-b))) = int_{M1} e(phi(t'-b+a)): 0/6484 failures -> ok 
+[NEG] NEG D only one preimage copy of M1 under theta -> -2 theta: 5066/6480 failures -> ok 
+[NEG] NEG D phase t-(a-b) instead of t-2(a-b): 3896/6480 failures -> ok 
+[POS] D' (4.76) on a non-symmetric toy M_1: 0/1299 failures -> ok 
+[NEG] NEG D' phase sign flipped (int_{M1} e(-phi(t'-b+a))) on the non-symmetric set: 1164/1296 failures -> ok 
+== (E) toy operator model, K = 1, J = 1
+  |S cap C| = 1086 states on 413 positions; |image space| = 1086
+  nonzero T entries 722; edges with t = 2(a-b) inside supp psi: 38, of which non-zero (eta != 0): 6; good fraction 0.937; ||A|| (Frobenius) 1.332e-01
+  (4.74) max |U T_-2^C U^-1 - T_1^Omega'| = 1.21e-16
+  (4.77) max |U G_-2 U^-1 - G_1^Omega'| = 0.00e+00
+  (4.72) max |U A_-2^C U^-1 - A_1^Omega',odd| = 3.03e-17
+[POS] E (4.72), (4.74), (4.77), S, unitarity: 0/5 failures -> ok (bad image states 0)
+  R = 1: positions with non-zero moment 151/413 (of which |moment| <= 1e-20: 4)
+  R = 1: sum_P <u_P,(AA*)^R u_P> = 3.140581e-02; sum_P <u~_TP,(A'A'*)^R u~_TP> = 3.140581e-02
+  R = 2: positions with non-zero moment 151/413 (of which |moment| <= 1e-20: 4)
+  R = 2: sum_P <u_P,(AA*)^R u_P> = 7.493096e-05; sum_P <u~_TP,(A'A'*)^R u~_TP> = 7.493096e-05
+  R = 3: positions with non-zero moment 151/413 (of which |moment| <= 1e-20: 10)
+  R = 3: sum_P <u_P,(AA*)^R u_P> = 3.327238e-07; sum_P <u~_TP,(A'A'*)^R u~_TP> = 3.327238e-07
+[POS] E (4.73) for every P in Omega cap C, R = 1, 2, 3; hence (4.54) <-> (4.78): 0/1239 failures -> ok 
+[NEG] NEG E (4.74) with kernel' with 1_{t'=a-b}: 1/1 failures -> ok (max diff 3.83e-01)
+[NEG] NEG E (4.74) with T_-2^C with one preimage copy of M_1: 1/1 failures -> ok (max diff 3.73e-02)
+[NEG] NEG E (4.74) with psi_-2(u) = psi_1(u/2) (sign dropped): 1/1 failures -> ok (max diff 3.75e-02)
+[NEG] NEG E (4.77) with G_1^Omega' using r_P instead of r_TP: 60/1086 failures -> ok 
+[NEG] NEG E (4.73), R = 1, with the psi sign dropped on the left: 145/400 failures -> ok 
+== SUMMARY
+positive checks: 7, failing: 0
+negative controls: 11, failing as they must: 11
+unexpected outcomes: 0 []
+wall time 19.0 s
