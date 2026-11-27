@@ -1,0 +1,60 @@
+== (A) operator algebra of p. 58: K = S T S, (4.149), and the S-removals
+[POS] A <f, STS f> = <f, T f> (f independent of tuple order): 0/30 failures -> ok 
+[POS] A (4.149) <f,Kf> - <f,GKGf> = <(1-G)f,Kf> + <Gf,K(1-G)f>: 0/30 failures -> ok 
+[POS] A <(1-G)f, Kf> = <(1-G)f, T f> (p. 58): 0/30 failures -> ok 
+[POS] A <Gf, K(1-G)f> = <Gf, T(1-G)f> (second term): 0/30 failures -> ok 
+[NEG] NEG A <(1-G)f,Kf> = <(1-G)f,Tf> with G depending on the tuple ORDER: 30/30 failures -> ok 
+[NEG] NEG A <f,STSf> = <f,Tf> with f depending on the tuple order: 30/30 failures -> ok 
+== (B) (4.152)-(4.153): brute force over all line tuples l in prod_q P^1(F_q)
+   15 vectors z', 360 (z',p,p') triples, 90 with D | det(z0,z'); |line space| = 2304
+[POS] B (4.153) at rho=1: (prod (q+1))^{-1} #{l : restrictions} = 1_{D|det} prod_{p|Dab} 1/(p+1): 0/360 failures -> ok 
+[POS] B (4.152)+(4.153) at rho=1/2: rho-weighted line average <= 1_{D|det} prod_{p|Dab} 1/(p+1): 0/360 failures -> ok 
+[POS] B w_l(z0), w_l(z') >= K(J+1) under the restrictions (p. 59): 0/360 failures -> ok 
+[NEG] NEG B same inequality at rho = 2 (0 < rho < 1 is used): 90/360 failures -> ok 
+[NEG] NEG B rho=1 identity with the constraint l_p = [z']_p at p | D dropped (no 1_{D|det}): 270/360 failures -> ok 
+== (C) p. 60 prime-tuple weight sum
+   P1=6 P2=7 J=1: sum=4.8792e-05 <= prod(sum 1/(q+1))^(J+2)=1.5478e-04 <= prod V^(J+2)=2.0121e-04
+   P1=6 P2=7 J=2: sum=6.9374e-07 <= prod(sum 1/(q+1))^(J+2)=8.3103e-06 <= prod V^(J+2)=1.1790e-05
+   P1=7 P2=10 J=1: sum=6.3355e-05 <= prod(sum 1/(q+1))^(J+2)=1.5436e-04 <= prod V^(J+2)=1.8984e-04
+   P1=7 P2=10 J=2: sum=1.2668e-06 <= prod(sum 1/(q+1))^(J+2)=8.2802e-06 <= prod V^(J+2)=1.0911e-05
+   P1=12 P2=17 J=1: sum=2.2026e-06 <= prod(sum 1/(q+1))^(J+2)=3.5252e-06 <= prod V^(J+2)=3.7301e-06
+   P1=12 P2=17 J=2: sum=2.0395e-08 <= prod(sum 1/(q+1))^(J+2)=5.3651e-08 <= prod V^(J+2)=5.7850e-08
+[POS] C sum_{tuples} prod_{q|Dab}(q+1)^{-1} <= prod(sum 1/(q+1))^{J+2} <= prod V_i^{J+2}: 0/6 failures -> ok 
+[NEG] NEG C same with an extra 1/(J+2)! per i (unordered-tuple misreading): 6/6 failures -> ok 
+== (D) change of variables behind (4.150): g' of (4.80), z = g'^{-1} T Q, r_{TP} = -2 r_P
+[POS] D det g' = 1: 0/4000 failures -> ok 
+[POS] D z = g'^{-1} T Q is primitive with odd first coordinate (Q in C): 0/4000 failures -> ok 
+[POS] D q_1 = u z_1 - 2c z_2 (so p | q_1 <=> [z]_p = l_p(g'), (4.83)): 0/4000 failures -> ok 
+[POS] D det(z0, z) = det(TP, TQ) = -det(P,Q)/2, det(P,Q) even: 0/4000 failures -> ok 
+[POS] D r_{TP} = r_{g' z0} = -2 r_P (mod 1): 0/4000 failures -> ok 
+[POS] D g~(u, v, c/u) of (4.89) = g' of (4.80): 0/4000 failures -> ok 
+[NEG] NEG D r_{TP} = +2 r_P (mod 1): 4000/4000 failures -> ok 
+   example z1=(16,1): r_{g~z1}(r) at r=0,.25,.5,.75,.999 = 0.93750, 0.93548, 0.93333, 0.93103, 0.92858
+== (E) (4.124)/(4.155): number of h for fixed t
+[POS] E {h : g~z' in Omega' (1st coord)} subset {h : 1/16 <= h + rDt <= 16}, # <= 16: 0/20000 failures -> ok (max seen 15, 16)
+[NEG] NEG E (tightness, not a misreading) same with '<= 15': 1/1 failures -> ok 
+== (F) M_1, (4.94) and (4.76)
+   L^A0=3, Y=200: meas M_1=0.24000, meas M_-2=0.24000
+   L^A0=5, Y=1000: meas M_1=0.20000, meas M_-2=0.20000
+   L^A0=4, Y=97: meas M_1=0.82646, meas M_-2=0.82646
+   L^A0=6, Y=5000: meas M_1=0.05760, meas M_-2=0.05760
+[POS] F int_{M_1} e(phi w) dphi is real (M_1 = -M_1): 0/484 failures -> ok 
+[POS] F |int_{M_1} e(phi w)| <= meas M_1 and |W(-w)| = |W(w)| (edge reversal): 0/484 failures -> ok 
+[POS] F (4.76) int_{M_-2} e(theta(t-2c)) = int_{M_1} e(phi(-t/2+c)) for even t: 0/240 failures -> ok 
+   int_{M_1} e(phi w) < 0 for 248/484 values of w (min -0.1159): the |.| printed in (4.94) (p. 37, visible only in the page image) is what makes W >= 0 on p. 46
+[NEG] NEG F (4.76) with t odd (t in 2Z is used): 240/240 failures -> ok 
+== (G) measures on T: (4.28), r -> -2r (p. 60), and the Moebius map r -> r_{g~ z1}
+[POS] G (4.28) meas{r in T : ||m r|| <= eps} = 2 eps (exact): 0/300 failures -> ok 
+[POS] G meas{r : -2r mod 1 in F} = meas F for finite unions F (exact): 0/300 failures -> ok 
+   z1=(16,1): meas F = 0.00893, meas{r : r_(g~z1)(r) in F} = 1.00000
+[NEG] NEG G meas{r : r_{g~z1}(r) in F} <= 2 meas F (would allow keeping the restriction at z1): 1/1 failures -> ok 
+== (H) Prop. 4.5(ii), p. 46: F_1 factorisation, H_{1,p} average, Bonferroni truncation
+[POS] H rho^{(w_l(z0)+w_l(z1))/2} = prod_p (1 - H_{1,p}(l_p)): 0/400 failures -> ok 
+[POS] H (p+1)^{-1} sum_l H_{1,p}(l) <= 2/(p+1): 0/2400 failures -> ok 
+[POS] H Bonferroni: |prod(1-x) - sum_{k<B} (-1)^k e_k| <= e_B on [0,1]^n: 0/400 failures -> ok 
+[NEG] NEG H (p+1)^{-1} sum_l H_{1,p}(l) <= 1/(p+1): 514/2400 failures -> ok 
+== SUMMARY
+positive checks: 23, failing: 0
+negative controls: 10, failing as they must: 10
+unexpected outcomes: 0 []
+wall time 3.5 s
