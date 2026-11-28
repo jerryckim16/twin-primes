@@ -42,7 +42,8 @@ Outcome: success criterion met, conditional on (I2). No-go not triggered.
   Section 3 end; Section 4.1 through Prop. 4.2 on p. 18). Also read: Prop. 5.3 (p. 63) and (5.31)-(5.33) (pp. 69-70),
   where (4.8) is used.
 - pp. 15-16 were rendered to PNG (pdftoppm, 130 dpi) and read visually. This settled:
-  - (4.4): the second line is "T_3(F) ≤ Σ∫|ψ̂(v)||T(M,N)|dv + …", with bars on T(M,N) and none on T_3(F);
+  - (4.4): [corrected after the audit] at 400 dpi the second line reads "T_3(F) ≤ Σ∫|ψ̂(v)| T(M,N) dv + …", with
+    **no** bars on T(M,N) (the 130-dpi reading of bars was wrong);
   - (4.7): the second line has α_m\overline{α_r}β_n\overline{β_s} (pdftotext drops the bars);
   - (4.8): the right side is Σ_Y ((MN/Y)Q_Y)^{1/2}.
 
@@ -103,8 +104,9 @@ Outcome: success criterion met, conditional on (I2). No-go not triggered.
 - Coefficients: |α_m| ≤ 1, and |β_n| ≤ log(2N) ≤ L + 1. So with C ≥ 2 and x large, |α_m| ≤ L^C R_Z(m)1_{(M,2M]} and
   |β_n| ≤ L^C R_Z(n)1_{(N,2N]}. Also M, N ≥ x^{1/5} ≥ x^δ for every δ < 1/5. These are Prop. 4.2's hypotheses. α is
   exactly µR_Z·m^{iv}, as Prop. 5.3 requires.
-- (4.4), first line ✓. The second line is printed "T_3(F) ≤ …" (S1). It is valid as printed, since T_3(F) is real, but
-  (4.8) needs |T_3(F)| ≤ …, which follows from the same triangle inequality.
+- (4.4), first line ✓. The second line is printed with T(M,N), not |T(M,N)|, on the right (S1). T(M,N) is complex
+  (it carries m^{iv}), so the line is meaningless as printed; the intended bound, with |T(M,N)|, follows from the
+  triangle inequality, which is the form R9 and (4.8) use.
 
 **R4. The W-expansion (p. 15).** Proved here; Computed (A), (B).
 - ω_i(k) = Σ_{p∈P_i, p|k} 1. So W(k) = ∏V_i^{-1}Σ_{(p_1,…,p_K), p_i∈P_i, p_i|k}ρ^{ω(k)−K}, with ω := Σω_i.
@@ -162,7 +164,7 @@ Outcome: success criterion met, conditional on (I2). No-go not triggered.
   was recorded in the 2026-11-27 p23-27 card. Prop. 5.3 states uniformity in |v| ≤ x^{C_0}.
 
 ## Inputs not proved here
-- **(I2)** V_i = log 2 + o(1) (Mertens; LWW p. 7). Only V_i ≫ 1 is used, in R5. It was not re-derived or read in a
+- **(I2)** V_i = log 2 + o(1) (Mertens; LWW p. 7). Only V_i ≫ 1 is used: in R5, and through ‖W‖_∞ ≪_{K,ρ} 1 (LWW p. 7) in R1, R3 and R9 [corrected after the audit]. It was not re-derived or read in a
   source. It is standard.
 - Fourier inversion for C_c^∞ functions on ℝ (textbook analysis). It is used, not re-proved.
 - LWW's [2, p. 242] (the construction of ψ) was **not read**; R1 replaces it.
@@ -180,8 +182,8 @@ Outcome: success criterion met, conditional on (I2). No-go not triggered.
 - **T5** (p. 16): the existence of η and its realness/positivity (R6).
 
 ## Slips and typos (none affects the argument)
-- **S1** (4.4): the left side of the second line is T_3(F), not |T_3(F)|. It is harmless, since T_3 is real and the
-  same bound holds for |T_3|.
+- **S1** (4.4) [corrected after the audit]: the right side of the second line has T(M,N) where |T(M,N)| is meant
+  (T(M,N) is complex). Harmless: the triangle-inequality form is what is used later.
 - **S2** (p. 16): X is used in "O(XL exp(−L^{1/20}))", (4.5) and (4.6) before it is defined. It is defined as X = MN
   only in Prop. 4.2 (p. 18).
 - **S3** (p. 16): "we may see that The contribution": stray capital.
@@ -204,12 +206,12 @@ Small boxes, random Gaussian-rational α, β, ρ ∈ {1/2, 2/3, 1/3}.
   fails in all three toys (|D|² = 70.2, 80.1, 181). Also:
   - every (a, h) > 1 term has p_i² | mn+2;
   - the per-m count is ≤ N/p² + 1 (0 if p | m);
-  - |D| is ≤ the R5 bound. This is a loose sanity check.
+  - |D| is ≤ the R5 bound, a union bound with actual counts (18-2700× slack), so it cannot fail informatively.
 - **(C)** η partition of unity on A; Σ_Y T_Y = T(M,N) + D exactly; the support facts Y ≤ a ≤ 4Y and
   h ≤ (4X+2)/Y.
 - **(D)** (4.7): the first line equals the literal second line exactly. NEG: the second line without conjugates fails.
-- **(E)** (4.6) with the explicit factor ⌊(4X+2)/Y⌋, for the true c_h and for c_h = 1. NEG: the same inequality
-  without the factor X/Y fails.
+- **(E)** (4.6) with the explicit factor ⌊(4X+2)/Y⌋, for the true c_h and for c_h = 1. NEG: the inequality without the
+  factor X/Y, at α = β = 1 and c_h = 1, fails.
 - **(F)** Sanity checks: the dyadic-box facts of R3 (1.1M pairs) and the short-interval divisor bound (300 intervals).
 - **Results:** 32 positive checks, 0 failing; 12 negative controls, all failing as they must; 0 unexpected. Wall time
   about 16 s.
@@ -227,7 +229,13 @@ which is unread. Alternatively one could give an elementary proof of the weaker 
 suffices. (I2) (Mertens) is the other open standard input.
 
 ## Audit
-**Pending: no independent audit was run.** The task called for a fresh-context adversarial audit agent. The session
+Fresh-context adversarial audit (spawned by the main session, Session 62): 2026-11-28-lww-p15-16-reduction-audit.md.
+Tally: 1 error (the card misread (4.4); see S1, corrected), 0 gaps, 1 overstatement ((I2) is used beyond R5;
+corrected), 2 slips (descriptions of two script checks; corrected). 0 errors in LWW's mathematics; every step R0-R9
+re-derived by the auditor; the script re-run gives the committed output, and four mutated copies were each caught.
+
+Earlier note (before the audit):
+(Superseded.) No independent audit had been run at writing time. The task called for a fresh-context adversarial audit agent. The session
 that wrote this card had no tool for spawning agents, so no audit file
 (2026-11-28-lww-p15-16-reduction-audit.md) exists. Until one is run, treat the classification as unaudited.
 - A self re-check against the PDF was done instead. It is **not** independent. It re-read pp. 15-16 (PNG) and

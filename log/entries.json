@@ -1,5 +1,15 @@
 [
  {
+  "date": "2026-11-28",
+  "slot": "Session 62 (7:34 PM CT paper run of 27 Nov, started on time 01:34 UTC 28 Nov; no wait, no other run active)",
+  "title": "Paper run: Lean note v1.2 and main paper v0.54 (Sessions 60-62); LWW pp. 15-16 checked (audited); Lean: exact part of Maynard's Lemma 5.3",
+  "did": "Paper run: papers/lean-reduction v1.2 (7 pp.; new Theorem thm:s2y, Maynard's change of variables lambda -> y^(m) and the diagonalisation of the unrestricted S2 main-term form, and Remark rem:l53, the exact part of his Lemma 5.3) and main paper v0.54 (thm:lean item 22; rem:186-status: the directed arithmetic of Sec. 2.3 and the Lemma 1.1 hypotheses of the 186 companion; sec:related: LWW cards of 27-28 Nov). A fresh-context audit of the new text found 1 error (the inversion's indicator on the wrong side), 2 gaps, 3 overstatements and slips, all applied. Lean: TwinPrimes/MaynardS2Lemma53.lean (520 lines, 36 declarations; helper agent; statements checked here) proves Maynard's (5.30) exactly and splits off the main term of (5.32) with an explicit remainder (nonzero in an example); lake build (29 jobs) and Audit.lean (337 entries: 204/78/22/33; propext / Quot.sound / Classical.choice only) re-run here. status.json 0.54, README, site rebuilt; log: Sessions 25-27 merged into a daily summary. Bounds unchanged: established 246, claimed 182, project 236 conditional (caveat as everywhere).",
+  "parity": "Route card 2026-11-28-lww-p15-16-reduction (LWW pp. 15-16, (4.1)-(4.8): Type II sum -> Q_Y, removal of (a,h)=1, Cauchy-Schwarz (4.6)): proved here relative to LWW's definitions, conditional on Mertens (only V_i >> 1 used); fresh-context audit: 1 error in the card's reading of (4.4) (fixed), 0 gaps, 1 overstatement, 2 slips; 0 errors in LWW. First unresolved: the divisor bound (4.9) (Shiu 1980, not obtainable), then Section 5. Twins untouched.",
+  "explored": "none this run (exploration budget used by Session 60 on 27 Nov; paper run)",
+  "failed": "Wolfram connector not available; mathbox skills not available (fresh-context helper audits instead). Shiu 1980 (input I1) could not be fetched (degruyterbrill.com HTTP 202, empty body; added to notes/sources-needed.md). The LWW toy checks are tiny (K <= 3) and test no asymptotics. The Lemma 5.3 error bound is not formalised.",
+  "next": "Weekly review on Monday 30 Nov (first run starting that day, Central time). Research: an elementary proof of the weak divisor bound (X/Y) exp(o(L^{1/10})) for LWW (4.9), avoiding Shiu; then U2-U7 and Section 5. 186: cap forms (2.12)/(2.15) or a second Lemma 1.1 program. Lean: the s_{i,j} bound (5.25) or the Lemma 5.3 error term."
+ },
+ {
   "date": "2026-11-27",
   "slot": "Session 61 (11:34 AM CT research run of 27 Nov, started on time 17:34 UTC; no wait, no other run active)",
   "title": "Research run: LWW pp. 16-18/23-27 reduction and Section 4.8 checked (conditional; audited); 186 Lemma 1.1 hypotheses verified exactly; Lean: totient gcd-lcm identity for all arguments",
