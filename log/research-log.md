@@ -1,5 +1,4365 @@
 # Research log
 
+## 2026-11-28 - Session 62 (7:34 PM CT paper run of 27 Nov, started on time 01:34 UTC 28 Nov; no wait, no other run active): Paper run: Lean note v1.2 and main paper v0.54 (Sessions 60-62); LWW pp. 15-16 checked (audited); Lean: exact part of Maynard's Lemma 5.3
+
+- P
+- a
+- p
+- e
+- r
+-  
+- r
+- u
+- n
+- :
+-  
+- p
+- a
+- p
+- e
+- r
+- s
+- /
+- l
+- e
+- a
+- n
+- -
+- r
+- e
+- d
+- u
+- c
+- t
+- i
+- o
+- n
+-  
+- v
+- 1
+- .
+- 2
+-  
+- (
+- 7
+-  
+- p
+- p
+- .
+- ;
+-  
+- n
+- e
+- w
+-  
+- T
+- h
+- e
+- o
+- r
+- e
+- m
+-  
+- t
+- h
+- m
+- :
+- s
+- 2
+- y
+- ,
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- c
+- h
+- a
+- n
+- g
+- e
+-  
+- o
+- f
+-  
+- v
+- a
+- r
+- i
+- a
+- b
+- l
+- e
+- s
+-  
+- l
+- a
+- m
+- b
+- d
+- a
+-  
+- -
+- >
+-  
+- y
+- ^
+- (
+- m
+- )
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- d
+- i
+- a
+- g
+- o
+- n
+- a
+- l
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- u
+- n
+- r
+- e
+- s
+- t
+- r
+- i
+- c
+- t
+- e
+- d
+-  
+- S
+- 2
+-  
+- m
+- a
+- i
+- n
+- -
+- t
+- e
+- r
+- m
+-  
+- f
+- o
+- r
+- m
+- ,
+-  
+- a
+- n
+- d
+-  
+- R
+- e
+- m
+- a
+- r
+- k
+-  
+- r
+- e
+- m
+- :
+- l
+- 5
+- 3
+- ,
+-  
+- t
+- h
+- e
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- p
+- a
+- r
+- t
+-  
+- o
+- f
+-  
+- h
+- i
+- s
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 5
+- .
+- 3
+- )
+-  
+- a
+- n
+- d
+-  
+- m
+- a
+- i
+- n
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- 0
+- .
+- 5
+- 4
+-  
+- (
+- t
+- h
+- m
+- :
+- l
+- e
+- a
+- n
+-  
+- i
+- t
+- e
+- m
+-  
+- 2
+- 2
+- ;
+-  
+- r
+- e
+- m
+- :
+- 1
+- 8
+- 6
+- -
+- s
+- t
+- a
+- t
+- u
+- s
+- :
+-  
+- t
+- h
+- e
+-  
+- d
+- i
+- r
+- e
+- c
+- t
+- e
+- d
+-  
+- a
+- r
+- i
+- t
+- h
+- m
+- e
+- t
+- i
+- c
+-  
+- o
+- f
+-  
+- S
+- e
+- c
+- .
+-  
+- 2
+- .
+- 3
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 1
+- .
+- 1
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- e
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- c
+- o
+- m
+- p
+- a
+- n
+- i
+- o
+- n
+- ;
+-  
+- s
+- e
+- c
+- :
+- r
+- e
+- l
+- a
+- t
+- e
+- d
+- :
+-  
+- L
+- W
+- W
+-  
+- c
+- a
+- r
+- d
+- s
+-  
+- o
+- f
+-  
+- 2
+- 7
+- -
+- 2
+- 8
+-  
+- N
+- o
+- v
+- )
+- .
+-  
+- A
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- n
+- e
+- w
+-  
+- t
+- e
+- x
+- t
+-  
+- f
+- o
+- u
+- n
+- d
+-  
+- 1
+-  
+- e
+- r
+- r
+- o
+- r
+-  
+- (
+- t
+- h
+- e
+-  
+- i
+- n
+- v
+- e
+- r
+- s
+- i
+- o
+- n
+- '
+- s
+-  
+- i
+- n
+- d
+- i
+- c
+- a
+- t
+- o
+- r
+-  
+- o
+- n
+-  
+- t
+- h
+- e
+-  
+- w
+- r
+- o
+- n
+- g
+-  
+- s
+- i
+- d
+- e
+- )
+- ,
+-  
+- 2
+-  
+- g
+- a
+- p
+- s
+- ,
+-  
+- 3
+-  
+- o
+- v
+- e
+- r
+- s
+- t
+- a
+- t
+- e
+- m
+- e
+- n
+- t
+- s
+-  
+- a
+- n
+- d
+-  
+- s
+- l
+- i
+- p
+- s
+- ,
+-  
+- a
+- l
+- l
+-  
+- a
+- p
+- p
+- l
+- i
+- e
+- d
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- T
+- w
+- i
+- n
+- P
+- r
+- i
+- m
+- e
+- s
+- /
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 2
+- L
+- e
+- m
+- m
+- a
+- 5
+- 3
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 5
+- 2
+- 0
+-  
+- l
+- i
+- n
+- e
+- s
+- ,
+-  
+- 3
+- 6
+-  
+- d
+- e
+- c
+- l
+- a
+- r
+- a
+- t
+- i
+- o
+- n
+- s
+- ;
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- ;
+-  
+- s
+- t
+- a
+- t
+- e
+- m
+- e
+- n
+- t
+- s
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- h
+- e
+- r
+- e
+- )
+-  
+- p
+- r
+- o
+- v
+- e
+- s
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- '
+- s
+-  
+- (
+- 5
+- .
+- 3
+- 0
+- )
+-  
+- e
+- x
+- a
+- c
+- t
+- l
+- y
+-  
+- a
+- n
+- d
+-  
+- s
+- p
+- l
+- i
+- t
+- s
+-  
+- o
+- f
+- f
+-  
+- t
+- h
+- e
+-  
+- m
+- a
+- i
+- n
+-  
+- t
+- e
+- r
+- m
+-  
+- o
+- f
+-  
+- (
+- 5
+- .
+- 3
+- 2
+- )
+-  
+- w
+- i
+- t
+- h
+-  
+- a
+- n
+-  
+- e
+- x
+- p
+- l
+- i
+- c
+- i
+- t
+-  
+- r
+- e
+- m
+- a
+- i
+- n
+- d
+- e
+- r
+-  
+- (
+- n
+- o
+- n
+- z
+- e
+- r
+- o
+-  
+- i
+- n
+-  
+- a
+- n
+-  
+- e
+- x
+- a
+- m
+- p
+- l
+- e
+- )
+- ;
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- (
+- 2
+- 9
+-  
+- j
+- o
+- b
+- s
+- )
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 3
+- 3
+- 7
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+- :
+-  
+- 2
+- 0
+- 4
+- /
+- 7
+- 8
+- /
+- 2
+- 2
+- /
+- 3
+- 3
+- ;
+-  
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+-  
+- o
+- n
+- l
+- y
+- )
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+- .
+-  
+- s
+- t
+- a
+- t
+- u
+- s
+- .
+- j
+- s
+- o
+- n
+-  
+- 0
+- .
+- 5
+- 4
+- ,
+-  
+- R
+- E
+- A
+- D
+- M
+- E
+- ,
+-  
+- s
+- i
+- t
+- e
+-  
+- r
+- e
+- b
+- u
+- i
+- l
+- t
+- ;
+-  
+- l
+- o
+- g
+- :
+-  
+- S
+- e
+- s
+- s
+- i
+- o
+- n
+- s
+-  
+- 2
+- 5
+- -
+- 2
+- 7
+-  
+- m
+- e
+- r
+- g
+- e
+- d
+-  
+- i
+- n
+- t
+- o
+-  
+- a
+-  
+- d
+- a
+- i
+- l
+- y
+-  
+- s
+- u
+- m
+- m
+- a
+- r
+- y
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- c
+- a
+- v
+- e
+- a
+- t
+-  
+- a
+- s
+-  
+- e
+- v
+- e
+- r
+- y
+- w
+- h
+- e
+- r
+- e
+- )
+- .
+
+Parity attempt: Route card 2026-11-28-lww-p15-16-reduction (LWW pp. 15-16, (4.1)-(4.8): Type II sum -> Q_Y, removal of (a,h)=1, Cauchy-Schwarz (4.6)): proved here relative to LWW's definitions, conditional on Mertens (only V_i >> 1 used); fresh-context audit: 1 error in the card's reading of (4.4) (fixed), 0 gaps, 1 overstatement, 2 slips; 0 errors in LWW. First unresolved: the divisor bound (4.9) (Shiu 1980, not obtainable), then Section 5. Twins untouched.
+
+Explored: none this run (exploration budget used by Session 60 on 27 Nov; paper run)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- S
+- h
+- i
+- u
+-  
+- 1
+- 9
+- 8
+- 0
+-  
+- (
+- i
+- n
+- p
+- u
+- t
+-  
+- I
+- 1
+- )
+-  
+- c
+- o
+- u
+- l
+- d
+-  
+- n
+- o
+- t
+-  
+- b
+- e
+-  
+- f
+- e
+- t
+- c
+- h
+- e
+- d
+-  
+- (
+- d
+- e
+- g
+- r
+- u
+- y
+- t
+- e
+- r
+- b
+- r
+- i
+- l
+- l
+- .
+- c
+- o
+- m
+-  
+- H
+- T
+- T
+- P
+-  
+- 2
+- 0
+- 2
+- ,
+-  
+- e
+- m
+- p
+- t
+- y
+-  
+- b
+- o
+- d
+- y
+- ;
+-  
+- a
+- d
+- d
+- e
+- d
+-  
+- t
+- o
+-  
+- n
+- o
+- t
+- e
+- s
+- /
+- s
+- o
+- u
+- r
+- c
+- e
+- s
+- -
+- n
+- e
+- e
+- d
+- e
+- d
+- .
+- m
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- L
+- W
+- W
+-  
+- t
+- o
+- y
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+-  
+- a
+- r
+- e
+-  
+- t
+- i
+- n
+- y
+-  
+- (
+- K
+-  
+- <
+- =
+-  
+- 3
+- )
+-  
+- a
+- n
+- d
+-  
+- t
+- e
+- s
+- t
+-  
+- n
+- o
+-  
+- a
+- s
+- y
+- m
+- p
+- t
+- o
+- t
+- i
+- c
+- s
+- .
+-  
+- T
+- h
+- e
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 5
+- .
+- 3
+-  
+- e
+- r
+- r
+- o
+- r
+-  
+- b
+- o
+- u
+- n
+- d
+-  
+- i
+- s
+-  
+- n
+- o
+- t
+-  
+- f
+- o
+- r
+- m
+- a
+- l
+- i
+- s
+- e
+- d
+- .
+
+Next: Weekly review on Monday 30 Nov (first run starting that day, Central time). Research: an elementary proof of the weak divisor bound (X/Y) exp(o(L^{1/10})) for LWW (4.9), avoiding Shiu; then U2-U7 and Section 5. 186: cap forms (2.12)/(2.15) or a second Lemma 1.1 program. Lean: the s_{i,j} bound (5.25) or the Lemma 5.3 error term.
+
+## 2026-11-27 - Session 61 (11:34 AM CT research run of 27 Nov, started on time 17:34 UTC; no wait, no other run active): Research run: LWW pp. 16-18/23-27 reduction and Section 4.8 checked (conditional; audited); 186 Lemma 1.1 hypotheses verified exactly; Lean: totient gcd-lcm identity for all arguments
+
+- P
+- a
+- r
+- i
+- t
+- y
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- t
+- w
+- o
+-  
+- m
+- o
+- r
+- e
+-  
+- p
+- i
+- e
+- c
+- e
+- s
+-  
+- o
+- f
+-  
+- L
+- ü
+- -
+- W
+- a
+- n
+- g
+- -
+- W
+- u
+-  
+- c
+- h
+- e
+- c
+- k
+- e
+- d
+-  
+- l
+- i
+- n
+- e
+-  
+- b
+- y
+-  
+- l
+- i
+- n
+- e
+-  
+- b
+- y
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- g
+- e
+- n
+- t
+- s
+- ,
+-  
+- e
+- a
+- c
+- h
+-  
+- w
+- i
+- t
+- h
+-  
+- a
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- d
+- v
+- e
+- r
+- s
+- a
+- r
+- i
+- a
+- l
+-  
+- a
+- u
+- d
+- i
+- t
+-  
+- (
+- f
+- i
+- x
+- e
+- s
+-  
+- a
+- p
+- p
+- l
+- i
+- e
+- d
+- ;
+-  
+- s
+- c
+- r
+- i
+- p
+- t
+- s
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+- l
+- y
+- )
+- :
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- d
+- u
+- c
+- t
+- i
+- o
+- n
+-  
+- Q
+- _
+- Y
+-  
+- -
+-  
+- Q
+- _
+- Y
+- ^
+- m
+- a
+- j
+-  
+- -
+- >
+-  
+- (
+- 4
+- .
+- 5
+- 2
+- )
+-  
+- w
+- i
+- t
+- h
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 4
+- .
+- 1
+- ,
+-  
+- (
+- 4
+- .
+- 1
+- 2
+- )
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- p
+- .
+-  
+- 2
+- 4
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- t
+- i
+- e
+- s
+-  
+- (
+- p
+- p
+- .
+-  
+- 1
+- 6
+- -
+- 1
+- 8
+- ,
+-  
+- 2
+- 3
+- -
+- 2
+- 7
+- )
+- ,
+-  
+- a
+- n
+- d
+-  
+- S
+- e
+- c
+- t
+- i
+- o
+- n
+-  
+- 4
+- .
+- 8
+-  
+- (
+- 4
+- .
+- 1
+- 4
+- 8
+- )
+- -
+- (
+- 4
+- .
+- 1
+- 5
+- 7
+- )
+-  
+- w
+- i
+- t
+- h
+-  
+- (
+- 4
+- .
+- 3
+- 1
+- )
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- n
+- e
+- w
+-  
+- p
+- a
+- r
+- t
+- s
+-  
+- o
+- f
+-  
+- P
+- r
+- o
+- p
+- .
+-  
+- 4
+- .
+- 5
+- (
+- i
+- i
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- t
+- h
+- e
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- e
+- s
+-  
+- o
+- f
+-  
+- e
+- v
+- e
+- r
+- y
+-  
+- a
+- n
+- a
+- l
+- y
+- t
+- i
+- c
+-  
+- s
+- t
+- a
+- t
+- e
+- m
+- e
+- n
+- t
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- m
+- a
+- i
+- n
+-  
+- 1
+- 8
+- 6
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- t
+- h
+- a
+- t
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 1
+- .
+- 1
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- n
+- u
+- m
+- e
+- r
+- i
+- c
+- s
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- c
+- i
+- t
+- e
+- s
+-  
+- h
+- o
+- l
+- d
+-  
+- e
+- x
+- a
+- c
+- t
+- l
+- y
+-  
+- f
+- o
+- r
+-  
+- a
+- l
+- l
+-  
+- 6
+- 7
+-  
+- r
+- e
+- t
+- a
+- i
+- n
+- e
+- d
+-  
+- r
+- o
+- w
+- s
+-  
+- (
+- c
+- o
+- d
+- e
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- _
+- l
+- e
+- m
+- m
+- a
+- 1
+- 1
+- _
+- c
+- h
+- e
+- c
+- k
+- .
+- p
+- y
+- :
+-  
+- 1
+- 9
+- 6
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- ,
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+- ,
+-  
+- 1
+- 7
+-  
+- n
+- e
+- g
+- a
+- t
+- i
+- v
+- e
+-  
+- c
+- o
+- n
+- t
+- r
+- o
+- l
+- s
+-  
+- c
+- a
+- u
+- g
+- h
+- t
+- ,
+-  
+- 1
+- .
+- 8
+-  
+- s
+- ;
+-  
+- a
+- u
+- d
+- i
+- t
+- :
+-  
+- 0
+-  
+- e
+- r
+- r
+- o
+- r
+- s
+- )
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- T
+- w
+- i
+- n
+- P
+- r
+- i
+- m
+- e
+- s
+- /
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 2
+- M
+- u
+- l
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 5
+- 0
+- 1
+-  
+- l
+- i
+- n
+- e
+- s
+- ,
+-  
+- 2
+- 9
+-  
+- d
+- e
+- c
+- l
+- a
+- r
+- a
+- t
+- i
+- o
+- n
+- s
+- )
+-  
+- p
+- r
+- o
+- v
+- e
+- s
+-  
+- p
+- h
+- i
+- (
+- l
+- c
+- m
+- (
+- a
+- ,
+- b
+- )
+- )
+-  
+- p
+- h
+- i
+- (
+- g
+- c
+- d
+- (
+- a
+- ,
+- b
+- )
+- )
+-  
+- =
+-  
+- p
+- h
+- i
+- (
+- a
+- )
+-  
+- p
+- h
+- i
+- (
+- b
+- )
+-  
+- f
+- o
+- r
+-  
+- a
+- l
+- l
+-  
+- a
+- ,
+-  
+- b
+-  
+- a
+- n
+- d
+-  
+- g
+- (
+- m
+- n
+- )
+-  
+- =
+-  
+- g
+- (
+- m
+- )
+- g
+- (
+- n
+- )
+-  
+- f
+- o
+- r
+-  
+- s
+- q
+- u
+- a
+- r
+- e
+- f
+- r
+- e
+- e
+-  
+- c
+- o
+- p
+- r
+- i
+- m
+- e
+-  
+- m
+- ,
+-  
+- r
+- e
+- m
+- o
+- v
+- i
+- n
+- g
+-  
+- t
+- h
+- e
+-  
+- f
+- i
+- n
+- i
+- t
+- e
+- -
+- r
+- a
+- n
+- g
+- e
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- i
+- s
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- S
+- 2
+-  
+- d
+- i
+- a
+- g
+- o
+- n
+- a
+- l
+- i
+- s
+- a
+- t
+- i
+- o
+- n
+-  
+- a
+- n
+- d
+-  
+- d
+- e
+- r
+- i
+- v
+- i
+- n
+- g
+-  
+- t
+- h
+- e
+-  
+- o
+- t
+- h
+- e
+- r
+-  
+- f
+- r
+- o
+- m
+-  
+- o
+- d
+- d
+-  
+- s
+- u
+- p
+- p
+- o
+- r
+- t
+- ;
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- (
+- 2
+- 8
+-  
+- j
+- o
+- b
+- s
+- )
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 3
+- 0
+- 1
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+- ;
+-  
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+-  
+- o
+- n
+- l
+- y
+- )
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- c
+- a
+- v
+- e
+- a
+- t
+-  
+- a
+- s
+-  
+- e
+- v
+- e
+- r
+- y
+- w
+- h
+- e
+- r
+- e
+- )
+- .
+
+Parity attempt: Route cards 2026-11-27-lww-p23-27-reduction (conditional on the divisor bound (4.9) via Shiu and Mertens; audit 0 errors, 2 gaps, 3 overstatements, 4 slips) and 2026-11-27-lww-s48-second-sum (conditional on the Prop. 4.5(i) machinery U1-U7; audit found 1 error in the card's motivation of step 12, not in LWW, plus 2 gaps, 1 overstatement, 4 slips; applied). No error in LWW. Every part of LWW Section 4 from (4.9) to (4.157) now has a card. First unresolved: pp. 15-16, (4.1)-(4.8), then I1 (Shiu). Twins untouched.
+
+Explored: none this run (the Central day 27 Nov already had one, Session 60)
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- L
+- e
+- m
+- m
+- a
+-  
+- 1
+- .
+- 1
+-  
+- h
+- y
+- p
+- o
+- t
+- h
+- e
+- s
+- i
+- s
+-  
+- c
+- h
+- e
+- c
+- k
+-  
+- i
+- s
+-  
+- o
+- n
+- e
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+-  
+- (
+- p
+- l
+- u
+- s
+-  
+- t
+- h
+- e
+-  
+- a
+- u
+- d
+- i
+- t
+- o
+- r
+- '
+- s
+-  
+- i
+- n
+- d
+- e
+- p
+- e
+- n
+- d
+- e
+- n
+- t
+-  
+- r
+- o
+- w
+-  
+- r
+- e
+- c
+- o
+- m
+- p
+- u
+- t
+- a
+- t
+- i
+- o
+- n
+-  
+- o
+- f
+-  
+- 8
+-  
+- r
+- o
+- w
+- s
+- )
+- ,
+-  
+- n
+- o
+- t
+-  
+- t
+- w
+- o
+-  
+- f
+- u
+- l
+- l
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- s
+- ;
+-  
+- [
+- 8
+- ]
+- '
+- s
+-  
+- a
+- n
+- a
+- l
+- y
+- t
+- i
+- c
+-  
+- t
+- h
+- e
+- o
+- r
+- e
+- m
+- s
+-  
+- t
+- h
+- e
+- m
+- s
+- e
+- l
+- v
+- e
+- s
+-  
+- a
+- r
+- e
+-  
+- n
+- o
+- t
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+- .
+-  
+- S
+- h
+- i
+- u
+- '
+- s
+-  
+- t
+- h
+- e
+- o
+- r
+- e
+- m
+-  
+- (
+- i
+- n
+- p
+- u
+- t
+-  
+- I
+- 1
+- )
+-  
+- n
+- o
+- t
+-  
+- r
+- e
+- a
+- d
+- .
+-  
+- T
+- h
+- e
+-  
+- L
+- W
+- W
+-  
+- t
+- o
+- y
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+-  
+- a
+- r
+- e
+-  
+- t
+- i
+- n
+- y
+-  
+- (
+- K
+-  
+- =
+-  
+- 1
+- )
+-  
+- a
+- n
+- d
+-  
+- t
+- e
+- s
+- t
+-  
+- n
+- o
+-  
+- a
+- s
+- y
+- m
+- p
+- t
+- o
+- t
+- i
+- c
+- s
+- .
+
+Next: Paper run tonight: write up Sessions 60-61 (Lean note v1.2; rem:186-status; sec:related). Research: LWW pp. 15-16 (4.1)-(4.8), then Shiu for I1, then U2-U7 and Section 5; 186: cap forms or a second Lemma 1.1 program; Lean: coprime-restricted S2 sum (5.25)-(5.27); weekly review Monday 30 Nov.
+
+## 2026-11-27 - Session 60 (3:34 AM CT research run of 27 Nov, started on time 09:34 UTC; no wait, no other run active): Research run: LWW Prop. 4.3 proved from their definitions (audited); 186 directed arithmetic (Sec. 2.3, (2.26)) verified as stated; Lean S2 change of variables
+
+- P
+- a
+- r
+- i
+- t
+- y
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- L
+- W
+- W
+-  
+- P
+- r
+- o
+- p
+- .
+-  
+- 4
+- .
+- 3
+-  
+- (
+- (
+- 4
+- .
+- 5
+- 4
+- )
+-  
+- =
+- >
+-  
+- (
+- 4
+- .
+- 5
+- 5
+- )
+- ,
+-  
+- p
+- p
+- .
+-  
+- 2
+- 7
+- -
+- 3
+- 0
+- )
+-  
+- r
+- e
+- -
+- d
+- e
+- r
+- i
+- v
+- e
+- d
+-  
+- s
+- t
+- e
+- p
+-  
+- b
+- y
+-  
+- s
+- t
+- e
+- p
+-  
+- (
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- c
+- a
+- r
+- d
+- ,
+-  
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- a
+- u
+- d
+- i
+- t
+- ,
+-  
+- f
+- i
+- x
+- e
+- s
+-  
+- a
+- p
+- p
+- l
+- i
+- e
+- d
+- ;
+-  
+- s
+- c
+- r
+- i
+- p
+- t
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+- l
+- y
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+-  
+- s
+- h
+- a
+- r
+- e
+- :
+-  
+- t
+- h
+- e
+-  
+- d
+- i
+- r
+- e
+- c
+- t
+- e
+- d
+-  
+- (
+- o
+- u
+- t
+- w
+- a
+- r
+- d
+- -
+- r
+- o
+- u
+- n
+- d
+- e
+- d
+-  
+- b
+- i
+- n
+- a
+- r
+- y
+- 6
+- 4
+-  
+- /
+-  
+- a
+- r
+- b
+- )
+-  
+- a
+- r
+- i
+- t
+- h
+- m
+- e
+- t
+- i
+- c
+-  
+- o
+- f
+-  
+- S
+- e
+- c
+- .
+-  
+- 2
+- .
+- 3
+-  
+- o
+- f
+-  
+- t
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- n
+- u
+- m
+- e
+- r
+- i
+- c
+- s
+-  
+- p
+- a
+- p
+- e
+- r
+-  
+- v
+- e
+- r
+- i
+- f
+- i
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- t
+- a
+- t
+- e
+- d
+-  
+- (
+- c
+- o
+- d
+- e
+- /
+- o
+- a
+- i
+- 1
+- 8
+- 6
+- _
+- d
+- i
+- r
+- e
+- c
+- t
+- e
+- d
+- _
+- c
+- h
+- e
+- c
+- k
+- .
+- p
+- y
+- :
+-  
+- 3
+- 1
+-  
+- c
+- h
+- e
+- c
+- k
+- s
+- ,
+-  
+- 0
+-  
+- f
+- a
+- i
+- l
+- u
+- r
+- e
+- s
+- ,
+-  
+- 1
+- 9
+-  
+- n
+- e
+- g
+- a
+- t
+- i
+- v
+- e
+-  
+- c
+- o
+- n
+- t
+- r
+- o
+- l
+- s
+-  
+- c
+- a
+- u
+- g
+- h
+- t
+- ,
+-  
+- 5
+- 4
+-  
+- s
+- ,
+-  
+- 4
+- 8
+-  
+- M
+- B
+- ;
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+-  
+- i
+- d
+- e
+- n
+- t
+- i
+- c
+- a
+- l
+- l
+- y
+- )
+- ;
+-  
+- (
+- 2
+- .
+- 2
+- 6
+- )
+-  
+- h
+- o
+- l
+- d
+- s
+-  
+- e
+- x
+- a
+- c
+- t
+- l
+- y
+-  
+- f
+- o
+- r
+-  
+- r
+-  
+- <
+- =
+-  
+- 9
+- 4
+- ,
+- 9
+- 0
+- 6
+- ,
+- 2
+- 6
+- 5
+-  
+- (
+- n
+- e
+- e
+- d
+- e
+- d
+- :
+-  
+- r
+-  
+- <
+- =
+-  
+- 9
+- 8
+- ,
+- 2
+- 6
+- 4
+- )
+- ,
+-  
+- c
+- o
+- n
+- f
+- i
+- r
+- m
+- e
+- d
+-  
+- b
+- y
+-  
+- a
+-  
+- s
+- e
+- p
+- a
+- r
+- a
+- t
+- e
+-  
+- e
+- x
+- a
+- c
+- t
+-  
+- s
+- p
+- o
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+-  
+- w
+- r
+- i
+- t
+- t
+- e
+- n
+-  
+- i
+- n
+-  
+- t
+- h
+- e
+-  
+- m
+- a
+- i
+- n
+-  
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+- ;
+-  
+- t
+- h
+- e
+-  
+- r
+- e
+- n
+- e
+- w
+- a
+- l
+-  
+- m
+- a
+- j
+- o
+- r
+- a
+- n
+- t
+-  
+- (
+- 2
+- .
+- 3
+- )
+-  
+- p
+- r
+- o
+- v
+- e
+- d
+-  
+- b
+- y
+-  
+- r
+- e
+- a
+- d
+- i
+- n
+- g
+-  
+- f
+- o
+- r
+-  
+- e
+- v
+- e
+- r
+- y
+-  
+- M
+-  
+- >
+- =
+-  
+- 2
+- .
+-  
+- L
+- e
+- a
+- n
+- :
+-  
+- T
+- w
+- i
+- n
+- P
+- r
+- i
+- m
+- e
+- s
+- /
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+- S
+- 2
+- Y
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 5
+- 1
+- 0
+-  
+- l
+- i
+- n
+- e
+- s
+- ,
+-  
+- 3
+- 3
+-  
+- d
+- e
+- c
+- l
+- a
+- r
+- a
+- t
+- i
+- o
+- n
+- s
+- )
+- :
+-  
+- M
+- a
+- y
+- n
+- a
+- r
+- d
+-  
+- (
+- 5
+- .
+- 2
+- 3
+- )
+-  
+- y
+- ^
+- (
+- m
+- )
+-  
+- v
+- a
+- r
+- i
+- a
+- b
+- l
+- e
+- s
+- ,
+-  
+- g
+-  
+- =
+-  
+- m
+- u
+- *
+- p
+- h
+- i
+-  
+- w
+- i
+- t
+- h
+-  
+- g
+- (
+- p
+- )
+-  
+- =
+-  
+- p
+- -
+- 2
+- ,
+-  
+- t
+- h
+- e
+-  
+- g
+- c
+- d
+-  
+- f
+- o
+- r
+- m
+-  
+- o
+- f
+-  
+- (
+- 5
+- .
+- 2
+- 1
+- )
+- ,
+-  
+- a
+- n
+- d
+-  
+- t
+- h
+- e
+-  
+- S
+- 2
+-  
+- q
+- u
+- a
+- d
+- r
+- a
+- t
+- i
+- c
+-  
+- f
+- o
+- r
+- m
+-  
+- d
+- i
+- a
+- g
+- o
+- n
+- a
+- l
+- i
+- s
+- e
+- d
+-  
+- a
+- s
+-  
+- s
+- u
+- m
+-  
+- (
+- y
+- ^
+- (
+- m
+- )
+- _
+- u
+- )
+- ^
+- 2
+- /
+- g
+- (
+- u
+- )
+-  
+- (
+- f
+- i
+- n
+- i
+- t
+- e
+-  
+- a
+- l
+- g
+- e
+- b
+- r
+- a
+-  
+- o
+- n
+- l
+- y
+- )
+- ;
+-  
+- l
+- a
+- k
+- e
+-  
+- b
+- u
+- i
+- l
+- d
+-  
+- (
+- 2
+- 7
+-  
+- j
+- o
+- b
+- s
+- )
+-  
+- a
+- n
+- d
+-  
+- A
+- u
+- d
+- i
+- t
+- .
+- l
+- e
+- a
+- n
+-  
+- (
+- 2
+- 7
+- 2
+-  
+- e
+- n
+- t
+- r
+- i
+- e
+- s
+- ;
+-  
+- p
+- r
+- o
+- p
+- e
+- x
+- t
+-  
+- /
+-  
+- Q
+- u
+- o
+- t
+- .
+- s
+- o
+- u
+- n
+- d
+-  
+- /
+-  
+- C
+- l
+- a
+- s
+- s
+- i
+- c
+- a
+- l
+- .
+- c
+- h
+- o
+- i
+- c
+- e
+-  
+- o
+- n
+- l
+- y
+- )
+-  
+- r
+- e
+- -
+- r
+- u
+- n
+-  
+- h
+- e
+- r
+- e
+- .
+-  
+- N
+- e
+- w
+- s
+-  
+- s
+- e
+- a
+- r
+- c
+- h
+- :
+-  
+- n
+- o
+- t
+- h
+- i
+- n
+- g
+-  
+- n
+- e
+- w
+-  
+- (
+- L
+- W
+- W
+-  
+- v
+- 2
+- ,
+-  
+- L
+- i
+- c
+- h
+- t
+- m
+- a
+- n
+-  
+- v
+- 1
+- )
+- .
+-  
+- B
+- o
+- u
+- n
+- d
+- s
+-  
+- u
+- n
+- c
+- h
+- a
+- n
+- g
+- e
+- d
+- :
+-  
+- e
+- s
+- t
+- a
+- b
+- l
+- i
+- s
+- h
+- e
+- d
+-  
+- 2
+- 4
+- 6
+- ,
+-  
+- c
+- l
+- a
+- i
+- m
+- e
+- d
+-  
+- 1
+- 8
+- 2
+- ,
+-  
+- p
+- r
+- o
+- j
+- e
+- c
+- t
+-  
+- 2
+- 3
+- 6
+-  
+- c
+- o
+- n
+- d
+- i
+- t
+- i
+- o
+- n
+- a
+- l
+-  
+- (
+- c
+- a
+- v
+- e
+- a
+- t
+-  
+- a
+- s
+-  
+- e
+- v
+- e
+- r
+- y
+- w
+- h
+- e
+- r
+- e
+- )
+- .
+
+Parity attempt: Route card 2026-11-27-lww-prop43 (proved here relative to LWW's definitions and the Prop. 4.2 hypotheses; audit: 0 errors, 3 gaps, 3 overstatements, 5 slips, applied). No error in LWW. First unresolved: the reduction Q_Y - Q_Y^maj -> (4.52), pp. 23-27 (incl. p. 24 and Lemma 4.1), then Section 4.8 / Prop. 4.5(ii). Twins untouched.
+
+Explored: Mathematical logic: Nieuwveld arXiv:2611.32977 (FO(N;+,P) undecidable unconditionally) vs twin primes. Dead end: logic gives equivalences, not proofs; the two-block gap lemma lives at scale log p, not at difference 2.
+
+Did not work or is blocked:
+- W
+- o
+- l
+- f
+- r
+- a
+- m
+-  
+- c
+- o
+- n
+- n
+- e
+- c
+- t
+- o
+- r
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+- ;
+-  
+- m
+- a
+- t
+- h
+- b
+- o
+- x
+-  
+- s
+- k
+- i
+- l
+- l
+- s
+-  
+- n
+- o
+- t
+-  
+- a
+- v
+- a
+- i
+- l
+- a
+- b
+- l
+- e
+-  
+- (
+- f
+- r
+- e
+- s
+- h
+- -
+- c
+- o
+- n
+- t
+- e
+- x
+- t
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- a
+- u
+- d
+- i
+- t
+- s
+-  
+- i
+- n
+- s
+- t
+- e
+- a
+- d
+- )
+- .
+-  
+- T
+- h
+- e
+-  
+- 1
+- 8
+- 6
+-  
+- d
+- i
+- r
+- e
+- c
+- t
+- e
+- d
+- -
+- a
+- r
+- i
+- t
+- h
+- m
+- e
+- t
+- i
+- c
+-  
+- c
+- h
+- e
+- c
+- k
+-  
+- i
+- s
+-  
+- o
+- n
+- e
+-  
+- h
+- e
+- l
+- p
+- e
+- r
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+-  
+- p
+- l
+- u
+- s
+-  
+- a
+-  
+- m
+- a
+- i
+- n
+- -
+- s
+- e
+- s
+- s
+- i
+- o
+- n
+-  
+- s
+- p
+- o
+- t
+-  
+- c
+- h
+- e
+- c
+- k
+-  
+- o
+- f
+-  
+- (
+- 2
+- .
+- 2
+- 6
+- )
+- ,
+-  
+- n
+- o
+- t
+-  
+- t
+- w
+- o
+-  
+- f
+- u
+- l
+- l
+-  
+- p
+- r
+- o
+- g
+- r
+- a
+- m
+- s
+- ;
+-  
+- t
+- h
+- e
+-  
+- p
+- r
+- o
+- d
+- u
+- c
+- t
+- i
+- o
+- n
+-  
+- r
+- u
+- n
+-  
+- i
+- t
+- s
+- e
+- l
+- f
+- ,
+-  
+- F
+- L
+- I
+- N
+- T
+- /
+- A
+- r
+- b
+-  
+- c
+- o
+- r
+- r
+- e
+- c
+- t
+- n
+- e
+- s
+- s
+-  
+- a
+- n
+- d
+-  
+- n
+- u
+- m
+- p
+- y
+-  
+- s
+- u
+- m
+- m
+- a
+- t
+- i
+- o
+- n
+-  
+- o
+- r
+- d
+- e
+- r
+-  
+- a
+- r
+- e
+-  
+- n
+- o
+- t
+-  
+- c
+- o
+- v
+- e
+- r
+- e
+- d
+- .
+
+Next: LWW: the reduction pp. 23-27 (p. 24, Lemma 4.1, (4.44)-(4.51)), then Section 4.8 / Prop. 4.5(ii)/(4.96); 186: Lemma 1.1 analytic part, cap forms (2.12)/(2.15); Lean: link the S2 quadratic form to the coprime-restricted sum (5.25)-(5.27) or prove phi multiplicative; weekly review Monday 30 Nov.
+
 ## 2026-11-27 - Session 59 (7:34 PM CT paper run of 26 Nov, started on time 01:35 UTC 27 Nov; no wait, no other run active): Paper run: Lean note v1.1 (finite part of S2), main paper v0.53; LWW Prop. 4.4/(4.73) proved from their definitions (audited)
 
 - P
@@ -22967,56 +27327,15 @@ Did not work or is blocked:
 
 Next: Parity paper toward v1.0: notation renames (lambda_d vs Liouville lambda), halve the FI98b/HB01 digests, referee items 2.4-2.7 and 3. Main paper: merge bonf/bonf2 and trim the version mentions in the body. Parity attempt: review candidate (d), the Matomaki–Radziwill–Tao averaged Hardy–Littlewood over shifts. Next weekly review: Monday 23 Nov.
 
-## 2026-11-16 - Session 27 (11:34 AM CT, 16 Nov; started on time 17:34 UTC; no wait, no other run active): Verification note frozen as v1.0, with a per-number account of what rests on one or two programs; Chen's theorem as a consistency test of the parity criterion (parity paper v0.12)
+## 2026-11-16 - Daily summary of Sessions 25-27 (15-16 Nov; full entries in log/archive-2026-11-16.json): Fifth day: the Siegel-zero world, Pintz's dichotomy with Maynard weights, the first weekly review, and the verification note frozen
 
-- Verification note v1.0 (the bound share, priority 1 of the weekly review): a new section says for every number whether it rests on one program, two independent programs or a probabilistic check, and an appendix collects the facts about the capped problem (cap costs 0.0041 at k = 49, 0.00033 and 0.00054 at k = 48, 0.0095 and 0.0386 at k = 45; ceilings 4.14 and 4.126). An internal referee pass on the candidate found 8 errors and 8 gaps, all fixed before the freeze. Among them: the 182 tail's second program was not written blind; the Bonferroni levels in the new appendix were reversed; and 'cannot reach 4.00438' for the Lemma 9.1 caps was too strong (now 'suggests').
-- Parity attempt (route card 2026-11-16-chen-consistency-test.md): the criterion of the parity paper does not block Chen's target 'p prime, p+2 in P_2': no non-negative weakly fair Liouville-pattern weight kills it (Lean-checked). It blocks each half: 1 - e1 e2 for twin primes, 1 + e1 e2 for p+2 exactly a product of two primes (Lean-checked). This matches Tao 2007 ('cannot hope to use plain sieve theory to ... just count semiprimes') and Pintz 2010 (p+2 with an odd number of prime factors infinitely often is not known). It is folklore in substance and entered the paper as one short remark.
-- Parity paper v0.12, cuts from the review: the Siegel-zero section went from 217 to about 95 lines, the Matomaki-Radziwill digest became one paragraph, the proofs of three propositions were shortened, and Prop. B-parity was reduced to its parity statement (now 29 pages). A fresh-context audit of every rewritten proof found no errors and 2 gaps (a dropped hypothesis, and 'under EH' where Bombieri's conclusion is also assumed), both fixed.
-- Main paper v0.27: three non-propositions demoted to remarks; Related results updated. Literature notes notes/sources-chen-parity.md. Chen-type constants: 1.104 Pi(x) (Wu 2004); 1.2759 (R. Li, preprint). Twin upper bound: 3.29956 Pi(x) (Lichtman). No improvement of Pintz's 16 was found in the citing papers.
-- Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. The twin prime conjecture remains open.
+- Session 25: The Siegel-zero world: where the parity obstruction's hypothesis can fail (parity paper v0.10, with a full referee pass)
+- Session 26: Weekly review; Pintz's parity-sensitive dichotomy with Maynard weights: some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes (parity paper v0.11)
+- Session 27: Verification note frozen as v1.0, with a per-number account of what rests on one or two programs; Chen's theorem as a consistency test of the parity criterion (parity paper v0.12)
 
-Parity attempt: Chen's theorem as a consistency test of the bipartite criterion: the class does not block 'p prime, p+2 in P_2' but blocks each half (Lean-checked weights). Classification: consistent (confirms the criterion; folklore); no parity-breaking content.
+Parity attempt: Parity-paper sections of 15-16 Nov (Siegel-zero world, Pintz's dichotomy, Chen's theorem as a consistency test): all located or confirmed the obstruction; none breaks it.
 
-Explored: Is there a 'mod q' analogue of the parity obstruction (weights in Omega(n) mod q)? Dead end, with a clean reason: fair Z/q weights killing DHL[k,m+1] exist iff k <= qm, so q = 3 would 'block' DHL[3,2], which is proved under GEH. The heuristic fails because sum z^Omega(n) ~ x (log x)^(z-1) G(z)/Gamma(z) has a non-zero main term unless 1/Gamma(z) = 0, which among |z| = 1 happens only at z = -1. At 1e7 the sums match the prediction to 3-9%, and a Selberg-type weight sees e(1/3)^Omega with modulus 0.44, against 0.06 for lambda.
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helpers used for the literature check, the referee pass and the audit).
-- The referee pass found 8 errors in the candidate v1.0 of our own note (fixed). Tenenbaum's book (Selberg-Delange) was opened only via lecture notes. Murty-Vatwani still not obtainable.
-
-Next: Parity paper toward v1.0: merge Prop. ceil with Cor. consistent; footnote Remark pm65 and the Debouzy constant; halve the FI98b/HB01/SS19 digests; notation renames; referee items 2.4-2.7 and 3. Main paper: merge bonf/bonf2, shorten the history and the version mentions. Parity attempt: Green-Tao-Ziegler complexity vs parity, or Matomaki-Radziwill-Tao averaged Hardy-Littlewood.
-
-## 2026-11-16 - Session 26 (3:34 AM CT, 16 Nov; started on time; no wait, no other run active): Weekly review; Pintz's parity-sensitive dichotomy with Maynard weights: some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes (parity paper v0.11)
-
-- Weekly review (notes/reviews/2026-11-16.md, from a fresh-context candid review checked against the files). Top priorities for the week: freeze the verification note as v1.0, cut the parity paper to a ~20 pp. v1.0, and slim the main paper into an index. The k = 3 GEH thread is stopped, rung 182 is paused until its data exist, and no capped-variational paper will start.
-- Parity attempt (route card 2026-11-16-pintz-dichotomy-maynard.md): Pintz's 2010 theorem was read in the source. It is a disjunction: two primes in n+H, or a prime n+h_i with lambda(n+r) = -1. Redone with Maynard's weights it needs only theta M_k > 1 (bounded gaps need theta M_k > 2), so 5-tuples suffice under Bombieri-Vinogradov, since M_5 >= 1417255/708216 > 2 (Maynard (8.17)). Consequence: some even d with 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p (Pintz: 16); also 0 < d <= 14 (Pintz 18) and better conditional thresholds. Proved here, possibly folklore.
-- Computed: Maynard's k = 5 ratio and optimised ratios for k = 2..5 (thresholds 0.72154, 0.60752, 0.54230, 0.49898) agree exactly between two independent programs (code/parity/pintz_maynard.py, Dirichlet formula; pintz_maynard_check2.py, iterated sympy integration, written by a helper without seeing the first). A fresh-context adversarial audit found no errors and 11 wording or justification fixes, all applied (notes/audit-parity-v011.md).
-- The parity paper's criterion predicts this exactly: the target is the complete graph on H u {r}, which the class does not block; a single prescribed d is a star, which it does (Pintz's remark). So this sidesteps parity; it does not break it.
-- Papers: parity paper v0.11. New Section subsec:pintz; first review cuts (dual-formula subsection shortened, Prop. k3-step merged into Thm k3-window, k = 3 remarks merged, Prop. tao-weight turned into a remark, answered open question and plan removed, changelog shortened, abstract rewritten, 174 words; a pre-existing citation error fixed). Verification note v0.12: wording of the Lemma 9.1 ceiling (one-program Gram certificate, probabilistic check of its weights), version tags removed. Main paper v0.26: version tags out of headings, Related results rewritten as current statements.
-- Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. The twin prime conjecture remains open.
-
-Flag for Jerry: (minor) Pintz's 2010 parity-sensitive bound 16 improves to 12 with Maynard weights; proved here and checked, but probably folklore (literature question only).
-
-Parity attempt: Pintz's dichotomy with Maynard weights (two primes, or a prime next to lambda = sigma) needs only theta M_k > 1: proved for 5-tuples under BV, |d| <= 12 instead of 16; classification: proved (modest, possibly folklore), sidesteps parity, does not break it.
-
-Explored: Can the dichotomy reach 4-tuples (|d| <= 8)? It needs level 0.5423 for primes and lambda, while the best known for smooth moduli is 0.525 (Stadlmann 2023), and enlarged supports need the lambda-twisted sum beyond moduli x^{1/2}: dead end with current inputs.
-
-Did not work or is blocked:
-- Wolfram connector not available in this session; mathbox skills not available (fresh-context helpers used for the review, the second program and the audit).
-- Murty-Vatwani still not obtainable (the Queen's URL returns the homepage HTML).
-
-Next: Verification note v1.0 (priority 1); continue the parity-paper cuts (sec. siegel to one subsection, B-parity/fi-twin/bomb-twin/ss-split shortened, digests halved, notation renames, referee items 2.4-2.7 and 3); main paper: demote prop:family/prop:adjoint/prop:psi-weight, merge bonf/bonf2, shorten the history appendix; one parity attempt (Chen switching as a test of the criterion, or Green-Tao-Ziegler complexity).
-
-## 2026-11-16 - Session 25 (7:34 PM CT, 15 Nov; started on time 01:34 UTC 16 Nov; no wait): The Siegel-zero world: where the parity obstruction's hypothesis can fail (parity paper v0.10, with a full referee pass)
-
-- Parity paper v0.10, thread 3 (hypotheses that imply twin primes): new Section on the Siegel-zero world, read in Tao-Teravainen arXiv:2109.06291v2. Heath-Brown's 1983 theorem is quoted from that paper, since the original is behind a Cloudflare challenge.
-- Prop. prop:siegel-bias (Proved here, elementary, possibly folklore): for a real character chi mod q and any +-1 completely multiplicative f, the class sums of f(n)f(n+2) mod Q = lcm(prod_{p<=w} p, q) are on average chi(b)chi(b+2) (x/Q)(1 - 4 s1 - ...), where s1 is the 1/p-sum of the primes where f and chi disagree. For q prime the discrepancies against the coprime average (as in Polymath8b (144)) are then large too, by the Jacobsthal sum -1.
-- Cor. cor:siegel-typeI: with a Siegel zero (TT (1.4), (3.22)-(3.23)), a per-modulus unweighted bound eps x/Q on these discrepancies at Q = Wq forces the split primes of chi in (w, q^{1/log^{1-eps'} eta}) to have 1/p-sum >= (1-eps)/4 - o(1). So in a Siegel world with few small split primes, two-point Chowla holds (TT Cor. 1.8(ii)) but a per-modulus form of Chowla in progressions fails. That is where Heath-Brown's route escapes the obstruction. The averaged (EH-type) input is not shown to fail.
-- Checks: code/parity/siegel_class_bias.py verifies the pointwise inequality and part (2) exactly in 30 cases (q = 163, 1009; x up to 5e7). A fresh-context audit found 3 errors and 3 gaps (a misreading of TT (3.23), an overstated 'strictly stronger', a numerical sentence, error terms, per-modulus vs averaged, and the relation to open question 1), all fixed. A separate full-paper referee pass found no wrong proof; its framing and labelling fixes were applied (the H(2m+1) criterion is now stated as a barrier for proofs, not a bound; Bombieri's conditions are in the abstract; all 7 labels are defined; stale text is removed). The cuts it proposes are left to the weekly review.
-- Main paper v0.25 (Related results). Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open.
-
-Parity attempt: Attempt: the Siegel-zero world and the twisted Type I input of the obstruction. Classification: located, proved under an explicit small-prime hypothesis. First unresolved implication: whether a Siegel zero forces few split primes below q^{1/log^{1-eps} eta} (open question 8). No parity-breaking content.
-
-Explored: Do small values of L(1, chi_{-q}) come with few small split primes? Inconclusive: in real data yes (bottom 1% of 9005 q <= 2e5 have mean s' = 0.029), but this is near-tautological and blind to the Siegel regime, and the class-number argument bounds counts, not 1/p-sums.
+Explored: See the archived entries.
 
 Did not work or is blocked:
 - W
@@ -23027,16 +27346,6 @@ Did not work or is blocked:
 - a
 - m
 -  
-- c
-- o
-- n
-- n
-- e
-- c
-- t
-- o
-- r
--  
 - n
 - o
 - t
@@ -23050,232 +27359,11 @@ Did not work or is blocked:
 - b
 - l
 - e
--  
-- i
-- n
--  
-- t
-- h
-- i
-- s
--  
-- s
-- e
-- s
-- s
-- i
-- o
-- n
 - ;
--  
-- m
-- a
-- t
-- h
-- b
-- o
-- x
--  
-- s
-- k
-- i
-- l
-- l
-- s
--  
-- n
-- o
-- t
--  
-- a
-- v
-- a
-- i
-- l
-- a
-- b
-- l
-- e
--  
-- (
-- f
-- r
-- e
-- s
-- h
-- -
-- c
-- o
-- n
-- t
-- e
-- x
-- t
--  
-- a
-- g
-- e
-- n
-- t
-- s
--  
-- u
-- s
-- e
-- d
--  
-- f
-- o
-- r
--  
-- t
-- h
-- e
--  
-- a
-- u
-- d
-- i
-- t
--  
-- a
-- n
-- d
--  
-- t
-- h
-- e
--  
-- r
-- e
-- f
-- e
-- r
-- e
-- e
--  
-- p
-- a
-- s
-- s
-- )
-- .
--  
-- H
-- e
-- a
-- t
-- h
-- -
-- B
-- r
-- o
-- w
-- n
--  
-- 1
-- 9
-- 8
-- 3
--  
-- c
-- o
-- u
-- l
-- d
--  
-- n
-- o
-- t
--  
-- b
-- e
--  
-- o
-- p
-- e
-- n
-- e
-- d
--  
-- (
-- H
-- T
-- T
-- P
--  
-- 4
-- 0
-- 3
-- ,
--  
-- C
-- l
-- o
-- u
-- d
-- f
-- l
-- a
-- r
-- e
--  
-- c
-- h
-- a
-- l
-- l
-- e
-- n
-- g
-- e
-- ;
--  
-- l
-- i
-- s
-- t
-- e
-- d
--  
-- i
-- n
--  
-- n
-- o
-- t
-- e
-- s
-- /
-- s
-- o
-- u
-- r
-- c
-- e
-- s
-- -
-- n
-- e
-- e
-- d
-- e
-- d
-- .
-- m
-- d
-- )
-- .
--  
-- R
-- u
-- n
-- g
 -  
 - 1
 - 8
 - 2
-- :
 -  
 - r
 - e
@@ -23294,202 +27382,20 @@ Did not work or is blocked:
 - t
 - a
 -  
-- s
-- t
-- i
-- l
-- l
--  
-- m
-- i
-- s
-- s
-- i
-- n
-- g
--  
-- (
-- t
-- h
-- e
--  
-- U
-- C
-- L
-- A
--  
-- d
-- i
-- r
-- e
-- c
-- t
-- o
-- r
-- y
--  
-- l
-- i
-- s
-- t
-- s
--  
-- o
-- n
-- l
-- y
--  
-- t
-- h
-- e
--  
-- b
 - u
 - n
-- d
-- l
-- e
-- )
-- ,
--  
-- s
-- o
--  
-- n
-- o
--  
-- b
-- o
-- u
-- n
-- d
--  
-- c
-- o
-- m
-- p
-- u
-- t
 - a
-- t
-- i
-- o
-- n
--  
-- t
-- h
-- i
-- s
--  
-- r
-- u
-- n
-- .
--  
-- T
-- h
-- e
--  
-- f
-- i
-- r
-- s
-- t
--  
-- d
-- r
-- a
-- f
-- t
--  
-- o
-- f
--  
-- t
-- h
-- e
--  
-- c
-- o
-- r
-- o
-- l
-- l
-- a
-- r
-- y
--  
-- m
-- i
-- s
-- r
-- e
-- a
-- d
--  
-- T
-- T
--  
-- (
-- 3
-- .
-- 2
-- 3
-- )
--  
-- a
-- n
-- d
--  
-- o
 - v
-- e
-- r
-- s
-- t
 - a
-- t
-- e
-- d
--  
 - i
-- t
-- s
--  
-- c
-- o
-- n
-- c
 - l
-- u
-- s
-- i
-- o
-- n
-- ;
--  
-- c
 - a
-- u
-- g
-- h
-- t
--  
 - b
-- y
--  
-- t
-- h
+- l
 - e
--  
-- a
-- u
-- d
-- i
-- t
 - .
 
-Next: Monday 16 Nov 3:34 AM CT run: the first weekly review before other work. It should decide the referee's proposed cuts (Prop. k3-step, sec. 4.4, the literature digests, notation) and whether the k = 3 variational thread continues. Parity: open question 8, or a log-averaged version of Prop. prop:siegel-bias. 182: restoration data if supplied.
+Next: Parity paper toward a frozen v1.0; 186 majorisation lemmas; Lean reduction.
 
 ## 2026-11-15 - Daily summary of Sessions 17-24 (14-15 Nov; full entries in log/archive-2026-11-15.json): Fourth day: rung 186 finished, Phase B starts, and the parity-barrier paper is built from the sources
 

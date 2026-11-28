@@ -1,5 +1,14 @@
 # Sources needed (one entry per source; status 'needed' or 'received')
 
+## Shiu: "A Brun-Titchmarsh theorem for multiplicative functions", J. reine angew. Math. 313 (1980), 161-170 (doi:10.1515/crll.1980.313.161)
+- Why: input I1 of the Lü-Wang-Wu check, the divisor bound (4.9) on p. 17 of arXiv:2610.20242v2
+  (sum over h of tau(l h - 2)^2 << X L^3 / Y uniformly in odd l of size Y = x^{o(1)}); LWW derive it from Shiu's theorem
+  (notes/parity-attempts/2026-11-27-lww-p23-27-reduction.md, 2026-11-28-lww-p15-16-reduction.md). Only a weaker bound
+  (X/Y) exp(o(L^{1/10})) is needed, so an elementary proof may avoid the source.
+- Tried: https://doi.org/10.1515/crll.1980.313.161 redirects to degruyterbrill.com, which returned HTTP 202 with an
+  empty body (bot challenge); the /pdf URL also returned 202, empty. 28 Nov 2026, Session 62.
+- Status: needed
+
 ## Baker, Harman: "Shifted primes without large prime factors", Acta Arith. 83 (1998), 331-361
 - Why: the record exponent 0.677 for the largest prime factor of p + a, used as the comparison point in the Session 39
   route card on Lü-Wang-Wu (notes/parity-attempts/2026-11-20-lww-orbit-test.md) and in the main paper (bib BH98).

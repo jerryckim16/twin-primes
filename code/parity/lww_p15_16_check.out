@@ -1,0 +1,49 @@
+[POS] (A) mu(n)W(n) = (a,h)=1 expansion, n<=3000, K=1 P1={3,5,7}: 0 failures / 3000 cases  -> ok
+[NEG] (A) NEG same identity with (a,h)=1 dropped, K=1 P1={3,5,7}: 247 failures / 3000 cases  -> ok
+[POS] (A) mu(n)W(n) = (a,h)=1 expansion, n<=3000, K=2 P1={3,5},P2={7,11}: 0 failures / 3000 cases  -> ok
+[NEG] (A) NEG same identity with (a,h)=1 dropped, K=2 P1={3,5},P2={7,11}: 65 failures / 3000 cases  -> ok
+[POS] (A) mu(n)W(n) = (a,h)=1 expansion, n<=3000, K=3 {3},{5,13},{7}: 0 failures / 3000 cases  -> ok
+[NEG] (A) NEG same identity with (a,h)=1 dropped, K=3 {3},{5,13},{7}: 11 failures / 3000 cases  -> ok
+[POS] (B) (4.3) T(M,N) = (a,h)=1 expansion, K=1 P1={3,5,7}: 0 failures / 1 cases  -> ok
+[NEG] (B) NEG T(M,N) = expansion with (a,h)=1 simply dropped, K=1 P1={3,5,7}: 1 failures / 1 cases (|D|^2 = 70.2, 26 bad terms) -> ok
+[POS] (B) every (a,h)>1 term has p_i^2 | mn+2, K=1 P1={3,5,7}: 0 failures / 26 cases  -> ok
+[POS] (B) per m, #{n: p^2 | mn+2} <= N/p^2+1 (0 if p|m), K=1 P1={3,5,7}: 0 failures / 42 cases  -> ok
+[POS] (B) |D| <= trivial bound, K=1 P1={3,5,7}: 0 failures / 1 cases (|D| = 8.38 <= 153) -> ok
+[POS] (C) sum_l eta(a/2^l) = 1 on A, K=1 P1={3,5,7}: 0 failures / 3 cases  -> ok
+[POS] (C) T(M,N) + D = sum_Y T_Y (4.5), K=1 P1={3,5,7}: 0 failures / 1 cases (3 values of Y) -> ok
+[POS] (C) on supp eta(a/Y): Y<=a<=4Y and h<=(4X+2)/Y, K=1 P1={3,5,7}: 0 failures / 238 cases  -> ok
+[POS] (D) (4.7) line 1 = line 2 (with conjugates), K=1 P1={3,5,7}: 0 failures / 3 cases  -> ok
+[NEG] (D) NEG (4.7) line 2 without conjugates, K=1 P1={3,5,7}: 3 failures / 3 cases  -> ok
+[POS] (E) (4.6) |T_Y|^2 <= floor((4X+2)/Y) Q_Y (true c_h and c_h=1), K=1 P1={3,5,7}: 0 failures / 6 cases  -> ok
+[NEG] (E) NEG |T_Y|^2 <= Q_Y (factor X/Y dropped; alpha=beta=1, c_h=1), K=1 P1={3,5,7}: 3 failures / 3 cases  -> ok
+[POS] (B) (4.3) T(M,N) = (a,h)=1 expansion, K=2 P1={3,5},P2={7,11}: 0 failures / 1 cases  -> ok
+[NEG] (B) NEG T(M,N) = expansion with (a,h)=1 simply dropped, K=2 P1={3,5},P2={7,11}: 1 failures / 1 cases (|D|^2 = 80.1, 3 bad terms) -> ok
+[POS] (B) every (a,h)>1 term has p_i^2 | mn+2, K=2 P1={3,5},P2={7,11}: 0 failures / 3 cases  -> ok
+[POS] (B) per m, #{n: p^2 | mn+2} <= N/p^2+1 (0 if p|m), K=2 P1={3,5},P2={7,11}: 0 failures / 48 cases  -> ok
+[POS] (B) |D| <= trivial bound, K=2 P1={3,5},P2={7,11}: 0 failures / 1 cases (|D| = 8.95 <= 1.5e+03) -> ok
+[POS] (C) sum_l eta(a/2^l) = 1 on A, K=2 P1={3,5},P2={7,11}: 0 failures / 4 cases  -> ok
+[POS] (C) T(M,N) + D = sum_Y T_Y (4.5), K=2 P1={3,5},P2={7,11}: 0 failures / 1 cases (3 values of Y) -> ok
+[POS] (C) on supp eta(a/Y): Y<=a<=4Y and h<=(4X+2)/Y, K=2 P1={3,5},P2={7,11}: 0 failures / 28 cases  -> ok
+[POS] (D) (4.7) line 1 = line 2 (with conjugates), K=2 P1={3,5},P2={7,11}: 0 failures / 3 cases  -> ok
+[NEG] (D) NEG (4.7) line 2 without conjugates, K=2 P1={3,5},P2={7,11}: 3 failures / 3 cases  -> ok
+[POS] (E) (4.6) |T_Y|^2 <= floor((4X+2)/Y) Q_Y (true c_h and c_h=1), K=2 P1={3,5},P2={7,11}: 0 failures / 6 cases  -> ok
+[NEG] (E) NEG |T_Y|^2 <= Q_Y (factor X/Y dropped; alpha=beta=1, c_h=1), K=2 P1={3,5},P2={7,11}: 3 failures / 3 cases  -> ok
+[POS] (B) (4.3) T(M,N) = (a,h)=1 expansion, K=3 {3},{5,13},{7}: 0 failures / 1 cases  -> ok
+[NEG] (B) NEG T(M,N) = expansion with (a,h)=1 simply dropped, K=3 {3},{5,13},{7}: 1 failures / 1 cases (|D|^2 = 181, 3 bad terms) -> ok
+[POS] (B) every (a,h)>1 term has p_i^2 | mn+2, K=3 {3},{5,13},{7}: 0 failures / 3 cases  -> ok
+[POS] (B) per m, #{n: p^2 | mn+2} <= N/p^2+1 (0 if p|m), K=3 {3},{5,13},{7}: 0 failures / 72 cases  -> ok
+[POS] (B) |D| <= trivial bound, K=3 {3},{5,13},{7}: 0 failures / 1 cases (|D| = 13.4 <= 3.67e+04) -> ok
+[POS] (C) sum_l eta(a/2^l) = 1 on A, K=3 {3},{5,13},{7}: 0 failures / 2 cases  -> ok
+[POS] (C) T(M,N) + D = sum_Y T_Y (4.5), K=3 {3},{5,13},{7}: 0 failures / 1 cases (4 values of Y) -> ok
+[POS] (C) on supp eta(a/Y): Y<=a<=4Y and h<=(4X+2)/Y, K=3 {3},{5,13},{7}: 0 failures / 10 cases  -> ok
+[POS] (D) (4.7) line 1 = line 2 (with conjugates), K=3 {3},{5,13},{7}: 0 failures / 4 cases  -> ok
+[NEG] (D) NEG (4.7) line 2 without conjugates, K=3 {3},{5,13},{7}: 4 failures / 4 cases  -> ok
+[POS] (E) (4.6) |T_Y|^2 <= floor((4X+2)/Y) Q_Y (true c_h and c_h=1), K=3 {3},{5,13},{7}: 0 failures / 8 cases  -> ok
+[NEG] (E) NEG |T_Y|^2 <= Q_Y (factor X/Y dropped; alpha=beta=1, c_h=1), K=3 {3},{5,13},{7}: 4 failures / 4 cases  -> ok
+[POS] (F) dyadic boxes: unique box per pair; MN in [(1-e)x/4,(2+e)x) (sanity): 0 failures / 1126757 cases  -> ok
+[POS] (F) short-interval divisor bound (sanity): 0 failures / 300 cases  -> ok
+== SUMMARY
+positive checks: 32, failing: 0
+negative controls: 12, failing as they must: 12
+unexpected outcomes: 0 []
+wall time 16.8 s

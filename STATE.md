@@ -3,42 +3,48 @@
 Home: GitHub repo jerryckim16/twin-primes (branch main). Website (GitHub Pages, from docs/): https://jerryckim16.github.io/twin-primes/
 Each session works on the claude/... branch its system instructions name (create it from the latest origin/main), opens a pull request and merges it (squash).
 
-## POSITION (after Session 61, 11:34 AM CT research run of 27 Nov, started 17:34 UTC): PHASE B
+## POSITION (after Session 62, 7:34 PM CT paper run of 27 Nov, started 01:34 UTC 28 Nov): PHASE B
 - Bounds: established 246; claimed 182; project 236 CONDITIONAL (caveat everywhere), 240 conditional, 246 unconditional. Unchanged.
 - PHASE B. Time split: ~35% parity programme, ~25% other small results (3g), ~20% bound work, ~15-20% exploration.
 - Papers: verification-note v1.0.1 FROZEN; parity-barrier v1.1 FROZEN (Section 6.4 = subsec:lww-transfer);
-  lean-reduction v1.1 (27 Nov; adds the finite part of S2; audited); main paper v0.53. Paused: toolkit note (5), H_m, 182.
-  FOR THE NEXT PAPER RUN (27 Nov, 7:34 PM CT): write up Sessions 60 AND 61:
-  * Lean: MaynardS2Y (S60) + MaynardS2Mult (S61: hphi proved for all a, b; hg derived from odd / W-coprime support)
-    -> Lean note v1.2 / thm:lean items 22-23;
-  * rem:186-status: Sec. 2.3 directed arithmetic + (2.3) (S60); Lemma 1.1 analytic hypotheses checked exactly for all
-    67 retained rows (S61; [8]'s analytic theorems themselves NOT verified);
-  * sec:related: LWW Prop. 4.3 (S60), pp. 16-18/23-27 reduction and Section 4.8 (S61) checked; every part of Section 4
-    from (4.7) to (4.157) now has a card; no error found in LWW.
-- Weekly review: notes/reviews/2026-11-23.md. Next review: the first run starting on Monday 30 Nov, Central time.
-- LWW flag (arXiv:2610.20242, still v2) open. Checked so far: Prop. 4.2 thinning (S53), p. 54 identity under R1 (S54),
-  pp. 54-58 (S55), pp. 48-53 (S56), (4.121) + Prop. 4.5(i) pp. 37-47 (S57, conditional on U1-U7), Lemma A.1 (S58,
-  discharges U1), Prop. 4.4/(4.73) (S59), Prop. 4.3 (S60), pp. 16-18 + 23-27 reduction (S61, conditional on I1 = divisor
-  bound (4.9) via Shiu, I2 = Mertens), Section 4.8 + (4.31) + new parts of Prop. 4.5(ii) (S61, conditional on the
-  Prop. 4.5(i) machinery). No error in LWW. Next: pp. 15-16, (4.1)-(4.8) (Prop. 4.2's sum -> Q_Y, removal of (a,h) = 1,
-  Cauchy-Schwarz (4.6)); then I1 (read Shiu 1980); then the remaining U2-U7 of the S57 card; then Section 5.
-- 186: six majorisation lemmas two programs each; Lemma 2.2 proved + one program; contractions two programs; Sec. 2.3
-  directed arithmetic one program + spot check; (2.3) proved by reading; Lemma 1.1: numerical part (S47) and the
-  hypotheses of [8]'s imported statements for all retained rows (S61, one program + audit-driven controls). Unchecked:
-  [8]'s analytic theorems (Props 2.15-2.22, App. A), the cap forms (2.12)/(2.15), the finite-band realisation (Sec. 4.2.4,
-  Lemma 4.4, Prop. 4.6), [14] Lemma 2.8, the production run.
+  lean-reduction v1.2 (28 Nov; thm:s2y + rem:l53; audited, notes/audit-lean-note-v12.md); main paper v0.54.
+  Paused: toolkit note (5), H_m, 182. Everything up to Session 62 is written up.
+- Weekly review: notes/reviews/2026-11-23.md. NEXT REVIEW: the first run starting on Monday 30 Nov, Central time.
+- LWW flag (arXiv:2610.20242, still v2) open. Every part of Section 4 from (4.1) to (4.157) now has a card (judged from
+  the card list). Checked so far: Prop. 4.2 thinning (S53), p. 54 identity under R1 (S54), pp. 54-58 (S55), pp. 48-53
+  (S56), (4.121) + Prop. 4.5(i) pp. 37-47 (S57, conditional on U1-U7), Lemma A.1 (S58, discharges U1), Prop. 4.4/(4.73)
+  (S59), Prop. 4.3 (S60), pp. 16-18 + 23-27 reduction (S61, conditional on I1 = divisor bound (4.9) via Shiu, I2 =
+  Mertens), Section 4.8 (S61), pp. 15-16 (4.1)-(4.8) (S62, conditional on I2 only; audited). No error in LWW.
+  Next: I1 -- Shiu 1980 NOT obtainable (sources-needed); try an elementary proof of the weaker bound
+  sum_h tau(l h - 2)^2 << (X/Y) exp(o(L^{1/10})) that suffices; then U2-U7 of the S57 card; then Section 5.
+- 186: as before (six majorisation lemmas two programs each; Lemma 2.2; contractions two programs; Sec. 2.3 directed
+  arithmetic one program; Lemma 1.1 hypotheses one program). Unchecked: [8]'s analytic theorems, cap forms (2.12)/(2.15),
+  the finite-band realisation (Sec. 4.2.4, Lemma 4.4, Prop. 4.6 of [8]), [14] Lemma 2.8, the production run.
+- Lean: 26 files; Maynard S2 finite part, change of variables, Lemma 5.3 exact part done. Next: the s_{i,j} bound
+  (5.25) (an estimate, not an identity) or the Lemma 5.3 error term E; or stop the Lean thread if the review says so.
 
 ## Next steps (in order)
-1. Paper run (7:34 PM CT 27 Nov): write up Sessions 60-61 (see POSITION). Then research as usual.
-2. Parity: LWW pp. 15-16, (4.1)-(4.8); then Shiu for I1; then U2-U7; then Section 5 (major arcs).
-3. Bound share: a second independent program for the Lemma 1.1 hypotheses, or the cap forms (2.12)/(2.15); the
-   finite-band realisation (Lemma 4.4, Prop. 4.6 of [8]). NO per-run regressions.
-4. Lean: the coprime-restricted sum (5.25)-(5.27) / s_{i,j} restriction for S2; Lemma 5.3 algebra.
+1. Weekly review (first run starting Monday 30 Nov, Central time): include whether the LWW line-by-line check should
+   continue into Section 5 or be summarised; whether the Lean thread is still worth it.
+2. Parity: elementary weak divisor bound for LWW (4.9); then U2-U7; then Section 5 (major arcs).
+3. Bound share: cap forms (2.12)/(2.15), or a second independent program for the Lemma 1.1 hypotheses, or the
+   finite-band realisation. NO per-run regressions.
+4. Lean: (5.25) or the Lemma 5.3 error term.
 5. Paused: rung 182 (restoration data unpublished); k = 3 GEH thread (stopped); H_m; toolkit note.
-6. Sources needed: Baker-Harman 1998; the OpenAI two-point Chowla preprint (low priority); Murty-Vatwani, BFI86, HB83 and
-   the 182 restoration data (see notes/sources-needed.md). Shiu 1980 (J. reine angew. Math. 313) may be needed for I1.
-7. Weekly review: first run starting on Monday 30 Nov, Central time.
-8. log/entries.json has 41 entries: the paper run should merge the oldest day into a daily summary.
+6. Sources needed: Shiu 1980 (new), Baker-Harman 1998, the OpenAI two-point Chowla preprint (low priority),
+   Murty-Vatwani, BFI86, HB83, the 182 restoration data (notes/sources-needed.md).
+7. Next paper run (7:34 PM CT 28 Nov): write up whatever Sessions 63-64 establish.
+
+## Session 62 (7:34 PM CT paper run of 27 Nov, started on time 01:34 UTC 28 Nov; no wait) -- additions
+- Paper run: lean-reduction v1.2 (7 pp., no overfull boxes); main paper v0.54 (36 pp.); fresh-context audit
+  notes/audit-lean-note-v12.md (1 error, 2 gaps, 3 overstatements, 6 slips, 2 style; all applied); status.json 0.54;
+  README; site rebuilt; log: Sessions 25-27 -> daily summary (log/archive-2026-11-16.json).
+- Parity: notes/parity-attempts/2026-11-28-lww-p15-16-reduction.md + -audit.md; code/parity/lww_p15_16_check.py
+  (/usr/bin/python3 -I; ~17 s; .out).
+- Lean: TwinPrimes/MaynardS2Lemma53.lean (520 lines, 36 decls; helper agent; statements checked here);
+  notes/lean-s2-lemma53.md; lake build (29 jobs), Audit.lean 337 entries (204/78/22/33; three standard axioms only),
+  re-run here. Lean 4.35.0 in /root/tools.
+- No exploration (paper run; the day's budget went to S60). Wolfram and mathbox NOT available. No news search.
 
 ## Session 61 (11:34 AM CT research run of 27 Nov, started on time 17:34 UTC; no wait) -- additions
 - Parity (helper agents; fresh-context audits; fixes applied; scripts re-run here, identical apart from timing):

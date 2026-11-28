@@ -23,7 +23,7 @@
 \title[The finite part of Maynard's reduction in core Lean]{The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean}
 \author{Jerry Kim}
 \thanks{Prepared with the assistance of Claude (Anthropic). The Lean sources are in \url{https://github.com/jerryckim16/twin-primes} (directory \tl{lean/}); the project's main paper is at \url{https://jerryckim16.github.io/twin-primes/}.}
-\date{Version 1.1, 27 November 2026}
+\date{Version 1.2, 28 November 2026}
 
 \begin{document}
 
@@ -39,9 +39,11 @@ $S_1$, the Chinese-remainder count with its error, Maynard's change of
 variables $\lambda\leftrightarrow y$ for every $R$ and $k$, the
 diagonalisation of the main term, and the exact contribution of pairs whose
 moduli are not pairwise coprime, under the shift condition Maynard actually has; and the
-same finite expansion of $S_2$ down to one prime-counting problem per pair of tuples. Not formalised: the asymptotics of $S_1$ and
+same finite expansion of $S_2$ down to one prime-counting problem per pair of tuples, with
+Maynard's change of variables $\lambda\to y^{(m)}$, the diagonalisation of the
+unrestricted main-term form of $S_2$, and the exact part of his Lemma~5.3. Not formalised: the asymptotics of $S_1$ and
 $S_2$ (which rest on the Bombieri--Vinogradov theorem), the size of the error
-terms, the change of variables in the main term of $S_2$, the passage from real to integer
+terms, the removal of the coprimality restriction (Maynard's $s_{i,j}$ terms) in the main term of $S_2$, the error term of Maynard's Lemma~5.3, the passage from real to integer
 weights, and the variational inequality $M_k>4$. A Mathlib formalisation of
 $H_1\le246$ by another group has been announced; this
 note is a small independent check of the combinatorial skeleton, not a
@@ -257,11 +259,68 @@ $\prod_id_i<R<N$). The bad-pair step uses neither the residue condition nor
 primality: an $S_2$ count is a sub-count of the corresponding $S_1$ count.
 Non-vacuity examples with every hypothesis discharged, for items (1)--(3), are in both
 files; item (4) has none.
-Not covered: that the class in (4) is coprime to $q$ (it follows from (SC) and
-$\gcd(v_0+h_m,W)=1$), the prime counts in the classes, the Bombieri--Vinogradov input,
-and the change of variables $\lambda\to y^{(m)}$ in the main term
-$\sum\lambda_d\lambda_e/\varphi(\prod_i[d_i,e_i])$ over good pairs
-\cite[(5.21)--(5.24) and Lemma~5.3, which uses (5.8)]{May15}.
+Not covered by Theorem~\ref{thm:s2}: that the class in (4) is coprime to $q$ (it follows from (SC) and
+$\gcd(v_0+h_m,W)=1$), the prime counts in the classes and the Bombieri--Vinogradov input.
+
+\subsection*{The change of variables in the main term}
+After the prime counts, the main term of $S_2^{(m)}$ is a multiple of
+$\sum\lambda_d\lambda_e/\prod_i\varphi([d_i,e_i])$ over good pairs with $d_m=e_m=1$
+\cite[(5.18)]{May15}. Maynard diagonalises it with
+$\varphi([d,e])^{-1}=\varphi(d)^{-1}\varphi(e)^{-1}\sum_{u\mid d,\,u\mid e}g(u)$ (for squarefree $d,e$),
+where $g$ is totally multiplicative with $g(p)=p-2$, and the new variables
+\[
+y^{(m)}_r=\prod_i\mu(r_i)g(r_i)\sum_{\substack{r\mid d\\ d_m=1}}\frac{\lambda_d}{\prod_i\varphi(d_i)}
+\]
+\cite[(5.21)--(5.23)]{May15}. In Lean, $g$ is defined as the Dirichlet convolution
+$\mu*\varphi$, which needs no factorisation; we prove $g(p)=p-2$ and
+$g(mn)=g(m)g(n)$ for $m$ squarefree and coprime to $n$, so (by induction, not stated as a separate Lean theorem) it
+agrees with Maynard's $g$ on every squarefree argument; at non-squarefree $u$ the two differ ($g(4)=1$ here), but those
+terms vanish since $y^{(m)}_u$ contains $\mu(u)$. With $g=\mu*\varphi$ the identity above holds for all $d,e$.
+
+\begin{theorem}[\lbl{Lean-checked}; files \tl{MaynardS2Y.lean}, \tl{MaynardS2Mult.lean}]\label{thm:s2y}
+Let $\lambda$ be rational-valued and supported on the box $\{1,\dots,R\}^k$ with squarefree entries, and fix $m$.
+\begin{enumerate}
+\item \tl{totient\_lcm\_mul\_gcd}, \tl{totient\_mul\_coprime}: $\varphi([a,b])\varphi((a,b))=\varphi(a)\varphi(b)$ for all
+$a,b$, and $\varphi(mn)=\varphi(m)\varphi(n)$ for coprime $m,n$. \tl{gM\_prime},
+\tl{gM\_mul\_coprime\_sqf}: $g(p)=p-2$ and the multiplicativity of $g$ just stated.
+\item \tl{yS2\_eq\_zero}: $y^{(m)}_r=0$ unless $r_m=1$.
+\item \tl{maynard\_S2\_diag\_lcm\_all}, for every $R$, $k$, $m$:
+\[
+\sum_{\substack{d,e\\ d_m=e_m=1}}\frac{\lambda_d\lambda_e}{\prod_i\varphi([d_i,e_i])}
+=\sum_u\frac{\big(y^{(m)}_u\big)^2}{\prod_ig(u_i)},
+\]
+the sum running over all pairs of the box (not only good ones), with $x/0=0$.
+\item \tl{maynard\_S2\_lam\_of\_y\_odd}, \tl{maynard\_S2\_lam\_of\_y\_W}: if moreover every entry of the
+support is odd (for instance coprime to $W$ with $2\mid W$, Maynard's situation), then
+$\prod_i\mu(d_i)\varphi(d_i)\sum_{d\mid r}y^{(m)}_r/\prod_ig(r_i)=\mathbf 1[d_m=1]\,\lambda_d$
+for every $d$ in the box (so $\lambda$ is recovered on $d_m=1$, and the left side vanishes for $d_m\ne1$).
+\end{enumerate}
+\end{theorem}
+
+\noindent Item (3) is the identity behind the main term of \cite[(5.24)]{May15} with every
+$s_{i,j}=1$: for the unrestricted form it is exact, as for $S_1$ in
+Theorem~\ref{thm:diag}(3). Maynard's form runs over good pairs only; he encodes the restriction with
+M\"obius variables $s_{i,j}$ and bounds the terms with $s_{i,j}\ne1$, with a loss $1/D_0$ \cite[(5.22), (5.24)--(5.25)]{May15}. That
+step is not formalised. Nor is \cite[Lemma~5.3]{May15}, which expresses $y^{(m)}$ through $y$ (its
+exact part needs the multiplicativity of $\mu\cdot\mathrm{id}/\varphi$). In (4), oddness is what
+makes $\prod_ig(r_i)\ne0$ ($g(2)=0$), so the inversion cannot hold without some such condition.
+Non-vacuity examples are in both files: on a two-term $\lambda$ ($R=3$, $k=2$) both sides of (3)
+equal $5/2$ (computed by \tl{decide} for the $\varphi(\gcd)$ form, linked to the $1/\varphi([d,e])$ form through
+an instance with $R\le12$), and the inversion (4) is instantiated with every hypothesis discharged.
+
+\begin{remark}[\lbl{Lean-checked}; file \tl{MaynardS2Lemma53.lean}]\label{rem:l53}
+The exact part of \cite[Lemma~5.3]{May15} is also checked. If $\lambda$ is defined from a rational $y$ with squarefree
+entries by \cite[(5.8)]{May15}, then for $r$ in the box with $r_m=1$ (\tl{maynard\_lemma53\_exact}, Maynard's (5.30))
+\[
+y^{(m)}_r=\prod_i\mu(r_i)g(r_i)\sum_{r\mid a}\frac{y_a}{\prod_i\varphi(a_i)}\prod_{i\ne m}\frac{\mu(a_i)r_i}{\varphi(a_i)},
+\]
+and the terms with $a_i=r_i$ for all $i\ne m$ give
+$\prod_ig(r_i)r_i/\varphi(r_i)^2\cdot\sum_{a_m}y_{r[m\mapsto a_m]}/\varphi(a_m)$, the rest being an explicit
+sum $E$ (\tl{maynard\_lemma53\_split}, the main term of (5.32)). The bound on $E$ and the estimate
+$g(p)p/\varphi(p)^2=1+O(p^{-2})$ are not formalised. In a small example ($r=(1,3)$) $E=-3/8\ne0$, so the main term
+alone is not exact.
+\end{remark}
+
 
 \section{What stays a hypothesis}\label{sec:hyp}
 
@@ -283,14 +342,14 @@ $\frac NW\sum_u y_u^2/\prod\varphi(u_i)=(1+o(1))\varphi(W)^kN(\log R)^kI_k(F)/W^
 \end{hypothesis}
 
 \begin{hypothesis}[the main term of $S_2$]\label{hyp:s2}
-The prime counts in the classes of Theorem~\ref{thm:s2}(4), the analogue of
-Theorem~\ref{thm:diag} for $S_2^{(m)}$ (the change of variables to $y^{(m)}$),
-and the asymptotic
+The prime counts in the classes of Theorem~\ref{thm:s2}(4), the passage from
+the good-pair main term to the unrestricted form of Theorem~\ref{thm:s2y}(3) (the $s_{i,j}$ terms),
+Lemma~5.3 of \cite{May15} ($y^{(m)}$ in terms of $y$), and the asymptotic
 $S_2=(1+o(1))\varphi(W)^kN(\log R)^{k+1}\sum_mJ^{(m)}_k(F)/(W^{k+1}\log N)$,
 which uses a level of distribution $\theta$ for the primes (for $\theta<1/2$,
 the Bombieri--Vinogradov theorem) (\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.2 and~6.3]{May15}; the level enters through the error term $O(y_{\max}^2N/(\log N)^A)$ of Lemma~5.2).
-The change of variables to $y^{(m)}$ is
-elementary and is the next step of this programme.
+The exact part of Lemma~5.3 is Remark~\ref{rem:l53}; the bound for the $s_{i,j}\ne1$ terms (an elementary
+estimate with a loss $1/D_0$) and the error term of Lemma~5.3 are the next steps of this programme.
 \end{hypothesis}
 
 \begin{hypothesis}[the variational inequality]\label{hyp:var}
@@ -302,7 +361,7 @@ exactly (\lbl{Computed}; \tl{code/cert\_M50e25\_D27e.json}, checked by
 \end{hypothesis}
 
 \begin{hypothesis}[finite glue]\label{hyp:glue}
-The translation of Theorems~\ref{thm:s1} and~\ref{thm:diag} into the form of
+The translation of Theorems~\ref{thm:s1}--\ref{thm:s2y} into the form of
 Theorem~\ref{thm:skeleton}(4): the range $N\le n<2N$ (a difference of two Lean
 sums, doubling the error), real weights replaced by rational and, after
 scaling, integer ones at a cost absorbed in the error terms, the natural-number
@@ -333,12 +392,12 @@ already known.
 
 \begin{itemize}
 \item Toolchain: Lean~4.35.0 (official release), no Mathlib, no other dependencies.
-\item \tl{cd lean \&\& lake build} builds all $23$ files of \tl{TwinPrimes/}
-($6309$ lines; \tl{Reduction.lean}, the seven \tl{Maynard*} files and the two \tl{Mu*} files total $3132$).
-\item \tl{lake env lean Audit.lean} prints the axioms of $239$ declarations: $129$
-use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $61$ use
-\tl{propext}, \tl{Quot.sound}; $21$ use \tl{propext}; $28$ use none. No
-\tl{sorryAx}, no other axiom (run of 27 November 2026).
+\item \tl{cd lean \&\& lake build} builds all $26$ files of \tl{TwinPrimes/}
+($7840$ lines; \tl{Reduction.lean}, the ten \tl{Maynard*} files and the two \tl{Mu*} files total $4663$).
+\item \tl{lake env lean Audit.lean} prints the axioms of $337$ declarations: $204$
+use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $78$ use
+\tl{propext}, \tl{Quot.sound}; $22$ use \tl{propext}; $33$ use none. No
+\tl{sorryAx}, no other axiom (run of 28 November 2026).
 \item \tl{grep} finds no \tl{sorry}, \tl{native\_decide} or \tl{axiom}
 declaration in \tl{TwinPrimes/}. Finite facts (admissibility of the $50$-tuple,
 sign tables for small $c$) use \tl{decide}, checked by the kernel.
@@ -358,6 +417,12 @@ the weaker shift condition (SC) in \tl{MaynardHpw.lean}
 (\tl{MaynardS2.lean}, \tl{MaynardS2Hpw.lean}); Hypothesis~\ref{hyp:s2} narrowed
 accordingly; build and audit counts updated; an internal fresh-context audit (2 gaps, 2
 overstatements, a wrong theorem name, a citation) applied; author count of \cite{Axiom26} corrected ($42$, not $40$).
+\item[1.2] (28 Nov 2026) Theorem~\ref{thm:s2y}: the change of variables $\lambda\to y^{(m)}$ and the
+diagonalisation of the unrestricted main-term form of $S_2$, with the multiplicativity of $\varphi$ and of
+$g=\mu*\varphi$ it needs (\tl{MaynardS2Y.lean}, \tl{MaynardS2Mult.lean}); Remark~\ref{rem:l53}, the exact part of Maynard's
+Lemma~5.3 (\tl{MaynardS2Lemma53.lean}); Hypothesis~\ref{hyp:s2} narrowed; an internal fresh-context audit
+(1 error, 2 gaps, 3 overstatements, slips) applied;
+build and audit counts updated.
 \end{description}
 
 \begin{thebibliography}{9}
