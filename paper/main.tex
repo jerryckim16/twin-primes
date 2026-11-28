@@ -357,8 +357,8 @@ $g=\mu*\varphi$ (so $g(p)=p-2$ and $g(mn)=g(m)g(n)$ for squarefree $m$ coprime t
 $y^{(m)}_r=\prod_i\mu(r_i)g(r_i)\sum_{r\mid d,\,d_m=1}\lambda_d/\prod_i\varphi(d_i)$: for squarefree support in the box
 $\{1,\dots,R\}^k$ and every $R$, $k$, $m$,
 $\sum_{d_m=e_m=1}\lambda_d\lambda_e/\prod_i\varphi([d_i,e_i])=\sum_u(y^{(m)}_u)^2/\prod_ig(u_i)$, the sum over all pairs
-of the box (\texttt{maynard\_}\allowbreak\texttt{S2\_diag\_lcm\_all}); and, for odd entries, $\lambda$ is recovered
-from $y^{(m)}$ (\texttt{maynard\_}\allowbreak\texttt{S2\_lam\_of\_y\_odd}). This uses
+of the box (\texttt{maynard\_}\allowbreak\texttt{S2\_diag\_lcm\_all}); and, for odd entries, $\lambda_d$ is recovered
+from $y^{(m)}$ for every $d$ with $d_m=1$ (\texttt{maynard\_}\allowbreak\texttt{S2\_lam\_of\_y\_odd}). This uses
 $\varphi([a,b])\varphi((a,b))=\varphi(a)\varphi(b)$ for all $a,b$ (\texttt{totient\_}\allowbreak\texttt{lcm\_mul\_gcd}).
 Not formalised: the restriction to good pairs (Maynard's $s_{i,j}$ terms) and \cite[Lemma~5.3]{May15}.
 \end{enumerate}
@@ -2050,7 +2050,7 @@ written from the PDF and the authors' data before the first was opened (\lbl{Com
 failures, full agreement; \texttt{code/}\allowbreak\texttt{oai186\_contractions\_check.py},
 \texttt{code/}\allowbreak\texttt{oai186\_contractions\_check2.py}).
 The directed (outward-rounded) arithmetic of its Section~2.3 is verified as stated: every rounding direction
-is correct for the quantity it bounds, and (2.26) holds exactly for every $1\le r\le98264$ (\lbl{Computed}, $31$ checks,
+is correct for the quantity it bounds, and (2.26) holds exactly for every $1\le r\le98264$ (\lbl{Proved here} by reading and \lbl{Computed}, $31$ checks,
 $19$ negative controls caught, one program written from the PDF, \texttt{code/}\allowbreak\texttt{oai186\_directed\_check.py};
 \texttt{notes/}\allowbreak\texttt{oai186-directed-check.md}); its renewal majorant (2.3) is proved here for every $M\ge2$
 (\lbl{Proved here}, same note). For its Lemma~1.1, the hypotheses of every statement of the main $186$ paper that it
@@ -2245,11 +2245,13 @@ the weekly review of 30 November. Since 24 November the cards are mostly a line-
 pp.~48--58, the norm bounds and the end of the proof of Proposition~4.6, each conditional on listed earlier inputs;
 pp.~37--47, (4.121) and Proposition~4.5(i), conditional; Lemma~A.1 and (4.86)--(4.88), proved relative to the
 Weil--Estermann bound and textbook facts; Proposition~4.4 and (4.73), the change of variables of pp.~31--33, proved
-from their definitions alone). Cards of 27 November: Proposition~4.3 (pp.~27--30), proved relative to their
-definitions; the reduction of $Q_Y-Q_Y^{\rm maj}$ to the two inner products of (4.52) (pp.~16--18 and 23--27), conditional
+from their definitions alone). Cards of 27 November: Proposition~4.3 (pp.~27--30), the implication (4.54)$\Rightarrow$(4.55), proved relative to their
+definitions and the hypotheses of Proposition~4.2; the reduction of $Q_Y-Q_Y^{\rm maj}$ to the two inner products of (4.52) (pp.~16--18 and 23--27), conditional
 on the divisor bound (4.9) (a consequence of Shiu's theorem, which we have not read) and on Mertens; Section~4.8,
-(4.148)--(4.157), conditional on the inputs of Proposition~4.5(i). All cards were audited by a fresh-context helper.
-Every part of their Section~4 from (4.9) to (4.157) now has a card. No error has been found; pp.~15--16, (4.1)--(4.8), and
+(4.148)--(4.157), conditional on Proposition~4.5(ii) (checked only relative to the machinery of Proposition~4.5(i), whose
+inputs it inherits) and on Mertens. All cards were audited by a fresh-context helper.
+Judged from the card list, every part of their Section~4 from (4.9) to (4.157) has now been the subject of a card,
+(4.9) itself only as a named input. No error has been found; pp.~15--16, (4.1)--(4.8), and
 the divisor bound are next, then Section~5. This is evidence about their proof, not a verification of it.
 \item \emph{The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean}
 (\texttt{papers/}\allowbreak\texttt{lean-reduction/}, version~1.2). Theorem~\ref{thm:lean}'s Maynard items written up, with

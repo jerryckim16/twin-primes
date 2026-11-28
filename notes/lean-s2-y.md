@@ -1,5 +1,9 @@
 # Lean: the S2 change of variables y^(m) (Maynard, Lemma 5.2, eqs. (5.21)–(5.24), (5.26); algebraic/finite part only)
 
+> **Update (28 Nov 2026, Session 62):** the multiplicativity of φ, the identity φ([a,b])φ((a,b)) = φ(a)φ(b) for all a, b
+> (`hphi`), the multiplicativity of g on squarefree arguments and the hypothesis `hg` (from odd support) are now proved in
+> `MaynardS2Mult.lean` (see notes/lean-s2-mult.md). Statements below that these are "not proved" refer to this file only.
+
 File: `lean/TwinPrimes/MaynardS2Y.lean` (510 lines, namespace `TwinPrimes.MaynardS2Y`, imports
 `MaynardS1Diag`). It is added to `lean/TwinPrimes.lean`; its 33 declarations are added to `lean/Audit.lean`.
 Core Lean 4.35.0, no Mathlib, no `sorry`, no `native_decide`, no new axioms. Finite checks use

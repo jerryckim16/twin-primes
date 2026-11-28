@@ -43,7 +43,7 @@ same finite expansion of $S_2$ down to one prime-counting problem per pair of tu
 Maynard's change of variables $\lambda\to y^{(m)}$ and the diagonalisation of the
 unrestricted main-term form of $S_2$. Not formalised: the asymptotics of $S_1$ and
 $S_2$ (which rest on the Bombieri--Vinogradov theorem), the size of the error
-terms, the coprimality restriction in the main term of $S_2$ and Maynard's Lemma~5.3, the passage from real to integer
+terms, the removal of the coprimality restriction (Maynard's $s_{i,j}$ terms) in the main term of $S_2$ and Maynard's Lemma~5.3, the passage from real to integer
 weights, and the variational inequality $M_k>4$. A Mathlib formalisation of
 $H_1\le246$ by another group has been announced; this
 note is a small independent check of the combinatorial skeleton, not a
@@ -266,22 +266,23 @@ $\gcd(v_0+h_m,W)=1$), the prime counts in the classes and the Bombieri--Vinograd
 After the prime counts, the main term of $S_2^{(m)}$ is a multiple of
 $\sum\lambda_d\lambda_e/\prod_i\varphi([d_i,e_i])$ over good pairs with $d_m=e_m=1$
 \cite[(5.18)]{May15}. Maynard diagonalises it with
-$\varphi([d,e])^{-1}=\varphi(d)^{-1}\varphi(e)^{-1}\sum_{u\mid d,\,u\mid e}g(u)$,
+$\varphi([d,e])^{-1}=\varphi(d)^{-1}\varphi(e)^{-1}\sum_{u\mid d,\,u\mid e}g(u)$ (for squarefree $d,e$),
 where $g$ is totally multiplicative with $g(p)=p-2$, and the new variables
 \[
 y^{(m)}_r=\prod_i\mu(r_i)g(r_i)\sum_{\substack{r\mid d\\ d_m=1}}\frac{\lambda_d}{\prod_i\varphi(d_i)}
 \]
 \cite[(5.21)--(5.23)]{May15}. In Lean, $g$ is defined as the Dirichlet convolution
 $\mu*\varphi$, which needs no factorisation; we prove $g(p)=p-2$ and
-$g(mn)=g(m)g(n)$ for $m$ squarefree and coprime to $n$, so it agrees with Maynard's $g$
-on every squarefree argument, the only ones that occur.
+$g(mn)=g(m)g(n)$ for $m$ squarefree and coprime to $n$, so (by induction, not stated as a separate Lean theorem) it
+agrees with Maynard's $g$ on every squarefree argument; at non-squarefree $u$ the two differ ($g(4)=1$ here), but those
+terms vanish since $y^{(m)}_u$ contains $\mu(u)$. With $g=\mu*\varphi$ the identity above holds for all $d,e$.
 
 \begin{theorem}[\lbl{Lean-checked}; files \tl{MaynardS2Y.lean}, \tl{MaynardS2Mult.lean}]\label{thm:s2y}
-Let $\lambda$ be supported on the box $\{1,\dots,R\}^k$ with squarefree entries, and fix $m$.
+Let $\lambda$ be rational-valued and supported on the box $\{1,\dots,R\}^k$ with squarefree entries, and fix $m$.
 \begin{enumerate}
 \item \tl{totient\_lcm\_mul\_gcd}, \tl{totient\_mul\_coprime}: $\varphi([a,b])\varphi((a,b))=\varphi(a)\varphi(b)$ for all
-$a,b$, and $\varphi(mn)=\varphi(m)\varphi(n)$ for coprime $m,n$. \tl{gM\_mul\_coprime\_sqf},
-\tl{gM\_prime}: the multiplicativity of $g$ just stated.
+$a,b$, and $\varphi(mn)=\varphi(m)\varphi(n)$ for coprime $m,n$. \tl{gM\_prime},
+\tl{gM\_mul\_coprime\_sqf}: $g(p)=p-2$ and the multiplicativity of $g$ just stated.
 \item \tl{yS2\_eq\_zero}: $y^{(m)}_r=0$ unless $r_m=1$.
 \item \tl{maynard\_S2\_diag\_lcm\_all}, for every $R$, $k$, $m$:
 \[
@@ -291,20 +292,21 @@ $a,b$, and $\varphi(mn)=\varphi(m)\varphi(n)$ for coprime $m,n$. \tl{gM\_mul\_co
 the sum running over all pairs of the box (not only good ones), with $x/0=0$.
 \item \tl{maynard\_S2\_lam\_of\_y\_odd}, \tl{maynard\_S2\_lam\_of\_y\_W}: if moreover every entry of the
 support is odd (for instance coprime to $W$ with $2\mid W$, Maynard's situation), then
-$\lambda_d=\mathbf 1[d_m=1]\prod_i\mu(d_i)\varphi(d_i)\sum_{d\mid r}y^{(m)}_r/\prod_ig(r_i)$
-for every $d$ in the box.
+$\prod_i\mu(d_i)\varphi(d_i)\sum_{d\mid r}y^{(m)}_r/\prod_ig(r_i)=\mathbf 1[d_m=1]\,\lambda_d$
+for every $d$ in the box (so $\lambda$ is recovered on $d_m=1$, and the left side vanishes for $d_m\ne1$).
 \end{enumerate}
 \end{theorem}
 
 \noindent Item (3) is the identity behind the main term of \cite[(5.24)]{May15} with every
 $s_{i,j}=1$: for the unrestricted form it is exact, as for $S_1$ in
-Theorem~\ref{thm:diag}(3). Maynard's form runs over good pairs only; he removes the restriction with
-variables $s_{i,j}$ and bounds the terms with $s_{i,j}\ne1$ \cite[(5.24)--(5.25)]{May15}. That
+Theorem~\ref{thm:diag}(3). Maynard's form runs over good pairs only; he encodes the restriction with
+M\"obius variables $s_{i,j}$ and bounds the terms with $s_{i,j}\ne1$, with a loss $1/D_0$ \cite[(5.22), (5.24)--(5.25)]{May15}. That
 step is not formalised. Nor is \cite[Lemma~5.3]{May15}, which expresses $y^{(m)}$ through $y$ (its
 exact part needs the multiplicativity of $\mu\cdot\mathrm{id}/\varphi$). In (4), oddness is what
 makes $\prod_ig(r_i)\ne0$ ($g(2)=0$), so the inversion cannot hold without some such condition.
-Non-vacuity examples with every hypothesis discharged are in both files (both sides of (3) equal $5/2$
-on a two-term $\lambda$).
+Non-vacuity examples are in both files: on a two-term $\lambda$ ($R=3$, $k=2$) both sides of (3)
+equal $5/2$ (computed by \tl{decide} for the $\varphi(\gcd)$ form, linked to the $1/\varphi([d,e])$ form through
+an instance with $R\le12$), and the inversion (4) is instantiated with every hypothesis discharged.
 
 \section{What stays a hypothesis}\label{sec:hyp}
 
@@ -332,8 +334,8 @@ Lemma~5.3 of \cite{May15} ($y^{(m)}$ in terms of $y$), and the asymptotic
 $S_2=(1+o(1))\varphi(W)^kN(\log R)^{k+1}\sum_mJ^{(m)}_k(F)/(W^{k+1}\log N)$,
 which uses a level of distribution $\theta$ for the primes (for $\theta<1/2$,
 the Bombieri--Vinogradov theorem) (\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.2 and~6.3]{May15}; the level enters through the error term $O(y_{\max}^2N/(\log N)^A)$ of Lemma~5.2).
-The removal of the coprimality restriction and the exact part of Lemma~5.3 are
-elementary and are the next steps of this programme.
+The bound for the $s_{i,j}\ne1$ terms (an elementary estimate with a loss $1/D_0$) and the exact part
+of Lemma~5.3 are the next steps of this programme.
 \end{hypothesis}
 
 \begin{hypothesis}[the variational inequality]\label{hyp:var}
