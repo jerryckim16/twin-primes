@@ -40,10 +40,10 @@ variables $\lambda\leftrightarrow y$ for every $R$ and $k$, the
 diagonalisation of the main term, and the exact contribution of pairs whose
 moduli are not pairwise coprime, under the shift condition Maynard actually has; and the
 same finite expansion of $S_2$ down to one prime-counting problem per pair of tuples, with
-Maynard's change of variables $\lambda\to y^{(m)}$ and the diagonalisation of the
-unrestricted main-term form of $S_2$. Not formalised: the asymptotics of $S_1$ and
+Maynard's change of variables $\lambda\to y^{(m)}$, the diagonalisation of the
+unrestricted main-term form of $S_2$, and the exact part of his Lemma~5.3. Not formalised: the asymptotics of $S_1$ and
 $S_2$ (which rest on the Bombieri--Vinogradov theorem), the size of the error
-terms, the removal of the coprimality restriction (Maynard's $s_{i,j}$ terms) in the main term of $S_2$ and Maynard's Lemma~5.3, the passage from real to integer
+terms, the removal of the coprimality restriction (Maynard's $s_{i,j}$ terms) in the main term of $S_2$, the error term of Maynard's Lemma~5.3, the passage from real to integer
 weights, and the variational inequality $M_k>4$. A Mathlib formalisation of
 $H_1\le246$ by another group has been announced; this
 note is a small independent check of the combinatorial skeleton, not a
@@ -308,6 +308,20 @@ Non-vacuity examples are in both files: on a two-term $\lambda$ ($R=3$, $k=2$) b
 equal $5/2$ (computed by \tl{decide} for the $\varphi(\gcd)$ form, linked to the $1/\varphi([d,e])$ form through
 an instance with $R\le12$), and the inversion (4) is instantiated with every hypothesis discharged.
 
+\begin{remark}[\lbl{Lean-checked}; file \tl{MaynardS2Lemma53.lean}]\label{rem:l53}
+The exact part of \cite[Lemma~5.3]{May15} is also checked. If $\lambda$ is defined from a rational $y$ with squarefree
+entries by \cite[(5.8)]{May15}, then for $r$ in the box with $r_m=1$ (\tl{maynard\_lemma53\_exact}, Maynard's (5.30))
+\[
+y^{(m)}_r=\prod_i\mu(r_i)g(r_i)\sum_{r\mid a}\frac{y_a}{\prod_i\varphi(a_i)}\prod_{i\ne m}\frac{\mu(a_i)r_i}{\varphi(a_i)},
+\]
+and the terms with $a_i=r_i$ for all $i\ne m$ give
+$\prod_ig(r_i)r_i/\varphi(r_i)^2\cdot\sum_{a_m}y_{r[m\mapsto a_m]}/\varphi(a_m)$, the rest being an explicit
+sum $E$ (\tl{maynard\_lemma53\_split}, the main term of (5.32)). The bound on $E$ and the estimate
+$g(p)p/\varphi(p)^2=1+O(p^{-2})$ are not formalised. In a small example ($r=(1,3)$) $E=-3/8\ne0$, so the main term
+alone is not exact.
+\end{remark}
+
+
 \section{What stays a hypothesis}\label{sec:hyp}
 
 The following are \emph{not} formalised. To use Theorem~\ref{thm:skeleton}(4) or
@@ -334,8 +348,8 @@ Lemma~5.3 of \cite{May15} ($y^{(m)}$ in terms of $y$), and the asymptotic
 $S_2=(1+o(1))\varphi(W)^kN(\log R)^{k+1}\sum_mJ^{(m)}_k(F)/(W^{k+1}\log N)$,
 which uses a level of distribution $\theta$ for the primes (for $\theta<1/2$,
 the Bombieri--Vinogradov theorem) (\lbl{Literature}, \cite[Prop.~4.1, Lemmas~5.2 and~6.3]{May15}; the level enters through the error term $O(y_{\max}^2N/(\log N)^A)$ of Lemma~5.2).
-The bound for the $s_{i,j}\ne1$ terms (an elementary estimate with a loss $1/D_0$) and the exact part
-of Lemma~5.3 are the next steps of this programme.
+The exact part of Lemma~5.3 is Remark~\ref{rem:l53}; the bound for the $s_{i,j}\ne1$ terms (an elementary
+estimate with a loss $1/D_0$) and the error term of Lemma~5.3 are the next steps of this programme.
 \end{hypothesis}
 
 \begin{hypothesis}[the variational inequality]\label{hyp:var}
@@ -378,11 +392,11 @@ already known.
 
 \begin{itemize}
 \item Toolchain: Lean~4.35.0 (official release), no Mathlib, no other dependencies.
-\item \tl{cd lean \&\& lake build} builds all $25$ files of \tl{TwinPrimes/}
-($7320$ lines; \tl{Reduction.lean}, the nine \tl{Maynard*} files and the two \tl{Mu*} files total $4143$).
-\item \tl{lake env lean Audit.lean} prints the axioms of $301$ declarations: $172$
-use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $75$ use
-\tl{propext}, \tl{Quot.sound}; $21$ use \tl{propext}; $33$ use none. No
+\item \tl{cd lean \&\& lake build} builds all $26$ files of \tl{TwinPrimes/}
+($7840$ lines; \tl{Reduction.lean}, the ten \tl{Maynard*} files and the two \tl{Mu*} files total $4663$).
+\item \tl{lake env lean Audit.lean} prints the axioms of $337$ declarations: $204$
+use \tl{propext}, \tl{Classical.choice}, \tl{Quot.sound}; $78$ use
+\tl{propext}, \tl{Quot.sound}; $22$ use \tl{propext}; $33$ use none. No
 \tl{sorryAx}, no other axiom (run of 28 November 2026).
 \item \tl{grep} finds no \tl{sorry}, \tl{native\_decide} or \tl{axiom}
 declaration in \tl{TwinPrimes/}. Finite facts (admissibility of the $50$-tuple,
@@ -405,7 +419,9 @@ accordingly; build and audit counts updated; an internal fresh-context audit (2 
 overstatements, a wrong theorem name, a citation) applied; author count of \cite{Axiom26} corrected ($42$, not $40$).
 \item[1.2] (28 Nov 2026) Theorem~\ref{thm:s2y}: the change of variables $\lambda\to y^{(m)}$ and the
 diagonalisation of the unrestricted main-term form of $S_2$, with the multiplicativity of $\varphi$ and of
-$g=\mu*\varphi$ it needs (\tl{MaynardS2Y.lean}, \tl{MaynardS2Mult.lean}); Hypothesis~\ref{hyp:s2} narrowed;
+$g=\mu*\varphi$ it needs (\tl{MaynardS2Y.lean}, \tl{MaynardS2Mult.lean}); Remark~\ref{rem:l53}, the exact part of Maynard's
+Lemma~5.3 (\tl{MaynardS2Lemma53.lean}); Hypothesis~\ref{hyp:s2} narrowed; an internal fresh-context audit
+(1 error, 2 gaps, 3 overstatements, slips) applied;
 build and audit counts updated.
 \end{description}
 

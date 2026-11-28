@@ -360,7 +360,9 @@ $\sum_{d_m=e_m=1}\lambda_d\lambda_e/\prod_i\varphi([d_i,e_i])=\sum_u(y^{(m)}_u)^
 of the box (\texttt{maynard\_}\allowbreak\texttt{S2\_diag\_lcm\_all}); and, for odd entries, $\lambda_d$ is recovered
 from $y^{(m)}$ for every $d$ with $d_m=1$ (\texttt{maynard\_}\allowbreak\texttt{S2\_lam\_of\_y\_odd}). This uses
 $\varphi([a,b])\varphi((a,b))=\varphi(a)\varphi(b)$ for all $a,b$ (\texttt{totient\_}\allowbreak\texttt{lcm\_mul\_gcd}).
-Not formalised: the restriction to good pairs (Maynard's $s_{i,j}$ terms) and \cite[Lemma~5.3]{May15}.
+The exact part of \cite[Lemma~5.3]{May15} ($y^{(m)}$ through $y$, (5.30), and the split into the main term of (5.32)
+and an explicit remainder) is checked too (\texttt{MaynardS2Lemma53.lean}). Not formalised: the restriction to good
+pairs (Maynard's $s_{i,j}$ terms) and the error bound of Lemma~5.3.
 \end{enumerate}
 \end{theorem}
 
@@ -2393,7 +2395,7 @@ Lean note.
 \item[0.53] (27 Nov 2026) Theorem~\ref{thm:lean}, item 21 (the finite part of $S_2$); Remark~\ref{rem:186-status}: the
 contractions by two programs; Section~\ref{sec:related}: LWW checks of 26--27 November, Lean note 1.1; the author list of \cite{Axiom26} corrected.
 \item[0.54] (28 Nov 2026) Theorem~\ref{thm:lean}, item 22 (the change of variables and diagonalisation
-in the main term of $S_2$); Remark~\ref{rem:186-status}: the directed arithmetic and the hypotheses of Lemma~1.1 of the
+in the main term of $S_2$, and the exact part of Maynard's Lemma~5.3); Remark~\ref{rem:186-status}: the directed arithmetic and the hypotheses of Lemma~1.1 of the
 $186$ companion; Section~\ref{sec:related}: LWW checks of 27 November, Lean note 1.2.
 \end{itemize}
 
