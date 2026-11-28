@@ -1,7 +1,7 @@
 {
- "version": "0.53",
- "updated": "2026-11-27",
- "session_count": 59,
+ "version": "0.54",
+ "updated": "2026-11-28",
+ "session_count": 62,
  "bounds": {
   "target": 2,
   "sieve_limit_geh": 6,
@@ -640,6 +640,21 @@
    "label": "Literature",
    "text": "What Lu-Wang-Wu (arXiv:2610.20242v2, Claimed) use from the target mu(n+2) (Session 50): only P1 boundedness, P2 a fixed sign at the auxiliary primes in R, P3 Bombieri-Vinogradov with zero main term to x^{2/5+o(1)}; lambda passes after routine changes; mu*chi and Remark 1 not covered verbatim. Heuristic: a Lambda-based fake target satisfies P1, P3 and fails only P2 with correlation ~1, locating the parity-breaking step at 'P2 => T_3 small'. Audited (fresh context); not an error found.",
    "where": "notes/parity-attempts/2026-11-24-lww-mu-vs-lambda.md"
+  },
+  {
+   "label": "Lean-checked",
+   "text": "Maynard's S2 change of variables (Lemma 5.2, (5.21)-(5.23)), finite part (Sessions 60-61): with g = mu*phi, sum_{d_m=e_m=1} lam_d lam_e / prod phi([d_i,e_i]) = sum_u (y^(m)_u)^2 / prod g(u_i) over all pairs of the box, for every R, k, m and squarefree support; lambda recovered from y^(m) for odd entries; phi([a,b])phi((a,b)) = phi(a)phi(b) for all a, b. Not covered: the good-pair restriction (s_{i,j} terms), Lemma 5.3, anything analytic.",
+   "where": "lean/TwinPrimes/MaynardS2Y.lean, lean/TwinPrimes/MaynardS2Mult.lean; papers/lean-reduction v1.2 thm:s2y; main paper thm:lean item 22"
+  },
+  {
+   "label": "Computed",
+   "text": "Rung 186 companion: the directed arithmetic of Sec. 2.3 verified as stated, (2.26) exactly for every r <= 98264 (31 checks, 19 negative controls caught, one program; Session 60); renewal majorant (2.3) proved here for every M >= 2. Hypotheses of every statement of the main 186 paper imported by Lemma 1.1 hold exactly on all 67 retained rows (196 checks, 17 controls, one program; Session 61). The imported theorems themselves are not verified; 186 not adopted.",
+   "where": "code/oai186_directed_check.py, code/oai186_lemma11_check.py; notes/oai186-directed-check.md, notes/oai186-lemma11-analytic.md; main paper rem:186-status"
+  },
+  {
+   "label": "Proved here (conditional, relative to LWW's definitions)",
+   "text": "Line-by-line checks of Lu-Wang-Wu (arXiv:2610.20242v2, Claimed), Sessions 60-61: Prop. 4.3 (pp. 27-30) proved from their definitions; the reduction Q_Y - Q_Y^maj -> (4.52) (pp. 16-18, 23-27) conditional on the divisor bound (4.9) (Shiu, not read) and Mertens; Section 4.8 (4.148)-(4.157) conditional on the Prop. 4.5(i) inputs. All audited by fresh-context helpers. No error found in LWW; not a verification of their theorem.",
+   "where": "notes/parity-attempts/2026-11-27-lww-prop43.md, 2026-11-27-lww-p23-27-reduction.md, 2026-11-27-lww-s48-second-sum.md"
   }
  ],
  "ideas": [
@@ -1301,10 +1316,10 @@
   {
    "slug": "lean-reduction",
    "title": "The finite part of Maynard's reduction from a variational ratio to bounded gaps, checked in core Lean",
-   "version": "1.1",
+   "version": "1.2",
    "status": "active",
    "pdf": "docs/papers/lean-reduction.pdf",
-   "summary": "v1.1 (27 Nov 2026, 6 pp.): the Lean-checked finite steps of Maynard's reduction (skeleton, S1 expansion/CRT/bad pairs/diagonalisation, and now the finite expansion of S2 down to one prime count per pair) and a precise list of what stays a hypothesis (S1/S2 asymptotics via BV, error sizes, the S2 change of variables, M_50 > 4, finite glue). Audited. Not a formalisation of bounded gaps; nothing about twin primes."
+   "summary": "v1.2 (28 Nov 2026, 7 pp.): the Lean-checked finite steps of Maynard's reduction (skeleton, S1 expansion/CRT/bad pairs/diagonalisation, the finite expansion of S2 down to one prime count per pair, and now Maynard's change of variables lambda -> y^(m) with the diagonalisation of the unrestricted S2 main-term form, using phi([a,b])phi((a,b)) = phi(a)phi(b) for all a, b and g = mu*phi multiplicative on squarefree arguments) and a precise list of what stays a hypothesis (S1/S2 asymptotics via BV, error sizes, the coprimality restriction (s_{i,j} terms) and Maynard's Lemma 5.3, M_50 > 4, finite glue). Audited. Not a formalisation of bounded gaps; nothing about twin primes."
   }
  ],
  "last_review": "2026-11-23",

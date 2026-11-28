@@ -457,59 +457,17 @@
  },
  {
   "date": "2026-11-16",
-  "slot": "Session 27 (11:34 AM CT, 16 Nov; started on time 17:34 UTC; no wait, no other run active)",
-  "title": "Verification note frozen as v1.0, with a per-number account of what rests on one or two programs; Chen's theorem as a consistency test of the parity criterion (parity paper v0.12)",
+  "slot": "Daily summary of Sessions 25-27 (15-16 Nov; full entries in log/archive-2026-11-16.json)",
+  "title": "Fifth day: the Siegel-zero world, Pintz's dichotomy with Maynard weights, the first weekly review, and the verification note frozen",
   "did": [
-   "Verification note v1.0 (the bound share, priority 1 of the weekly review): a new section says for every number whether it rests on one program, two independent programs or a probabilistic check, and an appendix collects the facts about the capped problem (cap costs 0.0041 at k = 49, 0.00033 and 0.00054 at k = 48, 0.0095 and 0.0386 at k = 45; ceilings 4.14 and 4.126). An internal referee pass on the candidate found 8 errors and 8 gaps, all fixed before the freeze. Among them: the 182 tail's second program was not written blind; the Bonferroni levels in the new appendix were reversed; and 'cannot reach 4.00438' for the Lemma 9.1 caps was too strong (now 'suggests').",
-   "Parity attempt (route card 2026-11-16-chen-consistency-test.md): the criterion of the parity paper does not block Chen's target 'p prime, p+2 in P_2': no non-negative weakly fair Liouville-pattern weight kills it (Lean-checked). It blocks each half: 1 - e1 e2 for twin primes, 1 + e1 e2 for p+2 exactly a product of two primes (Lean-checked). This matches Tao 2007 ('cannot hope to use plain sieve theory to ... just count semiprimes') and Pintz 2010 (p+2 with an odd number of prime factors infinitely often is not known). It is folklore in substance and entered the paper as one short remark.",
-   "Parity paper v0.12, cuts from the review: the Siegel-zero section went from 217 to about 95 lines, the Matomaki-Radziwill digest became one paragraph, the proofs of three propositions were shortened, and Prop. B-parity was reduced to its parity statement (now 29 pages). A fresh-context audit of every rewritten proof found no errors and 2 gaps (a dropped hypothesis, and 'under EH' where Bombieri's conclusion is also assumed), both fixed.",
-   "Main paper v0.27: three non-propositions demoted to remarks; Related results updated. Literature notes notes/sources-chen-parity.md. Chen-type constants: 1.104 Pi(x) (Wu 2004); 1.2759 (R. Li, preprint). Twin upper bound: 3.29956 Pi(x) (Lichtman). No improvement of Pintz's 16 was found in the citing papers.",
-   "Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. The twin prime conjecture remains open."
+   "Session 25: The Siegel-zero world: where the parity obstruction's hypothesis can fail (parity paper v0.10, with a full referee pass)",
+   "Session 26: Weekly review; Pintz's parity-sensitive dichotomy with Maynard weights: some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes (parity paper v0.11)",
+   "Session 27: Verification note frozen as v1.0, with a per-number account of what rests on one or two programs; Chen's theorem as a consistency test of the parity criterion (parity paper v0.12)"
   ],
-  "explored": "Is there a 'mod q' analogue of the parity obstruction (weights in Omega(n) mod q)? Dead end, with a clean reason: fair Z/q weights killing DHL[k,m+1] exist iff k <= qm, so q = 3 would 'block' DHL[3,2], which is proved under GEH. The heuristic fails because sum z^Omega(n) ~ x (log x)^(z-1) G(z)/Gamma(z) has a non-zero main term unless 1/Gamma(z) = 0, which among |z| = 1 happens only at z = -1. At 1e7 the sums match the prediction to 3-9%, and a Selberg-type weight sees e(1/3)^Omega with modulus 0.44, against 0.06 for lambda.",
-  "parity": "Chen's theorem as a consistency test of the bipartite criterion: the class does not block 'p prime, p+2 in P_2' but blocks each half (Lean-checked weights). Classification: consistent (confirms the criterion; folklore); no parity-breaking content.",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helpers used for the literature check, the referee pass and the audit).",
-   "The referee pass found 8 errors in the candidate v1.0 of our own note (fixed). Tenenbaum's book (Selberg-Delange) was opened only via lecture notes. Murty-Vatwani still not obtainable."
-  ],
-  "next": "Parity paper toward v1.0: merge Prop. ceil with Cor. consistent; footnote Remark pm65 and the Debouzy constant; halve the FI98b/HB01/SS19 digests; notation renames; referee items 2.4-2.7 and 3. Main paper: merge bonf/bonf2, shorten the history and the version mentions. Parity attempt: Green-Tao-Ziegler complexity vs parity, or Matomaki-Radziwill-Tao averaged Hardy-Littlewood."
- },
- {
-  "date": "2026-11-16",
-  "slot": "Session 26 (3:34 AM CT, 16 Nov; started on time; no wait, no other run active)",
-  "title": "Weekly review; Pintz's parity-sensitive dichotomy with Maynard weights: some even 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes (parity paper v0.11)",
-  "did": [
-   "Weekly review (notes/reviews/2026-11-16.md, from a fresh-context candid review checked against the files). Top priorities for the week: freeze the verification note as v1.0, cut the parity paper to a ~20 pp. v1.0, and slim the main paper into an index. The k = 3 GEH thread is stopped, rung 182 is paused until its data exist, and no capped-variational paper will start.",
-   "Parity attempt (route card 2026-11-16-pintz-dichotomy-maynard.md): Pintz's 2010 theorem was read in the source. It is a disjunction: two primes in n+H, or a prime n+h_i with lambda(n+r) = -1. Redone with Maynard's weights it needs only theta M_k > 1 (bounded gaps need theta M_k > 2), so 5-tuples suffice under Bombieri-Vinogradov, since M_5 >= 1417255/708216 > 2 (Maynard (8.17)). Consequence: some even d with 0 < |d| <= 12 has lambda(p+d) = -1 for infinitely many primes p (Pintz: 16); also 0 < d <= 14 (Pintz 18) and better conditional thresholds. Proved here, possibly folklore.",
-   "Computed: Maynard's k = 5 ratio and optimised ratios for k = 2..5 (thresholds 0.72154, 0.60752, 0.54230, 0.49898) agree exactly between two independent programs (code/parity/pintz_maynard.py, Dirichlet formula; pintz_maynard_check2.py, iterated sympy integration, written by a helper without seeing the first). A fresh-context adversarial audit found no errors and 11 wording or justification fixes, all applied (notes/audit-parity-v011.md).",
-   "The parity paper's criterion predicts this exactly: the target is the complete graph on H u {r}, which the class does not block; a single prescribed d is a star, which it does (Pintz's remark). So this sidesteps parity; it does not break it.",
-   "Papers: parity paper v0.11. New Section subsec:pintz; first review cuts (dual-formula subsection shortened, Prop. k3-step merged into Thm k3-window, k = 3 remarks merged, Prop. tao-weight turned into a remark, answered open question and plan removed, changelog shortened, abstract rewritten, 174 words; a pre-existing citation error fixed). Verification note v0.12: wording of the Lemma 9.1 ceiling (one-program Gram certificate, probabilistic check of its weights), version tags removed. Main paper v0.26: version tags out of headings, Related results rewritten as current statements.",
-   "Bounds unchanged: established 246; claimed 182; reproduced here 236 (conditional on Song-Yue Thm 4.18, not verified), 240 (conditional), 246 unconditional. The twin prime conjecture remains open."
-  ],
-  "explored": "Can the dichotomy reach 4-tuples (|d| <= 8)? It needs level 0.5423 for primes and lambda, while the best known for smooth moduli is 0.525 (Stadlmann 2023), and enlarged supports need the lambda-twisted sum beyond moduli x^{1/2}: dead end with current inputs.",
-  "parity": "Pintz's dichotomy with Maynard weights (two primes, or a prime next to lambda = sigma) needs only theta M_k > 1: proved for 5-tuples under BV, |d| <= 12 instead of 16; classification: proved (modest, possibly folklore), sidesteps parity, does not break it.",
-  "flag": "(minor) Pintz's 2010 parity-sensitive bound 16 improves to 12 with Maynard weights; proved here and checked, but probably folklore (literature question only).",
-  "failed": [
-   "Wolfram connector not available in this session; mathbox skills not available (fresh-context helpers used for the review, the second program and the audit).",
-   "Murty-Vatwani still not obtainable (the Queen's URL returns the homepage HTML)."
-  ],
-  "next": "Verification note v1.0 (priority 1); continue the parity-paper cuts (sec. siegel to one subsection, B-parity/fi-twin/bomb-twin/ss-split shortened, digests halved, notation renames, referee items 2.4-2.7 and 3); main paper: demote prop:family/prop:adjoint/prop:psi-weight, merge bonf/bonf2, shorten the history appendix; one parity attempt (Chen switching as a test of the criterion, or Green-Tao-Ziegler complexity)."
- },
- {
-  "date": "2026-11-16",
-  "slot": "Session 25 (7:34 PM CT, 15 Nov; started on time 01:34 UTC 16 Nov; no wait)",
-  "title": "The Siegel-zero world: where the parity obstruction's hypothesis can fail (parity paper v0.10, with a full referee pass)",
-  "did": [
-   "Parity paper v0.10, thread 3 (hypotheses that imply twin primes): new Section on the Siegel-zero world, read in Tao-Teravainen arXiv:2109.06291v2. Heath-Brown's 1983 theorem is quoted from that paper, since the original is behind a Cloudflare challenge.",
-   "Prop. prop:siegel-bias (Proved here, elementary, possibly folklore): for a real character chi mod q and any +-1 completely multiplicative f, the class sums of f(n)f(n+2) mod Q = lcm(prod_{p<=w} p, q) are on average chi(b)chi(b+2) (x/Q)(1 - 4 s1 - ...), where s1 is the 1/p-sum of the primes where f and chi disagree. For q prime the discrepancies against the coprime average (as in Polymath8b (144)) are then large too, by the Jacobsthal sum -1.",
-   "Cor. cor:siegel-typeI: with a Siegel zero (TT (1.4), (3.22)-(3.23)), a per-modulus unweighted bound eps x/Q on these discrepancies at Q = Wq forces the split primes of chi in (w, q^{1/log^{1-eps'} eta}) to have 1/p-sum >= (1-eps)/4 - o(1). So in a Siegel world with few small split primes, two-point Chowla holds (TT Cor. 1.8(ii)) but a per-modulus form of Chowla in progressions fails. That is where Heath-Brown's route escapes the obstruction. The averaged (EH-type) input is not shown to fail.",
-   "Checks: code/parity/siegel_class_bias.py verifies the pointwise inequality and part (2) exactly in 30 cases (q = 163, 1009; x up to 5e7). A fresh-context audit found 3 errors and 3 gaps (a misreading of TT (3.23), an overstated 'strictly stronger', a numerical sentence, error terms, per-modulus vs averaged, and the relation to open question 1), all fixed. A separate full-paper referee pass found no wrong proof; its framing and labelling fixes were applied (the H(2m+1) criterion is now stated as a barrier for proofs, not a bound; Bombieri's conditions are in the abstract; all 7 labels are defined; stale text is removed). The cuts it proposes are left to the weekly review.",
-   "Main paper v0.25 (Related results). Bounds unchanged: established 246, claimed 182, project 236 (conditional on Song-Yue's unverified Thm 4.18). The twin prime conjecture is open."
-  ],
-  "explored": "Do small values of L(1, chi_{-q}) come with few small split primes? Inconclusive: in real data yes (bottom 1% of 9005 q <= 2e5 have mean s' = 0.029), but this is near-tautological and blind to the Siegel regime, and the class-number argument bounds counts, not 1/p-sums.",
-  "parity": "Attempt: the Siegel-zero world and the twisted Type I input of the obstruction. Classification: located, proved under an explicit small-prime hypothesis. First unresolved implication: whether a Siegel zero forces few split primes below q^{1/log^{1-eps} eta} (open question 8). No parity-breaking content.",
-  "failed": "Wolfram connector not available in this session; mathbox skills not available (fresh-context agents used for the audit and the referee pass). Heath-Brown 1983 could not be opened (HTTP 403, Cloudflare challenge; listed in notes/sources-needed.md). Rung 182: restoration data still missing (the UCLA directory lists only the bundle), so no bound computation this run. The first draft of the corollary misread TT (3.23) and overstated its conclusion; caught by the audit.",
-  "next": "Monday 16 Nov 3:34 AM CT run: the first weekly review before other work. It should decide the referee's proposed cuts (Prop. k3-step, sec. 4.4, the literature digests, notation) and whether the k = 3 variational thread continues. Parity: open question 8, or a log-averaged version of Prop. prop:siegel-bias. 182: restoration data if supplied."
+  "parity": "Parity-paper sections of 15-16 Nov (Siegel-zero world, Pintz's dichotomy, Chen's theorem as a consistency test): all located or confirmed the obstruction; none breaks it.",
+  "explored": "See the archived entries.",
+  "failed": "Wolfram not available; 182 restoration data unavailable.",
+  "next": "Parity paper toward a frozen v1.0; 186 majorisation lemmas; Lean reduction."
  },
  {
   "date": "2026-11-15",
